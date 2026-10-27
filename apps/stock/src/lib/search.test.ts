@@ -58,10 +58,12 @@ describe("disjunctive counts", () => {
     expect(hero.results.every((a) => a.spec === "block.hero")).toBe(true);
     expect(hero.results.length).toBe(one.variantsOf.get("block.hero") ?? -1);
   });
-  test("wildcards: a block matches every skin and radius", () => {
-    const sky = search(E, st({ filters: { type: ["block"], skin: ["sky"] } }));
-    expect(sky.results.length).toBe(92);
-    expect(search(E, st({ filters: { skin: ["sky"] } })).counts["type"]!.get("skin")).toBe(1);
+  test("no label is no value: a block without a density label is never counted and drops out under any density", () => {
+    const all = search(E, st({ variants: "all", filters: { type: ["block"] } }));
+    const labelled = INDEX.assets.filter((a) => a.type === "block" && a.labels["density"]!.length).length;
+    expect(labelled).toBeLessThan(INDEX.counts["block"]!);
+    expect(search(E, st({ variants: "all", filters: { type: ["block"], density: INDEX.facets.find((f) => f.id === "density")!.values.map((v) => v.id) } })).results.length).toBe(labelled);
+    expect([...all.counts["density"]!.values()].reduce((a, b) => a + b, 0)).toBe(labelled);
   });
   test("soft facets rank and never filter", () => {
     const base = search(E, st({}));
@@ -91,7 +93,7 @@ describe("text and sorts", () => {
     expect(un[0]!.missing.length).toBe(Math.max(...un.map((a) => a.missing.length)));
   });
   test("an empty result names the filters to drop", () => {
-    const s = st({ filters: { type: ["skin"], job: ["hero"] } });
+    const s = st({ filters: { type: ["screen"], job: ["comparison"], tone: ["inverse"] } });
     expect(search(E, s).results.length).toBe(0);
     const hints = relaxations(E, s);
     expect(hints[0]!.count).toBeGreaterThan(0);
@@ -129,7 +131,7 @@ describe("performance", () => {
     const assets: Asset[] = [];
     for (let k = 0; assets.length < 2000; k++) for (const a of INDEX.assets) { if (assets.length >= 2000) break; assets.push({ ...a, id: `${a.id}#${k}`, group: `${a.group}#${k}`, order: assets.length }); }
     const big = prepare({ ...INDEX, assets });
-    const states = [st({}), st({ q: "hero" }), st({ filters: { type: ["block"], job: ["hero", "pricing"], density: ["dense"] } }), st({ q: "card", filters: { composition: ["grid"] }, variants: "all", sort: "name" }), st({ filters: { industry: ["saas"], skin: ["sky"] } })];
+    const states = [st({}), st({ q: "hero" }), st({ filters: { type: ["block"], job: ["hero", "pricing"], density: ["dense"] } }), st({ q: "card", filters: { composition: ["grid"] }, variants: "all", sort: "name" }), st({ filters: { industry: ["saas"], section: ["commerce"] } })];
     for (const s of states) search(big, s); // warm up
     const times: number[] = [];
     for (let r = 0; r < 5; r++) for (const s of states) { const t = performance.now(); search(big, s); times.push(performance.now() - t); }

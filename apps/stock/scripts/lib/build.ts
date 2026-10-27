@@ -2,13 +2,14 @@
 // the assets (content/assets.v0.json), the preview recipes (content/previews.v0.json) and the loaders of the Codex collections the
 // previews read (src/lib/collections.gen.ts). Pure apart from reading files; the same inputs give byte-equal outputs (and digest).
 //   sources: packages/compose-gen/specs/blocks (blocks, axes, variants, samples), packages/compose-gen/schema/codex/blocks.json
-//   (data/kind/record -> slots), packages/compose-gen/specs/organisms (sections, runtimes), packages/compose-gen/specs/screens
-//   (composed screens: one asset per page), packages/skins/skins (skins)
+//   (data/kind/record -> slots), packages/compose-gen/specs/organisms (runtimes; an organism no block draws, directly or inside
+//   another organism, would be an asset of its own: none is today), packages/compose-gen/specs/screens (composed screens made of
+//   kit blocks only: one asset per page). Skins are preview settings, not assets. No fallback values: an asset no rule matches has
+//   no label for the facet. A value no asset carries and a facet that does not discriminate are hidden (index.hidden).
 import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ui as dict } from "@ui8kit/app-shared/content";
-import { colourWords } from "@ui8kit/taste-data/search";
 import type { Asset, BlockRecipe, BlockUse, Clause, Facet, FacetValue, Index, Preview, Previews, Rule, ScreenRecipe, SpecValue, Vocabulary } from "../../src/lib/model";
 
 export const ROOT = join(import.meta.dir, "..", "..", "..", "..");
@@ -28,12 +29,11 @@ type BlockSpec = {
   slots: string[]; data?: { as: string; collection: string; fields: Record<string, string> }[];
   sample: { props: Record<string, SpecValue> };
 };
-type OrganismSpec = { id: string; name: string; docs: string; props: { name: string }[]; portable: Record<string, boolean> };
+type OrganismSpec = { id: string; name: string; docs: string; props: { name: string }[]; portable: Record<string, boolean>; view?: unknown };
 type CodexBlock = { spec?: string; surface: string; data?: { record: string; required?: string[]; optional?: string[] }[]; labels?: { prop: string }[] };
 type ScreenSpec = { id: string; name: string; kind?: string; frame?: { before?: unknown[]; after?: unknown[] }; areas?: Record<string, unknown[]> };
-type SkinSpec = { id: string; name: string; fonts: string[]; light: Record<string, string> };
 
-/** what a rule can look at: one variant of a block, a skin, a page of a screen */
+/** what a rule can look at: one variant of a block, a page of a screen */
 type Ctx = {
   block?: string; group?: string; theme?: string; axes: Record<string, string>; slots: string[]; records: string[]; fields: string[];
   labels: string[]; skin?: string; colours: string[]; screen?: string; area?: string; facets: Record<string, string[]>;
@@ -52,10 +52,9 @@ export function matches(c: Clause, x: Ctx): boolean {
 }
 const ruleHits = (r: Rule, x: Ctx): boolean => matches(r.any, x) && !(r.not && matches(r.not, x));
 
-/** the rule-derived values of a facet for one context: matched values in vocabulary order, else the fallback */
+/** the rule-derived values of a facet for one context: matched values in vocabulary order; none matched is "no label" (no fallback) */
 export function deriveRules(f: Facet, x: Ctx): string[] {
-  const out = f.values.filter((v) => (v.rules ?? []).some((r) => ruleHits(r, x))).map((v) => v.id);
-  return out.length ? out : f.fallback ? [f.fallback] : [];
+  return f.values.filter((v) => (v.rules ?? []).some((r) => ruleHits(r, x))).map((v) => v.id);
 }
 
 const humanize = (s: string): string => {
@@ -69,15 +68,6 @@ const words = (...parts: (string | undefined)[]): string[] => [...new Set(parts.
 const getAt = (o: unknown, path: string): unknown => path.split(".").reduce<unknown>((a, k) => (a && typeof a === "object" ? (a as Record<string, unknown>)[k] : undefined), o);
 const str = (v: unknown, fallback: string): string => (typeof v === "string" && v ? v : fallback);
 
-/** the radius of a skin (CSS length of its light --radius) on the 0/4/8/12/16 scale: the nearest step (ties up) */
-export function radiusStep(css: string | undefined): string {
-  const m = /^(-?\d*\.?\d+)(px|rem)?$/.exec((css ?? "").trim());
-  if (!m) return "8";
-  const px = Number(m[1]) * (m[2] === "rem" ? 16 : 1);
-  const steps = [0, 4, 8, 12, 16];
-  return String(steps.reduce((a, b) => (Math.abs(b - px) <= Math.abs(a - px) ? b : a))); // a tie goes to the larger step
-}
-
 export type Built = { index: Index; previews: Previews; collections: string };
 
 export function loadVocabulary(): Vocabulary { return readJson<Vocabulary>(join(APP, "content", "facets.v0.json")); }
@@ -89,12 +79,9 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
   const codex = readJson<{ blocks: CodexBlock[] }>(join(ROOT, "packages", "compose-gen", "schema", "codex", "blocks.json")).blocks;
   const codexBySpec = new Map(codex.filter((c) => c.surface === "kit-block" && c.spec).map((c) => [c.spec!, c]));
   const screens = jsonFiles(join(SPECS, "screens")).map((f) => readJson<ScreenSpec>(join(SPECS, "screens", f)));
-  const skinDir = join(ROOT, "packages", "skins", "skins");
-  const skins = readJson<{ skins: { id: string; file: string }[] }>(join(skinDir, "index.json")).skins.map((s) => readJson<SkinSpec>(join(skinDir, s.file)));
 
-  // the vocabulary with its generated values (the skins, the values of an axis)
-  const facets: Facet[] = vocab.facets.map((f) => {
-    if (f.valuesFrom === "skins") return { ...f, values: skins.map((s) => ({ id: s.id, label: { en: s.name }, synonyms: { en: words(s.id, s.name) } })) };
+  // the vocabulary with its generated values (the values of an axis)
+  const all: Facet[] = vocab.facets.map((f) => {
     if (f.valuesFrom?.startsWith("axis:")) {
       const axis = f.valuesFrom.slice(5);
       const vals = [...new Set(blocks.flatMap((b) => b.axes[axis] ?? []))].sort();
@@ -102,7 +89,9 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
     }
     return f;
   }).sort((a, b) => a.order - b.order);
-  const byId = new Map(facets.map((f) => [f.id, f]));
+  // narrowed to the facets that discriminate once the raw labels are known (see `hide` below)
+  let facets: Facet[] = all;
+  const byId = new Map(all.map((f) => [f.id, f]));
   const applies = (f: Facet, type: string): boolean => !f.types || f.types.includes(type);
 
   /** the labels of one context for one asset type, facet by facet in vocabulary order (later rules can read earlier facets) */
@@ -122,7 +111,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
     }
     return out;
   }
-  /** merge label sets (a section or a page carries every value of the variants or blocks it is made of) */
+  /** merge label sets (a page carries every value of the blocks it is made of) */
   function union(sets: Record<string, string[]>[]): Record<string, string[]> {
     const out: Record<string, string[]> = {};
     for (const f of facets) {
@@ -172,10 +161,8 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
   const labelledDraft = new Set<string>();
   const recipes: Previews["blocks"] = {};
   const sorted = [...blocks].sort((a, b) => THEMES.indexOf(a.theme as (typeof THEMES)[number]) - THEMES.indexOf(b.theme as (typeof THEMES)[number]) || a.id.localeCompare(b.id));
-  /** every variant's labels, for the sections drawn by them and the pages made of them */
+  /** every variant's labels, for the pages made of them */
   const variantLabels = new Map<string, Record<string, string[]>>();
-  const firstPreviewOf = new Map<string, Preview>();
-  const variantsOfOrganism = new Map<string, Record<string, string[]>[]>();
 
   for (const b of sorted) {
     const key = b.id.slice(6);
@@ -191,8 +178,6 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       const labels = labelsOf("block", blockCtx(b, v.set), runtimesOf([org]));
       variantLabels.set(`${key}/${v.id}`, labels);
       const preview: Preview = { kind: "block", block: key, variant: v.id };
-      if (!firstPreviewOf.has(org)) firstPreviewOf.set(org, preview);
-      (variantsOfOrganism.get(org) ?? variantsOfOrganism.set(org, []).get(org)!).push(labelsOf("section", blockCtx(b, v.set), runtimesOf([org])));
       const title = str(names[key], humanize(key));
       const vname = str(variantNames[key]?.[v.id], humanize(v.id));
       raws.push({
@@ -202,14 +187,17 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
     }
   }
 
-  // sections: the organisms of the composition layer (tier organism), labelled by the block variants that draw them
-  for (const o of [...organisms].filter((o) => o.id.startsWith("organism.")).sort((a, b) => a.name.localeCompare(b.name))) {
-    const sets = variantsOfOrganism.get(o.name) ?? [];
-    const labels = sets.length ? union(sets) : labelsOf("section", { axes: {}, slots: [], records: [], fields: [], labels: [], colours: [], facets: {} }, runtimesOf([o.name]));
+  // organisms drawn by a block (its organism, its alt, and every organism nested in their views) are shown as that block's variants;
+  // an organism no block draws would be a block asset of its own, without a preview recipe (none today: all 97 are drawn)
+  const nested = (o: OrganismSpec | undefined): string[] => [...JSON.stringify(o?.view ?? null).matchAll(/"organism":"(\w+)"/g)].map((m) => m[1]!);
+  const drawn = new Set<string>();
+  const visit = (name: string): void => { if (drawn.has(name)) return; drawn.add(name); nested(orgByName.get(name)).forEach(visit); };
+  for (const b of blocks) [b.organism, ...(b.alt ? [b.alt.organism] : [])].forEach(visit);
+  for (const o of [...organisms].filter((o) => o.id.startsWith("organism.") && !drawn.has(o.name)).sort((a, b) => a.name.localeCompare(b.name))) {
     const title = humanize(o.name);
     raws.push({
-      id: `section.${o.id.slice(9)}`, type: "section", group: `section.${o.id.slice(9)}`, title, subtitle: o.name, spec: o.id, labels,
-      preview: firstPreviewOf.get(o.name) ?? null,
+      id: `block.${o.id.slice(9)}`, type: "block", group: `organism.${o.id.slice(9)}`, title, subtitle: o.name, spec: o.id,
+      labels: labelsOf("block", { axes: {}, slots: [], records: [], fields: [], labels: [], colours: [], facets: {} }, runtimesOf([o.name])), preview: null,
       words: [{ w: 6, words: words(title, o.name) }, { w: 1, words: words(o.docs) }],
     });
   }
@@ -233,7 +221,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       const ctx: Ctx = { axes: {}, slots: [], records: [], fields: [], labels: [], colours: [], facets: { ...merged }, screen: key, area };
       // page-level rules (industry by screen and area) add to what the blocks carry
       const own = labelsOf("screen", ctx, runtimesOf(list.map((u) => recipes[u.block]?.organism ?? "")));
-      const labels = union([merged, Object.fromEntries(Object.entries(own).filter(([f]) => byId.get(f)!.derive === "rules" && (byId.get(f)!.mode === "soft" || !merged[f]?.length))), { runtime: own["runtime"] ?? [], skin: ["*"], radius: ["*"] }]);
+      const labels = union([merged, Object.fromEntries(Object.entries(own).filter(([f]) => byId.get(f)!.derive === "rules" && (byId.get(f)!.mode === "soft" || !merged[f]?.length))), { runtime: own["runtime"] ?? [] }]);
       const pageName = humanize(area);
       raws.push({
         id: `screen.${key}/${area}`, type: "screen", group: `screen.${key}/${area}`, title: screenTitle, subtitle: pageName, spec: s.id, variant: area, labels,
@@ -243,25 +231,35 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
     }
   }
 
-  // skins: the theme presets of packages/skins, previewed on the landing page of the marketing screen
-  for (const sk of skins) {
-    const ctx: Ctx = { axes: {}, slots: [], records: [], fields: [], labels: [], colours: colourWords(sk.id), skin: sk.id, facets: {} };
-    const labels = labelsOf("skin", ctx, [], { skin: [sk.id], radius: [radiusStep(sk.light["radius"])] });
-    raws.push({
-      id: `skin.${sk.id}`, type: "skin", group: `skin.${sk.id}`, title: sk.name, subtitle: sk.fonts.join(" + "), spec: `skin.${sk.id}`, labels,
-      preview: screenRecipes["theme-marketing-landing"] ? { kind: "screen", screen: "theme-marketing-landing", area: "home", skin: sk.id } : null,
-      words: [{ w: 6, words: words(sk.name, sk.id) }, { w: 4, words: [...colourWords(sk.id), ...sk.fonts] }],
-    });
-  }
+  // hide the facets that do not discriminate: no asset carries a label, or every asset the facet applies to carries the same labels
+  const hidden: NonNullable<Index["hidden"]> = { facets: [], values: [] };
+  facets = all.filter((f) => {
+    if (f.derive === "type" || f.derive === "markup") return true;
+    const of = raws.filter((r) => applies(f, r.type));
+    const sets = new Set(of.map((r) => JSON.stringify(r.labels[f.id] ?? [])));
+    const reason = !of.some((r) => (r.labels[f.id]?.length ?? 0) > 0) ? "empty" : sets.size === 1 ? "uniform" : null;
+    if (reason) hidden.facets.push({ facet: f.id, reason });
+    return !reason;
+  });
+  for (const r of raws) for (const h of hidden.facets) delete r.labels[h.facet];
 
   for (const r of raws) for (const f of facets) if (f.draft && (r.labels[f.id]?.length ?? 0) > 0 && r.labels[f.id]![0] !== "*") labelledDraft.add(`${r.type}:${f.id}`);
-  const all: Asset[] = raws.map((r, i) => finish(r, i));
+  const assets: Asset[] = raws.map((r, i) => finish(r, i));
+  // hide the values no asset carries (an empty industry, a calm with no rule, a markup state nothing has yet)
+  const carried = new Set(assets.flatMap((a) => Object.entries(a.labels).flatMap(([f, vs]) => vs.map((v) => `${f}\u0000${v}`))));
+  const shown: Facet[] = facets.map((f) => {
+    const keep = f.values.filter((v) => carried.has(`${f.id}\u0000${v.id}`));
+    for (const v of f.values) if (!keep.includes(v)) hidden.values.push({ facet: f.id, value: v.id });
+    return { ...f, values: keep };
+  });
+  const live = new Set(shown.flatMap((f) => f.values.map((v) => `${f.id}\u0000${v.id}`)));
+  const quick = vocab.quick.filter((q) => live.has(`${q.facet}\u0000${q.value}`));
   const counts: Record<string, number> = {};
-  for (const a of all) counts[a.type] = (counts[a.type] ?? 0) + 1;
+  for (const a of assets) counts[a.type] = (counts[a.type] ?? 0) + 1;
   counts["blockSpecs"] = blocks.length;
-  const body = { version: vocab.version, counts, facets, quick: vocab.quick, sorts: vocab.sorts, assets: all };
+  const body = { version: vocab.version, counts, facets: shown, hidden, quick, sorts: vocab.sorts, assets };
   const digest = "sha256:" + createHash("sha256").update(JSON.stringify(body)).digest("hex");
-  const index: Index = { version: body.version, digest, counts, facets, quick: body.quick, sorts: body.sorts, assets: all };
+  const index: Index = { version: body.version, digest, counts, facets: shown, hidden, quick, sorts: body.sorts, assets };
   const previews: Previews = { version: vocab.version, blocks: recipes, screens: screenRecipes };
 
   // the Codex collections the previews read, as lazy imports of @ui8kit/app-shared/data/<collection>

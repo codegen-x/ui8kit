@@ -1,14 +1,22 @@
 {
-  "$comment": "The facet vocabulary of Stock (data, not code): every facet the storefront shows, in order, with its values, synonyms and the rules that derive auto and draft (weak) labels from the specs. scripts/build-index.ts reads it; components render any facet listed here. draft: true marks facets whose labels are weak (not reviewed by a person). Rules: a value is given when any clause of `any` matches and no clause of `not` does; `fallback` is the value when no rule matched.",
+  "$comment": "The facet vocabulary of Stock (data, not code): every facet the storefront shows, in order, with its values, synonyms and the rules that derive auto and draft (weak) labels from the specs. scripts/build-index.ts reads it; components render any facet listed here. draft: true marks facets whose labels are weak (not reviewed by a person). Rules: a value is given when any clause of `any` matches and no clause of `not` does; There are no fallback values: an asset no rule matches has no label for the facet (\"no label\", never counted as a value). Labels are in en, fr, de, es, ru (ids stay English). The index builder hides a value no asset carries and a facet that does not discriminate (no labels, or the same labels on every asset); skin, radius and theme are preview settings, not facets.",
   "version": "0",
   "locales": [
-    "en"
+    "en",
+    "fr",
+    "de",
+    "es",
+    "ru"
   ],
   "facets": [
     {
       "id": "type",
       "label": {
-        "en": "Asset type"
+        "en": "Asset type",
+        "fr": "Type de ressource",
+        "de": "Asset-Typ",
+        "es": "Tipo de recurso",
+        "ru": "Тип ассета"
       },
       "ui": "tabs",
       "scope": "shared",
@@ -18,7 +26,11 @@
         {
           "id": "block",
           "label": {
-            "en": "Blocks"
+            "en": "Blocks",
+            "fr": "Blocs",
+            "de": "Blöcke",
+            "es": "Bloques",
+            "ru": "Блоки"
           },
           "synonyms": {
             "en": [
@@ -29,23 +41,13 @@
           }
         },
         {
-          "id": "section",
-          "label": {
-            "en": "Sections"
-          },
-          "synonyms": {
-            "en": [
-              "section",
-              "sections",
-              "organism",
-              "organisms"
-            ]
-          }
-        },
-        {
           "id": "screen",
           "label": {
-            "en": "Screens"
+            "en": "Screens",
+            "fr": "Écrans",
+            "de": "Screens",
+            "es": "Pantallas",
+            "ru": "Экраны"
           },
           "synonyms": {
             "en": [
@@ -57,83 +59,6 @@
               "templates"
             ]
           }
-        },
-        {
-          "id": "skin",
-          "label": {
-            "en": "Skins"
-          },
-          "synonyms": {
-            "en": [
-              "skin",
-              "skins",
-              "theme",
-              "themes",
-              "palette"
-            ]
-          }
-        },
-        {
-          "id": "illustration",
-          "label": {
-            "en": "Illustrations"
-          },
-          "synonyms": {
-            "en": [
-              "illustration"
-            ]
-          },
-          "soon": true
-        },
-        {
-          "id": "video",
-          "label": {
-            "en": "Video"
-          },
-          "synonyms": {
-            "en": [
-              "video"
-            ]
-          },
-          "soon": true
-        },
-        {
-          "id": "background",
-          "label": {
-            "en": "Backgrounds"
-          },
-          "synonyms": {
-            "en": [
-              "background"
-            ]
-          },
-          "soon": true
-        },
-        {
-          "id": "font",
-          "label": {
-            "en": "Fonts"
-          },
-          "synonyms": {
-            "en": [
-              "font",
-              "typeface"
-            ]
-          },
-          "soon": true
-        },
-        {
-          "id": "poster",
-          "label": {
-            "en": "Social posters"
-          },
-          "synonyms": {
-            "en": [
-              "poster",
-              "social"
-            ]
-          },
-          "soon": true
         }
       ],
       "order": 0
@@ -141,7 +66,11 @@
     {
       "id": "job",
       "label": {
-        "en": "Block job"
+        "en": "Block job",
+        "fr": "Rôle du bloc",
+        "de": "Aufgabe des Blocks",
+        "es": "Función del bloque",
+        "ru": "Задача блока"
       },
       "ui": "checkbox",
       "open": true,
@@ -149,16 +78,19 @@
       "scope": "shared",
       "types": [
         "block",
-        "section",
         "screen"
       ],
-      "source": "auto",
+      "source": "weak",
       "derive": "rules",
       "values": [
         {
           "id": "hero",
           "label": {
-            "en": "Opening / hero"
+            "en": "Opening / hero",
+            "fr": "Ouverture / hero",
+            "de": "Einstieg / Hero",
+            "es": "Apertura / hero",
+            "ru": "Открытие / hero"
           },
           "synonyms": {
             "en": [
@@ -185,7 +117,11 @@
         {
           "id": "features",
           "label": {
-            "en": "Features"
+            "en": "Features",
+            "fr": "Fonctionnalités",
+            "de": "Funktionen",
+            "es": "Funciones",
+            "ru": "Преимущества"
           },
           "synonyms": {
             "en": [
@@ -207,7 +143,11 @@
         {
           "id": "pricing",
           "label": {
-            "en": "Pricing"
+            "en": "Pricing",
+            "fr": "Tarifs",
+            "de": "Preise",
+            "es": "Precios",
+            "ru": "Тарифы"
           },
           "synonyms": {
             "en": [
@@ -233,7 +173,11 @@
         {
           "id": "testimonials",
           "label": {
-            "en": "Testimonials"
+            "en": "Testimonials",
+            "fr": "Témoignages",
+            "de": "Kundenstimmen",
+            "es": "Testimonios",
+            "ru": "Отзывы"
           },
           "synonyms": {
             "en": [
@@ -257,7 +201,11 @@
         {
           "id": "cta",
           "label": {
-            "en": "Call to action"
+            "en": "Call to action",
+            "fr": "Appel à l’action",
+            "de": "Handlungsaufruf",
+            "es": "Llamada a la acción",
+            "ru": "Призыв к действию"
           },
           "synonyms": {
             "en": [
@@ -282,7 +230,11 @@
         {
           "id": "faq",
           "label": {
-            "en": "FAQ / objections"
+            "en": "FAQ / objections",
+            "fr": "FAQ / objections",
+            "de": "FAQ / Einwände",
+            "es": "FAQ / objeciones",
+            "ru": "FAQ / возражения"
           },
           "synonyms": {
             "en": [
@@ -304,7 +256,11 @@
         {
           "id": "proof",
           "label": {
-            "en": "Social proof"
+            "en": "Social proof",
+            "fr": "Preuve sociale",
+            "de": "Social Proof",
+            "es": "Prueba social",
+            "ru": "Соц. доказательство"
           },
           "synonyms": {
             "en": [
@@ -330,7 +286,11 @@
         {
           "id": "navigation",
           "label": {
-            "en": "Navigation"
+            "en": "Navigation",
+            "fr": "Navigation",
+            "de": "Navigation",
+            "es": "Navegación",
+            "ru": "Навигация"
           },
           "synonyms": {
             "en": [
@@ -361,7 +321,11 @@
         {
           "id": "value",
           "label": {
-            "en": "Value proposition"
+            "en": "Value proposition",
+            "fr": "Proposition de valeur",
+            "de": "Nutzenversprechen",
+            "es": "Propuesta de valor",
+            "ru": "Ценностное предложение"
           },
           "synonyms": {
             "en": [
@@ -388,7 +352,11 @@
         {
           "id": "how",
           "label": {
-            "en": "How it works"
+            "en": "How it works",
+            "fr": "Comment ça marche",
+            "de": "So funktioniert es",
+            "es": "Cómo funciona",
+            "ru": "Как это работает"
           },
           "synonyms": {
             "en": [
@@ -414,7 +382,11 @@
         {
           "id": "logos",
           "label": {
-            "en": "Logos"
+            "en": "Logos",
+            "fr": "Logos",
+            "de": "Logos",
+            "es": "Logotipos",
+            "ru": "Логотипы"
           },
           "synonyms": {
             "en": [
@@ -436,7 +408,11 @@
         {
           "id": "numbers",
           "label": {
-            "en": "Numbers"
+            "en": "Numbers",
+            "fr": "Chiffres",
+            "de": "Zahlen",
+            "es": "Cifras",
+            "ru": "Цифры"
           },
           "synonyms": {
             "en": [
@@ -460,7 +436,11 @@
         {
           "id": "comparison",
           "label": {
-            "en": "Comparison"
+            "en": "Comparison",
+            "fr": "Comparaison",
+            "de": "Vergleich",
+            "es": "Comparación",
+            "ru": "Сравнение"
           },
           "synonyms": {
             "en": [
@@ -482,7 +462,11 @@
         {
           "id": "lead",
           "label": {
-            "en": "Lead form"
+            "en": "Lead form",
+            "fr": "Formulaire de contact",
+            "de": "Lead-Formular",
+            "es": "Formulario de captación",
+            "ru": "Лид-форма"
           },
           "synonyms": {
             "en": [
@@ -511,7 +495,11 @@
         {
           "id": "contacts",
           "label": {
-            "en": "Contacts"
+            "en": "Contacts",
+            "fr": "Contacts",
+            "de": "Kontakte",
+            "es": "Contactos",
+            "ru": "Контакты"
           },
           "synonyms": {
             "en": [
@@ -537,7 +525,11 @@
         {
           "id": "catalog",
           "label": {
-            "en": "Catalog"
+            "en": "Catalog",
+            "fr": "Catalogue",
+            "de": "Katalog",
+            "es": "Catálogo",
+            "ru": "Каталог"
           },
           "synonyms": {
             "en": [
@@ -566,7 +558,11 @@
         {
           "id": "product",
           "label": {
-            "en": "Product card"
+            "en": "Product card",
+            "fr": "Fiche produit",
+            "de": "Produktkarte",
+            "es": "Ficha de producto",
+            "ru": "Карточка товара"
           },
           "synonyms": {
             "en": [
@@ -587,7 +583,11 @@
         {
           "id": "checkout",
           "label": {
-            "en": "Cart / checkout"
+            "en": "Cart / checkout",
+            "fr": "Panier / paiement",
+            "de": "Warenkorb / Kasse",
+            "es": "Carrito / pago",
+            "ru": "Корзина / чекаут"
           },
           "synonyms": {
             "en": [
@@ -613,7 +613,11 @@
         {
           "id": "delivery",
           "label": {
-            "en": "Delivery"
+            "en": "Delivery",
+            "fr": "Livraison",
+            "de": "Lieferung",
+            "es": "Entrega",
+            "ru": "Доставка"
           },
           "synonyms": {
             "en": [
@@ -635,7 +639,11 @@
         {
           "id": "blog",
           "label": {
-            "en": "Blog feed"
+            "en": "Blog feed",
+            "fr": "Fil de blog",
+            "de": "Blog-Feed",
+            "es": "Feed del blog",
+            "ru": "Лента блога"
           },
           "synonyms": {
             "en": [
@@ -660,7 +668,11 @@
         {
           "id": "article",
           "label": {
-            "en": "Article"
+            "en": "Article",
+            "fr": "Article",
+            "de": "Artikel",
+            "es": "Artículo",
+            "ru": "Статья"
           },
           "synonyms": {
             "en": [
@@ -687,7 +699,11 @@
         {
           "id": "footer",
           "label": {
-            "en": "Footer"
+            "en": "Footer",
+            "fr": "Pied de page",
+            "de": "Fußzeile",
+            "es": "Pie de página",
+            "ru": "Подвал"
           },
           "synonyms": {
             "en": [
@@ -710,7 +726,11 @@
         {
           "id": "auth",
           "label": {
-            "en": "Sign in"
+            "en": "Sign in",
+            "fr": "Connexion",
+            "de": "Anmeldung",
+            "es": "Inicio de sesión",
+            "ru": "Вход"
           },
           "synonyms": {
             "en": [
@@ -734,7 +754,11 @@
         {
           "id": "dashboard",
           "label": {
-            "en": "Dashboard widget"
+            "en": "Dashboard widget",
+            "fr": "Widget de tableau de bord",
+            "de": "Dashboard-Widget",
+            "es": "Widget de panel",
+            "ru": "Виджет дашборда"
           },
           "synonyms": {
             "en": [
@@ -766,12 +790,24 @@
           ]
         }
       ],
-      "order": 1
+      "order": 1,
+      "draft": true,
+      "draftNote": {
+        "en": "Draft labels: a hand-written table of block ids per job (written by the bot, not reviewed by a person)",
+        "fr": "Libellés provisoires : table de blocs par rôle écrite à la main, non vérifiée par une personne",
+        "de": "Entwurf: handgeschriebene Tabelle der Blöcke je Aufgabe, nicht von einer Person geprüft",
+        "es": "Borrador: tabla de bloques por función escrita a mano, no revisada por una persona",
+        "ru": "Черновая разметка: таблица блоков по задачам написана вручную, человеком не проверена"
+      }
     },
     {
       "id": "role",
       "label": {
-        "en": "Role on the page"
+        "en": "Role on the page",
+        "fr": "Rôle dans la page",
+        "de": "Rolle auf der Seite",
+        "es": "Papel en la página",
+        "ru": "Роль на странице"
       },
       "ui": "chips",
       "open": true,
@@ -779,20 +815,27 @@
       "scope": "shared",
       "types": [
         "block",
-        "section",
         "screen"
       ],
       "source": "weak",
       "draft": true,
       "draftNote": {
-        "en": "Draft labels: derived from the block job, not reviewed by a person"
+        "en": "Draft labels: derived from the block job, not reviewed by a person",
+        "fr": "Libellés provisoires : déduits du rôle du bloc, non vérifiés",
+        "de": "Entwurf: aus der Aufgabe des Blocks abgeleitet, nicht geprüft",
+        "es": "Borrador: derivado de la función del bloque, sin revisar",
+        "ru": "Черновая разметка: выведена из задачи блока, не проверена"
       },
       "derive": "rules",
       "values": [
         {
           "id": "opening",
           "label": {
-            "en": "Opening"
+            "en": "Opening",
+            "fr": "Ouverture",
+            "de": "Einstieg",
+            "es": "Apertura",
+            "ru": "Открытие"
           },
           "synonyms": {
             "en": [
@@ -815,7 +858,11 @@
         {
           "id": "value",
           "label": {
-            "en": "Value"
+            "en": "Value",
+            "fr": "Valeur",
+            "de": "Nutzen",
+            "es": "Valor",
+            "ru": "Ценность"
           },
           "synonyms": {
             "en": [
@@ -840,7 +887,11 @@
         {
           "id": "proof",
           "label": {
-            "en": "Proof"
+            "en": "Proof",
+            "fr": "Preuve",
+            "de": "Beleg",
+            "es": "Prueba",
+            "ru": "Доказательство"
           },
           "synonyms": {
             "en": [
@@ -865,7 +916,11 @@
         {
           "id": "offer",
           "label": {
-            "en": "Offer"
+            "en": "Offer",
+            "fr": "Offre",
+            "de": "Angebot",
+            "es": "Oferta",
+            "ru": "Оффер"
           },
           "synonyms": {
             "en": [
@@ -889,7 +944,11 @@
         {
           "id": "objections",
           "label": {
-            "en": "Objections"
+            "en": "Objections",
+            "fr": "Objections",
+            "de": "Einwände",
+            "es": "Objeciones",
+            "ru": "Возражения"
           },
           "synonyms": {
             "en": [
@@ -911,7 +970,11 @@
         {
           "id": "final-cta",
           "label": {
-            "en": "Final call to action"
+            "en": "Final call to action",
+            "fr": "Appel final",
+            "de": "Abschließender Aufruf",
+            "es": "Llamada final",
+            "ru": "Финальный CTA"
           },
           "synonyms": {
             "en": [
@@ -934,7 +997,11 @@
         {
           "id": "service",
           "label": {
-            "en": "Service"
+            "en": "Service",
+            "fr": "Service",
+            "de": "Service",
+            "es": "Servicio",
+            "ru": "Служебный"
           },
           "synonyms": {
             "en": [
@@ -968,7 +1035,11 @@
     {
       "id": "composition",
       "label": {
-        "en": "Composition"
+        "en": "Composition",
+        "fr": "Composition",
+        "de": "Komposition",
+        "es": "Composición",
+        "ru": "Композиция"
       },
       "ui": "tiles",
       "open": true,
@@ -976,16 +1047,19 @@
       "scope": "shared",
       "types": [
         "block",
-        "section",
         "screen"
       ],
-      "source": "auto",
+      "source": "weak",
       "derive": "rules",
       "values": [
         {
           "id": "central",
           "label": {
-            "en": "Central focus"
+            "en": "Central focus",
+            "fr": "Accent central",
+            "de": "Zentraler Fokus",
+            "es": "Foco central",
+            "ru": "Центральный акцент"
           },
           "synonyms": {
             "en": [
@@ -1023,7 +1097,11 @@
         {
           "id": "two-column",
           "label": {
-            "en": "Two columns"
+            "en": "Two columns",
+            "fr": "Deux colonnes",
+            "de": "Zwei Spalten",
+            "es": "Dos columnas",
+            "ru": "Две колонки"
           },
           "synonyms": {
             "en": [
@@ -1063,7 +1141,11 @@
         {
           "id": "editorial",
           "label": {
-            "en": "Editorial"
+            "en": "Editorial",
+            "fr": "Éditorial",
+            "de": "Redaktionell",
+            "es": "Editorial",
+            "ru": "Редакционная"
           },
           "synonyms": {
             "en": [
@@ -1093,7 +1175,11 @@
         {
           "id": "bento",
           "label": {
-            "en": "Bento"
+            "en": "Bento",
+            "fr": "Bento",
+            "de": "Bento",
+            "es": "Bento",
+            "ru": "Бенто"
           },
           "synonyms": {
             "en": [
@@ -1116,7 +1202,11 @@
         {
           "id": "diagonal",
           "label": {
-            "en": "Diagonal"
+            "en": "Diagonal",
+            "fr": "Diagonale",
+            "de": "Diagonal",
+            "es": "Diagonal",
+            "ru": "Диагональ"
           },
           "synonyms": {
             "en": [
@@ -1140,7 +1230,11 @@
         {
           "id": "axial",
           "label": {
-            "en": "Axial"
+            "en": "Axial",
+            "fr": "Axiale",
+            "de": "Axial",
+            "es": "Axial",
+            "ru": "Осевая"
           },
           "synonyms": {
             "en": [
@@ -1176,7 +1270,11 @@
         {
           "id": "grid",
           "label": {
-            "en": "Card grid"
+            "en": "Card grid",
+            "fr": "Grille de cartes",
+            "de": "Kartenraster",
+            "es": "Cuadrícula de tarjetas",
+            "ru": "Сетка карточек"
           },
           "synonyms": {
             "en": [
@@ -1212,12 +1310,24 @@
           ]
         }
       ],
-      "order": 3
+      "order": 3,
+      "draft": true,
+      "draftNote": {
+        "en": "Draft labels: a hand-written table from the layout axis to a composition, not reviewed by a person",
+        "fr": "Libellés provisoires : table manuelle de la mise en page vers la composition, non vérifiée",
+        "de": "Entwurf: handgeschriebene Zuordnung vom Layout zur Komposition, nicht geprüft",
+        "es": "Borrador: tabla manual del diseño a la composición, sin revisar",
+        "ru": "Черновая разметка: ручная таблица раскладка → композиция, не проверена"
+      }
     },
     {
       "id": "character",
       "label": {
-        "en": "Character"
+        "en": "Character",
+        "fr": "Caractère",
+        "de": "Charakter",
+        "es": "Carácter",
+        "ru": "Характер"
       },
       "ui": "tiles",
       "open": true,
@@ -1226,15 +1336,22 @@
       "source": "weak",
       "draft": true,
       "draftNote": {
-        "en": "Draft labels: derived from tone, scale and skin, not reviewed by a person"
+        "en": "Draft labels: a hand-written table from tone, scale and media, not reviewed by a person",
+        "fr": "Libellés provisoires : table manuelle du ton, de l’échelle et des médias, non vérifiée",
+        "de": "Entwurf: handgeschriebene Zuordnung aus Ton, Maßstab und Medien, nicht geprüft",
+        "es": "Borrador: tabla manual de tono, escala y medios, sin revisar",
+        "ru": "Черновая разметка: ручная таблица по тону, масштабу и медиа, не проверена"
       },
       "derive": "rules",
-      "fallback": "restrained",
       "values": [
         {
-          "id": "restrained",
+          "id": "calm",
           "label": {
-            "en": "Restrained"
+            "en": "Calm",
+            "fr": "Calme",
+            "de": "Ruhig",
+            "es": "Sereno",
+            "ru": "Спокойный"
           },
           "synonyms": {
             "en": [
@@ -1246,9 +1363,13 @@
           }
         },
         {
-          "id": "expressive",
+          "id": "bold",
           "label": {
-            "en": "Expressive"
+            "en": "Bold",
+            "fr": "Audacieux",
+            "de": "Kräftig",
+            "es": "Audaz",
+            "ru": "Смелый"
           },
           "synonyms": {
             "en": [
@@ -1289,7 +1410,11 @@
         {
           "id": "technical",
           "label": {
-            "en": "Technical"
+            "en": "Technical",
+            "fr": "Technique",
+            "de": "Technisch",
+            "es": "Técnico",
+            "ru": "Технологичный"
           },
           "synonyms": {
             "en": [
@@ -1329,7 +1454,11 @@
         {
           "id": "playful",
           "label": {
-            "en": "Playful"
+            "en": "Playful",
+            "fr": "Ludique",
+            "de": "Verspielt",
+            "es": "Lúdico",
+            "ru": "Игровой"
           },
           "synonyms": {
             "en": [
@@ -1355,7 +1484,11 @@
     {
       "id": "density",
       "label": {
-        "en": "Density"
+        "en": "Density",
+        "fr": "Densité",
+        "de": "Dichte",
+        "es": "Densidad",
+        "ru": "Плотность"
       },
       "ui": "tiles",
       "open": true,
@@ -1363,17 +1496,19 @@
       "scope": "shared",
       "types": [
         "block",
-        "section",
         "screen"
       ],
       "source": "auto",
       "derive": "rules",
-      "fallback": "moderate",
       "values": [
         {
           "id": "airy",
           "label": {
-            "en": "Airy"
+            "en": "Airy",
+            "fr": "Aéré",
+            "de": "Luftig",
+            "es": "Amplio",
+            "ru": "Много воздуха"
           },
           "synonyms": {
             "en": [
@@ -1396,14 +1531,19 @@
           ]
         },
         {
-          "id": "moderate",
+          "id": "balanced",
           "label": {
-            "en": "Moderate"
+            "en": "Balanced",
+            "fr": "Équilibré",
+            "de": "Ausgewogen",
+            "es": "Equilibrado",
+            "ru": "Умеренная"
           },
           "synonyms": {
             "en": [
+              "balanced",
               "moderate",
-              "balanced"
+              "medium"
             ]
           },
           "rules": [
@@ -1421,7 +1561,11 @@
         {
           "id": "dense",
           "label": {
-            "en": "Dense"
+            "en": "Dense",
+            "fr": "Dense",
+            "de": "Dicht",
+            "es": "Denso",
+            "ru": "Насыщенная"
           },
           "synonyms": {
             "en": [
@@ -1446,97 +1590,31 @@
       "order": 5
     },
     {
-      "id": "skin",
-      "label": {
-        "en": "Skin and palette"
-      },
-      "ui": "swatches",
-      "scope": "shared",
-      "source": "auto",
-      "derive": "skin",
-      "wildcard": [
-        "block",
-        "section",
-        "screen"
-      ],
-      "valuesFrom": "skins",
-      "values": [],
-      "order": 6
-    },
-    {
-      "id": "radius",
-      "label": {
-        "en": "Corner radius"
-      },
-      "ui": "segments",
-      "scope": "shared",
-      "types": [
-        "block",
-        "section",
-        "screen",
-        "skin"
-      ],
-      "source": "auto",
-      "derive": "radius",
-      "wildcard": [
-        "block",
-        "section",
-        "screen"
-      ],
-      "values": [
-        {
-          "id": "0",
-          "label": {
-            "en": "0"
-          }
-        },
-        {
-          "id": "4",
-          "label": {
-            "en": "4"
-          }
-        },
-        {
-          "id": "8",
-          "label": {
-            "en": "8"
-          }
-        },
-        {
-          "id": "12",
-          "label": {
-            "en": "12"
-          }
-        },
-        {
-          "id": "16",
-          "label": {
-            "en": "16"
-          }
-        }
-      ],
-      "order": 7
-    },
-    {
       "id": "media",
       "label": {
-        "en": "Media"
+        "en": "Media",
+        "fr": "Médias",
+        "de": "Medien",
+        "es": "Medios",
+        "ru": "Медиа"
       },
       "ui": "checkbox",
       "scope": "shared",
       "types": [
         "block",
-        "section",
         "screen"
       ],
-      "source": "auto",
+      "source": "weak",
       "derive": "rules",
-      "fallback": "none",
       "values": [
         {
           "id": "none",
           "label": {
-            "en": "No media"
+            "en": "No media",
+            "fr": "Sans média",
+            "de": "Ohne Medien",
+            "es": "Sin medios",
+            "ru": "Без медиа"
           },
           "synonyms": {
             "en": [
@@ -1548,7 +1626,11 @@
         {
           "id": "icons",
           "label": {
-            "en": "Icons"
+            "en": "Icons",
+            "fr": "Icônes",
+            "de": "Icons",
+            "es": "Iconos",
+            "ru": "Иконки"
           },
           "synonyms": {
             "en": [
@@ -1596,7 +1678,11 @@
         {
           "id": "image",
           "label": {
-            "en": "Single image"
+            "en": "Single image",
+            "fr": "Image unique",
+            "de": "Einzelbild",
+            "es": "Imagen única",
+            "ru": "Одно изображение"
           },
           "synonyms": {
             "en": [
@@ -1655,7 +1741,11 @@
         {
           "id": "gallery",
           "label": {
-            "en": "Gallery"
+            "en": "Gallery",
+            "fr": "Galerie",
+            "de": "Galerie",
+            "es": "Galería",
+            "ru": "Галерея"
           },
           "synonyms": {
             "en": [
@@ -1692,7 +1782,11 @@
         {
           "id": "video",
           "label": {
-            "en": "Video"
+            "en": "Video",
+            "fr": "Vidéo",
+            "de": "Video",
+            "es": "Vídeo",
+            "ru": "Видео"
           },
           "synonyms": {
             "en": [
@@ -1712,32 +1806,50 @@
           ]
         }
       ],
-      "order": 8
+      "order": 8,
+      "draft": true,
+      "draftNote": {
+        "en": "Draft labels: a hand-written table from the axes and the Codex fields, not reviewed by a person",
+        "fr": "Libellés provisoires : table manuelle des axes et des champs Codex, non vérifiée",
+        "de": "Entwurf: handgeschriebene Zuordnung aus Achsen und Codex-Feldern, nicht geprüft",
+        "es": "Borrador: tabla manual de ejes y campos Codex, sin revisar",
+        "ru": "Черновая разметка: ручная таблица по осям и полям Codex, не проверена"
+      }
     },
     {
       "id": "mood",
       "label": {
-        "en": "Mood"
+        "en": "Mood",
+        "fr": "Ambiance",
+        "de": "Stimmung",
+        "es": "Ambiente",
+        "ru": "Настроение"
       },
       "ui": "chips",
       "scope": "shared",
       "types": [
-        "skin",
         "block",
-        "section",
         "screen"
       ],
       "source": "weak",
       "draft": true,
       "draftNote": {
-        "en": "Draft labels: only skins carry a mood (from their colour words); blocks are not labelled yet"
+        "en": "Draft labels: blocks are not labelled with a mood yet",
+        "fr": "Libellés provisoires : les blocs n’ont pas encore d’ambiance",
+        "de": "Entwurf: Blöcke haben noch keine Stimmung",
+        "es": "Borrador: los bloques aún no tienen ambiente",
+        "ru": "Черновая разметка: у блоков пока нет настроения"
       },
       "derive": "rules",
       "values": [
         {
           "id": "warm",
           "label": {
-            "en": "Warm"
+            "en": "Warm",
+            "fr": "Chaleureux",
+            "de": "Warm",
+            "es": "Cálido",
+            "ru": "Тёплое"
           },
           "synonyms": {
             "en": [
@@ -1757,7 +1869,11 @@
         {
           "id": "cold",
           "label": {
-            "en": "Cold"
+            "en": "Cold",
+            "fr": "Froid",
+            "de": "Kühl",
+            "es": "Frío",
+            "ru": "Холодное"
           },
           "synonyms": {
             "en": [
@@ -1778,7 +1894,11 @@
         {
           "id": "premium",
           "label": {
-            "en": "Premium"
+            "en": "Premium",
+            "fr": "Premium",
+            "de": "Premium",
+            "es": "Premium",
+            "ru": "Премиальное"
           },
           "synonyms": {
             "en": [
@@ -1800,7 +1920,11 @@
         {
           "id": "friendly",
           "label": {
-            "en": "Friendly"
+            "en": "Friendly",
+            "fr": "Amical",
+            "de": "Freundlich",
+            "es": "Amigable",
+            "ru": "Дружелюбное"
           },
           "synonyms": {
             "en": [
@@ -1822,7 +1946,11 @@
         {
           "id": "strict",
           "label": {
-            "en": "Strict"
+            "en": "Strict",
+            "fr": "Strict",
+            "de": "Streng",
+            "es": "Estricto",
+            "ru": "Строгое"
           },
           "synonyms": {
             "en": [
@@ -1845,7 +1973,11 @@
         {
           "id": "festive",
           "label": {
-            "en": "Festive"
+            "en": "Festive",
+            "fr": "Festif",
+            "de": "Festlich",
+            "es": "Festivo",
+            "ru": "Праздничное"
           },
           "synonyms": {
             "en": [
@@ -1870,7 +2002,11 @@
     {
       "id": "industry",
       "label": {
-        "en": "Industry"
+        "en": "Industry",
+        "fr": "Secteur",
+        "de": "Branche",
+        "es": "Sector",
+        "ru": "Отрасль"
       },
       "ui": "checkbox",
       "mode": "soft",
@@ -1878,14 +2014,22 @@
       "source": "weak",
       "draft": true,
       "draftNote": {
-        "en": "Draft labels: a ranking hint from the catalog topic, never a hard filter"
+        "en": "Draft labels: a hand-written ranking hint from the catalog topic, never a hard filter",
+        "fr": "Libellés provisoires : indice de classement manuel d’après la rubrique, jamais un filtre strict",
+        "de": "Entwurf: handgeschriebener Ranking-Hinweis aus dem Katalogbereich, nie ein harter Filter",
+        "es": "Borrador: pista de orden manual según la sección, nunca un filtro estricto",
+        "ru": "Черновая разметка: ручная подсказка ранжирования по разделу, не жёсткий фильтр"
       },
       "derive": "rules",
       "values": [
         {
           "id": "food",
           "label": {
-            "en": "Food and restaurants"
+            "en": "Food and restaurants",
+            "fr": "Restauration",
+            "de": "Essen und Restaurants",
+            "es": "Comida y restaurantes",
+            "ru": "Еда и рестораны"
           },
           "synonyms": {
             "en": [
@@ -1900,7 +2044,11 @@
         {
           "id": "saas",
           "label": {
-            "en": "SaaS"
+            "en": "SaaS",
+            "fr": "SaaS",
+            "de": "SaaS",
+            "es": "SaaS",
+            "ru": "SaaS"
           },
           "synonyms": {
             "en": [
@@ -1931,7 +2079,11 @@
         {
           "id": "ecommerce",
           "label": {
-            "en": "E-commerce"
+            "en": "E-commerce",
+            "fr": "E-commerce",
+            "de": "E-Commerce",
+            "es": "Comercio electrónico",
+            "ru": "E-commerce"
           },
           "synonyms": {
             "en": [
@@ -1957,7 +2109,11 @@
         {
           "id": "education",
           "label": {
-            "en": "Education"
+            "en": "Education",
+            "fr": "Éducation",
+            "de": "Bildung",
+            "es": "Educación",
+            "ru": "Образование"
           },
           "synonyms": {
             "en": [
@@ -1982,7 +2138,11 @@
         {
           "id": "medicine",
           "label": {
-            "en": "Medicine"
+            "en": "Medicine",
+            "fr": "Santé",
+            "de": "Medizin",
+            "es": "Medicina",
+            "ru": "Медицина"
           },
           "synonyms": {
             "en": [
@@ -1995,7 +2155,11 @@
         {
           "id": "realestate",
           "label": {
-            "en": "Real estate"
+            "en": "Real estate",
+            "fr": "Immobilier",
+            "de": "Immobilien",
+            "es": "Inmobiliaria",
+            "ru": "Недвижимость"
           },
           "synonyms": {
             "en": [
@@ -2008,7 +2172,11 @@
         {
           "id": "finance",
           "label": {
-            "en": "Finance"
+            "en": "Finance",
+            "fr": "Finance",
+            "de": "Finanzen",
+            "es": "Finanzas",
+            "ru": "Финансы"
           },
           "synonyms": {
             "en": [
@@ -2032,7 +2200,11 @@
         {
           "id": "portfolio",
           "label": {
-            "en": "Portfolio"
+            "en": "Portfolio",
+            "fr": "Portfolio",
+            "de": "Portfolio",
+            "es": "Portafolio",
+            "ru": "Портфолио"
           },
           "synonyms": {
             "en": [
@@ -2061,7 +2233,11 @@
         {
           "id": "events",
           "label": {
-            "en": "Events"
+            "en": "Events",
+            "fr": "Événements",
+            "de": "Veranstaltungen",
+            "es": "Eventos",
+            "ru": "Мероприятия"
           },
           "synonyms": {
             "en": [
@@ -2086,13 +2262,16 @@
     {
       "id": "section",
       "label": {
-        "en": "Catalog section"
+        "en": "Catalog section",
+        "fr": "Rubrique du catalogue",
+        "de": "Katalogbereich",
+        "es": "Sección del catálogo",
+        "ru": "Раздел каталога"
       },
       "ui": "checkbox",
       "scope": "shared",
       "types": [
         "block",
-        "section",
         "screen"
       ],
       "source": "auto",
@@ -2101,7 +2280,11 @@
         {
           "id": "marketing",
           "label": {
-            "en": "Marketing"
+            "en": "Marketing",
+            "fr": "Marketing",
+            "de": "Marketing",
+            "es": "Marketing",
+            "ru": "Маркетинг"
           },
           "synonyms": {
             "en": [
@@ -2121,7 +2304,11 @@
         {
           "id": "commerce",
           "label": {
-            "en": "Commerce"
+            "en": "Commerce",
+            "fr": "Commerce",
+            "de": "Handel",
+            "es": "Comercio",
+            "ru": "Коммерция"
           },
           "synonyms": {
             "en": [
@@ -2141,7 +2328,11 @@
         {
           "id": "dashboard",
           "label": {
-            "en": "Dashboard"
+            "en": "Dashboard",
+            "fr": "Tableau de bord",
+            "de": "Dashboard",
+            "es": "Panel",
+            "ru": "Дашборд"
           },
           "synonyms": {
             "en": [
@@ -2161,7 +2352,11 @@
         {
           "id": "content",
           "label": {
-            "en": "Content"
+            "en": "Content",
+            "fr": "Contenu",
+            "de": "Inhalt",
+            "es": "Contenido",
+            "ru": "Контент"
           },
           "synonyms": {
             "en": [
@@ -2181,7 +2376,11 @@
         {
           "id": "account",
           "label": {
-            "en": "Account"
+            "en": "Account",
+            "fr": "Compte",
+            "de": "Konto",
+            "es": "Cuenta",
+            "ru": "Аккаунт"
           },
           "synonyms": {
             "en": [
@@ -2201,7 +2400,11 @@
         {
           "id": "onboarding",
           "label": {
-            "en": "Onboarding"
+            "en": "Onboarding",
+            "fr": "Prise en main",
+            "de": "Onboarding",
+            "es": "Incorporación",
+            "ru": "Онбординг"
           },
           "synonyms": {
             "en": [
@@ -2221,7 +2424,11 @@
         {
           "id": "support",
           "label": {
-            "en": "Support"
+            "en": "Support",
+            "fr": "Assistance",
+            "de": "Support",
+            "es": "Soporte",
+            "ru": "Поддержка"
           },
           "synonyms": {
             "en": [
@@ -2241,7 +2448,11 @@
         {
           "id": "promo",
           "label": {
-            "en": "Promo"
+            "en": "Promo",
+            "fr": "Promo",
+            "de": "Aktion",
+            "es": "Promoción",
+            "ru": "Промо"
           },
           "synonyms": {
             "en": [
@@ -2264,13 +2475,16 @@
     {
       "id": "runtime",
       "label": {
-        "en": "Runtime"
+        "en": "Runtime",
+        "fr": "Environnement",
+        "de": "Laufzeit",
+        "es": "Entorno",
+        "ru": "Рантайм"
       },
       "ui": "checkbox",
       "scope": "shared",
       "types": [
         "block",
-        "section",
         "screen"
       ],
       "source": "auto",
@@ -2282,49 +2496,81 @@
         {
           "id": "svelte",
           "label": {
-            "en": "Svelte"
+            "en": "Svelte",
+            "fr": "Svelte",
+            "de": "Svelte",
+            "es": "Svelte",
+            "ru": "Svelte"
           }
         },
         {
           "id": "react",
           "label": {
-            "en": "React"
+            "en": "React",
+            "fr": "React",
+            "de": "React",
+            "es": "React",
+            "ru": "React"
           }
         },
         {
           "id": "vue",
           "label": {
-            "en": "Vue"
+            "en": "Vue",
+            "fr": "Vue",
+            "de": "Vue",
+            "es": "Vue",
+            "ru": "Vue"
           }
         },
         {
           "id": "solid",
           "label": {
-            "en": "Solid"
+            "en": "Solid",
+            "fr": "Solid",
+            "de": "Solid",
+            "es": "Solid",
+            "ru": "Solid"
           }
         },
         {
           "id": "templ",
           "label": {
-            "en": "templ"
+            "en": "templ",
+            "fr": "templ",
+            "de": "templ",
+            "es": "templ",
+            "ru": "templ"
           }
         },
         {
           "id": "twig",
           "label": {
-            "en": "Twig"
+            "en": "Twig",
+            "fr": "Twig",
+            "de": "Twig",
+            "es": "Twig",
+            "ru": "Twig"
           }
         },
         {
           "id": "jinja2",
           "label": {
-            "en": "Jinja2"
+            "en": "Jinja2",
+            "fr": "Jinja2",
+            "de": "Jinja2",
+            "es": "Jinja2",
+            "ru": "Jinja2"
           }
         },
         {
           "id": "latte",
           "label": {
-            "en": "Latte"
+            "en": "Latte",
+            "fr": "Latte",
+            "de": "Latte",
+            "es": "Latte",
+            "ru": "Latte"
           }
         }
       ],
@@ -2333,21 +2579,28 @@
     {
       "id": "slots",
       "label": {
-        "en": "Contains slots"
+        "en": "Contains slots",
+        "fr": "Contient",
+        "de": "Enthält",
+        "es": "Contiene",
+        "ru": "Содержит слоты"
       },
       "ui": "checkbox",
       "scope": "typed",
       "types": [
-        "block",
-        "section"
+        "block"
       ],
-      "source": "auto",
+      "source": "weak",
       "derive": "rules",
       "values": [
         {
           "id": "price",
           "label": {
-            "en": "Price"
+            "en": "Price",
+            "fr": "Prix",
+            "de": "Preis",
+            "es": "Precio",
+            "ru": "Цена"
           },
           "synonyms": {
             "en": [
@@ -2384,7 +2637,11 @@
         {
           "id": "image",
           "label": {
-            "en": "Image"
+            "en": "Image",
+            "fr": "Image",
+            "de": "Bild",
+            "es": "Imagen",
+            "ru": "Изображение"
           },
           "synonyms": {
             "en": [
@@ -2413,7 +2670,11 @@
         {
           "id": "date",
           "label": {
-            "en": "Date"
+            "en": "Date",
+            "fr": "Date",
+            "de": "Datum",
+            "es": "Fecha",
+            "ru": "Дата"
           },
           "synonyms": {
             "en": [
@@ -2443,7 +2704,11 @@
         {
           "id": "form",
           "label": {
-            "en": "Form"
+            "en": "Form",
+            "fr": "Formulaire",
+            "de": "Formular",
+            "es": "Formulario",
+            "ru": "Форма"
           },
           "synonyms": {
             "en": [
@@ -2476,7 +2741,11 @@
         {
           "id": "rating",
           "label": {
-            "en": "Rating"
+            "en": "Rating",
+            "fr": "Note",
+            "de": "Bewertung",
+            "es": "Valoración",
+            "ru": "Рейтинг"
           },
           "synonyms": {
             "en": [
@@ -2501,7 +2770,11 @@
         {
           "id": "avatar",
           "label": {
-            "en": "Avatar"
+            "en": "Avatar",
+            "fr": "Avatar",
+            "de": "Avatar",
+            "es": "Avatar",
+            "ru": "Аватар"
           },
           "synonyms": {
             "en": [
@@ -2531,7 +2804,11 @@
         {
           "id": "map",
           "label": {
-            "en": "Map"
+            "en": "Map",
+            "fr": "Carte",
+            "de": "Karte",
+            "es": "Mapa",
+            "ru": "Карта"
           },
           "synonyms": {
             "en": [
@@ -2557,7 +2834,11 @@
         {
           "id": "table",
           "label": {
-            "en": "Table"
+            "en": "Table",
+            "fr": "Tableau",
+            "de": "Tabelle",
+            "es": "Tabla",
+            "ru": "Таблица"
           },
           "synonyms": {
             "en": [
@@ -2584,7 +2865,11 @@
         {
           "id": "chart",
           "label": {
-            "en": "Chart"
+            "en": "Chart",
+            "fr": "Graphique",
+            "de": "Diagramm",
+            "es": "Gráfico",
+            "ru": "График"
           },
           "synonyms": {
             "en": [
@@ -2608,12 +2893,24 @@
           ]
         }
       ],
-      "order": 13
+      "order": 13,
+      "draft": true,
+      "draftNote": {
+        "en": "Draft labels: a hand-written table from the Codex fields, records and slot components, not reviewed by a person",
+        "fr": "Libellés provisoires : table manuelle des champs, enregistrements et composants Codex, non vérifiée",
+        "de": "Entwurf: handgeschriebene Zuordnung aus Codex-Feldern, Datensätzen und Slot-Komponenten, nicht geprüft",
+        "es": "Borrador: tabla manual de campos, registros y componentes Codex, sin revisar",
+        "ru": "Черновая разметка: ручная таблица по полям, записям и слотам Codex, не проверена"
+      }
     },
     {
       "id": "layout",
       "label": {
-        "en": "Block layout"
+        "en": "Block layout",
+        "fr": "Mise en page du bloc",
+        "de": "Block-Layout",
+        "es": "Diseño del bloque",
+        "ru": "Раскладка блока"
       },
       "ui": "checkbox",
       "scope": "typed",
@@ -2629,13 +2926,16 @@
     {
       "id": "tone",
       "label": {
-        "en": "Tone"
+        "en": "Tone",
+        "fr": "Ton",
+        "de": "Ton",
+        "es": "Tono",
+        "ru": "Тон"
       },
       "ui": "segments",
       "scope": "typed",
       "types": [
-        "block",
-        "section"
+        "block"
       ],
       "source": "auto",
       "derive": "rules",
@@ -2643,7 +2943,11 @@
         {
           "id": "default",
           "label": {
-            "en": "Default"
+            "en": "Default",
+            "fr": "Par défaut",
+            "de": "Standard",
+            "es": "Predeterminado",
+            "ru": "Обычный"
           },
           "synonyms": {
             "en": [
@@ -2666,7 +2970,11 @@
         {
           "id": "muted",
           "label": {
-            "en": "Muted"
+            "en": "Muted",
+            "fr": "Atténué",
+            "de": "Gedämpft",
+            "es": "Atenuado",
+            "ru": "Приглушённый"
           },
           "synonyms": {
             "en": [
@@ -2689,7 +2997,11 @@
         {
           "id": "inverse",
           "label": {
-            "en": "Inverse"
+            "en": "Inverse",
+            "fr": "Inversé",
+            "de": "Invertiert",
+            "es": "Invertido",
+            "ru": "Инверсный"
           },
           "synonyms": {
             "en": [
@@ -2716,7 +3028,11 @@
     {
       "id": "markup",
       "label": {
-        "en": "Labelling state"
+        "en": "Labelling state",
+        "fr": "État du marquage",
+        "de": "Kennzeichnungsstatus",
+        "es": "Estado del etiquetado",
+        "ru": "Состояние разметки"
       },
       "ui": "toggle",
       "scope": "shared",
@@ -2726,7 +3042,11 @@
         {
           "id": "human",
           "label": {
-            "en": "Reviewed by a person"
+            "en": "Reviewed by a person",
+            "fr": "Vérifié par une personne",
+            "de": "Von einer Person geprüft",
+            "es": "Revisado por una persona",
+            "ru": "Проверено человеком"
           },
           "synonyms": {
             "en": [
@@ -2738,7 +3058,11 @@
         {
           "id": "auto",
           "label": {
-            "en": "Automatic only"
+            "en": "Automatic only",
+            "fr": "Automatique seulement",
+            "de": "Nur automatisch",
+            "es": "Solo automático",
+            "ru": "Только авто"
           },
           "synonyms": {
             "en": [
@@ -2750,7 +3074,11 @@
         {
           "id": "disputed",
           "label": {
-            "en": "Disputed"
+            "en": "Disputed",
+            "fr": "Contesté",
+            "de": "Umstritten",
+            "es": "Disputado",
+            "ru": "Спорное"
           },
           "synonyms": {
             "en": [
@@ -2761,7 +3089,11 @@
         {
           "id": "needs",
           "label": {
-            "en": "Needs labelling"
+            "en": "Needs labelling",
+            "fr": "À marquer",
+            "de": "Muss gekennzeichnet werden",
+            "es": "Necesita etiquetado",
+            "ru": "Нужна разметка"
           },
           "synonyms": {
             "en": [
@@ -2789,13 +3121,6 @@
       "value": "testimonials"
     },
     {
-      "facet": "tone",
-      "value": "inverse",
-      "label": {
-        "en": "Dark"
-      }
-    },
-    {
       "facet": "density",
       "value": "airy"
     },
@@ -2807,7 +3132,11 @@
       "facet": "slots",
       "value": "form",
       "label": {
-        "en": "With a form"
+        "en": "With a form",
+        "fr": "Avec formulaire",
+        "de": "Mit Formular",
+        "es": "Con formulario",
+        "ru": "С формой"
       }
     },
     {
@@ -2819,25 +3148,41 @@
     {
       "id": "relevance",
       "label": {
-        "en": "Relevance"
+        "en": "Relevance",
+        "fr": "Pertinence",
+        "de": "Relevanz",
+        "es": "Relevancia",
+        "ru": "Релевантность"
       }
     },
     {
       "id": "catalog",
       "label": {
-        "en": "Catalog order"
+        "en": "Catalog order",
+        "fr": "Ordre du catalogue",
+        "de": "Katalogreihenfolge",
+        "es": "Orden del catálogo",
+        "ru": "Порядок каталога"
       }
     },
     {
       "id": "name",
       "label": {
-        "en": "Name"
+        "en": "Name",
+        "fr": "Nom",
+        "de": "Name",
+        "es": "Nombre",
+        "ru": "Название"
       }
     },
     {
       "id": "unlabelled",
       "label": {
-        "en": "Needs labelling first"
+        "en": "Needs labelling first",
+        "fr": "À marquer d’abord",
+        "de": "Zuerst ungekennzeichnete",
+        "es": "Primero sin etiquetar",
+        "ru": "Сначала неразмеченные"
       }
     }
   ]

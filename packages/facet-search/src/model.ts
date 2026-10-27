@@ -58,8 +58,6 @@ export type Facet = {
   mode?: "soft";
   /** how labels are derived: rules of the values, or a named source */
   derive: string;
-  /** the value given when no rule matched */
-  fallback?: string;
   /** asset types that match every value (a block renders in any skin, at any radius) */
   wildcard?: string[];
   /** the values are generated from the sources (the skins, the values of an axis) */
@@ -104,6 +102,8 @@ export type Index<P = unknown> = {
   facets: Facet[];
   quick: QuickFilter[];
   sorts: SortDef[];
+  /** what the index builder left out: facets that do not discriminate (no labels, or the same labels on every asset) and values no asset carries */
+  hidden?: { facets: { facet: string; reason: "empty" | "uniform" }[]; values: { facet: string; value: string }[] };
   assets: Asset<P>[];
 };
 

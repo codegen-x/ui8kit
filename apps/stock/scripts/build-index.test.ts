@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { build, deriveRules, loadVocabulary, matches, OUTPUTS, radiusStep, ROOT, serialise } from "./lib/build";
+import { build, deriveRules, loadVocabulary, matches, OUTPUTS, ROOT, serialise } from "./lib/build";
 
 const vocab = loadVocabulary();
 const built = build(vocab);
@@ -23,10 +23,18 @@ describe("index", () => {
     expect(new Set(index.assets.map((a) => a.id)).size).toBe(index.assets.length);
     index.assets.forEach((a, i) => expect(a.order).toBe(i));
   });
-  test("sections, screens and skins are indexed", () => {
-    expect(index.counts["section"]).toBeGreaterThan(0);
-    expect(index.counts["screen"]).toBeGreaterThan(0);
-    expect(index.counts["skin"]).toBe(15);
+  test("two categories: blocks and screens; no sections (every organism is drawn by a block) and no skins (a preview setting)", () => {
+    expect(Object.keys(index.counts).sort()).toEqual(["block", "blockSpecs", "screen"]);
+    expect(index.counts["screen"]).toBe(65);
+    expect(index.facets.find((f) => f.id === "type")!.values.map((v) => v.id)).toEqual(["block", "screen"]);
+    expect(index.facets.some((f) => f.id === "skin" || f.id === "radius")).toBe(false);
+  });
+  test("every page of a screen is made of kit blocks with existing variants", () => {
+    const byId = new Map(blockSpecs.map((b) => [b.id.slice(6), new Set(b.variants.map((v) => v.id))]));
+    for (const r of Object.values(previews.screens)) for (const u of [...r.before, ...r.after, ...Object.values(r.areas).flat()]) {
+      expect(byId.has(u.block)).toBe(true);
+      if (u.variant) expect(byId.get(u.block)!.has(u.variant)).toBe(true);
+    }
   });
   test("deterministic: a second build gives the same digest and the same bytes", () => {
     const again = build(loadVocabulary());
@@ -41,6 +49,7 @@ describe("index", () => {
 });
 
 describe("labels", () => {
+  const blocks = () => index.assets.filter((a) => a.type === "block");
   const facetOf = new Map(index.facets.map((f) => [f.id, f]));
   test("every label is a value of the vocabulary (or * where the facet allows it for the type)", () => {
     for (const a of index.assets) for (const [f, vals] of Object.entries(a.labels)) {
@@ -57,7 +66,7 @@ describe("labels", () => {
     const blocks = index.assets.filter((a) => a.type === "block");
     for (const a of blocks) {
       expect(a.labels["type"]).toEqual(["block"]);
-      for (const f of ["job", "section", "density", "media", "runtime"]) expect(a.labels[f]!.length).toBeGreaterThan(0);
+      for (const f of ["job", "section"]) expect(a.labels[f]!.length).toBeGreaterThan(0);
     }
     const hero = index.assets.find((a) => a.id === "block.hero/centered")!;
     expect(hero.labels["job"]).toContain("hero");
@@ -68,13 +77,38 @@ describe("labels", () => {
     expect(blocks.some((a) => a.labels["tone"]?.includes("inverse"))).toBe(true);
     expect(blocks.some((a) => a.labels["density"]?.includes("airy"))).toBe(true);
   });
+  test("no fallback values: an asset without a matching rule has no label, and the canon ids are used", () => {
+    expect(vocab.facets.some((f) => "fallback" in f)).toBe(false);
+    expect(blocks().some((a) => a.labels["density"]!.length === 0)).toBe(true);
+    expect(blocks().some((a) => a.labels["character"]!.length === 0)).toBe(true);
+    expect(vocab.facets.find((f) => f.id === "character")!.values.map((v) => v.id)).toEqual(["calm", "bold", "technical", "playful"]);
+    expect(vocab.facets.find((f) => f.id === "density")!.values.map((v) => v.id)).toEqual(["airy", "balanced", "dense"]);
+    expect(vocab.quick.some((q) => q.facet === "tone")).toBe(false);
+  });
+  test("facets that do not discriminate and values nobody carries are hidden, and named", () => {
+    const hiddenFacets = index.hidden!.facets.map((h) => h.facet);
+    expect(hiddenFacets).toContain("runtime");
+    for (const h of index.hidden!.facets) expect(index.facets.some((f) => f.id === h.facet)).toBe(false);
+    for (const h of index.hidden!.values) expect(index.facets.find((f) => f.id === h.facet)?.values.some((v) => v.id === h.value) ?? false).toBe(false);
+    for (const f of index.facets) for (const v of f.values) expect(index.assets.some((a) => a.labels[f.id]?.includes(v.id))).toBe(true);
+    expect(index.hidden!.values).toContainEqual({ facet: "markup", value: "human" });
+  });
+  test("labels in five languages", () => {
+    expect(vocab.locales).toEqual(["en", "fr", "de", "es", "ru"]);
+    for (const f of vocab.facets) {
+      for (const l of vocab.locales) expect(f.label[l]?.length ?? 0).toBeGreaterThan(0);
+      if (!f.valuesFrom) for (const v of f.values) for (const l of vocab.locales) expect(v.label[l]?.length ?? 0).toBeGreaterThan(0);
+    }
+  });
   test("draft facets are marked in the data and their labels are listed as weak", () => {
     const drafts = vocab.facets.filter((f) => f.draft).map((f) => f.id).sort();
-    expect(drafts).toEqual(["character", "industry", "mood", "role"]);
+    // the hand-written mapping tables are drafts too (job, composition, media, slots), next to role, character, mood and industry
+    expect(drafts).toEqual(["character", "composition", "industry", "job", "media", "mood", "role", "slots"]);
     for (const f of vocab.facets.filter((f) => f.draft)) expect(f.draftNote?.en.length).toBeGreaterThan(0);
     const hero = index.assets.find((a) => a.id === "block.hero/centered")!;
     expect(hero.weak).toContain("role");
-    expect(hero.weak).not.toContain("job");
+    expect(hero.weak).toContain("job");
+    expect(hero.weak).not.toContain("section");
   });
   test("at least 12 filter groups besides the type bar, 5 of them open", () => {
     const groups = index.facets.filter((f) => f.ui !== "tabs");
@@ -86,7 +120,7 @@ describe("labels", () => {
       if (a.preview?.kind === "block") expect(previews.blocks[a.preview.block]?.variants.some((v) => v.id === (a.preview as { variant: string }).variant)).toBe(true);
       if (a.preview?.kind === "screen") expect(previews.screens[a.preview.screen]?.areas[a.preview.area]).toBeDefined();
     }
-    expect(index.assets.filter((a) => a.type !== "section").every((a) => a.preview !== null)).toBe(true);
+    expect(index.assets.every((a) => a.preview !== null)).toBe(true);
   });
 });
 
@@ -100,17 +134,10 @@ describe("rules", () => {
     expect(matches({ record: ["Product"], slot: ["MediaFrame"] }, ctx)).toBe(true);
     expect(matches({}, ctx)).toBe(false);
   });
-  test("values in vocabulary order, not-clauses, fallback", () => {
-    const f = { id: "x", label: { en: "x" }, ui: "checkbox" as const, order: 0, scope: "shared" as const, source: "auto" as const, derive: "rules", fallback: "z",
+  test("values in vocabulary order, not-clauses, no fallback", () => {
+    const f = { id: "x", label: { en: "x" }, ui: "checkbox" as const, order: 0, scope: "shared" as const, source: "auto" as const, derive: "rules",
       values: [{ id: "a", label: { en: "a" }, rules: [{ any: { block: ["hero"] }, not: { group: ["hero"] } }] }, { id: "b", label: { en: "b" }, rules: [{ any: { axis: { tone: ["muted"] } } }] }, { id: "z", label: { en: "z" } }] };
     expect(deriveRules(f, ctx)).toEqual(["b"]);
-    expect(deriveRules(f, { ...ctx, axes: {} })).toEqual(["z"]);
-  });
-  test("skin radius on the 0/4/8/12/16 scale", () => {
-    expect(radiusStep("0px")).toBe("0");
-    expect(radiusStep("0.375rem")).toBe("8");
-    expect(radiusStep("0.125rem")).toBe("4");
-    expect(radiusStep("1.4rem")).toBe("16");
-    expect(radiusStep("0.625rem")).toBe("12");
+    expect(deriveRules(f, { ...ctx, axes: {} })).toEqual([]);
   });
 });
