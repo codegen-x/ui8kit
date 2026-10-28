@@ -473,15 +473,7 @@
                     },
                     {
                       "when": {
-                        "op": "or",
-                        "args": [
-                          {
-                            "$": "aside.title"
-                          },
-                          {
-                            "$": "aside.content"
-                          }
-                        ]
+                        "$": "aside.content"
                       },
                       "then": [
                         {

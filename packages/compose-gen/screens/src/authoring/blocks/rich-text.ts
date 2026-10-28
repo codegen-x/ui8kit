@@ -27,7 +27,8 @@ const metaLine = (): ViewNode => when(or(ref("meta.date"), ref("meta.author"), r
 const cover = (ratio: Value): ViewNode => organism("MediaFrame", { alt: coalesce(ref("media.alt"), ref("title")), src: ref("media.src"), ratio });
 
 /** the side note of the sidebar layout: a card after the body (not a landmark of its own), its heading one level under the title */
-const sideNote = (): ViewNode => when(or(ref("aside.title"), ref("aside.content")), [
+// the side note shows only when its markup is set (an empty |html read gives nothing): a title alone is no card
+const sideNote = (): ViewNode => when(ref("aside.content"), [
   use("Card", { props: { Variant: "compact", Class: "h-fit" }, attrs: { "data-testid": "richtext-aside" } },
     when(ref("aside.title"), [use("Title", { props: { As: cond(eq(ref("level"), 1), 2, 3), Size: "lg", Weight: "semibold" } }, text(ref("aside.title")))]),
     body("none", "sm", "richtext-aside-content", "aside.content")),

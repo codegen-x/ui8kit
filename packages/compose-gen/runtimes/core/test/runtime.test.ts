@@ -176,6 +176,8 @@ test("the html pipe marks Codex markup as TrustedHtml; htmlOf prints it raw and 
   expect(readPath(entry, "content|html")).toEqual({ __html: "<h2>Body</h2><p>a &amp; b</p>" });
   expect(readPath(entry, "content")).toBe("<h2>Body</h2><p>a &amp; b</p>");
   expect(readPath(entry, "missing|html")).toBeUndefined();
+  // only a string with text is markup: an empty string, a number, a boolean, a list give nothing
+  for (const v of ["", 0, 7, true, false, ["<b>x</b>"], { __html: "<b>x</b>" }, null]) expect([v, readPath({ v }, "v|html")]).toEqual([v, undefined]);
   expect(isTrustedHtml(readPath(entry, "content|html"))).toBe(true);
   expect(htmlOf(readPath(entry, "content|html") as { __html: string })).toBe("<h2>Body</h2><p>a &amp; b</p>");
   // a plain string is text: escaped, even where markup is expected

@@ -94,7 +94,7 @@ export function RichText({
               />
             ) : null}
           </Box>
-          {(aside?.title || aside?.content) ? (
+          {aside?.content ? (
             <Card variant="compact" className="h-fit" data-testid="richtext-aside">
               {aside?.title ? (
                 <Title as={((level === 1) ? 2 : 3)} size="lg" weight="semibold">

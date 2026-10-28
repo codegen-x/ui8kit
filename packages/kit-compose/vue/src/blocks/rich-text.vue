@@ -93,7 +93,7 @@ const {
       <Box class="min-w-0 lg:col-span-2">
         <Prose v-if="content" size="base" width="none" data-testid="richtext-content" :innerHTML="htmlOf(content)" />
       </Box>
-      <Card v-if="(aside?.title || aside?.content)" variant="compact" class="h-fit" data-testid="richtext-aside">
+      <Card v-if="aside?.content" variant="compact" class="h-fit" data-testid="richtext-aside">
         <Title v-if="aside?.title" :as="((level === 1) ? 2 : 3)" size="lg" weight="semibold">
           {{ aside?.title }}
         </Title>

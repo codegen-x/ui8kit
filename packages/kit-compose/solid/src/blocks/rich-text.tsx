@@ -89,7 +89,7 @@ export function RichText({
               <Prose size="base" width="none" data-testid="richtext-content" innerHTML={htmlOf(content)} />
             ) : null}
           </Box>
-          {(aside?.title || aside?.content) ? (
+          {aside?.content ? (
             <Card variant="compact" class="h-fit" data-testid="richtext-aside">
               {aside?.title ? (
                 <Title as={((level === 1) ? 2 : 3)} size="lg" weight="semibold">

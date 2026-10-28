@@ -70,7 +70,7 @@ templ RichText(p RichTextProps) {
 						}
 					}
 				}
-				if uiutils.T(uiutils.Or(uiutils.Get(vAside, "title"), uiutils.Get(vAside, "content"))) {
+				if uiutils.T(uiutils.Get(vAside, "content")) {
 					@compose.Card(compose.CardProps{Variant: "compact", BoxProps: box.BoxProps{Class: "h-fit", Attrs: uiutils.Attrs("data-testid", "richtext-aside")}}) {
 						if uiutils.T(uiutils.Get(vAside, "title")) {
 							@compose.Title(compose.TitleProps{As: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLevel, float64(1))), float64(2), float64(3))), Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
