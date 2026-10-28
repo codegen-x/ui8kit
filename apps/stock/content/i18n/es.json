@@ -91,7 +91,8 @@
       "loading": "Cargando la vista previa",
       "full": "Pantalla completa",
       "fullTitle": "{title}: pantalla completa",
-      "close": "Cerrar"
+      "close": "Cerrar",
+      "side": "Lado a lado"
     },
     "summary": {
       "facts": "Lo esencial",

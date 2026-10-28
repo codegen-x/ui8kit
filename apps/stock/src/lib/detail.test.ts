@@ -29,7 +29,8 @@ describe("routes", () => {
   test("the full-screen preview is in the URL: view=full and a device (desktop by default, an unknown one is desktop)", () => {
     expect(assetHash("screen.site/home", { device: "desktop" })).toBe("#/asset/screen.site/home?view=full");
     expect(assetHash("screen.site/home", { device: "phone" })).toBe("#/asset/screen.site/home?view=full&device=phone");
-    for (const d of ["desktop", "tablet", "phone"] as const) expect(parseRoute(assetHash("block.about/split", { device: d }))).toEqual({ kind: "asset", id: "block.about/split", full: { device: d } });
+    expect(assetHash("screen.site/home", { device: "side" })).toBe("#/asset/screen.site/home?view=full&device=side");
+    for (const d of ["desktop", "tablet", "phone", "side"] as const) expect(parseRoute(assetHash("block.about/split", { device: d }))).toEqual({ kind: "asset", id: "block.about/split", full: { device: d } });
     expect(parseRoute("#/asset/block.about/split?view=full&device=watch")).toEqual({ kind: "asset", id: "block.about/split", full: { device: "desktop" } });
     expect(parseRoute("#/asset/block.about/split?device=phone")).toEqual({ kind: "asset", id: "block.about/split" });
   });

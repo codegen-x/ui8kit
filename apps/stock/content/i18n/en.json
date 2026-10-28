@@ -91,7 +91,8 @@
       "loading": "Loading the preview",
       "full": "Full screen",
       "fullTitle": "{title}: full screen",
-      "close": "Close"
+      "close": "Close",
+      "side": "Side by side"
     },
     "summary": {
       "facts": "Key facts",

@@ -32,6 +32,9 @@
   .ui8-full-title { @apply min-w-0 truncate; }
   .ui8-full-controls { @apply flex-wrap; }
   .ui8-full-room { @apply relative flex min-h-0 flex-1 items-center justify-center overflow-hidden bg-muted; }
+  .ui8-full-side { @apply grid min-h-0 flex-1 grid-cols-1 grid-rows-2 gap-4 overflow-hidden bg-muted p-4 md:grid-cols-4 md:grid-rows-1; }
+  .ui8-full-cell { @apply relative flex min-h-0 min-w-0 items-center justify-center overflow-hidden; }
+  .ui8-full-wide { @apply md:col-span-3; }
   .ui8-detail-segments { @apply gap-2; }
   .ui8-detail-legend { @apply sr-only; }
   .ui8-detail-segment { @apply relative inline-flex h-8 cursor-pointer items-center gap-2 rounded px-4 text-sm font-medium inset-ring inset-ring-border has-checked:bg-primary has-checked:text-primary-foreground has-checked:inset-ring-primary has-focus-visible:ring-2 has-focus-visible:ring-ring; }

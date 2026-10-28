@@ -91,7 +91,8 @@
       "loading": "Vorschau wird geladen",
       "full": "Vollbild",
       "fullTitle": "{title}: Vollbild",
-      "close": "Schließen"
+      "close": "Schließen",
+      "side": "Nebeneinander"
     },
     "summary": {
       "facts": "Das Wichtigste",

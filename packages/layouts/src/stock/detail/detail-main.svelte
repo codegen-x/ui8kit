@@ -12,10 +12,12 @@
   import Summary from "./summary.svelte";
   import type { CardView, DetailView, DeviceView, PassportLink, RelatedView, StockText } from "../text";
 
-  let { t, view, back, devices, full, onfull, mode, onmode, src, related, card, thumb }: {
+  let { t, view, back, devices, full, side = false, onfull, mode, onmode, src, related, card, thumb }: {
     t: StockText; view: DetailView; back: string; devices: readonly DeviceView[];
     /** the device of the open full-screen preview (null: closed); `onfull` opens it at a device or closes it (null) */
     full: DeviceView | null; onfull: (device: string | null) => void;
+    /** the full-screen preview shows desktop and phone side by side (onfull("side")) */
+    side?: boolean;
     mode: string; onmode: (mode: string) => void; src: string; related: RelatedView[];
     card: Snippet<[CardView]>; thumb: Snippet<[PassportLink]>;
   } = $props();
@@ -43,5 +45,5 @@
       <Box class="ui8-detail-related"><RelatedRow {t} {row} {card} /></Box>
     {/each}
   </Stack>
-  <Fullscreen {t} title={view.title} {devices} device={full} ondevice={(d) => onfull(d)} {mode} {onmode} {src} onclose={() => onfull(null)} />
+  <Fullscreen {t} title={view.title} {devices} device={full} {side} ondevice={(d) => onfull(d)} {mode} {onmode} {src} onclose={() => onfull(null)} />
 </Block>

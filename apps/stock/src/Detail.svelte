@@ -49,6 +49,7 @@
     ];
   });
   const fullDevice = $derived(full ? DEVICES.find((d) => d.id === full.device) ?? DEVICES[0]! : null);
+  const fullSide = $derived(full?.device === "side");
 
   const search = (patch: Partial<ReturnType<typeof emptySearch>>): void => { location.hash = searchHash({ ...emptySearch(), ...patch }, vocab); };
   /** the full-screen preview at a device, or closed (null); the URL holds it, so Back closes it too */
@@ -78,7 +79,7 @@
   {/snippet}
   {#snippet main()}
     {#if view}
-      <DetailMain {t} {view} back={visit.back} devices={DEVICES} full={fullDevice} {onfull}
+      <DetailMain {t} {view} back={visit.back} devices={DEVICES} full={fullDevice} side={fullSide} {onfull}
         mode={stock.state.mode} onmode={(m) => themeCtl.setField("mode", m)} src={frameHash(view.key)} {related}>
         {#snippet card(c: CardView)}
           <AssetCard {t} card={c} onvariants={(spec) => search({ spec, variants: "all" })}>

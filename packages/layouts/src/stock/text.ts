@@ -58,6 +58,8 @@ export type DetailText = {
     title: string; width: string; widths: Record<"desktop" | "tablet" | "phone", string>; mode: string; light: string; dark: string; frame: string; loading: string;
     /** the button that opens the full-screen preview, the dialog's name ({title}) and its close button */
     full: string; fullTitle: string; close: string;
+    /** the segment of the full-screen preview that shows desktop and phone together */
+    side: string;
   };
   summary: { facts: string; type: string; pattern: string; runtimes: string; blocks: string; variants: string; tags: string; findSimilar: string; actions: string };
   concepts: {
