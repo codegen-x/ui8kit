@@ -19,7 +19,7 @@ import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
 import { cleanPalette, HARMONIES, paletteStyle, type Palette } from "./palette";
 import { cleanTokens, DENSITIES, DENSITY_ELEMENTS, DENSITY_VARS, ELEMENT_SLOT, ELEMENTS, setToken, SHADOW_ELEMENTS, SHADOWS, tokenAttrs, tokenStyle, type Density, type Tokens } from "./design";
 
-/** palette: the custom colours of the colour wheel (palette.ts) over the skin's neutrals; absent: the skin's own colours */
+/** palette: the custom colours of the colour wheel (palette.ts), with the skin's neutrals tinted by it; absent: the skin's own colours */
 export type GlobalTheme = { skin: string | null; font: string | null; radius: number | null; tokens: Tokens; palette?: Palette };
 export const NO_THEME: GlobalTheme = { skin: null, font: null, radius: null, tokens: {} };
 
@@ -74,7 +74,7 @@ export function rootStyle(t: GlobalTheme, family: (id: string) => string, mode: 
     t.radius !== null ? `--radius:${t.radius}px` : "",
     t.font ? `--font-sans:${family(t.font)},sans-serif;--taste-heading:${family(t.font)},sans-serif` : "",
     tokenStyle(t.tokens),
-    t.palette ? paletteStyle(t.palette, mode) : "",
+    t.palette ? paletteStyle(t.palette, mode, t.skin) : "",
   ].filter(Boolean).join(";");
 }
 /** the attributes of the root: the skin and the density attributes */

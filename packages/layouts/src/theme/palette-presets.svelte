@@ -6,13 +6,14 @@
   import { paletteTokens, PRESETS, samePalette, type Palette } from "@ui8kit/theme-model/palette";
   import type { PaletteText } from "./text";
 
-  let { current, mode, onpick, text }: {
+  let { current, mode, skin, onpick, text }: {
     /** the custom palette now (none: no card is selected) */ current: Palette | null; mode: "light" | "dark";
+    /** the skin under the palette (null: the kit's own) */ skin: string | null;
     onpick: (p: Palette) => void; text: PaletteText["presets"];
   } = $props();
   const titleId = "ui8-palette-presets-title";
   const CHARTS = ["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"] as const;
-  const stripes = (p: Palette): string[] => { const t = paletteTokens(p, mode); return CHARTS.map((c) => `background:${t[c]}`); };
+  const stripes = (p: Palette): string[] => { const t = paletteTokens(p, mode, skin); return CHARTS.map((c) => `background:${t[c]}`); };
 </script>
 
 <Box class="ui8-palette-presets-wrap" data-testid="palette-presets">

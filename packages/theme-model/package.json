@@ -14,7 +14,8 @@
   },
   "scripts": {
     "check": "tsc --noEmit -p tsconfig.json",
-    "test": "bun test src"
+    "test": "bun test src",
+    "skin-neutrals": "bun scripts/skin-neutrals.ts"
   },
   "dependencies": {
     "@ui8kit/panorama": "workspace:*",

@@ -51,6 +51,6 @@
         <Button variant="outline" disabled={!ctl.value.palette} onclick={() => ctl.setTheme({ palette: undefined })} data-testid="palette-reset">{T.reset}</Button>
       </Stack>
     </Box>
-    <PalettePresets current={ctl.value.palette ?? null} mode={ctl.mode} onpick={(v) => ctl.setTheme({ palette: v })} text={T.presets} />
+    <PalettePresets current={ctl.value.palette ?? null} mode={ctl.mode} skin={ctl.value.skin} onpick={(v) => ctl.setTheme({ palette: v })} text={T.presets} />
   </Box>
 </Stack>

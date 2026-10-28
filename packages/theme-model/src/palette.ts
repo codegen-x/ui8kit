@@ -3,8 +3,11 @@
 // (the reference's six, plus monochromatic, and Adobe Color's double split complementary and compound) give the hues; turning the base turns them all, so their angles always hold.
 // Only colour changes: the result rewrites the values of the skin's own shadcn tokens (--primary, --secondary, --accent, --ring,
 // --chart-1..5 and their sidebar twins, with their -foreground pairs) in the skins' format `hsl(H S% L%)`, for the light and the
-// dark mode. Neutrals (background, foreground, card, muted, border, input, destructive), radius, fonts and spacing stay the skin's.
-// Every -foreground pair is checked for WCAG AA (4.5:1): the colour's lightness moves away from its text until it passes.
+// dark mode. The neutrals (background, foreground, card, popover, muted, border, input and the sidebar's: NEUTRAL_TOKENS) follow
+// as tinted neutrals: the palette's base hue at a low saturation, the skin's own lightness (skin-neutrals.ts). Destructive stays the
+// skin's semantic colour; radius, fonts and spacing stay the skin's.
+// Every -foreground pair is checked for WCAG AA (4.5:1): the colour's lightness moves away from its text until it passes; every
+// neutral text (foreground, muted-foreground, ...) moves away from its surfaces until it passes on each of them.
 
 export const HARMONIES = ["monochromatic", "analogous", "complementary", "split", "triadic", "tetradic", "square", "double-split", "compound"] as const;
 export type Harmony = (typeof HARMONIES)[number];
@@ -53,6 +56,10 @@ export const DEFAULT_PALETTE: Palette = { harmony: "analogous", h: 220, s: 80, l
 export type Mode = "light" | "dark";
 export type Hsl = { h: number; s: number; l: number };
 
+import { NEUTRAL_TOKENS, type NeutralToken } from "./neutral-tokens";
+import { SKIN_NEUTRALS, type Neutral } from "./skin-neutrals";
+
+export { NEUTRAL_TOKENS };
 const clamp = (v: number, lo: number, hi: number): number => Math.min(hi, Math.max(lo, v));
 export const wrap = (h: number): number => ((h % 360) + 360) % 360;
 const round1 = (v: number): number => Math.round(v * 10) / 10;
@@ -105,17 +112,56 @@ export function withForeground(bg: Hsl): { bg: Hsl; fg: Hsl } {
   return { bg: c, fg };
 }
 
-/** the skin tokens the palette rewrites (the skins' own names) */
+/** the skin tokens the palette rewrites (the skins' own names): the colours, then the tinted neutrals */
 export const PALETTE_TOKENS = [
   "primary", "primary-foreground", "secondary", "secondary-foreground", "accent", "accent-foreground", "ring",
   "chart-1", "chart-2", "chart-3", "chart-4", "chart-5",
   "sidebar-primary", "sidebar-primary-foreground", "sidebar-accent", "sidebar-accent-foreground", "sidebar-ring",
+  ...NEUTRAL_TOKENS,
 ] as const;
+export type PaletteToken = (typeof PALETTE_TOKENS)[number];
+/** the neutral texts and the surfaces each must read on (AA) */
+export const NEUTRAL_PAIRS: ReadonlyArray<readonly [NeutralToken, readonly NeutralToken[]]> = [
+  ["foreground", ["background", "card", "popover"]],
+  ["card-foreground", ["card"]],
+  ["popover-foreground", ["popover"]],
+  ["muted-foreground", ["background", "muted", "card"]],
+  ["sidebar-foreground", ["sidebar"]],
+];
+const TEXTS = new Set<NeutralToken>(NEUTRAL_PAIRS.map(([t]) => t));
+const LINES = new Set<NeutralToken>(["border", "input", "sidebar-border"]);
+
+/** the neutral tokens of a skin (null: the kit's own theme) tinted by a palette: the base hue, a low saturation (surfaces 8%, text
+ *  10%, lines 12%; monochromatic tints everything: 20/24/24%; never above the palette's own), the skin's lightness and alpha; then
+ *  each text moves away from its surfaces until it passes AA on all of them */
+export function neutralTokens(p: Palette, mode: Mode, skin: string | null): Record<NeutralToken, string> {
+  const row = SKIN_NEUTRALS[skin ?? "default"];
+  if (!row) throw new Error(`no neutral lightness for skin ${skin}: run \`bun run skin-neutrals\` in packages/theme-model`);
+  const mono = p.harmony === "monochromatic";
+  const sat = (t: NeutralToken): number => Math.min(p.s, TEXTS.has(t) ? (mono ? 24 : 10) : LINES.has(t) ? (mono ? 24 : 12) : mono ? 20 : 8);
+  const values = new Map<NeutralToken, { c: Hsl; a: number | undefined }>(
+    NEUTRAL_TOKENS.map((t, i) => { const v: Neutral = row[mode][i]!; return [t, { c: { h: p.h, s: sat(t), l: v[0] }, a: v[1] }]; }),
+  );
+  const get = (t: NeutralToken): Hsl => values.get(t)!.c;
+  for (const [text, surfaces] of NEUTRAL_PAIRS) {
+    let c = get(text);
+    const bgs = surfaces.map(get);
+    const up = c.l >= bgs.reduce((n, b) => n + b.l, 0) / bgs.length;
+    const worst = (x: Hsl): number => Math.min(...bgs.map((b) => contrast(x, b)));
+    while (worst(c) < AA + 0.1 && c.l > 0 && c.l < 100) c = { ...c, l: clamp(c.l + (up ? 1 : -1), 0, 100) };
+    values.set(text, { c, a: undefined });
+  }
+  return Object.fromEntries(NEUTRAL_TOKENS.map((t) => {
+    const { c, a } = values.get(t)!;
+    return [t, a === undefined ? css(c) : `hsl(${round1(c.h)} ${round1(c.s)}% ${round1(c.l)}% / ${a})`];
+  })) as Record<NeutralToken, string>;
+}
+
 /** the pairs a palette checks for AA: the colour and its text */
 export const FOREGROUND_PAIRS = [["primary", "primary-foreground"], ["secondary", "secondary-foreground"], ["accent", "accent-foreground"], ["sidebar-primary", "sidebar-primary-foreground"], ["sidebar-accent", "sidebar-accent-foreground"]] as const;
 
-/** the token values (`hsl(H S% L%)`) of a palette in one mode */
-export function paletteTokens(p: Palette, mode: Mode): Record<(typeof PALETTE_TOKENS)[number], string> {
+/** the token values (`hsl(H S% L%)`) of a palette in one mode over a skin (null: the kit's own theme) */
+export function paletteTokens(p: Palette, mode: Mode, skin: string | null): Record<PaletteToken, string> {
   const dark = mode === "dark";
   const cs = harmonyColours(p);
   const at = (i: number): Hsl => cs[i % cs.length]!;
@@ -145,11 +191,12 @@ export function paletteTokens(p: Palette, mode: Mode): Record<(typeof PALETTE_TO
     "sidebar-primary": css(primary.bg), "sidebar-primary-foreground": css(primary.fg),
     "sidebar-accent": css(accent.bg), "sidebar-accent-foreground": css(accent.fg),
     "sidebar-ring": css(primary.bg),
+    ...neutralTokens(p, mode, skin),
   };
 }
 
 /** the CSS declarations of a palette in one mode (`--primary:hsl(...)`; ...), for the root's inline style */
-export const paletteStyle = (p: Palette, mode: Mode): string => Object.entries(paletteTokens(p, mode)).map(([k, v]) => `--${k}:${v}`).join(";");
+export const paletteStyle = (p: Palette, mode: Mode, skin: string | null): string => Object.entries(paletteTokens(p, mode, skin)).map(([k, v]) => `--${k}:${v}`).join(";");
 
 // ---- the wheel: angle and distance <-> hue and saturation ----
 
