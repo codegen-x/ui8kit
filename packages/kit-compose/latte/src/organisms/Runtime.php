@@ -202,7 +202,8 @@ final class Runtime
             return false;
         }
         if (preg_match('/^([a-zA-Z][a-zA-Z0-9+.\-]*):/', $k, $m) !== 1) {
-            return true;
+            // no scheme: a path, unless a ':' comes before any '/' (as written or decoded), as templ.URL
+            return preg_match('#^[^/]*:#', $k) !== 1 && preg_match('#^[^/]*:#', $v) !== 1;
         }
         $scheme = strtolower($m[1]);
         if ($scheme === 'data') {

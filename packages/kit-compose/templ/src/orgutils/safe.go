@@ -30,17 +30,18 @@ var URLAttrs = []string{"href", "src", "action", "formaction", "poster", "cite",
 var ImageAttrs = []string{"src", "poster", "background"}
 
 var (
-	entityRe    = regexp.MustCompile(`&(?:#[xX]([0-9a-fA-F]{1,8});?|#([0-9]{1,10});?|([a-zA-Z][a-zA-Z0-9]{0,31});)`)
-	controlRe   = regexp.MustCompile(`[\x00-\x20\x7f]+`)
-	networkRe   = regexp.MustCompile(`^[/\\]{2}`)
-	schemeRe    = regexp.MustCompile(`^([a-zA-Z][a-zA-Z0-9+.\-]*):`)
-	dataImageRe = regexp.MustCompile(`^data:image/(png|jpeg|gif|webp|avif|svg\+xml)[;,]`)
-	styleBadRe  = regexp.MustCompile(`expression\(|javascript:|vbscript:|-moz-binding|behavior:`)
-	styleURLRe  = regexp.MustCompile(`(?i)url\(([^)]*)\)?`)
-	quotedRe    = regexp.MustCompile(`(?s)^"(.*)"$|^'(.*)'$`)
-	cssValueRe  = regexp.MustCompile(`^[-+.%#a-zA-Z0-9 ,]*$`)
-	attrNameRe  = regexp.MustCompile(`^[a-zA-Z_:][-a-zA-Z0-9_:.]*$`)
-	trailComma  = regexp.MustCompile(`,+$`)
+	entityRe     = regexp.MustCompile(`&(?:#[xX]([0-9a-fA-F]{1,8});?|#([0-9]{1,10});?|([a-zA-Z][a-zA-Z0-9]{0,31});)`)
+	controlRe    = regexp.MustCompile(`[\x00-\x20\x7f]+`)
+	networkRe    = regexp.MustCompile(`^[/\\]{2}`)
+	schemeRe     = regexp.MustCompile(`^([a-zA-Z][a-zA-Z0-9+.\-]*):`)
+	dataImageRe  = regexp.MustCompile(`^data:image/(png|jpeg|gif|webp|avif|svg\+xml)[;,]`)
+	styleBadRe   = regexp.MustCompile(`expression\(|javascript:|vbscript:|-moz-binding|behavior:`)
+	styleURLRe   = regexp.MustCompile(`(?i)url\(([^)]*)\)?`)
+	quotedRe     = regexp.MustCompile(`(?s)^"(.*)"$|^'(.*)'$`)
+	colonFirstRe = regexp.MustCompile(`^[^/]*:`)
+	cssValueRe   = regexp.MustCompile(`^[-+.%#a-zA-Z0-9 ,]*$`)
+	attrNameRe   = regexp.MustCompile(`^[a-zA-Z_:][-a-zA-Z0-9_:.]*$`)
+	trailComma   = regexp.MustCompile(`,+$`)
 )
 
 func fromCode(n uint64, ok bool) string {
@@ -91,7 +92,8 @@ func IsSafeURL(v string, image bool) bool {
 	}
 	m := schemeRe.FindStringSubmatch(k)
 	if m == nil {
-		return true
+		// no scheme: a path, unless a ":" comes before any "/" (as written or decoded), as templ.URL
+		return !colonFirstRe.MatchString(k) && !colonFirstRe.MatchString(v)
 	}
 	scheme := strings.ToLower(m[1])
 	if scheme == "data" {

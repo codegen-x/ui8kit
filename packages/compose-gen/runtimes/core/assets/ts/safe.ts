@@ -41,7 +41,8 @@ export function isSafeUrl(v: string, image = false): boolean {
   const k = compact(v);
   if (/^[/\\]{2}/.test(k)) return false;
   const m = /^([a-zA-Z][a-zA-Z0-9+.-]*):/.exec(k);
-  if (!m) return true;
+  // no scheme: a path, unless a ":" comes before any "/" (as written or decoded), which templ.URL refuses too (one rule everywhere)
+  if (!m) return !/^[^/]*:/.test(k) && !/^[^/]*:/.test(v);
   const scheme = m[1]!.toLowerCase();
   if (scheme === "data") return image && DATA_IMAGE.test(k.toLowerCase());
   return URL_SCHEMES.includes(scheme);

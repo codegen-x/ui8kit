@@ -165,7 +165,8 @@ def is_safe_url(v: str, image: bool = False) -> bool:
         return False
     m = re.match(r"^([a-zA-Z][a-zA-Z0-9+.\-]*):", k)
     if not m:
-        return True
+        # no scheme: a path, unless a ":" comes before any "/" (as written or decoded), as templ.URL
+        return not re.match(r"^[^/]*:", k) and not re.match(r"^[^/]*:", v)
     scheme = m.group(1).lower()
     if scheme == "data":
         return image and bool(_DATA_IMAGE.match(k.lower()))
