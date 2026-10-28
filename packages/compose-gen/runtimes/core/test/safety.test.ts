@@ -21,3 +21,11 @@ test("srcset candidate by candidate, style url(...) and script forms, attribute 
 test("entities as a browser decodes them in an attribute: numeric with or without ;, the named ones that spell URL syntax", () => {
   expect(decodeEntities("&#106;&#x61;&colon;&Tab;&NewLine;&sol;&bsol;&amp;#58;&nope;&#0;")).toBe("ja:\t\n/\\:&nope;\ufffd");
 });
+test("no TrustedHtml marker in a sample or fixture: trusted markup comes only from a read pipe (|html) or an adapter", async () => {
+  const { readdirSync, readFileSync, statSync } = await import("node:fs");
+  const { join, resolve } = await import("node:path");
+  const root = resolve(import.meta.dir, "../../..");
+  const files = (dir: string): string[] => readdirSync(dir).flatMap((f) => (statSync(join(dir, f)).isDirectory() ? files(join(dir, f)) : [join(dir, f)]));
+  const hits = ["specs", "fixtures", "screens/src/authoring"].flatMap((d) => files(join(root, d))).filter((f) => readFileSync(f, "utf8").includes("__html"));
+  expect(hits).toEqual([]);
+});
