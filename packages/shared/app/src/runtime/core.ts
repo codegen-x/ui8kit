@@ -106,7 +106,19 @@ export interface ReadOptions {
   menus?: readonly unknown[];
   /** the address of an entry by its kind, with `{slug}`: `{ product: "#/product/{slug}" }`; `slug|route` builds it; without a route: undefined (no link) */
   routes?: Readonly<Record<string, string>>;
+  /** the site settings: `x|settings:<key>` falls back to the setting `<key>` when the value is absent */
+  settings?: Readonly<Record<string, unknown>>;
 }
+
+/** words of a generated excerpt (`excerpt-fallback`) and words per reading minute (`reading-minutes`), as in wp-fasty ReadPath.php */
+export const EXCERPT_WORDS = 24;
+export const WORDS_PER_MINUTE = 200;
+
+/** the words of a text or of markup (every tag is a space), as PHP ReadPath::words: a scalar as a string (true "1", false ""), else none */
+export const wordsOf = (v: unknown): string[] => {
+  const s = typeof v === "string" ? v : typeof v === "number" ? String(v) : v === true ? "1" : "";
+  return s.replace(/<[^>]*>/g, " ").split(/\s+/u).filter((w) => w !== "");
+};
 
 const field = (o: unknown, k: string): unknown => (o !== null && typeof o === "object" ? (o as Record<string, unknown>)[k] : undefined);
 
@@ -122,15 +134,30 @@ const byLocale = (records: readonly unknown[], locale: string): unknown => recor
  *   "metadata.value.value|number" -> the number in the locale, with the entry's `metadata.unit` (percent, second): 12400 -> "12,400"
  *   "metadata.views.value|compact" -> the count in short form: 1200 -> "1.2K"
  *   "id|menu"                   -> the menu items under this one (parent_id), as { id, name, icon, href } (href only with a route)
+ *   "excerpt|excerpt-fallback"  -> the excerpt, else the first EXCERPT_WORDS words of `content` (tags stripped, "…" when cut)
+ *   "x|settings:<key>"          -> the value, else the setting <key>    "stock|in-stock" -> absent: true, else a number > 0
+ *   "content|reading-minutes"   -> ceil(words / WORDS_PER_MINUTE)        "terms|term-names:tag" -> the names of every term of that taxonomy
  */
 export function readPath(source: unknown, path: string, opts: ReadOptions = {}): unknown {
   const [dotted, pipe] = path.split("|") as [string, string | undefined];
   let cur: unknown = source;
   for (const part of dotted.split(".")) {
-    if (cur === null || typeof cur !== "object") return undefined;
+    // a path that ends early is absent (undefined); the fallback pipes below still run on it
+    if (cur === null || typeof cur !== "object") { cur = undefined; break; }
     cur = (cur as Record<string, unknown>)[part];
   }
+  // the pipes that also run on an absent value (fallbacks), as wp-fasty ReadPath.php
+  if (pipe === "excerpt-fallback") {
+    // blank as PHP trim(): only " \t\n\r\0\x0B" (a no-break space is text)
+    if (typeof cur === "string" && cur.replace(/^[ \t\n\r\0\x0B]+|[ \t\n\r\0\x0B]+$/g, "") !== "") return cur;
+    const w = wordsOf(field(source, "content"));
+    if (w.length === 0) return undefined;
+    return w.length > EXCERPT_WORDS ? `${w.slice(0, EXCERPT_WORDS).join(" ")}\u2026` : w.join(" ");
+  }
+  if (pipe?.startsWith("settings:")) return cur ?? field(opts.settings, pipe.slice(9));
+  if (pipe === "in-stock") return cur == null ? true : typeof cur === "number" && cur > 0;
   if (pipe === undefined || cur === undefined) return cur;
+  if (cur === null && (pipe === "reading-minutes" || pipe.startsWith("term-names:"))) return undefined;
   const own = field(source, "locale");
   const locale = opts.locale ?? (typeof own === "string" ? own : DEFAULT_LOCALE);
   if (pipe === "date") return fmtDate(cur, locale);
@@ -149,6 +176,15 @@ export function readPath(source: unknown, path: string, opts: ReadOptions = {}):
   // markup from the Codex (the body of an entry) is trusted: the TrustedHtml marker of the runtimes (assets/ts/html.ts), printed
   // without escaping by an `html` view node; a value read without this pipe stays text and is escaped
   if (pipe === "html") return { __html: String(cur) };
+  if (pipe === "reading-minutes") return Math.ceil(wordsOf(cur).length / WORDS_PER_MINUTE);
+  // the names of every term of that taxonomy the entry has, in its order (a term not in `terms` is left out)
+  if (pipe.startsWith("term-names:")) {
+    if (!Array.isArray(cur)) return undefined;
+    const taxonomy = pipe.slice(11);
+    return cur.filter((r) => field(r, "taxonomy") === taxonomy)
+      .map((r) => field(byLocale((opts.terms ?? []).filter((t) => field(t, "taxonomy_id") === taxonomy && field(t, "id") === field(r, "term_id")), locale), "name"))
+      .filter((n) => n !== undefined && n !== null);
+  }
   if (pipe.startsWith("term:") || pipe.startsWith("term-slug:")) {
     const taxonomy = pipe.slice(pipe.indexOf(":") + 1);
     const ref = Array.isArray(cur) ? cur.find((r) => field(r, "taxonomy") === taxonomy) : undefined;
