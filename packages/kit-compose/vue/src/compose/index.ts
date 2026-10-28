@@ -10,6 +10,7 @@ export { default as Inline } from "./Inline.vue";
 export { default as List } from "./List.vue";
 export { default as ListItem } from "./ListItem.vue";
 export { default as Skeleton } from "./Skeleton.vue";
+export { default as Prose } from "./Prose.vue";
 export { default as Alert } from "./Alert.vue";
 export { default as Card } from "./Card.vue";
 export { default as CardHeader } from "./CardHeader.vue";

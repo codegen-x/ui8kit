@@ -604,6 +604,30 @@ export const RECIPES: Record<string, R> = {
     },
     "compound": []
   },
+  "prose": {
+    "base": "w-full min-w-0 mx-auto break-words [&>*+*]:mt-4 [&>:first-child]:mt-0 [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-semibold [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li+li]:mt-2 [&_blockquote]:border-l-4 [&_blockquote]:border-border [&_blockquote]:pl-4 [&_blockquote]:text-muted-foreground [&_img]:h-auto [&_img]:max-w-full [&_img]:rounded [&_code]:rounded [&_code]:bg-muted [&_code]:px-2 [&_pre]:overflow-x-auto [&_pre]:rounded [&_pre]:bg-muted [&_pre]:p-4 [&_table]:w-full [&_table]:border-collapse [&_th]:border-b [&_th]:border-border [&_th]:py-2 [&_th]:pr-4 [&_th]:text-left [&_th]:font-semibold [&_td]:border-b [&_td]:border-border [&_td]:py-2 [&_td]:pr-4 [&_figcaption]:mt-2 [&_figcaption]:text-sm [&_figcaption]:text-muted-foreground [&_.wp-caption-text]:mt-2 [&_.wp-caption-text]:text-sm [&_.wp-caption-text]:text-muted-foreground [&_.wp-element-caption]:mt-2 [&_.wp-element-caption]:text-sm [&_.wp-element-caption]:text-muted-foreground [&_.aligncenter]:mx-auto [&_.alignwide]:w-full [&_.alignfull]:w-full",
+    "keys": [
+      "size",
+      "width"
+    ],
+    "defaults": {
+      "size": "base",
+      "width": "narrow"
+    },
+    "byKey": {
+      "size": {
+        "sm": "text-sm leading-6",
+        "base": "text-base leading-6",
+        "lg": "text-lg leading-8"
+      },
+      "width": {
+        "narrow": "max-w-2xl",
+        "wide": "max-w-4xl",
+        "none": "max-w-none"
+      }
+    },
+    "compound": []
+  },
   "radio": {
     "base": "shrink-0 appearance-none rounded-full bg-background inset-ring inset-ring-input checked:bg-primary checked:inset-ring-primary radio-glyph disabled:cursor-not-allowed disabled:opacity-50",
     "keys": [

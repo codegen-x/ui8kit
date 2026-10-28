@@ -10,6 +10,7 @@ export { default as Inline } from "./Inline.svelte";
 export { default as List } from "./List.svelte";
 export { default as ListItem } from "./ListItem.svelte";
 export { default as Skeleton } from "./Skeleton.svelte";
+export { default as Prose } from "./Prose.svelte";
 export { default as Alert } from "./Alert.svelte";
 export { default as Card } from "./Card.svelte";
 export { default as CardHeader } from "./CardHeader.svelte";

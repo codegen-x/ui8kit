@@ -20,6 +20,7 @@ Prop placement, checked against ui8kit/codegen v0.1.0: as there, `variant` / `si
 | List | Box | from `Tag`, default `ul` | list | — |
 | ListItem | Box | `li` | — | — |
 | Skeleton | Box | `div` | skeleton | "aria-hidden": "true" |
+| Prose | Box | `div` | prose | — (rich text: the rhythm and element styles of the markup inside) |
 | Alert | Box | `div` | alert | role: "alert" |
 | Card | Box | `div` | card | — |
 | CardHeader | Box | `div` | — | `grid auto-rows-min items-start gap-2` |

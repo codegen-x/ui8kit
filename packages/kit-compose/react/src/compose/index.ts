@@ -10,6 +10,7 @@ export * from "./inline";
 export * from "./list";
 export * from "./list-item";
 export * from "./skeleton";
+export * from "./prose";
 export * from "./alert";
 export * from "./card";
 export * from "./card-header";

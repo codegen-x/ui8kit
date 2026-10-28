@@ -41,6 +41,8 @@ export const BRICKS: Record<string, BrickMap> = {
   List: { primitive: "Box", recipe: "list", tagFrom: { prop: "Tag", fallback: "ul" } },
   ListItem: { primitive: "Box", tag: "li" },
   Skeleton: { primitive: "Box", recipe: "skeleton", tag: "div", fixed: { "aria-hidden": "true" } },
+  // rich text (the body of a page or a post): the rhythm and the element styles of the markup inside it, from the prose recipe
+  Prose: { primitive: "Box", recipe: "prose", tag: "div" },
   // data-slot on Alert, Card, Badge, Button: the hook of the per-element tokens of kit.css ([data-slot="button"].rounded -> --radius-button,
   // density, shadow), as the v2 primitives carried it; without it the Theme / Design system tokens match nothing
   Alert: { primitive: "Box", recipe: "alert", tag: "div", fixed: { role: "alert", "data-slot": "alert" } },

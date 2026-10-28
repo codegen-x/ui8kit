@@ -10,6 +10,7 @@ export * from "./inline.solid";
 export * from "./list.solid";
 export * from "./list-item.solid";
 export * from "./skeleton.solid";
+export * from "./prose.solid";
 export * from "./alert.solid";
 export * from "./card.solid";
 export * from "./card-header.solid";
