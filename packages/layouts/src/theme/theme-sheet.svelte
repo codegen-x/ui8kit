@@ -1,5 +1,5 @@
 <!-- The global Theme sheet: one modal dialog (the kit Dialog, variant sheet) holding two panels flush side by side: the narrow Theme
-     panel on the right and, when opened from it, one wide panel on its left: the Design system, or the skin or font picker. On narrow screens the wide panel replaces
+     panel on the right and, when opened from it, one wide panel on its left: the Design system, the skin or font picker, or the palette (colour wheel). On narrow screens the wide panel replaces
      the narrow one (Back returns). The state is the app's (a ThemeController of @ui8kit/theme-model/controller: its storage key, its
      mode); the texts are the app's data. The Magazine and Stock render this one sheet. -->
 <script lang="ts">
@@ -7,6 +7,7 @@
   import type { FontId } from "@ui8kit/taste-data/fonts";
   import type { ThemeController } from "@ui8kit/theme-model/controller";
   import DsPanel from "./ds-panel.svelte";
+  import PalettePanel from "./palette-panel.svelte";
   import PickerPanel from "./picker-panel.svelte";
   import ThemePanel from "./theme-panel.svelte";
   import type { ThemeSheetText } from "./text";
@@ -42,7 +43,7 @@
 <Dialog {id} variant="sheet" size="lg" class="ui8-theme-sheet" aria-labelledby={titleId} {onclose} {onclick} data-testid="theme-sheet">
   {#if ctl.open}
     <Group gap="0" align="stretch" class="ui8-theme-sheet-panels" data-wide={ctl.wide ? "1" : "0"}>
-      {#if ctl.wide === "ds"}<DsPanel {ctl} {text} {fallback} />{:else if ctl.wide}<PickerPanel {ctl} {text} kind={ctl.wide} {fallback} />{/if}
+      {#if ctl.wide === "ds"}<DsPanel {ctl} {text} {fallback} />{:else if ctl.wide === "palette"}<PalettePanel {ctl} {text} />{:else if ctl.wide}<PickerPanel {ctl} {text} kind={ctl.wide} {fallback} />{/if}
       <ThemePanel {ctl} {text} {titleId} />
     </Group>
   {/if}

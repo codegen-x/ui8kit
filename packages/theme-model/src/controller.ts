@@ -3,8 +3,9 @@
 // its own implementation (its storage key, its mode, its reactive state) and hands it to the sheet; this file is the contract only.
 import type { FieldValue, GlobalTheme, ImportResult, Mode, ThemeConfig } from "./global-theme";
 
-/** the wide panel beside the narrow Theme panel, one at a time: the Design system, the skin picker or the font picker; null: none */
-export type WidePanel = null | "ds" | "skins" | "fonts";
+/** the wide panel beside the narrow Theme panel, one at a time: the Design system, the skin or font picker, or the palette (colour
+ *  wheel); null: none */
+export type WidePanel = null | "ds" | "skins" | "fonts" | "palette";
 
 export interface ThemeController {
   /** the global theme now */

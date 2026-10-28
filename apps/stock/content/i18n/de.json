@@ -253,6 +253,65 @@
     "style": {
       "light": "Hell",
       "dark": "Dunkel"
+    },
+    "palette": {
+      "open": "Palette",
+      "title": "Palette",
+      "note": "Eine Farbe auf dem Rad und eine Harmonie: Drehen Sie das Rad, und alle Farben des Skins folgen im gleichen Verhältnis. Nur die Farben ändern sich (die Tokens des Skins); Radius, Schriften und Abstände bleiben.",
+      "custom": "Eigene Palette",
+      "reset": "Zurück zu den Farben des Skins",
+      "wheel": "Farbrad: Farbton rund um das Rad, Sättigung von der Mitte, Helligkeit auf dem äußeren Ring",
+      "harmony": "Harmonie",
+      "hue": "Farbton",
+      "saturation": "Sättigung",
+      "lightness": "Helligkeit",
+      "harmonies": {
+        "monochromatic": {
+          "name": "Monochrom",
+          "hint": "1 Farbton, 3 Stufen"
+        },
+        "analogous": {
+          "name": "Analog",
+          "hint": "±30°"
+        },
+        "complementary": {
+          "name": "Komplementär",
+          "hint": "180°"
+        },
+        "split": {
+          "name": "Geteilt komplementär",
+          "hint": "180° ± 30°"
+        },
+        "triadic": {
+          "name": "Triadisch",
+          "hint": "120°"
+        },
+        "tetradic": {
+          "name": "Tetradisch",
+          "hint": "60° + 180°"
+        },
+        "square": {
+          "name": "Quadrat",
+          "hint": "90°"
+        }
+      },
+      "samples": {
+        "plan": "Pro",
+        "price": "24 $",
+        "per": "pro Monat",
+        "feature": "Alles aus Free, plus unbegrenzte Exporte",
+        "choose": "Tarif wählen",
+        "popular": "Beliebt",
+        "actions": "Aktionen",
+        "primary": "Primär",
+        "secondary": "Sekundär",
+        "outline": "Kontur",
+        "chart": "Diagrammfarben",
+        "alertTitle": "Hinweis",
+        "alertText": "Neue Farben gelten für die ganze Website und ihre Vorschauen.",
+        "accent": "Akzentfläche",
+        "muted": "Sekundäre Fläche"
+      }
     }
   }
 }

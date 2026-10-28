@@ -253,6 +253,65 @@
     "style": {
       "light": "Clair",
       "dark": "Sombre"
+    },
+    "palette": {
+      "open": "Palette",
+      "title": "Palette",
+      "note": "Une couleur sur la roue et une harmonie : tournez la roue et toutes les couleurs du skin suivent dans les mêmes proportions. Seules les couleurs changent (les jetons du skin) ; rayon, polices et espacements restent.",
+      "custom": "Palette personnalisée",
+      "reset": "Revenir aux couleurs du skin",
+      "wheel": "Roue chromatique : teinte autour de la roue, saturation depuis le centre, luminosité sur l'anneau extérieur",
+      "harmony": "Harmonie",
+      "hue": "Teinte",
+      "saturation": "Saturation",
+      "lightness": "Luminosité",
+      "harmonies": {
+        "monochromatic": {
+          "name": "Monochrome",
+          "hint": "1 teinte, 3 nuances"
+        },
+        "analogous": {
+          "name": "Analogue",
+          "hint": "±30°"
+        },
+        "complementary": {
+          "name": "Complémentaire",
+          "hint": "180°"
+        },
+        "split": {
+          "name": "Complémentaire adjacente",
+          "hint": "180° ± 30°"
+        },
+        "triadic": {
+          "name": "Triadique",
+          "hint": "120°"
+        },
+        "tetradic": {
+          "name": "Tétradique",
+          "hint": "60° + 180°"
+        },
+        "square": {
+          "name": "Carré",
+          "hint": "90°"
+        }
+      },
+      "samples": {
+        "plan": "Pro",
+        "price": "24 $",
+        "per": "par mois",
+        "feature": "Tout Free, plus des exports illimités",
+        "choose": "Choisir l'offre",
+        "popular": "Populaire",
+        "actions": "Actions",
+        "primary": "Principal",
+        "secondary": "Secondaire",
+        "outline": "Contour",
+        "chart": "Couleurs des graphiques",
+        "alertTitle": "À noter",
+        "alertText": "Les nouvelles couleurs s'appliquent à tout le site et à ses aperçus.",
+        "accent": "Surface d'accent",
+        "muted": "Surface secondaire"
+      }
     }
   }
 }

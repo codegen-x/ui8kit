@@ -253,6 +253,65 @@
     "style": {
       "light": "Claro",
       "dark": "Oscuro"
+    },
+    "palette": {
+      "open": "Paleta",
+      "title": "Paleta",
+      "note": "Un color en la rueda y una armonía: gire la rueda y todos los colores del skin le siguen en las mismas proporciones. Solo cambian los colores (los tokens del skin); radio, fuentes y espaciado se mantienen.",
+      "custom": "Paleta personalizada",
+      "reset": "Volver a los colores del skin",
+      "wheel": "Rueda de color: tono alrededor de la rueda, saturación desde el centro, luminosidad en el anillo exterior",
+      "harmony": "Armonía",
+      "hue": "Tono",
+      "saturation": "Saturación",
+      "lightness": "Luminosidad",
+      "harmonies": {
+        "monochromatic": {
+          "name": "Monocromática",
+          "hint": "1 tono, 3 matices"
+        },
+        "analogous": {
+          "name": "Análoga",
+          "hint": "±30°"
+        },
+        "complementary": {
+          "name": "Complementaria",
+          "hint": "180°"
+        },
+        "split": {
+          "name": "Complementaria dividida",
+          "hint": "180° ± 30°"
+        },
+        "triadic": {
+          "name": "Triádica",
+          "hint": "120°"
+        },
+        "tetradic": {
+          "name": "Tetrádica",
+          "hint": "60° + 180°"
+        },
+        "square": {
+          "name": "Cuadrada",
+          "hint": "90°"
+        }
+      },
+      "samples": {
+        "plan": "Pro",
+        "price": "24 $",
+        "per": "al mes",
+        "feature": "Todo lo de Free, más exportaciones ilimitadas",
+        "choose": "Elegir plan",
+        "popular": "Popular",
+        "actions": "Acciones",
+        "primary": "Principal",
+        "secondary": "Secundario",
+        "outline": "Contorno",
+        "chart": "Colores de gráficos",
+        "alertTitle": "Aviso",
+        "alertText": "Los nuevos colores se aplican a todo el sitio y a sus vistas previas.",
+        "accent": "Superficie de acento",
+        "muted": "Superficie secundaria"
+      }
     }
   }
 }

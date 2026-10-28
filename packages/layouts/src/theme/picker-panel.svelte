@@ -24,6 +24,8 @@
   const radius = $derived(ctl.value.radius ?? fallback.radius);
   const skinOf = (v: string | null): string => (kind === "skins" ? v ?? fallback.skin : skin);
   const fontOf = (v: string | null): FontId => (kind === "fonts" ? ((v ?? fallback.font) as FontId) : font);
+  // a skin card returns to that skin's own colours (as the skin select does): it drops a custom palette
+  const pick = (v: string | null): void => { if (field === "skin" && ctl.value.palette) ctl.setTheme({ skin: v, palette: undefined }); else ctl.setField(field, v); };
   const faceStyle = (v: string | null): string => {
     const f = family(fontOf(v));
     return `--radius:${radius}px;--font-sans:${f},sans-serif;--taste-heading:${f},sans-serif`;
@@ -42,7 +44,7 @@
     <Box class="ui8-picker-grid" role="radiogroup" aria-labelledby={titleId}>
       {#each CHOICES[kind] as v (v ?? "")}
         <Label class="group ui8-picker-card" data-testid={"pick-card-" + (v ?? "default")}>
-          <Radio class="ui8-picker-input" name={"ui8-pick-" + kind} value={v ?? ""} checked={current === v} onchange={() => ctl.setField(field, v)} />
+          <Radio class="ui8-picker-input" name={"ui8-pick-" + kind} value={v ?? ""} checked={current === v} onchange={() => pick(v)} />
           <Box class="ui8-picker-face" data-skin={skinOf(v)} style={faceStyle(v)} aria-hidden="true">
             {#if kind === "skins"}
               <Stack gap="2">

@@ -9,6 +9,7 @@
     "./design": "./src/design.ts",
     "./tokens": "./src/tokens.ts",
     "./controller": "./src/controller.ts",
+    "./palette": "./src/palette.ts",
     "./package.json": "./package.json"
   },
   "scripts": {

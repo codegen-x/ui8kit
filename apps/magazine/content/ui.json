@@ -415,5 +415,64 @@
       "partial": "Imported; dropped unknown values",
       "invalid": "Not a theme config"
     }
+  },
+  "palette": {
+    "open": "Palette",
+    "title": "Palette",
+    "note": "One colour on the wheel and a harmony: turn the wheel and every colour of the skin follows in the same proportions. Only the colours change (the skin's own tokens); radius, fonts and spacing stay.",
+    "custom": "Custom palette",
+    "reset": "Back to the skin's colours",
+    "wheel": "Colour wheel: hue round the wheel, saturation from the centre, lightness on the outer ring",
+    "harmony": "Harmony",
+    "hue": "Hue",
+    "saturation": "Saturation",
+    "lightness": "Lightness",
+    "harmonies": {
+      "monochromatic": {
+        "name": "Monochromatic",
+        "hint": "1 hue, 3 shades"
+      },
+      "analogous": {
+        "name": "Analogous",
+        "hint": "±30°"
+      },
+      "complementary": {
+        "name": "Complementary",
+        "hint": "180°"
+      },
+      "split": {
+        "name": "Split complementary",
+        "hint": "180° ± 30°"
+      },
+      "triadic": {
+        "name": "Triadic",
+        "hint": "120°"
+      },
+      "tetradic": {
+        "name": "Tetradic",
+        "hint": "60° + 180°"
+      },
+      "square": {
+        "name": "Square",
+        "hint": "90°"
+      }
+    },
+    "samples": {
+      "plan": "Pro",
+      "price": "$24",
+      "per": "per month",
+      "feature": "Everything in Free, plus unlimited exports",
+      "choose": "Choose plan",
+      "popular": "Popular",
+      "actions": "Actions",
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "outline": "Outline",
+      "chart": "Chart colours",
+      "alertTitle": "Heads up",
+      "alertText": "New colours apply to the whole site and its previews.",
+      "accent": "Accent surface",
+      "muted": "Secondary surface"
+    }
   }
 }

@@ -12,6 +12,42 @@
   .ui8-theme-panel-ds { @apply flex-1; }
   .ui8-ds-panel { @apply h-full min-h-0 w-180 min-w-0 shrink border-r border-border bg-background *:w-full max-sm:w-screen max-sm:max-w-none max-sm:border-r-0; }
   .ui8-ds-panel-back { @apply sm:hidden; }
+  .ui8-theme-fields-palette { @apply w-full pb-4; }
+  .ui8-theme-fields-palette-open { @apply w-full gap-2; }
+  .ui8-palette-panel { @apply h-full min-h-0 w-240 min-w-0 shrink border-r border-border bg-background *:w-full max-sm:w-screen max-sm:max-w-none max-sm:border-r-0; }
+  .ui8-palette-samples { @apply grid grid-cols-3 items-start gap-4 py-4 max-md:grid-cols-1; }
+  .ui8-palette-price { @apply mb-4; }
+  .ui8-palette-price-value { @apply text-3xl leading-10; }
+  .ui8-palette-muted { @apply text-sm leading-normal text-muted-foreground; }
+  .ui8-palette-cta { @apply w-full; }
+  .ui8-palette-row { @apply mb-4 flex-wrap; }
+  .ui8-palette-chart { @apply flex h-16 items-end gap-2; }
+  .ui8-palette-bar { @apply flex-1 rounded; }
+  .ui8-palette-bar-1 { @apply h-12 bg-chart-1; }
+  .ui8-palette-bar-2 { @apply h-16 bg-chart-2; }
+  .ui8-palette-bar-3 { @apply h-8 bg-chart-3; }
+  .ui8-palette-bar-4 { @apply h-14 bg-chart-4; }
+  .ui8-palette-bar-5 { @apply h-10 bg-chart-5; }
+  .ui8-palette-accent { @apply mt-4 rounded bg-accent p-4 text-sm leading-normal text-accent-foreground; }
+  .ui8-palette-secondary { @apply mt-2 rounded bg-secondary p-4 text-sm leading-normal text-secondary-foreground; }
+  .ui8-palette-main { @apply grid grid-cols-[20rem_minmax(0,1fr)] items-start gap-6 border-t border-border py-6 max-md:grid-cols-1; }
+  .ui8-palette-controls { @apply min-w-0 *:w-full; }
+  .ui8-palette-range { @apply flex flex-col gap-2; }
+  .ui8-palette-label { @apply text-sm leading-normal text-foreground; }
+  .ui8-palette-wheel { @apply relative size-80 touch-none select-none max-md:mx-auto; }
+  .ui8-palette-ring { @apply absolute inset-0 cursor-pointer [clip-path:circle(50%)]; }
+  .ui8-palette-gap { @apply absolute inset-6 bg-background [clip-path:circle(50%)]; }
+  .ui8-palette-disc { @apply absolute inset-8 cursor-crosshair [clip-path:circle(50%)]; }
+  .ui8-palette-mark { @apply pointer-events-none absolute size-5 -translate-x-1/2 -translate-y-1/2 [clip-path:circle(50%)]; }
+  .ui8-palette-mark-base { @apply size-7; }
+  .ui8-palette-harmonies-wrap { @apply flex flex-col gap-2; }
+  .ui8-palette-harmonies { @apply grid grid-cols-[repeat(auto-fill,7rem)] gap-2; }
+  .ui8-palette-harmony { @apply relative flex aspect-square cursor-pointer flex-col items-center justify-center gap-2 rounded border border-border p-2 text-center hover:bg-muted has-checked:border-primary has-checked:bg-muted has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-ring; }
+  .ui8-palette-diagram { @apply relative size-10 flex-none [clip-path:circle(50%)]; }
+  .ui8-palette-dot { @apply absolute size-2 -translate-x-1/2 -translate-y-1/2 bg-foreground [clip-path:circle(50%)]; }
+  .ui8-palette-dot-base { @apply size-3 bg-primary; }
+  .ui8-palette-harmony-name { @apply text-xs leading-4 text-foreground; }
+  .ui8-palette-harmony-hint { @apply text-xs leading-4 text-muted-foreground; }
   .ui8-picker-panel { @apply h-full min-h-0 w-180 min-w-0 shrink border-r border-border bg-background *:w-full max-sm:w-screen max-sm:max-w-none max-sm:border-r-0; }
   .ui8-picker-grid { @apply grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4 py-4 max-sm:grid-cols-2; }
   .ui8-picker-card { @apply relative flex cursor-pointer flex-col items-stretch gap-2 text-left; }

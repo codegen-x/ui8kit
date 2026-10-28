@@ -3,6 +3,7 @@
 // every live preview (and the storefront around it) follows it.
 import { applyTheme, initTheme } from "@ui8kit/app-shared/runtime/theme";
 import { family, type FontId } from "@ui8kit/taste-data/fonts";
+import { PALETTE_TOKENS } from "@ui8kit/theme-model/palette";
 import { fromConfig, NO_THEME, readTheme, rootAttrs, rootStyle, setThemeField, toConfig, writeTheme, type FieldValue, type GlobalTheme, type ImportResult, type ThemeConfig } from "@ui8kit/theme-model/global-theme";
 
 const KEY = "stock:v1:theme";
@@ -18,7 +19,7 @@ export function loadTheme(): ThemeState {
 }
 
 let applied: string[] = [];
-/** the theme on <html>: data-skin and the density attributes, --radius and the font variables (CSSOM); `keep` stores it (the frame
+/** the theme on <html>: data-skin and the density attributes, --radius, the font variables and the custom palette's colour tokens for the mode (CSSOM); `keep` stores it (the frame
  *  document of the detail page only reads: the page that holds the Theme sheet writes) */
 export function applyState(s: ThemeState, keep = true): void {
   const root = document.documentElement;
@@ -28,8 +29,8 @@ export function applyState(s: ThemeState, keep = true): void {
   const attrs = rootAttrs(s.theme);
   applied = Object.keys(attrs);
   for (const [k, v] of Object.entries(attrs)) root.setAttribute(k, v);
-  for (const p of ["--radius", "--font-sans", "--taste-heading"]) root.style.removeProperty(p);
-  for (const decl of rootStyle(s.theme, (id) => family(id as FontId)).split(";").filter(Boolean)) {
+  for (const p of ["--radius", "--font-sans", "--taste-heading", ...PALETTE_TOKENS.map((t) => "--" + t)]) root.style.removeProperty(p);
+  for (const decl of rootStyle(s.theme, (id) => family(id as FontId), s.mode).split(";").filter(Boolean)) {
     const at = decl.indexOf(":");
     root.style.setProperty(decl.slice(0, at), decl.slice(at + 1));
   }

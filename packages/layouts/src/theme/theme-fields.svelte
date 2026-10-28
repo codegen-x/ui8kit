@@ -3,7 +3,7 @@
      radio groups), so both cover every field; values come from the app's controller and go back through it. -->
 <script lang="ts">
   import type { Snippet } from "svelte";
-  import { Button, LucideIcon, Stack, Title } from "@codegen-x/svelte-compose";
+  import { Box, Button, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import { DENSITIES, densityOf, fieldValue, setDensity, viewFields, type Field, type FieldGroup, type ThemeView } from "@ui8kit/theme-model/global-theme";
   import type { ThemeController } from "@ui8kit/theme-model/controller";
   import type { Density } from "@ui8kit/theme-model/design";
@@ -27,12 +27,21 @@
   const pos = (p: string) => D.positions[p] ?? p;
   const unsetLabel = (f: Field) => (f.group === "site" ? T.default : f.id === "radius-badge" ? D.pill : f.group === "radius" ? `${D.follow} (${t.radius ?? 8} px)` : D.follow);
   const valueLabel = (f: Field, v: string | number) => (f.id === "mode" ? (v === "dark" ? T.dark : T.light) : typeof v === "number" ? `${v} px` : f.group === "density" ? pos(v) : v);
-  const options = (f: Field) => [...(f.nullable ? [{ value: "", label: unsetLabel(f) }] : []), ...f.values.map((v) => ({ value: String(v), label: valueLabel(f, v) }))];
-  const current = (f: Field) => { const v = fieldValue({ mode: ctl.mode, theme: t }, f.id); return v === null ? "" : String(v); };
-  const change = (f: Field, raw: string) => ctl.setField(f.id, raw === "" ? null : f.values.find((v) => String(v) === raw) ?? null);
+  // a custom palette (the colour wheel) shows in the skin select as "Custom" (over the skin it keeps the neutrals of); picking a
+  // skin there returns to that skin's own colours
+  const CUSTOM = "custom";
+  const custom = (f: Field): boolean => f.id === "skin" && !!t.palette;
+  const options = (f: Field) => [...(custom(f) ? [{ value: CUSTOM, label: text.palette.custom }] : []), ...(f.nullable ? [{ value: "", label: unsetLabel(f) }] : []), ...f.values.map((v) => ({ value: String(v), label: valueLabel(f, v) }))];
+  const current = (f: Field) => { if (custom(f)) return CUSTOM; const v = fieldValue({ mode: ctl.mode, theme: t }, f.id); return v === null ? "" : String(v); };
+  const change = (f: Field, raw: string) => {
+    if (raw === CUSTOM) return;
+    const v = raw === "" ? null : f.values.find((x) => String(x) === raw) ?? null;
+    if (custom(f)) ctl.setTheme({ skin: typeof v === "string" ? v : null, palette: undefined });
+    else ctl.setField(f.id, v);
+  };
   const density = $derived(densityOf(t.tokens));
   // the skin and font selects of the narrow panel open their picker (a wide panel) from an icon button on their row
-  const ICON: Record<PickerKind, string> = { skins: "palette", fonts: "type" };
+  const ICON: Record<PickerKind, string> = { skins: "layers", fonts: "type" };
   const browse = (k: PickerKind): string => (k === "skins" ? T.browseSkins : T.browseFonts);
   const togglePicker = (k: PickerKind): void => { ctl.wide = ctl.wide === k ? null : k; };
   const starts = (i: number) => rows[i]!.field.group !== "site" && rows[i]!.field.group !== rows[i - 1]?.field.group;
@@ -57,6 +66,11 @@
       <OptionSelect name={nameOf(r.field)} field={r.field.id} legend={legend(r.field)} options={options(r.field)} value={current(r.field)} onchange={(v) => change(r.field, v)} />
     {:else}
       <OptionGroup name={nameOf(r.field)} field={r.field.id} legend={legend(r.field)} multiple={false} options={options(r.field)} selected={[current(r.field)]} onchange={(v) => change(r.field, v[0] ?? "")} />
+    {/if}
+    {#if r.field.id === "skin" && view === "sheet"}
+      <Box class="ui8-theme-fields-palette">
+        <Button variant={ctl.wide === "palette" ? "secondary" : "outline"} size="sm" class="ui8-theme-fields-palette-open" onclick={() => (ctl.wide = ctl.wide === "palette" ? null : "palette")} data-testid="palette-open"><LucideIcon name="palette" /><Text tag="span">{text.palette.open}</Text></Button>
+      </Box>
     {/if}
     {#if r.field.id === "radius" && afterSite}{@render afterSite()}{/if}
   {/each}

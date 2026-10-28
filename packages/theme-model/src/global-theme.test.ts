@@ -94,6 +94,16 @@ describe("theme coverage parity", () => {
       expect(rootStyle(t, String) + JSON.stringify(rootAttrs(t))).not.toBe(rootStyle(NO_THEME, String) + JSON.stringify(rootAttrs(NO_THEME)));
     }
   });
+  test("the palette round trips through the config and reaches the root as the skin's colour tokens", () => {
+    const t = cleanTheme({ skin: "claude", palette: { harmony: "triadic", h: 200, s: 60, l: 45 } });
+    const r = fromConfig(JSON.stringify(toConfig({ mode: "dark", theme: t })));
+    expect(r.ok && r.theme).toEqual(t);
+    expect(rootStyle(t, String, "light")).toContain("--primary:hsl(200 60% ");
+    expect(rootStyle(t, String, "light")).not.toBe(rootStyle(t, String, "dark"));
+    expect(isDefault({ ...NO_THEME, palette: t.palette })).toBe(false);
+    const bad = fromConfig({ palette: { harmony: "pentad", h: 1, s: 1, l: 1 } });
+    expect(bad.ok && bad.dropped).toEqual(["palette"]);
+  });
   test("import: older shapes and a style preset; bad input is refused or dropped", () => {
     const stored = { v: 1, theme: { skin: "claude", font: "inter", radius: 4, tokens: { "radius-card": 16 } } };
     const r1 = fromConfig(stored);
@@ -112,7 +122,8 @@ describe("theme coverage parity", () => {
   test("the JSON Schema names every field and its values", () => {
     const p = THEME_SCHEMA.properties as Record<string, { enum?: unknown[] }>;
     const tp = (THEME_SCHEMA.properties.tokens as { properties: Record<string, { enum: unknown[] }> }).properties;
-    expect([...Object.keys(p).filter((k) => !["format", "version", "tokens"].includes(k)), ...Object.keys(tp)].sort()).toEqual([...FIELD_IDS].sort());
+    // the palette (the colour wheel) is one object, not a field of FIELDS: its own schema entry, and its own test (palette.test.ts)
+    expect([...Object.keys(p).filter((k) => !["format", "version", "tokens", "palette"].includes(k)), ...Object.keys(tp)].sort()).toEqual([...FIELD_IDS].sort());
     for (const f of FIELDS) for (const v of f.values) expect((f.store === "tokens" ? tp[f.id]! : p[f.id]!).enum).toContain(v);
     expect(Object.keys(toConfig({ mode: "dark", theme: NO_THEME })).filter((k) => k !== "tokens" && k !== "format" && k !== "version").sort()).toEqual(Object.keys(p).filter((k) => !["format", "version", "tokens"].includes(k)).sort());
   });

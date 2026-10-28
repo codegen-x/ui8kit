@@ -16,9 +16,11 @@
 // The two layers are stored apart (the feed tune in the address, the global theme here): changing one never rewrites the other.
 import { FONT_IDS } from "@ui8kit/taste-data/font-ids";
 import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
+import { cleanPalette, HARMONIES, paletteStyle, type Palette } from "./palette";
 import { cleanTokens, DENSITIES, DENSITY_ELEMENTS, DENSITY_VARS, ELEMENT_SLOT, ELEMENTS, setToken, SHADOW_ELEMENTS, SHADOWS, tokenAttrs, tokenStyle, type Density, type Tokens } from "./design";
 
-export type GlobalTheme = { skin: string | null; font: string | null; radius: number | null; tokens: Tokens };
+/** palette: the custom colours of the colour wheel (palette.ts) over the skin's neutrals; absent: the skin's own colours */
+export type GlobalTheme = { skin: string | null; font: string | null; radius: number | null; tokens: Tokens; palette?: Palette };
 export const NO_THEME: GlobalTheme = { skin: null, font: null, radius: null, tokens: {} };
 
 /** a theme from anything (storage, JSON): unknown values become null, unknown tokens are dropped */
@@ -27,10 +29,11 @@ export function cleanTheme(v: unknown): GlobalTheme {
   const skin = typeof o.skin === "string" && (SKIN_IDS as readonly string[]).includes(o.skin) ? o.skin : null;
   const font = typeof o.font === "string" && (FONT_IDS as readonly string[]).includes(o.font) ? o.font : null;
   const radius = typeof o.radius === "number" && (RADII as readonly number[]).includes(o.radius) ? o.radius : null;
-  return { skin, font, radius, tokens: cleanTokens(o.tokens) };
+  const palette = cleanPalette(o.palette);
+  return { skin, font, radius, tokens: cleanTokens(o.tokens), ...(palette ? { palette } : {}) };
 }
 
-export const isDefault = (t: GlobalTheme): boolean => t.skin === null && t.font === null && t.radius === null && Object.keys(t.tokens).length === 0;
+export const isDefault = (t: GlobalTheme): boolean => t.skin === null && t.font === null && t.radius === null && Object.keys(t.tokens).length === 0 && !t.palette;
 
 /** localStorage, or null where there is none or it is blocked (reading the property itself throws then) */
 const local = (): Storage | null => { try { return typeof localStorage === "undefined" ? null : localStorage; } catch { return null; } };
@@ -55,12 +58,14 @@ export function densityOf(tokens: Tokens): Density | null {
 }
 export { DENSITIES };
 
-/** the CSS variables of the root: radius, the one font (body and headings), the per-element tokens */
-export function rootStyle(t: GlobalTheme, family: (id: string) => string): string {
+/** the CSS variables of the root: radius, the one font (body and headings), the per-element tokens, and the custom palette's
+ *  colour tokens for the app's mode now (they differ between light and dark) */
+export function rootStyle(t: GlobalTheme, family: (id: string) => string, mode: "light" | "dark" = "light"): string {
   return [
     t.radius !== null ? `--radius:${t.radius}px` : "",
     t.font ? `--font-sans:${family(t.font)},sans-serif;--taste-heading:${family(t.font)},sans-serif` : "",
     tokenStyle(t.tokens),
+    t.palette ? paletteStyle(t.palette, mode) : "",
   ].filter(Boolean).join(";");
 }
 /** the attributes of the root: the skin and the density attributes */
@@ -141,13 +146,13 @@ export const viewFields = (view: ThemeView): Array<{ field: Field; control: Cont
 
 export const CONFIG_FORMAT = "magazine-theme";
 export const CONFIG_VERSION = 2;
-export type ThemeConfig = { format: typeof CONFIG_FORMAT; version: typeof CONFIG_VERSION; mode: Mode; skin: string | null; font: string | null; radius: number | null; tokens: Tokens };
+export type ThemeConfig = { format: typeof CONFIG_FORMAT; version: typeof CONFIG_VERSION; mode: Mode; skin: string | null; font: string | null; radius: number | null; tokens: Tokens; palette: Palette | null };
 export type ImportResult = { ok: true; mode: Mode | null; theme: GlobalTheme; dropped: string[] } | { ok: false; error: string };
 
 /** the config of a state: every field, unset ones as null (tokens: only the ones set) */
 export function toConfig(s: ThemeState): ThemeConfig {
   const t = cleanTheme(s.theme);
-  return { format: CONFIG_FORMAT, version: CONFIG_VERSION, mode: s.mode, skin: t.skin, font: t.font, radius: t.radius, tokens: t.tokens };
+  return { format: CONFIG_FORMAT, version: CONFIG_VERSION, mode: s.mode, skin: t.skin, font: t.font, radius: t.radius, tokens: t.tokens, palette: t.palette ?? null };
 }
 
 /**
@@ -168,6 +173,7 @@ export function fromConfig(input: unknown): ImportResult {
   const dropped: string[] = [];
   for (const k of ["skin", "font", "radius"] as const) if (o[k] !== undefined && o[k] !== null && theme[k] === null) dropped.push(k);
   if (o.mode !== undefined && o.mode !== null && mode === null) dropped.push("mode");
+  if (o.palette !== undefined && o.palette !== null && !theme.palette) dropped.push("palette");
   if (o.tokens && typeof o.tokens === "object" && !Array.isArray(o.tokens)) {
     for (const [k, x] of Object.entries(o.tokens as Record<string, unknown>)) if (!(k in theme.tokens) && !(k.startsWith("density-") && x === "default" && fieldOf(k))) dropped.push(k);
   } else if (o.tokens !== undefined && o.tokens !== null) dropped.push("tokens");
@@ -186,6 +192,7 @@ export const THEME_SCHEMA = {
     format: { const: CONFIG_FORMAT },
     version: { const: CONFIG_VERSION },
     ...Object.fromEntries(FIELDS.filter((f) => f.store !== "tokens").map((f) => [f.id, { enum: f.nullable ? [...f.values, null] : [...f.values] }])),
+    palette: { type: ["object", "null"], required: ["harmony", "h", "s", "l"], additionalProperties: false, properties: { harmony: { enum: [...HARMONIES] }, h: { type: "number", minimum: 0, maximum: 359 }, s: { type: "number", minimum: 0, maximum: 100 }, l: { type: "number", minimum: 0, maximum: 100 } } },
     tokens: { type: "object", additionalProperties: false, properties: Object.fromEntries(FIELDS.filter((f) => f.store === "tokens").map((f) => [f.id, { enum: [...f.values] }])) },
   },
 } as const;

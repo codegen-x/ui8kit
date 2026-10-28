@@ -20,9 +20,21 @@ export type DesignText = {
   elementRadius: string; elementDensity: string; elementShadow: string; follow: string; pill: string;
   elements: Record<string, string>; positions: Record<string, string>;
 };
+/** the colour wheel (palette-panel and its parts): headings, controls, the seven harmonies and the three sample cards */
+export type PaletteText = {
+  open: string; title: string; note: string; custom: string; reset: string; wheel: string;
+  harmony: string; hue: string; saturation: string; lightness: string;
+  harmonies: Record<"monochromatic" | "analogous" | "complementary" | "split" | "triadic" | "tetradic" | "square", { name: string; hint: string }>;
+  samples: {
+    plan: string; price: string; per: string; feature: string; choose: string; popular: string;
+    actions: string; primary: string; secondary: string; outline: string; chart: string;
+    alertTitle: string; alertText: string; accent: string; muted: string;
+  };
+};
 export type ThemeSheetText = {
   theme: ThemePanelText;
   design: DesignText;
+  palette: PaletteText;
   /** the names of the two modes over the specimen's swatches */
   style: { light: string; dark: string };
 };
