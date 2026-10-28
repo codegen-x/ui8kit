@@ -28,11 +28,11 @@ const groupField = (key: string, value: string): string =>
   key === "..." ? `...${value}` : value === key ? key : `${/^[A-Za-z_]\w*$/.test(key) ? key : JSON.stringify(key)}: ${value}`;
 
 /** a string literal of the generated TypeScript, inert in every template that holds it: JSON, with `{{` / `}}` (Vue text), `</` and
- * `<!` (the end of a script block of Svelte and Vue) and U+2028 / U+2029 escaped; a control character is an error (no spec has a use for one) */
+ * `<!` (the end of a script block of Svelte and Vue), `&` before a name or # (an entity Vue decodes in a template) and U+2028 / U+2029 escaped; a control character is an error (no spec has a use for one) */
 export function jsString(s: string): string {
   const bad = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.exec(s);
   if (bad) throw new Error(`a literal holds the control character U+${bad[0].charCodeAt(0).toString(16).padStart(4, "0")}: ${JSON.stringify(s)}`);
-  return JSON.stringify(s).replace(/\{\{/g, "{\\u007b").replace(/\}\}/g, "}\\u007d").replace(/<(?=[/!])/g, "\\u003c").replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
+  return JSON.stringify(s).replace(/\{\{/g, "{\\u007b").replace(/\}\}/g, "}\\u007d").replace(/<(?=[/!])/g, "\\u003c").replace(/&(?=[#a-zA-Z])/g, "\\u0026").replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
 }
 
 export function printValue(v: Value, ctx: PrintCtx): string {
