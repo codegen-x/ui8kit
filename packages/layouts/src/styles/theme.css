@@ -12,6 +12,19 @@
   .ui8-theme-panel-ds { @apply flex-1; }
   .ui8-ds-panel { @apply h-full min-h-0 w-180 min-w-0 shrink border-r border-border bg-background *:w-full max-sm:w-screen max-sm:max-w-none max-sm:border-r-0; }
   .ui8-ds-panel-back { @apply sm:hidden; }
+  .ui8-picker-panel { @apply h-full min-h-0 w-180 min-w-0 shrink border-r border-border bg-background *:w-full max-sm:w-screen max-sm:max-w-none max-sm:border-r-0; }
+  .ui8-picker-grid { @apply grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4 py-4 max-sm:grid-cols-2; }
+  .ui8-picker-card { @apply relative flex cursor-pointer flex-col items-stretch gap-2 text-left; }
+  .ui8-picker-input { @apply absolute inset-0 m-0 size-full cursor-pointer opacity-0; }
+  .ui8-picker-face { @apply block aspect-4/3 max-sm:aspect-auto overflow-hidden rounded border border-border bg-background p-4 font-sans text-foreground group-has-checked:outline-2 group-has-checked:outline-offset-2 group-has-checked:outline-ring group-has-focus-visible:outline-2 group-has-focus-visible:outline-offset-2 group-has-focus-visible:outline-ring; }
+  .ui8-picker-title { @apply text-sm leading-normal; }
+  .ui8-picker-text { @apply text-xs leading-normal text-muted-foreground; }
+  .ui8-picker-button { @apply inline-flex h-6 items-center rounded bg-primary px-2 text-xs text-primary-foreground; }
+  .ui8-picker-surface { @apply inline-flex h-6 w-fit items-center rounded border border-border bg-card px-2 text-xs leading-normal text-card-foreground; }
+  .ui8-picker-swatch { @apply size-4 rounded border border-border; }
+  .ui8-picker-font { @apply h-full; }
+  .ui8-picker-font-h { @apply font-[family-name:var(--taste-heading,var(--font-sans))] text-2xl leading-8; }
+  .ui8-picker-name { @apply text-sm leading-normal text-foreground group-has-checked:font-semibold; }
   .ui8-ds-panel-specimen { @apply mb-4; }
   .ui8-theme-fields { @apply *:w-full; }
   .ui8-theme-fields-heading { @apply mt-6 leading-normal; }

@@ -1,16 +1,16 @@
 // The controller of the global theme (the model: @ui8kit/theme-model/global-theme): the one place that changes it. Loaded once from this device,
 // saved on every change; every view (the Theme sheet's two panels, the style page's Design system tab) reads `gtheme` and writes
 // through these functions, so they always show the same values. Also the Theme sheet's open state (narrow panel) and whether its
-// wide Design system panel is shown. `window.__magazineTheme` is the same controller for scripts and future external configs.
+// wide panel is shown (Design system, skin or font picker). `window.__magazineTheme` is the same controller for scripts and future external configs.
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
-import type { ThemeController } from "@ui8kit/theme-model/controller";
+import type { ThemeController, WidePanel } from "@ui8kit/theme-model/controller";
 import { FIELDS, fromConfig, NO_THEME, readTheme, setThemeField, THEME_SCHEMA, toConfig, writeTheme, type FieldValue, type GlobalTheme, type ImportResult, type Mode, type ThemeConfig } from "@ui8kit/theme-model/global-theme";
 import { theme } from "./theme.svelte";
 
 /** the Magazine's own storage key of the global theme (Stock keeps its own) */
 export const STORE_THEME = "magazine:v1:theme";
 
-export const gtheme = $state<{ value: GlobalTheme; open: boolean; wide: boolean }>({ value: readTheme(STORE_THEME), open: false, wide: false });
+export const gtheme = $state<{ value: GlobalTheme; open: boolean; wide: WidePanel }>({ value: readTheme(STORE_THEME), open: false, wide: null });
 
 export function setTheme(patch: Partial<GlobalTheme>): void {
   gtheme.value = { ...gtheme.value, ...patch };
@@ -47,7 +47,7 @@ export const themeCtl: ThemeController = {
   get open() { return gtheme.open; },
   set open(v: boolean) { gtheme.open = v; },
   get wide() { return gtheme.wide; },
-  set wide(v: boolean) { gtheme.wide = v; },
+  set wide(v: WidePanel) { gtheme.wide = v; },
   setTheme, setField, reset: resetTheme, exportConfig, importConfig,
 };
 

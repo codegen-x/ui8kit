@@ -1,5 +1,6 @@
-<!-- The narrow panel of the Theme sheet: every field of the theme (theme-fields, view "sheet"), export/import; the footer opens the
-     wide Design system panel (the same fields as radio groups, with the specimen) and resets the theme. -->
+<!-- The narrow panel of the Theme sheet: every field of the theme (theme-fields, view "sheet"; the skin and font selects open their
+     picker), export/import; the footer opens the wide Design system panel (the same fields as radio groups, with the specimen) and
+     resets the theme. -->
 <script lang="ts">
   import { Box, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import { isDefault } from "@ui8kit/theme-model/global-theme";
@@ -33,6 +34,6 @@
   </Stack>
   <Group gap="2" class="ui8-theme-foot">
     <Button variant="outline" disabled={isDefault(t)} onclick={() => ctl.reset()} data-testid="theme-reset">{T.resetAll}</Button>
-    <Button class="ui8-theme-panel-ds" variant={ctl.wide ? "secondary" : "default"} onclick={() => (ctl.wide = !ctl.wide)} data-testid="theme-ds">{ctl.wide ? T.hideDesignSystem : T.designSystem}</Button>
+    <Button class="ui8-theme-panel-ds" variant={ctl.wide === "ds" ? "secondary" : "default"} onclick={() => (ctl.wide = ctl.wide === "ds" ? null : "ds")} data-testid="theme-ds">{ctl.wide === "ds" ? T.hideDesignSystem : T.designSystem}</Button>
   </Group>
 </Stack>

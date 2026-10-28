@@ -3,12 +3,13 @@
      radio groups), so both cover every field; values come from the app's controller and go back through it. -->
 <script lang="ts">
   import type { Snippet } from "svelte";
-  import { Stack, Title } from "@codegen-x/svelte-compose";
+  import { Button, LucideIcon, Stack, Title } from "@codegen-x/svelte-compose";
   import { DENSITIES, densityOf, fieldValue, setDensity, viewFields, type Field, type FieldGroup, type ThemeView } from "@ui8kit/theme-model/global-theme";
   import type { ThemeController } from "@ui8kit/theme-model/controller";
   import type { Density } from "@ui8kit/theme-model/design";
   import OptionGroup from "../magazine/option-group.svelte";
   import OptionSelect from "../magazine/option-select.svelte";
+  import { pickerOf, type PickerKind } from "./pickers";
   import type { ThemeSheetText } from "./text";
 
   let { ctl, text, idp, view, afterSite }: {
@@ -30,6 +31,10 @@
   const current = (f: Field) => { const v = fieldValue({ mode: ctl.mode, theme: t }, f.id); return v === null ? "" : String(v); };
   const change = (f: Field, raw: string) => ctl.setField(f.id, raw === "" ? null : f.values.find((v) => String(v) === raw) ?? null);
   const density = $derived(densityOf(t.tokens));
+  // the skin and font selects of the narrow panel open their picker (a wide panel) from an icon button on their row
+  const ICON: Record<PickerKind, string> = { skins: "palette", fonts: "type" };
+  const browse = (k: PickerKind): string => (k === "skins" ? T.browseSkins : T.browseFonts);
+  const togglePicker = (k: PickerKind): void => { ctl.wide = ctl.wide === k ? null : k; };
   const starts = (i: number) => rows[i]!.field.group !== "site" && rows[i]!.field.group !== rows[i - 1]?.field.group;
 </script>
 
@@ -41,7 +46,14 @@
         <OptionGroup name={idp + "-density"} field="density-all" legend={T.densityAll} multiple={false} options={DENSITIES.map((d) => ({ value: d, label: pos(d) }))} selected={density ? [density] : []} onchange={(v) => ctl.setTheme({ tokens: setDensity(t.tokens, v[0] as Density) })} />
       {/if}
     {/if}
-    {#if r.control === "select"}
+    {#if r.control === "select" && view === "sheet" && pickerOf(r.field.id)}
+      {@const k = pickerOf(r.field.id)!}
+      <OptionSelect name={nameOf(r.field)} field={r.field.id} legend={legend(r.field)} options={options(r.field)} value={current(r.field)} onchange={(v) => change(r.field, v)}>
+        {#snippet action()}
+          <Button variant={ctl.wide === k ? "secondary" : "outline"} size="sm" layout="icon" aria-label={browse(k)} title={browse(k)} onclick={() => togglePicker(k)} data-testid={"pick-" + k}><LucideIcon name={ICON[k]} /></Button>
+        {/snippet}
+      </OptionSelect>
+    {:else if r.control === "select"}
       <OptionSelect name={nameOf(r.field)} field={r.field.id} legend={legend(r.field)} options={options(r.field)} value={current(r.field)} onchange={(v) => change(r.field, v)} />
     {:else}
       <OptionGroup name={nameOf(r.field)} field={r.field.id} legend={legend(r.field)} multiple={false} options={options(r.field)} selected={[current(r.field)]} onchange={(v) => change(r.field, v[0] ?? "")} />

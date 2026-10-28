@@ -29,7 +29,7 @@
   <Box class="ui8-theme-head">
     <Group gap="2" justify="between" align="center">
       <Group gap="2" align="center">
-        <Button variant="ghost" size="sm" class="ui8-ds-panel-back" onclick={() => (ctl.wide = false)} data-testid="ds-back">{T.back}</Button>
+        <Button variant="ghost" size="sm" class="ui8-ds-panel-back" onclick={() => (ctl.wide = null)} data-testid="ds-back">{T.back}</Button>
         <Title as={2} size="base">{T.dsTitle}</Title>
       </Group>
     </Group>

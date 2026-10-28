@@ -1,7 +1,10 @@
 // The controller of the global theme as the shared Theme sheet (@ui8kit/layouts/theme) sees it: what it reads (the theme, the app's
-// light/dark mode, whether the sheet and its wide Design system panel are open) and the only ways it changes them. Each app keeps
+// light/dark mode, whether the sheet is open and which wide panel shows beside it) and the only ways it changes them. Each app keeps
 // its own implementation (its storage key, its mode, its reactive state) and hands it to the sheet; this file is the contract only.
 import type { FieldValue, GlobalTheme, ImportResult, Mode, ThemeConfig } from "./global-theme";
+
+/** the wide panel beside the narrow Theme panel, one at a time: the Design system, the skin picker or the font picker; null: none */
+export type WidePanel = null | "ds" | "skins" | "fonts";
 
 export interface ThemeController {
   /** the global theme now */
@@ -10,8 +13,8 @@ export interface ThemeController {
   readonly mode: Mode;
   /** the sheet (its narrow Theme panel) is open */
   open: boolean;
-  /** the wide Design system panel is shown beside (or, on narrow screens, instead of) the Theme panel */
-  wide: boolean;
+  /** the wide panel shown beside (or, on narrow screens, instead of) the Theme panel */
+  wide: WidePanel;
   /** merge a patch into the theme and save it */
   setTheme(patch: Partial<GlobalTheme>): void;
   /** set one field (global-theme FIELDS) by its id; null clears it; "mode" switches the app's mode */

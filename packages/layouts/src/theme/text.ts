@@ -8,6 +8,9 @@ export type ThemePanelText = {
   title: string; note: string; mode: string; light: string; dark: string; skin: string; font: string; default: string; radius: string;
   resetRadius: string; densityAll: string; designSystem: string; hideDesignSystem: string; resetAll: string; close: string; back: string;
   dsTitle: string; dsNote: string; dsReset: string; io: ThemeIoText;
+  /** the skin and font pickers (picker-panel): the select row's buttons, the panels' headings and notes, the faces' sample texts */
+  browseSkins: string; browseFonts: string; skinsTitle: string; skinsNote: string; fontsTitle: string; fontsNote: string;
+  sampleTitle: string; sampleText: string; sampleButton: string; sampleBadge: string; sampleCard: string; fontHeading: string; fontSub: string;
 };
 export type DesignText = {
   tokens: string; type: string; sample: string; radii: string; current: string; spacing: string; buttons: string; badges: string;
