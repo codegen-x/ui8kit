@@ -22,6 +22,10 @@ export type ViewNode =
   /** a primitive: `use` is a part name (Card, Button, TableCell …); `props` are its spec props by canonical name, `attrs` are free DOM attributes */
   | { use: string; props?: Record<string, Value>; attrs?: Record<string, Value>; on?: Record<string, Handler>; children?: ViewNode[] }
   | { text: Value }
+  /** markup that is printed without escaping: only a prop (or a field of a record prop) of type TrustedHtml, and only as the one child of a
+   *  primitive (React dangerouslySetInnerHTML, Svelte {@html}, Vue and Solid innerHTML, Twig |raw, Latte |noescape, Jinja2 |safe, templ.Raw);
+   *  a value that is not TrustedHtml at run time is escaped like text (htmlOf / og_html / Html) */
+  | { html: Value }
   | { when: Value; then: ViewNode[]; else?: ViewNode[] }
   | { each: Value; as: string; key: Value; do: ViewNode[]; /** name of the loop index, readable inside the body */ index?: string }
   /** renders a slot the component receives (render prop with arguments) */
@@ -60,7 +64,10 @@ export const OPS: Record<string, number | "n"> = {
   /** a literal array: list(a, b, c) -> [a, b, c] */ list: "n",
 };
 
-export type FieldType = "string" | "number" | "boolean" | "string[]";
+/** `TrustedHtml`: markup from a trusted source (the `|html` pipe of readPath, or the host), `{ __html: string }`; see TRUSTED_HTML */
+export type FieldType = "string" | "number" | "boolean" | "string[]" | "TrustedHtml";
+/** the prop type of markup printed without escaping (an `html` view node reads it); every other type is escaped */
+export const TRUSTED_HTML = "TrustedHtml";
 /**
  * a field of a record: a data field (FieldType), or in a grouped prop any TypeScript type written out
  * (`"one" | "two"`, `NavLink[]`); `default` is the value a variant axis on the field starts from
@@ -152,7 +159,9 @@ export const typesPath = (orgId: string, other: { id: string; name: string }): s
 
 export interface ColumnSpec { id: string; label: string; type: "text" | "money" | "number" | "badge" | "boolean"; sortable?: boolean; align?: "start" | "end" }
 
-export interface SourceSpec { collection: string; kind: string; record: string; fields: Record<string, string> }
+/** `scope`: `list` (default) reads every entry of the collection as an array; `current` reads one entry, the record of the current
+ *  route (the entry whose slug the route names, else the first: on the fixtures, the first entry) */
+export interface SourceSpec { collection: string; kind: string; record: string; fields: Record<string, string>; scope?: "list" | "current" }
 
 export interface ScreenSpec {
   $schema?: string;

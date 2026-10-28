@@ -41,6 +41,10 @@
           "excerpt": {
             "type": "string"
           },
+          "content": {
+            "type": "string",
+            "description": "the body as rich text (markup from the editor, the_content of a CMS); a block reads it with the |html pipe as TrustedHtml, printed without escaping"
+          },
           "author_id": {
             "type": "string",
             "minLength": 1,

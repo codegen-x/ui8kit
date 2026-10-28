@@ -184,6 +184,8 @@ function node(n: ViewNode, c: Ctx): string[] {
     return call(template, props, walk(n.children ?? [], c), c, false, c.deps.callPart, ref);
   }
   if ("text" in n) return [d.out(`og_text(${printValue(n.text, c)})`)];
+  // trusted markup (a TrustedHtml prop, the one child of a primitive): |raw, |safe, |noescape over og_html, which escapes any other value
+  if ("html" in n) return [d.raw(`og_html(${printValue(n.html, c)})`)];
   if ("when" in n) {
     const out: string[] = [];
     let at: ViewNode | undefined = n;

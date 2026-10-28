@@ -1,11 +1,14 @@
 // Validates every fixture entry with the @ui8kit/contract v0.4 validator (npm package @ui8kit/contract, a devDependency of
 // packages/compose-gen/schema) against packages/compose-gen/schema/codex/manifest.json, and the manifest itself against
 // https://schema.buildy.tw/manifest.schema.json (shipped by the package as @ui8kit/contract/schemas/manifest.schema.json).
+// The block data manifest (../codex/blocks.json: which kinds every block reads, in which scope: a list, or `current`, the record of
+// the current route) is validated against its schema (../codex/blocks.schema.json) too.
 //   bun run codex:validate
 import { readFileSync } from "node:fs";
 import Ajv2020 from "ajv/dist/2020.js";
 import { validateCollectionV04 } from "@ui8kit/contract/validate";
 import { MANIFEST_PATH, loadFixtures, loadTaxonomies } from "./codex";
+import { BLOCKS_PATH } from "./codex-blocks";
 
 const manifest = JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
 const schema = JSON.parse(readFileSync(new URL(import.meta.resolve("@ui8kit/contract/schemas/manifest.schema.json")), "utf8"));
@@ -31,10 +34,16 @@ for (const e of items) {
   if (!menuMap.has(key)) menuMap.set(key, { id: `menu-${location}`, location, locale: e.locale, items: [] });
   menuMap.get(key)!.items.push({ id: e.id, label: e.title, url: `/${e.slug}`, ...(e.parent_id ? { parent_id: e.parent_id } : {}), ...(e.order !== undefined ? { order: e.order } : {}), target: { kind: "menu_item", id: e.id } });
 }
+// the block data manifest against its schema: the scopes of the bindings (current) and every field the file may hold
+const blocksDoc = JSON.parse(readFileSync(BLOCKS_PATH, "utf8")) as { blocks: { data?: { scope?: string }[] }[] };
+const blocksAjv = new Ajv2020({ strict: false });
+const okBlocks = blocksAjv.validate(JSON.parse(readFileSync(BLOCKS_PATH.replace(/blocks\.json$/, "blocks.schema.json"), "utf8")), blocksDoc);
+const current = blocksDoc.blocks.flatMap((b) => b.data ?? []).filter((d) => d.scope === "current").length;
 const menus = [...menuMap.values()].map((data) => ({ file: `menus/${data.id}.${data.locale}`, data }));
 const issues = validateCollectionV04({ entries, terms, menus }, { manifest }) as { code: string; path: string; message: string; severity?: string }[];
 for (const i of issues) console.log(`${i.severity ?? "error"} ${i.code} ${i.path}: ${i.message}`);
 const errors = issues.filter((i) => !i.severity).length, warnings = issues.length - errors;
 for (const b of badBundles) console.log(`error taxonomy ${b}`);
+console.log(`blocks.json schema: ${okBlocks ? "ok" : JSON.stringify(blocksAjv.errors)} (${blocksDoc.blocks.length} blocks, ${current} binding(s) in scope current)`);
 console.log(`manifest schema: ${okManifest ? "ok" : JSON.stringify(ajv.errors)}; ${entries.length} entries, ${menus.length} menus (${items.length} items), ${manifest.resources.length} kinds, ${bundles.length} taxonomies (${terms.length} terms): ${errors + badBundles.length} errors, ${warnings} warnings`);
-process.exit(okManifest && errors === 0 && badBundles.length === 0 ? 0 : 1);
+process.exit(okManifest && okBlocks && errors === 0 && badBundles.length === 0 ? 0 : 1);

@@ -725,6 +725,13 @@
           },
           "as": {
             "type": "string"
+          },
+          "scope": {
+            "enum": [
+              "list",
+              "current"
+            ],
+            "description": "list (default): every entry of the collection, as an array; current: one entry, the record of the current route (the entry whose slug the route names, else the first)"
           }
         },
         "required": [

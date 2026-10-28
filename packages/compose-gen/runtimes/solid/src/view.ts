@@ -1,7 +1,7 @@
 // Solid output for organisms and screens. Blocks are JSX ternaries, lists are `<For>`, render-prop slots are function props (as in React).
 import { fileName, presetFile, printBare, printValue, sourcesOf, tierDir, typesPath, type OrganismSpec, type ScreenSpec } from "../../../screens/src/index";
 import { htmlPropName, reactPropName } from "../../../spec/src/index";
-import { assetFile, assetTables, BANNER, chainLines, chunksOf, partsOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "../../core/src/index";
+import { assetFile, assetTables, BANNER, chainLines, chunksOf, partsOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, takesTrustedHtml, readSource, sourceReaders, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "../../core/src/index";
 
 const pad = (lines: string[], n = 1): string[] => lines.map((l) => (l ? "  ".repeat(n) + l : l));
 const cap = (s: string): string => s[0]!.toUpperCase() + s.slice(1);
@@ -47,6 +47,7 @@ export const solidSyntax: Syntax = {
   slot: (name, args, fn) => [fn ? `{${name}?.(${args.join(", ")})}` : `{${name}}`],
   slotProp: (name, params, body, fn) => ({ attr: [fn ? `${name}={(${params}) => ${frag(body).join("\n")}}` : `${name}={${frag(body).join("\n")}}`] }),
   fragment: frag,
+  html: (expr) => ({ attr: `innerHTML={${expr}}` }),
 };
 
 export interface ViewDeps {
@@ -137,6 +138,7 @@ export function emitOrganism(org: OrganismSpec, deps: ViewDeps): GeneratedFile[]
     ...(helpers.length ? [`import { ${helpers.join(", ")} } from "../utils";`] : []),
     ...(assetTables(org).length ? [`import { ${assetTables(org).join(", ")} } from "./${fileName(name)}.assets";`] : []),
     ...(recordNames.length ? [`import type { ${recordNames.join(", ")} } from "./${fileName(name)}.types";`] : []),
+    ...(takesTrustedHtml(org) ? [`import type { TrustedHtml } from "../utils";`] : []),
     ...(org.typeImports ?? []).map((t) => `import type { ${t.names.join(", ")} } from "${typesPath(org.id, deps.organisms[t.from] ?? { id: org.id, name: t.from })}";`),
     ``,
     ...tables.flatMap((t) => [t, ``]),
@@ -184,7 +186,7 @@ function emitPage(s: ScreenSpec, deps: ScreenDeps): GeneratedFile {
     solidImports(markup),
     wrapList("import {", [...imports, ...types], `} from "${deps.ui}";`),
     ...[...chunks.values(), ...parts].map((c) => `import { ${c.name} } from "./${c.dir}/${c.name}";`),
-    `import { fromCodex, matchRoute, type UrlPort } from "${deps.shared}/runtime/core";`,
+    `import { ${sourceReaders(sources).join(", ")}, matchRoute, type UrlPort } from "${deps.shared}/runtime/core";`,
     ...(sources.length ? [`import { CODEX } from "${deps.shared}/runtime/codex";`] : []),
     `import { toggleTheme } from "${deps.shared}/runtime/theme";`,
     `import { ui } from "${deps.shared}/content";`,
@@ -193,7 +195,7 @@ function emitPage(s: ScreenSpec, deps: ScreenDeps): GeneratedFile {
     ``,
     m.constsTs,
     ``,
-    ...sources.map((x) => `const ${x.as} = fromCodex<${x.record}>(${x.as}Entries, ${x.as.toUpperCase()}_FIELDS, CODEX);`),
+    ...sources.map((x) => `${readSource(x)}`),
     `const HOME = { area: ${JSON.stringify(m.listArea)}, params: {} as Record<string, string> };`,
     `const actions = { toggleTheme };`,
     ...(m.namedTs ? [``, m.namedTs] : []),
@@ -222,14 +224,14 @@ function emitChunk(s: ScreenSpec, c: ChunkModel, deps: ScreenDeps): GeneratedFil
     `// ${c.doc}`,
     solidImports(markup),
     wrapList("import {", [...imports, ...types], `} from "${deps.ui}";`),
-    ...(c.sources.length ? [`import { fromCodex } from "${deps.shared}/runtime/core";`] : []),
+    ...(c.sources.length ? [`import { ${sourceReaders(c.sources).join(", ")} } from "${deps.shared}/runtime/core";`] : []),
     ...(c.sources.length ? [`import { CODEX } from "${deps.shared}/runtime/codex";`] : []),
     ...(c.actions ? [`import { toggleTheme } from "${deps.shared}/runtime/theme";`] : []),
     `import { ui } from "${deps.shared}/content";`,
     ...c.sources.map((x) => `import { ${x.collection} as ${x.as}Entries } from "${deps.shared}/data/${x.collection}";`),
     ...(c.constsTs ? [``, c.constsTs] : []),
     ``,
-    ...c.sources.map((x) => `const ${x.as} = fromCodex<${x.record}>(${x.as}Entries, ${x.as.toUpperCase()}_FIELDS, CODEX);`),
+    ...c.sources.map((x) => `${readSource(x)}`),
     ...(c.actions ? [`const actions = { toggleTheme };`] : []),
     ...(c.sources.length || c.actions ? [``] : []),
     ...(c.namedTs ? [c.namedTs, ``] : []),

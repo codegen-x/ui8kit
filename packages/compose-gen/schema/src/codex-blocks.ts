@@ -15,7 +15,8 @@ const COMPOSE_GEN = join(import.meta.dir, "..", "..");
 
 type Json = null | boolean | number | string | Json[] | { [k: string]: Json };
 type Obj = { [k: string]: Json };
-export interface Binding { prop: string; collection?: string; kind: string; record?: string; map?: string; list?: boolean; required?: string[]; optional?: string[] }
+/** `scope: "current"`: the block reads one entry, the record of the current route (not a list); its props read fields of it (`entry.title`) */
+export interface Binding { prop: string; collection?: string; kind: string; scope?: "current"; record?: string; map?: string; list?: boolean; required?: string[]; optional?: string[] }
 export interface Labels { prop: string; dictionary: string; keys: string[] }
 export interface BlockEntry {
   id: string; surface: string; spec?: string; source: string; status: "todo" | "done";
@@ -77,13 +78,16 @@ function kitBlock(file: string, src: BlockSources, orgs: ReturnType<typeof organ
   const data: Binding[] = specData.map((d) => {
     const r = refs.find((x) => x.ref === d.as);
     const map = mapOf(d.fields, typeof d.kind === "string" ? d.kind : "");
+    // the record of the current route: its fields go to several props (`entry.title`, `entry.content`), so the binding is named after the alias
+    const current = d.scope === "current";
     return {
-      prop: r?.path ?? (d.as as string),
+      prop: current ? (d.as as string) : r?.path ?? (d.as as string),
       ...(d.collection ? { collection: d.collection as string } : {}),
       kind: d.kind as string,
+      ...(current ? { scope: "current" as const } : {}),
       ...(d.record ? { record: d.record as string } : {}),
       ...(map ? { map } : {}),
-      list: !r?.one,
+      list: current ? false : !r?.one,
     };
   });
   const org = orgs.byName.get(s.organism as string);
@@ -99,7 +103,7 @@ function kitBlock(file: string, src: BlockSources, orgs: ReturnType<typeof organ
     const strings = isObj(value) ? Object.keys(value).filter((k) => typeof value[k] === "string") : [];
     labels.push({ prop: r.path, dictionary, keys: fields ? fields.filter((k) => strings.includes(k)) : strings });
   }
-  const touched = new Set(refs.filter((r) => r.ref.startsWith("ui.") || aliases.has(r.ref)).map((r) => r.path.split(".")[0]!));
+  const touched = new Set(refs.filter((r) => r.ref.startsWith("ui.") || aliases.has(r.ref) || aliases.has(r.ref.split(".")[0]!)).map((r) => r.path.split(".")[0]!));
   const settings = props.map((p) => p.name).filter((n) => !touched.has(n));
   return {
     id: s.organism as string, surface: "kit-block", spec: s.id as string, source: rel(src, file), status: "todo",

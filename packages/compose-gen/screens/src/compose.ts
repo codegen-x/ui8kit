@@ -9,8 +9,10 @@ function sourcesOfBlocks(used: BlockSpec[], problems: string[], where: string): 
   const out: NonNullable<ScreenSpec["sources"]> = [];
   for (const b of used) for (const d of b.data) {
     const have = out.find((x) => x.as === d.as);
-    if (!have) out.push({ as: d.as, collection: d.collection, kind: d.kind, record: d.record, fields: d.fields });
-    else if (JSON.stringify(have) !== JSON.stringify({ as: d.as, collection: d.collection, kind: d.kind, record: d.record, fields: d.fields })) problems.push(`${where}: blocks read ${d.as} in different ways`);
+    // scope current: the record of the current route, one entry (not written for a list, the default)
+    const want = { as: d.as, collection: d.collection, kind: d.kind, record: d.record, fields: d.fields, ...(d.scope === "current" ? { scope: d.scope } : {}) };
+    if (!have) out.push(want);
+    else if (JSON.stringify(have) !== JSON.stringify(want)) problems.push(`${where}: blocks read ${d.as} in different ways`);
   }
   return out;
 }

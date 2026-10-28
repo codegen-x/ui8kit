@@ -101,6 +101,15 @@ export interface ChunkModel {
   namedTs: string;
 }
 
+/** the read of a source: every entry as records (`fromCodex`), or the record of the current route for a source in scope `current` (`currentOf`) */
+export const readSource = (x: SourceSpec & { as: string }): string =>
+  `const ${x.as} = ${x.scope === "current" ? "currentOf" : "fromCodex"}<${x.record}>(${x.as}Entries, ${x.as.toUpperCase()}_FIELDS, CODEX);`;
+/** the readers of runtime/core the sources use: fromCodex, currentOf (fromCodex alone when there are none) */
+export const sourceReaders = (sources: Array<SourceSpec & { as: string }>): string[] => {
+  const used = new Set(sources.map((x) => (x.scope === "current" ? "currentOf" : "fromCodex")));
+  return used.size ? [...used].sort() : ["fromCodex"];
+};
+
 const pascal = (s: string): string => s.split(/[^A-Za-z0-9]+/).filter(Boolean).map((w) => w[0]!.toUpperCase() + w.slice(1)).join("");
 
 /** the chunks of a screen with `chunks`: one per area; an area that reads the route, the menu or the url state cannot leave the screen */

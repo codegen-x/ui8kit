@@ -146,6 +146,9 @@ export function readPath(source: unknown, path: string, opts: ReadOptions = {}):
     return typeof currency === "string" ? fmtCurrency(cur, currency, locale) : fmtFigure(cur, field(field(field(source, "metadata"), "unit"), "value"), locale);
   }
   if (pipe === "compact") return fmtCompact(cur, locale);
+  // markup from the Codex (the body of an entry) is trusted: the TrustedHtml marker of the runtimes (assets/ts/html.ts), printed
+  // without escaping by an `html` view node; a value read without this pipe stays text and is escaped
+  if (pipe === "html") return { __html: String(cur) };
   if (pipe.startsWith("term:") || pipe.startsWith("term-slug:")) {
     const taxonomy = pipe.slice(pipe.indexOf(":") + 1);
     const ref = Array.isArray(cur) ? cur.find((r) => field(r, "taxonomy") === taxonomy) : undefined;
@@ -180,6 +183,13 @@ export function trail<T>(entries: readonly T[], leaf?: string): T[] {
 /** Codex entries -> flat records by the `fields` mapping of the screen ("title", "metadata.price.value", "metadata.date.value|date") */
 export function fromCodex<T>(entries: readonly unknown[], fields: Record<string, string>, opts: ReadOptions = {}): T[] {
   return entries.map((e) => Object.fromEntries(Object.entries(fields).map(([name, path]) => [name, readPath(e, path, opts)])) as T);
+}
+
+/** the record of the current route (a source in scope `current`): the entry whose slug is `slug`, else the first; with no entry, a
+ *  record whose fields are all undefined (the block shows its empty parts) */
+export function currentOf<T>(entries: readonly unknown[], fields: Record<string, string>, opts: ReadOptions = {}, slug?: string): T {
+  const entry = (slug === undefined ? undefined : entries.find((e) => field(e, "slug") === slug)) ?? entries[0];
+  return fromCodex<T>([entry], fields, opts)[0]!;
 }
 
 export function parseSort(sort: string | undefined, fallback: string): { field: string; dir: SortDir } {

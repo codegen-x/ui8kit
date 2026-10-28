@@ -59,6 +59,12 @@
           "type": "string",
           "description": "the entry kind (a resource of manifest.json)"
         },
+        "scope": {
+          "enum": [
+            "current"
+          ],
+          "description": "current: one entry, the record of the current route (the post or page being shown), not a list; without it the block reads a collection"
+        },
         "record": {
           "type": "string",
           "description": "the record type of the kit (Product, Post, Plan)"

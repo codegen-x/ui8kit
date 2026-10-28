@@ -67,7 +67,11 @@ export function blockCases(inputs: Inputs, emitted: Set<string>): { cases: OrgCa
   const cases: OrgCase[] = [], skipped: string[] = [];
   for (const b of galleryOf(inputs.blocks.map((x) => x.value))) {
     const scope: Scope = { ui: inputs.dictionary.value };
-    for (const d of b.data) scope[d.as] = (collections.get(d.collection) ?? []).map((e) => Object.fromEntries(Object.entries(d.fields).map(([n, p]) => [n, readPath(e, p, codex)])));
+    for (const d of b.data) {
+      const rows = (collections.get(d.collection) ?? []).map((e) => Object.fromEntries(Object.entries(d.fields).map(([n, p]) => [n, readPath(e, p, codex)])));
+      // scope current: the record of the current route (the first entry on the fixtures, as currentOf reads it), not the list
+      scope[d.as] = d.scope === "current" ? rows[0] ?? Object.fromEntries(Object.keys(d.fields).map((n) => [n, undefined])) : rows;
+    }
     for (const v of b.variants) {
       const key = blockKey(b);
       const extra: Record<string, Value> = { id: `${key}-${v.id}`, level: 2, landmarkLabel: `${key} ${v.id}` };

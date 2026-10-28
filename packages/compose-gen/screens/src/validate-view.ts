@@ -1,7 +1,7 @@
 // Checks a view tree against the brick specs: the part exists, its props exist, enum values are recipe keys,
 // text is never a literal, ARIA state is static, every reference is in scope, every handler exists.
 import type { LoadedBrick } from "../../spec/src/index";
-import { OPS, isGroup, isOp, isRef, presetAt, sourcesOf, type Handler, type OrganismSpec, type PresetSpec, type RecipeFile, type ScreenSpec, type Value, type ViewNode } from "./ir";
+import { OPS, TRUSTED_HTML, isGroup, isOp, isRef, presetAt, sourcesOf, type Handler, type OrganismSpec, type PresetSpec, type RecipeFile, type ScreenSpec, type Value, type ViewNode } from "./ir";
 
 export interface Parts { [name: string]: { brick: LoadedBrick["brick"]; part: LoadedBrick["brick"]["parts"][number] } }
 export const indexParts = (bricks: LoadedBrick[]): Parts => {
@@ -20,7 +20,21 @@ const ARIA_STATE = new Set(["aria-selected", "aria-expanded", "aria-pressed", "a
 const isBoolLike = (v: Value): boolean => v === true || v === false || typeof v === "string" || isRef(v) || (isOp(v) && ((v.op === "undef") || (v.op === "cond" && isBoolLike(v.args[1]!) && isBoolLike(v.args[2]!))));
 const ARIA_DYNAMIC_OK = new Set(["aria-label", "aria-labelledby", "aria-describedby"]);
 
-interface Scope { names: Set<string>; handlers: (h: Handler) => string | null; organisms: Record<string, OrganismSpec>; allowOutlet: boolean; slots: Record<string, number>; where: string; parts: Parts }
+interface Scope {
+  names: Set<string>; handlers: (h: Handler) => string | null; organisms: Record<string, OrganismSpec>; allowOutlet: boolean; slots: Record<string, number>; where: string; parts: Parts;
+  /** whether a reference reads trusted markup (a prop, or a field of a record prop, of type TrustedHtml); screens have none */
+  trusted?: (ref: string) => boolean;
+}
+
+/** a reference into the props of an organism that holds TrustedHtml: `content`, or `aside.content` (a field of a record prop) */
+const trustedRef = (o: OrganismSpec) => (ref: string): boolean => {
+  const [root, field, ...rest] = ref.split(".");
+  const prop = o.props.find((p) => p.name === root);
+  if (!prop || rest.length) return false;
+  if (field === undefined) return prop.type === TRUSTED_HTML;
+  const rec = typeof prop.type === "object" && "record" in prop.type ? o.records[prop.type.record] : undefined;
+  return rec?.some((f) => f.name === field && f.type === TRUSTED_HTML) ?? false;
+};
 
 
 function checkValue(v: Value, names: Set<string>, where: string, out: string[]): void {
@@ -84,11 +98,20 @@ function checkUse(n: Extract<ViewNode, { use: string }>, sc: Scope, names: Set<s
     for (const a of h.args ?? []) checkValue(a, new Set([...names, "event", "arg"]), `${where}.on.${ev}`, out);
   }
   if (n.children?.length && !part.props.some((p) => p.type === "children")) out.push(`${where}: has no children slot`);
+  // trusted markup is printed raw, so it is the one child of the primitive and reads a TrustedHtml prop (never a literal, an op or text)
+  const html = (n.children ?? []).find((c): c is Extract<ViewNode, { html: Value }> => "html" in c);
+  if (html) {
+    if (n.children!.length !== 1) out.push(`${where}: an html node is the one child of its primitive`);
+    if (!isRef(html.html) || !sc.trusted?.(html.html.$)) out.push(`${where}: an html node reads a prop (or a field of a record prop) of type ${TRUSTED_HTML}${isRef(html.html) ? `, not "${html.html.$}"` : ""}`);
+    else checkValue(html.html, names, `${where} html`, out);
+    return;
+  }
   for (const c of n.children ?? []) walk(c, sc, names, out);
 }
 
 function walk(n: ViewNode, sc: Scope, names: Set<string>, out: string[]): void {
   if ("use" in n) return checkUse(n, sc, names, out);
+  if ("html" in n) { out.push(`${sc.where}: an html node is the one child of a primitive`); return; }
   if ("text" in n) {
     checkValue(n.text, names, `${sc.where} text`, out);
     if (typeof n.text === "string" && /\p{L}/u.test(n.text)) out.push(`${sc.where}: literal text "${n.text}" (text comes from content or labels)`);
@@ -188,7 +211,7 @@ export function validateOrganism(o: OrganismSpec, parts: Parts, organisms: Recor
     if (!h.call.startsWith("emit.")) return `handler ${h.call}: organisms only emit their events`;
     return o.events.some((e) => e.name === h.call.slice(5)) ? null : `handler ${h.call}: no such event`;
   };
-  const sc: Scope = { names: ORGANISM_NAMES(o), handlers, organisms, allowOutlet: false, slots: { ...Object.fromEntries(o.slots.map((s) => [s.name, s.args.length])), ...(o.children ? { children: 0 } : {}) }, where: o.name, parts };
+  const sc: Scope = { names: ORGANISM_NAMES(o), handlers, organisms, allowOutlet: false, slots: { ...Object.fromEntries(o.slots.map((s) => [s.name, s.args.length])), ...(o.children ? { children: 0 } : {}) }, where: o.name, parts, trusted: trustedRef(o) };
   if (o.portable.svelte === true || o.portable.react === true) {
     if (!o.view.length) out.push(`${o.name}: portable but has no view`);
   } else if (o.view.length) out.push(`${o.name}: not portable to either runtime, so it is a contract and has no view`);
@@ -261,6 +284,7 @@ export function contentRefs(nodes: ViewNode[], into = new Set<string>()): Set<st
   const go = (n: ViewNode): void => {
     if ("use" in n) { Object.values(n.props ?? {}).forEach(scan); Object.values(n.attrs ?? {}).forEach(scan); Object.values(n.on ?? {}).forEach((h) => h.args?.forEach(scan)); n.children?.forEach(go); }
     else if ("text" in n) scan(n.text);
+    else if ("html" in n) scan(n.html);
     else if ("when" in n) { scan(n.when); n.then.forEach(go); n.else?.forEach(go); }
     else if ("each" in n) { scan(n.each); scan(n.key); n.do.forEach(go); }
     else if ("slot" in n) n.args?.forEach(scan);

@@ -168,3 +168,25 @@ test("figures, term slugs and trails: |number formats by locale with the unit, |
   expect(trail(pages, "c").map((p) => p.id)).toEqual(["a", "b", "c"]);
   expect(trail(pages.slice(0, 3)).map((p) => p.id)).toEqual(["a", "b", "c"]);
 });
+
+test("the html pipe marks Codex markup as TrustedHtml; htmlOf prints it raw and escapes any other value", async () => {
+  const { readPath, currentOf } = await import("../assets/app/core");
+  const { htmlOf, isTrustedHtml, trustHtml, escapeHtml } = await import("../assets/ts/html");
+  const entry = { slug: "about", title: "<b>About</b>", content: "<h2>Body</h2><p>a &amp; b</p>" };
+  expect(readPath(entry, "content|html")).toEqual({ __html: "<h2>Body</h2><p>a &amp; b</p>" });
+  expect(readPath(entry, "content")).toBe("<h2>Body</h2><p>a &amp; b</p>");
+  expect(readPath(entry, "missing|html")).toBeUndefined();
+  expect(isTrustedHtml(readPath(entry, "content|html"))).toBe(true);
+  expect(htmlOf(readPath(entry, "content|html") as { __html: string })).toBe("<h2>Body</h2><p>a &amp; b</p>");
+  // a plain string is text: escaped, even where markup is expected
+  expect(htmlOf(entry.title)).toBe("&lt;b&gt;About&lt;/b&gt;");
+  expect(htmlOf(`"x" & 'y'`)).toBe("&quot;x&quot; &amp; &#39;y&#39;");
+  expect([htmlOf(null), htmlOf(undefined), htmlOf(true), htmlOf(3)]).toEqual(["", "", "", "3"]);
+  expect(htmlOf(trustHtml("<i>ok</i>"))).toBe("<i>ok</i>");
+  expect(escapeHtml("<&>")).toBe("&lt;&amp;&gt;");
+  // scope current: the entry the route names, else the first; with none, a record of undefined fields
+  const pages = [{ slug: "a", title: "A" }, { slug: "b", title: "B" }];
+  expect(currentOf<{ title: string }>(pages, { title: "title" })).toEqual({ title: "A" });
+  expect(currentOf<{ title: string }>(pages, { title: "title" }, {}, "b")).toEqual({ title: "B" });
+  expect(currentOf<{ title?: string }>([], { title: "title" })).toEqual({ title: undefined });
+});

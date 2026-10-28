@@ -94,6 +94,19 @@ func Text(v any) string {
 	return S(v)
 }
 
+var htmlEntities = strings.NewReplacer("&", "&amp;", "<", "&lt;", ">", "&gt;", `"`, "&quot;", "'", "&#39;")
+
+// Html is the markup an html node prints (through templ.Raw): the trusted markup ({"__html": "..."}, a TrustedHtml prop) as it is;
+// any other value is text, escaped (& < > " ' as entities, like htmlOf of the TypeScript runtimes).
+func Html(v any) string {
+	if m, ok := v.(map[string]any); ok {
+		if s, ok := m["__html"].(string); ok {
+			return s
+		}
+	}
+	return htmlEntities.Replace(Text(v))
+}
+
 // T is the truthiness of JavaScript: nil, false, 0, NaN and "" are false.
 func T(v any) bool {
 	switch x := v.(type) {

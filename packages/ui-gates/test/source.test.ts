@@ -36,3 +36,18 @@ test("allowTags lets a listed Box/Text tag value through, nothing else", () => {
   expect(rules(src, "x.tsx")).toEqual(['tag-allowlist tag "mark" is not an HTML5 Box/Text tag']);
   expect(checkSourceText(src, "x.tsx", { allowTags: ["mark"] })).toEqual([]);
 });
+
+test("TrustedHtml: the raw forms of the runtimes print markup from data, so the source holds no tag to flag; a literal tag still is", () => {
+  const forms: Array<[string, string]> = [
+    [`export const A = () => <Prose dangerouslySetInnerHTML={{ __html: htmlOf(content) }} />;`, "a.tsx"],
+    [`export const A = () => <Prose innerHTML={htmlOf(content)} />;`, "b.tsx"],
+    [`<script lang="ts">import { htmlOf } from "../utils";</script>\n<Prose>{@html htmlOf(content)}</Prose>`, "a.svelte"],
+    [`<template><Prose :innerHTML="htmlOf(content)" /></template>`, "a.vue"],
+    [`{% embed "compose/Prose.html.twig" %}{% block children %}{{ og_html(v_content)|raw }}{% endblock %}{% endembed %}`, "a.twig"],
+    [`{=og_html($v_content)|noescape}`, "a.latte"],
+    [`{{ og_html(v_content)|safe }}`, "a.j2"],
+    [`templ X(p Props) {\n\t@compose.Prose(compose.ProseProps{}) {\n\t\t@templ.Raw(uiutils.Html(p.Content))\n\t}\n}`, "a.templ"],
+  ];
+  for (const [src, file] of forms) expect([file, rules(src, file)]).toEqual([file, []]);
+  expect(rules(`<Prose>{@html htmlOf(content)}<h2>x</h2></Prose>`, "c.svelte")).toEqual(["raw-html <h2>: use Text"]);
+});

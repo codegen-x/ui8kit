@@ -34,6 +34,8 @@ export interface Syntax {
   text?(expr: string): string;
   /** wrap several top-level nodes */
   fragment(lines: string[]): string[];
+  /** trusted markup as the content of a primitive, from `htmlOf(...)`: an attribute (`dangerouslySetInnerHTML`, `innerHTML`) or a child (`{@html}`) */
+  html(expr: string): { attr?: string; child?: string };
 }
 
 export interface WalkEnv {
@@ -220,8 +222,18 @@ function walkNode(n: ViewNode, env: WalkEnv): string[] {
     for (const [k, v] of Object.entries(n.props ?? {})) if (!(k === "Class" && v === "")) attrs.push(attrText(s.propName(ref, k), v, env));
     for (const [k, v] of Object.entries(n.attrs ?? {})) attrs.push(attrText(s.attrName(k), v, env));
     for (const [ev, h] of Object.entries(n.on ?? {})) attrs.push(handlerText(ev, h, env));
+    // trusted markup is the one child of a primitive: printed by the runtime's own raw form, through htmlOf (a value that is not
+    // TrustedHtml at run time is escaped)
+    const only = n.children?.length === 1 ? n.children[0]! : undefined;
+    if (only && "html" in only) {
+      env.print.helpers.add("htmlOf");
+      const out = s.html(`htmlOf(${printValue(only.html, env.print)})`);
+      if (out.attr) attrs.push(out.attr);
+      return openTag(n.use, attrs, out.child ? [out.child] : [], s.attr);
+    }
     return openTag(n.use, attrs, walkNodes(n.children ?? [], env), s.attr);
   }
+  if ("html" in n) throw new Error("an html node is the one child of a primitive");
   if ("text" in n) return [s.text ? s.text(printValue(n.text, env.print)) : `{${printValue(n.text, env.print)}}`];
   if ("when" in n) {
     // an else that is one more test continues the chain: `a ? x : b ? y : z`, `{:else if b}`
@@ -276,17 +288,24 @@ export function optionalGroups(org: OrganismSpec): string[] {
   return org.props.filter((p) => !p.required && typeof p.type === "object" && ("record" in p.type || /^[A-Z]\w*$/.test(p.type.ts))).map((p) => p.name);
 }
 
+/** the organism takes trusted markup (a prop, a slot or event argument of type TrustedHtml): its file imports the type from the utils */
+export const takesTrustedHtml = (org: OrganismSpec): boolean =>
+  [...org.props, ...org.slots.flatMap((s) => s.args), ...org.events.flatMap((e) => e.args)].some((p) => p.type === "TrustedHtml");
+
 export function recordTypes(org: OrganismSpec, organisms: Record<string, OrganismSpec> = {}): string {
   const types = Object.entries(org.records)
     .map(([name, fields]) => `export type ${name} = {\n${fields.map((f) => `${f.docs ? `  /** ${f.docs} */\n` : ""}  ${f.name}${f.optional ? "?" : ""}: ${f.type};`).join("\n")}\n};`)
     .join("\n\n");
+  // a record field of trusted markup (`content: TrustedHtml`): the type of the utils, next to the components (src/<tier>/)
+  const trusted = Object.values(org.records).some((fs) => fs.some((f) => f.type === "TrustedHtml")) ? [`import type { TrustedHtml } from "../utils";`] : [];
   // the record types of other components a grouped prop reads (`links: NavLink[]`)
   const imports = (org.typeImports ?? []).flatMap((t) => {
     const used = t.names.filter((n) => new RegExp(`\\b${n}\\b`).test(types));
     const other = organisms[t.from];
     return used.length && other ? [`import type { ${used.join(", ")} } from "${typesPath(org.id, other)}";`] : [];
   });
-  return imports.length ? `${imports.join("\n")}\n\n${types}` : types;
+  const head = [...trusted, ...imports];
+  return head.length ? `${head.join("\n")}\n\n${types}` : types;
 }
 
 

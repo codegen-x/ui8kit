@@ -2,7 +2,7 @@
 // scoped slots (`<slot name="item" :item>` / `<template #item="{ item }">`), events are `defineEmits`, derived values `computed`.
 import { fileName, presetFile, printBare, printValue, tierDir, typesPath, type OrganismSpec, type ScreenSpec } from "../../../screens/src/index";
 import { htmlPropName } from "../../../spec/src/index";
-import { assetFile, assetTables, BANNER, chainLines, chunksOf, partsOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "../../core/src/index";
+import { assetFile, assetTables, BANNER, chainLines, chunksOf, partsOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, takesTrustedHtml, readSource, sourceReaders, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "../../core/src/index";
 import { attrExpr, each, ifChain, slotName, vueAttr } from "./template";
 
 const pad = (lines: string[], n = 1): string[] => lines.map((l) => (l ? "  ".repeat(n) + l : l));
@@ -38,6 +38,7 @@ export const vueSyntax: Syntax = {
   attr: vueAttr,
   text: (expr) => `{{ ${expr} }}`,
   fragment: (lines) => lines,
+  html: (expr) => ({ attr: `innerHTML={${expr}}` }),
 };
 
 export interface ViewDeps {
@@ -119,6 +120,7 @@ export function emitOrganism(org: OrganismSpec, deps: ViewDeps): GeneratedFile[]
   const presetImports = [...(env.print.presets ?? [])].sort().map((p) => `import { ${p} } from "../presets/${presetFile(p)}";`);
   const typeHead = [
     ...(recordNames.length ? [`import type { ${recordNames.join(", ")} } from "./${fileName(name)}.types";`] : []),
+    ...(takesTrustedHtml(org) ? [`import type { TrustedHtml } from "../utils";`] : []),
     ...(org.typeImports ?? []).map((t) => `import type { ${t.names.join(", ")} } from "${typesPath(org.id, deps.organisms[t.from] ?? { id: org.id, name: t.from })}";`),
     ...(tables.length ? [`import { variants } from "../utils";`, ``, ...tables] : []),
   ];
@@ -188,7 +190,7 @@ function emitPage(s: ScreenSpec, deps: ScreenDeps): GeneratedFile {
     `import { computed } from "vue";`,
     wrapList("import {", [...imports, ...types], `} from "${deps.ui}";`, 110),
     ...[...chunks.values(), ...parts].map((c) => `import ${c.name} from "./${c.dir}/${c.name}.vue";`),
-    `import { fromCodex, matchRoute, type UrlPort } from "${deps.shared}/runtime/core";`,
+    `import { ${sourceReaders(sources).join(", ")}, matchRoute, type UrlPort } from "${deps.shared}/runtime/core";`,
     ...(sources.length ? [`import { CODEX } from "${deps.shared}/runtime/codex";`] : []),
     `import { toggleTheme } from "${deps.shared}/runtime/theme";`,
     `import { ui } from "${deps.shared}/content";`,
@@ -199,7 +201,7 @@ function emitPage(s: ScreenSpec, deps: ScreenDeps): GeneratedFile {
     ``,
     `const { url } = defineProps<{ url: UrlPort }>();`,
     ``,
-    ...sources.map((x) => `const ${x.as} = fromCodex<${x.record}>(${x.as}Entries, ${x.as.toUpperCase()}_FIELDS, CODEX);`),
+    ...sources.map((x) => `${readSource(x)}`),
     `const route = computed(() => matchRoute(ROUTES, url.path) ?? { area: ${JSON.stringify(m.listArea)}, params: {} as Record<string, string> });`,
     ...(s.nav ? [`const nav = computed(() => navOf(route.value.area));`] : []),
     `const actions = { toggleTheme };`,
@@ -225,14 +227,14 @@ function emitChunk(s: ScreenSpec, c: ChunkModel, deps: ScreenDeps): GeneratedFil
     `<!-- ${c.doc} -->`,
     `<script setup lang="ts">`,
     wrapList("import {", [...imports, ...types], `} from "${deps.ui}";`, 110),
-    ...(c.sources.length ? [`import { fromCodex } from "${deps.shared}/runtime/core";`] : []),
+    ...(c.sources.length ? [`import { ${sourceReaders(c.sources).join(", ")} } from "${deps.shared}/runtime/core";`] : []),
     ...(c.sources.length ? [`import { CODEX } from "${deps.shared}/runtime/codex";`] : []),
     ...(c.actions ? [`import { toggleTheme } from "${deps.shared}/runtime/theme";`] : []),
     `import { ui } from "${deps.shared}/content";`,
     ...c.sources.map((x) => `import { ${x.collection} as ${x.as}Entries } from "${deps.shared}/data/${x.collection}";`),
     ...(c.constsTs ? [``, ...indented(c.constsTs)] : []),
     ``,
-    ...c.sources.map((x) => `const ${x.as} = fromCodex<${x.record}>(${x.as}Entries, ${x.as.toUpperCase()}_FIELDS, CODEX);`),
+    ...c.sources.map((x) => `${readSource(x)}`),
     ...(c.actions ? [`const actions = { toggleTheme };`] : []),
     ...(c.namedTs ? [...(c.sources.length || c.actions ? [``] : []), ...indented(c.namedTs)] : []),
     `</script>`,

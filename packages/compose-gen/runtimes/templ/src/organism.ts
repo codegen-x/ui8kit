@@ -234,7 +234,7 @@ function node(n: ViewNode, c: Ctx): string[] {
     const call = `@${pkg}.${ref.part.name}(${pkg}.${ref.part.name}Props{${fields.join(", ")}})`;
     return block(call, walk(n.children ?? [], c));
   }
-  if ("text" in n) return [`{ uiutils.Text(${printGo(n.text, c)}) }`];
+  if ("text" in n || "html" in n) return "text" in n ? [`{ uiutils.Text(${printGo(n.text, c)}) }`] : [`@templ.Raw(uiutils.Html(${printGo(n.html, c)}))`]; // html: TrustedHtml (the one child of a primitive), raw through uiutils.Html, which escapes any other value
   if ("when" in n) {
     const out: string[] = [];
     let at: ViewNode | undefined = n;

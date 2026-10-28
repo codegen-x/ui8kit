@@ -98,6 +98,17 @@ def text(v: Any) -> str:
     return "" if isinstance(v, bool) else s(v)
 
 
+_ENTITIES = {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}
+
+
+def html_(v: Any) -> str:
+    """the markup an html node prints (with |safe): the trusted markup ({"__html": "..."}, a TrustedHtml prop) as it is; any other
+    value is text, escaped (& < > " ' as entities, like htmlOf of the TypeScript runtimes)"""
+    if isinstance(v, dict) and isinstance(v.get("__html"), str):
+        return v["__html"]
+    return "".join(_ENTITIES.get(c, c) for c in text(v))
+
+
 def t(v: Any) -> bool:
     """JS truthiness: None, False, 0, NaN and '' are false"""
     if v is None:

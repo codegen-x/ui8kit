@@ -19,3 +19,11 @@ test("text-content: a button named by its <label for> passes, an unnamed one doe
   const bare = await checkHtml([{ id: "b", html: `<label for="x">Updates</label><button type="button" role="switch" aria-checked="false" id="s"></button>` }]);
   expect(bare.some((p) => p.rule === "text-content")).toBe(true);
 });
+
+test("TrustedHtml: rich text printed as it is inside Prose (headings, lists, quote, picture, code, table, captions) passes the gate", async () => {
+  const body = `<h1>Page</h1><div class="prose" data-testid="richtext-content"><p>Intro with <a href="https://example.org/">a link</a> and <code>code</code>.</p>`
+    + `<h2>Section</h2><ul><li>one</li><li>two</li></ul><h3>Steps</h3><ol><li>first</li></ol><blockquote><p>A quote.</p></blockquote>`
+    + `<figure class="wp-caption alignwide"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="A picture" width="1" height="1"><figcaption class="wp-caption-text">Caption</figcaption></figure>`
+    + `<pre><code>bun run build</code></pre><table><caption>Runtimes</caption><thead><tr><th scope="col">Runtime</th></tr></thead><tbody><tr><td>Latte</td></tr></tbody></table></div>`;
+  expect(await checkHtml([{ id: "richtext", html: body }])).toEqual([]);
+}, 60000);

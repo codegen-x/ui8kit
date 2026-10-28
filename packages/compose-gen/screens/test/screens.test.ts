@@ -2,7 +2,7 @@ import { expect, test } from "bun:test";
 import { join } from "node:path";
 import { partsFromKit } from "../../parts";
 import type { ScreenSpec } from "../src/index";
-import { galleryOf, THEMES, blockKey, blockProps, expandComposed, sourcesOf, validateScreen, authored, authoredDirs, indexParts, loadInputs, op, ref, stringify, text, use, validateOrganism, printValue } from "../src/index";
+import { galleryOf, THEMES, blockKey, blockProps, expandComposed, sourcesOf, validateScreen, authored, authoredDirs, indexParts, loadInputs, op, ref, stringify, text, html, use, validateOrganism, printValue } from "../src/index";
 import { readFileSync } from "node:fs";
 
 const root = join(import.meta.dir, "..", "..");
@@ -46,6 +46,22 @@ test("ARIA state must be static, and unknown attributes are rejected", () => {
   expect(a.join("\n")).toContain("must be static");
   const b = validateOrganism(withView([use("Text", { attrs: { onclick: "x" } })]), parts, orgs);
   expect(b.join("\n")).toContain("not allowed");
+});
+
+test("an html node reads only a TrustedHtml prop or record field, as the one child of a primitive", () => {
+  const trusted = {
+    ...base,
+    props: [...base.props, { name: "body", type: "TrustedHtml" as const, required: false, docs: "" }, { name: "plain", type: "string" as const, required: false, docs: "" }, { name: "side", type: { record: "Side" }, required: false, docs: "" }],
+    records: { ...base.records, Side: [{ name: "body", type: "TrustedHtml" }, { name: "note", type: "string" }] },
+  };
+  const check = (view: typeof base.view) => validateOrganism({ ...trusted, view }, parts, orgs).join("\n");
+  expect(check([use("Box", {}, html(ref("body")))])).toBe("");
+  expect(check([use("Box", {}, html(ref("side.body")))])).toBe("");
+  expect(check([use("Box", {}, html(ref("plain")))])).toContain("of type TrustedHtml");
+  expect(check([use("Box", {}, html(ref("side.note")))])).toContain("of type TrustedHtml");
+  expect(check([use("Box", {}, html("<b>x</b>"))])).toContain("of type TrustedHtml");
+  expect(check([use("Box", {}, html(ref("body")), text(ref("plain")))])).toContain("the one child");
+  expect(check([html(ref("body"))])).toContain("the one child");
 });
 
 test("references must be in scope and ops must have the right arity", () => {

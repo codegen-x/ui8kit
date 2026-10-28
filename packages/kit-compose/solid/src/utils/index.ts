@@ -6,3 +6,4 @@ export { TagGroup, isAllowedTag, resolveTag } from "./tags";
 export * from "./expr";
 export { tpl, fmtNumber, fmtMoney, minorDigits, at, pageWindow, fitCols, uniqLabel } from "./format";
 export * from "./a11y";
+export { type TrustedHtml, trustHtml, isTrustedHtml, escapeHtml, htmlOf } from "./html";

@@ -1,7 +1,7 @@
 // Svelte 5 output for organisms, screens and the app scaffold. Blocks are `{#if}` / `{#each}`, render-prop slots are snippets.
 import { fileName, presetFile, printBare, printValue, sourcesOf, tierDir, typesPath, type OrganismSpec, type ScreenSpec } from "../../../screens/src/index";
 import { htmlPropName } from "../../../spec/src/index";
-import { assetFile, assetTables, BANNER, chainLines, chunksOf, partsOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "../../core/src/index";
+import { assetFile, assetTables, BANNER, chainLines, chunksOf, partsOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, takesTrustedHtml, readSource, sourceReaders, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "../../core/src/index";
 
 const pad = (lines: string[], n = 1): string[] => lines.map((l) => (l ? "  ".repeat(n) + l : l));
 
@@ -29,6 +29,7 @@ export const svelteSyntax: Syntax = {
   slot: (name, args) => [`{@render ${name}?.(${args.join(", ")})}`],
   slotProp: (name, params, body) => ({ child: [`{#snippet ${name}(${params})}`, ...pad(body), "{/snippet}"] }),
   fragment: (lines) => lines,
+  html: (expr) => ({ child: `{@html ${expr}}` }),
 };
 
 export interface ViewDeps {
@@ -104,6 +105,7 @@ export function emitOrganism(org: OrganismSpec, deps: ViewDeps): GeneratedFile[]
     `<script lang="ts" module>`,
     `  import type { Snippet } from "svelte";`,
     ...(recordNames.length ? [`  import type { ${recordNames.join(", ")} } from "./${fileName(name)}.types";`] : []),
+    ...(takesTrustedHtml(org) ? [`  import type { TrustedHtml } from "../utils";`] : []),
     ...(org.typeImports ?? []).map((t) => `  import type { ${t.names.join(", ")} } from "${typesPath(org.id, deps.organisms[t.from] ?? { id: org.id, name: t.from })}";`),
     ...(tables.length ? [`  import { variants } from "../utils";`, ``, ...tables.map((t) => t.split("\n").map((l) => `  ${l}`).join("\n"))] : []),
     ``,
@@ -159,7 +161,7 @@ function emitPage(s: ScreenSpec, deps: ScreenDeps): GeneratedFile {
     `<script lang="ts">`,
     wrapList("import {", [...imports, ...types], `} from "${deps.ui}";`, 110, "  "),
     ...[...chunks.values(), ...parts].map((c) => `  import ${c.name} from "./${c.dir}/${c.name}.svelte";`),
-    `  import { fromCodex, matchRoute, type UrlPort } from "${deps.shared}/runtime/core";`,
+    `  import { ${sourceReaders(sources).join(", ")}, matchRoute, type UrlPort } from "${deps.shared}/runtime/core";`,
     ...(sources.length ? [`  import { CODEX } from "${deps.shared}/runtime/codex";`] : []),
     `  import { toggleTheme } from "${deps.shared}/runtime/theme";`,
     `  import { ui } from "${deps.shared}/content";`,
@@ -170,7 +172,7 @@ function emitPage(s: ScreenSpec, deps: ScreenDeps): GeneratedFile {
     ``,
     `  let { url }: { url: UrlPort } = $props();`,
     ``,
-    ...sources.map((x) => `  const ${x.as} = fromCodex<${x.record}>(${x.as}Entries, ${x.as.toUpperCase()}_FIELDS, CODEX);`),
+    ...sources.map((x) => `  ${readSource(x)}`),
     `  const route = $derived(matchRoute(ROUTES, url.path) ?? { area: ${JSON.stringify(m.listArea)}, params: {} as Record<string, string> });`,
     ...(s.nav ? [`  const nav = $derived(navOf(route.area));`] : []),
     `  const actions = { toggleTheme };`,
@@ -194,14 +196,14 @@ function emitChunk(s: ScreenSpec, c: ChunkModel, deps: ScreenDeps): GeneratedFil
     `<!-- ${c.doc} -->`,
     `<script lang="ts">`,
     `  ${wrapList("import {", [...imports, ...types], `} from "${deps.ui}";`, 110, "  ").trimStart()}`,
-    ...(c.sources.length ? [`  import { fromCodex } from "${deps.shared}/runtime/core";`] : []),
+    ...(c.sources.length ? [`  import { ${sourceReaders(c.sources).join(", ")} } from "${deps.shared}/runtime/core";`] : []),
     ...(c.sources.length ? [`  import { CODEX } from "${deps.shared}/runtime/codex";`] : []),
     ...(c.actions ? [`  import { toggleTheme } from "${deps.shared}/runtime/theme";`] : []),
     `  import { ui } from "${deps.shared}/content";`,
     ...c.sources.map((x) => `  import { ${x.collection} as ${x.as}Entries } from "${deps.shared}/data/${x.collection}";`),
     ...(c.constsTs ? [``, ...c.constsTs.split("\n").map((l) => "  " + l)] : []),
     ``,
-    ...c.sources.map((x) => `  const ${x.as} = fromCodex<${x.record}>(${x.as}Entries, ${x.as.toUpperCase()}_FIELDS, CODEX);`),
+    ...c.sources.map((x) => `  ${readSource(x)}`),
     ...(c.actions ? [`  const actions = { toggleTheme };`] : []),
     ...(c.namedTs ? [...(c.sources.length || c.actions ? [``] : []), ...c.namedTs.split("\n").map((l) => "  " + l)] : []),
     `</script>`,

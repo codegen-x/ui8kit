@@ -55,6 +55,8 @@ export const use = (name: string, opts: Opts = {}, ...children: ViewNode[]): Vie
   ...(children.length ? { children } : {}),
 });
 export const text = (v: Value): ViewNode => ({ text: v });
+/** trusted markup printed without escaping: a reference to a TrustedHtml prop (or record field), the one child of a primitive */
+export const html = (v: Value): ViewNode => ({ html: v });
 export const when = (test: Value, then: ViewNode[], otherwise?: ViewNode[]): ViewNode => ({ when: test, then, ...(otherwise ? { else: otherwise } : {}) });
 export const each = (items: Value, as: string, key: Value, ...body: ViewNode[]): ViewNode => ({ each: items, as, key, do: body });
 /** a loop that also names its index */
