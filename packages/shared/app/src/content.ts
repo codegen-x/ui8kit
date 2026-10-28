@@ -534,6 +534,7 @@ export const ui = {
         "row4": "Grid, four columns in one row",
         "news4": "Four news cards, title on image, date strip",
         "list": "List of horizontal cards",
+        "listPaged": "List of horizontal cards with a numbered pager",
         "magazine": "Magazine: first post wide",
         "textOnly": "Text only",
         "digest": "Digest: short meta, compact, muted"
@@ -1410,7 +1411,14 @@ export const ui = {
   "content": {
     "posts": {
       "title": "Latest News",
-      "action": "All Posts"
+      "action": "All Posts",
+      "pager": {
+        "label": "Pages of posts",
+        "summary": "Page {0} of {1}",
+        "previous": "Previous page",
+        "next": "Next page",
+        "page": "Page {0}"
+      }
     },
     "labels": {
       "minutes": "{0} min read",

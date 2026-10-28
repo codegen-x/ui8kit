@@ -48,7 +48,13 @@ const newsletter = define({
 
 const posts = define({
   key: "posts", theme: "content", group: "blog", name: "Blog posts", docs: "Posts as a grid, a list or a magazine.",
-  organism: "PostGrid", axes: ["layout", "cols", "media", "meta", "filter.mode", "tone", "density"], data: [d.posts, d.topics],
+  organism: "PostGrid", axes: ["layout", "cols", "media", "meta", "filter.mode", "pager.mode", "tone", "density"], data: [d.posts, d.topics],
+  // the pager: a nav landmark with its name, the current page marked aria-current="page"
+  facts: [
+    { sel: 'nav[aria-label][data-testid="posts-pager"]', n: 1, when: { "pager.mode": "pages" } },
+    { sel: '[data-testid="posts-pager"] [aria-current="page"]', n: 1, when: { "pager.mode": "pages" } },
+    { sel: '[data-testid="posts-pager"]', n: 0, when: { "pager.mode": "none" } },
+  ],
   variants: [
     ["grid", "Grid, three columns"],
     ["filters", "Grid with topic filters", { "filter.mode": "topics" }, { filter: { topic: "Design" } }],
@@ -56,6 +62,7 @@ const posts = define({
     ["row4", "Grid, four columns in one row", { cols: "1-4" }],
     ["news4", "Four news cards, title on image, date strip", { cols: "1-4", meta: "news" }, { action: { label: t("content.posts.action"), href: "#/" } }],
     ["list", "List of horizontal cards", { layout: "list" }],
+    ["listPaged", "List of horizontal cards with a numbered pager", { layout: "list", "pager.mode": "pages" }, { pager: { page: 2, pages: 5 } }],
     ["magazine", "Magazine: first post wide", { layout: "magazine" }],
     ["textOnly", "Text only", { media: "none" }],
     ["digest", "Digest: short meta, compact, muted", { meta: "short", density: "compact", tone: "muted", media: "none" }],
@@ -63,6 +70,7 @@ const posts = define({
   sample: {
     id: "posts", title: t("content.posts.title"), posts: ref("posts"), labels: t("content.labels"),
     filter: { topics: ref("topics"), label: t("vibe.posts.topics"), topic: "" },
+    pager: { label: t("content.posts.pager.label"), summary: t("content.posts.pager.summary"), previous: t("content.posts.pager.previous"), next: t("content.posts.pager.next"), pageLabel: t("content.posts.pager.page") },
     action: { label: t("content.posts.action"), href: "#/" },
   },
 });

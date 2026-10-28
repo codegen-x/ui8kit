@@ -16,3 +16,22 @@ export type PostFilter = {
   /** the value of the chosen topic; empty: all posts */
   topic?: string;
 };
+
+export type PostPager = {
+  /** pages: a numbered Pager under the posts, in a nav landmark */
+  mode?: "none" | "pages";
+  /** the current page, from 1 */
+  page?: number;
+  /** the number of pages */
+  pages?: number;
+  /** accessible name of the pager nav (Pages of posts) */
+  label?: string;
+  /** template of the summary line: {0} the page, {1} the pages */
+  summary?: string;
+  /** accessible name of the previous-page button */
+  previous?: string;
+  /** accessible name of the next-page button */
+  next?: string;
+  /** template of the accessible name of a page button, {0} the number */
+  pageLabel?: string;
+};

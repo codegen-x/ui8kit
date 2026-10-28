@@ -2,11 +2,11 @@
 <!--
   A section with a heading and the posts as cards: a grid, a list of horizontal cards, or a magazine (the first
   post wide, the rest in a grid). Axes: layout (grid, list, magazine), columns, media, meta (full, short, news),
-  filter mode (none, topics), tone, density.
+  filter mode (none, topics), pager (none, pages), tone, density.
 -->
 <script lang="ts" module>
   import type { Snippet } from "svelte";
-  import type { PostTopic, PostFilter } from "./post-grid.types";
+  import type { PostTopic, PostFilter, PostPager } from "./post-grid.types";
   import type { Post, PostLabels } from "./post-card.types";
   import type { HeadLink } from "../components/section-frame.types";
 
@@ -17,6 +17,7 @@
     labels: PostLabels;
     action?: HeadLink;
     filter?: PostFilter;
+    pager?: PostPager;
     layout?: "grid" | "list" | "magazine";
     cols?: "1-2" | "1-3" | "1-4";
     media?: "image" | "none";
@@ -25,17 +26,20 @@
     density?: "default" | "compact";
     landmarkLabel?: string;
     ontopic?: (value: string) => void;
+    onpage?: (page: number) => void;
   };
 </script>
 
 <script lang="ts">
+  import Block from "../compose/Block.svelte";
   import Grid from "../compose/Grid.svelte";
   import Stack from "../compose/Stack.svelte";
+  import Pager from "../components/pager.svelte";
   import PostCard from "../blocks/post-card.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import Switcher from "../components/switcher.svelte";
   import SwitcherItem from "../components/switcher-item.svelte";
-  import { fitCols } from "../utils";
+  import { fitCols, tpl, uniqLabel } from "../utils";
 
   let {
     id,
@@ -44,6 +48,7 @@
     labels,
     action,
     filter,
+    pager,
     layout = "grid",
     cols = "1-3",
     media = "image",
@@ -52,6 +57,7 @@
     density = "default",
     landmarkLabel,
     ontopic,
+    onpage,
   }: PostGridProps = $props();
 </script>
 
@@ -111,5 +117,26 @@
         {/each}
       </Grid>
     {/if}
+  {/if}
+  {#if ((pager?.mode === "pages") && ((posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0) > 0))}
+    <Block
+      tag="nav"
+      aria-label={
+        landmarkLabel ? uniqLabel(tpl("{0}, {1}", pager?.label, landmarkLabel))
+        : pager?.label
+      }
+      data-testid="posts-pager"
+    >
+      <Pager
+        page={(pager?.page ?? 1)}
+        pages={(pager?.pages ?? 1)}
+        summary={tpl(pager?.summary, (pager?.page ?? 1), (pager?.pages ?? 1))}
+        previousLabel={pager?.previous}
+        nextLabel={pager?.next}
+        numbered={true}
+        pageLabel={pager?.pageLabel}
+        onpage={(arg: number) => onpage?.(arg)}
+      />
+    </Block>
   {/if}
 </SectionFrame>

@@ -66,6 +66,14 @@ export function PlainPage() {
         posts={posts}
         labels={ui.content.labels}
         filter={{ topics, label: ui.vibe.posts.topics, topic: "", mode: "none" }}
+        pager={{
+          label: ui.content.posts.pager.label,
+          summary: ui.content.posts.pager.summary,
+          previous: ui.content.posts.pager.previous,
+          next: ui.content.posts.pager.next,
+          pageLabel: ui.content.posts.pager.page,
+          mode: "none",
+        }}
         action={{ label: ui.content.posts.action, href: "#/" }}
         layout="grid"
         cols="1-3"

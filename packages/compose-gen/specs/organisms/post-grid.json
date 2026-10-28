@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "organism.post-grid",
   "name": "PostGrid",
-  "docs": "A section with a heading and the posts as cards: a grid, a list of horizontal cards, or a magazine (the first post wide, the rest in a grid). Axes: layout (grid, list, magazine), columns, media, meta (full, short, news), filter mode (none, topics), tone, density.",
+  "docs": "A section with a heading and the posts as cards: a grid, a list of horizontal cards, or a magazine (the first post wide, the rest in a grid). Axes: layout (grid, list, magazine), columns, media, meta (full, short, news), filter mode (none, topics), pager (none, pages), tone, density.",
   "records": {
     "PostTopic": [
       {
@@ -45,6 +45,59 @@
         "optional": true,
         "docs": "the value of the chosen topic; empty: all posts"
       }
+    ],
+    "PostPager": [
+      {
+        "name": "mode",
+        "type": "\"none\" | \"pages\"",
+        "optional": true,
+        "docs": "pages: a numbered Pager under the posts, in a nav landmark",
+        "default": "none"
+      },
+      {
+        "name": "page",
+        "type": "number",
+        "optional": true,
+        "docs": "the current page, from 1",
+        "default": 1
+      },
+      {
+        "name": "pages",
+        "type": "number",
+        "optional": true,
+        "docs": "the number of pages",
+        "default": 1
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "optional": true,
+        "docs": "accessible name of the pager nav (Pages of posts)"
+      },
+      {
+        "name": "summary",
+        "type": "string",
+        "optional": true,
+        "docs": "template of the summary line: {0} the page, {1} the pages"
+      },
+      {
+        "name": "previous",
+        "type": "string",
+        "optional": true,
+        "docs": "accessible name of the previous-page button"
+      },
+      {
+        "name": "next",
+        "type": "string",
+        "optional": true,
+        "docs": "accessible name of the next-page button"
+      },
+      {
+        "name": "pageLabel",
+        "type": "string",
+        "optional": true,
+        "docs": "template of the accessible name of a page button, {0} the number"
+      }
     ]
   },
   "props": [
@@ -85,6 +138,13 @@
         "record": "PostFilter"
       },
       "docs": "the topic tabs and the chosen topic"
+    },
+    {
+      "name": "pager",
+      "type": {
+        "record": "PostPager"
+      },
+      "docs": "the pager under the posts (as OrderTable's): mode, page, pages and its texts"
     },
     {
       "name": "layout",
@@ -145,6 +205,16 @@
         }
       ],
       "docs": "a topic tab was chosen"
+    },
+    {
+      "name": "page",
+      "args": [
+        {
+          "name": "page",
+          "type": "number"
+        }
+      ],
+      "docs": "a page of the pager was chosen"
     }
   ],
   "view": [
@@ -572,6 +642,155 @@
                           ]
                         }
                       ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "when": {
+                "op": "and",
+                "args": [
+                  {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "pager.mode"
+                      },
+                      "pages"
+                    ]
+                  },
+                  {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "op": "where",
+                            "args": [
+                              {
+                                "$": "posts"
+                              },
+                              "category",
+                              {
+                                "$": "filter.topic"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  }
+                ]
+              },
+              "then": [
+                {
+                  "use": "Block",
+                  "props": {
+                    "Tag": "nav"
+                  },
+                  "attrs": {
+                    "aria-label": {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "$": "landmarkLabel"
+                        },
+                        {
+                          "op": "uniq",
+                          "args": [
+                            {
+                              "op": "tpl",
+                              "args": [
+                                "{0}, {1}",
+                                {
+                                  "$": "pager.label"
+                                },
+                                {
+                                  "$": "landmarkLabel"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "$": "pager.label"
+                        }
+                      ]
+                    },
+                    "data-testid": "posts-pager"
+                  },
+                  "children": [
+                    {
+                      "organism": "Pager",
+                      "props": {
+                        "page": {
+                          "op": "coalesce",
+                          "args": [
+                            {
+                              "$": "pager.page"
+                            },
+                            1
+                          ]
+                        },
+                        "pages": {
+                          "op": "coalesce",
+                          "args": [
+                            {
+                              "$": "pager.pages"
+                            },
+                            1
+                          ]
+                        },
+                        "summary": {
+                          "op": "tpl",
+                          "args": [
+                            {
+                              "$": "pager.summary"
+                            },
+                            {
+                              "op": "coalesce",
+                              "args": [
+                                {
+                                  "$": "pager.page"
+                                },
+                                1
+                              ]
+                            },
+                            {
+                              "op": "coalesce",
+                              "args": [
+                                {
+                                  "$": "pager.pages"
+                                },
+                                1
+                              ]
+                            }
+                          ]
+                        },
+                        "previousLabel": {
+                          "$": "pager.previous"
+                        },
+                        "nextLabel": {
+                          "$": "pager.next"
+                        },
+                        "numbered": true,
+                        "pageLabel": {
+                          "$": "pager.pageLabel"
+                        }
+                      },
+                      "on": {
+                        "page": {
+                          "call": "emit.page",
+                          "args": [
+                            {
+                              "$": "arg"
+                            }
+                          ]
+                        }
+                      }
                     }
                   ]
                 }

@@ -4054,6 +4054,31 @@
           "keys": []
         },
         {
+          "prop": "pager.label",
+          "dictionary": "content.posts.pager.label",
+          "keys": []
+        },
+        {
+          "prop": "pager.summary",
+          "dictionary": "content.posts.pager.summary",
+          "keys": []
+        },
+        {
+          "prop": "pager.previous",
+          "dictionary": "content.posts.pager.previous",
+          "keys": []
+        },
+        {
+          "prop": "pager.next",
+          "dictionary": "content.posts.pager.next",
+          "keys": []
+        },
+        {
+          "prop": "pager.pageLabel",
+          "dictionary": "content.posts.pager.page",
+          "keys": []
+        },
+        {
           "prop": "action.label",
           "dictionary": "content.posts.action",
           "keys": []

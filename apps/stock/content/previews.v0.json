@@ -6918,6 +6918,7 @@
     "media": "image",
     "meta": "full",
     "filter.mode": "none",
+    "pager.mode": "none",
     "tone": "default",
     "density": "default"
    },
@@ -6940,6 +6941,23 @@
       "$": "ui.vibe.posts.topics"
      },
      "topic": ""
+    },
+    "pager": {
+     "label": {
+      "$": "ui.content.posts.pager.label"
+     },
+     "summary": {
+      "$": "ui.content.posts.pager.summary"
+     },
+     "previous": {
+      "$": "ui.content.posts.pager.previous"
+     },
+     "next": {
+      "$": "ui.content.posts.pager.next"
+     },
+     "pageLabel": {
+      "$": "ui.content.posts.pager.page"
+     }
     },
     "action": {
      "label": {
@@ -6995,6 +7013,19 @@
      "id": "list",
      "set": {
       "layout": "list"
+     }
+    },
+    {
+     "id": "listPaged",
+     "set": {
+      "layout": "list",
+      "pager.mode": "pages"
+     },
+     "props": {
+      "pager": {
+       "page": 2,
+       "pages": 5
+      }
      }
     },
     {
@@ -7054,6 +7085,7 @@
      "labels",
      "action",
      "filter",
+     "pager",
      "layout",
      "cols",
      "media",

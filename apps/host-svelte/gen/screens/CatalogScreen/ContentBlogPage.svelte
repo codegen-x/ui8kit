@@ -40,6 +40,13 @@
   const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS, CODEX);
 
   const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const;
+  const POSTS_PAGER = {
+    label: ui.content.posts.pager.label,
+    summary: ui.content.posts.pager.summary,
+    previous: ui.content.posts.pager.previous,
+    next: ui.content.posts.pager.next,
+    pageLabel: ui.content.posts.pager.page,
+  } as const;
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">
@@ -58,7 +65,7 @@
           {ui.catalog.categories.contentBlog}
         </Title>
         <Text class="max-w-2xl text-muted-foreground">
-          {tpl(ui.catalog.count, 1, 9)}
+          {tpl(ui.catalog.count, 1, 10)}
         </Text>
       </Stack>
       <Stack
@@ -96,6 +103,7 @@
               posts={posts}
               labels={ui.content.labels}
               filter={{ ...POSTS_FILTER, mode: "none" }}
+              pager={{ ...POSTS_PAGER, mode: "none" }}
               action={{ label: ui.content.posts.action, href: "#/" }}
               layout="grid"
               cols="1-3"
@@ -126,6 +134,7 @@
               posts={posts}
               labels={ui.content.labels}
               filter={{ ...POSTS_FILTER, topic: "Design", mode: "topics" }}
+              pager={{ ...POSTS_PAGER, mode: "none" }}
               action={{ label: ui.content.posts.action, href: "#/" }}
               layout="grid"
               cols="1-3"
@@ -156,6 +165,7 @@
               posts={posts}
               labels={ui.content.labels}
               filter={{ ...POSTS_FILTER, mode: "none" }}
+              pager={{ ...POSTS_PAGER, mode: "none" }}
               action={{ label: ui.content.posts.action, href: "#/" }}
               layout="grid"
               cols="1-2"
@@ -186,6 +196,7 @@
               posts={posts}
               labels={ui.content.labels}
               filter={{ ...POSTS_FILTER, mode: "none" }}
+              pager={{ ...POSTS_PAGER, mode: "none" }}
               action={{ label: ui.content.posts.action, href: "#/" }}
               layout="grid"
               cols="1-4"
@@ -216,6 +227,7 @@
               posts={posts}
               labels={ui.content.labels}
               filter={{ ...POSTS_FILTER, mode: "none" }}
+              pager={{ ...POSTS_PAGER, mode: "none" }}
               action={{ label: ui.content.posts.action, href: "#/" }}
               layout="grid"
               cols="1-4"
@@ -246,6 +258,7 @@
               posts={posts}
               labels={ui.content.labels}
               filter={{ ...POSTS_FILTER, mode: "none" }}
+              pager={{ ...POSTS_PAGER, mode: "none" }}
               action={{ label: ui.content.posts.action, href: "#/" }}
               layout="list"
               cols="1-3"
@@ -254,6 +267,37 @@
               tone="default"
               density="default"
               landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.list))}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="posts-listPaged-label"
+          data-testid="variant"
+          data-block="posts"
+          data-variant="listPaged"
+        >
+          <Title as={3} size="base" weight="bold" id="posts-listPaged-label" data-testid="variant-label">
+            {ui.blocks.variants.posts.listPaged}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PostGrid
+              id="posts-listPaged"
+              title={ui.content.posts.title}
+              posts={posts}
+              labels={ui.content.labels}
+              filter={{ ...POSTS_FILTER, mode: "none" }}
+              pager={{ ...POSTS_PAGER, mode: "pages", page: 2, pages: 5 }}
+              action={{ label: ui.content.posts.action, href: "#/" }}
+              layout="list"
+              cols="1-3"
+              media="image"
+              meta="full"
+              tone="default"
+              density="default"
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.listPaged))}
             />
           </Box>
         </Stack>
@@ -276,6 +320,7 @@
               posts={posts}
               labels={ui.content.labels}
               filter={{ ...POSTS_FILTER, mode: "none" }}
+              pager={{ ...POSTS_PAGER, mode: "none" }}
               action={{ label: ui.content.posts.action, href: "#/" }}
               layout="magazine"
               cols="1-3"
@@ -306,6 +351,7 @@
               posts={posts}
               labels={ui.content.labels}
               filter={{ ...POSTS_FILTER, mode: "none" }}
+              pager={{ ...POSTS_PAGER, mode: "none" }}
               action={{ label: ui.content.posts.action, href: "#/" }}
               layout="grid"
               cols="1-3"
@@ -336,6 +382,7 @@
               posts={posts}
               labels={ui.content.labels}
               filter={{ ...POSTS_FILTER, mode: "none" }}
+              pager={{ ...POSTS_PAGER, mode: "none" }}
               action={{ label: ui.content.posts.action, href: "#/" }}
               layout="grid"
               cols="1-3"

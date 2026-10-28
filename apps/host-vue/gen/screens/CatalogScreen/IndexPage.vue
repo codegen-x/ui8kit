@@ -136,7 +136,7 @@ const CATALOG = [
     title: ui.catalog.sections.content.title,
     text: ui.catalog.sections.content.text,
     categories: [
-      { id: "content-blog", href: "#/content-blog", name: ui.catalog.categories.contentBlog, blocks: 1, variants: 9 },
+      { id: "content-blog", href: "#/content-blog", name: ui.catalog.categories.contentBlog, blocks: 1, variants: 10 },
       {
         id: "content-post-showcase",
         href: "#/content-post-showcase",

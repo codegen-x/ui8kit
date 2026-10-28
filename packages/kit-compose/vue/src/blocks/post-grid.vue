@@ -2,10 +2,10 @@
 <!--
   A section with a heading and the posts as cards: a grid, a list of horizontal cards, or a magazine (the first
   post wide, the rest in a grid). Axes: layout (grid, list, magazine), columns, media, meta (full, short, news),
-  filter mode (none, topics), tone, density.
+  filter mode (none, topics), pager (none, pages), tone, density.
 -->
 <script lang="ts">
-import type { PostTopic, PostFilter } from "./post-grid.types";
+import type { PostTopic, PostFilter, PostPager } from "./post-grid.types";
 import type { Post, PostLabels } from "./post-card.types";
 import type { HeadLink } from "../components/section-frame.types";
 
@@ -16,6 +16,7 @@ export type PostGridProps = {
   labels: PostLabels;
   action?: HeadLink;
   filter?: PostFilter;
+  pager?: PostPager;
   layout?: "grid" | "list" | "magazine";
   cols?: "1-2" | "1-3" | "1-4";
   media?: "image" | "none";
@@ -27,13 +28,15 @@ export type PostGridProps = {
 </script>
 
 <script setup lang="ts">
+import Block from "../compose/Block.vue";
 import Grid from "../compose/Grid.vue";
 import Stack from "../compose/Stack.vue";
+import Pager from "../components/pager.vue";
 import PostCard from "../blocks/post-card.vue";
 import SectionFrame from "../components/section-frame.vue";
 import Switcher from "../components/switcher.vue";
 import SwitcherItem from "../components/switcher-item.vue";
-import { fitCols } from "../utils";
+import { fitCols, tpl, uniqLabel } from "../utils";
 
 const {
   id,
@@ -42,6 +45,7 @@ const {
   labels,
   action,
   filter,
+  pager,
   layout = "grid",
   cols = "1-3",
   media = "image",
@@ -50,7 +54,7 @@ const {
   density = "default",
   landmarkLabel,
 } = defineProps<PostGridProps>();
-const emit = defineEmits<{ topic: [value: string] }>();
+const emit = defineEmits<{ topic: [value: string], page: [page: number] }>();
 </script>
 
 <template>
@@ -111,5 +115,24 @@ const emit = defineEmits<{ topic: [value: string] }>();
         />
       </Grid>
     </template>
+    <Block v-if="((pager?.mode === 'pages') && ((posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)?.length ?? 0) > 0))"
+      tag="nav"
+      :aria-label="
+        landmarkLabel ? uniqLabel(tpl('{0}, {1}', pager?.label, landmarkLabel))
+        : pager?.label
+      "
+      data-testid="posts-pager"
+    >
+      <Pager
+        :page="(pager?.page ?? 1)"
+        :pages="(pager?.pages ?? 1)"
+        :summary="tpl(pager?.summary, (pager?.page ?? 1), (pager?.pages ?? 1))"
+        :previousLabel="pager?.previous"
+        :nextLabel="pager?.next"
+        :numbered="true"
+        :pageLabel="pager?.pageLabel"
+        @page="(arg: number) => emit('page', arg)"
+      />
+    </Block>
   </SectionFrame>
 </template>

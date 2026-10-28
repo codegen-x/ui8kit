@@ -9,7 +9,9 @@ import { result, walk, type Ctx, type CheckResult } from "./context";
 export const READABILITY = { fileLines: 150, screenLines: 600, fileBytes: 8000, lineChars: 160, props: 12 } as const;
 export interface Measure { lines?: number; long?: number; bytes?: number; props?: number }
 export type Allowance = Measure & { why: string };
-export const READABILITY_ALLOW: Record<string, Allowance> = {};
+export const READABILITY_ALLOW: Record<string, Allowance> = {
+  "post-grid": { props: 13, why: "the pager prop wp-fasty asked for (audit codegen-gap item 4) on top of 12; split pending: the list options (layout, cols, media, meta) into one group" },
+};
 
 /** HeroSection.svelte, hero-section.tsx -> hero-section: one key for every runtime and naming style */
 export const kebab = (stem: string): string => stem.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/([A-Z])([A-Z][a-z])/g, "$1-$2").toLowerCase();

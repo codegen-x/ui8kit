@@ -31,6 +31,10 @@
       "none",
       "topics"
     ],
+    "pager.mode": [
+      "none",
+      "pages"
+    ],
     "tone": [
       "default",
       "muted"
@@ -46,6 +50,7 @@
     "media": "image",
     "meta": "full",
     "filter.mode": "none",
+    "pager.mode": "none",
     "tone": "default",
     "density": "default"
   },
@@ -99,6 +104,19 @@
       }
     },
     {
+      "id": "listPaged",
+      "set": {
+        "layout": "list",
+        "pager.mode": "pages"
+      },
+      "props": {
+        "pager": {
+          "page": 2,
+          "pages": 5
+        }
+      }
+    },
+    {
       "id": "magazine",
       "set": {
         "layout": "magazine"
@@ -121,9 +139,33 @@
     }
   ],
   "slots": [
+    "Pager",
     "SectionFrame",
     "Switcher",
     "SwitcherItem"
+  ],
+  "facts": [
+    {
+      "sel": "nav[aria-label][data-testid=\"posts-pager\"]",
+      "n": 1,
+      "when": {
+        "pager.mode": "pages"
+      }
+    },
+    {
+      "sel": "[data-testid=\"posts-pager\"] [aria-current=\"page\"]",
+      "n": 1,
+      "when": {
+        "pager.mode": "pages"
+      }
+    },
+    {
+      "sel": "[data-testid=\"posts-pager\"]",
+      "n": 0,
+      "when": {
+        "pager.mode": "none"
+      }
+    }
   ],
   "data": [
     {
@@ -176,6 +218,23 @@
           "$": "ui.vibe.posts.topics"
         },
         "topic": ""
+      },
+      "pager": {
+        "label": {
+          "$": "ui.content.posts.pager.label"
+        },
+        "summary": {
+          "$": "ui.content.posts.pager.summary"
+        },
+        "previous": {
+          "$": "ui.content.posts.pager.previous"
+        },
+        "next": {
+          "$": "ui.content.posts.pager.next"
+        },
+        "pageLabel": {
+          "$": "ui.content.posts.pager.page"
+        }
       },
       "action": {
         "label": {

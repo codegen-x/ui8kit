@@ -69,20 +69,26 @@ const postCard = spec(`${O}post-card`, "PostCard", "A post as a card: cover pict
   })(),
 });
 
-const postGrid = spec(`${O}post-grid`, "PostGrid", "A section with a heading and the posts as cards: a grid, a list of horizontal cards, or a magazine (the first post wide, the rest in a grid). Axes: layout (grid, list, magazine), columns, media, meta (full, short, news), filter mode (none, topics), tone, density.", {
+const postGrid = spec(`${O}post-grid`, "PostGrid", "A section with a heading and the posts as cards: a grid, a list of horizontal cards, or a magazine (the first post wide, the rest in a grid). Axes: layout (grid, list, magazine), columns, media, meta (full, short, news), filter mode (none, topics), pager (none, pages), tone, density.", {
   typeImports: [{ from: "PostCard", names: ["Post", "PostLabels"] }, { from: "SectionFrame", names: ["HeadLink"] }],
   records: {
     PostTopic: fields(["id", "string"], ["title", "string"], ["value", "string"]),
     PostFilter: groupFields(["mode", tsOf("none", "topics"), "topics: tabs above the posts; the page filters by `topic`", "none"],
       ["topics", "PostTopic[]", "the topic tabs"], ["label", "string", "accessible name of the topic tabs"], ["topic", "string", "the value of the chosen topic; empty: all posts"]),
+    PostPager: groupFields(["mode", tsOf("none", "pages"), "pages: a numbered Pager under the posts, in a nav landmark", "none"],
+      ["page", "number", "the current page, from 1", 1], ["pages", "number", "the number of pages", 1],
+      ["label", "string", "accessible name of the pager nav (Pages of posts)"], ["summary", "string", "template of the summary line: {0} the page, {1} the pages"],
+      ["previous", "string", "accessible name of the previous-page button"], ["next", "string", "accessible name of the next-page button"],
+      ["pageLabel", "string", "template of the accessible name of a page button, {0} the number"]),
   },
-  events: [{ name: "topic", args: [{ name: "value", type: "string" }], docs: "a topic tab was chosen" }],
+  events: [{ name: "topic", args: [{ name: "value", type: "string" }], docs: "a topic tab was chosen" }, { name: "page", args: [{ name: "page", type: "number" }], docs: "a page of the pager was chosen" }],
   props: [
     id, title,
     { name: "posts", type: ts("Post[]"), required: true },
     { name: "labels", type: ts("PostLabels"), required: true },
     { name: "action", type: ts("HeadLink"), docs: "optional link opposite the heading (All posts)" },
     { name: "filter", type: rec("PostFilter"), docs: "the topic tabs and the chosen topic" },
+    { name: "pager", type: rec("PostPager"), docs: "the pager under the posts (as OrderTable's): mode, page, pages and its texts" },
     { name: "layout", type: tsOf("grid", "list", "magazine"), default: "grid" },
     { name: "cols", type: tsOf("1-2", "1-3", "1-4"), default: "1-3" },
     { name: "media", type: tsOf("image", "none"), default: "image" },
@@ -104,6 +110,10 @@ const postGrid = spec(`${O}post-grid`, "PostGrid", "A section with a heading and
             eachAt(shown, "p", "i", ref("p.id"), when(gt(ref("i"), 0), [card("vertical")]))))],
         [use("Grid", { props: { Cols: cond(eq(ref("layout"), "list"), "1", fitCols(ref("cols"), len(shown))), Class: "w-full gap-6" }, attrs: { "data-testid": "items" } },
           each(shown, "p", ref("p.id"), organism("PostCard", { post: ref("p"), labels: ref("labels"), layout: cond(eq(ref("layout"), "list"), "horizontal", "vertical"), media: ref("media"), meta: ref("meta"), density: ref("density") })))])]),
+      // the pager: a nav landmark named by pager.label around the Pager (the current page is aria-current="page")
+      when(and(eq(ref("pager.mode"), "pages"), gt(len(shown), 0)), [use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("pager.label"), "data-testid": "posts-pager" } },
+        organism("Pager", { page: coalesce(ref("pager.page"), 1), pages: coalesce(ref("pager.pages"), 1), summary: tpl(ref("pager.summary"), coalesce(ref("pager.page"), 1), coalesce(ref("pager.pages"), 1)),
+          previousLabel: ref("pager.previous"), nextLabel: ref("pager.next"), numbered: true, pageLabel: ref("pager.pageLabel") }, { on: { page: call("emit.page", ref("arg")) } }))]),
     ])];
   })(),
 });
