@@ -185,7 +185,8 @@ export const ui = {
       "postshowcase": "Post showcase",
       "medialist": "List beside a picture",
       "featureshowcase": "Feature cards with a picture",
-      "storytabs": "Story in steps"
+      "storytabs": "Story in steps",
+      "richtext": "Rich text"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -279,7 +280,8 @@ export const ui = {
       "postshowcase": "Four small post cards beside an intro with a view-all link; the first post in detail beside its picture; or cards with the text on a panel over the picture, in two or three columns.",
       "medialist": "Four figures, figures with a featured review, numbered steps, the latest posts, topic rows, or contact buttons with support figures, beside a picture.",
       "featureshowcase": "Cards with a picture on top and a read link, or with a muted glyph panel on top like an index of categories, in three or four columns.",
-      "storytabs": "Year tabs over the panel of the chosen year, or the heading beside a picture with arrows and one dot per step. Choosing a step is an event."
+      "storytabs": "Year tabs over the panel of the chosen year, or the heading beside a picture with arrows and one dot per step. Choosing a step is an event.",
+      "richtext": "The body of the current page or post as rich text (headings, lists, quotes, pictures, code, tables) under its title and a meta line; in a reading column, wide, beside a side note, under a cover, in a card, or as the page heading over a wide cover."
     },
     "variants": {
       "header": {
@@ -939,6 +941,14 @@ export const ui = {
         "yearTabs": "Year tabs over the panel of the chosen year",
         "carouselSplit": "The heading beside a picture with arrows and dots",
         "yearTabsMuted": "Year tabs, muted"
+      },
+      "richtext": {
+        "narrow": "One reading column",
+        "wide": "A wider column",
+        "sidebar": "The body beside a side note",
+        "media": "A cover above the body",
+        "card": "The body in a card",
+        "heroTitle": "The title as the page heading over a wide cover"
       }
     },
     "landmark": "{0}, {1}",
@@ -1428,6 +1438,9 @@ export const ui = {
       "lead": "The posts our readers shared most, picked by the editors.",
       "badge": "Editors' picks",
       "action": "View all posts"
+    },
+    "richtext": {
+      "aside": "In short"
     }
   },
   "auth": {
@@ -1963,6 +1976,9 @@ export const ui = {
       },
       "plain": {
         "nav": "Plain"
+      },
+      "page": {
+        "nav": "Page"
       }
     },
     "accountPortal": {
@@ -2202,6 +2218,7 @@ export const ui = {
       "contentArticle": "Article and legal",
       "contentTimeline": "Timeline",
       "contentStoryTabs": "Story in steps",
+      "contentRichtext": "Rich text",
       "promoBanners": "Banners",
       "promoNewsletter": "Newsletter",
       "supportContact": "Contact",

@@ -74,6 +74,7 @@ import { PostheaderPage } from "./BlocksScreen/PostheaderPage";
 import { PostsPage } from "./BlocksScreen/PostsPage";
 import { PostshowcasePage } from "./BlocksScreen/PostshowcasePage";
 import { PostsplitPage } from "./BlocksScreen/PostsplitPage";
+import { RichtextPage } from "./BlocksScreen/RichtextPage";
 import { StorytabsPage } from "./BlocksScreen/StorytabsPage";
 import { TimelinePage } from "./BlocksScreen/TimelinePage";
 import { AuthPage } from "./BlocksScreen/AuthPage";
@@ -174,6 +175,7 @@ const ROUTES = [
   {"path":"posts","area":"posts"},
   {"path":"postshowcase","area":"postshowcase"},
   {"path":"postsplit","area":"postsplit"},
+  {"path":"richtext","area":"richtext"},
   {"path":"storytabs","area":"storytabs"},
   {"path":"timeline","area":"timeline"},
   {"path":"auth","area":"auth"},
@@ -347,6 +349,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <PostshowcasePage />
         ) : route.area === "postsplit" ? (
           <PostsplitPage />
+        ) : route.area === "richtext" ? (
+          <RichtextPage />
         ) : route.area === "storytabs" ? (
           <StorytabsPage />
         ) : route.area === "timeline" ? (

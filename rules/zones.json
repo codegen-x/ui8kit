@@ -251,9 +251,11 @@
         "src/stock/facet-column.svelte",
         "src/stock/results.svelte",
         "src/stock/detail/detail-main.svelte",
-        "src/stock/detail/device-preview.svelte",
+        "src/stock/detail/preview-panel.svelte",
+        "src/stock/detail/summary.svelte",
+        "src/stock/detail/concepts.svelte",
         "src/stock/detail/passport.svelte",
-        "src/stock/detail/similar-row.svelte"
+        "src/stock/detail/related-row.svelte"
       ]
     },
     {

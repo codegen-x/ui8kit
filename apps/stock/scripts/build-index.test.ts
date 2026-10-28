@@ -11,13 +11,13 @@ const blockSpecs = blockFiles.map((f) => JSON.parse(readFileSync(join(ROOT, "pac
 
 describe("index", () => {
   test("every block and every variant is an asset", () => {
-    expect(blockSpecs.length).toBe(92);
+    expect(blockSpecs.length).toBe(93);
     const ids = new Set(index.assets.map((a) => a.id));
     let variants = 0;
     for (const b of blockSpecs) for (const v of b.variants) { variants++; expect(ids.has(`${b.id}/${v.id}`)).toBe(true); }
     expect(index.counts["block"]).toBe(variants);
-    expect(index.counts["blockSpecs"]).toBe(92);
-    expect(new Set(index.assets.filter((a) => a.type === "block").map((a) => a.group)).size).toBe(92);
+    expect(index.counts["blockSpecs"]).toBe(93);
+    expect(new Set(index.assets.filter((a) => a.type === "block").map((a) => a.group)).size).toBe(93);
   });
   test("ids are unique, orders are the positions", () => {
     expect(new Set(index.assets.map((a) => a.id)).size).toBe(index.assets.length);
@@ -25,7 +25,7 @@ describe("index", () => {
   });
   test("two categories: blocks and screens; no sections (every organism is drawn by a block) and no skins (a preview setting)", () => {
     expect(Object.keys(index.counts).sort()).toEqual(["block", "blockSpecs", "screen"]);
-    expect(index.counts["screen"]).toBe(65);
+    expect(index.counts["screen"]).toBe(66);
     expect(index.facets.find((f) => f.id === "type")!.values.map((v) => v.id)).toEqual(["block", "screen"]);
     expect(index.facets.some((f) => f.id === "skin" || f.id === "radius")).toBe(false);
   });

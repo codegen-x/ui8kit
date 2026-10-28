@@ -1,0 +1,637 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.rich-text",
+  "name": "RichText",
+  "docs": "Rich text: the body of the current page or post (trusted markup from the content source) styled by Prose, under its title and a meta line (date, author, category). Axes: layout (narrow: one reading column; wide: a wider column; sidebar: the body and a side note; media: a cover above the body; card: the body in a card; hero: the title as the page heading over a wide cover), tone, density.",
+  "records": {
+    "RichEntry": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "content",
+        "type": "TrustedHtml",
+        "optional": true
+      },
+      {
+        "name": "excerpt",
+        "type": "string",
+        "optional": true
+      },
+      {
+        "name": "date",
+        "type": "string",
+        "optional": true
+      },
+      {
+        "name": "author",
+        "type": "string",
+        "optional": true
+      },
+      {
+        "name": "category",
+        "type": "string",
+        "optional": true
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": true
+      },
+      {
+        "name": "aside",
+        "type": "TrustedHtml",
+        "optional": true
+      }
+    ],
+    "RichMedia": [
+      {
+        "name": "src",
+        "type": "string",
+        "optional": true,
+        "docs": "address of the picture; none: the placeholder"
+      },
+      {
+        "name": "alt",
+        "type": "string",
+        "optional": true,
+        "docs": "accessible name of the picture; none: the title"
+      }
+    ],
+    "RichMeta": [
+      {
+        "name": "date",
+        "type": "string",
+        "optional": true,
+        "docs": "the date, formatted"
+      },
+      {
+        "name": "author",
+        "type": "string",
+        "optional": true,
+        "docs": "the author's name"
+      },
+      {
+        "name": "category",
+        "type": "string",
+        "optional": true,
+        "docs": "the category"
+      }
+    ],
+    "RichAside": [
+      {
+        "name": "title",
+        "type": "string",
+        "optional": true,
+        "docs": "heading of the side note"
+      },
+      {
+        "name": "content",
+        "type": "TrustedHtml",
+        "optional": true,
+        "docs": "the side note, trusted markup"
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "docs": "ties the heading to the section: the heading id is `<id>-title`",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "docs": "the title of the page; empty string: no heading",
+      "default": ""
+    },
+    {
+      "name": "content",
+      "type": "TrustedHtml",
+      "docs": "the body: trusted markup (`content|html` of the source), printed without escaping; a plain string is escaped"
+    },
+    {
+      "name": "media",
+      "type": {
+        "record": "RichMedia"
+      },
+      "docs": "the cover of the media and hero layouts"
+    },
+    {
+      "name": "meta",
+      "type": {
+        "record": "RichMeta"
+      },
+      "docs": "the meta line under the title: date, author, category"
+    },
+    {
+      "name": "aside",
+      "type": {
+        "record": "RichAside"
+      },
+      "docs": "the side note of the sidebar layout"
+    },
+    {
+      "name": "level",
+      "type": {
+        "ts": "1 | 2"
+      },
+      "docs": "heading level of the title: 1 when the block is the page heading",
+      "default": 2
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"narrow\" | \"wide\" | \"sidebar\" | \"media\" | \"card\" | \"hero\""
+      },
+      "docs": "how the body is laid out",
+      "default": "narrow"
+    },
+    {
+      "name": "tone",
+      "type": {
+        "ts": "\"default\" | \"muted\""
+      },
+      "docs": "background",
+      "default": "default"
+    },
+    {
+      "name": "density",
+      "type": {
+        "ts": "\"default\" | \"compact\""
+      },
+      "docs": "vertical padding",
+      "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "organism": "SectionFrame",
+      "props": {
+        "id": {
+          "$": "id"
+        },
+        "title": {
+          "$": "title"
+        },
+        "heading": {
+          "level": {
+            "$": "level"
+          }
+        },
+        "tone": {
+          "$": "tone"
+        },
+        "density": {
+          "$": "density"
+        },
+        "measure": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "or",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "layout"
+                    },
+                    "narrow"
+                  ]
+                },
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "layout"
+                    },
+                    "media"
+                  ]
+                }
+              ]
+            },
+            "2xl",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "layout"
+                    },
+                    "card"
+                  ]
+                },
+                "3xl",
+                "default"
+              ]
+            }
+          ]
+        },
+        "boxed": {
+          "op": "eq",
+          "args": [
+            {
+              "$": "layout"
+            },
+            "card"
+          ]
+        },
+        "landmarkLabel": {
+          "$": "landmarkLabel"
+        }
+      },
+      "slots": {
+        "children": {
+          "args": [],
+          "do": [
+            {
+              "when": {
+                "op": "or",
+                "args": [
+                  {
+                    "$": "meta.date"
+                  },
+                  {
+                    "$": "meta.author"
+                  },
+                  {
+                    "$": "meta.category"
+                  }
+                ]
+              },
+              "then": [
+                {
+                  "use": "Group",
+                  "props": {
+                    "Gap": "4",
+                    "Align": "center",
+                    "Class": "flex-wrap"
+                  },
+                  "attrs": {
+                    "data-testid": "richtext-meta"
+                  },
+                  "children": [
+                    {
+                      "when": {
+                        "$": "meta.date"
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "meta.date"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "$": "meta.author"
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Weight": "semibold"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "meta.author"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "$": "meta.category"
+                      },
+                      "then": [
+                        {
+                          "organism": "Pill",
+                          "props": {
+                            "tone": "blue"
+                          },
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "text": {
+                                    "$": "meta.category"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "when": {
+                "op": "or",
+                "args": [
+                  {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "hero"
+                    ]
+                  },
+                  {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "media"
+                    ]
+                  }
+                ]
+              },
+              "then": [
+                {
+                  "organism": "MediaFrame",
+                  "props": {
+                    "alt": {
+                      "op": "coalesce",
+                      "args": [
+                        {
+                          "$": "media.alt"
+                        },
+                        {
+                          "$": "title"
+                        }
+                      ]
+                    },
+                    "src": {
+                      "$": "media.src"
+                    },
+                    "ratio": {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "layout"
+                            },
+                            "hero"
+                          ]
+                        },
+                        "21/9",
+                        "16/9"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "sidebar"
+                ]
+              },
+              "then": [
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": "1",
+                    "Class": "gap-8 lg:grid-cols-3"
+                  },
+                  "children": [
+                    {
+                      "use": "Box",
+                      "props": {
+                        "Class": "min-w-0 lg:col-span-2"
+                      },
+                      "children": [
+                        {
+                          "when": {
+                            "$": "content"
+                          },
+                          "then": [
+                            {
+                              "use": "Prose",
+                              "props": {
+                                "Size": "base",
+                                "Width": "none"
+                              },
+                              "attrs": {
+                                "data-testid": "richtext-content"
+                              },
+                              "children": [
+                                {
+                                  "html": {
+                                    "$": "content"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "or",
+                        "args": [
+                          {
+                            "$": "aside.title"
+                          },
+                          {
+                            "$": "aside.content"
+                          }
+                        ]
+                      },
+                      "then": [
+                        {
+                          "use": "Card",
+                          "props": {
+                            "Variant": "compact",
+                            "Class": "h-fit"
+                          },
+                          "attrs": {
+                            "data-testid": "richtext-aside"
+                          },
+                          "children": [
+                            {
+                              "when": {
+                                "$": "aside.title"
+                              },
+                              "then": [
+                                {
+                                  "use": "Title",
+                                  "props": {
+                                    "As": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "level"
+                                            },
+                                            1
+                                          ]
+                                        },
+                                        2,
+                                        3
+                                      ]
+                                    },
+                                    "Size": "lg",
+                                    "Weight": "semibold"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "aside.title"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "when": {
+                                "$": "aside.content"
+                              },
+                              "then": [
+                                {
+                                  "use": "Prose",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Width": "none"
+                                  },
+                                  "attrs": {
+                                    "data-testid": "richtext-aside-content"
+                                  },
+                                  "children": [
+                                    {
+                                      "html": {
+                                        "$": "aside.content"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "when": {
+                    "$": "content"
+                  },
+                  "then": [
+                    {
+                      "use": "Prose",
+                      "props": {
+                        "Size": "base",
+                        "Width": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "wide"
+                              ]
+                            },
+                            "wide",
+                            {
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "layout"
+                                    },
+                                    "hero"
+                                  ]
+                                },
+                                "narrow",
+                                "none"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "data-testid": "richtext-content"
+                      },
+                      "children": [
+                        {
+                          "html": {
+                            "$": "content"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

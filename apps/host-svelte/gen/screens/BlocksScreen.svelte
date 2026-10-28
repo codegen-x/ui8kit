@@ -74,6 +74,7 @@
   import PostsPage from "./BlocksScreen/PostsPage.svelte";
   import PostshowcasePage from "./BlocksScreen/PostshowcasePage.svelte";
   import PostsplitPage from "./BlocksScreen/PostsplitPage.svelte";
+  import RichtextPage from "./BlocksScreen/RichtextPage.svelte";
   import StorytabsPage from "./BlocksScreen/StorytabsPage.svelte";
   import TimelinePage from "./BlocksScreen/TimelinePage.svelte";
   import AuthPage from "./BlocksScreen/AuthPage.svelte";
@@ -174,6 +175,7 @@
     {"path":"posts","area":"posts"},
     {"path":"postshowcase","area":"postshowcase"},
     {"path":"postsplit","area":"postsplit"},
+    {"path":"richtext","area":"richtext"},
     {"path":"storytabs","area":"storytabs"},
     {"path":"timeline","area":"timeline"},
     {"path":"auth","area":"auth"},
@@ -346,6 +348,8 @@
     <PostshowcasePage />
   {:else if route.area === "postsplit"}
     <PostsplitPage />
+  {:else if route.area === "richtext"}
+    <RichtextPage />
   {:else if route.area === "storytabs"}
     <StorytabsPage />
   {:else if route.area === "timeline"}

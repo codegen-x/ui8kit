@@ -340,6 +340,14 @@
                 "block": "storytabs"
               }
             ]
+          },
+          {
+            "id": "content-richtext",
+            "entries": [
+              {
+                "block": "richtext"
+              }
+            ]
           }
         ]
       },

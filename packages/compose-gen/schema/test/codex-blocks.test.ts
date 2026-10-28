@@ -36,8 +36,8 @@ test("status, required / optional, note and emptyMode are kept; source, bindings
   expect(next.find((x) => x.id === "PricingTiers")!.status).toBe("todo");
 });
 
-test("every surface is generated: 92 kit blocks, 15 screens, 10 templates + 2 parts, the taste screens", () => {
+test("every surface is generated: 93 kit blocks, 15 screens, 10 templates + 2 parts, the taste screens", () => {
   const count = (s: string) => doc.blocks.filter((b) => b.surface === s).length;
-  expect([count("kit-block"), count("compose-gen-screen"), count("magazine-template"), count("magazine-part")]).toEqual([92, 15, 10, 2]);
+  expect([count("kit-block"), count("compose-gen-screen"), count("magazine-template"), count("magazine-part")]).toEqual([93, 15, 10, 2]);
   expect(count("taste-screen")).toBeGreaterThan(100);
 });

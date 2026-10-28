@@ -1,0 +1,181 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.richtext",
+  "name": "Rich text",
+  "docs": "The body of the current page or post as rich text (headings, lists, quotes, pictures, code, tables) under its title and a meta line; in a reading column, wide, beside a side note, under a cover, in a card, or as the page heading over a wide cover.",
+  "theme": "content",
+  "group": "page",
+  "organism": "RichText",
+  "axes": {
+    "layout": [
+      "narrow",
+      "wide",
+      "sidebar",
+      "media",
+      "card",
+      "hero"
+    ]
+  },
+  "defaults": {
+    "layout": "narrow"
+  },
+  "variants": [
+    {
+      "id": "narrow",
+      "set": {}
+    },
+    {
+      "id": "wide",
+      "set": {
+        "layout": "wide"
+      }
+    },
+    {
+      "id": "sidebar",
+      "set": {
+        "layout": "sidebar"
+      }
+    },
+    {
+      "id": "media",
+      "set": {
+        "layout": "media"
+      }
+    },
+    {
+      "id": "card",
+      "set": {
+        "layout": "card"
+      }
+    },
+    {
+      "id": "heroTitle",
+      "set": {
+        "layout": "hero"
+      },
+      "props": {
+        "level": 1
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame",
+    "Pill",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"richtext-content\"]",
+      "n": 1
+    },
+    {
+      "sel": "[data-testid=\"richtext-content\"] h2",
+      "n": 1
+    },
+    {
+      "sel": "[data-testid=\"richtext-meta\"]",
+      "n": 1
+    },
+    {
+      "sel": "[data-testid=\"richtext-aside\"]",
+      "n": 1,
+      "when": {
+        "layout": "sidebar"
+      }
+    },
+    {
+      "sel": "[data-testid=\"richtext-aside\"]",
+      "n": 0,
+      "when": {
+        "layout": [
+          "narrow",
+          "wide",
+          "media",
+          "card",
+          "hero"
+        ]
+      }
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 1,
+      "when": {
+        "layout": [
+          "media",
+          "hero"
+        ]
+      }
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 0,
+      "when": {
+        "layout": [
+          "narrow",
+          "wide",
+          "sidebar",
+          "card"
+        ]
+      }
+    }
+  ],
+  "data": [
+    {
+      "as": "entry",
+      "collection": "pages",
+      "kind": "page",
+      "record": "RichEntry",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "content": "content|html",
+        "excerpt": "excerpt",
+        "date": "published_at|date",
+        "author": "author_id|author",
+        "category": "terms|term:category",
+        "image": "featured_media_id|media",
+        "aside": "metadata.aside.value|html"
+      },
+      "scope": "current"
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "richtext",
+      "title": {
+        "$": "entry.title"
+      },
+      "content": {
+        "$": "entry.content"
+      },
+      "media": {
+        "src": {
+          "$": "entry.image"
+        },
+        "alt": {
+          "$": "entry.title"
+        }
+      },
+      "meta": {
+        "date": {
+          "$": "entry.date"
+        },
+        "author": {
+          "$": "entry.author"
+        },
+        "category": {
+          "$": "entry.category"
+        }
+      },
+      "aside": {
+        "title": {
+          "$": "ui.content.richtext.aside"
+        },
+        "content": {
+          "$": "entry.aside"
+        }
+      }
+    }
+  }
+}

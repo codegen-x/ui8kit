@@ -48,11 +48,11 @@ describe("disjunctive counts", () => {
   });
   test("variants collapse into one card per block; every variant with variants=all", () => {
     const one = search(E, st({ filters: { type: ["block"] } }));
-    expect(one.results.length).toBe(92);
-    expect(new Set(one.results.map((a) => a.group)).size).toBe(92);
+    expect(one.results.length).toBe(93);
+    expect(new Set(one.results.map((a) => a.group)).size).toBe(93);
     const all = search(E, st({ filters: { type: ["block"] }, variants: "all" }));
     expect(all.results.length).toBe(INDEX.counts["block"]!);
-    expect(one.counts["type"]!.get("block")).toBe(92);
+    expect(one.counts["type"]!.get("block")).toBe(93);
     expect(all.counts["type"]!.get("block")).toBe(INDEX.counts["block"]!);
     const hero = search(E, st({ spec: "block.hero", variants: "all" }));
     expect(hero.results.every((a) => a.spec === "block.hero")).toBe(true);

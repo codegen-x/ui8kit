@@ -103,6 +103,7 @@ const TOPICS = [
       { key: "posts", href: "#/posts", name: ui.blocks.names.posts, docs: ui.blocks.docs.posts },
       { key: "postshowcase", href: "#/postshowcase", name: ui.blocks.names.postshowcase, docs: ui.blocks.docs.postshowcase },
       { key: "postsplit", href: "#/postsplit", name: ui.blocks.names.postsplit, docs: ui.blocks.docs.postsplit },
+      { key: "richtext", href: "#/richtext", name: ui.blocks.names.richtext, docs: ui.blocks.docs.richtext },
       { key: "storytabs", href: "#/storytabs", name: ui.blocks.names.storytabs, docs: ui.blocks.docs.storytabs },
       { key: "timeline", href: "#/timeline", name: ui.blocks.names.timeline, docs: ui.blocks.docs.timeline },
     ],

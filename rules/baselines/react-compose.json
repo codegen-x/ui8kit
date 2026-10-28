@@ -3,7 +3,7 @@
   "package": "packages/kit-compose/react",
   "totals": {
     "block-root": 0,
-    "raw-html": 0,
+    "raw-html": 3,
     "dynamic-tag": 0,
     "raw-native-tag": 0,
     "reactive-aria": 19,
@@ -11,7 +11,9 @@
   },
   "counts": {
     "block-root": {},
-    "raw-html": {},
+    "raw-html": {
+      "src/blocks/rich-text.tsx": 3
+    },
     "dynamic-tag": {},
     "raw-native-tag": {},
     "reactive-aria": {

@@ -11,7 +11,7 @@ import { files, loadOrganisms, JS_RUNTIMES } from "../src/organisms";
 import { checkHtml } from "../../ui-gates/src/html.mjs";
 import { checkSourceText } from "../../ui-gates/src/source.mjs";
 import { installSsrPlugin } from "./ssr";
-import { norm as tokens } from "./shared";
+import { norm as tokens, probeProblems, trustedProbes } from "./shared";
 
 // the DOM tree contract of the xgen gates (attributes by name, class tokens sorted, text trimmed) after the SSR artifacts
 // Vue serializes style="height:1px;" where React writes style="height:1px": the same declarations
@@ -20,7 +20,9 @@ const norm = (html: string) => normalizeHtml(tokens(html)).replace(/ style="([^"
 installSsrPlugin();
 const loaded = loadOrganisms();
 const generated = files();
-const { cases } = blockCases(loaded.inputs, new Set(loaded.organisms.map((o) => o.name)));
+const gallery = blockCases(loaded.inputs, new Set(loaded.organisms.map((o) => o.name))).cases;
+// the gallery cases, then the TrustedHtml probes (a plain string escaped, TrustedHtml raw, the page heading)
+const cases = [...gallery, ...trustedProbes(gallery)];
 const byName = Object.fromEntries(loaded.organisms.map((o) => [o.name, o]));
 const quiet = <T,>(f: () => T): T => { const w = console.warn, e = console.error; console.warn = console.error = () => {}; try { return f(); } finally { console.warn = w; console.error = e; } };
 
@@ -35,6 +37,7 @@ test("no raw HTML where a primitive exists in the organism sources", () => {
 });
 
 const rendered: { id: string; html: string }[] = [];
+const probes: string[] = [];
 /** the two HTML strings around their first difference */
 function firstDiff(a: string, b: string, rt: string): string {
   let i = 0;
@@ -71,13 +74,15 @@ test(`parity react = svelte = vue = solid: every gallery block case`, async () =
     const other = { ...rest, ...(className ? { class: className } : {}) };
     const got: Record<string, () => Promise<string> | string> = {
       svelte: () => quiet(() => render(S, { props: other }).body),
-      vue: () => vueSSR(createSSRApp({ render: () => h(V, other) })),
+      // Vue warns (dev only) that innerHTML replaces the children of the Box slot: TrustedHtml has none, the warning is noise here
+      vue: async () => { const w = console.warn; console.warn = () => {}; try { return await vueSSR(createSSRApp({ render: () => h(V, other) })); } finally { console.warn = w; } },
       solid: () => quiet(() => solidSSR(() => createComponent(L[c.organism] as never, other as never)).replace(/ data-hk="[^"]*"/g, "")),
     };
     for (const [rt, f] of Object.entries(got)) {
-      try { const html = norm(await f()); if (html !== want) problems.push(`${c.label} ${rt} differs:\n${firstDiff(want, html, rt)}`); }
+      try { const out = await f(); const html = norm(out); if (html !== want) problems.push(`${c.label} ${rt} differs:\n${firstDiff(want, html, rt)}`); probes.push(...probeProblems(`${c.label} ${rt}`, out)); }
       catch (e) { problems.push(`${c.label} ${rt}: ${(e as Error).message}`); }
     }
+    probes.push(...probeProblems(`${c.label} react`, raw));
     // rules: a Lucide glyph only inside the Icon primitive (span[data-slot=icon] > svg)
     const svgs = raw.match(/<svg[\s>]/g)?.length ?? 0, framed = raw.match(/<span[^>]*data-slot="icon"[^>]*><svg[\s>]/g)?.length ?? 0;
     if (svgs !== framed) problems.push(`${c.label}: ${svgs - framed} svg outside the Icon primitive`);
@@ -94,5 +99,11 @@ test("html-validate + axe on the React output of every case", async () => {
   if (problems.length) console.error(`${problems.length} html problems\n` + problems.slice(0, 40).join("\n"));
   expect(problems.length).toBe(0);
 }, 600000);
+
+test("TrustedHtml: printed as it is, a plain string escaped, on every runtime; one h1 only for the page heading", () => {
+  expect(rendered.length).toBe(cases.length);
+  expect(cases.filter((c) => c.label.startsWith("probe.")).length).toBe(3);
+  expect(probes).toEqual([]);
+});
 
 test("runtimes", () => expect([...JS_RUNTIMES]).toEqual(["react", "svelte", "vue", "solid"]));

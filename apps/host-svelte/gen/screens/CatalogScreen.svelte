@@ -40,6 +40,7 @@
   import ContentArticlePage from "./CatalogScreen/ContentArticlePage.svelte";
   import ContentTimelinePage from "./CatalogScreen/ContentTimelinePage.svelte";
   import ContentStoryTabsPage from "./CatalogScreen/ContentStoryTabsPage.svelte";
+  import ContentRichtextPage from "./CatalogScreen/ContentRichtextPage.svelte";
   import PromoBannersPage from "./CatalogScreen/PromoBannersPage.svelte";
   import PromoNewsletterPage from "./CatalogScreen/PromoNewsletterPage.svelte";
   import SupportContactPage from "./CatalogScreen/SupportContactPage.svelte";
@@ -128,6 +129,7 @@
     {"path":"content-article","area":"content-article"},
     {"path":"content-timeline","area":"content-timeline"},
     {"path":"content-story-tabs","area":"content-story-tabs"},
+    {"path":"content-richtext","area":"content-richtext"},
     {"path":"promo-banners","area":"promo-banners"},
     {"path":"promo-newsletter","area":"promo-newsletter"},
     {"path":"support-contact","area":"support-contact"},
@@ -253,6 +255,8 @@
     <ContentTimelinePage />
   {:else if route.area === "content-story-tabs"}
     <ContentStoryTabsPage />
+  {:else if route.area === "content-richtext"}
+    <ContentRichtextPage />
   {:else if route.area === "promo-banners"}
     <PromoBannersPage />
   {:else if route.area === "promo-newsletter"}

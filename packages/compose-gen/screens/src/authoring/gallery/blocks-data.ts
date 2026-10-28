@@ -80,4 +80,6 @@ export const posttags = link("posttags", "posttag");
 export const outline = menu("outline");
 // the breadcrumb trail: pages chained by parent_id, in the order root -> current page
 export const crumbs = src("crumbs", "crumbs", "page", "NavLink", CODEX_FIELDS.page);
+/** the page of the current route (scope current: one entry, not the list): its body is trusted markup (`content|html`) */
+export const entry: Source = { ...src("entry", "pages", "page", "RichEntry", CODEX_FIELDS.entry), scope: "current" };
 export const questions = src("questions", "questions", "question", "Question", CODEX_FIELDS.question);

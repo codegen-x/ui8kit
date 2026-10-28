@@ -55,6 +55,7 @@ const SECTIONS = [
     cat("content-article", "Article and legal", ...all("article")),
     cat("content-timeline", "Timeline", ...all("timeline")),
     cat("content-story-tabs", "Story in steps", ...all("storytabs")),
+    cat("content-richtext", "Rich text", ...all("richtext")),
   ] },
   { id: "promo", title: "Promo", text: "Announcements, the cookie notice and newsletter sign-ups.", categories: [
     cat("promo-banners", "Banners", ...all("announcement", "cookie")),

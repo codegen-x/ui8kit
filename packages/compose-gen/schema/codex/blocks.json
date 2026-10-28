@@ -4877,6 +4877,42 @@
       "emptyState": true
     },
     {
+      "id": "RichText",
+      "surface": "kit-block",
+      "spec": "block.richtext",
+      "source": "packages/compose-gen/specs/blocks/richtext.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "entry",
+          "collection": "pages",
+          "kind": "page",
+          "scope": "current",
+          "record": "RichEntry",
+          "map": "entry",
+          "list": false
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "layout",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "aside.title",
+          "dictionary": "content.richtext.aside",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
+      "emptyMode": "omit",
+      "note": "the record of the current route (scope current); no entry: no meta line, no body, no side note (emptyMode omit)"
+    },
+    {
       "id": "AppShell",
       "surface": "kit-block",
       "spec": "block.shell",
@@ -6798,6 +6834,15 @@
           "list": true
         },
         {
+          "prop": "RichText.entry",
+          "collection": "pages",
+          "kind": "page",
+          "scope": "current",
+          "record": "RichEntry",
+          "map": "entry",
+          "list": false
+        },
+        {
           "prop": "SkeletonLayout.lines",
           "collection": "placeholders",
           "kind": "placeholder",
@@ -6999,6 +7044,7 @@
         "block.proof",
         "block.quotesplit",
         "block.reviews",
+        "block.richtext",
         "block.shell",
         "block.sidenav",
         "block.sitemap",
@@ -7986,6 +8032,15 @@
           "list": true
         },
         {
+          "prop": "RichText.entry",
+          "collection": "pages",
+          "kind": "page",
+          "scope": "current",
+          "record": "RichEntry",
+          "map": "entry",
+          "list": false
+        },
+        {
           "prop": "SitemapFooter.groups",
           "collection": "sitemap",
           "kind": "menu_item",
@@ -8093,6 +8148,11 @@
           "prop": "titleKey",
           "dictionary": "pages.contentBlog.plain.nav",
           "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.contentBlog.page.nav",
+          "keys": []
         }
       ],
       "emptyState": true,
@@ -8105,6 +8165,7 @@
         "block.posts",
         "block.postshowcase",
         "block.postsplit",
+        "block.richtext",
         "block.sitemap"
       ]
     },

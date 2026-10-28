@@ -161,6 +161,7 @@
         { id: "content-article", href: "#/content-article", name: ui.catalog.categories.contentArticle, blocks: 1, variants: 4 },
         { id: "content-timeline", href: "#/content-timeline", name: ui.catalog.categories.contentTimeline, blocks: 1, variants: 4 },
         { id: "content-story-tabs", href: "#/content-story-tabs", name: ui.catalog.categories.contentStoryTabs, blocks: 1, variants: 3 },
+        { id: "content-richtext", href: "#/content-richtext", name: ui.catalog.categories.contentRichtext, blocks: 1, variants: 6 },
       ],
     },
     {

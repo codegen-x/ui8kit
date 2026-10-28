@@ -75,6 +75,7 @@ import PostheaderPage from "./BlocksScreen/PostheaderPage.vue";
 import PostsPage from "./BlocksScreen/PostsPage.vue";
 import PostshowcasePage from "./BlocksScreen/PostshowcasePage.vue";
 import PostsplitPage from "./BlocksScreen/PostsplitPage.vue";
+import RichtextPage from "./BlocksScreen/RichtextPage.vue";
 import StorytabsPage from "./BlocksScreen/StorytabsPage.vue";
 import TimelinePage from "./BlocksScreen/TimelinePage.vue";
 import AuthPage from "./BlocksScreen/AuthPage.vue";
@@ -175,6 +176,7 @@ const ROUTES = [
   {"path":"posts","area":"posts"},
   {"path":"postshowcase","area":"postshowcase"},
   {"path":"postsplit","area":"postsplit"},
+  {"path":"richtext","area":"richtext"},
   {"path":"storytabs","area":"storytabs"},
   {"path":"timeline","area":"timeline"},
   {"path":"auth","area":"auth"},
@@ -279,6 +281,7 @@ const actions = { toggleTheme };
     <PostsPage v-else-if="route.area === 'posts'" />
     <PostshowcasePage v-else-if="route.area === 'postshowcase'" />
     <PostsplitPage v-else-if="route.area === 'postsplit'" />
+    <RichtextPage v-else-if="route.area === 'richtext'" />
     <StorytabsPage v-else-if="route.area === 'storytabs'" />
     <TimelinePage v-else-if="route.area === 'timeline'" />
     <AuthPage v-else-if="route.area === 'auth'" />

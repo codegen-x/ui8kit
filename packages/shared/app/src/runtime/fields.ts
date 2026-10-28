@@ -95,6 +95,20 @@ export const pageFields = {
   href: "slug|route",
 } as const;
 
+/** kind `page` (or `post`) -> RichEntry (RichText): the record of the current route (a source in scope `current`), its body as trusted
+ *  markup (`content|html`, printed without escaping), the side note from `metadata.aside` (trusted markup too) */
+export const entryFields = {
+  id: "id",
+  title: "title",
+  content: "content|html",
+  excerpt: "excerpt",
+  date: "published_at|date",
+  author: "author_id|author",
+  category: "terms|term:category",
+  image: "featured_media_id|media",
+  aside: "metadata.aside.value|html",
+} as const;
+
 /** kind `menu_item` -> NavLink (NavBar, SidebarNav, BottomNav, ShellSidebar, the sub nav, outlines and help links): a menu entry
  *  (Codex v0.4 Menu item: label = title, the address from the slug); `href` only where the app routes menu items, else no link */
 export const menuItemFields = {
@@ -190,7 +204,7 @@ export const KIT_FIELDS = {
 
 /** the field maps by entry kind */
 export const CODEX_FIELDS = {
-  product: productFields, post: postFields, plan: planFields, review: reviewFields, stat: statFields, faq: faqFields, faqtab: faqTabFields, page: pageFields,
+  product: productFields, post: postFields, plan: planFields, review: reviewFields, stat: statFields, faq: faqFields, faqtab: faqTabFields, page: pageFields, entry: entryFields,
   menuItem: menuItemFields, menuGroup: menuGroupFields, menuCategory: menuCategoryFields, ...KIT_FIELDS,
 } as const;
 export type CodexFieldKind = keyof typeof CODEX_FIELDS;

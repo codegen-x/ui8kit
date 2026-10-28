@@ -85,7 +85,7 @@ export const themeApps: ThemeApp[] = [
   },
   {
     name: "content-blog", title: "Blog", footer: "sitemap.compact",
-    docs: "A blog: a magazine front page, filtered and plain lists, and articles with a table of contents, a single column or no cover.",
+    docs: "A blog: a magazine front page, filtered and plain lists, articles with a table of contents, a single column or no cover, and a page of rich text.",
     pages: [
       { path: "", lead: "pagehead.start", head: ["The journal", "Notes on design, engineering and the work in between.", "Read the articles"], rest: ["posts.magazine", "postshowcase.introCards", "newsletter.stacked"] },
       { path: "articles", lead: "pagehead.center", head: ["All articles", "Filter by topic.", "Open the archive"], rest: ["posts.filters", "posts.twoUp"] },
@@ -94,6 +94,7 @@ export const themeApps: ThemeApp[] = [
       { path: "story", lead: "postsplit.splitStats", head: ["", "", ""], rest: ["article.column"] },
       { path: "essay", lead: "postheader.center", head: ["", "", ""], rest: ["article.column", "newsletter.inline"] },
       { path: "plain", lead: "postheader.noCover", head: ["", "", ""], rest: ["article.plain", "posts.grid"] },
+      { path: "page", lead: "richtext.heroTitle", head: ["", "", ""], rest: [] },
     ],
   },
   {

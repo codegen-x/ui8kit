@@ -10,6 +10,7 @@ export const NAV = [
   { id: "story", name: ui.pages.contentBlog.story.nav, icon: "link", href: "#/story", area: "story" },
   { id: "essay", name: ui.pages.contentBlog.essay.nav, icon: "link", href: "#/essay", area: "essay" },
   { id: "plain", name: ui.pages.contentBlog.plain.nav, icon: "link", href: "#/plain", area: "plain" },
+  { id: "page", name: ui.pages.contentBlog.page.nav, icon: "link", href: "#/page", area: "page" },
 ];
 
 /** the links of the menu and the id of the one that leads to the area on screen ("" when none does) */

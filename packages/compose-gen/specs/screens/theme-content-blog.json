@@ -4,7 +4,7 @@
   "id": "screen.theme-content-blog",
   "name": "ThemeContentBlogScreen",
   "kind": "composed",
-  "docs": "A blog: a magazine front page, filtered and plain lists, and articles with a table of contents, a single column or no cover.",
+  "docs": "A blog: a magazine front page, filtered and plain lists, articles with a table of contents, a single column or no cover, and a page of rich text.",
   "routes": [
     {
       "path": "",
@@ -33,6 +33,10 @@
     {
       "path": "plain",
       "area": "plain"
+    },
+    {
+      "path": "page",
+      "area": "page"
     }
   ],
   "frame": {
@@ -200,6 +204,12 @@
         "block": "posts",
         "variant": "grid"
       }
+    ],
+    "page": [
+      {
+        "block": "richtext",
+        "variant": "heroTitle"
+      }
     ]
   },
   "chunks": true,
@@ -241,6 +251,11 @@
       "id": "plain",
       "path": "plain",
       "titleKey": "pages.contentBlog.plain.nav"
+    },
+    {
+      "id": "page",
+      "path": "page",
+      "titleKey": "pages.contentBlog.page.nav"
     }
   ],
   "portable": {

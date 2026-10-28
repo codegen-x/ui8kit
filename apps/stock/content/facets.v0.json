@@ -687,7 +687,8 @@
               "any": {
                 "block": [
                   "article",
-                  "postheader"
+                  "postheader",
+                  "richtext"
                 ],
                 "group": [
                   "story"

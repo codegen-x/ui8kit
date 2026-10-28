@@ -41,6 +41,7 @@ import ContentPostHeaderSplitPage from "./CatalogScreen/ContentPostHeaderSplitPa
 import ContentArticlePage from "./CatalogScreen/ContentArticlePage.vue";
 import ContentTimelinePage from "./CatalogScreen/ContentTimelinePage.vue";
 import ContentStoryTabsPage from "./CatalogScreen/ContentStoryTabsPage.vue";
+import ContentRichtextPage from "./CatalogScreen/ContentRichtextPage.vue";
 import PromoBannersPage from "./CatalogScreen/PromoBannersPage.vue";
 import PromoNewsletterPage from "./CatalogScreen/PromoNewsletterPage.vue";
 import SupportContactPage from "./CatalogScreen/SupportContactPage.vue";
@@ -129,6 +130,7 @@ const ROUTES = [
   {"path":"content-article","area":"content-article"},
   {"path":"content-timeline","area":"content-timeline"},
   {"path":"content-story-tabs","area":"content-story-tabs"},
+  {"path":"content-richtext","area":"content-richtext"},
   {"path":"promo-banners","area":"promo-banners"},
   {"path":"promo-newsletter","area":"promo-newsletter"},
   {"path":"support-contact","area":"support-contact"},
@@ -219,6 +221,7 @@ const actions = { toggleTheme };
     <ContentArticlePage v-else-if="route.area === 'content-article'" />
     <ContentTimelinePage v-else-if="route.area === 'content-timeline'" />
     <ContentStoryTabsPage v-else-if="route.area === 'content-story-tabs'" />
+    <ContentRichtextPage v-else-if="route.area === 'content-richtext'" />
     <PromoBannersPage v-else-if="route.area === 'promo-banners'" />
     <PromoNewsletterPage v-else-if="route.area === 'promo-newsletter'" />
     <SupportContactPage v-else-if="route.area === 'support-contact'" />

@@ -40,6 +40,7 @@ import { ContentPostHeaderSplitPage } from "./CatalogScreen/ContentPostHeaderSpl
 import { ContentArticlePage } from "./CatalogScreen/ContentArticlePage";
 import { ContentTimelinePage } from "./CatalogScreen/ContentTimelinePage";
 import { ContentStoryTabsPage } from "./CatalogScreen/ContentStoryTabsPage";
+import { ContentRichtextPage } from "./CatalogScreen/ContentRichtextPage";
 import { PromoBannersPage } from "./CatalogScreen/PromoBannersPage";
 import { PromoNewsletterPage } from "./CatalogScreen/PromoNewsletterPage";
 import { SupportContactPage } from "./CatalogScreen/SupportContactPage";
@@ -128,6 +129,7 @@ const ROUTES = [
   {"path":"content-article","area":"content-article"},
   {"path":"content-timeline","area":"content-timeline"},
   {"path":"content-story-tabs","area":"content-story-tabs"},
+  {"path":"content-richtext","area":"content-richtext"},
   {"path":"promo-banners","area":"promo-banners"},
   {"path":"promo-newsletter","area":"promo-newsletter"},
   {"path":"support-contact","area":"support-contact"},
@@ -254,6 +256,8 @@ export function CatalogScreen({ url }: { url: UrlPort }) {
           <ContentTimelinePage />
         ) : route.area === "content-story-tabs" ? (
           <ContentStoryTabsPage />
+        ) : route.area === "content-richtext" ? (
+          <ContentRichtextPage />
         ) : route.area === "promo-banners" ? (
           <PromoBannersPage />
         ) : route.area === "promo-newsletter" ? (

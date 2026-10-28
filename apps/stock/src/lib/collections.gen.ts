@@ -35,6 +35,7 @@ export const COLLECTIONS: Record<string, () => Promise<readonly unknown[]>> = {
   "navlinks": () => import("@ui8kit/app-shared/data/navlinks").then((m) => m.navlinks as readonly unknown[]),
   "orders": () => import("@ui8kit/app-shared/data/orders").then((m) => m.orders as readonly unknown[]),
   "outline": () => import("@ui8kit/app-shared/data/outline").then((m) => m.outline as readonly unknown[]),
+  "pages": () => import("@ui8kit/app-shared/data/pages").then((m) => m.pages as readonly unknown[]),
   "payments": () => import("@ui8kit/app-shared/data/payments").then((m) => m.payments as readonly unknown[]),
   "perks": () => import("@ui8kit/app-shared/data/perks").then((m) => m.perks as readonly unknown[]),
   "photos": () => import("@ui8kit/app-shared/data/photos").then((m) => m.photos as readonly unknown[]),
