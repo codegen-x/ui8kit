@@ -28,7 +28,7 @@ import Group from "../compose/Group.vue";
 import LinkPlain from "../compose/LinkPlain.vue";
 import MenuEntry from "../components/menu-entry.vue";
 import NavBlock from "../components/nav-block.vue";
-import { cn, tpl, uniqLabel } from "../utils";
+import { cn, tpl, uniqLabel, urlOf } from "../utils";
 
 const {
   labels,
@@ -105,7 +105,7 @@ const emit = defineEmits<{ theme: [] }>();
           v-if="(((actions as string) === 'cta') && cta)"
           variant="default"
           size="sm"
-          :href="ctaHref"
+          :href="urlOf(ctaHref)"
           data-testid="header-cta"
         >
           {{ cta }}

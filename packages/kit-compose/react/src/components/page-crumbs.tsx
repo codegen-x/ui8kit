@@ -6,6 +6,7 @@
 import { type ReactNode } from "react";
 import { Block, Inline, Link, List, ListItem } from "../compose";
 import { LucideIcon } from "../icons/LucideIcon";
+import { urlOf } from "../utils";
 import type { NavLink } from "../blocks/nav-bar.types";
 
 export type PageCrumbsProps = {
@@ -24,7 +25,7 @@ export function PageCrumbs({ label, crumbs, landmarkLabel }: PageCrumbsProps) {
             {(i < last) ? (
               <>
                 {c.href ? (
-                  <Link href={c.href} variant="muted" size="sm" data-testid="crumb">
+                  <Link href={urlOf(c.href)} variant="muted" size="sm" data-testid="crumb">
                     {c.name}
                   </Link>
                 ) : (

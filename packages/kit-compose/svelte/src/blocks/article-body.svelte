@@ -33,7 +33,7 @@
   import EmptyState from "../components/empty-state.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import SectionFrame from "../components/section-frame.svelte";
-  import { cn, tpl, uniqLabel } from "../utils";
+  import { cn, tpl, uniqLabel, urlOf } from "../utils";
 
   let {
     id,
@@ -73,7 +73,7 @@
               {#each sections as s (s.id)}
                 <ListItem>
                   <Link
-                    href={tpl("#{0}-{1}", id, s.id)}
+                    href={urlOf(tpl("#{0}-{1}", id, s.id))}
                     variant="default"
                     class="text-sm text-muted-foreground"
                     data-testid="toc-link"

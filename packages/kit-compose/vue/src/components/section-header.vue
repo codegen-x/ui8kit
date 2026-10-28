@@ -24,7 +24,7 @@ import Link from "../compose/Link.vue";
 import Text from "../compose/Text.vue";
 import Title from "../compose/Title.vue";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 const { titleId, title = "", heading, action, lead, center = false } = defineProps<SectionHeaderProps>();
 const level = computed(() => heading?.level ?? 2);
@@ -63,7 +63,7 @@ const hasAction = computed(() => action?.label && action?.href);
       {{ title }}
     </Title>
     <Link
-      :href="action?.href"
+      :href="urlOf(action?.href)"
       variant="default"
       :class="cn(defaults.text.tiny, 'shrink-0 font-medium leading-5')"
       data-testid="section-action"
@@ -86,7 +86,7 @@ const hasAction = computed(() => action?.label && action?.href);
   </Title>
   <Group v-if="(((title as string) === '') && hasAction)" gap="4" align="center" justify="end" class="w-full">
     <Link
-      :href="action?.href"
+      :href="urlOf(action?.href)"
       variant="default"
       :class="cn(defaults.text.tiny, 'shrink-0 font-medium leading-5')"
       data-testid="section-action"

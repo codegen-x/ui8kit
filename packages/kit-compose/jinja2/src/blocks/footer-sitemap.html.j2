@@ -9,5 +9,5 @@
     {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'arrow-right', 'Size': 16}}) }}
     {{ og_text(v_label) }}
   {%- endset -%}
-  {{ og_include('compose/link.html.j2', {'p': {'Href': og_s(v_href), 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'footer-sitemap'])}, 'children': c_1}) }}
+  {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(v_href)), 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'footer-sitemap'])}, 'children': c_1}) }}
 {%- endif %}

@@ -69,7 +69,7 @@ templ StoreLocations(p StoreLocationsProps) {
 								}
 								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-2"}}) {
 									@icons.LucideIcon(icons.LucideIconProps{Name: "phone", Size: 16})
-									@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.S(uiutils.Tpl("tel:{0}", uiutils.Get(vS, "phone")))}}) {
+									@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Tpl("tel:{0}", uiutils.Get(vS, "phone")), false)}}) {
 										{ uiutils.Text(uiutils.Nbsp(uiutils.Get(vS, "phone"))) }
 									}
 								}

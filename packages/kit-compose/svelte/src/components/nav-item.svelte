@@ -64,7 +64,7 @@
   import ButtonPlain from "../compose/ButtonPlain.svelte";
   import LinkPlain from "../compose/LinkPlain.svelte";
   import NavItemRow from "../components/nav-item-row.svelte";
-  import { cn } from "../utils";
+  import { cn, urlOf } from "../utils";
 
   let {
     selected = false,
@@ -99,7 +99,7 @@
 
 {#if href}
   <LinkPlain
-    href={href}
+    href={urlOf(href)}
     class={outer}
     aria-current={(selected ? "page" : undefined)}
     data-slot="nav-item"

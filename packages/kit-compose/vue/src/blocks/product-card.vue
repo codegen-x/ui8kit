@@ -33,7 +33,7 @@ import Text from "../compose/Text.vue";
 import Title from "../compose/Title.vue";
 import MediaFrame from "../components/media-frame.vue";
 import Rating from "../components/rating.vue";
-import { at, cn, fmtMoney, tpl } from "../utils";
+import { at, cn, fmtMoney, tpl, urlOf } from "../utils";
 
 const {
   product,
@@ -81,7 +81,7 @@ const emit = defineEmits<{ add: [id: string] }>();
         {{ product.category }}
       </Text>
       <Title :as="3" size="base" weight="bold">
-        <Link v-if="product.href" :href="product.href" variant="default" data-testid="open">
+        <Link v-if="product.href" :href="urlOf(product.href)" variant="default" data-testid="open">
           {{ product.name }}
         </Link>
         <template v-else>

@@ -7,7 +7,7 @@ import { type JSX } from "solid-js";
 import { Box, Button, Group, Text } from "../compose";
 import { LucideIcon } from "../icons/LucideIcon";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 export type PromptComposerProps = {
   label?: string;
@@ -88,7 +88,7 @@ export function PromptComposer({ label, attachLabel, modelLabel, send, href }: P
           ) : null}
         </Group>
         <Button
-          href={href}
+          href={urlOf(href)}
           variant="secondary"
           size="sm"
           layout="icon"

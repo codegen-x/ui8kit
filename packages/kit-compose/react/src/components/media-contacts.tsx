@@ -3,6 +3,7 @@
 import { Fragment, type ReactNode } from "react";
 import { Button, Group, Stack, Text } from "../compose";
 import { LucideIcon } from "../icons/LucideIcon";
+import { urlOf } from "../utils";
 import type { MediaExtras, MediaListLabels } from "../blocks/media-list.types";
 
 export type MediaContactsProps = {
@@ -18,7 +19,13 @@ export function MediaContacts({ extras, labels }: MediaContactsProps) {
           {labels.list}
         </Text>
         {(extras.channels ?? []).map((c, i) => (
-          <Button key={c.id} variant="outline" size="default" href={c.href} className="w-full gap-2" data-testid="media-channel">
+          <Button key={c.id}
+            variant="outline"
+            size="default"
+            href={urlOf(c.href)}
+            className="w-full gap-2"
+            data-testid="media-channel"
+          >
             <LucideIcon name={c.icon} size={16} />
             {c.title}
           </Button>

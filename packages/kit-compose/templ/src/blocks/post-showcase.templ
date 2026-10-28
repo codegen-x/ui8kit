@@ -49,7 +49,7 @@ templ PostShowcase(p PostShowcaseProps) {
 		}
 	} else if uiutils.Eq(vLayout, "intro") {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, LandmarkLabel: vLandmarkLabel, Aside: postShowcaseFill1(p, vPosts, vLabels)}) {
-			@compose.Link(compose.LinkProps{Size: "sm", LinkProps: link.LinkProps{Href: uiutils.S(uiutils.Get(vAction, "href")), Attrs: uiutils.Attrs("data-testid", "section-action")}}) {
+			@compose.Link(compose.LinkProps{Size: "sm", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vAction, "href"), false), Attrs: uiutils.Attrs("data-testid", "section-action")}}) {
 				{ uiutils.Text(uiutils.Get(vAction, "label")) }
 				@icons.LucideIcon(icons.LucideIconProps{Name: "arrow-right", Size: 16})
 			}

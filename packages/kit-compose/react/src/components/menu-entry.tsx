@@ -5,6 +5,7 @@
  */
 import { type ReactNode } from "react";
 import { Box, Inline, Link } from "../compose";
+import { urlOf } from "../utils";
 
 export type MenuEntryProps = {
   href?: string;
@@ -31,7 +32,7 @@ export function MenuEntry({
     <>
       {href ? (
         <Link
-          href={href}
+          href={urlOf(href)}
           variant={variant}
           size={size}
           aria-current={(current ? "page" : undefined)}

@@ -88,7 +88,7 @@
         {%- set c_16 -%}
           {{ og_text(og_get(v_labels, ['read'])) }}
         {%- endset -%}
-        {{ og_include('compose/link.html.j2', {'p': {'Href': og_s(og_get(v_post, ['href'])), 'Variant': 'default', 'Attrs': og_attrs(['data-testid', 'read'])}, 'children': c_16}) }}
+        {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_post, ['href']))), 'Variant': 'default', 'Attrs': og_attrs(['data-testid', 'read'])}, 'children': c_16}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/card-content.html.j2', {'p': {'Class': 'flex flex-1 flex-col gap-2'}, 'children': c_17}) }}

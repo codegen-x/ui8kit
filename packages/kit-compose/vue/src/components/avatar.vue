@@ -29,7 +29,7 @@ export type AvatarProps = {
 <script setup lang="ts">
 import Image from "../compose/Image.vue";
 import Inline from "../compose/Inline.vue";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 const { src, alt = "", size = "default", class: className } = defineProps<AvatarProps>();
 </script>
@@ -37,7 +37,7 @@ const { src, alt = "", size = "default", class: className } = defineProps<Avatar
 <template>
   <Inline :class="cn(avatarVariants({ size: size }), className)" data-slot="avatar">
     <Image
-      :src="src"
+      :src="urlOf(src, true)"
       :alt="alt"
       class="size-full object-cover"
       fit="cover"

@@ -12,6 +12,7 @@
     Text,
     Title,
     tpl,
+    urlOf,
   } from "@codegen-x/svelte-compose";
   import { ui } from "@ui8kit/app-shared/content";
 
@@ -207,7 +208,7 @@
         {#each PAGES as p (p.id)}
           <ListItem class="flex flex-col gap-2 rounded p-4 inset-ring inset-ring-border">
             <Link
-              href={p.href}
+              href={urlOf(p.href)}
               variant="default"
               class="font-bold"
               data-testid="page-link"

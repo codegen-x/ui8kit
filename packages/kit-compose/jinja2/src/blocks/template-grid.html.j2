@@ -96,7 +96,7 @@
     {%- set c_19 -%}
       {{ og_text(og_get(v_labels, ['browse'])) }}
     {%- endset -%}
-    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Href': og_s(v_browseHref), 'Class': 'w-full', 'Attrs': og_attrs(['data-testid', 'template-browse'])}, 'children': c_19}) }}
+    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Href': og_url(og_s(v_browseHref)), 'Class': 'w-full', 'Attrs': og_attrs(['data-testid', 'template-browse'])}, 'children': c_19}) }}
   {%- endset -%}
   {{ og_include('compose/stack.html.j2', {'p': {'Gap': '8', 'Align': 'stretch'}, 'children': c_20}) }}
 {%- endset -%}

@@ -42,7 +42,7 @@ templ SectionHeader(p SectionHeaderProps) {
 			@compose.Title(compose.TitleProps{As: uiutils.S(vLevel), Size: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLevel, float64(1))), "5xl", "xl")), Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vScale, "display")), "text-6xl tracking-tight md:text-8xl", uiutils.Cond(uiutils.T(uiutils.Eq(vLevel, float64(1))), "leading-tight", "leading-7"))), Attrs: uiutils.Attrs("id", vTitleId)}}) {
 				{ uiutils.Text(vTitle) }
 			}
-			@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.S(uiutils.Get(vAction, "href")), Class: uiutils.S(uiutils.Cnv(uiutils.Get(presetDefaults, "text", "tiny"), "shrink-0 font-medium leading-5")), Attrs: uiutils.Attrs("data-testid", "section-action")}}) {
+			@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vAction, "href"), false), Class: uiutils.S(uiutils.Cnv(uiutils.Get(presetDefaults, "text", "tiny"), "shrink-0 font-medium leading-5")), Attrs: uiutils.Attrs("data-testid", "section-action")}}) {
 				{ uiutils.Text(uiutils.Get(vAction, "label")) }
 			}
 		}
@@ -54,7 +54,7 @@ templ SectionHeader(p SectionHeaderProps) {
 	}
 	if uiutils.T(uiutils.And(uiutils.Eq(vTitle, ""), vHasAction)) {
 		@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "end", BoxProps: box.BoxProps{Class: "w-full"}}) {
-			@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.S(uiutils.Get(vAction, "href")), Class: uiutils.S(uiutils.Cnv(uiutils.Get(presetDefaults, "text", "tiny"), "shrink-0 font-medium leading-5")), Attrs: uiutils.Attrs("data-testid", "section-action")}}) {
+			@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vAction, "href"), false), Class: uiutils.S(uiutils.Cnv(uiutils.Get(presetDefaults, "text", "tiny"), "shrink-0 font-medium leading-5")), Attrs: uiutils.Attrs("data-testid", "section-action")}}) {
 				{ uiutils.Text(uiutils.Get(vAction, "label")) }
 			}
 		}

@@ -1,6 +1,7 @@
 // Checks a view tree against the brick specs: the part exists, its props exist, enum values are recipe keys,
 // text is never a literal, ARIA state is static, every reference is in scope, every handler exists.
 import type { LoadedBrick } from "../../spec/src/index";
+import { isSafeAttrName } from "../../runtimes/core/assets/ts/safe";
 import { OPS, TRUSTED_HTML, isGroup, isOp, isRef, presetAt, sourcesOf, type Handler, type OrganismSpec, type PresetSpec, type RecipeFile, type ScreenSpec, type Value, type ViewNode } from "./ir";
 
 export interface Parts { [name: string]: { brick: LoadedBrick["brick"]; part: LoadedBrick["brick"]["parts"][number] } }
@@ -80,6 +81,7 @@ function checkUse(n: Extract<ViewNode, { use: string }>, sc: Scope, names: Set<s
   }
   for (const [k, v] of Object.entries(n.attrs ?? {})) {
     checkValue(v, names, `${where}.${k}`, out);
+    if (!isSafeAttrName(k)) out.push(`${where}: attribute name ${JSON.stringify(k)} is not allowed (a valid name, not on*: events go in on)`);
     if (k.startsWith("aria-")) {
       if (ARIA_STATE.has(k) && isBoolLike(v)) { /* mapped from a prop */ }
       else if (!ARIA_DYNAMIC_OK.has(k) && typeof v === "object" && v !== null) out.push(`${where}: ${k} must be static (ARIA state is never computed)`);
@@ -87,6 +89,11 @@ function checkUse(n: Extract<ViewNode, { use: string }>, sc: Scope, names: Set<s
       if (ARIA_DYNAMIC_OK.has(k) && typeof v === "string" && !idRef) out.push(`${where}: ${k} is text, it must come from content`);
     } else if (k === "style") {
       if (!(isOp(v) && v.op === "css")) out.push(`${where}: style takes css(property, value, unit, ...)`);
+      // the property and the unit are literal words, the value is printed through cssValue (plain: no url(), no ;)
+      else for (let i = 0; i < v.args.length; i += 3) {
+        const [prop, unit] = [v.args[i], v.args[i + 2]];
+        if (typeof prop !== "string" || !/^-{0,2}[a-z][a-z0-9-]*$/.test(prop) || typeof unit !== "string" || !/^[a-z%]*$/.test(unit)) out.push(`${where}: style css(property, value, unit): the property and the unit are literal CSS words`);
+      }
     } else if (TEXT_ATTRS.has(k)) {
       if (typeof v === "string") out.push(`${where}: ${k} is text, it must come from content`);
     } else if (!k.startsWith("data-") && !FREE_ATTRS.has(k)) out.push(`${where}: attribute ${k} is not allowed (data-*, aria-*, ${[...FREE_ATTRS, ...TEXT_ATTRS, "style"].join(", ")})`);

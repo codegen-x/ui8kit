@@ -11,12 +11,12 @@
   {%- set c_1 -%}
     {{ og_text(v_primary) }}
   {%- endset -%}
-  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': og_s(v_primaryHref), 'Attrs': og_attrs(['data-testid', 'action-primary'])}, 'children': c_1}) }}
+  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': og_url(og_s(v_primaryHref)), 'Attrs': og_attrs(['data-testid', 'action-primary'])}, 'children': c_1}) }}
   {%- if og_t(v_secondary) %}
     {%- set c_2 -%}
       {{ og_text(v_secondary) }}
     {%- endset -%}
-    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'default', 'Href': og_s(v_secondaryHref), 'Attrs': og_attrs(['data-testid', 'action-secondary'])}, 'children': c_2}) }}
+    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'default', 'Href': og_url(og_s(v_secondaryHref)), 'Attrs': og_attrs(['data-testid', 'action-secondary'])}, 'children': c_2}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': og_s(('center' if og_t(og_eq(v_align, 'center')) else 'start')), 'Class': 'flex-wrap', 'Attrs': og_attrs(['data-slot', 'action-group'])}, 'children': c_3}) }}

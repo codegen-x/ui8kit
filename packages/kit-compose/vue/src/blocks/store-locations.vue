@@ -35,7 +35,7 @@ import Title from "../compose/Title.vue";
 import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
-import { at, cn, tpl } from "../utils";
+import { at, cn, tpl, urlOf } from "../utils";
 
 const {
   id,
@@ -104,7 +104,7 @@ const {
             </ListItem>
             <ListItem class="flex items-center gap-2">
               <LucideIcon name="phone" :size="16" />
-              <Link :href="tpl('tel:{0}', s.phone)" variant="default">
+              <Link :href="urlOf(tpl('tel:{0}', s.phone))" variant="default">
                 {{ (s.phone ?? "").replaceAll(" ", "\u00a0") }}
               </Link>
             </ListItem>

@@ -56,7 +56,7 @@ templ HeroClassic(p HeroClassicProps) {
 					}
 					@compose.Group(compose.GroupProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: "w-full flex-wrap"}}) {
 						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "prompt", Class: "min-w-0 flex-1", Placeholder: uiutils.S(uiutils.Get(vActions, "emailLabel")), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-email", vId), "data-testid", "field")}})
-						@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.S(uiutils.Get(vActions, "href")), Attrs: uiutils.Attrs("data-testid", "submit")}}) {
+						@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.URL(uiutils.Get(vActions, "href"), false), Attrs: uiutils.Attrs("data-testid", "submit")}}) {
 							{ uiutils.Text(uiutils.Get(vActions, "cta")) }
 						}
 					}

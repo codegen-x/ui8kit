@@ -30,7 +30,7 @@ import Inline from "../compose/Inline.vue";
 import LinkPlain from "../compose/LinkPlain.vue";
 import LucideIcon from "../icons/LucideIcon.vue";
 import Text from "../compose/Text.vue";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 const {
   label,
@@ -91,7 +91,7 @@ const {
           {{ text }}
         </Text>
         <LinkPlain v-if="cta"
-          :href="ctaHref"
+          :href="urlOf(ctaHref)"
           class="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4"
           data-testid="announcement-cta"
         >

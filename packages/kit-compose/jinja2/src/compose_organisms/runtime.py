@@ -233,6 +233,12 @@ def style(v: Any) -> str:
     return x
 
 
+def css_value(v: Any) -> str:
+    """a value of an inline style declaration (the css op): kept when plain (numbers, words, %, #, +, -, ., commas, spaces), else ''"""
+    x = _str(v)
+    return x if re.fullmatch(r"[-+.%#a-zA-Z0-9 ,]*", x) else ""
+
+
 def is_safe_attr_name(name: str) -> bool:
     """an attribute name that may be printed: a valid name, not an event handler (on*)"""
     return bool(re.fullmatch(r"[a-zA-Z_:][-a-zA-Z0-9_:.]*", name)) and not re.match(r"on", name, re.I)
@@ -516,7 +522,7 @@ def max_by(items: Any, f: str) -> float:
 
 
 def css(triples: list) -> str:
-    return ";".join(s(triples[k]) + ":" + s(triples[k + 1]) + s(triples[k + 2]) for k in range(0, len(triples) - 2, 3))
+    return ";".join(s(triples[k]) + ":" + css_value(triples[k + 1]) + s(triples[k + 2]) for k in range(0, len(triples) - 2, 3))
 
 
 def _compound_hits(c: dict, pick_: Any) -> bool:

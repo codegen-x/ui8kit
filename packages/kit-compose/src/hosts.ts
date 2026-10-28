@@ -43,7 +43,7 @@ function composePackage(r: JsRuntime, organisms: OrganismSpec[]): GeneratedFile[
     `export * from "./organisms";`,
     jsx ? `export { LucideIcon, type LucideIconProps } from "./icons/LucideIcon";` : `export { default as LucideIcon } from "./icons/LucideIcon.${EXT[r]}";`,
     ...presetNames.map(([f, n]) => `export { ${n} } from "./presets/${f.replace(/\.ts$/, "")}";`),
-    `export { cn, variants, tpl, fmtNumber, fmtMoney, at, pageWindow, fitCols, uniqLabel } from "./utils";`,
+    `export { cn, variants, tpl, fmtNumber, fmtMoney, at, pageWindow, fitCols, uniqLabel, urlOf, srcsetOf, cssValue } from "./utils";`,
     ``,
   ].join("\n");
   const styles = path.join(GEN, "runtimes/core/assets/styles");

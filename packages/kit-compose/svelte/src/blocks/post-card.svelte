@@ -29,7 +29,7 @@
   import Title from "../compose/Title.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import { defaults } from "../presets/defaults";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, urlOf } from "../utils";
 
   let {
     post,
@@ -137,7 +137,7 @@
         </Group>
       {/if}
       {#if (((meta as string) !== "news") && post.href)}
-        <Link href={post.href} variant="default" data-testid="read">
+        <Link href={urlOf(post.href)} variant="default" data-testid="read">
           {labels.read}
         </Link>
       {/if}

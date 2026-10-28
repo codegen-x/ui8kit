@@ -13,6 +13,7 @@ import { PostFeature } from "../components/post-feature";
 import { PostMiniCard } from "../components/post-mini-card";
 import { PostOverlayCard } from "../components/post-overlay-card";
 import { SectionFrame } from "../components/section-frame";
+import { urlOf } from "../utils";
 import type { Post, PostLabels } from "./post-card.types";
 import type { HeadLink } from "../components/section-frame.types";
 
@@ -75,7 +76,7 @@ export function PostShowcase({
             </Box>
           )}
         >
-          <Link href={action.href} size="sm" data-testid="section-action">
+          <Link href={urlOf(action.href)} size="sm" data-testid="section-action">
             {action.label}
             <LucideIcon name="arrow-right" size={16} />
           </Link>

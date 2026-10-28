@@ -49,7 +49,7 @@ templ ArticleBody(p ArticleBodyProps) {
 							@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-2 p-0"}}) {
 								for _, vS := range uiutils.L(vSections) {
 									@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{}}) {
-										@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.S(uiutils.Tpl("#{0}-{1}", vId, uiutils.Get(vS, "id"))), Class: "text-sm text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "toc-link")}}) {
+										@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Tpl("#{0}-{1}", vId, uiutils.Get(vS, "id")), false), Class: "text-sm text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "toc-link")}}) {
 											{ uiutils.Text(uiutils.Get(vS, "title")) }
 										}
 									}

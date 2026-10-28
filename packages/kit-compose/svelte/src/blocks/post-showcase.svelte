@@ -36,6 +36,7 @@
   import PostMiniCard from "../components/post-mini-card.svelte";
   import PostOverlayCard from "../components/post-overlay-card.svelte";
   import SectionFrame from "../components/section-frame.svelte";
+  import { urlOf } from "../utils";
 
   let {
     id,
@@ -69,7 +70,7 @@
     media={{ show: true, side: mediaSide }}
     landmarkLabel={landmarkLabel}
   >
-    <Link href={action.href} size="sm" data-testid="section-action">
+    <Link href={urlOf(action.href)} size="sm" data-testid="section-action">
       {action.label}
       <LucideIcon name="arrow-right" size={16} />
     </Link>

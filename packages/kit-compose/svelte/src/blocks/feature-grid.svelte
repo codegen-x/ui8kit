@@ -34,7 +34,7 @@
   import FeatureRows from "../components/feature-rows.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { defaults } from "../presets/defaults";
-  import { cn } from "../utils";
+  import { cn, urlOf } from "../utils";
 
   let {
     id,
@@ -60,7 +60,7 @@
       </Title>
       {#if (action?.label && action?.href)}
         <Link
-          href={action?.href}
+          href={urlOf(action?.href)}
           variant="default"
           class={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
           data-testid="section-action"

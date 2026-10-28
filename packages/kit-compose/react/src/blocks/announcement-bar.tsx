@@ -6,7 +6,7 @@
 import { type ReactNode } from "react";
 import { Block, Button, Container, Group, Inline, LinkPlain, Text } from "../compose";
 import { LucideIcon } from "../icons/LucideIcon";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 export type AnnouncementBarProps = {
   label: string;
@@ -84,7 +84,7 @@ export function AnnouncementBar({
           </Text>
           {cta ? (
             <LinkPlain
-              href={ctaHref}
+              href={urlOf(ctaHref)}
               className="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4"
               data-testid="announcement-cta"
             >

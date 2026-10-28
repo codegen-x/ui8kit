@@ -22,7 +22,7 @@
   import LucideIcon from "../icons/LucideIcon.svelte";
   import Text from "../compose/Text.svelte";
   import { defaults } from "../presets/defaults";
-  import { cn } from "../utils";
+  import { cn, urlOf } from "../utils";
 
   let { label, attachLabel, modelLabel, send, href }: PromptComposerProps = $props();
 </script>
@@ -96,7 +96,7 @@
       {/if}
     </Group>
     <Button
-      href={href}
+      href={urlOf(href)}
       variant="secondary"
       size="sm"
       layout="icon"

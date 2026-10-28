@@ -21,7 +21,7 @@
   import Text from "../compose/Text.svelte";
   import Title from "../compose/Title.svelte";
   import { defaults } from "../presets/defaults";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, urlOf } from "../utils";
 
   let { id, title, text, cta, href, tone = "muted", landmarkLabel }: CtaBannerProps = $props();
 </script>
@@ -51,7 +51,7 @@
     <Text size="xs" weight="semibold" class={cn("leading-5 text-muted-foreground", defaults.cta.text)}>
       {text}
     </Text>
-    <Button variant="default" size="lg" href={href} class={defaults.cta.button} data-testid="action-primary">
+    <Button variant="default" size="lg" href={urlOf(href)} class={defaults.cta.button} data-testid="action-primary">
       {cta}
     </Button>
   </Box>

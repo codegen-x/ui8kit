@@ -26,7 +26,7 @@
     {%- set c_3 -%}
       {{ og_text(og_get(v_action, ['label'])) }}
     {%- endset -%}
-    {{ og_include('compose/link.html.j2', {'p': {'Href': og_s(og_get(v_action, ['href'])), 'Variant': 'default', 'Class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'Attrs': og_attrs(['data-testid', 'section-action'])}, 'children': c_3}) }}
+    {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_action, ['href']))), 'Variant': 'default', 'Class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'Attrs': og_attrs(['data-testid', 'section-action'])}, 'children': c_3}) }}
   {%- endset -%}
   {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Class': 'w-full flex-wrap'}, 'children': c_4}) }}
 {%- endif %}
@@ -41,7 +41,7 @@
     {%- set c_6 -%}
       {{ og_text(og_get(v_action, ['label'])) }}
     {%- endset -%}
-    {{ og_include('compose/link.html.j2', {'p': {'Href': og_s(og_get(v_action, ['href'])), 'Variant': 'default', 'Class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'Attrs': og_attrs(['data-testid', 'section-action'])}, 'children': c_6}) }}
+    {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_action, ['href']))), 'Variant': 'default', 'Class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'Attrs': og_attrs(['data-testid', 'section-action'])}, 'children': c_6}) }}
   {%- endset -%}
   {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'end', 'Class': 'w-full'}, 'children': c_7}) }}
 {%- endif %}

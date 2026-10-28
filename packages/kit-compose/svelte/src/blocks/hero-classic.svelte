@@ -40,7 +40,7 @@
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import TopicChips from "../components/topic-chips.svelte";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, urlOf } from "../utils";
 
   let {
     id,
@@ -99,7 +99,7 @@
             id={tpl("{0}-email", id)}
             data-testid="field"
           />
-          <Button variant="default" size="default" href={actions?.href} data-testid="submit">
+          <Button variant="default" size="default" href={urlOf(actions?.href)} data-testid="submit">
             {actions?.cta}
           </Button>
         </Group>

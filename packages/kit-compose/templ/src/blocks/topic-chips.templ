@@ -24,14 +24,14 @@ templ TopicChips(p TopicChipsProps) {
 	@compose.Group(compose.GroupProps{Gap: "2", Align: "center", Justify: "center", BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-testid", "hero-topics")}}) {
 		for _, vTopic := range uiutils.L(vTopics) {
 			if uiutils.Eq(vTone, "inverse") {
-				@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.S(uiutils.Get(vTopic, "href")), Class: "gap-2 text-background inset-ring-background/30 hover:bg-background/10", Attrs: uiutils.Attrs("data-testid", "hero-topic")}}) {
+				@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(uiutils.Get(vTopic, "href"), false), Class: "gap-2 text-background inset-ring-background/30 hover:bg-background/10", Attrs: uiutils.Attrs("data-testid", "hero-topic")}}) {
 					if uiutils.T(uiutils.Get(vTopic, "icon")) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vTopic, "icon")), Size: 16})
 					}
 					{ uiutils.Text(uiutils.Get(vTopic, "name")) }
 				}
 			} else {
-				@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.S(uiutils.Get(vTopic, "href")), Attrs: uiutils.Attrs("data-testid", "hero-topic")}}) {
+				@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(uiutils.Get(vTopic, "href"), false), Attrs: uiutils.Attrs("data-testid", "hero-topic")}}) {
 					{ uiutils.Text(uiutils.Get(vTopic, "name")) }
 				}
 			}

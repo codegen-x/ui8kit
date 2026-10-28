@@ -7,7 +7,7 @@ import { type JSX } from "solid-js";
 import { Block, Button, Container, Stack, Text, Title } from "../compose";
 import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 export type EmptyPanelProps = {
   id: string;
@@ -52,7 +52,7 @@ export function EmptyPanel({
               {text}
             </Text>
             {((actions as string) === "button") ? (
-              <Button variant="default" size="sm" href={ctaHref} data-testid="empty-action">
+              <Button variant="default" size="sm" href={urlOf(ctaHref)} data-testid="empty-action">
                 {cta}
               </Button>
             ) : null}
@@ -70,7 +70,7 @@ export function EmptyPanel({
             action={(
               <>
                 {((actions as string) === "button") ? (
-                  <Button variant="default" size="sm" href={ctaHref} data-testid="empty-action">
+                  <Button variant="default" size="sm" href={urlOf(ctaHref)} data-testid="empty-action">
                     {cta}
                   </Button>
                 ) : null}

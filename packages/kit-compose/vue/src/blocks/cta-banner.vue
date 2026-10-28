@@ -19,7 +19,7 @@ import Button from "../compose/Button.vue";
 import Text from "../compose/Text.vue";
 import Title from "../compose/Title.vue";
 import { defaults } from "../presets/defaults";
-import { cn, tpl } from "../utils";
+import { cn, tpl, urlOf } from "../utils";
 
 const { id, title, text, cta, href, tone = "muted", landmarkLabel } = defineProps<CtaBannerProps>();
 </script>
@@ -50,7 +50,13 @@ const { id, title, text, cta, href, tone = "muted", landmarkLabel } = defineProp
       <Text size="xs" weight="semibold" :class="cn('leading-5 text-muted-foreground', defaults.cta.text)">
         {{ text }}
       </Text>
-      <Button variant="default" size="lg" :href="href" :class="defaults.cta.button" data-testid="action-primary">
+      <Button
+        variant="default"
+        size="lg"
+        :href="urlOf(href)"
+        :class="defaults.cta.button"
+        data-testid="action-primary"
+      >
         {{ cta }}
       </Button>
     </Box>

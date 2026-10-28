@@ -19,6 +19,7 @@ import IconBadge from "../compose/IconBadge.vue";
 import Link from "../compose/Link.vue";
 import LucideIcon from "../icons/LucideIcon.vue";
 import Text from "../compose/Text.vue";
+import { urlOf } from "../utils";
 
 const { label, value, icon, href, hint } = defineProps<StatTileProps>();
 </script>
@@ -26,7 +27,7 @@ const { label, value, icon, href, hint } = defineProps<StatTileProps>();
 <template>
   <Box class="min-w-0">
     <Link v-if="href"
-      :href="href"
+      :href="urlOf(href)"
       variant="block"
       :class="'flex min-w-0 flex-col gap-4 rounded bg-card p-6 text-foreground no-underline inset-ring inset-ring-border ' +
         'hover:bg-muted'"

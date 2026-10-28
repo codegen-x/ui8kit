@@ -7,7 +7,7 @@ import { type JSX } from "solid-js";
 import { Badge, Button, Group, Stack, Text, Title } from "../compose";
 import { LucideIcon } from "../icons/LucideIcon";
 import { MediaFrame } from "../components/media-frame";
-import { tpl } from "../utils";
+import { tpl, urlOf } from "../utils";
 import type { Post, PostLabels } from "../blocks/post-card.types";
 
 export type PostFeatureProps = {
@@ -38,7 +38,7 @@ export function PostFeature({ p, labels }: PostFeatureProps) {
           </Text>
         </Stack>
       </Group>
-      <Button variant="default" size="default" href={p.href} class="w-full gap-2" data-testid="action-primary">
+      <Button variant="default" size="default" href={urlOf(p.href)} class="w-full gap-2" data-testid="action-primary">
         {labels.read}
         <LucideIcon name="arrow-right" size={16} />
       </Button>

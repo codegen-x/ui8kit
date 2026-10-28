@@ -7,7 +7,7 @@
 import { type ChangeEvent, type ReactNode } from "react";
 import { Button, Group, Range, Stack, Text } from "../compose";
 import { SectionFrame } from "../components/section-frame";
-import { cn, fmtMoney, tpl } from "../utils";
+import { cn, fmtMoney, tpl, urlOf } from "../utils";
 import type { UsageSlider, UsagePrice } from "./usage-calculator.types";
 
 export type UsageCalculatorProps = {
@@ -87,7 +87,7 @@ export function UsageCalculator({
               {fmtMoney((usage * price.rate), price.currency)}
             </Text>
           </Stack>
-          <Button variant="default" size="default" href={href} data-testid="submit">
+          <Button variant="default" size="default" href={urlOf(href)} data-testid="submit">
             {cta}
           </Button>
         </Group>

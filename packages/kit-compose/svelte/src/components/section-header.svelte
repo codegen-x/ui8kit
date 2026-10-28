@@ -24,7 +24,7 @@
   import Text from "../compose/Text.svelte";
   import Title from "../compose/Title.svelte";
   import { defaults } from "../presets/defaults";
-  import { cn } from "../utils";
+  import { cn, urlOf } from "../utils";
 
   let { titleId, title = "", heading, action, lead, center = false }: SectionHeaderProps = $props();
   const level = $derived(heading?.level ?? 2);
@@ -53,7 +53,7 @@
       {title}
     </Title>
     <Link
-      href={action?.href}
+      href={urlOf(action?.href)}
       variant="default"
       class={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
       data-testid="section-action"
@@ -80,7 +80,7 @@
 {#if (((title as string) === "") && hasAction)}
   <Group gap="4" align="center" justify="end" class="w-full">
     <Link
-      href={action?.href}
+      href={urlOf(action?.href)}
       variant="default"
       class={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
       data-testid="section-action"

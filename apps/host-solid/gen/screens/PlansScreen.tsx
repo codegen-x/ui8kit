@@ -26,6 +26,7 @@ import {
   at,
   fmtMoney,
   tpl,
+  urlOf,
   type Plan,
 } from "@codegen-x/solid-compose";
 import { collectionView, fromCodex, matchRoute, screenActions, type UrlPort } from "@ui8kit/app-shared/runtime/core";
@@ -203,7 +204,7 @@ export function PlansScreen({ url }: { url: UrlPort }) {
                   <For each={view.rows ?? []}>{(row) => (
                     <TableRow data-testid="plan-row">
                       <TableCell>
-                        <Link href={(("#/plans/" + row.id) + view.qs)} variant="default" data-testid="open-record">
+                        <Link href={urlOf((("#/plans/" + row.id) + view.qs))} variant="default" data-testid="open-record">
                           {row.name}
                         </Link>
                       </TableCell>

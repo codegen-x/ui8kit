@@ -31,7 +31,7 @@ templ PageCrumbs(p PageCrumbsProps) {
 				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-2"}}) {
 					if uiutils.Lt(float64(vI), vLast) {
 						if uiutils.T(uiutils.Get(vC, "href")) {
-							@compose.Link(compose.LinkProps{Variant: "muted", Size: "sm", LinkProps: link.LinkProps{Href: uiutils.S(uiutils.Get(vC, "href")), Attrs: uiutils.Attrs("data-testid", "crumb")}}) {
+							@compose.Link(compose.LinkProps{Variant: "muted", Size: "sm", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vC, "href"), false), Attrs: uiutils.Attrs("data-testid", "crumb")}}) {
 								{ uiutils.Text(uiutils.Get(vC, "name")) }
 							}
 						} else {

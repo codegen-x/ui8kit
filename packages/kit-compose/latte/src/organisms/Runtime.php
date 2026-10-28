@@ -294,6 +294,13 @@ final class Runtime
         return $s;
     }
 
+    /** a value of an inline style declaration (the css op): kept when plain (numbers, words, %, #, +, -, ., commas, spaces), else '' */
+    public static function cssValue(mixed $v): string
+    {
+        $s = self::safeStr($v);
+        return preg_match('/^[-+.%#a-zA-Z0-9 ,]*$/', $s) === 1 ? $s : '';
+    }
+
     /** an attribute name that may be printed: a valid name, not an event handler (on*) */
     public static function isSafeAttrName(string $name): bool
     {
@@ -729,7 +736,7 @@ final class Runtime
     {
         $parts = [];
         for ($i = 0; $i + 2 < count($triples); $i += 3) {
-            $parts[] = self::s($triples[$i]) . ':' . self::s($triples[$i + 1]) . self::s($triples[$i + 2]);
+            $parts[] = self::s($triples[$i]) . ':' . self::cssValue($triples[$i + 1]) . self::s($triples[$i + 2]);
         }
         return implode(';', $parts);
     }

@@ -92,7 +92,7 @@ templ PostCard(p PostCardProps) {
 					}
 				}
 				if uiutils.T(uiutils.And(!uiutils.Eq(vMeta, "news"), uiutils.Get(vPost, "href"))) {
-					@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.S(uiutils.Get(vPost, "href")), Attrs: uiutils.Attrs("data-testid", "read")}}) {
+					@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vPost, "href"), false), Attrs: uiutils.Attrs("data-testid", "read")}}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "read")) }
 					}
 				}

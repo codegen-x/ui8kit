@@ -6,7 +6,7 @@
 import { type ReactNode } from "react";
 import { Badge, Group, Link, Text, Title } from "../compose";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 import type { SectionHeading, HeadLink } from "./section-frame.types";
 
 export type SectionHeaderProps = {
@@ -52,7 +52,7 @@ export function SectionHeader({
             {title}
           </Title>
           <Link
-            href={action?.href}
+            href={urlOf(action?.href)}
             variant="default"
             className={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
             data-testid="section-action"
@@ -79,7 +79,7 @@ export function SectionHeader({
       {(((title as string) === "") && hasAction) ? (
         <Group gap="4" align="center" justify="end" className="w-full">
           <Link
-            href={action?.href}
+            href={urlOf(action?.href)}
             variant="default"
             className={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
             data-testid="section-action"

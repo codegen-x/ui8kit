@@ -39,7 +39,7 @@ templ CtaBanner(p CtaBannerProps) {
 			@compose.Text(compose.TextProps{Size: "xs", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("leading-5 text-muted-foreground", uiutils.Get(presetDefaults, "cta", "text")))}}) {
 				{ uiutils.Text(vText) }
 			}
-			@compose.Button(compose.ButtonProps{Variant: "default", Size: "lg", ButtonProps: button.ButtonProps{Href: uiutils.S(vHref), Class: uiutils.S(uiutils.Get(presetDefaults, "cta", "button")), Attrs: uiutils.Attrs("data-testid", "action-primary")}}) {
+			@compose.Button(compose.ButtonProps{Variant: "default", Size: "lg", ButtonProps: button.ButtonProps{Href: uiutils.URL(vHref, false), Class: uiutils.S(uiutils.Get(presetDefaults, "cta", "button")), Attrs: uiutils.Attrs("data-testid", "action-primary")}}) {
 				{ uiutils.Text(vCta) }
 			}
 		}

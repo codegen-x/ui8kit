@@ -22,7 +22,7 @@
   import Text from "../compose/Text.svelte";
   import Title from "../compose/Title.svelte";
   import MediaFrame from "../components/media-frame.svelte";
-  import { tpl } from "../utils";
+  import { tpl, urlOf } from "../utils";
 
   let { p, labels }: PostFeatureProps = $props();
 </script>
@@ -48,7 +48,7 @@
       </Text>
     </Stack>
   </Group>
-  <Button variant="default" size="default" href={p.href} class="w-full gap-2" data-testid="action-primary">
+  <Button variant="default" size="default" href={urlOf(p.href)} class="w-full gap-2" data-testid="action-primary">
     {labels.read}
     <LucideIcon name="arrow-right" size={16} />
   </Button>

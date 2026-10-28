@@ -19,7 +19,7 @@ export type BarChartProps = {
 import { computed } from "vue";
 import Box from "../compose/Box.vue";
 import Text from "../compose/Text.vue";
-import { cn } from "../utils";
+import { cn, cssValue } from "../utils";
 
 const { bars, label, max, height = 160, class: className } = defineProps<BarChartProps>();
 const top = computed(() => Math.max(1, (max ?? bars.reduce((m, i) => Math.max(m, i.value), 0))));
@@ -27,11 +27,16 @@ const top = computed(() => Math.max(1, (max ?? bars.reduce((m, i) => Math.max(m,
 
 <template>
   <Box :class="cn('min-w-0', className)" data-slot="bar-chart">
-    <Box class="flex min-w-0 items-end gap-2" role="img" :aria-label="label" :style="`height:${height}px`">
+    <Box
+      class="flex min-w-0 items-end gap-2"
+      role="img"
+      :aria-label="label"
+      :style="`height:${cssValue(height)}px`"
+    >
       <Box v-for="b in bars" :key="b.id" class="flex h-full min-w-0 flex-1 items-end" :title="(b.title ?? b.label)">
         <Box
           :class="cn('w-full rounded', (b.muted ? 'bg-muted-foreground' : 'bg-primary'))"
-          :style="`height:${Math.max(2, Math.round(((b.value / top) * 100)))}%`"
+          :style="`height:${cssValue(Math.max(2, Math.round(((b.value / top) * 100))))}%`"
           :data-bar="b.id"
         />
       </Box>

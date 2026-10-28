@@ -21,6 +21,7 @@
   import Link from "../compose/Link.svelte";
   import LucideIcon from "../icons/LucideIcon.svelte";
   import Text from "../compose/Text.svelte";
+  import { urlOf } from "../utils";
 
   let { label, value, icon, href, hint }: StatTileProps = $props();
 </script>
@@ -28,7 +29,7 @@
 <Box class="min-w-0">
   {#if href}
     <Link
-      href={href}
+      href={urlOf(href)}
       variant="block"
       class={"flex min-w-0 flex-col gap-4 rounded bg-card p-6 text-foreground no-underline inset-ring inset-ring-border " +
         "hover:bg-muted"}

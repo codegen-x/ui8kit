@@ -6,6 +6,7 @@
 import { type ReactNode } from "react";
 import { Link } from "../compose";
 import { LucideIcon } from "../icons/LucideIcon";
+import { urlOf } from "../utils";
 
 export type FooterSitemapProps = {
   href?: string;
@@ -16,7 +17,7 @@ export function FooterSitemap({ href, label }: FooterSitemapProps) {
   return (
     <>
       {href ? (
-        <Link href={href} size="sm" data-testid="footer-sitemap">
+        <Link href={urlOf(href)} size="sm" data-testid="footer-sitemap">
           <LucideIcon name="arrow-right" size={16} />
           {label}
         </Link>

@@ -33,7 +33,7 @@ import FeatureCards from "../components/feature-cards.vue";
 import FeatureRows from "../components/feature-rows.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 const {
   id,
@@ -65,7 +65,7 @@ const {
         {{ title }}
       </Title>
       <Link v-if="(action?.label && action?.href)"
-        :href="action?.href"
+        :href="urlOf(action?.href)"
         variant="default"
         :class="cn(defaults.text.tiny, 'shrink-0 font-medium leading-5')"
         data-testid="section-action"

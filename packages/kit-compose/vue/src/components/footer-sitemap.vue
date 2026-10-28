@@ -13,12 +13,13 @@ export type FooterSitemapProps = {
 <script setup lang="ts">
 import Link from "../compose/Link.vue";
 import LucideIcon from "../icons/LucideIcon.vue";
+import { urlOf } from "../utils";
 
 const { href, label } = defineProps<FooterSitemapProps>();
 </script>
 
 <template>
-  <Link v-if="href" :href="href" size="sm" data-testid="footer-sitemap">
+  <Link v-if="href" :href="urlOf(href)" size="sm" data-testid="footer-sitemap">
     <LucideIcon name="arrow-right" :size="16" />
     {{ label }}
   </Link>

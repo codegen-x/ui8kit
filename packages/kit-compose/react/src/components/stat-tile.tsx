@@ -6,6 +6,7 @@
 import { type ReactNode } from "react";
 import { Box, IconBadge, Link, Text } from "../compose";
 import { LucideIcon } from "../icons/LucideIcon";
+import { urlOf } from "../utils";
 
 export type StatTileProps = {
   label: string;
@@ -20,7 +21,7 @@ export function StatTile({ label, value, icon, href, hint }: StatTileProps) {
     <Box className="min-w-0">
       {href ? (
         <Link
-          href={href}
+          href={urlOf(href)}
           variant="block"
           className={"flex min-w-0 flex-col gap-4 rounded bg-card p-6 text-foreground no-underline inset-ring inset-ring-border " +
             "hover:bg-muted"}

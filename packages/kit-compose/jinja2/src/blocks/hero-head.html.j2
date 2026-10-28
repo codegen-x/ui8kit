@@ -32,7 +32,7 @@
             {%- set c_3 -%}
               {{ og_text(og_get(v_l, ['name'])) }}
             {%- endset -%}
-            {{ og_include('compose/link.html.j2', {'p': {'Href': og_s(og_get(v_l, ['href'])), 'Variant': 'default', 'AriaCurrent': og_s(('page' if og_t(og_eq(og_get(v_l, ['id']), v_current)) else none)), 'Class': 'text-xs font-medium leading-5 text-background', 'Attrs': og_attrs(['data-testid', 'nav-link'])}, 'children': c_3}) }}
+            {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_l, ['href']))), 'Variant': 'default', 'AriaCurrent': og_s(('page' if og_t(og_eq(og_get(v_l, ['id']), v_current)) else none)), 'Class': 'text-xs font-medium leading-5 text-background', 'Attrs': og_attrs(['data-testid', 'nav-link'])}, 'children': c_3}) }}
           {%- else %}
             {%- set c_4 -%}
               {{ og_text(og_get(v_l, ['name'])) }}
@@ -50,13 +50,13 @@
       {%- set c_7 -%}
         {{ og_text(v_login) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Href': og_s(v_loginHref), 'Variant': 'ghost', 'Size': 'sm', 'Class': 'text-background hover:bg-background/10', 'Attrs': og_attrs(['data-testid', 'nav-login'])}, 'children': c_7}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Href': og_url(og_s(v_loginHref)), 'Variant': 'ghost', 'Size': 'sm', 'Class': 'text-background hover:bg-background/10', 'Attrs': og_attrs(['data-testid', 'nav-login'])}, 'children': c_7}) }}
     {%- endif %}
     {%- if og_t(v_cta) %}
       {%- set c_8 -%}
         {{ og_text(v_cta) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Href': og_s(v_href), 'Variant': 'secondary', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'header-cta'])}, 'children': c_8}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Href': og_url(og_s(v_href)), 'Variant': 'secondary', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'header-cta'])}, 'children': c_8}) }}
     {%- endif %}
   {%- endset -%}
   {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center'}, 'children': c_9}) }}

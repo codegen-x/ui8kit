@@ -6,6 +6,6 @@
 {%- set v_alt = og_def(p['alt'], '') -%}
 {%- set v_size = og_def(p['size'], 'default') -%}
 {%- set c_1 -%}
-  {{ og_include('compose/image.html.j2', {'p': {'Src': og_s(v_src), 'Alt': og_s(v_alt), 'Class': 'size-full object-cover', 'Fit': 'cover', 'Size': 'auto', 'Loading': 'eager', 'Decoding': 'auto', 'Attrs': og_attrs(['draggable', 'false'])}}) }}
+  {{ og_include('compose/image.html.j2', {'p': {'Src': og_url(og_s(v_src), true), 'Alt': og_s(v_alt), 'Class': 'size-full object-cover', 'Fit': 'cover', 'Size': 'auto', 'Loading': 'eager', 'Decoding': 'auto', 'Attrs': og_attrs(['draggable', 'false'])}}) }}
 {%- endset -%}
 {{ og_include('compose/inline.html.j2', {'p': {'Class': og_s(og_cnv([og_recipe('blocks/recipes/avatar.variants.json', {'size': v_size}), og_def(p['className'], '')])), 'Attrs': og_attrs(['data-slot', 'avatar'])}, 'children': c_1}) }}

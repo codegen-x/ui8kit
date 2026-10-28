@@ -58,7 +58,7 @@ templ SiteHeader(p SiteHeaderProps) {
 					{ uiutils.Text(uiutils.Get(vLabels, "theme")) }
 				}
 				if uiutils.T(uiutils.And(uiutils.Eq(vActions, "cta"), vCta)) {
-					@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.S(vCtaHref), Attrs: uiutils.Attrs("data-testid", "header-cta")}}) {
+					@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vCtaHref, false), Attrs: uiutils.Attrs("data-testid", "header-cta")}}) {
 						{ uiutils.Text(vCta) }
 					}
 				}

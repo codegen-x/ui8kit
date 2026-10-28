@@ -102,7 +102,7 @@ templ TemplateGrid(p TemplateGridProps) {
 					}
 				}
 			}
-			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.S(vBrowseHref), Class: "w-full", Attrs: uiutils.Attrs("data-testid", "template-browse")}}) {
+			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vBrowseHref, false), Class: "w-full", Attrs: uiutils.Attrs("data-testid", "template-browse")}}) {
 				{ uiutils.Text(uiutils.Get(vLabels, "browse")) }
 			}
 		}

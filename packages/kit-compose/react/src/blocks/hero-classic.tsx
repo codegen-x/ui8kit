@@ -11,7 +11,7 @@ import { CodeWindow } from "../components/code-window";
 import { MediaFrame } from "../components/media-frame";
 import { SectionFrame } from "../components/section-frame";
 import { TopicChips } from "../components/topic-chips";
-import { cn, tpl } from "../utils";
+import { cn, tpl, urlOf } from "../utils";
 import type { HeroMedia } from "./hero-classic.types";
 import type { ActionSet } from "../components/cta-actions.types";
 import type { CodeLine } from "../components/code-window.types";
@@ -113,7 +113,7 @@ export function HeroClassic({
                   id={tpl("{0}-email", id)}
                   data-testid="field"
                 />
-                <Button variant="default" size="default" href={actions?.href} data-testid="submit">
+                <Button variant="default" size="default" href={urlOf(actions?.href)} data-testid="submit">
                   {actions?.cta}
                 </Button>
               </Group>

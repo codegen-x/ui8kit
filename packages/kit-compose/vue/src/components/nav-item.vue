@@ -60,7 +60,7 @@ import Box from "../compose/Box.vue";
 import ButtonPlain from "../compose/ButtonPlain.vue";
 import LinkPlain from "../compose/LinkPlain.vue";
 import NavItemRow from "../components/nav-item-row.vue";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 const {
   selected = false,
@@ -93,7 +93,7 @@ const inner = computed(() =>
 
 <template>
   <LinkPlain v-if="href"
-    :href="href"
+    :href="urlOf(href)"
     :class="outer"
     :aria-current="(selected ? 'page' : undefined)"
     data-slot="nav-item"

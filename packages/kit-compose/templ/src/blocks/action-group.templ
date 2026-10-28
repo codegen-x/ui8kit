@@ -27,11 +27,11 @@ templ ActionGroup(p ActionGroupProps) {
 	{{ vSecondaryHref := p.SecondaryHref }}
 	{{ vAlign := uiutils.Def(p.Align, "start") }}
 	@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "center", "start")), BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-slot", "action-group")}}) {
-		@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.S(vPrimaryHref), Attrs: uiutils.Attrs("data-testid", "action-primary")}}) {
+		@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.URL(vPrimaryHref, false), Attrs: uiutils.Attrs("data-testid", "action-primary")}}) {
 			{ uiutils.Text(vPrimary) }
 		}
 		if uiutils.T(vSecondary) {
-			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.S(vSecondaryHref), Attrs: uiutils.Attrs("data-testid", "action-secondary")}}) {
+			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.URL(vSecondaryHref, false), Attrs: uiutils.Attrs("data-testid", "action-secondary")}}) {
 				{ uiutils.Text(vSecondary) }
 			}
 		}

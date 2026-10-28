@@ -4,6 +4,7 @@ import type { Handler, OrganismSpec, PropType, Value, ViewNode } from "../../../
 import { handlerUsesEvent, printCall, printValue, typesPath, type PrintCtx } from "../../../screens/src/index";
 import type { BrickDef, PartDef } from "../../../spec/src/index";
 import { printClassString } from "./variant-table";
+import { checkUse, sinkOf } from "./sinks";
 
 export interface PartRef { brick: BrickDef; part: PartDef }
 
@@ -61,8 +62,15 @@ const pad = (lines: string[], n = 1): string[] => lines.map((l) => (l ? "  ".rep
 export const typeName = (t: PropType): string => (typeof t === "string" ? t : "record" in t ? t.record : t.ts);
 
 const safeAttr = /^[^"{}<>&\\\n]*$/;
-function attrText(name: string, v: Value, env: WalkEnv): string {
+/** a prop or attribute of a primitive: a URL sink (sinks.ts) through urlOf / srcsetOf (a literal one is checked by checkUse) */
+function attrText(name: string, v: Value, env: WalkEnv, key?: string): string {
+  const sink = key === undefined ? undefined : sinkOf(key);
   if (typeof v === "string") return safeAttr.test(v) ? `${name}="${v}"` : `${name}={${JSON.stringify(v)}}`;
+  if (sink && v !== null && typeof v === "object") {
+    const fn = sink.kind === "srcset" ? "srcsetOf" : "urlOf";
+    env.print.helpers.add(fn);
+    return `${name}={${fn}(${printValue(v, env.print)}${sink.kind === "url" && sink.image ? ", true" : ""})}`;
+  }
   return `${name}={${printValue(v, env.print)}}`;
 }
 
@@ -219,8 +227,9 @@ function walkNode(n: ViewNode, env: WalkEnv): string[] {
     const ref = env.parts[n.use]!;
     env.usedParts.add(n.use);
     const attrs: string[] = [];
-    for (const [k, v] of Object.entries(n.props ?? {})) if (!(k === "Class" && v === "")) attrs.push(attrText(s.propName(ref, k), v, env));
-    for (const [k, v] of Object.entries(n.attrs ?? {})) attrs.push(attrText(s.attrName(k), v, env));
+    for (const [k, v] of Object.entries(n.props ?? {})) if (!(k === "Class" && v === "")) attrs.push(attrText(s.propName(ref, k), v, env, k));
+    checkUse(n.use, n);
+    for (const [k, v] of Object.entries(n.attrs ?? {})) attrs.push(attrText(s.attrName(k), v, env, k));
     for (const [ev, h] of Object.entries(n.on ?? {})) attrs.push(handlerText(ev, h, env));
     // trusted markup is the one child of a primitive: printed by the runtime's own raw form, through htmlOf (a value that is not
     // TrustedHtml at run time is escaped)

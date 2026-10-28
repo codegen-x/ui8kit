@@ -9,7 +9,7 @@ import { Block, Box, CardContent, Group, Link, Text, Title } from "../compose";
 import { LucideIcon } from "../icons/LucideIcon";
 import { MediaFrame } from "../components/media-frame";
 import { defaults } from "../presets/defaults";
-import { cn, tpl } from "../utils";
+import { cn, tpl, urlOf } from "../utils";
 import type { Post, PostLabels } from "./post-card.types";
 
 export type PostCardProps = {
@@ -127,7 +127,7 @@ export function PostCard({
               </Group>
             ) : null}
             {(((meta as string) !== "news") && post.href) ? (
-              <Link href={post.href} variant="default" data-testid="read">
+              <Link href={urlOf(post.href)} variant="default" data-testid="read">
                 {labels.read}
               </Link>
             ) : null}

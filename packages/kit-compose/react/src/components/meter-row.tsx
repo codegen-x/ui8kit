@@ -5,7 +5,7 @@
  */
 import { type ReactNode } from "react";
 import { Box, Link, Progress, Text } from "../compose";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 export type MeterRowProps = {
   label: string;
@@ -21,7 +21,7 @@ export function MeterRow({ label, value, caption, hint, href, className }: Meter
     <Box className={cn("min-w-0", className)} data-slot="meter-row">
       {href ? (
         <Link
-          href={href}
+          href={urlOf(href)}
           variant="block"
           className="flex min-w-0 flex-col gap-2 rounded p-2 text-foreground no-underline hover:bg-muted"
         >

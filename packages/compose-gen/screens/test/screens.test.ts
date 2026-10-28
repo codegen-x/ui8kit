@@ -105,8 +105,8 @@ test("a recipe op names a declared recipe, a key of it and a value of the key", 
 test("css prints a string for Svelte and an object for React; the other new ops print", () => {
   const mk = (runtime: "svelte" | "react") => ({ emit: (e: string) => e, helpers: new Set<string>(), optional: new Set<string>(), runtime });
   const css = op("css", "height", ref("h"), "px", "max-width", 5, "%");
-  expect(printValue(css, mk("svelte"))).toBe("`height:${h}px;max-width:${5}%`");
-  expect(printValue(css, mk("react"))).toBe("{ height: `${h}px`, maxWidth: `${5}%` }");
+  expect(printValue(css, mk("svelte"))).toBe("`height:${cssValue(h)}px;max-width:${5}%`");
+  expect(printValue(css, mk("react"))).toBe("{ height: `${cssValue(h)}px`, maxWidth: `${5}%` }");
   const c = mk("svelte");
   expect(printValue(op("range", 3), c)).toBe("Array.from({ length: 3 }, (_, i) => i)");
   expect(printValue(op("str", ref("n")), c)).toBe("(n == null ? undefined : String(n))");

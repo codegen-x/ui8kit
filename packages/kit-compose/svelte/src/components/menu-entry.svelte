@@ -22,6 +22,7 @@
   import Box from "../compose/Box.svelte";
   import Inline from "../compose/Inline.svelte";
   import Link from "../compose/Link.svelte";
+  import { urlOf } from "../utils";
 
   let {
     href,
@@ -37,7 +38,7 @@
 
 {#if href}
   <Link
-    href={href}
+    href={urlOf(href)}
     variant={variant}
     size={size}
     aria-current={(current ? "page" : undefined)}

@@ -10,7 +10,7 @@ import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { SectionFrame } from "../components/section-frame";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 import type { Template, Filter, TemplateLabels } from "./template-grid.types";
 
 export type TemplateGridProps = {
@@ -116,7 +116,7 @@ export function TemplateGrid({
             )}</For>
           </Grid>
         )}
-        <Button variant="outline" size="sm" href={browseHref} class="w-full" data-testid="template-browse">
+        <Button variant="outline" size="sm" href={urlOf(browseHref)} class="w-full" data-testid="template-browse">
           {labels.browse}
         </Button>
       </Stack>

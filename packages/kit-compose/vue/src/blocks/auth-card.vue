@@ -35,7 +35,7 @@ import Stack from "../compose/Stack.vue";
 import Text from "../compose/Text.vue";
 import Title from "../compose/Title.vue";
 import AuthForm from "../components/auth-form.vue";
-import { cn, tpl } from "../utils";
+import { cn, tpl, urlOf } from "../utils";
 
 const {
   id,
@@ -120,7 +120,7 @@ const {
     <Text size="sm" class="text-center text-muted-foreground">
       {{ switchText }}
       {{ " " }}
-      <Link :href="switchHref" variant="default" data-testid="switch">
+      <Link :href="urlOf(switchHref)" variant="default" data-testid="switch">
         {{ switchLink }}
       </Link>
     </Text>

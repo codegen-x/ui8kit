@@ -16,7 +16,7 @@
         {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': og_s(og_get(v_c, ['icon'])), 'Size': 16}}) }}
         {{ og_text(og_get(v_c, ['title'])) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'default', 'Href': og_s(og_get(v_c, ['href'])), 'Class': 'w-full gap-2', 'Attrs': og_attrs(['data-testid', 'media-channel'])}, 'children': c_2}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'default', 'Href': og_url(og_s(og_get(v_c, ['href']))), 'Class': 'w-full gap-2', 'Attrs': og_attrs(['data-testid', 'media-channel'])}, 'children': c_2}) }}
     {%- endfor %}
   {%- endset -%}
   {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch'}, 'children': c_3}) }}

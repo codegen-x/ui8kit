@@ -46,7 +46,7 @@
     {%- set c_8 -%}
       {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'arrow-up', 'Size': 16}}) }}
     {%- endset -%}
-    {{ og_include('compose/button.html.j2', {'p': {'Href': og_s(v_href), 'Variant': 'secondary', 'Size': 'sm', 'Layout': 'icon', 'Attrs': og_attrs(['data-testid', 'submit', 'aria-label', og_coalesce([v_send, 'Send'])])}, 'children': c_8}) }}
+    {{ og_include('compose/button.html.j2', {'p': {'Href': og_url(og_s(v_href)), 'Variant': 'secondary', 'Size': 'sm', 'Layout': 'icon', 'Attrs': og_attrs(['data-testid', 'submit', 'aria-label', og_coalesce([v_send, 'Send'])])}, 'children': c_8}) }}
   {%- endset -%}
   {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Justify': 'between', 'Class': 'h-8 w-full', 'Attrs': og_attrs(['data-testid', 'composer-tools'])}, 'children': c_9}) }}
 {%- endset -%}

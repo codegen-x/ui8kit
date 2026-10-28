@@ -620,7 +620,7 @@ func MaxBy(items any, field string) any {
 func Css(triples ...any) string {
 	parts := []string{}
 	for i := 0; i+2 < len(triples); i += 3 {
-		parts = append(parts, S(triples[i])+":"+S(triples[i+1])+S(triples[i+2]))
+		parts = append(parts, S(triples[i])+":"+CSSValue(triples[i+1])+S(triples[i+2]))
 	}
 	return strings.Join(parts, ";")
 }

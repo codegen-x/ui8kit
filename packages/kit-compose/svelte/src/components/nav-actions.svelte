@@ -20,6 +20,7 @@
 
 <script lang="ts">
   import Button from "../compose/Button.svelte";
+  import { urlOf } from "../utils";
 
   let {
     login,
@@ -37,7 +38,7 @@
   <Button
     variant="ghost"
     size="sm"
-    href={loginHref}
+    href={urlOf(loginHref)}
     class={(((tone as string) === "inverse") ? "text-background hover:bg-background/10" : "")}
     data-testid="nav-login"
   >
@@ -48,7 +49,7 @@
   <Button
     variant={(((tone as string) === "inverse") ? "secondary" : "default")}
     size="sm"
-    href={ctaHref}
+    href={urlOf(ctaHref)}
     data-testid="header-cta"
   >
     {cta}

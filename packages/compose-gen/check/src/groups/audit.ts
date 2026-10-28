@@ -10,7 +10,7 @@ export const MAX_FILE_LINES = 350;
 export const MAX_LINE_CHARS = 600;
 /** files over the limits today, with their numbers: a ratchet (a file may not grow; lower the entry when it shrinks) */
 export const STRUCTURE_ALLOW: Record<string, { lines?: number; long?: number; why: string }> = {
-  "runtimes/templ/src/organism.ts": { lines: 368, why: "the templ organism emitter (Go types + templ body), moved from xgen unchanged; split pending" },
+  "runtimes/templ/src/organism.ts": { lines: 367, why: "the templ organism emitter (Go types + templ body), moved from xgen unchanged; split pending" },
   "runtimes/templ/src/templ.ts": { lines: 449, why: "the templ view printer, moved from xgen unchanged; split pending" },
 };
 /** consumers compose-gen may read as data (not code): the kit-compose description (map.ts + variants) the prop tables derive from */

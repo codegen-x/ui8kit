@@ -58,7 +58,7 @@ templ AnnouncementBar(p AnnouncementBarProps) {
 					{ uiutils.Text(vText) }
 				}
 				if uiutils.T(vCta) {
-					@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: uiutils.S(vCtaHref), Class: "inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4", Attrs: uiutils.Attrs("data-testid", "announcement-cta")}}) {
+					@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: uiutils.URL(vCtaHref, false), Class: "inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4", Attrs: uiutils.Attrs("data-testid", "announcement-cta")}}) {
 						{ uiutils.Text(vCta) }
 						@icons.LucideIcon(icons.LucideIconProps{Name: "arrow-right", Size: 16})
 					}

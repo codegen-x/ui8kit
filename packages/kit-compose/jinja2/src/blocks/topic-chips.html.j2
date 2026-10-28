@@ -13,12 +13,12 @@
         {%- endif %}
         {{ og_text(og_get(v_topic, ['name'])) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Href': og_s(og_get(v_topic, ['href'])), 'Variant': 'ghost', 'Size': 'sm', 'Class': 'gap-2 text-background inset-ring-background/30 hover:bg-background/10', 'Attrs': og_attrs(['data-testid', 'hero-topic'])}, 'children': c_1}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Href': og_url(og_s(og_get(v_topic, ['href']))), 'Variant': 'ghost', 'Size': 'sm', 'Class': 'gap-2 text-background inset-ring-background/30 hover:bg-background/10', 'Attrs': og_attrs(['data-testid', 'hero-topic'])}, 'children': c_1}) }}
     {%- else %}
       {%- set c_2 -%}
         {{ og_text(og_get(v_topic, ['name'])) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Href': og_s(og_get(v_topic, ['href'])), 'Variant': 'outline', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'hero-topic'])}, 'children': c_2}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Href': og_url(og_s(og_get(v_topic, ['href']))), 'Variant': 'outline', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'hero-topic'])}, 'children': c_2}) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}

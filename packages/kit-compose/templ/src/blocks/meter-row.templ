@@ -31,7 +31,7 @@ templ MeterRow(p MeterRowProps) {
 	{{ vHref := p.Href }}
 	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("min-w-0", p.Class)), Attrs: uiutils.Attrs("data-slot", "meter-row")}}) {
 		if uiutils.T(vHref) {
-			@compose.Link(compose.LinkProps{Variant: "block", LinkProps: link.LinkProps{Href: uiutils.S(vHref), Class: "flex min-w-0 flex-col gap-2 rounded p-2 text-foreground no-underline hover:bg-muted"}}) {
+			@compose.Link(compose.LinkProps{Variant: "block", LinkProps: link.LinkProps{Href: uiutils.URL(vHref, false), Class: "flex min-w-0 flex-col gap-2 rounded p-2 text-foreground no-underline hover:bg-muted"}}) {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex items-baseline justify-between gap-4"}}) {
 					@compose.Text(compose.TextProps{TextProps: text.TextProps{Class: "m-0 min-w-0 truncate text-sm font-bold text-foreground"}}) {
 						{ uiutils.Text(vLabel) }

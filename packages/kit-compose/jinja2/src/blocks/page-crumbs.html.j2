@@ -16,7 +16,7 @@
             {%- set c_1 -%}
               {{ og_text(og_get(v_c, ['name'])) }}
             {%- endset -%}
-            {{ og_include('compose/link.html.j2', {'p': {'Href': og_s(og_get(v_c, ['href'])), 'Variant': 'muted', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'crumb'])}, 'children': c_1}) }}
+            {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_c, ['href']))), 'Variant': 'muted', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'crumb'])}, 'children': c_1}) }}
           {%- else %}
             {%- set c_2 -%}
               {{ og_text(og_get(v_c, ['name'])) }}

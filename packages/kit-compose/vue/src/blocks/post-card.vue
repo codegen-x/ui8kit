@@ -28,7 +28,7 @@ import Text from "../compose/Text.vue";
 import Title from "../compose/Title.vue";
 import MediaFrame from "../components/media-frame.vue";
 import { defaults } from "../presets/defaults";
-import { cn, tpl } from "../utils";
+import { cn, tpl, urlOf } from "../utils";
 
 const {
   post,
@@ -129,7 +129,7 @@ const {
       </Group>
       <Link
         v-if="(((meta as string) !== 'news') && post.href)"
-        :href="post.href"
+        :href="urlOf(post.href)"
         variant="default"
         data-testid="read"
       >

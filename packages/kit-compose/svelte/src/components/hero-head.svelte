@@ -32,7 +32,7 @@
   import MenuEntry from "../components/menu-entry.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import { defaults } from "../presets/defaults";
-  import { cn, tpl, uniqLabel } from "../utils";
+  import { cn, tpl, uniqLabel, urlOf } from "../utils";
 
   let {
     brand,
@@ -81,7 +81,7 @@
         {#each links as l (l.id)}
           {#if l.href}
             <Link
-              href={l.href}
+              href={urlOf(l.href)}
               variant="default"
               aria-current={((l.id === current) ? "page" : undefined)}
               class="text-xs font-medium leading-5 text-background"
@@ -101,7 +101,7 @@
   <Group gap="2" align="center">
     {#if login}
       <Button
-        href={loginHref}
+        href={urlOf(loginHref)}
         variant="ghost"
         size="sm"
         class="text-background hover:bg-background/10"
@@ -111,7 +111,7 @@
       </Button>
     {/if}
     {#if cta}
-      <Button href={href} variant="secondary" size="sm" data-testid="header-cta">
+      <Button href={urlOf(href)} variant="secondary" size="sm" data-testid="header-cta">
         {cta}
       </Button>
     {/if}

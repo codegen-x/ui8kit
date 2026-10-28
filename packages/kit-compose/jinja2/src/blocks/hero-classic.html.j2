@@ -56,7 +56,7 @@
           {%- set c_2 -%}
             {{ og_text(og_get(v_actions, ['cta'])) }}
           {%- endset -%}
-          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': og_s(og_get(v_actions, ['href'])), 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_2}) }}
+          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': og_url(og_s(og_get(v_actions, ['href']))), 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_2}) }}
         {%- endset -%}
         {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'start', 'Class': 'w-full flex-wrap'}, 'children': c_3}) }}
       {%- endset -%}

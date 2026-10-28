@@ -2,7 +2,7 @@
 /** An image in a round frame (recipe: size xs to xl, 24 to 64 px). Avatars are always round. */
 import { type ReactNode } from "react";
 import { Image, Inline } from "../compose";
-import { cn, variants } from "../utils";
+import { cn, urlOf, variants } from "../utils";
 
 /** Avatar: the classes of each value (shadcn/cva style). */
 export const avatarVariants = variants({
@@ -30,7 +30,7 @@ export function Avatar({ src, alt = "", size = "default", className }: AvatarPro
   return (
     <Inline className={cn(avatarVariants({ size: size }), className)} data-slot="avatar">
       <Image
-        src={src}
+        src={urlOf(src, true)}
         alt={alt}
         className="size-full object-cover"
         fit="cover"

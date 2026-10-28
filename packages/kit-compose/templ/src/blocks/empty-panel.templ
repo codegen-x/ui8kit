@@ -50,7 +50,7 @@ templ EmptyPanel(p EmptyPanelProps) {
 						{ uiutils.Text(vText) }
 					}
 					if uiutils.Eq(vActions, "button") {
-						@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.S(vCtaHref), Attrs: uiutils.Attrs("data-testid", "empty-action")}}) {
+						@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vCtaHref, false), Attrs: uiutils.Attrs("data-testid", "empty-action")}}) {
 							{ uiutils.Text(vCta) }
 						}
 					}
@@ -64,7 +64,7 @@ templ EmptyPanel(p EmptyPanelProps) {
 
 templ emptyPanelFill1(p EmptyPanelProps, vCta any, vCtaHref any, vActions any) {
 	if uiutils.Eq(vActions, "button") {
-		@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.S(vCtaHref), Attrs: uiutils.Attrs("data-testid", "empty-action")}}) {
+		@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vCtaHref, false), Attrs: uiutils.Attrs("data-testid", "empty-action")}}) {
 			{ uiutils.Text(vCta) }
 		}
 	}

@@ -44,7 +44,7 @@
         {%- set c_8 -%}
           {{ og_text(v_cta) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Href': og_s(v_ctaHref), 'Attrs': og_attrs(['data-testid', 'header-cta'])}, 'children': c_8}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Href': og_url(og_s(v_ctaHref)), 'Attrs': og_attrs(['data-testid', 'header-cta'])}, 'children': c_8}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center'}, 'children': c_9}) }}

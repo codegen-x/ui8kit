@@ -12,6 +12,7 @@ import {
   Text,
   Title,
   tpl,
+  urlOf,
 } from "@codegen-x/solid-compose";
 import { ui } from "@ui8kit/app-shared/content";
 
@@ -208,7 +209,7 @@ export function PagesPage() {
             <For each={PAGES ?? []}>{(p) => (
               <ListItem class="flex flex-col gap-2 rounded p-4 inset-ring inset-ring-border">
                 <Link
-                  href={p.href}
+                  href={urlOf(p.href)}
                   variant="default"
                   class="font-bold"
                   data-testid="page-link"

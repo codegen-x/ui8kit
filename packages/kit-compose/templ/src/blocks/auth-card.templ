@@ -97,7 +97,7 @@ templ AuthCard(p AuthCardProps) {
 		@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-center text-muted-foreground"}}) {
 			{ uiutils.Text(vSwitchText) }
 			{ uiutils.Text(" ") }
-			@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.S(vSwitchHref), Attrs: uiutils.Attrs("data-testid", "switch")}}) {
+			@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(vSwitchHref, false), Attrs: uiutils.Attrs("data-testid", "switch")}}) {
 				{ uiutils.Text(vSwitchLink) }
 			}
 		}

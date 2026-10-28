@@ -21,7 +21,7 @@
   import Link from "../compose/Link.svelte";
   import Progress from "../compose/Progress.svelte";
   import Text from "../compose/Text.svelte";
-  import { cn } from "../utils";
+  import { cn, urlOf } from "../utils";
 
   let { label, value, caption, hint, href, class: className }: MeterRowProps = $props();
 </script>
@@ -29,7 +29,7 @@
 <Box class={cn("min-w-0", className)} data-slot="meter-row">
   {#if href}
     <Link
-      href={href}
+      href={urlOf(href)}
       variant="block"
       class="flex min-w-0 flex-col gap-2 rounded p-2 text-foreground no-underline hover:bg-muted"
     >

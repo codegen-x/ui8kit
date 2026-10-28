@@ -4,7 +4,7 @@
 import type { OrganismSpec, Value, ViewNode, SlotFill } from "../../../screens/src/index";
 import { fileName, isGroup, isOp, isRef } from "../../../screens/src/index";
 import type { PartDef } from "../../../spec/src/index";
-import { BANNER, pascalCase, type GeneratedFile, type PartRef } from "../../core/src/index";
+import { BANNER, pascalCase, usedPart, sinkCall, type GeneratedFile, type PartRef } from "../../core/src/index";
 import { goPackageOf } from "./templ";
 
 /** the templ component a part renders as when the organisms call compositions (kit-compose) instead of v2 bricks */
@@ -157,7 +157,7 @@ function brickField(part: PartDef, name: string, v: Value, c: Ctx): string {
   const g = printGo(v, c);
   if (d.goType === "uiutils.HeadingLevel") return `uiutils.HeadingLevel(uiutils.I(${g}))`;
   switch (d.type) {
-    case "string": return typeof v === "string" ? g : `uiutils.S(${g})`;
+    case "string": return typeof v === "string" ? g : sinkCall("go", name, v, g) ?? `uiutils.S(${g})`;
     case "bool": return typeof v === "boolean" ? g : `uiutils.T(${g})`;
     case "int": return typeof v === "number" ? String(Math.round(v)) : `uiutils.I(${g})`;
     case "items": c.imports.add(goPackageOf(c.deps.parts[part.name]!.brick)); return `uiutils.As[[]${goPackageOf(c.deps.parts[part.name]!.brick)}.${d.itemsOf}](${g})`;
@@ -200,7 +200,7 @@ function composeUse(n: Extract<ViewNode, { use: string }>, ref: PartRef, c: Ctx)
     if (!d) throw new Error(`${c.org.name}: ${n.use} has no prop ${k}`);
     if (d.attr) { attrs.push(`${lit(d.attr)}, ${printGo(v, c)}`); continue; }
     const type = n.use === "LucideIcon" && k === "Size" ? "int" : d.wire ?? d.type;
-    (t.embed && (d.cva || k === "As") ? outer : inner).push(`${k}: ${type === "*string" ? `uiutils.SP(${printGo(v, c)})` : goValue(type, v, c)}`);
+    (t.embed && (d.cva || k === "As") ? outer : inner).push(`${k}: ${type === "*string" ? `uiutils.SP(${printGo(v, c)})` : (type === "string" && sinkCall("go", k, v, printGo(v, c))) || goValue(type, v, c)}`);
   }
   for (const [k, v] of Object.entries(n.attrs ?? {})) attrs.push(`${lit(k)}, ${printGo(v, c)}`);
   if (attrs.length) inner.push(`Attrs: uiutils.Attrs(${attrs.join(", ")})`);
@@ -215,8 +215,7 @@ function composeUse(n: Extract<ViewNode, { use: string }>, ref: PartRef, c: Ctx)
 
 function node(n: ViewNode, c: Ctx): string[] {
   if ("use" in n) {
-    const ref = c.deps.parts[n.use];
-    if (!ref) throw new Error(`${c.org.name}: unknown part ${n.use}`);
+    const ref = usedPart(c.org.name, c.deps.parts, n); // attribute names and literal URLs checked (core/src/sinks.ts)
     if (c.deps.compose) return composeUse(n, ref, c);
     const pkg = goPackageOf(ref.brick);
     c.imports.add(pkg);

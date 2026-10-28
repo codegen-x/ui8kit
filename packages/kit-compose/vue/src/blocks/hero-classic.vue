@@ -40,7 +40,7 @@ import CodeWindow from "../components/code-window.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import TopicChips from "../components/topic-chips.vue";
-import { cn, tpl } from "../utils";
+import { cn, tpl, urlOf } from "../utils";
 
 const {
   id,
@@ -99,7 +99,7 @@ const mediaSide = computed(() => media?.side ?? "end");
             :id="tpl('{0}-email', id)"
             data-testid="field"
           />
-          <Button variant="default" size="default" :href="actions?.href" data-testid="submit">
+          <Button variant="default" size="default" :href="urlOf(actions?.href)" data-testid="submit">
             {{ actions?.cta }}
           </Button>
         </Group>

@@ -32,7 +32,7 @@
   import Stack from "../compose/Stack.svelte";
   import Text from "../compose/Text.svelte";
   import SectionFrame from "../components/section-frame.svelte";
-  import { cn, fmtMoney, tpl } from "../utils";
+  import { cn, fmtMoney, tpl, urlOf } from "../utils";
 
   let {
     id,
@@ -96,7 +96,7 @@
           {fmtMoney((usage * price.rate), price.currency)}
         </Text>
       </Stack>
-      <Button variant="default" size="default" href={href} data-testid="submit">
+      <Button variant="default" size="default" href={urlOf(href)} data-testid="submit">
         {cta}
       </Button>
     </Group>

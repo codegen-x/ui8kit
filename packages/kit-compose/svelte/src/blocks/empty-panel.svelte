@@ -30,7 +30,7 @@
   import Title from "../compose/Title.svelte";
   import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
-  import { cn } from "../utils";
+  import { cn, urlOf } from "../utils";
 
   let {
     id,
@@ -62,7 +62,7 @@
           {text}
         </Text>
         {#if ((actions as string) === "button")}
-          <Button variant="default" size="sm" href={ctaHref} data-testid="empty-action">
+          <Button variant="default" size="sm" href={urlOf(ctaHref)} data-testid="empty-action">
             {cta}
           </Button>
         {/if}
@@ -80,7 +80,7 @@
       >
         {#snippet action()}
           {#if ((actions as string) === "button")}
-            <Button variant="default" size="sm" href={ctaHref} data-testid="empty-action">
+            <Button variant="default" size="sm" href={urlOf(ctaHref)} data-testid="empty-action">
               {cta}
             </Button>
           {/if}

@@ -513,5 +513,59 @@
    "data:image/png;base64,AA",
    "data:image/png;base64,AA"
   ]
+ ],
+ "css": [
+  [
+   "12",
+   true
+  ],
+  [
+   "50%",
+   true
+  ],
+  [
+   "#fff",
+   true
+  ],
+  [
+   "1.5",
+   true
+  ],
+  [
+   "-0.25",
+   true
+  ],
+  [
+   "red, blue",
+   true
+  ],
+  [
+   "url(javascript:alert(1))",
+   false
+  ],
+  [
+   "1px;background:url(//evil)",
+   false
+  ],
+  [
+   "expression(alert(1))",
+   false
+  ],
+  [
+   "1}body{x:y",
+   false
+  ],
+  [
+   "\"",
+   false
+  ],
+  [
+   "\\31 ",
+   false
+  ],
+  [
+   "1&#59;x",
+   false
+  ]
  ]
 }

@@ -31,7 +31,7 @@ import LinkPlain from "../compose/LinkPlain.vue";
 import MenuEntry from "../components/menu-entry.vue";
 import NavBlock from "../components/nav-block.vue";
 import { defaults } from "../presets/defaults";
-import { cn, tpl, uniqLabel } from "../utils";
+import { cn, tpl, uniqLabel, urlOf } from "../utils";
 
 const {
   brand,
@@ -77,7 +77,7 @@ const {
       <Group gap="8" align="center" class="flex-wrap">
         <template v-for="l in links" :key="l.id">
           <Link v-if="l.href"
-            :href="l.href"
+            :href="urlOf(l.href)"
             variant="default"
             :aria-current="((l.id === current) ? 'page' : undefined)"
             class="text-xs font-medium leading-5 text-background"
@@ -93,7 +93,7 @@ const {
     </NavBlock>
     <Group gap="2" align="center">
       <Button v-if="login"
-        :href="loginHref"
+        :href="urlOf(loginHref)"
         variant="ghost"
         size="sm"
         class="text-background hover:bg-background/10"
@@ -101,7 +101,7 @@ const {
       >
         {{ login }}
       </Button>
-      <Button v-if="cta" :href="href" variant="secondary" size="sm" data-testid="header-cta">
+      <Button v-if="cta" :href="urlOf(href)" variant="secondary" size="sm" data-testid="header-cta">
         {{ cta }}
       </Button>
     </Group>

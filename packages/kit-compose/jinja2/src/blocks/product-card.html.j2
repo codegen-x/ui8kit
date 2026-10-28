@@ -34,7 +34,7 @@
         {%- set c_4 -%}
           {{ og_text(og_get(v_product, ['name'])) }}
         {%- endset -%}
-        {{ og_include('compose/link.html.j2', {'p': {'Href': og_s(og_get(v_product, ['href'])), 'Variant': 'default', 'Attrs': og_attrs(['data-testid', 'open'])}, 'children': c_4}) }}
+        {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_product, ['href']))), 'Variant': 'default', 'Attrs': og_attrs(['data-testid', 'open'])}, 'children': c_4}) }}
       {%- else %}
         {{ og_text(og_get(v_product, ['name'])) }}
       {%- endif %}

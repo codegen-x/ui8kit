@@ -5,6 +5,7 @@
  */
 import { type ReactNode } from "react";
 import { Button } from "../compose";
+import { urlOf } from "../utils";
 
 export type NavActionsProps = {
   login?: string;
@@ -33,7 +34,7 @@ export function NavActions({
         <Button
           variant="ghost"
           size="sm"
-          href={loginHref}
+          href={urlOf(loginHref)}
           className={(((tone as string) === "inverse") ? "text-background hover:bg-background/10" : "")}
           data-testid="nav-login"
         >
@@ -44,7 +45,7 @@ export function NavActions({
         <Button
           variant={(((tone as string) === "inverse") ? "secondary" : "default")}
           size="sm"
-          href={ctaHref}
+          href={urlOf(ctaHref)}
           data-testid="header-cta"
         >
           {cta}

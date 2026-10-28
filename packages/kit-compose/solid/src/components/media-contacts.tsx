@@ -3,6 +3,7 @@
 import { For, type JSX } from "solid-js";
 import { Button, Group, Stack, Text } from "../compose";
 import { LucideIcon } from "../icons/LucideIcon";
+import { urlOf } from "../utils";
 import type { MediaExtras, MediaListLabels } from "../blocks/media-list.types";
 
 export type MediaContactsProps = {
@@ -18,7 +19,7 @@ export function MediaContacts({ extras, labels }: MediaContactsProps) {
           {labels.list}
         </Text>
         <For each={extras.channels ?? []}>{(c, iOf) => { const i = iOf(); return (
-          <Button variant="outline" size="default" href={c.href} class="w-full gap-2" data-testid="media-channel">
+          <Button variant="outline" size="default" href={urlOf(c.href)} class="w-full gap-2" data-testid="media-channel">
             <LucideIcon name={c.icon} size={16} />
             {c.title}
           </Button>

@@ -19,19 +19,19 @@
 <script lang="ts">
   import Box from "../compose/Box.svelte";
   import Text from "../compose/Text.svelte";
-  import { cn } from "../utils";
+  import { cn, cssValue } from "../utils";
 
   let { bars, label, max, height = 160, class: className }: BarChartProps = $props();
   const top = $derived(Math.max(1, (max ?? bars.reduce((m, i) => Math.max(m, i.value), 0))));
 </script>
 
 <Box class={cn("min-w-0", className)} data-slot="bar-chart">
-  <Box class="flex min-w-0 items-end gap-2" role="img" aria-label={label} style={`height:${height}px`}>
+  <Box class="flex min-w-0 items-end gap-2" role="img" aria-label={label} style={`height:${cssValue(height)}px`}>
     {#each bars as b (b.id)}
       <Box class="flex h-full min-w-0 flex-1 items-end" title={(b.title ?? b.label)}>
         <Box
           class={cn("w-full rounded", (b.muted ? "bg-muted-foreground" : "bg-primary"))}
-          style={`height:${Math.max(2, Math.round(((b.value / top) * 100)))}%`}
+          style={`height:${cssValue(Math.max(2, Math.round(((b.value / top) * 100))))}%`}
           data-bar={b.id}
         />
       </Box>

@@ -36,7 +36,7 @@
   import Text from "../compose/Text.svelte";
   import Title from "../compose/Title.svelte";
   import AuthForm from "../components/auth-form.svelte";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, urlOf } from "../utils";
 
   let {
     id,
@@ -116,7 +116,7 @@
   <Text size="sm" class="text-center text-muted-foreground">
     {switchText}
     {" "}
-    <Link href={switchHref} variant="default" data-testid="switch">
+    <Link href={urlOf(switchHref)} variant="default" data-testid="switch">
       {switchLink}
     </Link>
   </Text>

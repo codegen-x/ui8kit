@@ -36,7 +36,7 @@ templ NavItem(p NavItemProps) {
 	{{ vOuter := any(uiutils.Cnv(recipeNavItem.Of(map[string]any{"level": vLevel, "state": vState}), "group in-data-[nav=collapsed]:justify-center", p.Class)) }}
 	{{ vInner := any(uiutils.Cnv(recipeNavItemContent.Of(map[string]any{"level": vLevel, "state": vState}), uiutils.And(!uiutils.T(vSelected), "group-hover:bg-muted"), "in-data-[nav=collapsed]:w-10 in-data-[nav=collapsed]:flex-none in-data-[nav=collapsed]:justify-center in-data-[nav=collapsed]:px-0", vContentClass)) }}
 	if uiutils.T(vHref) {
-		@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: uiutils.S(vHref), Class: uiutils.S(vOuter), AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(vSelected), "page", nil)), Attrs: uiutils.Attrs("data-slot", "nav-item", "data-state", vState)}}) {
+		@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: uiutils.URL(vHref, false), Class: uiutils.S(vOuter), AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(vSelected), "page", nil)), Attrs: uiutils.Attrs("data-slot", "nav-item", "data-state", vState)}}) {
 			@NavItemRow(NavItemRowProps{Inner: vInner, ReserveRight: vReserveRight, Icon: p.Icon, Right: p.Right}) {
 				{ children... }
 			}

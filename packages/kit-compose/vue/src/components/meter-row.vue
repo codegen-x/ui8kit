@@ -19,7 +19,7 @@ import Box from "../compose/Box.vue";
 import Link from "../compose/Link.vue";
 import Progress from "../compose/Progress.vue";
 import Text from "../compose/Text.vue";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 const { label, value, caption, hint, href, class: className } = defineProps<MeterRowProps>();
 </script>
@@ -27,7 +27,7 @@ const { label, value, caption, hint, href, class: className } = defineProps<Mete
 <template>
   <Box :class="cn('min-w-0', className)" data-slot="meter-row">
     <Link v-if="href"
-      :href="href"
+      :href="urlOf(href)"
       variant="block"
       class="flex min-w-0 flex-col gap-2 rounded p-2 text-foreground no-underline hover:bg-muted"
     >

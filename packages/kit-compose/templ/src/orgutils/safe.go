@@ -38,6 +38,7 @@ var (
 	styleBadRe  = regexp.MustCompile(`expression\(|javascript:|vbscript:|-moz-binding|behavior:`)
 	styleURLRe  = regexp.MustCompile(`(?i)url\(([^)]*)\)?`)
 	quotedRe    = regexp.MustCompile(`(?s)^"(.*)"$|^'(.*)'$`)
+	cssValueRe  = regexp.MustCompile(`^[-+.%#a-zA-Z0-9 ,]*$`)
 	attrNameRe  = regexp.MustCompile(`^[a-zA-Z_:][-a-zA-Z0-9_:.]*$`)
 	trailComma  = regexp.MustCompile(`,+$`)
 )
@@ -186,6 +187,15 @@ func Style(v any) string {
 		}
 	}
 	return s
+}
+
+// CSSValue is a value of an inline style declaration (the css op): kept when plain (numbers, words, %, #, +, -, ., commas, spaces), else "".
+func CSSValue(v any) string {
+	s := safeStr(v)
+	if cssValueRe.MatchString(s) {
+		return s
+	}
+	return ""
 }
 
 // IsSafeAttrName is true for an attribute name that may be printed: a valid name, not an event handler (on*).

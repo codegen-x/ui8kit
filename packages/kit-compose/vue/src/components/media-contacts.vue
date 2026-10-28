@@ -15,6 +15,7 @@ import Group from "../compose/Group.vue";
 import LucideIcon from "../icons/LucideIcon.vue";
 import Stack from "../compose/Stack.vue";
 import Text from "../compose/Text.vue";
+import { urlOf } from "../utils";
 
 const { extras, labels } = defineProps<MediaContactsProps>();
 </script>
@@ -30,7 +31,7 @@ const { extras, labels } = defineProps<MediaContactsProps>();
         :key="c.id"
         variant="outline"
         size="default"
-        :href="c.href"
+        :href="urlOf(c.href)"
         class="w-full gap-2"
         data-testid="media-channel"
       >

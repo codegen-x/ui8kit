@@ -36,7 +36,7 @@ import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 const {
   id,
@@ -133,7 +133,7 @@ const {
           </Group>
         </Box>
       </Grid>
-      <Button variant="outline" size="sm" :href="browseHref" class="w-full" data-testid="template-browse">
+      <Button variant="outline" size="sm" :href="urlOf(browseHref)" class="w-full" data-testid="template-browse">
         {{ labels.browse }}
       </Button>
     </Stack>

@@ -17,6 +17,7 @@
   import Button from "../compose/Button.svelte";
   import Group from "../compose/Group.svelte";
   import LucideIcon from "../icons/LucideIcon.svelte";
+  import { urlOf } from "../utils";
 
   let { topics, tone = "default" }: TopicChipsProps = $props();
 </script>
@@ -25,7 +26,7 @@
   {#each topics as topic (topic.id)}
     {#if ((tone as string) === "inverse")}
       <Button
-        href={topic.href}
+        href={urlOf(topic.href)}
         variant="ghost"
         size="sm"
         class="gap-2 text-background inset-ring-background/30 hover:bg-background/10"
@@ -37,7 +38,7 @@
         {topic.name}
       </Button>
     {:else}
-      <Button href={topic.href} variant="outline" size="sm" data-testid="hero-topic">
+      <Button href={urlOf(topic.href)} variant="outline" size="sm" data-testid="hero-topic">
         {topic.name}
       </Button>
     {/if}

@@ -30,7 +30,7 @@ templ StatTile(p StatTileProps) {
 	{{ vHint := p.Hint }}
 	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "min-w-0"}}) {
 		if uiutils.T(vHref) {
-			@compose.Link(compose.LinkProps{Variant: "block", LinkProps: link.LinkProps{Href: uiutils.S(vHref), Class: "flex min-w-0 flex-col gap-4 rounded bg-card p-6 text-foreground no-underline inset-ring inset-ring-border hover:bg-muted"}}) {
+			@compose.Link(compose.LinkProps{Variant: "block", LinkProps: link.LinkProps{Href: uiutils.URL(vHref, false), Class: "flex min-w-0 flex-col gap-4 rounded bg-card p-6 text-foreground no-underline inset-ring inset-ring-border hover:bg-muted"}}) {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex items-center justify-between gap-2"}}) {
 					@compose.Text(compose.TextProps{TextProps: text.TextProps{Class: "m-0 text-xs font-bold text-muted-foreground"}}) {
 						{ uiutils.Text(vLabel) }

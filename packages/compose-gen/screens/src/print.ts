@@ -100,7 +100,10 @@ export function printValue(v: Value, ctx: PrintCtx): string {
 function printCss(args: Value[], ctx: PrintCtx): string {
   const decls: Array<[string, string, string]> = [];
   for (let i = 0; i + 2 < args.length; i += 3) {
-    decls.push([String(args[i]), printValue(args[i + 1]!, ctx), String(args[i + 2])]);
+    // a value is plain (cssValue: no url(), no ;) in every runtime; a literal number as it is
+    const v = args[i + 1]!;
+    if (typeof v !== "number") ctx.helpers.add("cssValue");
+    decls.push([String(args[i]), typeof v === "number" ? JSON.stringify(v) : `cssValue(${printValue(v, ctx)})`, String(args[i + 2])]);
   }
   if (ctx.runtime === "react") return `{ ${decls.map(([p, v, u]) => `${camel(p)}: \`\${${v}}${u}\``).join(", ")} }`;
   return `\`${decls.map(([p, v, u]) => `${p}:\${${v}}${u}`).join(";")}\``;

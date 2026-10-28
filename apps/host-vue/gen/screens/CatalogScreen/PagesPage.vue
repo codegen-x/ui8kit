@@ -12,6 +12,7 @@ import {
   Text,
   Title,
   tpl,
+  urlOf,
 } from "@codegen-x/vue-compose";
 import { ui } from "@ui8kit/app-shared/content";
 
@@ -207,7 +208,7 @@ const PAGES = [
         <List tag="ul" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-testid="page-list">
           <ListItem v-for="p in PAGES" :key="p.id" class="flex flex-col gap-2 rounded p-4 inset-ring inset-ring-border">
             <Link
-              :href="p.href"
+              :href="urlOf(p.href)"
               variant="default"
               class="font-bold"
               data-testid="page-link"

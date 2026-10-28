@@ -28,7 +28,7 @@ templ MediaContacts(p MediaContactsProps) {
 				{ uiutils.Text(uiutils.Get(vLabels, "list")) }
 			}
 			for _, vC := range uiutils.L(uiutils.Get(vExtras, "channels")) {
-				@compose.Button(compose.ButtonProps{Variant: "outline", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.S(uiutils.Get(vC, "href")), Class: "w-full gap-2", Attrs: uiutils.Attrs("data-testid", "media-channel")}}) {
+				@compose.Button(compose.ButtonProps{Variant: "outline", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.URL(uiutils.Get(vC, "href"), false), Class: "w-full gap-2", Attrs: uiutils.Attrs("data-testid", "media-channel")}}) {
 					@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vC, "icon")), Size: 16})
 					{ uiutils.Text(uiutils.Get(vC, "title")) }
 				}

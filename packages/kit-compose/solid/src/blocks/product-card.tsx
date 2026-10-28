@@ -8,7 +8,7 @@ import { type JSX } from "solid-js";
 import { Badge, Block, Box, Button, CardContent, Group, Inline, Link, Text, Title } from "../compose";
 import { MediaFrame } from "../components/media-frame";
 import { Rating } from "../components/rating";
-import { at, cn, fmtMoney, tpl } from "../utils";
+import { at, cn, fmtMoney, tpl, urlOf } from "../utils";
 import type { Product, ProductLabels } from "./product-card.types";
 
 export type ProductCardProps = {
@@ -64,7 +64,7 @@ export function ProductCard({
         </Text>
         <Title as={3} size="base" weight="bold">
           {product.href ? (
-            <Link href={product.href} variant="default" data-testid="open">
+            <Link href={urlOf(product.href)} variant="default" data-testid="open">
               {product.name}
             </Link>
           ) : (

@@ -37,7 +37,7 @@
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { defaults } from "../presets/defaults";
-  import { cn } from "../utils";
+  import { cn, urlOf } from "../utils";
 
   let {
     id,
@@ -129,7 +129,7 @@
         {/each}
       </Grid>
     {/if}
-    <Button variant="outline" size="sm" href={browseHref} class="w-full" data-testid="template-browse">
+    <Button variant="outline" size="sm" href={urlOf(browseHref)} class="w-full" data-testid="template-browse">
       {labels.browse}
     </Button>
   </Stack>

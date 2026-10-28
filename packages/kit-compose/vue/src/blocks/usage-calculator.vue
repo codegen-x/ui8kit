@@ -30,7 +30,7 @@ import Range from "../compose/Range.vue";
 import Stack from "../compose/Stack.vue";
 import Text from "../compose/Text.vue";
 import SectionFrame from "../components/section-frame.vue";
-import { cn, fmtMoney, tpl } from "../utils";
+import { cn, fmtMoney, tpl, urlOf } from "../utils";
 
 const {
   id,
@@ -93,7 +93,7 @@ const emit = defineEmits<{ usage: [value: string] }>();
             {{ fmtMoney((usage * price.rate), price.currency) }}
           </Text>
         </Stack>
-        <Button variant="default" size="default" :href="href" data-testid="submit">
+        <Button variant="default" size="default" :href="urlOf(href)" data-testid="submit">
           {{ cta }}
         </Button>
       </Group>

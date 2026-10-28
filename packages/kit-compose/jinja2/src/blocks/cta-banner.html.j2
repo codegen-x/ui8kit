@@ -22,7 +22,7 @@
     {%- set c_3 -%}
       {{ og_text(v_cta) }}
     {%- endset -%}
-    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'lg', 'Href': og_s(v_href), 'Class': og_s(og_preset('blocks/presets/defaults.json', ['cta', 'button'])), 'Attrs': og_attrs(['data-testid', 'action-primary'])}, 'children': c_3}) }}
+    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'lg', 'Href': og_url(og_s(v_href)), 'Class': og_s(og_preset('blocks/presets/defaults.json', ['cta', 'button'])), 'Attrs': og_attrs(['data-testid', 'action-primary'])}, 'children': c_3}) }}
   {%- endset -%}
   {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex w-full flex-col items-center gap-10 bg-muted px-6 text-center', og_preset('blocks/presets/defaults.json', ['cta', 'panel'])])), 'Attrs': og_attrs(['data-testid', 'cta-banner'])}, 'children': c_4}) }}
 {%- endset -%}

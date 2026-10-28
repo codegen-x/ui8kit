@@ -37,7 +37,7 @@
       {{ og_text(og_get(v_action, ['label'])) }}
       {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'arrow-right', 'Size': 16}}) }}
     {%- endset -%}
-    {{ og_include('compose/link.html.j2', {'p': {'Href': og_s(og_get(v_action, ['href'])), 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'section-action'])}, 'children': c_2}) }}
+    {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_action, ['href']))), 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'section-action'])}, 'children': c_2}) }}
   {%- endset -%}
   {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'layout': 'split', 'media': {'show': true, 'side': v_mediaSide}, 'landmarkLabel': v_landmarkLabel, 'aside': f_3}, 'children': c_5}) }}
 {%- elif og_t(og_eq(v_layout, 'featured')) %}

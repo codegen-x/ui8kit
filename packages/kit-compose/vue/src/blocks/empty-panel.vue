@@ -28,7 +28,7 @@ import Text from "../compose/Text.vue";
 import Title from "../compose/Title.vue";
 import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 const {
   id,
@@ -69,7 +69,7 @@ const {
           v-if="((actions as string) === 'button')"
           variant="default"
           size="sm"
-          :href="ctaHref"
+          :href="urlOf(ctaHref)"
           data-testid="empty-action"
         >
           {{ cta }}
@@ -90,7 +90,7 @@ const {
             v-if="((actions as string) === 'button')"
             variant="default"
             size="sm"
-            :href="ctaHref"
+            :href="urlOf(ctaHref)"
             data-testid="empty-action"
           >
             {{ cta }}

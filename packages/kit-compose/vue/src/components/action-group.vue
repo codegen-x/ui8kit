@@ -16,6 +16,7 @@ export type ActionGroupProps = {
 <script setup lang="ts">
 import Button from "../compose/Button.vue";
 import Group from "../compose/Group.vue";
+import { urlOf } from "../utils";
 
 const { primary, primaryHref, secondary, secondaryHref, align = "start" } = defineProps<ActionGroupProps>();
 </script>
@@ -28,14 +29,14 @@ const { primary, primaryHref, secondary, secondaryHref, align = "start" } = defi
     class="flex-wrap"
     data-slot="action-group"
   >
-    <Button variant="default" size="default" :href="primaryHref" data-testid="action-primary">
+    <Button variant="default" size="default" :href="urlOf(primaryHref)" data-testid="action-primary">
       {{ primary }}
     </Button>
     <Button
       v-if="secondary"
       variant="outline"
       size="default"
-      :href="secondaryHref"
+      :href="urlOf(secondaryHref)"
       data-testid="action-secondary"
     >
       {{ secondary }}

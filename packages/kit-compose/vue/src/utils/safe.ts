@@ -50,8 +50,12 @@ export function isSafeUrl(v: string, image = false): boolean {
 
 const str = (v: unknown): string => (typeof v === "string" ? v : typeof v === "number" ? String(v) : "");
 
-/** a URL attribute value: the value when it is allowed, else "" (a non-string is "") */
-export const urlOf = (v: unknown, image = false): string => { const s = str(v); return isSafeUrl(s, image) ? s : ""; };
+/** a URL attribute value: the value when it is allowed, else "" (another non-string is ""); undefined and null stay as they are (the attribute is left out) */
+export function urlOf<T>(v: T, image = false): string | Extract<T, null | undefined> {
+  if (v === undefined || v === null) return v as Extract<T, null | undefined>;
+  const s = str(v);
+  return isSafeUrl(s, image) ? s : "";
+}
 
 /** the URLs of a srcset, candidate by candidate (the URL of a candidate runs to the first whitespace; trailing commas end it) */
 export function srcsetUrls(v: string): string[] {
@@ -75,7 +79,14 @@ export function srcsetUrls(v: string): string[] {
 }
 
 /** a srcset value: the value when every candidate URL is an allowed image URL, else "" */
-export const srcsetOf = (v: unknown): string => { const s = str(v); return srcsetUrls(s).every((u) => isSafeUrl(u, true)) ? s : ""; };
+export function srcsetOf<T>(v: T): string | Extract<T, null | undefined> {
+  if (v === undefined || v === null) return v as Extract<T, null | undefined>;
+  const s = str(v);
+  return srcsetUrls(s).every((u) => isSafeUrl(u, true)) ? s : "";
+}
+
+/** a value of an inline style declaration (the css op): kept when it is plain (numbers, words, %, #, +, -, ., commas and spaces), else ""; no url(), no ; */
+export const cssValue = (v: unknown): string => { const s = str(v); return /^[-+.%#a-zA-Z0-9 ,]*$/.test(s) ? s : ""; };
 
 /** a style value: "" when it could load or run something (see the file comment), else the value */
 export function styleOf(v: unknown): string {

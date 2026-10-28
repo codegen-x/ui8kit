@@ -53,7 +53,7 @@ templ ProductCard(p ProductCardProps) {
 			}
 			@compose.Title(compose.TitleProps{As: "3", Size: "base", Weight: "bold", TextProps: text.TextProps{}}) {
 				if uiutils.T(uiutils.Get(vProduct, "href")) {
-					@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.S(uiutils.Get(vProduct, "href")), Attrs: uiutils.Attrs("data-testid", "open")}}) {
+					@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vProduct, "href"), false), Attrs: uiutils.Attrs("data-testid", "open")}}) {
 						{ uiutils.Text(uiutils.Get(vProduct, "name")) }
 					}
 				} else {

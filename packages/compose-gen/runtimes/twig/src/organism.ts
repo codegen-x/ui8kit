@@ -6,7 +6,7 @@
 import type { OrganismSpec, SlotFill, Value, ViewNode } from "../../../screens/src/index";
 import { fileName, isGroup, isOp, isRef } from "../../../screens/src/index";
 import type { PartDef } from "../../../spec/src/index";
-import type { GeneratedFile, PartRef } from "../../core/src/index";
+import { checkUse, sinkCall, type GeneratedFile, type PartRef } from "../../core/src/index";
 import { header, partTemplate } from "./brick";
 import { twig, type Dialect } from "./dialect";
 
@@ -119,7 +119,7 @@ function brickProp(part: PartDef, name: string, v: Value, c: Ctx): string {
   const g = printValue(v, c);
   if (def.goType === "uiutils.HeadingLevel") return `og_i(${g})`;
   switch (def.type) {
-    case "string": return typeof v === "string" ? g : `og_s(${g})`;
+    case "string": return typeof v === "string" ? g : sinkCall("twig", name, v, g) ?? `og_s(${g})`; // a URL sink: og_url / og_srcset (sinks.ts)
     case "bool": return typeof v === "boolean" ? g : `og_t(${g})`;
     case "int": return typeof v === "number" ? String(Math.round(v)) : `og_i(${g})`;
     case "items": return `og_l(${g})`;
@@ -165,6 +165,7 @@ function node(n: ViewNode, c: Ctx): string[] {
   if ("use" in n) {
     const ref = c.deps.parts[n.use];
     if (!ref) throw new Error(`${c.org.name}: unknown part ${n.use}`);
+    checkUse(`${c.org.name}: ${n.use}`, n);
     const props: Array<[string, string]> = [];
     const attrs: Array<[string, Value]> = [];
     for (const [k, v] of Object.entries(n.props ?? {})) {

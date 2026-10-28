@@ -6,7 +6,7 @@
 import { type ReactNode } from "react";
 import { Box, ButtonPlain, LinkPlain } from "../compose";
 import { NavItemRow } from "../components/nav-item-row";
-import { cn, variants } from "../utils";
+import { cn, urlOf, variants } from "../utils";
 
 /** NavItem: the classes of each value (shadcn/cva style). */
 export const navItemVariants = variants({
@@ -91,7 +91,7 @@ export function NavItem({
     <>
       {href ? (
         <LinkPlain
-          href={href}
+          href={urlOf(href)}
           className={outer}
           aria-current={(selected ? "page" : undefined)}
           data-slot="nav-item"

@@ -10,7 +10,7 @@
 {%- set v_lightSrc = og_coalesce([v_src, og_at(k_PLACEHOLDER, 'light')]) -%}
 {%- set v_nightSrc = og_coalesce([v_darkSrc, v_src, og_at(k_PLACEHOLDER, 'dark')]) -%}
 {%- set c_1 -%}
-  {{ og_include('compose/image.html.j2', {'p': {'Src': og_s(v_lightSrc), 'Alt': og_s(v_alt), 'Class': 'absolute inset-0 size-full object-cover dark:hidden', 'Attrs': og_attrs(['data-theme-src', 'light'])}}) }}
-  {{ og_include('compose/image.html.j2', {'p': {'Src': og_s(v_nightSrc), 'Alt': og_s(v_alt), 'Class': 'absolute inset-0 hidden size-full object-cover dark:block', 'Attrs': og_attrs(['data-theme-src', 'dark'])}}) }}
+  {{ og_include('compose/image.html.j2', {'p': {'Src': og_url(og_s(v_lightSrc), true), 'Alt': og_s(v_alt), 'Class': 'absolute inset-0 size-full object-cover dark:hidden', 'Attrs': og_attrs(['data-theme-src', 'light'])}}) }}
+  {{ og_include('compose/image.html.j2', {'p': {'Src': og_url(og_s(v_nightSrc), true), 'Alt': og_s(v_alt), 'Class': 'absolute inset-0 hidden size-full object-cover dark:block', 'Attrs': og_attrs(['data-theme-src', 'dark'])}}) }}
 {%- endset -%}
 {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv([og_recipe('blocks/recipes/media-frame.variants.json', {'ratio': v_ratio}), og_def(p['className'], '')])), 'Attrs': og_attrs(['data-slot', 'media-frame', 'data-placeholder', ('false' if og_t(v_src) else 'true')])}, 'children': c_1}) }}

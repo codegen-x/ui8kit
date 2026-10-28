@@ -34,7 +34,7 @@
           {{ og_text(v_cta) }}
           {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'arrow-right', 'Size': 16}}) }}
         {%- endset -%}
-        {{ og_include('compose/link-plain.html.j2', {'p': {'Href': og_s(v_ctaHref), 'Class': 'inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4', 'Attrs': og_attrs(['data-testid', 'announcement-cta'])}, 'children': c_3}) }}
+        {{ og_include('compose/link-plain.html.j2', {'p': {'Href': og_url(og_s(v_ctaHref)), 'Class': 'inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4', 'Attrs': og_attrs(['data-testid', 'announcement-cta'])}, 'children': c_3}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': og_s(og_cnv(['min-w-0 flex-wrap', ('ml-auto' if og_t(og_and([og_eq(v_layout, 'center'), og_eq(v_dismiss, 'show')])) else '')]))}, 'children': c_4}) }}

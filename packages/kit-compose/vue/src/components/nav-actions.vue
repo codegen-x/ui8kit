@@ -17,6 +17,7 @@ export type NavActionsProps = {
 
 <script setup lang="ts">
 import Button from "../compose/Button.vue";
+import { urlOf } from "../utils";
 
 const {
   login,
@@ -34,7 +35,7 @@ const emit = defineEmits<{ theme: [] }>();
   <Button v-if="login"
     variant="ghost"
     size="sm"
-    :href="loginHref"
+    :href="urlOf(loginHref)"
     :class="(((tone as string) === 'inverse') ? 'text-background hover:bg-background/10' : '')"
     data-testid="nav-login"
   >
@@ -43,7 +44,7 @@ const emit = defineEmits<{ theme: [] }>();
   <Button v-if="(((actions as string) === 'cta') && cta)"
     :variant="(((tone as string) === 'inverse') ? 'secondary' : 'default')"
     size="sm"
-    :href="ctaHref"
+    :href="urlOf(ctaHref)"
     data-testid="header-cta"
   >
     {{ cta }}

@@ -31,7 +31,7 @@ templ MenuEntry(p MenuEntryProps) {
 	{{ vTestid := p.Testid }}
 	{{ vBlock := uiutils.Def(p.Block, false) }}
 	if uiutils.T(vHref) {
-		@compose.Link(compose.LinkProps{Variant: uiutils.S(vVariant), Size: uiutils.S(vSize), LinkProps: link.LinkProps{Href: uiutils.S(vHref), AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(vCurrent), "page", nil)), Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("data-testid", vTestid)}}) {
+		@compose.Link(compose.LinkProps{Variant: uiutils.S(vVariant), Size: uiutils.S(vSize), LinkProps: link.LinkProps{Href: uiutils.URL(vHref, false), AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(vCurrent), "page", nil)), Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("data-testid", vTestid)}}) {
 			{ children... }
 		}
 	} else if uiutils.T(vBlock) {

@@ -8,7 +8,7 @@ import { type JSX } from "solid-js";
 import { Block, Button, Group, Link, Separator, Stack, Text, Title } from "../compose";
 import { LucideIcon } from "../icons/LucideIcon";
 import { AuthForm } from "../components/auth-form";
-import { cn, tpl } from "../utils";
+import { cn, tpl, urlOf } from "../utils";
 import type { AuthLabels } from "./auth-card.types";
 
 export type AuthCardProps = {
@@ -104,7 +104,7 @@ export function AuthCard({
       <Text size="sm" class="text-center text-muted-foreground">
         {switchText}
         {" "}
-        <Link href={switchHref} variant="default" data-testid="switch">
+        <Link href={urlOf(switchHref)} variant="default" data-testid="switch">
           {switchLink}
         </Link>
       </Text>

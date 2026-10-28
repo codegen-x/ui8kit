@@ -24,6 +24,6 @@ templ Avatar(p AvatarProps) {
 	{{ vAlt := uiutils.Def(p.Alt, "") }}
 	{{ vSize := uiutils.Def(p.Size, "default") }}
 	@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv(recipeAvatar.Of(map[string]any{"size": vSize}), p.Class)), Attrs: uiutils.Attrs("data-slot", "avatar")}}) {
-		@compose.Image(compose.ImageProps{Fit: "cover", Size: "auto", ImageProps: image.ImageProps{Src: uiutils.S(vSrc), Alt: uiutils.S(vAlt), Class: "size-full object-cover", Loading: "eager", Decoding: "auto", Attrs: uiutils.Attrs("draggable", "false")}})
+		@compose.Image(compose.ImageProps{Fit: "cover", Size: "auto", ImageProps: image.ImageProps{Src: uiutils.URL(vSrc, true), Alt: uiutils.S(vAlt), Class: "size-full object-cover", Loading: "eager", Decoding: "auto", Attrs: uiutils.Attrs("draggable", "false")}})
 	}
 }

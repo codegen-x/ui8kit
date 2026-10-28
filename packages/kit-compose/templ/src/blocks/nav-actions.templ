@@ -30,12 +30,12 @@ templ NavActions(p NavActionsProps) {
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vThemeLabel := p.ThemeLabel }}
 	if uiutils.T(vLogin) {
-		@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.S(vLoginHref), Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "inverse")), "text-background hover:bg-background/10", "")), Attrs: uiutils.Attrs("data-testid", "nav-login")}}) {
+		@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vLoginHref, false), Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "inverse")), "text-background hover:bg-background/10", "")), Attrs: uiutils.Attrs("data-testid", "nav-login")}}) {
 			{ uiutils.Text(vLogin) }
 		}
 	}
 	if uiutils.T(uiutils.And(uiutils.Eq(vActions, "cta"), vCta)) {
-		@compose.Button(compose.ButtonProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "inverse")), "secondary", "default")), Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.S(vCtaHref), Attrs: uiutils.Attrs("data-testid", "header-cta")}}) {
+		@compose.Button(compose.ButtonProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "inverse")), "secondary", "default")), Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vCtaHref, false), Attrs: uiutils.Attrs("data-testid", "header-cta")}}) {
 			{ uiutils.Text(vCta) }
 		}
 	}

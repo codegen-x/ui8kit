@@ -43,7 +43,7 @@ templ PostFeature(p PostFeatureProps) {
 				}
 			}
 		}
-		@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.S(uiutils.Get(vP, "href")), Class: "w-full gap-2", Attrs: uiutils.Attrs("data-testid", "action-primary")}}) {
+		@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.URL(uiutils.Get(vP, "href"), false), Class: "w-full gap-2", Attrs: uiutils.Attrs("data-testid", "action-primary")}}) {
 			{ uiutils.Text(uiutils.Get(vLabels, "read")) }
 			@icons.LucideIcon(icons.LucideIconProps{Name: "arrow-right", Size: 16})
 		}

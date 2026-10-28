@@ -8,7 +8,7 @@ import { type JSX } from "solid-js";
 import { Block, Button, Container, Group, LinkPlain } from "../compose";
 import { MenuEntry } from "../components/menu-entry";
 import { NavBlock } from "../components/nav-block";
-import { cn, tpl, uniqLabel } from "../utils";
+import { cn, tpl, uniqLabel, urlOf } from "../utils";
 import type { SiteHeaderLabels, SiteRoutes } from "./site-header.types";
 
 export type SiteHeaderProps = {
@@ -94,7 +94,7 @@ export function SiteHeader({
             {labels.theme}
           </Button>
           {(((actions as string) === "cta") && cta) ? (
-            <Button variant="default" size="sm" href={ctaHref} data-testid="header-cta">
+            <Button variant="default" size="sm" href={urlOf(ctaHref)} data-testid="header-cta">
               {cta}
             </Button>
           ) : null}

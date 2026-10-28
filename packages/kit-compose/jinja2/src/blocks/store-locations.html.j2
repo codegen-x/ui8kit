@@ -53,7 +53,7 @@
                 {%- set c_8 -%}
                   {{ og_text(og_nbsp(og_get(v_s, ['phone']))) }}
                 {%- endset -%}
-                {{ og_include('compose/link.html.j2', {'p': {'Href': og_s(og_tpl('tel:{0}', [og_get(v_s, ['phone'])])), 'Variant': 'default'}, 'children': c_8}) }}
+                {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_tpl('tel:{0}', [og_get(v_s, ['phone'])]))), 'Variant': 'default'}, 'children': c_8}) }}
               {%- endset -%}
               {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-2'}, 'children': c_9}) }}
             {%- endset -%}

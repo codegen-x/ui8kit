@@ -9,7 +9,7 @@ import { Box, Grid, Link, List, ListItem, Stack, Text, Title } from "../compose"
 import { EmptyState } from "../components/empty-state";
 import { NavBlock } from "../components/nav-block";
 import { SectionFrame } from "../components/section-frame";
-import { cn, tpl, uniqLabel } from "../utils";
+import { cn, tpl, uniqLabel, urlOf } from "../utils";
 import type { Section } from "./article-body.types";
 
 export type ArticleBodyProps = {
@@ -61,7 +61,7 @@ export function ArticleBody({
                   <For each={sections ?? []}>{(s) => (
                     <ListItem>
                       <Link
-                        href={tpl("#{0}-{1}", id, s.id)}
+                        href={urlOf(tpl("#{0}-{1}", id, s.id))}
                         variant="default"
                         class="text-sm text-muted-foreground"
                         data-testid="toc-link"

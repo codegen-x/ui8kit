@@ -15,12 +15,13 @@
 <script lang="ts">
   import Link from "../compose/Link.svelte";
   import LucideIcon from "../icons/LucideIcon.svelte";
+  import { urlOf } from "../utils";
 
   let { href, label }: FooterSitemapProps = $props();
 </script>
 
 {#if href}
-  <Link href={href} size="sm" data-testid="footer-sitemap">
+  <Link href={urlOf(href)} size="sm" data-testid="footer-sitemap">
     <LucideIcon name="arrow-right" size={16} />
     {label}
   </Link>

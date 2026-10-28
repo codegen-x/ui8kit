@@ -8,7 +8,7 @@ import { Block, Button, Group, Inline, Link, LinkPlain } from "../compose";
 import { MenuEntry } from "../components/menu-entry";
 import { NavBlock } from "../components/nav-block";
 import { defaults } from "../presets/defaults";
-import { cn, tpl, uniqLabel } from "../utils";
+import { cn, tpl, uniqLabel, urlOf } from "../utils";
 import type { NavLink } from "../blocks/nav-bar.types";
 
 export type HeroHeadProps = {
@@ -72,7 +72,7 @@ export function HeroHead({
               <Fragment key={l.id}>
                 {l.href ? (
                   <Link
-                    href={l.href}
+                    href={urlOf(l.href)}
                     variant="default"
                     aria-current={((l.id === current) ? "page" : undefined)}
                     className="text-xs font-medium leading-5 text-background"
@@ -93,7 +93,7 @@ export function HeroHead({
       <Group gap="2" align="center">
         {login ? (
           <Button
-            href={loginHref}
+            href={urlOf(loginHref)}
             variant="ghost"
             size="sm"
             className="text-background hover:bg-background/10"
@@ -103,7 +103,7 @@ export function HeroHead({
           </Button>
         ) : null}
         {cta ? (
-          <Button href={href} variant="secondary" size="sm" data-testid="header-cta">
+          <Button href={urlOf(href)} variant="secondary" size="sm" data-testid="header-cta">
             {cta}
           </Button>
         ) : null}

@@ -35,7 +35,7 @@
   import Title from "../compose/Title.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import Rating from "../components/rating.svelte";
-  import { at, cn, fmtMoney, tpl } from "../utils";
+  import { at, cn, fmtMoney, tpl, urlOf } from "../utils";
 
   let {
     product,
@@ -78,7 +78,7 @@
     </Text>
     <Title as={3} size="base" weight="bold">
       {#if product.href}
-        <Link href={product.href} variant="default" data-testid="open">
+        <Link href={urlOf(product.href)} variant="default" data-testid="open">
           {product.name}
         </Link>
       {:else}

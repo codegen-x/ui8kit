@@ -35,6 +35,7 @@ import PostFeature from "../components/post-feature.vue";
 import PostMiniCard from "../components/post-mini-card.vue";
 import PostOverlayCard from "../components/post-overlay-card.vue";
 import SectionFrame from "../components/section-frame.vue";
+import { urlOf } from "../utils";
 
 const {
   id,
@@ -74,7 +75,7 @@ const {
     :media="{ show: true, side: mediaSide }"
     :landmarkLabel="landmarkLabel"
   >
-    <Link :href="action.href" size="sm" data-testid="section-action">
+    <Link :href="urlOf(action.href)" size="sm" data-testid="section-action">
       {{ action.label }}
       <LucideIcon name="arrow-right" :size="16" />
     </Link>

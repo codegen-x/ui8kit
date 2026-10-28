@@ -18,6 +18,7 @@
 <script lang="ts">
   import Button from "../compose/Button.svelte";
   import Group from "../compose/Group.svelte";
+  import { urlOf } from "../utils";
 
   let { primary, primaryHref, secondary, secondaryHref, align = "start" }: ActionGroupProps = $props();
 </script>
@@ -29,11 +30,11 @@
   class="flex-wrap"
   data-slot="action-group"
 >
-  <Button variant="default" size="default" href={primaryHref} data-testid="action-primary">
+  <Button variant="default" size="default" href={urlOf(primaryHref)} data-testid="action-primary">
     {primary}
   </Button>
   {#if secondary}
-    <Button variant="outline" size="default" href={secondaryHref} data-testid="action-secondary">
+    <Button variant="outline" size="default" href={urlOf(secondaryHref)} data-testid="action-secondary">
       {secondary}
     </Button>
   {/if}

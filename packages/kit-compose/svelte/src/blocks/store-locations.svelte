@@ -36,7 +36,7 @@
   import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
-  import { at, cn, tpl } from "../utils";
+  import { at, cn, tpl, urlOf } from "../utils";
 
   let {
     id,
@@ -107,7 +107,7 @@
               </ListItem>
               <ListItem class="flex items-center gap-2">
                 <LucideIcon name="phone" size={16} />
-                <Link href={tpl("tel:{0}", s.phone)} variant="default">
+                <Link href={urlOf(tpl("tel:{0}", s.phone))} variant="default">
                   {(s.phone ?? "").replaceAll(" ", "\u00a0")}
                 </Link>
               </ListItem>

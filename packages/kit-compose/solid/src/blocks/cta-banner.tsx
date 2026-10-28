@@ -3,7 +3,7 @@
 import { type JSX } from "solid-js";
 import { Block, Box, Button, Text, Title } from "../compose";
 import { defaults } from "../presets/defaults";
-import { cn, tpl } from "../utils";
+import { cn, tpl, urlOf } from "../utils";
 
 export type CtaBannerProps = {
   id: string;
@@ -42,7 +42,7 @@ export function CtaBanner({ id, title, text, cta, href, tone = "muted", landmark
         <Text size="xs" weight="semibold" class={cn("leading-5 text-muted-foreground", defaults.cta.text)}>
           {text}
         </Text>
-        <Button variant="default" size="lg" href={href} class={defaults.cta.button} data-testid="action-primary">
+        <Button variant="default" size="lg" href={urlOf(href)} class={defaults.cta.button} data-testid="action-primary">
           {cta}
         </Button>
       </Box>

@@ -16,6 +16,7 @@ export type TopicChipsProps = {
 import Button from "../compose/Button.vue";
 import Group from "../compose/Group.vue";
 import LucideIcon from "../icons/LucideIcon.vue";
+import { urlOf } from "../utils";
 
 const { topics, tone = "default" } = defineProps<TopicChipsProps>();
 </script>
@@ -24,7 +25,7 @@ const { topics, tone = "default" } = defineProps<TopicChipsProps>();
   <Group gap="2" align="center" justify="center" class="flex-wrap" data-testid="hero-topics">
     <template v-for="topic in topics" :key="topic.id">
       <Button v-if="((tone as string) === 'inverse')"
-        :href="topic.href"
+        :href="urlOf(topic.href)"
         variant="ghost"
         size="sm"
         class="gap-2 text-background inset-ring-background/30 hover:bg-background/10"
@@ -33,7 +34,7 @@ const { topics, tone = "default" } = defineProps<TopicChipsProps>();
         <LucideIcon v-if="topic.icon" :name="topic.icon" :size="16" />
         {{ topic.name }}
       </Button>
-      <Button v-else :href="topic.href" variant="outline" size="sm" data-testid="hero-topic">
+      <Button v-else :href="urlOf(topic.href)" variant="outline" size="sm" data-testid="hero-topic">
         {{ topic.name }}
       </Button>
     </template>

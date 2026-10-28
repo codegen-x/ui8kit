@@ -32,7 +32,7 @@
   import LinkPlain from "../compose/LinkPlain.svelte";
   import LucideIcon from "../icons/LucideIcon.svelte";
   import Text from "../compose/Text.svelte";
-  import { cn } from "../utils";
+  import { cn, urlOf } from "../utils";
 
   let {
     label,
@@ -95,7 +95,7 @@
       </Text>
       {#if cta}
         <LinkPlain
-          href={ctaHref}
+          href={urlOf(ctaHref)}
           class="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4"
           data-testid="announcement-cta"
         >

@@ -11,7 +11,7 @@ import { FeatureCards } from "../components/feature-cards";
 import { FeatureRows } from "../components/feature-rows";
 import { SectionFrame } from "../components/section-frame";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 import type { Feature } from "./feature-grid.types";
 import type { HeadLink } from "../components/section-frame.types";
 
@@ -54,7 +54,7 @@ export function FeatureGrid({
             </Title>
             {(action?.label && action?.href) ? (
               <Link
-                href={action?.href}
+                href={urlOf(action?.href)}
                 variant="default"
                 class={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
                 data-testid="section-action"

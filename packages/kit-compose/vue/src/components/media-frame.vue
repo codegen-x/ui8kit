@@ -37,7 +37,7 @@ export type MediaFrameProps = {
 import { computed } from "vue";
 import Box from "../compose/Box.vue";
 import Image from "../compose/Image.vue";
-import { at, cn } from "../utils";
+import { at, cn, urlOf } from "../utils";
 import { PLACEHOLDER } from "./media-frame.assets";
 
 const { alt, src, darkSrc, ratio = "16/9", class: className } = defineProps<MediaFrameProps>();
@@ -52,13 +52,13 @@ const nightSrc = computed(() => darkSrc ?? src ?? at(PLACEHOLDER, "dark"));
     :data-placeholder="(src ? 'false' : 'true')"
   >
     <Image
-      :src="lightSrc"
+      :src="urlOf(lightSrc, true)"
       :alt="alt"
       class="absolute inset-0 size-full object-cover dark:hidden"
       data-theme-src="light"
     />
     <Image
-      :src="nightSrc"
+      :src="urlOf(nightSrc, true)"
       :alt="alt"
       class="absolute inset-0 hidden size-full object-cover dark:block"
       data-theme-src="dark"

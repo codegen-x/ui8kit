@@ -6,6 +6,7 @@
 import { For, type JSX } from "solid-js";
 import { Button, Group } from "../compose";
 import { LucideIcon } from "../icons/LucideIcon";
+import { urlOf } from "../utils";
 import type { Topic } from "./topic-chips.types";
 
 export type TopicChipsProps = {
@@ -20,7 +21,7 @@ export function TopicChips({ topics, tone = "default" }: TopicChipsProps) {
         <>
           {((tone as string) === "inverse") ? (
             <Button
-              href={topic.href}
+              href={urlOf(topic.href)}
               variant="ghost"
               size="sm"
               class="gap-2 text-background inset-ring-background/30 hover:bg-background/10"
@@ -32,7 +33,7 @@ export function TopicChips({ topics, tone = "default" }: TopicChipsProps) {
               {topic.name}
             </Button>
           ) : (
-            <Button href={topic.href} variant="outline" size="sm" data-testid="hero-topic">
+            <Button href={urlOf(topic.href)} variant="outline" size="sm" data-testid="hero-topic">
               {topic.name}
             </Button>
           )}

@@ -21,7 +21,7 @@ templ FooterSitemap(p FooterSitemapProps) {
 	{{ vHref := p.Href }}
 	{{ vLabel := p.Label }}
 	if uiutils.T(vHref) {
-		@compose.Link(compose.LinkProps{Size: "sm", LinkProps: link.LinkProps{Href: uiutils.S(vHref), Attrs: uiutils.Attrs("data-testid", "footer-sitemap")}}) {
+		@compose.Link(compose.LinkProps{Size: "sm", LinkProps: link.LinkProps{Href: uiutils.URL(vHref, false), Attrs: uiutils.Attrs("data-testid", "footer-sitemap")}}) {
 			@icons.LucideIcon(icons.LucideIconProps{Name: "arrow-right", Size: 16})
 			{ uiutils.Text(vLabel) }
 		}

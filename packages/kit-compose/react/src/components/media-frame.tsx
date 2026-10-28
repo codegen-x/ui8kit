@@ -8,7 +8,7 @@
  */
 import { type ReactNode } from "react";
 import { Box, Image } from "../compose";
-import { at, cn, variants } from "../utils";
+import { at, cn, urlOf, variants } from "../utils";
 import { PLACEHOLDER } from "./media-frame.assets";
 
 /** MediaFrame: the classes of each value (shadcn/cva style). */
@@ -44,13 +44,13 @@ export function MediaFrame({ alt, src, darkSrc, ratio = "16/9", className }: Med
       data-placeholder={(src ? "false" : "true")}
     >
       <Image
-        src={lightSrc}
+        src={urlOf(lightSrc, true)}
         alt={alt}
         className="absolute inset-0 size-full object-cover dark:hidden"
         data-theme-src="light"
       />
       <Image
-        src={nightSrc}
+        src={urlOf(nightSrc, true)}
         alt={alt}
         className="absolute inset-0 hidden size-full object-cover dark:block"
         data-theme-src="dark"

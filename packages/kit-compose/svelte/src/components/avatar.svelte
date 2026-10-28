@@ -30,14 +30,14 @@
 <script lang="ts">
   import Image from "../compose/Image.svelte";
   import Inline from "../compose/Inline.svelte";
-  import { cn } from "../utils";
+  import { cn, urlOf } from "../utils";
 
   let { src, alt = "", size = "default", class: className }: AvatarProps = $props();
 </script>
 
 <Inline class={cn(avatarVariants({ size: size }), className)} data-slot="avatar">
   <Image
-    src={src}
+    src={urlOf(src, true)}
     alt={alt}
     class="size-full object-cover"
     fit="cover"

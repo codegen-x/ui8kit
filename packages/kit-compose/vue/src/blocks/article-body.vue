@@ -32,7 +32,7 @@ import Title from "../compose/Title.vue";
 import EmptyState from "../components/empty-state.vue";
 import NavBlock from "../components/nav-block.vue";
 import SectionFrame from "../components/section-frame.vue";
-import { cn, tpl, uniqLabel } from "../utils";
+import { cn, tpl, uniqLabel, urlOf } from "../utils";
 
 const {
   id,
@@ -69,7 +69,7 @@ const {
           <List class="m-0 flex list-none flex-col gap-2 p-0">
             <ListItem v-for="s in sections" :key="s.id">
               <Link
-                :href="tpl('#{0}-{1}', id, s.id)"
+                :href="urlOf(tpl('#{0}-{1}', id, s.id))"
                 variant="default"
                 class="text-sm text-muted-foreground"
                 data-testid="toc-link"

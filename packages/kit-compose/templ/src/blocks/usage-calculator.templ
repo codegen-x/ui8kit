@@ -72,7 +72,7 @@ templ UsageCalculator(p UsageCalculatorProps) {
 						{ uiutils.Text(uiutils.Money(uiutils.Mul(vUsage, uiutils.Get(vPrice, "rate")), uiutils.Get(vPrice, "currency"))) }
 					}
 				}
-				@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.S(vHref), Attrs: uiutils.Attrs("data-testid", "submit")}}) {
+				@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.URL(vHref, false), Attrs: uiutils.Attrs("data-testid", "submit")}}) {
 					{ uiutils.Text(vCta) }
 				}
 			}

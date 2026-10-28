@@ -56,7 +56,7 @@
       {%- set c_10 -%}
         {{ og_text(v_cta) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': og_s(v_href), 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_10}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': og_url(og_s(v_href)), 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_10}) }}
     {%- endset -%}
     {{ og_include('compose/group.html.j2', {'p': {'Justify': 'between', 'Align': 'center', 'Class': 'flex-wrap'}, 'children': c_11}) }}
   {%- endset -%}

@@ -9,7 +9,7 @@ import { LucideIcon } from "../icons/LucideIcon";
 import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { SectionFrame } from "../components/section-frame";
-import { at, cn, tpl } from "../utils";
+import { at, cn, tpl, urlOf } from "../utils";
 import type { Store, StoreLabels } from "./store-locations.types";
 
 export type StoreLocationsProps = {
@@ -93,7 +93,7 @@ export function StoreLocations({
                   </ListItem>
                   <ListItem className="flex items-center gap-2">
                     <LucideIcon name="phone" size={16} />
-                    <Link href={tpl("tel:{0}", s.phone)} variant="default">
+                    <Link href={urlOf(tpl("tel:{0}", s.phone))} variant="default">
                       {(s.phone ?? "").replaceAll(" ", "\u00a0")}
                     </Link>
                   </ListItem>

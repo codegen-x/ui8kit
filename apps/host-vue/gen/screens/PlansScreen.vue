@@ -27,6 +27,7 @@ import {
   at,
   fmtMoney,
   tpl,
+  urlOf,
   type Plan,
 } from "@codegen-x/vue-compose";
 import { collectionView, fromCodex, matchRoute, screenActions, type UrlPort } from "@ui8kit/app-shared/runtime/core";
@@ -217,7 +218,7 @@ const actions = computed(() => screenActions(url, view.value, "plans", (id) => `
             <TableBody>
               <TableRow v-for="row in view.rows" :key="row.id" data-testid="plan-row">
                 <TableCell>
-                  <Link :href="(('#/plans/' + row.id) + view.qs)" variant="default" data-testid="open-record">
+                  <Link :href="urlOf((('#/plans/' + row.id) + view.qs))" variant="default" data-testid="open-record">
                     {{ row.name }}
                   </Link>
                 </TableCell>

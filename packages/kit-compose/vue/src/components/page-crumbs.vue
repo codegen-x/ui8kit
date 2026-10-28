@@ -21,6 +21,7 @@ import Link from "../compose/Link.vue";
 import List from "../compose/List.vue";
 import ListItem from "../compose/ListItem.vue";
 import LucideIcon from "../icons/LucideIcon.vue";
+import { urlOf } from "../utils";
 
 const { label, crumbs, landmarkLabel } = defineProps<PageCrumbsProps>();
 const last = computed(() => (crumbs?.length ?? 0) - 1);
@@ -31,7 +32,7 @@ const last = computed(() => (crumbs?.length ?? 0) - 1);
     <List class="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground">
       <ListItem v-for="(c, i) in crumbs" :key="c.id" class="flex items-center gap-2">
         <template v-if="(i < last)">
-          <Link v-if="c.href" :href="c.href" variant="muted" size="sm" data-testid="crumb">
+          <Link v-if="c.href" :href="urlOf(c.href)" variant="muted" size="sm" data-testid="crumb">
             {{ c.name }}
           </Link>
           <Inline v-else data-testid="crumb">

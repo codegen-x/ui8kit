@@ -16,14 +16,15 @@ const VENV_PY = path.join(SRV, ".venv/bin/python");
 const PY = process.env.PYTHON ?? (existsSync(VENV_PY) ? VENV_PY : "python3");
 const ok = (cmd: string, args: string[]) => spawnSync(cmd, args, { stdio: "ignore" }).status === 0;
 const v = JSON.parse(readFileSync(VECTORS, "utf8")) as {
-  url: Array<[string, boolean, boolean]>; srcset: Array<[string, boolean]>; style: Array<[string, boolean]>; names: Array<[string, boolean]>; attrs: Array<[string, string, string]>;
+  url: Array<[string, boolean, boolean]>; srcset: Array<[string, boolean]>; style: Array<[string, boolean]>; css: Array<[string, boolean]>; names: Array<[string, boolean]>; attrs: Array<[string, string, string]>;
 };
-/** what every port must answer: [url ok, url value], srcset value, style value, name ok, attr value, decoded entities */
+/** what every port must answer: [url ok, url value], srcset value, style value, css value, name ok, attr value, decoded entities */
 const ENT = "&#106;&#x61;&colon;&Tab;&NewLine;&sol;&bsol;&amp;#58;&nope;&#0;";
 const want = {
   url: v.url.map(([s, , ok]) => [ok, ok ? s : ""]),
   srcset: v.srcset.map(([s, ok]) => (ok ? s : "")),
   style: v.style.map(([s, ok]) => (ok ? s : "")),
+  css: v.css.map(([s, ok]) => (ok ? s : "")),
   names: v.names.map(([, ok]) => ok),
   attrs: v.attrs.map(([, , w]) => w),
   entities: "ja:\t\n/\\:&nope;\ufffd",
@@ -37,6 +38,7 @@ echo json_encode([
   'url' => array_map(fn($x) => [R::isSafeUrl($x[0], $x[1]), R::url($x[0], $x[1])], $v['url']),
   'srcset' => array_map(fn($x) => R::srcset($x[0]), $v['srcset']),
   'style' => array_map(fn($x) => R::style($x[0]), $v['style']),
+  'css' => array_map(fn($x) => R::cssValue($x[0]), $v['css']),
   'names' => array_map(fn($x) => R::isSafeAttrName($x[0]), $v['names']),
   'attrs' => array_map(fn($x) => R::attrValue($x[0], $x[1]), $v['attrs']),
   'entities' => R::decodeEntities($argv[3]),
@@ -50,6 +52,7 @@ print(json.dumps({
   "url": [[R.is_safe_url(s, i), R.url(s, i)] for s, i, _ in v["url"]],
   "srcset": [R.srcset(s) for s, _ in v["srcset"]],
   "style": [R.style(s) for s, _ in v["style"]],
+  "css": [R.css_value(s) for s, _ in v["css"]],
   "names": [R.is_safe_attr_name(n) for n, _ in v["names"]],
   "attrs": [R.attr_value(n, s) for n, s, _ in v["attrs"]],
   "entities": R.decode_entities(sys.argv[3]),
@@ -70,7 +73,7 @@ func main() {
 	var v map[string][][]any
 	_ = json.Unmarshal(b, &v)
 	out := map[string]any{"entities": R.DecodeEntities(os.Args[2])}
-	var url, srcset, style, names, attrs []any
+	var url, srcset, style, css, names, attrs []any
 	for _, x := range v["url"] {
 		url = append(url, []any{R.IsSafeURL(x[0].(string), x[1].(bool)), R.URL(x[0], x[1].(bool))})
 	}
@@ -80,13 +83,16 @@ func main() {
 	for _, x := range v["style"] {
 		style = append(style, R.Style(x[0]))
 	}
+	for _, x := range v["css"] {
+		css = append(css, R.CSSValue(x[0]))
+	}
 	for _, x := range v["names"] {
 		names = append(names, R.IsSafeAttrName(x[0].(string)))
 	}
 	for _, x := range v["attrs"] {
 		attrs = append(attrs, R.AttrValue(x[0].(string), x[1]))
 	}
-	out["url"], out["srcset"], out["style"], out["names"], out["attrs"] = url, srcset, style, names, attrs
+	out["url"], out["srcset"], out["style"], out["css"], out["names"], out["attrs"] = url, srcset, style, css, names, attrs
 	j, _ := json.Marshal(out)
 	fmt.Println(string(j))
 }

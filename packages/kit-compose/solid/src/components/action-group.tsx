@@ -5,6 +5,7 @@
  */
 import { type JSX } from "solid-js";
 import { Button, Group } from "../compose";
+import { urlOf } from "../utils";
 
 export type ActionGroupProps = {
   primary: string;
@@ -29,11 +30,11 @@ export function ActionGroup({
       class="flex-wrap"
       data-slot="action-group"
     >
-      <Button variant="default" size="default" href={primaryHref} data-testid="action-primary">
+      <Button variant="default" size="default" href={urlOf(primaryHref)} data-testid="action-primary">
         {primary}
       </Button>
       {secondary ? (
-        <Button variant="outline" size="default" href={secondaryHref} data-testid="action-secondary">
+        <Button variant="outline" size="default" href={urlOf(secondaryHref)} data-testid="action-secondary">
           {secondary}
         </Button>
       ) : null}

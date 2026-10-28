@@ -33,7 +33,7 @@ templ MediaFrame(p MediaFrameProps) {
 	{{ vLightSrc := any(uiutils.Coalesce(vSrc, uiutils.At(mediaFramePlaceholder, "light"))) }}
 	{{ vNightSrc := any(uiutils.Coalesce(vDarkSrc, vSrc, uiutils.At(mediaFramePlaceholder, "dark"))) }}
 	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv(recipeMediaFrame.Of(map[string]any{"ratio": vRatio}), p.Class)), Attrs: uiutils.Attrs("data-slot", "media-frame", "data-placeholder", uiutils.Cond(uiutils.T(vSrc), "false", "true"))}}) {
-		@compose.Image(compose.ImageProps{ImageProps: image.ImageProps{Src: uiutils.S(vLightSrc), Alt: uiutils.S(vAlt), Class: "absolute inset-0 size-full object-cover dark:hidden", Attrs: uiutils.Attrs("data-theme-src", "light")}})
-		@compose.Image(compose.ImageProps{ImageProps: image.ImageProps{Src: uiutils.S(vNightSrc), Alt: uiutils.S(vAlt), Class: "absolute inset-0 hidden size-full object-cover dark:block", Attrs: uiutils.Attrs("data-theme-src", "dark")}})
+		@compose.Image(compose.ImageProps{ImageProps: image.ImageProps{Src: uiutils.URL(vLightSrc, true), Alt: uiutils.S(vAlt), Class: "absolute inset-0 size-full object-cover dark:hidden", Attrs: uiutils.Attrs("data-theme-src", "light")}})
+		@compose.Image(compose.ImageProps{ImageProps: image.ImageProps{Src: uiutils.URL(vNightSrc, true), Alt: uiutils.S(vAlt), Class: "absolute inset-0 hidden size-full object-cover dark:block", Attrs: uiutils.Attrs("data-theme-src", "dark")}})
 	}
 }

@@ -21,6 +21,7 @@
   import List from "../compose/List.svelte";
   import ListItem from "../compose/ListItem.svelte";
   import LucideIcon from "../icons/LucideIcon.svelte";
+  import { urlOf } from "../utils";
 
   let { label, crumbs, landmarkLabel }: PageCrumbsProps = $props();
   const last = $derived((crumbs?.length ?? 0) - 1);
@@ -32,7 +33,7 @@
       <ListItem class="flex items-center gap-2">
         {#if (i < last)}
           {#if c.href}
-            <Link href={c.href} variant="muted" size="sm" data-testid="crumb">
+            <Link href={urlOf(c.href)} variant="muted" size="sm" data-testid="crumb">
               {c.name}
             </Link>
           {:else}

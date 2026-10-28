@@ -20,7 +20,7 @@ import Group from "../compose/Group.vue";
 import LucideIcon from "../icons/LucideIcon.vue";
 import Text from "../compose/Text.vue";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, urlOf } from "../utils";
 
 const { label, attachLabel, modelLabel, send, href } = defineProps<PromptComposerProps>();
 </script>
@@ -91,7 +91,7 @@ const { label, attachLabel, modelLabel, send, href } = defineProps<PromptCompose
         </Button>
       </Group>
       <Button
-        :href="href"
+        :href="urlOf(href)"
         variant="secondary"
         size="sm"
         layout="icon"

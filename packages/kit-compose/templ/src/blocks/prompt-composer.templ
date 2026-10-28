@@ -57,7 +57,7 @@ templ PromptComposer(p PromptComposerProps) {
 					}
 				}
 			}
-			@compose.Button(compose.ButtonProps{Variant: "secondary", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Href: uiutils.S(vHref), Attrs: uiutils.Attrs("data-testid", "submit", "aria-label", uiutils.Coalesce(vSend, "Send"))}}) {
+			@compose.Button(compose.ButtonProps{Variant: "secondary", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Href: uiutils.URL(vHref, false), Attrs: uiutils.Attrs("data-testid", "submit", "aria-label", uiutils.Coalesce(vSend, "Send"))}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: "arrow-up", Size: 16})
 			}
 		}

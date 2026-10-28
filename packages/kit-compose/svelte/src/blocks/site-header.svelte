@@ -30,7 +30,7 @@
   import LinkPlain from "../compose/LinkPlain.svelte";
   import MenuEntry from "../components/menu-entry.svelte";
   import NavBlock from "../components/nav-block.svelte";
-  import { cn, tpl, uniqLabel } from "../utils";
+  import { cn, tpl, uniqLabel, urlOf } from "../utils";
 
   let {
     labels,
@@ -103,7 +103,7 @@
         {labels.theme}
       </Button>
       {#if (((actions as string) === "cta") && cta)}
-        <Button variant="default" size="sm" href={ctaHref} data-testid="header-cta">
+        <Button variant="default" size="sm" href={urlOf(ctaHref)} data-testid="header-cta">
           {cta}
         </Button>
       {/if}

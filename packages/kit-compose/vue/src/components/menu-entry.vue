@@ -19,6 +19,7 @@ export type MenuEntryProps = {
 import Box from "../compose/Box.vue";
 import Inline from "../compose/Inline.vue";
 import Link from "../compose/Link.vue";
+import { urlOf } from "../utils";
 
 const {
   href,
@@ -34,7 +35,7 @@ defineSlots<{ default?(): unknown }>();
 
 <template>
   <Link v-if="href"
-    :href="href"
+    :href="urlOf(href)"
     :variant="variant"
     :size="size"
     :aria-current="(current ? 'page' : undefined)"
