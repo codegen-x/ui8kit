@@ -708,6 +708,12 @@ func Attrs(kv ...any) templ.Attributes {
 	out := templ.Attributes{}
 	for i := 0; i+1 < len(kv); i += 2 {
 		k, v := S(kv[i]), kv[i+1]
+		if !IsSafeAttrName(k) {
+			continue
+		}
+		if _, isBool := v.(bool); !isBool && v != nil {
+			v = AttrValue(k, v)
+		}
 		switch x := v.(type) {
 		case nil:
 			continue

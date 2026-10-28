@@ -110,6 +110,146 @@ def html_(v: Any) -> str:
     return "".join(_ENTITIES.get(c, c) for c in text(v))
 
 
+def slot(v: Any) -> str:
+    """a slot prop printed in place (|safe): the markup the calling template captured ({"__html": ...}, made by markup()) as it
+    is; any other value (a plain string from a caller) is text, escaped"""
+    return html_(v)
+
+
+def markup(v: Any) -> dict:
+    """captured markup (a fill of a slot) as a TrustedHtml marker, which slot() prints as it is"""
+    return {"__html": "" if v is None else str(v)}
+
+
+# ------------------------------------------------------------------ output safety (assets/ts/safe.ts, test/safety-vectors.json)
+
+NAMED_ENTITIES = {
+    "Tab": "\t", "NewLine": "\n", "colon": ":", "sol": "/", "bsol": "\\", "lpar": "(", "rpar": ")", "amp": "&", "lt": "<", "gt": ">",
+    "quot": '"', "apos": "'", "nbsp": "\u00a0", "period": ".", "comma": ",", "excl": "!", "num": "#", "quest": "?", "equals": "=",
+    "plus": "+", "semi": ";", "percnt": "%", "lowbar": "_", "ast": "*", "commat": "@", "dollar": "$", "Hat": "^", "grave": "`",
+    "lsqb": "[", "rsqb": "]", "lcub": "{", "rcub": "}", "verbar": "|", "vert": "|",
+}
+URL_SCHEMES = ["http", "https", "mailto", "tel"]
+URL_ATTRS = ["href", "src", "action", "formaction", "poster", "cite", "background", "data", "xlink:href"]
+IMAGE_ATTRS = ["src", "poster", "background"]
+_ENTITY = re.compile(r"&(?:#[xX]([0-9a-fA-F]{1,8});?|#([0-9]{1,10});?|([a-zA-Z][a-zA-Z0-9]{0,31});)")
+_DATA_IMAGE = re.compile(r"^data:image/(png|jpeg|gif|webp|avif|svg\+xml)[;,]")
+
+
+def _from_code(n: int) -> str:
+    return chr(n) if 0 < n <= 0x10FFFF and not (0xD800 <= n <= 0xDFFF) else "\ufffd"
+
+
+def decode_entities(v: str) -> str:
+    """character references decoded as a browser would (numeric with or without ;, the named ones of NAMED_ENTITIES), up to 3 rounds"""
+    def one(m: "re.Match[str]") -> str:
+        if m.group(1) is not None:
+            return _from_code(int(m.group(1), 16))
+        if m.group(2) is not None:
+            return _from_code(int(m.group(2), 10))
+        return NAMED_ENTITIES.get(m.group(3), m.group(0))
+    i = 0
+    while i < 3 and "&" in v:
+        v = _ENTITY.sub(one, v)
+        i += 1
+    return v
+
+
+def _compact(v: str) -> str:
+    return re.sub(r"[\x00-\x20\x7f]+", "", decode_entities(v))
+
+
+def is_safe_url(v: str, image: bool = False) -> bool:
+    """true when the URL is allowed: no scheme and not //host, or http(s), mailto, tel; an image also data:image/*"""
+    k = _compact(v)
+    if re.match(r"^[/\\]{2}", k):
+        return False
+    m = re.match(r"^([a-zA-Z][a-zA-Z0-9+.\-]*):", k)
+    if not m:
+        return True
+    scheme = m.group(1).lower()
+    if scheme == "data":
+        return image and bool(_DATA_IMAGE.match(k.lower()))
+    return scheme in URL_SCHEMES
+
+
+def _str(v: Any) -> str:
+    return v if isinstance(v, str) else fmt_num(v) if _num(v) else ""
+
+
+def url(v: Any, image: bool = False) -> str:
+    """a URL attribute value: the value when allowed, else ''"""
+    x = _str(v)
+    return x if is_safe_url(x, image) else ""
+
+
+def srcset_urls(v: str) -> list:
+    """the URLs of a srcset, candidate by candidate"""
+    x, out, i = decode_entities(v), [], 0
+    n = len(x)
+    ws = lambda c: c in "\t\n\f\r "  # noqa: E731
+    while i < n:
+        while i < n and (ws(x[i]) or x[i] == ","):
+            i += 1
+        if i >= n:
+            break
+        j = i
+        while j < n and not ws(x[j]):
+            j += 1
+        u = x[i:j]
+        cut = re.search(r",+$", u)
+        if cut:
+            out.append(u[: -len(cut.group(0))])
+            i = j
+            continue
+        out.append(u)
+        depth = 0
+        while j < n and (depth > 0 or x[j] != ","):
+            if x[j] == "(":
+                depth += 1
+            elif x[j] == ")":
+                depth = max(0, depth - 1)
+            j += 1
+        i = j + 1
+    return out
+
+
+def srcset(v: Any) -> str:
+    """a srcset value: the value when every candidate is an allowed image URL, else ''"""
+    x = _str(v)
+    return x if all(is_safe_url(u, True) for u in srcset_urls(x)) else ""
+
+
+def style(v: Any) -> str:
+    """a style value: '' when a url(...) is not an image URL or it holds a script form or a CSS escape, else the value"""
+    x = _str(v)
+    d, k = decode_entities(x), _compact(x).lower()
+    if "\\" in d or re.search(r"expression\(|javascript:|vbscript:|-moz-binding|behavior:", k):
+        return ""
+    for m in re.finditer(r"url\(([^)]*)\)?", d, re.I):
+        arg = re.sub(r"^(['\"])(.*)\1$", r"\2", m.group(1).strip(" \t\n\r\f\v"), flags=re.S)
+        if not is_safe_url(arg, True):
+            return ""
+    return x
+
+
+def is_safe_attr_name(name: str) -> bool:
+    """an attribute name that may be printed: a valid name, not an event handler (on*)"""
+    return bool(re.fullmatch(r"[a-zA-Z_:][-a-zA-Z0-9_:.]*", name)) and not re.match(r"on", name, re.I)
+
+
+def attr_value(name: str, v: Any) -> Any:
+    """the value of attribute name as it may be printed: URL, srcset and style checked"""
+    n = name.lower()
+    if n in ("srcset", "imagesrcset"):
+        return srcset(v)
+    if n == "style":
+        return style(v)
+    if n in URL_ATTRS:
+        return url(v, n in IMAGE_ATTRS)
+    return v
+
+
 def t(v: Any) -> bool:
     """JS truthiness: None, False, 0, NaN and '' are false"""
     if v is None:
@@ -406,8 +546,10 @@ def attrs(kv: list) -> dict:
     out: dict = {}
     for k in range(0, len(kv) - 1, 2):
         name, v = s(kv[k]), kv[k + 1]
-        if v is None:
+        if v is None or not is_safe_attr_name(name):
             continue
+        if not isinstance(v, bool):
+            v = attr_value(name, v)
         if isinstance(v, bool):
             if name.startswith("data-") or name.startswith("aria-"):
                 out[name] = s(v)
@@ -424,10 +566,10 @@ def attr_html(a: Any) -> str:
         return ""
     out = ""
     for k, v in a.items():
-        if v is None or v is False:
+        if v is None or v is False or not is_safe_attr_name(str(k)):
             continue
-        name = html.escape(str(k), quote=True)
-        out += f" {name}" if v is True else f' {name}="{html.escape(s(v), quote=True)}"'
+        name = str(k)
+        out += f" {name}" if v is True else f' {name}="{html.escape(s(attr_value(name, v)), quote=True)}"'
     return out
 
 
