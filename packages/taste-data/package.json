@@ -34,7 +34,8 @@
     "@fontsource-variable/onest": "^5.3.1",
     "@fontsource-variable/open-sans": "^5.3.0",
     "@fontsource-variable/roboto": "^5.3.0",
-    "@fontsource-variable/rubik": "^5.3.0"
+    "@fontsource-variable/rubik": "^5.3.0",
+    "@fontsource/istok-web": "^5.3.0"
   },
   "devDependencies": {
     "@tsconfig/svelte": "^5.0.8",

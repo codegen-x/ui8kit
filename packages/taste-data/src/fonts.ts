@@ -1,10 +1,16 @@
 // The font palette of the tastes: Google fonts with both latin and cyrillic subsets, self-hosted from @fontsource-variable
 // (the same faces as Google Fonts, variable weight axis, one file per subset). The taste screens are English, so a snapshot
 // embeds the latin file only; the cyrillic file is registered for live pages (a future ru locale needs no other font).
+// Istok Web has no variable cut: @fontsource/istok-web, the static 400 and 700 faces (the weights Google Fonts has), each
+// registered for its half of the weight range, so every weight the kit asks for maps to one of them.
 import golosLatin from "@fontsource-variable/golos-text/files/golos-text-latin-wght-normal.woff2?url";
 import golosCyr from "@fontsource-variable/golos-text/files/golos-text-cyrillic-wght-normal.woff2?url";
 import plexLatin from "@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-normal.woff2?url";
 import plexCyr from "@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-cyrillic-wght-normal.woff2?url";
+import istokLatin from "@fontsource/istok-web/files/istok-web-latin-400-normal.woff2?url";
+import istokCyr from "@fontsource/istok-web/files/istok-web-cyrillic-400-normal.woff2?url";
+import istokBoldLatin from "@fontsource/istok-web/files/istok-web-latin-700-normal.woff2?url";
+import istokBoldCyr from "@fontsource/istok-web/files/istok-web-cyrillic-700-normal.woff2?url";
 import interLatin from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 import interCyr from "@fontsource-variable/inter/files/inter-cyrillic-wght-normal.woff2?url";
 import manropeLatin from "@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url";
@@ -25,8 +31,10 @@ import rubikCyr from "@fontsource-variable/rubik/files/rubik-cyrillic-wght-norma
 import { FONT_IDS, type FontId } from "./font-ids";
 export { FONT_IDS, type FontId };
 
-/** the files of a font: latin (embedded in snapshots) and cyrillic (registered for live pages) */
-export const FONT_FILES: Record<FontId, { latin: string; cyrillic: string }> = {
+/** the files of a font: latin (embedded in snapshots) and cyrillic (registered for live pages); `bold`: the 700 face of a static
+ *  font (the regular files are then its 400 face) */
+export type FontFiles = { latin: string; cyrillic: string; bold?: { latin: string; cyrillic: string } };
+export const FONT_FILES: Record<FontId, FontFiles> = {
   inter: { latin: interLatin, cyrillic: interCyr },
   roboto: { latin: robotoLatin, cyrillic: robotoCyr },
   manrope: { latin: manropeLatin, cyrillic: manropeCyr },
@@ -37,6 +45,7 @@ export const FONT_FILES: Record<FontId, { latin: string; cyrillic: string }> = {
   "golos-text": { latin: golosLatin, cyrillic: golosCyr },
   onest: { latin: onestLatin, cyrillic: onestCyr },
   "open-sans": { latin: openSansLatin, cyrillic: openSansCyr },
+  "istok-web": { latin: istokLatin, cyrillic: istokCyr, bold: { latin: istokBoldLatin, cyrillic: istokBoldCyr } },
 };
 
 /** the CSS family name of a font inside the app: `taste-<id>` (one name per id, so a snapshot and a live page agree) */
@@ -50,10 +59,13 @@ let registered = false;
 export function registerFonts(): void {
   if (registered || typeof FontFace === "undefined") return;
   registered = true;
-  for (const id of FONT_IDS) {
-    for (const [file, range] of [[FONT_FILES[id].latin, LATIN], [FONT_FILES[id].cyrillic, CYRILLIC]] as const) {
-      const face = new FontFace(family(id), `url(${file}) format("woff2")`, { weight: "100 900", unicodeRange: range, display: "swap" });
-      document.fonts.add(face);
+  const add = (id: FontId, files: { latin: string; cyrillic: string }, weight: string): void => {
+    for (const [file, range] of [[files.latin, LATIN], [files.cyrillic, CYRILLIC]] as const) {
+      document.fonts.add(new FontFace(family(id), `url(${file}) format("woff2")`, { weight, unicodeRange: range, display: "swap" }));
     }
+  };
+  for (const id of FONT_IDS) {
+    const f = FONT_FILES[id];
+    if (f.bold) { add(id, f, "100 549"); add(id, f.bold, "550 900"); } else add(id, f, "100 900");
   }
 }
