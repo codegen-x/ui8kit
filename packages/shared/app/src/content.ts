@@ -535,6 +535,7 @@ export const ui = {
         "news4": "Four news cards, title on image, date strip",
         "list": "List of horizontal cards",
         "listPaged": "List of horizontal cards with a numbered pager",
+        "listLinks": "Text-only list with a numbered pager of links, on page 1",
         "magazine": "Magazine: first post wide",
         "textOnly": "Text only",
         "digest": "Digest: short meta, compact, muted"

@@ -66,7 +66,7 @@ const POSTS_PAGER = {
             {{ ui.catalog.categories.contentBlog }}
           </Title>
           <Text class="max-w-2xl text-muted-foreground">
-            {{ tpl(ui.catalog.count, 1, 10) }}
+            {{ tpl(ui.catalog.count, 1, 11) }}
           </Text>
         </Stack>
         <Stack
@@ -299,6 +299,37 @@ const POSTS_PAGER = {
                 tone="default"
                 density="default"
                 :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.listPaged))"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="posts-listLinks-label"
+            data-testid="variant"
+            data-block="posts"
+            data-variant="listLinks"
+          >
+            <Title :as="3" size="base" weight="bold" id="posts-listLinks-label" data-testid="variant-label">
+              {{ ui.blocks.variants.posts.listLinks }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PostGrid
+                id="posts-listLinks"
+                :title="ui.content.posts.title"
+                :posts="posts"
+                :labels="ui.content.labels"
+                :filter="{ ...POSTS_FILTER, mode: 'none' }"
+                :pager="{ ...POSTS_PAGER, mode: 'pages', page: 1, pages: 5, url: '?paged={0}', firstUrl: './' }"
+                :action="{ label: ui.content.posts.action, href: '#/' }"
+                layout="list"
+                cols="1-3"
+                media="none"
+                meta="full"
+                tone="default"
+                density="default"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.listLinks))"
               />
             </Box>
           </Stack>

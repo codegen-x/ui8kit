@@ -54,6 +54,13 @@ const posts = define({
     { sel: 'nav[aria-label][data-testid="posts-pager"]', n: 1, when: { "pager.mode": "pages" } },
     { sel: '[data-testid="posts-pager"] [aria-current="page"]', n: 1, when: { "pager.mode": "pages" } },
     { sel: '[data-testid="posts-pager"]', n: 0, when: { "pager.mode": "none" } },
+    // button mode (no pager.url): no address; link mode (listLinks, page 1 of 5: 1 2 … 5): pages 2 and 5 and next are links, the current page is
+    // not, and the previous page is a disabled button without an address
+    { sel: '[data-testid="posts-pager"] a', n: 0, when: { "pager.mode": "pages", media: "image" } },
+    { sel: '[data-testid="posts-pager"] a[href]', n: 3, when: { "pager.mode": "pages", media: "none" } },
+    { sel: '[data-testid="posts-pager"] a[aria-current]', n: 0, when: { "pager.mode": "pages", media: "none" } },
+    { sel: '[data-testid="posts-pager"] button[disabled]:not([href])', n: 1, when: { "pager.mode": "pages", media: "none" } },
+    { sel: '[data-testid="posts-pager"] button', n: 1, when: { "pager.mode": "pages", media: "none" } },
   ],
   variants: [
     ["grid", "Grid, three columns"],
@@ -63,6 +70,8 @@ const posts = define({
     ["news4", "Four news cards, title on image, date strip", { cols: "1-4", meta: "news" }, { action: { label: t("content.posts.action"), href: "#/" } }],
     ["list", "List of horizontal cards", { layout: "list" }],
     ["listPaged", "List of horizontal cards with a numbered pager", { layout: "list", "pager.mode": "pages" }, { pager: { page: 2, pages: 5 } }],
+    // link mode: the adapter's address of page {0} (and of page 1); text only so the facts tell it from listPaged
+    ["listLinks", "Text-only list with a numbered pager of links, on page 1", { layout: "list", media: "none", "pager.mode": "pages" }, { pager: { page: 1, pages: 5, url: "?paged={0}", firstUrl: "./" } }],
     ["magazine", "Magazine: first post wide", { layout: "magazine" }],
     ["textOnly", "Text only", { media: "none" }],
     ["digest", "Digest: short meta, compact, muted", { meta: "short", density: "compact", tone: "muted", media: "none" }],

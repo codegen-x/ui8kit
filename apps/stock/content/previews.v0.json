@@ -7029,6 +7029,22 @@
      }
     },
     {
+     "id": "listLinks",
+     "set": {
+      "layout": "list",
+      "media": "none",
+      "pager.mode": "pages"
+     },
+     "props": {
+      "pager": {
+       "page": 1,
+       "pages": 5,
+       "url": "?paged={0}",
+       "firstUrl": "./"
+      }
+     }
+    },
+    {
      "id": "magazine",
      "set": {
       "layout": "magazine"

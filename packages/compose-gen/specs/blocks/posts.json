@@ -117,6 +117,22 @@
       }
     },
     {
+      "id": "listLinks",
+      "set": {
+        "layout": "list",
+        "media": "none",
+        "pager.mode": "pages"
+      },
+      "props": {
+        "pager": {
+          "page": 1,
+          "pages": 5,
+          "url": "?paged={0}",
+          "firstUrl": "./"
+        }
+      }
+    },
+    {
       "id": "magazine",
       "set": {
         "layout": "magazine"
@@ -164,6 +180,46 @@
       "n": 0,
       "when": {
         "pager.mode": "none"
+      }
+    },
+    {
+      "sel": "[data-testid=\"posts-pager\"] a",
+      "n": 0,
+      "when": {
+        "pager.mode": "pages",
+        "media": "image"
+      }
+    },
+    {
+      "sel": "[data-testid=\"posts-pager\"] a[href]",
+      "n": 3,
+      "when": {
+        "pager.mode": "pages",
+        "media": "none"
+      }
+    },
+    {
+      "sel": "[data-testid=\"posts-pager\"] a[aria-current]",
+      "n": 0,
+      "when": {
+        "pager.mode": "pages",
+        "media": "none"
+      }
+    },
+    {
+      "sel": "[data-testid=\"posts-pager\"] button[disabled]:not([href])",
+      "n": 1,
+      "when": {
+        "pager.mode": "pages",
+        "media": "none"
+      }
+    },
+    {
+      "sel": "[data-testid=\"posts-pager\"] button",
+      "n": 1,
+      "when": {
+        "pager.mode": "pages",
+        "media": "none"
       }
     }
   ],
