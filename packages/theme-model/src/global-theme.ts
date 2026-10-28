@@ -33,6 +33,15 @@ export function cleanTheme(v: unknown): GlobalTheme {
   return { skin, font, radius, tokens: cleanTokens(o.tokens), ...(palette ? { palette } : {}) };
 }
 
+/** a patch merged into a theme (every controller's setTheme): choosing a skin (any patch naming `skin`) returns to that skin's own
+ *  colours, so it drops a custom palette unless the patch sets one itself; one rule for every view that picks a skin */
+export function patchTheme(t: GlobalTheme, patch: Partial<GlobalTheme>): GlobalTheme {
+  const next: GlobalTheme = { ...t, ...patch };
+  if ("skin" in patch && !("palette" in patch)) delete next.palette;
+  if (next.palette === undefined) delete next.palette;
+  return next;
+}
+
 export const isDefault = (t: GlobalTheme): boolean => t.skin === null && t.font === null && t.radius === null && Object.keys(t.tokens).length === 0 && !t.palette;
 
 /** localStorage, or null where there is none or it is blocked (reading the property itself throws then) */
@@ -126,7 +135,7 @@ export function setThemeField(t: GlobalTheme, id: string, v: FieldValue | null):
   const f = fieldOf(id);
   if (!f || f.store === "mode") return t;
   const value = v !== null && f.values.includes(v) ? v : null;
-  if (f.store === "theme") return cleanTheme({ ...t, [id]: value });
+  if (f.store === "theme") return cleanTheme(patchTheme(t, { [id]: value }));
   return { ...t, tokens: setToken(t.tokens, id, value) };
 }
 

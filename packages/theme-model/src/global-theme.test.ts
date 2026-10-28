@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
-import { cleanTheme, densityOf, isDefault, NO_THEME, readTheme, rootAttrs, rootStyle, setDensity, writeTheme } from "./global-theme";
+import { cleanTheme, densityOf, isDefault, NO_THEME, patchTheme, readTheme, rootAttrs, rootStyle, setDensity, writeTheme } from "./global-theme";
 
 const mem = () => { const m = new Map<string, string>(); return { getItem: (k: string) => m.get(k) ?? null, setItem: (k: string, v: string) => void m.set(k, v), removeItem: (k: string) => void m.delete(k), m }; };
 
@@ -146,5 +146,20 @@ describe("per-element tokens: field -> data-slot -> kit.css", () => {
       if (f.slot === "media-frame") expect(media).toContain(`"data-slot": "media-frame"`);
       else expect(map, `${f.id}: a composition with data-slot ${f.slot}`).toContain(`"data-slot": "${f.slot}" }`);
     }
+  });
+});
+
+describe("choosing a skin drops the custom palette (patchTheme, the rule of every controller)", () => {
+  const pal = { harmony: "triadic" as const, h: 200, s: 60, l: 45 };
+  test("a skin, Default or the same skin returns to the skin's own colours; other patches keep the palette", () => {
+    const t = cleanTheme({ skin: "claude", palette: pal });
+    expect(patchTheme(t, { skin: "supabase" }).palette).toBeUndefined();
+    expect(patchTheme(t, { skin: null }).palette).toBeUndefined();
+    expect(patchTheme(t, { skin: "claude" }).palette).toBeUndefined();
+    expect(patchTheme(t, { font: "inter" }).palette).toEqual(pal);
+    expect(patchTheme(t, { skin: "claude", palette: { ...pal, h: 10 } }).palette?.h).toBe(10);
+    expect("palette" in patchTheme(t, { palette: undefined })).toBe(false);
+    expect(setThemeField(t, "skin", "supabase").palette).toBeUndefined();
+    expect(rootStyle(setThemeField(t, "skin", "supabase"), String, "dark")).not.toContain("--primary");
   });
 });

@@ -6,7 +6,8 @@
   import { HARMONIES, MONO_STEPS, OFFSETS, wheelPoint, type Harmony } from "@ui8kit/theme-model/palette";
   import type { PaletteText } from "./text";
 
-  let { value, onchange, text }: { value: Harmony; onchange: (h: Harmony) => void; text: PaletteText } = $props();
+  // value: the harmony of the custom palette; null while the skin's own colours show (a preset skin): then no button is selected
+  let { value, onchange, text }: { value: Harmony | null; onchange: (h: Harmony) => void; text: PaletteText } = $props();
   const legendId = "ui8-palette-harmony-legend";
   const dots = (h: Harmony): Array<{ x: number; y: number }> =>
     h === "monochromatic" ? MONO_STEPS.map((d) => wheelPoint(0, 55 + d * 1.6)) : OFFSETS[h].map((o) => wheelPoint(o, 72));

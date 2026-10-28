@@ -2,6 +2,7 @@
 // @ui8kit/theme-model/controller): the state (theme + mode, kept under Stock's own key by lib/theme.ts), whether the sheet and its
 // wide panel (Design system, skin or font picker) are open, and the only ways the sheet changes them. App.svelte applies `stock.state` to the document.
 import type { ThemeController, WidePanel } from "@ui8kit/theme-model/controller";
+import { patchTheme } from "@ui8kit/theme-model/global-theme";
 import { exportConfig, importConfig, loadTheme, resetTheme, setField, type ThemeState } from "./theme";
 
 export const stock = $state<{ state: ThemeState; open: boolean; wide: WidePanel }>({ state: loadTheme(), open: false, wide: null });
@@ -13,7 +14,7 @@ export const themeCtl: ThemeController = {
   set open(v: boolean) { stock.open = v; },
   get wide() { return stock.wide; },
   set wide(v: WidePanel) { stock.wide = v; },
-  setTheme(patch) { stock.state = { ...stock.state, theme: { ...stock.state.theme, ...patch } }; },
+  setTheme(patch) { stock.state = { ...stock.state, theme: patchTheme(stock.state.theme, patch) }; },
   setField(id, v) { stock.state = setField(stock.state, id, v); },
   reset() { stock.state = resetTheme(stock.state); },
   exportConfig() { return exportConfig(stock.state); },

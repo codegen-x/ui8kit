@@ -4,7 +4,7 @@
 // wide panel is shown (Design system, skin or font picker). `window.__magazineTheme` is the same controller for scripts and future external configs.
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import type { ThemeController, WidePanel } from "@ui8kit/theme-model/controller";
-import { FIELDS, fromConfig, NO_THEME, readTheme, setThemeField, THEME_SCHEMA, toConfig, writeTheme, type FieldValue, type GlobalTheme, type ImportResult, type Mode, type ThemeConfig } from "@ui8kit/theme-model/global-theme";
+import { FIELDS, fromConfig, NO_THEME, patchTheme, readTheme, setThemeField, THEME_SCHEMA, toConfig, writeTheme, type FieldValue, type GlobalTheme, type ImportResult, type Mode, type ThemeConfig } from "@ui8kit/theme-model/global-theme";
 import { theme } from "./theme.svelte";
 
 /** the Magazine's own storage key of the global theme (Stock keeps its own) */
@@ -13,7 +13,7 @@ export const STORE_THEME = "magazine:v1:theme";
 export const gtheme = $state<{ value: GlobalTheme; open: boolean; wide: WidePanel }>({ value: readTheme(STORE_THEME), open: false, wide: null });
 
 export function setTheme(patch: Partial<GlobalTheme>): void {
-  gtheme.value = { ...gtheme.value, ...patch };
+  gtheme.value = patchTheme(gtheme.value, patch);
   writeTheme(STORE_THEME, gtheme.value);
 }
 

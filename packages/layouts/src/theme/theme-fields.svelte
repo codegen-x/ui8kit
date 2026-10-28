@@ -36,8 +36,7 @@
   const change = (f: Field, raw: string) => {
     if (raw === CUSTOM) return;
     const v = raw === "" ? null : f.values.find((x) => String(x) === raw) ?? null;
-    if (custom(f)) ctl.setTheme({ skin: typeof v === "string" ? v : null, palette: undefined });
-    else ctl.setField(f.id, v);
+    ctl.setField(f.id, v); // a skin drops the custom palette (patchTheme), also when it is the skin already under it
   };
   const density = $derived(densityOf(t.tokens));
   // the skin and font selects of the narrow panel open their picker (a wide panel) from an icon button on their row

@@ -36,7 +36,7 @@
     <Box class="ui8-palette-main">
       <PaletteWheel palette={p} onchange={(v) => ctl.setTheme({ palette: v })} label={T.wheel} />
       <Stack gap="4" class="ui8-palette-controls">
-        <PaletteHarmonies value={p.harmony} onchange={(harmony) => set({ harmony })} text={T} />
+        <PaletteHarmonies value={ctl.value.palette?.harmony ?? null} onchange={(harmony) => set({ harmony })} text={T} />
         {#each RANGES as r (r.key)}
           <Box class="ui8-palette-range">
             <Group gap="2" justify="between" align="center">

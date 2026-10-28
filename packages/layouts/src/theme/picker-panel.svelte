@@ -24,8 +24,8 @@
   const radius = $derived(ctl.value.radius ?? fallback.radius);
   const skinOf = (v: string | null): string => (kind === "skins" ? v ?? fallback.skin : skin);
   const fontOf = (v: string | null): FontId => (kind === "fonts" ? ((v ?? fallback.font) as FontId) : font);
-  // a skin card returns to that skin's own colours (as the skin select does): it drops a custom palette
-  const pick = (v: string | null): void => { if (field === "skin" && ctl.value.palette) ctl.setTheme({ skin: v, palette: undefined }); else ctl.setField(field, v); };
+  // a skin card returns to that skin's own colours: the model drops a custom palette whenever a skin is chosen (patchTheme)
+  const pick = (v: string | null): void => ctl.setField(field, v);
   const faceStyle = (v: string | null): string => {
     const f = family(fontOf(v));
     return `--radius:${radius}px;--font-sans:${f},sans-serif;--taste-heading:${f},sans-serif`;
