@@ -1,9 +1,10 @@
 // Turns a view tree (organism or screen) into markup. The walk is shared; what differs between Svelte, React, Vue and Solid is a `Syntax`:
 // blocks (`{#if}`, a ternary, `v-if`), loops, render-prop slots, event and prop names. Everything else is the same text.
 import type { Handler, OrganismSpec, PropType, Value, ViewNode } from "../../../screens/src/index";
-import { handlerUsesEvent, printCall, printValue, typesPath, type PrintCtx } from "../../../screens/src/index";
+import { handlerUsesEvent, jsString, printCall, printValue, typesPath, type PrintCtx } from "../../../screens/src/index";
 import type { BrickDef, PartDef } from "../../../spec/src/index";
 import { printClassString } from "./variant-table";
+import { commentText } from "./comment";
 import { checkUse, sinkOf } from "./sinks";
 
 export interface PartRef { brick: BrickDef; part: PartDef }
@@ -61,11 +62,11 @@ export interface WalkEnv {
 const pad = (lines: string[], n = 1): string[] => lines.map((l) => (l ? "  ".repeat(n) + l : l));
 export const typeName = (t: PropType): string => (typeof t === "string" ? t : "record" in t ? t.record : t.ts);
 
-const safeAttr = /^[^"{}<>&\\\n]*$/;
+const safeAttr = /^[^"{}<>&\\\u0000-\u001f\u007f]*$/;
 /** a prop or attribute of a primitive: a URL sink (sinks.ts) through urlOf / srcsetOf (a literal one is checked by checkUse) */
 function attrText(name: string, v: Value, env: WalkEnv, key?: string): string {
   const sink = key === undefined ? undefined : sinkOf(key);
-  if (typeof v === "string") return safeAttr.test(v) ? `${name}="${v}"` : `${name}={${JSON.stringify(v)}}`;
+  if (typeof v === "string") return safeAttr.test(v) ? `${name}="${v}"` : `${name}={${jsString(v)}}`;
   if (sink && v !== null && typeof v === "object") {
     const fn = sink.kind === "srcset" ? "srcsetOf" : "urlOf";
     env.print.helpers.add(fn);
@@ -195,7 +196,7 @@ export function wrapList(open: string, items: string[], close: string, width = 1
 /** a comment cut into lines under the width (its own line breaks are kept) */
 export function wrapText(text: string, width = 110): string[] {
   const lines: string[] = [];
-  for (const para of text.split("\n")) {
+  for (const para of commentText(text, true).split("\n")) {
     let line = "";
     for (const word of para.split(" ")) {
       if (line && line.length + word.length + 1 > width) { lines.push(line); line = word; } else line = line ? `${line} ${word}` : word;
@@ -303,7 +304,7 @@ export const takesTrustedHtml = (org: OrganismSpec): boolean =>
 
 export function recordTypes(org: OrganismSpec, organisms: Record<string, OrganismSpec> = {}): string {
   const types = Object.entries(org.records)
-    .map(([name, fields]) => `export type ${name} = {\n${fields.map((f) => `${f.docs ? `  /** ${f.docs} */\n` : ""}  ${f.name}${f.optional ? "?" : ""}: ${f.type};`).join("\n")}\n};`)
+    .map(([name, fields]) => `export type ${name} = {\n${fields.map((f) => `${f.docs ? `  /** ${commentText(f.docs)} */\n` : ""}  ${f.name}${f.optional ? "?" : ""}: ${f.type};`).join("\n")}\n};`)
     .join("\n\n");
   // a record field of trusted markup (`content: TrustedHtml`): the type of the utils, next to the components (src/<tier>/)
   const trusted = Object.values(org.records).some((fs) => fs.some((f) => f.type === "TrustedHtml")) ? [`import type { TrustedHtml } from "../utils";`] : [];

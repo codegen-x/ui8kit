@@ -2,6 +2,8 @@
 // forms (ternary order, `safe` for `raw`, `is not none`, include with a context dict), so a Jinja2 target is a second
 // Dialect object over the same brick and organism emitters, with a Python port of the og_* helpers.
 
+import { commentText, literalText } from "../../core/src/comment";
+
 export interface Dialect {
   name: "twig" | "jinja" | "latte";
   /** template file suffix: `.html.twig`, `.html.j2` */
@@ -63,7 +65,7 @@ export const URL_ATTRS = ["href", "src", "action", "formaction", "poster", "cite
 const isMarkup = (e: string): boolean => MARKUP_HELPERS.some((h) => e.startsWith(`${h}(`));
 const isUrlAttr = (name: string): boolean => (URL_ATTRS as readonly string[]).includes(name);
 
-const q = (s: string): string => `'${s.replace(/\\/g, "\\\\").replace(/'/g, "\\'")}'`;
+const q = (s: string): string => `'${literalText(s).replace(/\\/g, "\\\\").replace(/'/g, "\\'")}'`;
 
 export const twig: Dialect = {
   name: "twig",
@@ -85,7 +87,7 @@ export const twig: Dialect = {
   not: (a) => `not (${a})`,
   raw: (e) => `{{ ${e}|raw }}`,
   out: (e) => `{{ ${e} }}`,
-  comment: (text) => `{#- ${text.replace(/#}/g, "# }")} -#}`,
+  comment: (text) => `{#- ${commentText(text, true)} -#}`,
   set: (name, value) => `{%- set ${name} = ${value} -%}`,
   capture: (name) => [`{%- set ${name} -%}`, `{%- endset -%}`],
   if: (test) => `{%- if ${test} %}`,
@@ -112,7 +114,7 @@ export const jinja: Dialect = {
   orNull: (a, b) => `og_def(${a}, ${b})`,
   ternary: (c, a, b) => `(${a} if ${c} else ${b})`,
   raw: (e) => `{{ ${e}|safe }}`,
-  comment: (text) => `{#- ${text.replace(/#}/g, "# }")} -#}`,
+  comment: (text) => `{#- ${commentText(text, true)} -#}`,
   elseif: (test) => `{%- elif ${test} %}`,
   include: (template, vars) => `{{ og_include(${q(template)}, ${vars}) }}`,
   includeExpr: (template, vars) => `{{ og_include(${template}, ${vars}) }}`,
@@ -142,7 +144,7 @@ export const latte: Dialect = {
   not: (a) => `!(${a})`,
   raw: (e) => `{=${e}|noescape}`,
   out: (e) => (isMarkup(e) ? `{=${e}|noescape}` : `{=${e}}`),
-  comment: (text) => `{* ${text.replace(/\*\}/g, "* }")} *}`,
+  comment: (text) => `{* ${commentText(text, true)} *}`,
   set: (name, value) => `{var $${name} = ${value}}`,
   capture: (name) => [`{capture $${name}}`, `{/capture}`],
   if: (test) => `{if ${test}}`,

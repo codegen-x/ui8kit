@@ -1,6 +1,12 @@
 // Vue template text from the brace form the shared walker prints: `name={expr}` -> `:name="expr"`, `{...rest}` -> `v-bind="rest"`,
 // `{expr}` -> `{{ expr }}`. An attribute value is double quoted, so string literals of the expression move to single quotes.
 
+/** the body of a single-quoted string inside a double-quoted attribute: \\ and ' escaped, and what the attribute would read as
+ * its end or an entity (", & before a name or #), a line break, `{{` / `}}` and `</` written as escapes of the same characters */
+const attrLiteral = (s: string): string =>
+  s.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/"/g, "\\x22").replace(/&(?=[#a-zA-Z])/g, "\\x26")
+    .replace(/\{\{/g, "{\\x7b").replace(/\}\}/g, "}\\x7d").replace(/<(?=[/!])/g, "\\x3c").replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
+
 /** a TypeScript expression as the value of a double-quoted attribute: `"a"` -> `'a'` (template literals and their `${}` kept) */
 export function attrExpr(code: string): string {
   let out = "";
@@ -9,7 +15,7 @@ export function attrExpr(code: string): string {
     let j = i + 1;
     while (j < code.length && code[j] !== quote) j += code[j] === "\\" ? 2 : 1;
     const raw = code.slice(i, j + 1);
-    out += quote === '"' ? `'${(JSON.parse(raw) as string).replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, "\\n")}'` : raw;
+    out += quote === '"' ? `'${attrLiteral(JSON.parse(raw) as string)}'` : raw;
     i = j + 1;
   };
   const template = (): void => {

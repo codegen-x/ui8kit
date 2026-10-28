@@ -4,7 +4,7 @@
 import type { OrganismSpec, Value, ViewNode, SlotFill } from "../../../screens/src/index";
 import { fileName, isGroup, isOp, isRef } from "../../../screens/src/index";
 import type { PartDef } from "../../../spec/src/index";
-import { BANNER, pascalCase, usedPart, sinkCall, type GeneratedFile, type PartRef } from "../../core/src/index";
+import { BANNER, commentText, literalText, pascalCase, usedPart, sinkCall, type GeneratedFile, type PartRef } from "../../core/src/index";
 import { goPackageOf } from "./templ";
 
 /** the templ component a part renders as when the organisms call compositions (kit-compose) instead of v2 bricks */
@@ -29,7 +29,7 @@ const goIdent = (name: string): string => name.replace(/[^A-Za-z0-9_]/g, "_");
 const local = (name: string): string => `v${goIdent(name.charAt(0).toUpperCase() + name.slice(1))}`;
 /** an exported Go field of a prop: title -> Title */
 export const field = (name: string): string => (name === "className" ? "Class" : goIdent(name.charAt(0).toUpperCase() + name.slice(1)));
-const lit = (s: string): string => JSON.stringify(s);
+const lit = (s: string): string => JSON.stringify(literalText(s)); // a Go string: templ reads Go expressions with their strings, so { } inside is text
 const pad = (lines: string[]): string[] => lines.map((l) => (l ? `\t${l}` : l));
 
 /** the heads of the references in a subtree (event handlers left out) */
@@ -338,7 +338,7 @@ export function emitTemplOrganism(org: OrganismSpec, deps: OrgDeps): { file: Gen
       const path = `${deps.goModule}/ui/${brick.dir}`;
       return path.endsWith(`/${pkg}`) ? `\t"${path}"` : `\t${pkg} "${path}"`;
     });
-  const docs = org.docs.split("\n").map((l) => `// ${l}`.trimEnd());
+  const docs = commentText(org.docs, true).split("\n").map((l) => `// ${l}`.trimEnd());
   const contents = [
     `// ${BANNER}`,
     ``,

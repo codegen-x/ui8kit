@@ -1,7 +1,7 @@
 // Solid output for organisms and screens. Blocks are JSX ternaries, lists are `<For>`, render-prop slots are function props (as in React).
 import { fileName, presetFile, printBare, printValue, sourcesOf, tierDir, typesPath, type OrganismSpec, type ScreenSpec } from "../../../screens/src/index";
 import { htmlPropName, reactPropName } from "../../../spec/src/index";
-import { assetFile, assetTables, BANNER, chainLines, chunksOf, partsOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, takesTrustedHtml, readSource, sourceReaders, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "../../core/src/index";
+import { assetFile, assetTables, BANNER, chainLines, chunksOf, partsOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, commentText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, takesTrustedHtml, readSource, sourceReaders, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "../../core/src/index";
 
 const pad = (lines: string[], n = 1): string[] => lines.map((l) => (l ? "  ".repeat(n) + l : l));
 const cap = (s: string): string => s[0]!.toUpperCase() + s.slice(1);
@@ -221,7 +221,7 @@ function emitChunk(s: ScreenSpec, c: ChunkModel, deps: ScreenDeps): GeneratedFil
   const types = [...new Set(c.sources.map((x) => x.record))].sort().map((r) => `type ${r}`);
   const contents = [
     header,
-    `// ${c.doc}`,
+    `// ${commentText(c.doc)}`,
     solidImports(markup),
     wrapList("import {", [...imports, ...types], `} from "${deps.ui}";`),
     ...(c.sources.length ? [`import { ${sourceReaders(c.sources).join(", ")} } from "${deps.shared}/runtime/core";`] : []),

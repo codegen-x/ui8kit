@@ -8,3 +8,4 @@ export * from "./preset";
 export * from "./variant-table";
 export * from "./decks";
 export * from "./sinks";
+export * from "./comment";

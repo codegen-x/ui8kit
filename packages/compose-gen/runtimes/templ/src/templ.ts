@@ -17,7 +17,7 @@ import {
 } from "../../../spec/src/index";
 import { allowedTags } from "../../../spec/src/index";
 import {
-  BANNER,
+  BANNER, commentText,
   exprType,
   foldResolvedTag,
   indent,
@@ -53,7 +53,7 @@ export class TemplEmitter implements Emitter {
     // Record types.
     for (const record of brick.recordTypes ?? []) {
       const fields = record.fields.map((f) => {
-        const doc = f.docs ? `\t// ${f.docs}\n` : "";
+        const doc = f.docs ? `\t// ${commentText(f.docs)}\n` : "";
         return `${doc}\t${f.name} ${f.type === "string" ? "string" : "bool"}`;
       });
       bodyParts.push(`// ${record.name} is one ${record.name} entry.\ntype ${record.name} struct {\n${fields.join("\n")}\n}`);
@@ -74,7 +74,7 @@ export class TemplEmitter implements Emitter {
     header.push(`// ${BANNER}`);
     header.push(``);
     header.push(`/*`);
-    for (const line of brick.docs.split("\n")) header.push(line);
+    for (const line of commentText(brick.docs, true).split("\n")) header.push(line);
     header.push(`*/`);
     header.push(``);
     header.push(`package ${pkg}`);
@@ -127,7 +127,7 @@ export class TemplEmitter implements Emitter {
     const fields: string[] = [];
     for (const p of part.props) {
       if (p.type === "children") continue;
-      const doc = p.docs ? `\t// ${p.name} — ${p.docs}\n` : "";
+      const doc = p.docs ? `\t// ${p.name} — ${commentText(p.docs)}\n` : "";
       fields.push(`${doc}\t${p.name} ${this.goType(part, p.name)}`);
     }
     return `// ${part.name}Props configures ${part.name}.\ntype ${part.name}Props struct {\n${fields.join("\n")}\n}`;

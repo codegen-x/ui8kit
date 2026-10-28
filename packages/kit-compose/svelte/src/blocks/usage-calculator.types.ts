@@ -5,7 +5,7 @@ export type UsageSlider = {
   max: number;
   /** accessible name of the slider */
   label: string;
-  /** template of an amount, e.g. `{0} credits` */
+  /** template of an amount, e.g. `｛0｝ credits` */
   unit: string;
 };
 

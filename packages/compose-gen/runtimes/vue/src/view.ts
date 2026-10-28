@@ -2,7 +2,7 @@
 // scoped slots (`<slot name="item" :item>` / `<template #item="{ item }">`), events are `defineEmits`, derived values `computed`.
 import { fileName, presetFile, printBare, printValue, tierDir, typesPath, type OrganismSpec, type ScreenSpec } from "../../../screens/src/index";
 import { htmlPropName } from "../../../spec/src/index";
-import { assetFile, assetTables, BANNER, chainLines, chunksOf, partsOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, takesTrustedHtml, readSource, sourceReaders, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "../../core/src/index";
+import { assetFile, assetTables, BANNER, chainLines, chunksOf, partsOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, commentText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, takesTrustedHtml, readSource, sourceReaders, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "../../core/src/index";
 import { attrExpr, each, ifChain, slotName, vueAttr } from "./template";
 
 const pad = (lines: string[], n = 1): string[] => lines.map((l) => (l ? "  ".repeat(n) + l : l));
@@ -224,7 +224,7 @@ function emitChunk(s: ScreenSpec, c: ChunkModel, deps: ScreenDeps): GeneratedFil
   const types = [...new Set(c.sources.map((x) => x.record))].sort().map((r) => `type ${r}`);
   const contents = [
     header,
-    `<!-- ${c.doc} -->`,
+    `<!-- ${commentText(c.doc)} -->`,
     `<script setup lang="ts">`,
     wrapList("import {", [...imports, ...types], `} from "${deps.ui}";`, 110),
     ...(c.sources.length ? [`import { ${sourceReaders(c.sources).join(", ")} } from "${deps.shared}/runtime/core";`] : []),

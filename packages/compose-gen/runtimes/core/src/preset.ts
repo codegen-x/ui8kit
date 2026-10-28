@@ -1,6 +1,7 @@
 // A layout preset as a TypeScript module, the same text for every runtime: `export const defaults = { hero: { band: "..." } } as const;`
 import { presetFile, type PresetGroup, type PresetSpec, type PresetValue } from "../../../screens/src/index";
 import { BANNER } from "./common";
+import { commentText } from "./comment";
 import type { GeneratedFile } from "./common";
 
 const KEY = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
@@ -31,7 +32,7 @@ export function emitPreset(p: PresetSpec, source: string): GeneratedFile {
     `// Source: ${source}`,
     ``,
     `/**`,
-    ...p.docs.split("\n").map((l) => ` * ${l}`.trimEnd()),
+    ...commentText(p.docs, true).split("\n").map((l) => ` * ${l}`.trimEnd()),
     ...(p.source ? [` *`, ` * Numbers: ${p.source}`] : []),
     ` */`,
     `export const ${p.name} = {`,

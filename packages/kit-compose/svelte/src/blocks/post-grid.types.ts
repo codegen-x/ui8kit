@@ -26,12 +26,12 @@ export type PostPager = {
   pages?: number;
   /** accessible name of the pager nav (Pages of posts) */
   label?: string;
-  /** template of the summary line: {0} the page, {1} the pages */
+  /** template of the summary line: ｛0｝ the page, ｛1｝ the pages */
   summary?: string;
   /** accessible name of the previous-page button */
   previous?: string;
   /** accessible name of the next-page button */
   next?: string;
-  /** template of the accessible name of a page button, {0} the number */
+  /** template of the accessible name of a page button, ｛0｝ the number */
   pageLabel?: string;
 };

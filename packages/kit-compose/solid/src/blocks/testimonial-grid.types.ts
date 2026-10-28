@@ -13,11 +13,11 @@ export type Quote = {
 };
 
 export type QuoteLabels = {
-  /** template of the rating's accessible name, e.g. `{0} out of 5` */
+  /** template of the rating's accessible name, e.g. `｛0｝ out of 5` */
   rating: string;
-  /** template of the line under the author, e.g. `{0}, {1}` (role, company) */
+  /** template of the line under the author, e.g. `｛0｝, ｛1｝` (role, company) */
   byLine: string;
-  /** template of the line under a social author, e.g. `{0} / {1}` (handle, time) */
+  /** template of the line under a social author, e.g. `｛0｝ / ｛1｝` (handle, time) */
   handleLine: string;
 };
 
