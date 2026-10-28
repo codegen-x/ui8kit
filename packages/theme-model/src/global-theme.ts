@@ -16,7 +16,7 @@
 // The two layers are stored apart (the feed tune in the address, the global theme here): changing one never rewrites the other.
 import { FONT_IDS } from "@ui8kit/taste-data/font-ids";
 import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
-import { cleanPalette, HARMONIES, paletteStyle, type Palette } from "./palette";
+import { cleanPalette, CONTRAST_LEVELS, HARMONIES, paletteStyle, type Palette } from "./palette";
 import { cleanTokens, DENSITIES, DENSITY_ELEMENTS, DENSITY_VARS, ELEMENT_SLOT, ELEMENTS, setToken, SHADOW_ELEMENTS, SHADOWS, tokenAttrs, tokenStyle, type Density, type Tokens } from "./design";
 
 /** palette: the custom colours of the colour wheel (palette.ts), with the skin's neutrals tinted by it; absent: the skin's own colours */
@@ -201,7 +201,7 @@ export const THEME_SCHEMA = {
     format: { const: CONFIG_FORMAT },
     version: { const: CONFIG_VERSION },
     ...Object.fromEntries(FIELDS.filter((f) => f.store !== "tokens").map((f) => [f.id, { enum: f.nullable ? [...f.values, null] : [...f.values] }])),
-    palette: { type: ["object", "null"], required: ["harmony", "h", "s", "l"], additionalProperties: false, properties: { harmony: { enum: [...HARMONIES] }, h: { type: "number", minimum: 0, maximum: 359 }, s: { type: "number", minimum: 0, maximum: 100 }, l: { type: "number", minimum: 0, maximum: 100 } } },
+    palette: { type: ["object", "null"], required: ["harmony", "h", "s", "l"], additionalProperties: false, properties: { harmony: { enum: [...HARMONIES] }, h: { type: "number", minimum: 0, maximum: 359 }, s: { type: "number", minimum: 0, maximum: 100 }, l: { type: "number", minimum: 0, maximum: 100 }, contrast: { enum: [...CONTRAST_LEVELS] } } },
     tokens: { type: "object", additionalProperties: false, properties: Object.fromEntries(FIELDS.filter((f) => f.store === "tokens").map((f) => [f.id, { enum: [...f.values] }])) },
   },
 } as const;

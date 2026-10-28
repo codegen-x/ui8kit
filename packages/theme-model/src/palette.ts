@@ -6,8 +6,9 @@
 // dark mode. The neutrals (background, foreground, card, popover, muted, border, input and the sidebar's: NEUTRAL_TOKENS) follow
 // as tinted neutrals: the palette's base hue at a low saturation, the skin's own lightness (skin-neutrals.ts). Destructive stays the
 // skin's semantic colour; radius, fonts and spacing stay the skin's.
-// Every -foreground pair is checked for WCAG AA (4.5:1): the colour's lightness moves away from its text until it passes; every
-// neutral text (foreground, muted-foreground, ...) moves away from its surfaces until it passes on each of them.
+// Every -foreground pair is checked for the palette's contrast level (WCAG AA 4.5:1 by default, AAA 7:1 on request): the colour's
+// lightness moves away from its text until it passes; every neutral text (foreground, muted-foreground, ...) moves away from its
+// surfaces until it passes on each of them.
 
 export const HARMONIES = ["monochromatic", "analogous", "complementary", "split", "triadic", "tetradic", "square", "double-split", "compound"] as const;
 export type Harmony = (typeof HARMONIES)[number];
@@ -51,7 +52,11 @@ export const samePalette = (a: Palette | null | undefined, b: Palette): boolean 
 /** the lightness steps of a monochromatic harmony's markers (from the base lightness) */
 export const MONO_STEPS = [0, -24, 24] as const;
 
-export type Palette = { harmony: Harmony; h: number; s: number; l: number };
+/** the contrast the palette's text keeps (WCAG 2.x, normal text): AA 4.5:1, AAA 7:1 */
+export const CONTRAST_LEVELS = ["AA", "AAA"] as const;
+export type ContrastLevel = (typeof CONTRAST_LEVELS)[number];
+/** contrast: absent is AA (palettes stored before the level existed read as AA; AA is not written) */
+export type Palette = { harmony: Harmony; h: number; s: number; l: number; contrast?: "AAA" };
 export const DEFAULT_PALETTE: Palette = { harmony: "analogous", h: 220, s: 80, l: 45 };
 export type Mode = "light" | "dark";
 export type Hsl = { h: number; s: number; l: number };
@@ -72,7 +77,7 @@ export function cleanPalette(v: unknown): Palette | null {
   const n = (x: unknown): number | null => (typeof x === "number" && Number.isFinite(x) ? x : null);
   const h = n(o.h), s = n(o.s), l = n(o.l);
   if (h === null || s === null || l === null) return null;
-  return { harmony: o.harmony as Harmony, h: Math.round(wrap(h)), s: Math.round(clamp(s, 0, 100)), l: Math.round(clamp(l, 0, 100)) };
+  return { harmony: o.harmony as Harmony, h: Math.round(wrap(h)), s: Math.round(clamp(s, 0, 100)), l: Math.round(clamp(l, 0, 100)), ...(o.contrast === "AAA" ? { contrast: "AAA" as const } : {}) };
 }
 
 /** the colours of the harmony's markers on the wheel (hue, saturation, lightness) */
@@ -100,15 +105,24 @@ export function contrast(a: Hsl, b: Hsl): number {
 export const css = (c: Hsl): string => `hsl(${round1(c.h)} ${round1(c.s)}% ${round1(c.l)}%)`;
 
 export const AA = 4.5;
+export const AAA = 7;
+export const contrastLevel = (p: Palette): ContrastLevel => p.contrast ?? "AA";
+/** the ratio a palette's text pairs must reach */
+export const targetRatio = (p: Palette): number => (p.contrast === "AAA" ? AAA : AA);
+/** a palette at a contrast level (AA drops the field: the stored form of the default) */
+export function withContrast(p: Palette, level: ContrastLevel): Palette {
+  const { contrast: _, ...rest } = p;
+  return level === "AAA" ? { ...rest, contrast: "AAA" } : rest;
+}
 /** a colour and the text on it: white or a deep tint of its own hue, whichever reads better; then the colour's lightness moves
- *  away from that text until the pair passes AA (with a margin for the 1-decimal values) */
-export function withForeground(bg: Hsl): { bg: Hsl; fg: Hsl } {
+ *  away from that text until the pair passes `ratio` (with a margin for the 1-decimal values) */
+export function withForeground(bg: Hsl, ratio: number): { bg: Hsl; fg: Hsl } {
   const light: Hsl = { h: 0, s: 0, l: 100 };
   const dark: Hsl = { h: bg.h, s: Math.min(bg.s, 40), l: 10 };
   const fg = contrast(bg, light) >= contrast(bg, dark) ? light : dark;
   let c = { ...bg };
   const step = fg === light ? -1 : 1;
-  while (contrast(c, fg) < AA + 0.1 && c.l > 0 && c.l < 100) c = { ...c, l: clamp(c.l + step, 0, 100) };
+  while (contrast(c, fg) < ratio + 0.1 && c.l > 0 && c.l < 100) c = { ...c, l: clamp(c.l + step, 0, 100) };
   return { bg: c, fg };
 }
 
@@ -120,7 +134,7 @@ export const PALETTE_TOKENS = [
   ...NEUTRAL_TOKENS,
 ] as const;
 export type PaletteToken = (typeof PALETTE_TOKENS)[number];
-/** the neutral texts and the surfaces each must read on (AA) */
+/** the neutral texts and the surfaces each must read on (at the palette's contrast level) */
 export const NEUTRAL_PAIRS: ReadonlyArray<readonly [NeutralToken, readonly NeutralToken[]]> = [
   ["foreground", ["background", "card", "popover"]],
   ["card-foreground", ["card"]],
@@ -133,7 +147,7 @@ const LINES = new Set<NeutralToken>(["border", "input", "sidebar-border"]);
 
 /** the neutral tokens of a skin (null: the kit's own theme) tinted by a palette: the base hue, a low saturation (surfaces 8%, text
  *  10%, lines 12%; monochromatic tints everything: 20/24/24%; never above the palette's own), the skin's lightness and alpha; then
- *  each text moves away from its surfaces until it passes AA on all of them */
+ *  each text moves away from its surfaces until it passes the palette's contrast level on all of them */
 export function neutralTokens(p: Palette, mode: Mode, skin: string | null): Record<NeutralToken, string> {
   const row = SKIN_NEUTRALS[skin ?? "default"];
   if (!row) throw new Error(`no neutral lightness for skin ${skin}: run \`bun run skin-neutrals\` in packages/theme-model`);
@@ -148,7 +162,7 @@ export function neutralTokens(p: Palette, mode: Mode, skin: string | null): Reco
     const bgs = surfaces.map(get);
     const up = c.l >= bgs.reduce((n, b) => n + b.l, 0) / bgs.length;
     const worst = (x: Hsl): number => Math.min(...bgs.map((b) => contrast(x, b)));
-    while (worst(c) < AA + 0.1 && c.l > 0 && c.l < 100) c = { ...c, l: clamp(c.l + (up ? 1 : -1), 0, 100) };
+    while (worst(c) < targetRatio(p) + 0.1 && c.l > 0 && c.l < 100) c = { ...c, l: clamp(c.l + (up ? 1 : -1), 0, 100) };
     values.set(text, { c, a: undefined });
   }
   return Object.fromEntries(NEUTRAL_TOKENS.map((t) => {
@@ -157,7 +171,7 @@ export function neutralTokens(p: Palette, mode: Mode, skin: string | null): Reco
   })) as Record<NeutralToken, string>;
 }
 
-/** the pairs a palette checks for AA: the colour and its text */
+/** the pairs a palette checks for its contrast level: the colour and its text */
 export const FOREGROUND_PAIRS = [["primary", "primary-foreground"], ["secondary", "secondary-foreground"], ["accent", "accent-foreground"], ["sidebar-primary", "sidebar-primary-foreground"], ["sidebar-accent", "sidebar-accent-foreground"]] as const;
 
 /** the token values (`hsl(H S% L%)`) of a palette in one mode over a skin (null: the kit's own theme) */
@@ -167,12 +181,13 @@ export function paletteTokens(p: Palette, mode: Mode, skin: string | null): Reco
   const at = (i: number): Hsl => cs[i % cs.length]!;
   // the base colour: its own lightness in light mode, mirrored above the middle in dark mode
   const base: Hsl = { h: p.h, s: p.s, l: dark ? Math.max(p.l, 100 - p.l) : p.l };
-  const primary = withForeground(base);
+  const ratio = targetRatio(p);
+  const primary = withForeground(base, ratio);
   // secondary and accent: quiet surfaces in the 2nd and 3rd colours of the harmony (tints in light mode, deep tones in dark)
   const surface = (c: Hsl, light: number, deep: number, sat: number): Hsl => ({ h: c.h, s: Math.min(c.s, sat), l: dark ? deep : light });
   const mono = p.harmony === "monochromatic";
-  const secondary = withForeground(surface(at(1), mono ? 94 : 92, mono ? 18 : 22, 70));
-  const accent = withForeground(surface(at(mono ? 2 : 2), mono ? 88 : 90, mono ? 26 : 28, 80));
+  const secondary = withForeground(surface(at(1), mono ? 94 : 92, mono ? 18 : 22, 70), ratio);
+  const accent = withForeground(surface(at(mono ? 2 : 2), mono ? 88 : 90, mono ? 26 : 28, 80), ratio);
   // the charts: every colour of the harmony at a readable middle lightness; shades of the hue fill the rest
   const mid = dark ? 62 : 52;
   const SHADES = [0, -14, 14, -24, 24];

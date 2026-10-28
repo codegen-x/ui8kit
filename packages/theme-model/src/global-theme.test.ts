@@ -101,6 +101,12 @@ describe("theme coverage parity", () => {
     expect(rootStyle(t, String, "light")).toContain("--primary:hsl(200 60% ");
     expect(rootStyle(t, String, "light")).not.toBe(rootStyle(t, String, "dark"));
     expect(isDefault({ ...NO_THEME, palette: t.palette })).toBe(false);
+    // the contrast level travels with the palette; a config without it (or written before it existed) reads as AA
+    const aaa = cleanTheme({ skin: "claude", palette: { harmony: "triadic", h: 200, s: 60, l: 45, contrast: "AAA" } });
+    const back = fromConfig(JSON.parse(JSON.stringify(toConfig({ mode: "light", theme: aaa }))));
+    expect(back.ok && back.theme.palette).toEqual({ harmony: "triadic", h: 200, s: 60, l: 45, contrast: "AAA" });
+    const old = fromConfig({ palette: { harmony: "triadic", h: 200, s: 60, l: 45 } });
+    expect(old.ok && old.theme.palette?.contrast).toBeUndefined();
     const bad = fromConfig({ palette: { harmony: "pentad", h: 1, s: 1, l: 1 } });
     expect(bad.ok && bad.dropped).toEqual(["palette"]);
   });

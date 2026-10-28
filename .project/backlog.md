@@ -5,7 +5,7 @@ Deferred by the owner ("later", roughness); one line each, newest section first.
 ## 2026-10-28
 
 ### To do (next, not roughness)
-- Palette contrast level as its own control (AA / AAA, or soft / sharp) for fine contrast tuning of the generated colours — 5cda873c.
+- Done: palette contrast level as its own control (AA / AAA, or soft / sharp) for fine contrast tuning of the generated colours — 5cda873c; shipped as AA 4.5:1 / AAA 7:1 in the palette tools (commit "theme palette: a contrast level").
 - Font controls in the Fonts sheet header: on the left a live sample (a heading, body text and a quote); on the right fine controls: size scale in % (smaller / larger; many fonts look too large) and a Width slider (the Google Fonts variable axis wdth), shown only for fonts that have that axis (verify per font from the Google Fonts axis data). A theme setting: scales the type tokens, applies to the page and the preview iframes, persists, in export/import.
 
 ### Stock: catalog and detail page

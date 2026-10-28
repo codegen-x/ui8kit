@@ -265,6 +265,12 @@
       "hue": "Tono",
       "saturation": "Saturación",
       "lightness": "Luminosidad",
+      "contrast": {
+        "legend": "Contraste del texto",
+        "aa": "AA · 4,5:1",
+        "aaa": "AAA · 7:1",
+        "note": "WCAG para texto normal: todo texto sobre los colores y superficies de la paleta, incluido el texto atenuado, mantiene esta relación. AAA aleja más los colores de su texto."
+      },
       "harmonies": {
         "monochromatic": {
           "name": "Monocromática",

@@ -27,4 +27,17 @@ describe("theme export/import: the custom palette", () => {
     expect(state.theme.skin).toBe("supabase");
     expect(rootStyle(state.theme, String, "dark")).not.toContain("--primary");
   });
+  test("the contrast level (AA/AAA) is in the export; an import without it reads as AA", () => {
+    const aaa: ThemeState = { mode: "light", theme: { ...NO_THEME, skin: "claude", palette: { ...palette, contrast: "AAA" } } };
+    const cfg = JSON.stringify(exportConfig(aaa));
+    expect(JSON.parse(cfg).palette.contrast).toBe("AAA");
+    const { state } = importConfig(resetTheme(aaa), cfg);
+    expect(state.theme.palette).toEqual({ ...palette, contrast: "AAA" });
+    expect(rootStyle(state.theme, String, "light")).toBe(rootStyle(aaa.theme, String, "light"));
+    const old = JSON.parse(cfg); delete old.palette.contrast;
+    const plain = importConfig(aaa, JSON.stringify(old)).state;
+    expect(plain.theme.palette).toEqual(palette);
+    expect(rootStyle(plain.theme, String, "light")).toBe(rootStyle({ ...aaa.theme, palette }, String, "light"));
+    expect(rootStyle(plain.theme, String, "light")).not.toBe(rootStyle(aaa.theme, String, "light"));
+  });
 });

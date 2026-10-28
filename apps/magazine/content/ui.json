@@ -427,6 +427,12 @@
     "hue": "Hue",
     "saturation": "Saturation",
     "lightness": "Lightness",
+    "contrast": {
+      "legend": "Text contrast",
+      "aa": "AA · 4.5:1",
+      "aaa": "AAA · 7:1",
+      "note": "WCAG for normal text: every text on the palette's colours and surfaces, muted text included, keeps this ratio. AAA moves the colours further from their text."
+    },
     "harmonies": {
       "monochromatic": {
         "name": "Monochromatic",

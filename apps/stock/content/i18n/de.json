@@ -265,6 +265,12 @@
       "hue": "Farbton",
       "saturation": "Sättigung",
       "lightness": "Helligkeit",
+      "contrast": {
+        "legend": "Textkontrast",
+        "aa": "AA · 4,5:1",
+        "aaa": "AAA · 7:1",
+        "note": "WCAG für normalen Text: jeder Text auf den Farben und Flächen der Palette, gedämpfter Text eingeschlossen, hält dieses Verhältnis. AAA rückt die Farben weiter von ihrem Text ab."
+      },
       "harmonies": {
         "monochromatic": {
           "name": "Monochrom",
