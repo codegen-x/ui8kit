@@ -14,7 +14,8 @@
   // a match starts a word of the label (any script): "car" finds "Card grid" and "Cart / checkout", not "Scarce"
   const hits = (label: string): boolean => label.toLowerCase().split(/[^\p{L}\p{N}]+/u).some((w) => w.startsWith(needle)) || label.toLowerCase().startsWith(needle);
   const found = $derived(needle ? g.values.filter((v) => v.checked || hits(v.label)) : g.values);
-  const shown = $derived(needle || all ? found : g.values.slice(0, Math.max(g.visible, g.values.filter((v) => v.checked).length)));
+  // folded: the first `visible` values and every checked one wherever it stands (a checked value is never out of sight)
+  const shown = $derived(needle || all ? found : g.values.filter((v, i) => i < g.visible || v.checked));
   const rest = $derived(needle ? 0 : g.values.length - shown.length);
   const picked = $derived(g.values.filter((v) => v.checked).length);
 </script>
