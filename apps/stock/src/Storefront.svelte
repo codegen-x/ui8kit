@@ -87,7 +87,7 @@
             {@const a = refOf(c)}
             {#if a?.preview}
               {#await loadPreview(a.preview, "pv-" + c.key.replace(/[^a-z0-9]+/gi, "-"))}
-                <Text tag="span" class="sr-only">{t.card.loading}</Text>
+                <Text tag="span" class="sr-only" data-preview-pending>{t.card.loading}</Text>
               {:then shown}
                 <LivePreview parts={shown.parts} ctx={shown.ctx} />
               {:catch}

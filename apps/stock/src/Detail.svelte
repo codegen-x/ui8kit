@@ -63,7 +63,7 @@
 {#snippet live(a: Asset | undefined, prefix: string)}
   {#if a?.preview}
     {#await loadPreview(a.preview, prefix)}
-      <Text tag="span" class="sr-only">{t.card.loading}</Text>
+      <Text tag="span" class="sr-only" data-preview-pending>{t.card.loading}</Text>
     {:then shown}
       <LivePreview parts={shown.parts} ctx={shown.ctx} />
     {:catch}

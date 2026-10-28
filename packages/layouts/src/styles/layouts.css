@@ -5,10 +5,15 @@
    carry named classes composed from the same token utilities with @apply, in magazine.css, options.css and theme.css next to
    this file (the app imports them; styles.test.ts). */
 .ui8-preview-stage {
+  position: relative;
   width: var(--preview-width, 1280px);
   transform-origin: 0 0;
   scale: var(--preview-scale, 0.25);
   pointer-events: none;
+}
+/* the wireframe of a frame stays until its stage shows something besides the pending marker of a render still loading */
+.ui8-preview-frame:has(> .ui8-preview-stage > :not([data-preview-pending])) > .ui8-preview-skeleton {
+  display: none;
 }
 
 /* The live screen of a Magazine taste card (src/magazine/taste-card.svelte): a 1440 × 1080 taste screen at its own size, scaled to
