@@ -4,9 +4,13 @@ Deferred by the owner ("later", roughness); one line each, newest section first.
 
 ## 2026-10-28
 
+### To do (next, not roughness)
+- Palette contrast level as its own control (AA / AAA, or soft / sharp) for fine contrast tuning of the generated colours — 5cda873c.
+- Font controls in the Fonts sheet header: on the left a live sample (a heading, body text and a quote); on the right fine controls: size scale in % (smaller / larger; many fonts look too large) and a Width slider (the Google Fonts variable axis wdth), shown only for fonts that have that axis (verify per font from the Google Fonts axis data). A theme setting: scales the type tokens, applies to the page and the preview iframes, persists, in export/import.
+
 ### Stock: catalog and detail page
 - "All of these blocks" mode for "Similar by blocks" (match every block of the page, not any one) — 2d6eb757.
-- Detail page polish ("штрихи"): spacing, alignment and small visual touches of the 70/30 page — c65ce634.
+- Detail page polish (the owner's "finishing touches"): spacing, alignment and small visual touches of the 70/30 page — c65ce634.
 - Search suggestions as a kit-wide ARIA combobox (one composition across the 8 runtimes) — 33cf9675.
 - Translated block names in the facets, chips and the detail page (now the kit ids) — 2d6eb757.
 - Precomputed suggestion index once the catalog nears ~10k assets (now built in the browser) — 33cf9675.
