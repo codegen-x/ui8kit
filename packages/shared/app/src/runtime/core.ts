@@ -156,8 +156,8 @@ export function readPath(source: unknown, path: string, opts: ReadOptions = {}):
   }
   if (pipe?.startsWith("settings:")) return cur ?? field(opts.settings, pipe.slice(9));
   if (pipe === "in-stock") return cur == null ? true : typeof cur === "number" && cur > 0;
-  if (pipe === undefined || cur === undefined) return cur;
-  if (cur === null && (pipe === "reading-minutes" || pipe.startsWith("term-names:"))) return undefined;
+  // JSON null is absent: every other pipe (and no pipe) gives absent on it, as ReadPath.php (test/readpath-null.json)
+  if (pipe === undefined || cur === undefined || cur === null) return cur === null ? undefined : cur;
   const own = field(source, "locale");
   const locale = opts.locale ?? (typeof own === "string" ? own : DEFAULT_LOCALE);
   if (pipe === "date") return fmtDate(cur, locale);
@@ -174,10 +174,10 @@ export function readPath(source: unknown, path: string, opts: ReadOptions = {}):
   }
   if (pipe === "compact") return fmtCompact(cur, locale);
   // markup from the Codex (the body of an entry) is trusted: the TrustedHtml marker of the runtimes (assets/ts/html.ts), printed
-  // without escaping by an `html` view node; a value read without this pipe stays text and is escaped. Only a string with text is
-  // markup: an empty string, a number, a boolean, a list or nothing gives nothing (wp-fasty ReadPath gives null), so a block that
+  // without escaping by an `html` view node; a value read without this pipe stays text and is escaped. Only a string with text (not blank
+  // as PHP trim()) is markup: a blank string, a number, a boolean, a list or nothing gives nothing (wp-fasty ReadPath gives null), so a block that
   // shows a part only when its markup is set (the RichText side note) leaves it out
-  if (pipe === "html") return typeof cur === "string" && cur !== "" ? { __html: cur } : undefined;
+  if (pipe === "html") return typeof cur === "string" && cur.replace(/^[ \t\n\r\0\x0B]+|[ \t\n\r\0\x0B]+$/g, "") !== "" ? { __html: cur } : undefined;
   if (pipe === "reading-minutes") return Math.ceil(wordsOf(cur).length / WORDS_PER_MINUTE);
   // the names of every term of that taxonomy the entry has, in its order (a term not in `terms` is left out)
   if (pipe.startsWith("term-names:")) {

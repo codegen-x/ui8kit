@@ -27,3 +27,14 @@ test("no unknown formatter for these pipes, on present and absent values; anothe
     for (const s of [{}, { v: "a b" }, { v: null }]) expect(() => readPath(s, `v|${p}`)).not.toThrow();
   expect(() => readPath({ v: 1 }, "v|nope")).toThrow("unknown formatter");
 });
+
+test("JSON null is absent for every pipe: a null and an absent value read the same, as ReadPath.php (readpath-null.json)", async () => {
+  const nulls = (await import("./readpath-null.json")).default as { opts: Record<string, unknown>; cases: Array<{ label: string; source: unknown; path: string; want: unknown }> };
+  expect(nulls.cases.length).toBe(38);
+  for (const c of nulls.cases) {
+    const got = readPath(c.source, c.path, nulls.opts as never);
+    expect([c.label, got === undefined ? null : got]).toEqual([c.label, c.want]);
+  }
+  for (const v of [" ", "\t\n", "\u0000 "]) expect([v, readPath({ v }, "v|html")]).toEqual([v, undefined]);
+  expect(readPath({ v: "\u00a0" }, "v|html")).toEqual({ __html: "\u00a0" });
+});
