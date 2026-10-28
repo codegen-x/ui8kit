@@ -39,7 +39,7 @@
     {%- endset -%}
     {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_action, ['href']))), 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'section-action'])}, 'children': c_2}) }}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'layout': 'split', 'media': {'show': true, 'side': v_mediaSide}, 'landmarkLabel': v_landmarkLabel, 'aside': f_3}, 'children': c_5}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'layout': 'split', 'media': {'show': true, 'side': v_mediaSide}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_3)}, 'children': c_5}) }}
 {%- elif og_t(og_eq(v_layout, 'featured')) %}
   {%- set f_6 -%}
     {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': v_title, 'ratio': '4/3'}}) }}
@@ -52,7 +52,7 @@
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'layout': 'split', 'media': {'show': true, 'side': v_mediaSide}, 'landmarkLabel': v_landmarkLabel, 'aside': f_6}, 'children': c_7}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'layout': 'split', 'media': {'show': true, 'side': v_mediaSide}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_6)}, 'children': c_7}) }}
 {%- else %}
   {%- set c_9 -%}
     {%- set c_8 -%}

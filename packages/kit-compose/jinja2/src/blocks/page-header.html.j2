@@ -21,7 +21,7 @@
   {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex min-w-0 flex-col gap-2'}, 'children': c_3}) }}
   {%- if og_t((og_def(p['actions'], none) is not none)) %}
     {%- set c_4 -%}
-      {{ og_def(p['actions'], '')|safe }}
+      {{ og_slot(og_def(p['actions'], none))|safe }}
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex flex-wrap items-center gap-2'}, 'children': c_4}) }}
   {%- endif %}

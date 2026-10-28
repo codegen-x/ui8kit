@@ -42,7 +42,7 @@
           {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'sm', 'href' => og_url(og_s($v_ctaHref)), 'attrs' => og_attrs(['data-testid', 'empty-action']), 'children' => (string) $c_6])|noescape}
         {/if}
       {/capture}
-      {=og_include('blocks/empty-state.latte', ['p' => ['icon' => $v_icon, 'title' => $v_title, 'text' => $v_text, 'className' => og_cnv([og_cnv(['mx-auto max-w-xl', (og_t(og_eq($v_layout, 'plain')) ? 'bg-transparent inset-ring-0' : ''), (og_t(og_eq($v_size, 'compact')) ? 'py-6' : '')])]), 'action' => $f_5]])|noescape}
+      {=og_include('blocks/empty-state.latte', ['p' => ['icon' => $v_icon, 'title' => $v_title, 'text' => $v_text, 'className' => og_cnv([og_cnv(['mx-auto max-w-xl', (og_t(og_eq($v_layout, 'plain')) ? 'bg-transparent inset-ring-0' : ''), (og_t(og_eq($v_size, 'compact')) ? 'py-6' : '')])]), 'action' => og_markup($f_5)]])|noescape}
     {/if}
   {/capture}
   {=og_include('compose/Container.latte', ['class' => og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', (og_t(og_eq($v_size, 'compact')) ? 'py-4' : 'py-8')])), 'attrs' => og_attrs(['data-slot', 'container']), 'children' => (string) $c_7])|noescape}

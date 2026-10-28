@@ -214,7 +214,7 @@ function node(n: ViewNode, c: Ctx): string[] {
     const decl = c.org.slots.find((s) => s.name === n.slot);
     if (!decl) throw new Error(`${c.org.name}: unknown slot ${n.slot}`);
     const slot = d.field(d.v("p"), n.slot);
-    if (!decl.args.length) return [d.raw(d.orNull(slot, "''"))];
+    if (!decl.args.length) return [d.raw(`og_slot(${d.orNull(slot, d.nul)})`)]; // raw only the markup a fill captured (og_markup), a plain string escaped
     const args = (n.args ?? []).map((a, i): [string, string] => [`a${i}`, printValue(a, c)]);
     return [d.if(d.isNotNull(d.orNull(slot, d.nul))), `  ${d.includeExpr(d.field(slot, "t"), d.merge(d.field(slot, "v"), d.hash(args)))}`, d.endif];
   }
@@ -227,7 +227,7 @@ function node(n: ViewNode, c: Ctx): string[] {
     const pre: string[] = [];
     for (const [name, sl] of Object.entries(n.slots ?? {})) {
       if (sl.forward !== undefined) {
-        if (name === "children") children = [d.raw(d.orNull(sl.forward === "children" ? d.v("children") : d.field(d.v("p"), sl.forward), "''"))];
+        if (name === "children") children = [sl.forward === "children" ? d.raw(d.orNull(d.v("children"), "''")) : d.raw(`og_slot(${d.orNull(d.field(d.v("p"), sl.forward), d.nul)})`)];
         else props.push([name, d.orNull(d.field(d.v("p"), sl.forward), d.nul)]);
         continue;
       }
@@ -251,7 +251,7 @@ function fill(sl: SlotFill, arity: number, c: Ctx, pre: string[]): string {
       const name = `f_${++c.n}`;
       const [open, close] = d.capture(name);
       pre.push(open, ...pad(walk(sl.do, c)), close);
-      return d.v(name);
+      return `og_markup(${d.v(name)})`; // the captured markup as TrustedHtml, printed by og_slot
     }
     const used = refHeads(sl.do);
     const captured = [...c.scope.entries()].filter(([k]) => used.has(k) && !sl.args.includes(k));

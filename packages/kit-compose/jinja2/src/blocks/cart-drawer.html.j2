@@ -39,7 +39,7 @@
               {%- endset -%}
               {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'default'}, 'children': c_6}) }}
             {%- endset -%}
-            {{ og_include('blocks/empty-state.html.j2', {'p': {'icon': 'shopping-bag', 'title': og_get(v_drawer, ['empty']), 'text': og_get(v_drawer, ['emptyText']), 'action': f_5}}) }}
+            {{ og_include('blocks/empty-state.html.j2', {'p': {'icon': 'shopping-bag', 'title': og_get(v_drawer, ['empty']), 'text': og_get(v_drawer, ['emptyText']), 'action': og_markup(f_5)}}) }}
           {%- endset -%}
           {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex flex-1 flex-col justify-center p-4', 'Attrs': og_attrs(['data-testid', 'empty'])}, 'children': c_7}) }}
         {%- else %}

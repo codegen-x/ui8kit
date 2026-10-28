@@ -8,7 +8,7 @@
 {%- set v_preview = og_def(p['preview'], false) -%}
 {%- set c_4 -%}
   {%- set c_3 -%}
-    {{ og_def(p['icon'], '')|safe }}
+    {{ og_slot(og_def(p['icon'], none))|safe }}
     {%- set c_1 -%}
       {{ og_text(v_label) }}
     {%- endset -%}

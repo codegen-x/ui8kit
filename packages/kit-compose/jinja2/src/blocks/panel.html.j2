@@ -23,7 +23,7 @@
         {%- endif %}
       {%- endset -%}
       {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex min-w-0 flex-col gap-2'}, 'children': c_3}) }}
-      {{ og_def(p['actions'], '')|safe }}
+      {{ og_slot(og_def(p['actions'], none))|safe }}
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex items-start justify-between gap-4'}, 'children': c_4}) }}
   {%- endif %}
