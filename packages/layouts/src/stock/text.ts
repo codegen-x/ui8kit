@@ -61,7 +61,8 @@ export type DetailText = {
     /** the segment of the full-screen preview that shows desktop and phone together */
     side: string;
   };
-  summary: { facts: string; type: string; pattern: string; runtimes: string; blocks: string; variants: string; tags: string; findSimilar: string; actions: string };
+  /** `byPattern`, `byBlocks`, `usedIn`: the ways into the catalog of SimilarLink (a pattern, the blocks of a page, the screens of a block) */
+  summary: { facts: string; type: string; pattern: string; runtimes: string; blocks: string; variants: string; tags: string; findSimilar: string; actions: string; byPattern: string; byBlocks: string; usedIn: string };
   concepts: {
     title: string; lead: string; blocks: string; blocksNote: string; locate: string; variants: string; usedBy: string; unused: string; current: string;
     map: string; mapNote: string; pattern: string; patternNone: string; facets: string; future: string; futureNote: string; futureItems: string[];
@@ -80,6 +81,8 @@ export type TagView = { key: string; label: string; href: string; draft: boolean
 export type PatternView = { id: string; label: string; definition: string | null; draft: boolean };
 /** one row of the page map: a block of the page (a block variant: itself) top to bottom, with its first composition ("" none) */
 export type MapRow = { key: string; title: string; subtitle: string; composition: string; compositionLabel: string };
+/** a way into the catalog from an asset: its composition pattern, the blocks of its page, the screens that use its block */
+export type SimilarLink = { id: "pattern" | "blocks" | "usedIn"; href: string };
 /** a row of related assets: its heading, the cards, what to say when there are none */
 export type RelatedView = { id: string; title: string; cards: CardView[]; none: string };
 /** the detail page of an asset: `parts` are the blocks of a screen page or the variants of a block, `usedBy` the screen pages of a
@@ -88,6 +91,8 @@ export type RelatedView = { id: string; title: string; cards: CardView[]; none: 
 export type DetailView = {
   key: string; type: string; title: string; subtitle: string; kind: string; parts: PassportLink[]; usedBy: PassportLink[]; facets: PassportFacet[];
   runtimes: Option[]; pattern: PassportFacet | null; patterns: PatternView[]; concepts: PassportFacet[]; tags: TagView[]; map: MapRow[]; similarHref: string;
+  /** the separate ways into the catalog (none: only `similarHref`) */
+  similarBy: SimilarLink[];
 };
 /** a width of the device frame */
 export type DeviceView = { id: "desktop" | "tablet" | "phone"; width: number; height: number };

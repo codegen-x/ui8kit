@@ -28,7 +28,8 @@ counted). `draft: true` marks the facets whose labels come from hand-written tab
 composition, media, slots, role, character, mood, industry; the storefront shows a draft badge on them. Industry is soft: it ranks,
 never filters. The composition pattern (`pattern`) has its vocabulary in one file, `content/terms/pattern.v0.json` (brain-term/v1: the 9
 `pattern:*` nodes of the brain graph plus z-pattern, f-pattern, modular-grid, golden-canon; labels in five languages; a status per
-term). `modular-grid` is computed from the spec (`scripts/lib/pattern.ts`: the root Grid of the variant is one repeated module, no
+term; definitions in five languages). "Built from block" (`blocks`, screens only) is computed: the kit blocks of the page, its frame
+and its area, one value per block spec named as the catalog names the block (English, like every asset title). `modular-grid` is computed from the spec (`scripts/lib/pattern.ts`: the root Grid of the variant is one repeated module, no
 span, three or more equal columns); every other value comes from the hand-written table `content/pattern-map.v0.json` and is a draft
 (per-value badge). The builder hides a facet that does not discriminate (no labels: mood; the same labels everywhere: runtime) and a value
 no asset carries (`index.hidden` names both). Each asset lists its `weak` facets and the `missing` ones; the labelling state facet

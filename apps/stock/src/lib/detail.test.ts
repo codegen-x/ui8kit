@@ -4,7 +4,7 @@ import type { Recipes } from "@ui8kit/layouts/preview/recipe";
 import indexJson from "../../content/assets.v0.json";
 import recipesJson from "../../content/previews.v0.json";
 import termsJson from "../../content/terms/pattern.v0.json";
-import { detailView, pageMap, pageUses, passportFacets, sameBlocks, samePattern, similar, similarFilters, usedBy, useId, type Definitions } from "./detail";
+import { detailView, pageMap, pageUses, passportFacets, sameBlocks, samePattern, similar, similarBy, similarFilters, usedBy, useId, type Definitions } from "./detail";
 import type { Index } from "./model";
 import { assetHash, frameHash, parseRoute } from "./route";
 
@@ -140,4 +140,20 @@ describe("detail", () => {
     expect(similarFilters(get("screen.site/home"))).toEqual({ type: ["screen"], pattern: get("screen.site/home").labels.pattern! });
     expect(similarFilters(get("block.about/split"))).toEqual({ type: ["block"], composition: ["two-column"] });
   });
+
+  test("similar by pattern and by blocks: filtered catalog links that give results, none without a label", async () => {
+    const { prepare, search, parseSearch } = await import("@ui8kit/facet-search");
+    const engine = prepare(index);
+    const vocab = { facets: index.facets, sorts: index.sorts };
+    const count = (href: string): number => search(engine, parseSearch(href.replace(/^#\/search\??/, ""), vocab)).results.length;
+    const home = similarBy(index, recipes, get("screen.site/home"));
+    expect(home.map((x) => x.id)).toEqual(["pattern", "blocks"]);
+    for (const x of home) expect(count(x.href)).toBeGreaterThan(1);
+    expect(home[1]!.href).toContain("type=screen");
+    const about = similarBy(index, recipes, get("block.about/split"));
+    expect(about.some((x) => x.id === "pattern")).toBe(false);
+    const used = about.find((x) => x.id === "usedIn");
+    if (used) expect(count(used.href)).toBe(sameBlocks(index, recipes, get("block.about/split"), 999).length);
+  });
 });
+

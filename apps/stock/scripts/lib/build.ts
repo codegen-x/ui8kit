@@ -93,6 +93,12 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       const vals = [...new Set(blocks.flatMap((b) => b.axes[axis] ?? []))].sort();
       return { ...f, values: vals.map((v) => ({ id: v, label: { en: humanize(v) } })) };
     }
+    // the kit blocks a screen page is built from: one value per block spec, named as the catalog names the block (English, like
+    // every asset title), in name order
+    if (f.valuesFrom === "blocks") {
+      const named = blocks.map((b) => ({ id: b.id.slice(6), label: { en: str((dict.blocks.names as Record<string, string>)[b.id.slice(6)], humanize(b.id.slice(6))) } }));
+      return { ...f, values: named.sort((a, b) => a.label.en.localeCompare(b.label.en) || a.id.localeCompare(b.id)) };
+    }
     if (f.valuesFrom?.startsWith("terms:")) {
       const t = loadTerms(f.valuesFrom.slice(6));
       return { ...f, values: t.terms.map((x) => ({ id: x.id, label: x.label as FacetValue["label"], ...(x.status === "draft" ? { draft: true } : {}) })) };
@@ -236,8 +242,10 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       const merged = union(parts.map((p) => Object.fromEntries(Object.entries(p).filter(([f]) => applies(byId.get(f)!, "screen")))));
       const ctx: Ctx = { axes: {}, slots: [], records: [], fields: [], labels: [], colours: [], facets: { ...merged }, screen: key, area };
       // page-level rules (industry by screen and area) add to what the blocks carry
-      const own = labelsOf("screen", ctx, runtimesOf(list.map((u) => recipes[u.block]?.organism ?? "")));
-      const labels = union([merged, Object.fromEntries(Object.entries(own).filter(([f]) => byId.get(f)!.derive === "rules" && (byId.get(f)!.mode === "soft" || !merged[f]?.length))), { runtime: own["runtime"] ?? [] }]);
+      // the blocks of the page: its frame (before, after) and its area, each block once
+      const built = [...new Set([...screenRecipes[key].before, ...list, ...screenRecipes[key].after].map((u) => u.block))];
+      const own = labelsOf("screen", ctx, runtimesOf(list.map((u) => recipes[u.block]?.organism ?? "")), byId.has("blocks") ? { blocks: built } : {});
+      const labels = union([merged, Object.fromEntries(Object.entries(own).filter(([f]) => byId.get(f)!.derive === "rules" && (byId.get(f)!.mode === "soft" || !merged[f]?.length))), { runtime: own["runtime"] ?? [] }, { blocks: own["blocks"] ?? [] }]);
       const pageName = humanize(area);
       raws.push({
         id: `screen.${key}/${area}`, type: "screen", group: `screen.${key}/${area}`, title: screenTitle, subtitle: pageName, spec: s.id, variant: area, labels,

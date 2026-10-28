@@ -66,6 +66,12 @@
         <LucideIcon name="monitor-smartphone" size={16} />
         <Text tag="span">{t.detail.preview.full}</Text>
       </Button>
+      {#each view.similarBy as s (s.id)}
+        <Link href={s.href} size="sm" class="ui8-summary-link" data-testid={"detail-similar-" + s.id}>
+          <LucideIcon name={s.id === "pattern" ? "layout-grid" : "layers"} size={16} />
+          <Text tag="span">{s.id === "pattern" ? t.detail.summary.byPattern : s.id === "blocks" ? t.detail.summary.byBlocks : t.detail.summary.usedIn}</Text>
+        </Link>
+      {/each}
       <Link href={view.similarHref} size="sm" class="ui8-summary-link" data-testid="detail-find-similar">
         <LucideIcon name="search" size={16} />
         <Text tag="span">{t.detail.summary.findSimilar}</Text>

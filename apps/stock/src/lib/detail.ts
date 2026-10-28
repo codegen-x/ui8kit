@@ -3,7 +3,7 @@
 // type with its labels (or an explicit "no label": no fallback), and the similar assets.
 import { emptySearch, searchHash } from "@ui8kit/facet-search";
 import { textIn, type Locale, type Text } from "@ui8kit/facet-search/model";
-import type { DetailView, MapRow, Option, PassportFacet, PassportLink, PatternView, TagView } from "@ui8kit/layouts/stock/text";
+import type { DetailView, MapRow, Option, PassportFacet, PassportLink, PatternView, SimilarLink, TagView } from "@ui8kit/layouts/stock/text";
 import type { BlockUse, Recipes } from "@ui8kit/layouts/preview/recipe";
 import type { Asset, Index } from "./model";
 import { assetHash } from "./route";
@@ -129,6 +129,24 @@ export function similarFilters(a: Asset): Record<string, string[]> {
   return { type: [a.type], ...(pat.length ? { pattern: pat } : pick("composition").length ? { composition: pick("composition") } : {}) };
 }
 
+/** the ways into the catalog from this asset, each a filtered search: its composition pattern (when it has one), and its blocks:
+ *  for a screen page the screens built from any block of its own area (the frame's header and footer would match nearly every
+ *  page), for a block variant the screens built from its block (when one is). None is made up: no label, no link. */
+export function similarBy(index: Index, recipes: Recipes, a: Asset): SimilarLink[] {
+  const out: SimilarLink[] = [];
+  const pat = (a.labels["pattern"] ?? []).filter((v) => v !== "*");
+  if (pat.length) out.push({ id: "pattern", href: catalogHash(index, { type: [a.type], pattern: pat }) });
+  const blocks = index.facets.find((f) => f.id === "blocks");
+  const p = a.preview;
+  if (blocks && p?.kind === "screen") {
+    const own = [...new Set((recipes.screens[p.screen]?.areas[p.area] ?? []).map((u) => u.block))].filter((b) => blocks.values.some((v) => v.id === b));
+    if (own.length) out.push({ id: "blocks", href: catalogHash(index, { type: ["screen"], blocks: own }) });
+  } else if (blocks && p?.kind === "block" && blocks.values.some((v) => v.id === p.block)) {
+    out.push({ id: "usedIn", href: catalogHash(index, { type: ["screen"], blocks: [p.block] }) });
+  }
+  return out;
+}
+
 const SKIPPED = (a: Asset, seen: Set<string>) => (x: Asset) => x.type === a.type && x.group !== a.group && !seen.has(x.group);
 const firstPerGroup = (list: Asset[], n: number, seen: Set<string>): Asset[] => {
   const out: Asset[] = [];
@@ -169,5 +187,6 @@ export function detailView(index: Index, recipes: Recipes, a: Asset, locale: Loc
     facets, runtimes: runtimes(index, locale), pattern, patterns: patterns(pattern, defs, locale),
     concepts: CONCEPTS.flatMap((id) => facets.filter((f) => f.id === id)),
     tags: tags(index, a, locale), map: pageMap(index, recipes, a, locale), similarHref: catalogHash(index, similarFilters(a)),
+    similarBy: similarBy(index, recipes, a),
   };
 }

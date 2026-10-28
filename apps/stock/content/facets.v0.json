@@ -1620,6 +1620,26 @@
       "values": []
     },
     {
+      "id": "blocks",
+      "label": {
+        "en": "Built from block",
+        "fr": "Construit avec le bloc",
+        "de": "Gebaut aus Block",
+        "es": "Construido con el bloque",
+        "ru": "Собрано из блока"
+      },
+      "ui": "checkbox",
+      "scope": "typed",
+      "types": [
+        "screen"
+      ],
+      "source": "system",
+      "derive": "blocks",
+      "valuesFrom": "blocks",
+      "order": 7,
+      "values": []
+    },
+    {
       "id": "media",
       "label": {
         "en": "Media",

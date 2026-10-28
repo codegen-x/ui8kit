@@ -104,7 +104,10 @@
       "variants": "Variantes",
       "tags": "Étiquettes",
       "findSimilar": "Trouver des semblables dans le catalogue",
-      "actions": "Actions"
+      "actions": "Actions",
+      "byPattern": "Similaires par motif de composition",
+      "byBlocks": "Similaires par blocs",
+      "usedIn": "Écrans avec ce bloc"
     },
     "concepts": {
       "title": "Concepts et entités",
