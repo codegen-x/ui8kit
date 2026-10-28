@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { AA, baseHueFor, cleanPalette, contrast, FOREGROUND_PAIRS, HARMONIES, harmonyColours, hueAt, OFFSETS, PALETTE_TOKENS, paletteTokens, type Hsl, type Palette } from "./palette";
+import { AA, baseHueFor, PRESETS, samePalette, cleanPalette, contrast, FOREGROUND_PAIRS, HARMONIES, harmonyColours, hueAt, OFFSETS, PALETTE_TOKENS, paletteTokens, type Hsl, type Palette } from "./palette";
 
 const parse = (v: string): Hsl => { const m = /^hsl\(([\d.]+) ([\d.]+)% ([\d.]+)%\)$/.exec(v)!; return { h: +m[1]!, s: +m[2]!, l: +m[3]! }; };
 
@@ -11,6 +11,8 @@ describe("palette", () => {
     expect(OFFSETS.tetradic).toEqual([0, 60, 180, 240]);
     expect(OFFSETS.split).toEqual([0, 150, 210]);
     expect(OFFSETS.analogous).toEqual([0, -30, 30]);
+    expect(OFFSETS["double-split"]).toEqual([0, 30, 180, 210]);
+    expect(OFFSETS.compound).toEqual([0, -30, 30, 165, 195]);
     for (const harmony of HARMONIES) for (const h of [0, 47, 200, 359]) {
       const cs = harmonyColours({ harmony, h, s: 70, l: 50 });
       if (harmony === "monochromatic") { expect(new Set(cs.map((c) => c.h)).size).toBe(1); continue; }
@@ -38,6 +40,18 @@ describe("palette", () => {
       for (const [bg, fg] of FOREGROUND_PAIRS) { expect(contrast(parse(t[bg]), parse(t[fg]))).toBeGreaterThanOrEqual(AA); n++; }
     }
     expect(n).toBeGreaterThan(10000);
+  });
+  test("16 presets, each a clean palette whose -foreground pairs pass AA in both modes", () => {
+    expect(PRESETS.length).toBe(16);
+    expect(new Set(PRESETS.map((p) => p.id)).size).toBe(16);
+    for (const { palette } of PRESETS) {
+      expect(cleanPalette(palette)).toEqual(palette);
+      expect(samePalette(cleanPalette(palette), palette)).toBe(true);
+      for (const mode of ["light", "dark"] as const) {
+        const t = paletteTokens(palette, mode);
+        for (const [bg, fg] of FOREGROUND_PAIRS) expect(contrast(parse(t[bg]), parse(t[fg]))).toBeGreaterThanOrEqual(AA);
+      }
+    }
   });
   test("cleans stored palettes", () => {
     expect(cleanPalette({ harmony: "triadic", h: 370, s: 120, l: -4 })).toEqual({ harmony: "triadic", h: 10, s: 100, l: 0 });

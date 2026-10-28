@@ -1,12 +1,14 @@
 <!-- A wide panel of the Theme sheet: the custom palette. Three live cards on top; below, the colour wheel (palette-wheel) on the left
      and the harmonies (palette-harmonies) with the hue, saturation and lightness ranges on the right. Any change writes the theme's
      palette, which rewrites only the skin's colour tokens (@ui8kit/theme-model/palette) for the whole site, its previews included;
-     the skin select then shows "Custom", and Reset returns to the skin's own colours. Opening the panel changes nothing. -->
+     the skin select then shows "Custom", and Reset returns to the skin's own colours. Under the tools, 16 well-known combinations
+     (palette-presets) apply a whole palette at once. Opening the panel changes nothing. -->
 <script lang="ts">
   import { Box, Button, Group, Label, Range, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { ThemeController } from "@ui8kit/theme-model/controller";
   import { DEFAULT_PALETTE, type Palette } from "@ui8kit/theme-model/palette";
   import PaletteHarmonies from "./palette-harmonies.svelte";
+  import PalettePresets from "./palette-presets.svelte";
   import PaletteSamples from "./palette-samples.svelte";
   import PaletteWheel from "./palette-wheel.svelte";
   import type { ThemeSheetText } from "./text";
@@ -49,5 +51,6 @@
         <Button variant="outline" disabled={!ctl.value.palette} onclick={() => ctl.setTheme({ palette: undefined })} data-testid="palette-reset">{T.reset}</Button>
       </Stack>
     </Box>
+    <PalettePresets current={ctl.value.palette ?? null} mode={ctl.mode} onpick={(v) => ctl.setTheme({ palette: v })} text={T.presets} />
   </Box>
 </Stack>

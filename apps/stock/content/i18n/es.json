@@ -293,6 +293,14 @@
         "square": {
           "name": "Cuadrada",
           "hint": "90°"
+        },
+        "double-split": {
+          "name": "Doble complementaria dividida",
+          "hint": "dos pares, a 30°"
+        },
+        "compound": {
+          "name": "Compuesta",
+          "hint": "±30°, 180° ± 15°"
         }
       },
       "samples": {
@@ -311,6 +319,28 @@
         "alertText": "Los nuevos colores se aplican a todo el sitio y a sus vistas previas.",
         "accent": "Superficie de acento",
         "muted": "Superficie secundaria"
+      },
+      "presets": {
+        "title": "Combinaciones conocidas",
+        "note": "Combinaciones clásicas y actuales, cada una como armonía: una tarjeta fija toda la paleta.",
+        "names": {
+          "blue-orange": "Azul y naranja",
+          "red-green": "Rojo y verde",
+          "yellow-violet": "Amarillo y violeta",
+          "navy-gold": "Marino y dorado",
+          "teal-amber": "Verde azulado y ámbar",
+          "sage-terracotta": "Salvia y terracota",
+          "butter-aubergine": "Amarillo mantequilla y berenjena",
+          "blue-tan": "Azul intenso y canela",
+          "mint-burgundy": "Menta y burdeos",
+          "pink-green": "Rosa y verde",
+          "coral-turquoise": "Coral y turquesa",
+          "rgb-triad": "Rojo, verde y azul",
+          "ocean": "Océano",
+          "sunset": "Atardecer",
+          "forest": "Bosque",
+          "lavender": "Tonos lavanda"
+        }
       }
     }
   }

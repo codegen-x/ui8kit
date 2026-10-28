@@ -1,12 +1,12 @@
 // The custom palette of the global theme: a colour wheel as in online palette editors (reference: htmlcolorcodes.com/color-wheel,
 // reimplemented): one base colour (hue round the wheel, saturation from the centre out, lightness on the outer ring) and a harmony
-// (the reference's six, plus monochromatic) give the hues; turning the base turns them all, so their angles always hold.
+// (the reference's six, plus monochromatic, and Adobe Color's double split complementary and compound) give the hues; turning the base turns them all, so their angles always hold.
 // Only colour changes: the result rewrites the values of the skin's own shadcn tokens (--primary, --secondary, --accent, --ring,
 // --chart-1..5 and their sidebar twins, with their -foreground pairs) in the skins' format `hsl(H S% L%)`, for the light and the
 // dark mode. Neutrals (background, foreground, card, muted, border, input, destructive), radius, fonts and spacing stay the skin's.
 // Every -foreground pair is checked for WCAG AA (4.5:1): the colour's lightness moves away from its text until it passes.
 
-export const HARMONIES = ["monochromatic", "analogous", "complementary", "split", "triadic", "tetradic", "square"] as const;
+export const HARMONIES = ["monochromatic", "analogous", "complementary", "split", "triadic", "tetradic", "square", "double-split", "compound"] as const;
 export type Harmony = (typeof HARMONIES)[number];
 /** the hue offsets (degrees) of each harmony from the base colour; monochromatic: one hue, its shades and tints */
 export const OFFSETS: Record<Harmony, readonly number[]> = {
@@ -17,7 +17,34 @@ export const OFFSETS: Record<Harmony, readonly number[]> = {
   triadic: [0, 120, 240],
   tetradic: [0, 60, 180, 240],
   square: [0, 90, 180, 270],
+  // two complementary pairs 30° apart, an X on the wheel (Adobe Color: Double Split Complementary)
+  "double-split": [0, 30, 180, 210],
+  // the base, its two neighbours and two colours either side of its complement (Adobe Color: Compound; five colours)
+  compound: [0, -30, 30, 165, 195],
 };
+
+/** well-known colour combinations as palettes (the harmony nearest to the pair's angle, the base hue, saturation and lightness of
+ *  its main colour); the names are the panel's texts (PaletteText.presets), by id */
+export const PRESETS: ReadonlyArray<{ id: string; palette: Palette }> = [
+  { id: "blue-orange", palette: { harmony: "complementary", h: 215, s: 85, l: 45 } },
+  { id: "red-green", palette: { harmony: "complementary", h: 355, s: 75, l: 45 } },
+  { id: "yellow-violet", palette: { harmony: "complementary", h: 48, s: 90, l: 50 } },
+  { id: "navy-gold", palette: { harmony: "complementary", h: 223, s: 80, l: 22 } },
+  { id: "teal-amber", palette: { harmony: "split", h: 197, s: 65, l: 29 } },
+  { id: "sage-terracotta", palette: { harmony: "tetradic", h: 15, s: 62, l: 47 } },
+  { id: "butter-aubergine", palette: { harmony: "triadic", h: 290, s: 45, l: 30 } },
+  { id: "blue-tan", palette: { harmony: "complementary", h: 212, s: 60, l: 38 } },
+  { id: "mint-burgundy", palette: { harmony: "split", h: 345, s: 65, l: 32 } },
+  { id: "pink-green", palette: { harmony: "complementary", h: 330, s: 70, l: 55 } },
+  { id: "coral-turquoise", palette: { harmony: "compound", h: 10, s: 80, l: 60 } },
+  { id: "rgb-triad", palette: { harmony: "triadic", h: 0, s: 80, l: 50 } },
+  { id: "ocean", palette: { harmony: "analogous", h: 200, s: 70, l: 40 } },
+  { id: "sunset", palette: { harmony: "analogous", h: 25, s: 90, l: 50 } },
+  { id: "forest", palette: { harmony: "analogous", h: 130, s: 45, l: 32 } },
+  { id: "lavender", palette: { harmony: "monochromatic", h: 265, s: 55, l: 55 } },
+];
+/** a palette is a preset's when every value matches */
+export const samePalette = (a: Palette | null | undefined, b: Palette): boolean => !!a && a.harmony === b.harmony && a.h === b.h && a.s === b.s && a.l === b.l;
 /** the lightness steps of a monochromatic harmony's markers (from the base lightness) */
 export const MONO_STEPS = [0, -24, 24] as const;
 

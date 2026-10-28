@@ -293,6 +293,14 @@
         "square": {
           "name": "Carré",
           "hint": "90°"
+        },
+        "double-split": {
+          "name": "Double complémentaire adjacente",
+          "hint": "deux paires à 30°"
+        },
+        "compound": {
+          "name": "Composée",
+          "hint": "±30°, 180° ± 15°"
         }
       },
       "samples": {
@@ -311,6 +319,28 @@
         "alertText": "Les nouvelles couleurs s'appliquent à tout le site et à ses aperçus.",
         "accent": "Surface d'accent",
         "muted": "Surface secondaire"
+      },
+      "presets": {
+        "title": "Associations connues",
+        "note": "Des associations classiques et actuelles, chacune en harmonie : une carte règle toute la palette.",
+        "names": {
+          "blue-orange": "Bleu et orange",
+          "red-green": "Rouge et vert",
+          "yellow-violet": "Jaune et violet",
+          "navy-gold": "Marine et or",
+          "teal-amber": "Sarcelle et ambre",
+          "sage-terracotta": "Sauge et terre cuite",
+          "butter-aubergine": "Jaune beurre et aubergine",
+          "blue-tan": "Bleu profond et fauve",
+          "mint-burgundy": "Menthe et bordeaux",
+          "pink-green": "Rose et vert",
+          "coral-turquoise": "Corail et turquoise",
+          "rgb-triad": "Rouge, vert et bleu",
+          "ocean": "Océan",
+          "sunset": "Coucher de soleil",
+          "forest": "Forêt",
+          "lavender": "Nuances de lavande"
+        }
       }
     }
   }

@@ -455,6 +455,14 @@
       "square": {
         "name": "Square",
         "hint": "90°"
+      },
+      "double-split": {
+        "name": "Double split complementary",
+        "hint": "two pairs, 30° apart"
+      },
+      "compound": {
+        "name": "Compound",
+        "hint": "±30°, 180° ± 15°"
       }
     },
     "samples": {
@@ -473,6 +481,28 @@
       "alertText": "New colours apply to the whole site and its previews.",
       "accent": "Accent surface",
       "muted": "Secondary surface"
+    },
+    "presets": {
+      "title": "Well-known combinations",
+      "note": "Classic and current pairings, each turned into a harmony: a card sets the whole palette.",
+      "names": {
+        "blue-orange": "Blue and orange",
+        "red-green": "Red and green",
+        "yellow-violet": "Yellow and violet",
+        "navy-gold": "Navy and gold",
+        "teal-amber": "Teal and amber",
+        "sage-terracotta": "Sage and terracotta",
+        "butter-aubergine": "Butter yellow and aubergine",
+        "blue-tan": "Rich blue and tan",
+        "mint-burgundy": "Mint and burgundy",
+        "pink-green": "Pink and green",
+        "coral-turquoise": "Coral and turquoise",
+        "rgb-triad": "Red, green and blue",
+        "ocean": "Ocean",
+        "sunset": "Sunset",
+        "forest": "Forest",
+        "lavender": "Lavender tints"
+      }
     }
   }
 }

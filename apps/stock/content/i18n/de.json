@@ -293,6 +293,14 @@
         "square": {
           "name": "Quadrat",
           "hint": "90°"
+        },
+        "double-split": {
+          "name": "Doppelt geteilt komplementär",
+          "hint": "zwei Paare, 30° versetzt"
+        },
+        "compound": {
+          "name": "Zusammengesetzt",
+          "hint": "±30°, 180° ± 15°"
         }
       },
       "samples": {
@@ -311,6 +319,28 @@
         "alertText": "Neue Farben gelten für die ganze Website und ihre Vorschauen.",
         "accent": "Akzentfläche",
         "muted": "Sekundäre Fläche"
+      },
+      "presets": {
+        "title": "Bekannte Kombinationen",
+        "note": "Klassische und aktuelle Paare, jeweils als Harmonie: eine Karte setzt die ganze Palette.",
+        "names": {
+          "blue-orange": "Blau und Orange",
+          "red-green": "Rot und Grün",
+          "yellow-violet": "Gelb und Violett",
+          "navy-gold": "Marine und Gold",
+          "teal-amber": "Petrol und Bernstein",
+          "sage-terracotta": "Salbei und Terrakotta",
+          "butter-aubergine": "Buttergelb und Aubergine",
+          "blue-tan": "Sattes Blau und Hellbraun",
+          "mint-burgundy": "Mint und Bordeaux",
+          "pink-green": "Rosa und Grün",
+          "coral-turquoise": "Koralle und Türkis",
+          "rgb-triad": "Rot, Grün und Blau",
+          "ocean": "Ozean",
+          "sunset": "Sonnenuntergang",
+          "forest": "Wald",
+          "lavender": "Lavendeltöne"
+        }
       }
     }
   }

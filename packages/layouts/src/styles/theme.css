@@ -48,6 +48,12 @@
   .ui8-palette-dot-base { @apply size-3 bg-primary; }
   .ui8-palette-harmony-name { @apply text-xs leading-4 text-foreground; }
   .ui8-palette-harmony-hint { @apply text-xs leading-4 text-muted-foreground; }
+  .ui8-palette-presets-wrap { @apply flex flex-col gap-2 border-t border-border py-6; }
+  .ui8-palette-presets { @apply mt-2 grid grid-cols-4 gap-4 max-md:grid-cols-2; }
+  .ui8-palette-preset { @apply relative flex cursor-pointer flex-col gap-2; }
+  .ui8-palette-stripes { @apply flex h-20 overflow-hidden rounded border border-border group-has-checked:outline-2 group-has-checked:outline-offset-2 group-has-checked:outline-ring group-has-focus-visible:outline-2 group-has-focus-visible:outline-offset-2 group-has-focus-visible:outline-ring; }
+  .ui8-palette-stripe { @apply h-full flex-1; }
+  .ui8-palette-preset-name { @apply text-sm leading-normal text-foreground group-has-checked:font-semibold; }
   .ui8-picker-panel { @apply h-full min-h-0 w-180 min-w-0 shrink border-r border-border bg-background *:w-full max-sm:w-screen max-sm:max-w-none max-sm:border-r-0; }
   .ui8-picker-grid { @apply grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4 py-4 max-sm:grid-cols-2; }
   .ui8-picker-card { @apply relative flex cursor-pointer flex-col items-stretch gap-2 text-left; }

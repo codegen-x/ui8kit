@@ -1,5 +1,6 @@
 // The texts of the shared Theme sheet (theme-sheet.svelte and its panels), as data from the app: the Magazine passes its
 // content/ui.json (theme, design, style), Stock its content/i18n/<locale>.json. Only the keys the sheet reads.
+import type { Harmony } from "@ui8kit/theme-model/palette";
 export type ThemeIoText = {
   title: string; note: string; label: string; placeholder: string; export: string; import: string;
   copied: string; copyFailed: string; imported: string; partial: string; invalid: string;
@@ -24,7 +25,9 @@ export type DesignText = {
 export type PaletteText = {
   open: string; title: string; note: string; custom: string; reset: string; wheel: string;
   harmony: string; hue: string; saturation: string; lightness: string;
-  harmonies: Record<"monochromatic" | "analogous" | "complementary" | "split" | "triadic" | "tetradic" | "square", { name: string; hint: string }>;
+  harmonies: Record<Harmony, { name: string; hint: string }>;
+  /** the well-known combinations under the tools (@ui8kit/theme-model/palette PRESETS): heading, note, a name per preset id */
+  presets: { title: string; note: string; names: Record<string, string> };
   samples: {
     plan: string; price: string; per: string; feature: string; choose: string; popular: string;
     actions: string; primary: string; secondary: string; outline: string; chart: string;
