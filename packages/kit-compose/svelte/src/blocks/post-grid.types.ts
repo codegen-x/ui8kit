@@ -34,4 +34,8 @@ export type PostPager = {
   next?: string;
   /** template of the accessible name of a page button, ｛0｝ the number */
   pageLabel?: string;
+  /** address of page ｛0｝ (filled by the adapter): with it the pages are links; none: buttons that emit page */
+  url?: string;
+  /** address of page 1 when it is not url with 1 (the list's own address) */
+  firstUrl?: string;
 };

@@ -79,7 +79,7 @@ templ PostGrid(p PostGridProps) {
 		}
 		if uiutils.T(uiutils.And(uiutils.Eq(uiutils.Get(vPager, "mode"), "pages"), uiutils.Gt(uiutils.Len(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic"))), float64(0)))) {
 			@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vPager, "label"), vLandmarkLabel)), uiutils.Get(vPager, "label")), "data-testid", "posts-pager")}}) {
-				@Pager(PagerProps{Page: uiutils.Coalesce(uiutils.Get(vPager, "page"), float64(1)), Pages: uiutils.Coalesce(uiutils.Get(vPager, "pages"), float64(1)), Summary: uiutils.Tpl(uiutils.Get(vPager, "summary"), uiutils.Coalesce(uiutils.Get(vPager, "page"), float64(1)), uiutils.Coalesce(uiutils.Get(vPager, "pages"), float64(1))), PreviousLabel: uiutils.Coalesce(uiutils.Get(vPager, "previous"), ""), NextLabel: uiutils.Coalesce(uiutils.Get(vPager, "next"), ""), Numbered: true, PageLabel: uiutils.Get(vPager, "pageLabel")})
+				@Pager(PagerProps{Page: uiutils.Coalesce(uiutils.Get(vPager, "page"), float64(1)), Pages: uiutils.Coalesce(uiutils.Get(vPager, "pages"), float64(1)), Summary: uiutils.Tpl(uiutils.Get(vPager, "summary"), uiutils.Coalesce(uiutils.Get(vPager, "page"), float64(1)), uiutils.Coalesce(uiutils.Get(vPager, "pages"), float64(1))), PreviousLabel: uiutils.Coalesce(uiutils.Get(vPager, "previous"), ""), NextLabel: uiutils.Coalesce(uiutils.Get(vPager, "next"), ""), Numbered: true, PageLabel: uiutils.Get(vPager, "pageLabel"), PageUrl: uiutils.Get(vPager, "url"), FirstUrl: uiutils.Get(vPager, "firstUrl")})
 			}
 		}
 	}

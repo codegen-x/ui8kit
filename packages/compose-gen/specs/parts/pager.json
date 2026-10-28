@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "part.pager",
   "name": "Pager",
-  "docs": "The list footer: a summary line and previous / next page buttons. With `numbered` it shows page numbers (1 … 4 5 6 … 21), with `moreLabel` a \"Load more\" button. The current page is a plain element marked aria-current=\"page\"; the others are buttons. All text comes in through props.",
+  "docs": "The list footer: a summary line and previous / next page buttons. With `numbered` it shows page numbers (1 … 4 5 6 … 21), with `moreLabel` a \"Load more\" button. The current page is a plain element marked aria-current=\"page\"; the others are buttons, or links with `pageUrl` (the address of page {0}; `firstUrl` for page 1): a disabled previous / next stays a disabled button, without an address. All text comes in through props.",
   "records": {},
   "props": [
     {
@@ -48,6 +48,16 @@
       "name": "moreLabel",
       "type": "string",
       "docs": "label of the \"Load more\" button; no button without it"
+    },
+    {
+      "name": "pageUrl",
+      "type": "string",
+      "docs": "address of page {0} (/blog/page/{0}/, ?paged={0}, #/posts/{0}); with it every page and previous / next is a link"
+    },
+    {
+      "name": "firstUrl",
+      "type": "string",
+      "docs": "address of page 1 when it is not pageUrl with 1 (the list's own address)"
     }
   ],
   "derived": [
@@ -182,6 +192,84 @@
                     },
                     1
                   ]
+                },
+                "Href": {
+                  "op": "cond",
+                  "args": [
+                    {
+                      "op": "le",
+                      "args": [
+                        {
+                          "$": "page"
+                        },
+                        1
+                      ]
+                    },
+                    {
+                      "op": "undef",
+                      "args": []
+                    },
+                    {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "$": "pageUrl"
+                        },
+                        {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "and",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "op": "sub",
+                                      "args": [
+                                        {
+                                          "$": "page"
+                                        },
+                                        1
+                                      ]
+                                    },
+                                    1
+                                  ]
+                                },
+                                {
+                                  "$": "firstUrl"
+                                }
+                              ]
+                            },
+                            {
+                              "$": "firstUrl"
+                            },
+                            {
+                              "op": "tpl",
+                              "args": [
+                                {
+                                  "$": "pageUrl"
+                                },
+                                {
+                                  "op": "sub",
+                                  "args": [
+                                    {
+                                      "$": "page"
+                                    },
+                                    1
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "op": "undef",
+                          "args": []
+                        }
+                      ]
+                    }
+                  ]
                 }
               },
               "on": {
@@ -300,7 +388,19 @@
                                 "Variant": "ghost",
                                 "Size": "sm",
                                 "Layout": "icon",
-                                "Type": "button",
+                                "Type": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "$": "pageUrl"
+                                    },
+                                    {
+                                      "op": "undef",
+                                      "args": []
+                                    },
+                                    "button"
+                                  ]
+                                },
                                 "AriaLabel": {
                                   "op": "tpl",
                                   "args": [
@@ -309,6 +409,54 @@
                                     },
                                     {
                                       "$": "n"
+                                    }
+                                  ]
+                                },
+                                "Href": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "$": "pageUrl"
+                                    },
+                                    {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "and",
+                                          "args": [
+                                            {
+                                              "op": "eq",
+                                              "args": [
+                                                {
+                                                  "$": "n"
+                                                },
+                                                1
+                                              ]
+                                            },
+                                            {
+                                              "$": "firstUrl"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "$": "firstUrl"
+                                        },
+                                        {
+                                          "op": "tpl",
+                                          "args": [
+                                            {
+                                              "$": "pageUrl"
+                                            },
+                                            {
+                                              "$": "n"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "op": "undef",
+                                      "args": []
                                     }
                                   ]
                                 }
@@ -380,6 +528,86 @@
                     },
                     {
                       "$": "pages"
+                    }
+                  ]
+                },
+                "Href": {
+                  "op": "cond",
+                  "args": [
+                    {
+                      "op": "ge",
+                      "args": [
+                        {
+                          "$": "page"
+                        },
+                        {
+                          "$": "pages"
+                        }
+                      ]
+                    },
+                    {
+                      "op": "undef",
+                      "args": []
+                    },
+                    {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "$": "pageUrl"
+                        },
+                        {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "and",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "op": "add",
+                                      "args": [
+                                        {
+                                          "$": "page"
+                                        },
+                                        1
+                                      ]
+                                    },
+                                    1
+                                  ]
+                                },
+                                {
+                                  "$": "firstUrl"
+                                }
+                              ]
+                            },
+                            {
+                              "$": "firstUrl"
+                            },
+                            {
+                              "op": "tpl",
+                              "args": [
+                                {
+                                  "$": "pageUrl"
+                                },
+                                {
+                                  "op": "add",
+                                  "args": [
+                                    {
+                                      "$": "page"
+                                    },
+                                    1
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "op": "undef",
+                          "args": []
+                        }
+                      ]
                     }
                   ]
                 }

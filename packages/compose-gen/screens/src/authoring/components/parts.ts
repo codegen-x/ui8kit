@@ -1,7 +1,7 @@
 // The parts of canary (packages/ui/src/parts) that are pure: markup bound to props, no state, no effects.
 // What canary did with `$state`, `$props.id()`, DOM APIs or private kit data stays a contract (see `contract`).
 import { and, call, coalesce, cn, cond, eq, eachAt, each, has, lt, le, op, ref, slot, str, sub, text, tpl, undef, use, when, at } from "../../build";
-import type { OrganismSpec, ViewNode } from "../../ir";
+import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { contract, defaultOf, fields, prop, recipeExamples, req, spec, ts, union } from "../kit";
 
 const P = "part.";
@@ -145,13 +145,15 @@ const pageHeader = spec(`${P}page-header`, "PageHeader", "The page heading: a ti
   ],
 });
 
-const pager = spec(`${P}pager`, "Pager", "The list footer: a summary line and previous / next page buttons. With `numbered` it shows page numbers (1 … 4 5 6 … 21), with `moreLabel` a \"Load more\" button. The current page is a plain element marked aria-current=\"page\"; the others are buttons. All text comes in through props.", {
+const pager = spec(`${P}pager`, "Pager", "The list footer: a summary line and previous / next page buttons. With `numbered` it shows page numbers (1 … 4 5 6 … 21), with `moreLabel` a \"Load more\" button. The current page is a plain element marked aria-current=\"page\"; the others are buttons, or links with `pageUrl` (the address of page {0}; `firstUrl` for page 1): a disabled previous / next stays a disabled button, without an address. All text comes in through props.", {
   props: [
     req("page", "number", "current page, from 1"), req("pages", "number", "number of pages"), req("summary", "string"),
     req("previousLabel", "string"), req("nextLabel", "string"),
     prop("numbered", "boolean", "show page numbers between the arrows", { default: false }),
     prop("pageLabel", "string", "template of the accessible name of a page button, {0} is the number"),
     prop("moreLabel", "string", "label of the \"Load more\" button; no button without it"),
+    prop("pageUrl", "string", "address of page {0} (/blog/page/{0}/, ?paged={0}, #/posts/{0}); with it every page and previous / next is a link"),
+    prop("firstUrl", "string", "address of page 1 when it is not pageUrl with 1 (the list's own address)"),
   ],
   events: [{ name: "page", args: [{ name: "page", type: "number" }], docs: "a page was chosen" }, { name: "more", args: [], docs: "the load-more button was pressed" }],
   derived: [{ name: "numbers", value: op("pageWindow", ref("page"), ref("pages")) }],
@@ -163,7 +165,7 @@ const pager = spec(`${P}pager`, "Pager", "The list footer: a summary line and pr
           use("Button", { props: { Variant: "outline", Size: "sm", Type: "button" }, on: { click: call("emit.more") }, attrs: { "data-testid": "pager-more" } },
             text(ref("moreLabel"))),
         ]),
-        use("Button", { props: { Variant: "outline", Size: "sm", Layout: "icon", AriaLabel: ref("previousLabel"), Disabled: le(ref("page"), 1) }, on: { click: call("emit.page", sub(ref("page"), 1)) } },
+        use("Button", { props: { Variant: "outline", Size: "sm", Layout: "icon", AriaLabel: ref("previousLabel"), Disabled: le(ref("page"), 1), Href: cond(le(ref("page"), 1), undef(), pageHref(sub(ref("page"), 1))) }, on: { click: call("emit.page", sub(ref("page"), 1)) } },
           use("LucideIcon", { props: { Name: "chevron-left", Size: 16 } })),
         when(ref("numbered"),
           [eachAt(ref("numbers"), "n", "i", or2(ref("n"), tpl("gap{0}", ref("i"))),
@@ -171,13 +173,16 @@ const pager = spec(`${P}pager`, "Pager", "The list footer: a summary line and pr
               [use("Inline", { props: { Class: "w-8 text-center" } }, text("…"))],
               [when(eq(ref("n"), ref("page")),
                 [use("Inline", { props: { Class: "flex h-8 min-w-8 items-center justify-center rounded bg-foreground px-2 font-bold text-background" }, attrs: { "aria-current": "page", "data-testid": "pager-current" } }, text(ref("n")))],
-                [use("Button", { props: { Variant: "ghost", Size: "sm", Layout: "icon", Type: "button", AriaLabel: tpl(ref("pageLabel"), ref("n")) }, on: { click: call("emit.page", ref("n")) } }, text(ref("n")))])]))],
+                [use("Button", { props: { Variant: "ghost", Size: "sm", Layout: "icon", Type: cond(ref("pageUrl"), undef(), "button"), AriaLabel: tpl(ref("pageLabel"), ref("n")), Href: pageHref(ref("n")) }, on: { click: call("emit.page", ref("n")) } }, text(ref("n")))])]))],
           [use("Inline", { props: { Class: "min-w-12 text-center font-bold text-foreground" } }, text(ref("page")), text(" / "), text(ref("pages")))]),
-        use("Button", { props: { Variant: "outline", Size: "sm", Layout: "icon", AriaLabel: ref("nextLabel"), Disabled: op("ge", ref("page"), ref("pages")) }, on: { click: call("emit.page", op("add", ref("page"), 1)) } },
+        use("Button", { props: { Variant: "outline", Size: "sm", Layout: "icon", AriaLabel: ref("nextLabel"), Disabled: op("ge", ref("page"), ref("pages")), Href: cond(op("ge", ref("page"), ref("pages")), undef(), pageHref(op("add", ref("page"), 1))) }, on: { click: call("emit.page", op("add", ref("page"), 1)) } },
           use("LucideIcon", { props: { Name: "chevron-right", Size: 16 } })))),
   ],
 });
 function or2(a: ReturnType<typeof ref>, b: ReturnType<typeof ref>) { return op("or", a, b); }
+/** the address of page n in link mode (firstUrl for page 1 when given, else pageUrl with {0} = n); none without pageUrl (button mode).
+ * Built in the view with tpl, so every runtime builds it the same way and the Button primitive's URL check applies */
+function pageHref(n: Value): Value { return cond(ref("pageUrl"), cond(and(eq(n, 1), ref("firstUrl")), ref("firstUrl"), tpl(ref("pageUrl"), n)), undef()); }
 
 const panel = spec(`${P}panel`, "Panel", "A titled card (surface bg-card, hairline ring): the content panel of a page. An optional title, description and header actions. Pass `id` to name the panel by its title. Not a landmark: a labelled group inside the Block of its block (rule 01).", {
   props: [prop("title", "string"), prop("description", "string"), prop("id", "string", "base id: the title gets `{id}-t` and the panel points at it with aria-labelledby")],

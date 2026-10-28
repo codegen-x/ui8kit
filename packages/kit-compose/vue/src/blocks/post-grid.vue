@@ -131,6 +131,8 @@ const emit = defineEmits<{ topic: [value: string], page: [page: number] }>();
         :nextLabel="(pager?.next ?? '')"
         :numbered="true"
         :pageLabel="pager?.pageLabel"
+        :pageUrl="pager?.url"
+        :firstUrl="pager?.firstUrl"
         @page="(arg: number) => emit('page', arg)"
       />
     </Block>

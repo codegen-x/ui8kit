@@ -79,7 +79,9 @@ const postGrid = spec(`${O}post-grid`, "PostGrid", "A section with a heading and
       ["page", "number", "the current page, from 1", 1], ["pages", "number", "the number of pages", 1],
       ["label", "string", "accessible name of the pager nav (Pages of posts)"], ["summary", "string", "template of the summary line: {0} the page, {1} the pages"],
       ["previous", "string", "accessible name of the previous-page button"], ["next", "string", "accessible name of the next-page button"],
-      ["pageLabel", "string", "template of the accessible name of a page button, {0} the number"]),
+      ["pageLabel", "string", "template of the accessible name of a page button, {0} the number"],
+      ["url", "string", "address of page {0} (filled by the adapter): with it the pages are links; none: buttons that emit page"],
+      ["firstUrl", "string", "address of page 1 when it is not url with 1 (the list's own address)"]),
   },
   events: [{ name: "topic", args: [{ name: "value", type: "string" }], docs: "a topic tab was chosen" }, { name: "page", args: [{ name: "page", type: "number" }], docs: "a page of the pager was chosen" }],
   props: [
@@ -113,7 +115,7 @@ const postGrid = spec(`${O}post-grid`, "PostGrid", "A section with a heading and
       // the pager: a nav landmark named by pager.label around the Pager (the current page is aria-current="page")
       when(and(eq(ref("pager.mode"), "pages"), gt(len(shown), 0)), [use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("pager.label"), "data-testid": "posts-pager" } },
         organism("Pager", { page: coalesce(ref("pager.page"), 1), pages: coalesce(ref("pager.pages"), 1), summary: tpl(ref("pager.summary"), coalesce(ref("pager.page"), 1), coalesce(ref("pager.pages"), 1)),
-          previousLabel: coalesce(ref("pager.previous"), ""), nextLabel: coalesce(ref("pager.next"), ""), numbered: true, pageLabel: ref("pager.pageLabel") }, { on: { page: call("emit.page", ref("arg")) } }))]),
+          previousLabel: coalesce(ref("pager.previous"), ""), nextLabel: coalesce(ref("pager.next"), ""), numbered: true, pageLabel: ref("pager.pageLabel"), pageUrl: ref("pager.url"), firstUrl: ref("pager.firstUrl") }, { on: { page: call("emit.page", ref("arg")) } }))]),
     ])];
   })(),
 });

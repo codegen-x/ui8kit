@@ -134,6 +134,8 @@ export function PostGrid({
             nextLabel={(pager?.next ?? "")}
             numbered={true}
             pageLabel={pager?.pageLabel}
+            pageUrl={pager?.url}
+            firstUrl={pager?.firstUrl}
             onPage={(arg: number) => onPage?.(arg)}
           />
         </Block>

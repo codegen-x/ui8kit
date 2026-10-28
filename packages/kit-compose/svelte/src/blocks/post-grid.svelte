@@ -135,6 +135,8 @@
         nextLabel={(pager?.next ?? "")}
         numbered={true}
         pageLabel={pager?.pageLabel}
+        pageUrl={pager?.url}
+        firstUrl={pager?.firstUrl}
         onpage={(arg: number) => onpage?.(arg)}
       />
     </Block>

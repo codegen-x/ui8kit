@@ -2,7 +2,9 @@
 <!--
   The list footer: a summary line and previous / next page buttons. With `numbered` it shows page numbers (1 … 4
   5 6 … 21), with `moreLabel` a "Load more" button. The current page is a plain element marked
-  aria-current="page"; the others are buttons. All text comes in through props.
+  aria-current="page"; the others are buttons, or links with `pageUrl` (the address of page ｛0｝; `firstUrl` for
+  page 1): a disabled previous / next stays a disabled button, without an address. All text comes in through
+  props.
 -->
 <script lang="ts" module>
   import type { Snippet } from "svelte";
@@ -16,6 +18,8 @@
     numbered?: boolean;
     pageLabel?: string;
     moreLabel?: string;
+    pageUrl?: string;
+    firstUrl?: string;
     onpage?: (page: number) => void;
     onmore?: () => void;
   };
@@ -26,7 +30,7 @@
   import Button from "../compose/Button.svelte";
   import Inline from "../compose/Inline.svelte";
   import LucideIcon from "../icons/LucideIcon.svelte";
-  import { pageWindow, tpl } from "../utils";
+  import { pageWindow, tpl, urlOf } from "../utils";
 
   let {
     page,
@@ -37,6 +41,8 @@
     numbered = false,
     pageLabel,
     moreLabel,
+    pageUrl,
+    firstUrl,
     onpage,
     onmore,
   }: PagerProps = $props();
@@ -64,6 +70,7 @@
       layout="icon"
       aria-label={previousLabel}
       disabled={(page <= 1)}
+      href={urlOf(((page <= 1) ? undefined : (pageUrl ? ((((page - 1) === 1) && firstUrl) ? firstUrl : tpl(pageUrl, (page - 1))) : undefined)))}
       onclick={() => onpage?.((page - 1))}
     >
       <LucideIcon name="chevron-left" size={16} />
@@ -87,8 +94,9 @@
             variant="ghost"
             size="sm"
             layout="icon"
-            type="button"
+            type={(pageUrl ? undefined : "button")}
             aria-label={tpl(pageLabel, n)}
+            href={urlOf((pageUrl ? (((n === 1) && firstUrl) ? firstUrl : tpl(pageUrl, n)) : undefined))}
             onclick={() => onpage?.(n)}
           >
             {n}
@@ -108,6 +116,7 @@
       layout="icon"
       aria-label={nextLabel}
       disabled={(page >= pages)}
+      href={urlOf(((page >= pages) ? undefined : (pageUrl ? ((((page + 1) === 1) && firstUrl) ? firstUrl : tpl(pageUrl, (page + 1))) : undefined)))}
       onclick={() => onpage?.((page + 1))}
     >
       <LucideIcon name="chevron-right" size={16} />

@@ -22,9 +22,11 @@ type PagerProps struct {
 	Numbered any `json:"numbered"`
 	PageLabel any `json:"pageLabel"`
 	MoreLabel any `json:"moreLabel"`
+	PageUrl any `json:"pageUrl"`
+	FirstUrl any `json:"firstUrl"`
 }
 
-// The list footer: a summary line and previous / next page buttons. With `numbered` it shows page numbers (1 … 4 5 6 … 21), with `moreLabel` a "Load more" button. The current page is a plain element marked aria-current="page"; the others are buttons. All text comes in through props.
+// The list footer: a summary line and previous / next page buttons. With `numbered` it shows page numbers (1 … 4 5 6 … 21), with `moreLabel` a "Load more" button. The current page is a plain element marked aria-current="page"; the others are buttons, or links with `pageUrl` (the address of page ｛0｝; `firstUrl` for page 1): a disabled previous / next stays a disabled button, without an address. All text comes in through props.
 templ Pager(p PagerProps) {
 	{{ vPage := p.Page }}
 	{{ vPages := p.Pages }}
@@ -34,6 +36,8 @@ templ Pager(p PagerProps) {
 	{{ vNumbered := uiutils.Def(p.Numbered, false) }}
 	{{ vPageLabel := p.PageLabel }}
 	{{ vMoreLabel := p.MoreLabel }}
+	{{ vPageUrl := p.PageUrl }}
+	{{ vFirstUrl := p.FirstUrl }}
 	{{ vNumbers := any(uiutils.PageWindow(vPage, vPages)) }}
 	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "pager")}}) {
 		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex flex-wrap items-center gap-4"}}) {
@@ -47,7 +51,7 @@ templ Pager(p PagerProps) {
 					{ uiutils.Text(vMoreLabel) }
 				}
 			}
-			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{AriaLabel: uiutils.S(vPreviousLabel), Disabled: uiutils.T(uiutils.Le(vPage, float64(1)))}}) {
+			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{AriaLabel: uiutils.S(vPreviousLabel), Disabled: uiutils.T(uiutils.Le(vPage, float64(1))), Href: uiutils.URL(uiutils.Cond(uiutils.T(uiutils.Le(vPage, float64(1))), nil, uiutils.Cond(uiutils.T(vPageUrl), uiutils.Cond(uiutils.T(uiutils.And(uiutils.Eq(uiutils.Sub(vPage, float64(1)), float64(1)), vFirstUrl)), vFirstUrl, uiutils.Tpl(vPageUrl, uiutils.Sub(vPage, float64(1)))), nil)), false)}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: "chevron-left", Size: 16})
 			}
 			if uiutils.T(vNumbered) {
@@ -61,7 +65,7 @@ templ Pager(p PagerProps) {
 							{ uiutils.Text(vN) }
 						}
 					} else {
-						@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Tpl(vPageLabel, vN))}}) {
+						@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: uiutils.S(uiutils.Cond(uiutils.T(vPageUrl), nil, "button")), AriaLabel: uiutils.S(uiutils.Tpl(vPageLabel, vN)), Href: uiutils.URL(uiutils.Cond(uiutils.T(vPageUrl), uiutils.Cond(uiutils.T(uiutils.And(uiutils.Eq(vN, float64(1)), vFirstUrl)), vFirstUrl, uiutils.Tpl(vPageUrl, vN)), nil), false)}}) {
 							{ uiutils.Text(vN) }
 						}
 					}
@@ -73,7 +77,7 @@ templ Pager(p PagerProps) {
 					{ uiutils.Text(vPages) }
 				}
 			}
-			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{AriaLabel: uiutils.S(vNextLabel), Disabled: uiutils.T(uiutils.Ge(vPage, vPages))}}) {
+			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{AriaLabel: uiutils.S(vNextLabel), Disabled: uiutils.T(uiutils.Ge(vPage, vPages)), Href: uiutils.URL(uiutils.Cond(uiutils.T(uiutils.Ge(vPage, vPages)), nil, uiutils.Cond(uiutils.T(vPageUrl), uiutils.Cond(uiutils.T(uiutils.And(uiutils.Eq(uiutils.Add(vPage, float64(1)), float64(1)), vFirstUrl)), vFirstUrl, uiutils.Tpl(vPageUrl, uiutils.Add(vPage, float64(1)))), nil)), false)}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: "chevron-right", Size: 16})
 			}
 		}

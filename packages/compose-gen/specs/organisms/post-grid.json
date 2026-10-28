@@ -97,6 +97,18 @@
         "type": "string",
         "optional": true,
         "docs": "template of the accessible name of a page button, {0} the number"
+      },
+      {
+        "name": "url",
+        "type": "string",
+        "optional": true,
+        "docs": "address of page {0} (filled by the adapter): with it the pages are links; none: buttons that emit page"
+      },
+      {
+        "name": "firstUrl",
+        "type": "string",
+        "optional": true,
+        "docs": "address of page 1 when it is not url with 1 (the list's own address)"
       }
     ]
   },
@@ -791,6 +803,12 @@
                         "numbered": true,
                         "pageLabel": {
                           "$": "pager.pageLabel"
+                        },
+                        "pageUrl": {
+                          "$": "pager.url"
+                        },
+                        "firstUrl": {
+                          "$": "pager.firstUrl"
                         }
                       },
                       "on": {
