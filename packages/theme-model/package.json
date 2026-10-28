@@ -10,6 +10,7 @@
     "./tokens": "./src/tokens.ts",
     "./controller": "./src/controller.ts",
     "./palette": "./src/palette.ts",
+    "./colour-input": "./src/colour-input.ts",
     "./package.json": "./package.json"
   },
   "scripts": {

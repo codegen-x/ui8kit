@@ -265,6 +265,12 @@
       "hue": "Teinte",
       "saturation": "Saturation",
       "lightness": "Luminosité",
+      "options": {
+        "title": "Options",
+        "primary": "Couleur principale",
+        "hint": "HSL comme dans les jetons (217 91% 60%) ou Hex (#3b82f6, # facultatif) : le Hex devient HSL.",
+        "error": "Ce n’est pas une couleur : saisissez H S% L% (teinte 0–360, saturation et luminosité 0–100) ou un code Hex."
+      },
       "contrast": {
         "legend": "Contraste du texte",
         "aa": "AA · 4,5:1",

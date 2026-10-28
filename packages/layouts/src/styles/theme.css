@@ -34,6 +34,12 @@
   .ui8-palette-controls { @apply min-w-0 *:w-full; }
   .ui8-palette-range { @apply flex flex-col gap-2; }
   .ui8-palette-label { @apply text-sm leading-normal text-foreground; }
+  .ui8-palette-left { @apply w-full min-w-0 max-md:mx-auto max-md:max-w-80; }
+  .ui8-palette-options { @apply flex w-full flex-col gap-4 p-4; }
+  .ui8-palette-option { @apply flex flex-col gap-2; }
+  .ui8-palette-primary-row { @apply flex items-center gap-2 *:last:min-w-0 *:last:flex-1 *:last:font-mono; }
+  .ui8-palette-swatch { @apply size-8 shrink-0 rounded border border-border; }
+  .ui8-palette-error { @apply min-h-5 text-sm text-destructive; }
   .ui8-palette-wheel { @apply relative size-80 touch-none select-none max-md:mx-auto; }
   .ui8-palette-ring { @apply absolute inset-0 cursor-pointer [clip-path:circle(50%)]; }
   .ui8-palette-gap { @apply absolute inset-6 bg-background [clip-path:circle(50%)]; }

@@ -27,6 +27,8 @@ export type PaletteText = {
   harmony: string; hue: string; saturation: string; lightness: string;
   /** the contrast level of the palette's text (AA 4.5:1 / AAA 7:1): heading, the two options, a note */
   contrast: { legend: string; aa: string; aaa: string; note: string };
+  /** the Options card under the wheel: its heading; the primary field's label, hint and error */
+  options: { title: string; primary: string; hint: string; error: string };
   harmonies: Record<Harmony, { name: string; hint: string }>;
   /** the well-known combinations under the tools (@ui8kit/theme-model/palette PRESETS): heading, note, a name per preset id */
   presets: { title: string; note: string; names: Record<string, string> };

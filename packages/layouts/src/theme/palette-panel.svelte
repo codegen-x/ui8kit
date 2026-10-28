@@ -1,5 +1,5 @@
-<!-- A wide panel of the Theme sheet: the custom palette. Three live cards on top; below, the colour wheel (palette-wheel) on the left
-     and the harmonies (palette-harmonies) with the hue, saturation and lightness ranges on the right. Any change writes the theme's
+<!-- A wide panel of the Theme sheet: the custom palette. Three live cards on top; below, the colour wheel (palette-wheel) with the
+     Options card under it (palette-options: the primary as HSL or Hex) on the left and the harmonies (palette-harmonies) with the hue, saturation and lightness ranges on the right. Any change writes the theme's
      palette, which rewrites only the skin's colour tokens (@ui8kit/theme-model/palette) for the whole site, its previews included;
      the skin select then shows "Custom", and Reset returns to the skin's own colours. Under the tools, 16 well-known combinations
      (palette-presets) apply a whole palette at once, at the contrast level chosen (AA 4.5:1 or AAA 7:1, under the ranges). Opening
@@ -10,6 +10,7 @@
   import { contrastLevel, DEFAULT_PALETTE, withContrast, type ContrastLevel, type Palette } from "@ui8kit/theme-model/palette";
   import OptionGroup from "../magazine/option-group.svelte";
   import PaletteHarmonies from "./palette-harmonies.svelte";
+  import PaletteOptions from "./palette-options.svelte";
   import PalettePresets from "./palette-presets.svelte";
   import PaletteSamples from "./palette-samples.svelte";
   import PaletteWheel from "./palette-wheel.svelte";
@@ -41,7 +42,10 @@
   <Box class="ui8-theme-body" data-testid="palette-body">
     <PaletteSamples text={T.samples} />
     <Box class="ui8-palette-main">
-      <PaletteWheel palette={p} onchange={(v) => ctl.setTheme({ palette: v })} label={T.wheel} />
+      <Stack gap="6" class="ui8-palette-left">
+        <PaletteWheel palette={p} onchange={(v) => ctl.setTheme({ palette: v })} label={T.wheel} />
+        <PaletteOptions palette={p} onchange={(v) => ctl.setTheme({ palette: v })} text={T.options} />
+      </Stack>
       <Stack gap="4" class="ui8-palette-controls">
         <PaletteHarmonies value={ctl.value.palette?.harmony ?? null} onchange={(harmony) => set({ harmony })} text={T} />
         {#each RANGES as r (r.key)}

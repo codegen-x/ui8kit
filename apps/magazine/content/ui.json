@@ -427,6 +427,12 @@
     "hue": "Hue",
     "saturation": "Saturation",
     "lightness": "Lightness",
+    "options": {
+      "title": "Options",
+      "primary": "Primary colour",
+      "hint": "HSL as in the tokens (217 91% 60%) or Hex (#3b82f6, the # optional): Hex turns into HSL.",
+      "error": "Not a colour: type H S% L% (hue 0–360, saturation and lightness 0–100) or a Hex code."
+    },
     "contrast": {
       "legend": "Text contrast",
       "aa": "AA · 4.5:1",

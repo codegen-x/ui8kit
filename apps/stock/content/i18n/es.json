@@ -265,6 +265,12 @@
       "hue": "Tono",
       "saturation": "Saturación",
       "lightness": "Luminosidad",
+      "options": {
+        "title": "Opciones",
+        "primary": "Color principal",
+        "hint": "HSL como en los tokens (217 91% 60%) o Hex (#3b82f6, # opcional): el Hex se convierte en HSL.",
+        "error": "No es un color: escribe H S% L% (tono 0–360, saturación y luminosidad 0–100) o un código Hex."
+      },
       "contrast": {
         "legend": "Contraste del texto",
         "aa": "AA · 4,5:1",
