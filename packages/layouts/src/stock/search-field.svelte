@@ -1,14 +1,16 @@
 <!-- The search field of the header: one form (role search), the field and the submit button laid out by Group. While the field has
      text, a list of suggestions opens under it (the text as typed with its count, the facet values it names with the results each
      gives, the assets it names), each a button: Down moves from the field into the list, Up and Down move along it, Escape goes
-     back to the field and closes it. Plain focus moves, so no ARIA state has to follow the keyboard. -->
+     back to the field and closes it. Plain focus moves, so no ARIA state has to follow the keyboard. With `types`, a select of the
+     asset type sits before the field (as on stock sites), each option with its count for the current search; from sm up. -->
 <script lang="ts">
-  import { Box, Button, Form, Group, Input, List, ListItem, LucideIcon, Text } from "@codegen-x/svelte-compose";
-  import { fmt, type StockText, type SuggestView } from "./text";
+  import { Box, Button, Form, Group, Input, Label, List, ListItem, LucideIcon, Select, SelectOption, Text } from "@codegen-x/svelte-compose";
+  import { fmt, type StockText, type SuggestView, type TypeView } from "./text";
 
-  let { t, q, onsearch, suggest, onpick }: {
+  let { t, q, onsearch, suggest, onpick, types, type = "", ontype }: {
     t: StockText; q: string; onsearch: (q: string) => void;
     suggest?: (draft: string) => SuggestView[]; onpick?: (s: SuggestView) => void;
+    types?: TypeView[]; type?: string; ontype?: (id: string) => void;
   } = $props();
   let draft = $state("");
   let open = $state(false);
@@ -49,6 +51,12 @@
 <Box class="relative order-last min-w-0 flex-1 basis-full md:order-none md:basis-0" onkeydown={key} onfocusout={out}>
   <Form role="search" onsubmit={submit} data-testid="search-form">
     <Group gap="2" align="center">
+      {#if types && ontype}
+        <Label for="stock-search-type" class="sr-only">{t.filters.types}</Label>
+        <Select id="stock-search-type" class="hidden w-40 shrink-0 sm:block" value={type} onchange={(e: Event) => ontype((e.currentTarget as HTMLSelectElement).value)} data-testid="search-type">
+          {#each types as o (o.id)}<SelectOption value={o.id}>{fmt(t.search.typeOption, { type: o.label, n: o.count })}</SelectOption>{/each}
+        </Select>
+      {/if}
       <Input type="search" name="q" value={draft} autocomplete="off" aria-controls="stock-suggest" aria-describedby="stock-suggest-hint"
         oninput={(e: Event) => { draft = (e.currentTarget as HTMLInputElement).value; open = true; }} onfocus={() => (open = true)}
         placeholder={t.search.placeholder} aria-label={t.search.label} data-testid="search-input" />

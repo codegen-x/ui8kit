@@ -5,8 +5,8 @@ import type { ThemeSheetText } from "../theme/text";
 export type StockText = {
   brand: string;
   /** `suggest`: the listbox of suggestions; `searchFor` the free-text row ({q}); `count` a row's result count ({n}); `asset` the
-   *  group of asset rows; `hint` how to use the list (announced) */
-  search: { label: string; placeholder: string; submit: string; suggest: string; searchFor: string; count: string; asset: string; hint: string };
+   *  group of asset rows; `hint` how to use the list (announced); `typeOption` an option of the type select ({type}, {n}) */
+  search: { label: string; placeholder: string; submit: string; suggest: string; searchFor: string; count: string; asset: string; hint: string; typeOption: string };
   header: { actions: string; collections: string; compare: string; theme: string; locale: string; soon: string };
   filters: { region: string; types: string; all: string; quick: string };
   /** `find`: the field of a large facet ({facet}); `nomatch` none of its values matches ({q}) */

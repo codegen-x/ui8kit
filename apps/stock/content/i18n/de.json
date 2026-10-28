@@ -8,7 +8,8 @@
     "searchFor": "„{q}“ suchen",
     "count": "{n}",
     "asset": "Öffnen",
-    "hint": "Mit den Pfeiltasten auswählen, mit Enter übernehmen"
+    "hint": "Mit den Pfeiltasten auswählen, mit Enter übernehmen",
+    "typeOption": "{type} ({n})"
   },
   "header": {
     "actions": "Werkzeuge",

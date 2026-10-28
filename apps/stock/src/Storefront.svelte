@@ -33,6 +33,7 @@
   const relax = $derived(out.results.length === 0 ? relaxViews(index, relaxations(engine, s), locale, t) : []);
   const sorts = $derived(index.sorts.map((x) => ({ id: x.id, label: textIn(x.label, locale) })));
   const refine = $derived(refineViews(index, s, out, locale));
+  const types = $derived(typeViews(index, out, locale, t));
   const popular = $derived(out.results.length === 0 ? popularViews(index, search(engine, resetFilters(s)), locale) : []);
   // the suggestions count what a filter gives instead of the typed words: the current state without its text
   const bare = $derived(search(engine, { ...s, q: "", page: 1 }).counts);
@@ -67,10 +68,11 @@
 <StockFrame>
   {#snippet header()}
     <StockHeader {t} q={s.q} {locale} locales={LOCALE_OPTIONS} compare={0}
-      onsearch={(q) => go({ ...s, q, page: 1 })} onlocale={(id) => { if (isLocale(id)) visit.locale = id; }} ontheme={() => (themeCtl.open = true)} {suggest} {onpick} />
+      onsearch={(q) => go({ ...s, q, page: 1 })} onlocale={(id) => { if (isLocale(id)) visit.locale = id; }} ontheme={() => (themeCtl.open = true)} {suggest} {onpick}
+      {types} type={s.filters[TYPE]?.[0] ?? ""} {ontype} />
   {/snippet}
   {#snippet bar()}
-    <FilterBar {t} types={typeViews(index, out, locale, t)} type={s.filters[TYPE]?.[0] ?? ""} quick={quickViews(index, s, out, locale)} {ontype} onquick={toggle} />
+    <FilterBar {t} {types} type={s.filters[TYPE]?.[0] ?? ""} quick={quickViews(index, s, out, locale)} {ontype} onquick={toggle} />
   {/snippet}
   {#snippet aside()}
     <FacetColumn {t} groups={facetViews(index, s, out, locale)} selected={selectedCount(s)} ontoggle={toggle} collapsed={!filters} />

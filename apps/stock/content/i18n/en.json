@@ -8,7 +8,8 @@
     "searchFor": "Search “{q}”",
     "count": "{n}",
     "asset": "Open",
-    "hint": "Use the up and down arrows to choose, Enter to apply"
+    "hint": "Use the up and down arrows to choose, Enter to apply",
+    "typeOption": "{type} ({n})"
   },
   "header": {
     "actions": "Tools",
