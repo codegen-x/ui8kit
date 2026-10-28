@@ -104,6 +104,18 @@ const trustedOf = (name: string): Set<string> => {
 };
 const strings: Array<Case & { label: string }> = [];
 for (let r = 0; r < ROUNDS; r++) for (const c of gallery) strings.push({ label: `${c.label} #${r}`, organism: c.organism, props: mutate(c.props, r) });
+// the Pager link mode (PostGrid pager.url / pager.firstUrl): the address templates themselves are hostile, so the {0} filled in
+// cannot make them safe (javascript: with the page number, a scheme that is the page number, a protocol-relative host), on page 1
+// (previous disabled) and page 3 (page 1 and previous take firstUrl); the safe templates make the links the adapter asked for
+export const PAGER_TEMPLATES = [`javascript:alert({0})`, ` JaVaScRiPt:alert({0})`, `java{0}script:alert(1)`, `{0}:alert(1)`, `//evil.example/{0}`, `/\\evil.example/{0}`, `&#106;avascript:alert({0})`, `data:text/html,{0}`];
+const linksCase = gallery.find((c) => c.label === "posts.listLinks (PostGrid)")!;
+const withPager = (label: string, pager: Record<string, unknown>): Case & { label: string } =>
+  ({ label, organism: linksCase.organism, props: { ...(linksCase.props as object), pager: { ...(linksCase.props as { pager: object }).pager, ...pager } } });
+const pagerCases = [
+  ...PAGER_TEMPLATES.flatMap((url, i) => [1, 3].map((page) => withPager(`pager template ${JSON.stringify(url)} page ${page}`, { url, firstUrl: PAGER_TEMPLATES[(i + 1) % PAGER_TEMPLATES.length], page }))),
+  withPager("pager links page 3", { url: "/blog/page/{0}/", firstUrl: "/blog/", page: 3 }),
+];
+strings.push(...pagerCases);
 const marked: Array<Case & { label: string }> = gallery.map((c) => ({ label: `${c.label} __html`, organism: c.organism, props: markers(c.props, trustedOf(c.organism)) }));
 const all = [...strings, ...marked];
 const PAYLOADS = HTML_PAYLOADS.length + URL_PAYLOADS.length;
@@ -114,8 +126,24 @@ test("the DOM check sees what it must refuse", () => {
     expect([bad, domProblems(bad).length > 0]).toEqual([bad, true]);
 });
 
+test("the Pager link mode: hostile address templates give no link; safe ones the asked pages, aria-current on the current page", async () => {
+  const render = await jsRenderer(loaded.organisms);
+  /** the addresses of the links in the posts pager (the post cards link too) */
+  const hrefs = (html: string) => [...(/data-testid="posts-pager"[\s\S]*?<\/nav>/.exec(html)?.[0] ?? "").matchAll(/<a\b[^>]*?\bhref="([^"]*)"/g)].map((m) => m[1]);
+  for (const c of pagerCases.slice(0, -1)) {
+    const html = await render("react", c);
+    expect([c.label, /<nav\b[^>]*data-testid="posts-pager"/.test(html), hrefs(html)]).toEqual([c.label, true, []]);
+    expect([c.label, domProblems(html)]).toEqual([c.label, []]);
+  }
+  const html = await render("react", pagerCases.at(-1)!);
+  // previous (page 2), pages 1, 2, 4, 5 and next (page 4); page 3 is the current one, not a link
+  expect(hrefs(html)).toEqual(["/blog/page/2/", "/blog/", "/blog/page/2/", "/blog/page/4/", "/blog/page/5/", "/blog/page/4/"]);
+  expect(html).toMatch(/aria-current="page"[^>]*>3</);
+  expect(html).not.toMatch(/<a\b[^>]*aria-current/);
+});
+
 let react: string[] = [];
-test(`react, svelte, vue, solid: ${all.length} fuzz cases each (${gallery.length} gallery cases x ${ROUNDS} string rounds + 1 marker round, ${PAYLOADS} payloads), safe and the same DOM`, async () => {
+test(`react, svelte, vue, solid: ${all.length} fuzz cases each (${gallery.length} gallery cases x ${ROUNDS} string rounds + ${pagerCases.length} Pager address cases + 1 marker round, ${PAYLOADS} payloads), safe and the same DOM`, async () => {
   const render = await jsRenderer(loaded.organisms);
   const problems: string[] = [];
   for (const rt of JS_RT) {
