@@ -23,10 +23,13 @@
   } = $props();
   const screen = $derived(view.type === "screen");
   // the part of the page the concepts column points at (a screen page's block), outlined in the preview
+  // hover and focus only outline it; the "locate" button also scrolls the page to the preview and the preview to the part
   let point = $state<number | null>(null);
+  let reveal = $state<{ part: number; n: number } | null>(null);
   function locate(i: number): void {
     document.getElementById("detail-head")?.scrollIntoView({ behavior: "smooth", block: "start" });
     point = i;
+    reveal = { part: i, n: (reveal?.n ?? 0) + 1 };
   }
 </script>
 
@@ -34,7 +37,7 @@
   <Stack gap="6" align="stretch">
     <Link href={back} size="sm" variant="muted" class="ui8-detail-back" data-testid="detail-back"><LucideIcon name="arrow-left" size={16} /><Text tag="span">{t.detail.back}</Text></Link>
     <Box id="detail-head" class="ui8-detail-split" data-testid="detail-head">
-      <PreviewPanel {t} title={view.title} device={devices[0]!} {src} parts={screen ? view.map.length : 0} {point} onfull={() => onfull(devices[0]!.id)} />
+      <PreviewPanel {t} title={view.title} device={devices[0]!} {src} parts={screen ? view.map.length : 0} {point} {reveal} onfull={() => onfull(devices[0]!.id)} />
       <Summary {t} {view} onfull={() => onfull(devices[0]!.id)} />
     </Box>
     <Box class="ui8-detail-split ui8-detail-body" data-testid="detail-body">

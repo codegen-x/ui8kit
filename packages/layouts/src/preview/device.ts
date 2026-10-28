@@ -12,8 +12,10 @@ export const DEVICES: readonly DeviceView[] = [
   { id: "phone", width: 390, height: 844 },
 ];
 
-/** `highlight(i)` outlines the i-th part of the live render (its i-th top-level element) and scrolls the frame to it; null clears */
-export type DeviceFrame = { size: (d: DeviceView) => void; name: (title: string) => void; highlight: (part: number | null) => void; destroy: () => void };
+/** `highlight(i)` outlines the i-th part of the live render (its i-th top-level element); null clears. `reveal(i)` outlines it and
+ *  scrolls the frame to it: only on an explicit request (the "locate" button), never on hover, or the frame would scroll under a
+ *  pointer that is not over it (a wheel on the page slides the concept rows under the pointer, each row's hover moved the frame) */
+export type DeviceFrame = { size: (d: DeviceView) => void; name: (title: string) => void; highlight: (part: number | null) => void; reveal: (part: number) => void; destroy: () => void };
 /** "width": the frame takes the width on offer and its own proportions; "contain": it fits the parent's box both ways */
 export type DeviceFit = "width" | "contain";
 
@@ -47,7 +49,7 @@ export function mountDevice(host: HTMLElement, src: string, title: string, devic
   const ro = new ResizeObserver(resize);
   ro.observe(host.parentElement ?? host);
   let mark: HTMLElement | null = null;
-  const highlight = (part: number | null): void => {
+  const highlight = (part: number | null, scroll = false): void => {
     let doc: Document | null = null;
     try { doc = screen.contentDocument; } catch { return; } // another origin: no highlight
     mark?.removeAttribute("data-ui8-highlight");
@@ -57,13 +59,15 @@ export function mountDevice(host: HTMLElement, src: string, title: string, devic
     if (!el) return;
     el.setAttribute("data-ui8-highlight", "");
     mark = el;
+    if (!scroll) return;
     const top = el.getBoundingClientRect().top + (doc.defaultView?.scrollY ?? 0);
     doc.defaultView?.scrollTo({ top: Math.max(0, top - 16), behavior: "smooth" });
   };
   return {
     size: (d) => { cur = d; resize(); },
     name: (t) => { screen.title = t; },
-    highlight,
+    highlight: (part) => highlight(part),
+    reveal: (part) => highlight(part, true),
     destroy: () => { ro.disconnect(); screen.remove(); },
   };
 }

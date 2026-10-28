@@ -1,14 +1,17 @@
 <!-- The live preview of the detail page: a stage of fixed proportions (16:10, the height follows the width only) holding the device
      frame at desktop width, scaled as a whole (src/preview/device.ts), and the button that opens the full-screen preview (under the
      stage below lg, so it never covers the small preview; over its corner from lg up). `point`
-     is the part of the page the concepts column points at (outlined in the frame). -->
+     is the part of the page the concepts column points at (outlined in the frame); `reveal` scrolls the frame to a part. -->
 <script lang="ts">
   import { Block, Box, Button, LucideIcon, Text } from "@codegen-x/svelte-compose";
   import { mountDevice, type DeviceFrame } from "../../preview/device";
   import { fmt, type DeviceView, type StockText } from "../text";
 
-  let { t, title, device, src, parts, point, onfull }: {
-    t: StockText; title: string; device: DeviceView; src: string; parts: number; point: number | null; onfull: () => void;
+  let { t, title, device, src, parts, point, reveal = null, onfull }: {
+    t: StockText; title: string; device: DeviceView; src: string; parts: number; point: number | null;
+    /** a request to scroll the frame to a part (the "locate" button; `n` makes each request new); hover only outlines (`point`) */
+    reveal?: { part: number; n: number } | null;
+    onfull: () => void;
   } = $props();
   const name = $derived(fmt(t.detail.preview.frame, { title }));
 
@@ -21,6 +24,7 @@
   });
   $effect(() => { frame?.name(name); });
   $effect(() => { frame?.highlight(point); });
+  $effect(() => { if (reveal) frame?.reveal(reveal.part); });
 </script>
 
 <Block tag="section" aria-label={t.detail.preview.title} class="ui8-detail-preview" data-testid="detail-preview">

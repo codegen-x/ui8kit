@@ -1,6 +1,6 @@
 <!-- The frame document of the detail page (#/frame/<id>, loaded in its device frame): only the live render of the asset, in the
      visitor's Theme. It reads the Theme the page keeps on this device and follows every change the page makes (storage events);
-     it never writes it. -->
+     it never writes it. Its scroll is contained: a wheel over the frame never scrolls the page that holds it. -->
 <script lang="ts">
   import { Box, LivePreview, Text } from "./lib/parts";
   import indexJson from "../content/assets.v0.json";
@@ -15,6 +15,12 @@
   const asset = $derived(index.assets.find((a) => a.id === id));
   const t = TEXTS[visit.locale];
 
+  // the wheel over the preview scrolls the preview only: at its end it does not run on into the page around the frame
+  const CONTAIN = "overscroll-contain";
+  $effect(() => {
+    document.documentElement.classList.add(CONTAIN);
+    return () => document.documentElement.classList.remove(CONTAIN);
+  });
   $effect(() => {
     applyState(loadTheme(), false);
     const sync = (e: StorageEvent): void => { if (e.key === null || e.key.includes("theme")) applyState(loadTheme(), false); };
