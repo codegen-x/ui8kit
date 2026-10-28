@@ -131,8 +131,8 @@
         page={(pager?.page ?? 1)}
         pages={(pager?.pages ?? 1)}
         summary={tpl(pager?.summary, (pager?.page ?? 1), (pager?.pages ?? 1))}
-        previousLabel={pager?.previous}
-        nextLabel={pager?.next}
+        previousLabel={(pager?.previous ?? "")}
+        nextLabel={(pager?.next ?? "")}
         numbered={true}
         pageLabel={pager?.pageLabel}
         onpage={(arg: number) => onpage?.(arg)}

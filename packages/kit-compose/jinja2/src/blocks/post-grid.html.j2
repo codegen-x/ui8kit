@@ -59,7 +59,7 @@
   {%- endif %}
   {%- if og_t(og_and([og_eq(og_get(v_pager, ['mode']), 'pages'), og_gt(og_len(og_where(v_posts, 'category', og_get(v_filter, ['topic']))), 0)])) %}
     {%- set c_6 -%}
-      {{ og_include('blocks/pager.html.j2', {'p': {'page': og_coalesce([og_get(v_pager, ['page']), 1]), 'pages': og_coalesce([og_get(v_pager, ['pages']), 1]), 'summary': og_tpl(og_get(v_pager, ['summary']), [og_coalesce([og_get(v_pager, ['page']), 1]), og_coalesce([og_get(v_pager, ['pages']), 1])]), 'previousLabel': og_get(v_pager, ['previous']), 'nextLabel': og_get(v_pager, ['next']), 'numbered': true, 'pageLabel': og_get(v_pager, ['pageLabel'])}}) }}
+      {{ og_include('blocks/pager.html.j2', {'p': {'page': og_coalesce([og_get(v_pager, ['page']), 1]), 'pages': og_coalesce([og_get(v_pager, ['pages']), 1]), 'summary': og_tpl(og_get(v_pager, ['summary']), [og_coalesce([og_get(v_pager, ['page']), 1]), og_coalesce([og_get(v_pager, ['pages']), 1])]), 'previousLabel': og_coalesce([og_get(v_pager, ['previous']), '']), 'nextLabel': og_coalesce([og_get(v_pager, ['next']), '']), 'numbered': true, 'pageLabel': og_get(v_pager, ['pageLabel'])}}) }}
     {%- endset -%}
     {{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Attrs': og_attrs(['aria-label', (og_uniq(og_tpl('{0}, {1}', [og_get(v_pager, ['label']), v_landmarkLabel])) if og_t(v_landmarkLabel) else og_get(v_pager, ['label'])), 'data-testid', 'posts-pager'])}, 'children': c_6}) }}
   {%- endif %}

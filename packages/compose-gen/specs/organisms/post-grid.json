@@ -771,10 +771,22 @@
                           ]
                         },
                         "previousLabel": {
-                          "$": "pager.previous"
+                          "op": "coalesce",
+                          "args": [
+                            {
+                              "$": "pager.previous"
+                            },
+                            ""
+                          ]
                         },
                         "nextLabel": {
-                          "$": "pager.next"
+                          "op": "coalesce",
+                          "args": [
+                            {
+                              "$": "pager.next"
+                            },
+                            ""
+                          ]
                         },
                         "numbered": true,
                         "pageLabel": {

@@ -113,7 +113,7 @@ const postGrid = spec(`${O}post-grid`, "PostGrid", "A section with a heading and
       // the pager: a nav landmark named by pager.label around the Pager (the current page is aria-current="page")
       when(and(eq(ref("pager.mode"), "pages"), gt(len(shown), 0)), [use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("pager.label"), "data-testid": "posts-pager" } },
         organism("Pager", { page: coalesce(ref("pager.page"), 1), pages: coalesce(ref("pager.pages"), 1), summary: tpl(ref("pager.summary"), coalesce(ref("pager.page"), 1), coalesce(ref("pager.pages"), 1)),
-          previousLabel: ref("pager.previous"), nextLabel: ref("pager.next"), numbered: true, pageLabel: ref("pager.pageLabel") }, { on: { page: call("emit.page", ref("arg")) } }))]),
+          previousLabel: coalesce(ref("pager.previous"), ""), nextLabel: coalesce(ref("pager.next"), ""), numbered: true, pageLabel: ref("pager.pageLabel") }, { on: { page: call("emit.page", ref("arg")) } }))]),
     ])];
   })(),
 });
