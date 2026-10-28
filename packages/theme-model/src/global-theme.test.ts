@@ -126,12 +126,14 @@ describe("theme coverage parity", () => {
     expect(r3.ok && r3.theme).toEqual({ skin: null, font: null, radius: 4, tokens: {} });
   });
   test("the JSON Schema names every field and its values", () => {
-    const p = THEME_SCHEMA.properties as Record<string, { enum?: unknown[] }>;
+    const p = THEME_SCHEMA.properties as unknown as Record<string, { enum?: unknown[] }>;
     const tp = (THEME_SCHEMA.properties.tokens as { properties: Record<string, { enum: unknown[] }> }).properties;
-    // the palette (the colour wheel) is one object, not a field of FIELDS: its own schema entry, and its own test (palette.test.ts)
-    expect([...Object.keys(p).filter((k) => !["format", "version", "tokens", "palette"].includes(k)), ...Object.keys(tp)].sort()).toEqual([...FIELD_IDS].sort());
+    // the palette (the colour wheel) is one object, not a field of FIELDS: its own schema entry, and its own test (palette.test.ts);
+    // so are the type scale and width (type.ts), written only when set
+    const OWN = ["format", "version", "tokens", "palette", "fontScale", "fontWidth"];
+    expect([...Object.keys(p).filter((k) => !OWN.includes(k)), ...Object.keys(tp)].sort()).toEqual([...FIELD_IDS].sort());
     for (const f of FIELDS) for (const v of f.values) expect((f.store === "tokens" ? tp[f.id]! : p[f.id]!).enum).toContain(v);
-    expect(Object.keys(toConfig({ mode: "dark", theme: NO_THEME })).filter((k) => k !== "tokens" && k !== "format" && k !== "version").sort()).toEqual(Object.keys(p).filter((k) => !["format", "version", "tokens"].includes(k)).sort());
+    expect(Object.keys(toConfig({ mode: "dark", theme: NO_THEME })).filter((k) => k !== "tokens" && k !== "format" && k !== "version").sort()).toEqual(Object.keys(p).filter((k) => !["format", "version", "tokens", "fontScale", "fontWidth"].includes(k)).sort());
   });
 });
 
@@ -169,3 +171,43 @@ describe("choosing a skin drops the custom palette (patchTheme, the rule of ever
     expect(rootStyle(setThemeField(t, "skin", "supabase"), String, "dark")).not.toContain("--primary");
   });
 });
+
+describe("the type scale and width (Fonts panel header): stored only when set, in the config, in the root style", () => {
+  test("round trip through the config; absent fields read as 100% and the font's own width", () => {
+    const t = cleanTheme({ font: "roboto", fontScale: 90, fontWidth: 80 });
+    expect(t).toEqual({ skin: null, font: "roboto", radius: null, tokens: {}, fontScale: 90, fontWidth: 80 });
+    const cfg = JSON.parse(JSON.stringify(toConfig({ mode: "light", theme: t })));
+    expect(cfg.fontScale).toBe(90);
+    expect(cfg.fontWidth).toBe(80);
+    const back = fromConfig(cfg);
+    expect(back.ok && back.theme).toEqual(t);
+    expect(back.ok && back.dropped).toEqual([]);
+    const plain = toConfig({ mode: "light", theme: cleanTheme({ font: "roboto" }) });
+    expect("fontScale" in plain || "fontWidth" in plain).toBe(false);
+    const old = fromConfig({ format: "magazine-theme", version: 2, font: "roboto" });
+    expect(old.ok && old.theme.fontScale === undefined && old.theme.fontWidth === undefined).toBe(true);
+    expect(isDefault(cleanTheme({ fontScale: 100 }))).toBe(true);
+    expect(isDefault(cleanTheme({ fontScale: 110 }))).toBe(false);
+  });
+  test("values out of the steps, or a width the font has not, are dropped and named; the defaults are not", () => {
+    const r = fromConfig({ font: "inter", fontScale: 93, fontWidth: 80 });
+    expect(r.ok && r.dropped.sort()).toEqual(["fontScale", "fontWidth"]);
+    const d = fromConfig({ font: "roboto", fontScale: 100, fontWidth: 100 });
+    expect(d.ok && d.dropped).toEqual([]);
+    expect(d.ok && d.theme.fontWidth).toBeUndefined();
+    expect(cleanTheme({ font: "roboto", fontWidth: 74 }).fontWidth).toBeUndefined();
+    expect(cleanTheme({ font: "roboto", fontWidth: 80.5 }).fontWidth).toBeUndefined();
+  });
+  test("choosing a font drops the width, the scale stays; the root gets --text-* and font-stretch", () => {
+    const t = cleanTheme({ font: "open-sans", fontScale: 110, fontWidth: 85 });
+    expect(patchTheme(t, { font: "roboto" })).toEqual({ skin: null, font: "roboto", radius: null, tokens: {}, fontScale: 110 });
+    expect(patchTheme(t, { fontScale: undefined }).fontScale).toBeUndefined();
+    expect("fontScale" in patchTheme(t, { fontScale: undefined })).toBe(false);
+    const s = rootStyle(t, String);
+    expect(s).toContain("--text-sm:0.9625rem");
+    expect(s).toContain("--text-base:1.1rem");
+    expect(s).toContain("font-stretch:85%");
+    expect(rootStyle(cleanTheme({ font: "open-sans" }), String)).not.toContain("--text-");
+  });
+});
+

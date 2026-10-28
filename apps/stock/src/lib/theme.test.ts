@@ -40,4 +40,19 @@ describe("theme export/import: the custom palette", () => {
     expect(rootStyle(plain.theme, String, "light")).toBe(rootStyle({ ...aaa.theme, palette }, String, "light"));
     expect(rootStyle(plain.theme, String, "light")).not.toBe(rootStyle(aaa.theme, String, "light"));
   });
+  test("the font size % and width are in the export; an import without them reads as 100% and the font's own width", () => {
+    const typed: ThemeState = { mode: "dark", theme: { ...NO_THEME, font: "roboto", fontScale: 90, fontWidth: 80 } };
+    const cfg = JSON.stringify(exportConfig(typed));
+    expect(JSON.parse(cfg)).toMatchObject({ fontScale: 90, fontWidth: 80 });
+    const { state } = importConfig(resetTheme(typed), cfg);
+    expect(state.theme).toEqual(typed.theme);
+    expect(rootStyle(state.theme, String, "dark")).toContain("font-stretch:80%");
+    const old = JSON.parse(cfg); delete old.fontScale; delete old.fontWidth;
+    const plain = importConfig(typed, JSON.stringify(old)).state;
+    expect(plain.theme.fontScale).toBeUndefined();
+    expect(plain.theme.fontWidth).toBeUndefined();
+    expect(rootStyle(plain.theme, String, "dark")).not.toContain("--text-");
+    expect(JSON.parse(JSON.stringify(exportConfig({ mode: "dark", theme: NO_THEME })))).not.toHaveProperty("fontScale");
+  });
 });
+

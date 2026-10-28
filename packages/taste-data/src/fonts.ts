@@ -27,24 +27,31 @@ import robotoLatin from "@fontsource-variable/roboto/files/roboto-latin-wght-nor
 import robotoCyr from "@fontsource-variable/roboto/files/roboto-cyrillic-wght-normal.woff2?url";
 import rubikLatin from "@fontsource-variable/rubik/files/rubik-latin-wght-normal.woff2?url";
 import rubikCyr from "@fontsource-variable/rubik/files/rubik-cyrillic-wght-normal.woff2?url";
+import plexWdthLatin from "@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wdth-normal.woff2?url";
+import plexWdthCyr from "@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-cyrillic-wdth-normal.woff2?url";
+import openSansWdthLatin from "@fontsource-variable/open-sans/files/open-sans-latin-wdth-normal.woff2?url";
+import openSansWdthCyr from "@fontsource-variable/open-sans/files/open-sans-cyrillic-wdth-normal.woff2?url";
+import robotoWdthLatin from "@fontsource-variable/roboto/files/roboto-latin-wdth-normal.woff2?url";
+import robotoWdthCyr from "@fontsource-variable/roboto/files/roboto-cyrillic-wdth-normal.woff2?url";
 
-import { FONT_IDS, type FontId } from "./font-ids";
-export { FONT_IDS, type FontId };
+import { FONT_IDS, FONT_WIDTH, type FontId } from "./font-ids";
+export { FONT_IDS, FONT_WIDTH, type FontId };
 
 /** the files of a font: latin (embedded in snapshots) and cyrillic (registered for live pages); `bold`: the 700 face of a static
- *  font (the regular files are then its 400 face) */
-export type FontFiles = { latin: string; cyrillic: string; bold?: { latin: string; cyrillic: string } };
+ *  font (the regular files are then its 400 face); `wdth`: the files with the Width axis too (wght + wdth, FONT_WIDTH), registered
+ *  for the narrower widths only, so a page at the default width loads the smaller wght file as before */
+export type FontFiles = { latin: string; cyrillic: string; bold?: { latin: string; cyrillic: string }; wdth?: { latin: string; cyrillic: string } };
 export const FONT_FILES: Record<FontId, FontFiles> = {
   inter: { latin: interLatin, cyrillic: interCyr },
-  roboto: { latin: robotoLatin, cyrillic: robotoCyr },
+  roboto: { latin: robotoLatin, cyrillic: robotoCyr, wdth: { latin: robotoWdthLatin, cyrillic: robotoWdthCyr } },
   manrope: { latin: manropeLatin, cyrillic: manropeCyr },
   montserrat: { latin: montserratLatin, cyrillic: montserratCyr },
   rubik: { latin: rubikLatin, cyrillic: rubikCyr },
   nunito: { latin: nunitoLatin, cyrillic: nunitoCyr },
-  "ibm-plex-sans": { latin: plexLatin, cyrillic: plexCyr },
+  "ibm-plex-sans": { latin: plexLatin, cyrillic: plexCyr, wdth: { latin: plexWdthLatin, cyrillic: plexWdthCyr } },
   "golos-text": { latin: golosLatin, cyrillic: golosCyr },
   onest: { latin: onestLatin, cyrillic: onestCyr },
-  "open-sans": { latin: openSansLatin, cyrillic: openSansCyr },
+  "open-sans": { latin: openSansLatin, cyrillic: openSansCyr, wdth: { latin: openSansWdthLatin, cyrillic: openSansWdthCyr } },
   "istok-web": { latin: istokLatin, cyrillic: istokCyr, bold: { latin: istokBoldLatin, cyrillic: istokBoldCyr } },
 };
 
@@ -59,13 +66,18 @@ let registered = false;
 export function registerFonts(): void {
   if (registered || typeof FontFace === "undefined") return;
   registered = true;
-  const add = (id: FontId, files: { latin: string; cyrillic: string }, weight: string): void => {
+  const add = (id: FontId, files: { latin: string; cyrillic: string }, weight: string, stretch: string): void => {
     for (const [file, range] of [[files.latin, LATIN], [files.cyrillic, CYRILLIC]] as const) {
-      document.fonts.add(new FontFace(family(id), `url(${file}) format("woff2")`, { weight, unicodeRange: range, display: "swap" }));
+      document.fonts.add(new FontFace(family(id), `url(${file}) format("woff2")`, { weight, stretch, unicodeRange: range, display: "swap" }));
     }
   };
   for (const id of FONT_IDS) {
     const f = FONT_FILES[id];
-    if (f.bold) { add(id, f, "100 549"); add(id, f.bold, "550 900"); } else add(id, f, "100 900");
+    if (f.bold) { add(id, f, "100 549", "100%"); add(id, f.bold, "550 900", "100%"); continue; }
+    // a width font: the wght file at 100% (the default), the wght + wdth file for the narrower widths (font-stretch picks the face
+    // and drives its wdth axis); the browser downloads a face only when text needs it
+    const axis = FONT_WIDTH[id];
+    add(id, f, "100 900", "100%");
+    if (f.wdth && axis) add(id, f.wdth, "100 900", `${axis.min}% ${axis.max - 1}%`);
   }
 }

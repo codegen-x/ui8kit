@@ -6,7 +6,7 @@ Deferred by the owner ("later", roughness); one line each, newest section first.
 
 ### To do (next, not roughness)
 - Done: palette contrast level as its own control (AA / AAA, or soft / sharp) for fine contrast tuning of the generated colours — 5cda873c; shipped as AA 4.5:1 / AAA 7:1 in the palette tools (commit "theme palette: a contrast level").
-- Font controls in the Fonts sheet header: on the left a live sample (a heading, body text and a quote); on the right fine controls: size scale in % (smaller / larger; many fonts look too large) and a Width slider (the Google Fonts variable axis wdth), shown only for fonts that have that axis (verify per font from the Google Fonts axis data). A theme setting: scales the type tokens, applies to the page and the preview iframes, persists, in export/import.
+- Done: Font controls in the Fonts sheet header: on the left a live sample (a heading, body text and a quote); on the right fine controls: size scale in % (smaller / larger; many fonts look too large) and a Width slider (the Google Fonts variable axis wdth), shown only for fonts that have that axis (verify per font from the Google Fonts axis data). A theme setting: scales the type tokens, applies to the page and the preview iframes, persists, in export/import. Shipped: size 80–120 % in 5 % steps and Width (wdth) for Roboto, Open Sans and IBM Plex Sans (75–100 %) in the Fonts panel header (commit "theme fonts: size % and width").
 
 ### Stock: catalog and detail page
 - "All of these blocks" mode for "Similar by blocks" (match every block of the page, not any one) — 2d6eb757.

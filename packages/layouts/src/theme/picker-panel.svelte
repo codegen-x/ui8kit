@@ -1,11 +1,13 @@
 <!-- A wide panel of the Theme sheet: the skin picker or the font picker. Every choice ("Default" first) as a 4:3 card, its face drawn
      in the skin or font it stands for (the rest as the site shows it now); a card writes the same field as the select beside the
-     picker's button, so the two always agree. The cards are one radio group (native keyboard: arrows move and pick). On narrow
-     screens the panel replaces the Theme panel; Back returns. -->
+     picker's button, so the two always agree. The cards are one radio group (native keyboard: arrows move and pick). The font
+     picker's header holds the samples and the size and width controls (font-type). On narrow screens the panel replaces the Theme
+     panel; Back returns. -->
 <script lang="ts">
   import { Badge, Box, Button, Group, Label, Radio, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import { family, type FontId } from "@ui8kit/taste-data/fonts";
   import type { ThemeController } from "@ui8kit/theme-model/controller";
+  import FontType from "./font-type.svelte";
   import { CHOICES, PICKER_FIELD, SWATCHES, type PickerKind } from "./pickers";
   import type { ThemeSheetText } from "./text";
 
@@ -39,6 +41,7 @@
       <Title as={2} size="base" id={titleId}>{title}</Title>
     </Group>
     <Text class="ui8-theme-note">{kind === "skins" ? T.skinsNote : T.fontsNote}</Text>
+    {#if kind === "fonts"}<FontType {ctl} text={T.fontType} {font} />{/if}
   </Box>
   <Box class="ui8-theme-body" data-testid="picker-body">
     <Box class="ui8-picker-grid" role="radiogroup" aria-labelledby={titleId}>

@@ -189,6 +189,19 @@
       "sampleCard": "Fläche",
       "fontHeading": "Victor jagt zwölf Boxkämpfer",
       "fontSub": "quer über den großen Sylter Deich",
+      "fontType": {
+        "heading": "Zwölf Boxkämpfer jagen Viktor",
+        "body": "Fließtext in der Größe und Breite, die die Seite jetzt zeigt: ein Absatz bestimmt, wie sich Lesen anfühlt.",
+        "quote": "„Typografie ist, wie Sprache aussieht.“",
+        "size": "Schriftgröße",
+        "smaller": "Kleiner",
+        "larger": "Größer",
+        "resetSize": "Größe zurücksetzen",
+        "width": "Breite",
+        "widthRange": "Die Breitenachse der Schrift: {min}–{max} %.",
+        "resetWidth": "Breite zurücksetzen",
+        "noWidth": "Breite: nur Schriften mit Breitenachse (Roboto, Open Sans, IBM Plex Sans)."
+      },
       "io": {
         "title": "Export / Import",
         "note": "Das ganze Theme als eine JSON-Konfiguration (Format magazine-theme, Version 2): jede Einstellung. Der Import ersetzt das Theme.",

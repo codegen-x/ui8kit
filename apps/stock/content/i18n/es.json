@@ -189,6 +189,19 @@
       "sampleCard": "Superficie",
       "fontHeading": "El veloz murciélago hindú",
       "fontSub": "comía feliz cardillo y kiwi",
+      "fontType": {
+        "heading": "El veloz murciélago hindú",
+        "body": "Texto en el tamaño y el ancho que muestra el sitio: un párrafo marca cómo se siente la lectura.",
+        "quote": "«La tipografía es el aspecto del lenguaje.»",
+        "size": "Tamaño del texto",
+        "smaller": "Más pequeño",
+        "larger": "Más grande",
+        "resetSize": "Restablecer tamaño",
+        "width": "Ancho",
+        "widthRange": "El eje de ancho de la fuente: {min}–{max} %.",
+        "resetWidth": "Restablecer ancho",
+        "noWidth": "Ancho: solo fuentes con eje de ancho (Roboto, Open Sans, IBM Plex Sans)."
+      },
       "io": {
         "title": "Exportar / importar",
         "note": "Todo el tema en una configuración JSON (formato magazine-theme, versión 2): cada ajuste. Importar reemplaza el tema.",

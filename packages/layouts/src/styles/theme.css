@@ -60,6 +60,16 @@
   .ui8-palette-stripes { @apply flex h-20 overflow-hidden rounded border border-border group-has-checked:outline-2 group-has-checked:outline-offset-2 group-has-checked:outline-ring group-has-focus-visible:outline-2 group-has-focus-visible:outline-offset-2 group-has-focus-visible:outline-ring; }
   .ui8-palette-stripe { @apply h-full flex-1; }
   .ui8-palette-preset-name { @apply text-sm leading-normal text-foreground group-has-checked:font-semibold; }
+  .ui8-font-type { @apply mt-4 grid grid-cols-[minmax(0,1fr)_16rem] items-start gap-6 max-sm:grid-cols-1; }
+  .ui8-font-type-sample { @apply min-w-0 rounded border border-border bg-card p-4 font-sans text-card-foreground; }
+  .ui8-font-type-h { @apply font-[family-name:var(--taste-heading,var(--font-sans))] text-2xl leading-8; }
+  .ui8-font-type-body { @apply text-base leading-normal; }
+  .ui8-font-type-quote { @apply border-l-2 border-border pl-4 text-lg leading-normal text-muted-foreground italic; }
+  .ui8-font-type-controls { @apply min-w-0 *:w-full; }
+  .ui8-font-type-control { @apply flex flex-col gap-2; }
+  .ui8-font-type-row { @apply flex-nowrap *:nth-2:min-w-0 *:nth-2:flex-1; }
+  .ui8-font-type-step { @apply size-8 shrink-0 px-0; }
+  .ui8-font-type-reset { @apply self-start; }
   .ui8-picker-panel { @apply h-full min-h-0 w-180 min-w-0 shrink border-r border-border bg-background *:w-full max-sm:w-screen max-sm:max-w-none max-sm:border-r-0; }
   .ui8-picker-grid { @apply grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4 py-4 max-sm:grid-cols-2; }
   .ui8-picker-card { @apply relative flex cursor-pointer flex-col items-stretch gap-2 text-left; }

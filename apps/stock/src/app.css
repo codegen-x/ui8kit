@@ -31,3 +31,9 @@
       supports-[not_selector(::-webkit-scrollbar)]:hover:[scrollbar-color:color-mix(in_oklab,var(--muted-foreground)_50%,transparent)_transparent];
   }
 }
+
+/* Text with no size class (the body's own) reads the type scale too: the Theme's font size % rewrites --text-* on <html>
+   (@ui8kit/theme-model/type), never the root font size, so the rem spacing stays. At 100% this is the kit's 1rem. */
+@layer base {
+  body { @apply text-base; }
+}

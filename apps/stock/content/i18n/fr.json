@@ -189,6 +189,19 @@
       "sampleCard": "Surface",
       "fontHeading": "Portez ce vieux whisky",
       "fontSub": "au juge blond qui fume",
+      "fontType": {
+        "heading": "Portez ce vieux whisky",
+        "body": "Le texte courant à la taille et à la largeur que le site affiche : un paragraphe donne le confort de lecture.",
+        "quote": "« La typographie, c’est l’apparence de la langue. »",
+        "size": "Taille du texte",
+        "smaller": "Plus petit",
+        "larger": "Plus grand",
+        "resetSize": "Réinitialiser la taille",
+        "width": "Largeur",
+        "widthRange": "L’axe Largeur de la police : {min}–{max} %.",
+        "resetWidth": "Réinitialiser la largeur",
+        "noWidth": "Largeur : seulement les polices avec un axe Largeur (Roboto, Open Sans, IBM Plex Sans)."
+      },
       "io": {
         "title": "Exporter / importer",
         "note": "Tout le thème en une configuration JSON (format magazine-theme, version 2) : chaque réglage. L'import remplace le thème.",

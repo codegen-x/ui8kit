@@ -12,6 +12,11 @@ export type ThemePanelText = {
   /** the skin and font pickers (picker-panel): the select row's buttons, the panels' headings and notes, the faces' sample texts */
   browseSkins: string; browseFonts: string; skinsTitle: string; skinsNote: string; fontsTitle: string; fontsNote: string;
   sampleTitle: string; sampleText: string; sampleButton: string; sampleBadge: string; sampleCard: string; fontHeading: string; fontSub: string;
+  /** the Fonts panel header (font-type): the samples, the size and width controls; widthRange holds {min} and {max} */
+  fontType: {
+    heading: string; body: string; quote: string; size: string; smaller: string; larger: string; resetSize: string;
+    width: string; widthRange: string; resetWidth: string; noWidth: string;
+  };
 };
 export type DesignText = {
   tokens: string; type: string; sample: string; radii: string; current: string; spacing: string; buttons: string; badges: string;

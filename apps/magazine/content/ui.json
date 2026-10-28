@@ -401,6 +401,19 @@
     "sampleCard": "Surface",
     "fontHeading": "The quick brown fox",
     "fontSub": "jumps over the lazy dog",
+    "fontType": {
+      "heading": "The quick brown fox",
+      "body": "Body text at the size and width the site shows now, so you can see how a paragraph reads.",
+      "quote": "“Typography is what language looks like.”",
+      "size": "Font size",
+      "smaller": "Smaller",
+      "larger": "Larger",
+      "resetSize": "Reset size",
+      "width": "Width",
+      "widthRange": "The font's Width axis: {min}–{max}%.",
+      "resetWidth": "Reset width",
+      "noWidth": "Width: only fonts with a Width axis (Roboto, Open Sans, IBM Plex Sans)."
+    },
     "densityAll": "All elements",
     "io": {
       "title": "Export / import",
