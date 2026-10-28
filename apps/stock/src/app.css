@@ -14,3 +14,20 @@
 @source "../index.html";
 @source "../../../packages/layouts/src/stock";
 @source "../../../packages/layouts/src/preview";
+
+/* Touchpad-style scrollbars everywhere in Stock (the page, the sheets and panels, the facet lists, the sideways rows), from
+   utilities only: thin, no track, a thumb rounded by the theme radius (plain `rounded`: the corners rule allows no rounded-full) that shows on hover of its scroller and strengthens under the pointer.
+   WebKit/Blink (Chrome, Edge, Safari) draw the ::-webkit-scrollbar parts; the standard properties are set only where those
+   parts do not exist (Firefox), because Chrome 121+ drops the ::-webkit-scrollbar styles of an element that sets them. */
+@layer base {
+  * {
+    @apply [&::-webkit-scrollbar]:size-2 [&::-webkit-scrollbar-corner]:bg-transparent [&::-webkit-scrollbar-track]:bg-transparent
+      [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:border-2 [&::-webkit-scrollbar-thumb]:border-solid
+      [&::-webkit-scrollbar-thumb]:border-transparent [&::-webkit-scrollbar-thumb]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-clip-padding
+      hover:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/40 [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground/70
+      [&::-webkit-scrollbar-thumb:active]:bg-muted-foreground/80
+      supports-[not_selector(::-webkit-scrollbar)]:[scrollbar-width:thin]
+      supports-[not_selector(::-webkit-scrollbar)]:[scrollbar-color:transparent_transparent]
+      supports-[not_selector(::-webkit-scrollbar)]:hover:[scrollbar-color:color-mix(in_oklab,var(--muted-foreground)_50%,transparent)_transparent];
+  }
+}
