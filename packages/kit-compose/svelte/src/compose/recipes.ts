@@ -458,14 +458,16 @@ export const RECIPES: Record<string, R> = {
     "compound": []
   },
   "input": {
-    "base": "w-full min-w-0 bg-background text-foreground inset-ring inset-ring-input outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 focus-visible:inset-ring-ring rounded",
+    "base": "w-full min-w-0 bg-background text-foreground inset-ring inset-ring-input outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 focus-visible:inset-ring-ring rounded aria-invalid:inset-ring-destructive",
     "keys": [
       "size",
-      "variant"
+      "variant",
+      "state"
     ],
     "defaults": {
       "size": "default",
-      "variant": "default"
+      "variant": "default",
+      "state": "default"
     },
     "byKey": {
       "size": {
@@ -476,6 +478,10 @@ export const RECIPES: Record<string, R> = {
       "variant": {
         "default": "",
         "ghost": "bg-muted inset-ring-transparent"
+      },
+      "state": {
+        "default": "",
+        "error": "inset-ring-destructive focus-visible:inset-ring-destructive"
       }
     },
     "compound": []
@@ -658,14 +664,16 @@ export const RECIPES: Record<string, R> = {
     "compound": []
   },
   "select": {
-    "base": "w-full min-w-0 bg-background text-foreground inset-ring inset-ring-input outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 focus-visible:inset-ring-ring rounded",
+    "base": "w-full min-w-0 bg-background text-foreground inset-ring inset-ring-input outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 focus-visible:inset-ring-ring rounded aria-invalid:inset-ring-destructive",
     "keys": [
       "size",
-      "variant"
+      "variant",
+      "state"
     ],
     "defaults": {
       "size": "default",
-      "variant": "default"
+      "variant": "default",
+      "state": "default"
     },
     "byKey": {
       "size": {
@@ -676,6 +684,10 @@ export const RECIPES: Record<string, R> = {
       "variant": {
         "default": "",
         "ghost": "bg-muted inset-ring-transparent"
+      },
+      "state": {
+        "default": "",
+        "error": "inset-ring-destructive focus-visible:inset-ring-destructive"
       }
     },
     "compound": []
@@ -894,14 +906,16 @@ export const RECIPES: Record<string, R> = {
     "compound": []
   },
   "textarea": {
-    "base": "w-full min-w-0 bg-background text-foreground inset-ring inset-ring-input outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 focus-visible:inset-ring-ring rounded",
+    "base": "w-full min-w-0 bg-background text-foreground inset-ring inset-ring-input outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 focus-visible:inset-ring-ring rounded aria-invalid:inset-ring-destructive",
     "keys": [
       "size",
-      "variant"
+      "variant",
+      "state"
     ],
     "defaults": {
       "size": "default",
-      "variant": "default"
+      "variant": "default",
+      "state": "default"
     },
     "byKey": {
       "size": {
@@ -912,6 +926,10 @@ export const RECIPES: Record<string, R> = {
       "variant": {
         "default": "",
         "ghost": "bg-muted inset-ring-transparent"
+      },
+      "state": {
+        "default": "",
+        "error": "inset-ring-destructive focus-visible:inset-ring-destructive"
       }
     },
     "compound": []

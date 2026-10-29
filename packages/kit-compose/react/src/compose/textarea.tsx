@@ -4,9 +4,9 @@ import { Textarea as Prim } from "../../../../kit/react/src/ui/textarea/textarea
 import { cn } from "../../../../kit/react/src/utils";
 import { rc } from "./recipes";
 
-export type TextareaProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "variant"> & { "size"?: string | number; "variant"?: string | number; className?: string };
+export type TextareaProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "variant" | "state"> & { "size"?: string | number; "variant"?: string | number; "state"?: string | number; className?: string };
 
 /** Textarea: Textarea + recipe textarea. */
-export function Textarea({ "size": v_size, "variant": v_variant, className, ...rest }: TextareaProps) {
-  return <Prim className={cn(rc("textarea", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
+export function Textarea({ "size": v_size, "variant": v_variant, "state": v_state, className, ...rest }: TextareaProps) {
+  return <Prim className={cn(rc("textarea", { "size": v_size, "variant": v_variant, "state": v_state }), className)} {...rest} />;
 }

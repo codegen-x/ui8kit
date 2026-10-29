@@ -4,9 +4,9 @@ import { Select as Prim } from "../../../../kit/react/src/ui/select/select";
 import { cn } from "../../../../kit/react/src/utils";
 import { rc } from "./recipes";
 
-export type SelectProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "variant"> & { "size"?: string | number; "variant"?: string | number; className?: string };
+export type SelectProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "variant" | "state"> & { "size"?: string | number; "variant"?: string | number; "state"?: string | number; className?: string };
 
 /** Select: Select + recipe select. */
-export function Select({ "size": v_size, "variant": v_variant, className, ...rest }: SelectProps) {
-  return <Prim className={cn(rc("select", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
+export function Select({ "size": v_size, "variant": v_variant, "state": v_state, className, ...rest }: SelectProps) {
+  return <Prim className={cn(rc("select", { "size": v_size, "variant": v_variant, "state": v_state }), className)} {...rest} />;
 }

@@ -6,8 +6,8 @@
   import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
-  let { "size": v_size, "variant": v_variant, class: className, children, ...rest }: ComponentProps<typeof Prim> & { "size"?: string | number; "variant"?: string | number; class?: string; children?: Snippet } = $props();
-  const cls = $derived(cn(rc("select", { "size": v_size, "variant": v_variant }), className));
+  let { "size": v_size, "variant": v_variant, "state": v_state, class: className, children, ...rest }: ComponentProps<typeof Prim> & { "size"?: string | number; "variant"?: string | number; "state"?: string | number; class?: string; children?: Snippet } = $props();
+  const cls = $derived(cn(rc("select", { "size": v_size, "variant": v_variant, "state": v_state }), className));
 </script>
 
 <Prim class={cls} {...rest}>{@render children?.()}</Prim>

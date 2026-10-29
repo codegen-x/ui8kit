@@ -4,9 +4,9 @@ import { Input as Prim } from "../../../../kit/react/src/ui/input/input";
 import { cn } from "../../../../kit/react/src/utils";
 import { rc } from "./recipes";
 
-export type InputProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "variant"> & { "size"?: string | number; "variant"?: string | number; className?: string };
+export type InputProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "variant" | "state"> & { "size"?: string | number; "variant"?: string | number; "state"?: string | number; className?: string };
 
 /** Input: Input + recipe input. */
-export function Input({ "size": v_size, "variant": v_variant, className, ...rest }: InputProps) {
-  return <Prim className={cn(rc("input", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
+export function Input({ "size": v_size, "variant": v_variant, "state": v_state, className, ...rest }: InputProps) {
+  return <Prim className={cn(rc("input", { "size": v_size, "variant": v_variant, "state": v_state }), className)} {...rest} />;
 }

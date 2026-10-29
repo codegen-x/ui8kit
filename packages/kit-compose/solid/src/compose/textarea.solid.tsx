@@ -4,10 +4,10 @@ import { Textarea as Prim } from "../../../../kit/solid/src/ui/textarea/textarea
 import { cn } from "../../../../kit/solid/src/utils";
 import { rc } from "./recipes";
 
-export type TextareaProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "className" | "size" | "variant"> & { "size"?: string | number; "variant"?: string | number; class?: string; className?: string };
+export type TextareaProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "className" | "size" | "variant" | "state"> & { "size"?: string | number; "variant"?: string | number; "state"?: string | number; class?: string; className?: string };
 
 /** Textarea: Textarea + recipe textarea. */
 export function Textarea(props: TextareaProps) {
-  const [local, rest] = splitProps(props, ["size", "variant", "class", "className"]);
-  return <Prim class={cn(rc("textarea", { "size": local["size"], "variant": local["variant"] }), local.class ?? local.className)} {...rest} />;
+  const [local, rest] = splitProps(props, ["size", "variant", "state", "class", "className"]);
+  return <Prim class={cn(rc("textarea", { "size": local["size"], "variant": local["variant"], "state": local["state"] }), local.class ?? local.className)} {...rest} />;
 }

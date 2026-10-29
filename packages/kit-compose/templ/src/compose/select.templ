@@ -8,12 +8,13 @@ import "github.com/ui8kit/codegen/generated/templ/ui/select"
 type SelectProps struct {
 	Size string
 	Variant string
+	State string
 	selectfield.SelectProps
 }
 
 func selectInner(p SelectProps) selectfield.SelectProps {
 	in := p.SelectProps
-	in.Class = Join(Rc("select", map[string]string{"size": p.Size, "variant": p.Variant}), p.SelectProps.Class)
+	in.Class = Join(Rc("select", map[string]string{"size": p.Size, "variant": p.Variant, "state": p.State}), p.SelectProps.Class)
 	return in
 }
 

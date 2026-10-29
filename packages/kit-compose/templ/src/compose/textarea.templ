@@ -8,12 +8,13 @@ import "github.com/ui8kit/codegen/generated/templ/ui/textarea"
 type TextareaProps struct {
 	Size string
 	Variant string
+	State string
 	textarea.TextareaProps
 }
 
 func textareaInner(p TextareaProps) textarea.TextareaProps {
 	in := p.TextareaProps
-	in.Class = Join(Rc("textarea", map[string]string{"size": p.Size, "variant": p.Variant}), p.TextareaProps.Class)
+	in.Class = Join(Rc("textarea", map[string]string{"size": p.Size, "variant": p.Variant, "state": p.State}), p.TextareaProps.Class)
 	return in
 }
 

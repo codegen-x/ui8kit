@@ -4,10 +4,10 @@ import { Select as Prim } from "../../../../kit/solid/src/ui/select/select.solid
 import { cn } from "../../../../kit/solid/src/utils";
 import { rc } from "./recipes";
 
-export type SelectProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "className" | "size" | "variant"> & { "size"?: string | number; "variant"?: string | number; class?: string; className?: string };
+export type SelectProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "className" | "size" | "variant" | "state"> & { "size"?: string | number; "variant"?: string | number; "state"?: string | number; class?: string; className?: string };
 
 /** Select: Select + recipe select. */
 export function Select(props: SelectProps) {
-  const [local, rest] = splitProps(props, ["size", "variant", "class", "className"]);
-  return <Prim class={cn(rc("select", { "size": local["size"], "variant": local["variant"] }), local.class ?? local.className)} {...rest} />;
+  const [local, rest] = splitProps(props, ["size", "variant", "state", "class", "className"]);
+  return <Prim class={cn(rc("select", { "size": local["size"], "variant": local["variant"], "state": local["state"] }), local.class ?? local.className)} {...rest} />;
 }

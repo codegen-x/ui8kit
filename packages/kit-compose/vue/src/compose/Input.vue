@@ -7,13 +7,13 @@ import { cn } from "../../../../kit/vue/src/utils";
 import { rc } from "./recipes";
 
 defineOptions({ name: "Input", inheritAttrs: false });
-const props = defineProps<{ "size"?: string | number; "variant"?: string | number }>();
+const props = defineProps<{ "size"?: string | number; "variant"?: string | number; "state"?: string | number }>();
 const attrs = useAttrs();
 const rest = computed(() => {
   const { class: _class, ...r } = attrs;
   return r;
 });
-const cls = computed(() => cn(rc("input", { "size": props["size"], "variant": props["variant"] }), attrs.class as string | undefined));
+const cls = computed(() => cn(rc("input", { "size": props["size"], "variant": props["variant"], "state": props["state"] }), attrs.class as string | undefined));
 const tagValue = computed(() => "");
 </script>
 
