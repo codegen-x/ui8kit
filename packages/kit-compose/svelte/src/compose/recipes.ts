@@ -73,10 +73,10 @@ export const RECIPES: Record<string, R> = {
     },
     "byKey": {
       "variant": {
-        "default": "bg-primary text-primary-foreground inset-ring-primary",
-        "outline": "bg-card text-foreground inset-ring-border",
-        "ghost": "bg-transparent text-foreground inset-ring-transparent",
-        "secondary": "bg-secondary text-secondary-foreground inset-ring-border",
+        "default": "bg-primary text-primary-foreground inset-ring-primary hover:bg-primary/90",
+        "outline": "bg-card text-foreground inset-ring-border hover:bg-accent hover:text-accent-foreground",
+        "ghost": "bg-transparent text-foreground inset-ring-transparent hover:bg-accent hover:text-accent-foreground",
+        "secondary": "bg-secondary text-secondary-foreground inset-ring-border hover:bg-secondary/80",
         "destructive": "bg-destructive text-destructive-foreground hover:bg-destructive-hover inset-ring-transparent focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
         "link": "text-primary inset-ring-transparent underline-offset-4 hover:underline"
       },
