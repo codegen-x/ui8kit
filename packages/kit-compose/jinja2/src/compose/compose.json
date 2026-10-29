@@ -76,7 +76,7 @@
           "ghost": "bg-transparent text-foreground inset-ring-transparent",
           "secondary": "bg-secondary text-secondary-foreground inset-ring-border",
           "destructive": "bg-destructive text-destructive-foreground hover:bg-destructive-hover inset-ring-transparent focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
-          "link": "text-foreground inset-ring-transparent underline-offset-4 hover:underline"
+          "link": "text-primary inset-ring-transparent underline-offset-4 hover:underline"
         },
         "size": {
           "sm": "h-8 px-3 text-sm",
@@ -526,11 +526,11 @@
           "lg": "gap-2 text-2xl font-semibold"
         },
         "variant": {
-          "block": "flex w-full text-foreground",
-          "default": "text-foreground hover:underline",
-          "external": "text-foreground hover:underline",
+          "block": "flex w-full text-foreground hover:text-primary",
+          "default": "text-primary hover:underline",
+          "external": "text-primary hover:underline",
           "muted": "text-muted-foreground hover:text-foreground",
-          "nav": "text-foreground"
+          "nav": "text-foreground hover:text-primary"
         }
       },
       "compound": []

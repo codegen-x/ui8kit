@@ -17,11 +17,11 @@
       "lg": "gap-2 text-2xl font-semibold"
     },
     "variant": {
-      "block": "flex w-full text-foreground",
-      "default": "text-foreground hover:underline",
-      "external": "text-foreground hover:underline",
+      "block": "flex w-full text-foreground hover:text-primary",
+      "default": "text-primary hover:underline",
+      "external": "text-primary hover:underline",
       "muted": "text-muted-foreground hover:text-foreground",
-      "nav": "text-foreground"
+      "nav": "text-foreground hover:text-primary"
     }
   }
 }
