@@ -62,6 +62,9 @@ def compose_props(name: str, p: Any) -> dict:
             q[_pascal(k)] = v
     if s["fixedAttrs"]:
         q["Attrs"] = {**s["fixedAttrs"], **(q.get("Attrs") or {})}
+    im = s.get("implies")
+    if im and values.get(im["key"]) == im["value"] and not _set(q.get(_pascal(im["prop"]))):
+        q[_pascal(im["prop"])] = im["set"]
     return q
 
 

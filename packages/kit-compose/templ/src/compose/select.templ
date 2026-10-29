@@ -15,6 +15,9 @@ type SelectProps struct {
 func selectInner(p SelectProps) selectfield.SelectProps {
 	in := p.SelectProps
 	in.Class = Join(Rc("select", map[string]string{"size": p.Size, "variant": p.Variant, "state": p.State}), p.SelectProps.Class)
+	if p.State == "error" {
+		in.AriaInvalid = Or(in.AriaInvalid, "true")
+	}
 	return in
 }
 

@@ -8,5 +8,5 @@ export type TextareaProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "
 
 /** Textarea: Textarea + recipe textarea. */
 export function Textarea({ "size": v_size, "variant": v_variant, "state": v_state, className, ...rest }: TextareaProps) {
-  return <Prim className={cn(rc("textarea", { "size": v_size, "variant": v_variant, "state": v_state }), className)} {...rest} />;
+  return <Prim className={cn(rc("textarea", { "size": v_size, "variant": v_variant, "state": v_state }), className)} aria-invalid={v_state === "error" ? "true" : undefined} {...rest} />;
 }

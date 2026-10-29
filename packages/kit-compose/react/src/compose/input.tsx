@@ -8,5 +8,5 @@ export type InputProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "var
 
 /** Input: Input + recipe input. */
 export function Input({ "size": v_size, "variant": v_variant, "state": v_state, className, ...rest }: InputProps) {
-  return <Prim className={cn(rc("input", { "size": v_size, "variant": v_variant, "state": v_state }), className)} {...rest} />;
+  return <Prim className={cn(rc("input", { "size": v_size, "variant": v_variant, "state": v_state }), className)} aria-invalid={v_state === "error" ? "true" : undefined} {...rest} />;
 }

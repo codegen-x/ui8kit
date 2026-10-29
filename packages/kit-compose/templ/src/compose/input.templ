@@ -15,6 +15,9 @@ type InputProps struct {
 func inputInner(p InputProps) input.InputProps {
 	in := p.InputProps
 	in.Class = Join(Rc("input", map[string]string{"size": p.Size, "variant": p.Variant, "state": p.State}), p.InputProps.Class)
+	if p.State == "error" {
+		in.AriaInvalid = Or(in.AriaInvalid, "true")
+	}
 	return in
 }
 

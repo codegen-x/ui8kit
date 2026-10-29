@@ -24,7 +24,13 @@ export type BrickMap = {
   attrs?: Record<string, "string" | "number">;
   /** an empty element rendered after the children (composition the v3 primitive no longer ships: the Summary open/close indicator) */
   trail?: { tag: string; attrs: Record<string, string> };
+  /** an ARIA attribute a recipe key value implies (state=error -> aria-invalid="true"); an explicit value from the caller wins.
+   *  attr: the html attribute (JS runtimes), prop: the primitive prop (server runtimes: ariaInvalid / AriaInvalid) */
+  implies?: { key: string; value: string; attr: string; prop: string; set: string };
 };
+
+/** the field error state: state="error" renders aria-invalid="true" unless the caller passes ariaInvalid */
+export const ERROR_INVALID = { key: "state", value: "error", attr: "aria-invalid", prop: "ariaInvalid", set: "true" };
 
 /** the open/close indicator of a disclosure summary, as in UI8Kit 2: a Lucide chevron through CSS, turned over by group-open */
 export const SUMMARY_INDICATOR = { tag: "span", attrs: { class: "size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180", "aria-hidden": "true", "data-slot": "summary-indicator" } };
@@ -80,10 +86,10 @@ export const BRICKS: Record<string, BrickMap> = {
   LinkPlain: { primitive: "Link", recipe: "link-plain" },
   Label: { primitive: "Label", recipe: "label" },
   Form: { primitive: "Form", recipe: "form" },
-  Input: { primitive: "Input", recipe: "input" },
+  Input: { primitive: "Input", recipe: "input", implies: ERROR_INVALID },
   Range: { primitive: "Input", recipe: "range", fixed: { type: "range" } },
-  Textarea: { primitive: "Textarea", recipe: "textarea" },
-  Select: { primitive: "Select", recipe: "select" },
+  Textarea: { primitive: "Textarea", recipe: "textarea", implies: ERROR_INVALID },
+  Select: { primitive: "Select", recipe: "select", implies: ERROR_INVALID },
   SelectOption: { primitive: "SelectOption" },
   OptGroup: { primitive: "SelectOptGroup" },
   Checkbox: { primitive: "Checkbox", recipe: "checkbox" },

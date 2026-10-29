@@ -8,5 +8,5 @@ export type SelectProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "va
 
 /** Select: Select + recipe select. */
 export function Select({ "size": v_size, "variant": v_variant, "state": v_state, className, ...rest }: SelectProps) {
-  return <Prim className={cn(rc("select", { "size": v_size, "variant": v_variant, "state": v_state }), className)} {...rest} />;
+  return <Prim className={cn(rc("select", { "size": v_size, "variant": v_variant, "state": v_state }), className)} aria-invalid={v_state === "error" ? "true" : undefined} {...rest} />;
 }

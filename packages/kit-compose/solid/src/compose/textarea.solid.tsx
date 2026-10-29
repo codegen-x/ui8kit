@@ -9,5 +9,5 @@ export type TextareaProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | 
 /** Textarea: Textarea + recipe textarea. */
 export function Textarea(props: TextareaProps) {
   const [local, rest] = splitProps(props, ["size", "variant", "state", "class", "className"]);
-  return <Prim class={cn(rc("textarea", { "size": local["size"], "variant": local["variant"], "state": local["state"] }), local.class ?? local.className)} {...rest} />;
+  return <Prim class={cn(rc("textarea", { "size": local["size"], "variant": local["variant"], "state": local["state"] }), local.class ?? local.className)} aria-invalid={local["state"] === "error" ? "true" : undefined} {...rest} />;
 }

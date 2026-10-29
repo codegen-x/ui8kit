@@ -18,5 +18,5 @@ const tagValue = computed(() => "");
 </script>
 
 <template>
-  <Prim :class="cls" v-bind="rest" />
+  <Prim :class="cls" :aria-invalid="props.state === 'error' ? 'true' : undefined" v-bind="rest" />
 </template>

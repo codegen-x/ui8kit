@@ -9,5 +9,5 @@ export type InputProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "cl
 /** Input: Input + recipe input. */
 export function Input(props: InputProps) {
   const [local, rest] = splitProps(props, ["size", "variant", "state", "class", "className"]);
-  return <Prim class={cn(rc("input", { "size": local["size"], "variant": local["variant"], "state": local["state"] }), local.class ?? local.className)} {...rest} />;
+  return <Prim class={cn(rc("input", { "size": local["size"], "variant": local["variant"], "state": local["state"] }), local.class ?? local.className)} aria-invalid={local["state"] === "error" ? "true" : undefined} {...rest} />;
 }

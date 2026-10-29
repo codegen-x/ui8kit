@@ -31,6 +31,7 @@ export function spec(m: BrickMap) {
     fixedProps: Object.fromEntries(fixed.filter(([k]) => asProp.includes(k))),
     fixedAttrs: Object.fromEntries(fixed.filter(([k]) => !asProp.includes(k))),
     ...(m.trail ? { trail: trailHtml(m) } : {}),
+    ...(m.implies ? { implies: { key: m.implies.key, value: m.implies.value, prop: m.implies.prop, set: m.implies.set } } : {}),
   };
 }
 
@@ -107,6 +108,9 @@ def compose_props(name: str, p: Any) -> dict:
             q[_pascal(k)] = v
     if s["fixedAttrs"]:
         q["Attrs"] = {**s["fixedAttrs"], **(q.get("Attrs") or {})}
+    im = s.get("implies")
+    if im and values.get(im["key"]) == im["value"] and not _set(q.get(_pascal(im["prop"]))):
+        q[_pascal(im["prop"])] = im["set"]
     return q
 
 
@@ -213,6 +217,10 @@ final class Compose
         }
         if ($s['fixedAttrs'] !== []) {
             $q['attrs'] = array_merge($s['fixedAttrs'], (array) ($q['attrs'] ?? []));
+        }
+        $im = $s['implies'] ?? null;
+        if ($im !== null && ($values[$im['key']] ?? null) === $im['value'] && !self::isSet($q[$im['prop']] ?? null)) {
+            $q[$im['prop']] = $im['set'];
         }
         if (isset($s['trail'])) {
             $q['children'] = (string) ($q['children'] ?? '') . $s['trail'];
@@ -402,6 +410,7 @@ export function serverFiles(items: [string, BrickMap][], kit: string, HEAD: stri
     else if (s.tagFrom?.heading) set.push(`\tin.Tag = Heading(p.As, "${s.tagFrom.fallback}")`);
     else if (s.tagFrom) set.push(`\tin.Tag = Or(in.Tag, "${s.tagFrom.fallback}")`);
     for (const [k, v] of Object.entries(s.fixedProps)) set.push(`\tin.${pascal(k)} = Or(in.${pascal(k)}, ${JSON.stringify(v)})`);
+    if (s.implies) set.push(`\tif p.${pascal(s.implies.key)} == ${JSON.stringify(s.implies.value)} {\n\t\tin.${pascal(s.implies.prop)} = Or(in.${pascal(s.implies.prop)}, ${JSON.stringify(s.implies.set)})\n\t}`);
     if (Object.keys(s.fixedAttrs).length) set.push(`\tin.Attrs = WithAttrs(in.Attrs, map[string]string{${Object.entries(s.fixedAttrs).map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(", ")}})`);
     files.set(`templ/src/compose/${kebab(name)}.templ`, `// ${HEAD}
 

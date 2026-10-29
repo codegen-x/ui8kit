@@ -12,7 +12,7 @@ import { BRICKS } from "../src/map";
 import { RECIPES } from "../src/recipes";
 import { pascal } from "../src/server";
 import * as R from "../react/src/compose";
-import { cases, isLeaf, names, norm, MANUAL_CASES } from "./shared";
+import { ariaInvalidOf, cases, impliedWant, isLeaf, names, norm, MANUAL_CASES } from "./shared";
 import { MANUAL } from "../src/manual";
 
 const ROOT = path.resolve(import.meta.dir, "..");
@@ -36,6 +36,8 @@ function split({ name, c }: Case, P: (k: string) => string) {
     if (k === "className") props[P("class")] = v;
     else if (keys.includes(k) || k === "as" || k === "tag") props[P(k)] = v;
     else if (manual && k === "aria-label") props[P("ariaLabel")] = v;
+    // the explicit ariaInvalid of a field goes in as the primitive prop (ariaInvalid / AriaInvalid), not through attrs
+    else if (!manual && BRICKS[name].implies?.attr === k) props[P(BRICKS[name].implies!.prop)] = v;
     else attrs[k] = v;
   }
   if (Object.keys(attrs).length) props[P("attrs")] = attrs;
@@ -56,6 +58,7 @@ function suite(rt: string, available: string | null, run: () => string[]) {
         if (k.name !== name) return;
         const id = `${name} ${JSON.stringify(k.c)}`, got = norm((html[i] ?? "").trim());
         expect(got, `${rt} ${id}`).toBe(react[i]);
+        if (!MANUAL.includes(name) && BRICKS[name].implies) expect(ariaInvalidOf(got), `${rt} aria-invalid ${id}`).toBe(impliedWant(name, k.c));
       });
     });
   });
@@ -100,7 +103,7 @@ suite("templ", ok("go", ["version"]) ? null : "go not found", () => {
       for (const [f, v] of Object.entries(props)) {
         if (f === "Items") outer.push(`Items: []compose.BreadcrumbItem{${(v as Record<string, unknown>[]).map((it) => `{${Object.entries(it).map(([a, b]) => `${pascal(a)}: ${JSON.stringify(b)}`).join(", ")}}`).join(", ")}}`);
         else if (f === "Attrs") inner.push(`Attrs: templ.Attributes{${Object.entries(v as Record<string, string>).map(([a, b]) => `${JSON.stringify(a)}: ${JSON.stringify(b)}`).join(", ")}}`);
-        else if (f === "Class" || (f === "Tag" && !BRICKS[k.name].tagFrom?.heading)) inner.push(`${f}: ${JSON.stringify(v)}`);
+        else if (f === "Class" || f === "AriaInvalid" || (f === "Tag" && !BRICKS[k.name].tagFrom?.heading)) inner.push(`${f}: ${JSON.stringify(v)}`);
         else outer.push(`${f}: ${JSON.stringify(v)}`);
       }
       return `compose.${k.name}(compose.${k.name}Props{${[...outer, `${p}Props: ${pkg}.${p}Props{${inner.join(", ")}}`].join(", ")}})`;

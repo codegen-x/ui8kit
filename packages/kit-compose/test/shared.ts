@@ -23,10 +23,22 @@ export function cases(name: string): Record<string, string>[] {
   const base: Record<string, string> = NAMED.has(name) ? { "aria-label": "Field" } : {};
   const out: Record<string, string>[] = [{ ...base }, { ...base, className: "mt-4", "data-testid": "x" }];
   if (m.recipe) for (const k of RECIPES[m.recipe].keys) for (const v of Object.keys(RECIPES[m.recipe].byKey[k] ?? {})) out.push({ ...base, [k]: v });
+  // implied ARIA (state=error -> aria-invalid="true"): the explicit caller value alone, and over the implied one
+  if (m.implies) out.push({ ...base, [m.implies.attr]: m.implies.set }, { ...base, [m.implies.key]: m.implies.value, [m.implies.attr]: "false" });
   if (m.tagFrom?.heading) out.push({ as: "1" }, { as: "3" });
   else if (m.tagFrom) out.push({ tag: m.primitive === "Text" ? "span" : name === "List" ? "ol" : "section" });
   return out;
 }
+
+/** what the implied attribute must be in a case: the explicit caller value, else the implied one on its key value, else absent */
+export function impliedWant(name: string, c: Record<string, string>): string | null {
+  const im = BRICKS[name].implies;
+  if (!im) return null;
+  return c[im.attr] ?? (c[im.key] === im.value ? im.set : null);
+}
+
+/** the aria-invalid of the first element of a (normalized) html, or null when absent */
+export const ariaInvalidOf = (html: string): string | null => /^<[a-z0-9]+[^>]*?\saria-invalid="([^"]*)"/.exec(html)?.[1] ?? null;
 
 /** Hand-written compositions (src/manual.ts): props in React spelling; `aria-label` is a prop of these (default label). */
 export const ITEMS = [{ label: "Home", href: "/" }, { label: "Docs <&>", href: "/docs" }, { label: "Off", href: "/off", disabled: true }, { label: "Here", current: true }];

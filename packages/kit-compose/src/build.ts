@@ -64,6 +64,10 @@ const trailOf = (m: BrickMap, jsx: string | null): string => !m.trail ? "" : `<T
 const trailImport = (m: BrickMap, rt: string): string => !m.trail ? "" : rt === "react" ? `import { Text } from "../../../../kit/react/src/ui/text/text";\n`
   : rt === "solid" ? `import { Text } from "../../../../kit/solid/src/ui/text/text.solid";\n` : `${rt === "svelte" ? "  " : ""}import Text from "../../../../kit/${rt}/src/ui/text/Text.${rt}";\n`;
 const fixedAttrs = (m: BrickMap) => Object.entries(m.fixed ?? {});
+/** the implied ARIA attribute, placed before the caller's rest (the caller wins): ref = how the runtime reads the recipe key */
+const impliedAttr = (m: BrickMap, ref: (k: string) => string, vue = false): string => !m.implies ? ""
+  : vue ? ` :${m.implies.attr}="${ref(m.implies.key)} === '${m.implies.value}' ? '${m.implies.set}' : undefined"`
+  : ` ${m.implies.attr}={${ref(m.implies.key)} === ${JSON.stringify(m.implies.value)} ? ${JSON.stringify(m.implies.set)} : undefined}`;
 
 function react(name: string, m: BrickMap): string {
   const p = m.primitive, tp = tagProp(m), keys = keysOf(m);
@@ -81,7 +85,7 @@ export type ${name}Props = Omit<ComponentProps<typeof Prim>, ${["tag", ...keys].
 
 /** ${name}: ${p}${m.tag ? ` <${m.tag}>` : ""}${m.recipe ? ` + recipe ${m.recipe}` : ""}. */
 export function ${name}({ ${destr} }: ${name}Props) {
-  return <Prim${tag} className={${clsExpr(m, "className")}}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} {...rest}${m.trail ? `>{children}${trailOf(m, "className")}</Prim>` : " />"};
+  return <Prim${tag} className={${clsExpr(m, "className")}}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")}${impliedAttr(m, safe)} {...rest}${m.trail ? `>{children}${trailOf(m, "className")}</Prim>` : " />"};
 }
 `;
 }
@@ -96,7 +100,7 @@ function svelte(name: string, m: BrickMap): string {
   const p = m.primitive, tp = tagProp(m), keys = keysOf(m);
   const destr = [...keys.map((k) => `${JSON.stringify(k)}: ${safe(k)}`), ...(tp ? [tp] : []), "class: className", "children", "...rest"].join(", ");
   const tag = m.tag || m.tagFrom ? ` tag={${tagExpr(m, tp ?? "undefined")} as never}` : "";
-  const open = `<Prim${tag} class={cls}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} {...rest}`;
+  const open = `<Prim${tag} class={cls}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")}${impliedAttr(m, safe)} {...rest}`;
   return `<!-- ${HEAD} -->
 <!-- ${name}: ${p}${m.tag ? ` <${m.tag}>` : ""}${m.recipe ? ` + recipe ${m.recipe}` : ""}. -->
 <script lang="ts">
@@ -122,7 +126,7 @@ function vue(name: string, m: BrickMap): string {
   const tag = m.tag || m.tagFrom ? ` :tag="tagValue as never"` : "";
   const tagJs = m.tagFrom?.heading ? `(props.as && Number(props.as) >= 1 && Number(props.as) <= 6 ? \`h\${props.as}\` : "${m.tagFrom.fallback}")`
     : m.tagFrom ? `(props.tag ?? "${m.tagFrom.fallback}")` : JSON.stringify(m.tag ?? "");
-  const open = `<Prim${tag}${req.map((k) => ` :${k}="props.${k}"`).join("")} :class="cls"${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} v-bind="rest"`;
+  const open = `<Prim${tag}${req.map((k) => ` :${k}="props.${k}"`).join("")} :class="cls"${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")}${impliedAttr(m, (k) => `props.${k}`, true)} v-bind="rest"`;
   return `<!-- ${HEAD} -->
 <!-- ${name}: ${p}${m.tag ? ` <${m.tag}>` : ""}${m.recipe ? ` + recipe ${m.recipe}` : ""}. -->
 <script setup lang="ts">
@@ -168,7 +172,7 @@ export type ${name}Props = Omit<ComponentProps<typeof Prim>, ${["tag", "class", 
 /** ${name}: ${p}${m.tag ? ` <${m.tag}>` : ""}${m.recipe ? ` + recipe ${m.recipe}` : ""}. */
 export function ${name}(props: ${name}Props) {
   const [local, rest] = splitProps(props, [${[...keys, ...(tp ? [tp] : []), "class", "className", ...(m.trail ? ["children"] : [])].map((k) => JSON.stringify(k)).join(", ")}]);
-  return <Prim${tag} class={${cls}}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} {...rest}${m.trail ? `>{local.children}${trailOf(m, null)}</Prim>` : " />"};
+  return <Prim${tag} class={${cls}}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")}${impliedAttr(m, L)} {...rest}${m.trail ? `>{local.children}${trailOf(m, null)}</Prim>` : " />"};
 }
 `;
 }

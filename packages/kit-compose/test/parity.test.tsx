@@ -8,7 +8,7 @@ import { BRICKS, CONTROL_RECIPES } from "../src/map";
 import { RECIPES } from "../src/recipes";
 import * as R from "../react/src/compose";
 import { checkHtml } from "../../ui-gates/src/html.mjs";
-import { cases, names, norm, MANUAL_CASES } from "./shared";
+import { ariaInvalidOf, cases, impliedWant, names, norm, MANUAL_CASES } from "./shared";
 
 const rendered: { id: string; html: string }[] = [];
 
@@ -61,6 +61,7 @@ for (const name of names) {
       const vu = await vueSSR(createSSRApp({ render: () => h(V, { ...rest, class: className }, leaf ? undefined : { default: () => "Content" }) }));
       const so = solidSSR(() => createComponent(L, { ...rest, class: className, ...(leaf ? {} : { children: "Content" }) } as never));
       const want = norm(r);
+      if (BRICKS[name].implies) expect(ariaInvalidOf(want), `aria-invalid ${name} ${JSON.stringify(c)}`).toBe(impliedWant(name, c));
       expect(norm(sv), `svelte ${JSON.stringify(c)}`).toBe(want);
       expect(norm(vu), `vue ${JSON.stringify(c)}`).toBe(want);
       expect(norm(so), `solid ${JSON.stringify(c)}`).toBe(want);

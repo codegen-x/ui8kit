@@ -9,5 +9,5 @@ export type SelectProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "c
 /** Select: Select + recipe select. */
 export function Select(props: SelectProps) {
   const [local, rest] = splitProps(props, ["size", "variant", "state", "class", "className"]);
-  return <Prim class={cn(rc("select", { "size": local["size"], "variant": local["variant"], "state": local["state"] }), local.class ?? local.className)} {...rest} />;
+  return <Prim class={cn(rc("select", { "size": local["size"], "variant": local["variant"], "state": local["state"] }), local.class ?? local.className)} aria-invalid={local["state"] === "error" ? "true" : undefined} {...rest} />;
 }

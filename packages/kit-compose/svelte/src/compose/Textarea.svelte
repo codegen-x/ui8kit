@@ -10,4 +10,4 @@
   const cls = $derived(cn(rc("textarea", { "size": v_size, "variant": v_variant, "state": v_state }), className));
 </script>
 
-<Prim class={cls} {...rest}>{@render children?.()}</Prim>
+<Prim class={cls} aria-invalid={v_state === "error" ? "true" : undefined} {...rest}>{@render children?.()}</Prim>
