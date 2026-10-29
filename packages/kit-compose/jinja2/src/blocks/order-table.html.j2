@@ -47,7 +47,7 @@
                 {%- set c_6 -%}
                   {{ og_text(og_at(v_statuses, og_get(v_o, ['status']))) }}
                 {%- endset -%}
-                {{ og_include('blocks/pill.html.j2', {'p': {'tone': ('green' if og_t(og_eq(og_get(v_o, ['status']), 'paid')) else ('blue' if og_t(og_eq(og_get(v_o, ['status']), 'shipped')) else ('amber' if og_t(og_eq(og_get(v_o, ['status']), 'pending')) else 'gray')))}, 'children': c_6}) }}
+                {{ og_include('blocks/pill.html.j2', {'p': {'tone': ('green' if og_t(og_eq(og_get(v_o, ['status']), 'paid')) else ('blue' if og_t(og_eq(og_get(v_o, ['status']), 'shipped')) else ('amber' if og_t(og_eq(og_get(v_o, ['status']), 'pending')) else 'gray')))}, 'children': og_markup(c_6)}) }}
               {%- endset -%}
               {{ og_include('compose/card-content.html.j2', {'p': {'Class': 'flex flex-wrap items-center justify-between gap-4'}, 'children': c_7}) }}
             {%- endset -%}
@@ -63,4 +63,4 @@
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch'}, 'children': c_10}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': c_11}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_11)}) }}

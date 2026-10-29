@@ -32,14 +32,14 @@
                 {%- endset -%}
                 {{ og_include('compose/inline.html.j2', {'p': {'Class': og_s(('' if og_t(v_named) else 'sr-only'))}, 'children': c_3}) }}
               {%- endset -%}
-              {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_l, ['href']), 'className': og_cnv([og_cnv(['flex items-center gap-4 rounded py-2 text-sm', ('px-4' if og_t(v_named) else 'justify-center px-2'), ('bg-muted font-medium' if og_t(og_eq(og_get(v_l, ['id']), og_get(v_nav, ['current']))) else '')])]), 'current': og_eq(og_get(v_l, ['id']), og_get(v_nav, ['current'])), 'size': 'sm', 'testid': 'item'}, 'children': c_4}) }}
+              {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_l, ['href']), 'className': og_cnv([og_cnv(['flex items-center gap-4 rounded py-2 text-sm', ('px-4' if og_t(v_named) else 'justify-center px-2'), ('bg-muted font-medium' if og_t(og_eq(og_get(v_l, ['id']), og_get(v_nav, ['current']))) else '')])]), 'current': og_eq(og_get(v_l, ['id']), og_get(v_nav, ['current'])), 'size': 'sm', 'testid': 'item'}, 'children': og_markup(c_4)}) }}
             {%- endset -%}
             {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_5}) }}
           {%- endfor %}
         {%- endset -%}
         {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-2 p-0', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_6}) }}
       {%- endset -%}
-      {{ og_include('blocks/nav-block.html.j2', {'p': {'label': (og_uniq(og_tpl('{0}, {1}', [og_get(v_nav, ['label']), v_landmarkLabel])) if og_t(v_landmarkLabel) else og_get(v_nav, ['label'])), 'className': og_cnv(['flex-1'])}, 'children': c_7}) }}
+      {{ og_include('blocks/nav-block.html.j2', {'p': {'label': (og_uniq(og_tpl('{0}, {1}', [og_get(v_nav, ['label']), v_landmarkLabel])) if og_t(v_landmarkLabel) else og_get(v_nav, ['label'])), 'className': og_cnv(['flex-1'])}, 'children': og_markup(c_7)}) }}
     {%- endif %}
     {%- if og_t(og_eq(v_mode, 'collapsed')) %}
       {%- set c_8 -%}
@@ -66,14 +66,14 @@
                 {%- endset -%}
                 {{ og_include('compose/inline.html.j2', {'p': {'Class': og_s(('' if og_t(true) else 'sr-only'))}, 'children': c_11}) }}
               {%- endset -%}
-              {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_s, ['href']), 'className': og_cnv([og_cnv(['flex items-center gap-4 rounded py-2 text-sm', ('px-4' if og_t(true) else 'justify-center px-2'), ('bg-muted font-medium' if og_t(og_eq(og_get(v_s, ['id']), og_get(v_nav, ['subCurrent']))) else '')])]), 'current': og_eq(og_get(v_s, ['id']), og_get(v_nav, ['subCurrent'])), 'size': 'sm', 'testid': 'item'}, 'children': c_12}) }}
+              {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_s, ['href']), 'className': og_cnv([og_cnv(['flex items-center gap-4 rounded py-2 text-sm', ('px-4' if og_t(true) else 'justify-center px-2'), ('bg-muted font-medium' if og_t(og_eq(og_get(v_s, ['id']), og_get(v_nav, ['subCurrent']))) else '')])]), 'current': og_eq(og_get(v_s, ['id']), og_get(v_nav, ['subCurrent'])), 'size': 'sm', 'testid': 'item'}, 'children': og_markup(c_12)}) }}
             {%- endset -%}
             {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_13}) }}
           {%- endfor %}
         {%- endset -%}
         {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-2 p-0'}, 'children': c_14}) }}
       {%- endset -%}
-      {{ og_include('blocks/nav-block.html.j2', {'p': {'label': (og_uniq(og_tpl('{0}, {1}', [og_get(v_nav, ['subTitle']), v_landmarkLabel])) if og_t(v_landmarkLabel) else og_get(v_nav, ['subTitle']))}, 'children': c_15}) }}
+      {{ og_include('blocks/nav-block.html.j2', {'p': {'label': (og_uniq(og_tpl('{0}, {1}', [og_get(v_nav, ['subTitle']), v_landmarkLabel])) if og_t(v_landmarkLabel) else og_get(v_nav, ['subTitle']))}, 'children': og_markup(c_15)}) }}
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex w-56 flex-col gap-4 px-4 py-6', ('border-r border-border' if og_t(og_eq(v_side, 'end')) else 'border-l border-border')])), 'Attrs': og_attrs(['data-testid', 'subnav'])}, 'children': c_16}) }}
   {%- endif %}

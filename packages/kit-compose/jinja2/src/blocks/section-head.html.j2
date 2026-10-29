@@ -9,7 +9,7 @@
 {%- if og_t(og_has(v_expanded)) %}
   {%- set c_3 -%}
     {%- set c_1 -%}
-      {{ og_def(children, '')|safe }}
+      {{ og_slot(og_def(children, none))|safe }}
     {%- endset -%}
     {{ og_include('compose/inline.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'section-head-title'])}, 'children': c_1}) }}
     {%- if og_t((og_def(p['right'], none) is not none)) %}
@@ -23,7 +23,7 @@
 {%- else %}
   {%- set c_6 -%}
     {%- set c_4 -%}
-      {{ og_def(children, '')|safe }}
+      {{ og_slot(og_def(children, none))|safe }}
     {%- endset -%}
     {{ og_include('compose/inline.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'section-head-title'])}, 'children': c_4}) }}
     {%- if og_t((og_def(p['right'], none) is not none)) %}

@@ -25,7 +25,7 @@
     {{ og_include('blocks/post-stats.html.j2', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels, 'align': 'center'}}) }}
     {{ og_include('blocks/post-author.html.j2', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels, 'mode': 'card', 'share': true, 'className': og_cnv(['mx-auto w-full max-w-md'])}}) }}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': og_get(v_post, ['title']), 'lead': og_get(v_post, ['excerpt']), 'heading': {'badge': og_get(v_post, ['category']), 'level': v_level}, 'tone': v_tone, 'media': {'show': true}, 'align': 'center', 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_1)}, 'children': c_2}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': og_get(v_post, ['title']), 'lead': og_get(v_post, ['excerpt']), 'heading': {'badge': og_get(v_post, ['category']), 'level': v_level}, 'tone': v_tone, 'media': {'show': true}, 'align': 'center', 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_1)}, 'children': og_markup(c_2)}) }}
 {%- else %}
   {%- set f_3 -%}
     {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_post, ['title']), 'ratio': ('21/9' if og_t(og_eq(v_layout, 'center')) else ('1/1' if og_t(og_eq(v_cover, 'square')) else '4/3'))}}) }}
@@ -46,5 +46,5 @@
     {%- endif %}
     {{ og_include('blocks/post-actions.html.j2', {'p': {'labels': v_labels, 'mode': v_actions}}) }}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': og_get(v_post, ['title']), 'lead': og_get(v_post, ['excerpt']), 'heading': {'badge': og_get(v_post, ['category']), 'level': v_level}, 'tone': v_tone, 'media': {'show': true, 'side': v_mediaSide}, 'layout': 'split', 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_3)}, 'children': c_4}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': og_get(v_post, ['title']), 'lead': og_get(v_post, ['excerpt']), 'heading': {'badge': og_get(v_post, ['category']), 'level': v_level}, 'tone': v_tone, 'media': {'show': true, 'side': v_mediaSide}, 'layout': 'split', 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_3)}, 'children': og_markup(c_4)}) }}
 {%- endif %}

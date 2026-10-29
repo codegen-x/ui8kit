@@ -4,6 +4,6 @@
     Props (p): measure; children: markup. -#}
 {%- set v_measure = og_def(p['measure'], 'default') -%}
 {%- set c_1 -%}
-  {{ og_def(children, '')|safe }}
+  {{ og_slot(og_def(children, none))|safe }}
 {%- endset -%}
 {{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': 'stretch', 'Class': og_s(og_recipe('blocks/recipes/section-column.variants.json', {'measure': v_measure}))}, 'children': c_1}) }}

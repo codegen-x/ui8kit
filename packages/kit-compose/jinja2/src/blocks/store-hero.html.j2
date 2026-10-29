@@ -47,7 +47,7 @@
       {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-3', 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'perks'])}, 'children': c_6}) }}
     {%- endif %}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge, 'level': v_level}, 'tone': v_tone, 'density': 'roomy', 'measure': '3xl', 'className': og_cnv([('relative isolate overflow-hidden' if og_t(og_eq('image', 'image')) else '')]), 'landmarkLabel': v_landmarkLabel}, 'children': c_7}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge, 'level': v_level}, 'tone': v_tone, 'density': 'roomy', 'measure': '3xl', 'className': og_cnv([('relative isolate overflow-hidden' if og_t(og_eq('image', 'image')) else '')]), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_7)}) }}
 {%- else %}
   {%- set f_14 -%}
     {{ og_include('blocks/offer-media.html.j2', {'p': {'alt': v_title, 'card': v_card}}) }}
@@ -83,5 +83,5 @@
       {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-3', 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'perks'])}, 'children': c_13}) }}
     {%- endif %}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge, 'level': v_level}, 'layout': 'split', 'media': {'show': true, 'side': v_mediaSide}, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_14)}, 'children': c_15}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge, 'level': v_level}, 'layout': 'split', 'media': {'show': true, 'side': v_mediaSide}, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_14)}, 'children': og_markup(c_15)}) }}
 {%- endif %}

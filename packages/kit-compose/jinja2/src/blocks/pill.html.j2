@@ -10,7 +10,7 @@
     {%- if og_t(v_icon) %}
       {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': og_s(v_icon), 'Size': 12}}) }}
     {%- endif %}
-    {{ og_def(children, '')|safe }}
+    {{ og_slot(og_def(children, none))|safe }}
   {%- endset -%}
   {{ og_include('compose/inline.html.j2', {'p': {'Class': og_s(og_cnv(['inline-flex h-6 shrink-0 items-center gap-1 rounded-full px-3 text-xs font-medium whitespace-nowrap inset-ring', og_at(k_PILL, v_tone), og_def(p['className'], '')])), 'Attrs': og_attrs(['data-slot', 'pill'])}, 'children': c_1}) }}
 {%- endset -%}

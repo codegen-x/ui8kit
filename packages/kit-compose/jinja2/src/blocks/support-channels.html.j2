@@ -36,7 +36,7 @@
               {%- set c_4 -%}
                 {{ og_text(v_open) }}
               {%- endset -%}
-              {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_c, ['href']), 'className': og_cnv(['font-semibold']), 'testid': 'open'}, 'children': c_4}) }}
+              {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_c, ['href']), 'className': og_cnv(['font-semibold']), 'testid': 'open'}, 'children': og_markup(c_4)}) }}
             {%- endif %}
           {%- endset -%}
           {{ og_include('compose/card-content.html.j2', {'p': {'Class': og_s(og_cnv(['flex flex-1 gap-4', ('items-center' if og_t(og_eq(v_layout, 'list')) else 'flex-col')]))}, 'children': c_5}) }}
@@ -47,4 +47,4 @@
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1' if og_t(og_eq(v_layout, 'list')) else v_cols)), 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_7}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': c_8}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_8)}) }}

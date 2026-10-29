@@ -54,4 +54,4 @@
   {%- endset -%}
   {{ og_include('compose/block.html.j2', {'p': {'Tag': 'div', 'Class': 'w-full', 'Attrs': og_attrs(['role', 'status', 'aria-label', v_label, 'data-testid', 'skeleton', 'data-shape', v_shape])}, 'children': c_8}) }}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': c_9}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_9)}) }}

@@ -74,12 +74,12 @@
                   {%- set c_13 -%}
                     {{ og_text(og_get(v_g, ['title'])) }}
                   {%- endset -%}
-                  {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_g, ['href']), 'className': og_cnv(['text-sm']), 'testid': 'group'}, 'children': c_13}) }}
+                  {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_g, ['href']), 'className': og_cnv(['text-sm']), 'testid': 'group'}, 'children': og_markup(c_13)}) }}
                 {%- endfor %}
               {%- endset -%}
               {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Class': 'flex-wrap'}, 'children': c_14}) }}
             {%- endset -%}
-            {{ og_include('blocks/nav-block.html.j2', {'p': {'label': (og_uniq(og_tpl('{0}, {1}', [v_label, v_landmarkLabel])) if og_t(v_landmarkLabel) else v_label)}, 'children': c_15}) }}
+            {{ og_include('blocks/nav-block.html.j2', {'p': {'label': (og_uniq(og_tpl('{0}, {1}', [v_label, v_landmarkLabel])) if og_t(v_landmarkLabel) else v_label)}, 'children': og_markup(c_15)}) }}
           {%- endif %}
         {%- endset -%}
         {{ og_include('compose/group.html.j2', {'p': {'Gap': '6', 'Align': 'center', 'Justify': 'between', 'Class': 'flex-wrap'}, 'children': c_16}) }}
@@ -93,7 +93,7 @@
           {%- set c_18 -%}
             {{ og_text(og_get(v_status, ['label'])) }}
           {%- endset -%}
-          {{ og_include('blocks/pill.html.j2', {'p': {'tone': 'green', 'icon': 'circle-check'}, 'children': c_18}) }}
+          {{ og_include('blocks/pill.html.j2', {'p': {'tone': 'green', 'icon': 'circle-check'}, 'children': og_markup(c_18)}) }}
         {%- endif %}
       {%- endset -%}
       {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Class': 'flex-wrap border-t border-border pt-6'}, 'children': c_19}) }}

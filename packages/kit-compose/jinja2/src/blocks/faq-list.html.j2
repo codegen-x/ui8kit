@@ -26,10 +26,10 @@
         {%- set c_1 -%}
           {{ og_text(og_get(v_tab, ['title'])) }}
         {%- endset -%}
-        {{ og_include('blocks/switcher-item.html.j2', {'p': {'active': og_eq(og_get(v_tab, ['value']), og_get(v_filter, ['category']))}, 'children': c_1}) }}
+        {{ og_include('blocks/switcher-item.html.j2', {'p': {'active': og_eq(og_get(v_tab, ['value']), og_get(v_filter, ['category']))}, 'children': og_markup(c_1)}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('blocks/switcher.html.j2', {'p': {'label': og_get(v_filter, ['label'])}, 'children': c_2}) }}
+    {{ og_include('blocks/switcher.html.j2', {'p': {'label': og_get(v_filter, ['label'])}, 'children': og_markup(c_2)}) }}
   {%- endif %}
   {%- if og_t(og_eq(og_len(v_shown), 0)) %}
     {{ og_include('blocks/empty-state.html.j2', {'p': {'icon': 'circle-question-mark', 'title': v_empty}}) }}
@@ -76,4 +76,4 @@
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_cols, '2')) else '1')), 'Class': 'items-start gap-x-8', 'Attrs': og_attrs(['data-testid', 'faq'])}, 'children': c_12}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': ('2xl' if og_t(og_eq(v_layout, 'chat')) else 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': c_13}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': ('2xl' if og_t(og_eq(v_layout, 'chat')) else 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_13)}) }}

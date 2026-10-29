@@ -79,10 +79,10 @@
             {{ og_include('compose/box.html.j2', {'p': {'Class': 'text-sm text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'caption'])}, 'children': c_13}) }}
           {%- endif %}
         {%- endset -%}
-        {{ og_include('blocks/figure-block.html.j2', {'p': {'className': og_cnv([og_cnv(['flex flex-col gap-2', ('mb-4 break-inside-avoid' if og_t(og_eq(v_layout, 'masonry')) else ''), ('col-span-2 row-span-2' if og_t(og_and([og_eq(v_layout, 'mosaic'), og_eq(v_i, 0)])) else ''), ('rounded bg-card inset-ring inset-ring-border p-4' if og_t(og_eq(v_layout, 'cards')) else '')])]), 'testid': 'item'}, 'children': c_14}) }}
+        {{ og_include('blocks/figure-block.html.j2', {'p': {'className': og_cnv([og_cnv(['flex flex-col gap-2', ('mb-4 break-inside-avoid' if og_t(og_eq(v_layout, 'masonry')) else ''), ('col-span-2 row-span-2' if og_t(og_and([og_eq(v_layout, 'mosaic'), og_eq(v_i, 0)])) else ''), ('rounded bg-card inset-ring inset-ring-border p-4' if og_t(og_eq(v_layout, 'cards')) else '')])]), 'testid': 'item'}, 'children': og_markup(c_14)}) }}
       {%- endfor %}
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('columns-1 gap-4 sm:columns-2 lg:columns-3' if og_t(og_eq(v_layout, 'masonry')) else ('grid grid-cols-2 gap-4 md:grid-cols-4' if og_t(og_eq(v_layout, 'mosaic')) else 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'))), 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_15}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': c_16}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_16)}) }}

@@ -48,4 +48,4 @@
   {%- endset -%}
   {{ og_include('compose/block.html.j2', {'p': {'Tag': 'div', 'Class': og_s(og_cnv(['flex gap-4', ('flex-col items-start md:flex-row md:items-center' if og_t(og_eq(v_placement, 'end')) else ('flex-col-reverse items-start' if og_t(og_eq(v_placement, 'above')) else 'flex-col items-start'))])), 'Attrs': og_attrs(['data-testid', 'tour', 'data-placement', v_placement])}, 'children': c_9}) }}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': c_10}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_10)}) }}

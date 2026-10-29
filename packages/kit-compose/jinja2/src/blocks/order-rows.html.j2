@@ -61,7 +61,7 @@
             {%- set c_13 -%}
               {{ og_text(og_at(v_statuses, og_get(v_o, ['status']))) }}
             {%- endset -%}
-            {{ og_include('blocks/pill.html.j2', {'p': {'tone': ('green' if og_t(og_eq(og_get(v_o, ['status']), 'paid')) else ('blue' if og_t(og_eq(og_get(v_o, ['status']), 'shipped')) else ('amber' if og_t(og_eq(og_get(v_o, ['status']), 'pending')) else 'gray')))}, 'children': c_13}) }}
+            {{ og_include('blocks/pill.html.j2', {'p': {'tone': ('green' if og_t(og_eq(og_get(v_o, ['status']), 'paid')) else ('blue' if og_t(og_eq(og_get(v_o, ['status']), 'shipped')) else ('amber' if og_t(og_eq(og_get(v_o, ['status']), 'pending')) else 'gray')))}, 'children': og_markup(c_13)}) }}
           {%- endset -%}
           {{ og_include('compose/table-cell.html.j2', {'p': {}, 'children': c_14}) }}
         {%- endset -%}

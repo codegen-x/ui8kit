@@ -4,6 +4,6 @@
     Props (p): label, className; children: markup. -#}
 {%- set v_label = og_def(p['label'], none) -%}
 {%- set c_1 -%}
-  {{ og_def(children, '')|safe }}
+  {{ og_slot(og_def(children, none))|safe }}
 {%- endset -%}
 {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex items-center gap-2', og_def(p['className'], '')])), 'Attrs': og_attrs(['role', 'tablist', 'aria-label', v_label, 'data-slot', 'icon-tabs'])}, 'children': c_1}) }}

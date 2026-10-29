@@ -8,7 +8,7 @@
   {%- set c_2 -%}
     {{ og_slot(og_def(p['icon'], none))|safe }}
     {%- set c_1 -%}
-      {{ og_def(children, '')|safe }}
+      {{ og_slot(og_def(children, none))|safe }}
     {%- endset -%}
     {{ og_include('compose/inline.html.j2', {'p': {'Class': 'min-w-0 flex-1 truncate in-data-[nav=collapsed]:hidden', 'Attrs': og_attrs(['data-slot', 'nav-item-label'])}, 'children': c_1}) }}
   {%- endset -%}

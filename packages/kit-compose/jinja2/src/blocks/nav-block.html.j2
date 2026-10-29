@@ -6,6 +6,6 @@
 {%- set v_testid = og_def(p['testid'], none) -%}
 {%- set v_landmarkLabel = og_def(p['landmarkLabel'], none) -%}
 {%- set c_1 -%}
-  {{ og_def(children, '')|safe }}
+  {{ og_slot(og_def(children, none))|safe }}
 {%- endset -%}
 {{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Class': og_s(og_cnv([og_def(p['className'], '')])), 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-testid', v_testid])}, 'children': c_1}) }}

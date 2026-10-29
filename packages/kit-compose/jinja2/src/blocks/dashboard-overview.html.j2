@@ -30,17 +30,17 @@
         {%- set c_3 -%}
           {{ og_include('blocks/bar-chart.html.j2', {'p': {'bars': og_get(v_chart, ['series']), 'label': og_get(v_chart, ['summary']), 'height': 144}}) }}
         {%- endset -%}
-        {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_chart, ['title']), 'description': og_get(v_chart, ['text']), 'id': og_tpl('{0}-chart', [v_id]), 'className': og_cnv(['h-full'])}, 'children': c_3}) }}
+        {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_chart, ['title']), 'description': og_get(v_chart, ['text']), 'id': og_tpl('{0}-chart', [v_id]), 'className': og_cnv(['h-full'])}, 'children': og_markup(c_3)}) }}
       {%- endif %}
       {%- if og_t(og_gt(og_len(og_get(v_activity, ['events'])), 0)) %}
         {%- set c_4 -%}
           {{ og_include('blocks/timeline.html.j2', {'p': {'items': og_get(v_activity, ['events'])}}) }}
         {%- endset -%}
-        {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_activity, ['title']), 'description': og_get(v_activity, ['text']), 'id': og_tpl('{0}-feed', [v_id]), 'className': og_cnv(['h-full'])}, 'children': c_4}) }}
+        {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_activity, ['title']), 'description': og_get(v_activity, ['text']), 'id': og_tpl('{0}-feed', [v_id]), 'className': og_cnv(['h-full'])}, 'children': og_markup(c_4)}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_layout, 'split')) else '1')), 'Class': 'items-stretch gap-4', 'Attrs': og_attrs(['data-testid', 'panels'])}, 'children': c_5}) }}
   {%- endset -%}
   {{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': 'stretch'}, 'children': c_6}) }}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': c_7}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_7)}) }}

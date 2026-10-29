@@ -4,6 +4,6 @@
     Props (p): size, className; children: markup. -#}
 {%- set v_size = og_def(p['size'], 'default') -%}
 {%- set c_1 -%}
-  {{ og_def(children, '')|safe }}
+  {{ og_slot(og_def(children, none))|safe }}
 {%- endset -%}
 {{ og_include('compose/inline.html.j2', {'p': {'Class': og_s(og_cnv([og_recipe('blocks/recipes/badge-square.variants.json', {'size': v_size}), og_def(p['className'], '')])), 'Attrs': og_attrs(['data-slot', 'badge-square'])}, 'children': c_1}) }}

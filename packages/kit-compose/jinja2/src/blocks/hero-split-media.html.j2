@@ -23,7 +23,7 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_1}) }}
         {%- endset -%}
-        {{ og_include('blocks/figure-block.html.j2', {'p': {'className': og_cnv(['flex flex-col gap-2']), 'testid': 'hero-tile'}, 'children': c_2}) }}
+        {{ og_include('blocks/figure-block.html.j2', {'p': {'className': og_cnv(['flex flex-col gap-2']), 'testid': 'hero-tile'}, 'children': og_markup(c_2)}) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}

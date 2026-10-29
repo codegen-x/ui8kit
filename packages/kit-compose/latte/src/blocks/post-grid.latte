@@ -23,10 +23,10 @@
         {capture $c_1}
           {=og_text(og_get($v_tab, ['title']))}
         {/capture}
-        {=og_include('blocks/switcher-item.latte', ['p' => ['active' => og_eq(og_get($v_tab, ['value']), og_get($v_filter, ['topic']))], 'children' => $c_1])|noescape}
+        {=og_include('blocks/switcher-item.latte', ['p' => ['active' => og_eq(og_get($v_tab, ['value']), og_get($v_filter, ['topic']))], 'children' => og_markup($c_1)])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('blocks/switcher.latte', ['p' => ['label' => og_get($v_filter, ['label'])], 'children' => $c_2])|noescape}
+    {=og_include('blocks/switcher.latte', ['p' => ['label' => og_get($v_filter, ['label'])], 'children' => og_markup($c_2)])|noescape}
   {/if}
   {if og_t(og_gt(og_len(og_where($v_posts, 'category', og_get($v_filter, ['topic']))), 0))}
     {if og_t(og_eq($v_layout, 'magazine'))}
@@ -64,4 +64,4 @@
     {=og_include('compose/Block.latte', ['tag' => 'nav', 'attrs' => og_attrs(['aria-label', (og_t($v_landmarkLabel) ? og_uniq(og_tpl('{0}, {1}', [og_get($v_pager, ['label']), $v_landmarkLabel])) : og_get($v_pager, ['label'])), 'data-testid', 'posts-pager']), 'children' => (string) $c_6])|noescape}
   {/if}
 {/capture}
-{=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'action' => $v_action, 'tone' => $v_tone, 'density' => (og_t(og_eq($v_density, 'compact')) ? 'compact' : 'default'), 'measure' => (og_t(og_eq($v_meta, 'news')) ? 'fill' : 'default'), 'className' => og_cnv([(og_t(og_eq($v_meta, 'news')) ? 'py-0' : '')]), 'landmarkLabel' => $v_landmarkLabel], 'children' => $c_7])|noescape}
+{=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'action' => $v_action, 'tone' => $v_tone, 'density' => (og_t(og_eq($v_density, 'compact')) ? 'compact' : 'default'), 'measure' => (og_t(og_eq($v_meta, 'news')) ? 'fill' : 'default'), 'className' => og_cnv([(og_t(og_eq($v_meta, 'news')) ? 'py-0' : '')]), 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_7)])|noescape}

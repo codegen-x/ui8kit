@@ -135,8 +135,9 @@ function withScope<T>(c: Ctx, names: Array<[string, string]>, f: () => T): T {
 
 const walk = (nodes: ViewNode[], c: Ctx): string[] => nodes.flatMap((n) => node(n, c));
 
-/** children rendered into a variable first, then the include */
-function call(template: string, props: Array<[string, string]>, children: string[], c: Ctx, dynamic = false, custom?: TwigOrgDeps["callPart"], ref?: PartRef): string[] {
+/** children rendered into a variable first, then the include; an organism gets them as captured markup (og_markup, printed by og_slot
+ *  like a slot fill), a part (a kit primitive) as the string it prints */
+function call(template: string, props: Array<[string, string]>, children: string[], c: Ctx, dynamic = false, custom?: TwigOrgDeps["callPart"], ref?: PartRef, markup = false): string[] {
   const d = c.d;
   if (custom) {
     const pre: string[] = [];
@@ -155,10 +156,13 @@ function call(template: string, props: Array<[string, string]>, children: string
     const name = `c_${++c.n}`;
     const [open, close] = d.capture(name);
     pre.push(open, ...pad(children), close);
-    vars.push(["children", d.v(name)]);
+    vars.push(["children", markup ? `og_markup(${d.v(name)})` : d.v(name)]);
   }
   return [...pre, dynamic ? d.includeExpr(template, d.hash(vars)) : d.include(template, d.hash(vars))];
 }
+
+/** the organism's children printed like a slot: raw only the markup a calling template captured (og_markup), a plain string escaped */
+const childrenOut = (d: Dialect): string => d.raw(`og_slot(${d.orNull(d.v("children"), d.nul)})`);
 
 function node(n: ViewNode, c: Ctx): string[] {
   const d = c.d;
@@ -209,7 +213,7 @@ function node(n: ViewNode, c: Ctx): string[] {
   if ("slot" in n) {
     if (n.slot === "children") {
       if (c.inFill) throw new Error(`${c.org.name}: children rendered inside a slot fill`);
-      return [d.raw(d.orNull(d.v("children"), "''"))];
+      return [childrenOut(d)];
     }
     const decl = c.org.slots.find((s) => s.name === n.slot);
     if (!decl) throw new Error(`${c.org.name}: unknown slot ${n.slot}`);
@@ -227,7 +231,7 @@ function node(n: ViewNode, c: Ctx): string[] {
     const pre: string[] = [];
     for (const [name, sl] of Object.entries(n.slots ?? {})) {
       if (sl.forward !== undefined) {
-        if (name === "children") children = [sl.forward === "children" ? d.raw(d.orNull(d.v("children"), "''")) : d.raw(`og_slot(${d.orNull(d.field(d.v("p"), sl.forward), d.nul)})`)];
+        if (name === "children") children = [sl.forward === "children" ? childrenOut(d) : d.raw(`og_slot(${d.orNull(d.field(d.v("p"), sl.forward), d.nul)})`)];
         else props.push([name, d.orNull(d.field(d.v("p"), sl.forward), d.nul)]);
         continue;
       }
@@ -236,7 +240,7 @@ function node(n: ViewNode, c: Ctx): string[] {
       if (!decl) throw new Error(`${c.org.name}: ${n.organism} has no slot ${name}`);
       props.push([name, fill(sl, decl.args.length, c, pre)]);
     }
-    return [...pre, ...call(organismTemplate(n.organism, d), props, children, c)];
+    return [...pre, ...call(organismTemplate(n.organism, d), props, children, c, false, undefined, undefined, true)];
   }
   return [];
 }

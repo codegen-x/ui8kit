@@ -38,7 +38,7 @@
           {%- endset -%}
           {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2'}, 'children': c_5}) }}
         {%- endset -%}
-        {{ og_include('blocks/nav-block.html.j2', {'p': {'label': (og_uniq(og_tpl('{0}, {1}', [v_tocTitle, v_landmarkLabel])) if og_t(v_landmarkLabel) else v_tocTitle), 'className': og_cnv(['md:sticky md:top-4']), 'testid': 'toc'}, 'children': c_6}) }}
+        {{ og_include('blocks/nav-block.html.j2', {'p': {'label': (og_uniq(og_tpl('{0}, {1}', [v_tocTitle, v_landmarkLabel])) if og_t(v_landmarkLabel) else v_tocTitle), 'className': og_cnv(['md:sticky md:top-4']), 'testid': 'toc'}, 'children': og_markup(c_6)}) }}
       {%- endif %}
       {%- set c_11 -%}
         {%- for v_s in og_l(v_sections) %}
@@ -68,4 +68,4 @@
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1', 'Class': og_s(og_cnv(['items-start gap-8', ('md:grid-cols-[14rem_minmax(0,1fr)]' if og_t(og_eq(v_layout, 'toc')) else '')]))}, 'children': c_12}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': c_13}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_13)}) }}

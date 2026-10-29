@@ -61,4 +61,4 @@
     {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['grid grid-cols-1 gap-4', ('md:grid-cols-3' if og_t(og_eq(v_layout, 'stacked')) else '')])), 'Attrs': og_attrs(['data-testid', 'values'])}, 'children': c_9}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'density': v_density, 'layout': ('split' if og_t(og_eq(v_layout, 'split')) else 'stack'), 'media': {'show': true, 'side': 'start'}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_10)}, 'children': c_12}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'density': v_density, 'layout': ('split' if og_t(og_eq(v_layout, 'split')) else 'stack'), 'media': {'show': true, 'side': 'start'}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_10)}, 'children': og_markup(c_12)}) }}

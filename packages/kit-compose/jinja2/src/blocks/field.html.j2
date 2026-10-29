@@ -11,7 +11,7 @@
     {{ og_text(v_label) }}
   {%- endset -%}
   {{ og_include('compose/label.html.j2', {'p': {'Class': 'text-xs font-bold text-foreground', 'For': og_s(v_htmlFor)}, 'children': c_1}) }}
-  {{ og_def(children, '')|safe }}
+  {{ og_slot(og_def(children, none))|safe }}
   {%- if og_t(v_error) %}
     {%- set c_2 -%}
       {{ og_text(v_error) }}

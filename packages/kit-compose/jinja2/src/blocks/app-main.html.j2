@@ -31,13 +31,13 @@
         {%- set c_4 -%}
           {{ og_include('blocks/bar-chart.html.j2', {'p': {'bars': og_get(v_chart, ['series']), 'label': og_get(v_chart, ['summary']), 'height': 144}}) }}
         {%- endset -%}
-        {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_chart, ['title']), 'description': og_get(v_chart, ['text']), 'id': og_tpl('{0}-chart', [v_id]), 'className': og_cnv(['h-full'])}, 'children': c_4}) }}
+        {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_chart, ['title']), 'description': og_get(v_chart, ['text']), 'id': og_tpl('{0}-chart', [v_id]), 'className': og_cnv(['h-full'])}, 'children': og_markup(c_4)}) }}
       {%- endif %}
       {%- if og_t(og_gt(og_len(og_get(v_activity, ['events'])), 0)) %}
         {%- set c_5 -%}
           {{ og_include('blocks/timeline.html.j2', {'p': {'items': og_get(v_activity, ['events'])}}) }}
         {%- endset -%}
-        {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_activity, ['title']), 'description': og_get(v_activity, ['text']), 'id': og_tpl('{0}-feed', [v_id]), 'className': og_cnv(['h-full'])}, 'children': c_5}) }}
+        {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_activity, ['title']), 'description': og_get(v_activity, ['text']), 'id': og_tpl('{0}-feed', [v_id]), 'className': og_cnv(['h-full'])}, 'children': og_markup(c_5)}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-2', 'Class': 'items-stretch gap-4'}, 'children': c_6}) }}
@@ -45,7 +45,7 @@
     {%- set c_7 -%}
       {{ og_include('blocks/bar-chart.html.j2', {'p': {'bars': og_get(v_chart, ['series']), 'label': og_get(v_chart, ['summary']), 'height': 144}}) }}
     {%- endset -%}
-    {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_chart, ['title']), 'description': og_get(v_chart, ['text']), 'id': og_tpl('{0}-chart', [v_id]), 'className': og_cnv(['h-full'])}, 'children': c_7}) }}
+    {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_chart, ['title']), 'description': og_get(v_chart, ['text']), 'id': og_tpl('{0}-chart', [v_id]), 'className': og_cnv(['h-full'])}, 'children': og_markup(c_7)}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('compose/stack.html.j2', {'p': {'Gap': og_s(('4' if og_t(og_eq(v_density, 'compact')) else '6')), 'Align': 'stretch', 'Class': 'min-w-0', 'Attrs': og_attrs(['data-testid', 'app-main'])}, 'children': c_8}) }}

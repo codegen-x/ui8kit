@@ -12,7 +12,7 @@
       {{ og_include('compose/inline.html.j2', {'p': {'Class': 'flex w-7 shrink-0 items-center pr-2', 'Attrs': og_attrs(['data-slot', 'dropdown-item-icon'])}, 'children': c_1}) }}
     {%- endif %}
     {%- set c_2 -%}
-      {{ og_def(children, '')|safe }}
+      {{ og_slot(og_def(children, none))|safe }}
     {%- endset -%}
     {{ og_include('compose/inline.html.j2', {'p': {'Class': og_s(og_cnv(['text-xs', 'min-w-0 flex-1 truncate px-1 font-bold'])), 'Attrs': og_attrs(['data-slot', 'dropdown-item-label'])}, 'children': c_2}) }}
     {%- if og_t((og_def(p['right'], none) is not none)) %}

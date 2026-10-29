@@ -50,4 +50,4 @@
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_layout, 'beside')) else '1')), 'Class': 'items-center gap-8'}, 'children': c_8}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'align': 'center', 'landmarkLabel': v_landmarkLabel}, 'children': c_9}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'align': 'center', 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_9)}) }}

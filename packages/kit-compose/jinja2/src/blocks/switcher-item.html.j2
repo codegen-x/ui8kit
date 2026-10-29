@@ -6,6 +6,6 @@
 {%- set v_size = og_def(p['size'], 'default') -%}
 {%- set v_layout = og_def(p['layout'], 'text') -%}
 {%- set c_1 -%}
-  {{ og_def(children, '')|safe }}
+  {{ og_slot(og_def(children, none))|safe }}
 {%- endset -%}
 {{ og_include('compose/button-plain.html.j2', {'p': {'Type': 'button', 'Class': og_s(og_cnv([og_recipe('blocks/recipes/switcher-item.variants.json', {'size': v_size, 'layout': v_layout, 'state': ('active' if og_t(v_active) else 'default')}), og_def(p['className'], '')])), 'Attrs': og_attrs(['role', 'tab', 'aria-selected', v_active, 'tabindex', (0 if og_t(v_active) else -1), 'data-slot', 'switcher-item', 'data-state', ('active' if og_t(v_active) else 'default')])}, 'children': c_1}) }}

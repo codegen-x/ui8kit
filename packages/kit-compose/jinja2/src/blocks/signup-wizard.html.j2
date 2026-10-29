@@ -53,11 +53,11 @@
             {%- set c_7 -%}
               {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': og_s(og_tpl('{0}-a', [v_id])), 'Attrs': og_attrs(['id', og_tpl('{0}-a', [v_id]), 'data-testid', 'field'])}}) }}
             {%- endset -%}
-            {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_s, ['fieldA']), 'htmlFor': og_tpl('{0}-a', [v_id])}, 'children': c_7}) }}
+            {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_s, ['fieldA']), 'htmlFor': og_tpl('{0}-a', [v_id])}, 'children': og_markup(c_7)}) }}
             {%- set c_8 -%}
               {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': og_s(og_tpl('{0}-b', [v_id])), 'Attrs': og_attrs(['id', og_tpl('{0}-b', [v_id]), 'data-testid', 'field'])}}) }}
             {%- endset -%}
-            {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_s, ['fieldB']), 'htmlFor': og_tpl('{0}-b', [v_id])}, 'children': c_8}) }}
+            {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_s, ['fieldB']), 'htmlFor': og_tpl('{0}-b', [v_id])}, 'children': og_markup(c_8)}) }}
           {%- endset -%}
           {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid gap-4'}, 'children': c_9}) }}
         {%- endset -%}

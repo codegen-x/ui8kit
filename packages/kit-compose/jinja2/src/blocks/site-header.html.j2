@@ -20,21 +20,21 @@
     {%- set c_2 -%}
       {{ og_text(og_get(v_labels, ['brand'])) }}
     {%- endset -%}
-    {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_routes, ['home']), 'className': og_cnv(['text-lg font-medium']), 'testid': 'brand'}, 'children': c_2}) }}
+    {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_routes, ['home']), 'className': og_cnv(['text-lg font-medium']), 'testid': 'brand'}, 'children': og_markup(c_2)}) }}
     {%- set c_6 -%}
       {%- set c_5 -%}
         {%- set c_3 -%}
           {{ og_text(og_get(v_labels, ['home'])) }}
         {%- endset -%}
-        {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_routes, ['home']), 'className': og_cnv(['font-semibold']), 'current': og_eq(v_current, 'home'), 'testid': 'nav-link'}, 'children': c_3}) }}
+        {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_routes, ['home']), 'className': og_cnv(['font-semibold']), 'current': og_eq(v_current, 'home'), 'testid': 'nav-link'}, 'children': og_markup(c_3)}) }}
         {%- set c_4 -%}
           {{ og_text(og_get(v_labels, ['pricing'])) }}
         {%- endset -%}
-        {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_routes, ['pricing']), 'className': og_cnv(['font-semibold']), 'current': og_eq(v_current, 'pricing'), 'testid': 'nav-link'}, 'children': c_4}) }}
+        {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_routes, ['pricing']), 'className': og_cnv(['font-semibold']), 'current': og_eq(v_current, 'pricing'), 'testid': 'nav-link'}, 'children': og_markup(c_4)}) }}
       {%- endset -%}
       {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center'}, 'children': c_5}) }}
     {%- endset -%}
-    {{ og_include('blocks/nav-block.html.j2', {'p': {'label': (og_uniq(og_tpl('{0}, {1}', [og_get(v_labels, ['nav']), v_landmarkLabel])) if og_t(v_landmarkLabel) else og_get(v_labels, ['nav'])), 'testid': 'site-nav'}, 'children': c_6}) }}
+    {{ og_include('blocks/nav-block.html.j2', {'p': {'label': (og_uniq(og_tpl('{0}, {1}', [og_get(v_labels, ['nav']), v_landmarkLabel])) if og_t(v_landmarkLabel) else og_get(v_labels, ['nav'])), 'testid': 'site-nav'}, 'children': og_markup(c_6)}) }}
     {%- set c_9 -%}
       {%- set c_7 -%}
         {{ og_text(og_get(v_labels, ['theme'])) }}

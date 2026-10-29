@@ -5,6 +5,6 @@
 {%- set v_variant = og_def(p['variant'], none) -%}
 {%- set v_landmarkLabel = og_def(p['landmarkLabel'], none) -%}
 {%- set c_1 -%}
-  {{ og_def(children, '')|safe }}
+  {{ og_slot(og_def(children, none))|safe }}
 {%- endset -%}
 {{ og_include('compose/block.html.j2', {'p': {'Tag': 'aside', 'Class': og_s(og_cnv([og_recipe('blocks/recipes/sidebar-panel.variants.json', {'variant': v_variant}), og_def(p['className'], '')])), 'Attrs': og_attrs(['data-slot', 'sidebar-panel', 'data-variant', og_coalesce([v_variant, 'chat']), 'aria-label', v_landmarkLabel])}, 'children': c_1}) }}

@@ -46,7 +46,7 @@
         {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col p-0', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_6}) }}
       {%- endif %}
     {%- endset -%}
-    {{ og_include('blocks/panel.html.j2', {'p': {'title': v_title, 'description': v_text, 'id': v_id, 'className': og_cnv([('bg-muted' if og_t(og_eq(v_tone, 'muted')) else '')])}, 'children': c_7}) }}
+    {{ og_include('blocks/panel.html.j2', {'p': {'title': v_title, 'description': v_text, 'id': v_id, 'className': og_cnv([('bg-muted' if og_t(og_eq(v_tone, 'muted')) else '')])}, 'children': og_markup(c_7)}) }}
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4 py-8', 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_8}) }}
 {%- endset -%}

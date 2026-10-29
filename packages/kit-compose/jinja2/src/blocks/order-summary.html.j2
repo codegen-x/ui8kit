@@ -53,4 +53,4 @@
     {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv([('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_layout, 'card')) else '')])), 'Attrs': og_attrs(['data-testid', 'summary'])}, 'children': c_8}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': 'md', 'landmarkLabel': v_landmarkLabel}, 'children': c_9}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': 'md', 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_9)}) }}

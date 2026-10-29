@@ -21,13 +21,13 @@
         {%- set c_1 -%}
           {{ og_text(og_get(v_billingLabels, ['monthly'])) }}
         {%- endset -%}
-        {{ og_include('blocks/switcher-item.html.j2', {'p': {'active': og_eq(v_billing, 'monthly')}, 'children': c_1}) }}
+        {{ og_include('blocks/switcher-item.html.j2', {'p': {'active': og_eq(v_billing, 'monthly')}, 'children': og_markup(c_1)}) }}
         {%- set c_2 -%}
           {{ og_text(og_get(v_billingLabels, ['annual'])) }}
         {%- endset -%}
-        {{ og_include('blocks/switcher-item.html.j2', {'p': {'active': og_eq(v_billing, 'annual')}, 'children': c_2}) }}
+        {{ og_include('blocks/switcher-item.html.j2', {'p': {'active': og_eq(v_billing, 'annual')}, 'children': og_markup(c_2)}) }}
       {%- endset -%}
-      {{ og_include('blocks/switcher.html.j2', {'p': {'label': og_get(v_billingLabels, ['label'])}, 'children': c_3}) }}
+      {{ og_include('blocks/switcher.html.j2', {'p': {'label': og_get(v_billingLabels, ['label'])}, 'children': og_markup(c_3)}) }}
       {%- set c_4 -%}
         {{ og_text(og_get(v_billingLabels, ['save'])) }}
       {%- endset -%}
@@ -46,4 +46,4 @@
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1' if og_t(og_eq(v_layout, 'stack')) else og_fit_cols(v_cols, og_len(v_plans)))), 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'tiers'])}, 'children': c_6}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': ('md' if og_t(og_eq(v_layout, 'stack')) else 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': c_7}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': ('md' if og_t(og_eq(v_layout, 'stack')) else 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_7)}) }}

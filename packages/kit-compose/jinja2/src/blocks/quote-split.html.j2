@@ -19,7 +19,7 @@
   {%- set c_1 -%}
     {{ og_include('blocks/empty-state.html.j2', {'p': {'icon': 'quote', 'title': v_empty}}) }}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': c_1}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_1)}) }}
 {%- elif og_t(og_or([og_eq(v_layout, 'compact'), og_eq(v_layout, 'bento')])) %}
   {%- set c_3 -%}
     {%- if og_t(og_eq(v_layout, 'bento')) %}
@@ -33,7 +33,7 @@
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('grid grid-cols-1 gap-4 lg:grid-cols-2' if og_t(og_eq(v_layout, 'bento')) else 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4'))}, 'children': c_2}) }}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': c_3}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_3)}) }}
 {%- else %}
   {%- set f_5 -%}
     {%- if og_t(og_eq(v_layout, 'rating')) %}
@@ -69,5 +69,5 @@
       {{ og_include('blocks/action-group.html.j2', {'p': {'primary': og_get(v_actions, ['cta']), 'primaryHref': og_get(v_actions, ['href']), 'secondary': (og_get(v_actions, ['secondary']) if og_t(og_eq(og_get(v_actions, ['mode']), 'two')) else none), 'secondaryHref': og_get(v_actions, ['secondaryHref'])}}) }}
     {%- endif %}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'layout': 'split', 'media': {'show': true, 'side': v_mediaSide}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_5)}, 'children': c_6}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'layout': 'split', 'media': {'show': true, 'side': v_mediaSide}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_5)}, 'children': og_markup(c_6)}) }}
 {%- endif %}

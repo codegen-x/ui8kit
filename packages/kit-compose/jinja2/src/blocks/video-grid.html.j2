@@ -55,10 +55,10 @@
             {{ og_include('compose/text.html.j2', {'p': {'Tag': 'figcaption', 'Attrs': og_attrs(['data-testid', 'caption'])}, 'children': c_8}) }}
           {%- endif %}
         {%- endset -%}
-        {{ og_include('blocks/figure-block.html.j2', {'p': {'className': og_cnv(['m-0 flex flex-col gap-4']), 'testid': 'item'}, 'children': c_9}) }}
+        {{ og_include('blocks/figure-block.html.j2', {'p': {'className': og_cnv(['m-0 flex flex-col gap-4']), 'testid': 'item'}, 'children': og_markup(c_9)}) }}
       {%- endfor %}
     {%- endset -%}
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(v_cols), 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_10}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': c_11}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_11)}) }}

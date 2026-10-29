@@ -72,4 +72,4 @@
   {%- endset -%}
   {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('grid grid-cols-1 items-start gap-8 lg:grid-cols-3' if og_t(og_eq(v_layout, 'split')) else 'grid grid-cols-1 gap-8'))}, 'children': c_13}) }}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': c_14}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_14)}) }}

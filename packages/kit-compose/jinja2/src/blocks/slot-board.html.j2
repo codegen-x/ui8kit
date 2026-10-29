@@ -30,7 +30,7 @@
             {%- endset -%}
             {{ og_include('compose/select.html.j2', {'p': {'Name': og_s(og_tpl('{0}-zone', [v_id])), 'Attrs': og_attrs(['id', og_tpl('{0}-zone', [v_id])])}, 'children': c_2}) }}
           {%- endset -%}
-          {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['zone']), 'htmlFor': og_tpl('{0}-zone', [v_id])}, 'children': c_3}) }}
+          {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['zone']), 'htmlFor': og_tpl('{0}-zone', [v_id])}, 'children': og_markup(c_3)}) }}
           {%- set c_13 -%}
             {%- set c_6 -%}
               {%- set c_4 -%}
@@ -86,4 +86,4 @@
     {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 items-start gap-8 lg:grid-cols-3'}, 'children': c_18}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': c_19}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_19)}) }}

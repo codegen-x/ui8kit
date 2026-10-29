@@ -5,9 +5,9 @@
 {%- set v_boxed = og_def(p['boxed'], false) -%}
 {%- if og_t(v_boxed) %}
   {%- set c_1 -%}
-    {{ og_def(children, '')|safe }}
+    {{ og_slot(og_def(children, none))|safe }}
   {%- endset -%}
   {{ og_include('compose/card.html.j2', {'p': {'Variant': 'muted'}, 'children': c_1}) }}
 {%- else %}
-  {{ og_def(children, '')|safe }}
+  {{ og_slot(og_def(children, none))|safe }}
 {%- endif %}

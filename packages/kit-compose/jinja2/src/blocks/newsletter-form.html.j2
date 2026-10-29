@@ -39,4 +39,4 @@
   {%- endset -%}
   {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': og_s(og_cnv(['w-full max-w-md', ('mx-auto' if og_t(og_eq(v_align, 'center')) else '')])), 'Attrs': og_attrs(['data-testid', 'newsletter-form'])}, 'children': c_5}) }}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_text, 'tone': v_tone, 'align': v_align, 'layout': ('split' if og_t(og_eq(v_layout, 'split')) else 'stack'), 'media': {'show': og_eq(v_layout, 'split')}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_6)}, 'children': c_7}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_text, 'tone': v_tone, 'align': v_align, 'layout': ('split' if og_t(og_eq(v_layout, 'split')) else 'stack'), 'media': {'show': og_eq(v_layout, 'split')}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_6)}, 'children': og_markup(c_7)}) }}

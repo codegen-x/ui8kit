@@ -73,4 +73,4 @@
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_layout, 'card')) else '')), 'Attrs': og_attrs(['data-testid', 'checklist'])}, 'children': c_11}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'measure': '2xl', 'landmarkLabel': v_landmarkLabel}, 'children': c_12}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'measure': '2xl', 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_12)}) }}

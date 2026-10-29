@@ -46,9 +46,9 @@
         {%- endset -%}
         {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'mt-auto'}, 'children': c_6}) }}
       {%- endset -%}
-      {{ og_include('blocks/article-block.html.j2', {'p': {'className': og_cnv([og_cnv(['flex h-full flex-col gap-4', ('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_item, 'card')) else 'border-b border-border pb-4')])]), 'testid': 'item'}, 'children': c_7}) }}
+      {{ og_include('blocks/article-block.html.j2', {'p': {'className': og_cnv([og_cnv(['flex h-full flex-col gap-4', ('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_item, 'card')) else 'border-b border-border pb-4')])]), 'testid': 'item'}, 'children': og_markup(c_7)}) }}
     {%- endfor %}
   {%- endset -%}
   {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-3' if og_t(og_eq(v_layout, 'grid')) else '1')), 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_8}) }}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': ('2xl' if og_t(og_eq(v_layout, 'list')) else 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': c_9}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': ('2xl' if og_t(og_eq(v_layout, 'list')) else 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_9)}) }}

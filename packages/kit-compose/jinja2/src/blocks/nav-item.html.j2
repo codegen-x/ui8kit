@@ -14,25 +14,25 @@
 {%- if og_t(v_href) %}
   {%- set c_2 -%}
     {%- set c_1 -%}
-      {{ og_def(children, '')|safe }}
+      {{ og_slot(og_def(children, none))|safe }}
     {%- endset -%}
-    {{ og_include('blocks/nav-item-row.html.j2', {'p': {'inner': v_inner, 'reserveRight': v_reserveRight, 'icon': og_def(p['icon'], none), 'right': og_def(p['right'], none)}, 'children': c_1}) }}
+    {{ og_include('blocks/nav-item-row.html.j2', {'p': {'inner': v_inner, 'reserveRight': v_reserveRight, 'icon': og_def(p['icon'], none), 'right': og_def(p['right'], none)}, 'children': og_markup(c_1)}) }}
   {%- endset -%}
   {{ og_include('compose/link-plain.html.j2', {'p': {'Href': og_url(og_s(v_href)), 'Class': og_s(v_outer), 'AriaCurrent': og_s(('page' if og_t(v_selected) else none)), 'Attrs': og_attrs(['data-slot', 'nav-item', 'data-state', v_state])}, 'children': c_2}) }}
 {%- elif og_t(v_interactive) %}
   {%- set c_4 -%}
     {%- set c_3 -%}
-      {{ og_def(children, '')|safe }}
+      {{ og_slot(og_def(children, none))|safe }}
     {%- endset -%}
-    {{ og_include('blocks/nav-item-row.html.j2', {'p': {'inner': v_inner, 'reserveRight': v_reserveRight, 'icon': og_def(p['icon'], none), 'right': og_def(p['right'], none)}, 'children': c_3}) }}
+    {{ og_include('blocks/nav-item-row.html.j2', {'p': {'inner': v_inner, 'reserveRight': v_reserveRight, 'icon': og_def(p['icon'], none), 'right': og_def(p['right'], none)}, 'children': og_markup(c_3)}) }}
   {%- endset -%}
   {{ og_include('compose/button-plain.html.j2', {'p': {'Type': 'button', 'Class': og_s(og_cnv([v_outer, 'text-left'])), 'Attrs': og_attrs(['aria-current', ('page' if og_t(v_selected) else none), 'data-slot', 'nav-item', 'data-state', v_state])}, 'children': c_4}) }}
 {%- else %}
   {%- set c_6 -%}
     {%- set c_5 -%}
-      {{ og_def(children, '')|safe }}
+      {{ og_slot(og_def(children, none))|safe }}
     {%- endset -%}
-    {{ og_include('blocks/nav-item-row.html.j2', {'p': {'inner': v_inner, 'reserveRight': v_reserveRight, 'icon': og_def(p['icon'], none), 'right': og_def(p['right'], none)}, 'children': c_5}) }}
+    {{ og_include('blocks/nav-item-row.html.j2', {'p': {'inner': v_inner, 'reserveRight': v_reserveRight, 'icon': og_def(p['icon'], none), 'right': og_def(p['right'], none)}, 'children': og_markup(c_5)}) }}
   {%- endset -%}
   {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(v_outer), 'Attrs': og_attrs(['aria-current', ('page' if og_t(v_selected) else none), 'data-slot', 'nav-item', 'data-state', v_state])}, 'children': c_6}) }}
 {%- endif %}

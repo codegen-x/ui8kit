@@ -21,22 +21,22 @@
         {%- set c_1 -%}
           {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'name', 'Attrs': og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [v_id]), 'data-testid', 'field'])}}) }}
         {%- endset -%}
-        {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['name']), 'htmlFor': og_tpl('{0}-name', [v_id])}, 'children': c_1}) }}
+        {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['name']), 'htmlFor': og_tpl('{0}-name', [v_id])}, 'children': og_markup(c_1)}) }}
       {%- endif %}
       {%- set c_2 -%}
         {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Attrs': og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}}) }}
       {%- endset -%}
-      {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['email']), 'htmlFor': og_tpl('{0}-email', [v_id])}, 'children': c_2}) }}
+      {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['email']), 'htmlFor': og_tpl('{0}-email', [v_id])}, 'children': og_markup(c_2)}) }}
       {%- if og_t(og_eq(v_fields, 'full')) %}
         {%- set c_3 -%}
           {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'subject', 'Attrs': og_attrs(['id', og_tpl('{0}-subject', [v_id]), 'data-testid', 'field'])}}) }}
         {%- endset -%}
-        {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['subject']), 'htmlFor': og_tpl('{0}-subject', [v_id])}, 'children': c_3}) }}
+        {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['subject']), 'htmlFor': og_tpl('{0}-subject', [v_id])}, 'children': og_markup(c_3)}) }}
       {%- endif %}
       {%- set c_4 -%}
         {{ og_include('compose/textarea.html.j2', {'p': {'Rows': 4, 'Name': 'message', 'Attrs': og_attrs(['id', og_tpl('{0}-message', [v_id]), 'data-testid', 'field'])}}) }}
       {%- endset -%}
-      {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['message']), 'htmlFor': og_tpl('{0}-message', [v_id])}, 'children': c_4}) }}
+      {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['message']), 'htmlFor': og_tpl('{0}-message', [v_id])}, 'children': og_markup(c_4)}) }}
       {%- if og_t(og_eq(v_terms, 'show')) %}
         {%- set c_6 -%}
           {{ og_include('compose/checkbox.html.j2', {'p': {'Name': 'consent', 'Attrs': og_attrs(['id', og_tpl('{0}-consent', [v_id])])}}) }}
@@ -78,4 +78,4 @@
   {%- endset -%}
   {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_layout, 'split')) else '1')), 'Class': 'items-start gap-8'}, 'children': c_14}) }}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_text, 'heading': {'level': v_level}, 'tone': v_tone, 'density': ('roomy' if og_t(og_eq(v_page, 'full')) else 'default'), 'align': ('center' if og_t(og_eq(v_page, 'full')) else 'start'), 'measure': ('xl' if og_t(og_eq(v_layout, 'single')) else 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': c_15}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_text, 'heading': {'level': v_level}, 'tone': v_tone, 'density': ('roomy' if og_t(og_eq(v_page, 'full')) else 'default'), 'align': ('center' if og_t(og_eq(v_page, 'full')) else 'start'), 'measure': ('xl' if og_t(og_eq(v_layout, 'single')) else 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_15)}) }}

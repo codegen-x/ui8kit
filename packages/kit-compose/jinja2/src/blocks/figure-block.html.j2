@@ -4,6 +4,6 @@
     Props (p): testid, className; children: markup. -#}
 {%- set v_testid = og_def(p['testid'], none) -%}
 {%- set c_1 -%}
-  {{ og_def(children, '')|safe }}
+  {{ og_slot(og_def(children, none))|safe }}
 {%- endset -%}
 {{ og_include('compose/block.html.j2', {'p': {'Tag': 'figure', 'Class': og_s(og_cnv([og_def(p['className'], '')])), 'Attrs': og_attrs(['data-testid', v_testid])}, 'children': c_1}) }}

@@ -18,7 +18,7 @@
           {%- set c_2 -%}
             {{ og_text(og_get(v_p, ['title'])) }}
           {%- endset -%}
-          {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_p, ['href']), 'className': og_cnv(['text-sm font-medium']), 'size': 'sm'}, 'children': c_2}) }}
+          {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_p, ['href']), 'className': og_cnv(['text-sm font-medium']), 'size': 'sm'}, 'children': og_markup(c_2)}) }}
           {%- set c_3 -%}
             {{ og_text(og_tpl('{0} · {1}', [og_get(v_p, ['date']), og_tpl(og_get(v_labels, ['minutes']), [og_get(v_p, ['minutes'])])])) }}
           {%- endset -%}

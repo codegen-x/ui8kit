@@ -17,7 +17,7 @@
   {%- set c_1 -%}
     {{ og_include('blocks/empty-state.html.j2', {'p': {'icon': 'milestone', 'title': v_empty}}) }}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': c_1}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_1)}) }}
 {%- elif og_t(og_eq(v_layout, 'years')) %}
   {%- set c_6 -%}
     {%- set c_5 -%}
@@ -43,7 +43,7 @@
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': c_6}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_6)}) }}
 {%- else %}
   {%- set f_7 -%}
     {%- set c_11 -%}

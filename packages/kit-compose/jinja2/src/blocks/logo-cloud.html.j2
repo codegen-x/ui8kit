@@ -16,7 +16,7 @@
   {%- set c_1 -%}
     {{ og_include('blocks/empty-state.html.j2', {'p': {'icon': 'building-2', 'title': v_empty}}) }}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'align': 'center', 'landmarkLabel': v_landmarkLabel}, 'children': c_1}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'align': 'center', 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_1)}) }}
 {%- elif og_t(og_eq(v_layout, 'row')) %}
   {{ og_include('blocks/logo-ribbon.html.j2', {'p': {'id': v_id, 'title': v_title, 'logos': v_logos, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}}) }}
 {%- else %}
@@ -35,5 +35,5 @@
     {%- endset -%}
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('2' if og_t(og_eq(v_cols, '2')) else ('2-3' if og_t(og_eq(v_cols, '3')) else ('2-4' if og_t(og_eq(v_cols, '4')) else '3-6')))), 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_4}) }}
   {%- endset -%}
-  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'align': 'center', 'landmarkLabel': v_landmarkLabel}, 'children': c_5}) }}
+  {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'align': 'center', 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_5)}) }}
 {%- endif %}

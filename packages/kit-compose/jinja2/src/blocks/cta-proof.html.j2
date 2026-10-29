@@ -27,4 +27,4 @@
     {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'cta-note'])}, 'children': c_1}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'align': ('center' if og_t(og_eq(v_layout, 'center')) else 'start'), 'layout': ('stack' if og_t(og_eq(v_layout, 'center')) else 'split'), 'media': {'show': og_eq(v_layout, 'split'), 'side': v_mediaSide}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_2)}, 'children': c_3}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'heading': {'badge': v_badge}, 'tone': v_tone, 'align': ('center' if og_t(og_eq(v_layout, 'center')) else 'start'), 'layout': ('stack' if og_t(og_eq(v_layout, 'center')) else 'split'), 'media': {'show': og_eq(v_layout, 'split'), 'side': v_mediaSide}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_2)}, 'children': og_markup(c_3)}) }}

@@ -29,6 +29,6 @@
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0'}, 'children': c_4}) }}
   {%- endset -%}
   {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start'}, 'children': c_5}) }}
-  {{ og_def(children, '')|safe }}
+  {{ og_slot(og_def(children, none))|safe }}
 {%- endset -%}
 {{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': 'stretch', 'Class': og_s(('rounded bg-card inset-ring inset-ring-border p-6' if og_t(og_eq(v_layout, 'cards')) else 'border-t border-border pt-6')), 'Attrs': og_attrs(['data-testid', 'step'])}, 'children': c_6}) }}

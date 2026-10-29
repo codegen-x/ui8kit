@@ -62,4 +62,4 @@
   {%- endset -%}
   {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(og_cnv(['mx-auto w-full', ('max-w-4xl' if og_t(og_eq(v_size, 'wide')) else 'max-w-2xl'), 'rounded bg-card inset-ring inset-ring-border p-4 shadow-lg'])), 'Attrs': og_attrs(['role', 'dialog', 'aria-label', v_title, 'data-testid', 'video-modal'])}, 'children': c_12}) }}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': c_13}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_13)}) }}

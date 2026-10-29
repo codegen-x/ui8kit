@@ -38,7 +38,7 @@
       {%- endset -%}
       {{ og_include('compose/box.html.j2', {'p': {'Class': 'mt-auto'}, 'children': c_7}) }}
     {%- endset -%}
-    {{ og_include('blocks/article-block.html.j2', {'p': {'className': og_cnv(['rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6']), 'testid': 'faq-card'}, 'children': c_8}) }}
+    {{ og_include('blocks/article-block.html.j2', {'p': {'className': og_cnv(['rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6']), 'testid': 'faq-card'}, 'children': og_markup(c_8)}) }}
   {%- endfor %}
 {%- endset -%}
 {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4' if og_t(og_eq(v_cards, 'grid4')) else 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3')), 'Attrs': og_attrs(['data-testid', 'faq'])}, 'children': c_9}) }}

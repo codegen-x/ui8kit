@@ -21,7 +21,7 @@
             {%- endset -%}
             {{ og_include('compose/inline.html.j2', {'p': {'Class': og_s(('sr-only' if og_t(og_eq(v_labels, 'hide')) else ''))}, 'children': c_1}) }}
           {%- endset -%}
-          {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_tab, ['href']), 'className': og_cnv([og_cnv(['flex flex-col items-center gap-2 py-2 text-xs', ('font-semibold text-primary' if og_t(og_eq(og_get(v_tab, ['id']), v_current)) else 'text-muted-foreground')])]), 'current': og_eq(og_get(v_tab, ['id']), v_current), 'testid': 'item'}, 'children': c_2}) }}
+          {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_tab, ['href']), 'className': og_cnv([og_cnv(['flex flex-col items-center gap-2 py-2 text-xs', ('font-semibold text-primary' if og_t(og_eq(og_get(v_tab, ['id']), v_current)) else 'text-muted-foreground')])]), 'current': og_eq(og_get(v_tab, ['id']), v_current), 'testid': 'item'}, 'children': og_markup(c_2)}) }}
         {%- endset -%}
         {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_3}) }}
       {%- endfor %}

@@ -5,6 +5,6 @@
 {%- set v_tag = og_def(p['tag'], none) -%}
 {%- set v_landmarkLabel = og_def(p['landmarkLabel'], none) -%}
 {%- set c_1 -%}
-  {{ og_def(children, '')|safe }}
+  {{ og_slot(og_def(children, none))|safe }}
 {%- endset -%}
 {{ og_include('compose/block.html.j2', {'p': {'Tag': og_s(v_tag), 'Class': og_s(og_def(p['className'], '')), 'Attrs': og_attrs(['aria-label', v_landmarkLabel])}, 'children': c_1}) }}

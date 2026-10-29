@@ -58,4 +58,4 @@
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'cart-cards'])}, 'children': c_9}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': c_10}) }}
+{{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_10)}) }}

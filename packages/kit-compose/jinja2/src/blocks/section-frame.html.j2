@@ -31,7 +31,7 @@
           {%- endif %}
           {%- set c_2 -%}
             {{ og_include('blocks/section-header.html.j2', {'p': {'titleId': v_titleId, 'title': v_title, 'heading': v_heading, 'action': v_action, 'lead': v_lead, 'center': v_center}}) }}
-            {{ og_def(children, '')|safe }}
+            {{ og_slot(og_def(children, none))|safe }}
           {%- endset -%}
           {{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': 'stretch'}, 'children': c_2}) }}
           {%- if og_t(og_and([og_get(v_media, ['show']), not (og_eq(og_get(v_media, ['side']), 'start'))])) %}
@@ -45,7 +45,7 @@
       {%- else %}
         {%- set c_6 -%}
           {{ og_include('blocks/section-header.html.j2', {'p': {'titleId': v_titleId, 'title': v_title, 'heading': v_heading, 'action': v_action, 'lead': v_lead, 'center': v_center}}) }}
-          {{ og_def(children, '')|safe }}
+          {{ og_slot(og_def(children, none))|safe }}
           {%- if og_t(og_get(v_media, ['show'])) %}
             {%- set c_5 -%}
               {{ og_slot(og_def(p['aside'], none))|safe }}
@@ -53,10 +53,10 @@
             {{ og_include('compose/box.html.j2', {'p': {'Class': 'w-full', 'Attrs': og_attrs(['data-slot', 'media'])}, 'children': c_5}) }}
           {%- endif %}
         {%- endset -%}
-        {{ og_include('blocks/section-column.html.j2', {'p': {'measure': v_measure}, 'children': c_6}) }}
+        {{ og_include('blocks/section-column.html.j2', {'p': {'measure': v_measure}, 'children': og_markup(c_6)}) }}
       {%- endif %}
     {%- endset -%}
-    {{ og_include('blocks/section-box.html.j2', {'p': {'boxed': v_boxed}, 'children': c_7}) }}
+    {{ og_include('blocks/section-box.html.j2', {'p': {'boxed': v_boxed}, 'children': og_markup(c_7)}) }}
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': og_s((og_cnv(['mx-auto w-full px-4', og_preset('blocks/presets/defaults.json', ['section', 'landing'])]) if og_t(og_eq(v_measure, 'landing')) else ('w-full' if og_t(og_eq(v_measure, 'fill')) else 'mx-auto w-full max-w-6xl px-4'))), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_8}) }}
 {%- endset -%}
