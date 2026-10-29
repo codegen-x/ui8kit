@@ -11,8 +11,8 @@
     "variant": {
       "default": "bg-card text-card-foreground inset-ring-border",
       "destructive": "bg-muted text-destructive inset-ring-destructive",
-      "success": "bg-muted text-foreground inset-ring-border",
-      "warning": "bg-muted text-foreground inset-ring-border"
+      "success": "bg-card text-primary inset-ring-primary",
+      "warning": "bg-accent text-accent-foreground inset-ring-border"
     }
   },
   "compound": []
