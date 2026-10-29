@@ -116,6 +116,21 @@ const pagerCases = [
   withPager("pager links page 3", { url: "/blog/page/{0}/", firstUrl: "/blog/", page: 3 }),
 ];
 strings.push(...pagerCases);
+// the organisms that take children, given a plain string as children (the top-level caller): text, escaped, on every runtime; the
+// markup a template captures for an organism's children (section-frame under most blocks) is the gallery above, still markup
+const CHILDREN_HOSTS: Array<[string, Record<string, unknown>]> = [
+  ["NavBlock", { label: "Main", landmarkLabel: "Main" }], ["MenuEntry", { href: "/x" }], ["FigureBlock", {}], ["CheckoutStep", { number: "1", title: "Pay" }], ["ArticleBlock", {}],
+];
+const childrenCases: Array<Case & { label: string; children: string }> = CHILDREN_HOSTS.flatMap(([organism, props]) =>
+  HTML_PAYLOADS.map((children, i) => ({ label: `${organism} children #${i}`, organism, props, children })));
+strings.push(...childrenCases);
+/** the text of the parsed output (a plain string children must come out as this text, whole) */
+const textOf = (html: string): string => {
+  const go = (n: Node): string => (n.nodeName === "#text" ? n.value ?? "" : (n.childNodes ?? []).map(go).join("") + (n.content ? go(n.content) : ""));
+  return go(parseFragment(html) as unknown as Node);
+};
+const childrenProblems = (html: string, c: Case): string[] =>
+  c.children !== undefined && !html.startsWith("ERROR:") && !textOf(html).includes(c.children) ? [`children not printed as text: ${JSON.stringify(c.children)}`] : [];
 const marked: Array<Case & { label: string }> = gallery.map((c) => ({ label: `${c.label} __html`, organism: c.organism, props: markers(c.props, trustedOf(c.organism)) }));
 const all = [...strings, ...marked];
 const PAYLOADS = HTML_PAYLOADS.length + URL_PAYLOADS.length;
@@ -143,7 +158,7 @@ test("the Pager link mode: hostile address templates give no link; safe ones the
 });
 
 let react: string[] = [];
-test(`react, svelte, vue, solid: ${all.length} fuzz cases each (${gallery.length} gallery cases x ${ROUNDS} string rounds + ${pagerCases.length} Pager address cases + 1 marker round, ${PAYLOADS} payloads), safe and the same DOM`, async () => {
+test(`react, svelte, vue, solid: ${all.length} fuzz cases each (${gallery.length} gallery cases x ${ROUNDS} string rounds + ${pagerCases.length} Pager address cases + ${childrenCases.length} plain-string children cases + 1 marker round, ${PAYLOADS} payloads), safe and the same DOM`, async () => {
   const render = await jsRenderer(loaded.organisms);
   const problems: string[] = [];
   for (const rt of JS_RT) {
@@ -154,7 +169,7 @@ test(`react, svelte, vue, solid: ${all.length} fuzz cases each (${gallery.length
     out.forEach((html, i) => {
       const c = all[i]!;
       if (html.startsWith("ERROR:")) { if (i < strings.length) problems.push(`${c.label} ${rt}: ${html}`); return; }
-      problems.push(...domProblems(html).map((p) => `${c.label} ${rt}: ${p}`));
+      problems.push(...[...domProblems(html), ...childrenProblems(html, c)].map((p) => `${c.label} ${rt}: ${p}`));
       if (rt !== "react" && !react[i]!.startsWith("ERROR:") && norm(html) !== norm(react[i]!)) problems.push(`${c.label} ${rt}: differs from react`);
     });
   }
@@ -178,7 +193,7 @@ for (const rt of SERVER_ORG_RT) {
     html.forEach((h, i) => {
       const c = all[i]!;
       if (h.startsWith("ERROR:")) { if (i < strings.length) problems.push(`${c.label}: ${h}`); return; }
-      problems.push(...domProblems(h).map((p) => `${c.label}: ${p}`));
+      problems.push(...[...domProblems(h), ...childrenProblems(h, c)].map((p) => `${c.label}: ${p}`));
       if (!react[i]!.startsWith("ERROR:") && norm(h) !== norm(react[i]!)) problems.push(`${c.label}: differs from react`);
     });
     if (problems.length) console.error(`${rt}: ${problems.length} problems\n` + problems.slice(0, 40).join("\n"));

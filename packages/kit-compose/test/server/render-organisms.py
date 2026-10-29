@@ -1,5 +1,5 @@
 """Organism parity harness (Jinja2): argv[1] = installed kit (packages/kit/jinja2/src), argv[2] = kit-compose root (packages/kit-compose/jinja2/src).
-stdin [{"template": "blocks/hero.html.j2", "p": {...}}] -> stdout JSON list of HTML (a failure is "ERROR: <message>")."""
+stdin [{"template": "blocks/hero.html.j2", "p": {...}, "children"?: "a plain string"}] -> stdout JSON list of HTML (a failure is "ERROR: <message>")."""
 
 import json
 import sys
@@ -15,7 +15,7 @@ env = register(environment(sys.argv[1]), sys.argv[2])
 out = []
 for r in json.load(sys.stdin):
     try:
-        out.append(env.get_template(r["template"]).render(p=r.get("p") or {}))
+        out.append(env.get_template(r["template"]).render(p=r.get("p") or {}, **({"children": r["children"]} if "children" in r else {})))
     except Exception as e:  # noqa: BLE001
         out.append(f"ERROR: {type(e).__name__}: {e}")
 sys.stdout.write(json.dumps(out, ensure_ascii=False) + "\n")

@@ -1,7 +1,7 @@
 <?php
 
 // Organism parity harness (Twig, Latte): php render-organisms.php <twig|latte> <kit runtime src> <kit-compose runtime src>
-// stdin [{"template":"blocks/hero.html.twig","p":{...}}] -> stdout JSON list of HTML (a failure is "ERROR: <message>").
+// stdin [{"template":"blocks/hero.html.twig","p":{...},"children"?:"a plain string"}] -> stdout JSON list of HTML (a failure is "ERROR: <message>").
 
 declare(strict_types=1);
 
@@ -20,7 +20,7 @@ if ($engine === 'twig') {
     $twig->addExtension(new \UI8Kit\Twig\TwigExtension());
     $twig->addExtension(new \CodegenX\Compose\Twig\ComposeExtension());
     $twig->addExtension(new \CodegenX\Organisms\Twig\OrganismExtension($compose));
-    $render = static fn (string $t, array $p): string => $twig->render($t, ['p' => $p]);
+    $render = static fn (string $t, array $vars): string => $twig->render($t, $vars);
 } else {
     // Latte resolves '../ui/...' from compose/: one root with ui/ (the kit) and compose/, blocks/, icons/ side by side
     $root = sys_get_temp_dir() . '/kit-compose-org-latte-' . md5($kit . $compose);
@@ -32,12 +32,12 @@ if ($engine === 'twig') {
     $latte->setTempDirectory($root . '-cache');
     $latte->setLoader(new \Latte\Loaders\FileLoader($root));
     $latte->addExtension(new \CodegenX\Organisms\Latte\OrganismExtension($root, $latte));
-    $render = static fn (string $t, array $p): string => $latte->renderToString($t, ['p' => $p]);
+    $render = static fn (string $t, array $vars): string => $latte->renderToString($t, $vars);
 }
 $out = [];
 foreach ($cases as $c) {
     try {
-        $out[] = $render($c['template'], (array) ($c['p'] ?? []));
+        $out[] = $render($c['template'], ['p' => (array) ($c['p'] ?? [])] + (array_key_exists('children', $c) ? ['children' => $c['children']] : []));
     } catch (\Throwable $e) {
         $out[] = 'ERROR: ' . get_class($e) . ': ' . $e->getMessage();
     }

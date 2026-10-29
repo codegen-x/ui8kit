@@ -16,7 +16,9 @@ import { installSsrPlugin } from "./ssr";
 export const ROOT = path.resolve(import.meta.dir, "..");
 export const KIT = path.resolve(ROOT, "../kit");
 export const REQUIRED = process.env.UI8KIT_REQUIRE_ALL_RUNTIMES === "1";
-export type Case = { organism: string; props: unknown };
+/** `children`: a plain string given as the organism's children (text: escaped on every runtime; Svelte gets it as a snippet of the
+ *  escaped text, Vue as the default slot, templ as a component writing the escaped text, the server templates as the `children` variable) */
+export type Case = { organism: string; props: unknown; children?: string };
 export const quiet = <T,>(f: () => T): T => { const w = console.warn, e = console.error; console.warn = console.error = () => {}; try { return f(); } finally { console.warn = w; console.error = e; } };
 const ok = (cmd: string, args: string[]) => spawnSync(cmd, args, { stdio: "ignore" }).status === 0;
 const json = (cmd: string, args: string[], input: unknown, cwd?: string, env?: NodeJS.ProcessEnv) =>
@@ -42,7 +44,7 @@ function sources<T>(rt: ServerOrgRuntime, overrides: Map<string, string> | undef
 }
 
 const phpRender = (rt: "twig" | "latte", ext: string, cases: Case[], overrides?: Map<string, string>) => sources(rt, overrides, (src) =>
-  json("php", [path.join(SRV, "render-organisms.php"), rt, path.join(KIT, `${rt}/src`), src], cases.map((c) => ({ template: `blocks/${fileName(c.organism)}${ext}`, p: c.props }))));
+  json("php", [path.join(SRV, "render-organisms.php"), rt, path.join(KIT, `${rt}/src`), src], cases.map((c) => ({ template: `blocks/${fileName(c.organism)}${ext}`, p: c.props, ...(c.children === undefined ? {} : { children: c.children }) }))));
 
 /** a scratch Go module (templ generate writes *_templ.go next to the sources): kit module + kit-compose module + a main over the organisms */
 function templRender(cases: Case[], overrides?: Map<string, string>): string[] {
@@ -56,19 +58,21 @@ function templRender(cases: Case[], overrides?: Map<string, string>): string[] {
     for (const [rel, body] of overrides ?? []) if (rel.startsWith("templ/src/")) writeFileSync(path.join(tmp, rel.slice(6)), body);
     const names = [...new Set(cases.map((c) => c.organism))].sort();
     mkdirSync(path.join(tmp, "cmd"));
-    writeFileSync(path.join(tmp, "cmd/main.go"), [`package main`, ``, `import (`, `\t"bufio"`, `\t"context"`, `\t"encoding/json"`, `\t"fmt"`, `\t"os"`, `\t"strings"`, ``, `\t"github.com/a-h/templ"`, ``, `\t"${TEMPL_MODULE}/src/blocks"`, `)`, ``,
-      `type request struct {\n\tName  string          \`json:"name"\`\n\tProps json.RawMessage \`json:"props"\`\n}`, ``,
+    writeFileSync(path.join(tmp, "cmd/main.go"), [`package main`, ``, `import (`, `\t"bufio"`, `\t"context"`, `\t"encoding/json"`, `\t"fmt"`, `\t"io"`, `\t"os"`, `\t"strings"`, ``, `\t"github.com/a-h/templ"`, ``, `\t"${TEMPL_MODULE}/src/blocks"`, `)`, ``,
+      `type request struct {\n\tName     string          \`json:"name"\`\n\tProps    json.RawMessage \`json:"props"\`\n\tChildren *string         \`json:"children"\`\n}`, ``,
       `func component(name string, props []byte) (templ.Component, error) {`, `\tswitch name {`,
       ...names.flatMap((n) => [`\tcase ${JSON.stringify(n)}:`, `\t\tvar p blocks.${n}Props`, `\t\tif err := json.Unmarshal(props, &p); err != nil {`, `\t\t\treturn nil, err`, `\t\t}`, `\t\treturn blocks.${n}(p), nil`]),
       `\t}`, `\treturn nil, fmt.Errorf("unknown organism %s", name)`, `}`, ``,
       `func main() {`, `\tvar reqs []request`, `\tif err := json.NewDecoder(bufio.NewReader(os.Stdin)).Decode(&reqs); err != nil {`, `\t\tpanic(err)`, `\t}`,
       `\tout := make([]string, len(reqs))`, `\tfor i, r := range reqs {`, `\t\tc, err := component(r.Name, r.Props)`, `\t\tif err != nil {`, `\t\t\tout[i] = "ERROR: " + err.Error()`, `\t\t\tcontinue`, `\t\t}`,
-      `\t\tvar b strings.Builder`, `\t\tif err := c.Render(context.Background(), &b); err != nil {`, `\t\t\tout[i] = "ERROR: " + err.Error()`, `\t\t\tcontinue`, `\t\t}`, `\t\tout[i] = b.String()`, `\t}`,
+      `\t\tctx := context.Background()`, `\t\tif r.Children != nil {`, `\t\t\ttext := *r.Children`,
+      `\t\t\tctx = templ.WithChildren(ctx, templ.ComponentFunc(func(_ context.Context, w io.Writer) error {`, `\t\t\t\t_, err := io.WriteString(w, templ.EscapeString(text))`, `\t\t\t\treturn err`, `\t\t\t}))`, `\t\t}`,
+      `\t\tvar b strings.Builder`, `\t\tif err := c.Render(ctx, &b); err != nil {`, `\t\t\tout[i] = "ERROR: " + err.Error()`, `\t\t\tcontinue`, `\t\t}`, `\t\tout[i] = b.String()`, `\t}`,
       `\t_ = json.NewEncoder(os.Stdout).Encode(out)`, `}`, ``].join("\n"));
     const env = { ...process.env, GOFLAGS: "-mod=mod" };
     execFileSync("go", ["run", `github.com/a-h/templ/cmd/templ@${TEMPL}`, "generate", "-path", tmp], { cwd: tmp, env, stdio: ["ignore", "ignore", "inherit"] });
     execFileSync("go", ["vet", "./..."], { cwd: tmp, env, stdio: ["ignore", "ignore", "inherit"] });
-    return json("go", ["run", "./cmd"], cases.map((c) => ({ name: c.organism, props: c.props })), tmp, env);
+    return json("go", ["run", "./cmd"], cases.map((c) => ({ name: c.organism, props: c.props, ...(c.children === undefined ? {} : { children: c.children }) })), tmp, env);
   } finally {
     rmSync(tmp, { recursive: true, force: true });
   }
@@ -78,7 +82,7 @@ export const SERVER: Record<ServerOrgRuntime, { missing: () => string | null; re
   jinja2: {
     missing: () => (ok(PY, ["-c", "import jinja2"]) ? null : `${PY} with Jinja2 not found`),
     render: (cases, overrides) => sources("jinja2", overrides, (src) =>
-      json(PY, [path.join(SRV, "render-organisms.py"), path.join(KIT, "jinja2/src"), src], cases.map((c) => ({ template: `blocks/${fileName(c.organism)}.html.j2`, p: c.props })))),
+      json(PY, [path.join(SRV, "render-organisms.py"), path.join(KIT, "jinja2/src"), src], cases.map((c) => ({ template: `blocks/${fileName(c.organism)}.html.j2`, p: c.props, ...(c.children === undefined ? {} : { children: c.children }) })))),
   },
   twig: { missing: php, render: (cases, overrides) => phpRender("twig", ".html.twig", cases, overrides) },
   latte: { missing: php, render: (cases, overrides) => phpRender("latte", ".latte", cases, overrides) },
@@ -90,6 +94,8 @@ export const JS_RT = ["react", "svelte", "vue", "solid"] as const;
 export async function jsRenderer(organisms: OrganismSpec[]): Promise<(rt: (typeof JS_RT)[number], c: Case, file?: string) => Promise<string>> {
   installSsrPlugin();
   const { render } = await import("svelte/server");
+  const { createRawSnippet } = await import("svelte");
+  const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
   const { createSSRApp, h } = await import("vue");
   const { renderToString: vueSSR } = await import("@vue/server-renderer");
   const { createComponent } = await import("solid-js");
@@ -100,16 +106,18 @@ export async function jsRenderer(organisms: OrganismSpec[]): Promise<(rt: (typeo
   return async (rt, c, file) => {
     const o = byName[c.organism]!;
     const rel = file ?? `${tierDir(o.id)}/${fileName(o.name)}`;
-    const props = c.props as Record<string, unknown> & { className?: string };
+    const text = c.children;
+    const props = { ...(c.props as Record<string, unknown>), ...(text === undefined ? {} : { children: text }) } as Record<string, unknown> & { className?: string };
     const { className, ...rest } = props;
     const other = { ...rest, ...(className ? { class: className } : {}) };
     try {
       if (rt === "react") { const C = file ? (await import(`../react/src/${rel}.tsx`))[c.organism] : R[c.organism]; return quiet(() => renderToStaticMarkup(createElement(C!, props))); }
-      if (rt === "svelte") { const S = (await import(`../svelte/src/${rel}.svelte`)).default; return quiet(() => render(S, { props: other }).body); }
+      if (rt === "svelte") { const S = (await import(`../svelte/src/${rel}.svelte`)).default; return quiet(() => render(S, { props: text === undefined ? other : { ...other, children: createRawSnippet(() => ({ render: () => esc(text) })) } }).body); }
       if (rt === "vue") {
         const V = (await import(`../vue/src/${rel}.vue`)).default;
         const w = console.warn; console.warn = () => {};
-        const app = createSSRApp({ render: () => h(V, other) });
+        const { children: _text, ...attrs } = other;
+        const app = createSSRApp({ render: () => (text === undefined ? h(V, other) : h(V, attrs, { default: () => text })) });
         let failed: unknown;
         app.config.errorHandler = (e) => { failed ??= e; };
         try { const html = await vueSSR(app); if (failed) throw failed; return html; } finally { console.warn = w; }
