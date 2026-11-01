@@ -5,8 +5,8 @@
     "npm:@ui8kit/registry|vue|box": {
       "name": "box",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/box/Box.vue": "42ea506847d3658406e8d1941a86652a03841fcccdea642daa18572027aadbc3",
@@ -16,8 +16,8 @@
     "npm:@ui8kit/registry|vue|button": {
       "name": "button",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/button/Button.vue": "f896a1f3fcd4a37a5ec813f04398836fe94f9e3ed690ebfb61363949c5b6e0d8",
@@ -27,8 +27,8 @@
     "npm:@ui8kit/registry|vue|checkbox": {
       "name": "checkbox",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/checkbox/Checkbox.vue": "8b67ec3c5d59bc9a8bb5af03e97516a5e9d04494c6a887b00e03c398f5a22388",
@@ -38,8 +38,8 @@
     "npm:@ui8kit/registry|vue|dialog": {
       "name": "dialog",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/dialog/Dialog.vue": "9afa63615978ad47c7796d80b3e67a9ae076b588c9f64a536e369a957e4d7742",
@@ -49,8 +49,8 @@
     "npm:@ui8kit/registry|vue|disclosure": {
       "name": "disclosure",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/disclosure/Disclosure.vue": "e74da9f08791904c0859f10dd2fb259513cc93872583a5e6ae0782eca9fd5df9",
@@ -61,8 +61,8 @@
     "npm:@ui8kit/registry|vue|form": {
       "name": "form",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/form/Form.vue": "8381922d1a6821ade43ceb512fc9eb3574205e3c662e57df891f0aa36190429b",
@@ -72,8 +72,8 @@
     "npm:@ui8kit/registry|vue|icon": {
       "name": "icon",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/icon/Icon.vue": "a49c36c98e15ff49c9c60f13b3688b52b82ce4450ceabf0c427b0d0628d08259",
@@ -84,8 +84,8 @@
     "npm:@ui8kit/registry|vue|image": {
       "name": "image",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/image/Image.vue": "7ec739cd12b984c1b74a596175a545973dfd9c4f6be2b6de81491c48346a8b74",
@@ -97,8 +97,8 @@
     "npm:@ui8kit/registry|vue|input": {
       "name": "input",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/input/Input.vue": "56826d542fd67a77450af3cd9cac0071e073b8003c82fb76af76fb9ad77a4381",
@@ -108,8 +108,8 @@
     "npm:@ui8kit/registry|vue|label": {
       "name": "label",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/label/Label.vue": "f7488a1082c7a1504a539e21cfbd40bccd7f5437f67a3b86346f42f0d69332dd",
@@ -119,8 +119,8 @@
     "npm:@ui8kit/registry|vue|link": {
       "name": "link",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/link/Link.vue": "e1e7cbd540fd66adf3d87ed038216b6607f1236a29e259eeb58e4d6ad562adc6",
@@ -130,8 +130,8 @@
     "npm:@ui8kit/registry|vue|meter": {
       "name": "meter",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/meter/Meter.vue": "460aaf200864c7cdb5680236e0cf784df9863590bd82d6a44abd76fa3cc5375d",
@@ -141,8 +141,8 @@
     "npm:@ui8kit/registry|vue|progress": {
       "name": "progress",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/progress/Progress.vue": "1159ceff6c38fa37c157b7b734b46a88caaf990b842a85455bf800fc0e601afa",
@@ -152,8 +152,8 @@
     "npm:@ui8kit/registry|vue|radio": {
       "name": "radio",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/radio/Radio.vue": "734e78cd1ed8d1f2452ea9899425f24a5ec672636f2ff165fa21ef2498123ea7",
@@ -163,8 +163,8 @@
     "npm:@ui8kit/registry|vue|rules": {
       "name": "rules",
       "type": "registry:rules",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         ".cursor/rules/ui8kit-primitives.mdc": "c191a07b9415c10a34c4efa257237e2817ec14e4c4c193fc52a66ab5bfac5248"
@@ -173,21 +173,21 @@
     "npm:@ui8kit/registry|vue|select": {
       "name": "select",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/select/Select.vue": "66efca22adbfdf1c88c0bb6360ec5bdd6275c8cf40f8431b6b8ba1f29499927c",
         "src/ui/select/SelectOptGroup.vue": "7b5b3aa13d1d19daa35af6e6c22dc49a3a4b3c51077caa65a913e6431e90d22d",
         "src/ui/select/SelectOption.vue": "b9560f590411a6565471e45e8c57162098fcd0a739cafbf4b5d4cc4f929000a7",
-        "src/ui/select/select.shared.ts": "fbfd77060f93463a61673bd34fb3d53edf78d5f8ead587253eb0fea8d2a19bba"
+        "src/ui/select/select.shared.ts": "e4768849ab701303495e024cea5ddbcded792336cd62d9b5d32480f643a53ea2"
       }
     },
     "npm:@ui8kit/registry|vue|separator": {
       "name": "separator",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/separator/Separator.vue": "5981630a5103482d0600e7f31ee69217bbdfe39903cf8438e85b998efa53ebc5",
@@ -197,8 +197,8 @@
     "npm:@ui8kit/registry|vue|switch": {
       "name": "switch",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/switch/Switch.vue": "47fe30e1c4a016b8a882ada35e61c24e9eb630feb047fc4ff47412d5fd3ce743",
@@ -208,8 +208,8 @@
     "npm:@ui8kit/registry|vue|text": {
       "name": "text",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/text/Text.vue": "2414641ca7b40a926508be42f878f7754b191b5a4ab4af4cd89bafa70193ca9b",
@@ -219,8 +219,8 @@
     "npm:@ui8kit/registry|vue|textarea": {
       "name": "textarea",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/ui/textarea/Textarea.vue": "a284c03cb50693d1e8fde57c820b18d87a625621fd5db9ee3cfc7c09759e586f",
@@ -230,8 +230,8 @@
     "npm:@ui8kit/registry|vue|utils": {
       "name": "utils",
       "type": "registry:utils",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/vue",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/vue",
+      "version": "3.3.1",
       "runtime": "vue",
       "files": {
         "src/utils/cn.ts": "71e49505248438b14660406596be49812819f912e0aeb0f3e2f46677e1d481d7",

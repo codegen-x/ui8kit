@@ -122,7 +122,7 @@ final class Classes
      */
     public static function selectClasses(array $p = []): string
     {
-        return Rt::cn([($p['class'] ?? '')]);
+        return Rt::cn(['pr-2', ($p['class'] ?? '')]);
     }
 
     /**

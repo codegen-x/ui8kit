@@ -15,7 +15,7 @@ CLASS_EXPRESSIONS = {
     "form_classes": "ui_cn([ui_def(p['Class'], '')])",
     "input_classes": "ui_cn([ui_def(p['Class'], '')])",
     "textarea_classes": "ui_cn([ui_def(p['Class'], '')])",
-    "select_classes": "ui_cn([ui_def(p['Class'], '')])",
+    "select_classes": "ui_cn(['pr-2', ui_def(p['Class'], '')])",
     "checkbox_classes": "ui_cn([ui_def(p['Class'], '')])",
     "radio_classes": "ui_cn([ui_def(p['Class'], '')])",
     "switch_classes": "ui_cn([ui_def(p['Class'], '')])",

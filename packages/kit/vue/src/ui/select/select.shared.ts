@@ -24,7 +24,7 @@ export type SelectClassesInput = {
 
 /** Compose Select classes without rendering — the cross-runtime `asChild` substitute. */
 export function selectClasses(input: SelectClassesInput = {}): string {
-  return cn(input.className);
+  return cn("pr-2", input.className);
 }
 
 /** SelectOption renders a native option. */

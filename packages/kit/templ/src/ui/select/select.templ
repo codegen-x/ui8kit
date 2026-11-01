@@ -38,7 +38,7 @@ type SelectProps struct {
 // SelectClasses composes Select classes without rendering —
 // the server-composition escape hatch for custom root elements (no asChild in templ).
 func SelectClasses(p SelectProps) string {
-	return uiutils.Cn(p.Class)
+	return uiutils.Cn("pr-2", p.Class)
 }
 
 // Select renders the Select contract.

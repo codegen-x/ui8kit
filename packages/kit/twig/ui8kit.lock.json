@@ -5,8 +5,8 @@
     "npm:@ui8kit/registry|twig|box": {
       "name": "box",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/box/Box.html.twig": "4c830b628ed256582360a799ec0de4dae77330cb2b0b900f68d7dde706fe4ba9"
@@ -15,8 +15,8 @@
     "npm:@ui8kit/registry|twig|button": {
       "name": "button",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/button/Button.html.twig": "11c4e2e5fe93b0ae9aa095fe5ab4e9fb5b7ded62ce549ee82a148fb641d8580b"
@@ -25,8 +25,8 @@
     "npm:@ui8kit/registry|twig|checkbox": {
       "name": "checkbox",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/checkbox/Checkbox.html.twig": "a180be238fecdff71b58d4b981151d124164f4c5306e81c02f7e86c8064adc27"
@@ -35,8 +35,8 @@
     "npm:@ui8kit/registry|twig|dialog": {
       "name": "dialog",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/dialog/Dialog.html.twig": "b505962a8be59cef27fc1cfc7f4c9eb9b5eb09b758a54f21312b7be810b5a488"
@@ -45,8 +45,8 @@
     "npm:@ui8kit/registry|twig|disclosure": {
       "name": "disclosure",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/disclosure/Disclosure.html.twig": "c406f615320207590422c17674cbc7dec66b49bbaa262148985973ac95adee66",
@@ -56,8 +56,8 @@
     "npm:@ui8kit/registry|twig|form": {
       "name": "form",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/form/Form.html.twig": "abf6b8a8313168831f2bbfb6f9191a9157da86ec8988eaa6e3b8668527dc6aff"
@@ -66,8 +66,8 @@
     "npm:@ui8kit/registry|twig|icon": {
       "name": "icon",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/icon/Icon.html.twig": "ffe7f2c302a65ee97b7dc00c1c03f2c234fde002279403dbbbbbce56c2a4977c"
@@ -76,8 +76,8 @@
     "npm:@ui8kit/registry|twig|image": {
       "name": "image",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/image/Image.html.twig": "624c82cf3867cd62bdd78b6bc1a4fb0e872404becfd1028b9e1d0e3e66bbce59",
@@ -88,8 +88,8 @@
     "npm:@ui8kit/registry|twig|input": {
       "name": "input",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/input/Input.html.twig": "59838c5ea72dc3f35a0ae86e4ba1bfc384612ac7af4a210f2d79325d5cf90220"
@@ -98,8 +98,8 @@
     "npm:@ui8kit/registry|twig|label": {
       "name": "label",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/label/Label.html.twig": "ce69201765ac344d7de36f7bd6831de19cd74f3ce7d903fd7f84cec77b1bc6ae"
@@ -108,8 +108,8 @@
     "npm:@ui8kit/registry|twig|link": {
       "name": "link",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/link/Link.html.twig": "0a81fe84d29f8291ad65806527935cd25d705b1179b4456c83afa2c9afb7bf90"
@@ -118,8 +118,8 @@
     "npm:@ui8kit/registry|twig|meter": {
       "name": "meter",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/meter/Meter.html.twig": "a31fa7d638a6cfa9ed3ed15675757c013c827124ee85b4004e299db89f672c15"
@@ -128,8 +128,8 @@
     "npm:@ui8kit/registry|twig|progress": {
       "name": "progress",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/progress/Progress.html.twig": "02903d717e081437408340d6c61dd319951f625ae26dcf7a94144f2f875e91d1"
@@ -138,8 +138,8 @@
     "npm:@ui8kit/registry|twig|radio": {
       "name": "radio",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/radio/Radio.html.twig": "0c3f3033762953237240f749e61d63967d35bcd3de4f445a1b8e3fa912db5809"
@@ -148,8 +148,8 @@
     "npm:@ui8kit/registry|twig|rules": {
       "name": "rules",
       "type": "registry:rules",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         ".cursor/rules/ui8kit-primitives.mdc": "2a552495e2473b5216a1194c568acb9ad0c828ee0eb0749b5440b4554131a69a"
@@ -158,8 +158,8 @@
     "npm:@ui8kit/registry|twig|select": {
       "name": "select",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/select/Select.html.twig": "7227801b075482c1a31b69760e47cbefd40cde978a4cbcdd9a86bc4bb60518db",
@@ -170,8 +170,8 @@
     "npm:@ui8kit/registry|twig|separator": {
       "name": "separator",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/separator/Separator.html.twig": "96f9ac56e7ab31c6575f65a4e3baedf78078f0987e3405cc32426dab4f388d3c"
@@ -180,8 +180,8 @@
     "npm:@ui8kit/registry|twig|switch": {
       "name": "switch",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/switch/Switch.html.twig": "6dcc57cbbc1ca04285662d198e276bb6fbe731ef3fc746ca3c47a591be9994ec"
@@ -190,8 +190,8 @@
     "npm:@ui8kit/registry|twig|text": {
       "name": "text",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/text/Text.html.twig": "365b146fe897398883ea8b5152639596fd4b9c5aa4c21812adaa16511ff7d9a3"
@@ -200,8 +200,8 @@
     "npm:@ui8kit/registry|twig|textarea": {
       "name": "textarea",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
         "src/ui/textarea/Textarea.html.twig": "36a3b176ea70b44354e7d26bb2552fb6b2723c0769de8e8d5465d38c4b80d6cf"
@@ -210,11 +210,11 @@
     "npm:@ui8kit/registry|twig|utils": {
       "name": "utils",
       "type": "registry:utils",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/twig",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/twig",
+      "version": "3.3.1",
       "runtime": "twig",
       "files": {
-        "src/runtime/Classes.php": "bdf2ef2a333181fd9449d2a64a8a01d1ae4a7fc9c780bc7ccb6ca3ceffce1458",
+        "src/runtime/Classes.php": "8566bb5ef8c187a23b3dbbf2d0b87c3850467ebda177e3c7a2168aec27970e98",
         "src/runtime/CnMerge.php": "3ffef49a305d808c0e23f2598b086228869f625a1b72b319b29dc29dfe7d7263",
         "src/runtime/Rt.php": "c725a60d3ef6fa278cbe093c2ff1328ff163a2dbc09df8a242ba436db266aabc",
         "src/runtime/Tags.php": "5d9709187764c50976306f2b13945f7e57b1592031ef1b36bc8300f8f723a21c",

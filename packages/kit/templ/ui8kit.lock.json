@@ -5,8 +5,8 @@
     "npm:@ui8kit/registry|templ|box": {
       "name": "box",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/box/box.templ": "b071e63925919145f633e7676eb3c9e67fac50c6490c5fd1585ab2676f5fa2cd"
@@ -15,8 +15,8 @@
     "npm:@ui8kit/registry|templ|button": {
       "name": "button",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/button/button.templ": "6afb472196005ed8b5d5ed88b40a4bc95cc79fb327cfe5d117e086f417dcc2bb"
@@ -25,8 +25,8 @@
     "npm:@ui8kit/registry|templ|checkbox": {
       "name": "checkbox",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/checkbox/checkbox.templ": "d1ab62366a0a446a6699e095b626beb9bb84ded65bcd0974f2cda7afbaf99cd6"
@@ -35,8 +35,8 @@
     "npm:@ui8kit/registry|templ|dialog": {
       "name": "dialog",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/dialog/dialog.templ": "b172a2c01c942580a0bb20522b18bcdda0a3b6f0271d5e777d3db3a64e5e9484"
@@ -45,8 +45,8 @@
     "npm:@ui8kit/registry|templ|disclosure": {
       "name": "disclosure",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/disclosure/disclosure.templ": "5d4162f4ac45d93bbd0fb24740f838a801725fa49477242f9b35412c0ce5a533"
@@ -55,8 +55,8 @@
     "npm:@ui8kit/registry|templ|form": {
       "name": "form",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/form/form.templ": "465d084233129b057e207d9eb9893cab08712a17663f0a5f4217e828145d2df6"
@@ -65,8 +65,8 @@
     "npm:@ui8kit/registry|templ|icon": {
       "name": "icon",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/icon/icon.templ": "c6d2fa3ad58752b8b788b5e7a2464f4f3eee42aa3226276a0401e8c1db235989",
@@ -77,8 +77,8 @@
     "npm:@ui8kit/registry|templ|image": {
       "name": "image",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/image/image.templ": "6ca100b738f5c188962667357c6dfcf9886900e2db436ec0df15a51dea95a759"
@@ -87,8 +87,8 @@
     "npm:@ui8kit/registry|templ|input": {
       "name": "input",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/input/input.templ": "1a8a71e9ccdc86be00fbb44926ca6b927a87845590e16a223051ec8d24498476"
@@ -97,8 +97,8 @@
     "npm:@ui8kit/registry|templ|label": {
       "name": "label",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/label/label.templ": "594d0bdb5e37649f5069bb0d2cada4af33ec2710758e452b087c48a3850fe415"
@@ -107,8 +107,8 @@
     "npm:@ui8kit/registry|templ|link": {
       "name": "link",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/link/link.templ": "295978938321a4ac54f6abbd15c9661abfc0ed9bfee53379fb63bcb25a8dff53"
@@ -117,8 +117,8 @@
     "npm:@ui8kit/registry|templ|meter": {
       "name": "meter",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/meter/meter.templ": "a90f6ffdb7c52ca2c1cec71e88e0bab7f908a10e973c179c2519f844b9d19cca"
@@ -127,8 +127,8 @@
     "npm:@ui8kit/registry|templ|progress": {
       "name": "progress",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/progress/progress.templ": "c0a87613c333263dcb7ed68ac2f07c9ae8178d8ee27b8cf5b01936e0bad9bc7a"
@@ -137,8 +137,8 @@
     "npm:@ui8kit/registry|templ|radio": {
       "name": "radio",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/radio/radio.templ": "f52748e95625c8305ce0e4bbbb3a29d88da5e470ce247b9469517343aecb0f11"
@@ -147,8 +147,8 @@
     "npm:@ui8kit/registry|templ|rules": {
       "name": "rules",
       "type": "registry:rules",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         ".cursor/rules/ui8kit-primitives.mdc": "6134f7638d3764a07e8ffcd7fbf18f701e5235705c69e46686867db17580bd92"
@@ -157,18 +157,18 @@
     "npm:@ui8kit/registry|templ|select": {
       "name": "select",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
-        "src/ui/select/select.templ": "ae6cf287a337d9bcafe663316654c6b90ed1259fbe65782bacf51a1d37ed1cbb"
+        "src/ui/select/select.templ": "4034518f66b32f5ccdb8cf2f553413bb87e0d84a42c266e91491344b08ec8740"
       }
     },
     "npm:@ui8kit/registry|templ|separator": {
       "name": "separator",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/separator/separator.templ": "2c19e40a984eb941592501c53f6c1546238fca9558a8b524a18a3ad44cf3a7fd"
@@ -177,8 +177,8 @@
     "npm:@ui8kit/registry|templ|switch": {
       "name": "switch",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/switch/switch.templ": "c5f81f7350e6cee7f2f9b1404a2e2dc576a8779dd5e326c976e5329d79434728"
@@ -187,8 +187,8 @@
     "npm:@ui8kit/registry|templ|text": {
       "name": "text",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/text/text.templ": "1f58c23d1384f15dfb6ef11001b46efad79b6a074229b4da17526564090584e6"
@@ -197,8 +197,8 @@
     "npm:@ui8kit/registry|templ|textarea": {
       "name": "textarea",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/ui/textarea/textarea.templ": "e621667d999da0823198612389289ad1520605e69ddf127e7f1dece796969432"
@@ -207,8 +207,8 @@
     "npm:@ui8kit/registry|templ|utils": {
       "name": "utils",
       "type": "registry:utils",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/templ",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/templ",
+      "version": "3.3.1",
       "runtime": "templ",
       "files": {
         "src/utils/cn_merge.go": "2761e3565f991314e133f670776bfd342eecf1da2c4b52f72f880e05d3e957b7",

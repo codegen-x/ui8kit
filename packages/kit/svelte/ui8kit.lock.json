@@ -5,8 +5,8 @@
     "npm:@ui8kit/registry|svelte|box": {
       "name": "box",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/box/Box.svelte": "666dc197d86a46a28d0202823faf04010a333379cf748c684fb129b9eb216974",
@@ -16,8 +16,8 @@
     "npm:@ui8kit/registry|svelte|button": {
       "name": "button",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/button/Button.svelte": "ee9ce61438a84f3f5751c7a260a7c46faeac420aa43fe2f471b6d4eadf38a02f",
@@ -27,8 +27,8 @@
     "npm:@ui8kit/registry|svelte|checkbox": {
       "name": "checkbox",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/checkbox/Checkbox.svelte": "0b5c88aa8b88487e1dcf7e4b7c92c9bf7b7e684fa614de36d2986a1c9551c708",
@@ -38,8 +38,8 @@
     "npm:@ui8kit/registry|svelte|dialog": {
       "name": "dialog",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/dialog/Dialog.svelte": "7df141b52a0c77587745f0fabfb2c0885593622ec02123e38d3339ce52a08b08",
@@ -49,8 +49,8 @@
     "npm:@ui8kit/registry|svelte|disclosure": {
       "name": "disclosure",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/disclosure/Disclosure.svelte": "ab7a0f936156c625e292d491e8417dd66a0c441b208e983995f8696f5f199619",
@@ -61,8 +61,8 @@
     "npm:@ui8kit/registry|svelte|form": {
       "name": "form",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/form/Form.svelte": "54248a0073cc1587a874cb9f52fa0b830870cb370953bf2b0bcf609d1a596965",
@@ -72,8 +72,8 @@
     "npm:@ui8kit/registry|svelte|icon": {
       "name": "icon",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/icon/Icon.svelte": "78d4c5caa2fcf8975d28387f5a786ae08f04fa50c0486728fcf163ca9756fa01",
@@ -84,8 +84,8 @@
     "npm:@ui8kit/registry|svelte|image": {
       "name": "image",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/image/Image.svelte": "030e6de9f31eb23b4da75de9388d43c958bec25db2d2c421a3b95476a7e8fa47",
@@ -97,8 +97,8 @@
     "npm:@ui8kit/registry|svelte|input": {
       "name": "input",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/input/Input.svelte": "19d212365cef67bc407dca87fe59c704df250b77ec2e8046235783cf79ead561",
@@ -108,8 +108,8 @@
     "npm:@ui8kit/registry|svelte|label": {
       "name": "label",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/label/Label.svelte": "079d4995184378c14434fbe121c0e2f7c1b42ae8e985cd9add11ed150681a9c4",
@@ -119,8 +119,8 @@
     "npm:@ui8kit/registry|svelte|link": {
       "name": "link",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/link/Link.svelte": "94bd8743b7c3f73846dd4d0cfbeb3503c30501a04ea5827b00b429e0db81a72c",
@@ -130,8 +130,8 @@
     "npm:@ui8kit/registry|svelte|meter": {
       "name": "meter",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/meter/Meter.svelte": "bd36887da63dd869876d96edee01dab8d3e35580201304a0809041a85dfe37be",
@@ -141,8 +141,8 @@
     "npm:@ui8kit/registry|svelte|progress": {
       "name": "progress",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/progress/Progress.svelte": "741a5818084b0df5176fe36fcd8d566f9d260d1d76a362879151a22a11e652fc",
@@ -152,8 +152,8 @@
     "npm:@ui8kit/registry|svelte|radio": {
       "name": "radio",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/radio/Radio.svelte": "3b1c2ccedb42ec5a8e388ca1c9117aca5fc2b80e18aec9571ccf9816aa2540c7",
@@ -163,8 +163,8 @@
     "npm:@ui8kit/registry|svelte|rules": {
       "name": "rules",
       "type": "registry:rules",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         ".cursor/rules/ui8kit-primitives.mdc": "15bcdbb8e74994c63266996befd09f1a8484398304b04bce3302d8ea26217932"
@@ -173,21 +173,21 @@
     "npm:@ui8kit/registry|svelte|select": {
       "name": "select",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/select/Select.svelte": "2e58ff4606479d93fb8b398f127acfa147c1672c3244b612ea59213bb6837e7d",
         "src/ui/select/SelectOptGroup.svelte": "ce955995f052b17dcb9a31c9e4ec99aab89c6559ed5eb1177de2e9b86773e004",
         "src/ui/select/SelectOption.svelte": "c1da8f5e8dabb1a6de86f11f8b7d0ff3bc48912d8009887c5d99d2fbcf70b35a",
-        "src/ui/select/select.shared.ts": "fbfd77060f93463a61673bd34fb3d53edf78d5f8ead587253eb0fea8d2a19bba"
+        "src/ui/select/select.shared.ts": "e4768849ab701303495e024cea5ddbcded792336cd62d9b5d32480f643a53ea2"
       }
     },
     "npm:@ui8kit/registry|svelte|separator": {
       "name": "separator",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/separator/Separator.svelte": "6cbf2df4ec5e6813b5b75eb2e135a9906e6bc7047555b9e9747c5537febf627d",
@@ -197,8 +197,8 @@
     "npm:@ui8kit/registry|svelte|switch": {
       "name": "switch",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/switch/Switch.svelte": "12fa77e503f1db6bbf75fb7d73f4e2e7e4dbeee51552cd238aeb270c2008f35d",
@@ -208,8 +208,8 @@
     "npm:@ui8kit/registry|svelte|text": {
       "name": "text",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/text/Text.svelte": "3abd12ff80b1a615a7e3da9214605978f0fa71365af0ae4e2a5514cf53dc3b9b",
@@ -219,8 +219,8 @@
     "npm:@ui8kit/registry|svelte|textarea": {
       "name": "textarea",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/ui/textarea/Textarea.svelte": "4a1bd410a6193a025a70ce79287263ed030f921466b8e84e9473fb9c0a39f1b5",
@@ -230,8 +230,8 @@
     "npm:@ui8kit/registry|svelte|utils": {
       "name": "utils",
       "type": "registry:utils",
-      "source": "https://unpkg.com/@ui8kit/registry@3.3.0/r/svelte",
-      "version": "3.3.0",
+      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/svelte",
+      "version": "3.3.1",
       "runtime": "svelte",
       "files": {
         "src/utils/cn.ts": "71e49505248438b14660406596be49812819f912e0aeb0f3e2f46677e1d481d7",
