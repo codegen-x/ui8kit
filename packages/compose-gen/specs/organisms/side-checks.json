@@ -1,0 +1,160 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.side-checks",
+  "name": "SideChecks",
+  "docs": "Extras to tick: a fieldset named by its legend, one checkbox per option with its note and price. Static markup.",
+  "records": {},
+  "props": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "docs": "prefix of the checkbox names (one per option: <name>-<option id>)"
+    },
+    {
+      "name": "legend",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "options",
+      "type": {
+        "ts": "DishOption[]"
+      },
+      "required": true
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Fieldset",
+      "props": {
+        "Class": "flex flex-col gap-2"
+      },
+      "attrs": {
+        "data-testid": "sides"
+      },
+      "children": [
+        {
+          "use": "Legend",
+          "props": {
+            "Size": "sm",
+            "Class": "mb-2"
+          },
+          "children": [
+            {
+              "text": {
+                "$": "legend"
+              }
+            }
+          ]
+        },
+        {
+          "each": {
+            "$": "options"
+          },
+          "as": "o",
+          "key": {
+            "$": "o.id"
+          },
+          "do": [
+            {
+              "use": "Label",
+              "props": {
+                "Class": "flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted"
+              },
+              "children": [
+                {
+                  "use": "Inline",
+                  "props": {
+                    "Class": "flex items-center gap-2"
+                  },
+                  "children": [
+                    {
+                      "use": "Checkbox",
+                      "props": {
+                        "Name": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-{1}",
+                            {
+                              "$": "name"
+                            },
+                            {
+                              "$": "o.id"
+                            }
+                          ]
+                        },
+                        "Value": "on"
+                      }
+                    },
+                    {
+                      "use": "Inline",
+                      "children": [
+                        {
+                          "text": {
+                            "$": "o.name"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "Inline",
+                  "props": {
+                    "Class": "text-muted-foreground"
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "op": "tpl",
+                        "args": [
+                          "{0} · {1}",
+                          {
+                            "$": "o.note"
+                          },
+                          {
+                            "op": "money",
+                            "args": [
+                              {
+                                "$": "o.price"
+                              },
+                              {
+                                "$": "o.currency"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "OptionChips",
+      "names": [
+        "DishOption"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.add-icon",
+  "name": "AddIcon",
+  "docs": "A small icon button that adds one dish: a plus, named after the dish. Static markup.",
+  "records": {},
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": true,
+      "docs": "accessible name, with the dish in it"
+    },
+    {
+      "name": "variant",
+      "type": {
+        "ts": "\"default\" | \"outline\""
+      },
+      "default": "outline"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Button",
+      "props": {
+        "Variant": {
+          "$": "variant"
+        },
+        "Size": "sm",
+        "Layout": "icon",
+        "Type": "button",
+        "AriaLabel": {
+          "$": "label"
+        }
+      },
+      "attrs": {
+        "data-testid": "add"
+      },
+      "children": [
+        {
+          "use": "LucideIcon",
+          "props": {
+            "Name": "plus",
+            "Size": 16
+          }
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

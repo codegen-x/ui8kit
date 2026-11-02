@@ -1,0 +1,78 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.cart-count",
+  "name": "CartCount",
+  "docs": "The cart count as a live status (role status, aria-live polite): a bag icon and the words with the number. The page updates the number; screen readers announce it.",
+  "records": {},
+  "props": [
+    {
+      "name": "count",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": true,
+      "docs": "the words with {0} for the number"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Inline",
+      "props": {
+        "Class": "inline-flex h-8 items-center gap-2 rounded bg-muted px-4 text-sm font-medium"
+      },
+      "attrs": {
+        "role": "status",
+        "aria-live": "polite",
+        "data-testid": "cart-count"
+      },
+      "children": [
+        {
+          "use": "LucideIcon",
+          "props": {
+            "Name": "shopping-bag",
+            "Size": 16
+          }
+        },
+        {
+          "use": "Inline",
+          "children": [
+            {
+              "text": {
+                "op": "tpl",
+                "args": [
+                  {
+                    "$": "label"
+                  },
+                  {
+                    "op": "str",
+                    "args": [
+                      {
+                        "$": "count"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.add-qty",
+  "name": "AddQty",
+  "docs": "A quantity field named after the dish (minus and plus buttons with their own names) beside an add button. Static markup.",
+  "records": {},
+  "props": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "docs": "name of the quantity field"
+    },
+    {
+      "name": "dish",
+      "type": "string",
+      "required": true,
+      "docs": "the dish name, put into the labels"
+    },
+    {
+      "name": "labels",
+      "type": {
+        "ts": "{ qtyOf: string; decreaseOf: string; increaseOf: string; add: string }"
+      },
+      "required": true
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "default": "1"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Group",
+      "props": {
+        "Gap": "2",
+        "Align": "center",
+        "Justify": "between",
+        "Class": "flex-wrap"
+      },
+      "children": [
+        {
+          "organism": "NumberField",
+          "props": {
+            "value": {
+              "$": "value"
+            },
+            "name": {
+              "$": "name"
+            },
+            "min": "0",
+            "label": {
+              "op": "tpl",
+              "args": [
+                {
+                  "$": "labels.qtyOf"
+                },
+                {
+                  "$": "dish"
+                }
+              ]
+            },
+            "decrease": {
+              "op": "tpl",
+              "args": [
+                {
+                  "$": "labels.decreaseOf"
+                },
+                {
+                  "$": "dish"
+                }
+              ]
+            },
+            "increase": {
+              "op": "tpl",
+              "args": [
+                {
+                  "$": "labels.increaseOf"
+                },
+                {
+                  "$": "dish"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "use": "Button",
+          "props": {
+            "Variant": "default",
+            "Size": "default",
+            "Type": "button"
+          },
+          "attrs": {
+            "data-testid": "add"
+          },
+          "children": [
+            {
+              "use": "LucideIcon",
+              "props": {
+                "Name": "plus",
+                "Size": 16
+              }
+            },
+            {
+              "text": {
+                "$": "labels.add"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

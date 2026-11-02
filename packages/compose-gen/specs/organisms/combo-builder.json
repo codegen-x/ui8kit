@@ -1,0 +1,356 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.combo-builder",
+  "name": "ComboBuilder",
+  "docs": "A set (combo) builder: three numbered steps, each a radio group of cards with the price (main, side, drink), beside or under a summary with the live total and the order button. Axes: layout (split, stacked), tone.",
+  "records": {},
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "lead",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "labels",
+      "type": {
+        "ts": "FoodLabels"
+      },
+      "required": true
+    },
+    {
+      "name": "mains",
+      "type": {
+        "ts": "DishOption[]"
+      },
+      "required": true,
+      "docs": "main dishes"
+    },
+    {
+      "name": "sides",
+      "type": {
+        "ts": "DishOption[]"
+      },
+      "required": true,
+      "docs": "sides"
+    },
+    {
+      "name": "drinks",
+      "type": {
+        "ts": "DishOption[]"
+      },
+      "required": true,
+      "docs": "drinks"
+    },
+    {
+      "name": "total",
+      "type": "number",
+      "required": true,
+      "docs": "the total of the first choices, minor units"
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"split\" | \"stacked\""
+      },
+      "default": "split"
+    },
+    {
+      "name": "tone",
+      "type": {
+        "ts": "\"default\" | \"muted\""
+      },
+      "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "organism": "SectionFrame",
+      "props": {
+        "id": {
+          "$": "id"
+        },
+        "title": {
+          "$": "title"
+        },
+        "lead": {
+          "$": "lead"
+        },
+        "tone": {
+          "$": "tone"
+        },
+        "landmarkLabel": {
+          "$": "landmarkLabel"
+        }
+      },
+      "slots": {
+        "children": {
+          "args": [],
+          "do": [
+            {
+              "use": "Box",
+              "props": {
+                "Class": "grid grid-cols-1 items-start gap-8 lg:grid-cols-3"
+              },
+              "children": [
+                {
+                  "use": "Box",
+                  "props": {
+                    "Class": {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "layout"
+                            },
+                            "split"
+                          ]
+                        },
+                        "flex flex-col gap-8 lg:col-span-2",
+                        "flex flex-col gap-8 lg:col-span-3"
+                      ]
+                    }
+                  },
+                  "attrs": {
+                    "data-testid": "steps"
+                  },
+                  "children": [
+                    {
+                      "organism": "OptionChips",
+                      "props": {
+                        "name": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-main",
+                            {
+                              "$": "id"
+                            }
+                          ]
+                        },
+                        "legend": {
+                          "$": "labels.main"
+                        },
+                        "options": {
+                          "$": "mains"
+                        },
+                        "extra": "price",
+                        "layout": "column"
+                      }
+                    },
+                    {
+                      "organism": "OptionChips",
+                      "props": {
+                        "name": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-side",
+                            {
+                              "$": "id"
+                            }
+                          ]
+                        },
+                        "legend": {
+                          "$": "labels.side"
+                        },
+                        "options": {
+                          "$": "sides"
+                        },
+                        "extra": "price",
+                        "layout": "column"
+                      }
+                    },
+                    {
+                      "organism": "OptionChips",
+                      "props": {
+                        "name": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-drink",
+                            {
+                              "$": "id"
+                            }
+                          ]
+                        },
+                        "legend": {
+                          "$": "labels.drink"
+                        },
+                        "options": {
+                          "$": "drinks"
+                        },
+                        "extra": "price",
+                        "layout": "column"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "4",
+                    "Class": {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "layout"
+                            },
+                            "split"
+                          ]
+                        },
+                        "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6 lg:sticky lg:top-8",
+                        "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6"
+                      ]
+                    }
+                  },
+                  "attrs": {
+                    "data-testid": "summary"
+                  },
+                  "children": [
+                    {
+                      "use": "Text",
+                      "props": {
+                        "Size": "lg",
+                        "Weight": "semibold"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "labels.summary"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Group",
+                      "props": {
+                        "Gap": "2",
+                        "Align": "baseline",
+                        "Justify": "between"
+                      },
+                      "children": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.total"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Inline",
+                          "props": {
+                            "Class": "text-2xl font-bold"
+                          },
+                          "attrs": {
+                            "role": "status",
+                            "aria-live": "polite",
+                            "data-testid": "total"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "op": "money",
+                                "args": [
+                                  {
+                                    "$": "total"
+                                  },
+                                  {
+                                    "$": "currency"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Button",
+                      "props": {
+                        "Variant": "default",
+                        "Size": "lg",
+                        "Type": "button",
+                        "Class": "w-full"
+                      },
+                      "children": [
+                        {
+                          "use": "LucideIcon",
+                          "props": {
+                            "Name": "shopping-bag",
+                            "Size": 16
+                          }
+                        },
+                        {
+                          "text": {
+                            "$": "labels.add"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "DishShowcase",
+      "names": [
+        "Dish",
+        "FoodLabels"
+      ]
+    },
+    {
+      "from": "OptionChips",
+      "names": [
+        "DishOption"
+      ]
+    }
+  ]
+}

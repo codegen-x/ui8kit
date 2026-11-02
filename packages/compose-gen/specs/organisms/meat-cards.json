@@ -1,0 +1,204 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.meat-cards",
+  "name": "MeatCards",
+  "docs": "The meat of a grill dish as picture cards in one radio group (fieldset with role radiogroup named by its legend): a picture, the name and the price per 500 g; the first checked.",
+  "records": {},
+  "props": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "docs": "name of the radio group; the legend id is `<name>-legend`"
+    },
+    {
+      "name": "legend",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "options",
+      "type": {
+        "ts": "DishOption[]"
+      },
+      "required": true
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Fieldset",
+      "props": {
+        "Class": "flex flex-col gap-2"
+      },
+      "attrs": {
+        "role": "radiogroup",
+        "aria-labelledby": {
+          "op": "tpl",
+          "args": [
+            "{0}-legend",
+            {
+              "$": "name"
+            }
+          ]
+        },
+        "data-testid": "meat"
+      },
+      "children": [
+        {
+          "use": "Legend",
+          "props": {
+            "Size": "sm",
+            "Class": "mb-2"
+          },
+          "attrs": {
+            "id": {
+              "op": "tpl",
+              "args": [
+                "{0}-legend",
+                {
+                  "$": "name"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "text": {
+                "$": "legend"
+              }
+            }
+          ]
+        },
+        {
+          "use": "Box",
+          "props": {
+            "Class": "grid grid-cols-2 gap-4 md:grid-cols-4"
+          },
+          "children": [
+            {
+              "each": {
+                "$": "options"
+              },
+              "as": "o",
+              "key": {
+                "$": "o.id"
+              },
+              "do": [
+                {
+                  "use": "Box",
+                  "props": {
+                    "Class": "flex flex-col gap-2 rounded p-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground"
+                  },
+                  "attrs": {
+                    "data-testid": "option"
+                  },
+                  "children": [
+                    {
+                      "organism": "MediaFrame",
+                      "props": {
+                        "alt": {
+                          "$": "o.name"
+                        },
+                        "ratio": "4/3"
+                      }
+                    },
+                    {
+                      "use": "Label",
+                      "props": {
+                        "Class": "flex items-center gap-2 font-medium"
+                      },
+                      "children": [
+                        {
+                          "use": "Radio",
+                          "props": {
+                            "Name": {
+                              "$": "name"
+                            },
+                            "Value": {
+                              "$": "o.id"
+                            },
+                            "Checked": {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "i"
+                                },
+                                0
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "use": "Inline",
+                          "children": [
+                            {
+                              "text": {
+                                "$": "o.name"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Inline",
+                      "props": {
+                        "Class": "text-xs text-muted-foreground"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "op": "tpl",
+                            "args": [
+                              "{0} · {1}",
+                              {
+                                "op": "money",
+                                "args": [
+                                  {
+                                    "$": "o.price"
+                                  },
+                                  {
+                                    "$": "o.currency"
+                                  }
+                                ]
+                              },
+                              {
+                                "$": "o.note"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "index": "i"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "OptionChips",
+      "names": [
+        "DishOption"
+      ]
+    }
+  ]
+}

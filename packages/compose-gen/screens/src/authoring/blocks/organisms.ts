@@ -22,6 +22,11 @@ import { accountOrganisms } from "./account";
 import { dashboardOrganisms } from "./dashboard";
 import { storefrontOrganisms } from "./storefront";
 import { deliveryOrganisms } from "./delivery";
+import { foodOrganisms } from "./food";
+import { foodMoreOrganisms } from "./food-more";
+import { foodBuilderOrganisms } from "./food-builders";
+import { foodBoxOrganisms, meatCards } from "./food-box";
+import { foodParts } from "../components/food-parts";
 import { checkoutOrganisms } from "./checkout";
 import { checkoutParts } from "../components/checkout-parts";
 import { shopParts } from "../components/shop-parts";
@@ -60,7 +65,7 @@ import { richTextOrganisms } from "./rich-text";
 export const allOrganisms = [
   pricingCard, ...siteOrganisms, ...landingOrganisms, ...pricingOrganisms, ...showcaseOrganisms, ...navigationOrganisms, ...workspaceOrganisms,
   ...guideOrganisms, ...signupOrganisms, ...marketingOrganisms, ...commerceOrganisms, ...contentOrganisms, ...templateOrganisms,
-  ...promoOrganisms, ...accountOrganisms, ...dashboardOrganisms, ...checkoutParts, ...shopParts, ...storefrontOrganisms, ...deliveryOrganisms,
+  ...promoOrganisms, ...accountOrganisms, ...dashboardOrganisms, ...checkoutParts, ...shopParts, ...storefrontOrganisms, ...deliveryOrganisms, ...foodParts, meatCards, ...foodOrganisms, ...foodMoreOrganisms, ...foodBuilderOrganisms, ...foodBoxOrganisms,
   ...checkoutOrganisms, ...peopleParts, ...workParts, ...peopleOrganisms, ...workOrganisms, ...shellParts, ...shellOrganisms,
   ...heroSplitParts, ...heroSplitOrganisms, ...faqParts, ...faqSplitOrganisms,
   ...ctaProofParts, ...ctaProofOrganisms, ...quoteSplitParts, ...quoteSplitOrganisms,

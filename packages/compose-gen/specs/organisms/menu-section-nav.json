@@ -1,0 +1,122 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.menu-section-nav",
+  "name": "MenuSectionNav",
+  "docs": "The sections of a menu as chips that jump to them: a nav landmark named by `label`, one link per section to `#<prefix>-<key>`.",
+  "records": {},
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": true,
+      "docs": "accessible name of the nav"
+    },
+    {
+      "name": "sections",
+      "type": {
+        "ts": "Array<{ id: string; key: string; title: string }>"
+      },
+      "required": true
+    },
+    {
+      "name": "prefix",
+      "type": "string",
+      "required": true,
+      "docs": "the block id the section ids start with"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "nav"
+      },
+      "attrs": {
+        "aria-label": {
+          "op": "coalesce",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "$": "label"
+            }
+          ]
+        },
+        "data-testid": "section-nav"
+      },
+      "children": [
+        {
+          "use": "List",
+          "props": {
+            "Tag": "ul",
+            "Class": "flex flex-wrap gap-2"
+          },
+          "children": [
+            {
+              "each": {
+                "$": "sections"
+              },
+              "as": "s",
+              "key": {
+                "$": "s.id"
+              },
+              "do": [
+                {
+                  "use": "ListItem",
+                  "children": [
+                    {
+                      "use": "Link",
+                      "props": {
+                        "Href": {
+                          "op": "tpl",
+                          "args": [
+                            "#{0}-{1}",
+                            {
+                              "$": "prefix"
+                            },
+                            {
+                              "$": "s.key"
+                            }
+                          ]
+                        },
+                        "Variant": "nav",
+                        "Size": "sm",
+                        "Class": "h-8 rounded px-4 inset-ring inset-ring-border"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "s.title"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

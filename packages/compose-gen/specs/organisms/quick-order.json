@@ -1,0 +1,367 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.quick-order",
+  "name": "QuickOrder",
+  "docs": "Quick order in one click: compact rows (name, weight, summary, price) each with an order button named after the dish, under a phone field that the one click uses. Axes: phone (show, hide), tone.",
+  "records": {},
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "lead",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "dishes",
+      "type": {
+        "ts": "Dish[]"
+      },
+      "required": true
+    },
+    {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
+      "name": "labels",
+      "type": {
+        "ts": "FoodLabels"
+      },
+      "required": true
+    },
+    {
+      "name": "phone",
+      "type": {
+        "ts": "\"show\" | \"hide\""
+      },
+      "default": "show"
+    },
+    {
+      "name": "tone",
+      "type": {
+        "ts": "\"default\" | \"muted\""
+      },
+      "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "organism": "SectionFrame",
+      "props": {
+        "id": {
+          "$": "id"
+        },
+        "title": {
+          "$": "title"
+        },
+        "lead": {
+          "$": "lead"
+        },
+        "tone": {
+          "$": "tone"
+        },
+        "landmarkLabel": {
+          "$": "landmarkLabel"
+        }
+      },
+      "slots": {
+        "children": {
+          "args": [],
+          "do": [
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "dishes"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "zap",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "4",
+                    "Align": "stretch",
+                    "Class": "mx-auto w-full max-w-3xl"
+                  },
+                  "children": [
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "phone"
+                          },
+                          "show"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "Field",
+                          "props": {
+                            "label": {
+                              "$": "labels.phone"
+                            },
+                            "htmlFor": {
+                              "op": "tpl",
+                              "args": [
+                                "{0}-phone",
+                                {
+                                  "$": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "use": "Input",
+                                  "props": {
+                                    "Type": "tel",
+                                    "Name": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-phone",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "attrs": {
+                                    "id": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-phone",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "use": "List",
+                      "props": {
+                        "Tag": "ul",
+                        "Class": "flex flex-col"
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "dishes"
+                          },
+                          "as": "d",
+                          "key": {
+                            "$": "d.id"
+                          },
+                          "do": [
+                            {
+                              "use": "ListItem",
+                              "props": {
+                                "Class": "flex flex-wrap items-center gap-4 border-b border-border py-4"
+                              },
+                              "attrs": {
+                                "data-testid": "item"
+                              },
+                              "children": [
+                                {
+                                  "use": "Stack",
+                                  "props": {
+                                    "Gap": "0",
+                                    "Class": "min-w-0 flex-1"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "Group",
+                                      "props": {
+                                        "Gap": "2",
+                                        "Align": "baseline"
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "base",
+                                            "Weight": "semibold"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "d.name"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "xs",
+                                            "Class": "text-muted-foreground"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "d.weight"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "d.summary"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Inline",
+                                  "props": {
+                                    "Class": "text-base font-bold"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "op": "money",
+                                        "args": [
+                                          {
+                                            "$": "d.price"
+                                          },
+                                          {
+                                            "$": "d.currency"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Button",
+                                  "props": {
+                                    "Variant": "default",
+                                    "Size": "sm",
+                                    "Type": "button",
+                                    "AriaLabel": {
+                                      "op": "tpl",
+                                      "args": [
+                                        {
+                                          "$": "labels.orderOf"
+                                        },
+                                        {
+                                          "$": "d.name"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "attrs": {
+                                    "data-testid": "order"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": "zap",
+                                        "Size": 16
+                                      }
+                                    },
+                                    {
+                                      "text": {
+                                        "$": "labels.order"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "DishShowcase",
+      "names": [
+        "Dish",
+        "FoodLabels"
+      ]
+    }
+  ]
+}

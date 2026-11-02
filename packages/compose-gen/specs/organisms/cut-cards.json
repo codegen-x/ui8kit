@@ -1,0 +1,273 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.cut-cards",
+  "name": "CutCards",
+  "docs": "The cards layout of DishCompare: one compare card per cut with a picture, the name, the summary, the weight, heat and price as a description list, and the cooking time.",
+  "records": {},
+  "props": [
+    {
+      "name": "dishes",
+      "type": {
+        "ts": "Dish[]"
+      },
+      "required": true
+    },
+    {
+      "name": "labels",
+      "type": {
+        "ts": "FoodLabels"
+      },
+      "required": true
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Grid",
+      "props": {
+        "Cols": "1-4",
+        "Class": "gap-4"
+      },
+      "attrs": {
+        "data-testid": "items"
+      },
+      "children": [
+        {
+          "each": {
+            "$": "dishes"
+          },
+          "as": "d",
+          "key": {
+            "$": "d.id"
+          },
+          "do": [
+            {
+              "use": "Stack",
+              "props": {
+                "Gap": "4",
+                "Class": "rounded bg-card inset-ring inset-ring-border p-4"
+              },
+              "attrs": {
+                "data-testid": "item"
+              },
+              "children": [
+                {
+                  "organism": "MediaFrame",
+                  "props": {
+                    "alt": {
+                      "$": "d.name"
+                    },
+                    "ratio": "4/3"
+                  }
+                },
+                {
+                  "use": "Text",
+                  "props": {
+                    "Size": "lg",
+                    "Weight": "semibold"
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "$": "d.name"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "use": "Text",
+                  "props": {
+                    "Size": "sm",
+                    "Class": "text-muted-foreground"
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "$": "d.summary"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "use": "List",
+                  "props": {
+                    "Tag": "ul",
+                    "Class": "flex flex-col gap-2 text-sm"
+                  },
+                  "children": [
+                    {
+                      "use": "ListItem",
+                      "props": {
+                        "Class": "flex items-center justify-between gap-4"
+                      },
+                      "children": [
+                        {
+                          "use": "Inline",
+                          "props": {
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.weight"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Inline",
+                          "props": {
+                            "Class": "font-semibold"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "d.weight"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "ListItem",
+                      "props": {
+                        "Class": "flex items-center justify-between gap-4"
+                      },
+                      "children": [
+                        {
+                          "use": "Inline",
+                          "props": {
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.heat"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Inline",
+                          "props": {
+                            "Class": "font-semibold"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "d.tag"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "ListItem",
+                      "props": {
+                        "Class": "flex items-center justify-between gap-4"
+                      },
+                      "children": [
+                        {
+                          "use": "Inline",
+                          "props": {
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.price"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Inline",
+                          "props": {
+                            "Class": "font-semibold"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "op": "money",
+                                "args": [
+                                  {
+                                    "$": "d.price"
+                                  },
+                                  {
+                                    "$": "d.currency"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "Badge",
+                  "props": {
+                    "Variant": "secondary",
+                    "Size": "default",
+                    "Class": "w-fit"
+                  },
+                  "children": [
+                    {
+                      "use": "LucideIcon",
+                      "props": {
+                        "Name": "timer",
+                        "Size": 16
+                      }
+                    },
+                    {
+                      "text": {
+                        "op": "tpl",
+                        "args": [
+                          {
+                            "$": "labels.minutes"
+                          },
+                          {
+                            "op": "str",
+                            "args": [
+                              {
+                                "$": "d.minutes"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "DishShowcase",
+      "names": [
+        "Dish",
+        "FoodLabels"
+      ]
+    }
+  ]
+}

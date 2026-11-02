@@ -1,0 +1,450 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.restaurant-menu",
+  "name": "RestaurantMenu",
+  "docs": "A restaurant menu by sections: a nav of section links, then each section (heading and note) with its dishes as menu lines (name, a dotted leader, the price; the summary and weight below). No cart. Axes: cols (1, 2), tone.",
+  "records": {
+    "DishSection": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "key",
+        "type": "string"
+      },
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "note",
+        "type": "string"
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "lead",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "dishes",
+      "type": {
+        "ts": "Dish[]"
+      },
+      "required": true
+    },
+    {
+      "name": "sections",
+      "type": {
+        "ts": "DishSection[]"
+      },
+      "required": true
+    },
+    {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
+      "name": "labels",
+      "type": {
+        "ts": "FoodLabels"
+      },
+      "required": true
+    },
+    {
+      "name": "cols",
+      "type": {
+        "ts": "\"1\" | \"2\""
+      },
+      "default": "1"
+    },
+    {
+      "name": "tone",
+      "type": {
+        "ts": "\"default\" | \"muted\""
+      },
+      "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "organism": "SectionFrame",
+      "props": {
+        "id": {
+          "$": "id"
+        },
+        "title": {
+          "$": "title"
+        },
+        "lead": {
+          "$": "lead"
+        },
+        "tone": {
+          "$": "tone"
+        },
+        "landmarkLabel": {
+          "$": "landmarkLabel"
+        }
+      },
+      "slots": {
+        "children": {
+          "args": [],
+          "do": [
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "sections"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "star",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "8",
+                    "Align": "stretch",
+                    "Class": {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "cols"
+                            },
+                            "1"
+                          ]
+                        },
+                        "mx-auto w-full max-w-3xl",
+                        ""
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "organism": "MenuSectionNav",
+                      "props": {
+                        "label": {
+                          "$": "labels.sections"
+                        },
+                        "sections": {
+                          "$": "sections"
+                        },
+                        "prefix": {
+                          "$": "id"
+                        },
+                        "landmarkLabel": {
+                          "$": "landmarkLabel"
+                        }
+                      }
+                    },
+                    {
+                      "use": "Box",
+                      "props": {
+                        "Class": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "cols"
+                                },
+                                "2"
+                              ]
+                            },
+                            "grid grid-cols-1 gap-8 md:grid-cols-2",
+                            "flex flex-col gap-8"
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "sections"
+                          },
+                          "as": "s",
+                          "key": {
+                            "$": "s.id"
+                          },
+                          "do": [
+                            {
+                              "use": "Stack",
+                              "props": {
+                                "Gap": "4"
+                              },
+                              "attrs": {
+                                "id": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-{1}",
+                                    {
+                                      "$": "id"
+                                    },
+                                    {
+                                      "$": "s.key"
+                                    }
+                                  ]
+                                },
+                                "data-testid": "menusection"
+                              },
+                              "children": [
+                                {
+                                  "use": "Stack",
+                                  "props": {
+                                    "Gap": "0",
+                                    "Class": "border-b border-border pb-2"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "Title",
+                                      "props": {
+                                        "As": 3,
+                                        "Size": "xl",
+                                        "Weight": "bold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "s.title"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "s.note"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "List",
+                                  "props": {
+                                    "Tag": "ul",
+                                    "Class": "flex flex-col gap-4"
+                                  },
+                                  "children": [
+                                    {
+                                      "each": {
+                                        "$": "dishes"
+                                      },
+                                      "as": "d",
+                                      "key": {
+                                        "$": "d.id"
+                                      },
+                                      "do": [
+                                        {
+                                          "when": {
+                                            "op": "eq",
+                                            "args": [
+                                              {
+                                                "$": "d.tag"
+                                              },
+                                              {
+                                                "$": "s.key"
+                                              }
+                                            ]
+                                          },
+                                          "then": [
+                                            {
+                                              "use": "ListItem",
+                                              "props": {
+                                                "Class": "flex flex-col gap-0"
+                                              },
+                                              "attrs": {
+                                                "data-testid": "item"
+                                              },
+                                              "children": [
+                                                {
+                                                  "use": "Box",
+                                                  "props": {
+                                                    "Class": "flex items-baseline gap-2"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "use": "Inline",
+                                                      "props": {
+                                                        "Class": "font-semibold"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "text": {
+                                                            "$": "d.name"
+                                                          }
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "when": {
+                                                        "$": "d.badge"
+                                                      },
+                                                      "then": [
+                                                        {
+                                                          "use": "Badge",
+                                                          "props": {
+                                                            "Variant": "outline",
+                                                            "Size": "sm"
+                                                          },
+                                                          "children": [
+                                                            {
+                                                              "text": {
+                                                                "$": "d.badge"
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    },
+                                                    {
+                                                      "use": "Inline",
+                                                      "props": {
+                                                        "Class": "flex-1 border-b border-dotted border-border"
+                                                      },
+                                                      "attrs": {
+                                                        "aria-hidden": "true"
+                                                      }
+                                                    },
+                                                    {
+                                                      "use": "Inline",
+                                                      "props": {
+                                                        "Class": "font-semibold"
+                                                      },
+                                                      "children": [
+                                                        {
+                                                          "text": {
+                                                            "op": "money",
+                                                            "args": [
+                                                              {
+                                                                "$": "d.price"
+                                                              },
+                                                              {
+                                                                "$": "d.currency"
+                                                              }
+                                                            ]
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "use": "Text",
+                                                  "props": {
+                                                    "Size": "sm",
+                                                    "Class": "text-muted-foreground"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "op": "tpl",
+                                                        "args": [
+                                                          "{0} · {1}",
+                                                          {
+                                                            "$": "d.summary"
+                                                          },
+                                                          {
+                                                            "$": "d.weight"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "DishShowcase",
+      "names": [
+        "Dish",
+        "FoodLabels"
+      ]
+    }
+  ]
+}

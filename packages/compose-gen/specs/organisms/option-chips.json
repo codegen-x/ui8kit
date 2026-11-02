@@ -1,0 +1,292 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.option-chips",
+  "name": "OptionChips",
+  "docs": "One choice as a radio group drawn as chips: a fieldset with role radiogroup named by its legend, one radio per option (the first checked), the name and an optional price or note. Static markup.",
+  "records": {
+    "DishOption": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "price",
+        "type": "number"
+      },
+      {
+        "name": "currency",
+        "type": "string"
+      },
+      {
+        "name": "note",
+        "type": "string"
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true,
+      "docs": "name of the radio group; the legend id is `<name>-legend`"
+    },
+    {
+      "name": "legend",
+      "type": "string",
+      "required": true,
+      "docs": "the visible name of the group"
+    },
+    {
+      "name": "options",
+      "type": {
+        "ts": "DishOption[]"
+      },
+      "required": true
+    },
+    {
+      "name": "extra",
+      "type": {
+        "ts": "\"none\" | \"price\" | \"note\""
+      },
+      "default": "none",
+      "docs": "what follows the option name"
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"wrap\" | \"column\""
+      },
+      "default": "wrap"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Fieldset",
+      "props": {
+        "Class": "flex flex-col gap-2"
+      },
+      "attrs": {
+        "role": "radiogroup",
+        "aria-labelledby": {
+          "op": "tpl",
+          "args": [
+            "{0}-legend",
+            {
+              "$": "name"
+            }
+          ]
+        },
+        "data-testid": "option-group"
+      },
+      "children": [
+        {
+          "use": "Legend",
+          "props": {
+            "Size": "sm",
+            "Class": "mb-2"
+          },
+          "attrs": {
+            "id": {
+              "op": "tpl",
+              "args": [
+                "{0}-legend",
+                {
+                  "$": "name"
+                }
+              ]
+            }
+          },
+          "children": [
+            {
+              "text": {
+                "$": "legend"
+              }
+            }
+          ]
+        },
+        {
+          "use": "Box",
+          "props": {
+            "Class": {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "layout"
+                    },
+                    "column"
+                  ]
+                },
+                "flex flex-col gap-2",
+                "flex flex-wrap gap-2"
+              ]
+            }
+          },
+          "children": [
+            {
+              "each": {
+                "$": "options"
+              },
+              "as": "o",
+              "key": {
+                "$": "o.id"
+              },
+              "do": [
+                {
+                  "use": "Label",
+                  "props": {
+                    "Class": {
+                      "op": "cn",
+                      "args": [
+                        "flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground",
+                        {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "column"
+                              ]
+                            },
+                            "justify-between",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "attrs": {
+                    "data-testid": "option"
+                  },
+                  "children": [
+                    {
+                      "use": "Inline",
+                      "props": {
+                        "Class": "flex items-center gap-2"
+                      },
+                      "children": [
+                        {
+                          "use": "Radio",
+                          "props": {
+                            "Name": {
+                              "$": "name"
+                            },
+                            "Value": {
+                              "$": "o.id"
+                            },
+                            "Checked": {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "i"
+                                },
+                                0
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "use": "Inline",
+                          "children": [
+                            {
+                              "text": {
+                                "$": "o.name"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "extra"
+                          },
+                          "price"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "use": "Inline",
+                          "props": {
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "op": "money",
+                                "args": [
+                                  {
+                                    "$": "o.price"
+                                  },
+                                  {
+                                    "$": "o.currency"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "extra"
+                          },
+                          "note"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "use": "Inline",
+                          "props": {
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "o.note"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "index": "i"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

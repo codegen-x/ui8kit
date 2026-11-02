@@ -1,0 +1,418 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.dish-compare",
+  "name": "DishCompare",
+  "docs": "Grill cuts side by side: an accessible table (caption, column and row headers) of the cut, weight, cooking time, heat, marinade and price, or one compare card per cut with the same facts as a description list. Axes: layout (table, cards), tone.",
+  "records": {},
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "lead",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "dishes",
+      "type": {
+        "ts": "Dish[]"
+      },
+      "required": true
+    },
+    {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
+      "name": "labels",
+      "type": {
+        "ts": "FoodLabels"
+      },
+      "required": true
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"table\" | \"cards\""
+      },
+      "default": "table"
+    },
+    {
+      "name": "tone",
+      "type": {
+        "ts": "\"default\" | \"muted\""
+      },
+      "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "organism": "SectionFrame",
+      "props": {
+        "id": {
+          "$": "id"
+        },
+        "title": {
+          "$": "title"
+        },
+        "lead": {
+          "$": "lead"
+        },
+        "tone": {
+          "$": "tone"
+        },
+        "landmarkLabel": {
+          "$": "landmarkLabel"
+        }
+      },
+      "slots": {
+        "children": {
+          "args": [],
+          "do": [
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "dishes"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "scale",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "table"
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "Box",
+                      "props": {
+                        "Class": "w-full overflow-x-auto"
+                      },
+                      "attrs": {
+                        "data-testid": "compare-table"
+                      },
+                      "children": [
+                        {
+                          "use": "Table",
+                          "props": {
+                            "Class": "w-full text-sm"
+                          },
+                          "children": [
+                            {
+                              "use": "TableCaption",
+                              "props": {
+                                "Class": "sr-only"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "labels.caption"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "use": "TableHead",
+                              "children": [
+                                {
+                                  "use": "TableRow",
+                                  "children": [
+                                    {
+                                      "use": "TableHeadCell",
+                                      "props": {
+                                        "Scope": "col",
+                                        "Class": "py-2"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "labels.cut"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "TableHeadCell",
+                                      "props": {
+                                        "Scope": "col",
+                                        "Class": "py-2"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "labels.weight"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "TableHeadCell",
+                                      "props": {
+                                        "Scope": "col",
+                                        "Class": "py-2"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "labels.minutes"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "TableHeadCell",
+                                      "props": {
+                                        "Scope": "col",
+                                        "Class": "py-2"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "labels.heat"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "TableHeadCell",
+                                      "props": {
+                                        "Scope": "col",
+                                        "Class": "py-2"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "labels.marinade"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "TableHeadCell",
+                                      "props": {
+                                        "Scope": "col",
+                                        "Class": "py-2"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "labels.price"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "use": "TableBody",
+                              "children": [
+                                {
+                                  "each": {
+                                    "$": "dishes"
+                                  },
+                                  "as": "d",
+                                  "key": {
+                                    "$": "d.id"
+                                  },
+                                  "do": [
+                                    {
+                                      "use": "TableRow",
+                                      "attrs": {
+                                        "data-testid": "item"
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "TableHeadCell",
+                                          "props": {
+                                            "Scope": "row",
+                                            "Class": "py-2 font-semibold"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "d.name"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "TableCell",
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "d.weight"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "TableCell",
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "op": "tpl",
+                                                "args": [
+                                                  {
+                                                    "$": "labels.minutes"
+                                                  },
+                                                  {
+                                                    "op": "str",
+                                                    "args": [
+                                                      {
+                                                        "$": "d.minutes"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "TableCell",
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "d.tag"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "TableCell",
+                                          "children": [
+                                            {
+                                              "each": {
+                                                "$": "d.items"
+                                              },
+                                              "as": "x",
+                                              "key": {
+                                                "$": "x"
+                                              },
+                                              "do": [
+                                                {
+                                                  "text": {
+                                                    "$": "x"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "TableCell",
+                                          "props": {
+                                            "Class": "font-semibold"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "op": "money",
+                                                "args": [
+                                                  {
+                                                    "$": "d.price"
+                                                  },
+                                                  {
+                                                    "$": "d.currency"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": [
+                    {
+                      "organism": "CutCards",
+                      "props": {
+                        "dishes": {
+                          "$": "dishes"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "DishShowcase",
+      "names": [
+        "Dish",
+        "FoodLabels"
+      ]
+    }
+  ]
+}
