@@ -54,17 +54,32 @@
   import CartpagePage from "./BlocksScreen/CartpagePage.svelte";
   import CategoriesPage from "./BlocksScreen/CategoriesPage.svelte";
   import CheckoutPage from "./BlocksScreen/CheckoutPage.svelte";
+  import CombobuilderPage from "./BlocksScreen/CombobuilderPage.svelte";
   import DeliveryPage from "./BlocksScreen/DeliveryPage.svelte";
+  import DishbentoPage from "./BlocksScreen/DishbentoPage.svelte";
+  import DishcartPage from "./BlocksScreen/DishcartPage.svelte";
+  import DishcomparePage from "./BlocksScreen/DishcomparePage.svelte";
+  import DishshowcasePage from "./BlocksScreen/DishshowcasePage.svelte";
+  import DishstripPage from "./BlocksScreen/DishstripPage.svelte";
+  import GrillbuilderPage from "./BlocksScreen/GrillbuilderPage.svelte";
+  import GrocerylistPage from "./BlocksScreen/GrocerylistPage.svelte";
   import LocationsPage from "./BlocksScreen/LocationsPage.svelte";
   import OrdersPage from "./BlocksScreen/OrdersPage.svelte";
+  import PizzapickerPage from "./BlocksScreen/PizzapickerPage.svelte";
   import ProductPage from "./BlocksScreen/ProductPage.svelte";
   import ProductinfoPage from "./BlocksScreen/ProductinfoPage.svelte";
   import ProductsPage from "./BlocksScreen/ProductsPage.svelte";
+  import QuickorderPage from "./BlocksScreen/QuickorderPage.svelte";
+  import RecipekitsPage from "./BlocksScreen/RecipekitsPage.svelte";
+  import RestaurantmenuPage from "./BlocksScreen/RestaurantmenuPage.svelte";
   import ReviewsPage from "./BlocksScreen/ReviewsPage.svelte";
   import SlotsPage from "./BlocksScreen/SlotsPage.svelte";
   import StoreheroPage from "./BlocksScreen/StoreheroPage.svelte";
   import SummaryPage from "./BlocksScreen/SummaryPage.svelte";
+  import SushisetsPage from "./BlocksScreen/SushisetsPage.svelte";
   import UspPage from "./BlocksScreen/UspPage.svelte";
+  import VeggieboxPage from "./BlocksScreen/VeggieboxPage.svelte";
+  import WeekmenuPage from "./BlocksScreen/WeekmenuPage.svelte";
   import ZonesPage from "./BlocksScreen/ZonesPage.svelte";
   import AnnouncementPage from "./BlocksScreen/AnnouncementPage.svelte";
   import CookiePage from "./BlocksScreen/CookiePage.svelte";
@@ -155,17 +170,32 @@
     {"path":"cartpage","area":"cartpage"},
     {"path":"categories","area":"categories"},
     {"path":"checkout","area":"checkout"},
+    {"path":"combobuilder","area":"combobuilder"},
     {"path":"delivery","area":"delivery"},
+    {"path":"dishbento","area":"dishbento"},
+    {"path":"dishcart","area":"dishcart"},
+    {"path":"dishcompare","area":"dishcompare"},
+    {"path":"dishshowcase","area":"dishshowcase"},
+    {"path":"dishstrip","area":"dishstrip"},
+    {"path":"grillbuilder","area":"grillbuilder"},
+    {"path":"grocerylist","area":"grocerylist"},
     {"path":"locations","area":"locations"},
     {"path":"orders","area":"orders"},
+    {"path":"pizzapicker","area":"pizzapicker"},
     {"path":"product","area":"product"},
     {"path":"productinfo","area":"productinfo"},
     {"path":"products","area":"products"},
+    {"path":"quickorder","area":"quickorder"},
+    {"path":"recipekits","area":"recipekits"},
+    {"path":"restaurantmenu","area":"restaurantmenu"},
     {"path":"reviews","area":"reviews"},
     {"path":"slots","area":"slots"},
     {"path":"storehero","area":"storehero"},
     {"path":"summary","area":"summary"},
+    {"path":"sushisets","area":"sushisets"},
     {"path":"usp","area":"usp"},
+    {"path":"veggiebox","area":"veggiebox"},
+    {"path":"weekmenu","area":"weekmenu"},
     {"path":"zones","area":"zones"},
     {"path":"announcement","area":"announcement"},
     {"path":"cookie","area":"cookie"},
@@ -308,18 +338,42 @@
     <CategoriesPage />
   {:else if route.area === "checkout"}
     <CheckoutPage />
+  {:else if route.area === "combobuilder"}
+    <CombobuilderPage />
   {:else if route.area === "delivery"}
     <DeliveryPage />
+  {:else if route.area === "dishbento"}
+    <DishbentoPage />
+  {:else if route.area === "dishcart"}
+    <DishcartPage />
+  {:else if route.area === "dishcompare"}
+    <DishcomparePage />
+  {:else if route.area === "dishshowcase"}
+    <DishshowcasePage />
+  {:else if route.area === "dishstrip"}
+    <DishstripPage />
+  {:else if route.area === "grillbuilder"}
+    <GrillbuilderPage />
+  {:else if route.area === "grocerylist"}
+    <GrocerylistPage />
   {:else if route.area === "locations"}
     <LocationsPage />
   {:else if route.area === "orders"}
     <OrdersPage />
+  {:else if route.area === "pizzapicker"}
+    <PizzapickerPage />
   {:else if route.area === "product"}
     <ProductPage />
   {:else if route.area === "productinfo"}
     <ProductinfoPage />
   {:else if route.area === "products"}
     <ProductsPage />
+  {:else if route.area === "quickorder"}
+    <QuickorderPage />
+  {:else if route.area === "recipekits"}
+    <RecipekitsPage />
+  {:else if route.area === "restaurantmenu"}
+    <RestaurantmenuPage />
   {:else if route.area === "reviews"}
     <ReviewsPage />
   {:else if route.area === "slots"}
@@ -328,8 +382,14 @@
     <StoreheroPage />
   {:else if route.area === "summary"}
     <SummaryPage />
+  {:else if route.area === "sushisets"}
+    <SushisetsPage />
   {:else if route.area === "usp"}
     <UspPage />
+  {:else if route.area === "veggiebox"}
+    <VeggieboxPage />
+  {:else if route.area === "weekmenu"}
+    <WeekmenuPage />
   {:else if route.area === "zones"}
     <ZonesPage />
   {:else if route.area === "announcement"}

@@ -74,6 +74,28 @@ export const themeApps: ThemeApp[] = [
     ],
   },
   {
+    name: "food-delivery", title: "Food delivery", footer: "sitemap.columns",
+    docs: "A food delivery site: meals with a cart, quick order, pizza and sushi, recipe kits, produce and groceries, a restaurant menu and a week of meals.",
+    pages: [
+      { path: "", lead: "pagehead.center", head: ["Hot food, delivered", "Order lunch, dinner or the week ahead.", "See the pizza"], rest: ["dishshowcase.grid3", "dishcart.cards", "quickorder.phone", "dishstrip.small"] },
+      { path: "pizza", lead: "pagehead.start", head: ["Pizza and sushi", "Pick a size and a crust, or a set to share.", "See the kits"], rest: ["pizzapicker.cards", "sushisets.grid4", "dishstrip.large"] },
+      { path: "sets", lead: "pagehead.muted", head: ["Sets and combos", "Pizza in rows, sushi sets and a combo of your own.", "See the kits"], rest: ["pizzapicker.rows", "sushisets.grid3", "combobuilder.stacked", "dishcart.textOnly"] },
+      { path: "kits", lead: "pagehead.start", head: ["Cook at home", "Recipe kits, vegetables and groceries.", "See the menu"], rest: ["recipekits.rows", "veggiebox.split", "grocerylist.twoCols"] },
+      { path: "market", lead: "pagehead.muted", head: ["The market", "Produce by weight, kits to share and the basics.", "See the menu"], rest: ["recipekits.cards", "veggiebox.stacked", "grocerylist.plain"] },
+      { path: "menu", lead: "pagehead.center", head: ["The restaurant menu", "What the kitchen cooks this week.", "Back to the start"], rest: ["restaurantmenu.column", "weekmenu.week", "dishshowcase.grid4", "quickorder.rows"] },
+      { path: "week", lead: "pagehead.start", head: ["Meals for the week", "One fresh meal a day.", "Back to the start"], rest: ["weekmenu.compact", "restaurantmenu.twoCols", "dishshowcase.muted"] },
+    ],
+  },
+  {
+    name: "food-grill", title: "Grill delivery", footer: "sitemap.columns",
+    docs: "Grill (mangal) meal delivery in three landings: a full ordering page (hero, grill builder, combos, delivery), a browse-only showcase of meat dishes, and a compare of the cuts.",
+    pages: [
+      { path: "", lead: "hero.backdrop", head: ["Grill dishes, delivered hot", "Choose the meat, the weight and the sides; we cook it over the coals and bring it to you.", "Build your dish"], rest: ["grillbuilder.split", "combobuilder.split", "delivery.split", "faq.list"] },
+      { path: "dishes", lead: "pagehead.center", head: ["From the grill", "Every meat dish we cook, to browse at leisure.", "Compare the cuts"], rest: ["dishbento.start", "dishshowcase.grid4", "restaurantmenu.twoCols"] },
+      { path: "compare", lead: "pagehead.start", head: ["Compare the cuts", "Weight, cooking time, heat and price side by side.", "Back to ordering"], rest: ["dishcompare.table", "dishbento.end", "cta.band"] },
+    ],
+  },
+  {
     name: "promo-campaign", title: "Campaigns", footer: "footersplit.newsletterStart",
     docs: "Campaign pages: announcement bars in every position and tone, sign-up forms, calls to action with a pattern, and the cookie notice.",
     pages: [

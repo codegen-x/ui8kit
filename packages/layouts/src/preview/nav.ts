@@ -7,6 +7,8 @@ type NavModule = { navOf: (area: string) => ScreenNav };
 export const NAVS: Record<string, () => Promise<NavModule>> = {
   ThemeAccountPortalScreen: () => import("@ui8kit/app-shared/nav/ThemeAccountPortalScreen"),
   ThemeCommerceShopScreen: () => import("@ui8kit/app-shared/nav/ThemeCommerceShopScreen"),
+  ThemeFoodDeliveryScreen: () => import("@ui8kit/app-shared/nav/ThemeFoodDeliveryScreen"),
+  ThemeFoodGrillScreen: () => import("@ui8kit/app-shared/nav/ThemeFoodGrillScreen"),
   ThemeContentBlogScreen: () => import("@ui8kit/app-shared/nav/ThemeContentBlogScreen"),
   ThemeDashboardConsoleScreen: () => import("@ui8kit/app-shared/nav/ThemeDashboardConsoleScreen"),
   ThemeMarketingLandingScreen: () => import("@ui8kit/app-shared/nav/ThemeMarketingLandingScreen"),

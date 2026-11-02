@@ -1,0 +1,178 @@
+{
+  "$schema": "../../schema/schemas/composed.schema.json",
+  "specVersion": 1,
+  "id": "screen.theme-food-grill",
+  "name": "ThemeFoodGrillScreen",
+  "kind": "composed",
+  "docs": "Grill (mangal) meal delivery in three landings: a full ordering page (hero, grill builder, combos, delivery), a browse-only showcase of meat dishes, and a compare of the cuts.",
+  "routes": [
+    {
+      "path": "",
+      "area": "home"
+    },
+    {
+      "path": "dishes",
+      "area": "dishes"
+    },
+    {
+      "path": "compare",
+      "area": "compare"
+    }
+  ],
+  "frame": {
+    "before": [
+      {
+        "block": "navbar",
+        "variant": "inline",
+        "props": {
+          "brandHref": "#/",
+          "links": {
+            "$": "nav.links"
+          },
+          "current": {
+            "$": "nav.current"
+          },
+          "skip": {
+            "$": "ui.site.header.skip"
+          },
+          "actions": {
+            "themeLabel": {
+              "$": "ui.theme.toggle"
+            }
+          }
+        }
+      }
+    ],
+    "after": [
+      {
+        "block": "sitemap",
+        "variant": "columns"
+      }
+    ]
+  },
+  "areas": {
+    "home": [
+      {
+        "block": "hero",
+        "variant": "backdrop",
+        "props": {
+          "title": {
+            "$": "ui.pages.foodGrill.home.title"
+          },
+          "text": {
+            "$": "ui.pages.foodGrill.home.text"
+          },
+          "actions": {
+            "cta": {
+              "$": "ui.pages.foodGrill.home.cta"
+            },
+            "href": "#/dishes"
+          }
+        }
+      },
+      {
+        "block": "grillbuilder",
+        "variant": "split"
+      },
+      {
+        "block": "combobuilder",
+        "variant": "split"
+      },
+      {
+        "block": "delivery",
+        "variant": "split"
+      },
+      {
+        "block": "faq",
+        "variant": "list"
+      }
+    ],
+    "dishes": [
+      {
+        "block": "pagehead",
+        "variant": "center",
+        "props": {
+          "title": {
+            "$": "ui.pages.foodGrill.dishes.title"
+          },
+          "text": {
+            "$": "ui.pages.foodGrill.dishes.text"
+          },
+          "cta": {
+            "$": "ui.pages.foodGrill.dishes.cta"
+          },
+          "href": "#/compare"
+        }
+      },
+      {
+        "block": "dishbento",
+        "variant": "start"
+      },
+      {
+        "block": "dishshowcase",
+        "variant": "grid4"
+      },
+      {
+        "block": "restaurantmenu",
+        "variant": "twoCols"
+      }
+    ],
+    "compare": [
+      {
+        "block": "pagehead",
+        "variant": "start",
+        "props": {
+          "title": {
+            "$": "ui.pages.foodGrill.compare.title"
+          },
+          "text": {
+            "$": "ui.pages.foodGrill.compare.text"
+          },
+          "cta": {
+            "$": "ui.pages.foodGrill.compare.cta"
+          },
+          "href": "#/"
+        }
+      },
+      {
+        "block": "dishcompare",
+        "variant": "table"
+      },
+      {
+        "block": "dishbento",
+        "variant": "end"
+      },
+      {
+        "block": "cta",
+        "variant": "band"
+      }
+    ]
+  },
+  "chunks": true,
+  "requireH1": true,
+  "nameLandmarks": true,
+  "nav": true,
+  "menu": [
+    {
+      "id": "home",
+      "path": "",
+      "titleKey": "pages.foodGrill.home.nav"
+    },
+    {
+      "id": "dishes",
+      "path": "dishes",
+      "titleKey": "pages.foodGrill.dishes.nav"
+    },
+    {
+      "id": "compare",
+      "path": "compare",
+      "titleKey": "pages.foodGrill.compare.nav"
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true
+  }
+}

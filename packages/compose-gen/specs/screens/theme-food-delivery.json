@@ -1,0 +1,340 @@
+{
+  "$schema": "../../schema/schemas/composed.schema.json",
+  "specVersion": 1,
+  "id": "screen.theme-food-delivery",
+  "name": "ThemeFoodDeliveryScreen",
+  "kind": "composed",
+  "docs": "A food delivery site: meals with a cart, quick order, pizza and sushi, recipe kits, produce and groceries, a restaurant menu and a week of meals.",
+  "routes": [
+    {
+      "path": "",
+      "area": "home"
+    },
+    {
+      "path": "pizza",
+      "area": "pizza"
+    },
+    {
+      "path": "sets",
+      "area": "sets"
+    },
+    {
+      "path": "kits",
+      "area": "kits"
+    },
+    {
+      "path": "market",
+      "area": "market"
+    },
+    {
+      "path": "menu",
+      "area": "menu"
+    },
+    {
+      "path": "week",
+      "area": "week"
+    }
+  ],
+  "frame": {
+    "before": [
+      {
+        "block": "navbar",
+        "variant": "inline",
+        "props": {
+          "brandHref": "#/",
+          "links": {
+            "$": "nav.links"
+          },
+          "current": {
+            "$": "nav.current"
+          },
+          "skip": {
+            "$": "ui.site.header.skip"
+          },
+          "actions": {
+            "themeLabel": {
+              "$": "ui.theme.toggle"
+            }
+          }
+        }
+      }
+    ],
+    "after": [
+      {
+        "block": "sitemap",
+        "variant": "columns"
+      }
+    ]
+  },
+  "areas": {
+    "home": [
+      {
+        "block": "pagehead",
+        "variant": "center",
+        "props": {
+          "title": {
+            "$": "ui.pages.foodDelivery.home.title"
+          },
+          "text": {
+            "$": "ui.pages.foodDelivery.home.text"
+          },
+          "cta": {
+            "$": "ui.pages.foodDelivery.home.cta"
+          },
+          "href": "#/pizza"
+        }
+      },
+      {
+        "block": "dishshowcase",
+        "variant": "grid3"
+      },
+      {
+        "block": "dishcart",
+        "variant": "cards"
+      },
+      {
+        "block": "quickorder",
+        "variant": "phone"
+      },
+      {
+        "block": "dishstrip",
+        "variant": "small"
+      }
+    ],
+    "pizza": [
+      {
+        "block": "pagehead",
+        "variant": "start",
+        "props": {
+          "title": {
+            "$": "ui.pages.foodDelivery.pizza.title"
+          },
+          "text": {
+            "$": "ui.pages.foodDelivery.pizza.text"
+          },
+          "cta": {
+            "$": "ui.pages.foodDelivery.pizza.cta"
+          },
+          "href": "#/sets"
+        }
+      },
+      {
+        "block": "pizzapicker",
+        "variant": "cards"
+      },
+      {
+        "block": "sushisets",
+        "variant": "grid4"
+      },
+      {
+        "block": "dishstrip",
+        "variant": "large"
+      }
+    ],
+    "sets": [
+      {
+        "block": "pagehead",
+        "variant": "muted",
+        "props": {
+          "title": {
+            "$": "ui.pages.foodDelivery.sets.title"
+          },
+          "text": {
+            "$": "ui.pages.foodDelivery.sets.text"
+          },
+          "cta": {
+            "$": "ui.pages.foodDelivery.sets.cta"
+          },
+          "href": "#/kits"
+        }
+      },
+      {
+        "block": "pizzapicker",
+        "variant": "rows"
+      },
+      {
+        "block": "sushisets",
+        "variant": "grid3"
+      },
+      {
+        "block": "combobuilder",
+        "variant": "stacked"
+      },
+      {
+        "block": "dishcart",
+        "variant": "textOnly"
+      }
+    ],
+    "kits": [
+      {
+        "block": "pagehead",
+        "variant": "start",
+        "props": {
+          "title": {
+            "$": "ui.pages.foodDelivery.kits.title"
+          },
+          "text": {
+            "$": "ui.pages.foodDelivery.kits.text"
+          },
+          "cta": {
+            "$": "ui.pages.foodDelivery.kits.cta"
+          },
+          "href": "#/market"
+        }
+      },
+      {
+        "block": "recipekits",
+        "variant": "rows"
+      },
+      {
+        "block": "veggiebox",
+        "variant": "split"
+      },
+      {
+        "block": "grocerylist",
+        "variant": "twoCols"
+      }
+    ],
+    "market": [
+      {
+        "block": "pagehead",
+        "variant": "muted",
+        "props": {
+          "title": {
+            "$": "ui.pages.foodDelivery.market.title"
+          },
+          "text": {
+            "$": "ui.pages.foodDelivery.market.text"
+          },
+          "cta": {
+            "$": "ui.pages.foodDelivery.market.cta"
+          },
+          "href": "#/menu"
+        }
+      },
+      {
+        "block": "recipekits",
+        "variant": "cards"
+      },
+      {
+        "block": "veggiebox",
+        "variant": "stacked"
+      },
+      {
+        "block": "grocerylist",
+        "variant": "plain"
+      }
+    ],
+    "menu": [
+      {
+        "block": "pagehead",
+        "variant": "center",
+        "props": {
+          "title": {
+            "$": "ui.pages.foodDelivery.menu.title"
+          },
+          "text": {
+            "$": "ui.pages.foodDelivery.menu.text"
+          },
+          "cta": {
+            "$": "ui.pages.foodDelivery.menu.cta"
+          },
+          "href": "#/week"
+        }
+      },
+      {
+        "block": "restaurantmenu",
+        "variant": "column"
+      },
+      {
+        "block": "weekmenu",
+        "variant": "week"
+      },
+      {
+        "block": "dishshowcase",
+        "variant": "grid4"
+      },
+      {
+        "block": "quickorder",
+        "variant": "rows"
+      }
+    ],
+    "week": [
+      {
+        "block": "pagehead",
+        "variant": "start",
+        "props": {
+          "title": {
+            "$": "ui.pages.foodDelivery.week.title"
+          },
+          "text": {
+            "$": "ui.pages.foodDelivery.week.text"
+          },
+          "cta": {
+            "$": "ui.pages.foodDelivery.week.cta"
+          },
+          "href": "#/"
+        }
+      },
+      {
+        "block": "weekmenu",
+        "variant": "compact"
+      },
+      {
+        "block": "restaurantmenu",
+        "variant": "twoCols"
+      },
+      {
+        "block": "dishshowcase",
+        "variant": "muted"
+      }
+    ]
+  },
+  "chunks": true,
+  "requireH1": true,
+  "nameLandmarks": true,
+  "nav": true,
+  "menu": [
+    {
+      "id": "home",
+      "path": "",
+      "titleKey": "pages.foodDelivery.home.nav"
+    },
+    {
+      "id": "pizza",
+      "path": "pizza",
+      "titleKey": "pages.foodDelivery.pizza.nav"
+    },
+    {
+      "id": "sets",
+      "path": "sets",
+      "titleKey": "pages.foodDelivery.sets.nav"
+    },
+    {
+      "id": "kits",
+      "path": "kits",
+      "titleKey": "pages.foodDelivery.kits.nav"
+    },
+    {
+      "id": "market",
+      "path": "market",
+      "titleKey": "pages.foodDelivery.market.nav"
+    },
+    {
+      "id": "menu",
+      "path": "menu",
+      "titleKey": "pages.foodDelivery.menu.nav"
+    },
+    {
+      "id": "week",
+      "path": "week",
+      "titleKey": "pages.foodDelivery.week.nav"
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true
+  }
+}

@@ -54,6 +54,12 @@ import CommerceCartPage from "./CatalogScreen/CommerceCartPage.vue";
 import CommerceCheckoutPage from "./CatalogScreen/CommerceCheckoutPage.vue";
 import CommerceDeliveryPage from "./CatalogScreen/CommerceDeliveryPage.vue";
 import CommerceOrdersPage from "./CatalogScreen/CommerceOrdersPage.vue";
+import FoodShowcasePage from "./CatalogScreen/FoodShowcasePage.vue";
+import FoodCartPage from "./CatalogScreen/FoodCartPage.vue";
+import FoodPizzaSushiPage from "./CatalogScreen/FoodPizzaSushiPage.vue";
+import FoodBuildersPage from "./CatalogScreen/FoodBuildersPage.vue";
+import FoodKitsPage from "./CatalogScreen/FoodKitsPage.vue";
+import FoodMenuPage from "./CatalogScreen/FoodMenuPage.vue";
 import AppShellPage from "./CatalogScreen/AppShellPage.vue";
 import AppDashboardShellsPage from "./CatalogScreen/AppDashboardShellsPage.vue";
 import AppWidgetsPage from "./CatalogScreen/AppWidgetsPage.vue";
@@ -143,6 +149,12 @@ const ROUTES = [
   {"path":"commerce-checkout","area":"commerce-checkout"},
   {"path":"commerce-delivery","area":"commerce-delivery"},
   {"path":"commerce-orders","area":"commerce-orders"},
+  {"path":"food-showcase","area":"food-showcase"},
+  {"path":"food-cart","area":"food-cart"},
+  {"path":"food-pizza-sushi","area":"food-pizza-sushi"},
+  {"path":"food-builders","area":"food-builders"},
+  {"path":"food-kits","area":"food-kits"},
+  {"path":"food-menu","area":"food-menu"},
   {"path":"app-shell","area":"app-shell"},
   {"path":"app-dashboard-shells","area":"app-dashboard-shells"},
   {"path":"app-widgets","area":"app-widgets"},
@@ -234,6 +246,12 @@ const actions = { toggleTheme };
     <CommerceCheckoutPage v-else-if="route.area === 'commerce-checkout'" />
     <CommerceDeliveryPage v-else-if="route.area === 'commerce-delivery'" />
     <CommerceOrdersPage v-else-if="route.area === 'commerce-orders'" />
+    <FoodShowcasePage v-else-if="route.area === 'food-showcase'" />
+    <FoodCartPage v-else-if="route.area === 'food-cart'" />
+    <FoodPizzaSushiPage v-else-if="route.area === 'food-pizza-sushi'" />
+    <FoodBuildersPage v-else-if="route.area === 'food-builders'" />
+    <FoodKitsPage v-else-if="route.area === 'food-kits'" />
+    <FoodMenuPage v-else-if="route.area === 'food-menu'" />
     <AppShellPage v-else-if="route.area === 'app-shell'" />
     <AppDashboardShellsPage v-else-if="route.area === 'app-dashboard-shells'" />
     <AppWidgetsPage v-else-if="route.area === 'app-widgets'" />

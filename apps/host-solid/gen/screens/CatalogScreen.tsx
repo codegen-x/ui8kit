@@ -53,6 +53,12 @@ import { CommerceCartPage } from "./CatalogScreen/CommerceCartPage";
 import { CommerceCheckoutPage } from "./CatalogScreen/CommerceCheckoutPage";
 import { CommerceDeliveryPage } from "./CatalogScreen/CommerceDeliveryPage";
 import { CommerceOrdersPage } from "./CatalogScreen/CommerceOrdersPage";
+import { FoodShowcasePage } from "./CatalogScreen/FoodShowcasePage";
+import { FoodCartPage } from "./CatalogScreen/FoodCartPage";
+import { FoodPizzaSushiPage } from "./CatalogScreen/FoodPizzaSushiPage";
+import { FoodBuildersPage } from "./CatalogScreen/FoodBuildersPage";
+import { FoodKitsPage } from "./CatalogScreen/FoodKitsPage";
+import { FoodMenuPage } from "./CatalogScreen/FoodMenuPage";
 import { AppShellPage } from "./CatalogScreen/AppShellPage";
 import { AppDashboardShellsPage } from "./CatalogScreen/AppDashboardShellsPage";
 import { AppWidgetsPage } from "./CatalogScreen/AppWidgetsPage";
@@ -142,6 +148,12 @@ const ROUTES = [
   {"path":"commerce-checkout","area":"commerce-checkout"},
   {"path":"commerce-delivery","area":"commerce-delivery"},
   {"path":"commerce-orders","area":"commerce-orders"},
+  {"path":"food-showcase","area":"food-showcase"},
+  {"path":"food-cart","area":"food-cart"},
+  {"path":"food-pizza-sushi","area":"food-pizza-sushi"},
+  {"path":"food-builders","area":"food-builders"},
+  {"path":"food-kits","area":"food-kits"},
+  {"path":"food-menu","area":"food-menu"},
   {"path":"app-shell","area":"app-shell"},
   {"path":"app-dashboard-shells","area":"app-dashboard-shells"},
   {"path":"app-widgets","area":"app-widgets"},
@@ -282,6 +294,18 @@ export function CatalogScreen({ url }: { url: UrlPort }) {
           <CommerceDeliveryPage />
         ) : route.area === "commerce-orders" ? (
           <CommerceOrdersPage />
+        ) : route.area === "food-showcase" ? (
+          <FoodShowcasePage />
+        ) : route.area === "food-cart" ? (
+          <FoodCartPage />
+        ) : route.area === "food-pizza-sushi" ? (
+          <FoodPizzaSushiPage />
+        ) : route.area === "food-builders" ? (
+          <FoodBuildersPage />
+        ) : route.area === "food-kits" ? (
+          <FoodKitsPage />
+        ) : route.area === "food-menu" ? (
+          <FoodMenuPage />
         ) : route.area === "app-shell" ? (
           <AppShellPage />
         ) : route.area === "app-dashboard-shells" ? (

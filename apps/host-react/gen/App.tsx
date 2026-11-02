@@ -15,6 +15,8 @@ const LOADERS: Record<string, () => Promise<ScreenModule>> = {
   "theme-commerce-shop": () => import("./screens/ThemeCommerceShopScreen").then((m) => ({ default: m.ThemeCommerceShopScreen })),
   "theme-content-blog": () => import("./screens/ThemeContentBlogScreen").then((m) => ({ default: m.ThemeContentBlogScreen })),
   "theme-dashboard-console": () => import("./screens/ThemeDashboardConsoleScreen").then((m) => ({ default: m.ThemeDashboardConsoleScreen })),
+  "theme-food-delivery": () => import("./screens/ThemeFoodDeliveryScreen").then((m) => ({ default: m.ThemeFoodDeliveryScreen })),
+  "theme-food-grill": () => import("./screens/ThemeFoodGrillScreen").then((m) => ({ default: m.ThemeFoodGrillScreen })),
   "theme-marketing-landing": () => import("./screens/ThemeMarketingLandingScreen").then((m) => ({ default: m.ThemeMarketingLandingScreen })),
   "theme-marketing-pricing": () => import("./screens/ThemeMarketingPricingScreen").then((m) => ({ default: m.ThemeMarketingPricingScreen })),
   "theme-marketing-product": () => import("./screens/ThemeMarketingProductScreen").then((m) => ({ default: m.ThemeMarketingProductScreen })),

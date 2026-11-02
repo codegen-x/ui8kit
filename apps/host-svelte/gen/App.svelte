@@ -19,6 +19,8 @@
     "theme-commerce-shop": () => import("./screens/ThemeCommerceShopScreen.svelte"),
     "theme-content-blog": () => import("./screens/ThemeContentBlogScreen.svelte"),
     "theme-dashboard-console": () => import("./screens/ThemeDashboardConsoleScreen.svelte"),
+    "theme-food-delivery": () => import("./screens/ThemeFoodDeliveryScreen.svelte"),
+    "theme-food-grill": () => import("./screens/ThemeFoodGrillScreen.svelte"),
     "theme-marketing-landing": () => import("./screens/ThemeMarketingLandingScreen.svelte"),
     "theme-marketing-pricing": () => import("./screens/ThemeMarketingPricingScreen.svelte"),
     "theme-marketing-product": () => import("./screens/ThemeMarketingProductScreen.svelte"),

@@ -54,17 +54,32 @@ import { CartdrawerPage } from "./BlocksScreen/CartdrawerPage";
 import { CartpagePage } from "./BlocksScreen/CartpagePage";
 import { CategoriesPage } from "./BlocksScreen/CategoriesPage";
 import { CheckoutPage } from "./BlocksScreen/CheckoutPage";
+import { CombobuilderPage } from "./BlocksScreen/CombobuilderPage";
 import { DeliveryPage } from "./BlocksScreen/DeliveryPage";
+import { DishbentoPage } from "./BlocksScreen/DishbentoPage";
+import { DishcartPage } from "./BlocksScreen/DishcartPage";
+import { DishcomparePage } from "./BlocksScreen/DishcomparePage";
+import { DishshowcasePage } from "./BlocksScreen/DishshowcasePage";
+import { DishstripPage } from "./BlocksScreen/DishstripPage";
+import { GrillbuilderPage } from "./BlocksScreen/GrillbuilderPage";
+import { GrocerylistPage } from "./BlocksScreen/GrocerylistPage";
 import { LocationsPage } from "./BlocksScreen/LocationsPage";
 import { OrdersPage } from "./BlocksScreen/OrdersPage";
+import { PizzapickerPage } from "./BlocksScreen/PizzapickerPage";
 import { ProductPage } from "./BlocksScreen/ProductPage";
 import { ProductinfoPage } from "./BlocksScreen/ProductinfoPage";
 import { ProductsPage } from "./BlocksScreen/ProductsPage";
+import { QuickorderPage } from "./BlocksScreen/QuickorderPage";
+import { RecipekitsPage } from "./BlocksScreen/RecipekitsPage";
+import { RestaurantmenuPage } from "./BlocksScreen/RestaurantmenuPage";
 import { ReviewsPage } from "./BlocksScreen/ReviewsPage";
 import { SlotsPage } from "./BlocksScreen/SlotsPage";
 import { StoreheroPage } from "./BlocksScreen/StoreheroPage";
 import { SummaryPage } from "./BlocksScreen/SummaryPage";
+import { SushisetsPage } from "./BlocksScreen/SushisetsPage";
 import { UspPage } from "./BlocksScreen/UspPage";
+import { VeggieboxPage } from "./BlocksScreen/VeggieboxPage";
+import { WeekmenuPage } from "./BlocksScreen/WeekmenuPage";
 import { ZonesPage } from "./BlocksScreen/ZonesPage";
 import { AnnouncementPage } from "./BlocksScreen/AnnouncementPage";
 import { CookiePage } from "./BlocksScreen/CookiePage";
@@ -155,17 +170,32 @@ const ROUTES = [
   {"path":"cartpage","area":"cartpage"},
   {"path":"categories","area":"categories"},
   {"path":"checkout","area":"checkout"},
+  {"path":"combobuilder","area":"combobuilder"},
   {"path":"delivery","area":"delivery"},
+  {"path":"dishbento","area":"dishbento"},
+  {"path":"dishcart","area":"dishcart"},
+  {"path":"dishcompare","area":"dishcompare"},
+  {"path":"dishshowcase","area":"dishshowcase"},
+  {"path":"dishstrip","area":"dishstrip"},
+  {"path":"grillbuilder","area":"grillbuilder"},
+  {"path":"grocerylist","area":"grocerylist"},
   {"path":"locations","area":"locations"},
   {"path":"orders","area":"orders"},
+  {"path":"pizzapicker","area":"pizzapicker"},
   {"path":"product","area":"product"},
   {"path":"productinfo","area":"productinfo"},
   {"path":"products","area":"products"},
+  {"path":"quickorder","area":"quickorder"},
+  {"path":"recipekits","area":"recipekits"},
+  {"path":"restaurantmenu","area":"restaurantmenu"},
   {"path":"reviews","area":"reviews"},
   {"path":"slots","area":"slots"},
   {"path":"storehero","area":"storehero"},
   {"path":"summary","area":"summary"},
+  {"path":"sushisets","area":"sushisets"},
   {"path":"usp","area":"usp"},
+  {"path":"veggiebox","area":"veggiebox"},
+  {"path":"weekmenu","area":"weekmenu"},
   {"path":"zones","area":"zones"},
   {"path":"announcement","area":"announcement"},
   {"path":"cookie","area":"cookie"},
@@ -309,18 +339,42 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <CategoriesPage />
         ) : route.area === "checkout" ? (
           <CheckoutPage />
+        ) : route.area === "combobuilder" ? (
+          <CombobuilderPage />
         ) : route.area === "delivery" ? (
           <DeliveryPage />
+        ) : route.area === "dishbento" ? (
+          <DishbentoPage />
+        ) : route.area === "dishcart" ? (
+          <DishcartPage />
+        ) : route.area === "dishcompare" ? (
+          <DishcomparePage />
+        ) : route.area === "dishshowcase" ? (
+          <DishshowcasePage />
+        ) : route.area === "dishstrip" ? (
+          <DishstripPage />
+        ) : route.area === "grillbuilder" ? (
+          <GrillbuilderPage />
+        ) : route.area === "grocerylist" ? (
+          <GrocerylistPage />
         ) : route.area === "locations" ? (
           <LocationsPage />
         ) : route.area === "orders" ? (
           <OrdersPage />
+        ) : route.area === "pizzapicker" ? (
+          <PizzapickerPage />
         ) : route.area === "product" ? (
           <ProductPage />
         ) : route.area === "productinfo" ? (
           <ProductinfoPage />
         ) : route.area === "products" ? (
           <ProductsPage />
+        ) : route.area === "quickorder" ? (
+          <QuickorderPage />
+        ) : route.area === "recipekits" ? (
+          <RecipekitsPage />
+        ) : route.area === "restaurantmenu" ? (
+          <RestaurantmenuPage />
         ) : route.area === "reviews" ? (
           <ReviewsPage />
         ) : route.area === "slots" ? (
@@ -329,8 +383,14 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <StoreheroPage />
         ) : route.area === "summary" ? (
           <SummaryPage />
+        ) : route.area === "sushisets" ? (
+          <SushisetsPage />
         ) : route.area === "usp" ? (
           <UspPage />
+        ) : route.area === "veggiebox" ? (
+          <VeggieboxPage />
+        ) : route.area === "weekmenu" ? (
+          <WeekmenuPage />
         ) : route.area === "zones" ? (
           <ZonesPage />
         ) : route.area === "announcement" ? (

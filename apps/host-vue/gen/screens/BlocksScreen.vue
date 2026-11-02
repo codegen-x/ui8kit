@@ -55,17 +55,32 @@ import CartdrawerPage from "./BlocksScreen/CartdrawerPage.vue";
 import CartpagePage from "./BlocksScreen/CartpagePage.vue";
 import CategoriesPage from "./BlocksScreen/CategoriesPage.vue";
 import CheckoutPage from "./BlocksScreen/CheckoutPage.vue";
+import CombobuilderPage from "./BlocksScreen/CombobuilderPage.vue";
 import DeliveryPage from "./BlocksScreen/DeliveryPage.vue";
+import DishbentoPage from "./BlocksScreen/DishbentoPage.vue";
+import DishcartPage from "./BlocksScreen/DishcartPage.vue";
+import DishcomparePage from "./BlocksScreen/DishcomparePage.vue";
+import DishshowcasePage from "./BlocksScreen/DishshowcasePage.vue";
+import DishstripPage from "./BlocksScreen/DishstripPage.vue";
+import GrillbuilderPage from "./BlocksScreen/GrillbuilderPage.vue";
+import GrocerylistPage from "./BlocksScreen/GrocerylistPage.vue";
 import LocationsPage from "./BlocksScreen/LocationsPage.vue";
 import OrdersPage from "./BlocksScreen/OrdersPage.vue";
+import PizzapickerPage from "./BlocksScreen/PizzapickerPage.vue";
 import ProductPage from "./BlocksScreen/ProductPage.vue";
 import ProductinfoPage from "./BlocksScreen/ProductinfoPage.vue";
 import ProductsPage from "./BlocksScreen/ProductsPage.vue";
+import QuickorderPage from "./BlocksScreen/QuickorderPage.vue";
+import RecipekitsPage from "./BlocksScreen/RecipekitsPage.vue";
+import RestaurantmenuPage from "./BlocksScreen/RestaurantmenuPage.vue";
 import ReviewsPage from "./BlocksScreen/ReviewsPage.vue";
 import SlotsPage from "./BlocksScreen/SlotsPage.vue";
 import StoreheroPage from "./BlocksScreen/StoreheroPage.vue";
 import SummaryPage from "./BlocksScreen/SummaryPage.vue";
+import SushisetsPage from "./BlocksScreen/SushisetsPage.vue";
 import UspPage from "./BlocksScreen/UspPage.vue";
+import VeggieboxPage from "./BlocksScreen/VeggieboxPage.vue";
+import WeekmenuPage from "./BlocksScreen/WeekmenuPage.vue";
 import ZonesPage from "./BlocksScreen/ZonesPage.vue";
 import AnnouncementPage from "./BlocksScreen/AnnouncementPage.vue";
 import CookiePage from "./BlocksScreen/CookiePage.vue";
@@ -156,17 +171,32 @@ const ROUTES = [
   {"path":"cartpage","area":"cartpage"},
   {"path":"categories","area":"categories"},
   {"path":"checkout","area":"checkout"},
+  {"path":"combobuilder","area":"combobuilder"},
   {"path":"delivery","area":"delivery"},
+  {"path":"dishbento","area":"dishbento"},
+  {"path":"dishcart","area":"dishcart"},
+  {"path":"dishcompare","area":"dishcompare"},
+  {"path":"dishshowcase","area":"dishshowcase"},
+  {"path":"dishstrip","area":"dishstrip"},
+  {"path":"grillbuilder","area":"grillbuilder"},
+  {"path":"grocerylist","area":"grocerylist"},
   {"path":"locations","area":"locations"},
   {"path":"orders","area":"orders"},
+  {"path":"pizzapicker","area":"pizzapicker"},
   {"path":"product","area":"product"},
   {"path":"productinfo","area":"productinfo"},
   {"path":"products","area":"products"},
+  {"path":"quickorder","area":"quickorder"},
+  {"path":"recipekits","area":"recipekits"},
+  {"path":"restaurantmenu","area":"restaurantmenu"},
   {"path":"reviews","area":"reviews"},
   {"path":"slots","area":"slots"},
   {"path":"storehero","area":"storehero"},
   {"path":"summary","area":"summary"},
+  {"path":"sushisets","area":"sushisets"},
   {"path":"usp","area":"usp"},
+  {"path":"veggiebox","area":"veggiebox"},
+  {"path":"weekmenu","area":"weekmenu"},
   {"path":"zones","area":"zones"},
   {"path":"announcement","area":"announcement"},
   {"path":"cookie","area":"cookie"},
@@ -261,17 +291,32 @@ const actions = { toggleTheme };
     <CartpagePage v-else-if="route.area === 'cartpage'" />
     <CategoriesPage v-else-if="route.area === 'categories'" />
     <CheckoutPage v-else-if="route.area === 'checkout'" />
+    <CombobuilderPage v-else-if="route.area === 'combobuilder'" />
     <DeliveryPage v-else-if="route.area === 'delivery'" />
+    <DishbentoPage v-else-if="route.area === 'dishbento'" />
+    <DishcartPage v-else-if="route.area === 'dishcart'" />
+    <DishcomparePage v-else-if="route.area === 'dishcompare'" />
+    <DishshowcasePage v-else-if="route.area === 'dishshowcase'" />
+    <DishstripPage v-else-if="route.area === 'dishstrip'" />
+    <GrillbuilderPage v-else-if="route.area === 'grillbuilder'" />
+    <GrocerylistPage v-else-if="route.area === 'grocerylist'" />
     <LocationsPage v-else-if="route.area === 'locations'" />
     <OrdersPage v-else-if="route.area === 'orders'" />
+    <PizzapickerPage v-else-if="route.area === 'pizzapicker'" />
     <ProductPage v-else-if="route.area === 'product'" />
     <ProductinfoPage v-else-if="route.area === 'productinfo'" />
     <ProductsPage v-else-if="route.area === 'products'" />
+    <QuickorderPage v-else-if="route.area === 'quickorder'" />
+    <RecipekitsPage v-else-if="route.area === 'recipekits'" />
+    <RestaurantmenuPage v-else-if="route.area === 'restaurantmenu'" />
     <ReviewsPage v-else-if="route.area === 'reviews'" />
     <SlotsPage v-else-if="route.area === 'slots'" />
     <StoreheroPage v-else-if="route.area === 'storehero'" />
     <SummaryPage v-else-if="route.area === 'summary'" />
+    <SushisetsPage v-else-if="route.area === 'sushisets'" />
     <UspPage v-else-if="route.area === 'usp'" />
+    <VeggieboxPage v-else-if="route.area === 'veggiebox'" />
+    <WeekmenuPage v-else-if="route.area === 'weekmenu'" />
     <ZonesPage v-else-if="route.area === 'zones'" />
     <AnnouncementPage v-else-if="route.area === 'announcement'" />
     <CookiePage v-else-if="route.area === 'cookie'" />

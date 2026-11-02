@@ -53,6 +53,12 @@
   import CommerceCheckoutPage from "./CatalogScreen/CommerceCheckoutPage.svelte";
   import CommerceDeliveryPage from "./CatalogScreen/CommerceDeliveryPage.svelte";
   import CommerceOrdersPage from "./CatalogScreen/CommerceOrdersPage.svelte";
+  import FoodShowcasePage from "./CatalogScreen/FoodShowcasePage.svelte";
+  import FoodCartPage from "./CatalogScreen/FoodCartPage.svelte";
+  import FoodPizzaSushiPage from "./CatalogScreen/FoodPizzaSushiPage.svelte";
+  import FoodBuildersPage from "./CatalogScreen/FoodBuildersPage.svelte";
+  import FoodKitsPage from "./CatalogScreen/FoodKitsPage.svelte";
+  import FoodMenuPage from "./CatalogScreen/FoodMenuPage.svelte";
   import AppShellPage from "./CatalogScreen/AppShellPage.svelte";
   import AppDashboardShellsPage from "./CatalogScreen/AppDashboardShellsPage.svelte";
   import AppWidgetsPage from "./CatalogScreen/AppWidgetsPage.svelte";
@@ -142,6 +148,12 @@
     {"path":"commerce-checkout","area":"commerce-checkout"},
     {"path":"commerce-delivery","area":"commerce-delivery"},
     {"path":"commerce-orders","area":"commerce-orders"},
+    {"path":"food-showcase","area":"food-showcase"},
+    {"path":"food-cart","area":"food-cart"},
+    {"path":"food-pizza-sushi","area":"food-pizza-sushi"},
+    {"path":"food-builders","area":"food-builders"},
+    {"path":"food-kits","area":"food-kits"},
+    {"path":"food-menu","area":"food-menu"},
     {"path":"app-shell","area":"app-shell"},
     {"path":"app-dashboard-shells","area":"app-dashboard-shells"},
     {"path":"app-widgets","area":"app-widgets"},
@@ -281,6 +293,18 @@
     <CommerceDeliveryPage />
   {:else if route.area === "commerce-orders"}
     <CommerceOrdersPage />
+  {:else if route.area === "food-showcase"}
+    <FoodShowcasePage />
+  {:else if route.area === "food-cart"}
+    <FoodCartPage />
+  {:else if route.area === "food-pizza-sushi"}
+    <FoodPizzaSushiPage />
+  {:else if route.area === "food-builders"}
+    <FoodBuildersPage />
+  {:else if route.area === "food-kits"}
+    <FoodKitsPage />
+  {:else if route.area === "food-menu"}
+    <FoodMenuPage />
   {:else if route.area === "app-shell"}
     <AppShellPage />
   {:else if route.area === "app-dashboard-shells"}
