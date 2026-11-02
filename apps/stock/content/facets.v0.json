@@ -544,7 +544,8 @@
               "any": {
                 "group": [
                   "catalog",
-                  "gallery"
+                  "gallery",
+                  "food"
                 ],
                 "block": [
                   "photos",
@@ -2088,9 +2089,32 @@
               "restaurant",
               "cafe",
               "menu",
-              "barbecue"
+              "barbecue",
+              "grill",
+              "mangal",
+              "pizza",
+              "sushi",
+              "rolls",
+              "delivery",
+              "meal",
+              "recipe",
+              "grocery",
+              "vegetables"
             ]
-          }
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "food"
+                ],
+                "screen": [
+                  "theme-food-delivery",
+                  "theme-food-grill"
+                ]
+              }
+            }
+          ]
         },
         {
           "id": "saas",
