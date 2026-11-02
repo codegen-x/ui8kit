@@ -1,0 +1,336 @@
+{
+  "collection": "menudishes",
+  "kind": "dish",
+  "entries": [
+    {
+      "id": "dish-menudishes-bruschetta",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "menudishes-bruschetta",
+      "title": "Bruschetta",
+      "metadata": {
+        "summary": {
+          "value": "Toast, tomato, garlic and basil."
+        },
+        "price": {
+          "value": 790
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "180 g"
+        },
+        "tag": {
+          "value": "starters"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 10
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-menudishes-soup",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "menudishes-soup",
+      "title": "Soup of the day",
+      "metadata": {
+        "summary": {
+          "value": "Ask your server."
+        },
+        "price": {
+          "value": 650
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "300 ml"
+        },
+        "tag": {
+          "value": "starters"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 10
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-menudishes-carpaccio",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "menudishes-carpaccio",
+      "title": "Beef carpaccio",
+      "metadata": {
+        "summary": {
+          "value": "Thin beef, rocket and parmesan."
+        },
+        "price": {
+          "value": 1290
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "150 g"
+        },
+        "tag": {
+          "value": "starters"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 10
+        },
+        "badge": {
+          "value": "chef"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-menudishes-steak",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "menudishes-steak",
+      "title": "Ribeye steak",
+      "metadata": {
+        "summary": {
+          "value": "With pepper sauce and fries."
+        },
+        "price": {
+          "value": 2890
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "300 g"
+        },
+        "tag": {
+          "value": "mains"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 25
+        },
+        "badge": {
+          "value": "chef"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-menudishes-fish",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "menudishes-fish",
+      "title": "Baked sea bass",
+      "metadata": {
+        "summary": {
+          "value": "With lemon butter and greens."
+        },
+        "price": {
+          "value": 2190
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "350 g"
+        },
+        "tag": {
+          "value": "mains"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 25
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-menudishes-risotto",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "menudishes-risotto",
+      "title": "Mushroom risotto",
+      "metadata": {
+        "summary": {
+          "value": "Arborio rice, mushrooms, parmesan."
+        },
+        "price": {
+          "value": 1590
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "320 g"
+        },
+        "tag": {
+          "value": "mains"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 20
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-menudishes-tiramisu",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "menudishes-tiramisu",
+      "title": "Tiramisu",
+      "metadata": {
+        "summary": {
+          "value": "Coffee, mascarpone, cocoa."
+        },
+        "price": {
+          "value": 790
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "150 g"
+        },
+        "tag": {
+          "value": "desserts"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 5
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-menudishes-cheesecake",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "menudishes-cheesecake",
+      "title": "Cheesecake",
+      "metadata": {
+        "summary": {
+          "value": "With berry sauce."
+        },
+        "price": {
+          "value": 750
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "150 g"
+        },
+        "tag": {
+          "value": "desserts"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 5
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-menudishes-sorbet",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "menudishes-sorbet",
+      "title": "Lemon sorbet",
+      "metadata": {
+        "summary": {
+          "value": "Two scoops."
+        },
+        "price": {
+          "value": 550
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "120 g"
+        },
+        "tag": {
+          "value": "desserts"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 5
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    }
+  ]
+}

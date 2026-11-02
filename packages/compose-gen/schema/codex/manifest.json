@@ -507,6 +507,132 @@
     },
     {
       "record": {
+        "id": "dish",
+        "label": "Dish",
+        "scope": "workspace",
+        "description": "fixtures: cuts, groceries, kits, meals, menudishes, pizzas, rolls, specials, sushisets, veggies, weekmeals",
+        "fields": [
+          {
+            "id": "badge",
+            "label": "Badge",
+            "type": "string"
+          },
+          {
+            "id": "currency",
+            "label": "Currency",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "items",
+            "label": "Items",
+            "type": "collection",
+            "items": {
+              "id": "item",
+              "label": "Item",
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "id": "minutes",
+            "label": "Minutes",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ],
+            "required": true
+          },
+          {
+            "id": "price",
+            "label": "Price",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/money"
+              }
+            ],
+            "required": true
+          },
+          {
+            "id": "summary",
+            "label": "Summary",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "tag",
+            "label": "Tag",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "weight",
+            "label": "Weight",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "record": {
+        "id": "dishoption",
+        "label": "Dishoption",
+        "scope": "workspace",
+        "description": "fixtures: combodrinks, combomains, combosides, crusts, grillmeats, grillsides, grillweights, pizzasizes, portions",
+        "fields": [
+          {
+            "id": "currency",
+            "label": "Currency",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "note",
+            "label": "Note",
+            "type": "string"
+          },
+          {
+            "id": "price",
+            "label": "Price",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/money"
+              }
+            ],
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "record": {
+        "id": "dishsection",
+        "label": "Dishsection",
+        "scope": "workspace",
+        "description": "fixtures: menusections, weekdays",
+        "fields": [
+          {
+            "id": "key",
+            "label": "Key",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "note",
+            "label": "Note",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "record": {
         "id": "event",
         "label": "Event",
         "scope": "workspace",

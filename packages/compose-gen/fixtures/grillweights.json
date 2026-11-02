@@ -1,0 +1,78 @@
+{
+  "collection": "grillweights",
+  "kind": "dishoption",
+  "entries": [
+    {
+      "id": "dishoption-grillweights-w500",
+      "locale": "en",
+      "kind": "dishoption",
+      "status": "published",
+      "visibility": "public",
+      "slug": "grillweights-w500",
+      "title": "500 g",
+      "metadata": {
+        "price": {
+          "value": 0
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "note": {
+          "value": "1 to 2 people"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dishoption-grillweights-w1000",
+      "locale": "en",
+      "kind": "dishoption",
+      "status": "published",
+      "visibility": "public",
+      "slug": "grillweights-w1000",
+      "title": "1 kg",
+      "metadata": {
+        "price": {
+          "value": 0
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "note": {
+          "value": "3 to 4 people"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dishoption-grillweights-w2000",
+      "locale": "en",
+      "kind": "dishoption",
+      "status": "published",
+      "visibility": "public",
+      "slug": "grillweights-w2000",
+      "title": "2 kg",
+      "metadata": {
+        "price": {
+          "value": 0
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "note": {
+          "value": "6 to 8 people"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    }
+  ]
+}

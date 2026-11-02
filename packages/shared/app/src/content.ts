@@ -123,6 +123,21 @@ export const ui = {
       "cartpage": "Cart page",
       "cartdrawer": "Cart drawer",
       "checkout": "Checkout",
+      "dishshowcase": "Dish showcase",
+      "dishcart": "Dish cart grid",
+      "quickorder": "Quick order",
+      "sushisets": "Sushi sets",
+      "dishstrip": "Dish strip",
+      "dishbento": "Dish bento",
+      "grocerylist": "Grocery list",
+      "weekmenu": "Week of meals",
+      "restaurantmenu": "Restaurant menu",
+      "pizzapicker": "Pizza picker",
+      "combobuilder": "Combo builder",
+      "grillbuilder": "Grill dish builder",
+      "recipekits": "Recipe kits",
+      "veggiebox": "Vegetable box",
+      "dishcompare": "Cut compare",
       "announcement": "Announcement bar",
       "cookie": "Cookie notice",
       "newsletter": "Newsletter sign-up",
@@ -218,6 +233,21 @@ export const ui = {
       "cartpage": "The cart lines beside a summary with a promo code and a free-delivery bar.",
       "cartdrawer": "The cart drawer in its open state, filled or empty.",
       "checkout": "Contacts, address, a window and the payment beside a sticky order summary.",
+      "dishshowcase": "Dish cards that each open the dish page; no cart.",
+      "dishcart": "Cards with a quantity field and an add button, under a live cart count.",
+      "quickorder": "Compact rows with a one-click order button and a phone field.",
+      "sushisets": "A dense grid of sets with the piece count and the rolls of each.",
+      "dishstrip": "A horizontal strip of small cards that scrolls sideways.",
+      "dishbento": "One featured dish in a large tile among smaller ones.",
+      "grocerylist": "A compact list of groceries with a small picture and an add button.",
+      "weekmenu": "Meal delivery as a week: one column per day with its meal.",
+      "restaurantmenu": "Menu sections with dotted leaders to the price; no cart.",
+      "pizzapicker": "Pizza cards with a size and a crust radio group and an add button.",
+      "combobuilder": "Pick a main, a side and a drink beside the total.",
+      "grillbuilder": "Choose the meat, the weight and the sides of a grill (mangal) dish.",
+      "recipekits": "Kits with the ingredients list, the cooking time and the portions.",
+      "veggiebox": "Fill a box by weight: produce tiles beside the box with a meter.",
+      "dishcompare": "Grill cuts side by side: a table or compare cards.",
       "announcement": "A thin strip above the page with one sentence and a link.",
       "cookie": "A consent notice with accept and decline buttons.",
       "newsletter": "An email field and a button, inline, stacked or beside a picture.",
@@ -503,6 +533,67 @@ export const ui = {
         "cards": "Steps in cards",
         "numbered": "Numbered steps",
         "noSummary": "Without the summary, muted"
+      },
+      "dishshowcase": {
+        "grid3": "Three columns of link cards",
+        "grid4": "Four square cards",
+        "muted": "Three columns, muted"
+      },
+      "dishcart": {
+        "cards": "Cards with pictures",
+        "textOnly": "Without pictures, muted"
+      },
+      "quickorder": {
+        "phone": "Rows under a phone field",
+        "rows": "Rows only, muted"
+      },
+      "sushisets": {
+        "grid4": "Four columns",
+        "grid3": "Three columns, muted"
+      },
+      "dishstrip": {
+        "small": "Small square cards",
+        "large": "Large cards, muted"
+      },
+      "dishbento": {
+        "start": "Featured tile first",
+        "end": "Featured tile at the end, muted"
+      },
+      "grocerylist": {
+        "twoCols": "Two columns with pictures",
+        "plain": "One column, no pictures"
+      },
+      "weekmenu": {
+        "week": "Days with pictures",
+        "compact": "Days without pictures, muted"
+      },
+      "restaurantmenu": {
+        "column": "One column",
+        "twoCols": "Two columns, muted"
+      },
+      "pizzapicker": {
+        "cards": "Cards",
+        "rows": "Rows, muted"
+      },
+      "combobuilder": {
+        "split": "Steps beside the summary",
+        "stacked": "Summary below, muted"
+      },
+      "grillbuilder": {
+        "split": "Builder beside the summary",
+        "stacked": "Summary below, muted"
+      },
+      "recipekits": {
+        "rows": "Picture beside the kit",
+        "cards": "Three cards, muted"
+      },
+      "veggiebox": {
+        "split": "Tiles beside the box",
+        "stacked": "Box below, muted"
+      },
+      "dishcompare": {
+        "table": "Accessible table",
+        "cards": "Compare cards, muted"
       },
       "announcement": {
         "bar": "Primary strip",
@@ -1929,6 +2020,70 @@ export const ui = {
         "cta": "Back to the shop"
       }
     },
+    "foodDelivery": {
+      "home": {
+        "nav": "Home",
+        "title": "Hot food, delivered",
+        "text": "Order lunch, dinner or the week ahead.",
+        "cta": "See the pizza"
+      },
+      "pizza": {
+        "nav": "Pizza",
+        "title": "Pizza and sushi",
+        "text": "Pick a size and a crust, or a set to share.",
+        "cta": "See the kits"
+      },
+      "sets": {
+        "nav": "Sets",
+        "title": "Sets and combos",
+        "text": "Pizza in rows, sushi sets and a combo of your own.",
+        "cta": "See the kits"
+      },
+      "kits": {
+        "nav": "Kits",
+        "title": "Cook at home",
+        "text": "Recipe kits, vegetables and groceries.",
+        "cta": "See the menu"
+      },
+      "market": {
+        "nav": "Market",
+        "title": "The market",
+        "text": "Produce by weight, kits to share and the basics.",
+        "cta": "See the menu"
+      },
+      "menu": {
+        "nav": "Menu",
+        "title": "The restaurant menu",
+        "text": "What the kitchen cooks this week.",
+        "cta": "Back to the start"
+      },
+      "week": {
+        "nav": "Week",
+        "title": "Meals for the week",
+        "text": "One fresh meal a day.",
+        "cta": "Back to the start"
+      }
+    },
+    "foodGrill": {
+      "home": {
+        "nav": "Home",
+        "title": "Grill dishes, delivered hot",
+        "text": "Choose the meat, the weight and the sides; we cook it over the coals and bring it to you.",
+        "cta": "Build your dish"
+      },
+      "dishes": {
+        "nav": "Dishes",
+        "title": "From the grill",
+        "text": "Every meat dish we cook, to browse at leisure.",
+        "cta": "Compare the cuts"
+      },
+      "compare": {
+        "nav": "Compare",
+        "title": "Compare the cuts",
+        "text": "Weight, cooking time, heat and price side by side.",
+        "cta": "Back to ordering"
+      }
+    },
     "promoCampaign": {
       "home": {
         "nav": "Home",
@@ -2187,6 +2342,10 @@ export const ui = {
         "title": "Commerce",
         "text": "A whole store: storefront, categories, products, product page, cart, checkout and order history."
       },
+      "food": {
+        "title": "Food ordering",
+        "text": "Sites that sell meals, pizza, sushi, recipe kits, produce and grill dishes: showcases, cart grids, quick order, pickers, builders, menus and compare tables."
+      },
       "app": {
         "title": "App and dashboard",
         "text": "The inside of a product: shells and navigation, dashboard widgets, states, sign-in, settings and onboarding."
@@ -2240,6 +2399,12 @@ export const ui = {
       "commerceCheckout": "Checkout",
       "commerceDelivery": "Delivery and pickup",
       "commerceOrders": "Orders",
+      "foodShowcase": "Dish showcases",
+      "foodCart": "Add to cart and quick order",
+      "foodPizzaSushi": "Pizza and sushi",
+      "foodBuilders": "Combos and grill builders",
+      "foodKits": "Recipe kits and produce",
+      "foodMenu": "Menus and meal plans",
       "appShell": "Shells and navigation",
       "appDashboardShells": "Dashboard shells",
       "appWidgets": "Dashboard widgets",
@@ -2503,6 +2668,105 @@ export const ui = {
     "days": "No delivery windows yet",
     "posts": "No posts yet",
     "jobs": "No open jobs right now",
-    "templates": "No templates yet"
+    "templates": "No templates yet",
+    "dishes": "No dishes yet."
+  },
+  "food": {
+    "labels": {
+      "add": "Add",
+      "open": "Open the dish",
+      "order": "Order",
+      "qtyOf": "Quantity of {0}",
+      "decreaseOf": "Fewer {0}",
+      "increaseOf": "More {0}",
+      "addOf": "Add {0} to the cart",
+      "orderOf": "Order {0} in one click",
+      "inCart": "In the cart: {0}",
+      "total": "Total",
+      "minutes": "{0} min",
+      "ingredients": "In the box",
+      "portions": "Portions",
+      "size": "Size",
+      "crust": "Crust",
+      "perKg": "{0} per kg",
+      "weightOf": "Weight of {0}, kg",
+      "boxFill": "How full the box is",
+      "main": "Main",
+      "side": "Side",
+      "drink": "Drink",
+      "meat": "Meat",
+      "weight": "Weight",
+      "sides": "Sides and sauces",
+      "summary": "Your order",
+      "phone": "Phone for the one-click order",
+      "cut": "Cut",
+      "heat": "Heat",
+      "price": "Price",
+      "marinade": "Marinade",
+      "caption": "Grill cuts compared by weight, cooking time, heat, marinade and price",
+      "pieces": "Rolls in the {0}",
+      "strip": "Dishes, scroll sideways",
+      "sections": "Menu sections"
+    },
+    "showcase": {
+      "title": "Today's menu",
+      "lead": "Open a dish to see what is inside."
+    },
+    "cart": {
+      "title": "Order lunch",
+      "lead": "Pick a quantity and add it to the cart."
+    },
+    "quick": {
+      "title": "Quick order",
+      "lead": "Leave a phone number and order in one click."
+    },
+    "sushi": {
+      "title": "Sushi sets",
+      "lead": "Sets to share, made to order."
+    },
+    "strip": {
+      "title": "Rolls",
+      "lead": "Swipe for more rolls."
+    },
+    "bento": {
+      "title": "From the grill",
+      "lead": "The chef's pick and the dishes around it."
+    },
+    "grocery": {
+      "title": "Groceries",
+      "lead": "Everyday basics, delivered today."
+    },
+    "week": {
+      "title": "Meals for the week",
+      "lead": "One fresh meal a day, delivered the evening before."
+    },
+    "menu": {
+      "title": "Menu",
+      "lead": "Starters, mains and desserts."
+    },
+    "pizza": {
+      "title": "Pizza",
+      "lead": "Choose a size and a crust."
+    },
+    "combo": {
+      "title": "Build a combo",
+      "lead": "A main, a side and a drink for one price."
+    },
+    "grill": {
+      "title": "Build your grill dish",
+      "lead": "Choose the meat, the weight and the sides; we cook it over the coals."
+    },
+    "kits": {
+      "title": "Recipe kits",
+      "lead": "Measured ingredients and a recipe card, delivered home."
+    },
+    "veggie": {
+      "title": "Vegetable box",
+      "lead": "Fill the box by weight."
+    },
+    "compare": {
+      "title": "Compare the cuts",
+      "lead": "Weight, cooking time, heat and price side by side."
+    }
   }
 } as const;

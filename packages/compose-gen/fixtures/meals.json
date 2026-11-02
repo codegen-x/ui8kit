@@ -1,0 +1,252 @@
+{
+  "collection": "meals",
+  "kind": "dish",
+  "entries": [
+    {
+      "id": "dish-meals-bowl",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "meals-bowl",
+      "title": "Chicken rice bowl",
+      "metadata": {
+        "summary": {
+          "value": "Grilled chicken, rice, greens and a sesame dressing."
+        },
+        "price": {
+          "value": 1150
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "420 g"
+        },
+        "tag": {
+          "value": "bowls"
+        },
+        "items": {
+          "value": [
+            "Chicken",
+            "Rice",
+            "Greens"
+          ]
+        },
+        "minutes": {
+          "value": 15
+        },
+        "badge": {
+          "value": "new"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-meals-soup",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "meals-soup",
+      "title": "Tomato soup",
+      "metadata": {
+        "summary": {
+          "value": "Slow-cooked tomato soup with basil oil and toast."
+        },
+        "price": {
+          "value": 690
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "350 ml"
+        },
+        "tag": {
+          "value": "soups"
+        },
+        "items": {
+          "value": [
+            "Tomato",
+            "Basil",
+            "Toast"
+          ]
+        },
+        "minutes": {
+          "value": 10
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-meals-pasta",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "meals-pasta",
+      "title": "Creamy mushroom pasta",
+      "metadata": {
+        "summary": {
+          "value": "Fresh pasta with mushrooms, cream and parmesan."
+        },
+        "price": {
+          "value": 1290
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "380 g"
+        },
+        "tag": {
+          "value": "pasta"
+        },
+        "items": {
+          "value": [
+            "Pasta",
+            "Mushrooms",
+            "Parmesan"
+          ]
+        },
+        "minutes": {
+          "value": 20
+        },
+        "badge": {
+          "value": "popular"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-meals-salad",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "meals-salad",
+      "title": "Garden salad",
+      "metadata": {
+        "summary": {
+          "value": "Leaves, cucumber, radish and a lemon dressing."
+        },
+        "price": {
+          "value": 850
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "260 g"
+        },
+        "tag": {
+          "value": "salads"
+        },
+        "items": {
+          "value": [
+            "Leaves",
+            "Cucumber",
+            "Radish"
+          ]
+        },
+        "minutes": {
+          "value": 10
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-meals-curry",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "meals-curry",
+      "title": "Vegetable curry",
+      "metadata": {
+        "summary": {
+          "value": "Mild coconut curry with seasonal vegetables and rice."
+        },
+        "price": {
+          "value": 1190
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "450 g"
+        },
+        "tag": {
+          "value": "bowls"
+        },
+        "items": {
+          "value": [
+            "Coconut",
+            "Vegetables",
+            "Rice"
+          ]
+        },
+        "minutes": {
+          "value": 25
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-meals-wrap",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "meals-wrap",
+      "title": "Falafel wrap",
+      "metadata": {
+        "summary": {
+          "value": "Falafel, hummus, pickles and herbs in a warm flatbread."
+        },
+        "price": {
+          "value": 890
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "300 g"
+        },
+        "tag": {
+          "value": "wraps"
+        },
+        "items": {
+          "value": [
+            "Falafel",
+            "Hummus",
+            "Pickles"
+          ]
+        },
+        "minutes": {
+          "value": 10
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    }
+  ]
+}

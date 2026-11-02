@@ -186,6 +186,10 @@ export const KIT_FIELDS = {
   department: { id: "id", name: "title" },
   milestone: { id: "id", date: m("date"), title: "title", text: m("text"), tag: m("tag") },
   skill: { id: "id", label: "title", level: m("level") },
+  // food: a dish (meals, pizzas, sets, kits, produce, menu, cuts), an option of a builder or picker (size, crust, meat, side) and a section of a menu or a week
+  dish: { id: "id", name: "title", summary: m("summary"), price: m("price"), currency: m("currency"), weight: m("weight"), tag: m("tag"), items: m("items"), minutes: m("minutes"), badge: m("badge"), href: "slug|route" },
+  dishOption: { id: "id", name: "title", price: m("price"), currency: m("currency"), note: m("note") },
+  dishSection: { id: "id", key: m("key"), title: "title", note: m("note") },
   question: { id: "id", question: "title", answer: m("answer"), category: "terms|term:faq_category", icon: m("icon"), href: "slug|route" },
   // the copy decks of the taste screens (packages/compose-gen/fixtures/deck*.json -> packages/taste-data/content/copy.json): kind `deck` and
   // its parts, which name their deck (`deck`) and their place in it (`position`); figures and prices are poster copy, text

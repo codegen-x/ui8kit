@@ -1,0 +1,186 @@
+{
+  "collection": "weekmeals",
+  "kind": "dish",
+  "entries": [
+    {
+      "id": "dish-weekmeals-mon",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "weekmeals-mon",
+      "title": "Chicken with rice",
+      "metadata": {
+        "summary": {
+          "value": "Herb chicken, rice and peas."
+        },
+        "price": {
+          "value": 990
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "420 g"
+        },
+        "tag": {
+          "value": "mon"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 5
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-weekmeals-tue",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "weekmeals-tue",
+      "title": "Beef stew",
+      "metadata": {
+        "summary": {
+          "value": "Beef, carrot and potato stew."
+        },
+        "price": {
+          "value": 1190
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "450 g"
+        },
+        "tag": {
+          "value": "tue"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 5
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-weekmeals-wed",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "weekmeals-wed",
+      "title": "Vegetable lasagna",
+      "metadata": {
+        "summary": {
+          "value": "Layers of pasta and vegetables."
+        },
+        "price": {
+          "value": 1090
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "400 g"
+        },
+        "tag": {
+          "value": "wed"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 5
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-weekmeals-thu",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "weekmeals-thu",
+      "title": "Salmon and greens",
+      "metadata": {
+        "summary": {
+          "value": "Baked salmon with greens."
+        },
+        "price": {
+          "value": 1390
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "380 g"
+        },
+        "tag": {
+          "value": "thu"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 5
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "dish-weekmeals-fri",
+      "locale": "en",
+      "kind": "dish",
+      "status": "published",
+      "visibility": "public",
+      "slug": "weekmeals-fri",
+      "title": "Turkey meatballs",
+      "metadata": {
+        "summary": {
+          "value": "Meatballs, tomato sauce, pasta."
+        },
+        "price": {
+          "value": 1090
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "weight": {
+          "value": "420 g"
+        },
+        "tag": {
+          "value": "fri"
+        },
+        "items": {
+          "value": []
+        },
+        "minutes": {
+          "value": 5
+        }
+      },
+      "version": 1,
+      "created_at": "2026-10-01T09:00:00Z",
+      "updated_at": "2026-10-02T09:00:00Z",
+      "published_at": "2026-10-02T10:00:00Z"
+    }
+  ]
+}

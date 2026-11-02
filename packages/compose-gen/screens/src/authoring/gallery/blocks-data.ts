@@ -83,3 +83,30 @@ export const crumbs = src("crumbs", "crumbs", "page", "NavLink", CODEX_FIELDS.pa
 /** the page of the current route (scope current: one entry, not the list): its body is trusted markup (`content|html`) */
 export const entry: Source = { ...src("entry", "pages", "page", "RichEntry", CODEX_FIELDS.entry), scope: "current" };
 export const questions = src("questions", "questions", "question", "Question", CODEX_FIELDS.question);
+
+// food: dishes (kind dish), the options of the pickers and builders (kind dishoption), the sections of a menu or a week (kind dishsection)
+const dish = (as: string) => src(as, as, "dish", "Dish", CODEX_FIELDS.dish);
+const option = (as: string) => src(as, as, "dishoption", "DishOption", CODEX_FIELDS.dishOption);
+const section = (as: string) => src(as, as, "dishsection", "DishSection", CODEX_FIELDS.dishSection);
+export const meals = dish("meals");
+export const pizzas = dish("pizzas");
+export const sushisets = dish("sushisets");
+export const rolls = dish("rolls");
+export const kits = dish("kits");
+export const veggies = dish("veggies");
+export const groceries = dish("groceries");
+export const menudishes = dish("menudishes");
+export const weekmeals = dish("weekmeals");
+export const specials = dish("specials");
+export const cuts = dish("cuts");
+export const pizzasizes = option("pizzasizes");
+export const crusts = option("crusts");
+export const combomains = option("combomains");
+export const combosides = option("combosides");
+export const combodrinks = option("combodrinks");
+export const grillmeats = option("grillmeats");
+export const grillweights = option("grillweights");
+export const grillsides = option("grillsides");
+export const portions = option("portions");
+export const menusections = section("menusections");
+export const weekdays = section("weekdays");

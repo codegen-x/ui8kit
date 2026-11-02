@@ -15,6 +15,8 @@ export const SCREENS: readonly ScreenEntry[] = [
   { key: "theme-commerce-shop", id: "screen.theme-commerce-shop", name: "ThemeCommerceShopScreen", skin: "default" },
   { key: "theme-content-blog", id: "screen.theme-content-blog", name: "ThemeContentBlogScreen", skin: "default" },
   { key: "theme-dashboard-console", id: "screen.theme-dashboard-console", name: "ThemeDashboardConsoleScreen", skin: "default" },
+  { key: "theme-food-delivery", id: "screen.theme-food-delivery", name: "ThemeFoodDeliveryScreen", skin: "default" },
+  { key: "theme-food-grill", id: "screen.theme-food-grill", name: "ThemeFoodGrillScreen", skin: "default" },
   { key: "theme-marketing-landing", id: "screen.theme-marketing-landing", name: "ThemeMarketingLandingScreen", skin: "default" },
   { key: "theme-marketing-pricing", id: "screen.theme-marketing-pricing", name: "ThemeMarketingPricingScreen", skin: "default" },
   { key: "theme-marketing-product", id: "screen.theme-marketing-product", name: "ThemeMarketingProductScreen", skin: "default" },
