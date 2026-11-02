@@ -1,0 +1,93 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.veggiebox",
+  "name": "Vegetable box",
+  "docs": "Fill a box by weight: produce tiles beside the box with a meter.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "VeggieBox",
+  "axes": {
+    "layout": [
+      "split",
+      "stacked"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "layout": "split",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "split",
+      "set": {}
+    },
+    {
+      "id": "stacked",
+      "set": {
+        "layout": "stacked",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "EmptyState",
+    "MediaFrame",
+    "NumberField",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@veggies"
+    }
+  ],
+  "data": [
+    {
+      "as": "veggies",
+      "collection": "veggies",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "veggie",
+      "title": {
+        "$": "ui.food.veggie.title"
+      },
+      "lead": {
+        "$": "ui.food.veggie.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "veggies"
+      },
+      "fill": 60,
+      "total": 2150,
+      "currency": "USD"
+    }
+  }
+}

@@ -75,6 +75,14 @@ const SECTIONS = [
     cat("commerce-delivery", "Delivery and pickup", ...all("delivery", "zones", "slots", "locations")),
     cat("commerce-orders", "Orders", ...all("orders")),
   ] },
+  { id: "food", title: "Food ordering", text: "Sites that sell meals, pizza, sushi, recipe kits, produce and grill dishes: showcases, cart grids, quick order, pickers, builders, menus and compare tables.", categories: [
+    cat("food-showcase", "Dish showcases", ...all("dishshowcase", "dishbento", "dishstrip")),
+    cat("food-cart", "Add to cart and quick order", ...all("dishcart", "quickorder", "grocerylist")),
+    cat("food-pizza-sushi", "Pizza and sushi", ...all("pizzapicker", "sushisets")),
+    cat("food-builders", "Combos and grill builders", ...all("combobuilder", "grillbuilder", "dishcompare")),
+    cat("food-kits", "Recipe kits and produce", ...all("recipekits", "veggiebox")),
+    cat("food-menu", "Menus and meal plans", ...all("restaurantmenu", "weekmenu")),
+  ] },
   { id: "app", title: "App and dashboard", text: "The inside of a product: shells and navigation, dashboard widgets, states, sign-in, settings and onboarding.", categories: [
     cat("app-shell", "Shells and navigation", ...all("shell", "sidenav", "bottomnav")),
     cat("app-dashboard-shells", "Dashboard shells", ...all("dashshell")),

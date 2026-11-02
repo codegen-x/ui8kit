@@ -1,0 +1,119 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.grillbuilder",
+  "name": "Grill dish builder",
+  "docs": "Choose the meat, the weight and the sides of a grill (mangal) dish.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "GrillBuilder",
+  "axes": {
+    "layout": [
+      "split",
+      "stacked"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "layout": "split",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "split",
+      "set": {}
+    },
+    {
+      "id": "stacked",
+      "set": {
+        "layout": "stacked",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "MeatCards",
+    "OptionChips",
+    "SectionFrame",
+    "SideChecks"
+  ],
+  "facts": [
+    {
+      "sel": "[role=\"radiogroup\"]",
+      "n": 2
+    },
+    {
+      "sel": "input[type=\"checkbox\"]",
+      "n": "@grillsides"
+    }
+  ],
+  "data": [
+    {
+      "as": "grillmeats",
+      "collection": "grillmeats",
+      "kind": "dishoption",
+      "record": "DishOption",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "note": "metadata.note.value"
+      }
+    },
+    {
+      "as": "grillweights",
+      "collection": "grillweights",
+      "kind": "dishoption",
+      "record": "DishOption",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "note": "metadata.note.value"
+      }
+    },
+    {
+      "as": "grillsides",
+      "collection": "grillsides",
+      "kind": "dishoption",
+      "record": "DishOption",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "note": "metadata.note.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "grillbuilder",
+      "title": {
+        "$": "ui.food.grill.title"
+      },
+      "lead": {
+        "$": "ui.food.grill.lead"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "meats": {
+        "$": "grillmeats"
+      },
+      "weights": {
+        "$": "grillweights"
+      },
+      "sides": {
+        "$": "grillsides"
+      },
+      "total": 1890,
+      "currency": "USD"
+    }
+  }
+}

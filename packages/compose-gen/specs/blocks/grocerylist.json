@@ -1,0 +1,95 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.grocerylist",
+  "name": "Grocery list",
+  "docs": "A compact list of groceries with a small picture and an add button.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "GroceryList",
+  "axes": {
+    "thumbs": [
+      "show",
+      "hide"
+    ],
+    "cols": [
+      "1",
+      "2"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "thumbs": "show",
+    "cols": "2",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "twoCols",
+      "set": {}
+    },
+    {
+      "id": "plain",
+      "set": {
+        "thumbs": "hide",
+        "cols": "1"
+      }
+    }
+  ],
+  "slots": [
+    "AddIcon",
+    "EmptyState",
+    "MediaFrame",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@groceries"
+    }
+  ],
+  "data": [
+    {
+      "as": "groceries",
+      "collection": "groceries",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "grocery",
+      "title": {
+        "$": "ui.food.grocery.title"
+      },
+      "lead": {
+        "$": "ui.food.grocery.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "groceries"
+      }
+    }
+  }
+}

@@ -1213,6 +1213,101 @@
       "emptyMode": "omit"
     },
     {
+      "id": "ComboBuilder",
+      "surface": "kit-block",
+      "spec": "block.combobuilder",
+      "source": "packages/compose-gen/specs/blocks/combobuilder.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "mains",
+          "collection": "combomains",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "sides",
+          "collection": "combosides",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "drinks",
+          "collection": "combodrinks",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "total",
+        "currency",
+        "layout",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.combo.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.combo.lead",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true,
+      "emptyMode": "omit"
+    },
+    {
       "id": "ComparisonTable",
       "surface": "kit-block",
       "spec": "block.compare",
@@ -1814,6 +1909,413 @@
       ],
       "emptyState": true,
       "emptyMode": "omit"
+    },
+    {
+      "id": "DishBento",
+      "surface": "kit-block",
+      "spec": "block.dishbento",
+      "source": "packages/compose-gen/specs/blocks/dishbento.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "specials",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "feature",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.bento.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.bento.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
+    },
+    {
+      "id": "DishCartGrid",
+      "surface": "kit-block",
+      "spec": "block.dishcart",
+      "source": "packages/compose-gen/specs/blocks/dishcart.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "meals",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "count",
+        "media",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.cart.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.cart.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
+    },
+    {
+      "id": "DishCompare",
+      "surface": "kit-block",
+      "spec": "block.dishcompare",
+      "source": "packages/compose-gen/specs/blocks/dishcompare.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "cuts",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.compare.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.compare.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
+    },
+    {
+      "id": "DishShowcase",
+      "surface": "kit-block",
+      "spec": "block.dishshowcase",
+      "source": "packages/compose-gen/specs/blocks/dishshowcase.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "meals",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "cols",
+        "ratio",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.showcase.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.showcase.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
+    },
+    {
+      "id": "DishStrip",
+      "surface": "kit-block",
+      "spec": "block.dishstrip",
+      "source": "packages/compose-gen/specs/blocks/dishstrip.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "rolls",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "size",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.strip.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.strip.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
     },
     {
       "id": "EmptyPanel",
@@ -2492,6 +2994,183 @@
       ],
       "emptyState": true,
       "emptyMode": "omit"
+    },
+    {
+      "id": "GrillBuilder",
+      "surface": "kit-block",
+      "spec": "block.grillbuilder",
+      "source": "packages/compose-gen/specs/blocks/grillbuilder.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "meats",
+          "collection": "grillmeats",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "weights",
+          "collection": "grillweights",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "sides",
+          "collection": "grillsides",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "total",
+        "currency",
+        "layout",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.grill.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.grill.lead",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true,
+      "emptyMode": "omit"
+    },
+    {
+      "id": "GroceryList",
+      "surface": "kit-block",
+      "spec": "block.grocerylist",
+      "source": "packages/compose-gen/specs/blocks/grocerylist.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "groceries",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "thumbs",
+        "cols",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.grocery.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.grocery.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
     },
     {
       "id": "SiteHeader",
@@ -3871,6 +4550,103 @@
       "emptyState": true
     },
     {
+      "id": "PizzaPicker",
+      "surface": "kit-block",
+      "spec": "block.pizzapicker",
+      "source": "packages/compose-gen/specs/blocks/pizzapicker.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "pizzas",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "sizes",
+          "collection": "pizzasizes",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "crusts",
+          "collection": "crusts",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.pizza.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.pizza.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
+    },
+    {
       "id": "PricingCard",
       "surface": "kit-block",
       "spec": "block.plan",
@@ -4727,6 +5503,87 @@
       "emptyState": true
     },
     {
+      "id": "QuickOrder",
+      "surface": "kit-block",
+      "spec": "block.quickorder",
+      "source": "packages/compose-gen/specs/blocks/quickorder.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "meals",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "phone",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.quick.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.quick.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
+    },
+    {
       "id": "QuoteSplit",
       "surface": "kit-block",
       "spec": "block.quotesplit",
@@ -4846,6 +5703,184 @@
           "prop": "actions.secondary",
           "dictionary": "marketing.quoteSplit.secondary",
           "keys": []
+        }
+      ],
+      "emptyState": true
+    },
+    {
+      "id": "RecipeKits",
+      "surface": "kit-block",
+      "spec": "block.recipekits",
+      "source": "packages/compose-gen/specs/blocks/recipekits.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "kits",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "portions",
+          "collection": "portions",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.kits.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.kits.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
+    },
+    {
+      "id": "RestaurantMenu",
+      "surface": "kit-block",
+      "spec": "block.restaurantmenu",
+      "source": "packages/compose-gen/specs/blocks/restaurantmenu.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "menudishes",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "sections",
+          "collection": "menusections",
+          "kind": "dishsection",
+          "record": "DishSection",
+          "map": "dishSection",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "cols",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.menu.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.menu.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
         }
       ],
       "emptyState": true
@@ -5720,6 +6755,87 @@
       "emptyState": true
     },
     {
+      "id": "SushiSets",
+      "surface": "kit-block",
+      "spec": "block.sushisets",
+      "source": "packages/compose-gen/specs/blocks/sushisets.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "sushisets",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "cols",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.sushi.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.sushi.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
+    },
+    {
       "id": "TeamGrid",
       "surface": "kit-block",
       "spec": "block.team",
@@ -6118,6 +7234,90 @@
       "emptyState": true
     },
     {
+      "id": "VeggieBox",
+      "surface": "kit-block",
+      "spec": "block.veggiebox",
+      "source": "packages/compose-gen/specs/blocks/veggiebox.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "veggies",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "fill",
+        "total",
+        "currency",
+        "layout",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.veggie.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.veggie.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
+    },
+    {
       "id": "VideoModal",
       "surface": "kit-block",
       "spec": "block.videomodal",
@@ -6232,6 +7432,95 @@
           "prop": "byLine",
           "dictionary": "testimonials.byLine",
           "keys": []
+        }
+      ],
+      "emptyState": true
+    },
+    {
+      "id": "WeekMenu",
+      "surface": "kit-block",
+      "spec": "block.weekmenu",
+      "source": "packages/compose-gen/specs/blocks/weekmenu.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "weekmeals",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "sections",
+          "collection": "weekdays",
+          "kind": "dishsection",
+          "record": "DishSection",
+          "map": "dishSection",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "media",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "food.week.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "food.week.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
         }
       ],
       "emptyState": true
@@ -6531,6 +7820,30 @@
           "list": true
         },
         {
+          "prop": "ComboBuilder.mains",
+          "collection": "combomains",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "ComboBuilder.sides",
+          "collection": "combosides",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "ComboBuilder.drinks",
+          "collection": "combodrinks",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
           "prop": "ComparisonTable.rows",
           "collection": "compare",
           "kind": "row",
@@ -6603,6 +7916,38 @@
           "list": true
         },
         {
+          "prop": "DishBento.dishes",
+          "collection": "specials",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "DishCartGrid.dishes",
+          "collection": "meals",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "DishCompare.dishes",
+          "collection": "cuts",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "DishStrip.dishes",
+          "collection": "rolls",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
           "prop": "FaqList.items",
           "collection": "faq",
           "kind": "faq",
@@ -6648,6 +7993,38 @@
           "kind": "channel",
           "record": "Feature",
           "map": "channel",
+          "list": true
+        },
+        {
+          "prop": "GrillBuilder.meats",
+          "collection": "grillmeats",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "GrillBuilder.weights",
+          "collection": "grillweights",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "GrillBuilder.sides",
+          "collection": "grillsides",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "GroceryList.dishes",
+          "collection": "groceries",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
           "list": true
         },
         {
@@ -6795,6 +8172,30 @@
           "list": true
         },
         {
+          "prop": "PizzaPicker.dishes",
+          "collection": "pizzas",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "PizzaPicker.sizes",
+          "collection": "pizzasizes",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "PizzaPicker.crusts",
+          "collection": "crusts",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
           "prop": "PostGrid.filter.topics",
           "collection": "topics",
           "kind": "topic",
@@ -6859,6 +8260,38 @@
           "list": true
         },
         {
+          "prop": "RecipeKits.dishes",
+          "collection": "kits",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "RecipeKits.portions",
+          "collection": "portions",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "RestaurantMenu.dishes",
+          "collection": "menudishes",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "RestaurantMenu.sections",
+          "collection": "menusections",
+          "kind": "dishsection",
+          "record": "DishSection",
+          "map": "dishSection",
+          "list": true
+        },
+        {
           "prop": "RichText.entry",
           "collection": "pages",
           "kind": "page",
@@ -6892,6 +8325,14 @@
           "list": true
         },
         {
+          "prop": "SushiSets.dishes",
+          "collection": "sushisets",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
           "prop": "TeamGrid.members",
           "collection": "members",
           "kind": "member",
@@ -6916,11 +8357,35 @@
           "list": true
         },
         {
+          "prop": "VeggieBox.dishes",
+          "collection": "veggies",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
           "prop": "VideoModal.chapters",
           "collection": "chapters",
           "kind": "chapter",
           "record": "Chapter",
           "map": "chapter",
+          "list": true
+        },
+        {
+          "prop": "WeekMenu.dishes",
+          "collection": "weekmeals",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "WeekMenu.sections",
+          "collection": "weekdays",
+          "kind": "dishsection",
+          "record": "DishSection",
+          "map": "dishSection",
           "list": true
         },
         {
@@ -7019,6 +8484,7 @@
         "block.chart",
         "block.checklist",
         "block.checkout",
+        "block.combobuilder",
         "block.compare",
         "block.contact",
         "block.cookie",
@@ -7027,6 +8493,11 @@
         "block.ctaproof",
         "block.dashshell",
         "block.delivery",
+        "block.dishbento",
+        "block.dishcart",
+        "block.dishcompare",
+        "block.dishshowcase",
+        "block.dishstrip",
         "block.empty",
         "block.errorpage",
         "block.faq",
@@ -7037,6 +8508,8 @@
         "block.featuretabs",
         "block.footer",
         "block.footersplit",
+        "block.grillbuilder",
+        "block.grocerylist",
         "block.header",
         "block.hero",
         "block.herosplit",
@@ -7055,6 +8528,7 @@
         "block.pagehead",
         "block.pagetrail",
         "block.photos",
+        "block.pizzapicker",
         "block.plan",
         "block.postheader",
         "block.posts",
@@ -7067,7 +8541,10 @@
         "block.profile",
         "block.projects",
         "block.proof",
+        "block.quickorder",
         "block.quotesplit",
+        "block.recipekits",
+        "block.restaurantmenu",
         "block.reviews",
         "block.richtext",
         "block.shell",
@@ -7082,6 +8559,7 @@
         "block.storehero",
         "block.storytabs",
         "block.summary",
+        "block.sushisets",
         "block.team",
         "block.templates",
         "block.testimonials",
@@ -7089,8 +8567,10 @@
         "block.tour",
         "block.usage",
         "block.usp",
+        "block.veggiebox",
         "block.videomodal",
         "block.videos",
+        "block.weekmenu",
         "block.wizard",
         "block.zones"
       ]
@@ -8454,6 +9934,602 @@
         "block.sidenav",
         "block.sitemap",
         "block.skeleton"
+      ]
+    },
+    {
+      "id": "screen.theme-food-delivery",
+      "surface": "compose-gen-screen",
+      "source": "packages/compose-gen/specs/screens/theme-food-delivery.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "ComboBuilder.mains",
+          "collection": "combomains",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "ComboBuilder.sides",
+          "collection": "combosides",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "ComboBuilder.drinks",
+          "collection": "combodrinks",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "DishCartGrid.dishes",
+          "collection": "meals",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "DishStrip.dishes",
+          "collection": "rolls",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "GroceryList.dishes",
+          "collection": "groceries",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "NavBar.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "PizzaPicker.dishes",
+          "collection": "pizzas",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "PizzaPicker.sizes",
+          "collection": "pizzasizes",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "PizzaPicker.crusts",
+          "collection": "crusts",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "RecipeKits.dishes",
+          "collection": "kits",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "RecipeKits.portions",
+          "collection": "portions",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "RestaurantMenu.dishes",
+          "collection": "menudishes",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "RestaurantMenu.sections",
+          "collection": "menusections",
+          "kind": "dishsection",
+          "record": "DishSection",
+          "map": "dishSection",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "SushiSets.dishes",
+          "collection": "sushisets",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "VeggieBox.dishes",
+          "collection": "veggies",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "WeekMenu.dishes",
+          "collection": "weekmeals",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "WeekMenu.sections",
+          "collection": "weekdays",
+          "kind": "dishsection",
+          "record": "DishSection",
+          "map": "dishSection",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.foodDelivery.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.foodDelivery.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.foodDelivery.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.foodDelivery.pizza.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.foodDelivery.pizza.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.foodDelivery.pizza.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.foodDelivery.sets.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.foodDelivery.sets.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.foodDelivery.sets.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.foodDelivery.kits.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.foodDelivery.kits.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.foodDelivery.kits.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.foodDelivery.market.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.foodDelivery.market.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.foodDelivery.market.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.foodDelivery.menu.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.foodDelivery.menu.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.foodDelivery.menu.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.foodDelivery.week.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.foodDelivery.week.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.foodDelivery.week.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.foodDelivery.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.foodDelivery.pizza.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.foodDelivery.sets.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.foodDelivery.kits.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.foodDelivery.market.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.foodDelivery.menu.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.foodDelivery.week.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
+      "uses": [
+        "block.combobuilder",
+        "block.dishcart",
+        "block.dishshowcase",
+        "block.dishstrip",
+        "block.grocerylist",
+        "block.navbar",
+        "block.pagehead",
+        "block.pizzapicker",
+        "block.quickorder",
+        "block.recipekits",
+        "block.restaurantmenu",
+        "block.sitemap",
+        "block.sushisets",
+        "block.veggiebox",
+        "block.weekmenu"
+      ]
+    },
+    {
+      "id": "screen.theme-food-grill",
+      "surface": "compose-gen-screen",
+      "source": "packages/compose-gen/specs/screens/theme-food-grill.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "ComboBuilder.mains",
+          "collection": "combomains",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "ComboBuilder.sides",
+          "collection": "combosides",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "ComboBuilder.drinks",
+          "collection": "combodrinks",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "DeliveryInfo.facts",
+          "collection": "deliveryfacts",
+          "kind": "fact",
+          "record": "Feature",
+          "map": "fact",
+          "list": true
+        },
+        {
+          "prop": "DeliveryInfo.zones",
+          "collection": "zones",
+          "kind": "zone",
+          "record": "Zone",
+          "map": "zone",
+          "list": true
+        },
+        {
+          "prop": "DishBento.dishes",
+          "collection": "specials",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "DishCompare.dishes",
+          "collection": "cuts",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "DishShowcase.dishes",
+          "collection": "meals",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "FaqList.items",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "Faq",
+          "map": "faq",
+          "list": true
+        },
+        {
+          "prop": "FaqList.filter.tabs",
+          "collection": "faqtabs",
+          "kind": "tab",
+          "record": "FaqTab",
+          "map": "faqtab",
+          "list": true
+        },
+        {
+          "prop": "GrillBuilder.meats",
+          "collection": "grillmeats",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "GrillBuilder.weights",
+          "collection": "grillweights",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "GrillBuilder.sides",
+          "collection": "grillsides",
+          "kind": "dishoption",
+          "record": "DishOption",
+          "map": "dishOption",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.media.lines",
+          "collection": "terminal",
+          "kind": "line",
+          "record": "CodeLine",
+          "map": "line",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.topics",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Topic",
+          "map": "prompt",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.nav.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "RestaurantMenu.dishes",
+          "collection": "menudishes",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "RestaurantMenu.sections",
+          "collection": "menusections",
+          "kind": "dishsection",
+          "record": "DishSection",
+          "map": "dishSection",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.foodGrill.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.foodGrill.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.foodGrill.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.foodGrill.dishes.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.foodGrill.dishes.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.foodGrill.dishes.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.foodGrill.compare.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.foodGrill.compare.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.foodGrill.compare.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.foodGrill.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.foodGrill.dishes.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.foodGrill.compare.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
+      "uses": [
+        "block.combobuilder",
+        "block.cta",
+        "block.delivery",
+        "block.dishbento",
+        "block.dishcompare",
+        "block.dishshowcase",
+        "block.faq",
+        "block.grillbuilder",
+        "block.hero",
+        "block.navbar",
+        "block.pagehead",
+        "block.restaurantmenu",
+        "block.sitemap"
       ]
     },
     {

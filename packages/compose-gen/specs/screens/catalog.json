@@ -508,6 +508,86 @@
         ]
       },
       {
+        "id": "food",
+        "categories": [
+          {
+            "id": "food-showcase",
+            "entries": [
+              {
+                "block": "dishshowcase"
+              },
+              {
+                "block": "dishbento"
+              },
+              {
+                "block": "dishstrip"
+              }
+            ]
+          },
+          {
+            "id": "food-cart",
+            "entries": [
+              {
+                "block": "dishcart"
+              },
+              {
+                "block": "quickorder"
+              },
+              {
+                "block": "grocerylist"
+              }
+            ]
+          },
+          {
+            "id": "food-pizza-sushi",
+            "entries": [
+              {
+                "block": "pizzapicker"
+              },
+              {
+                "block": "sushisets"
+              }
+            ]
+          },
+          {
+            "id": "food-builders",
+            "entries": [
+              {
+                "block": "combobuilder"
+              },
+              {
+                "block": "grillbuilder"
+              },
+              {
+                "block": "dishcompare"
+              }
+            ]
+          },
+          {
+            "id": "food-kits",
+            "entries": [
+              {
+                "block": "recipekits"
+              },
+              {
+                "block": "veggiebox"
+              }
+            ]
+          },
+          {
+            "id": "food-menu",
+            "entries": [
+              {
+                "block": "restaurantmenu"
+              },
+              {
+                "block": "weekmenu"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "app",
         "categories": [
           {

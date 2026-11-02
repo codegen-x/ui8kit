@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.dishstrip",
+  "name": "Dish strip",
+  "docs": "A horizontal strip of small cards that scrolls sideways.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "DishStrip",
+  "axes": {
+    "size": [
+      "sm",
+      "lg"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "size": "sm",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "small",
+      "set": {}
+    },
+    {
+      "id": "large",
+      "set": {
+        "size": "lg",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "AddIcon",
+    "EmptyState",
+    "MediaFrame",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@rolls"
+    }
+  ],
+  "data": [
+    {
+      "as": "rolls",
+      "collection": "rolls",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "strip",
+      "title": {
+        "$": "ui.food.strip.title"
+      },
+      "lead": {
+        "$": "ui.food.strip.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "rolls"
+      }
+    }
+  }
+}

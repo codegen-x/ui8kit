@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.dishbento",
+  "name": "Dish bento",
+  "docs": "One featured dish in a large tile among smaller ones.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "DishBento",
+  "axes": {
+    "feature": [
+      "start",
+      "end"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "feature": "start",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "start",
+      "set": {}
+    },
+    {
+      "id": "end",
+      "set": {
+        "feature": "end",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "AddIcon",
+    "EmptyState",
+    "MediaFrame",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"feature\"]",
+      "n": 1
+    }
+  ],
+  "data": [
+    {
+      "as": "specials",
+      "collection": "specials",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "bento",
+      "title": {
+        "$": "ui.food.bento.title"
+      },
+      "lead": {
+        "$": "ui.food.bento.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "specials"
+      }
+    }
+  }
+}

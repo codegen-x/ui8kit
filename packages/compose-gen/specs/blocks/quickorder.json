@@ -1,0 +1,89 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.quickorder",
+  "name": "Quick order",
+  "docs": "Compact rows with a one-click order button and a phone field.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "QuickOrder",
+  "axes": {
+    "phone": [
+      "show",
+      "hide"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "phone": "show",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "phone",
+      "set": {}
+    },
+    {
+      "id": "rows",
+      "set": {
+        "phone": "hide",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "EmptyState",
+    "Field",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@meals"
+    }
+  ],
+  "data": [
+    {
+      "as": "meals",
+      "collection": "meals",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "quick",
+      "title": {
+        "$": "ui.food.quick.title"
+      },
+      "lead": {
+        "$": "ui.food.quick.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "meals"
+      }
+    }
+  }
+}

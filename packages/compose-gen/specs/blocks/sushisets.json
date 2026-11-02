@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.sushisets",
+  "name": "Sushi sets",
+  "docs": "A dense grid of sets with the piece count and the rolls of each.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "SushiSets",
+  "axes": {
+    "cols": [
+      "3",
+      "4"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "cols": "4",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "grid4",
+      "set": {}
+    },
+    {
+      "id": "grid3",
+      "set": {
+        "cols": "3",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "AddIcon",
+    "EmptyState",
+    "MediaFrame",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@sushisets"
+    }
+  ],
+  "data": [
+    {
+      "as": "sushisets",
+      "collection": "sushisets",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "sushi",
+      "title": {
+        "$": "ui.food.sushi.title"
+      },
+      "lead": {
+        "$": "ui.food.sushi.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "sushisets"
+      }
+    }
+  }
+}

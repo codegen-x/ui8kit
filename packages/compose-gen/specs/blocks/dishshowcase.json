@@ -1,0 +1,100 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.dishshowcase",
+  "name": "Dish showcase",
+  "docs": "Dish cards that each open the dish page; no cart.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "DishShowcase",
+  "axes": {
+    "cols": [
+      "3",
+      "4"
+    ],
+    "ratio": [
+      "4/3",
+      "1/1"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "cols": "3",
+    "ratio": "4/3",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "grid3",
+      "set": {}
+    },
+    {
+      "id": "grid4",
+      "set": {
+        "cols": "4",
+        "ratio": "1/1"
+      }
+    },
+    {
+      "id": "muted",
+      "set": {
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "EmptyState",
+    "MediaFrame",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@meals"
+    }
+  ],
+  "data": [
+    {
+      "as": "meals",
+      "collection": "meals",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "showcase",
+      "title": {
+        "$": "ui.food.showcase.title"
+      },
+      "lead": {
+        "$": "ui.food.showcase.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "meals"
+      }
+    }
+  }
+}

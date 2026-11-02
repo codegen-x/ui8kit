@@ -1,0 +1,103 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.dishcompare",
+  "name": "Cut compare",
+  "docs": "Grill cuts side by side: a table or compare cards.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "DishCompare",
+  "axes": {
+    "layout": [
+      "table",
+      "cards"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "layout": "table",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "table",
+      "set": {}
+    },
+    {
+      "id": "cards",
+      "set": {
+        "layout": "cards",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "CutCards",
+    "EmptyState",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@cuts"
+    },
+    {
+      "sel": "[data-testid=\"compare-table\"]",
+      "n": 1,
+      "when": {
+        "layout": "table"
+      }
+    },
+    {
+      "sel": "[data-testid=\"compare-table\"]",
+      "n": 0,
+      "when": {
+        "layout": "cards"
+      }
+    }
+  ],
+  "data": [
+    {
+      "as": "cuts",
+      "collection": "cuts",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "compare",
+      "title": {
+        "$": "ui.food.compare.title"
+      },
+      "lead": {
+        "$": "ui.food.compare.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "cuts"
+      }
+    }
+  }
+}

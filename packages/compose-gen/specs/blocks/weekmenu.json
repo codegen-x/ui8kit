@@ -1,0 +1,108 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.weekmenu",
+  "name": "Week of meals",
+  "docs": "Meal delivery as a week: one column per day with its meal.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "WeekMenu",
+  "axes": {
+    "media": [
+      "image",
+      "none"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "media": "image",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "week",
+      "set": {}
+    },
+    {
+      "id": "compact",
+      "set": {
+        "media": "none",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "EmptyState",
+    "MediaFrame",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"day\"]",
+      "n": "@weekdays"
+    },
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@weekmeals"
+    }
+  ],
+  "data": [
+    {
+      "as": "weekmeals",
+      "collection": "weekmeals",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    },
+    {
+      "as": "weekdays",
+      "collection": "weekdays",
+      "kind": "dishsection",
+      "record": "DishSection",
+      "fields": {
+        "id": "id",
+        "key": "metadata.key.value",
+        "title": "title",
+        "note": "metadata.note.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "week",
+      "title": {
+        "$": "ui.food.week.title"
+      },
+      "lead": {
+        "$": "ui.food.week.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "weekmeals"
+      },
+      "sections": {
+        "$": "weekdays"
+      }
+    }
+  }
+}

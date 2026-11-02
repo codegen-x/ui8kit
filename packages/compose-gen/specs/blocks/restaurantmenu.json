@@ -1,0 +1,108 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.restaurantmenu",
+  "name": "Restaurant menu",
+  "docs": "Menu sections with dotted leaders to the price; no cart.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "RestaurantMenu",
+  "axes": {
+    "cols": [
+      "1",
+      "2"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "cols": "1",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "column",
+      "set": {}
+    },
+    {
+      "id": "twoCols",
+      "set": {
+        "cols": "2",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "EmptyState",
+    "MenuSectionNav",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"menusection\"]",
+      "n": "@menusections"
+    },
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@menudishes"
+    }
+  ],
+  "data": [
+    {
+      "as": "menudishes",
+      "collection": "menudishes",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    },
+    {
+      "as": "menusections",
+      "collection": "menusections",
+      "kind": "dishsection",
+      "record": "DishSection",
+      "fields": {
+        "id": "id",
+        "key": "metadata.key.value",
+        "title": "title",
+        "note": "metadata.note.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "menu",
+      "title": {
+        "$": "ui.food.menu.title"
+      },
+      "lead": {
+        "$": "ui.food.menu.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "menudishes"
+      },
+      "sections": {
+        "$": "menusections"
+      }
+    }
+  }
+}

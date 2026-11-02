@@ -1,0 +1,110 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.recipekits",
+  "name": "Recipe kits",
+  "docs": "Kits with the ingredients list, the cooking time and the portions.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "RecipeKits",
+  "axes": {
+    "layout": [
+      "rows",
+      "cards"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "layout": "rows",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "rows",
+      "set": {}
+    },
+    {
+      "id": "cards",
+      "set": {
+        "layout": "cards",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "EmptyState",
+    "MediaFrame",
+    "OptionChips",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@kits"
+    },
+    {
+      "sel": "[data-testid=\"ingredients\"]",
+      "n": "@kits"
+    }
+  ],
+  "data": [
+    {
+      "as": "kits",
+      "collection": "kits",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    },
+    {
+      "as": "portions",
+      "collection": "portions",
+      "kind": "dishoption",
+      "record": "DishOption",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "note": "metadata.note.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "kits",
+      "title": {
+        "$": "ui.food.kits.title"
+      },
+      "lead": {
+        "$": "ui.food.kits.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "kits"
+      },
+      "portions": {
+        "$": "portions"
+      }
+    }
+  }
+}

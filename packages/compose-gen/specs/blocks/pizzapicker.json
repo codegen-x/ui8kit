@@ -1,0 +1,126 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.pizzapicker",
+  "name": "Pizza picker",
+  "docs": "Pizza cards with a size and a crust radio group and an add button.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "PizzaPicker",
+  "axes": {
+    "layout": [
+      "cards",
+      "rows"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "layout": "cards",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "cards",
+      "set": {}
+    },
+    {
+      "id": "rows",
+      "set": {
+        "layout": "rows",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "EmptyState",
+    "MediaFrame",
+    "OptionChips",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@pizzas"
+    },
+    {
+      "sel": "[role=\"radiogroup\"]",
+      "n": 6
+    }
+  ],
+  "data": [
+    {
+      "as": "pizzas",
+      "collection": "pizzas",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    },
+    {
+      "as": "pizzasizes",
+      "collection": "pizzasizes",
+      "kind": "dishoption",
+      "record": "DishOption",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "note": "metadata.note.value"
+      }
+    },
+    {
+      "as": "crusts",
+      "collection": "crusts",
+      "kind": "dishoption",
+      "record": "DishOption",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "note": "metadata.note.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "pizza",
+      "title": {
+        "$": "ui.food.pizza.title"
+      },
+      "lead": {
+        "$": "ui.food.pizza.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "pizzas"
+      },
+      "sizes": {
+        "$": "pizzasizes"
+      },
+      "crusts": {
+        "$": "crusts"
+      }
+    }
+  }
+}

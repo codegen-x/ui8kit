@@ -1,0 +1,117 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.combobuilder",
+  "name": "Combo builder",
+  "docs": "Pick a main, a side and a drink beside the total.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "ComboBuilder",
+  "axes": {
+    "layout": [
+      "split",
+      "stacked"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "layout": "split",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "split",
+      "set": {}
+    },
+    {
+      "id": "stacked",
+      "set": {
+        "layout": "stacked",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "OptionChips",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[role=\"radiogroup\"]",
+      "n": 3
+    },
+    {
+      "sel": "[data-testid=\"summary\"]",
+      "n": 1
+    }
+  ],
+  "data": [
+    {
+      "as": "combomains",
+      "collection": "combomains",
+      "kind": "dishoption",
+      "record": "DishOption",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "note": "metadata.note.value"
+      }
+    },
+    {
+      "as": "combosides",
+      "collection": "combosides",
+      "kind": "dishoption",
+      "record": "DishOption",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "note": "metadata.note.value"
+      }
+    },
+    {
+      "as": "combodrinks",
+      "collection": "combodrinks",
+      "kind": "dishoption",
+      "record": "DishOption",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "note": "metadata.note.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "combobuilder",
+      "title": {
+        "$": "ui.food.combo.title"
+      },
+      "lead": {
+        "$": "ui.food.combo.lead"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "mains": {
+        "$": "combomains"
+      },
+      "sides": {
+        "$": "combosides"
+      },
+      "drinks": {
+        "$": "combodrinks"
+      },
+      "total": 1390,
+      "currency": "USD"
+    }
+  }
+}

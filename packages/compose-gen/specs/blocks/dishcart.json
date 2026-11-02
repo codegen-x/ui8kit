@@ -1,0 +1,96 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.dishcart",
+  "name": "Dish cart grid",
+  "docs": "Cards with a quantity field and an add button, under a live cart count.",
+  "theme": "commerce",
+  "group": "food",
+  "organism": "DishCartGrid",
+  "axes": {
+    "media": [
+      "image",
+      "none"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ]
+  },
+  "defaults": {
+    "media": "image",
+    "tone": "default"
+  },
+  "variants": [
+    {
+      "id": "cards",
+      "set": {}
+    },
+    {
+      "id": "textOnly",
+      "set": {
+        "media": "none",
+        "tone": "muted"
+      }
+    }
+  ],
+  "slots": [
+    "AddQty",
+    "CartCount",
+    "EmptyState",
+    "MediaFrame",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@meals"
+    },
+    {
+      "sel": "[data-testid=\"cart-count\"]",
+      "n": 1
+    }
+  ],
+  "data": [
+    {
+      "as": "meals",
+      "collection": "meals",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "cart",
+      "title": {
+        "$": "ui.food.cart.title"
+      },
+      "lead": {
+        "$": "ui.food.cart.lead"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      },
+      "dishes": {
+        "$": "meals"
+      },
+      "count": 2
+    }
+  }
+}
