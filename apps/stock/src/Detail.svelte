@@ -9,9 +9,11 @@
   import indexJson from "../content/assets.v0.json";
   import recipesJson from "../content/previews.v0.json";
   import termsJson from "../content/terms/pattern.v0.json";
+  import installJson from "../content/install.v0.json";
   import { detailView, sameBlocks, samePattern, similar, type Definitions } from "./lib/detail";
   import { LOCALE_OPTIONS, TEXTS, isLocale } from "./lib/i18n";
   import { visit } from "./lib/locale.svelte";
+  import type { InstallIndex } from "./lib/install";
   import type { Asset, Index, Previews } from "./lib/model";
   import { loadPreview } from "./lib/preview";
   import { assetHash, frameHash, type Device, type Full } from "./lib/route";
@@ -23,6 +25,7 @@
   const FALLBACK = { skin: "", font: "inter", radius: 10 } as const;
   const index = indexJson as unknown as Index;
   const recipes = recipesJson as unknown as Previews;
+  const inst = installJson as unknown as InstallIndex;
   const defs: Definitions = Object.fromEntries(termsJson.terms.map((x) => [x.id, x.definition as Definitions[string]]));
   const vocab = { facets: index.facets, sorts: index.sorts };
   const byId = new Map(index.assets.map((a) => [a.id, a]));
@@ -31,7 +34,7 @@
   const asset = $derived(byId.get(id));
 
   const t = $derived(TEXTS[visit.locale]);
-  const view = $derived(asset ? detailView(index, recipes, asset, visit.locale, defs) : null);
+  const view = $derived(asset ? detailView(index, recipes, asset, visit.locale, defs, inst) : null);
   const card = (a: Asset): CardView => cardView(index, a, groupSize.get(a.group) ?? 1, visit.locale);
   // the related rows: the same composition pattern, the same blocks, then similar by the shared labels (no asset twice)
   const related = $derived.by((): RelatedView[] => {

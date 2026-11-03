@@ -3,6 +3,7 @@
      screen, similar ones in the catalog). A missing label says so ("no label"); nothing is filled in. -->
 <script lang="ts">
   import { Badge, Block, Box, Button, Group, Link, List, ListItem, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
+  import InstallPanel from "./install-panel.svelte";
   import type { DetailView, StockText } from "../text";
 
   let { t, view, onfull }: { t: StockText; view: DetailView; onfull: () => void } = $props();
@@ -77,5 +78,8 @@
         <Text tag="span">{t.detail.summary.findSimilar}</Text>
       </Link>
     </Stack>
+    {#if view.install}
+      <InstallPanel {t} install={view.install} {screen} />
+    {/if}
   </Stack>
 </Block>

@@ -70,7 +70,12 @@ export type DetailText = {
   passport: { title: string; facets: string; readonly: string; noLabel: string; any: string; draft: string; access: string; accessText: string };
   related: { pattern: string; blocks: string; usedBy: string; similar: string; none: string; patternNone: string };
   missing: { title: string; text: string };
+  /** the install section: `blocks` the count line of a screen page ({n}), `docs` the link of a block to its page on the docs site,
+   *  `docsOf` the accessible name of a screen page's block link ({name}), `newTab` announced after a link that opens a new tab */
+  install: { title: string; runtime: string; command: string; copy: string; copied: string; docs: string; docsOf: string; blocks: string; newTab: string };
 };
+/** how to install the asset: its registry blocks with their docs pages (`href`) and one command per runtime (`id`, `label`) */
+export type InstallView = { items: { name: string; href: string }[]; commands: { id: string; label: string; command: string }[] };
 /** a link of the passport: another asset (a block of the page, a variant, a screen page that uses the block); `asset` is its id */
 export type PassportLink = { key: string; asset: string; title: string; subtitle: string; href: string; current?: boolean };
 /** a facet of the asset with its labels; no values and not `any` is "no label" (never a fallback value) */
@@ -93,6 +98,8 @@ export type DetailView = {
   runtimes: Option[]; pattern: PassportFacet | null; patterns: PatternView[]; concepts: PassportFacet[]; tags: TagView[]; map: MapRow[]; similarHref: string;
   /** the separate ways into the catalog (none: only `similarHref`) */
   similarBy: SimilarLink[];
+  /** how to install it with the ui8kit CLI (null: no install object) */
+  install: InstallView | null;
 };
 /** a width of the device frame */
 export type DeviceView = { id: "desktop" | "tablet" | "phone"; width: number; height: number };

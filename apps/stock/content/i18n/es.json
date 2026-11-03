@@ -153,6 +153,17 @@
     "missing": {
       "title": "No encontrado",
       "text": "No hay ningún bloque ni pantalla {id}."
+    },
+    "install": {
+      "title": "Instalar",
+      "runtime": "Entorno",
+      "command": "Comando de instalación",
+      "copy": "Copiar el comando",
+      "copied": "Copiado",
+      "docs": "Ver el código en Buildy",
+      "docsOf": "Ver el código de {name} en Buildy (nueva pestaña)",
+      "blocks": "Bloques de esta página: {n}",
+      "newTab": "(se abre en una pestaña nueva)"
     }
   },
   "sheet": {

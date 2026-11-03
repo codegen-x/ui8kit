@@ -153,6 +153,17 @@
     "missing": {
       "title": "Not found",
       "text": "There is no block or screen {id}."
+    },
+    "install": {
+      "title": "Install",
+      "runtime": "Runtime",
+      "command": "Install command",
+      "copy": "Copy the command",
+      "copied": "Copied",
+      "docs": "View code on Buildy",
+      "docsOf": "View the code of {name} on Buildy (opens in a new tab)",
+      "blocks": "Blocks of this page: {n}",
+      "newTab": "(opens in a new tab)"
     }
   },
   "sheet": {

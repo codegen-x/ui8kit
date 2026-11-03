@@ -3,8 +3,9 @@
 // type with its labels (or an explicit "no label": no fallback), and the similar assets.
 import { emptySearch, searchHash } from "@ui8kit/facet-search";
 import { textIn, type Locale, type Text } from "@ui8kit/facet-search/model";
-import type { DetailView, MapRow, Option, PassportFacet, PassportLink, PatternView, SimilarLink, TagView } from "@ui8kit/layouts/stock/text";
+import type { DetailView, InstallView, MapRow, Option, PassportFacet, PassportLink, PatternView, SimilarLink, TagView } from "@ui8kit/layouts/stock/text";
 import type { BlockUse, Recipes } from "@ui8kit/layouts/preview/recipe";
+import type { Install, InstallIndex } from "./install";
 import type { Asset, Index } from "./model";
 import { assetHash } from "./route";
 import { TYPE } from "./view";
@@ -175,7 +176,25 @@ export function sameBlocks(index: Index, recipes: Recipes, a: Asset, n = 4, seen
   return firstPerGroup(scored, n, seen);
 }
 
-export function detailView(index: Index, recipes: Recipes, a: Asset, locale: Locale, defs: Definitions = {}): DetailView {
+/** the install object of an asset: a block variant's registry block, a screen page's blocks (none: null) */
+export function installOf(inst: InstallIndex | undefined, a: Asset): Install | null {
+  if (!inst) return null;
+  if (a.type === "screen") return inst.screens[a.id] ?? null;
+  return a.registry ? inst.blocks[a.registry] ?? null : null;
+}
+
+/** the install section as the layouts show it: the runtimes labelled as the runtime facet labels them */
+export function installView(index: Index, inst: InstallIndex | undefined, a: Asset, locale: Locale): InstallView | null {
+  const i = installOf(inst, a);
+  if (!i) return null;
+  const labels = new Map(runtimes(index, locale).map((r) => [r.id, r.label]));
+  return {
+    items: i.items.map((x) => ({ name: x.name, href: x.docs })),
+    commands: Object.entries(i.commands).map(([id, command]) => ({ id, label: labels.get(id) ?? id, command })),
+  };
+}
+
+export function detailView(index: Index, recipes: Recipes, a: Asset, locale: Locale, defs: Definitions = {}, inst?: InstallIndex): DetailView {
   const type = index.facets.find((f) => f.id === TYPE)?.values.find((v) => v.id === a.type);
   const screen = a.preview?.kind === "screen";
   const facets = passportFacets(index, a, locale);
@@ -188,5 +207,6 @@ export function detailView(index: Index, recipes: Recipes, a: Asset, locale: Loc
     concepts: CONCEPTS.flatMap((id) => facets.filter((f) => f.id === id)),
     tags: tags(index, a, locale), map: pageMap(index, recipes, a, locale), similarHref: catalogHash(index, similarFilters(a)),
     similarBy: similarBy(index, recipes, a),
+    install: installView(index, inst, a, locale),
   };
 }

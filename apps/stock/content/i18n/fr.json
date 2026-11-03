@@ -153,6 +153,17 @@
     "missing": {
       "title": "Introuvable",
       "text": "Aucun bloc ni écran {id}."
+    },
+    "install": {
+      "title": "Installer",
+      "runtime": "Environnement",
+      "command": "Commande d’installation",
+      "copy": "Copier la commande",
+      "copied": "Copié",
+      "docs": "Voir le code sur Buildy",
+      "docsOf": "Voir le code de {name} sur Buildy (nouvel onglet)",
+      "blocks": "Blocs de cette page : {n}",
+      "newTab": "(nouvel onglet)"
     }
   },
   "sheet": {

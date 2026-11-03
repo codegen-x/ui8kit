@@ -11,6 +11,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ui as dict } from "@ui8kit/app-shared/content";
 import { isModular, rootGrid, variantProps, type PatternMap, type TermFile } from "./pattern";
+import { install, kebab, DOCS_URL, REGISTRY_URL, RUNTIMES, type Install, type InstallIndex } from "../../src/lib/install";
 import type { Asset, BlockRecipe, BlockUse, Clause, Facet, FacetValue, Index, Preview, Previews, Rule, ScreenRecipe, SpecValue, Vocabulary } from "../../src/lib/model";
 
 export const ROOT = join(import.meta.dir, "..", "..", "..", "..");
@@ -71,7 +72,7 @@ const words = (...parts: (string | undefined)[]): string[] => [...new Set(parts.
 const getAt = (o: unknown, path: string): unknown => path.split(".").reduce<unknown>((a, k) => (a && typeof a === "object" ? (a as Record<string, unknown>)[k] : undefined), o);
 const str = (v: unknown, fallback: string): string => (typeof v === "string" && v ? v : fallback);
 
-export type Built = { index: Index; previews: Previews; collections: string };
+export type Built = { index: Index; previews: Previews; collections: string; install: InstallIndex };
 
 export function loadVocabulary(): Vocabulary { return readJson<Vocabulary>(join(APP, "content", "facets.v0.json")); }
 /** a term file of content/terms (brain-term/v1) and the draft table of the pattern facet */
@@ -183,6 +184,18 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
   const variantLabels = new Map<string, Record<string, string[]>>();
   const patternMap = loadPatternMap();
 
+  // the install objects: one per registry block a variant is drawn by, one per screen page (its blocks, each once, in page order)
+  const installBlocks: Record<string, Install> = {};
+  const installScreens: Record<string, Install> = {};
+  /** the registry name of a block use: the organism that draws the variant it names (else the block's first) */
+  const useName = (u: BlockUse): string => {
+    const b = blocks.find((x) => x.id === `block.${u.block}`);
+    if (!b) throw new Error(`build-index: no block spec ${u.block}`);
+    const v = b.variants.find((x) => x.id === (u.variant ?? b.variants[0]?.id));
+    if (!v) throw new Error(`build-index: no variant ${u.variant} of ${u.block}`);
+    return kebab(drawnBy(b, v));
+  };
+
   for (const b of sorted) {
     const key = b.id.slice(6);
     const orgNames = [b.organism, ...(b.alt ? [b.alt.organism] : [])];
@@ -194,6 +207,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
     };
     for (const v of b.variants) {
       const org = drawnBy(b, v);
+      installBlocks[kebab(org)] ??= install([kebab(org)])!;
       const o = orgByName.get(org);
       const computed = o && isModular(rootGrid(o.view, variantProps(o.props, b.sample.props, (b.data ?? []).map((d) => d.as), { ...b.defaults, ...v.set }, v.props), orgByName)) ? ["modular-grid"] : [];
       const ctx = { ...blockCtx(b, v.set), patterns: [...computed, ...(patternMap.labels[key] ?? []), ...(patternMap.labels[`${key}/${v.id}`] ?? [])] };
@@ -203,7 +217,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       const title = str(names[key], humanize(key));
       const vname = str(variantNames[key]?.[v.id], humanize(v.id));
       raws.push({
-        id: `block.${key}/${v.id}`, type: "block", group: `block.${key}`, title, subtitle: vname, spec: b.id, variant: v.id, labels, preview,
+        id: `block.${key}/${v.id}`, type: "block", group: `block.${key}`, title, subtitle: vname, spec: b.id, variant: v.id, registry: kebab(org), labels, preview,
         words: [{ w: 6, words: words(title, key) }, { w: 4, words: words(vname, v.id) }, { w: 3, words: words(b.group, b.theme, str(themeTitles[b.theme]?.title, ""), org) }, { w: 1, words: words(b.docs) }],
       });
     }
@@ -247,6 +261,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       const own = labelsOf("screen", ctx, runtimesOf(list.map((u) => recipes[u.block]?.organism ?? "")), byId.has("blocks") ? { blocks: built } : {});
       const labels = union([merged, Object.fromEntries(Object.entries(own).filter(([f]) => byId.get(f)!.derive === "rules" && (byId.get(f)!.mode === "soft" || !merged[f]?.length))), { runtime: own["runtime"] ?? [] }, { blocks: own["blocks"] ?? [] }]);
       const pageName = humanize(area);
+      installScreens[`screen.${key}/${area}`] = install([...screenRecipes[key].before, ...list, ...screenRecipes[key].after].map(useName))!;
       raws.push({
         id: `screen.${key}/${area}`, type: "screen", group: `screen.${key}/${area}`, title: screenTitle, subtitle: pageName, spec: s.id, variant: area, labels,
         preview: { kind: "screen", screen: key, area },
@@ -299,18 +314,21 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
     return `  ${JSON.stringify(c)}: () => import("@ui8kit/app-shared/data/${c}").then((m) => m.${name} as readonly unknown[]),`;
   });
   const collections = `// Code generated by apps/stock/scripts/build-index.ts. DO NOT EDIT.\n// The Codex collections the block previews read (data[].collection of the block specs), loaded on demand.\nexport const COLLECTIONS: Record<string, () => Promise<readonly unknown[]>> = {\n${lines.join("\n")}\n};\n`;
-  return { index, previews, collections };
+  const sortedBlocks = Object.fromEntries(Object.keys(installBlocks).sort().map((k) => [k, installBlocks[k]!]));
+  const installIndex: InstallIndex = { version: vocab.version, registry: REGISTRY_URL, docs: DOCS_URL, runtimes: [...RUNTIMES], blocks: sortedBlocks, screens: installScreens };
+  return { index, previews, collections, install: installIndex };
 }
 
 export const OUTPUTS = {
   index: join(APP, "content", "assets.v0.json"),
   previews: join(APP, "content", "previews.v0.json"),
   collections: join(APP, "src", "lib", "collections.gen.ts"),
+  install: join(APP, "content", "install.v0.json"),
 } as const;
 
 /** the files of a build, as written to disk */
 export function serialise(b: Built): Record<keyof typeof OUTPUTS, string> {
-  return { index: JSON.stringify(b.index) + "\n", previews: JSON.stringify(b.previews, null, 1) + "\n", collections: b.collections };
+  return { index: JSON.stringify(b.index) + "\n", previews: JSON.stringify(b.previews, null, 1) + "\n", collections: b.collections, install: JSON.stringify(b.install) + "\n" };
 }
 
 /** the values of a facet that are in the vocabulary (for validation): every id, plus "*" for wildcard types */

@@ -8,15 +8,15 @@ both work).
     bun run build        # vite build to dist/ (preview: bun run preview, port 5188)
     bun run check        # svelte-check
     bun run test         # unit tests (also part of the root bun run test)
-    bun run index        # rebuild the index: content/assets.v0.json, content/previews.v0.json, src/lib/collections.gen.ts
+    bun run index        # rebuild the index: content/assets.v0.json, content/previews.v0.json, content/install.v0.json, src/lib/collections.gen.ts
     bun run index:check  # fail when the committed index differs from a fresh build (deterministic: same inputs, same digest)
 
 ## Index (S1)
 
 `scripts/build-index.ts` (logic in `scripts/lib/build.ts`) reads the facet vocabulary `content/facets.v0.json` and the specs:
-`packages/compose-gen/specs/blocks` (92 blocks, 474 variants, axes, samples), `packages/compose-gen/schema/codex/blocks.json` (data/kind/
+`packages/compose-gen/specs/blocks` (108 blocks, 513 variants, axes, samples), `packages/compose-gen/schema/codex/blocks.json` (data/kind/
 record and label props: the slots), `specs/organisms` (runtimes) and `specs/screens` (one asset per page of a composed screen). Two
-categories: **Blocks** (one asset per variant; the variants of a block share a collapse key) and **Screens** (the 65 pages of the
+categories: **Blocks** (one asset per variant; the variants of a block share a collapse key) and **Screens** (the 76 pages of the
 composed screens, each made of kit blocks only; checked by a test). An organism is shown through the block variants that draw it
 (directly or nested in another organism); one no block draws would be an asset of its own (none today). Skins, the corner radius and
 the light/dark theme are preview settings, not assets or facets. The 146 taste screens are not part of Stock.
@@ -34,6 +34,21 @@ span, three or more equal columns); every other value comes from the hand-writte
 (per-value badge). The builder hides a facet that does not discriminate (no labels: mood; the same labels everywhere: runtime) and a value
 no asset carries (`index.hidden` names both). Each asset lists its `weak` facets and the `missing` ones; the labelling state facet
 (`markup`) is derived from them.
+
+## Install (code on Buildy)
+
+Every block variant names its registry item (`registry` on the asset: the kebab name of the organism that draws it, so `hero` variants
+with `chrome=nav` are `hero-prompt`). `content/install.v0.json` (built with the index by `src/lib/install.ts`, plain JSON, English keys,
+meant to be served as is later, e.g. by an MCP server) holds one install object per registry block (`blocks`) and per screen page
+(`screens`, by asset id: the blocks of the page, each once, in page order):
+
+    { "registry": "https://registry.buildy.tw",
+      "items": [{ "name": "dish-bento", "docs": "https://ui.buildy.tw/blocks/dish-bento/" }],
+      "commands": { "svelte": "npx ui8kit add dish-bento --framework svelte", "react": "...", "...": "..." } }
+
+The detail page shows a runtime select, the command with a copy button and the showcase page on ui.buildy.tw (new tab). The names
+are checked against a snapshot of the registry's blocks (`scripts/fixtures/registry-blocks.json`, from
+`https://registry.buildy.tw/react/index.json`; refresh it when the registry gains blocks) in `scripts/install.test.ts`.
 
 ## Search (S2)
 

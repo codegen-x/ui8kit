@@ -4,6 +4,8 @@ import type { Recipes } from "@ui8kit/layouts/preview/recipe";
 import indexJson from "../../content/assets.v0.json";
 import recipesJson from "../../content/previews.v0.json";
 import termsJson from "../../content/terms/pattern.v0.json";
+import installJson from "../../content/install.v0.json";
+import type { InstallIndex } from "./install";
 import { detailView, pageMap, pageUses, passportFacets, sameBlocks, samePattern, similar, similarBy, similarFilters, usedBy, useId, type Definitions } from "./detail";
 import type { Index } from "./model";
 import { assetHash, frameHash, parseRoute } from "./route";
@@ -157,3 +159,21 @@ describe("detail", () => {
   });
 });
 
+
+describe("install", () => {
+  const inst = installJson as unknown as InstallIndex;
+  test("a block variant: its registry block, a command per runtime, its page on ui.buildy.tw", () => {
+    const a = index.assets.find((x) => x.type === "block" && x.registry === "dish-bento")!;
+    const v = detailView(index, recipes, a, "fr", {}, inst).install!;
+    expect(v.items).toEqual([{ name: "dish-bento", href: "https://ui.buildy.tw/blocks/dish-bento/" }]);
+    expect(v.commands.map((c) => c.id)).toEqual(["svelte", "react", "vue", "solid", "templ", "twig", "latte", "jinja2"]);
+    expect(v.commands.find((c) => c.id === "react")!.command).toBe("npx ui8kit add dish-bento --framework react");
+  });
+  test("a screen page: every block once, one combined command; without the install file: none", () => {
+    const a = index.assets.find((x) => x.type === "screen")!;
+    const v = detailView(index, recipes, a, "en", {}, inst).install!;
+    expect(v.items.length).toBeGreaterThan(1);
+    expect(v.commands[0]!.command).toBe(`npx ui8kit add ${v.items.map((i) => i.name).join(" ")} --framework svelte`);
+    expect(detailView(index, recipes, a, "en").install).toBeNull();
+  });
+});
