@@ -1,7 +1,27 @@
 import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { FONT_IDS, FONT_WIDTH } from "@ui8kit/taste-data/font-ids";
-import { cleanScale, cleanWidth, FONT_SCALES, TEXT_SIZES, typeStyle, widthAxis } from "./type";
+import { cleanHeadingWeight, cleanScale, cleanTracking, cleanWeight, cleanWidth, FONT_SCALES, FONT_WEIGHTS, TEXT_SIZES, TRACKINGS, typeStyle, widthAxis } from "./type";
+
+describe("weight and tracking", () => {
+  test("weights are discrete; body 400 and heading's face default are not stored", () => {
+    expect(FONT_WEIGHTS).toEqual([300, 400, 500, 600, 700]);
+    for (const v of [300, 500, 600, 700]) expect(cleanWeight(v)).toBe(v);
+    for (const v of FONT_WEIGHTS) expect(cleanHeadingWeight(v)).toBe(v);
+    for (const bad of [400, 350, 800, "500", null]) expect(cleanWeight(bad)).toBeNull();
+    for (const bad of [350, 800, "500", null]) expect(cleanHeadingWeight(bad)).toBeNull();
+  });
+  test("tracking is -0.05..0.1em in 0.025em steps; zero is not stored", () => {
+    expect(TRACKINGS).toEqual([-0.05, -0.025, 0, 0.025, 0.05, 0.075, 0.1]);
+    for (const v of TRACKINGS.filter((v) => v !== 0)) expect(cleanTracking(v)).toBe(v);
+    for (const bad of [0, 0.01, -0.075, 0.125, "0.025", null]) expect(cleanTracking(bad)).toBeNull();
+  });
+  test("CSS reaches body and headings, even for a fixed-cut face such as Pacifico", () => {
+    expect(typeStyle(null, null, 500, 700, 0.025)).toBe("font-weight:500;--taste-heading-weight:700;--tracking-normal:0.025em");
+    expect(typeStyle(null, null, null, 300, -0.05)).toBe("--taste-heading-weight:300;--tracking-normal:-0.05em");
+    expect(typeStyle(null, null)).toBe("");
+  });
+});
 
 describe("the type scale and width", () => {
   test("TEXT_SIZES is Tailwind's type scale (tailwindcss/theme.css)", () => {

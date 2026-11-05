@@ -53,9 +53,9 @@ const MODEL_KEYS = ["mode", ...Object.keys(NO_THEME).filter((k) => k !== "tokens
   ...ELEMENTS.map((e) => "radius-" + e), ...DENSITY_ELEMENTS.map((e) => "density-" + e), ...SHADOW_ELEMENTS.map((e) => "shadow-" + e)];
 /** a theme with every field set to a non-default value (the i-th allowed value, wrapping) */
 const full = (i: number): { mode: "light" | "dark"; theme: GlobalTheme } => {
-  let theme: GlobalTheme = NO_THEME;
+  let theme: GlobalTheme = { ...NO_THEME, font: "roboto" };
   for (const f of FIELDS) if (f.store !== "mode") { const vs = f.values.filter((v) => v !== f.unset); theme = setThemeField(theme, f.id, vs[i % vs.length]!); }
-  return { mode: i % 2 ? "dark" : "light", theme };
+  return { mode: i % 2 ? "dark" : "light", theme: { ...theme, fontScale: 105, fontWidth: 75, fontWeight: 300 + i * 100, headingWeight: 700 - i * 100, tracking: -0.05 + i * 0.025 } };
 };
 
 describe("theme coverage parity", () => {
@@ -91,7 +91,7 @@ describe("theme coverage parity", () => {
       const r = fromConfig(JSON.parse(JSON.stringify(cfg)));
       if (!r.ok) throw new Error(r.error);
       expect({ mode: r.mode, theme: r.theme }).toEqual({ mode: s.mode, theme: cleanTheme(s.theme) });
-      for (const id of FIELD_IDS) expect(fieldValue({ mode: cfg.mode, theme: { skin: cfg.skin, font: cfg.font, headingFont: cfg.headingFont, radius: cfg.radius, tokens: cfg.tokens } }, id)).toBe(fieldValue(s, id));
+      for (const id of [...FIELD_IDS, "fontScale", "fontWidth", "fontWeight", "headingWeight", "tracking"]) expect(fieldValue({ mode: cfg.mode, theme: { skin: cfg.skin, font: cfg.font, headingFont: cfg.headingFont, radius: cfg.radius, tokens: cfg.tokens, fontScale: cfg.fontScale, fontWidth: cfg.fontWidth, fontWeight: cfg.fontWeight, headingWeight: cfg.headingWeight, tracking: cfg.tracking } }, id)).toBe(fieldValue(s, id));
     }
   });
   test("every field reaches the site root (CSS variable, data attribute or the mode)", () => {
@@ -137,10 +137,10 @@ describe("theme coverage parity", () => {
     const tp = (THEME_SCHEMA.properties.tokens as { properties: Record<string, { enum: unknown[] }> }).properties;
     // the palette (the colour wheel) is one object, not a field of FIELDS: its own schema entry, and its own test (palette.test.ts);
     // so are the type scale and width (type.ts), written only when set
-    const OWN = ["format", "version", "tokens", "palette", "fontScale", "fontWidth"];
+    const OWN = ["format", "version", "tokens", "palette", "fontScale", "fontWidth", "fontWeight", "headingWeight", "tracking"];
     expect([...Object.keys(p).filter((k) => !OWN.includes(k)), ...Object.keys(tp)].sort()).toEqual([...FIELD_IDS].sort());
     for (const f of FIELDS) for (const v of f.values) expect((f.store === "tokens" ? tp[f.id]! : p[f.id]!).enum).toContain(v);
-    expect(Object.keys(toConfig({ mode: "dark", theme: NO_THEME })).filter((k) => k !== "tokens" && k !== "format" && k !== "version").sort()).toEqual(Object.keys(p).filter((k) => !["format", "version", "tokens", "fontScale", "fontWidth"].includes(k)).sort());
+    expect(Object.keys(toConfig({ mode: "dark", theme: NO_THEME })).filter((k) => k !== "tokens" && k !== "format" && k !== "version").sort()).toEqual(Object.keys(p).filter((k) => !["format", "version", "tokens", "fontScale", "fontWidth", "fontWeight", "headingWeight", "tracking"].includes(k)).sort());
   });
 });
 
@@ -176,6 +176,26 @@ describe("choosing a skin drops the custom palette (patchTheme, the rule of ever
     expect("palette" in patchTheme(t, { palette: undefined })).toBe(false);
     expect(setThemeField(t, "skin", "supabase").palette).toBeUndefined();
     expect(rootStyle(setThemeField(t, "skin", "supabase"), String, "dark")).not.toContain("--primary");
+  });
+});
+
+describe("weight and tracking in the global theme", () => {
+  test("config/storage round trip; reset removes only non-defaults", () => {
+    const t = cleanTheme({ font: "pacifico", headingFont: "pacifico", fontWeight: 500, headingWeight: 300, tracking: -0.025 });
+    expect(toConfig({ mode: "dark", theme: t })).toMatchObject({ fontWeight: 500, headingWeight: 300, tracking: -0.025 });
+    expect(fromConfig(JSON.stringify(toConfig({ mode: "dark", theme: t })))).toMatchObject({ ok: true, theme: t, dropped: [] });
+    expect(rootStyle(t, String)).toContain("font-weight:500;--taste-heading-weight:300;--tracking-normal:-0.025em");
+    expect(rootStyle(cleanTheme({ headingWeight: 500, tracking: 0.025 }), String)).toBe("--taste-heading-weight:500;--tracking-normal:0.025em");
+    expect(isDefault(cleanTheme({ fontWeight: 400, tracking: 0 }))).toBe(true);
+    const reset = patchTheme(t, { fontWeight: undefined, headingWeight: undefined, tracking: undefined });
+    expect("fontWeight" in reset || "headingWeight" in reset || "tracking" in reset).toBe(false);
+  });
+  test("bad steps are dropped and named; defaults are accepted without storage", () => {
+    const r = fromConfig({ fontWeight: 350, headingWeight: 800, tracking: 0.01 });
+    expect(r.ok && r.dropped.sort()).toEqual(["fontWeight", "headingWeight", "tracking"]);
+    const d = fromConfig({ fontWeight: 400, headingWeight: 400, tracking: 0 });
+    expect(d.ok && d.dropped).toEqual([]);
+    expect(d.ok && d.theme).toEqual({ ...NO_THEME, headingWeight: 400 });
   });
 });
 

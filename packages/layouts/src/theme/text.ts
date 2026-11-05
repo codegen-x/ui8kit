@@ -16,6 +16,8 @@ export type ThemePanelText = {
   fontType: {
     heading: string; body: string; quote: string; size: string; smaller: string; larger: string; resetSize: string;
     width: string; widthRange: string; resetWidth: string; noWidth: string;
+    weight: string; headingWeight: string; weightNote: string; resetWeight: string; resetHeadingWeight: string;
+    tracking: string; tighter: string; wider: string; resetTracking: string;
   };
 };
 export type DesignText = {

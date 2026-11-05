@@ -211,7 +211,16 @@
         "width": "Breite",
         "widthRange": "Die Breitenachse der Schrift: {min}–{max} %.",
         "resetWidth": "Breite zurücksetzen",
-        "noWidth": "Breite: nur Schriften mit Breitenachse (Roboto, Open Sans, IBM Plex Sans)."
+        "noWidth": "Breite: nur Schriften mit Breitenachse (Roboto, Open Sans, IBM Plex Sans).",
+        "weight": "Schriftschnitt des Texts",
+        "headingWeight": "Schriftschnitt der Überschriften",
+        "weightNote": "Schriften ohne die gewählte Stärke verwenden den nächsten verfügbaren Schnitt.",
+        "resetWeight": "Textschnitt zurücksetzen",
+        "resetHeadingWeight": "Überschriftenschnitt zurücksetzen",
+        "tracking": "Laufweite",
+        "tighter": "Enger",
+        "wider": "Weiter",
+        "resetTracking": "Laufweite zurücksetzen"
       },
       "io": {
         "title": "Export / Import",

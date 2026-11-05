@@ -211,7 +211,16 @@
         "width": "Width",
         "widthRange": "The font's Width axis: {min}–{max}%.",
         "resetWidth": "Reset width",
-        "noWidth": "Width: only fonts with a Width axis (Roboto, Open Sans, IBM Plex Sans)."
+        "noWidth": "Width: only fonts with a Width axis (Roboto, Open Sans, IBM Plex Sans).",
+        "weight": "Body weight",
+        "headingWeight": "Heading weight",
+        "weightNote": "Faces without a selected weight use their closest available cut.",
+        "resetWeight": "Reset body weight",
+        "resetHeadingWeight": "Reset heading weight",
+        "tracking": "Letter spacing",
+        "tighter": "Tighter",
+        "wider": "Wider",
+        "resetTracking": "Reset letter spacing"
       },
       "io": {
         "title": "Export / import",

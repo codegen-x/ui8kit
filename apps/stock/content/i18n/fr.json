@@ -211,7 +211,16 @@
         "width": "Largeur",
         "widthRange": "L’axe Largeur de la police : {min}–{max} %.",
         "resetWidth": "Réinitialiser la largeur",
-        "noWidth": "Largeur : seulement les polices avec un axe Largeur (Roboto, Open Sans, IBM Plex Sans)."
+        "noWidth": "Largeur : seulement les polices avec un axe Largeur (Roboto, Open Sans, IBM Plex Sans).",
+        "weight": "Graisse du texte",
+        "headingWeight": "Graisse des titres",
+        "weightNote": "Les polices sans la graisse choisie utilisent la coupe disponible la plus proche.",
+        "resetWeight": "Réinitialiser la graisse du texte",
+        "resetHeadingWeight": "Réinitialiser la graisse des titres",
+        "tracking": "Interlettrage",
+        "tighter": "Plus serré",
+        "wider": "Plus large",
+        "resetTracking": "Réinitialiser l’interlettrage"
       },
       "io": {
         "title": "Exporter / importer",

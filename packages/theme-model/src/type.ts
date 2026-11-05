@@ -1,4 +1,4 @@
-// The fine type controls of the global theme (the Fonts panel's header): a size scale and the font's width.
+// The fine type controls of the global theme (the Fonts panel's header): size, width, weight and tracking.
 // Scale: one percentage for every text size (80..120% in 5% steps; 100% is the kit's own scale and is not stored). It rewrites
 // Tailwind's --text-* theme variables on the theme root (every text-* utility and every kit recipe reads them; line heights are
 // ratios of the size and follow), never the root font size, so every rem of spacing (the 8 + 4 grid) stays as it is. Google Fonts
@@ -10,6 +10,12 @@ import { FONT_WIDTH, type FontId, type WidthAxis } from "@ui8kit/taste-data/font
 export const FONT_SCALES = [80, 85, 90, 95, 100, 105, 110, 115, 120] as const;
 export const SCALE_STEP = 5;
 export const DEFAULT_SCALE = 100;
+
+export const FONT_WEIGHTS = [300, 400, 500, 600, 700] as const;
+export const DEFAULT_FONT_WEIGHT = 400;
+export const TRACKINGS = [-0.05, -0.025, 0, 0.025, 0.05, 0.075, 0.1] as const;
+export const TRACKING_STEP = 0.025;
+export const DEFAULT_TRACKING = 0;
 
 /** Tailwind's type scale (tailwindcss/theme.css --text-*, rem); the test reads the file, so it cannot drift */
 export const TEXT_SIZES = {
@@ -26,12 +32,21 @@ export function cleanWidth(font: string | null, v: unknown): number | null {
   const a = widthAxis(font);
   return a && typeof v === "number" && Number.isInteger(v) && v >= a.min && v <= a.max && v !== a.default ? v : null;
 }
+/** body weight: 400 is the inherited default; a face without the chosen cut uses its closest face (or synthesis) */
+export const cleanWeight = (v: unknown): number | null => (typeof v === "number" && v !== DEFAULT_FONT_WEIGHT && (FONT_WEIGHTS as readonly number[]).includes(v) ? v : null);
+/** heading weight has no single default: the selected face's metadata or the skin supplies it */
+export const cleanHeadingWeight = (v: unknown): number | null => (typeof v === "number" && (FONT_WEIGHTS as readonly number[]).includes(v) ? v : null);
+/** base tracking in em, including negative steps; zero leaves the skin's own --tracking-normal */
+export const cleanTracking = (v: unknown): number | null => (typeof v === "number" && v !== DEFAULT_TRACKING && (TRACKINGS as readonly number[]).includes(v) ? v : null);
 
 const r4 = (v: number): number => Math.round(v * 1e4) / 1e4;
 /** the declarations of the root for a scale and a width (empty at the defaults) */
-export function typeStyle(scale: number | null, width: number | null): string {
+export function typeStyle(scale: number | null, width: number | null, weight: number | null = null, headingWeight: number | null = null, tracking: number | null = null): string {
   return [
     scale !== null ? Object.entries(TEXT_SIZES).map(([k, rem]) => `--text-${k}:${r4((rem * scale) / 100)}rem`).join(";") : "",
     width !== null ? `font-stretch:${width}%` : "",
+    weight !== null ? `font-weight:${weight}` : "",
+    headingWeight !== null ? `--taste-heading-weight:${headingWeight}` : "",
+    tracking !== null ? `--tracking-normal:${tracking}em` : "",
   ].filter(Boolean).join(";");
 }

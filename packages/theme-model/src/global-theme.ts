@@ -17,13 +17,13 @@
 import { THEME_FONT_IDS, themeHeadingWeight } from "@ui8kit/app-shared/runtime/theme-fonts";
 import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
 import { cleanPalette, CONTRAST_LEVELS, HARMONIES, paletteStyle, type Palette } from "./palette";
-import { cleanScale, cleanWidth, FONT_SCALES, typeStyle, widthAxis } from "./type";
+import { cleanHeadingWeight, cleanScale, cleanTracking, cleanWeight, cleanWidth, FONT_SCALES, FONT_WEIGHTS, TRACKINGS, typeStyle, widthAxis } from "./type";
 import { cleanTokens, DENSITIES, DENSITY_ELEMENTS, DENSITY_VARS, ELEMENT_SLOT, ELEMENTS, setToken, SHADOW_ELEMENTS, SHADOWS, tokenAttrs, tokenStyle, type Density, type Tokens } from "./design";
 
 /** palette: the custom colours of the colour wheel (palette.ts), with the skin's neutrals tinted by it; absent: the skin's own colours.
  *  fontScale: every text size in % (type.ts; absent: 100%); fontWidth: the font's Width axis in % (only for a font that has one;
  *  absent: the font's own width) */
-export type GlobalTheme = { skin: string | null; font: string | null; headingFont: string | null; radius: number | null; tokens: Tokens; palette?: Palette; fontScale?: number; fontWidth?: number };
+export type GlobalTheme = { skin: string | null; font: string | null; headingFont: string | null; radius: number | null; tokens: Tokens; palette?: Palette; fontScale?: number; fontWidth?: number; fontWeight?: number; headingWeight?: number; tracking?: number };
 export const NO_THEME: GlobalTheme = { skin: null, font: null, headingFont: null, radius: null, tokens: {} };
 
 /** a theme from anything (storage, JSON): unknown values become null, unknown tokens are dropped */
@@ -35,7 +35,8 @@ export function cleanTheme(v: unknown): GlobalTheme {
   const radius = typeof o.radius === "number" && (RADII as readonly number[]).includes(o.radius) ? o.radius : null;
   const palette = cleanPalette(o.palette);
   const fontScale = cleanScale(o.fontScale), fontWidth = cleanWidth(font, o.fontWidth);
-  return { skin, font, headingFont, radius, tokens: cleanTokens(o.tokens), ...(palette ? { palette } : {}), ...(fontScale !== null ? { fontScale } : {}), ...(fontWidth !== null ? { fontWidth } : {}) };
+  const fontWeight = cleanWeight(o.fontWeight), headingWeight = cleanHeadingWeight(o.headingWeight), tracking = cleanTracking(o.tracking);
+  return { skin, font, headingFont, radius, tokens: cleanTokens(o.tokens), ...(palette ? { palette } : {}), ...(fontScale !== null ? { fontScale } : {}), ...(fontWidth !== null ? { fontWidth } : {}), ...(fontWeight !== null ? { fontWeight } : {}), ...(headingWeight !== null ? { headingWeight } : {}), ...(tracking !== null ? { tracking } : {}) };
 }
 
 /** a patch merged into a theme (every controller's setTheme): choosing a skin (any patch naming `skin`) returns to that skin's own
@@ -45,11 +46,11 @@ export function patchTheme(t: GlobalTheme, patch: Partial<GlobalTheme>): GlobalT
   const next: GlobalTheme = { ...t, ...patch };
   if ("skin" in patch && !("palette" in patch)) delete next.palette;
   if ("font" in patch && !("fontWidth" in patch)) delete next.fontWidth;
-  for (const k of ["palette", "fontScale", "fontWidth"] as const) if (next[k] === undefined) delete next[k];
+  for (const k of ["palette", "fontScale", "fontWidth", "fontWeight", "headingWeight", "tracking"] as const) if (next[k] === undefined) delete next[k];
   return next;
 }
 
-export const isDefault = (t: GlobalTheme): boolean => t.skin === null && t.font === null && t.headingFont === null && t.radius === null && Object.keys(t.tokens).length === 0 && !t.palette && t.fontScale === undefined && t.fontWidth === undefined;
+export const isDefault = (t: GlobalTheme): boolean => t.skin === null && t.font === null && t.headingFont === null && t.radius === null && Object.keys(t.tokens).length === 0 && !t.palette && t.fontScale === undefined && t.fontWidth === undefined && t.fontWeight === undefined && t.headingWeight === undefined && t.tracking === undefined;
 
 /** localStorage, or null where there is none or it is blocked (reading the property itself throws then) */
 const local = (): Storage | null => { try { return typeof localStorage === "undefined" ? null : localStorage; } catch { return null; } };
@@ -80,10 +81,10 @@ export function rootStyle(t: GlobalTheme, family: (id: string) => string, mode: 
   return [
     t.radius !== null ? `--radius:${t.radius}px` : "",
     t.font ? `--font-sans:${family(t.font)},sans-serif` : "",
-    t.headingFont ? `--taste-heading:${family(t.headingFont)},sans-serif;--font-serif:${family(t.headingFont)},sans-serif;--taste-heading-weight:${themeHeadingWeight(t.headingFont) ?? "var(--font-weight-semibold,600)"}` : t.font ? `--taste-heading:${family(t.font)},sans-serif` : "",
+    [t.headingFont ? `--taste-heading:${family(t.headingFont)},sans-serif;--font-serif:${family(t.headingFont)},sans-serif` : t.font ? `--taste-heading:${family(t.font)},sans-serif` : "", t.headingWeight === undefined && t.headingFont ? `--taste-heading-weight:${themeHeadingWeight(t.headingFont) ?? "var(--font-weight-semibold,600)"}` : ""].filter(Boolean).join(";"),
     tokenStyle(t.tokens),
     t.palette ? paletteStyle(t.palette, mode, t.skin) : "",
-    typeStyle(t.fontScale ?? null, t.fontWidth ?? null),
+    typeStyle(t.fontScale ?? null, t.fontWidth ?? null, t.fontWeight ?? null, t.headingWeight ?? null, t.tracking ?? null),
   ].filter(Boolean).join(";");
 }
 /** the attributes of the root: the skin and the density attributes */
@@ -136,7 +137,7 @@ export function fieldValue(s: ThemeState, id: string): FieldValue | null {
   const f = fieldOf(id);
   if (!f) return null;
   if (f.store === "mode") return s.mode;
-  if (f.store === "theme") return s.theme[id as "skin" | "font" | "headingFont" | "radius"] ?? f.unset;
+  if (f.store === "theme") return s.theme[id as "skin" | "font" | "headingFont" | "radius" | "fontWeight" | "headingWeight" | "tracking"] ?? f.unset;
   return s.theme.tokens[id] ?? f.unset;
 }
 
@@ -165,13 +166,13 @@ export const viewFields = (view: ThemeView): Array<{ field: Field; control: Cont
 
 export const CONFIG_FORMAT = "magazine-theme";
 export const CONFIG_VERSION = 2;
-export type ThemeConfig = { format: typeof CONFIG_FORMAT; version: typeof CONFIG_VERSION; mode: Mode; skin: string | null; font: string | null; headingFont: string | null; radius: number | null; tokens: Tokens; palette: Palette | null; fontScale?: number; fontWidth?: number };
+export type ThemeConfig = { format: typeof CONFIG_FORMAT; version: typeof CONFIG_VERSION; mode: Mode; skin: string | null; font: string | null; headingFont: string | null; radius: number | null; tokens: Tokens; palette: Palette | null; fontScale?: number; fontWidth?: number; fontWeight?: number; headingWeight?: number; tracking?: number };
 export type ImportResult = { ok: true; mode: Mode | null; theme: GlobalTheme; dropped: string[] } | { ok: false; error: string };
 
 /** the config of a state: every field, unset ones as null (tokens: only the ones set; the type scale and width only when set) */
 export function toConfig(s: ThemeState): ThemeConfig {
   const t = cleanTheme(s.theme);
-  return { format: CONFIG_FORMAT, version: CONFIG_VERSION, mode: s.mode, skin: t.skin, font: t.font, headingFont: t.headingFont, radius: t.radius, tokens: t.tokens, palette: t.palette ?? null, ...(t.fontScale !== undefined ? { fontScale: t.fontScale } : {}), ...(t.fontWidth !== undefined ? { fontWidth: t.fontWidth } : {}) };
+  return { format: CONFIG_FORMAT, version: CONFIG_VERSION, mode: s.mode, skin: t.skin, font: t.font, headingFont: t.headingFont, radius: t.radius, tokens: t.tokens, palette: t.palette ?? null, ...(t.fontScale !== undefined ? { fontScale: t.fontScale } : {}), ...(t.fontWidth !== undefined ? { fontWidth: t.fontWidth } : {}), ...(t.fontWeight !== undefined ? { fontWeight: t.fontWeight } : {}), ...(t.headingWeight !== undefined ? { headingWeight: t.headingWeight } : {}), ...(t.tracking !== undefined ? { tracking: t.tracking } : {}) };
 }
 
 /**
@@ -195,6 +196,7 @@ export function fromConfig(input: unknown): ImportResult {
   if (o.palette !== undefined && o.palette !== null && !theme.palette) dropped.push("palette");
   // the defaults themselves (100%, the font's own width) are not dropped: they are what an absent field means
   if (o.fontScale !== undefined && o.fontScale !== null && o.fontScale !== 100 && theme.fontScale === undefined) dropped.push("fontScale");
+  for (const k of ["fontWeight", "headingWeight", "tracking"] as const) if (o[k] !== undefined && o[k] !== null && theme[k] === undefined && !(k === "fontWeight" && o[k] === 400) && !(k === "tracking" && o[k] === 0)) dropped.push(k);
   if (o.fontWidth !== undefined && o.fontWidth !== null && theme.fontWidth === undefined && o.fontWidth !== widthAxis(theme.font)?.default) dropped.push("fontWidth");
   if (o.tokens && typeof o.tokens === "object" && !Array.isArray(o.tokens)) {
     for (const [k, x] of Object.entries(o.tokens as Record<string, unknown>)) if (!(k in theme.tokens) && !(k.startsWith("density-") && x === "default" && fieldOf(k))) dropped.push(k);
@@ -217,6 +219,9 @@ export const THEME_SCHEMA = {
     palette: { type: ["object", "null"], required: ["harmony", "h", "s", "l"], additionalProperties: false, properties: { harmony: { enum: [...HARMONIES] }, h: { type: "number", minimum: 0, maximum: 359 }, s: { type: "number", minimum: 0, maximum: 100 }, l: { type: "number", minimum: 0, maximum: 100 }, contrast: { enum: [...CONTRAST_LEVELS] } } },
     fontScale: { enum: [...FONT_SCALES] },
     fontWidth: { type: "integer", minimum: 25, maximum: 300 },
+    fontWeight: { enum: [...FONT_WEIGHTS] },
+    headingWeight: { enum: [...FONT_WEIGHTS] },
+    tracking: { enum: [...TRACKINGS] },
     tokens: { type: "object", additionalProperties: false, properties: Object.fromEntries(FIELDS.filter((f) => f.store === "tokens").map((f) => [f.id, { enum: [...f.values] }])) },
   },
 } as const;

@@ -211,7 +211,16 @@
         "width": "Ancho",
         "widthRange": "El eje de ancho de la fuente: {min}–{max} %.",
         "resetWidth": "Restablecer ancho",
-        "noWidth": "Ancho: solo fuentes con eje de ancho (Roboto, Open Sans, IBM Plex Sans)."
+        "noWidth": "Ancho: solo fuentes con eje de ancho (Roboto, Open Sans, IBM Plex Sans).",
+        "weight": "Peso del texto",
+        "headingWeight": "Peso de los títulos",
+        "weightNote": "Las fuentes sin el peso elegido usan el corte disponible más cercano.",
+        "resetWeight": "Restablecer peso del texto",
+        "resetHeadingWeight": "Restablecer peso de los títulos",
+        "tracking": "Interletraje",
+        "tighter": "Más compacto",
+        "wider": "Más amplio",
+        "resetTracking": "Restablecer interletraje"
       },
       "io": {
         "title": "Exportar / importar",
