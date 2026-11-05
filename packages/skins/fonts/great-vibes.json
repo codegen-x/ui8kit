@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "great-vibes",
+  "family": "Great Vibes",
+  "provider": "google",
+  "google": "Great+Vibes:wght@400",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "montserrat-alternates",
+  "family": "Montserrat Alternates",
+  "provider": "google",
+  "google": "Montserrat+Alternates:wght@400;500;600;700",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "kurale",
+  "family": "Kurale",
+  "provider": "google",
+  "google": "Kurale:wght@400",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

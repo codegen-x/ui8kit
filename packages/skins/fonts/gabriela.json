@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "gabriela",
+  "family": "Gabriela",
+  "provider": "google",
+  "google": "Gabriela:wght@400",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

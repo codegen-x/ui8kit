@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "tenor-sans",
+  "family": "Tenor Sans",
+  "provider": "google",
+  "google": "Tenor+Sans:wght@400",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

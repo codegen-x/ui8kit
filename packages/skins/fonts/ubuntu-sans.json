@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "ubuntu-sans",
+  "family": "Ubuntu Sans",
+  "provider": "google",
+  "google": "Ubuntu+Sans:wght@400;500;600;700",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "UFL-1.0"
+  }
+}

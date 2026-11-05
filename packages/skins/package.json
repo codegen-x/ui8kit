@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Skins as data (skins/<id>.json, 15 tweakcn presets + sky) and the fonts they load (fonts/<id>.json). `bun run skins build [--check]` writes packages/compose-gen/runtimes/core/assets/styles/skins/*.css, skins.json and packages/shared/app/src/runtime/skin-fonts.ts. Moved out of xgen/skins.",
+  "description": "Skins as data (skins/<id>.json, 15 tweakcn presets + sky + rose) and the fonts they load (fonts/<id>.json). `bun run skins build [--check]` writes packages/compose-gen/runtimes/core/assets/styles/skins/*.css, skins.json and packages/shared/app/src/runtime/skin-fonts.ts. Moved out of xgen/skins.",
   "scripts": {
     "build": "bun skins.ts build",
     "check": "bun skins.ts build --check"

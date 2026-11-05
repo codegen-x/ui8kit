@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "ysabeau-office",
+  "family": "Ysabeau Office",
+  "provider": "google",
+  "google": "Ysabeau+Office:wght@400;500;600;700",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}
