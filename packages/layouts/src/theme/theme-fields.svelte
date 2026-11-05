@@ -40,7 +40,7 @@
   };
   const density = $derived(densityOf(t.tokens));
   // the skin and font selects of the narrow panel open their picker (a wide panel) from an icon button on their row
-  const ICON: Record<PickerKind, string> = { skins: "layers", fonts: "type" };
+  const ICON: Record<PickerKind, string> = { skins: "layers", fonts: "type", headingFonts: "type" };
   const browse = (k: PickerKind): string => (k === "skins" ? T.browseSkins : T.browseFonts);
   const togglePicker = (k: PickerKind): void => { ctl.wide = ctl.wide === k ? null : k; };
   const starts = (i: number) => rows[i]!.field.group !== "site" && rows[i]!.field.group !== rows[i - 1]?.field.group;

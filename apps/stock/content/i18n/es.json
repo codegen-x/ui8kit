@@ -174,7 +174,7 @@
       "light": "Claro",
       "dark": "Oscuro",
       "skin": "Skin",
-      "font": "Fuente",
+      "font": "Fuente del cuerpo",
       "default": "Predeterminado",
       "radius": "Radio predeterminado",
       "resetRadius": "Restablecer radio",
@@ -225,7 +225,9 @@
         "imported": "Importada",
         "partial": "Importada; se descartaron valores desconocidos",
         "invalid": "No es una configuración de tema"
-      }
+      },
+      "headingFont": "Fuente de títulos",
+      "headingFontsTitle": "Fuentes de títulos"
     },
     "design": {
       "tokens": "Tokens de color (HSL)",

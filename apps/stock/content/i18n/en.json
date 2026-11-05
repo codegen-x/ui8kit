@@ -174,7 +174,7 @@
       "light": "Light",
       "dark": "Dark",
       "skin": "Skin",
-      "font": "Font",
+      "font": "Body font",
       "default": "Default",
       "radius": "Default radius",
       "resetRadius": "Reset radius",
@@ -225,7 +225,9 @@
         "imported": "Imported",
         "partial": "Imported; dropped unknown values",
         "invalid": "Not a theme config"
-      }
+      },
+      "headingFont": "Heading font",
+      "headingFontsTitle": "Heading fonts"
     },
     "design": {
       "tokens": "Colour tokens (HSL)",

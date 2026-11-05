@@ -20,6 +20,7 @@
     "skin-neutrals": "bun scripts/skin-neutrals.ts"
   },
   "dependencies": {
+    "@ui8kit/app-shared": "workspace:*",
     "@ui8kit/panorama": "workspace:*",
     "@ui8kit/taste-data": "workspace:*"
   },

@@ -107,6 +107,26 @@ export function skinFontsSource(skins: Record<string, { fonts: string[] }>): Gen
   };
 }
 
+/** the Theme font registry: self-hosted taste faces plus every Google face from packages/skins/fonts. */
+export function themeFontsSource(fonts: ReadonlyArray<{ id: string; family: string; google: string; headingWeight?: number }>): GeneratedFile {
+  const rows = fonts.map((f) => `  ${JSON.stringify(f.id)}: { family: ${JSON.stringify(f.family)}, google: ${JSON.stringify(f.google)}${f.headingWeight === undefined ? "" : `, headingWeight: ${f.headingWeight}`} },`);
+  return {
+    path: "src/runtime/theme-fonts.ts",
+    contents: withBanner([
+      `// The Theme font ids and Google css2 specs, from packages/skins/fonts/*.json plus the self-hosted taste FONT_IDS.`,
+      `import { FONT_IDS } from "@ui8kit/taste-data/font-ids";`,
+      ``,
+      `export const GOOGLE_FONTS: Record<string, { family: string; google: string; headingWeight?: number }> = {`,
+      ...rows,
+      `};`,
+      `export const THEME_FONT_IDS = [...new Set([...FONT_IDS, ...Object.keys(GOOGLE_FONTS)])] as const;`,
+      `export const themeFamily = (id: string): string => GOOGLE_FONTS[id]?.family ?? \`taste-\${id}\`;`,
+      `export const themeHeadingWeight = (id: string | null): number | null => id ? GOOGLE_FONTS[id]?.headingWeight ?? null : null;`,
+      ``,
+    ].join("\n")),
+  };
+}
+
 function registryFile(screens: ScreenSpec[]): GeneratedFile {
   const rows = screens.map((s) => `  { key: ${JSON.stringify(screenKey(s.id))}, id: ${JSON.stringify(s.id)}, name: ${JSON.stringify(s.name)}, skin: ${JSON.stringify(screenSkin(s.id))} },`);
   return {

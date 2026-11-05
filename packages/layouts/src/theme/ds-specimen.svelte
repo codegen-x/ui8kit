@@ -1,20 +1,20 @@
 <!-- The specimen of the Design system: colour tokens, type scale, radii, spacing, buttons, badges, card, alerts and inputs in one
-     live frame whose skin, single font, radius and per-element tokens are CSS variables. Shared by the Theme sheet's Design system
+     live frame whose skin, body and heading fonts, radius and per-element tokens are CSS variables. Shared by the Theme sheet's Design system
      panel and the Magazine's style page. -->
 <script lang="ts">
   import { Alert, Badge, Box, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Group, Input, Label, Text, Title } from "@codegen-x/svelte-compose";
-  import { family, type FontId } from "@ui8kit/taste-data/fonts";
+  import { themeFamily, themeHeadingWeight } from "@ui8kit/app-shared/runtime/theme-fonts";
   import { RADII } from "@ui8kit/taste-data/taste";
   import { tokenAttrs, tokenStyle, type Tokens } from "@ui8kit/theme-model/design";
   import type { Token } from "@ui8kit/theme-model/tokens";
   import type { DesignText } from "./text";
 
-  let { text, modes, skin, font, radius, tokens, tokenValues, idp = "ds", class: className = "" }: {
+  let { text, modes, skin, font, headingFont, radius, tokens, tokenValues, idp = "ds", class: className = "" }: {
     text: DesignText; /** the names of the two modes */ modes: { light: string; dark: string };
-    skin: string; font: FontId; radius: number; tokens: { light: Token[]; dark: Token[] }; tokenValues: Tokens;
+    skin: string; font: string; headingFont: string; radius: number; tokens: { light: Token[]; dark: Token[] }; tokenValues: Tokens;
     /** id prefix: unique per use on a page */ idp?: string; class?: string;
   } = $props();
-  const style = $derived(`--radius:${radius}px;--font-sans:${family(font)},sans-serif;--taste-heading:${family(font)},sans-serif;${tokenStyle(tokenValues)}`);
+  const style = $derived(`--radius:${radius}px;--font-sans:${themeFamily(font)},sans-serif;--taste-heading:${themeFamily(headingFont)},sans-serif;--taste-heading-weight:${themeHeadingWeight(headingFont) ?? "var(--font-weight-semibold,600)"};${tokenStyle(tokenValues)}`);
   const attrs = $derived(tokenAttrs(tokenValues));
   const PX = "px";
   const CHIP = "4px";

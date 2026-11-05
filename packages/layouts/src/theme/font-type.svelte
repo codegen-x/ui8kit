@@ -4,12 +4,12 @@
      percents. Each control has its own reset; the defaults (100%, the font's own width) are not stored (@ui8kit/theme-model/type). -->
 <script lang="ts">
   import { Box, Button, Group, Label, LucideIcon, Range, Stack, Text, Title } from "@codegen-x/svelte-compose";
-  import { family, type FontId } from "@ui8kit/taste-data/fonts";
+  import { themeFamily, themeHeadingWeight } from "@ui8kit/app-shared/runtime/theme-fonts";
   import type { ThemeController } from "@ui8kit/theme-model/controller";
   import { DEFAULT_SCALE, FONT_SCALES, SCALE_STEP, widthAxis } from "@ui8kit/theme-model/type";
   import type { ThemePanelText } from "./text";
 
-  let { ctl, text, font }: { ctl: ThemeController; text: ThemePanelText["fontType"]; /** the font the site shows now */ font: FontId } = $props();
+  let { ctl, text, font, headingFont }: { ctl: ThemeController; text: ThemePanelText["fontType"]; /** the font the site shows now */ font: string; headingFont: string } = $props();
   const scale = $derived(ctl.value.fontScale ?? DEFAULT_SCALE);
   const axis = $derived(widthAxis(ctl.value.font));
   const width = $derived(axis ? ctl.value.fontWidth ?? axis.default : null);
@@ -17,7 +17,7 @@
   // the defaults are written as "unset": 100% and the font's own width never reach storage
   const setScale = (v: number): void => ctl.setTheme({ fontScale: v === DEFAULT_SCALE ? undefined : Math.min(MAX, Math.max(MIN, v)) });
   const setWidth = (v: number): void => ctl.setTheme({ fontWidth: axis && v !== axis.default ? v : undefined });
-  const face = $derived(`--font-sans:${family(font)},sans-serif;--taste-heading:${family(font)},sans-serif`);
+  const face = $derived(`--font-sans:${themeFamily(font)},sans-serif;--taste-heading:${themeFamily(headingFont)},sans-serif;--taste-heading-weight:${themeHeadingWeight(headingFont) ?? "var(--font-weight-semibold,600)"}`);
 </script>
 
 <Box class="ui8-font-type" data-testid="font-type">

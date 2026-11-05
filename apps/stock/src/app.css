@@ -37,3 +37,8 @@
 @layer base {
   body { @apply text-base; }
 }
+
+/* Theme heading choices also cover ordinary h1–h3, not only serifHeading skins. */
+@layer base {
+  :is(h1, h2, h3) { font-family: var(--taste-heading, var(--font-sans)); font-weight: var(--taste-heading-weight, var(--font-weight-semibold, 600)); }
+}

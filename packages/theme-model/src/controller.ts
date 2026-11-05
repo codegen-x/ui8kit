@@ -5,7 +5,7 @@ import type { FieldValue, GlobalTheme, ImportResult, Mode, ThemeConfig } from ".
 
 /** the wide panel beside the narrow Theme panel, one at a time: the Design system, the skin or font picker, or the palette (colour
  *  wheel); null: none */
-export type WidePanel = null | "ds" | "skins" | "fonts" | "palette";
+export type WidePanel = null | "ds" | "skins" | "fonts" | "headingFonts" | "palette";
 
 export interface ThemeController {
   /** the global theme now */

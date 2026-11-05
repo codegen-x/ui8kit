@@ -174,7 +174,7 @@
       "light": "Hell",
       "dark": "Dunkel",
       "skin": "Skin",
-      "font": "Schrift",
+      "font": "Textschrift",
       "default": "Standard",
       "radius": "Standardradius",
       "resetRadius": "Radius zurücksetzen",
@@ -225,7 +225,9 @@
         "imported": "Importiert",
         "partial": "Importiert; unbekannte Werte verworfen",
         "invalid": "Keine Theme-Konfiguration"
-      }
+      },
+      "headingFont": "Überschriftenschrift",
+      "headingFontsTitle": "Überschriftenschriften"
     },
     "design": {
       "tokens": "Farbtokens (HSL)",

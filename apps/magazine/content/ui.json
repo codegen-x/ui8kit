@@ -375,7 +375,7 @@
     "light": "Light",
     "dark": "Dark",
     "skin": "Skin",
-    "font": "Font",
+    "font": "Body font",
     "default": "Default",
     "radius": "Default radius",
     "resetRadius": "Reset radius",
@@ -404,13 +404,13 @@
     "fontType": {
       "heading": "The quick brown fox",
       "body": "Body text at the size and width the site shows now, so you can see how a paragraph reads.",
-      "quote": "“Typography is what language looks like.”",
+      "quote": "\u201cTypography is what language looks like.\u201d",
       "size": "Font size",
       "smaller": "Smaller",
       "larger": "Larger",
       "resetSize": "Reset size",
       "width": "Width",
-      "widthRange": "The font's Width axis: {min}–{max}%.",
+      "widthRange": "The font's Width axis: {min}\u2013{max}%.",
       "resetWidth": "Reset width",
       "noWidth": "Width: only fonts with a Width axis (Roboto, Open Sans, IBM Plex Sans)."
     },
@@ -427,7 +427,9 @@
       "imported": "Imported",
       "partial": "Imported; dropped unknown values",
       "invalid": "Not a theme config"
-    }
+    },
+    "headingFont": "Heading font",
+    "headingFontsTitle": "Heading fonts"
   },
   "palette": {
     "open": "Palette",
@@ -444,12 +446,12 @@
       "title": "Options",
       "primary": "Primary colour",
       "hint": "HSL as in the tokens (217 91% 60%) or Hex (#3b82f6, the # optional): Hex turns into HSL.",
-      "error": "Not a colour: type H S% L% (hue 0–360, saturation and lightness 0–100) or a Hex code."
+      "error": "Not a colour: type H S% L% (hue 0\u2013360, saturation and lightness 0\u2013100) or a Hex code."
     },
     "contrast": {
       "legend": "Text contrast",
-      "aa": "AA · 4.5:1",
-      "aaa": "AAA · 7:1",
+      "aa": "AA \u00b7 4.5:1",
+      "aaa": "AAA \u00b7 7:1",
       "note": "WCAG for normal text: every text on the palette's colours and surfaces, muted text included, keeps this ratio. AAA moves the colours further from their text."
     },
     "harmonies": {
@@ -459,35 +461,35 @@
       },
       "analogous": {
         "name": "Analogous",
-        "hint": "±30°"
+        "hint": "\u00b130\u00b0"
       },
       "complementary": {
         "name": "Complementary",
-        "hint": "180°"
+        "hint": "180\u00b0"
       },
       "split": {
         "name": "Split complementary",
-        "hint": "180° ± 30°"
+        "hint": "180\u00b0 \u00b1 30\u00b0"
       },
       "triadic": {
         "name": "Triadic",
-        "hint": "120°"
+        "hint": "120\u00b0"
       },
       "tetradic": {
         "name": "Tetradic",
-        "hint": "60° + 180°"
+        "hint": "60\u00b0 + 180\u00b0"
       },
       "square": {
         "name": "Square",
-        "hint": "90°"
+        "hint": "90\u00b0"
       },
       "double-split": {
         "name": "Double split complementary",
-        "hint": "two pairs, 30° apart"
+        "hint": "two pairs, 30\u00b0 apart"
       },
       "compound": {
         "name": "Compound",
-        "hint": "±30°, 180° ± 15°"
+        "hint": "\u00b130\u00b0, 180\u00b0 \u00b1 15\u00b0"
       }
     },
     "samples": {

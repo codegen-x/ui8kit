@@ -6,10 +6,10 @@
 //   bun run skins build           validate, then write the files (and the checksums of index.json)
 //   bun run skins build --check   validate and fail when a written file differs (run by `bun run check`)
 import { createHash } from "node:crypto";
-import { existsSync, lstatSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, lstatSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import Ajv2020 from "ajv/dist/2020.js";
-import { SHARED_DIR, skinFontsSource } from "../compose-gen/runtimes/core/src/app-common";
+import { SHARED_DIR, skinFontsSource, themeFontsSource } from "../compose-gen/runtimes/core/src/app-common";
 
 const ROOT = join(import.meta.dir, "..", "..");
 const SKINS = join(ROOT, "packages", "skins", "skins");
@@ -23,7 +23,7 @@ export interface Skin {
   fonts: string[]; comment: string; scope: "any" | "root"; bodyTracking: boolean; serifHeadings?: boolean;
   light: Tokens; dark: Tokens; notes?: { light?: Tokens; dark?: Tokens };
 }
-export interface Font { id: string; family: string; provider: "google"; google: string; attribution: { source: string; license: string } }
+export interface Font { id: string; family: string; provider: "google"; google: string; headingWeight?: number; attribution: { source: string; license: string } }
 export interface IndexEntry { id: string; name: string; version: string; file: string; sha256: string }
 
 const readJson = <T>(p: string): T => JSON.parse(readFileSync(p, "utf8")) as T;
@@ -65,7 +65,7 @@ export function skinCss(s: Skin): string {
     block(sel, destructiveHover(s.light), s.notes?.light),
     block(dark, destructiveHover(s.dark), s.notes?.dark),
     ...(s.bodyTracking ? [`:root[data-skin="${s.id}"] body { letter-spacing: var(--tracking-normal); }`] : []),
-    ...(s.serifHeadings ? [`${sel} :is(h1, h2, h3) { font-family: var(--font-serif); }`] : []),
+    ...(s.serifHeadings ? [`${sel} :is(h1, h2, h3) { font-family: var(--font-serif); font-weight: var(--taste-heading-weight, var(--font-weight-semibold, 600)); }`] : []),
     ["shadow-xs", "shadow-sm", "shadow", "shadow-md", "shadow-lg", "shadow-xl"].map((k) => `${sel} .${k} { --tw-shadow: var(--${k}); }`).join("\n"),
     "",
   ].join("\n");
@@ -120,6 +120,9 @@ export function build(check: boolean): { written: string[]; stale: string[]; err
   outputs.set(join(CSS_DIR, "skins.json"), JSON.stringify(registry, null, 2) + "\n");
   const sf = skinFontsSource(registry);
   outputs.set(join(ROOT, SHARED_DIR, sf.path), sf.contents);
+  const allFonts = readdirSync(FONTS).filter((f) => f.endsWith(".json") && f !== "font.schema.json").sort().map((f) => font(f.slice(0, -5))!);
+  const tf = themeFontsSource(allFonts);
+  outputs.set(join(ROOT, SHARED_DIR, tf.path), tf.contents);
   outputs.set(join(SKINS, "index.json"), JSON.stringify({ skins: entries }, null, 2) + "\n");
   const written: string[] = [], stale: string[] = [];
   for (const [p, contents] of outputs) {

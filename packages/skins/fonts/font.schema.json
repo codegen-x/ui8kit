@@ -27,6 +27,12 @@
     "provider": {
       "const": "google"
     },
+    "headingWeight": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 900,
+      "description": "Default CSS heading weight. If the face does not offer it, the browser uses the closest available weight."
+    },
     "google": {
       "type": "string",
       "pattern": "^[A-Za-z0-9+]+:[a-z,]+@[0-9;,.]+$",

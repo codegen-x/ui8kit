@@ -108,7 +108,7 @@ export function hostTargets(): { targets: HostTarget[]; problems: string[] } {
   return { targets, problems };
 }
 
-const SKINS_OWNED = /^src\/runtime\/skin-fonts\.ts$/;
+const SKINS_OWNED = /^src\/runtime\/(?:skin|theme)-fonts\.ts$/;
 
 function walk(dir: string, rel = ""): string[] {
   if (!existsSync(path.join(dir, rel))) return [];

@@ -90,6 +90,6 @@
 
   <section class="mg-sec" aria-labelledby="ds-specimen">
     <h2 class="mg-h2" id="ds-specimen">{ui.design.specimen}</h2>
-    <DsSpecimen text={ui.design} modes={ui.style} {skin} {font} {radius} {tokens} {tokenValues} />
+    <DsSpecimen text={ui.design} modes={ui.style} {skin} {font} headingFont={font} {radius} {tokens} {tokenValues} />
   </section>
 </div>

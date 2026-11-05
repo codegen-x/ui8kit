@@ -117,7 +117,7 @@
 }
 
 :root[data-skin="rose"] body { letter-spacing: var(--tracking-normal); }
-[data-skin="rose"] :is(h1, h2, h3) { font-family: var(--font-serif); }
+[data-skin="rose"] :is(h1, h2, h3) { font-family: var(--font-serif); font-weight: var(--taste-heading-weight, var(--font-weight-semibold, 600)); }
 [data-skin="rose"] .shadow-xs { --tw-shadow: var(--shadow-xs); }
 [data-skin="rose"] .shadow-sm { --tw-shadow: var(--shadow-sm); }
 [data-skin="rose"] .shadow { --tw-shadow: var(--shadow); }

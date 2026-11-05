@@ -5,6 +5,7 @@
   import { Box, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { FontId } from "@ui8kit/taste-data/fonts";
   import type { ThemeController } from "@ui8kit/theme-model/controller";
+  import { loadThemeFonts } from "@ui8kit/app-shared/runtime/skins";
   import { skinTokens, type Token } from "@ui8kit/theme-model/tokens";
   import DsSpecimen from "./ds-specimen.svelte";
   import ThemeFields from "./theme-fields.svelte";
@@ -20,7 +21,9 @@
   const t = $derived(ctl.value);
   const skin = $derived(t.skin ?? fallback.skin);
   const font = $derived((t.font ?? fallback.font) as FontId);
+  const headingFont = $derived(t.headingFont ?? t.font ?? fallback.font);
   const radius = $derived(t.radius ?? fallback.radius);
+  $effect(() => { loadThemeFonts([font, headingFont]); });
   let swatches = $state<{ light: Token[]; dark: Token[] }>({ light: [], dark: [] });
   $effect(() => { swatches = { light: skinTokens(skin, false), dark: skinTokens(skin, true) }; });
 </script>
@@ -38,7 +41,7 @@
   <Stack gap="0" class="ui8-theme-body" data-testid="ds-body">
     <ThemeFields {ctl} {text} idp="gt" view="design" />
     <ThemeIo {ctl} text={T.io} idp="gt" />
-    <DsSpecimen text={text.design} modes={text.style} idp="gt" {skin} {font} {radius} tokens={swatches} tokenValues={t.tokens} class="ui8-ds-panel-specimen" />
+    <DsSpecimen text={text.design} modes={text.style} idp="gt" {skin} {font} {headingFont} {radius} tokens={swatches} tokenValues={t.tokens} class="ui8-ds-panel-specimen" />
   </Stack>
   <Group gap="2" class="ui8-theme-foot">
     <Button variant="outline" disabled={Object.keys(t.tokens).length === 0} onclick={() => ctl.setTheme({ tokens: {} })} data-testid="ds-tokens-reset">{T.dsReset}</Button>

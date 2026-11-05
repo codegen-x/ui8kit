@@ -14,7 +14,7 @@
 //      edits this same theme), so the tab, the Theme sheet and the site always agree.
 //   3. the defaults: the kit's own values (the sky skin of the app CSS, var(--radius), the spec's padding and shadow).
 // The two layers are stored apart (the feed tune in the address, the global theme here): changing one never rewrites the other.
-import { FONT_IDS } from "@ui8kit/taste-data/font-ids";
+import { THEME_FONT_IDS, themeHeadingWeight } from "@ui8kit/app-shared/runtime/theme-fonts";
 import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
 import { cleanPalette, CONTRAST_LEVELS, HARMONIES, paletteStyle, type Palette } from "./palette";
 import { cleanScale, cleanWidth, FONT_SCALES, typeStyle, widthAxis } from "./type";
@@ -23,18 +23,19 @@ import { cleanTokens, DENSITIES, DENSITY_ELEMENTS, DENSITY_VARS, ELEMENT_SLOT, E
 /** palette: the custom colours of the colour wheel (palette.ts), with the skin's neutrals tinted by it; absent: the skin's own colours.
  *  fontScale: every text size in % (type.ts; absent: 100%); fontWidth: the font's Width axis in % (only for a font that has one;
  *  absent: the font's own width) */
-export type GlobalTheme = { skin: string | null; font: string | null; radius: number | null; tokens: Tokens; palette?: Palette; fontScale?: number; fontWidth?: number };
-export const NO_THEME: GlobalTheme = { skin: null, font: null, radius: null, tokens: {} };
+export type GlobalTheme = { skin: string | null; font: string | null; headingFont: string | null; radius: number | null; tokens: Tokens; palette?: Palette; fontScale?: number; fontWidth?: number };
+export const NO_THEME: GlobalTheme = { skin: null, font: null, headingFont: null, radius: null, tokens: {} };
 
 /** a theme from anything (storage, JSON): unknown values become null, unknown tokens are dropped */
 export function cleanTheme(v: unknown): GlobalTheme {
   const o = (v && typeof v === "object" ? v : {}) as Record<string, unknown>;
   const skin = typeof o.skin === "string" && (SKIN_IDS as readonly string[]).includes(o.skin) ? o.skin : null;
-  const font = typeof o.font === "string" && (FONT_IDS as readonly string[]).includes(o.font) ? o.font : null;
+  const font = typeof o.font === "string" && (THEME_FONT_IDS as readonly string[]).includes(o.font) ? o.font : null;
+  const headingFont = typeof o.headingFont === "string" && (THEME_FONT_IDS as readonly string[]).includes(o.headingFont) ? o.headingFont : null;
   const radius = typeof o.radius === "number" && (RADII as readonly number[]).includes(o.radius) ? o.radius : null;
   const palette = cleanPalette(o.palette);
   const fontScale = cleanScale(o.fontScale), fontWidth = cleanWidth(font, o.fontWidth);
-  return { skin, font, radius, tokens: cleanTokens(o.tokens), ...(palette ? { palette } : {}), ...(fontScale !== null ? { fontScale } : {}), ...(fontWidth !== null ? { fontWidth } : {}) };
+  return { skin, font, headingFont, radius, tokens: cleanTokens(o.tokens), ...(palette ? { palette } : {}), ...(fontScale !== null ? { fontScale } : {}), ...(fontWidth !== null ? { fontWidth } : {}) };
 }
 
 /** a patch merged into a theme (every controller's setTheme): choosing a skin (any patch naming `skin`) returns to that skin's own
@@ -48,7 +49,7 @@ export function patchTheme(t: GlobalTheme, patch: Partial<GlobalTheme>): GlobalT
   return next;
 }
 
-export const isDefault = (t: GlobalTheme): boolean => t.skin === null && t.font === null && t.radius === null && Object.keys(t.tokens).length === 0 && !t.palette && t.fontScale === undefined && t.fontWidth === undefined;
+export const isDefault = (t: GlobalTheme): boolean => t.skin === null && t.font === null && t.headingFont === null && t.radius === null && Object.keys(t.tokens).length === 0 && !t.palette && t.fontScale === undefined && t.fontWidth === undefined;
 
 /** localStorage, or null where there is none or it is blocked (reading the property itself throws then) */
 const local = (): Storage | null => { try { return typeof localStorage === "undefined" ? null : localStorage; } catch { return null; } };
@@ -73,12 +74,13 @@ export function densityOf(tokens: Tokens): Density | null {
 }
 export { DENSITIES };
 
-/** the CSS variables of the root: radius, the one font (body and headings), the per-element tokens, the custom palette's
+/** the CSS variables of the root: radius, the body and heading fonts, the per-element tokens, the custom palette's
  *  colour tokens for the app's mode now (they differ between light and dark), and the type scale (--text-*) and width (font-stretch) */
 export function rootStyle(t: GlobalTheme, family: (id: string) => string, mode: "light" | "dark" = "light"): string {
   return [
     t.radius !== null ? `--radius:${t.radius}px` : "",
-    t.font ? `--font-sans:${family(t.font)},sans-serif;--taste-heading:${family(t.font)},sans-serif` : "",
+    t.font ? `--font-sans:${family(t.font)},sans-serif` : "",
+    t.headingFont ? `--taste-heading:${family(t.headingFont)},sans-serif;--font-serif:${family(t.headingFont)},sans-serif;--taste-heading-weight:${themeHeadingWeight(t.headingFont) ?? "var(--font-weight-semibold,600)"}` : t.font ? `--taste-heading:${family(t.font)},sans-serif` : "",
     tokenStyle(t.tokens),
     t.palette ? paletteStyle(t.palette, mode, t.skin) : "",
     typeStyle(t.fontScale ?? null, t.fontWidth ?? null),
@@ -116,7 +118,8 @@ export type Field = {
 export const FIELDS: readonly Field[] = [
   { id: "mode", group: "site", values: MODES, nullable: false, unset: null, store: "mode" },
   { id: "skin", group: "site", values: SKIN_IDS, nullable: true, unset: null, store: "theme" },
-  { id: "font", group: "site", values: FONT_IDS, nullable: true, unset: null, store: "theme" },
+  { id: "font", group: "site", values: THEME_FONT_IDS, nullable: true, unset: null, store: "theme" },
+  { id: "headingFont", group: "site", values: THEME_FONT_IDS, nullable: true, unset: null, store: "theme", css: ["--taste-heading", "--font-serif"] },
   { id: "radius", group: "site", values: RADII, nullable: true, unset: null, store: "theme" },
   ...ELEMENTS.map((e): Field => ({ id: "radius-" + e, group: "radius", element: e, values: RADII, nullable: true, unset: null, store: "tokens", slot: ELEMENT_SLOT[e], css: ["--radius-" + e] })),
   ...DENSITY_ELEMENTS.map((e): Field => ({ id: "density-" + e, group: "density", element: e, values: DENSITIES, nullable: false, unset: "default", store: "tokens", slot: ELEMENT_SLOT[e], css: DENSITY_VARS[e] })),
@@ -133,7 +136,7 @@ export function fieldValue(s: ThemeState, id: string): FieldValue | null {
   const f = fieldOf(id);
   if (!f) return null;
   if (f.store === "mode") return s.mode;
-  if (f.store === "theme") return s.theme[id as "skin" | "font" | "radius"] ?? f.unset;
+  if (f.store === "theme") return s.theme[id as "skin" | "font" | "headingFont" | "radius"] ?? f.unset;
   return s.theme.tokens[id] ?? f.unset;
 }
 
@@ -153,7 +156,7 @@ export type ThemeView = "sheet" | "design";
 export type Control = "radio" | "select";
 const CONTROL: Record<ThemeView, (f: Field) => Control> = {
   sheet: (f) => (f.id === "mode" || f.id === "radius" ? "radio" : "select"),
-  design: (f) => (f.id === "skin" || f.id === "font" ? "select" : "radio"),
+  design: (f) => (f.id === "skin" || f.id === "font" || f.id === "headingFont" ? "select" : "radio"),
 };
 /** every field of the model, in order, with the control a view renders for it: both views cover every field */
 export const viewFields = (view: ThemeView): Array<{ field: Field; control: Control }> => FIELDS.map((field) => ({ field, control: CONTROL[view](field) }));
@@ -162,13 +165,13 @@ export const viewFields = (view: ThemeView): Array<{ field: Field; control: Cont
 
 export const CONFIG_FORMAT = "magazine-theme";
 export const CONFIG_VERSION = 2;
-export type ThemeConfig = { format: typeof CONFIG_FORMAT; version: typeof CONFIG_VERSION; mode: Mode; skin: string | null; font: string | null; radius: number | null; tokens: Tokens; palette: Palette | null; fontScale?: number; fontWidth?: number };
+export type ThemeConfig = { format: typeof CONFIG_FORMAT; version: typeof CONFIG_VERSION; mode: Mode; skin: string | null; font: string | null; headingFont: string | null; radius: number | null; tokens: Tokens; palette: Palette | null; fontScale?: number; fontWidth?: number };
 export type ImportResult = { ok: true; mode: Mode | null; theme: GlobalTheme; dropped: string[] } | { ok: false; error: string };
 
 /** the config of a state: every field, unset ones as null (tokens: only the ones set; the type scale and width only when set) */
 export function toConfig(s: ThemeState): ThemeConfig {
   const t = cleanTheme(s.theme);
-  return { format: CONFIG_FORMAT, version: CONFIG_VERSION, mode: s.mode, skin: t.skin, font: t.font, radius: t.radius, tokens: t.tokens, palette: t.palette ?? null, ...(t.fontScale !== undefined ? { fontScale: t.fontScale } : {}), ...(t.fontWidth !== undefined ? { fontWidth: t.fontWidth } : {}) };
+  return { format: CONFIG_FORMAT, version: CONFIG_VERSION, mode: s.mode, skin: t.skin, font: t.font, headingFont: t.headingFont, radius: t.radius, tokens: t.tokens, palette: t.palette ?? null, ...(t.fontScale !== undefined ? { fontScale: t.fontScale } : {}), ...(t.fontWidth !== undefined ? { fontWidth: t.fontWidth } : {}) };
 }
 
 /**
@@ -187,7 +190,7 @@ export function fromConfig(input: unknown): ImportResult {
   const theme = cleanTheme(o);
   const mode = o.mode === "light" || o.mode === "dark" ? o.mode : null;
   const dropped: string[] = [];
-  for (const k of ["skin", "font", "radius"] as const) if (o[k] !== undefined && o[k] !== null && theme[k] === null) dropped.push(k);
+  for (const k of ["skin", "font", "headingFont", "radius"] as const) if (o[k] !== undefined && o[k] !== null && theme[k] === null) dropped.push(k);
   if (o.mode !== undefined && o.mode !== null && mode === null) dropped.push("mode");
   if (o.palette !== undefined && o.palette !== null && !theme.palette) dropped.push("palette");
   // the defaults themselves (100%, the font's own width) are not dropped: they are what an absent field means

@@ -15,6 +15,7 @@
 //   data-look-reset="skin|font|radius"               back to the build skin, the skin's font, the skin's radius
 // The tile of the current choice gets aria-pressed="true".
 import { SKIN_FONTS } from "./skin-fonts";
+import { GOOGLE_FONTS, THEME_FONT_IDS } from "./theme-fonts";
 
 const KEYS = { skin: "codegen-x-skin", font: "codegen-x-font", radius: "codegen-x-radius" } as const;
 const LEGACY_KEYS = { skin: "xgen-skin", font: "xgen-font", radius: "xgen-radius" } as const;
@@ -64,6 +65,11 @@ export const storedSkin = (): string | null => read("skin");
 /** load the Google fonts a skin names (Stock/Magazine Theme call this when data-skin is set without /skins/ tiles) */
 export function loadSkinFonts(skin: string): void {
   for (const spec of SKIN_FONTS[skin] ?? []) loadFont(spec);
+}
+
+/** load the Google faces selected by Theme (self-hosted FONT_IDS are already registered by the app). */
+export function loadThemeFonts(ids: readonly string[] = THEME_FONT_IDS): void {
+  for (const id of ids) if (GOOGLE_FONTS[id]) loadFont(GOOGLE_FONTS[id]!.google);
 }
 
 /** put a skin on the page and load the fonts it needs */

@@ -5,7 +5,9 @@
      panel; Back returns. -->
 <script lang="ts">
   import { Badge, Box, Button, Group, Label, Radio, Stack, Text, Title } from "@codegen-x/svelte-compose";
-  import { family, type FontId } from "@ui8kit/taste-data/fonts";
+  import { loadThemeFonts } from "@ui8kit/app-shared/runtime/skins";
+  import { themeFamily, themeHeadingWeight } from "@ui8kit/app-shared/runtime/theme-fonts";
+  import type { FontId } from "@ui8kit/taste-data/fonts";
   import type { ThemeController } from "@ui8kit/theme-model/controller";
   import FontType from "./font-type.svelte";
   import { CHOICES, PICKER_FIELD, SWATCHES, type PickerKind } from "./pickers";
@@ -19,18 +21,22 @@
   const T = $derived(text.theme);
   const field = $derived(PICKER_FIELD[kind]);
   const current = $derived(ctl.value[field] ?? null);
-  const title = $derived(kind === "skins" ? T.skinsTitle : T.fontsTitle);
+  const title = $derived(kind === "skins" ? T.skinsTitle : kind === "fonts" ? T.fontsTitle : T.headingFontsTitle);
   const titleId = $derived("ui8-picker-" + kind + "-title");
   const skin = $derived(ctl.value.skin ?? fallback.skin);
-  const font = $derived((ctl.value.font ?? fallback.font) as FontId);
+  const font = $derived(ctl.value.font ?? fallback.font);
+  const headingFont = $derived(ctl.value.headingFont ?? ctl.value.font ?? fallback.font);
+  $effect(() => { if (kind !== "skins") loadThemeFonts(); });
   const radius = $derived(ctl.value.radius ?? fallback.radius);
   const skinOf = (v: string | null): string => (kind === "skins" ? v ?? fallback.skin : skin);
-  const fontOf = (v: string | null): FontId => (kind === "fonts" ? ((v ?? fallback.font) as FontId) : font);
+  const fontOf = (v: string | null): string => kind === "fonts" ? v ?? fallback.font : font;
+  const headingOf = (v: string | null): string => kind === "headingFonts" ? v ?? ctl.value.font ?? fallback.font : headingFont;
   // a skin card returns to that skin's own colours: the model drops a custom palette whenever a skin is chosen (patchTheme)
   const pick = (v: string | null): void => ctl.setField(field, v);
   const faceStyle = (v: string | null): string => {
-    const f = family(fontOf(v));
-    return `--radius:${radius}px;--font-sans:${f},sans-serif;--taste-heading:${f},sans-serif`;
+    const f = themeFamily(fontOf(v)), h = themeFamily(headingOf(v));
+    const weight = themeHeadingWeight(kind === "headingFonts" ? v : ctl.value.headingFont);
+    return `--radius:${radius}px;--font-sans:${f},sans-serif;--taste-heading:${h},sans-serif;--taste-heading-weight:${weight ?? "var(--font-weight-semibold,600)"}`;
   };
 </script>
 
@@ -40,8 +46,8 @@
       <Button variant="ghost" size="sm" class="ui8-ds-panel-back" onclick={() => (ctl.wide = null)} data-testid="picker-back">{T.back}</Button>
       <Title as={2} size="base" id={titleId}>{title}</Title>
     </Group>
-    <Text class="ui8-theme-note">{kind === "skins" ? T.skinsNote : T.fontsNote}</Text>
-    {#if kind === "fonts"}<FontType {ctl} text={T.fontType} {font} />{/if}
+    <Text class="ui8-theme-note">{kind === "skins" ? T.skinsNote : kind === "fonts" ? T.fontsNote : T.fontsNote}</Text>
+    {#if kind !== "skins"}<FontType {ctl} text={T.fontType} {font} {headingFont} />{/if}
   </Box>
   <Box class="ui8-theme-body" data-testid="picker-body">
     <Box class="ui8-picker-grid" role="radiogroup" aria-labelledby={titleId}>

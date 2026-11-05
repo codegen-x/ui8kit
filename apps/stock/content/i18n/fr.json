@@ -174,7 +174,7 @@
       "light": "Clair",
       "dark": "Sombre",
       "skin": "Skin",
-      "font": "Police",
+      "font": "Police du texte",
       "default": "Par défaut",
       "radius": "Arrondi par défaut",
       "resetRadius": "Réinitialiser l'arrondi",
@@ -225,7 +225,9 @@
         "imported": "Importé",
         "partial": "Importé ; valeurs inconnues ignorées",
         "invalid": "Ce n'est pas une configuration de thème"
-      }
+      },
+      "headingFont": "Police des titres",
+      "headingFontsTitle": "Polices des titres"
     },
     "design": {
       "tokens": "Jetons de couleur (HSL)",

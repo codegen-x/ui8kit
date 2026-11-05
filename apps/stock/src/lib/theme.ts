@@ -1,9 +1,9 @@
 // The Theme of Stock: the global theme model the Magazine uses too (@ui8kit/theme-model/global-theme: skin, font, radius,
 // per-element tokens, the light/dark mode of @ui8kit/app-shared), kept under Stock's own key. Applied to the document root, so
 // every live preview (and the storefront around it) follows it.
-import { loadSkinFonts } from "@ui8kit/app-shared/runtime/skins";
+import { loadSkinFonts, loadThemeFonts } from "@ui8kit/app-shared/runtime/skins";
 import { applyTheme, initTheme } from "@ui8kit/app-shared/runtime/theme";
-import { family, type FontId } from "@ui8kit/taste-data/fonts";
+import { themeFamily } from "@ui8kit/app-shared/runtime/theme-fonts";
 import { fromConfig, NO_THEME, readTheme, rootAttrs, rootStyle, setThemeField, toConfig, writeTheme, type FieldValue, type GlobalTheme, type ImportResult, type ThemeConfig } from "@ui8kit/theme-model/global-theme";
 
 const KEY = "stock:v1:theme";
@@ -32,9 +32,10 @@ export function applyState(s: ThemeState, keep = true): void {
   applied = Object.keys(attrs);
   for (const [k, v] of Object.entries(attrs)) root.setAttribute(k, v);
   if (s.theme.skin) loadSkinFonts(s.theme.skin);
+  loadThemeFonts([s.theme.font, s.theme.headingFont].filter((id): id is string => id !== null));
   for (const p of appliedProps) root.style.removeProperty(p);
   appliedProps = [];
-  for (const decl of rootStyle(s.theme, (id) => family(id as FontId), s.mode).split(";").filter(Boolean)) {
+  for (const decl of rootStyle(s.theme, themeFamily, s.mode).split(";").filter(Boolean)) {
     const at = decl.indexOf(":");
     root.style.setProperty(decl.slice(0, at), decl.slice(at + 1));
     appliedProps.push(decl.slice(0, at));

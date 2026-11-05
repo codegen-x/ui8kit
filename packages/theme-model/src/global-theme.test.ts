@@ -6,12 +6,12 @@ const mem = () => { const m = new Map<string, string>(); return { getItem: (k: s
 
 describe("global theme", () => {
   test("cleans unknown values", () => {
-    expect(cleanTheme({ skin: "nope", font: "inter", radius: 7, tokens: { "radius-card": 16, x: 1 } })).toEqual({ skin: null, font: "inter", radius: null, tokens: { "radius-card": 16 } });
+    expect(cleanTheme({ skin: "nope", font: "inter", radius: 7, tokens: { "radius-card": 16, x: 1 } })).toEqual({ skin: null, font: "inter", headingFont: null, radius: null, tokens: { "radius-card": 16 } });
     expect(isDefault(cleanTheme(null))).toBe(true);
   });
   test("round trip through storage; the default is not stored", () => {
     const s = mem();
-    const t = { skin: "claude", font: "manrope", radius: 12, tokens: { "shadow-card": "sm" } };
+    const t = { skin: "claude", font: "manrope", headingFont: null, radius: 12, tokens: { "shadow-card": "sm" } };
     writeTheme("magazine:v1:theme", t, s);
     expect(readTheme("magazine:v1:theme", s)).toEqual(t);
     expect(readTheme("stock:v1:theme", s)).toEqual(NO_THEME);
@@ -28,16 +28,22 @@ describe("global theme", () => {
     expect(Object.keys(setDensity(t, "default"))).toEqual([]);
   });
   test("root style and attributes", () => {
-    const t = { skin: "claude", font: "inter", radius: 0, tokens: { "radius-card": 16, "density-card": "compact" } };
+    const t = { skin: "claude", font: "inter", headingFont: null, radius: 0, tokens: { "radius-card": 16, "density-card": "compact" } };
     expect(rootStyle(t, (f) => "taste-" + f)).toBe("--radius:0px;--font-sans:taste-inter,sans-serif;--taste-heading:taste-inter,sans-serif;--radius-card:16px");
     expect(rootAttrs(t)).toEqual({ "data-skin": "claude", "data-density-card": "compact" });
     expect(rootStyle(NO_THEME, String)).toBe("");
+    expect(cleanTheme({ font: "pacifico", headingFont: "great-vibes" })).toMatchObject({ font: "pacifico", headingFont: "great-vibes" });
+    const split = rootStyle({ ...NO_THEME, font: "nunito", headingFont: "pacifico" }, String);
+    expect(split).toContain("--font-sans:nunito,sans-serif");
+    expect(split).toContain("--taste-heading:pacifico,sans-serif;--font-serif:pacifico,sans-serif");
+    expect(split).toContain("--taste-heading-weight:300");
+    expect(rootStyle({ ...NO_THEME, headingFont: "andika" }, String)).toContain("--font-serif:andika,sans-serif");
   });
 });
 
 // ---- coverage parity: one model, every field in both views, in export/import, applied to the site ----
 import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
-import { FONT_IDS } from "@ui8kit/taste-data/font-ids";
+import { THEME_FONT_IDS } from "@ui8kit/app-shared/runtime/theme-fonts";
 import { presetOf } from "@ui8kit/taste-data/preset";
 import { cleanTokens, DENSITY_ELEMENTS, ELEMENTS, SHADOW_ELEMENTS } from "./design";
 import { FIELD_IDS, FIELDS, fieldValue, fromConfig, setThemeField, THEME_SCHEMA, toConfig, viewFields, type GlobalTheme } from "./global-theme";
@@ -57,7 +63,8 @@ describe("theme coverage parity", () => {
     expect([...FIELD_IDS].sort()).toEqual([...MODEL_KEYS].sort());
     for (const k of MODEL_KEYS.filter((k) => k.includes("-"))) expect(Object.keys(cleanTokens({ [k]: FIELDS.find((f) => f.id === k)!.values.find((v) => v !== "default") }))).toEqual([k]);
     expect(FIELDS.find((f) => f.id === "skin")!.values).toEqual(SKIN_IDS);
-    expect(FIELDS.find((f) => f.id === "font")!.values).toEqual(FONT_IDS);
+    expect(FIELDS.find((f) => f.id === "font")!.values).toEqual(THEME_FONT_IDS);
+    expect(FIELDS.find((f) => f.id === "headingFont")!.values).toEqual(THEME_FONT_IDS);
     expect(FIELDS.find((f) => f.id === "radius")!.values).toEqual(RADII);
   });
   test("both views (Theme panel and Design system panel) render every field", () => {
@@ -84,7 +91,7 @@ describe("theme coverage parity", () => {
       const r = fromConfig(JSON.parse(JSON.stringify(cfg)));
       if (!r.ok) throw new Error(r.error);
       expect({ mode: r.mode, theme: r.theme }).toEqual({ mode: s.mode, theme: cleanTheme(s.theme) });
-      for (const id of FIELD_IDS) expect(fieldValue({ mode: cfg.mode, theme: { skin: cfg.skin, font: cfg.font, radius: cfg.radius, tokens: cfg.tokens } }, id)).toBe(fieldValue(s, id));
+      for (const id of FIELD_IDS) expect(fieldValue({ mode: cfg.mode, theme: { skin: cfg.skin, font: cfg.font, headingFont: cfg.headingFont, radius: cfg.radius, tokens: cfg.tokens } }, id)).toBe(fieldValue(s, id));
     }
   });
   test("every field reaches the site root (CSS variable, data attribute or the mode)", () => {
@@ -113,17 +120,17 @@ describe("theme coverage parity", () => {
   test("import: older shapes and a style preset; bad input is refused or dropped", () => {
     const stored = { v: 1, theme: { skin: "claude", font: "inter", radius: 4, tokens: { "radius-card": 16 } } };
     const r1 = fromConfig(stored);
-    expect(r1.ok && r1.theme).toEqual(stored.theme);
+    expect(r1.ok && r1.theme).toEqual({ ...stored.theme, headingFont: null });
     const preset = { ...presetOf("t071-poster-dots|bubblegum|montserrat+open-sans|0")!, tokens: { "shadow-card": "sm" } };
     const r2 = fromConfig(JSON.stringify(preset));
-    expect(r2.ok && r2.theme).toEqual({ skin: "bubblegum", font: "open-sans", radius: 0, tokens: { "shadow-card": "sm" } });
+    expect(r2.ok && r2.theme).toEqual({ skin: "bubblegum", font: "open-sans", headingFont: null, radius: 0, tokens: { "shadow-card": "sm" } });
     expect(fromConfig("{nope").ok).toBe(false);
     expect(fromConfig([1]).ok).toBe(false);
     expect(fromConfig({ format: "other" }).ok).toBe(false);
     expect(fromConfig({ format: "magazine-theme", version: 3 }).ok).toBe(false);
     const r3 = fromConfig({ format: "magazine-theme", version: 2, mode: "dim", skin: "nope", radius: 4, tokens: { "radius-card": 5, "density-card": "default", x: 1 } });
     expect(r3.ok && r3.dropped.sort()).toEqual(["mode", "radius-card", "skin", "x"]);
-    expect(r3.ok && r3.theme).toEqual({ skin: null, font: null, radius: 4, tokens: {} });
+    expect(r3.ok && r3.theme).toEqual({ skin: null, font: null, headingFont: null, radius: 4, tokens: {} });
   });
   test("the JSON Schema names every field and its values", () => {
     const p = THEME_SCHEMA.properties as unknown as Record<string, { enum?: unknown[] }>;
@@ -175,7 +182,7 @@ describe("choosing a skin drops the custom palette (patchTheme, the rule of ever
 describe("the type scale and width (Fonts panel header): stored only when set, in the config, in the root style", () => {
   test("round trip through the config; absent fields read as 100% and the font's own width", () => {
     const t = cleanTheme({ font: "roboto", fontScale: 90, fontWidth: 80 });
-    expect(t).toEqual({ skin: null, font: "roboto", radius: null, tokens: {}, fontScale: 90, fontWidth: 80 });
+    expect(t).toEqual({ skin: null, font: "roboto", headingFont: null, radius: null, tokens: {}, fontScale: 90, fontWidth: 80 });
     const cfg = JSON.parse(JSON.stringify(toConfig({ mode: "light", theme: t })));
     expect(cfg.fontScale).toBe(90);
     expect(cfg.fontWidth).toBe(80);
@@ -200,7 +207,7 @@ describe("the type scale and width (Fonts panel header): stored only when set, i
   });
   test("choosing a font drops the width, the scale stays; the root gets --text-* and font-stretch", () => {
     const t = cleanTheme({ font: "open-sans", fontScale: 110, fontWidth: 85 });
-    expect(patchTheme(t, { font: "roboto" })).toEqual({ skin: null, font: "roboto", radius: null, tokens: {}, fontScale: 110 });
+    expect(patchTheme(t, { font: "roboto" })).toEqual({ skin: null, font: "roboto", headingFont: null, radius: null, tokens: {}, fontScale: 110 });
     expect(patchTheme(t, { fontScale: undefined }).fontScale).toBeUndefined();
     expect("fontScale" in patchTheme(t, { fontScale: undefined })).toBe(false);
     const s = rootStyle(t, String);
