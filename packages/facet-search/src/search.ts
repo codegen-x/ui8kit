@@ -142,6 +142,7 @@ export function search<P>(e: Engine<P>, s: SearchState): Outcome<P> {
     const A = a.it, B = b.it;
     let d = 0;
     if (sort === "name") d = A.name < B.name ? -1 : A.name > B.name ? 1 : 0;
+    else if (sort === "newest") d = (B.asset.added ?? "").localeCompare(A.asset.added ?? "") || B.asset.order - A.asset.order;
     else {
       d = b.boost - a.boost;
       if (!d && sort === "relevance") d = b.rel - a.rel;

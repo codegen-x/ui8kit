@@ -84,11 +84,14 @@ describe("text and sorts", () => {
     // vocabulary synonyms reach the text search: "testimonials" finds the blocks of that job
     expect(search(E, st({ q: "testimonials", filters: { type: ["block"] } })).results.some((a) => a.labels["job"]!.includes("testimonials"))).toBe(true);
   });
-  test("sorts: catalog by default, relevance with a query, name, unlabelled first", () => {
+  test("sorts: catalog by default, relevance with a query, name, newest, unlabelled first", () => {
     expect(search(E, st({})).sort).toBe("catalog");
     expect(search(E, st({ q: "hero" })).sort).toBe("relevance");
     const byName = search(E, st({ sort: "name", filters: { type: ["block"] } })).results.map((a) => (a.title + " " + a.subtitle).toLowerCase());
     expect(byName).toEqual([...byName].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0)));
+    const newest = search(E, st({ sort: "newest", filters: { type: ["block"] }, variants: "all" })).results;
+    expect(newest.some((a) => a.spec === "block.dish")).toBe(true);
+    expect(newest[0]!.added >= newest[newest.length - 1]!.added).toBe(true);
     const un = search(E, st({ sort: "unlabelled" })).results;
     expect(un[0]!.missing.length).toBe(Math.max(...un.map((a) => a.missing.length)));
   });

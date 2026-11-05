@@ -12,7 +12,7 @@
     "pacifico",
     "nunito"
   ],
-  "comment": " Skin \"rose\": RoseUI System (2024 experiment) remapped to shadcn HSL; CodeGen-X wins conflicts (destructive, radius 0.625rem). darkMode class (.dark). Light primary rose-700 for AA. Typography: H1–H3 / Title as=h1|h2|h3 use font-serif = Pacifico (Lat+Cyr); body and UI use font-sans = Nunito.\n   On when data-skin=\"rose\" is on <html> (the page) or on any element (a tile of /skins/). ",
+  "comment": " Skin \"rose\": RoseUI System (2024 experiment) remapped to shadcn HSL; CodeGen-X wins conflicts (destructive, radius 0.625rem). darkMode class (.dark). Light primary Tailwind rose-600 #e11d48. Typography: H1–H3 / Title as=h1|h2|h3 use font-serif = Pacifico (Lat+Cyr); body and UI use font-sans = Nunito.\n   On when data-skin=\"rose\" is on <html> (the page) or on any element (a tile of /skins/). ",
   "scope": "any",
   "bodyTracking": true,
   "light": {
@@ -22,7 +22,7 @@
     "card-foreground": "hsl(240.0 5.9% 10.0%)",
     "popover": "hsl(0 0% 100%)",
     "popover-foreground": "hsl(240.0 5.9% 10.0%)",
-    "primary": "hsl(345.3 82.7% 40.8%)",
+    "primary": "hsl(346.8 77.2% 49.8%)",
     "primary-foreground": "hsl(0.0 0.0% 98.0%)",
     "secondary": "hsl(240.0 4.8% 95.9%)",
     "secondary-foreground": "hsl(240.0 5.9% 10.0%)",
@@ -34,20 +34,20 @@
     "destructive-foreground": "hsl(0 0% 100%)",
     "border": "hsl(240.0 5.9% 90.0%)",
     "input": "hsl(240.0 4.9% 83.9%)",
-    "ring": "hsl(345.3 82.7% 40.8%)",
-    "chart-1": "hsl(345.3 82.7% 40.8%)",
+    "ring": "hsl(346.8 77.2% 49.8%)",
+    "chart-1": "hsl(346.8 77.2% 49.8%)",
     "chart-2": "hsl(351.3 94.5% 71.4%)",
     "chart-3": "hsl(349.7 89.2% 60.2%)",
     "chart-4": "hsl(240.0 3.8% 46.1%)",
     "chart-5": "hsl(240.0 5.3% 26.1%)",
     "sidebar": "hsl(0.0 0.0% 98.0%)",
     "sidebar-foreground": "hsl(240.0 5.9% 10.0%)",
-    "sidebar-primary": "hsl(345.3 82.7% 40.8%)",
+    "sidebar-primary": "hsl(346.8 77.2% 49.8%)",
     "sidebar-primary-foreground": "hsl(0.0 0.0% 98.0%)",
     "sidebar-accent": "hsl(355.6 100.0% 94.7%)",
     "sidebar-accent-foreground": "hsl(341.5 75.5% 30.4%)",
     "sidebar-border": "hsl(240.0 5.9% 90.0%)",
-    "sidebar-ring": "hsl(345.3 82.7% 40.8%)",
+    "sidebar-ring": "hsl(346.8 77.2% 49.8%)",
     "font-sans": "Nunito, ui-sans-serif, system-ui, sans-serif",
     "font-serif": "Pacifico, cursive",
     "font-mono": "\"JetBrains Mono\", ui-monospace, monospace",
@@ -123,7 +123,7 @@
   },
   "notes": {
     "light": {
-      "primary": "/* rose-600 #e11d48 fails AA with zinc-50 → rose-700 #be123c */",
+      "primary": "/* Tailwind rose-600 #e11d48 */",
       "font-serif": "/* H1–H3 / Title as=h1|h2|h3 → font-serif Pacifico */"
     },
     "dark": {
@@ -132,5 +132,6 @@
       "card": "/* RoseUI dark:bg-zinc-800 */",
       "font-serif": "/* H1–H3 / Title as=h1|h2|h3 → font-serif Pacifico */"
     }
-  }
+  },
+  "serifHeadings": true
 }

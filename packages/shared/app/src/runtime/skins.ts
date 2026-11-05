@@ -61,10 +61,15 @@ const fontStack = (family: string): string => `"${family}", ui-sans-serif, syste
 /** the skin picked on /skins/, or null */
 export const storedSkin = (): string | null => read("skin");
 
+/** load the Google fonts a skin names (Stock/Magazine Theme call this when data-skin is set without /skins/ tiles) */
+export function loadSkinFonts(skin: string): void {
+  for (const spec of SKIN_FONTS[skin] ?? []) loadFont(spec);
+}
+
 /** put a skin on the page and load the fonts it needs */
 export function applySkin(skin: string): void {
   html().dataset.skin = skin;
-  for (const spec of SKIN_FONTS[skin] ?? []) loadFont(spec);
+  loadSkinFonts(skin);
 }
 
 /** put the stored font and radius on top of the skin, or take them off */

@@ -85,6 +85,8 @@ export type Asset<P = unknown> = {
   variant?: string;
   /** the order of the catalog (by topic, then name, then variant) */
   order: number;
+  /** ISO date (YYYY-MM-DD) when the asset's spec entered Stock; used by the newest sort */
+  added: string;
   /** facet id -> value ids ("*" = every value) */
   labels: Record<string, string[]>;
   /** the facets whose labels are weak (draft) for this asset */

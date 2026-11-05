@@ -3245,6 +3245,16 @@
       }
     },
     {
+      "id": "newest",
+      "label": {
+        "en": "Newest first",
+        "fr": "Plus récents",
+        "de": "Neueste zuerst",
+        "es": "Más recientes",
+        "ru": "Сначала новые"
+      }
+    },
+    {
       "id": "name",
       "label": {
         "en": "Name",

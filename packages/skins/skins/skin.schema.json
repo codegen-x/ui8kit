@@ -99,6 +99,10 @@
           "$ref": "#/$defs/notes"
         }
       }
+    },
+    "serifHeadings": {
+      "type": "boolean",
+      "description": "When true, h1–h3 under the skin use font-family: var(--font-serif) (e.g. Pacifico for rose)."
     }
   },
   "$defs": {

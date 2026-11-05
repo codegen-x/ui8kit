@@ -26,9 +26,9 @@ function makeIndex(n: number): Index {
     else labels["colour"] = [];
     labels["size"] = [["s", "m", "l"][rnd(3)]!];
     if (rnd(2)) labels["tag"] = [["alpha", "beta"][rnd(2)]!];
-    assets.push({ id: `a${i}`, type: labels["type"]![0]!, group: `g${g}`, title: `Item ${i} ${["hero", "pricing", "faq"][g % 3]}`, subtitle: `v${i % 3}`, spec: `block.g${g}`, order: i, labels, weak: [], missing: labels["colour"]!.length ? [] : ["colour"], fields: [{ w: 6, words: [`item`, ["hero", "pricing", "faq"][g % 3]!] }], preview: null });
+    assets.push({ id: `a${i}`, type: labels["type"]![0]!, group: `g${g}`, title: `Item ${i} ${["hero", "pricing", "faq"][g % 3]}`, subtitle: `v${i % 3}`, spec: `block.g${g}`, order: i, added: i >= 90 ? "2026-11-05" : "2025-01-01", labels, weak: [], missing: labels["colour"]!.length ? [] : ["colour"], fields: [{ w: 6, words: [`item`, ["hero", "pricing", "faq"][g % 3]!] }], preview: null });
   }
-  return { version: "0", digest: "sha256:test", counts: {}, facets: FACETS, quick: [], sorts: [{ id: "relevance", label: { en: "Relevance" } }, { id: "catalog", label: { en: "Catalog" } }, { id: "name", label: { en: "Name" } }], assets };
+  return { version: "0", digest: "sha256:test", counts: {}, facets: FACETS, quick: [], sorts: [{ id: "relevance", label: { en: "Relevance" } }, { id: "catalog", label: { en: "Catalog" } }, { id: "newest", label: { en: "Newest" } }, { id: "name", label: { en: "Name" } }], assets };
 }
 const INDEX = makeIndex(300);
 const E = prepare(INDEX);

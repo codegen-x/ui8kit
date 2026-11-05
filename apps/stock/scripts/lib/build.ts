@@ -78,6 +78,13 @@ export function loadVocabulary(): Vocabulary { return readJson<Vocabulary>(join(
 /** a term file of content/terms (brain-term/v1) and the draft table of the pattern facet */
 export const loadTerms = (scheme: string): TermFile => readJson<TermFile>(join(APP, "content", "terms", `${scheme}.v0.json`));
 export const loadPatternMap = (): PatternMap => readJson<PatternMap>(join(APP, "content", "pattern-map.v0.json"));
+/** ISO dates when each block/screen spec entered Stock (content/added.v0.json); missing → 2025-01-01 */
+export type AddedMap = { specs: Record<string, string> };
+export const loadAdded = (): AddedMap => {
+  const p = join(APP, "content", "added.v0.json");
+  try { return readJson<AddedMap>(p); } catch { return { specs: {} }; }
+};
+const DEFAULT_ADDED = "2025-01-01";
 
 export function build(vocab: Vocabulary = loadVocabulary()): Built {
   const blocks = jsonFiles(join(SPECS, "blocks")).map((f) => readJson<BlockSpec>(join(SPECS, "blocks", f)));
@@ -140,7 +147,9 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
     return out;
   }
   /** finish an asset: type label, labelling state, weak and missing facets, the haystack */
-  function finish(a: Omit<Asset, "weak" | "missing" | "fields" | "order"> & { words: { w: number; words: string[] }[] }, order: number): Asset {
+  const addedMap = loadAdded().specs;
+  const addedOf = (spec: string): string => addedMap[spec] ?? DEFAULT_ADDED;
+  function finish(a: Omit<Asset, "weak" | "missing" | "fields" | "order" | "added"> & { words: { w: number; words: string[] }[] }, order: number): Asset {
     const labels: Record<string, string[]> = { ...a.labels, type: [a.type] };
     // what still needs labelling: a shared, filtering facet of the type with no value (a typed facet without a value does not apply,
     // a draft facet with no labels at all for the type is unlabelled by design and marked as a draft instead)
@@ -154,7 +163,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
     // the words of the labels (value names and synonyms) are added by the engine when it loads the index (src/lib/search.ts)
     const fields = a.words.filter((f) => f.words.length);
     const { words: _w, ...rest } = a;
-    return { ...rest, order, labels: ordered, weak, missing, fields };
+    return { ...rest, order, added: addedOf(a.spec), labels: ordered, weak, missing, fields };
   }
 
   const runtimesOf = (names: string[]): string[] => {

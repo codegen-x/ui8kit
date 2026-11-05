@@ -1,6 +1,7 @@
 // The Theme of Stock: the global theme model the Magazine uses too (@ui8kit/theme-model/global-theme: skin, font, radius,
 // per-element tokens, the light/dark mode of @ui8kit/app-shared), kept under Stock's own key. Applied to the document root, so
 // every live preview (and the storefront around it) follows it.
+import { loadSkinFonts } from "@ui8kit/app-shared/runtime/skins";
 import { applyTheme, initTheme } from "@ui8kit/app-shared/runtime/theme";
 import { family, type FontId } from "@ui8kit/taste-data/fonts";
 import { fromConfig, NO_THEME, readTheme, rootAttrs, rootStyle, setThemeField, toConfig, writeTheme, type FieldValue, type GlobalTheme, type ImportResult, type ThemeConfig } from "@ui8kit/theme-model/global-theme";
@@ -30,6 +31,7 @@ export function applyState(s: ThemeState, keep = true): void {
   const attrs = rootAttrs(s.theme);
   applied = Object.keys(attrs);
   for (const [k, v] of Object.entries(attrs)) root.setAttribute(k, v);
+  if (s.theme.skin) loadSkinFonts(s.theme.skin);
   for (const p of appliedProps) root.style.removeProperty(p);
   appliedProps = [];
   for (const decl of rootStyle(s.theme, (id) => family(id as FontId), s.mode).split(";").filter(Boolean)) {

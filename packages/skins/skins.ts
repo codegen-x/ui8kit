@@ -20,7 +20,7 @@ type Tokens = Record<string, string>;
 export interface Skin {
   id: string; name: string; version: string;
   attribution: { source: string; license: string; upstream?: string; notice?: string };
-  fonts: string[]; comment: string; scope: "any" | "root"; bodyTracking: boolean;
+  fonts: string[]; comment: string; scope: "any" | "root"; bodyTracking: boolean; serifHeadings?: boolean;
   light: Tokens; dark: Tokens; notes?: { light?: Tokens; dark?: Tokens };
 }
 export interface Font { id: string; family: string; provider: "google"; google: string; attribution: { source: string; license: string } }
@@ -65,6 +65,7 @@ export function skinCss(s: Skin): string {
     block(sel, destructiveHover(s.light), s.notes?.light),
     block(dark, destructiveHover(s.dark), s.notes?.dark),
     ...(s.bodyTracking ? [`:root[data-skin="${s.id}"] body { letter-spacing: var(--tracking-normal); }`] : []),
+    ...(s.serifHeadings ? [`${sel} :is(h1, h2, h3) { font-family: var(--font-serif); }`] : []),
     ["shadow-xs", "shadow-sm", "shadow", "shadow-md", "shadow-lg", "shadow-xl"].map((k) => `${sel} .${k} { --tw-shadow: var(--${k}); }`).join("\n"),
     "",
   ].join("\n");

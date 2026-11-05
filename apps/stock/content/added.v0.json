@@ -1,0 +1,10 @@
+{
+  "$comment": "ISO date (YYYY-MM-DD) when a Stock asset's spec first entered the index. Key = block.<id> or screen.<id>. Missing keys get 2025-01-01 at build time.",
+  "specs": {
+    "block.dish": "2026-11-05",
+    "block.menuboard": "2026-11-05",
+    "block.reservation": "2026-11-05",
+    "block.lightboxgallery": "2026-11-05",
+    "screen.theme-restaurant-house": "2026-11-05"
+  }
+}
