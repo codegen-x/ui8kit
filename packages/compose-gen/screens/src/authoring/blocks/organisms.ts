@@ -26,6 +26,10 @@ import { foodOrganisms } from "./food";
 import { foodMoreOrganisms } from "./food-more";
 import { foodBuilderOrganisms } from "./food-builders";
 import { foodBoxOrganisms, meatCards } from "./food-box";
+import { dishCardOrganisms } from "./dish-card";
+import { menuBoardOrganisms } from "./menu-board";
+import { reservationFormOrganisms } from "./reservation-form";
+import { lightboxGalleryOrganisms } from "./lightbox-gallery";
 import { foodParts } from "../components/food-parts";
 import { checkoutOrganisms } from "./checkout";
 import { checkoutParts } from "../components/checkout-parts";
@@ -65,7 +69,7 @@ import { richTextOrganisms } from "./rich-text";
 export const allOrganisms = [
   pricingCard, ...siteOrganisms, ...landingOrganisms, ...pricingOrganisms, ...showcaseOrganisms, ...navigationOrganisms, ...workspaceOrganisms,
   ...guideOrganisms, ...signupOrganisms, ...marketingOrganisms, ...commerceOrganisms, ...contentOrganisms, ...templateOrganisms,
-  ...promoOrganisms, ...accountOrganisms, ...dashboardOrganisms, ...checkoutParts, ...shopParts, ...storefrontOrganisms, ...deliveryOrganisms, ...foodParts, meatCards, ...foodOrganisms, ...foodMoreOrganisms, ...foodBuilderOrganisms, ...foodBoxOrganisms,
+  ...promoOrganisms, ...accountOrganisms, ...dashboardOrganisms, ...checkoutParts, ...shopParts, ...storefrontOrganisms, ...deliveryOrganisms, ...foodParts, meatCards, ...foodOrganisms, ...foodMoreOrganisms, ...foodBuilderOrganisms, ...foodBoxOrganisms, ...dishCardOrganisms, ...menuBoardOrganisms, ...reservationFormOrganisms, ...lightboxGalleryOrganisms,
   ...checkoutOrganisms, ...peopleParts, ...workParts, ...peopleOrganisms, ...workOrganisms, ...shellParts, ...shellOrganisms,
   ...heroSplitParts, ...heroSplitOrganisms, ...faqParts, ...faqSplitOrganisms,
   ...ctaProofParts, ...ctaProofOrganisms, ...quoteSplitParts, ...quoteSplitOrganisms,

@@ -22,6 +22,7 @@ const LOADERS: Record<string, () => Promise<ScreenModule>> = {
   "theme-marketing-product": () => import("./screens/ThemeMarketingProductScreen").then((m) => ({ default: m.ThemeMarketingProductScreen })),
   "theme-onboarding-flow": () => import("./screens/ThemeOnboardingFlowScreen").then((m) => ({ default: m.ThemeOnboardingFlowScreen })),
   "theme-promo-campaign": () => import("./screens/ThemePromoCampaignScreen").then((m) => ({ default: m.ThemePromoCampaignScreen })),
+  "theme-restaurant-house": () => import("./screens/ThemeRestaurantHouseScreen").then((m) => ({ default: m.ThemeRestaurantHouseScreen })),
   "theme-support-center": () => import("./screens/ThemeSupportCenterScreen").then((m) => ({ default: m.ThemeSupportCenterScreen })),
 };
 

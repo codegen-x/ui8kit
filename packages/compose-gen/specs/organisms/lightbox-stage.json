@@ -1,0 +1,286 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.lightbox-stage",
+  "name": "LightboxStage",
+  "docs": "The selected photo in a dialog: title, close, picture, optional caption and previous/next. Static open state. Used by LightboxGallery.",
+  "records": {},
+  "props": [
+    {
+      "name": "photos",
+      "type": {
+        "ts": "Photo[]"
+      },
+      "required": true
+    },
+    {
+      "name": "labels",
+      "type": {
+        "ts": "LightboxLabels"
+      },
+      "required": true
+    },
+    {
+      "name": "captions",
+      "type": {
+        "ts": "\"show\" | \"hide\""
+      },
+      "default": "show"
+    },
+    {
+      "name": "lightbox",
+      "type": {
+        "ts": "\"open\" | \"closed\""
+      },
+      "default": "closed"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Dialog",
+      "props": {
+        "Open": {
+          "op": "eq",
+          "args": [
+            {
+              "$": "lightbox"
+            },
+            "open"
+          ]
+        },
+        "Size": "xl",
+        "AriaLabel": {
+          "op": "firstOf",
+          "args": [
+            {
+              "$": "photos"
+            },
+            "title"
+          ]
+        },
+        "Class": "gap-4 p-4"
+      },
+      "attrs": {
+        "data-testid": "lightbox"
+      },
+      "children": [
+        {
+          "use": "Group",
+          "props": {
+            "Gap": "2",
+            "Align": "center",
+            "Justify": "between"
+          },
+          "children": [
+            {
+              "use": "Text",
+              "props": {
+                "Size": "sm",
+                "Weight": "semibold"
+              },
+              "children": [
+                {
+                  "text": {
+                    "op": "firstOf",
+                    "args": [
+                      {
+                        "$": "photos"
+                      },
+                      "title"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "use": "Button",
+              "props": {
+                "Variant": "ghost",
+                "Size": "sm",
+                "Layout": "icon",
+                "Type": "button",
+                "AriaLabel": {
+                  "$": "labels.close"
+                }
+              },
+              "attrs": {
+                "data-testid": "lightbox-close"
+              },
+              "children": [
+                {
+                  "use": "LucideIcon",
+                  "props": {
+                    "Name": "x",
+                    "Size": 16
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "organism": "MediaFrame",
+          "props": {
+            "alt": {
+              "op": "firstOf",
+              "args": [
+                {
+                  "$": "photos"
+                },
+                "title"
+              ]
+            },
+            "ratio": "4/3"
+          }
+        },
+        {
+          "when": {
+            "op": "eq",
+            "args": [
+              {
+                "$": "captions"
+              },
+              "show"
+            ]
+          },
+          "then": [
+            {
+              "use": "Text",
+              "props": {
+                "Size": "sm",
+                "Class": "text-muted-foreground"
+              },
+              "children": [
+                {
+                  "text": {
+                    "op": "firstOf",
+                    "args": [
+                      {
+                        "$": "photos"
+                      },
+                      "tag"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "use": "Group",
+          "props": {
+            "Gap": "2",
+            "Align": "center",
+            "Justify": "between"
+          },
+          "children": [
+            {
+              "use": "Text",
+              "props": {
+                "Size": "xs",
+                "Class": "text-muted-foreground"
+              },
+              "children": [
+                {
+                  "text": {
+                    "op": "tpl",
+                    "args": [
+                      {
+                        "$": "labels.counter"
+                      },
+                      1,
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "photos"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "use": "Group",
+              "props": {
+                "Gap": "2"
+              },
+              "children": [
+                {
+                  "use": "Button",
+                  "props": {
+                    "Variant": "outline",
+                    "Size": "sm",
+                    "Layout": "icon",
+                    "Type": "button",
+                    "AriaLabel": {
+                      "$": "labels.previous"
+                    }
+                  },
+                  "children": [
+                    {
+                      "use": "LucideIcon",
+                      "props": {
+                        "Name": "chevron-left",
+                        "Size": 16
+                      }
+                    }
+                  ]
+                },
+                {
+                  "use": "Button",
+                  "props": {
+                    "Variant": "outline",
+                    "Size": "sm",
+                    "Layout": "icon",
+                    "Type": "button",
+                    "AriaLabel": {
+                      "$": "labels.next"
+                    }
+                  },
+                  "children": [
+                    {
+                      "use": "LucideIcon",
+                      "props": {
+                        "Name": "chevron-right",
+                        "Size": 16
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "LightboxGallery",
+      "names": [
+        "LightboxLabels"
+      ]
+    },
+    {
+      "from": "PhotoGallery",
+      "names": [
+        "Photo"
+      ]
+    }
+  ]
+}

@@ -26,6 +26,7 @@
     "theme-marketing-product": () => import("./screens/ThemeMarketingProductScreen.svelte"),
     "theme-onboarding-flow": () => import("./screens/ThemeOnboardingFlowScreen.svelte"),
     "theme-promo-campaign": () => import("./screens/ThemePromoCampaignScreen.svelte"),
+    "theme-restaurant-house": () => import("./screens/ThemeRestaurantHouseScreen.svelte"),
     "theme-support-center": () => import("./screens/ThemeSupportCenterScreen.svelte"),
   };
   const load = $derived(LOADERS[screen]);

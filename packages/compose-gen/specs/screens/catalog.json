@@ -584,6 +584,28 @@
                 "block": "weekmenu"
               }
             ]
+          },
+          {
+            "id": "food-dining",
+            "entries": [
+              {
+                "block": "dish"
+              },
+              {
+                "block": "menuboard"
+              }
+            ]
+          },
+          {
+            "id": "food-booking",
+            "entries": [
+              {
+                "block": "reservation"
+              },
+              {
+                "block": "lightboxgallery"
+              }
+            ]
           }
         ]
       },

@@ -11,6 +11,7 @@ import * as d from "./blocks-data";
 import { commerceBlocks } from "./blocks-commerce";
 import { shopBlocks } from "./blocks-shop";
 import { foodBlocks } from "./blocks-food";
+import { restaurantBlocks } from "./blocks-restaurant";
 import { companyBlocks } from "./blocks-company";
 import { shellBlocks } from "./blocks-shells";
 import { heroBlocks } from "./blocks-heroes";
@@ -221,7 +222,7 @@ const steps = define({
 });
 
 export const marketingBlocks = [header, hero, logos, features, stats, testimonials, steps, pricing, plan, faq, cta, footer];
-const all = [...marketingBlocks, ...commerceBlocks, ...shopBlocks, ...foodBlocks, ...moreBlocks, ...vibeBlocks, ...companyBlocks, ...shellBlocks, ...heroBlocks, ...faqBlocks, ...ctaBlocks, ...quoteBlocks, ...postBlocks, ...footerBlocks, ...featureSplitBlocks, ...pageTrailBlocks, ...postShowcaseBlocks, ...mediaListBlocks, ...featureShowcaseBlocks, ...storyTabsBlocks, ...richTextBlocks];
+const all = [...marketingBlocks, ...commerceBlocks, ...shopBlocks, ...foodBlocks, ...restaurantBlocks, ...moreBlocks, ...vibeBlocks, ...companyBlocks, ...shellBlocks, ...heroBlocks, ...faqBlocks, ...ctaBlocks, ...quoteBlocks, ...postBlocks, ...footerBlocks, ...featureSplitBlocks, ...pageTrailBlocks, ...postShowcaseBlocks, ...mediaListBlocks, ...featureShowcaseBlocks, ...storyTabsBlocks, ...richTextBlocks];
 
 export const blocks: BlockSpec[] = all.map((x) => x.block);
 export const blockTexts: Record<string, BlockTexts> = Object.fromEntries(all.map((x) => [x.block.id.slice("block.".length), x.texts]));

@@ -1,0 +1,432 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.menu-board",
+  "name": "MenuBoard",
+  "docs": "A restaurant menu board: category sections with DishCards in a grid, or denser menu rows in a list or a sectioned column. Axes: layout (sections, grid, list), prices (show, hide), density. Composes DishCard; section rows use MenuRow.",
+  "records": {},
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "lead",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "dishes",
+      "type": {
+        "ts": "Dish[]"
+      },
+      "required": true
+    },
+    {
+      "name": "sections",
+      "type": {
+        "ts": "DishSection[]"
+      },
+      "required": true
+    },
+    {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
+      "name": "labels",
+      "type": {
+        "ts": "FoodLabels"
+      },
+      "required": true
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"sections\" | \"grid\" | \"list\""
+      },
+      "default": "sections"
+    },
+    {
+      "name": "prices",
+      "type": {
+        "ts": "\"show\" | \"hide\""
+      },
+      "default": "show"
+    },
+    {
+      "name": "density",
+      "type": {
+        "ts": "\"default\" | \"compact\""
+      },
+      "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "organism": "SectionFrame",
+      "props": {
+        "id": {
+          "$": "id"
+        },
+        "title": {
+          "$": "title"
+        },
+        "lead": {
+          "$": "lead"
+        },
+        "density": {
+          "$": "density"
+        },
+        "landmarkLabel": {
+          "$": "landmarkLabel"
+        }
+      },
+      "slots": {
+        "children": {
+          "args": [],
+          "do": [
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "sections"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "star",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "8",
+                    "Align": "stretch"
+                  },
+                  "children": [
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "sections"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "MenuSectionNav",
+                          "props": {
+                            "label": {
+                              "$": "labels.sections"
+                            },
+                            "sections": {
+                              "$": "sections"
+                            },
+                            "prefix": {
+                              "$": "id"
+                            },
+                            "landmarkLabel": {
+                              "$": "landmarkLabel"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Box",
+                      "props": {
+                        "Class": "flex flex-col gap-8"
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "sections"
+                          },
+                          "as": "s",
+                          "key": {
+                            "$": "s.id"
+                          },
+                          "do": [
+                            {
+                              "use": "Stack",
+                              "props": {
+                                "Gap": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "density"
+                                        },
+                                        "compact"
+                                      ]
+                                    },
+                                    "2",
+                                    "4"
+                                  ]
+                                }
+                              },
+                              "attrs": {
+                                "id": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-{1}",
+                                    {
+                                      "$": "id"
+                                    },
+                                    {
+                                      "$": "s.key"
+                                    }
+                                  ]
+                                },
+                                "data-testid": "menusection"
+                              },
+                              "children": [
+                                {
+                                  "use": "Stack",
+                                  "props": {
+                                    "Gap": "0",
+                                    "Class": "border-b border-border pb-2"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "Title",
+                                      "props": {
+                                        "As": 3,
+                                        "Size": "xl",
+                                        "Weight": "bold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "s.title"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "s.note"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "when": {
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "layout"
+                                      },
+                                      "grid"
+                                    ]
+                                  },
+                                  "then": [
+                                    {
+                                      "use": "Grid",
+                                      "props": {
+                                        "Cols": "1-3",
+                                        "Class": "gap-4"
+                                      },
+                                      "children": [
+                                        {
+                                          "each": {
+                                            "$": "dishes"
+                                          },
+                                          "as": "d",
+                                          "key": {
+                                            "$": "d.id"
+                                          },
+                                          "do": [
+                                            {
+                                              "when": {
+                                                "op": "eq",
+                                                "args": [
+                                                  {
+                                                    "$": "d.tag"
+                                                  },
+                                                  {
+                                                    "$": "s.key"
+                                                  }
+                                                ]
+                                              },
+                                              "then": [
+                                                {
+                                                  "organism": "DishCard",
+                                                  "props": {
+                                                    "dish": {
+                                                      "$": "d"
+                                                    },
+                                                    "labels": {
+                                                      "add": {
+                                                        "$": "labels.add"
+                                                      }
+                                                    },
+                                                    "media": {
+                                                      "op": "cond",
+                                                      "args": [
+                                                        {
+                                                          "op": "eq",
+                                                          "args": [
+                                                            {
+                                                              "$": "density"
+                                                            },
+                                                            "compact"
+                                                          ]
+                                                        },
+                                                        "none",
+                                                        "image"
+                                                      ]
+                                                    },
+                                                    "prices": {
+                                                      "$": "prices"
+                                                    },
+                                                    "action": "none",
+                                                    "density": {
+                                                      "$": "density"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "else": [
+                                    {
+                                      "use": "List",
+                                      "props": {
+                                        "Tag": "ul",
+                                        "Class": "flex flex-col"
+                                      },
+                                      "children": [
+                                        {
+                                          "each": {
+                                            "$": "dishes"
+                                          },
+                                          "as": "d",
+                                          "key": {
+                                            "$": "d.id"
+                                          },
+                                          "do": [
+                                            {
+                                              "when": {
+                                                "op": "eq",
+                                                "args": [
+                                                  {
+                                                    "$": "d.tag"
+                                                  },
+                                                  {
+                                                    "$": "s.key"
+                                                  }
+                                                ]
+                                              },
+                                              "then": [
+                                                {
+                                                  "organism": "MenuRow",
+                                                  "props": {
+                                                    "dish": {
+                                                      "$": "d"
+                                                    },
+                                                    "prices": {
+                                                      "$": "prices"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "DishShowcase",
+      "names": [
+        "Dish",
+        "FoodLabels"
+      ]
+    },
+    {
+      "from": "RestaurantMenu",
+      "names": [
+        "DishSection"
+      ]
+    }
+  ]
+}

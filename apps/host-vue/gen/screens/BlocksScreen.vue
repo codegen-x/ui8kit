@@ -57,6 +57,7 @@ import CategoriesPage from "./BlocksScreen/CategoriesPage.vue";
 import CheckoutPage from "./BlocksScreen/CheckoutPage.vue";
 import CombobuilderPage from "./BlocksScreen/CombobuilderPage.vue";
 import DeliveryPage from "./BlocksScreen/DeliveryPage.vue";
+import DishPage from "./BlocksScreen/DishPage.vue";
 import DishbentoPage from "./BlocksScreen/DishbentoPage.vue";
 import DishcartPage from "./BlocksScreen/DishcartPage.vue";
 import DishcomparePage from "./BlocksScreen/DishcomparePage.vue";
@@ -64,7 +65,9 @@ import DishshowcasePage from "./BlocksScreen/DishshowcasePage.vue";
 import DishstripPage from "./BlocksScreen/DishstripPage.vue";
 import GrillbuilderPage from "./BlocksScreen/GrillbuilderPage.vue";
 import GrocerylistPage from "./BlocksScreen/GrocerylistPage.vue";
+import LightboxgalleryPage from "./BlocksScreen/LightboxgalleryPage.vue";
 import LocationsPage from "./BlocksScreen/LocationsPage.vue";
+import MenuboardPage from "./BlocksScreen/MenuboardPage.vue";
 import OrdersPage from "./BlocksScreen/OrdersPage.vue";
 import PizzapickerPage from "./BlocksScreen/PizzapickerPage.vue";
 import ProductPage from "./BlocksScreen/ProductPage.vue";
@@ -72,6 +75,7 @@ import ProductinfoPage from "./BlocksScreen/ProductinfoPage.vue";
 import ProductsPage from "./BlocksScreen/ProductsPage.vue";
 import QuickorderPage from "./BlocksScreen/QuickorderPage.vue";
 import RecipekitsPage from "./BlocksScreen/RecipekitsPage.vue";
+import ReservationPage from "./BlocksScreen/ReservationPage.vue";
 import RestaurantmenuPage from "./BlocksScreen/RestaurantmenuPage.vue";
 import ReviewsPage from "./BlocksScreen/ReviewsPage.vue";
 import SlotsPage from "./BlocksScreen/SlotsPage.vue";
@@ -173,6 +177,7 @@ const ROUTES = [
   {"path":"checkout","area":"checkout"},
   {"path":"combobuilder","area":"combobuilder"},
   {"path":"delivery","area":"delivery"},
+  {"path":"dish","area":"dish"},
   {"path":"dishbento","area":"dishbento"},
   {"path":"dishcart","area":"dishcart"},
   {"path":"dishcompare","area":"dishcompare"},
@@ -180,7 +185,9 @@ const ROUTES = [
   {"path":"dishstrip","area":"dishstrip"},
   {"path":"grillbuilder","area":"grillbuilder"},
   {"path":"grocerylist","area":"grocerylist"},
+  {"path":"lightboxgallery","area":"lightboxgallery"},
   {"path":"locations","area":"locations"},
+  {"path":"menuboard","area":"menuboard"},
   {"path":"orders","area":"orders"},
   {"path":"pizzapicker","area":"pizzapicker"},
   {"path":"product","area":"product"},
@@ -188,6 +195,7 @@ const ROUTES = [
   {"path":"products","area":"products"},
   {"path":"quickorder","area":"quickorder"},
   {"path":"recipekits","area":"recipekits"},
+  {"path":"reservation","area":"reservation"},
   {"path":"restaurantmenu","area":"restaurantmenu"},
   {"path":"reviews","area":"reviews"},
   {"path":"slots","area":"slots"},
@@ -293,6 +301,7 @@ const actions = { toggleTheme };
     <CheckoutPage v-else-if="route.area === 'checkout'" />
     <CombobuilderPage v-else-if="route.area === 'combobuilder'" />
     <DeliveryPage v-else-if="route.area === 'delivery'" />
+    <DishPage v-else-if="route.area === 'dish'" />
     <DishbentoPage v-else-if="route.area === 'dishbento'" />
     <DishcartPage v-else-if="route.area === 'dishcart'" />
     <DishcomparePage v-else-if="route.area === 'dishcompare'" />
@@ -300,7 +309,9 @@ const actions = { toggleTheme };
     <DishstripPage v-else-if="route.area === 'dishstrip'" />
     <GrillbuilderPage v-else-if="route.area === 'grillbuilder'" />
     <GrocerylistPage v-else-if="route.area === 'grocerylist'" />
+    <LightboxgalleryPage v-else-if="route.area === 'lightboxgallery'" />
     <LocationsPage v-else-if="route.area === 'locations'" />
+    <MenuboardPage v-else-if="route.area === 'menuboard'" />
     <OrdersPage v-else-if="route.area === 'orders'" />
     <PizzapickerPage v-else-if="route.area === 'pizzapicker'" />
     <ProductPage v-else-if="route.area === 'product'" />
@@ -308,6 +319,7 @@ const actions = { toggleTheme };
     <ProductsPage v-else-if="route.area === 'products'" />
     <QuickorderPage v-else-if="route.area === 'quickorder'" />
     <RecipekitsPage v-else-if="route.area === 'recipekits'" />
+    <ReservationPage v-else-if="route.area === 'reservation'" />
     <RestaurantmenuPage v-else-if="route.area === 'restaurantmenu'" />
     <ReviewsPage v-else-if="route.area === 'reviews'" />
     <SlotsPage v-else-if="route.area === 'slots'" />

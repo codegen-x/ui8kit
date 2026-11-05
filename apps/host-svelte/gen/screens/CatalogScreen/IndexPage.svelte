@@ -235,6 +235,8 @@
         { id: "food-builders", href: "#/food-builders", name: ui.catalog.categories.foodBuilders, blocks: 3, variants: 6 },
         { id: "food-kits", href: "#/food-kits", name: ui.catalog.categories.foodKits, blocks: 2, variants: 4 },
         { id: "food-menu", href: "#/food-menu", name: ui.catalog.categories.foodMenu, blocks: 2, variants: 4 },
+        { id: "food-dining", href: "#/food-dining", name: ui.catalog.categories.foodDining, blocks: 2, variants: 10 },
+        { id: "food-booking", href: "#/food-booking", name: ui.catalog.categories.foodBooking, blocks: 2, variants: 9 },
       ],
     },
     {

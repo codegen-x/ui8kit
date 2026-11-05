@@ -56,6 +56,7 @@ import { CategoriesPage } from "./BlocksScreen/CategoriesPage";
 import { CheckoutPage } from "./BlocksScreen/CheckoutPage";
 import { CombobuilderPage } from "./BlocksScreen/CombobuilderPage";
 import { DeliveryPage } from "./BlocksScreen/DeliveryPage";
+import { DishPage } from "./BlocksScreen/DishPage";
 import { DishbentoPage } from "./BlocksScreen/DishbentoPage";
 import { DishcartPage } from "./BlocksScreen/DishcartPage";
 import { DishcomparePage } from "./BlocksScreen/DishcomparePage";
@@ -63,7 +64,9 @@ import { DishshowcasePage } from "./BlocksScreen/DishshowcasePage";
 import { DishstripPage } from "./BlocksScreen/DishstripPage";
 import { GrillbuilderPage } from "./BlocksScreen/GrillbuilderPage";
 import { GrocerylistPage } from "./BlocksScreen/GrocerylistPage";
+import { LightboxgalleryPage } from "./BlocksScreen/LightboxgalleryPage";
 import { LocationsPage } from "./BlocksScreen/LocationsPage";
+import { MenuboardPage } from "./BlocksScreen/MenuboardPage";
 import { OrdersPage } from "./BlocksScreen/OrdersPage";
 import { PizzapickerPage } from "./BlocksScreen/PizzapickerPage";
 import { ProductPage } from "./BlocksScreen/ProductPage";
@@ -71,6 +74,7 @@ import { ProductinfoPage } from "./BlocksScreen/ProductinfoPage";
 import { ProductsPage } from "./BlocksScreen/ProductsPage";
 import { QuickorderPage } from "./BlocksScreen/QuickorderPage";
 import { RecipekitsPage } from "./BlocksScreen/RecipekitsPage";
+import { ReservationPage } from "./BlocksScreen/ReservationPage";
 import { RestaurantmenuPage } from "./BlocksScreen/RestaurantmenuPage";
 import { ReviewsPage } from "./BlocksScreen/ReviewsPage";
 import { SlotsPage } from "./BlocksScreen/SlotsPage";
@@ -172,6 +176,7 @@ const ROUTES = [
   {"path":"checkout","area":"checkout"},
   {"path":"combobuilder","area":"combobuilder"},
   {"path":"delivery","area":"delivery"},
+  {"path":"dish","area":"dish"},
   {"path":"dishbento","area":"dishbento"},
   {"path":"dishcart","area":"dishcart"},
   {"path":"dishcompare","area":"dishcompare"},
@@ -179,7 +184,9 @@ const ROUTES = [
   {"path":"dishstrip","area":"dishstrip"},
   {"path":"grillbuilder","area":"grillbuilder"},
   {"path":"grocerylist","area":"grocerylist"},
+  {"path":"lightboxgallery","area":"lightboxgallery"},
   {"path":"locations","area":"locations"},
+  {"path":"menuboard","area":"menuboard"},
   {"path":"orders","area":"orders"},
   {"path":"pizzapicker","area":"pizzapicker"},
   {"path":"product","area":"product"},
@@ -187,6 +194,7 @@ const ROUTES = [
   {"path":"products","area":"products"},
   {"path":"quickorder","area":"quickorder"},
   {"path":"recipekits","area":"recipekits"},
+  {"path":"reservation","area":"reservation"},
   {"path":"restaurantmenu","area":"restaurantmenu"},
   {"path":"reviews","area":"reviews"},
   {"path":"slots","area":"slots"},
@@ -343,6 +351,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <CombobuilderPage />
         ) : route.area === "delivery" ? (
           <DeliveryPage />
+        ) : route.area === "dish" ? (
+          <DishPage />
         ) : route.area === "dishbento" ? (
           <DishbentoPage />
         ) : route.area === "dishcart" ? (
@@ -357,8 +367,12 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <GrillbuilderPage />
         ) : route.area === "grocerylist" ? (
           <GrocerylistPage />
+        ) : route.area === "lightboxgallery" ? (
+          <LightboxgalleryPage />
         ) : route.area === "locations" ? (
           <LocationsPage />
+        ) : route.area === "menuboard" ? (
+          <MenuboardPage />
         ) : route.area === "orders" ? (
           <OrdersPage />
         ) : route.area === "pizzapicker" ? (
@@ -373,6 +387,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <QuickorderPage />
         ) : route.area === "recipekits" ? (
           <RecipekitsPage />
+        ) : route.area === "reservation" ? (
+          <ReservationPage />
         ) : route.area === "restaurantmenu" ? (
           <RestaurantmenuPage />
         ) : route.area === "reviews" ? (

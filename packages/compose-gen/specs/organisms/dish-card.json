@@ -1,0 +1,469 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.dish-card",
+  "name": "DishCard",
+  "docs": "A dish as a card: picture, optional badge, category, name, portion/weight, summary, price and an order button. No rating. Axes: layout (vertical, horizontal), media (image, none), density, action (button, none). Records map from Codex kind `dish`.",
+  "records": {
+    "DishLabels": [
+      {
+        "name": "add",
+        "type": "string"
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "dish",
+      "type": {
+        "ts": "Dish"
+      },
+      "required": true
+    },
+    {
+      "name": "labels",
+      "type": {
+        "record": "DishLabels"
+      },
+      "required": true
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"vertical\" | \"horizontal\""
+      },
+      "default": "vertical"
+    },
+    {
+      "name": "media",
+      "type": {
+        "ts": "\"image\" | \"none\""
+      },
+      "default": "image"
+    },
+    {
+      "name": "prices",
+      "type": {
+        "ts": "\"show\" | \"hide\""
+      },
+      "default": "show"
+    },
+    {
+      "name": "action",
+      "type": {
+        "ts": "\"button\" | \"none\""
+      },
+      "default": "button"
+    },
+    {
+      "name": "density",
+      "type": {
+        "ts": "\"default\" | \"compact\""
+      },
+      "default": "default"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "add",
+      "args": [
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "docs": "the order button was pressed"
+    }
+  ],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "article",
+        "Class": {
+          "op": "cn",
+          "args": [
+            "flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded",
+            "h-full gap-4 overflow-hidden",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "layout"
+                    },
+                    "horizontal"
+                  ]
+                },
+                "flex flex-col sm:flex-row",
+                "flex flex-col"
+              ]
+            }
+          ]
+        }
+      },
+      "attrs": {
+        "data-slot": "card",
+        "data-testid": "item",
+        "data-layout": {
+          "$": "layout"
+        }
+      },
+      "children": [
+        {
+          "when": {
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "image"
+            ]
+          },
+          "then": [
+            {
+              "use": "Box",
+              "props": {
+                "Class": {
+                  "op": "cn",
+                  "args": [
+                    "relative shrink-0",
+                    {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "layout"
+                            },
+                            "horizontal"
+                          ]
+                        },
+                        "sm:w-48",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "organism": "MediaFrame",
+                  "props": {
+                    "alt": {
+                      "$": "dish.name"
+                    },
+                    "ratio": "4/3",
+                    "className": "h-full"
+                  }
+                },
+                {
+                  "when": {
+                    "$": "dish.badge"
+                  },
+                  "then": [
+                    {
+                      "use": "Badge",
+                      "props": {
+                        "Variant": "default",
+                        "Size": "default",
+                        "Class": "absolute left-4 top-4"
+                      },
+                      "attrs": {
+                        "data-testid": "badge"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "dish.badge"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "use": "CardContent",
+          "props": {
+            "Class": "flex flex-1 flex-col gap-2"
+          },
+          "children": [
+            {
+              "use": "Group",
+              "props": {
+                "Gap": "2",
+                "Align": "center",
+                "Class": "flex-wrap"
+              },
+              "children": [
+                {
+                  "use": "Text",
+                  "props": {
+                    "Size": "xs",
+                    "Class": "uppercase tracking-wide text-muted-foreground"
+                  },
+                  "attrs": {
+                    "data-testid": "category"
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "$": "dish.tag"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "media"
+                      },
+                      "none"
+                    ]
+                  },
+                  "then": [
+                    {
+                      "when": {
+                        "$": "dish.badge"
+                      },
+                      "then": [
+                        {
+                          "use": "Badge",
+                          "props": {
+                            "Variant": "secondary",
+                            "Size": "sm"
+                          },
+                          "attrs": {
+                            "data-testid": "badge"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "dish.badge"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "use": "Title",
+              "props": {
+                "As": 3,
+                "Size": "base",
+                "Weight": "bold"
+              },
+              "children": [
+                {
+                  "when": {
+                    "$": "dish.href"
+                  },
+                  "then": [
+                    {
+                      "use": "Link",
+                      "props": {
+                        "Href": {
+                          "$": "dish.href"
+                        },
+                        "Variant": "default"
+                      },
+                      "attrs": {
+                        "data-testid": "open"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "dish.name"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "else": [
+                    {
+                      "text": {
+                        "$": "dish.name"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "when": {
+                "$": "dish.weight"
+              },
+              "then": [
+                {
+                  "use": "Text",
+                  "props": {
+                    "Size": "xs",
+                    "Class": "text-muted-foreground"
+                  },
+                  "attrs": {
+                    "data-testid": "portion"
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "$": "dish.weight"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "density"
+                  },
+                  "default"
+                ]
+              },
+              "then": [
+                {
+                  "use": "Text",
+                  "props": {
+                    "Size": "sm",
+                    "Class": "text-muted-foreground"
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "$": "dish.summary"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "use": "Group",
+              "props": {
+                "Gap": "4",
+                "Justify": "between",
+                "Class": "mt-auto pt-2"
+              },
+              "children": [
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "prices"
+                      },
+                      "show"
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "Text",
+                      "props": {
+                        "Size": "xl",
+                        "Weight": "bold"
+                      },
+                      "attrs": {
+                        "data-testid": "price"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "op": "money",
+                            "args": [
+                              {
+                                "$": "dish.price"
+                              },
+                              {
+                                "$": "dish.currency"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "action"
+                      },
+                      "button"
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "Button",
+                      "props": {
+                        "Variant": "default",
+                        "Size": "sm",
+                        "Type": "button"
+                      },
+                      "attrs": {
+                        "data-testid": "add"
+                      },
+                      "on": {
+                        "click": {
+                          "call": "emit.add",
+                          "args": [
+                            {
+                              "$": "dish.id"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "labels.add"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "DishShowcase",
+      "names": [
+        "Dish"
+      ]
+    }
+  ]
+}

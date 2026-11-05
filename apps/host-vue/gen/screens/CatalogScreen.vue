@@ -60,6 +60,8 @@ import FoodPizzaSushiPage from "./CatalogScreen/FoodPizzaSushiPage.vue";
 import FoodBuildersPage from "./CatalogScreen/FoodBuildersPage.vue";
 import FoodKitsPage from "./CatalogScreen/FoodKitsPage.vue";
 import FoodMenuPage from "./CatalogScreen/FoodMenuPage.vue";
+import FoodDiningPage from "./CatalogScreen/FoodDiningPage.vue";
+import FoodBookingPage from "./CatalogScreen/FoodBookingPage.vue";
 import AppShellPage from "./CatalogScreen/AppShellPage.vue";
 import AppDashboardShellsPage from "./CatalogScreen/AppDashboardShellsPage.vue";
 import AppWidgetsPage from "./CatalogScreen/AppWidgetsPage.vue";
@@ -155,6 +157,8 @@ const ROUTES = [
   {"path":"food-builders","area":"food-builders"},
   {"path":"food-kits","area":"food-kits"},
   {"path":"food-menu","area":"food-menu"},
+  {"path":"food-dining","area":"food-dining"},
+  {"path":"food-booking","area":"food-booking"},
   {"path":"app-shell","area":"app-shell"},
   {"path":"app-dashboard-shells","area":"app-dashboard-shells"},
   {"path":"app-widgets","area":"app-widgets"},
@@ -252,6 +256,8 @@ const actions = { toggleTheme };
     <FoodBuildersPage v-else-if="route.area === 'food-builders'" />
     <FoodKitsPage v-else-if="route.area === 'food-kits'" />
     <FoodMenuPage v-else-if="route.area === 'food-menu'" />
+    <FoodDiningPage v-else-if="route.area === 'food-dining'" />
+    <FoodBookingPage v-else-if="route.area === 'food-booking'" />
     <AppShellPage v-else-if="route.area === 'app-shell'" />
     <AppDashboardShellsPage v-else-if="route.area === 'app-dashboard-shells'" />
     <AppWidgetsPage v-else-if="route.area === 'app-widgets'" />

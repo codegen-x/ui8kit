@@ -26,6 +26,7 @@ const LOADERS: Record<string, () => Promise<{ default: Component }>> = {
   "theme-marketing-product": () => import("./screens/ThemeMarketingProductScreen.vue"),
   "theme-onboarding-flow": () => import("./screens/ThemeOnboardingFlowScreen.vue"),
   "theme-promo-campaign": () => import("./screens/ThemePromoCampaignScreen.vue"),
+  "theme-restaurant-house": () => import("./screens/ThemeRestaurantHouseScreen.vue"),
   "theme-support-center": () => import("./screens/ThemeSupportCenterScreen.vue"),
 };
 const load = LOADERS[screen];

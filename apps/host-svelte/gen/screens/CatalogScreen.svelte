@@ -59,6 +59,8 @@
   import FoodBuildersPage from "./CatalogScreen/FoodBuildersPage.svelte";
   import FoodKitsPage from "./CatalogScreen/FoodKitsPage.svelte";
   import FoodMenuPage from "./CatalogScreen/FoodMenuPage.svelte";
+  import FoodDiningPage from "./CatalogScreen/FoodDiningPage.svelte";
+  import FoodBookingPage from "./CatalogScreen/FoodBookingPage.svelte";
   import AppShellPage from "./CatalogScreen/AppShellPage.svelte";
   import AppDashboardShellsPage from "./CatalogScreen/AppDashboardShellsPage.svelte";
   import AppWidgetsPage from "./CatalogScreen/AppWidgetsPage.svelte";
@@ -154,6 +156,8 @@
     {"path":"food-builders","area":"food-builders"},
     {"path":"food-kits","area":"food-kits"},
     {"path":"food-menu","area":"food-menu"},
+    {"path":"food-dining","area":"food-dining"},
+    {"path":"food-booking","area":"food-booking"},
     {"path":"app-shell","area":"app-shell"},
     {"path":"app-dashboard-shells","area":"app-dashboard-shells"},
     {"path":"app-widgets","area":"app-widgets"},
@@ -305,6 +309,10 @@
     <FoodKitsPage />
   {:else if route.area === "food-menu"}
     <FoodMenuPage />
+  {:else if route.area === "food-dining"}
+    <FoodDiningPage />
+  {:else if route.area === "food-booking"}
+    <FoodBookingPage />
   {:else if route.area === "app-shell"}
     <AppShellPage />
   {:else if route.area === "app-dashboard-shells"}

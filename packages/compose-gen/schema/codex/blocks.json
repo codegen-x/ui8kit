@@ -1911,6 +1911,40 @@
       "emptyMode": "omit"
     },
     {
+      "id": "DishCard",
+      "surface": "kit-block",
+      "spec": "block.dish",
+      "source": "packages/compose-gen/specs/blocks/dish.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "dish",
+          "collection": "meals",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": false
+        }
+      ],
+      "settings": [
+        "layout",
+        "media",
+        "prices",
+        "action",
+        "density"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "restaurant.dish",
+          "keys": [
+            "add"
+          ]
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "DishBento",
       "surface": "kit-block",
       "spec": "block.dishbento",
@@ -3673,6 +3707,59 @@
       "emptyState": true
     },
     {
+      "id": "LightboxGallery",
+      "surface": "kit-block",
+      "spec": "block.lightboxgallery",
+      "source": "packages/compose-gen/specs/blocks/lightboxgallery.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "photos",
+          "collection": "photos",
+          "kind": "photo",
+          "record": "Photo",
+          "map": "photo",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "captions",
+        "lightbox",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "restaurant.gallery.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "restaurant.gallery.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.photos",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "restaurant.gallery",
+          "keys": [
+            "close",
+            "previous",
+            "next",
+            "open",
+            "counter"
+          ]
+        }
+      ],
+      "emptyState": true
+    },
+    {
       "id": "StoreLocations",
       "surface": "kit-block",
       "spec": "block.locations",
@@ -4034,6 +4121,96 @@
       ],
       "emptyState": true,
       "emptyMode": "omit"
+    },
+    {
+      "id": "MenuBoard",
+      "surface": "kit-block",
+      "spec": "block.menuboard",
+      "source": "packages/compose-gen/specs/blocks/menuboard.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "dishes",
+          "collection": "menudishes",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "sections",
+          "collection": "menusections",
+          "kind": "dishsection",
+          "record": "DishSection",
+          "map": "dishSection",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "prices",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "restaurant.board.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "restaurant.board.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.dishes",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "food.labels",
+          "keys": [
+            "add",
+            "open",
+            "order",
+            "qtyOf",
+            "decreaseOf",
+            "increaseOf",
+            "addOf",
+            "orderOf",
+            "inCart",
+            "total",
+            "minutes",
+            "ingredients",
+            "portions",
+            "size",
+            "crust",
+            "perKg",
+            "weightOf",
+            "boxFill",
+            "main",
+            "side",
+            "drink",
+            "meat",
+            "weight",
+            "sides",
+            "summary",
+            "phone",
+            "cut",
+            "heat",
+            "price",
+            "marinade",
+            "caption",
+            "pieces",
+            "strip",
+            "sections"
+          ]
+        }
+      ],
+      "emptyState": true
     },
     {
       "id": "MetricRow",
@@ -5795,6 +5972,61 @@
         }
       ],
       "emptyState": true
+    },
+    {
+      "id": "ReservationForm",
+      "surface": "kit-block",
+      "spec": "block.reservation",
+      "source": "packages/compose-gen/specs/blocks/reservation.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "details",
+          "collection": "contacts",
+          "kind": "contact",
+          "record": "Feature",
+          "map": "contact",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "fields",
+        "terms",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "restaurant.reservation.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "restaurant.reservation.text",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "restaurant.reservation.labels",
+          "keys": [
+            "name",
+            "phone",
+            "email",
+            "date",
+            "time",
+            "guests",
+            "notes",
+            "consent",
+            "submit",
+            "decrease",
+            "increase"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "RestaurantMenu",
@@ -7916,16 +8148,16 @@
           "list": true
         },
         {
-          "prop": "DishBento.dishes",
-          "collection": "specials",
+          "prop": "DishCard.dish",
+          "collection": "meals",
           "kind": "dish",
           "record": "Dish",
           "map": "dish",
-          "list": true
+          "list": false
         },
         {
-          "prop": "DishCartGrid.dishes",
-          "collection": "meals",
+          "prop": "DishBento.dishes",
+          "collection": "specials",
           "kind": "dish",
           "record": "Dish",
           "map": "dish",
@@ -8100,6 +8332,14 @@
           "list": true
         },
         {
+          "prop": "LightboxGallery.photos",
+          "collection": "photos",
+          "kind": "photo",
+          "record": "Photo",
+          "map": "photo",
+          "list": true
+        },
+        {
           "prop": "StoreLocations.stores",
           "collection": "stores",
           "kind": "store",
@@ -8140,6 +8380,22 @@
           "list": true
         },
         {
+          "prop": "MenuBoard.dishes",
+          "collection": "menudishes",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "MenuBoard.sections",
+          "collection": "menusections",
+          "kind": "dishsection",
+          "record": "DishSection",
+          "map": "dishSection",
+          "list": true
+        },
+        {
           "prop": "MetricRow.metrics",
           "collection": "metrics",
           "kind": "metric",
@@ -8161,14 +8417,6 @@
           "kind": "page",
           "record": "NavLink",
           "map": "page",
-          "list": true
-        },
-        {
-          "prop": "PhotoGallery.photos",
-          "collection": "photos",
-          "kind": "photo",
-          "record": "Photo",
-          "map": "photo",
           "list": true
         },
         {
@@ -8273,22 +8521,6 @@
           "kind": "dishoption",
           "record": "DishOption",
           "map": "dishOption",
-          "list": true
-        },
-        {
-          "prop": "RestaurantMenu.dishes",
-          "collection": "menudishes",
-          "kind": "dish",
-          "record": "Dish",
-          "map": "dish",
-          "list": true
-        },
-        {
-          "prop": "RestaurantMenu.sections",
-          "collection": "menusections",
-          "kind": "dishsection",
-          "record": "DishSection",
-          "map": "dishSection",
           "list": true
         },
         {
@@ -8463,7 +8695,7 @@
           "keys": []
         }
       ],
-      "emptyState": true,
+      "emptyState": false,
       "uses": [
         "block.about",
         "block.aboutme",
@@ -8493,6 +8725,7 @@
         "block.ctaproof",
         "block.dashshell",
         "block.delivery",
+        "block.dish",
         "block.dishbento",
         "block.dishcart",
         "block.dishcompare",
@@ -8516,10 +8749,12 @@
         "block.iconwall",
         "block.jobs",
         "block.kanban",
+        "block.lightboxgallery",
         "block.locations",
         "block.logos",
         "block.medialist",
         "block.megamenu",
+        "block.menuboard",
         "block.metrics",
         "block.navbar",
         "block.newsletter",
@@ -8544,6 +8779,7 @@
         "block.quickorder",
         "block.quotesplit",
         "block.recipekits",
+        "block.reservation",
         "block.restaurantmenu",
         "block.reviews",
         "block.richtext",
@@ -11745,6 +11981,181 @@
         "block.navbar",
         "block.newsletter",
         "block.pagehead"
+      ]
+    },
+    {
+      "id": "screen.theme-restaurant-house",
+      "surface": "compose-gen-screen",
+      "source": "packages/compose-gen/specs/screens/theme-restaurant-house.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "DishCard.dish",
+          "collection": "meals",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": false
+        },
+        {
+          "prop": "LightboxGallery.photos",
+          "collection": "photos",
+          "kind": "photo",
+          "record": "Photo",
+          "map": "photo",
+          "list": true
+        },
+        {
+          "prop": "MenuBoard.dishes",
+          "collection": "menudishes",
+          "kind": "dish",
+          "record": "Dish",
+          "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "MenuBoard.sections",
+          "collection": "menusections",
+          "kind": "dishsection",
+          "record": "DishSection",
+          "map": "dishSection",
+          "list": true
+        },
+        {
+          "prop": "NavBar.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "ReservationForm.details",
+          "collection": "contacts",
+          "kind": "contact",
+          "record": "Feature",
+          "map": "contact",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.restaurantHouse.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.restaurantHouse.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.restaurantHouse.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.restaurantHouse.menu.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.restaurantHouse.menu.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.restaurantHouse.menu.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.restaurantHouse.book.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.restaurantHouse.book.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.restaurantHouse.book.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.restaurantHouse.room.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.restaurantHouse.room.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.restaurantHouse.room.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.restaurantHouse.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.restaurantHouse.menu.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.restaurantHouse.book.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.restaurantHouse.room.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": false,
+      "uses": [
+        "block.dish",
+        "block.lightboxgallery",
+        "block.menuboard",
+        "block.navbar",
+        "block.pagehead",
+        "block.reservation",
+        "block.sitemap"
       ]
     },
     {

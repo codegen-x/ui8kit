@@ -1,0 +1,167 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.menu-row",
+  "name": "MenuRow",
+  "docs": "One dish on a menu board: name, optional badge, a dotted leader to the price, then the summary and the portion/weight. Used by MenuBoard; Codex kind `dish`.",
+  "records": {},
+  "props": [
+    {
+      "name": "dish",
+      "type": {
+        "ts": "Dish"
+      },
+      "required": true
+    },
+    {
+      "name": "prices",
+      "type": {
+        "ts": "\"show\" | \"hide\""
+      },
+      "default": "show"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "ListItem",
+      "props": {
+        "Class": "flex flex-col gap-0 border-b border-border py-2"
+      },
+      "attrs": {
+        "data-testid": "item"
+      },
+      "children": [
+        {
+          "use": "Box",
+          "props": {
+            "Class": "flex items-baseline gap-2"
+          },
+          "children": [
+            {
+              "use": "Inline",
+              "props": {
+                "Class": "font-semibold"
+              },
+              "children": [
+                {
+                  "text": {
+                    "$": "dish.name"
+                  }
+                }
+              ]
+            },
+            {
+              "when": {
+                "$": "dish.badge"
+              },
+              "then": [
+                {
+                  "use": "Badge",
+                  "props": {
+                    "Variant": "outline",
+                    "Size": "sm"
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "$": "dish.badge"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "prices"
+                  },
+                  "show"
+                ]
+              },
+              "then": [
+                {
+                  "use": "Inline",
+                  "props": {
+                    "Class": "flex-1 border-b border-dotted border-border"
+                  },
+                  "attrs": {
+                    "aria-hidden": "true"
+                  }
+                },
+                {
+                  "use": "Inline",
+                  "props": {
+                    "Class": "font-semibold"
+                  },
+                  "attrs": {
+                    "data-testid": "price"
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "op": "money",
+                        "args": [
+                          {
+                            "$": "dish.price"
+                          },
+                          {
+                            "$": "dish.currency"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "use": "Inline",
+          "props": {
+            "Class": "text-sm text-muted-foreground"
+          },
+          "children": [
+            {
+              "text": {
+                "op": "tpl",
+                "args": [
+                  "{0} · {1}",
+                  {
+                    "$": "dish.summary"
+                  },
+                  {
+                    "$": "dish.weight"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "DishShowcase",
+      "names": [
+        "Dish"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.menuboard",
+  "name": "Menu board",
+  "docs": "Category sections with DishCards in a grid, or denser menu rows; prices can be hidden.",
+  "theme": "commerce",
+  "group": "restaurant",
+  "organism": "MenuBoard",
+  "axes": {
+    "layout": [
+      "sections",
+      "grid",
+      "list"
+    ],
+    "prices": [
+      "show",
+      "hide"
+    ],
+    "density": [
+      "default",
+      "compact"
+    ]
+  },
+  "defaults": {
+    "layout": "sections",
+    "prices": "show",
+    "density": "default"
+  },
+  "variants": [
+    {
+      "id": "sections",
+      "set": {}
+    },
+    {
+      "id": "grid",
+      "set": {
+        "layout": "grid"
+      }
+    },
+    {
+      "id": "list",
+      "set": {
+        "layout": "list"
+      }
+    },
+    {
+      "id": "noPrices",
+      "set": {
+        "prices": "hide"
+      }
+    },
+    {
+      "id": "compact",
+      "set": {
+        "layout": "grid",
+        "density": "compact"
+      }
+    }
+  ],
+  "slots": [
+    "EmptyState",
+    "MenuRow",
+    "MenuSectionNav",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"menusection\"]",
+      "n": "@menusections"
+    },
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@menudishes"
+    },
+    {
+      "sel": "[data-testid=\"price\"]",
+      "n": "@menudishes",
+      "when": {
+        "prices": "show"
+      }
+    },
+    {
+      "sel": "[data-testid=\"price\"]",
+      "n": 0,
+      "when": {
+        "prices": "hide"
+      }
+    },
+    {
+      "sel": "[data-testid=\"section-nav\"]",
+      "n": 1,
+      "when": {
+        "layout": "sections"
+      }
+    },
+    {
+      "sel": "[data-testid=\"section-nav\"]",
+      "n": 0,
+      "when": {
+        "layout": [
+          "grid",
+          "list"
+        ]
+      }
+    }
+  ],
+  "data": [
+    {
+      "as": "menudishes",
+      "collection": "menudishes",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    },
+    {
+      "as": "menusections",
+      "collection": "menusections",
+      "kind": "dishsection",
+      "record": "DishSection",
+      "fields": {
+        "id": "id",
+        "key": "metadata.key.value",
+        "title": "title",
+        "note": "metadata.note.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "menuboard",
+      "title": {
+        "$": "ui.restaurant.board.title"
+      },
+      "lead": {
+        "$": "ui.restaurant.board.lead"
+      },
+      "dishes": {
+        "$": "menudishes"
+      },
+      "sections": {
+        "$": "menusections"
+      },
+      "empty": {
+        "$": "ui.empty.dishes"
+      },
+      "labels": {
+        "$": "ui.food.labels"
+      }
+    }
+  }
+}

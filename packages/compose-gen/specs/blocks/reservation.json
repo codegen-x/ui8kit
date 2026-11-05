@@ -1,0 +1,126 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.reservation",
+  "name": "Reservation form",
+  "docs": "Book a table: name, phone, date, time, guests, optional notes and consent.",
+  "theme": "commerce",
+  "group": "restaurant",
+  "organism": "ReservationForm",
+  "axes": {
+    "layout": [
+      "single",
+      "split"
+    ],
+    "fields": [
+      "full",
+      "compact"
+    ],
+    "terms": [
+      "show",
+      "hide"
+    ],
+    "density": [
+      "default",
+      "compact"
+    ]
+  },
+  "defaults": {
+    "layout": "single",
+    "fields": "full",
+    "terms": "hide",
+    "density": "default"
+  },
+  "variants": [
+    {
+      "id": "single",
+      "set": {}
+    },
+    {
+      "id": "split",
+      "set": {
+        "layout": "split"
+      }
+    },
+    {
+      "id": "compact",
+      "set": {
+        "fields": "compact"
+      }
+    },
+    {
+      "id": "consent",
+      "set": {
+        "terms": "show"
+      }
+    },
+    {
+      "id": "dense",
+      "set": {
+        "fields": "compact",
+        "density": "compact"
+      }
+    }
+  ],
+  "slots": [
+    "Field",
+    "NumberField",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"reservation-form\"]",
+      "n": 1
+    },
+    {
+      "sel": "[data-testid=\"submit\"]",
+      "n": 1
+    },
+    {
+      "sel": "[data-testid=\"details\"]",
+      "n": 1,
+      "when": {
+        "layout": "split"
+      }
+    },
+    {
+      "sel": "[data-testid=\"details\"]",
+      "n": 0,
+      "when": {
+        "layout": "single"
+      }
+    }
+  ],
+  "data": [
+    {
+      "as": "contacts",
+      "collection": "contacts",
+      "kind": "contact",
+      "record": "Feature",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "text": "metadata.text.value",
+        "icon": "metadata.icon.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "reservation",
+      "title": {
+        "$": "ui.restaurant.reservation.title"
+      },
+      "text": {
+        "$": "ui.restaurant.reservation.text"
+      },
+      "labels": {
+        "$": "ui.restaurant.reservation.labels"
+      },
+      "details": {
+        "$": "contacts"
+      }
+    }
+  }
+}

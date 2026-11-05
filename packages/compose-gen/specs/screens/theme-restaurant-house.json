@@ -1,0 +1,207 @@
+{
+  "$schema": "../../schema/schemas/composed.schema.json",
+  "specVersion": 1,
+  "id": "screen.theme-restaurant-house",
+  "name": "ThemeRestaurantHouseScreen",
+  "kind": "composed",
+  "docs": "A restaurant site: dish cards, a menu board of the kitchen, a table reservation form and a photo gallery with a lightbox.",
+  "routes": [
+    {
+      "path": "",
+      "area": "home"
+    },
+    {
+      "path": "menu",
+      "area": "menu"
+    },
+    {
+      "path": "book",
+      "area": "book"
+    },
+    {
+      "path": "room",
+      "area": "room"
+    }
+  ],
+  "frame": {
+    "before": [
+      {
+        "block": "navbar",
+        "variant": "inline",
+        "props": {
+          "brandHref": "#/",
+          "links": {
+            "$": "nav.links"
+          },
+          "current": {
+            "$": "nav.current"
+          },
+          "skip": {
+            "$": "ui.site.header.skip"
+          },
+          "actions": {
+            "themeLabel": {
+              "$": "ui.theme.toggle"
+            }
+          }
+        }
+      }
+    ],
+    "after": [
+      {
+        "block": "sitemap",
+        "variant": "columns"
+      }
+    ]
+  },
+  "areas": {
+    "home": [
+      {
+        "block": "pagehead",
+        "variant": "center",
+        "props": {
+          "title": {
+            "$": "ui.pages.restaurantHouse.home.title"
+          },
+          "text": {
+            "$": "ui.pages.restaurantHouse.home.text"
+          },
+          "cta": {
+            "$": "ui.pages.restaurantHouse.home.cta"
+          },
+          "href": "#/menu"
+        }
+      },
+      {
+        "block": "dish",
+        "variant": "vertical"
+      },
+      {
+        "block": "menuboard",
+        "variant": "sections"
+      },
+      {
+        "block": "reservation",
+        "variant": "single"
+      }
+    ],
+    "menu": [
+      {
+        "block": "pagehead",
+        "variant": "start",
+        "props": {
+          "title": {
+            "$": "ui.pages.restaurantHouse.menu.title"
+          },
+          "text": {
+            "$": "ui.pages.restaurantHouse.menu.text"
+          },
+          "cta": {
+            "$": "ui.pages.restaurantHouse.menu.cta"
+          },
+          "href": "#/book"
+        }
+      },
+      {
+        "block": "menuboard",
+        "variant": "grid"
+      },
+      {
+        "block": "dish",
+        "variant": "horizontal"
+      },
+      {
+        "block": "menuboard",
+        "variant": "list"
+      }
+    ],
+    "book": [
+      {
+        "block": "pagehead",
+        "variant": "start",
+        "props": {
+          "title": {
+            "$": "ui.pages.restaurantHouse.book.title"
+          },
+          "text": {
+            "$": "ui.pages.restaurantHouse.book.text"
+          },
+          "cta": {
+            "$": "ui.pages.restaurantHouse.book.cta"
+          },
+          "href": "#/room"
+        }
+      },
+      {
+        "block": "reservation",
+        "variant": "split"
+      },
+      {
+        "block": "reservation",
+        "variant": "compact"
+      }
+    ],
+    "room": [
+      {
+        "block": "pagehead",
+        "variant": "muted",
+        "props": {
+          "title": {
+            "$": "ui.pages.restaurantHouse.room.title"
+          },
+          "text": {
+            "$": "ui.pages.restaurantHouse.room.text"
+          },
+          "cta": {
+            "$": "ui.pages.restaurantHouse.room.cta"
+          },
+          "href": "#/"
+        }
+      },
+      {
+        "block": "lightboxgallery",
+        "variant": "grid"
+      },
+      {
+        "block": "lightboxgallery",
+        "variant": "open"
+      },
+      {
+        "block": "lightboxgallery",
+        "variant": "masonry"
+      }
+    ]
+  },
+  "chunks": true,
+  "requireH1": true,
+  "nameLandmarks": true,
+  "nav": true,
+  "menu": [
+    {
+      "id": "home",
+      "path": "",
+      "titleKey": "pages.restaurantHouse.home.nav"
+    },
+    {
+      "id": "menu",
+      "path": "menu",
+      "titleKey": "pages.restaurantHouse.menu.nav"
+    },
+    {
+      "id": "book",
+      "path": "book",
+      "titleKey": "pages.restaurantHouse.book.nav"
+    },
+    {
+      "id": "room",
+      "path": "room",
+      "titleKey": "pages.restaurantHouse.room.nav"
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true
+  }
+}

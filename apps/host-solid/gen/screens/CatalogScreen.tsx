@@ -59,6 +59,8 @@ import { FoodPizzaSushiPage } from "./CatalogScreen/FoodPizzaSushiPage";
 import { FoodBuildersPage } from "./CatalogScreen/FoodBuildersPage";
 import { FoodKitsPage } from "./CatalogScreen/FoodKitsPage";
 import { FoodMenuPage } from "./CatalogScreen/FoodMenuPage";
+import { FoodDiningPage } from "./CatalogScreen/FoodDiningPage";
+import { FoodBookingPage } from "./CatalogScreen/FoodBookingPage";
 import { AppShellPage } from "./CatalogScreen/AppShellPage";
 import { AppDashboardShellsPage } from "./CatalogScreen/AppDashboardShellsPage";
 import { AppWidgetsPage } from "./CatalogScreen/AppWidgetsPage";
@@ -154,6 +156,8 @@ const ROUTES = [
   {"path":"food-builders","area":"food-builders"},
   {"path":"food-kits","area":"food-kits"},
   {"path":"food-menu","area":"food-menu"},
+  {"path":"food-dining","area":"food-dining"},
+  {"path":"food-booking","area":"food-booking"},
   {"path":"app-shell","area":"app-shell"},
   {"path":"app-dashboard-shells","area":"app-dashboard-shells"},
   {"path":"app-widgets","area":"app-widgets"},
@@ -306,6 +310,10 @@ export function CatalogScreen({ url }: { url: UrlPort }) {
           <FoodKitsPage />
         ) : route.area === "food-menu" ? (
           <FoodMenuPage />
+        ) : route.area === "food-dining" ? (
+          <FoodDiningPage />
+        ) : route.area === "food-booking" ? (
+          <FoodBookingPage />
         ) : route.area === "app-shell" ? (
           <AppShellPage />
         ) : route.area === "app-dashboard-shells" ? (

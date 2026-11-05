@@ -1,0 +1,147 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.lightboxgallery",
+  "name": "Lightbox gallery",
+  "docs": "A photo gallery with a dialog for the selected picture. Additive to Photo gallery.",
+  "theme": "commerce",
+  "group": "restaurant",
+  "organism": "LightboxGallery",
+  "axes": {
+    "layout": [
+      "grid",
+      "masonry",
+      "featured"
+    ],
+    "captions": [
+      "show",
+      "hide"
+    ],
+    "lightbox": [
+      "open",
+      "closed"
+    ]
+  },
+  "defaults": {
+    "layout": "grid",
+    "captions": "show",
+    "lightbox": "closed"
+  },
+  "variants": [
+    {
+      "id": "grid",
+      "set": {}
+    },
+    {
+      "id": "masonry",
+      "set": {
+        "layout": "masonry",
+        "captions": "hide"
+      }
+    },
+    {
+      "id": "featured",
+      "set": {
+        "layout": "featured"
+      }
+    },
+    {
+      "id": "open",
+      "set": {
+        "lightbox": "open"
+      }
+    }
+  ],
+  "slots": [
+    "EmptyState",
+    "FigureBlock",
+    "LightboxStage",
+    "MediaFrame",
+    "SectionFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": "@photos",
+      "when": {
+        "layout": [
+          "grid",
+          "masonry"
+        ]
+      }
+    },
+    {
+      "sel": "[data-testid=\"thumbs\"] [data-slot=\"media-frame\"]",
+      "n": "@photos",
+      "when": {
+        "layout": "featured"
+      }
+    },
+    {
+      "sel": "[data-testid=\"caption\"]",
+      "n": "@photos",
+      "when": {
+        "layout": [
+          "grid",
+          "masonry"
+        ],
+        "captions": "show"
+      }
+    },
+    {
+      "sel": "[data-testid=\"caption\"]",
+      "n": 0,
+      "when": {
+        "captions": "hide"
+      }
+    },
+    {
+      "sel": "[data-testid=\"lightbox\"][open]",
+      "n": 1,
+      "when": {
+        "lightbox": "open"
+      }
+    },
+    {
+      "sel": "[data-testid=\"lightbox\"][open]",
+      "n": 0,
+      "when": {
+        "lightbox": "closed"
+      }
+    }
+  ],
+  "data": [
+    {
+      "as": "photos",
+      "collection": "photos",
+      "kind": "photo",
+      "record": "Photo",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "tag": "metadata.tag.value",
+        "size": "metadata.size.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "lightboxgallery",
+      "title": {
+        "$": "ui.restaurant.gallery.title"
+      },
+      "lead": {
+        "$": "ui.restaurant.gallery.lead"
+      },
+      "photos": {
+        "$": "photos"
+      },
+      "empty": {
+        "$": "ui.empty.photos"
+      },
+      "labels": {
+        "$": "ui.restaurant.gallery"
+      }
+    }
+  }
+}

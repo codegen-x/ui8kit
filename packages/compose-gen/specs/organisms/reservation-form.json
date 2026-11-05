@@ -1,0 +1,777 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.reservation-form",
+  "name": "ReservationForm",
+  "docs": "A table reservation: name, phone and/or email, date, time, guests, optional notes and consent; in the split layout, the ways to reach the house sit beside the form. Axes: layout (single, split), density, fields (full, compact).",
+  "records": {
+    "ReservationLabels": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "phone",
+        "type": "string"
+      },
+      {
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "name": "date",
+        "type": "string"
+      },
+      {
+        "name": "time",
+        "type": "string"
+      },
+      {
+        "name": "guests",
+        "type": "string"
+      },
+      {
+        "name": "notes",
+        "type": "string"
+      },
+      {
+        "name": "consent",
+        "type": "string"
+      },
+      {
+        "name": "submit",
+        "type": "string"
+      },
+      {
+        "name": "decrease",
+        "type": "string"
+      },
+      {
+        "name": "increase",
+        "type": "string"
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "labels",
+      "type": {
+        "record": "ReservationLabels"
+      },
+      "required": true
+    },
+    {
+      "name": "details",
+      "type": {
+        "ts": "Feature[]"
+      },
+      "required": true,
+      "docs": "address, hours and phone, shown beside the form in the split layout; Codex kind `contact`"
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"single\" | \"split\""
+      },
+      "default": "single"
+    },
+    {
+      "name": "fields",
+      "type": {
+        "ts": "\"full\" | \"compact\""
+      },
+      "default": "full"
+    },
+    {
+      "name": "terms",
+      "type": {
+        "ts": "\"show\" | \"hide\""
+      },
+      "default": "hide"
+    },
+    {
+      "name": "density",
+      "type": {
+        "ts": "\"default\" | \"compact\""
+      },
+      "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "organism": "SectionFrame",
+      "props": {
+        "id": {
+          "$": "id"
+        },
+        "title": {
+          "$": "title"
+        },
+        "lead": {
+          "$": "text"
+        },
+        "density": {
+          "$": "density"
+        },
+        "measure": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "layout"
+                },
+                "single"
+              ]
+            },
+            "xl",
+            "default"
+          ]
+        },
+        "landmarkLabel": {
+          "$": "landmarkLabel"
+        }
+      },
+      "slots": {
+        "children": {
+          "args": [],
+          "do": [
+            {
+              "use": "Grid",
+              "props": {
+                "Cols": {
+                  "op": "cond",
+                  "args": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "$": "layout"
+                        },
+                        "split"
+                      ]
+                    },
+                    "1-2",
+                    "1"
+                  ]
+                },
+                "Class": "items-start gap-8"
+              },
+              "children": [
+                {
+                  "use": "Form",
+                  "props": {
+                    "Method": "dialog",
+                    "Class": "flex w-full flex-col gap-4"
+                  },
+                  "attrs": {
+                    "data-testid": "reservation-form"
+                  },
+                  "children": [
+                    {
+                      "organism": "Field",
+                      "props": {
+                        "label": {
+                          "$": "labels.name"
+                        },
+                        "htmlFor": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-name",
+                            {
+                              "$": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
+                            {
+                              "use": "Input",
+                              "props": {
+                                "Type": "text",
+                                "Name": "name",
+                                "Autocomplete": "name"
+                              },
+                              "attrs": {
+                                "id": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-name",
+                                    {
+                                      "$": "id"
+                                    }
+                                  ]
+                                },
+                                "data-testid": "field"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "organism": "Field",
+                      "props": {
+                        "label": {
+                          "$": "labels.phone"
+                        },
+                        "htmlFor": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-phone",
+                            {
+                              "$": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
+                            {
+                              "use": "Input",
+                              "props": {
+                                "Type": "tel",
+                                "Name": "phone",
+                                "Autocomplete": "tel"
+                              },
+                              "attrs": {
+                                "id": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-phone",
+                                    {
+                                      "$": "id"
+                                    }
+                                  ]
+                                },
+                                "data-testid": "field"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "fields"
+                          },
+                          "full"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "Field",
+                          "props": {
+                            "label": {
+                              "$": "labels.email"
+                            },
+                            "htmlFor": {
+                              "op": "tpl",
+                              "args": [
+                                "{0}-email",
+                                {
+                                  "$": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "use": "Input",
+                                  "props": {
+                                    "Type": "email",
+                                    "Name": "email",
+                                    "Autocomplete": "email"
+                                  },
+                                  "attrs": {
+                                    "id": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-email",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    },
+                                    "data-testid": "field"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Group",
+                      "props": {
+                        "Gap": "4",
+                        "Class": "flex-wrap"
+                      },
+                      "children": [
+                        {
+                          "use": "Box",
+                          "props": {
+                            "Class": "min-w-0 flex-1"
+                          },
+                          "children": [
+                            {
+                              "organism": "Field",
+                              "props": {
+                                "label": {
+                                  "$": "labels.date"
+                                },
+                                "htmlFor": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-date",
+                                    {
+                                      "$": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "use": "Input",
+                                      "props": {
+                                        "Type": "date",
+                                        "Name": "date"
+                                      },
+                                      "attrs": {
+                                        "id": {
+                                          "op": "tpl",
+                                          "args": [
+                                            "{0}-date",
+                                            {
+                                              "$": "id"
+                                            }
+                                          ]
+                                        },
+                                        "data-testid": "field"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Box",
+                          "props": {
+                            "Class": "min-w-0 flex-1"
+                          },
+                          "children": [
+                            {
+                              "organism": "Field",
+                              "props": {
+                                "label": {
+                                  "$": "labels.time"
+                                },
+                                "htmlFor": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-time",
+                                    {
+                                      "$": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "use": "Input",
+                                      "props": {
+                                        "Type": "time",
+                                        "Name": "time"
+                                      },
+                                      "attrs": {
+                                        "id": {
+                                          "op": "tpl",
+                                          "args": [
+                                            "{0}-time",
+                                            {
+                                              "$": "id"
+                                            }
+                                          ]
+                                        },
+                                        "data-testid": "field"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "2"
+                      },
+                      "children": [
+                        {
+                          "use": "Label",
+                          "props": {
+                            "Class": "text-xs font-bold text-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.guests"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "organism": "NumberField",
+                          "props": {
+                            "value": "2",
+                            "name": {
+                              "op": "tpl",
+                              "args": [
+                                "{0}-guests",
+                                {
+                                  "$": "id"
+                                }
+                              ]
+                            },
+                            "min": "1",
+                            "label": {
+                              "$": "labels.guests"
+                            },
+                            "decrease": {
+                              "$": "labels.decrease"
+                            },
+                            "increase": {
+                              "$": "labels.increase"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "fields"
+                          },
+                          "full"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "Field",
+                          "props": {
+                            "label": {
+                              "$": "labels.notes"
+                            },
+                            "htmlFor": {
+                              "op": "tpl",
+                              "args": [
+                                "{0}-notes",
+                                {
+                                  "$": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "use": "Textarea",
+                                  "props": {
+                                    "Rows": 4,
+                                    "Name": "notes"
+                                  },
+                                  "attrs": {
+                                    "id": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-notes",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    },
+                                    "data-testid": "field"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "terms"
+                          },
+                          "show"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "use": "Group",
+                          "props": {
+                            "Gap": "2",
+                            "Align": "center",
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "w-fit",
+                                ""
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "use": "Checkbox",
+                              "props": {
+                                "Name": "consent"
+                              },
+                              "attrs": {
+                                "id": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-consent",
+                                    {
+                                      "$": "id"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "use": "Label",
+                              "props": {
+                                "For": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-consent",
+                                    {
+                                      "$": "id"
+                                    }
+                                  ]
+                                },
+                                "Class": "text-sm"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "labels.consent"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Button",
+                      "props": {
+                        "Variant": "default",
+                        "Size": "default",
+                        "Type": "submit",
+                        "Class": "w-fit"
+                      },
+                      "attrs": {
+                        "data-testid": "submit"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "labels.submit"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "when": {
+                    "op": "and",
+                    "args": [
+                      {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "split"
+                        ]
+                      },
+                      {
+                        "op": "gt",
+                        "args": [
+                          {
+                            "op": "len",
+                            "args": [
+                              {
+                                "$": "details"
+                              }
+                            ]
+                          },
+                          0
+                        ]
+                      }
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "4"
+                      },
+                      "attrs": {
+                        "data-testid": "details"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "details"
+                          },
+                          "as": "d",
+                          "key": {
+                            "$": "d.id"
+                          },
+                          "do": [
+                            {
+                              "use": "Group",
+                              "props": {
+                                "Gap": "4",
+                                "Align": "start"
+                              },
+                              "attrs": {
+                                "data-testid": "detail"
+                              },
+                              "children": [
+                                {
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": {
+                                      "$": "d.icon"
+                                    },
+                                    "Size": 20
+                                  }
+                                },
+                                {
+                                  "use": "Stack",
+                                  "props": {
+                                    "Gap": "0"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "base",
+                                        "Weight": "semibold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "d.title"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "d.text"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  },
+  "typeImports": [
+    {
+      "from": "FeatureGrid",
+      "names": [
+        "Feature"
+      ]
+    }
+  ]
+}

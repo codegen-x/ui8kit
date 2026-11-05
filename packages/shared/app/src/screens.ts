@@ -22,6 +22,7 @@ export const SCREENS: readonly ScreenEntry[] = [
   { key: "theme-marketing-product", id: "screen.theme-marketing-product", name: "ThemeMarketingProductScreen", skin: "default" },
   { key: "theme-onboarding-flow", id: "screen.theme-onboarding-flow", name: "ThemeOnboardingFlowScreen", skin: "default" },
   { key: "theme-promo-campaign", id: "screen.theme-promo-campaign", name: "ThemePromoCampaignScreen", skin: "default" },
+  { key: "theme-restaurant-house", id: "screen.theme-restaurant-house", name: "ThemeRestaurantHouseScreen", skin: "default" },
   { key: "theme-support-center", id: "screen.theme-support-center", name: "ThemeSupportCenterScreen", skin: "default" },
 ];
 

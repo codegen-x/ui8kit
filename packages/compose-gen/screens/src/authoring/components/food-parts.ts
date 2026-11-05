@@ -73,6 +73,23 @@ export const menuSectionNav = spec(`${P}menu-section-nav`, "MenuSectionNav", "Th
 });
 foodParts.push(menuSectionNav);
 
+export const menuRow = spec(`${P}menu-row`, "MenuRow", "One dish on a menu board: name, optional badge, a dotted leader to the price, then the summary and the portion/weight. Used by MenuBoard; Codex kind `dish`.", {
+  typeImports: [{ from: "DishShowcase", names: ["Dish"] }],
+  props: [
+    { name: "dish", type: ts("Dish"), required: true },
+    { name: "prices", type: tsOf("show", "hide"), default: "show" },
+  ],
+  view: [use("ListItem", { props: { Class: "flex flex-col gap-0 border-b border-border py-2" }, attrs: { "data-testid": "item" } },
+    use("Box", { props: { Class: "flex items-baseline gap-2" } },
+      use("Inline", { props: { Class: "font-semibold" } }, text(ref("dish.name"))),
+      when(ref("dish.badge"), [use("Badge", { props: { Variant: "outline", Size: "sm" } }, text(ref("dish.badge")))]),
+      when(eq(ref("prices"), "show"), [
+        use("Inline", { props: { Class: "flex-1 border-b border-dotted border-border" }, attrs: { "aria-hidden": "true" } }),
+        use("Inline", { props: { Class: "font-semibold" }, attrs: { "data-testid": "price" } }, text(money(ref("dish.price"), ref("dish.currency"))))])),
+    use("Inline", { props: { Class: "text-sm text-muted-foreground" } }, text(tpl("{0} · {1}", ref("dish.summary"), ref("dish.weight")))))],
+});
+foodParts.push(menuRow);
+
 const sideRow = "flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted";
 export const sideChecks = spec(`${P}side-checks`, "SideChecks", "Extras to tick: a fieldset named by its legend, one checkbox per option with its note and price. Static markup.", {
   typeImports: [{ from: "OptionChips", names: ["DishOption"] }],

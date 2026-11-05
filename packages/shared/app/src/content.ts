@@ -138,6 +138,10 @@ export const ui = {
       "recipekits": "Recipe kits",
       "veggiebox": "Vegetable box",
       "dishcompare": "Cut compare",
+      "dish": "Dish card",
+      "menuboard": "Menu board",
+      "reservation": "Reservation form",
+      "lightboxgallery": "Lightbox gallery",
       "announcement": "Announcement bar",
       "cookie": "Cookie notice",
       "newsletter": "Newsletter sign-up",
@@ -248,6 +252,10 @@ export const ui = {
       "recipekits": "Kits with the ingredients list, the cooking time and the portions.",
       "veggiebox": "Fill a box by weight: produce tiles beside the box with a meter.",
       "dishcompare": "Grill cuts side by side: a table or compare cards.",
+      "dish": "A dish as a card: picture, category, portion/weight, price and an order button. No rating.",
+      "menuboard": "Category sections with DishCards in a grid, or denser menu rows; prices can be hidden.",
+      "reservation": "Book a table: name, phone, date, time, guests, optional notes and consent.",
+      "lightboxgallery": "A photo gallery with a dialog for the selected picture. Additive to Photo gallery.",
       "announcement": "A thin strip above the page with one sentence and a link.",
       "cookie": "A consent notice with accept and decline buttons.",
       "newsletter": "An email field and a button, inline, stacked or beside a picture.",
@@ -594,6 +602,33 @@ export const ui = {
       "dishcompare": {
         "table": "Accessible table",
         "cards": "Compare cards, muted"
+      },
+      "dish": {
+        "vertical": "Vertical card with a picture",
+        "horizontal": "Horizontal, picture on the side",
+        "textOnly": "Without a picture",
+        "compact": "Compact, no description",
+        "browse": "No order button"
+      },
+      "menuboard": {
+        "sections": "Sections with a nav and menu rows",
+        "grid": "Sections of dish cards",
+        "list": "List of rows, no section nav",
+        "noPrices": "Rows without prices",
+        "compact": "Compact grid of cards"
+      },
+      "reservation": {
+        "single": "Single column, all fields",
+        "split": "Beside the house details",
+        "compact": "Name, phone, date, time and guests",
+        "consent": "With a consent line",
+        "dense": "Compact density, short fields"
+      },
+      "lightboxgallery": {
+        "grid": "Grid with captions",
+        "masonry": "Masonry, captions hidden",
+        "featured": "Featured picture over thumbnails",
+        "open": "Grid with the lightbox open"
       },
       "announcement": {
         "bar": "Primary strip",
@@ -2084,6 +2119,32 @@ export const ui = {
         "cta": "Back to ordering"
       }
     },
+    "restaurantHouse": {
+      "home": {
+        "nav": "Home",
+        "title": "The house",
+        "text": "Seasonal plates, a board of the kitchen, and a table when you want one.",
+        "cta": "See the menu"
+      },
+      "menu": {
+        "nav": "Menu",
+        "title": "The menu",
+        "text": "Cards, a board and a compact list of the same kitchen.",
+        "cta": "Book a table"
+      },
+      "book": {
+        "nav": "Book",
+        "title": "Book a table",
+        "text": "Name, time and how many seats.",
+        "cta": "See the room"
+      },
+      "room": {
+        "nav": "Room",
+        "title": "The dining room",
+        "text": "Photos of the house, with a closer look.",
+        "cta": "Back to the start"
+      }
+    },
     "promoCampaign": {
       "home": {
         "nav": "Home",
@@ -2344,7 +2405,7 @@ export const ui = {
       },
       "food": {
         "title": "Food ordering",
-        "text": "Sites that sell meals, pizza, sushi, recipe kits, produce and grill dishes: showcases, cart grids, quick order, pickers, builders, menus and compare tables."
+        "text": "Sites that sell meals, pizza, sushi, recipe kits, produce and grill dishes, and restaurant dining: showcases, cart grids, a dish card, a menu board, a reservation form and a lightbox gallery."
       },
       "app": {
         "title": "App and dashboard",
@@ -2405,6 +2466,8 @@ export const ui = {
       "foodBuilders": "Combos and grill builders",
       "foodKits": "Recipe kits and produce",
       "foodMenu": "Menus and meal plans",
+      "foodDining": "Restaurant dining",
+      "foodBooking": "Reservations and the room",
       "appShell": "Shells and navigation",
       "appDashboardShells": "Dashboard shells",
       "appWidgets": "Dashboard widgets",
@@ -2767,6 +2830,41 @@ export const ui = {
     "compare": {
       "title": "Compare the cuts",
       "lead": "Weight, cooking time, heat and price side by side."
+    }
+  },
+  "restaurant": {
+    "dish": {
+      "add": "Order"
+    },
+    "board": {
+      "title": "Tonight's board",
+      "lead": "What the kitchen is cooking."
+    },
+    "reservation": {
+      "title": "Book a table",
+      "text": "Tell us when you are coming and we will hold a table.",
+      "labels": {
+        "name": "Your name",
+        "phone": "Phone",
+        "email": "Email",
+        "date": "Date",
+        "time": "Time",
+        "guests": "Guests",
+        "notes": "Notes for the kitchen",
+        "consent": "I agree to be contacted about this booking",
+        "submit": "Reserve a table",
+        "decrease": "Fewer guests",
+        "increase": "More guests"
+      }
+    },
+    "gallery": {
+      "title": "The dining room",
+      "lead": "A look inside the house.",
+      "close": "Close the photo",
+      "previous": "Previous photo",
+      "next": "Next photo",
+      "open": "View photo",
+      "counter": "{0} of {1}"
     }
   }
 } as const;

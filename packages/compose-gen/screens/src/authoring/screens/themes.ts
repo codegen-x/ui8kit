@@ -96,6 +96,16 @@ export const themeApps: ThemeApp[] = [
     ],
   },
   {
+    name: "restaurant-house", title: "Restaurant", footer: "sitemap.columns",
+    docs: "A restaurant site: dish cards, a menu board of the kitchen, a table reservation form and a photo gallery with a lightbox.",
+    pages: [
+      { path: "", lead: "pagehead.center", head: ["The house", "Seasonal plates, a board of the kitchen, and a table when you want one.", "See the menu"], rest: ["dish.vertical", "menuboard.sections", "reservation.single"] },
+      { path: "menu", lead: "pagehead.start", head: ["The menu", "Cards, a board and a compact list of the same kitchen.", "Book a table"], rest: ["menuboard.grid", "dish.horizontal", "menuboard.list"] },
+      { path: "book", lead: "pagehead.start", head: ["Book a table", "Name, time and how many seats.", "See the room"], rest: ["reservation.split", "reservation.compact"] },
+      { path: "room", lead: "pagehead.muted", head: ["The dining room", "Photos of the house, with a closer look.", "Back to the start"], rest: ["lightboxgallery.grid", "lightboxgallery.open", "lightboxgallery.masonry"] },
+    ],
+  },
+  {
     name: "promo-campaign", title: "Campaigns", footer: "footersplit.newsletterStart",
     docs: "Campaign pages: announcement bars in every position and tone, sign-up forms, calls to action with a pattern, and the cookie notice.",
     pages: [

@@ -1,0 +1,129 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.dish",
+  "name": "Dish card",
+  "docs": "A dish as a card: picture, category, portion/weight, price and an order button. No rating.",
+  "theme": "commerce",
+  "group": "restaurant",
+  "fit": "card",
+  "organism": "DishCard",
+  "axes": {
+    "layout": [
+      "vertical",
+      "horizontal"
+    ],
+    "media": [
+      "image",
+      "none"
+    ],
+    "density": [
+      "default",
+      "compact"
+    ],
+    "action": [
+      "button",
+      "none"
+    ]
+  },
+  "defaults": {
+    "layout": "vertical",
+    "media": "image",
+    "density": "default",
+    "action": "button"
+  },
+  "variants": [
+    {
+      "id": "vertical",
+      "set": {}
+    },
+    {
+      "id": "horizontal",
+      "set": {
+        "layout": "horizontal"
+      }
+    },
+    {
+      "id": "textOnly",
+      "set": {
+        "media": "none"
+      }
+    },
+    {
+      "id": "compact",
+      "set": {
+        "density": "compact"
+      }
+    },
+    {
+      "id": "browse",
+      "set": {
+        "action": "none"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"item\"]",
+      "n": 1
+    },
+    {
+      "sel": "[data-testid=\"portion\"]",
+      "n": 1
+    },
+    {
+      "sel": "[data-testid=\"add\"]",
+      "n": 1,
+      "when": {
+        "action": "button"
+      }
+    },
+    {
+      "sel": "[data-testid=\"add\"]",
+      "n": 0,
+      "when": {
+        "action": "none"
+      }
+    }
+  ],
+  "data": [
+    {
+      "as": "meals",
+      "collection": "meals",
+      "kind": "dish",
+      "record": "Dish",
+      "fields": {
+        "id": "id",
+        "name": "title",
+        "summary": "metadata.summary.value",
+        "price": "metadata.price.value",
+        "currency": "metadata.currency.value",
+        "weight": "metadata.weight.value",
+        "tag": "metadata.tag.value",
+        "items": "metadata.items.value",
+        "minutes": "metadata.minutes.value",
+        "badge": "metadata.badge.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "dish": {
+        "op": "pick",
+        "args": [
+          {
+            "$": "meals"
+          },
+          "dish-meals-bowl"
+        ]
+      },
+      "labels": {
+        "$": "ui.restaurant.dish"
+      }
+    }
+  }
+}
