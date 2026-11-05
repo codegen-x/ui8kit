@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "andika",
+  "family": "Andika",
+  "provider": "google",
+  "google": "Andika:wght@400;700",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

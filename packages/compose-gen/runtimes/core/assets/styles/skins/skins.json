@@ -99,5 +99,13 @@
     "fonts": [
       "Architects+Daughter:wght@400"
     ]
+  },
+  "rose": {
+    "label": "Rose",
+    "source": "ui8kit",
+    "fonts": [
+      "Pacifico:wght@400",
+      "Nunito:wght@400;500;600;700"
+    ]
   }
 }

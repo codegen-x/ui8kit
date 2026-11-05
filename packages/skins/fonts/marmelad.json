@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "marmelad",
+  "family": "Marmelad",
+  "provider": "google",
+  "google": "Marmelad:wght@400",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

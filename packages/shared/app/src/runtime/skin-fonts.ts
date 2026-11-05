@@ -15,4 +15,5 @@ export const SKIN_FONTS: Record<string, readonly string[]> = {
   "mocha-mousse": ["DM+Sans:wght@400;500;600;700"],
   "neo-brutalism": ["DM+Sans:wght@400;500;600;700"],
   "notebook": ["Architects+Daughter:wght@400"],
+  "rose": ["Pacifico:wght@400","Nunito:wght@400;500;600;700"],
 };

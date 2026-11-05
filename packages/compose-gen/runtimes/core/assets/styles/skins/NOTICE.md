@@ -1,6 +1,6 @@
 # Skins: sources and licences
 
-- `sky.css`, `base.css`, `default.css`: ui8kit (this repository).
+- `sky.css`, `rose.css`, `base.css`, `default.css`: ui8kit (this repository).
 - Every other `.css` file here is a built-in theme preset of **tweakcn** by Sahaj Jain and contributors
   (<https://github.com/jnsahaj/tweakcn>, `utils/theme-presets.ts` at commit `a3b47b37cba97dd637de517aab52c45ec0f83456`),
   used under the **Apache License, Version 2.0** (<https://www.apache.org/licenses/LICENSE-2.0>). tweakcn ships no NOTICE file.

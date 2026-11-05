@@ -104,6 +104,13 @@
       "version": "1.0.0",
       "file": "notebook.json",
       "sha256": "b01130a64320537f2def9b570081adb54f7987bc3226610e5fd6703b9654e4ad"
+    },
+    {
+      "id": "rose",
+      "name": "Rose",
+      "version": "0.1.0",
+      "file": "rose.json",
+      "sha256": "2a50633524929957be375215beb3b262c45f4f2ae9ef564ba120c0e6087b5147"
     }
   ]
 }
