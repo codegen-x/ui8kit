@@ -5615,6 +5615,90 @@
     ]
    }
   },
+  "dish": {
+   "organism": "DishCard",
+   "fit": "card",
+   "defaults": {
+    "layout": "vertical",
+    "media": "image",
+    "density": "default",
+    "action": "button"
+   },
+   "sample": {
+    "dish": {
+     "op": "pick",
+     "args": [
+      {
+       "$": "meals"
+      },
+      "dish-meals-bowl"
+     ]
+    },
+    "labels": {
+     "$": "ui.restaurant.dish"
+    }
+   },
+   "variants": [
+    {
+     "id": "vertical",
+     "set": {}
+    },
+    {
+     "id": "horizontal",
+     "set": {
+      "layout": "horizontal"
+     }
+    },
+    {
+     "id": "textOnly",
+     "set": {
+      "media": "none"
+     }
+    },
+    {
+     "id": "compact",
+     "set": {
+      "density": "compact"
+     }
+    },
+    {
+     "id": "browse",
+     "set": {
+      "action": "none"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "meals",
+     "collection": "meals",
+     "fields": {
+      "id": "id",
+      "name": "title",
+      "summary": "metadata.summary.value",
+      "price": "metadata.price.value",
+      "currency": "metadata.currency.value",
+      "weight": "metadata.weight.value",
+      "tag": "metadata.tag.value",
+      "items": "metadata.items.value",
+      "minutes": "metadata.minutes.value",
+      "badge": "metadata.badge.value",
+      "href": "slug|route"
+     }
+    }
+   ],
+   "orgProps": {
+    "DishCard": [
+     "dish",
+     "labels",
+     "layout",
+     "media",
+     "prices",
+     "action",
+     "density"
+    ]
+   }
+  },
   "dishbento": {
    "organism": "DishBento",
    "defaults": {
@@ -6141,6 +6225,83 @@
     ]
    }
   },
+  "lightboxgallery": {
+   "organism": "LightboxGallery",
+   "defaults": {
+    "layout": "grid",
+    "captions": "show",
+    "lightbox": "closed"
+   },
+   "sample": {
+    "id": "lightboxgallery",
+    "title": {
+     "$": "ui.restaurant.gallery.title"
+    },
+    "lead": {
+     "$": "ui.restaurant.gallery.lead"
+    },
+    "photos": {
+     "$": "photos"
+    },
+    "empty": {
+     "$": "ui.empty.photos"
+    },
+    "labels": {
+     "$": "ui.restaurant.gallery"
+    }
+   },
+   "variants": [
+    {
+     "id": "grid",
+     "set": {}
+    },
+    {
+     "id": "masonry",
+     "set": {
+      "layout": "masonry",
+      "captions": "hide"
+     }
+    },
+    {
+     "id": "featured",
+     "set": {
+      "layout": "featured"
+     }
+    },
+    {
+     "id": "open",
+     "set": {
+      "lightbox": "open"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "photos",
+     "collection": "photos",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "tag": "metadata.tag.value",
+      "size": "metadata.size.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "LightboxGallery": [
+     "id",
+     "title",
+     "lead",
+     "photos",
+     "empty",
+     "labels",
+     "layout",
+     "captions",
+     "lightbox",
+     "landmarkLabel"
+    ]
+   }
+  },
   "locations": {
    "organism": "StoreLocations",
    "defaults": {
@@ -6214,6 +6375,110 @@
      "labels",
      "layout",
      "tone",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "menuboard": {
+   "organism": "MenuBoard",
+   "defaults": {
+    "layout": "sections",
+    "prices": "show",
+    "density": "default"
+   },
+   "sample": {
+    "id": "menuboard",
+    "title": {
+     "$": "ui.restaurant.board.title"
+    },
+    "lead": {
+     "$": "ui.restaurant.board.lead"
+    },
+    "dishes": {
+     "$": "menudishes"
+    },
+    "sections": {
+     "$": "menusections"
+    },
+    "empty": {
+     "$": "ui.empty.dishes"
+    },
+    "labels": {
+     "$": "ui.food.labels"
+    }
+   },
+   "variants": [
+    {
+     "id": "sections",
+     "set": {}
+    },
+    {
+     "id": "grid",
+     "set": {
+      "layout": "grid"
+     }
+    },
+    {
+     "id": "list",
+     "set": {
+      "layout": "list"
+     }
+    },
+    {
+     "id": "noPrices",
+     "set": {
+      "prices": "hide"
+     }
+    },
+    {
+     "id": "compact",
+     "set": {
+      "layout": "grid",
+      "density": "compact"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "menudishes",
+     "collection": "menudishes",
+     "fields": {
+      "id": "id",
+      "name": "title",
+      "summary": "metadata.summary.value",
+      "price": "metadata.price.value",
+      "currency": "metadata.currency.value",
+      "weight": "metadata.weight.value",
+      "tag": "metadata.tag.value",
+      "items": "metadata.items.value",
+      "minutes": "metadata.minutes.value",
+      "badge": "metadata.badge.value",
+      "href": "slug|route"
+     }
+    },
+    {
+     "as": "menusections",
+     "collection": "menusections",
+     "fields": {
+      "id": "id",
+      "key": "metadata.key.value",
+      "title": "title",
+      "note": "metadata.note.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "MenuBoard": [
+     "id",
+     "title",
+     "lead",
+     "dishes",
+     "sections",
+     "empty",
+     "labels",
+     "layout",
+     "prices",
+     "density",
      "landmarkLabel"
     ]
    }
@@ -6855,6 +7120,88 @@
      "portions",
      "layout",
      "tone",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "reservation": {
+   "organism": "ReservationForm",
+   "defaults": {
+    "layout": "single",
+    "fields": "full",
+    "terms": "hide",
+    "density": "default"
+   },
+   "sample": {
+    "id": "reservation",
+    "title": {
+     "$": "ui.restaurant.reservation.title"
+    },
+    "text": {
+     "$": "ui.restaurant.reservation.text"
+    },
+    "labels": {
+     "$": "ui.restaurant.reservation.labels"
+    },
+    "details": {
+     "$": "contacts"
+    }
+   },
+   "variants": [
+    {
+     "id": "single",
+     "set": {}
+    },
+    {
+     "id": "split",
+     "set": {
+      "layout": "split"
+     }
+    },
+    {
+     "id": "compact",
+     "set": {
+      "fields": "compact"
+     }
+    },
+    {
+     "id": "consent",
+     "set": {
+      "terms": "show"
+     }
+    },
+    {
+     "id": "dense",
+     "set": {
+      "fields": "compact",
+      "density": "compact"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "contacts",
+     "collection": "contacts",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "text": "metadata.text.value",
+      "icon": "metadata.icon.value",
+      "href": "slug|route"
+     }
+    }
+   ],
+   "orgProps": {
+    "ReservationForm": [
+     "id",
+     "title",
+     "text",
+     "labels",
+     "details",
+     "layout",
+     "fields",
+     "terms",
+     "density",
      "landmarkLabel"
     ]
    }
@@ -13428,6 +13775,156 @@
      {
       "block": "newsletter",
       "variant": "muted"
+     }
+    ]
+   }
+  },
+  "theme-restaurant-house": {
+   "name": "ThemeRestaurantHouseScreen",
+   "before": [
+    {
+     "block": "navbar",
+     "variant": "inline",
+     "props": {
+      "brandHref": "#/",
+      "links": {
+       "$": "nav.links"
+      },
+      "current": {
+       "$": "nav.current"
+      },
+      "skip": {
+       "$": "ui.site.header.skip"
+      },
+      "actions": {
+       "themeLabel": {
+        "$": "ui.theme.toggle"
+       }
+      }
+     }
+    }
+   ],
+   "after": [
+    {
+     "block": "sitemap",
+     "variant": "columns"
+    }
+   ],
+   "areas": {
+    "home": [
+     {
+      "block": "pagehead",
+      "variant": "center",
+      "props": {
+       "title": {
+        "$": "ui.pages.restaurantHouse.home.title"
+       },
+       "text": {
+        "$": "ui.pages.restaurantHouse.home.text"
+       },
+       "cta": {
+        "$": "ui.pages.restaurantHouse.home.cta"
+       },
+       "href": "#/menu"
+      }
+     },
+     {
+      "block": "dish",
+      "variant": "vertical"
+     },
+     {
+      "block": "menuboard",
+      "variant": "sections"
+     },
+     {
+      "block": "reservation",
+      "variant": "single"
+     }
+    ],
+    "menu": [
+     {
+      "block": "pagehead",
+      "variant": "start",
+      "props": {
+       "title": {
+        "$": "ui.pages.restaurantHouse.menu.title"
+       },
+       "text": {
+        "$": "ui.pages.restaurantHouse.menu.text"
+       },
+       "cta": {
+        "$": "ui.pages.restaurantHouse.menu.cta"
+       },
+       "href": "#/book"
+      }
+     },
+     {
+      "block": "menuboard",
+      "variant": "grid"
+     },
+     {
+      "block": "dish",
+      "variant": "horizontal"
+     },
+     {
+      "block": "menuboard",
+      "variant": "list"
+     }
+    ],
+    "book": [
+     {
+      "block": "pagehead",
+      "variant": "start",
+      "props": {
+       "title": {
+        "$": "ui.pages.restaurantHouse.book.title"
+       },
+       "text": {
+        "$": "ui.pages.restaurantHouse.book.text"
+       },
+       "cta": {
+        "$": "ui.pages.restaurantHouse.book.cta"
+       },
+       "href": "#/room"
+      }
+     },
+     {
+      "block": "reservation",
+      "variant": "split"
+     },
+     {
+      "block": "reservation",
+      "variant": "compact"
+     }
+    ],
+    "room": [
+     {
+      "block": "pagehead",
+      "variant": "muted",
+      "props": {
+       "title": {
+        "$": "ui.pages.restaurantHouse.room.title"
+       },
+       "text": {
+        "$": "ui.pages.restaurantHouse.room.text"
+       },
+       "cta": {
+        "$": "ui.pages.restaurantHouse.room.cta"
+       },
+       "href": "#/"
+      }
+     },
+     {
+      "block": "lightboxgallery",
+      "variant": "grid"
+     },
+     {
+      "block": "lightboxgallery",
+      "variant": "open"
+     },
+     {
+      "block": "lightboxgallery",
+      "variant": "masonry"
      }
     ]
    }

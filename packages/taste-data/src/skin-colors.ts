@@ -21,4 +21,5 @@ export const SKIN_COLORS: Record<SkinId, { light: SkinPalette; dark: SkinPalette
   "mocha-mousse": { light: { primary: [0.5676,0.0446,0.0426], background: [0.952,-0.0032,0.0146], accent: [0.8512,0.0257,0.0288] }, dark: { primary: [0.7273,0.0335,0.0423], background: [0.2691,0.009,0.0101], accent: [0.7454,0.0068,0.0372] } },
   "neo-brutalism": { light: { primary: [0.5893,0.2114,0.1075], background: [1,0,0], accent: [0.5635,-0.0384,-0.2377] }, dark: { primary: [0.7044,0.1721,0.0737], background: [0,0,0], accent: [0.6755,-0.0538,-0.1681] } },
   "notebook": { light: { primary: [0.4923,0,0], background: [0.9848,0,0], accent: [0.9354,-0.0034,0.0446] }, dark: { primary: [0.757,0,0], background: [0.2905,0,0], accent: [0.9079,0,0] } },
+  "rose": { light: { primary: [0.5144,0.1893,0.0575], background: [1,0,0], accent: [0.9413,0.0291,0.0065] }, dark: { primary: [0.81,0.1037,0.0214], background: [0.2103,0.0016,-0.0057], accent: [0.4104,0.1478,0.0267] } },
 };

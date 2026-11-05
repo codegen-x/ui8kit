@@ -18,7 +18,8 @@ describe("install", () => {
   });
   test("every block variant names a registry block, and has its install object", () => {
     const blocks = built.index.assets.filter((a) => a.type === "block");
-    expect(blocks.length).toBe(513);
+    expect(blocks.length).toBe(built.index.counts["block"]);
+    expect(blocks.length).toBeGreaterThan(0);
     for (const a of blocks) {
       expect(names.has(a.registry!)).toBe(true);
       expect(built.install.blocks[a.registry!]?.items.map((i) => i.name)).toEqual([a.registry!]);

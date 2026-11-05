@@ -156,7 +156,7 @@ describe("recommend", () => {
 
 describe("colour family of the top results", () => {
   // the picks of each curated row are screens the user chose by hand: the top screens of the feed must sit closer to them in colour
-  // than skins taken at random would (the mean nearest-pick distance of the first screens row against that of all 15 skins)
+  // than skins taken at random would (the mean nearest-pick distance of the first screens row against that of all SKIN_IDS)
   for (const [i, row] of CURATED_ROWS.entries()) {
     const picks = picksOfRow(i);
     if (picks.length < 10) continue;

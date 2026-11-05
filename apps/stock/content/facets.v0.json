@@ -481,7 +481,8 @@
             {
               "any": {
                 "block": [
-                  "newsletter"
+                  "newsletter",
+                  "reservation"
                 ],
                 "axis": {
                   "actions.mode": [
@@ -545,7 +546,8 @@
                 "group": [
                   "catalog",
                   "gallery",
-                  "food"
+                  "food",
+                  "restaurant"
                 ],
                 "block": [
                   "photos",
@@ -2106,11 +2108,13 @@
             {
               "any": {
                 "group": [
-                  "food"
+                  "food",
+                  "restaurant"
                 ],
                 "screen": [
                   "theme-food-delivery",
-                  "theme-food-grill"
+                  "theme-food-grill",
+                  "theme-restaurant-house"
                 ]
               }
             }

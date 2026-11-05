@@ -14,9 +14,9 @@ both work).
 ## Index (S1)
 
 `scripts/build-index.ts` (logic in `scripts/lib/build.ts`) reads the facet vocabulary `content/facets.v0.json` and the specs:
-`packages/compose-gen/specs/blocks` (108 blocks, 513 variants, axes, samples), `packages/compose-gen/schema/codex/blocks.json` (data/kind/
+`packages/compose-gen/specs/blocks` (112 blocks, 532 variants, axes, samples), `packages/compose-gen/schema/codex/blocks.json` (data/kind/
 record and label props: the slots), `specs/organisms` (runtimes) and `specs/screens` (one asset per page of a composed screen). Two
-categories: **Blocks** (one asset per variant; the variants of a block share a collapse key) and **Screens** (the 76 pages of the
+categories: **Blocks** (one asset per variant; the variants of a block share a collapse key) and **Screens** (the 80 pages of the
 composed screens, each made of kit blocks only; checked by a test). An organism is shown through the block variants that draw it
 (directly or nested in another organism); one no block draws would be an asset of its own (none today). Skins, the corner radius and
 the light/dark theme are preview settings, not assets or facets. The 146 taste screens are not part of Stock.
