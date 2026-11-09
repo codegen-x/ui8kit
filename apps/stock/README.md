@@ -8,7 +8,7 @@ both work).
     bun run build        # vite build to dist/ (preview: bun run preview, port 5188)
     bun run check        # svelte-check
     bun run test         # unit tests (also part of the root bun run test)
-    bun run index        # rebuild the index: content/assets.v0.json, content/previews.v0.json, content/install.v0.json, content/variants.v0.json, src/lib/collections.gen.ts
+    bun run index        # rebuild the index: content/assets.v0.json, content/previews.v0.json, content/install.v0.json, content/variants.v0.json, content/props.v0.json, src/lib/collections.gen.ts
     bun run index:check  # fail when the committed index differs from a fresh build (deterministic: same inputs, same digest)
 
 ## Index (S1)
@@ -68,6 +68,20 @@ content under the props equals what the gallery draws (`blockProps` of compose-k
         "variants": { "cells4": { "asset": "block.features/cells4", "set": { "cols": "1-4", "item": "cell", "density": "compact" },
           "props": { "layout": "grid", "cols": "1-4", "item": "cell", "mediaSide": "end", "tone": "default", "density": "compact",
             "action": { "label": { "$": "ui.site.home.featuresAction" }, "href": "#/" } } } } } } }
+
+## Props schemas
+
+`content/props.v0.json` (built with the index by `scripts/lib/props.ts`) holds one JSON Schema (draft 2020-12) per organism of the
+organism tier (117, the blocks of the registry), under its registry name, generated from the props and records of
+`packages/compose-gen/specs` (the spec every runtime file comes from, so one schema serves the 8 runtimes). Each item is
+`{ organism, events, slots, schema }`; the schema is self-contained (`$defs` holds the records and value kinds it uses), so
+`ajv.compile(items[name].schema)` validates the props of a page-spec. Values are spec values: a text is a string, `{ "$": "ui.<key>" }`
+or a field of the data; a record may also be a dictionary group (`labels`); lists, records and TrustedHtml may be the data the block
+reads (`{ "$": "<as>" }` or a data operation of `OPS`). Axes are string enums; a text that reaches `LucideIcon` is one of the glyphs
+the kit ships (`$defs.lucideIcon`). Closed: `additionalProperties: false` on the props and every record, like the generated
+TypeScript types; required = `required: true` props and record fields without `optional`. Events and render-prop slots are listed
+beside the schema, not in it. `scripts/props.test.ts` validates all 532 variants (sample content under the props, and the preset
+alone without required lists), negative cases, and the prop names and required ones against the svelte, react and templ files.
 
 ## Search (S2)
 

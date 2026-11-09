@@ -13,6 +13,7 @@ import { ui as dict } from "@ui8kit/app-shared/content";
 import { isModular, rootGrid, variantProps, type PatternMap, type TermFile } from "./pattern";
 import { install, kebab, DOCS_URL, REGISTRY_URL, RUNTIMES, type Install, type InstallIndex } from "../../src/lib/install";
 import { axisProps, mergeProps, type VariantIndex, type VariantItem } from "../../src/lib/variants";
+import { propsIndex, type PropsIndex, type PropsSpec } from "./props";
 import type { Asset, BlockRecipe, BlockUse, Clause, Facet, FacetValue, Index, Preview, Previews, Rule, ScreenRecipe, SpecValue, Vocabulary } from "../../src/lib/model";
 
 export const ROOT = join(import.meta.dir, "..", "..", "..", "..");
@@ -73,7 +74,7 @@ const words = (...parts: (string | undefined)[]): string[] => [...new Set(parts.
 const getAt = (o: unknown, path: string): unknown => path.split(".").reduce<unknown>((a, k) => (a && typeof a === "object" ? (a as Record<string, unknown>)[k] : undefined), o);
 const str = (v: unknown, fallback: string): string => (typeof v === "string" && v ? v : fallback);
 
-export type Built = { index: Index; previews: Previews; collections: string; install: InstallIndex; variants: VariantIndex };
+export type Built = { index: Index; previews: Previews; collections: string; install: InstallIndex; variants: VariantIndex; props: PropsIndex };
 
 export function loadVocabulary(): Vocabulary { return readJson<Vocabulary>(join(APP, "content", "facets.v0.json")); }
 /** a term file of content/terms (brain-term/v1) and the draft table of the pattern facet */
@@ -338,7 +339,11 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
   const installIndex: InstallIndex = { version: vocab.version, registry: REGISTRY_URL, docs: DOCS_URL, runtimes: [...RUNTIMES], blocks: sortedBlocks, screens: installScreens };
   const variantBody = { version: vocab.version, registry: REGISTRY_URL, items: Object.fromEntries(Object.keys(variantItems).sort().map((k) => [k, variantItems[k]!])) };
   const variants: VariantIndex = { version: variantBody.version, digest: "sha256:" + createHash("sha256").update(JSON.stringify(variantBody)).digest("hex"), registry: variantBody.registry, items: variantBody.items };
-  return { index, previews, collections, install: installIndex, variants };
+  // the props schemas (content/props.v0.json): one per organism of the organism tier, from the props and records of every spec (scripts/lib/props.ts)
+  const allSpecs = ["organisms", "parts", "patterns"].flatMap((d) => jsonFiles(join(SPECS, d)).map((f) => readJson<PropsSpec>(join(SPECS, d, f))));
+  const icons = Object.keys(readJson<{ icons: Record<string, unknown> }>(join(SPECS, "assets", "lucide-icons.json")).icons);
+  const props = propsIndex({ specs: allSpecs, icons, version: vocab.version, registry: REGISTRY_URL, kebab });
+  return { index, previews, collections, install: installIndex, variants, props };
 }
 
 export const OUTPUTS = {
@@ -347,11 +352,12 @@ export const OUTPUTS = {
   collections: join(APP, "src", "lib", "collections.gen.ts"),
   install: join(APP, "content", "install.v0.json"),
   variants: join(APP, "content", "variants.v0.json"),
+  props: join(APP, "content", "props.v0.json"),
 } as const;
 
 /** the files of a build, as written to disk */
 export function serialise(b: Built): Record<keyof typeof OUTPUTS, string> {
-  return { index: JSON.stringify(b.index) + "\n", previews: JSON.stringify(b.previews, null, 1) + "\n", collections: b.collections, install: JSON.stringify(b.install) + "\n", variants: JSON.stringify(b.variants) + "\n" };
+  return { index: JSON.stringify(b.index) + "\n", previews: JSON.stringify(b.previews, null, 1) + "\n", collections: b.collections, install: JSON.stringify(b.install) + "\n", variants: JSON.stringify(b.variants) + "\n", props: JSON.stringify(b.props) + "\n" };
 }
 
 /** the values of a facet that are in the vocabulary (for validation): every id, plus "*" for wildcard types */
