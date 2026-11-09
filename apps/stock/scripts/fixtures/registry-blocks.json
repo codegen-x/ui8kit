@@ -1,7 +1,7 @@
 {
- "source": "https://registry.buildy.tw/react/index.json",
- "fetched": "2026-11-03",
- "note": "registry:block names; the 8 runtime roots list the same 117 blocks",
+ "source": "https://registry.buildy.tw/<runtime>/index.json",
+ "fetched": "2026-11-09",
+ "note": "registry:block names served by all 8 runtime roots (117); written by scripts/registry-fixture.ts",
  "names": [
   "about-company",
   "about-me",
