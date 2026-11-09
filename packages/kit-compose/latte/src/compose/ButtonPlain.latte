@@ -6,6 +6,8 @@
   ?string $form = null,
   string $href = '',
   bool $disabled = false,
+  ?bool $pressed = null,
+  ?bool $expanded = null,
   ?string $ariaLabel = null,
   ?string $ariaPressed = null,
   ?string $ariaExpanded = null,
@@ -13,4 +15,4 @@
   array $attrs = [],
   string $children = '',
 }
-{include '../ui/button/Button.latte', ...\CodegenX\Compose\Latte\Compose::props('ButtonPlain', ['class' => $class, 'type' => $type, 'form' => $form, 'href' => $href, 'disabled' => $disabled, 'ariaLabel' => $ariaLabel, 'ariaPressed' => $ariaPressed, 'ariaExpanded' => $ariaExpanded, 'ariaControls' => $ariaControls, 'attrs' => $attrs, 'children' => $children])}
+{include '../ui/button/Button.latte', ...\CodegenX\Compose\Latte\Compose::props('ButtonPlain', ['class' => $class, 'type' => $type, 'form' => $form, 'href' => $href, 'disabled' => $disabled, 'pressed' => $pressed, 'expanded' => $expanded, 'ariaLabel' => $ariaLabel, 'ariaPressed' => $ariaPressed, 'ariaExpanded' => $ariaExpanded, 'ariaControls' => $ariaControls, 'attrs' => $attrs, 'children' => $children])}

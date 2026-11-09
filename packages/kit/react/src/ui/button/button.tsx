@@ -2,28 +2,33 @@
 /**
  * Button triggers an action. With `href` it renders an anchor (navigation that
  * looks like an action). Event handlers (onClick) flow through attrs/rest.
+ * Pressed / Expanded are the semantic ARIA state props (toggle, disclosure).
  */
 
 import { forwardRef, type ReactNode, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type Ref } from "react";
 import { buttonClasses } from "./button.shared";
-import { isSetStr, oneOfOr, orUndef, safeRest, safeUrl } from "../../utils/expr";
+import { isSetStr, oneOfOr, optBoolStr, orUndef, safeRest, safeUrl } from "../../utils/expr";
 import { Slot } from "../slot/slot";
 
 /**
  * Button renders a button element, or an anchor when Href is set.
  * Type/Form apply only in button mode; Disabled on anchors uses aria-disabled.
+ * Pressed (button mode) and Expanded print aria-pressed / aria-expanded as "true"/"false";
+ * unset omits the attribute.
  */
-export type ButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonHTMLAttributes<HTMLButtonElement>, "className" | "children" | "type" | "href" | "disabled"> & {
+export type ButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonHTMLAttributes<HTMLButtonElement>, "className" | "children" | "type" | "href" | "disabled" | "pressed" | "expanded"> & {
   type?: "button" | "submit" | "reset";
   href?: string;
   disabled?: boolean;
+  pressed?: boolean;
+  expanded?: boolean;
   className?: string;
   children?: ReactNode;
   asChild?: boolean;
 };
 
 export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonProps>(function Button(
-  { type, href, disabled, className, children, asChild, ...rawRest },
+  { type, href, disabled, pressed, expanded, className, children, asChild, ...rawRest },
   ref
 ) {
   const rest = safeRest(rawRest, { blank: ["aria-label", "aria-pressed", "aria-expanded", "aria-controls"] });
@@ -37,11 +42,11 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
   }
   return (
     isSetStr(href) ? (
-      <a ref={ref as Ref<HTMLAnchorElement>} href={orUndef(safeUrl(href))} className={cls || undefined} aria-disabled={disabled ? "true" : undefined} tabIndex={disabled ? -1 : undefined} {...rest}>
+      <a ref={ref as Ref<HTMLAnchorElement>} href={orUndef(safeUrl(href))} className={cls || undefined} aria-expanded={orUndef(optBoolStr(expanded))} aria-disabled={disabled ? "true" : undefined} tabIndex={disabled ? -1 : undefined} {...rest}>
         {children}
       </a>
     ) : (
-      <button ref={ref as Ref<HTMLButtonElement>} type={oneOfOr(type, "button", "submit", "reset")} className={cls || undefined} disabled={disabled} {...rest}>
+      <button ref={ref as Ref<HTMLButtonElement>} type={oneOfOr(type, "button", "submit", "reset")} className={cls || undefined} disabled={disabled} aria-pressed={orUndef(optBoolStr(pressed))} aria-expanded={orUndef(optBoolStr(expanded))} {...rest}>
         {children}
       </button>
     )

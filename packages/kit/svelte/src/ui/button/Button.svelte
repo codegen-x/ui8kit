@@ -2,6 +2,8 @@
 <!--
   Button renders a button element, or an anchor when Href is set.
   Type/Form apply only in button mode; Disabled on anchors uses aria-disabled.
+  Pressed (button mode) and Expanded print aria-pressed / aria-expanded as "true"/"false";
+  unset omits the attribute.
 -->
 <script lang="ts" module>
   import type { Snippet } from "svelte";
@@ -10,6 +12,8 @@
     type?: "button" | "submit" | "reset";
     href?: string;
     disabled?: boolean;
+    pressed?: boolean;
+    expanded?: boolean;
     class?: string;
     children?: Snippet;
     [key: string]: unknown;
@@ -18,12 +22,14 @@
 
 <script lang="ts">
   import { buttonClasses } from "./button.shared";
-  import { isSetStr, oneOfOr, orUndef, safeRest, safeUrl } from "../../utils/expr";
+  import { isSetStr, oneOfOr, optBoolStr, orUndef, safeRest, safeUrl } from "../../utils/expr";
 
   let {
     type,
     href,
     disabled,
+    pressed,
+    expanded,
     class: className,
     children,
     ...rawRest
@@ -34,11 +40,11 @@
 </script>
 
 {#if isSetStr(href)}
-  <a href={orUndef(safeUrl(href))} {...(cls ? { class: cls } : {})} aria-disabled={disabled ? "true" : undefined} tabindex={disabled ? -1 : undefined} {...rest}>
+  <a href={orUndef(safeUrl(href))} {...(cls ? { class: cls } : {})} aria-expanded={orUndef(optBoolStr(expanded))} aria-disabled={disabled ? "true" : undefined} tabindex={disabled ? -1 : undefined} {...rest}>
     {@render children?.()}
   </a>
 {:else}
-  <button type={oneOfOr(type, "button", "submit", "reset")} {...(cls ? { class: cls } : {})} disabled={disabled || undefined} {...rest}>
+  <button type={oneOfOr(type, "button", "submit", "reset")} {...(cls ? { class: cls } : {})} disabled={disabled || undefined} aria-pressed={orUndef(optBoolStr(pressed))} aria-expanded={orUndef(optBoolStr(expanded))} {...rest}>
     {@render children?.()}
   </button>
 {/if}

@@ -3,6 +3,7 @@
 /*
 Button triggers an action. With `href` it renders an anchor (navigation that
 looks like an action). Event handlers (onClick) flow through attrs/rest.
+Pressed / Expanded are the semantic ARIA state props (toggle, disclosure).
 */
 
 package button
@@ -25,6 +26,10 @@ type ButtonProps struct {
 	Href string
 	// Disabled — blocks interaction
 	Disabled bool
+	// Pressed — toggle state → aria-pressed (button mode); unset omits it
+	Pressed *bool
+	// Expanded — disclosure state → aria-expanded; unset omits it
+	Expanded *bool
 	AriaLabel string
 	AriaPressed string
 	AriaExpanded string
@@ -49,6 +54,13 @@ templ Button(p ButtonProps) {
 			}
 			if ButtonClasses(p) != "" {
 				class={ ButtonClasses(p) }
+			}
+			if !uiutils.HasAttr(p.Attrs, "aria-expanded") {
+				if !uiutils.IsSetStr(p.AriaExpanded) {
+					if uiutils.IsSetStr(uiutils.OptBoolStr(p.Expanded)) {
+						aria-expanded={ uiutils.OptBoolStr(p.Expanded) }
+					}
+				}
 			}
 			if !uiutils.HasAttr(p.Attrs, "aria-label") {
 				if uiutils.IsSetStr(p.AriaLabel) {
@@ -98,6 +110,20 @@ templ Button(p ButtonProps) {
 			if !uiutils.HasAttr(p.Attrs, "form") {
 				if uiutils.IsSetStr(p.Form) {
 					form={ p.Form }
+				}
+			}
+			if !uiutils.HasAttr(p.Attrs, "aria-pressed") {
+				if !uiutils.IsSetStr(p.AriaPressed) {
+					if uiutils.IsSetStr(uiutils.OptBoolStr(p.Pressed)) {
+						aria-pressed={ uiutils.OptBoolStr(p.Pressed) }
+					}
+				}
+			}
+			if !uiutils.HasAttr(p.Attrs, "aria-expanded") {
+				if !uiutils.IsSetStr(p.AriaExpanded) {
+					if uiutils.IsSetStr(uiutils.OptBoolStr(p.Expanded)) {
+						aria-expanded={ uiutils.OptBoolStr(p.Expanded) }
+					}
 				}
 			}
 			if !uiutils.HasAttr(p.Attrs, "aria-label") {

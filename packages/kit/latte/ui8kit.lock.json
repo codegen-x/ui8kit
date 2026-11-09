@@ -5,8 +5,8 @@
     "npm:@ui8kit/registry|latte|box": {
       "name": "box",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/box/Box.latte": "b6248c3890fff7aefc01915de3ffac58a20b8805c29469770ad91a7295b53f8b"
@@ -15,18 +15,18 @@
     "npm:@ui8kit/registry|latte|button": {
       "name": "button",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
-        "src/ui/button/Button.latte": "ea57fe42680911510957f8547e33ea77f4fe0af6e378d8c0cce95b2243e3fc39"
+        "src/ui/button/Button.latte": "197529982c265b2361d4cc35b4bb6b7f7f816fea1253ead417263eb0fd452261"
       }
     },
     "npm:@ui8kit/registry|latte|checkbox": {
       "name": "checkbox",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/checkbox/Checkbox.latte": "952d68d0371f67308c94b3b06bfee2b37d51d79c03cc46e9ab8b1912284e30e8"
@@ -35,8 +35,8 @@
     "npm:@ui8kit/registry|latte|dialog": {
       "name": "dialog",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/dialog/Dialog.latte": "46a6b479a01220adec01dfeb8be1e2f90c6dfd1bff964d0c7f039bca1f21f63c"
@@ -45,8 +45,8 @@
     "npm:@ui8kit/registry|latte|disclosure": {
       "name": "disclosure",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/disclosure/Disclosure.latte": "7d51d4121538521080c28749602e54af4649494661f0f93130bda931f97fc7ef",
@@ -56,8 +56,8 @@
     "npm:@ui8kit/registry|latte|form": {
       "name": "form",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/form/Form.latte": "a363859a9ea718685bea64fdf489cb406807054384e380fb03b4ab4de4603aea"
@@ -66,8 +66,8 @@
     "npm:@ui8kit/registry|latte|icon": {
       "name": "icon",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/icon/Icon.latte": "93f1a47e12fa69b44faa36e3abccc022a42f24bb03b716f8f438a3f10921e3cc"
@@ -76,8 +76,8 @@
     "npm:@ui8kit/registry|latte|image": {
       "name": "image",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/image/Image.latte": "4e77898b098d6f6a96a8dc14243f556f01b82f736fc9056623616e2c62f1fd5d",
@@ -88,8 +88,8 @@
     "npm:@ui8kit/registry|latte|input": {
       "name": "input",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/input/Input.latte": "8ed3ea2d14ed26df8f35ac4d41a295148631c57954de18f57ed86bb64c76f78c"
@@ -98,8 +98,8 @@
     "npm:@ui8kit/registry|latte|label": {
       "name": "label",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/label/Label.latte": "ab484896bd97da1738db8c5ee7a86b4475d94160b208c5ffec3d2bf02081b31e"
@@ -108,8 +108,8 @@
     "npm:@ui8kit/registry|latte|link": {
       "name": "link",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/link/Link.latte": "d46b1bdb6e7fd95c0b322491d482bf0be972e63508d69cbe9cc37d9bfa3024c0"
@@ -118,8 +118,8 @@
     "npm:@ui8kit/registry|latte|meter": {
       "name": "meter",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/meter/Meter.latte": "fa99b9fa90605b2df10917841f7ab61a5a6df28c8183886aada2efd03ac729a2"
@@ -128,8 +128,8 @@
     "npm:@ui8kit/registry|latte|progress": {
       "name": "progress",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/progress/Progress.latte": "5853efbcba11401788aa2971c8a1912a121888bfd76b2b155a1146c7a4bd0ef3"
@@ -138,8 +138,8 @@
     "npm:@ui8kit/registry|latte|radio": {
       "name": "radio",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/radio/Radio.latte": "6bd6f7a1dc51c23ad88ddf242726afc940a722f9c767d0f5b3223c5c8aa6b00c"
@@ -148,8 +148,8 @@
     "npm:@ui8kit/registry|latte|rules": {
       "name": "rules",
       "type": "registry:rules",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         ".cursor/rules/ui8kit-primitives.mdc": "640ebb4253518f9516fe12e131c0840d6d4e4cd0b4cdc2be8752f90d1d1b7a4a"
@@ -158,8 +158,8 @@
     "npm:@ui8kit/registry|latte|select": {
       "name": "select",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/select/Select.latte": "73931c71f55af3e0b80478358143b6973ca095e3df669b53f1916e85c64b7d86",
@@ -170,8 +170,8 @@
     "npm:@ui8kit/registry|latte|separator": {
       "name": "separator",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/separator/Separator.latte": "3de46f9927dad7fdfe77b7ff3d9b368d12029f0300ee782e783384ab1383eedf"
@@ -180,8 +180,8 @@
     "npm:@ui8kit/registry|latte|switch": {
       "name": "switch",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/switch/Switch.latte": "dfde2781d20033d04aab42e4a2d4784933290f0e780d0c0817e9116074db9e44"
@@ -190,8 +190,8 @@
     "npm:@ui8kit/registry|latte|text": {
       "name": "text",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/text/Text.latte": "b7e88881d06b5c391e197087c39995ac3e45075e8a105ca5f8e7eaccad64ec07"
@@ -200,8 +200,8 @@
     "npm:@ui8kit/registry|latte|textarea": {
       "name": "textarea",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
         "src/ui/textarea/Textarea.latte": "0c4c9be451a08aa10671155a9ae34a34a12027cd5efa892812d5098500da5a1c"
@@ -210,13 +210,13 @@
     "npm:@ui8kit/registry|latte|utils": {
       "name": "utils",
       "type": "registry:utils",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/latte",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/latte",
+      "version": "3.4.0",
       "runtime": "latte",
       "files": {
-        "src/runtime/Classes.php": "08833ca81ee80cdea5a101171bd510804b8a2aa907aa2caf2ec3eb43dc4d2c76",
+        "src/runtime/Classes.php": "cda172aa3738e54211a326dfdedd435ec06c44dd0faa67c339baa95b43a328b7",
         "src/runtime/CnMerge.php": "e96bcc7cd220f3666925dff533b9c1d079674dae4ad9b6b74cc1d5d649cfb81b",
-        "src/runtime/Rt.php": "ca2a4cc32d71fc63102120ed7f0d5846c656b4f6f1720348621f60e1400dc78c",
+        "src/runtime/Rt.php": "3ec5f7d9ccead8f9f1ec368328b0041e5b014254aed9a02a0012e189569c13da",
         "src/runtime/Tags.php": "d3b228f1b839911f9e2e2bf499880f8523a258b324428ff054706c6961775ab8"
       }
     }

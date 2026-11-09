@@ -8,6 +8,8 @@ export type ButtonBaseProps = {
   type?: "button" | "submit" | "reset";
   href?: string;
   disabled?: boolean;
+  pressed?: boolean;
+  expanded?: boolean;
 };
 
 export type ButtonClassesInput = {

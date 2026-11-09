@@ -2,19 +2,23 @@
 <!--
   Button renders a button element, or an anchor when Href is set.
   Type/Form apply only in button mode; Disabled on anchors uses aria-disabled.
+  Pressed (button mode) and Expanded print aria-pressed / aria-expanded as "true"/"false";
+  unset omits the attribute.
 -->
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { buttonClasses } from "./button.shared";
-import { isSetStr, oneOfOr, orUndef, safeRest, safeUrl } from "../../utils/expr";
+import { isSetStr, oneOfOr, optBoolStr, orUndef, safeRest, safeUrl } from "../../utils/expr";
 
 defineOptions({ name: "Button", inheritAttrs: false });
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   type?: "button" | "submit" | "reset";
   href?: string;
   disabled?: boolean;
-}>();
+  pressed?: boolean;
+  expanded?: boolean;
+}>(), { pressed: undefined, expanded: undefined });
 
 const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
@@ -26,10 +30,10 @@ const cls = computed(() => buttonClasses({ className: callerClass.value }));
 </script>
 
 <template>
-  <a v-if="isSetStr(props.href)" :href="orUndef(safeUrl(props.href))" :class="cls || undefined" :aria-disabled="props.disabled ? 'true' : undefined" :tabindex="props.disabled ? -1 : undefined" v-bind="restAttrs">
+  <a v-if="isSetStr(props.href)" :href="orUndef(safeUrl(props.href))" :class="cls || undefined" :aria-expanded="orUndef(optBoolStr(props.expanded))" :aria-disabled="props.disabled ? 'true' : undefined" :tabindex="props.disabled ? -1 : undefined" v-bind="restAttrs">
     <slot />
   </a>
-  <button v-else :type="oneOfOr(props.type, 'button', 'submit', 'reset')" :class="cls || undefined" :disabled="props.disabled || undefined" v-bind="restAttrs">
+  <button v-else :type="oneOfOr(props.type, 'button', 'submit', 'reset')" :class="cls || undefined" :disabled="props.disabled || undefined" :aria-pressed="orUndef(optBoolStr(props.pressed))" :aria-expanded="orUndef(optBoolStr(props.expanded))" v-bind="restAttrs">
     <slot />
   </button>
 </template>

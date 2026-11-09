@@ -5,8 +5,8 @@
     "npm:@ui8kit/registry|react|box": {
       "name": "box",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/box/box.shared.ts": "59f52e34fbf633e2fb85f253ac81c93b0b5a62adf9e20d719c452dfa31048150",
@@ -16,19 +16,19 @@
     "npm:@ui8kit/registry|react|button": {
       "name": "button",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
-        "src/ui/button/button.shared.ts": "c1666ca1a228d99bd84aecff67f6d5335ec4a0db6197c7fbb9aa9bf1e4973fbc",
-        "src/ui/button/button.tsx": "e3d65443749ffa0bd843a10eccb76db6412ef48151378f4127f128010fc3d4d1"
+        "src/ui/button/button.shared.ts": "e64ffc4c913f5911fef7c733469cbca52153eae058a229263559a1c1fc5fc254",
+        "src/ui/button/button.tsx": "0ce7782ce5a66696513547e951232955ea803cbbd7a09c5bdbf85d4502abfb96"
       }
     },
     "npm:@ui8kit/registry|react|checkbox": {
       "name": "checkbox",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/checkbox/checkbox.shared.ts": "e68cd1fb0c6cd5bf1e6293440e0e995d6be7097602ae990b94231471013eeddc",
@@ -38,8 +38,8 @@
     "npm:@ui8kit/registry|react|dialog": {
       "name": "dialog",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/dialog/dialog.shared.ts": "51414cef876fa635cb4add3c22dff978fb7f7e3eb6c86c8139caf63b10346888",
@@ -49,8 +49,8 @@
     "npm:@ui8kit/registry|react|disclosure": {
       "name": "disclosure",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/disclosure/disclosure.shared.ts": "2aa7b3cc137998037b9cb3c5af1c18617b7d220519a56a99e6b4ebd9b720f106",
@@ -60,8 +60,8 @@
     "npm:@ui8kit/registry|react|form": {
       "name": "form",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/form/form.shared.ts": "d168c15d3a66a521580f5857dd0c8cfc3f43a9ff089a87cd1b4fdd143c9730b5",
@@ -71,8 +71,8 @@
     "npm:@ui8kit/registry|react|icon": {
       "name": "icon",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/icon/icon.shared.ts": "5cc9c9474996f0d06ad2c277c24ab9a6d2ff4814a49f4024ce978947c098a11e",
@@ -83,8 +83,8 @@
     "npm:@ui8kit/registry|react|image": {
       "name": "image",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/image/image.shared.ts": "a67db7814370b79a1164b83e74b99d9d04d7e532d31dc0fa457c190e840cd05a",
@@ -94,8 +94,8 @@
     "npm:@ui8kit/registry|react|input": {
       "name": "input",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/input/input.shared.ts": "70f35d175c8f36d35d5b3f5a2faaf866042154ddaaf9af1a8d821d34ca90147c",
@@ -105,8 +105,8 @@
     "npm:@ui8kit/registry|react|label": {
       "name": "label",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/label/label.shared.ts": "0bcf690a2be25bfa1736733431ffae5009f4878a8e6122abb8884fe0a923cdbd",
@@ -116,8 +116,8 @@
     "npm:@ui8kit/registry|react|link": {
       "name": "link",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/link/link.shared.ts": "35ab6935736cc2e3871a1d3c76aa5fd092da590a373c94f3e0d0c0f3e0481039",
@@ -127,8 +127,8 @@
     "npm:@ui8kit/registry|react|meter": {
       "name": "meter",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/meter/meter.shared.ts": "f3be45a354c1af95345dde53ddf7974165dbe98efc7f31e7465fa4139578be91",
@@ -138,8 +138,8 @@
     "npm:@ui8kit/registry|react|progress": {
       "name": "progress",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/progress/progress.shared.ts": "cabe85d6c85b64fb2aeaf15b068e8d796ff12a33a6ce7b505a50943abf2e7df4",
@@ -149,8 +149,8 @@
     "npm:@ui8kit/registry|react|radio": {
       "name": "radio",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/radio/radio.shared.ts": "90a7a83d2a61327f4f4a76ff7b63b5e5c81e2291d33a3ad0477ca275b9607746",
@@ -160,8 +160,8 @@
     "npm:@ui8kit/registry|react|rules": {
       "name": "rules",
       "type": "registry:rules",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         ".cursor/rules/ui8kit-primitives.mdc": "baed551953cfd2614150e3fa52ea79274a323d45a13bde121344c5a4b30f7d00"
@@ -170,8 +170,8 @@
     "npm:@ui8kit/registry|react|select": {
       "name": "select",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/select/select.shared.ts": "e4768849ab701303495e024cea5ddbcded792336cd62d9b5d32480f643a53ea2",
@@ -181,8 +181,8 @@
     "npm:@ui8kit/registry|react|separator": {
       "name": "separator",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/separator/separator.shared.ts": "65711a64c434b5c90dfb6ad3924bde68436c1017d1af973dd4c11431d9cfc084",
@@ -192,8 +192,8 @@
     "npm:@ui8kit/registry|react|slot": {
       "name": "slot",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/slot/slot.tsx": "11fdcc61a0fdd93a61384e44b909faa7c0d665fbbf663db6e785a6620047f771"
@@ -202,8 +202,8 @@
     "npm:@ui8kit/registry|react|switch": {
       "name": "switch",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/switch/switch.shared.ts": "0e67fbba43cff2a46f1a929f0e7e5a10e2ec8e0a384bf730f5da8bd9f119d5b8",
@@ -213,8 +213,8 @@
     "npm:@ui8kit/registry|react|text": {
       "name": "text",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/text/text.shared.ts": "988fc436da762b618fdc6c17acc7f3537b63d14461eb5d614f4d242ef25672db",
@@ -224,8 +224,8 @@
     "npm:@ui8kit/registry|react|textarea": {
       "name": "textarea",
       "type": "registry:ui",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/ui/textarea/textarea.shared.ts": "07e46370404a3406345328fdaf390666c4aa4fd31c1d9de0f64f62cd9ee20c43",
@@ -235,13 +235,13 @@
     "npm:@ui8kit/registry|react|utils": {
       "name": "utils",
       "type": "registry:utils",
-      "source": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3.3.1/r/react",
-      "version": "3.3.1",
+      "source": "https://unpkg.com/@ui8kit/registry@3.4.0/r/react",
+      "version": "3.4.0",
       "runtime": "react",
       "files": {
         "src/utils/cn.ts": "71e49505248438b14660406596be49812819f912e0aeb0f3e2f46677e1d481d7",
         "src/utils/env.ts": "bc01c432801f7c9722b3756b4155c437c66061917362c7b259fcd12cc72a4478",
-        "src/utils/expr.ts": "ae6f7c5372b6881db5c9cb5b0ede34509b3e151c4c6bcfd9f1b0399722bcafb9",
+        "src/utils/expr.ts": "b679f14ad497875254d6cf39df785bd0fb9319b56c6d7541212a036340957c7b",
         "src/utils/index.ts": "098142c6140472cdb594686e1d23807c898c2218f24639a421a465b6924cfda5",
         "src/utils/recipe-types.ts": "5f25c506bbcac1b32569023a00c27497eea9b6684cd96a98708233cad313191b",
         "src/utils/tags.ts": "2aaa71b1175f3509c323bb84c4a57e10a08fc4fcd79c143e6bf7872768d75548",

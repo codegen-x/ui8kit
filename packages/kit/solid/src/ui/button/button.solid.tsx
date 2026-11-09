@@ -2,20 +2,25 @@
 /**
  * Button triggers an action. With `href` it renders an anchor (navigation that
  * looks like an action). Event handlers (onClick) flow through attrs/rest.
+ * Pressed / Expanded are the semantic ARIA state props (toggle, disclosure).
  */
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { buttonClasses } from "./button.shared";
-import { isSetStr, oneOfOr, orUndef, safeRest, safeUrl } from "../../utils/expr";
+import { isSetStr, oneOfOr, optBoolStr, orUndef, safeRest, safeUrl } from "../../utils/expr";
 
 /**
  * Button renders a button element, or an anchor when Href is set.
  * Type/Form apply only in button mode; Disabled on anchors uses aria-disabled.
+ * Pressed (button mode) and Expanded print aria-pressed / aria-expanded as "true"/"false";
+ * unset omits the attribute.
  */
-export type ButtonProps = Omit<JSX.HTMLAttributes<HTMLElement>, "class" | "className" | "children" | "type" | "href" | "disabled" | "ref"> & {
+export type ButtonProps = Omit<JSX.HTMLAttributes<HTMLElement>, "class" | "className" | "children" | "type" | "href" | "disabled" | "pressed" | "expanded" | "ref"> & {
   type?: "button" | "submit" | "reset";
   href?: string;
   disabled?: boolean;
+  pressed?: boolean;
+  expanded?: boolean;
   class?: string;
   className?: string;
   children?: JSX.Element;
@@ -23,16 +28,16 @@ export type ButtonProps = Omit<JSX.HTMLAttributes<HTMLElement>, "class" | "class
 };
 
 export const Button: Component<ButtonProps> = (props) => {
-  const [local, rest] = splitProps(props, ["type", "href", "disabled", "class", "className", "children"]);
+  const [local, rest] = splitProps(props, ["type", "href", "disabled", "pressed", "expanded", "class", "className", "children"]);
   const cls = () => buttonClasses({ className: local.class ?? local.className });
   return (
     <>
       {isSetStr(local.href) ? (
-        <a href={orUndef(safeUrl(local.href))} {...(cls() ? { class: cls() } : {})} aria-disabled={local.disabled ? "true" : undefined} tabIndex={local.disabled ? -1 : undefined} {...safeRest(rest, { blank: ["aria-label", "aria-pressed", "aria-expanded", "aria-controls"] })}>
+        <a href={orUndef(safeUrl(local.href))} {...(cls() ? { class: cls() } : {})} aria-expanded={orUndef(optBoolStr(local.expanded))} aria-disabled={local.disabled ? "true" : undefined} tabIndex={local.disabled ? -1 : undefined} {...safeRest(rest, { blank: ["aria-label", "aria-pressed", "aria-expanded", "aria-controls"] })}>
           {local.children}
         </a>
       ) : (
-        <button type={oneOfOr(local.type, "button", "submit", "reset")} {...(cls() ? { class: cls() } : {})} disabled={local.disabled || undefined} {...safeRest(rest, { blank: ["aria-label", "aria-pressed", "aria-expanded", "aria-controls"] })}>
+        <button type={oneOfOr(local.type, "button", "submit", "reset")} {...(cls() ? { class: cls() } : {})} disabled={local.disabled || undefined} aria-pressed={orUndef(optBoolStr(local.pressed))} aria-expanded={orUndef(optBoolStr(local.expanded))} {...safeRest(rest, { blank: ["aria-label", "aria-pressed", "aria-expanded", "aria-controls"] })}>
           {local.children}
         </button>
       )}

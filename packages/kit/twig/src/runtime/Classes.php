@@ -58,7 +58,7 @@ final class Classes
     /**
      * Button classes without rendering — the asChild replacement for custom roots.
      *
-     * @param array{class?: string, type?: string, form?: string, href?: string, disabled?: bool, ariaLabel?: string, ariaPressed?: string, ariaExpanded?: string, ariaControls?: string} $p
+     * @param array{class?: string, type?: string, form?: string, href?: string, disabled?: bool, pressed?: bool, expanded?: bool, ariaLabel?: string, ariaPressed?: string, ariaExpanded?: string, ariaControls?: string} $p
      */
     public static function buttonClasses(array $p = []): string
     {
