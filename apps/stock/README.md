@@ -8,7 +8,7 @@ both work).
     bun run build        # vite build to dist/ (preview: bun run preview, port 5188)
     bun run check        # svelte-check
     bun run test         # unit tests (also part of the root bun run test)
-    bun run index        # rebuild the index: content/assets.v0.json, content/previews.v0.json, content/install.v0.json, src/lib/collections.gen.ts
+    bun run index        # rebuild the index: content/assets.v0.json, content/previews.v0.json, content/install.v0.json, content/variants.v0.json, src/lib/collections.gen.ts
     bun run index:check  # fail when the committed index differs from a fresh build (deterministic: same inputs, same digest)
 
 ## Index (S1)
@@ -49,6 +49,25 @@ meant to be served as is later, e.g. by an MCP server) holds one install object 
 The detail page shows a runtime select, the command with a copy button and the showcase page on ui.buildy.tw (new tab). The names
 are checked against a snapshot of the registry's blocks (`scripts/fixtures/registry-blocks.json`, from
 `https://registry.buildy.tw/react/index.json`; refresh it when the registry gains blocks) in `scripts/install.test.ts`.
+
+## Variant presets
+
+`content/variants.v0.json` (built with the index by `src/lib/variants.ts`, plain JSON, English keys) says how to draw each variant
+Stock shows: `items` by registry name, each with the catalog block, its organism, axes, defaults, `defaultVariant` and `variants` by
+id (the asset id, the axes the variant sets, the organism props). The props are the gallery's layers without the sample content:
+axis defaults < variant axes < variant props; draw a variant with your content under them (`mergeProps(content, props)`). Texts are
+dictionary references `{ "$": "ui.<key>" }`, `{ "$": "<as>" }` names the data collection the block reads. `digest` is the sha256 of
+the file without it. The data is the block specs (`packages/compose-gen/specs/blocks`, stored from the gallery authoring), no table of
+its own; `scripts/variants.test.ts` checks one entry per block variant, the names against the registry snapshot, and that sample
+content under the props equals what the gallery draws (`blockProps` of compose-kit.ts).
+
+    { "version": "0", "digest": "sha256:...", "registry": "https://registry.buildy.tw",
+      "items": { "feature-grid": { "block": "features", "spec": "block.features", "organism": "FeatureGrid",
+        "axes": { "layout": ["grid", "rows"], "cols": ["1-2", "1-3", "1-4"], "...": "..." },
+        "defaults": { "layout": "grid", "cols": "1-3", "...": "..." }, "defaultVariant": "grid",
+        "variants": { "cells4": { "asset": "block.features/cells4", "set": { "cols": "1-4", "item": "cell", "density": "compact" },
+          "props": { "layout": "grid", "cols": "1-4", "item": "cell", "mediaSide": "end", "tone": "default", "density": "compact",
+            "action": { "label": { "$": "ui.site.home.featuresAction" }, "href": "#/" } } } } } } }
 
 ## Search (S2)
 

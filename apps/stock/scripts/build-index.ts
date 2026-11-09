@@ -1,5 +1,6 @@
 // Build the Stock index: content/assets.v0.json (assets + resolved vocabulary + digest), content/previews.v0.json (what each
-// card renders) and src/lib/collections.gen.ts (the data loaders of the previews).
+// card renders), content/install.v0.json (install commands), content/variants.v0.json (variant presets) and src/lib/collections.gen.ts
+// (the data loaders of the previews).
 //   bun scripts/build-index.ts           write the files
 //   bun scripts/build-index.ts --check   fail when a file differs from a fresh build (the index is deterministic)
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
