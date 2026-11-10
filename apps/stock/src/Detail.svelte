@@ -13,6 +13,8 @@
   import { detailView, sameBlocks, samePattern, similar, type Definitions } from "./lib/detail";
   import { LOCALE_OPTIONS, TEXTS, isLocale } from "./lib/i18n";
   import { visit } from "./lib/locale.svelte";
+  import { activeOf, kept, MAX_COMPARE, toggleCompare, toggleKept } from "./lib/collection";
+  import { keep, shelf } from "./lib/collection.svelte";
   import type { InstallIndex } from "./lib/install";
   import type { Asset, Index, Previews } from "./lib/model";
   import { loadPreview } from "./lib/preview";
@@ -77,7 +79,7 @@
 
 <DetailFrame>
   {#snippet header()}
-    <StockHeader {t} q="" locale={visit.locale} locales={LOCALE_OPTIONS} compare={0}
+    <StockHeader {t} q="" locale={visit.locale} locales={LOCALE_OPTIONS} kept={activeOf(shelf.value).items.length} compare={shelf.value.compare.length}
       onsearch={(q) => search({ q })} onlocale={(l) => { if (isLocale(l)) visit.locale = l; }} ontheme={() => (themeCtl.open = true)} />
   {/snippet}
   {#snippet main()}
@@ -85,7 +87,10 @@
       <DetailMain {t} {view} back={visit.back} devices={DEVICES} full={fullDevice} side={fullSide} {onfull}
         mode={stock.state.mode} onmode={(m) => themeCtl.setField("mode", m)} src={frameHash(view.key)} {related}>
         {#snippet card(c: CardView)}
-          <AssetCard {t} card={c} onvariants={(spec) => search({ spec, variants: "all" })}>
+          {@const own = byId.get(c.key)}
+          <AssetCard {t} card={c} onvariants={(spec) => search({ spec, variants: "all" })} collection={activeOf(shelf.value).title} saved={kept(shelf.value, c.key)}
+            compared={shelf.value.compare.includes(c.key)} compareMax={MAX_COMPARE} compareFull={shelf.value.compare.length >= MAX_COMPARE}
+            onsave={own ? () => keep(toggleKept(shelf.value, own, new Date())) : undefined} oncompare={() => keep(toggleCompare(shelf.value, c.key))}>
             {#snippet preview()}{@render live(byId.get(c.key), "pv-" + slug(c.key))}{/snippet}
           </AssetCard>
         {/snippet}

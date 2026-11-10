@@ -8,6 +8,8 @@
   import indexJson from "../content/assets.v0.json";
   import { LOCALE_OPTIONS, TEXTS, isLocale } from "./lib/i18n";
   import { visit } from "./lib/locale.svelte";
+  import { activeOf, kept, MAX_COMPARE, toggleCompare, toggleKept } from "./lib/collection";
+  import { keep, shelf } from "./lib/collection.svelte";
   import type { Asset, Index } from "./lib/model";
   import { loadPreview } from "./lib/preview";
   import { themeCtl } from "./lib/theme-ctl.svelte";
@@ -67,7 +69,7 @@
 
 <StockFrame>
   {#snippet header()}
-    <StockHeader {t} q={s.q} {locale} locales={LOCALE_OPTIONS} compare={0}
+    <StockHeader {t} q={s.q} {locale} locales={LOCALE_OPTIONS} kept={activeOf(shelf.value).items.length} compare={shelf.value.compare.length}
       onsearch={(q) => go({ ...s, q, page: 1 })} onlocale={(id) => { if (isLocale(id)) visit.locale = id; }} ontheme={() => (themeCtl.open = true)} {suggest} {onpick}
       {types} type={s.filters[TYPE]?.[0] ?? ""} {ontype} />
   {/snippet}
@@ -82,7 +84,10 @@
       onremove={(key) => go(removeKey(s, key))} onreset={() => go(resetFilters(s))} onsort={(id) => go({ ...s, sort: id, page: 1 })}
       {refine} {popular} ontoggle={toggle} onpopular={(f, v) => go(toggleValue(resetFilters(s), f, v))} {filters} {onfilters}>
       {#snippet card(c: CardView)}
-        <AssetCard {t} card={c} {onvariants}>
+        {@const own = refOf(c)}
+        <AssetCard {t} card={c} {onvariants} collection={activeOf(shelf.value).title} saved={kept(shelf.value, c.key)} compared={shelf.value.compare.includes(c.key)}
+          compareMax={MAX_COMPARE} compareFull={shelf.value.compare.length >= MAX_COMPARE}
+          onsave={own ? () => keep(toggleKept(shelf.value, own, new Date())) : undefined} oncompare={() => keep(toggleCompare(shelf.value, c.key))}>
           {#snippet preview()}
             {@const a = refOf(c)}
             {#if a?.preview}

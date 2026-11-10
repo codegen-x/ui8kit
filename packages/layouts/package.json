@@ -18,6 +18,8 @@
       "src/stock/filter-bar.svelte",
       "src/stock/facet-column.svelte",
       "src/stock/results.svelte",
+      "src/stock/compare-page.svelte",
+      "src/stock/collection-page.svelte",
       "src/stock/detail/detail-main.svelte",
       "src/stock/detail/preview-panel.svelte",
       "src/stock/detail/summary.svelte",

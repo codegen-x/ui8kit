@@ -15,6 +15,8 @@ export { default as AssetCard } from "./stock/asset-card.svelte";
 export { default as EmptyState } from "./stock/empty-state.svelte";
 export { default as RefineRow } from "./stock/refine-row.svelte";
 export { default as Pagination } from "./stock/pagination.svelte";
+export { default as CollectionPage } from "./stock/collection-page.svelte";
+export { default as ComparePage } from "./stock/compare-page.svelte";
 export { default as DetailFrame } from "./stock/detail/detail-frame.svelte";
 export { default as DetailMain } from "./stock/detail/detail-main.svelte";
 export { default as ThemeSheet } from "./theme/theme-sheet.svelte";

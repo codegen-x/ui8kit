@@ -14,10 +14,10 @@
   "header": {
     "actions": "Werkzeuge",
     "collections": "Sammlungen",
-    "compare": "Vergleichen ({n})",
+    "compare": "Vergleichen",
     "theme": "Theme",
     "locale": "Sprache",
-    "soon": "Kommt in einem späteren Schritt"
+    "count": "{n}"
   },
   "filters": {
     "region": "Filter",
@@ -73,7 +73,53 @@
     "variants": "{n} Varianten",
     "loading": "Vorschau wird geladen",
     "failed": "Die Vorschau konnte nicht geladen werden",
-    "none": "Keine Vorschau"
+    "none": "Keine Vorschau",
+    "save": "Zu {name} hinzufügen",
+    "unsave": "Aus {name} entfernen",
+    "compare": "Zum Vergleich hinzufügen",
+    "uncompare": "Aus dem Vergleich entfernen",
+    "full": "Der Vergleich fasst höchstens {n} Elemente"
+  },
+  "collection": {
+    "title": "Sammlungen",
+    "back": "Zurück zum Katalog",
+    "pick": "Sammlung",
+    "create": "Neue Sammlung",
+    "createdTitle": "Sammlung {n}",
+    "name": "Name",
+    "rename": "Umbenennen",
+    "remove": "Sammlung löschen",
+    "confirmRemove": "Die Sammlung „{name}“ löschen? Das lässt sich nicht rückgängig machen.",
+    "count": "{n} Elemente",
+    "empty": "Noch leer. Fügen Sie Screens und Blöcke mit dem Herz auf einer Karte hinzu.",
+    "items": "Elemente der Sammlung",
+    "actions": "Aktionen der Sammlung",
+    "export": "JSON exportieren",
+    "open": "In BuildY öffnen",
+    "openHint": "BuildY baut die Seite aus diesen Screens und Blöcken; was sein Katalog nicht hat, wird übersprungen und genannt.",
+    "tooLong": "Die Sammlung ist für einen Link zu lang: Die Datei wurde heruntergeladen. Importieren Sie sie in BuildY.",
+    "opened": "BuildY wurde in einem neuen Tab geöffnet.",
+    "up": "Nach oben",
+    "down": "Nach unten",
+    "drop": "Entfernen",
+    "note": "Notiz für BuildY",
+    "notePlaceholder": "Warum dieses Element (optional)",
+    "missing": "Nicht im aktuellen Katalog",
+    "compare": "Vergleichen"
+  },
+  "compare": {
+    "title": "Vergleich",
+    "back": "Zurück zum Katalog",
+    "empty": "Noch nichts zu vergleichen. Fügen Sie bis zu vier Screens oder Blöcke mit der Vergleichstaste einer Karte hinzu.",
+    "clear": "Leeren",
+    "drop": "Entfernen",
+    "count": "{n} von {max}",
+    "table": "Verglichene Elemente nebeneinander",
+    "item": "Element",
+    "registry": "Registry-Element",
+    "install": "Installation",
+    "none": "Keins",
+    "missing": "Nicht im aktuellen Katalog"
   },
   "detail": {
     "back": "Zurück zum Katalog",

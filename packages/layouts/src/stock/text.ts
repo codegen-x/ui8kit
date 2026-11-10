@@ -7,7 +7,8 @@ export type StockText = {
   /** `suggest`: the listbox of suggestions; `searchFor` the free-text row ({q}); `count` a row's result count ({n}); `asset` the
    *  group of asset rows; `hint` how to use the list (announced); `typeOption` an option of the type select ({type}, {n}) */
   search: { label: string; placeholder: string; submit: string; suggest: string; searchFor: string; count: string; asset: string; hint: string; typeOption: string };
-  header: { actions: string; collections: string; compare: string; theme: string; locale: string; soon: string };
+  /** `collections` / `compare` name the two pages; `count` the number beside them ({n}, announced with the name) */
+  header: { actions: string; collections: string; compare: string; theme: string; locale: string; count: string };
   filters: { region: string; types: string; all: string; quick: string };
   /** `find`: the field of a large facet ({facet}); `nomatch` none of its values matches ({q}) */
   facets: { region: string; title: string; toggle: string; draft: string; soft: string; more: string; less: string; hide: string; show: string; find: string; nomatch: string };
@@ -19,7 +20,13 @@ export type StockText = {
   };
   chips: { label: string; query: string; spec: string; remove: string; reset: string };
   pagination: { label: string; prev: string; next: string; page: string };
-  card: { variants: string; loading: string; failed: string; none: string };
+  /** `save` / `unsave` the collection toggle of a card ({name} the active collection), `compare` / `uncompare` the compare
+   *  toggle, `full` why a fifth item cannot be compared ({n}) */
+  card: { variants: string; loading: string; failed: string; none: string; save: string; unsave: string; compare: string; uncompare: string; full: string };
+  /** the Collections page (layouts/src/stock/collection-page.svelte) */
+  collection: CollectionText;
+  /** the Compare page (layouts/src/stock/compare-page.svelte) */
+  compare: CompareText;
   /** the detail page of an asset (layouts/src/stock/detail) */
   detail: DetailText;
   /** the shared Theme sheet (@ui8kit/layouts/theme): its Theme panel, the Design system panel and its specimen */
@@ -51,6 +58,26 @@ export type SuggestView =
   | { key: string; kind: "asset"; label: string; group: string; href: string };
 /** a value that narrows the current results (a related search): `count` of the current results carry it */
 export type RefineView = { facet: string; value: string; label: string; group: string; count: number };
+
+export type CollectionText = {
+  title: string; back: string; pick: string; create: string; createdTitle: string; name: string; rename: string; remove: string;
+  /** asked before a collection is deleted ({name}) */
+  confirmRemove: string;
+  /** `count` ({n} items), `empty` what to do with an empty collection, `items` the accessible name of the list */
+  count: string; empty: string; items: string;
+  actions: string; export: string; open: string; openHint: string; tooLong: string; opened: string;
+  up: string; down: string; drop: string; note: string; notePlaceholder: string; missing: string; compare: string;
+};
+export type CompareText = {
+  title: string; back: string; empty: string; clear: string; drop: string; count: string; table: string; item: string;
+  registry: string; install: string; none: string; missing: string;
+};
+/** one item of a collection as the page shows it: `key` its asset id, `href` its detail page (empty: not in the index) */
+export type KeptView = { key: string; title: string; kind: string; variant: string; note: string; href: string; preview: boolean };
+/** a row of the Compare table: its label and one value per compared item ("" none) */
+export type CompareRow = { id: string; label: string; values: string[] };
+/** one compared item: `key` its asset id, `href` its detail page (empty: not in the index) */
+export type CompareView = { key: string; title: string; kind: string; href: string; preview: boolean };
 
 export type DetailText = {
   back: string;

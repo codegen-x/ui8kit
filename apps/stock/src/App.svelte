@@ -1,8 +1,9 @@
-<!-- Stock: the router (lib/route.ts) over the storefront, the detail page of an asset and the bare frame document the detail page's
+<!-- Stock: the router (lib/route.ts) over the storefront, the detail page of an asset, the Collections and Compare pages and the bare frame document the detail page's
      device frame loads. The frame is decided once, at load: a link clicked inside a live preview never turns it into another page. -->
 <script lang="ts">
   import Detail from "./Detail.svelte";
   import Frame from "./Frame.svelte";
+  import Shelf from "./Shelf.svelte";
   import Storefront from "./Storefront.svelte";
   import { writeLocale } from "./lib/i18n";
   import { visit } from "./lib/locale.svelte";
@@ -31,6 +32,8 @@
   <Frame id={first.id} />
 {:else if route.kind === "asset"}
   {#key route.id}<Detail id={route.id} full={route.full} />{/key}
+{:else if route.kind === "collections" || route.kind === "compare"}
+  <Shelf page={route.kind} />
 {:else if route.kind === "search"}
   <Storefront query={route.query} />
 {/if}

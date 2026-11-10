@@ -11,6 +11,22 @@ both work).
     bun run index        # rebuild the index: content/assets.v0.json, content/previews.v0.json, content/install.v0.json, content/variants.v0.json, content/props.v0.json, src/lib/collections.gen.ts
     bun run index:check  # fail when the committed index differs from a fresh build (deterministic: same inputs, same digest)
 
+## Collections and Compare (alexy-os/chaosbun#151)
+
+The header's **Collections** and **Compare** open `#/collections` and `#/compare` (`src/Shelf.svelte`, layouts
+`collection-page.svelte` and `compare-page.svelte`). Every card has two toggles: the heart keeps the asset in the active
+collection, the compare button picks it for Compare (at most 4). Everything lives on this device under
+`stock:v1:collections` (`src/lib/collection.ts`, no accounts yet): several collections, the active one, the order of
+items, a note per item for BuildY.
+
+A collection is handed to BuildY as `buildy-collection:v1` (https://schema.buildy.tw/collection.schema.json, ui8kit/contract):
+items are Stock asset ids (a screen page, or a block + variant), pinned to the `digest` of `content/assets.v0.json`.
+**Open in BuildY** opens `<BUILDY_URL>/?collection=<base64url JSON>` in a new tab; a link over 8000 characters is not
+opened, the file is downloaded instead (import it in BuildY). **Export JSON** downloads the same document. `BUILDY_URL`
+(`src/lib/collection.ts`) is the one place of the chat address: `https://buildychat.vercel.app` until
+`https://chat.buildy.tw` is live; a build may override it with `VITE_BUILDY_URL`. The chat side: `docs/collection-intake.md`
+of ui8kit/contract. `scripts/fixtures/collection.schema.json` is a copy of the contract schema for the tests.
+
 ## Index (S1)
 
 `scripts/build-index.ts` (logic in `scripts/lib/build.ts`) reads the facet vocabulary `content/facets.v0.json` and the specs:

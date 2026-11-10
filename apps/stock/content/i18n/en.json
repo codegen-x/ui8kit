@@ -14,10 +14,10 @@
   "header": {
     "actions": "Tools",
     "collections": "Collections",
-    "compare": "Compare ({n})",
+    "compare": "Compare",
     "theme": "Theme",
     "locale": "Language",
-    "soon": "Coming in a later step"
+    "count": "{n}"
   },
   "filters": {
     "region": "Filters",
@@ -73,7 +73,53 @@
     "variants": "{n} variants",
     "loading": "Loading the preview",
     "failed": "The preview failed to load",
-    "none": "No preview"
+    "none": "No preview",
+    "save": "Add to {name}",
+    "unsave": "Remove from {name}",
+    "compare": "Add to Compare",
+    "uncompare": "Remove from Compare",
+    "full": "Compare holds up to {n} items"
+  },
+  "collection": {
+    "title": "Collections",
+    "back": "Back to the catalog",
+    "pick": "Collection",
+    "create": "New collection",
+    "createdTitle": "Collection {n}",
+    "name": "Name",
+    "rename": "Rename",
+    "remove": "Delete collection",
+    "confirmRemove": "Delete the collection “{name}”? This cannot be undone.",
+    "count": "{n} items",
+    "empty": "Nothing here yet. Add screens and blocks with the heart on a card.",
+    "items": "Items of the collection",
+    "actions": "Collection actions",
+    "export": "Export JSON",
+    "open": "Open in BuildY",
+    "openHint": "BuildY builds the page from these screens and blocks; items its catalog does not have are skipped and named.",
+    "tooLong": "The collection is too long for a link: the file was downloaded. Import it in BuildY.",
+    "opened": "BuildY opened in a new tab.",
+    "up": "Move up",
+    "down": "Move down",
+    "drop": "Remove",
+    "note": "Note for BuildY",
+    "notePlaceholder": "Why this item (optional)",
+    "missing": "Not in the current catalog",
+    "compare": "Compare"
+  },
+  "compare": {
+    "title": "Compare",
+    "back": "Back to the catalog",
+    "empty": "Nothing to compare yet. Add up to four screens or blocks with the compare button on a card.",
+    "clear": "Clear",
+    "drop": "Remove",
+    "count": "{n} of {max}",
+    "table": "Compared items side by side",
+    "item": "Item",
+    "registry": "Registry item",
+    "install": "Install",
+    "none": "None",
+    "missing": "Not in the current catalog"
   },
   "detail": {
     "back": "Back to the catalog",

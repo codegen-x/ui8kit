@@ -14,10 +14,10 @@
   "header": {
     "actions": "Herramientas",
     "collections": "Colecciones",
-    "compare": "Comparar ({n})",
+    "compare": "Comparar",
     "theme": "Tema",
     "locale": "Idioma",
-    "soon": "Llega en un paso posterior"
+    "count": "{n}"
   },
   "filters": {
     "region": "Filtros",
@@ -73,7 +73,53 @@
     "variants": "{n} variantes",
     "loading": "Cargando la vista previa",
     "failed": "No se pudo cargar la vista previa",
-    "none": "Sin vista previa"
+    "none": "Sin vista previa",
+    "save": "Añadir a {name}",
+    "unsave": "Quitar de {name}",
+    "compare": "Añadir a la comparación",
+    "uncompare": "Quitar de la comparación",
+    "full": "La comparación admite hasta {n} elementos"
+  },
+  "collection": {
+    "title": "Colecciones",
+    "back": "Volver al catálogo",
+    "pick": "Colección",
+    "create": "Nueva colección",
+    "createdTitle": "Colección {n}",
+    "name": "Nombre",
+    "rename": "Renombrar",
+    "remove": "Eliminar la colección",
+    "confirmRemove": "¿Eliminar la colección «{name}»? No se puede deshacer.",
+    "count": "{n} elementos",
+    "empty": "Aún no hay nada. Añade pantallas y bloques con el corazón de una tarjeta.",
+    "items": "Elementos de la colección",
+    "actions": "Acciones de la colección",
+    "export": "Exportar JSON",
+    "open": "Abrir en BuildY",
+    "openHint": "BuildY construye la página con estas pantallas y bloques; los que su catálogo no tiene se omiten y se nombran.",
+    "tooLong": "La colección es demasiado larga para un enlace: se descargó el archivo. Impórtalo en BuildY.",
+    "opened": "BuildY se abrió en una pestaña nueva.",
+    "up": "Subir",
+    "down": "Bajar",
+    "drop": "Quitar",
+    "note": "Nota para BuildY",
+    "notePlaceholder": "Por qué este elemento (opcional)",
+    "missing": "No está en el catálogo actual",
+    "compare": "Comparar"
+  },
+  "compare": {
+    "title": "Comparar",
+    "back": "Volver al catálogo",
+    "empty": "Aún no hay nada que comparar. Añade hasta cuatro pantallas o bloques con el botón de comparar de una tarjeta.",
+    "clear": "Vaciar",
+    "drop": "Quitar",
+    "count": "{n} de {max}",
+    "table": "Elementos comparados lado a lado",
+    "item": "Elemento",
+    "registry": "Elemento del registro",
+    "install": "Instalación",
+    "none": "Ninguno",
+    "missing": "No está en el catálogo actual"
   },
   "detail": {
     "back": "Volver al catálogo",

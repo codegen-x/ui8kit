@@ -14,10 +14,10 @@
   "header": {
     "actions": "Outils",
     "collections": "Collections",
-    "compare": "Comparer ({n})",
+    "compare": "Comparer",
     "theme": "Thème",
     "locale": "Langue",
-    "soon": "Arrive dans une prochaine étape"
+    "count": "{n}"
   },
   "filters": {
     "region": "Filtres",
@@ -73,7 +73,53 @@
     "variants": "{n} variantes",
     "loading": "Chargement de l’aperçu",
     "failed": "L’aperçu n’a pas pu être chargé",
-    "none": "Pas d’aperçu"
+    "none": "Pas d’aperçu",
+    "save": "Ajouter à {name}",
+    "unsave": "Retirer de {name}",
+    "compare": "Ajouter à la comparaison",
+    "uncompare": "Retirer de la comparaison",
+    "full": "La comparaison contient au plus {n} éléments"
+  },
+  "collection": {
+    "title": "Collections",
+    "back": "Retour au catalogue",
+    "pick": "Collection",
+    "create": "Nouvelle collection",
+    "createdTitle": "Collection {n}",
+    "name": "Nom",
+    "rename": "Renommer",
+    "remove": "Supprimer la collection",
+    "confirmRemove": "Supprimer la collection « {name} » ? Cette action est définitive.",
+    "count": "{n} éléments",
+    "empty": "Rien pour l'instant. Ajoutez des écrans et des blocs avec le cœur d'une carte.",
+    "items": "Éléments de la collection",
+    "actions": "Actions de la collection",
+    "export": "Exporter le JSON",
+    "open": "Ouvrir dans BuildY",
+    "openHint": "BuildY construit la page à partir de ces écrans et blocs ; ceux que son catalogue n'a pas sont ignorés et nommés.",
+    "tooLong": "La collection est trop longue pour un lien : le fichier a été téléchargé. Importez-le dans BuildY.",
+    "opened": "BuildY s'est ouvert dans un nouvel onglet.",
+    "up": "Monter",
+    "down": "Descendre",
+    "drop": "Retirer",
+    "note": "Note pour BuildY",
+    "notePlaceholder": "Pourquoi cet élément (facultatif)",
+    "missing": "Absent du catalogue actuel",
+    "compare": "Comparer"
+  },
+  "compare": {
+    "title": "Comparer",
+    "back": "Retour au catalogue",
+    "empty": "Rien à comparer. Ajoutez jusqu'à quatre écrans ou blocs avec le bouton de comparaison d'une carte.",
+    "clear": "Vider",
+    "drop": "Retirer",
+    "count": "{n} sur {max}",
+    "table": "Éléments comparés côte à côte",
+    "item": "Élément",
+    "registry": "Élément du registre",
+    "install": "Installation",
+    "none": "Aucun",
+    "missing": "Absent du catalogue actuel"
   },
   "detail": {
     "back": "Retour au catalogue",

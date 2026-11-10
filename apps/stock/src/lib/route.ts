@@ -3,8 +3,10 @@
 //   #/asset/<asset id>         the detail page of a block variant or a screen page (ids: block.about/split, screen.site/home)
 //   #/asset/<id>?view=full&device=phone   the same page with its full-screen preview open, at a device width (desktop by default;
 //                                         device=side: desktop and phone side by side)
+//   #/collections              the Collections page (the active collection of this device, Open in BuildY)
+//   #/compare                  the Compare page (up to four assets side by side)
 //   #/frame/<asset id>         the bare live render of an asset, the document of the detail page's device frame (an iframe)
-export type Route = { kind: "search"; query: string } | { kind: "asset"; id: string; full?: Full } | { kind: "frame"; id: string };
+export type Route = { kind: "search"; query: string } | { kind: "asset"; id: string; full?: Full } | { kind: "frame"; id: string } | { kind: "collections" } | { kind: "compare" };
 /** the full-screen preview of a detail page and its device */
 export type Full = { device: Device };
 export type Device = "desktop" | "tablet" | "phone" | "side";
@@ -14,6 +16,8 @@ const ID = /^[a-z0-9][a-zA-Z0-9./-]*$/;
 
 export function parseRoute(hash: string): Route {
   const h = hash.replace(/^#/, "");
+  if (h === "/collections" || h.startsWith("/collections?")) return { kind: "collections" };
+  if (h === "/compare" || h.startsWith("/compare?")) return { kind: "compare" };
   for (const kind of ["asset", "frame"] as const) {
     const pre = `/${kind}/`;
     if (h.startsWith(pre)) {
