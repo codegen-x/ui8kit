@@ -37,6 +37,28 @@
               "block",
               "blocks",
               "component"
+            ],
+            "fr": [
+              "bloc",
+              "blocs",
+              "composant"
+            ],
+            "de": [
+              "block",
+              "blöcke",
+              "komponente"
+            ],
+            "es": [
+              "bloque",
+              "bloques",
+              "componente"
+            ],
+            "ru": [
+              "блок",
+              "блоки",
+              "блоков",
+              "компонент",
+              "компоненты"
             ]
           }
         },
@@ -57,11 +79,391 @@
               "pages",
               "template",
               "templates"
+            ],
+            "fr": [
+              "écran",
+              "page",
+              "modèle"
+            ],
+            "de": [
+              "seite",
+              "seiten",
+              "vorlage"
+            ],
+            "es": [
+              "pantalla",
+              "página",
+              "plantilla"
+            ],
+            "ru": [
+              "экран",
+              "экраны",
+              "страница",
+              "страницы",
+              "шаблон",
+              "шаблоны"
             ]
           }
         }
       ],
       "order": 0
+    },
+    {
+      "id": "site",
+      "label": {
+        "en": "Site type",
+        "fr": "Type de site",
+        "de": "Website-Typ",
+        "es": "Tipo de sitio",
+        "ru": "Тип сайта"
+      },
+      "ui": "checkbox",
+      "open": true,
+      "scope": "typed",
+      "types": [
+        "screen"
+      ],
+      "source": "weak",
+      "draft": true,
+      "draftNote": {
+        "en": "Draft labels: a hand-written table of the composed screens (the kind of site a screen page belongs to), not reviewed by a person",
+        "fr": "Libellés provisoires : table manuelle des écrans composés (le type de site d’une page), non relue",
+        "de": "Entwurf: handgeschriebene Tabelle der Screens (zu welcher Art Website eine Seite gehört), nicht geprüft",
+        "es": "Borrador: tabla manual de las pantallas compuestas (el tipo de sitio de cada página), sin revisar",
+        "ru": "Черновая разметка: ручная таблица экранов (к какому типу сайта относится страница), не проверена человеком"
+      },
+      "derive": "rules",
+      "values": [
+        {
+          "id": "landing",
+          "label": {
+            "en": "Landing page",
+            "fr": "Page d’atterrissage",
+            "de": "Landingpage",
+            "es": "Página de aterrizaje",
+            "ru": "Лендинг"
+          },
+          "synonyms": {
+            "en": [
+              "landing",
+              "landingpage",
+              "onepage",
+              "campaign",
+              "launch",
+              "conversion"
+            ],
+            "fr": [
+              "atterrissage",
+              "campagne",
+              "lancement"
+            ],
+            "de": [
+              "landingpage",
+              "zielseite",
+              "kampagne"
+            ],
+            "es": [
+              "aterrizaje",
+              "campaña",
+              "lanzamiento"
+            ],
+            "ru": [
+              "лендинг",
+              "лендинга",
+              "лэндинг",
+              "посадочная",
+              "одностраничник",
+              "промостраница"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "screen": [
+                  "theme-marketing-landing",
+                  "theme-promo-campaign"
+                ]
+              },
+              "not": {
+                "area": [
+                  "studio",
+                  "company",
+                  "work"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "website",
+          "label": {
+            "en": "Website",
+            "fr": "Site web",
+            "de": "Website",
+            "es": "Sitio web",
+            "ru": "Сайт"
+          },
+          "synonyms": {
+            "en": [
+              "website",
+              "site",
+              "homepage",
+              "company",
+              "corporate",
+              "multipage"
+            ],
+            "fr": [
+              "site",
+              "vitrine",
+              "entreprise"
+            ],
+            "de": [
+              "webseite",
+              "website",
+              "firmenwebsite",
+              "unternehmen"
+            ],
+            "es": [
+              "sitio",
+              "web",
+              "empresa",
+              "corporativo"
+            ],
+            "ru": [
+              "сайт",
+              "сайта",
+              "вебсайт",
+              "многостраничный",
+              "корпоративный",
+              "компании",
+              "визитка"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "screen": [
+                  "site",
+                  "theme-marketing-product",
+                  "theme-marketing-pricing",
+                  "theme-restaurant-house",
+                  "theme-food-grill"
+                ],
+                "area": [
+                  "studio",
+                  "company",
+                  "work"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "app",
+          "label": {
+            "en": "App / dashboard",
+            "fr": "Application / tableau de bord",
+            "de": "App / Dashboard",
+            "es": "App / panel",
+            "ru": "Приложение / дашборд"
+          },
+          "synonyms": {
+            "en": [
+              "app",
+              "application",
+              "dashboard",
+              "admin",
+              "console",
+              "portal",
+              "webapp"
+            ],
+            "fr": [
+              "application",
+              "tableau",
+              "administration"
+            ],
+            "de": [
+              "anwendung",
+              "verwaltung",
+              "konsole"
+            ],
+            "es": [
+              "aplicación",
+              "panel",
+              "administración"
+            ],
+            "ru": [
+              "приложение",
+              "приложения",
+              "дашборд",
+              "админка",
+              "панель",
+              "кабинет",
+              "консоль"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "screen": [
+                  "theme-dashboard-console",
+                  "theme-account-portal",
+                  "theme-onboarding-flow"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "docs",
+          "label": {
+            "en": "Docs / support",
+            "fr": "Docs / support",
+            "de": "Doku / Support",
+            "es": "Docs / soporte",
+            "ru": "Документация / поддержка"
+          },
+          "synonyms": {
+            "en": [
+              "docs",
+              "documentation",
+              "support",
+              "help",
+              "helpdesk",
+              "knowledge"
+            ],
+            "fr": [
+              "documentation",
+              "aide",
+              "assistance"
+            ],
+            "de": [
+              "dokumentation",
+              "hilfe",
+              "hilfecenter"
+            ],
+            "es": [
+              "documentación",
+              "ayuda",
+              "soporte"
+            ],
+            "ru": [
+              "документация",
+              "документации",
+              "поддержка",
+              "поддержки",
+              "помощь",
+              "справка"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "screen": [
+                  "theme-support-center"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "shop",
+          "label": {
+            "en": "Shop",
+            "fr": "Boutique",
+            "de": "Shop",
+            "es": "Tienda",
+            "ru": "Магазин"
+          },
+          "synonyms": {
+            "en": [
+              "shop",
+              "store",
+              "ecommerce",
+              "storefront",
+              "marketplace"
+            ],
+            "fr": [
+              "boutique",
+              "magasin"
+            ],
+            "de": [
+              "shop",
+              "laden",
+              "onlineshop"
+            ],
+            "es": [
+              "tienda",
+              "comercio"
+            ],
+            "ru": [
+              "магазин",
+              "магазина",
+              "интернетмагазин",
+              "витрина",
+              "маркетплейс"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "screen": [
+                  "theme-commerce-shop",
+                  "theme-food-delivery"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "blog",
+          "label": {
+            "en": "Blog",
+            "fr": "Blog",
+            "de": "Blog",
+            "es": "Blog",
+            "ru": "Блог"
+          },
+          "synonyms": {
+            "en": [
+              "blog",
+              "magazine",
+              "journal",
+              "publication"
+            ],
+            "fr": [
+              "blog",
+              "magazine",
+              "journal"
+            ],
+            "de": [
+              "blog",
+              "magazin"
+            ],
+            "es": [
+              "blog",
+              "revista"
+            ],
+            "ru": [
+              "блог",
+              "блога",
+              "журнал",
+              "статьи",
+              "новости"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "screen": [
+                  "theme-content-blog"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "order": 1
     },
     {
       "id": "job",
@@ -99,6 +501,24 @@
               "header",
               "banner",
               "intro"
+            ],
+            "fr": [
+              "bannière",
+              "accroche"
+            ],
+            "de": [
+              "banner",
+              "einstieg"
+            ],
+            "es": [
+              "portada",
+              "cabecera"
+            ],
+            "ru": [
+              "хиро",
+              "шапка",
+              "баннер",
+              "обложка"
             ]
           },
           "rules": [
@@ -128,6 +548,25 @@
               "features",
               "benefits",
               "advantages"
+            ],
+            "fr": [
+              "fonctionnalités",
+              "avantages"
+            ],
+            "de": [
+              "funktionen",
+              "vorteile"
+            ],
+            "es": [
+              "funciones",
+              "ventajas",
+              "características"
+            ],
+            "ru": [
+              "преимущества",
+              "возможности",
+              "функции",
+              "фичи"
             ]
           },
           "rules": [
@@ -155,6 +594,28 @@
               "price",
               "plans",
               "tariff"
+            ],
+            "fr": [
+              "tarifs",
+              "prix",
+              "offres"
+            ],
+            "de": [
+              "preise",
+              "tarife"
+            ],
+            "es": [
+              "precios",
+              "planes",
+              "tarifas"
+            ],
+            "ru": [
+              "тарифы",
+              "тариф",
+              "цены",
+              "цена",
+              "прайс",
+              "стоимость"
             ]
           },
           "rules": [
@@ -184,6 +645,26 @@
               "testimonials",
               "reviews",
               "quotes"
+            ],
+            "fr": [
+              "témoignages",
+              "avis"
+            ],
+            "de": [
+              "kundenstimmen",
+              "bewertungen",
+              "referenzen"
+            ],
+            "es": [
+              "testimonios",
+              "opiniones",
+              "reseñas"
+            ],
+            "ru": [
+              "отзыв",
+              "отзывы",
+              "рекомендации",
+              "цитаты"
             ]
           },
           "rules": [
@@ -212,6 +693,24 @@
               "cta",
               "action",
               "signup"
+            ],
+            "fr": [
+              "appel",
+              "inscription"
+            ],
+            "de": [
+              "handlungsaufforderung",
+              "anmeldung"
+            ],
+            "es": [
+              "llamada",
+              "registro"
+            ],
+            "ru": [
+              "призыв",
+              "действие",
+              "кнопка",
+              "регистрация"
             ]
           },
           "rules": [
@@ -241,6 +740,25 @@
               "faq",
               "questions",
               "objections"
+            ],
+            "fr": [
+              "questions",
+              "réponses"
+            ],
+            "de": [
+              "fragen",
+              "antworten"
+            ],
+            "es": [
+              "preguntas",
+              "respuestas"
+            ],
+            "ru": [
+              "вопросы",
+              "вопрос",
+              "ответы",
+              "чаво",
+              "возражения"
             ]
           },
           "rules": [
@@ -267,6 +785,26 @@
               "proof",
               "trust",
               "press"
+            ],
+            "fr": [
+              "confiance",
+              "preuve",
+              "presse"
+            ],
+            "de": [
+              "vertrauen",
+              "presse"
+            ],
+            "es": [
+              "confianza",
+              "prueba",
+              "prensa"
+            ],
+            "ru": [
+              "доверие",
+              "доказательство",
+              "пресса",
+              "гарантии"
             ]
           },
           "rules": [
@@ -298,6 +836,24 @@
               "nav",
               "menu",
               "breadcrumbs"
+            ],
+            "fr": [
+              "navigation",
+              "menu"
+            ],
+            "de": [
+              "navigation",
+              "menü"
+            ],
+            "es": [
+              "navegación",
+              "menú"
+            ],
+            "ru": [
+              "навигация",
+              "меню",
+              "шапка",
+              "хлебные"
             ]
           },
           "rules": [
@@ -332,6 +888,24 @@
               "value",
               "usp",
               "why"
+            ],
+            "fr": [
+              "valeur",
+              "proposition"
+            ],
+            "de": [
+              "nutzen",
+              "mehrwert"
+            ],
+            "es": [
+              "valor",
+              "propuesta"
+            ],
+            "ru": [
+              "ценность",
+              "предложение",
+              "почему",
+              "утп"
             ]
           },
           "rules": [
@@ -363,6 +937,24 @@
               "steps",
               "process",
               "how"
+            ],
+            "fr": [
+              "étapes",
+              "processus"
+            ],
+            "de": [
+              "schritte",
+              "ablauf"
+            ],
+            "es": [
+              "pasos",
+              "proceso"
+            ],
+            "ru": [
+              "шаги",
+              "этапы",
+              "процесс",
+              "работает"
             ]
           },
           "rules": [
@@ -393,6 +985,28 @@
               "logos",
               "clients",
               "partners"
+            ],
+            "fr": [
+              "logos",
+              "clients",
+              "partenaires"
+            ],
+            "de": [
+              "logos",
+              "kunden",
+              "partner"
+            ],
+            "es": [
+              "logotipos",
+              "clientes",
+              "socios"
+            ],
+            "ru": [
+              "логотипы",
+              "логотип",
+              "клиенты",
+              "партнёры",
+              "партнеры"
             ]
           },
           "rules": [
@@ -420,6 +1034,26 @@
               "numbers",
               "metrics",
               "figures"
+            ],
+            "fr": [
+              "chiffres",
+              "statistiques"
+            ],
+            "de": [
+              "zahlen",
+              "statistiken",
+              "kennzahlen"
+            ],
+            "es": [
+              "cifras",
+              "estadísticas",
+              "métricas"
+            ],
+            "ru": [
+              "цифры",
+              "статистика",
+              "метрики",
+              "показатели"
             ]
           },
           "rules": [
@@ -447,6 +1081,23 @@
               "compare",
               "comparison",
               "versus"
+            ],
+            "fr": [
+              "comparaison",
+              "comparer"
+            ],
+            "de": [
+              "vergleich",
+              "vergleichen"
+            ],
+            "es": [
+              "comparación",
+              "comparar"
+            ],
+            "ru": [
+              "сравнение",
+              "сравнить",
+              "против"
             ]
           },
           "rules": [
@@ -475,6 +1126,29 @@
               "newsletter",
               "subscribe",
               "email"
+            ],
+            "fr": [
+              "formulaire",
+              "inscription",
+              "newsletter"
+            ],
+            "de": [
+              "formular",
+              "anfrage",
+              "newsletter"
+            ],
+            "es": [
+              "formulario",
+              "suscripción",
+              "boletín"
+            ],
+            "ru": [
+              "форма",
+              "заявка",
+              "лид",
+              "подписка",
+              "рассылка",
+              "почта"
             ]
           },
           "rules": [
@@ -508,6 +1182,24 @@
               "contacts",
               "support",
               "channels"
+            ],
+            "fr": [
+              "contact",
+              "contacts"
+            ],
+            "de": [
+              "kontakt",
+              "kontakte"
+            ],
+            "es": [
+              "contacto",
+              "contactos"
+            ],
+            "ru": [
+              "контакты",
+              "контакт",
+              "связь",
+              "поддержка"
             ]
           },
           "rules": [
@@ -538,6 +1230,30 @@
               "categories",
               "products",
               "gallery"
+            ],
+            "fr": [
+              "catalogue",
+              "catégories",
+              "produits",
+              "galerie"
+            ],
+            "de": [
+              "katalog",
+              "kategorien",
+              "produkte",
+              "galerie"
+            ],
+            "es": [
+              "catálogo",
+              "categorías",
+              "productos",
+              "galería"
+            ],
+            "ru": [
+              "каталог",
+              "категории",
+              "товары",
+              "галерея"
             ]
           },
           "rules": [
@@ -571,6 +1287,23 @@
             "en": [
               "product",
               "item"
+            ],
+            "fr": [
+              "produit",
+              "article"
+            ],
+            "de": [
+              "produkt",
+              "artikel"
+            ],
+            "es": [
+              "producto",
+              "artículo"
+            ],
+            "ru": [
+              "товар",
+              "карточка",
+              "продукт"
             ]
           },
           "rules": [
@@ -598,6 +1331,28 @@
               "checkout",
               "basket",
               "orders"
+            ],
+            "fr": [
+              "panier",
+              "paiement",
+              "commande"
+            ],
+            "de": [
+              "warenkorb",
+              "kasse",
+              "bestellung"
+            ],
+            "es": [
+              "carrito",
+              "pago",
+              "pedido"
+            ],
+            "ru": [
+              "корзина",
+              "оформление",
+              "заказ",
+              "заказы",
+              "оплата"
             ]
           },
           "rules": [
@@ -627,6 +1382,25 @@
               "delivery",
               "shipping",
               "pickup"
+            ],
+            "fr": [
+              "livraison",
+              "retrait"
+            ],
+            "de": [
+              "lieferung",
+              "versand",
+              "abholung"
+            ],
+            "es": [
+              "entrega",
+              "envío",
+              "recogida"
+            ],
+            "ru": [
+              "доставка",
+              "самовывоз",
+              "курьер"
             ]
           },
           "rules": [
@@ -654,6 +1428,27 @@
               "posts",
               "news",
               "feed"
+            ],
+            "fr": [
+              "blog",
+              "articles",
+              "actualités"
+            ],
+            "de": [
+              "blog",
+              "beiträge",
+              "neuigkeiten"
+            ],
+            "es": [
+              "blog",
+              "publicaciones",
+              "noticias"
+            ],
+            "ru": [
+              "блог",
+              "посты",
+              "новости",
+              "лента"
             ]
           },
           "rules": [
@@ -683,6 +1478,24 @@
               "post",
               "story",
               "timeline"
+            ],
+            "fr": [
+              "article",
+              "récit"
+            ],
+            "de": [
+              "artikel",
+              "beitrag"
+            ],
+            "es": [
+              "artículo",
+              "historia"
+            ],
+            "ru": [
+              "статья",
+              "статьи",
+              "пост",
+              "история"
             ]
           },
           "rules": [
@@ -713,6 +1526,22 @@
             "en": [
               "footer",
               "sitemap"
+            ],
+            "fr": [
+              "pied",
+              "plan"
+            ],
+            "de": [
+              "fußzeile",
+              "sitemap"
+            ],
+            "es": [
+              "pie",
+              "mapa"
+            ],
+            "ru": [
+              "подвал",
+              "футер"
             ]
           },
           "rules": [
@@ -743,6 +1572,29 @@
               "signin",
               "signup",
               "account"
+            ],
+            "fr": [
+              "connexion",
+              "inscription",
+              "compte"
+            ],
+            "de": [
+              "anmeldung",
+              "login",
+              "registrierung",
+              "konto"
+            ],
+            "es": [
+              "acceso",
+              "registro",
+              "cuenta"
+            ],
+            "ru": [
+              "вход",
+              "авторизация",
+              "логин",
+              "регистрация",
+              "аккаунт"
             ]
           },
           "rules": [
@@ -770,6 +1622,24 @@
               "widget",
               "admin",
               "app"
+            ],
+            "fr": [
+              "tableau",
+              "widget"
+            ],
+            "de": [
+              "dashboard",
+              "widget"
+            ],
+            "es": [
+              "panel",
+              "widget"
+            ],
+            "ru": [
+              "дашборд",
+              "виджет",
+              "админка",
+              "панель"
             ]
           },
           "rules": [
@@ -794,7 +1664,7 @@
           ]
         }
       ],
-      "order": 1,
+      "order": 2,
       "draft": true,
       "draftNote": {
         "en": "Draft labels: a hand-written table of block ids per job (written by the bot, not reviewed by a person)",
@@ -1034,7 +1904,7 @@
           ]
         }
       ],
-      "order": 2
+      "order": 3
     },
     {
       "id": "composition",
@@ -1314,7 +2184,7 @@
           ]
         }
       ],
-      "order": 3,
+      "order": 4,
       "draft": true,
       "draftNote": {
         "en": "Draft labels: a hand-written table from the layout axis to a composition, not reviewed by a person",
@@ -1483,7 +2353,7 @@
           ]
         }
       ],
-      "order": 4
+      "order": 5
     },
     {
       "id": "density",
@@ -1591,7 +2461,7 @@
           ]
         }
       ],
-      "order": 5
+      "order": 6
     },
     {
       "id": "pattern",
@@ -1603,7 +2473,7 @@
         "ru": "Паттерн композиции"
       },
       "ui": "checkbox",
-      "order": 6,
+      "order": 7,
       "open": true,
       "visible": 8,
       "scope": "shared",
@@ -1640,7 +2510,7 @@
       "source": "system",
       "derive": "blocks",
       "valuesFrom": "blocks",
-      "order": 7,
+      "order": 8,
       "values": []
     },
     {
@@ -1860,7 +2730,7 @@
           ]
         }
       ],
-      "order": 8,
+      "order": 9,
       "draft": true,
       "draftNote": {
         "en": "Draft labels: a hand-written table from the axes and the Codex fields, not reviewed by a person",
@@ -2051,7 +2921,7 @@
           ]
         }
       ],
-      "order": 9
+      "order": 10
     },
     {
       "id": "industry",
@@ -2102,6 +2972,42 @@
               "recipe",
               "grocery",
               "vegetables"
+            ],
+            "fr": [
+              "restaurant",
+              "nourriture",
+              "café",
+              "pizza",
+              "livraison"
+            ],
+            "de": [
+              "essen",
+              "restaurant",
+              "café",
+              "pizza",
+              "lieferdienst"
+            ],
+            "es": [
+              "comida",
+              "restaurante",
+              "cafetería",
+              "pizza",
+              "domicilio"
+            ],
+            "ru": [
+              "еда",
+              "ресторан",
+              "ресторана",
+              "кафе",
+              "меню",
+              "доставка",
+              "пицца",
+              "суши",
+              "роллы",
+              "гриль",
+              "мангал",
+              "шашлык",
+              "продукты"
             ]
           },
           "rules": [
@@ -2134,6 +3040,25 @@
               "saas",
               "software",
               "startup"
+            ],
+            "fr": [
+              "logiciel",
+              "startup"
+            ],
+            "de": [
+              "software",
+              "startup"
+            ],
+            "es": [
+              "software",
+              "startup"
+            ],
+            "ru": [
+              "saas",
+              "софт",
+              "сервис",
+              "стартап",
+              "программа"
             ]
           },
           "rules": [
@@ -2170,6 +3095,25 @@
               "store",
               "ecommerce",
               "commerce"
+            ],
+            "fr": [
+              "boutique",
+              "commerce"
+            ],
+            "de": [
+              "shop",
+              "handel",
+              "onlinehandel"
+            ],
+            "es": [
+              "tienda",
+              "comercio"
+            ],
+            "ru": [
+              "магазин",
+              "интернетмагазин",
+              "торговля",
+              "ecommerce"
             ]
           },
           "rules": [
@@ -2200,6 +3144,31 @@
               "course",
               "school",
               "learning"
+            ],
+            "fr": [
+              "éducation",
+              "cours",
+              "école",
+              "formation"
+            ],
+            "de": [
+              "bildung",
+              "kurs",
+              "schule",
+              "lernen"
+            ],
+            "es": [
+              "educación",
+              "curso",
+              "escuela",
+              "aprendizaje"
+            ],
+            "ru": [
+              "образование",
+              "курсы",
+              "курс",
+              "школа",
+              "обучение"
             ]
           },
           "rules": [
@@ -2228,6 +3197,27 @@
               "medicine",
               "health",
               "clinic"
+            ],
+            "fr": [
+              "médecine",
+              "santé",
+              "clinique"
+            ],
+            "de": [
+              "medizin",
+              "gesundheit",
+              "klinik"
+            ],
+            "es": [
+              "medicina",
+              "salud",
+              "clínica"
+            ],
+            "ru": [
+              "медицина",
+              "клиника",
+              "здоровье",
+              "врач"
             ]
           }
         },
@@ -2245,6 +3235,24 @@
               "realestate",
               "property",
               "housing"
+            ],
+            "fr": [
+              "immobilier",
+              "logement"
+            ],
+            "de": [
+              "immobilien",
+              "wohnung"
+            ],
+            "es": [
+              "inmobiliaria",
+              "vivienda"
+            ],
+            "ru": [
+              "недвижимость",
+              "квартиры",
+              "жильё",
+              "жилье"
             ]
           }
         },
@@ -2263,6 +3271,28 @@
               "bank",
               "money",
               "billing"
+            ],
+            "fr": [
+              "finance",
+              "banque",
+              "argent"
+            ],
+            "de": [
+              "finanzen",
+              "bank",
+              "geld"
+            ],
+            "es": [
+              "finanzas",
+              "banco",
+              "dinero"
+            ],
+            "ru": [
+              "финансы",
+              "банк",
+              "деньги",
+              "оплата",
+              "счета"
             ]
           },
           "rules": [
@@ -2291,6 +3321,28 @@
               "work",
               "studio",
               "designer"
+            ],
+            "fr": [
+              "portfolio",
+              "studio",
+              "agence"
+            ],
+            "de": [
+              "portfolio",
+              "studio",
+              "agentur"
+            ],
+            "es": [
+              "portafolio",
+              "estudio",
+              "agencia"
+            ],
+            "ru": [
+              "портфолио",
+              "работы",
+              "студия",
+              "дизайнер",
+              "агентство"
             ]
           },
           "rules": [
@@ -2323,6 +3375,25 @@
               "events",
               "conference",
               "meetup"
+            ],
+            "fr": [
+              "événements",
+              "conférence"
+            ],
+            "de": [
+              "veranstaltungen",
+              "konferenz"
+            ],
+            "es": [
+              "eventos",
+              "conferencia"
+            ],
+            "ru": [
+              "мероприятия",
+              "мероприятие",
+              "события",
+              "конференция",
+              "митап"
             ]
           },
           "rules": [
@@ -2336,7 +3407,7 @@
           ]
         }
       ],
-      "order": 10
+      "order": 11
     },
     {
       "id": "section",
@@ -2368,6 +3439,19 @@
           "synonyms": {
             "en": [
               "marketing"
+            ],
+            "fr": [
+              "marketing"
+            ],
+            "de": [
+              "marketing"
+            ],
+            "es": [
+              "marketing"
+            ],
+            "ru": [
+              "маркетинг",
+              "маркетинговый"
             ]
           },
           "rules": [
@@ -2392,6 +3476,23 @@
           "synonyms": {
             "en": [
               "commerce"
+            ],
+            "fr": [
+              "commerce",
+              "vente"
+            ],
+            "de": [
+              "handel",
+              "verkauf"
+            ],
+            "es": [
+              "comercio",
+              "ventas"
+            ],
+            "ru": [
+              "коммерция",
+              "торговля",
+              "продажи"
             ]
           },
           "rules": [
@@ -2416,6 +3517,20 @@
           "synonyms": {
             "en": [
               "dashboard"
+            ],
+            "fr": [
+              "tableau"
+            ],
+            "de": [
+              "dashboard"
+            ],
+            "es": [
+              "panel"
+            ],
+            "ru": [
+              "дашборд",
+              "панель",
+              "админка"
             ]
           },
           "rules": [
@@ -2440,6 +3555,21 @@
           "synonyms": {
             "en": [
               "content"
+            ],
+            "fr": [
+              "contenu"
+            ],
+            "de": [
+              "inhalt",
+              "inhalte"
+            ],
+            "es": [
+              "contenido"
+            ],
+            "ru": [
+              "контент",
+              "содержание",
+              "материалы"
             ]
           },
           "rules": [
@@ -2464,6 +3594,23 @@
           "synonyms": {
             "en": [
               "account"
+            ],
+            "fr": [
+              "compte",
+              "profil"
+            ],
+            "de": [
+              "konto",
+              "profil"
+            ],
+            "es": [
+              "cuenta",
+              "perfil"
+            ],
+            "ru": [
+              "аккаунт",
+              "профиль",
+              "кабинет"
             ]
           },
           "rules": [
@@ -2488,6 +3635,22 @@
           "synonyms": {
             "en": [
               "onboarding"
+            ],
+            "fr": [
+              "accueil",
+              "prise"
+            ],
+            "de": [
+              "einführung"
+            ],
+            "es": [
+              "incorporación",
+              "bienvenida"
+            ],
+            "ru": [
+              "онбординг",
+              "знакомство",
+              "обучение"
             ]
           },
           "rules": [
@@ -2512,6 +3675,23 @@
           "synonyms": {
             "en": [
               "support"
+            ],
+            "fr": [
+              "assistance",
+              "aide"
+            ],
+            "de": [
+              "support",
+              "hilfe"
+            ],
+            "es": [
+              "soporte",
+              "ayuda"
+            ],
+            "ru": [
+              "поддержка",
+              "помощь",
+              "справка"
             ]
           },
           "rules": [
@@ -2536,6 +3716,28 @@
           "synonyms": {
             "en": [
               "promo"
+            ],
+            "fr": [
+              "promo",
+              "promotion",
+              "offre"
+            ],
+            "de": [
+              "aktion",
+              "angebot",
+              "rabatt"
+            ],
+            "es": [
+              "promoción",
+              "oferta",
+              "descuento"
+            ],
+            "ru": [
+              "промо",
+              "акция",
+              "акции",
+              "скидки",
+              "кампания"
             ]
           },
           "rules": [
@@ -2549,7 +3751,7 @@
           ]
         }
       ],
-      "order": 11
+      "order": 12
     },
     {
       "id": "runtime",
@@ -2653,7 +3855,7 @@
           }
         }
       ],
-      "order": 12
+      "order": 13
     },
     {
       "id": "slots",
@@ -2972,7 +4174,7 @@
           ]
         }
       ],
-      "order": 13,
+      "order": 14,
       "draft": true,
       "draftNote": {
         "en": "Draft labels: a hand-written table from the Codex fields, records and slot components, not reviewed by a person",
@@ -3000,7 +4202,7 @@
       "derive": "axis:layout",
       "valuesFrom": "axis:layout",
       "values": [],
-      "order": 14
+      "order": 15
     },
     {
       "id": "tone",
@@ -3102,7 +4304,7 @@
           ]
         }
       ],
-      "order": 15
+      "order": 16
     },
     {
       "id": "markup",
@@ -3183,7 +4385,7 @@
           }
         }
       ],
-      "order": 16
+      "order": 17
     }
   ],
   "quick": [

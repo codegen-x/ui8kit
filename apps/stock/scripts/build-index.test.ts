@@ -102,8 +102,8 @@ describe("labels", () => {
   });
   test("draft facets are marked in the data and their labels are listed as weak", () => {
     const drafts = vocab.facets.filter((f) => f.draft).map((f) => f.id).sort();
-    // the hand-written mapping tables are drafts too (job, composition, media, slots), next to role, character, mood and industry
-    expect(drafts).toEqual(["character", "composition", "industry", "job", "media", "mood", "role", "slots"]);
+    // the hand-written mapping tables are drafts too (job, composition, media, slots, site), next to role, character, mood and industry
+    expect(drafts).toEqual(["character", "composition", "industry", "job", "media", "mood", "role", "site", "slots"]);
     for (const f of vocab.facets.filter((f) => f.draft)) expect(f.draftNote?.en.length).toBeGreaterThan(0);
     const hero = index.assets.find((a) => a.id === "block.hero/centered")!;
     expect(hero.weak).toContain("role");
@@ -113,7 +113,30 @@ describe("labels", () => {
   test("at least 12 filter groups besides the type bar, 6 of them open", () => {
     const groups = index.facets.filter((f) => f.ui !== "tabs");
     expect(groups.length).toBeGreaterThanOrEqual(12);
-    expect(groups.filter((f) => f.open).map((f) => f.id)).toEqual(["job", "role", "composition", "character", "density", "pattern"]);
+    expect(groups.filter((f) => f.open).map((f) => f.id)).toEqual(["site", "job", "role", "composition", "character", "density", "pattern"]);
+  });
+  test("site type: every screen page has exactly one, blocks have none (a page-level facet)", () => {
+    const site = index.facets.find((f) => f.id === "site")!;
+    expect(site.types).toEqual(["screen"]);
+    expect(site.values.map((v) => v.id)).toEqual(["landing", "website", "app", "docs", "shop", "blog"]);
+    for (const a of index.assets) {
+      if (a.type === "screen") expect(a.labels["site"]?.length).toBe(1);
+      else expect(a.labels["site"]).toBeUndefined();
+    }
+    const of = (id: string) => index.assets.find((a) => a.id === id)!.labels["site"];
+    expect(of("screen.theme-marketing-landing/home")).toEqual(["landing"]);
+    expect(of("screen.theme-marketing-landing/studio")).toEqual(["website"]);
+    expect(of("screen.theme-restaurant-house/home")).toEqual(["website"]);
+    expect(of("screen.theme-dashboard-console/home")).toEqual(["app"]);
+    expect(of("screen.theme-support-center/home")).toEqual(["docs"]);
+    expect(of("screen.theme-commerce-shop/home")).toEqual(["shop"]);
+    expect(of("screen.theme-content-blog/home")).toEqual(["blog"]);
+  });
+  test("synonyms of the main facets in every locale (data, the engine searches all of them)", () => {
+    for (const id of ["type", "site", "job", "industry", "section"]) {
+      const f = vocab.facets.find((x) => x.id === id)!;
+      for (const v of f.values) for (const l of vocab.locales) expect(v.synonyms?.[l]?.length ?? 0).toBeGreaterThan(0);
+    }
   });
   test("every block and screen has a preview recipe", () => {
     for (const a of index.assets) {

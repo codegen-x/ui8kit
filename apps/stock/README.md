@@ -25,7 +25,9 @@ The vocabulary is data: every facet with its order, UI, scope, source, values, s
 and the derivation rules of its values (`any` / `not` clauses over block, group, theme, axes, slots, Codex records, fields and label
 props, screen, area and earlier facets). **No fallback values**: an asset no rule matches has no label for the facet ("no label", never
 counted). `draft: true` marks the facets whose labels come from hand-written tables or are weak (not reviewed by a person): job,
-composition, media, slots, role, character, mood, industry; the storefront shows a draft badge on them. Industry is soft: it ranks,
+composition, media, slots, role, character, mood, industry, site; the storefront shows a draft badge on them. Site type (`site`,
+screens only: landing, website, app, docs, shop, blog) names the kind of site a screen page belongs to, from a table of screens and
+pages in the vocabulary (one value per page; BuildY picks a starting screen by it). Industry is soft: it ranks,
 never filters. The composition pattern (`pattern`) has its vocabulary in one file, `content/terms/pattern.v0.json` (brain-term/v1: the 9
 `pattern:*` nodes of the brain graph plus z-pattern, f-pattern, modular-grid, golden-canon; labels in five languages; a status per
 term; definitions in five languages). "Built from block" (`blocks`, screens only) is computed: the kit blocks of the page, its frame
