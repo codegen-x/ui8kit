@@ -61,9 +61,9 @@ const {
     tag="section"
     class="bg-background"
     :aria-labelledby="(landmarkLabel ? undefined : tpl('{0}-title', id))"
-    data-testid="app-shell"
     :data-layout="layout"
     :aria-label="landmarkLabel"
+    data-slot="app-shell"
   >
     <Stack v-if="((layout as string) === 'top')" gap="6" align="stretch">
       <NavBar
@@ -124,8 +124,8 @@ const {
           :description="activity.text"
           :id="tpl('{0}-list', id)"
         >
-          <List class="m-0 flex list-none flex-col gap-4 p-0" data-testid="items">
-            <ListItem v-for="e in activity.events" :key="e.id" class="flex flex-col gap-2" data-testid="item">
+          <List class="m-0 flex list-none flex-col gap-4 p-0" data-slot="items">
+            <ListItem v-for="e in activity.events" :key="e.id" class="flex flex-col gap-2" data-slot="item">
               <Text size="sm" weight="semibold">
                 {{ e.title }}
               </Text>

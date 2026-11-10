@@ -16,7 +16,7 @@
       {%- endset -%}
       {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'pb-4 text-muted-foreground'}, 'children': c_2}) }}
     {%- endset -%}
-    {{ og_include('compose/disclosure.html.j2', {'p': {'Variant': 'item', 'Name': og_s(v_name), 'Attrs': og_attrs(['data-testid', 'faq-item'])}, 'children': c_3}) }}
+    {{ og_include('compose/disclosure.html.j2', {'p': {'Variant': 'item', 'Name': og_s(v_name), 'Attrs': og_attrs(['data-slot', 'faq-item'])}, 'children': c_3}) }}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'faq'])}, 'children': c_4}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'faq'])}, 'children': c_4}) }}

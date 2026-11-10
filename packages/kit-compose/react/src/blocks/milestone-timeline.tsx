@@ -58,7 +58,7 @@ export function MilestoneTimeline({
             (layout as string) === "row" ? "grid grid-cols-1 gap-8 border-t border-border sm:grid-cols-2 lg:grid-cols-4"
             : "flex flex-col gap-8 border-l border-border"
           }
-          data-testid="items"
+          data-slot="items"
         >
           {(milestones ?? []).map((m) => (
             <ListItem key={m.id}
@@ -66,7 +66,7 @@ export function MilestoneTimeline({
                 (layout as string) === "row" ? "relative flex flex-col gap-2 pt-6"
                 : "relative flex flex-col gap-2 pl-6"
               }
-              data-testid="item"
+              data-slot="item"
             >
               <Inline
                 className={

@@ -63,12 +63,12 @@
               {/capture}
               {=og_include('compose/TableCell.latte', ['class' => og_s((og_t(og_eq($v_density, 'compact')) ? 'py-2' : 'py-4')), 'children' => (string) $c_11])|noescape}
             {/capture}
-            {=og_include('compose/TableRow.latte', ['class' => 'border-t border-border', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_12])|noescape}
+            {=og_include('compose/TableRow.latte', ['class' => 'border-t border-border', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_12])|noescape}
           {/foreach}
         {/capture}
         {=og_include('compose/TableBody.latte', ['children' => (string) $c_13])|noescape}
       {/capture}
-      {=og_include('compose/Table.latte', ['class' => 'w-full text-left text-sm', 'attrs' => og_attrs(['data-testid', 'compare']), 'children' => (string) $c_14])|noescape}
+      {=og_include('compose/Table.latte', ['class' => 'w-full text-left text-sm', 'attrs' => og_attrs(['data-slot', 'compare']), 'children' => (string) $c_14])|noescape}
     {/capture}
     {=og_include('compose/Box.latte', ['class' => 'relative w-full overflow-x-auto', 'children' => (string) $c_15])|noescape}
   {/if}

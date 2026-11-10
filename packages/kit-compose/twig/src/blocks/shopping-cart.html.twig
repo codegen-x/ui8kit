@@ -47,9 +47,9 @@
           {%- set c_6 -%}
             {{ include('icons/LucideIcon.html.twig', {'name': 'trash', 'size': 16}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'layout': 'icon', 'ariaLabel': og_s(og_get(v_labels, ['remove'])), 'attrs': og_attrs(['data-testid', 'remove']), 'children': c_6}, with_context = false) }}
+          {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'layout': 'icon', 'ariaLabel': og_s(og_get(v_labels, ['remove'])), 'children': c_6}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'rounded bg-card inset-ring inset-ring-border flex-wrap p-4', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_7}, with_context = false) }}
+        {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'rounded bg-card inset-ring inset-ring-border flex-wrap p-4', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_7}, with_context = false) }}
       {%- endfor %}
       {%- set c_10 -%}
         {%- set c_8 -%}
@@ -64,11 +64,11 @@
       {%- endset -%}
       {{ include('compose/Group.html.twig', {'gap': '4', 'justify': 'between', 'class': 'flex-wrap', 'children': c_10}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'lg:col-span-2' : '')), 'attrs': og_attrs(['data-testid', 'lines']), 'children': c_11}, with_context = false) }}
+    {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'lg:col-span-2' : '')), 'attrs': og_attrs(['data-slot', 'lines']), 'children': c_11}, with_context = false) }}
     {%- set c_12 -%}
       {{ include('blocks/cart-summary-card.html.twig', {'p': {'field': og_tpl('{0}-promo', [v_id]), 'lines': v_lines, 'rows': v_rows, 'promos': v_promos, 'labels': v_totals, 'promo': v_promo, 'progress': v_progress}}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Box.html.twig', {'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'lg:sticky lg:top-8' : '')), 'attrs': og_attrs(['data-testid', 'aside']), 'children': c_12}, with_context = false) }}
+    {{ include('compose/Box.html.twig', {'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'lg:sticky lg:top-8' : '')), 'attrs': og_attrs(['data-slot', 'aside']), 'children': c_12}, with_context = false) }}
   {%- endset -%}
   {{ include('compose/Box.html.twig', {'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'grid grid-cols-1 items-start gap-8 lg:grid-cols-3' : 'grid grid-cols-1 gap-8')), 'children': c_13}, with_context = false) }}
 {%- endset -%}

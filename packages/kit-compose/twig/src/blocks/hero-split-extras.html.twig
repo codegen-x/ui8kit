@@ -19,11 +19,11 @@
           {%- endset -%}
           {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_2}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '0', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-testid', 'hero-stat']), 'children': c_3}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '0', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-slot', 'hero-stat']), 'children': c_3}, with_context = false) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-3 gap-4', 'attrs': og_attrs(['data-testid', 'hero-stats']), 'children': c_4}, with_context = false) }}
+  {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-3 gap-4', 'attrs': og_attrs(['data-slot', 'hero-stats']), 'children': c_4}, with_context = false) }}
 {%- endif %}
 {%- if og_t(og_and([og_eq(v_extra, 'avatars'), og_gt(og_len(og_get(v_content, ['people'])), 0)])) %}
   {%- set c_7 -%}
@@ -41,7 +41,7 @@
     {%- endset -%}
     {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'text-muted-foreground', 'children': c_6}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['data-testid', 'hero-proof']), 'children': c_7}, with_context = false) }}
+  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['data-slot', 'hero-proof']), 'children': c_7}, with_context = false) }}
 {%- endif %}
 {%- if og_t(og_and([og_eq(v_extra, 'minis'), og_gt(og_len(og_get(v_content, ['features'])), 0)])) %}
   {%- set c_13 -%}
@@ -65,11 +65,11 @@
           {%- endset -%}
           {{ include('compose/Stack.html.twig', {'gap': '0', 'children': c_11}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-testid', 'hero-mini']), 'children': c_12}, with_context = false) }}
+        {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-slot', 'hero-mini']), 'children': c_12}, with_context = false) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'attrs': og_attrs(['data-testid', 'hero-minis']), 'children': c_13}, with_context = false) }}
+  {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'attrs': og_attrs(['data-slot', 'hero-minis']), 'children': c_13}, with_context = false) }}
 {%- endif %}
 {%- if og_t(og_and([og_eq(v_extra, 'quote'), og_gt(og_len(og_get(v_content, ['people'])), 0)])) %}
   {%- set c_24 -%}
@@ -114,11 +114,11 @@
             {%- endset -%}
             {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_21}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Stack.html.twig', {'gap': '0', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-testid', 'hero-stat']), 'children': c_22}, with_context = false) }}
+          {{ include('compose/Stack.html.twig', {'gap': '0', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-slot', 'hero-stat']), 'children': c_22}, with_context = false) }}
         {%- endif %}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-3 gap-4', 'attrs': og_attrs(['data-testid', 'hero-stats']), 'children': c_23}, with_context = false) }}
+    {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-3 gap-4', 'attrs': og_attrs(['data-slot', 'hero-stats']), 'children': c_23}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Stack.html.twig', {'gap': '6', 'align': 'stretch', 'children': c_24}, with_context = false) }}
+  {{ include('compose/Stack.html.twig', {'gap': '6', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'hero-split-extras']), 'children': c_24}, with_context = false) }}
 {%- endif %}

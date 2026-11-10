@@ -48,14 +48,14 @@
             {%- set c_6 -%}
               {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'x', 'Size': 16}}) }}
             {%- endset -%}
-            {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'AriaLabel': og_s(og_get(v_labels, ['remove'])), 'Attrs': og_attrs(['data-testid', 'remove'])}, 'children': c_6}) }}
+            {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'AriaLabel': og_s(og_get(v_labels, ['remove']))}, 'children': c_6}) }}
           {%- endset -%}
           {{ og_include('compose/card-content.html.j2', {'p': {'Class': 'flex flex-wrap items-center gap-4'}, 'children': c_7}) }}
         {%- endset -%}
-        {{ og_include('compose/card.html.j2', {'p': {'Variant': 'default', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_8}) }}
+        {{ og_include('compose/card.html.j2', {'p': {'Variant': 'default'}, 'children': c_8}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'cart-cards'])}, 'children': c_9}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'cart-cards'])}, 'children': c_9}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_10)}) }}

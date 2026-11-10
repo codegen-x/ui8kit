@@ -16,10 +16,10 @@ const featureshowcase = define({
     ["panelCards3", "Three cards with a glyph panel on top", { item: "panel" }, { features: ref("values") }],
   ],
   facts: [
-    { sel: '[data-testid="showcase-card"]', n: "@values", when: { cols: "3" } },
-    { sel: '[data-testid="showcase-card"]', n: "@features", when: { cols: "4" } },
-    { sel: '[data-testid="showcase-panel"]', n: 0, when: { item: "picture" } },
-    { sel: '[data-testid="read"]', n: 0, when: { item: "panel" } },
+    { sel: '[data-slot="card"]', n: "@values", when: { cols: "3" } },
+    { sel: '[data-slot="card"]', n: "@features", when: { cols: "4" } },
+    { sel: '[data-slot="showcase-panel"]', n: 0, when: { item: "picture" } },
+    { sel: '[data-slot="read"]', n: 0, when: { item: "panel" } },
   ],
   sample: { id: "featureshowcase", title: f("title"), lead: f("lead"), features: ref("features"), empty: t("empty.features"), more: f("more") },
 });

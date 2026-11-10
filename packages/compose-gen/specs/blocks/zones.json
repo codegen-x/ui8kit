@@ -52,18 +52,18 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@zones"
     },
     {
-      "sel": "[data-testid=\"zone-table\"]",
+      "sel": "[data-slot=\"zone-table\"]",
       "n": 1,
       "when": {
         "layout": "table"
       }
     },
     {
-      "sel": "[data-testid=\"zone-table\"]",
+      "sel": "[data-slot=\"zone-table\"]",
       "n": 0,
       "when": {
         "layout": "cards"

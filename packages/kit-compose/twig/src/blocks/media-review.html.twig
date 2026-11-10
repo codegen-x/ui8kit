@@ -25,6 +25,6 @@
       {%- endset -%}
       {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'text-muted-foreground', 'children': c_4}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': 'rounded bg-muted p-6', 'attrs': og_attrs(['data-testid', 'media-review']), 'children': c_5}, with_context = false) }}
+    {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': 'rounded bg-muted p-6', 'attrs': og_attrs(['data-slot', 'media-review']), 'children': c_5}, with_context = false) }}
   {%- endif %}
 {%- endfor %}

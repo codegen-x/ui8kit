@@ -133,10 +133,10 @@
         "Class": "w-full"
       },
       "attrs": {
-        "data-testid": "auth-layout",
         "data-layout": {
           "$": "layout"
-        }
+        },
+        "data-slot": "auth-layout"
       },
       "children": [
         {
@@ -251,7 +251,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "visual"
+                        "data-slot": "visual"
                       },
                       "children": [
                         {

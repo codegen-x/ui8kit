@@ -61,8 +61,8 @@ const {
     :landmarkLabel="landmarkLabel"
   >
     <EmptyState v-if="((jobs?.length ?? 0) === 0)" icon="briefcase" :title="empty" />
-    <Stack v-else-if="((layout as string) === 'grouped')" gap="8" align="stretch" data-testid="groups">
-      <Stack v-for="d in departments" :key="d.id" gap="2" align="stretch" data-testid="group">
+    <Stack v-else-if="((layout as string) === 'grouped')" gap="8" align="stretch" data-slot="groups">
+      <Stack v-for="d in departments" :key="d.id" gap="2" align="stretch" data-slot="group">
         <Group gap="4" align="baseline" justify="between">
           <Title :as="3" size="lg" weight="bold">
             {{ d.name }}
@@ -74,7 +74,7 @@ const {
         <List tag="ul" class="flex flex-col">
           <ListItem v-for="j in jobs.filter((i) => !d.id || i['dept'] === d.id)" :key="j.id"
             class="flex flex-wrap items-center justify-between gap-4 border-b border-border py-4"
-            data-testid="item"
+            data-slot="item"
           >
             <Stack gap="0">
               <MenuEntry :href="j.href" class="font-medium">

@@ -36,23 +36,17 @@ export function NavActions({
           size="sm"
           href={urlOf(loginHref)}
           class={(((tone as string) === "inverse") ? "text-background hover:bg-background/10" : "")}
-          data-testid="nav-login"
         >
           {login}
         </Button>
       ) : null}
       {(((actions as string) === "cta") && cta) ? (
-        <Button
-          variant={(((tone as string) === "inverse") ? "secondary" : "default")}
-          size="sm"
-          href={urlOf(ctaHref)}
-          data-testid="header-cta"
-        >
+        <Button variant={(((tone as string) === "inverse") ? "secondary" : "default")} size="sm" href={urlOf(ctaHref)}>
           {cta}
         </Button>
       ) : null}
       {themeLabel ? (
-        <Button variant="outline" size="sm" data-testid="theme-toggle" onClick={() => onTheme?.()}>
+        <Button variant="outline" size="sm" onClick={() => onTheme?.()}>
           {themeLabel}
         </Button>
       ) : null}

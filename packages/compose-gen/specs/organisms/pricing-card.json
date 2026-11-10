@@ -511,7 +511,10 @@
                             "$": "feature"
                           }
                         }
-                      ]
+                      ],
+                      "attrs": {
+                        "data-slot": "features-row"
+                      }
                     }
                   ]
                 }
@@ -539,9 +542,6 @@
                   ]
                 },
                 "Size": "default"
-              },
-              "attrs": {
-                "data-testid": "plan-select"
               },
               "on": {
                 "click": {

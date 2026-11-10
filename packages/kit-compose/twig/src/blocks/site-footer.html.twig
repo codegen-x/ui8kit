@@ -12,7 +12,7 @@
     {%- set c_1 -%}
       {{ og_text(og_get(v_labels, ['copyright'])) }}
     {%- endset -%}
-    {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'text-muted-foreground', 'attrs': og_attrs(['data-testid', 'copyright']), 'children': c_1}, with_context = false) }}
+    {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'text-muted-foreground', 'attrs': og_attrs(['data-slot', 'copyright']), 'children': c_1}, with_context = false) }}
     {%- set c_5 -%}
       {%- set c_4 -%}
         {%- set c_2 -%}
@@ -30,4 +30,4 @@
   {%- endset -%}
   {{ include('compose/Container.html.twig', {'class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'flex flex-wrap items-center gap-4', (og_t(og_eq(v_density, 'compact')) ? 'py-4' : 'py-6'), (og_t(og_eq(v_layout, 'centered')) ? 'flex-col text-center' : 'justify-between')])), 'attrs': og_attrs(['data-slot', 'container']), 'children': c_6}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'footer', 'class': 'mt-12 border-t border-border', 'attrs': og_attrs(['data-testid', 'site-footer', 'data-layout', v_layout, 'aria-label', v_landmarkLabel]), 'children': c_7}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'footer', 'class': 'mt-12 border-t border-border', 'attrs': og_attrs(['data-layout', v_layout, 'aria-label', v_landmarkLabel, 'data-slot', 'site-footer']), 'children': c_7}, with_context = false) }}

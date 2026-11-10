@@ -24,17 +24,17 @@
         {%- set c_1 -%}
           {{ include('blocks/product-card.html.twig', {'p': {'product': v_p, 'labels': v_labels, 'badges': v_badges, 'layout': (og_t(og_eq(v_layout, 'list')) ? 'horizontal' : 'vertical'), 'ratio': v_ratio, 'rating': v_rating, 'action': v_action, 'density': (og_t(og_eq(v_density, 'compact')) ? 'compact' : 'default')}}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Box.html.twig', {'class': 'w-64 shrink-0 snap-start', 'children': c_1}, with_context = false) }}
+        {{ include('compose/Box.html.twig', {'class': 'w-64 shrink-0 snap-start', 'attrs': og_attrs(['data-slot', 'product']), 'children': c_1}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Box.html.twig', {'class': 'flex snap-x gap-4 overflow-x-auto pb-4', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_2}, with_context = false) }}
+    {{ include('compose/Box.html.twig', {'class': 'flex snap-x gap-4 overflow-x-auto pb-4', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_2}, with_context = false) }}
   {%- else %}
     {%- set c_3 -%}
       {%- for v_p in og_l(v_products) %}
         {{ include('blocks/product-card.html.twig', {'p': {'product': v_p, 'labels': v_labels, 'badges': v_badges, 'layout': (og_t(og_eq(v_layout, 'list')) ? 'horizontal' : 'vertical'), 'ratio': v_ratio, 'rating': v_rating, 'action': v_action, 'density': (og_t(og_eq(v_density, 'compact')) ? 'compact' : 'default')}}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_layout, 'list')) ? '1' : v_cols)), 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_3}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_layout, 'list')) ? '1' : v_cols)), 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_3}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_4)}, with_context = false) }}

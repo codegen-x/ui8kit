@@ -15,7 +15,7 @@
   {%- set c_1 -%}
     {{ og_text(og_get(v_heading, ['badge'])) }}
   {%- endset -%}
-  {{ include('compose/Badge.html.twig', {'variant': 'outline', 'size': 'lg', 'class': og_s((og_t(v_center) ? 'mx-auto w-fit' : 'w-fit')), 'attrs': og_attrs(['data-testid', 'section-badge']), 'children': c_1}, with_context = false) }}
+  {{ include('compose/Badge.html.twig', {'variant': 'outline', 'size': 'lg', 'class': og_s((og_t(v_center) ? 'mx-auto w-fit' : 'w-fit')), 'children': c_1}, with_context = false) }}
 {%- endif %}
 {%- if og_t(og_and([not (og_eq(v_title, '')), v_hasAction])) %}
   {%- set c_4 -%}
@@ -26,28 +26,28 @@
     {%- set c_3 -%}
       {{ og_text(og_get(v_action, ['label'])) }}
     {%- endset -%}
-    {{ include('compose/Link.html.twig', {'href': og_url(og_s(og_get(v_action, ['href']))), 'variant': 'default', 'class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'attrs': og_attrs(['data-testid', 'section-action']), 'children': c_3}, with_context = false) }}
+    {{ include('compose/Link.html.twig', {'href': og_url(og_s(og_get(v_action, ['href']))), 'variant': 'default', 'class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'attrs': og_attrs(['data-slot', 'section-action']), 'children': c_3}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'between', 'class': 'w-full flex-wrap', 'children': c_4}, with_context = false) }}
+  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'between', 'class': 'w-full flex-wrap', 'attrs': og_attrs(['data-slot', 'section-header']), 'children': c_4}, with_context = false) }}
 {%- endif %}
 {%- if og_t(og_and([not (og_eq(v_title, '')), not (og_t(v_hasAction))])) %}
   {%- set c_5 -%}
     {{ og_text(v_title) }}
   {%- endset -%}
-  {{ include('compose/Title.html.twig', {'as': og_i(v_level), 'size': og_s((og_t(og_eq(v_level, 1)) ? '5xl' : 'xl')), 'weight': 'semibold', 'class': og_s((og_t(og_eq(v_scale, 'display')) ? 'text-6xl tracking-tight md:text-8xl' : (og_t(og_eq(v_level, 1)) ? 'leading-tight' : 'leading-7'))), 'attrs': og_attrs(['id', v_titleId]), 'children': c_5}, with_context = false) }}
+  {{ include('compose/Title.html.twig', {'as': og_i(v_level), 'size': og_s((og_t(og_eq(v_level, 1)) ? '5xl' : 'xl')), 'weight': 'semibold', 'class': og_s((og_t(og_eq(v_scale, 'display')) ? 'text-6xl tracking-tight md:text-8xl' : (og_t(og_eq(v_level, 1)) ? 'leading-tight' : 'leading-7'))), 'attrs': og_attrs(['id', v_titleId, 'data-slot', 'section-header']), 'children': c_5}, with_context = false) }}
 {%- endif %}
 {%- if og_t(og_and([og_eq(v_title, ''), v_hasAction])) %}
   {%- set c_7 -%}
     {%- set c_6 -%}
       {{ og_text(og_get(v_action, ['label'])) }}
     {%- endset -%}
-    {{ include('compose/Link.html.twig', {'href': og_url(og_s(og_get(v_action, ['href']))), 'variant': 'default', 'class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'attrs': og_attrs(['data-testid', 'section-action']), 'children': c_6}, with_context = false) }}
+    {{ include('compose/Link.html.twig', {'href': og_url(og_s(og_get(v_action, ['href']))), 'variant': 'default', 'class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'attrs': og_attrs(['data-slot', 'section-action']), 'children': c_6}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'end', 'class': 'w-full', 'children': c_7}, with_context = false) }}
+  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'end', 'class': 'w-full', 'attrs': og_attrs(['data-slot', 'section-header']), 'children': c_7}, with_context = false) }}
 {%- endif %}
 {%- if og_t(v_lead) %}
   {%- set c_8 -%}
     {{ og_text(v_lead) }}
   {%- endset -%}
-  {{ include('compose/Text.html.twig', {'size': 'base', 'class': og_s(og_cnv(['max-w-2xl text-muted-foreground', (og_t(v_center) ? 'mx-auto' : '')])), 'children': c_8}, with_context = false) }}
+  {{ include('compose/Text.html.twig', {'size': 'base', 'class': og_s(og_cnv(['max-w-2xl text-muted-foreground', (og_t(v_center) ? 'mx-auto' : '')])), 'attrs': og_attrs(['data-slot', 'section-header']), 'children': c_8}, with_context = false) }}
 {%- endif %}

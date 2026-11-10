@@ -14,7 +14,7 @@ export type MediaTopicsProps = {
 
 export function MediaTopics({ extras, labels }: MediaTopicsProps) {
   return (
-    <Stack gap="4" align="stretch">
+    <Stack gap="4" align="stretch" data-slot="media-topics">
       <Text size="sm" weight="semibold">
         {labels.list}
       </Text>

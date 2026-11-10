@@ -27,7 +27,6 @@ export function BulkBar({ label, clearLabel, className, children, onClear }: Bul
       aria-label={label}
       aria-live="polite"
       data-slot="bulk-bar"
-      data-testid="bulk-bar"
     >
       <Button
         variant="ghost"
@@ -40,7 +39,7 @@ export function BulkBar({ label, clearLabel, className, children, onClear }: Bul
       >
         <LucideIcon name="x" size={16} />
       </Button>
-      <Inline data-testid="bulk-count">
+      <Inline data-slot="bulk-count">
         {label}
       </Inline>
       <Inline className="ml-auto flex flex-wrap items-center gap-2">

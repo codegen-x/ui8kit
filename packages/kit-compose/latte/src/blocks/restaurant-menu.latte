@@ -59,16 +59,16 @@
                     {/capture}
                     {=og_include('compose/Text.latte', ['size' => 'sm', 'class' => 'text-muted-foreground', 'children' => (string) $c_8])|noescape}
                   {/capture}
-                  {=og_include('compose/ListItem.latte', ['class' => 'flex flex-col gap-0', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_9])|noescape}
+                  {=og_include('compose/ListItem.latte', ['class' => 'flex flex-col gap-0', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_9])|noescape}
                 {/if}
               {/foreach}
             {/capture}
             {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => 'flex flex-col gap-4', 'children' => (string) $c_10])|noescape}
           {/capture}
-          {=og_include('compose/Stack.latte', ['gap' => '4', 'attrs' => og_attrs(['id', og_tpl('{0}-{1}', [$v_id, og_get($v_s, ['key'])]), 'data-testid', 'menusection']), 'children' => (string) $c_11])|noescape}
+          {=og_include('compose/Stack.latte', ['gap' => '4', 'attrs' => og_attrs(['id', og_tpl('{0}-{1}', [$v_id, og_get($v_s, ['key'])]), 'data-slot', 'menusection']), 'children' => (string) $c_11])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_cols, '2')) ? 'grid grid-cols-1 gap-8 md:grid-cols-2' : 'flex flex-col gap-8')), 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_12])|noescape}
+      {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_cols, '2')) ? 'grid grid-cols-1 gap-8 md:grid-cols-2' : 'flex flex-col gap-8')), 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_12])|noescape}
     {/capture}
     {=og_include('compose/Stack.latte', ['gap' => '8', 'align' => 'stretch', 'class' => og_s((og_t(og_eq($v_cols, '1')) ? 'mx-auto w-full max-w-3xl' : '')), 'children' => (string) $c_13])|noescape}
   {/if}

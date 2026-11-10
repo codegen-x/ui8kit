@@ -24,8 +24,8 @@
         {%- endset -%}
         {{ include('compose/Stack.html.twig', {'gap': '2', 'class': 'min-w-0', 'children': c_4}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'attrs': og_attrs(['data-testid', 'feature-item']), 'children': c_5}, with_context = false) }}
+      {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'attrs': og_attrs(['data-slot', 'feature-item']), 'children': c_5}, with_context = false) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': 'grid grid-cols-1 gap-6 sm:grid-cols-2', 'children': c_6}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': 'grid grid-cols-1 gap-6 sm:grid-cols-2', 'attrs': og_attrs(['data-slot', 'feature-pairs']), 'children': c_6}, with_context = false) }}

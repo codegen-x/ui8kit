@@ -46,9 +46,9 @@ templ OrderTable(p OrderTableProps) {
 				if uiutils.Eq(vLayout, "table") {
 					@OrderRows(OrderRowsProps{Orders: vOrders, Statuses: vStatuses, Labels: vLabels, Density: vDensity})
 				} else {
-					@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "order-cards")}}) {
+					@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "order-cards")}}) {
 						for _, vO := range uiutils.L(vOrders) {
-							@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}}) {
+							@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{}}) {
 								@compose.CardContent(compose.CardContentProps{BoxProps: box.BoxProps{Class: "flex flex-wrap items-center justify-between gap-4"}}) {
 									@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 										@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {

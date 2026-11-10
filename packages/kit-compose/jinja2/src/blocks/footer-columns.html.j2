@@ -22,15 +22,15 @@
                 {%- endset -%}
                 {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_item, ['href']), 'className': og_cnv(['text-sm text-muted-foreground'])}, 'children': og_markup(c_2)}) }}
               {%- endset -%}
-              {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_3}) }}
+              {{ og_include('compose/list-item.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'links-row'])}, 'children': c_3}) }}
             {%- endfor %}
           {%- endset -%}
           {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-2 p-0'}, 'children': c_4}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Attrs': og_attrs(['data-testid', 'group'])}, 'children': c_5}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Attrs': og_attrs(['data-slot', 'group'])}, 'children': c_5}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1', 'Class': 'grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5', 'Attrs': og_attrs(['data-testid', 'footer-groups'])}, 'children': c_6}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1', 'Class': 'grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5', 'Attrs': og_attrs(['data-slot', 'footer-groups'])}, 'children': c_6}) }}
   {%- endset -%}
-  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label])])}, 'children': c_7}) }}
+  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-slot', 'footer-columns'])}, 'children': c_7}) }}
 {%- endif %}

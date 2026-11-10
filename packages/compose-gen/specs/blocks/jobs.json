@@ -61,18 +61,18 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@jobs"
     },
     {
-      "sel": "[data-testid=\"group\"]",
+      "sel": "[data-slot=\"group\"]",
       "n": "@departments",
       "when": {
         "layout": "grouped"
       }
     },
     {
-      "sel": "[data-testid=\"group\"]",
+      "sel": "[data-slot=\"group\"]",
       "n": 0,
       "when": {
         "layout": [
@@ -82,14 +82,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"job-table\"]",
+      "sel": "[data-slot=\"job-table\"]",
       "n": 1,
       "when": {
         "layout": "table"
       }
     },
     {
-      "sel": "[data-testid=\"job-table\"]",
+      "sel": "[data-slot=\"job-table\"]",
       "n": 0,
       "when": {
         "layout": [
@@ -99,7 +99,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"salary\"]",
+      "sel": "[data-slot=\"salary\"]",
       "n": "@jobs",
       "when": {
         "layout": "grid",
@@ -107,7 +107,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"salary\"]",
+      "sel": "[data-slot=\"salary\"]",
       "n": 0,
       "when": {
         "salary": "hide"

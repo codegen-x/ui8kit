@@ -18,5 +18,5 @@
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'flex-wrap'}, 'children': c_2}) }}
+  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'flex-wrap', 'Attrs': og_attrs(['data-slot', 'nav-links'])}, 'children': c_2}) }}
 {%- endif %}

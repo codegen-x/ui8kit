@@ -25,13 +25,13 @@
         {%- endset -%}
         {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start'}, 'children': c_4}) }}
       {%- endset -%}
-      {{ og_include('compose/card.html.j2', {'p': {'Variant': 'compact', 'Attrs': og_attrs(['data-testid', 'feature-card'])}, 'children': c_5}) }}
+      {{ og_include('compose/card.html.j2', {'p': {'Variant': 'compact'}, 'children': c_5}) }}
     {%- elif og_t(og_eq(v_item, 'cell')) %}
       {%- set c_9 -%}
         {%- set c_6 -%}
           {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': og_s(og_get(v_feature, ['icon'])), 'Size': 24}}) }}
         {%- endset -%}
-        {{ og_include('compose/icon-badge.html.j2', {'p': {'Variant': 'primary', 'Size': 'xl', 'Attrs': og_attrs(['data-testid', 'feature-icon'])}, 'children': c_6}) }}
+        {{ og_include('compose/icon-badge.html.j2', {'p': {'Variant': 'primary', 'Size': 'xl', 'Attrs': og_attrs(['data-slot', 'feature-icon'])}, 'children': c_6}) }}
         {%- set c_7 -%}
           {{ og_text(og_get(v_feature, ['title'])) }}
         {%- endset -%}
@@ -41,7 +41,7 @@
         {%- endset -%}
         {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Weight': 'semibold', 'Class': 'leading-5 text-muted-foreground'}, 'children': c_8}) }}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': 'h-full gap-8 bg-background px-6 py-12 text-center', 'Attrs': og_attrs(['data-testid', 'feature-card'])}, 'children': c_9}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': 'h-full gap-8 bg-background px-6 py-12 text-center', 'Attrs': og_attrs(['data-slot', 'feature-card'])}, 'children': c_9}) }}
     {%- else %}
       {%- set c_14 -%}
         {%- set c_11 -%}
@@ -60,8 +60,8 @@
         {%- endset -%}
         {{ og_include('compose/card-content.html.j2', {'p': {}, 'children': c_13}) }}
       {%- endset -%}
-      {{ og_include('compose/card.html.j2', {'p': {'Variant': 'default', 'Attrs': og_attrs(['data-testid', 'feature-card'])}, 'children': c_14}) }}
+      {{ og_include('compose/card.html.j2', {'p': {'Variant': 'default'}, 'children': c_14}) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(v_cols), 'Class': og_s((og_cnv(['w-full gap-px overflow-hidden bg-border p-px', og_preset('blocks/presets/defaults.json', ['features', 'cells'])]) if og_t(og_eq(v_item, 'cell')) else 'gap-6')), 'Attrs': og_attrs(['data-testid', 'feature-grid'])}, 'children': c_15}) }}
+{{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(v_cols), 'Class': og_s((og_cnv(['w-full gap-px overflow-hidden bg-border p-px', og_preset('blocks/presets/defaults.json', ['features', 'cells'])]) if og_t(og_eq(v_item, 'cell')) else 'gap-6')), 'Attrs': og_attrs(['data-slot', 'feature-grid'])}, 'children': c_15}) }}

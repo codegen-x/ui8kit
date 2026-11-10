@@ -57,32 +57,32 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"mega-trigger\"]",
+      "sel": "[data-slot=\"mega-trigger\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"mega-panel\"]",
+      "sel": "[data-slot=\"mega-panel\"]",
       "n": 1,
       "when": {
         "panel": "open"
       }
     },
     {
-      "sel": "[data-testid=\"mega-panel\"]",
+      "sel": "[data-slot=\"mega-panel\"]",
       "n": 0,
       "when": {
         "panel": "closed"
       }
     },
     {
-      "sel": "[data-testid=\"mega-panel\"] [data-testid=\"item\"]",
+      "sel": "[data-slot=\"mega-panel\"] [data-slot=\"item\"]",
       "n": "@megagroups",
       "when": {
         "panel": "open"
       }
     },
     {
-      "sel": "[data-testid=\"mega-panel\"] [data-testid=\"item\"]",
+      "sel": "[data-slot=\"mega-panel\"] [data-slot=\"item\"]",
       "cols": 3,
       "when": {
         "panel": "open",
@@ -90,7 +90,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"mega-panel\"] [data-testid=\"item\"]",
+      "sel": "[data-slot=\"mega-panel\"] [data-slot=\"item\"]",
       "cols": 2,
       "when": {
         "panel": "open",
@@ -98,7 +98,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"promo\"]",
+      "sel": "[data-slot=\"promo\"]",
       "n": 1,
       "when": {
         "panel": "open",

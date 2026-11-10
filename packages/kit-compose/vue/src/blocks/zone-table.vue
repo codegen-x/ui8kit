@@ -59,13 +59,13 @@ const {
   >
     <EmptyState v-if="((zones?.length ?? 0) === 0)" icon="map" :title="empty" />
     <ZoneRows v-else-if="((layout as string) === 'table')" :zones="zones" :labels="labels" />
-    <Grid v-else cols="1-3" class="gap-4" data-testid="items">
+    <Grid v-else cols="1-3" class="gap-4" data-slot="items">
       <Stack
         v-for="z in zones"
         :key="z.id"
         gap="4"
         class="rounded bg-card inset-ring inset-ring-border p-6"
-        data-testid="item"
+        data-slot="item"
       >
         <Stack gap="2">
           <Title :as="3" size="lg" weight="bold">

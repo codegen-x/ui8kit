@@ -19,10 +19,10 @@ const { steps, active } = defineProps<StoryDotsProps>();
 </script>
 
 <template>
-  <Group gap="2" align="center">
+  <Group gap="2" align="center" data-slot="story-dots">
     <Inline v-for="s in steps" :key="s.id"
       :class="cn('size-2 rounded-full', ((s.id === active) ? 'bg-primary' : 'bg-border'))"
-      data-testid="story-dot"
+      data-slot="story-dot"
     />
   </Group>
 </template>

@@ -22,7 +22,7 @@
       {%- endset -%}
       {{ include('compose/Inline.html.twig', {'class': 'flex flex-col items-start justify-start gap-0', 'children': c_3}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Label.html.twig', {'class': 'flex items-center gap-4 rounded p-4 inset-ring inset-ring-border has-checked:inset-ring-foreground', 'attrs': og_attrs(['data-testid', 'payment']), 'children': c_4}, with_context = false) }}
+    {{ include('compose/Label.html.twig', {'class': 'flex items-center gap-4 rounded p-4 inset-ring inset-ring-border has-checked:inset-ring-foreground', 'attrs': og_attrs(['data-slot', 'payment']), 'children': c_4}, with_context = false) }}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Grid.html.twig', {'cols': '1-2', 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'payments']), 'children': c_5}, with_context = false) }}
+{{ include('compose/Grid.html.twig', {'cols': '1-2', 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'payments']), 'children': c_5}, with_context = false) }}

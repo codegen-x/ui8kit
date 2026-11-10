@@ -15,7 +15,7 @@
     {%- endset -%}
     {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_2}) }}
   {%- endset -%}
-  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': 'end', 'Class': 'text-end', 'Attrs': og_attrs(['data-testid', 'page-figure'])}, 'children': c_3}) }}
+  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': 'end', 'Class': 'text-end', 'Attrs': og_attrs(['data-slot', 'page-figure'])}, 'children': c_3}) }}
 {%- endif %}
 {%- if og_t(og_eq(v_mode, 'note')) %}
   {%- set c_8 -%}
@@ -36,7 +36,7 @@
     {%- endset -%}
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0'}, 'children': c_7}) }}
   {%- endset -%}
-  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Class': 'rounded bg-card inset-ring inset-ring-border max-w-xs p-4', 'Attrs': og_attrs(['data-testid', 'page-note'])}, 'children': c_8}) }}
+  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Class': 'rounded bg-card inset-ring inset-ring-border max-w-xs p-4', 'Attrs': og_attrs(['data-slot', 'page-note'])}, 'children': c_8}) }}
 {%- endif %}
 {%- if og_t(og_eq(v_mode, 'facts')) %}
   {%- set c_13 -%}
@@ -57,9 +57,9 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_11}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-testid', 'page-fact'])}, 'children': c_12}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-slot', 'page-fact'])}, 'children': c_12}) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-2 gap-4'}, 'children': c_13}) }}
+  {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-2 gap-4', 'Attrs': og_attrs(['data-slot', 'page-aside'])}, 'children': c_13}) }}
 {%- endif %}

@@ -12,12 +12,14 @@
 //   icon: a text that reaches the Name of LucideIcon in a view (directly, through a loop or a nested organism) is one of the
 //   glyphs the kit ships (packages/compose-gen/specs/assets/lucide-icons.json), $defs.lucideIcon.
 //   out of the schema: events and render-prop slots (functions, named per runtime), listed beside the schema.
+//   viewMap: where each prop lands in the DOM of the block (data-slot names, scripts/lib/viewmap.ts, alexy-os/chaosbun#149).
 import { createHash } from "node:crypto";
 import { OPS, type OrganismSpec, type PropType, type Value, type ViewNode } from "../../../../packages/compose-gen/screens/src/ir";
+import { viewMaps, type ViewMap } from "./viewmap";
 
 export type JsonSchema = { [key: string]: unknown };
 /** one registry block: its organism, the callbacks and render-prop slots it takes besides the props, and the schema of its props */
-export type PropsItem = { organism: string; events: string[]; slots: string[]; schema: JsonSchema };
+export type PropsItem = { organism: string; events: string[]; slots: string[]; schema: JsonSchema; viewMap: ViewMap };
 /** content/props.v0.json: `items` by registry name; `digest` is the sha256 of the file without it */
 export type PropsIndex = { version: string; digest: string; registry: string; items: Record<string, PropsItem> };
 
@@ -201,6 +203,7 @@ export function propsIndex(opts: { specs: OrganismSpec[]; icons: string[]; versi
   }
   const icon = iconKeys(specs).keys;
   const base = baseDefs(opts.icons);
+  const maps = viewMaps(specs);
 
   const items: Record<string, PropsItem> = {};
   for (const org of specs.filter((s) => s.id.startsWith("organism.")).sort((a, b) => kebab(a.name).localeCompare(kebab(b.name)))) {
@@ -251,7 +254,7 @@ export function propsIndex(opts: { specs: OrganismSpec[]; icons: string[]; versi
     const body = object(props);
     const name = kebab(org.name);
     const schema: JsonSchema = { $schema: SCHEMA_DIALECT, title: `${org.name}Props`, description: org.docs, ...body, $defs: Object.fromEntries(Object.keys(defs).sort().map((k) => [k, defs[k]!])) };
-    items[name] = { organism: org.name, events: org.events.map((e) => e.name), slots: org.slots.map((s) => s.name), schema };
+    items[name] = { organism: org.name, events: org.events.map((e) => e.name), slots: org.slots.map((s) => s.name), schema, viewMap: maps.get(org.name)! };
   }
   const bodyOut = { version: opts.version, registry: opts.registry, items };
   return { version: bodyOut.version, digest: "sha256:" + createHash("sha256").update(JSON.stringify(bodyOut)).digest("hex"), registry: bodyOut.registry, items };

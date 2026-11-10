@@ -38,7 +38,7 @@ defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Stack gap="6" align="stretch" :class="sectionColumnVariants({ measure: measure })">
+  <Stack gap="6" align="stretch" :class="sectionColumnVariants({ measure: measure })" data-slot="section-column">
     <slot />
   </Stack>
 </template>

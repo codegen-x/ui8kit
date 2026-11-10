@@ -69,9 +69,9 @@ const {
   <Block v-else
     tag="footer"
     class="mt-12 border-t border-border"
-    data-testid="site-footer"
     :data-layout="layout"
     :aria-label="landmarkLabel"
+    data-slot="site-footer"
   >
     <Container
       :class="cn(
@@ -81,17 +81,17 @@ const {
       )"
       data-slot="container"
     >
-      <Stack v-if="(signup?.mode === 'first')" gap="4" class="max-w-md" data-testid="signup">
+      <Stack v-if="(signup?.mode === 'first')" gap="4" class="max-w-md" data-slot="signup">
         <Title :as="3" size="xl" weight="bold">
           {{ signup?.title }}
         </Title>
-        <Form method="dialog" :class="cn('w-full max-w-md', (false ? 'mx-auto' : ''))" data-testid="email-form">
+        <Form method="dialog" :class="cn('w-full max-w-md', (false ? 'mx-auto' : ''))" data-slot="email-form">
           <Label :for="tpl('{0}-email', id)" class="sr-only">
             {{ signup?.label }}
           </Label>
           <Group gap="2" align="start" class="w-full flex-wrap">
-            <Input type="email" name="email" class="min-w-0 flex-1" :id="tpl('{0}-email', id)" data-testid="field" />
-            <Button variant="default" size="default" type="submit" data-testid="submit">
+            <Input type="email" name="email" class="min-w-0 flex-1" :id="tpl('{0}-email', id)" data-slot="field" />
+            <Button variant="default" size="default" type="submit">
               {{ signup?.submit }}
             </Button>
           </Group>

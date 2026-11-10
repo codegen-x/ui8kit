@@ -27,7 +27,7 @@
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-2 gap-4', 'attrs': og_attrs(['data-testid', 'hero-grid']), 'children': c_3}, with_context = false) }}
+  {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-2 gap-4', 'attrs': og_attrs(['data-slot', 'hero-grid']), 'children': c_3}, with_context = false) }}
 {%- endif %}
 {%- if og_t(og_and([og_eq(v_media, 'plans'), og_gt(og_len(og_get(v_content, ['plans'])), 0)])) %}
   {%- set c_8 -%}
@@ -49,9 +49,9 @@
           {%- endset -%}
           {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'children': c_6}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '2', 'class': og_s(og_cnv(['absolute w-48 rounded bg-card p-4 shadow-lg', (og_t(og_eq(v_i, 0)) ? 'top-8 left-4' : 'right-4 bottom-8')])), 'attrs': og_attrs(['data-testid', 'hero-plan']), 'children': c_7}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '2', 'class': og_s(og_cnv(['absolute w-48 rounded bg-card p-4 shadow-lg', (og_t(og_eq(v_i, 0)) ? 'top-8 left-4' : 'right-4 bottom-8')])), 'attrs': og_attrs(['data-slot', 'hero-plan']), 'children': c_7}, with_context = false) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ include('compose/Box.html.twig', {'class': 'relative', 'attrs': og_attrs(['data-testid', 'hero-media']), 'children': c_8}, with_context = false) }}
+  {{ include('compose/Box.html.twig', {'class': 'relative', 'attrs': og_attrs(['data-slot', 'hero-media']), 'children': c_8}, with_context = false) }}
 {%- endif %}

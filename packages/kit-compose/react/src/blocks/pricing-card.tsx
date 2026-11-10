@@ -85,19 +85,14 @@ export function PricingCard({
         </Text>
         <List tag="ul" className="flex flex-col gap-2 text-sm">
           {(plan.features ?? []).map((feature) => (
-            <ListItem key={feature} className="flex gap-2">
+            <ListItem key={feature} className="flex gap-2" data-slot="features-row">
               {feature}
             </ListItem>
           ))}
         </List>
       </CardContent>
       <CardFooter className="flex flex-wrap items-center gap-2">
-        <Button
-          variant={(stand ? "default" : "outline")}
-          size="default"
-          data-testid="plan-select"
-          onClick={() => onSelect?.(plan.id)}
-        >
+        <Button variant={(stand ? "default" : "outline")} size="default" onClick={() => onSelect?.(plan.id)}>
           {labels.cta}
         </Button>
         {footer?.(plan)}

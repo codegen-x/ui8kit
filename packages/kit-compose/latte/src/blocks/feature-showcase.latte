@@ -25,7 +25,7 @@
             {capture $c_1}
               {=og_include('icons/LucideIcon.latte', ['name' => og_s(og_get($v_f, ['icon'])), 'size' => 32])|noescape}
             {/capture}
-            {=og_include('compose/Box.latte', ['class' => 'flex aspect-video items-center justify-center rounded bg-muted text-foreground', 'attrs' => og_attrs(['data-testid', 'showcase-panel']), 'children' => (string) $c_1])|noescape}
+            {=og_include('compose/Box.latte', ['class' => 'flex aspect-video items-center justify-center rounded bg-muted text-foreground', 'attrs' => og_attrs(['data-slot', 'showcase-panel']), 'children' => (string) $c_1])|noescape}
           {/if}
           {capture $c_5}
             {capture $c_2}
@@ -46,7 +46,7 @@
           {/capture}
           {=og_include('compose/CardContent.latte', ['class' => 'flex flex-1 flex-col gap-2', 'children' => (string) $c_5])|noescape}
         {/capture}
-        {=og_include('compose/Card.latte', ['variant' => 'default', 'class' => 'h-full gap-4 overflow-hidden', 'attrs' => og_attrs(['data-testid', 'showcase-card']), 'children' => (string) $c_6])|noescape}
+        {=og_include('compose/Card.latte', ['variant' => 'default', 'class' => 'h-full gap-4 overflow-hidden', 'children' => (string) $c_6])|noescape}
       {/foreach}
     {/capture}
     {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_cols, '4')) ? 'grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4' : 'grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-3')), 'children' => (string) $c_7])|noescape}

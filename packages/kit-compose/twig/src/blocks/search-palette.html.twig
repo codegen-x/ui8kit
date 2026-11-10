@@ -12,4 +12,4 @@
   {%- endset -%}
   {{ include('compose/Inline.html.twig', {'class': 'pointer-events-none absolute top-2 right-2 rounded px-2 py-0 text-xs text-muted-foreground inset-ring inset-ring-border', 'children': c_1}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': 'relative w-full max-w-sm', 'attrs': og_attrs(['data-testid', 'palette']), 'children': c_2}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': 'relative w-full max-w-sm', 'attrs': og_attrs(['data-slot', 'palette']), 'children': c_2}, with_context = false) }}

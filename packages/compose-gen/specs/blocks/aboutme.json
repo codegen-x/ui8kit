@@ -59,28 +59,28 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"fact\"]",
+      "sel": "[data-slot=\"fact\"]",
       "n": "@profilefacts",
       "when": {
         "layout": "facts"
       }
     },
     {
-      "sel": "[data-testid=\"fact\"]",
+      "sel": "[data-slot=\"fact\"]",
       "n": 0,
       "when": {
         "layout": "skills"
       }
     },
     {
-      "sel": "[data-testid=\"skill\"]",
+      "sel": "[data-slot=\"skill\"]",
       "n": "@skills",
       "when": {
         "layout": "skills"
       }
     },
     {
-      "sel": "[data-testid=\"skill\"]",
+      "sel": "[data-slot=\"skill\"]",
       "n": 0,
       "when": {
         "layout": "facts"

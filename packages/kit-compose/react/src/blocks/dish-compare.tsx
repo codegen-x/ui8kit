@@ -40,7 +40,7 @@ export function DishCompare({
       {((dishes?.length ?? 0) === 0) ? (
         <EmptyState icon="scale" title={empty} />
       ) : ((layout as string) === "table") ? (
-        <Box className="w-full overflow-x-auto" data-testid="compare-table">
+        <Box className="w-full overflow-x-auto" data-slot="compare-table">
           <Table className="w-full text-sm">
             <TableCaption className="sr-only">
               {labels.caption}
@@ -69,7 +69,7 @@ export function DishCompare({
             </TableHead>
             <TableBody>
               {(dishes ?? []).map((d) => (
-                <TableRow key={d.id} data-testid="item">
+                <TableRow key={d.id} data-slot="item">
                   <TableHeadCell scope="row" className="py-2 font-semibold">
                     {d.name}
                   </TableHeadCell>

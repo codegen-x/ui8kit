@@ -15,7 +15,7 @@
     {%- endset -%}
     {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_2}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Stack.html.twig', {'gap': '0', 'align': 'end', 'class': 'text-end', 'attrs': og_attrs(['data-testid', 'page-figure']), 'children': c_3}, with_context = false) }}
+  {{ include('compose/Stack.html.twig', {'gap': '0', 'align': 'end', 'class': 'text-end', 'attrs': og_attrs(['data-slot', 'page-figure']), 'children': c_3}, with_context = false) }}
 {%- endif %}
 {%- if og_t(og_eq(v_mode, 'note')) %}
   {%- set c_8 -%}
@@ -36,7 +36,7 @@
     {%- endset -%}
     {{ include('compose/Stack.html.twig', {'gap': '0', 'children': c_7}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'class': 'rounded bg-card inset-ring inset-ring-border max-w-xs p-4', 'attrs': og_attrs(['data-testid', 'page-note']), 'children': c_8}, with_context = false) }}
+  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'class': 'rounded bg-card inset-ring inset-ring-border max-w-xs p-4', 'attrs': og_attrs(['data-slot', 'page-note']), 'children': c_8}, with_context = false) }}
 {%- endif %}
 {%- if og_t(og_eq(v_mode, 'facts')) %}
   {%- set c_13 -%}
@@ -57,9 +57,9 @@
           {%- endset -%}
           {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_11}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '0', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-testid', 'page-fact']), 'children': c_12}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '0', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-slot', 'page-fact']), 'children': c_12}, with_context = false) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-2 gap-4', 'children': c_13}, with_context = false) }}
+  {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-2 gap-4', 'attrs': og_attrs(['data-slot', 'page-aside']), 'children': c_13}, with_context = false) }}
 {%- endif %}

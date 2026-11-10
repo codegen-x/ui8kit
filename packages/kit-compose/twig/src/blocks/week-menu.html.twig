@@ -48,14 +48,14 @@
                 {%- endset -%}
                 {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'baseline', 'justify': 'between', 'children': c_6}, with_context = false) }}
               {%- endset -%}
-              {{ include('compose/Stack.html.twig', {'gap': '2', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_7}, with_context = false) }}
+              {{ include('compose/Stack.html.twig', {'gap': '2', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_7}, with_context = false) }}
             {%- endif %}
           {%- endfor %}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '2', 'class': 'border-t-2 border-primary pt-4', 'attrs': og_attrs(['data-testid', 'day']), 'children': c_8}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '2', 'class': 'border-t-2 border-primary pt-4', 'attrs': og_attrs(['data-slot', 'day']), 'children': c_8}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_9}, with_context = false) }}
+    {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_9}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_10)}, with_context = false) }}

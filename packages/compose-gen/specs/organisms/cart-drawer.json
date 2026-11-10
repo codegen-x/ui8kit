@@ -108,7 +108,7 @@
             }
           ]
         },
-        "data-testid": "section"
+        "data-slot": "section"
       },
       "children": [
         {
@@ -165,7 +165,7 @@
                     "aria-label": {
                       "$": "drawer.title"
                     },
-                    "data-testid": "drawer"
+                    "data-slot": "drawer"
                   },
                   "children": [
                     {
@@ -250,7 +250,7 @@
                             "Class": "flex flex-1 flex-col justify-center p-4"
                           },
                           "attrs": {
-                            "data-testid": "empty"
+                            "data-slot": "empty"
                           },
                           "children": [
                             {

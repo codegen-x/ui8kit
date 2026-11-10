@@ -87,7 +87,7 @@
                         "Align": "center"
                       },
                       "attrs": {
-                        "data-testid": "footer-point"
+                        "data-slot": "footer-point"
                       },
                       "children": [
                         {
@@ -119,7 +119,10 @@
               ],
               "index": "i"
             }
-          ]
+          ],
+          "attrs": {
+            "data-slot": "footer-points"
+          }
         }
       ]
     }

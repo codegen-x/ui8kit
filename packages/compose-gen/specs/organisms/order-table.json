@@ -248,7 +248,7 @@
                             "Align": "stretch"
                           },
                           "attrs": {
-                            "data-testid": "order-cards"
+                            "data-slot": "order-cards"
                           },
                           "children": [
                             {
@@ -264,9 +264,6 @@
                                   "use": "Card",
                                   "props": {
                                     "Variant": "default"
-                                  },
-                                  "attrs": {
-                                    "data-testid": "item"
                                   },
                                   "children": [
                                     {

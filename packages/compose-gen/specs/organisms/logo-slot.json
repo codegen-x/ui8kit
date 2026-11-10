@@ -38,7 +38,6 @@
         }
       },
       "attrs": {
-        "data-testid": "item",
         "data-slot": "logo-slot"
       },
       "children": [

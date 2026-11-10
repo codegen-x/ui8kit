@@ -264,7 +264,7 @@
                                                     "Class": "text-sm text-muted-foreground"
                                                   },
                                                   "attrs": {
-                                                    "data-testid": "toc-link"
+                                                    "data-slot": "toc-link"
                                                   },
                                                   "children": [
                                                     {
@@ -274,7 +274,10 @@
                                                     }
                                                   ]
                                                 }
-                                              ]
+                                              ],
+                                              "attrs": {
+                                                "data-slot": "sections-row"
+                                              }
                                             }
                                           ]
                                         }
@@ -296,7 +299,7 @@
                         "Class": "mx-auto w-full max-w-2xl min-w-0"
                       },
                       "attrs": {
-                        "data-testid": "article"
+                        "data-slot": "article"
                       },
                       "children": [
                         {
@@ -326,7 +329,7 @@
                                     }
                                   ]
                                 },
-                                "data-testid": "item"
+                                "data-slot": "item"
                               },
                               "children": [
                                 {
@@ -380,7 +383,7 @@
                                             "Class": "m-0 border-l border-border pl-4 text-lg"
                                           },
                                           "attrs": {
-                                            "data-testid": "quote"
+                                            "data-slot": "quote"
                                           },
                                           "children": [
                                             {

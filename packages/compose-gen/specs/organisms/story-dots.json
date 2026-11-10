@@ -67,12 +67,15 @@
                 }
               },
               "attrs": {
-                "data-testid": "story-dot"
+                "data-slot": "story-dot"
               }
             }
           ]
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "story-dots"
+      }
     }
   ],
   "portable": {

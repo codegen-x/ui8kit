@@ -31,7 +31,7 @@ defineSlots<{ default?(): unknown }>();
       (layout as string) === 'cards' ? 'rounded bg-card inset-ring inset-ring-border p-6'
       : 'border-t border-border pt-6'
     "
-    data-testid="step"
+    data-slot="step"
   >
     <Group gap="4" align="start">
       <Box

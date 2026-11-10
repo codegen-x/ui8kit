@@ -22,7 +22,7 @@ export function BarChart({ bars, label, max, height = 160, class: className }: B
     <Box class={cn("min-w-0", className)} data-slot="bar-chart">
       <Box class="flex min-w-0 items-end gap-2" role="img" aria-label={label} style={`height:${cssValue(height)}px`}>
         <For each={bars ?? []}>{(b) => (
-          <Box class="flex h-full min-w-0 flex-1 items-end" title={(b.title ?? b.label)}>
+          <Box class="flex h-full min-w-0 flex-1 items-end" title={(b.title ?? b.label)} data-slot="bar">
             <Box
               class={cn("w-full rounded", (b.muted ? "bg-muted-foreground" : "bg-primary"))}
               style={`height:${cssValue(Math.max(2, Math.round(((b.value / top) * 100))))}%`}
@@ -33,7 +33,7 @@ export function BarChart({ bars, label, max, height = 160, class: className }: B
       </Box>
       <Box class="mt-2 flex min-w-0 gap-2" aria-hidden="true">
         <For each={bars ?? []}>{(b) => (
-          <Box class="relative h-4 min-w-0 flex-1">
+          <Box class="relative h-4 min-w-0 flex-1" data-slot="bar">
             <Text class={"absolute left-1/2 top-0 m-0 -translate-x-1/2 whitespace-nowrap text-xs font-medium text-muted-foreground"}>
               {b.label}
             </Text>

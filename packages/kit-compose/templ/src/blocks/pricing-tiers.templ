@@ -42,7 +42,7 @@ templ PricingTiers(p PricingTiersProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, Measure: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stack")), "md", "default"), LandmarkLabel: vLandmarkLabel}) {
 		if !uiutils.Eq(vBilling, "off") {
-			@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "center", BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-testid", "billing")}}) {
+			@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "center", BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-slot", "billing")}}) {
 				@Switcher(SwitcherProps{Label: uiutils.Get(vBillingLabels, "label")}) {
 					@SwitcherItem(SwitcherItemProps{Active: uiutils.Eq(vBilling, "monthly")}) {
 						{ uiutils.Text(uiutils.Get(vBillingLabels, "monthly")) }
@@ -59,7 +59,7 @@ templ PricingTiers(p PricingTiersProps) {
 		if uiutils.Eq(uiutils.Len(vPlans), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "layers", Title: uiutils.Get(vLabels, "empty")})
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stack")), "1", uiutils.FitCols(vCols, uiutils.Len(vPlans)))), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "tiers")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stack")), "1", uiutils.FitCols(vCols, uiutils.Len(vPlans)))), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "tiers")}}) {
 				for _, vPlan := range uiutils.L(vPlans) {
 					@PricingCard(PricingCardProps{Plan: vPlan, Labels: vLabels, Emphasis: vEmphasis, Billing: uiutils.Cond(uiutils.T(uiutils.Eq(vBilling, "annual")), "annual", "monthly"), Density: uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "compact", "default")})
 				}

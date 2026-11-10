@@ -24,13 +24,13 @@ templ ProjectTiles(p ProjectTilesProps) {
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "cards") }}
 	{{ vOver := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "overlay")), true, uiutils.Eq(vLayout, "bento"))) }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "compact")), "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3")), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "compact")), "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3")), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 		for vI, vP := range uiutils.L(vProjects) {
 			@ArticleBlock(ArticleBlockProps{Class: uiutils.Cnv(uiutils.Cnv("flex flex-col gap-4", uiutils.Cond(uiutils.T(vOver), "relative", "rounded bg-card inset-ring inset-ring-border p-4"), uiutils.Cond(uiutils.T(uiutils.And(uiutils.Eq(vLayout, "bento"), uiutils.Eq(float64(vI), float64(0)))), "sm:col-span-2 lg:row-span-2", ""))), Testid: "item"}) {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(vOver), "h-full", "relative"))}}) {
 					@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title"), Ratio: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "compact")), "1/1", uiutils.Cond(uiutils.T(vOver), "3/4", "4/3")), Class: uiutils.Cnv(uiutils.Cond(uiutils.T(vOver), "h-full", ""))})
 					if uiutils.T(uiutils.And(uiutils.Get(vP, "featured"), !uiutils.Eq(vLayout, "compact"))) {
-						@compose.Badge(compose.BadgeProps{Variant: "default", Size: "default", TextProps: text.TextProps{Class: "absolute left-4 top-4", Attrs: uiutils.Attrs("data-testid", "featured")}}) {
+						@compose.Badge(compose.BadgeProps{Variant: "default", Size: "default", TextProps: text.TextProps{Class: "absolute left-4 top-4"}}) {
 							{ uiutils.Text(uiutils.Get(vLabels, "featured")) }
 						}
 					}

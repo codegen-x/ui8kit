@@ -28,14 +28,14 @@ const last = computed(() => (crumbs?.length ?? 0) - 1);
 </script>
 
 <template>
-  <Block tag="nav" :aria-label="(landmarkLabel ?? label)" data-testid="crumbs">
+  <Block tag="nav" :aria-label="(landmarkLabel ?? label)" data-slot="crumbs">
     <List class="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground">
-      <ListItem v-for="(c, i) in crumbs" :key="c.id" class="flex items-center gap-2">
+      <ListItem v-for="(c, i) in crumbs" :key="c.id" class="flex items-center gap-2" data-slot="crumbs-row">
         <template v-if="(i < last)">
-          <Link v-if="c.href" :href="urlOf(c.href)" variant="muted" size="sm" data-testid="crumb">
+          <Link v-if="c.href" :href="urlOf(c.href)" variant="muted" size="sm" data-slot="crumb">
             {{ c.name }}
           </Link>
-          <Inline v-else data-testid="crumb">
+          <Inline v-else data-slot="crumb">
             {{ c.name }}
           </Inline>
           <LucideIcon name="chevron-right" :size="16" />

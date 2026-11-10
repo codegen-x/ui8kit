@@ -28,13 +28,13 @@ const { dishes, labels } = defineProps<CutCardsProps>();
 </script>
 
 <template>
-  <Grid cols="1-4" class="gap-4" data-testid="items">
+  <Grid cols="1-4" class="gap-4" data-slot="items">
     <Stack
       v-for="d in dishes"
       :key="d.id"
       gap="4"
       class="rounded bg-card inset-ring inset-ring-border p-4"
-      data-testid="item"
+      data-slot="item"
     >
       <MediaFrame :alt="d.name" ratio="4/3" />
       <Text size="lg" weight="semibold">

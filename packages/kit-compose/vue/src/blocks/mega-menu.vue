@@ -61,8 +61,8 @@ const {
   <Block
     tag="header"
     class="relative border-b border-border bg-background"
-    data-testid="mega-menu"
     :aria-label="landmarkLabel"
+    data-slot="mega-menu"
   >
     <Container
       :class="cn('mx-auto w-full max-w-6xl px-4', 'flex flex-wrap items-center gap-6 py-4')"
@@ -77,7 +77,7 @@ const {
             type="button"
             class="inline-flex items-center gap-2 text-sm font-semibold"
             :aria-expanded="(((panel as string) === 'open') ? 'true' : 'false')"
-            data-testid="mega-trigger"
+            data-slot="mega-trigger"
           >
             {{ trigger }}
             <LucideIcon name="chevron-down" :size="16" />
@@ -96,7 +96,7 @@ const {
       </NavBlock>
     </Container>
   </Block>
-  <Box v-if="((panel as string) === 'open')" class="border-t border-border bg-card" data-testid="mega-panel">
+  <Box v-if="((panel as string) === 'open')" class="border-t border-border bg-card" data-slot="mega-panel">
     <Container
       :class="cn(
         'mx-auto w-full max-w-6xl px-4',
@@ -109,9 +109,9 @@ const {
         v-if="((groups?.length ?? 0) > 0)"
         :cols="(((cols as string) === '2') ? '1-2' : '1-3')"
         class="gap-6"
-        data-testid="items"
+        data-slot="items"
       >
-        <Stack v-for="g in groups" :key="g.id" gap="2" data-testid="item">
+        <Stack v-for="g in groups" :key="g.id" gap="2" data-slot="item">
           <Group gap="2" align="center">
             <LucideIcon :name="g.icon" :size="16" />
             <Text size="sm" weight="semibold">
@@ -119,7 +119,7 @@ const {
             </Text>
           </Group>
           <List class="m-0 flex list-none flex-col gap-2 p-0">
-            <ListItem v-for="item in g.links" :key="item.id">
+            <ListItem v-for="item in g.links" :key="item.id" data-slot="links-row">
               <MenuEntry :href="item.href" class="text-sm text-muted-foreground">
                 {{ item.name }}
               </MenuEntry>
@@ -131,7 +131,7 @@ const {
         v-if="((promo as string) === 'card')"
         gap="2"
         class="rounded bg-card inset-ring inset-ring-border p-4"
-        data-testid="promo"
+        data-slot="promo"
       >
         <MediaFrame :alt="(promoTitle ?? '')" ratio="4/3" />
         <Text size="base" weight="semibold">

@@ -31,9 +31,9 @@ export function DrawerLines({
 }: DrawerLinesProps) {
   return (
     <>
-      <Stack gap="4" align="stretch" class="flex-1 p-4" data-testid="lines">
+      <Stack gap="4" align="stretch" class="flex-1 p-4" data-slot="lines">
         <For each={lines ?? []}>{(line) => (
-          <Group gap="4" align="start" data-testid="item">
+          <Group gap="4" align="start" data-slot="item">
             {((media as string) === "image") ? (
               <MediaFrame alt={line.name} ratio="1/1" class="size-16 shrink-0" />
             ) : null}
@@ -61,8 +61,8 @@ export function DrawerLines({
           </Group>
         )}</For>
       </Stack>
-      <Stack gap="4" align="stretch" class="border-t border-border p-4">
-        <Stack gap="2" align="stretch" class="rounded bg-muted p-4" data-testid="progress">
+      <Stack gap="4" align="stretch" class="border-t border-border p-4" data-slot="drawer-lines">
+        <Stack gap="2" align="stretch" class="rounded bg-muted p-4" data-slot="progress">
           <Text size="sm">
             {drawer.progress}
           </Text>
@@ -77,6 +77,7 @@ export function DrawerLines({
                     row.strong ? "flex justify-between text-base font-bold"
                     : "flex justify-between text-sm text-muted-foreground"
                   }
+                  data-slot="summary-row"
                 >
                   <Inline>
                     {row.label}
@@ -89,7 +90,7 @@ export function DrawerLines({
             </>
           ); }}</For>
         </List>
-        <Button variant="default" size="lg" class="w-full" data-testid="checkout">
+        <Button variant="default" size="lg" class="w-full">
           {labels.checkout}
         </Button>
       </Stack>

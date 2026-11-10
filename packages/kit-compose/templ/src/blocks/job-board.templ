@@ -42,9 +42,9 @@ templ JobBoard(p JobBoardProps) {
 		if uiutils.Eq(uiutils.Len(vJobs), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "briefcase", Title: vEmpty})
 		} else if uiutils.Eq(vLayout, "grouped") {
-			@compose.Stack(compose.StackProps{Gap: "8", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "groups")}}) {
+			@compose.Stack(compose.StackProps{Gap: "8", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "groups")}}) {
 				for _, vD := range uiutils.L(vDepartments) {
-					@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "group")}}) {
+					@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "group")}}) {
 						@compose.Group(compose.GroupProps{Gap: "4", Align: "baseline", Justify: "between", BoxProps: box.BoxProps{}}) {
 							@compose.Title(compose.TitleProps{As: "3", Size: "lg", Weight: "bold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vD, "name")) }
@@ -55,7 +55,7 @@ templ JobBoard(p JobBoardProps) {
 						}
 						@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col"}}) {
 							for _, vJ := range uiutils.L(uiutils.Where(vJobs, "dept", uiutils.Get(vD, "id"))) {
-								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-wrap items-center justify-between gap-4 border-b border-border py-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-wrap items-center justify-between gap-4 border-b border-border py-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 									@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 										@MenuEntry(MenuEntryProps{Href: uiutils.Get(vJ, "href"), Class: uiutils.Cnv("font-medium")}) {
 											{ uiutils.Text(uiutils.Get(vJ, "title")) }

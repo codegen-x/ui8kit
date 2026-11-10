@@ -23,10 +23,10 @@
           {%- endset -%}
           {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_tab, ['href']), 'className': og_cnv([og_cnv(['flex flex-col items-center gap-2 py-2 text-xs', ('font-semibold text-primary' if og_t(og_eq(og_get(v_tab, ['id']), v_current)) else 'text-muted-foreground')])]), 'current': og_eq(og_get(v_tab, ['id']), v_current), 'testid': 'item'}, 'children': og_markup(c_2)}) }}
         {%- endset -%}
-        {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_3}) }}
+        {{ og_include('compose/list-item.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'tabs-row'])}, 'children': c_3}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 grid list-none grid-flow-col auto-cols-fr p-0', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_4}) }}
+    {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 grid list-none grid-flow-col auto-cols-fr p-0', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_4}) }}
   {%- endset -%}
-  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Class': og_s(og_cnv(['mx-auto w-full max-w-md border-t border-border', ('bg-muted' if og_t(og_eq(v_tone, 'muted')) else 'bg-background'), ('sticky bottom-0 z-40' if og_t(og_eq(v_position, 'sticky')) else '')])), 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-testid', 'bottom-nav', 'data-position', v_position])}, 'children': c_5}) }}
+  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Class': og_s(og_cnv(['mx-auto w-full max-w-md border-t border-border', ('bg-muted' if og_t(og_eq(v_tone, 'muted')) else 'bg-background'), ('sticky bottom-0 z-40' if og_t(og_eq(v_position, 'sticky')) else '')])), 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-position', v_position, 'data-slot', 'bottom-nav'])}, 'children': c_5}) }}
 {%- endif %}

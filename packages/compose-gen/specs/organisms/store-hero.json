@@ -227,7 +227,7 @@
                         "Class": "gap-4"
                       },
                       "attrs": {
-                        "data-testid": "perks"
+                        "data-slot": "perks"
                       },
                       "children": [
                         {
@@ -257,7 +257,7 @@
                                     "Align": "start"
                                   },
                                   "attrs": {
-                                    "data-testid": "perk"
+                                    "data-slot": "perk"
                                   },
                                   "children": [
                                     {
@@ -426,7 +426,7 @@
                         "Class": "gap-4"
                       },
                       "attrs": {
-                        "data-testid": "perks"
+                        "data-slot": "perks"
                       },
                       "children": [
                         {
@@ -456,7 +456,7 @@
                                     "Align": "start"
                                   },
                                   "attrs": {
-                                    "data-testid": "perk"
+                                    "data-slot": "perk"
                                   },
                                   "children": [
                                     {

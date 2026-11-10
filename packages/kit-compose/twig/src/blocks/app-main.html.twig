@@ -20,10 +20,10 @@
         {%- set c_2 -%}
           {{ include('blocks/stat-tile.html.twig', {'p': {'label': og_get(v_m, ['label']), 'value': og_get(v_m, ['value']), 'icon': og_get(v_m, ['icon']), 'hint': og_get(v_m, ['hint'])}}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Box.html.twig', {'attrs': og_attrs(['data-testid', 'item']), 'children': c_2}, with_context = false) }}
+        {{ include('compose/Box.html.twig', {'attrs': og_attrs(['data-slot', 'item']), 'children': c_2}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': og_s(v_cols), 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_3}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': og_s(v_cols), 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_3}, with_context = false) }}
   {%- endif %}
   {%- if og_t(v_activity) %}
     {%- set c_6 -%}
@@ -48,4 +48,4 @@
     {{ include('blocks/panel.html.twig', {'p': {'title': og_get(v_chart, ['title']), 'description': og_get(v_chart, ['text']), 'id': og_tpl('{0}-chart', [v_id]), 'className': og_cnv(['h-full'])}, 'children': og_markup(c_7)}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': og_s((og_t(og_eq(v_density, 'compact')) ? '4' : '6')), 'align': 'stretch', 'class': 'min-w-0', 'attrs': og_attrs(['data-testid', 'app-main']), 'children': c_8}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': og_s((og_t(og_eq(v_density, 'compact')) ? '4' : '6')), 'align': 'stretch', 'class': 'min-w-0', 'attrs': og_attrs(['data-slot', 'app-main']), 'children': c_8}, with_context = false) }}

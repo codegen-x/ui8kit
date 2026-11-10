@@ -61,8 +61,8 @@ const {
       )
     )"
     :aria-label="(landmarkLabel ?? label)"
-    data-testid="announcement"
     :data-layout="layout"
+    data-slot="announcement"
   >
     <Container
       :class="cn(
@@ -83,7 +83,7 @@ const {
         <LucideIcon :name="icon" :size="16" />
         <Inline v-if="((badge as string) === 'show')"
           class="rounded px-2 py-0 text-xs font-semibold inset-ring inset-ring-current"
-          data-testid="announcement-badge"
+          data-slot="announcement-badge"
         >
           {{ badgeLabel }}
         </Inline>
@@ -93,7 +93,7 @@ const {
         <LinkPlain v-if="cta"
           :href="urlOf(ctaHref)"
           class="inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4"
-          data-testid="announcement-cta"
+          data-slot="announcement-cta"
         >
           {{ cta }}
           <LucideIcon name="arrow-right" :size="16" />
@@ -105,7 +105,6 @@ const {
         class="ml-auto shrink-0 text-current"
         type="button"
         :aria-label="dismissLabel"
-        data-testid="dismiss"
       >
         <LucideIcon name="x" :size="16" />
       </Button>

@@ -50,9 +50,9 @@
             {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'ratio': '1/1', 'className': og_cnv([('ring-2 ring-foreground' if og_t(og_eq(v_i, 0)) else '')])}}) }}
           {%- endfor %}
         {%- endset -%}
-        {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-3 gap-2 sm:grid-cols-9', 'Attrs': og_attrs(['data-testid', 'thumbs'])}, 'children': c_8}) }}
+        {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-3 gap-2 sm:grid-cols-9', 'Attrs': og_attrs(['data-slot', 'thumbs'])}, 'children': c_8}) }}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'featured'])}, 'children': c_9}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'featured'])}, 'children': c_9}) }}
     {%- else %}
       {%- set c_13 -%}
         {%- for v_p in og_l(v_photos) %}
@@ -62,18 +62,18 @@
             {%- set c_10 -%}
               {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'arrow-up-right', 'Size': 16}}) }}
             {%- endset -%}
-            {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'Class': 'absolute right-2 top-2 bg-background', 'AriaLabel': og_s(og_get(v_labels, ['open'])), 'Attrs': og_attrs(['data-testid', 'open'])}, 'children': c_10}) }}
+            {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'Class': 'absolute right-2 top-2 bg-background', 'AriaLabel': og_s(og_get(v_labels, ['open']))}, 'children': c_10}) }}
             {%- if og_t(og_and([og_eq(v_captions, 'show'), og_or([og_eq(v_layout, 'grid'), og_eq(v_layout, 'masonry')])])) %}
               {%- set c_11 -%}
                 {{ og_text(og_get(v_p, ['title'])) }}
               {%- endset -%}
-              {{ og_include('compose/box.html.j2', {'p': {'Class': 'text-sm text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'caption'])}, 'children': c_11}) }}
+              {{ og_include('compose/box.html.j2', {'p': {'Class': 'text-sm text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'caption'])}, 'children': c_11}) }}
             {%- endif %}
           {%- endset -%}
           {{ og_include('blocks/figure-block.html.j2', {'p': {'className': og_cnv([og_cnv(['relative flex flex-col gap-2', ('mb-4 break-inside-avoid' if og_t(og_eq(v_layout, 'masonry')) else '')])]), 'testid': 'item'}, 'children': og_markup(c_12)}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('columns-1 gap-4 sm:columns-2 lg:columns-3' if og_t(og_eq(v_layout, 'masonry')) else 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3')), 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_13}) }}
+      {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('columns-1 gap-4 sm:columns-2 lg:columns-3' if og_t(og_eq(v_layout, 'masonry')) else 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3')), 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_13}) }}
     {%- endif %}
     {{ og_include('blocks/lightbox-stage.html.j2', {'p': {'photos': v_photos, 'labels': v_labels, 'captions': v_captions, 'lightbox': v_lightbox}}) }}
   {%- endif %}

@@ -41,11 +41,10 @@ export function BeforeAfter({
       {((points?.length ?? 0) === 0) ? (
         <EmptyState icon="git-compare" title={empty} />
       ) : ((layout as string) === "cards") ? (
-        <Grid cols="1-2" class="items-stretch gap-4" data-testid="sides">
+        <Grid cols="1-2" class="items-stretch gap-4" data-slot="sides">
           <Card
             variant="muted"
             class={cn("h-full", (((density as string) === "compact") ? "gap-4 p-4" : ""))}
-            data-testid="side"
             data-side="before"
           >
             <CardContent class="flex flex-col gap-4">
@@ -54,7 +53,7 @@ export function BeforeAfter({
               </Title>
               <List class="m-0 flex list-none flex-col gap-4 p-0">
                 <For each={points ?? []}>{(p) => (
-                  <ListItem class="flex items-start gap-4" data-testid="item">
+                  <ListItem class="flex items-start gap-4" data-slot="item">
                     {((icons as string) === "show") ? (
                       <LucideIcon name="x" size={16} class="h-lh shrink-0 text-sm" />
                     ) : null}
@@ -69,7 +68,6 @@ export function BeforeAfter({
           <Card
             variant="default"
             class={cn("h-full", (((density as string) === "compact") ? "gap-4 p-4" : ""))}
-            data-testid="side"
             data-side="after"
           >
             <CardContent class="flex flex-col gap-4">
@@ -78,7 +76,7 @@ export function BeforeAfter({
               </Title>
               <List class="m-0 flex list-none flex-col gap-4 p-0">
                 <For each={points ?? []}>{(p) => (
-                  <ListItem class="flex items-start gap-4" data-testid="item">
+                  <ListItem class="flex items-start gap-4" data-slot="item">
                     {((icons as string) === "show") ? (
                       <LucideIcon name="check" size={16} class="h-lh shrink-0 text-sm" />
                     ) : null}
@@ -92,12 +90,12 @@ export function BeforeAfter({
           </Card>
         </Grid>
       ) : (
-        <Stack gap="2" align="stretch" data-testid="rows">
+        <Stack gap="2" align="stretch" data-slot="rows">
           <For each={points ?? []}>{(p) => (
             <Grid
               cols="1-3"
               class={cn("items-center gap-4", "rounded bg-card inset-ring inset-ring-border p-4")}
-              data-testid="item"
+              data-slot="item"
             >
               <Text size="base" weight="semibold">
                 {p.title}

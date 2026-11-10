@@ -35,8 +35,8 @@ const { lines, rows, labels, drawer, media = "image", field = "qty" } = definePr
 </script>
 
 <template>
-  <Stack gap="4" align="stretch" class="flex-1 p-4" data-testid="lines">
-    <Group v-for="line in lines" :key="line.id" gap="4" align="start" data-testid="item">
+  <Stack gap="4" align="stretch" class="flex-1 p-4" data-slot="lines">
+    <Group v-for="line in lines" :key="line.id" gap="4" align="start" data-slot="item">
       <MediaFrame v-if="((media as string) === 'image')" :alt="line.name" ratio="1/1" class="size-16 shrink-0" />
       <Stack gap="2" align="stretch" class="flex-1">
         <Group gap="2" justify="between" align="start">
@@ -61,8 +61,8 @@ const { lines, rows, labels, drawer, media = "image", field = "qty" } = definePr
       </Stack>
     </Group>
   </Stack>
-  <Stack gap="4" align="stretch" class="border-t border-border p-4">
-    <Stack gap="2" align="stretch" class="rounded bg-muted p-4" data-testid="progress">
+  <Stack gap="4" align="stretch" class="border-t border-border p-4" data-slot="drawer-lines">
+    <Stack gap="2" align="stretch" class="rounded bg-muted p-4" data-slot="progress">
       <Text size="sm">
         {{ drawer.progress }}
       </Text>
@@ -75,6 +75,7 @@ const { lines, rows, labels, drawer, media = "image", field = "qty" } = definePr
             row.strong ? 'flex justify-between text-base font-bold'
             : 'flex justify-between text-sm text-muted-foreground'
           "
+          data-slot="summary-row"
         >
           <Inline>
             {{ row.label }}
@@ -85,7 +86,7 @@ const { lines, rows, labels, drawer, media = "image", field = "qty" } = definePr
         </ListItem>
       </template>
     </List>
-    <Button variant="default" size="lg" class="w-full" data-testid="checkout">
+    <Button variant="default" size="lg" class="w-full">
       {{ labels.checkout }}
     </Button>
   </Stack>

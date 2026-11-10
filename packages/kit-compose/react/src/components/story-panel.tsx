@@ -22,7 +22,7 @@ export function StoryPanel({ s, index, total, labels }: StoryPanelProps) {
       gap="4"
       align="stretch"
       className="rounded bg-card inset-ring inset-ring-border p-6"
-      data-testid="story-panel"
+      data-slot="story-panel"
     >
       <Group gap="2" align="center">
         <Badge variant="secondary" size="sm">

@@ -38,7 +38,7 @@
         "Class": "relative overflow-hidden rounded"
       },
       "attrs": {
-        "data-testid": "post-overlay"
+        "data-slot": "post-overlay"
       },
       "children": [
         {

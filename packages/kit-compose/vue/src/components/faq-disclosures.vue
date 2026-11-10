@@ -19,8 +19,8 @@ const { items, name } = defineProps<FaqDisclosuresProps>();
 </script>
 
 <template>
-  <Stack gap="0" align="stretch" data-testid="faq">
-    <Disclosure v-for="q in items" :key="q.id" variant="item" :name="name" data-testid="faq-item">
+  <Stack gap="0" align="stretch" data-slot="faq">
+    <Disclosure v-for="q in items" :key="q.id" variant="item" :name="name" data-slot="faq-item">
       <Summary variant="item">
         {{ q.question }}
       </Summary>

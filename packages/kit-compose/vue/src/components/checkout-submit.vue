@@ -22,14 +22,14 @@ const { id, consent, submit, legal } = defineProps<CheckoutSubmitProps>();
 </script>
 
 <template>
-  <Stack gap="4" align="start">
+  <Stack gap="4" align="start" data-slot="checkout-submit">
     <Group gap="2" align="center" :class="cn('w-fit', '')">
       <Checkbox name="consent" :id="tpl('{0}-consent', id)" />
       <Label :for="tpl('{0}-consent', id)" class="text-sm">
         {{ consent }}
       </Label>
     </Group>
-    <Button variant="default" size="lg" type="submit" data-testid="submit">
+    <Button variant="default" size="lg" type="submit">
       {{ submit }}
     </Button>
     <Text size="xs" class="text-muted-foreground">

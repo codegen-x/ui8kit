@@ -12,7 +12,10 @@ export type PageHeaderProps = {
 
 export function PageHeader({ title, summary, id, actions }: PageHeaderProps) {
   return (
-    <Box className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+    <Box
+      className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between"
+      data-slot="page-header"
+    >
       <Box className="flex min-w-0 flex-col gap-2">
         <Title as={1} size="xl" weight="bold" className="m-0" id={id}>
           {title}

@@ -40,9 +40,9 @@ templ HeroHead(p HeroHeadProps) {
 	{{ vSkip := p.Skip }}
 	{{ vNavLabel := p.NavLabel }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "header", Class: uiutils.S(uiutils.Cnv("flex w-full flex-wrap items-center justify-between pr-4", uiutils.Get(presetDefaults, "hero", "head"))), Attrs: uiutils.Attrs("data-testid", "hero-head", "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "header", Class: uiutils.S(uiutils.Cnv("flex w-full flex-wrap items-center justify-between pr-4", uiutils.Get(presetDefaults, "hero", "head"))), Attrs: uiutils.Attrs("aria-label", vLandmarkLabel, "data-slot", "hero-head")}}) {
 		if uiutils.T(vSkip) {
-			@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:text-foreground focus:inset-ring focus:inset-ring-border", Attrs: uiutils.Attrs("data-testid", "skip-link")}}) {
+			@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:text-foreground focus:inset-ring focus:inset-ring-border", Attrs: uiutils.Attrs("data-slot", "skip-link")}}) {
 				{ uiutils.Text(vSkip) }
 			}
 		}
@@ -54,11 +54,11 @@ templ HeroHead(p HeroHeadProps) {
 				@compose.Group(compose.GroupProps{Gap: "8", Align: "center", BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
 					for _, vL := range uiutils.L(vLinks) {
 						if uiutils.T(uiutils.Get(vL, "href")) {
-							@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vL, "href"), false), AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "page", nil)), Class: "text-xs font-medium leading-5 text-background", Attrs: uiutils.Attrs("data-testid", "nav-link")}}) {
+							@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vL, "href"), false), AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "page", nil)), Class: "text-xs font-medium leading-5 text-background", Attrs: uiutils.Attrs("data-slot", "nav-link")}}) {
 								{ uiutils.Text(uiutils.Get(vL, "name")) }
 							}
 						} else {
-							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-xs font-medium leading-5 text-background", Attrs: uiutils.Attrs("data-testid", "nav-link")}}) {
+							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-xs font-medium leading-5 text-background", Attrs: uiutils.Attrs("data-slot", "nav-link")}}) {
 								{ uiutils.Text(uiutils.Get(vL, "name")) }
 							}
 						}
@@ -68,12 +68,12 @@ templ HeroHead(p HeroHeadProps) {
 		}
 		@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
 			if uiutils.T(vLogin) {
-				@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vLoginHref, false), Class: "text-background hover:bg-background/10", Attrs: uiutils.Attrs("data-testid", "nav-login")}}) {
+				@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vLoginHref, false), Class: "text-background hover:bg-background/10"}}) {
 					{ uiutils.Text(vLogin) }
 				}
 			}
 			if uiutils.T(vCta) {
-				@compose.Button(compose.ButtonProps{Variant: "secondary", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vHref, false), Attrs: uiutils.Attrs("data-testid", "header-cta")}}) {
+				@compose.Button(compose.ButtonProps{Variant: "secondary", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vHref, false)}}) {
 					{ uiutils.Text(vCta) }
 				}
 			}

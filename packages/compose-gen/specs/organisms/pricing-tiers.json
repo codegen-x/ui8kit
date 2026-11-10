@@ -189,7 +189,7 @@
                     "Class": "flex-wrap"
                   },
                   "attrs": {
-                    "data-testid": "billing"
+                    "data-slot": "billing"
                   },
                   "children": [
                     {
@@ -357,7 +357,7 @@
                     "Class": "gap-4"
                   },
                   "attrs": {
-                    "data-testid": "tiers"
+                    "data-slot": "tiers"
                   },
                   "children": [
                     {

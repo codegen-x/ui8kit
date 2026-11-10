@@ -41,15 +41,15 @@
             {%- endset -%}
             {{ og_include('blocks/empty-state.html.j2', {'p': {'icon': 'shopping-bag', 'title': og_get(v_drawer, ['empty']), 'text': og_get(v_drawer, ['emptyText']), 'action': og_markup(f_5)}}) }}
           {%- endset -%}
-          {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex flex-1 flex-col justify-center p-4', 'Attrs': og_attrs(['data-testid', 'empty'])}, 'children': c_7}) }}
+          {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex flex-1 flex-col justify-center p-4', 'Attrs': og_attrs(['data-slot', 'empty'])}, 'children': c_7}) }}
         {%- else %}
           {{ og_include('blocks/drawer-lines.html.j2', {'p': {'field': og_tpl('{0}-qty', [v_id]), 'lines': v_lines, 'rows': v_rows, 'labels': v_labels, 'drawer': v_drawer, 'media': v_media}}) }}
         {%- endif %}
       {%- endset -%}
-      {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex w-full flex-col bg-background shadow-lg sm:max-w-sm', 'Attrs': og_attrs(['role', 'group', 'aria-label', og_get(v_drawer, ['title']), 'data-testid', 'drawer'])}, 'children': c_8}) }}
+      {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex w-full flex-col bg-background shadow-lg sm:max-w-sm', 'Attrs': og_attrs(['role', 'group', 'aria-label', og_get(v_drawer, ['title']), 'data-slot', 'drawer'])}, 'children': c_8}) }}
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex min-h-160 overflow-hidden rounded bg-muted inset-ring inset-ring-border'}, 'children': c_9}) }}
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4', 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_10}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': 'py-8', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, og_get(v_drawer, ['title'])]), 'data-testid', 'section'])}, 'children': c_11}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': 'py-8', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, og_get(v_drawer, ['title'])]), 'data-slot', 'section'])}, 'children': c_11}) }}

@@ -24,7 +24,7 @@
       {%- endset -%}
       {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['w-full min-w-0', ('md:order-first' if og_t(og_eq(v_mediaSide, 'start')) else ('md:group-even:order-first' if og_t(og_eq(v_mediaSide, 'alternate')) else ''))]))}, 'children': c_4}) }}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-2', 'Class': 'group items-center gap-8', 'Attrs': og_attrs(['data-testid', 'feature-card'])}, 'children': c_5}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-2', 'Class': 'group items-center gap-8', 'Attrs': og_attrs(['data-slot', 'feature-card'])}, 'children': c_5}) }}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '8', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'feature-rows'])}, 'children': c_6}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '8', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'feature-rows'])}, 'children': c_6}) }}

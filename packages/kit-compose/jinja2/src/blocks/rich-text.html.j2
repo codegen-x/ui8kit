@@ -35,7 +35,7 @@
         {{ og_include('blocks/pill.html.j2', {'p': {'tone': 'blue'}, 'children': og_markup(c_3)}) }}
       {%- endif %}
     {%- endset -%}
-    {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'flex-wrap', 'Attrs': og_attrs(['data-testid', 'richtext-meta'])}, 'children': c_4}) }}
+    {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'flex-wrap', 'Attrs': og_attrs(['data-slot', 'richtext-meta'])}, 'children': c_4}) }}
   {%- endif %}
   {%- if og_t(og_or([og_eq(v_layout, 'hero'), og_eq(v_layout, 'media')])) %}
     {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_coalesce([og_get(v_media, ['alt']), v_title]), 'src': og_get(v_media, ['src']), 'ratio': ('21/9' if og_t(og_eq(v_layout, 'hero')) else '16/9')}}) }}
@@ -47,7 +47,7 @@
           {%- set c_5 -%}
             {{ og_html(v_content)|safe }}
           {%- endset -%}
-          {{ og_include('compose/prose.html.j2', {'p': {'Size': 'base', 'Width': 'none', 'Attrs': og_attrs(['data-testid', 'richtext-content'])}, 'children': c_5}) }}
+          {{ og_include('compose/prose.html.j2', {'p': {'Size': 'base', 'Width': 'none', 'Attrs': og_attrs(['data-slot', 'richtext-content'])}, 'children': c_5}) }}
         {%- endif %}
       {%- endset -%}
       {{ og_include('compose/box.html.j2', {'p': {'Class': 'min-w-0 lg:col-span-2'}, 'children': c_6}) }}
@@ -63,10 +63,10 @@
             {%- set c_8 -%}
               {{ og_html(og_get(v_aside, ['content']))|safe }}
             {%- endset -%}
-            {{ og_include('compose/prose.html.j2', {'p': {'Size': 'sm', 'Width': 'none', 'Attrs': og_attrs(['data-testid', 'richtext-aside-content'])}, 'children': c_8}) }}
+            {{ og_include('compose/prose.html.j2', {'p': {'Size': 'sm', 'Width': 'none', 'Attrs': og_attrs(['data-slot', 'richtext-aside-content'])}, 'children': c_8}) }}
           {%- endif %}
         {%- endset -%}
-        {{ og_include('compose/card.html.j2', {'p': {'Variant': 'compact', 'Class': 'h-fit', 'Attrs': og_attrs(['data-testid', 'richtext-aside'])}, 'children': c_9}) }}
+        {{ og_include('compose/card.html.j2', {'p': {'Variant': 'compact', 'Class': 'h-fit'}, 'children': c_9}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1', 'Class': 'gap-8 lg:grid-cols-3'}, 'children': c_10}) }}
@@ -74,7 +74,7 @@
     {%- set c_11 -%}
       {{ og_html(v_content)|safe }}
     {%- endset -%}
-    {{ og_include('compose/prose.html.j2', {'p': {'Size': 'base', 'Width': og_s(('wide' if og_t(og_eq(v_layout, 'wide')) else ('narrow' if og_t(og_eq(v_layout, 'hero')) else 'none'))), 'Attrs': og_attrs(['data-testid', 'richtext-content'])}, 'children': c_11}) }}
+    {{ og_include('compose/prose.html.j2', {'p': {'Size': 'base', 'Width': og_s(('wide' if og_t(og_eq(v_layout, 'wide')) else ('narrow' if og_t(og_eq(v_layout, 'hero')) else 'none'))), 'Attrs': og_attrs(['data-slot', 'richtext-content'])}, 'children': c_11}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'heading': {'level': v_level}, 'tone': v_tone, 'density': v_density, 'measure': ('2xl' if og_t(og_or([og_eq(v_layout, 'narrow'), og_eq(v_layout, 'media')])) else ('3xl' if og_t(og_eq(v_layout, 'card')) else 'default')), 'boxed': og_eq(v_layout, 'card'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_12)}) }}

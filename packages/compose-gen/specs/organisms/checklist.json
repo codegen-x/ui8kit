@@ -170,7 +170,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "checklist"
+                    "data-slot": "checklist"
                   },
                   "children": [
                     {
@@ -275,7 +275,7 @@
                             "Class": "text-muted-foreground"
                           },
                           "attrs": {
-                            "data-testid": "progress-text"
+                            "data-slot": "progress-text"
                           },
                           "children": [
                             {
@@ -315,7 +315,7 @@
                         "Class": "m-0 flex list-none flex-col gap-4 p-0"
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -333,7 +333,6 @@
                                 "Class": "flex items-start gap-4"
                               },
                               "attrs": {
-                                "data-testid": "item",
                                 "data-done": {
                                   "op": "str",
                                   "args": [
@@ -341,7 +340,8 @@
                                       "$": "task.done"
                                     }
                                   ]
-                                }
+                                },
+                                "data-slot": "item"
                               },
                               "children": [
                                 {
@@ -437,7 +437,7 @@
                                         "Class": "flex-1"
                                       },
                                       "attrs": {
-                                        "data-testid": "task-detail"
+                                        "data-slot": "task-detail"
                                       },
                                       "children": [
                                         {

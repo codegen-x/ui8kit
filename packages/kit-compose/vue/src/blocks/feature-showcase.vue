@@ -56,17 +56,11 @@ const {
         : 'grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-3'
       "
     >
-      <Card
-        v-for="f in features"
-        :key="f.id"
-        variant="default"
-        class="h-full gap-4 overflow-hidden"
-        data-testid="showcase-card"
-      >
+      <Card v-for="f in features" :key="f.id" variant="default" class="h-full gap-4 overflow-hidden">
         <MediaFrame v-if="((item as string) === 'picture')" :alt="f.title" />
         <Box v-else
           class="flex aspect-video items-center justify-center rounded bg-muted text-foreground"
-          data-testid="showcase-panel"
+          data-slot="showcase-panel"
         >
           <LucideIcon :name="f.icon" :size="32" />
         </Box>

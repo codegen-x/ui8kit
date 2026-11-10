@@ -18,18 +18,18 @@ export type PageCrumbsProps = {
 export function PageCrumbs({ label, crumbs, landmarkLabel }: PageCrumbsProps) {
   const last = (crumbs?.length ?? 0) - 1;
   return (
-    <Block tag="nav" aria-label={(landmarkLabel ?? label)} data-testid="crumbs">
+    <Block tag="nav" aria-label={(landmarkLabel ?? label)} data-slot="crumbs">
       <List className="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground">
         {(crumbs ?? []).map((c, i) => (
-          <ListItem key={c.id} className="flex items-center gap-2">
+          <ListItem key={c.id} className="flex items-center gap-2" data-slot="crumbs-row">
             {(i < last) ? (
               <>
                 {c.href ? (
-                  <Link href={urlOf(c.href)} variant="muted" size="sm" data-testid="crumb">
+                  <Link href={urlOf(c.href)} variant="muted" size="sm" data-slot="crumb">
                     {c.name}
                   </Link>
                 ) : (
-                  <Inline data-testid="crumb">
+                  <Inline data-slot="crumb">
                     {c.name}
                   </Inline>
                 )}

@@ -93,4 +93,4 @@
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'py-12'])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_13}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'footer', 'Class': og_s(og_cnv(['border-t border-border', ('bg-muted' if og_t(og_eq(v_tone, 'muted')) else '')])), 'Attrs': og_attrs(['data-testid', 'footer-split', 'data-layout', v_layout, 'aria-label', v_landmarkLabel])}, 'children': c_14}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'footer', 'Class': og_s(og_cnv(['border-t border-border', ('bg-muted' if og_t(og_eq(v_tone, 'muted')) else '')])), 'Attrs': og_attrs(['data-layout', v_layout, 'aria-label', v_landmarkLabel, 'data-slot', 'footer-split'])}, 'children': c_14}) }}

@@ -29,7 +29,7 @@ export const menuEntrySpec = spec(`${P}menu-entry`, "MenuEntry", "One entry of a
     { name: "current", type: "boolean", default: false, docs: "the entry of the current page" },
     { name: "variant", type: tsOf("default", "muted", "block"), default: "default", docs: "the look of the link" },
     { name: "size", type: tsOf("default", "sm"), default: "default" },
-    { name: "testid", type: "string", docs: "the test id of the entry" },
+    { name: "testid", type: "string", docs: "data-slot of the entry (default: the component name)" },
     { name: "block", type: "boolean", default: false, docs: "the content holds block elements: without an address it sits in a div, not a span" },
   ],
   className: true,

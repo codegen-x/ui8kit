@@ -42,12 +42,11 @@ export function SupportChannels({
       {((channels?.length ?? 0) === 0) ? (
         <EmptyState icon="life-buoy" title={empty} />
       ) : (
-        <Grid cols={(((layout as string) === "list") ? "1" : cols)} className="gap-4" data-testid="items">
+        <Grid cols={(((layout as string) === "list") ? "1" : cols)} className="gap-4" data-slot="items">
           {(channels ?? []).map((c) => (
             <Card key={c.id}
               variant="default"
               className={cn("h-full", (((layout as string) === "list") ? "flex-row items-center" : ""))}
-              data-testid="item"
             >
               <CardContent className={cn("flex flex-1 gap-4", (((layout as string) === "list") ? "items-center" : "flex-col"))}>
                 <LucideIcon name={c.icon} size={24} />

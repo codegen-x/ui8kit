@@ -8,5 +8,5 @@
   {%- set c_1 -%}
     {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': v_alt, 'ratio': '21/9', 'className': og_cnv(['size-full rounded-none opacity-40'])}}) }}
   {%- endset -%}
-  {{ og_include('compose/box.html.j2', {'p': {'Class': 'pointer-events-none absolute inset-0 -z-10', 'Attrs': og_attrs(['data-testid', 'over'])}, 'children': c_1}) }}
+  {{ og_include('compose/box.html.j2', {'p': {'Class': 'pointer-events-none absolute inset-0 -z-10', 'Attrs': og_attrs(['data-slot', 'over'])}, 'children': c_1}) }}
 {%- endif %}

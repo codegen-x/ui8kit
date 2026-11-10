@@ -46,7 +46,7 @@ templ AuthCard(p AuthCardProps) {
 	{{ vSocial := uiutils.Def(p.Social, "none") }}
 	{{ vLevel := uiutils.Def(p.Level, float64(2)) }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cnv("flex w-full flex-col gap-6", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "rounded bg-card p-6 inset-ring inset-ring-border", ""))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Tpl("{0}-title", vId)), "data-testid", "auth-card", "data-mode", vMode, "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cnv("flex w-full flex-col gap-6", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "rounded bg-card p-6 inset-ring inset-ring-border", ""))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Tpl("{0}-title", vId)), "data-mode", vMode, "aria-label", vLandmarkLabel, "data-slot", "auth-card")}}) {
 		@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
 			@compose.Title(compose.TitleProps{As: uiutils.S(vLevel), Size: "2xl", Weight: "bold", TextProps: text.TextProps{Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-title", vId))}}) {
 				{ uiutils.Text(vTitle) }
@@ -56,7 +56,7 @@ templ AuthCard(p AuthCardProps) {
 			}
 		}
 		if uiutils.T(uiutils.And(uiutils.Eq(vSocial, "first"), !uiutils.Eq(vSocial, "none"), !uiutils.Eq(vMode, "reset"), !uiutils.Eq(vMode, "magic"))) {
-			@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "social")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "social")}}) {
 				@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{}}) {
 					@compose.Separator(compose.SeparatorProps{SeparatorProps: separator.SeparatorProps{Class: "flex-1"}})
 					@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
@@ -76,7 +76,7 @@ templ AuthCard(p AuthCardProps) {
 		}
 		@AuthForm(AuthFormProps{Id: vId, Mode: vMode, Labels: vLabels, Submit: vSubmit})
 		if uiutils.T(uiutils.And(!uiutils.Eq(vSocial, "first"), !uiutils.Eq(vSocial, "none"), !uiutils.Eq(vMode, "reset"), !uiutils.Eq(vMode, "magic"))) {
-			@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "social")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "social")}}) {
 				@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{}}) {
 					@compose.Separator(compose.SeparatorProps{SeparatorProps: separator.SeparatorProps{Class: "flex-1"}})
 					@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
@@ -97,7 +97,7 @@ templ AuthCard(p AuthCardProps) {
 		@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-center text-muted-foreground"}}) {
 			{ uiutils.Text(vSwitchText) }
 			{ uiutils.Text(" ") }
-			@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(vSwitchHref, false), Attrs: uiutils.Attrs("data-testid", "switch")}}) {
+			@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(vSwitchHref, false), Attrs: uiutils.Attrs("data-slot", "switch")}}) {
 				{ uiutils.Text(vSwitchLink) }
 			}
 		}

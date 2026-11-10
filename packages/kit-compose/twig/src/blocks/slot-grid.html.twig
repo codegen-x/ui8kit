@@ -28,7 +28,7 @@
             {%- endset -%}
             {{ include('compose/Inline.html.twig', {'children': c_4}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Label.html.twig', {'class': 'flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', 'children': c_5}, with_context = false) }}
+          {{ include('compose/Label.html.twig', {'class': 'flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', 'attrs': og_attrs(['data-slot', 'slots-row']), 'children': c_5}, with_context = false) }}
         {%- endfor %}
         {%- for v_s in og_l(og_get(v_d, ['closed'])) %}
           {%- set c_7 -%}
@@ -38,12 +38,12 @@
             {%- endset -%}
             {{ include('compose/Inline.html.twig', {'children': c_6}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Label.html.twig', {'class': og_s(og_cnv(['flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', 'text-muted-foreground line-through'])), 'children': c_7}, with_context = false) }}
+          {{ include('compose/Label.html.twig', {'class': og_s(og_cnv(['flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', 'text-muted-foreground line-through'])), 'attrs': og_attrs(['data-slot', 'closed-row']), 'children': c_7}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
       {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-2 gap-2 sm:grid-cols-3', 'children': c_8}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Stack.html.twig', {'gap': '4', 'class': og_s((og_t(og_eq(v_item, 'card')) ? 'rounded bg-card inset-ring inset-ring-border p-4' : 'border-b border-border pb-4')), 'attrs': og_attrs(['data-testid', 'day']), 'children': c_9}, with_context = false) }}
+    {{ include('compose/Stack.html.twig', {'gap': '4', 'class': og_s((og_t(og_eq(v_item, 'card')) ? 'rounded bg-card inset-ring inset-ring-border p-4' : 'border-b border-border pb-4')), 'attrs': og_attrs(['data-slot', 'day']), 'children': c_9}, with_context = false) }}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-testid', 'days']), 'children': c_10}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'days']), 'children': c_10}, with_context = false) }}

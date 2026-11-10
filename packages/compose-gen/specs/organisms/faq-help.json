@@ -47,7 +47,7 @@
             }
           ]
         },
-        "data-testid": "faq-help"
+        "data-slot": "faq-help"
       },
       "children": [
         {
@@ -107,7 +107,7 @@
                     "Class": "flex items-start gap-4"
                   },
                   "attrs": {
-                    "data-testid": "faq-channel"
+                    "data-slot": "faq-channel"
                   },
                   "children": [
                     {

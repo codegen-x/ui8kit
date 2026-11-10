@@ -20,10 +20,11 @@ export function WeightedTitle({ id, title, weights, level = 1 }: WeightedTitlePr
       weight="semibold"
       class={cn("text-center tracking-tight text-background", defaults.hero.title)}
       id={id}
+      data-slot="weighted-title"
     >
       <For each={(title ?? "").split(" ") ?? []}>{(word, iOf) => { const i = iOf(); return (
         <>
-          <Inline class={weights?.[i]}>
+          <Inline class={weights?.[i]} data-slot="items-row">
             {word}
           </Inline>
           {" "}

@@ -32,11 +32,11 @@ export function ShellTopbar({
     <Block
       tag="header"
       className="flex h-16 shrink-0 items-center gap-6 border-b border-border bg-background px-6"
-      data-testid="topbar"
       aria-label={landmarkLabel}
+      data-slot="topbar"
     >
       {((brand as string) === "show") ? (
-        <Group gap="2" align="center" className="shrink-0" data-testid="brand">
+        <Group gap="2" align="center" className="shrink-0" data-slot="brand">
           <LucideIcon name="layers" size={24} />
           <Text size="base" weight="bold" className={(true ? "" : "sr-only")}>
             {nav.brand}
@@ -50,7 +50,7 @@ export function ShellTopbar({
         >
           <List className="m-0 flex list-none items-center gap-2 p-0">
             {(nav.links ?? []).map((l) => (
-              <ListItem key={l.id}>
+              <ListItem key={l.id} data-slot="links-row">
                 <MenuEntry
                   href={l.href}
                   className={cn(
@@ -90,7 +90,7 @@ export function ShellTopbar({
           ((links as string) === "show") && ((search as string) === "show") ? "shrink-0"
           : "ml-auto shrink-0"
         }
-        data-testid="user"
+        data-slot="user"
       >
         <LucideIcon name="bell" size={20} className="text-muted-foreground" />
         <MediaFrame alt={nav.userName} ratio="1/1" className="size-8 shrink-0 rounded-full" />

@@ -46,9 +46,9 @@ templ StoryTabs(p StoryTabsProps) {
 		}
 	} else if uiutils.Eq(vLayout, "years") {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-2 gap-2 sm:grid-cols-4", Attrs: uiutils.Attrs("data-testid", "story-tabs")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-2 gap-2 sm:grid-cols-4", Attrs: uiutils.Attrs("data-slot", "story-tabs")}}) {
 				for _, vS := range uiutils.L(vSteps) {
-					@compose.Button(compose.ButtonProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vS, "id"), vActive)), "default", "outline")), Size: "lg", ButtonProps: button.ButtonProps{Type: "button", Class: "h-auto flex-col items-start gap-0 py-2 text-start", Attrs: uiutils.Attrs("data-testid", "story-tab", "data-active", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vS, "id"), vActive)), "true", "false"))}}) {
+					@compose.Button(compose.ButtonProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vS, "id"), vActive)), "default", "outline")), Size: "lg", ButtonProps: button.ButtonProps{Type: "button", Class: "h-auto flex-col items-start gap-0 py-2 text-start", Attrs: uiutils.Attrs("data-active", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vS, "id"), vActive)), "true", "false"))}}) {
 						@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-sm font-semibold"}}) {
 							{ uiutils.Text(uiutils.Get(vS, "date")) }
 						}
@@ -73,11 +73,11 @@ templ storyTabsFill1(p StoryTabsProps, vTitle any, vSteps any, vActive any, vLab
 	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{}}) {
 		@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3"})
 		@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "between", BoxProps: box.BoxProps{}}) {
-			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Get(vLabels, "previous")), Attrs: uiutils.Attrs("data-testid", "story-arrow")}}) {
+			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Get(vLabels, "previous"))}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: "chevron-left", Size: 16})
 			}
 			@StoryDots(StoryDotsProps{Steps: vSteps, Active: vActive})
-			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Get(vLabels, "next")), Attrs: uiutils.Attrs("data-testid", "story-arrow")}}) {
+			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Get(vLabels, "next"))}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: "chevron-right", Size: 16})
 			}
 		}

@@ -21,7 +21,7 @@
           {capture $c_1}
             {=og_include('blocks/stat-tile.latte', ['p' => ['label' => og_get($v_m, ['label']), 'value' => og_get($v_m, ['value']), 'icon' => og_get($v_m, ['icon']), 'hint' => og_get($v_m, ['hint'])]])|noescape}
           {/capture}
-          {=og_include('compose/Box.latte', ['attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_1])|noescape}
+          {=og_include('compose/Box.latte', ['attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_1])|noescape}
         {else}
           {capture $c_6}
             {capture $c_3}
@@ -41,11 +41,11 @@
             {/capture}
             {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'text-muted-foreground', 'children' => (string) $c_5])|noescape}
           {/capture}
-          {=og_include('compose/Stack.latte', ['gap' => '0', 'class' => 'rounded bg-card p-4 inset-ring inset-ring-border', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_6])|noescape}
+          {=og_include('compose/Stack.latte', ['gap' => '0', 'class' => 'rounded bg-card p-4 inset-ring inset-ring-border', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_6])|noescape}
         {/if}
       {/foreach}
     {/capture}
-    {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_cols, '2')) ? '1-2' : '1-4')), 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_7])|noescape}
+    {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_cols, '2')) ? '1-2' : '1-4')), 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_7])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'tone' => $v_tone, 'density' => $v_density, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_8)])|noescape}

@@ -29,17 +29,17 @@
           {%- set c_3 -%}
             {{ og_text(v_cta) }}
           {%- endset -%}
-          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Href': og_url(og_s(v_ctaHref)), 'Attrs': og_attrs(['data-testid', 'empty-action'])}, 'children': c_3}) }}
+          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Href': og_url(og_s(v_ctaHref))}, 'children': c_3}) }}
         {%- endif %}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'mx-auto max-w-md text-center', 'Attrs': og_attrs(['data-testid', 'empty-visual'])}, 'children': c_4}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'mx-auto max-w-md text-center', 'Attrs': og_attrs(['data-slot', 'empty-visual'])}, 'children': c_4}) }}
     {%- else %}
       {%- set f_5 -%}
         {%- if og_t(og_eq(v_actions, 'button')) %}
           {%- set c_6 -%}
             {{ og_text(v_cta) }}
           {%- endset -%}
-          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Href': og_url(og_s(v_ctaHref)), 'Attrs': og_attrs(['data-testid', 'empty-action'])}, 'children': c_6}) }}
+          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Href': og_url(og_s(v_ctaHref))}, 'children': c_6}) }}
         {%- endif %}
       {%- endset -%}
       {{ og_include('blocks/empty-state.html.j2', {'p': {'icon': v_icon, 'title': v_title, 'text': v_text, 'className': og_cnv([og_cnv(['mx-auto max-w-xl', ('bg-transparent inset-ring-0' if og_t(og_eq(v_layout, 'plain')) else ''), ('py-6' if og_t(og_eq(v_size, 'compact')) else '')])]), 'action': og_markup(f_5)}}) }}
@@ -47,4 +47,4 @@
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', ('py-4' if og_t(og_eq(v_size, 'compact')) else 'py-8')])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_7}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_title]), 'data-testid', 'empty'])}, 'children': c_8}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_title]), 'data-slot', 'empty'])}, 'children': c_8}) }}

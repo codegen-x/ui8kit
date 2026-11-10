@@ -35,8 +35,8 @@ templ SiteHeader(p SiteHeaderProps) {
 	{{ vCta := p.Cta }}
 	{{ vCtaHref := p.CtaHref }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "header", Class: uiutils.S(uiutils.Cnv("border-b border-border bg-background", uiutils.Cond(uiutils.T(uiutils.Eq(vPosition, "sticky")), "sticky top-0 z-40", ""))), Attrs: uiutils.Attrs("data-testid", "site-header", "data-layout", vLayout, "aria-label", vLandmarkLabel)}}) {
-		@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border", Attrs: uiutils.Attrs("data-testid", "skip-link")}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "header", Class: uiutils.S(uiutils.Cnv("border-b border-border bg-background", uiutils.Cond(uiutils.T(uiutils.Eq(vPosition, "sticky")), "sticky top-0 z-40", ""))), Attrs: uiutils.Attrs("data-layout", vLayout, "aria-label", vLandmarkLabel, "data-slot", "site-header")}}) {
+		@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border", Attrs: uiutils.Attrs("data-slot", "skip-link")}}) {
 			{ uiutils.Text(uiutils.Get(vLabels, "skip")) }
 		}
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", "flex flex-wrap gap-4 py-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stacked")), "flex-col items-center", "items-center justify-between"))), Attrs: uiutils.Attrs("data-slot", "container")}}) {
@@ -54,11 +54,11 @@ templ SiteHeader(p SiteHeaderProps) {
 				}
 			}
 			@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{}}) {
-				@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", ButtonProps: button.ButtonProps{Attrs: uiutils.Attrs("data-testid", "theme-toggle")}}) {
+				@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", ButtonProps: button.ButtonProps{}}) {
 					{ uiutils.Text(uiutils.Get(vLabels, "theme")) }
 				}
 				if uiutils.T(uiutils.And(uiutils.Eq(vActions, "cta"), vCta)) {
-					@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vCtaHref, false), Attrs: uiutils.Attrs("data-testid", "header-cta")}}) {
+					@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vCtaHref, false)}}) {
 						{ uiutils.Text(vCta) }
 					}
 				}

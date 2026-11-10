@@ -26,11 +26,11 @@
             {{ include('blocks/meter-row.html.twig', {'p': {'label': og_get(v_s, ['label']), 'value': og_get(v_s, ['value']), 'caption': og_tpl(v_percent, [og_get(v_s, ['value'])])}}, with_context = false) }}
           {%- endfor %}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': og_s((og_t(og_eq(v_size, 'compact')) ? '0' : '2')), 'align': 'stretch', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_1}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': og_s((og_t(og_eq(v_size, 'compact')) ? '0' : '2')), 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_1}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('blocks/panel.html.twig', {'p': {'title': v_title, 'description': v_text, 'id': v_id, 'className': og_cnv([(og_t(og_eq(v_tone, 'muted')) ? 'bg-muted' : '')])}, 'children': og_markup(c_2)}, with_context = false) }}
   {%- endset -%}
   {{ include('compose/Container.html.twig', {'class': 'mx-auto w-full max-w-6xl px-4 py-8', 'attrs': og_attrs(['data-slot', 'container']), 'children': c_3}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'section', 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : (og_t(og_and([v_title, v_id])) ? og_tpl('{0}-t', [v_id]) : null)), 'data-testid', 'panel-section', 'aria-label', v_landmarkLabel]), 'children': c_4}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'section', 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : (og_t(og_and([v_title, v_id])) ? og_tpl('{0}-t', [v_id]) : null)), 'aria-label', v_landmarkLabel, 'data-slot', 'panel-section']), 'children': c_4}, with_context = false) }}

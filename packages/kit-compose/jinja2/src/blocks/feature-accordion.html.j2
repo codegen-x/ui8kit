@@ -39,10 +39,10 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'pb-4 text-muted-foreground'}, 'children': c_4}) }}
         {%- endset -%}
-        {{ og_include('compose/disclosure.html.j2', {'p': {'Variant': 'item', 'Name': og_s((none if og_t(v_multiple) else og_tpl('{0}-accordion', [og_coalesce([v_id, 'accordion'])]))), 'Open': og_t(og_and([og_eq(v_expand, 'first'), og_eq(v_i, 0)])), 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_5}) }}
+        {{ og_include('compose/disclosure.html.j2', {'p': {'Variant': 'item', 'Name': og_s((none if og_t(v_multiple) else og_tpl('{0}-accordion', [og_coalesce([v_id, 'accordion'])]))), 'Open': og_t(og_and([og_eq(v_expand, 'first'), og_eq(v_i, 0)])), 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_5}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_6}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_6}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'layout': ('split' if og_t(og_eq(v_media, 'image')) else 'stack'), 'media': {'show': og_eq(v_media, 'image')}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_7)}, 'children': og_markup(c_8)}) }}

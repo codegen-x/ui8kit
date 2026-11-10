@@ -24,17 +24,17 @@
         {capture $c_1}
           {=og_include('blocks/product-card.latte', ['p' => ['product' => $v_p, 'labels' => $v_labels, 'badges' => $v_badges, 'layout' => (og_t(og_eq($v_layout, 'list')) ? 'horizontal' : 'vertical'), 'ratio' => $v_ratio, 'rating' => $v_rating, 'action' => $v_action, 'density' => (og_t(og_eq($v_density, 'compact')) ? 'compact' : 'default')]])|noescape}
         {/capture}
-        {=og_include('compose/Box.latte', ['class' => 'w-64 shrink-0 snap-start', 'children' => (string) $c_1])|noescape}
+        {=og_include('compose/Box.latte', ['class' => 'w-64 shrink-0 snap-start', 'attrs' => og_attrs(['data-slot', 'product']), 'children' => (string) $c_1])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Box.latte', ['class' => 'flex snap-x gap-4 overflow-x-auto pb-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_2])|noescape}
+    {=og_include('compose/Box.latte', ['class' => 'flex snap-x gap-4 overflow-x-auto pb-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_2])|noescape}
   {else}
     {capture $c_3}
       {foreach og_l($v_products) as $v_p}
         {=og_include('blocks/product-card.latte', ['p' => ['product' => $v_p, 'labels' => $v_labels, 'badges' => $v_badges, 'layout' => (og_t(og_eq($v_layout, 'list')) ? 'horizontal' : 'vertical'), 'ratio' => $v_ratio, 'rating' => $v_rating, 'action' => $v_action, 'density' => (og_t(og_eq($v_density, 'compact')) ? 'compact' : 'default')]])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_layout, 'list')) ? '1' : $v_cols)), 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_3])|noescape}
+    {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_layout, 'list')) ? '1' : $v_cols)), 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_3])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'tone' => $v_tone, 'density' => $v_density, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_4)])|noescape}

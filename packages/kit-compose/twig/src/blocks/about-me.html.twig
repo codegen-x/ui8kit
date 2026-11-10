@@ -33,10 +33,10 @@
             {%- endset -%}
             {{ include('compose/Text.html.twig', {'size': 'sm', 'weight': 'semibold', 'children': c_2}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/ListItem.html.twig', {'class': 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4', 'attrs': og_attrs(['data-testid', 'fact']), 'children': c_3}, with_context = false) }}
+          {{ include('compose/ListItem.html.twig', {'class': 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4', 'attrs': og_attrs(['data-slot', 'fact']), 'children': c_3}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/List.html.twig', {'tag': 'ul', 'class': 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'attrs': og_attrs(['data-testid', 'facts']), 'children': c_4}, with_context = false) }}
+      {{ include('compose/List.html.twig', {'tag': 'ul', 'class': 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'attrs': og_attrs(['data-slot', 'facts']), 'children': c_4}, with_context = false) }}
     {%- endif %}
   {%- elseif og_t(og_gt(og_len(v_skills), 0)) %}
     {%- set c_9 -%}
@@ -55,10 +55,10 @@
           {{ include('compose/Group.html.twig', {'gap': '4', 'justify': 'between', 'children': c_7}, with_context = false) }}
           {{ include('compose/Progress.html.twig', {'value': og_s(og_str(og_get(v_s, ['level']))), 'max': '100', 'attrs': og_attrs(['aria-label', og_get(v_s, ['label'])])}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '2', 'align': 'stretch', 'attrs': og_attrs(['data-testid', 'skill']), 'children': c_8}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '2', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'skill']), 'children': c_8}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-testid', 'skills']), 'children': c_9}, with_context = false) }}
+    {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'skills']), 'children': c_9}, with_context = false) }}
   {%- endif %}
   {{ include('blocks/action-group.html.twig', {'p': {'primary': og_get(v_actions, ['cta']), 'primaryHref': og_get(v_actions, ['href']), 'secondary': (og_t(og_eq(og_get(v_actions, ['mode']), 'two')) ? og_get(v_actions, ['secondary']) : null), 'secondaryHref': og_get(v_actions, ['secondaryHref'])}}, with_context = false) }}
 {%- endset -%}

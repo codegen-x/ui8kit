@@ -161,7 +161,10 @@
               ],
               "index": "i"
             }
-          ]
+          ],
+          "attrs": {
+            "data-slot": "nav-links"
+          }
         }
       ]
     }

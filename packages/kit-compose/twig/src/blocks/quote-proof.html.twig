@@ -15,4 +15,4 @@
   {%- endset -%}
   {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'text-muted-foreground', 'children': c_2}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'figure', 'class': og_s(og_cnv(['flex flex-col gap-2', (og_t(v_center) ? 'items-center text-center' : '')])), 'attrs': og_attrs(['data-testid', 'proof']), 'children': c_3}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'figure', 'class': og_s(og_cnv(['flex flex-col gap-2', (og_t(v_center) ? 'items-center text-center' : '')])), 'attrs': og_attrs(['data-slot', 'proof']), 'children': c_3}, with_context = false) }}

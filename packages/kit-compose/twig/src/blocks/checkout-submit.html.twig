@@ -18,10 +18,10 @@
   {%- set c_3 -%}
     {{ og_text(v_submit) }}
   {%- endset -%}
-  {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'lg', 'type': 'submit', 'attrs': og_attrs(['data-testid', 'submit']), 'children': c_3}, with_context = false) }}
+  {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'lg', 'type': 'submit', 'children': c_3}, with_context = false) }}
   {%- set c_4 -%}
     {{ og_text(v_legal) }}
   {%- endset -%}
   {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_4}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'start', 'children': c_5}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'start', 'attrs': og_attrs(['data-slot', 'checkout-submit']), 'children': c_5}, with_context = false) }}

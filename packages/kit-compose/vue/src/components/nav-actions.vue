@@ -37,7 +37,6 @@ const emit = defineEmits<{ theme: [] }>();
     size="sm"
     :href="urlOf(loginHref)"
     :class="(((tone as string) === 'inverse') ? 'text-background hover:bg-background/10' : '')"
-    data-testid="nav-login"
   >
     {{ login }}
   </Button>
@@ -45,11 +44,10 @@ const emit = defineEmits<{ theme: [] }>();
     :variant="(((tone as string) === 'inverse') ? 'secondary' : 'default')"
     size="sm"
     :href="urlOf(ctaHref)"
-    data-testid="header-cta"
   >
     {{ cta }}
   </Button>
-  <Button v-if="themeLabel" variant="outline" size="sm" data-testid="theme-toggle" @click="() => emit('theme')">
+  <Button v-if="themeLabel" variant="outline" size="sm" @click="() => emit('theme')">
     {{ themeLabel }}
   </Button>
 </template>

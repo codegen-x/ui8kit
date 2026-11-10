@@ -28,13 +28,13 @@ templ OptionChips(p OptionChipsProps) {
 	{{ vOptions := p.Options }}
 	{{ vExtra := uiutils.Def(p.Extra, "none") }}
 	{{ vLayout := uiutils.Def(p.Layout, "wrap") }}
-	@compose.Fieldset(compose.FieldsetProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-2", Attrs: uiutils.Attrs("role", "radiogroup", "aria-labelledby", uiutils.Tpl("{0}-legend", vName), "data-testid", "option-group")}}) {
+	@compose.Fieldset(compose.FieldsetProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-2", Attrs: uiutils.Attrs("role", "radiogroup", "aria-labelledby", uiutils.Tpl("{0}-legend", vName), "data-slot", "option-group")}}) {
 		@compose.Legend(compose.LegendProps{Size: "sm", TextProps: text.TextProps{Class: "mb-2", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-legend", vName))}}) {
 			{ uiutils.Text(vLegend) }
 		}
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "column")), "flex flex-col gap-2", "flex flex-wrap gap-2"))}}) {
 			for vI, vO := range uiutils.L(vOptions) {
-				@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{Class: uiutils.S(uiutils.Cnv("flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "column")), "justify-between", ""))), Attrs: uiutils.Attrs("data-testid", "option")}}) {
+				@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{Class: uiutils.S(uiutils.Cnv("flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "column")), "justify-between", ""))), Attrs: uiutils.Attrs("data-slot", "option")}}) {
 					@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex items-center gap-2"}}) {
 						@compose.Radio(compose.RadioProps{RadioProps: radio.RadioProps{Name: uiutils.S(vName), Value: uiutils.SP(uiutils.Get(vO, "id")), Checked: uiutils.T(uiutils.Eq(float64(vI), float64(0)))}})
 						@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {

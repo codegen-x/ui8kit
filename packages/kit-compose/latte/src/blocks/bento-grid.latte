@@ -35,10 +35,10 @@
           {/capture}
           {=og_include('compose/CardContent.latte', ['class' => 'flex h-full flex-col gap-4', 'children' => (string) $c_3])|noescape}
         {/capture}
-        {=og_include('compose/Card.latte', ['variant' => 'default', 'class' => og_s(og_cnv(['h-full overflow-hidden', (og_t(og_eq($v_density, 'compact')) ? 'gap-4 p-4' : ''), (og_t(og_eq($v_layout, 'bento')) ? og_at($k_SPAN, og_get($v_tile, ['size'])) : '')])), 'attrs' => og_attrs(['data-testid', 'item', 'data-size', (og_t(og_eq($v_layout, 'bento')) ? og_get($v_tile, ['size']) : 'even')]), 'children' => (string) $c_4])|noescape}
+        {=og_include('compose/Card.latte', ['variant' => 'default', 'class' => og_s(og_cnv(['h-full overflow-hidden', (og_t(og_eq($v_density, 'compact')) ? 'gap-4 p-4' : ''), (og_t(og_eq($v_layout, 'bento')) ? og_at($k_SPAN, og_get($v_tile, ['size'])) : '')])), 'attrs' => og_attrs(['data-size', (og_t(og_eq($v_layout, 'bento')) ? og_get($v_tile, ['size']) : 'even')]), 'children' => (string) $c_4])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Grid.latte', ['cols' => '1-4', 'class' => 'auto-rows-fr gap-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_5])|noescape}
+    {=og_include('compose/Grid.latte', ['cols' => '1-4', 'class' => 'auto-rows-fr gap-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_5])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'tone' => $v_tone, 'density' => $v_density, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_6)])|noescape}

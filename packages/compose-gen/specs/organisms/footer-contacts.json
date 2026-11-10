@@ -57,7 +57,7 @@
                     "Align": "center"
                   },
                   "attrs": {
-                    "data-testid": "footer-contact"
+                    "data-slot": "footer-contact"
                   },
                   "children": [
                     {
@@ -117,7 +117,10 @@
                 }
               ]
             }
-          ]
+          ],
+          "attrs": {
+            "data-slot": "footer-contacts"
+          }
         }
       ]
     }

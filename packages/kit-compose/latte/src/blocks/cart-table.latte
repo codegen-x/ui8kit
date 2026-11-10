@@ -81,18 +81,18 @@
             {capture $c_18}
               {=og_include('icons/LucideIcon.latte', ['name' => 'x', 'size' => 16])|noescape}
             {/capture}
-            {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'layout' => 'icon', 'ariaLabel' => og_s(og_get($v_labels, ['remove'])), 'attrs' => og_attrs(['data-testid', 'remove']), 'children' => (string) $c_18])|noescape}
+            {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'layout' => 'icon', 'ariaLabel' => og_s(og_get($v_labels, ['remove'])), 'children' => (string) $c_18])|noescape}
           {/capture}
           {=og_include('compose/TableCell.latte', ['class' => 'text-right', 'children' => (string) $c_19])|noescape}
         {/capture}
-        {=og_include('compose/TableRow.latte', ['class' => 'border-t border-border', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_20])|noescape}
+        {=og_include('compose/TableRow.latte', ['class' => 'border-t border-border', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_20])|noescape}
       {/foreach}
     {/capture}
     {=og_include('compose/TableBody.latte', ['children' => (string) $c_21])|noescape}
   {/capture}
-  {=og_include('compose/Table.latte', ['class' => 'w-full text-left text-sm', 'attrs' => og_attrs(['data-testid', 'cart-table']), 'children' => (string) $c_22])|noescape}
+  {=og_include('compose/Table.latte', ['class' => 'w-full text-left text-sm', 'attrs' => og_attrs(['data-slot', 'cart-table']), 'children' => (string) $c_22])|noescape}
 {/capture}
-{=og_include('compose/Box.latte', ['class' => 'w-full overflow-x-auto', 'children' => (string) $c_23])|noescape}
+{=og_include('compose/Box.latte', ['class' => 'w-full overflow-x-auto', 'attrs' => og_attrs(['data-slot', 'cart-table-root']), 'children' => (string) $c_23])|noescape}
 {if og_t(og_gt(og_len($v_lines), 0))}
   {capture $c_26}
     {capture $c_24}
@@ -100,11 +100,11 @@
       {=og_text(' ')}
       {=og_text(og_money(og_sum_by($v_lines, 'price', 'qty'), og_first_of($v_lines, 'currency')))}
     {/capture}
-    {=og_include('compose/Text.latte', ['size' => 'base', 'weight' => 'bold', 'attrs' => og_attrs(['data-testid', 'subtotal']), 'children' => (string) $c_24])|noescape}
+    {=og_include('compose/Text.latte', ['size' => 'base', 'weight' => 'bold', 'attrs' => og_attrs(['data-slot', 'subtotal']), 'children' => (string) $c_24])|noescape}
     {capture $c_25}
       {=og_text(og_get($v_labels, ['checkout']))}
     {/capture}
-    {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'default', 'attrs' => og_attrs(['data-testid', 'checkout']), 'children' => (string) $c_25])|noescape}
+    {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'default', 'children' => (string) $c_25])|noescape}
   {/capture}
-  {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => 'between', 'class' => 'mt-4 flex-wrap border-t border-border pt-4', 'attrs' => og_attrs(['data-testid', 'cart-footer']), 'children' => (string) $c_26])|noescape}
+  {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => 'between', 'class' => 'mt-4 flex-wrap border-t border-border pt-4', 'attrs' => og_attrs(['data-slot', 'cart-footer']), 'children' => (string) $c_26])|noescape}
 {/if}

@@ -31,7 +31,7 @@ const { name, legend, options } = defineProps<MeatCardsProps>();
     class="flex flex-col gap-2"
     role="radiogroup"
     :aria-labelledby="tpl('{0}-legend', name)"
-    data-testid="meat"
+    data-slot="meat"
   >
     <Legend size="sm" class="mb-2" :id="tpl('{0}-legend', name)">
       {{ legend }}
@@ -40,7 +40,7 @@ const { name, legend, options } = defineProps<MeatCardsProps>();
       <Box v-for="(o, i) in options" :key="o.id"
         :class="'flex flex-col gap-2 rounded p-2 text-sm inset-ring inset-ring-border has-checked:bg-muted ' +
           'has-checked:inset-ring-foreground'"
-        data-testid="option"
+        data-slot="option"
       >
         <MediaFrame :alt="o.name" ratio="4/3" />
         <Label class="flex items-center gap-2 font-medium">

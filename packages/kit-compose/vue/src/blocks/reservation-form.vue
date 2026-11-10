@@ -64,25 +64,25 @@ const {
     :landmarkLabel="landmarkLabel"
   >
     <Grid :cols="(((layout as string) === 'split') ? '1-2' : '1')" class="items-start gap-8">
-      <Form method="dialog" class="flex w-full flex-col gap-4" data-testid="reservation-form">
+      <Form method="dialog" class="flex w-full flex-col gap-4" data-slot="reservation-form">
         <Field :label="labels.name" :htmlFor="tpl('{0}-name', id)">
-          <Input type="text" name="name" autocomplete="name" :id="tpl('{0}-name', id)" data-testid="field" />
+          <Input type="text" name="name" autocomplete="name" :id="tpl('{0}-name', id)" data-slot="field" />
         </Field>
         <Field :label="labels.phone" :htmlFor="tpl('{0}-phone', id)">
-          <Input type="tel" name="phone" autocomplete="tel" :id="tpl('{0}-phone', id)" data-testid="field" />
+          <Input type="tel" name="phone" autocomplete="tel" :id="tpl('{0}-phone', id)" data-slot="field" />
         </Field>
         <Field v-if="((fields as string) === 'full')" :label="labels.email" :htmlFor="tpl('{0}-email', id)">
-          <Input type="email" name="email" autocomplete="email" :id="tpl('{0}-email', id)" data-testid="field" />
+          <Input type="email" name="email" autocomplete="email" :id="tpl('{0}-email', id)" data-slot="field" />
         </Field>
         <Group gap="4" class="flex-wrap">
           <Box class="min-w-0 flex-1">
             <Field :label="labels.date" :htmlFor="tpl('{0}-date', id)">
-              <Input type="date" name="date" :id="tpl('{0}-date', id)" data-testid="field" />
+              <Input type="date" name="date" :id="tpl('{0}-date', id)" data-slot="field" />
             </Field>
           </Box>
           <Box class="min-w-0 flex-1">
             <Field :label="labels.time" :htmlFor="tpl('{0}-time', id)">
-              <Input type="time" name="time" :id="tpl('{0}-time', id)" data-testid="field" />
+              <Input type="time" name="time" :id="tpl('{0}-time', id)" data-slot="field" />
             </Field>
           </Box>
         </Group>
@@ -100,7 +100,7 @@ const {
           />
         </Stack>
         <Field v-if="((fields as string) === 'full')" :label="labels.notes" :htmlFor="tpl('{0}-notes', id)">
-          <Textarea :rows="4" name="notes" :id="tpl('{0}-notes', id)" data-testid="field" />
+          <Textarea :rows="4" name="notes" :id="tpl('{0}-notes', id)" data-slot="field" />
         </Field>
         <Group v-if="((terms as string) === 'show')" gap="2" align="center" :class="cn('w-fit', '')">
           <Checkbox name="consent" :id="tpl('{0}-consent', id)" />
@@ -108,16 +108,12 @@ const {
             {{ labels.consent }}
           </Label>
         </Group>
-        <Button variant="default" size="default" type="submit" class="w-fit" data-testid="submit">
+        <Button variant="default" size="default" type="submit" class="w-fit">
           {{ labels.submit }}
         </Button>
       </Form>
-      <Stack
-        v-if="(((layout as string) === 'split') && ((details?.length ?? 0) > 0))"
-        gap="4"
-        data-testid="details"
-      >
-        <Group v-for="d in details" :key="d.id" gap="4" align="start" data-testid="detail">
+      <Stack v-if="(((layout as string) === 'split') && ((details?.length ?? 0) > 0))" gap="4" data-slot="details">
+        <Group v-for="d in details" :key="d.id" gap="4" align="start" data-slot="detail">
           <LucideIcon :name="d.icon" :size="20" />
           <Stack gap="0">
             <Text size="base" weight="semibold">

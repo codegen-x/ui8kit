@@ -58,7 +58,7 @@
       {%- endset -%}
       {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'secondary', 'Size': 'default', 'Class': 'w-fit'}, 'children': c_13}) }}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_14}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_14}) }}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-4', 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_15}) }}
+{{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-4', 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_15}) }}

@@ -15,7 +15,7 @@
   {%- set c_1 -%}
     {{ og_text(og_get(v_heading, ['badge'])) }}
   {%- endset -%}
-  {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'outline', 'Size': 'lg', 'Class': og_s(('mx-auto w-fit' if og_t(v_center) else 'w-fit')), 'Attrs': og_attrs(['data-testid', 'section-badge'])}, 'children': c_1}) }}
+  {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'outline', 'Size': 'lg', 'Class': og_s(('mx-auto w-fit' if og_t(v_center) else 'w-fit'))}, 'children': c_1}) }}
 {%- endif %}
 {%- if og_t(og_and([not (og_eq(v_title, '')), v_hasAction])) %}
   {%- set c_4 -%}
@@ -26,28 +26,28 @@
     {%- set c_3 -%}
       {{ og_text(og_get(v_action, ['label'])) }}
     {%- endset -%}
-    {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_action, ['href']))), 'Variant': 'default', 'Class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'Attrs': og_attrs(['data-testid', 'section-action'])}, 'children': c_3}) }}
+    {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_action, ['href']))), 'Variant': 'default', 'Class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'Attrs': og_attrs(['data-slot', 'section-action'])}, 'children': c_3}) }}
   {%- endset -%}
-  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Class': 'w-full flex-wrap'}, 'children': c_4}) }}
+  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Class': 'w-full flex-wrap', 'Attrs': og_attrs(['data-slot', 'section-header'])}, 'children': c_4}) }}
 {%- endif %}
 {%- if og_t(og_and([not (og_eq(v_title, '')), not (og_t(v_hasAction))])) %}
   {%- set c_5 -%}
     {{ og_text(v_title) }}
   {%- endset -%}
-  {{ og_include('compose/title.html.j2', {'p': {'As': og_i(v_level), 'Size': og_s(('5xl' if og_t(og_eq(v_level, 1)) else 'xl')), 'Weight': 'semibold', 'Class': og_s(('text-6xl tracking-tight md:text-8xl' if og_t(og_eq(v_scale, 'display')) else ('leading-tight' if og_t(og_eq(v_level, 1)) else 'leading-7'))), 'Attrs': og_attrs(['id', v_titleId])}, 'children': c_5}) }}
+  {{ og_include('compose/title.html.j2', {'p': {'As': og_i(v_level), 'Size': og_s(('5xl' if og_t(og_eq(v_level, 1)) else 'xl')), 'Weight': 'semibold', 'Class': og_s(('text-6xl tracking-tight md:text-8xl' if og_t(og_eq(v_scale, 'display')) else ('leading-tight' if og_t(og_eq(v_level, 1)) else 'leading-7'))), 'Attrs': og_attrs(['id', v_titleId, 'data-slot', 'section-header'])}, 'children': c_5}) }}
 {%- endif %}
 {%- if og_t(og_and([og_eq(v_title, ''), v_hasAction])) %}
   {%- set c_7 -%}
     {%- set c_6 -%}
       {{ og_text(og_get(v_action, ['label'])) }}
     {%- endset -%}
-    {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_action, ['href']))), 'Variant': 'default', 'Class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'Attrs': og_attrs(['data-testid', 'section-action'])}, 'children': c_6}) }}
+    {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_action, ['href']))), 'Variant': 'default', 'Class': og_s(og_cnv([og_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'Attrs': og_attrs(['data-slot', 'section-action'])}, 'children': c_6}) }}
   {%- endset -%}
-  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'end', 'Class': 'w-full'}, 'children': c_7}) }}
+  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'end', 'Class': 'w-full', 'Attrs': og_attrs(['data-slot', 'section-header'])}, 'children': c_7}) }}
 {%- endif %}
 {%- if og_t(v_lead) %}
   {%- set c_8 -%}
     {{ og_text(v_lead) }}
   {%- endset -%}
-  {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Class': og_s(og_cnv(['max-w-2xl text-muted-foreground', ('mx-auto' if og_t(v_center) else '')]))}, 'children': c_8}) }}
+  {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Class': og_s(og_cnv(['max-w-2xl text-muted-foreground', ('mx-auto' if og_t(v_center) else '')])), 'Attrs': og_attrs(['data-slot', 'section-header'])}, 'children': c_8}) }}
 {%- endif %}

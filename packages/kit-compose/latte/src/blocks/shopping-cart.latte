@@ -47,9 +47,9 @@
           {capture $c_6}
             {=og_include('icons/LucideIcon.latte', ['name' => 'trash', 'size' => 16])|noescape}
           {/capture}
-          {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'layout' => 'icon', 'ariaLabel' => og_s(og_get($v_labels, ['remove'])), 'attrs' => og_attrs(['data-testid', 'remove']), 'children' => (string) $c_6])|noescape}
+          {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'layout' => 'icon', 'ariaLabel' => og_s(og_get($v_labels, ['remove'])), 'children' => (string) $c_6])|noescape}
         {/capture}
-        {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'rounded bg-card inset-ring inset-ring-border flex-wrap p-4', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_7])|noescape}
+        {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'rounded bg-card inset-ring inset-ring-border flex-wrap p-4', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_7])|noescape}
       {/foreach}
       {capture $c_10}
         {capture $c_8}
@@ -64,11 +64,11 @@
       {/capture}
       {=og_include('compose/Group.latte', ['gap' => '4', 'justify' => 'between', 'class' => 'flex-wrap', 'children' => (string) $c_10])|noescape}
     {/capture}
-    {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'class' => og_s((og_t(og_eq($v_layout, 'split')) ? 'lg:col-span-2' : '')), 'attrs' => og_attrs(['data-testid', 'lines']), 'children' => (string) $c_11])|noescape}
+    {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'class' => og_s((og_t(og_eq($v_layout, 'split')) ? 'lg:col-span-2' : '')), 'attrs' => og_attrs(['data-slot', 'lines']), 'children' => (string) $c_11])|noescape}
     {capture $c_12}
       {=og_include('blocks/cart-summary-card.latte', ['p' => ['field' => og_tpl('{0}-promo', [$v_id]), 'lines' => $v_lines, 'rows' => $v_rows, 'promos' => $v_promos, 'labels' => $v_totals, 'promo' => $v_promo, 'progress' => $v_progress]])|noescape}
     {/capture}
-    {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'split')) ? 'lg:sticky lg:top-8' : '')), 'attrs' => og_attrs(['data-testid', 'aside']), 'children' => (string) $c_12])|noescape}
+    {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'split')) ? 'lg:sticky lg:top-8' : '')), 'attrs' => og_attrs(['data-slot', 'aside']), 'children' => (string) $c_12])|noescape}
   {/capture}
   {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'split')) ? 'grid grid-cols-1 items-start gap-8 lg:grid-cols-3' : 'grid grid-cols-1 gap-8')), 'children' => (string) $c_13])|noescape}
 {/capture}

@@ -53,7 +53,7 @@ const wallCols = computed(() => fitCols(askedCols.value, (features?.length ?? 0)
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((features?.length ?? 0) === 0)" icon="layout-grid" :title="empty" />
-    <Grid v-else :cols="wallCols" class="gap-4" data-testid="items">
+    <Grid v-else :cols="wallCols" class="gap-4" data-slot="items">
       <Box v-for="f in features" :key="f.id"
         :class="cn(
           'flex items-center gap-2',
@@ -63,7 +63,7 @@ const wallCols = computed(() => fitCols(askedCols.value, (features?.length ?? 0)
             : 'px-4 py-2'
           )
         )"
-        data-testid="item"
+        data-slot="item"
       >
         <LucideIcon :name="f.icon" :size="(((item as string) === 'tile') ? 24 : 16)" />
         <Text size="sm" weight="semibold">

@@ -30,17 +30,17 @@
             {%- endset -%}
             {{ include('compose/Label.html.twig', {'htmlFor': og_s(og_tpl('{0}-email', [v_id])), 'class': 'sr-only', 'children': c_2}, with_context = false) }}
             {%- set c_4 -%}
-              {{ include('compose/Input.html.twig', {'type': 'email', 'name': 'email', 'class': 'min-w-0 flex-1', 'attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}, with_context = false) }}
+              {{ include('compose/Input.html.twig', {'type': 'email', 'name': 'email', 'class': 'min-w-0 flex-1', 'attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}, with_context = false) }}
               {%- set c_3 -%}
                 {{ og_text(og_get(v_signup, ['submit'])) }}
               {%- endset -%}
-              {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'submit', 'attrs': og_attrs(['data-testid', 'submit']), 'children': c_3}, with_context = false) }}
+              {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'submit', 'children': c_3}, with_context = false) }}
             {%- endset -%}
             {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'start', 'class': 'w-full flex-wrap', 'children': c_4}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Form.html.twig', {'method': 'dialog', 'class': og_s(og_cnv(['w-full max-w-md', (og_t(false) ? 'mx-auto' : '')])), 'attrs': og_attrs(['data-testid', 'email-form']), 'children': c_5}, with_context = false) }}
+          {{ include('compose/Form.html.twig', {'method': 'dialog', 'class': og_s(og_cnv(['w-full max-w-md', (og_t(false) ? 'mx-auto' : '')])), 'attrs': og_attrs(['data-slot', 'email-form']), 'children': c_5}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '4', 'class': 'max-w-md', 'attrs': og_attrs(['data-testid', 'signup']), 'children': c_6}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '4', 'class': 'max-w-md', 'attrs': og_attrs(['data-slot', 'signup']), 'children': c_6}, with_context = false) }}
       {%- endif %}
       {%- if og_t(og_eq(v_layout, 'columns')) %}
         {%- set c_11 -%}
@@ -100,5 +100,5 @@
     {%- endset -%}
     {{ include('compose/Container.html.twig', {'class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'flex flex-col gap-8', (og_t(og_eq(v_density, 'compact')) ? 'py-6' : 'py-12')])), 'attrs': og_attrs(['data-slot', 'container']), 'children': c_20}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Block.html.twig', {'tag': 'footer', 'class': 'mt-12 border-t border-border', 'attrs': og_attrs(['data-testid', 'site-footer', 'data-layout', v_layout, 'aria-label', v_landmarkLabel]), 'children': c_21}, with_context = false) }}
+  {{ include('compose/Block.html.twig', {'tag': 'footer', 'class': 'mt-12 border-t border-border', 'attrs': og_attrs(['data-layout', v_layout, 'aria-label', v_landmarkLabel, 'data-slot', 'site-footer']), 'children': c_21}, with_context = false) }}
 {%- endif %}

@@ -143,7 +143,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "items"
+                    "data-slot": "items"
                   },
                   "children": [
                     {
@@ -176,7 +176,7 @@
                             }
                           },
                           "attrs": {
-                            "data-testid": "item"
+                            "data-slot": "item"
                           },
                           "children": [
                             {
@@ -321,7 +321,7 @@
                                         "Class": "grid grid-cols-1 gap-2 text-sm sm:grid-cols-2"
                                       },
                                       "attrs": {
-                                        "data-testid": "ingredients"
+                                        "data-slot": "ingredients"
                                       },
                                       "children": [
                                         {
@@ -357,7 +357,10 @@
                                                     }
                                                   ]
                                                 }
-                                              ]
+                                              ],
+                                              "attrs": {
+                                                "data-slot": "items-row"
+                                              }
                                             }
                                           ]
                                         }
@@ -435,9 +438,6 @@
                                             }
                                           ]
                                         }
-                                      },
-                                      "attrs": {
-                                        "data-testid": "add"
                                       },
                                       "children": [
                                         {

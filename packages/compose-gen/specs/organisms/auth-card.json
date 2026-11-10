@@ -174,13 +174,13 @@
             }
           ]
         },
-        "data-testid": "auth-card",
         "data-mode": {
           "$": "mode"
         },
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "auth-card"
       },
       "children": [
         {
@@ -282,7 +282,7 @@
                 "Gap": "4"
               },
               "attrs": {
-                "data-testid": "social"
+                "data-slot": "social"
               },
               "children": [
                 {
@@ -436,7 +436,7 @@
                 "Gap": "4"
               },
               "attrs": {
-                "data-testid": "social"
+                "data-slot": "social"
               },
               "children": [
                 {
@@ -548,7 +548,7 @@
                 "Variant": "default"
               },
               "attrs": {
-                "data-testid": "switch"
+                "data-slot": "switch"
               },
               "children": [
                 {

@@ -24,7 +24,7 @@
       {/capture}
       {=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['w-full min-w-0', (og_t(og_eq($v_mediaSide, 'start')) ? 'md:order-first' : (og_t(og_eq($v_mediaSide, 'alternate')) ? 'md:group-even:order-first' : ''))])), 'children' => (string) $c_4])|noescape}
     {/capture}
-    {=og_include('compose/Grid.latte', ['cols' => '1-2', 'class' => 'group items-center gap-8', 'attrs' => og_attrs(['data-testid', 'feature-card']), 'children' => (string) $c_5])|noescape}
+    {=og_include('compose/Grid.latte', ['cols' => '1-2', 'class' => 'group items-center gap-8', 'attrs' => og_attrs(['data-slot', 'feature-card']), 'children' => (string) $c_5])|noescape}
   {/foreach}
 {/capture}
-{=og_include('compose/Stack.latte', ['gap' => '8', 'align' => 'stretch', 'attrs' => og_attrs(['data-testid', 'feature-rows']), 'children' => (string) $c_6])|noescape}
+{=og_include('compose/Stack.latte', ['gap' => '8', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'feature-rows']), 'children' => (string) $c_6])|noescape}

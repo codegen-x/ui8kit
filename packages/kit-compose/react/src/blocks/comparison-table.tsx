@@ -41,7 +41,7 @@ export function ComparisonTable({
         <EmptyState icon="table" title={empty} />
       ) : (
         <Box className="relative w-full overflow-x-auto">
-          <Table className="w-full text-left text-sm" data-testid="compare">
+          <Table className="w-full text-left text-sm" data-slot="compare">
             <TableCaption className="sr-only">
               {labels.caption}
             </TableCaption>
@@ -67,7 +67,7 @@ export function ComparisonTable({
             </TableHead>
             <TableBody>
               {(rows ?? []).map((row) => (
-                <TableRow key={row.id} className="border-t border-border" data-testid="item">
+                <TableRow key={row.id} className="border-t border-border" data-slot="item">
                   <TableHeadCell
                     scope="row"
                     className={cn("font-medium", (((density as string) === "compact") ? "py-2" : "py-4"))}

@@ -25,7 +25,7 @@
       {/capture}
       {=og_include('compose/Inline.latte', ['class' => 'text-muted-foreground', 'children' => (string) $c_4])|noescape}
     {/capture}
-    {=og_include('compose/Label.latte', ['class' => 'flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted', 'children' => (string) $c_5])|noescape}
+    {=og_include('compose/Label.latte', ['class' => 'flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted', 'attrs' => og_attrs(['data-slot', 'dish-option']), 'children' => (string) $c_5])|noescape}
   {/foreach}
 {/capture}
-{=og_include('compose/Fieldset.latte', ['class' => 'flex flex-col gap-2', 'attrs' => og_attrs(['data-testid', 'sides']), 'children' => (string) $c_6])|noescape}
+{=og_include('compose/Fieldset.latte', ['class' => 'flex flex-col gap-2', 'attrs' => og_attrs(['data-slot', 'sides']), 'children' => (string) $c_6])|noescape}

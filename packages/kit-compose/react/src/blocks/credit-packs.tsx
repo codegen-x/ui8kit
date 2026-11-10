@@ -55,7 +55,7 @@ export function CreditPacks({
             : fitCols((((cols as string) === "2") ? "1-2" : "1-4"), (packs?.length ?? 0))
           }
           className="gap-4"
-          data-testid="items"
+          data-slot="items"
         >
           {(packs ?? []).map((pack) => (
             <Card key={pack.id}
@@ -68,7 +68,6 @@ export function CreditPacks({
                   : ""
                 )
               )}
-              data-testid="item"
               data-badge={pack.badge}
             >
               <CardContent
@@ -81,7 +80,7 @@ export function CreditPacks({
                   {(pack.badge || (((item as string) !== "row") && (packs.filter((i) => i["badge"]).length > 0))) ? (
                     <Box className="flex min-h-6 items-center" data-slot="badge-slot">
                       {pack.badge ? (
-                        <Badge variant="default" size="default" className="w-fit shrink-0" data-testid="badge">
+                        <Badge variant="default" size="default" className="w-fit shrink-0">
                           {at(badges, pack.badge)}
                         </Badge>
                       ) : null}
@@ -101,7 +100,6 @@ export function CreditPacks({
                   size="sm"
                   type="button"
                   className={cn("w-fit shrink-0", (((item as string) === "row") ? "" : "mt-auto"))}
-                  data-testid="buy"
                 >
                   {buy}
                 </Button>

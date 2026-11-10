@@ -55,9 +55,9 @@ const emit = defineEmits<{ add: [id: string] }>();
     <Box
       v-else-if="((layout as string) === 'rail')"
       class="flex snap-x gap-4 overflow-x-auto pb-4"
-      data-testid="items"
+      data-slot="items"
     >
-      <Box v-for="p in products" :key="p.id" class="w-64 shrink-0 snap-start">
+      <Box v-for="p in products" :key="p.id" class="w-64 shrink-0 snap-start" data-slot="product">
         <ProductCard
           :product="p"
           :labels="labels"
@@ -71,7 +71,7 @@ const emit = defineEmits<{ add: [id: string] }>();
         />
       </Box>
     </Box>
-    <Grid v-else :cols="(((layout as string) === 'list') ? '1' : cols)" class="gap-4" data-testid="items">
+    <Grid v-else :cols="(((layout as string) === 'list') ? '1' : cols)" class="gap-4" data-slot="items">
       <ProductCard v-for="p in products" :key="p.id"
         :product="p"
         :labels="labels"

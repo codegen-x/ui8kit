@@ -49,7 +49,7 @@
       {/capture}
       {=og_include('compose/Button.latte', ['variant' => 'outline', 'size' => 'default', 'type' => 'button', 'class' => 'w-full', 'children' => (string) $c_7])|noescape}
     {/capture}
-    {=og_include('compose/Stack.latte', ['gap' => '4', 'attrs' => og_attrs(['data-testid', 'social']), 'children' => (string) $c_8])|noescape}
+    {=og_include('compose/Stack.latte', ['gap' => '4', 'attrs' => og_attrs(['data-slot', 'social']), 'children' => (string) $c_8])|noescape}
   {/if}
   {=og_include('blocks/auth-form.latte', ['p' => ['id' => $v_id, 'mode' => $v_mode, 'labels' => $v_labels, 'submit' => $v_submit]])|noescape}
   {if og_t(og_and([!(og_eq($v_social, 'first')), !(og_eq($v_social, 'none')), !(og_eq($v_mode, 'reset')), !(og_eq($v_mode, 'magic'))]))}
@@ -74,7 +74,7 @@
       {/capture}
       {=og_include('compose/Button.latte', ['variant' => 'outline', 'size' => 'default', 'type' => 'button', 'class' => 'w-full', 'children' => (string) $c_12])|noescape}
     {/capture}
-    {=og_include('compose/Stack.latte', ['gap' => '4', 'attrs' => og_attrs(['data-testid', 'social']), 'children' => (string) $c_13])|noescape}
+    {=og_include('compose/Stack.latte', ['gap' => '4', 'attrs' => og_attrs(['data-slot', 'social']), 'children' => (string) $c_13])|noescape}
   {/if}
   {capture $c_15}
     {=og_text($v_switchText)}
@@ -82,8 +82,8 @@
     {capture $c_14}
       {=og_text($v_switchLink)}
     {/capture}
-    {=og_include('compose/Link.latte', ['href' => og_url(og_s($v_switchHref)), 'variant' => 'default', 'attrs' => og_attrs(['data-testid', 'switch']), 'children' => (string) $c_14])|noescape}
+    {=og_include('compose/Link.latte', ['href' => og_url(og_s($v_switchHref)), 'variant' => 'default', 'attrs' => og_attrs(['data-slot', 'switch']), 'children' => (string) $c_14])|noescape}
   {/capture}
   {=og_include('compose/Text.latte', ['size' => 'sm', 'class' => 'text-center text-muted-foreground', 'children' => (string) $c_15])|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'section', 'class' => og_s(og_cnv(['flex w-full flex-col gap-6', (og_t(og_eq($v_layout, 'card')) ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')])), 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : og_tpl('{0}-title', [$v_id])), 'data-testid', 'auth-card', 'data-mode', $v_mode, 'aria-label', $v_landmarkLabel]), 'children' => (string) $c_16])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'section', 'class' => og_s(og_cnv(['flex w-full flex-col gap-6', (og_t(og_eq($v_layout, 'card')) ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')])), 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : og_tpl('{0}-title', [$v_id])), 'data-mode', $v_mode, 'aria-label', $v_landmarkLabel, 'data-slot', 'auth-card']), 'children' => (string) $c_16])|noescape}

@@ -57,7 +57,7 @@
         }
       },
       "attrs": {
-        "data-testid": "step"
+        "data-slot": "step"
       },
       "children": [
         {

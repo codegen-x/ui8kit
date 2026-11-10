@@ -30,7 +30,7 @@ templ Timeline(p TimelineProps) {
 	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("min-w-0", p.Class)), Attrs: uiutils.Attrs("data-slot", "timeline")}}) {
 		@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col p-0"}}) {
 			for vI, vItem := range uiutils.L(vItems) {
-				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "relative flex min-w-0 gap-4 pb-4 last:pb-0", Attrs: uiutils.Attrs("data-event", uiutils.Get(vItem, "id"))}}) {
+				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "relative flex min-w-0 gap-4 pb-4 last:pb-0", Attrs: uiutils.Attrs("data-event", uiutils.Get(vItem, "id"), "data-slot", "timeline-item")}}) {
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative flex w-2 shrink-0 justify-center"}}) {
 						if uiutils.T(uiutils.Lt(float64(vI), uiutils.Sub(uiutils.Len(vItems), float64(1)))) {
 							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "absolute top-4 -bottom-0 w-px bg-border"}})

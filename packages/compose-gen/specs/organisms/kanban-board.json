@@ -188,7 +188,7 @@
                     "Class": "items-start gap-4"
                   },
                   "attrs": {
-                    "data-testid": "lanes"
+                    "data-slot": "lanes"
                   },
                   "children": [
                     {
@@ -208,7 +208,7 @@
                             "Class": "rounded bg-muted p-4"
                           },
                           "attrs": {
-                            "data-testid": "lane"
+                            "data-slot": "lane"
                           },
                           "children": [
                             {
@@ -323,7 +323,7 @@
                                         }
                                       },
                                       "attrs": {
-                                        "data-testid": "item"
+                                        "data-slot": "item"
                                       },
                                       "children": [
                                         {

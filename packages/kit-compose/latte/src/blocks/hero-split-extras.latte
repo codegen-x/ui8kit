@@ -19,11 +19,11 @@
           {/capture}
           {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'text-muted-foreground', 'children' => (string) $c_2])|noescape}
         {/capture}
-        {=og_include('compose/Stack.latte', ['gap' => '0', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-testid', 'hero-stat']), 'children' => (string) $c_3])|noescape}
+        {=og_include('compose/Stack.latte', ['gap' => '0', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-slot', 'hero-stat']), 'children' => (string) $c_3])|noescape}
       {/if}
     {/foreach}
   {/capture}
-  {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-3 gap-4', 'attrs' => og_attrs(['data-testid', 'hero-stats']), 'children' => (string) $c_4])|noescape}
+  {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-3 gap-4', 'attrs' => og_attrs(['data-slot', 'hero-stats']), 'children' => (string) $c_4])|noescape}
 {/if}
 {if og_t(og_and([og_eq($v_extra, 'avatars'), og_gt(og_len(og_get($v_content, ['people'])), 0)]))}
   {capture $c_7}
@@ -41,7 +41,7 @@
     {/capture}
     {=og_include('compose/Text.latte', ['size' => 'sm', 'class' => 'text-muted-foreground', 'children' => (string) $c_6])|noescape}
   {/capture}
-  {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'flex-wrap', 'attrs' => og_attrs(['data-testid', 'hero-proof']), 'children' => (string) $c_7])|noescape}
+  {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'flex-wrap', 'attrs' => og_attrs(['data-slot', 'hero-proof']), 'children' => (string) $c_7])|noescape}
 {/if}
 {if og_t(og_and([og_eq($v_extra, 'minis'), og_gt(og_len(og_get($v_content, ['features'])), 0)]))}
   {capture $c_13}
@@ -65,11 +65,11 @@
           {/capture}
           {=og_include('compose/Stack.latte', ['gap' => '0', 'children' => (string) $c_11])|noescape}
         {/capture}
-        {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'start', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-testid', 'hero-mini']), 'children' => (string) $c_12])|noescape}
+        {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'start', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-slot', 'hero-mini']), 'children' => (string) $c_12])|noescape}
       {/if}
     {/foreach}
   {/capture}
-  {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'attrs' => og_attrs(['data-testid', 'hero-minis']), 'children' => (string) $c_13])|noescape}
+  {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'attrs' => og_attrs(['data-slot', 'hero-minis']), 'children' => (string) $c_13])|noescape}
 {/if}
 {if og_t(og_and([og_eq($v_extra, 'quote'), og_gt(og_len(og_get($v_content, ['people'])), 0)]))}
   {capture $c_24}
@@ -114,11 +114,11 @@
             {/capture}
             {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'text-muted-foreground', 'children' => (string) $c_21])|noescape}
           {/capture}
-          {=og_include('compose/Stack.latte', ['gap' => '0', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-testid', 'hero-stat']), 'children' => (string) $c_22])|noescape}
+          {=og_include('compose/Stack.latte', ['gap' => '0', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-slot', 'hero-stat']), 'children' => (string) $c_22])|noescape}
         {/if}
       {/foreach}
     {/capture}
-    {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-3 gap-4', 'attrs' => og_attrs(['data-testid', 'hero-stats']), 'children' => (string) $c_23])|noescape}
+    {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-3 gap-4', 'attrs' => og_attrs(['data-slot', 'hero-stats']), 'children' => (string) $c_23])|noescape}
   {/capture}
-  {=og_include('compose/Stack.latte', ['gap' => '6', 'align' => 'stretch', 'children' => (string) $c_24])|noescape}
+  {=og_include('compose/Stack.latte', ['gap' => '6', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'hero-split-extras']), 'children' => (string) $c_24])|noescape}
 {/if}

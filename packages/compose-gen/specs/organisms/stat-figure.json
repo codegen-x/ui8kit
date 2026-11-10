@@ -111,7 +111,7 @@
             }
           },
           "attrs": {
-            "data-testid": "item"
+            "data-slot": "item"
           },
           "children": [
             {

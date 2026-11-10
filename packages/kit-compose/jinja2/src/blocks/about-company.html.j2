@@ -17,7 +17,7 @@
     {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': v_title, 'ratio': '3/4', 'className': og_cnv(['mt-8'])}}) }}
     {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': v_title, 'ratio': '3/4'}}) }}
   {%- endset -%}
-  {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-3 gap-4', 'Attrs': og_attrs(['data-testid', 'strip'])}, 'children': c_11}) }}
+  {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-3 gap-4', 'Attrs': og_attrs(['data-slot', 'strip'])}, 'children': c_11}) }}
 {%- endset -%}
 {%- set c_12 -%}
   {%- if og_t(og_gt(og_len(v_stats), 0)) %}
@@ -33,10 +33,10 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_2}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Attrs': og_attrs(['data-testid', 'stat'])}, 'children': c_3}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Attrs': og_attrs(['data-slot', 'stat'])}, 'children': c_3}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '2-4', 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'stats'])}, 'children': c_4}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '2-4', 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'stats'])}, 'children': c_4}) }}
   {%- endif %}
   {%- if og_t(og_gt(og_len(v_values), 0)) %}
     {%- set c_9 -%}
@@ -55,10 +55,10 @@
           {%- endset -%}
           {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2'}, 'children': c_7}) }}
         {%- endset -%}
-        {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Class': 'border-t border-border pt-4', 'Attrs': og_attrs(['data-testid', 'value'])}, 'children': c_8}) }}
+        {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Class': 'border-t border-border pt-4', 'Attrs': og_attrs(['data-slot', 'value'])}, 'children': c_8}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['grid grid-cols-1 gap-4', ('md:grid-cols-3' if og_t(og_eq(v_layout, 'stacked')) else '')])), 'Attrs': og_attrs(['data-testid', 'values'])}, 'children': c_9}) }}
+    {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['grid grid-cols-1 gap-4', ('md:grid-cols-3' if og_t(og_eq(v_layout, 'stacked')) else '')])), 'Attrs': og_attrs(['data-slot', 'values'])}, 'children': c_9}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'density': v_density, 'layout': ('split' if og_t(og_eq(v_layout, 'split')) else 'stack'), 'media': {'show': true, 'side': 'start'}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_10)}, 'children': og_markup(c_12)}) }}

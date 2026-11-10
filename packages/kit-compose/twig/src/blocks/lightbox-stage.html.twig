@@ -15,7 +15,7 @@
     {%- set c_2 -%}
       {{ include('icons/LucideIcon.html.twig', {'name': 'x', 'size': 16}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'layout': 'icon', 'type': 'button', 'ariaLabel': og_s(og_get(v_labels, ['close'])), 'attrs': og_attrs(['data-testid', 'lightbox-close']), 'children': c_2}, with_context = false) }}
+    {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'layout': 'icon', 'type': 'button', 'ariaLabel': og_s(og_get(v_labels, ['close'])), 'children': c_2}, with_context = false) }}
   {%- endset -%}
   {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'justify': 'between', 'children': c_3}, with_context = false) }}
   {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_first_of(v_photos, 'title'), 'ratio': '4/3'}}, with_context = false) }}
@@ -44,4 +44,4 @@
   {%- endset -%}
   {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'justify': 'between', 'children': c_9}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Dialog.html.twig', {'open': og_t(og_eq(v_lightbox, 'open')), 'size': 'xl', 'ariaLabel': og_s(og_first_of(v_photos, 'title')), 'class': 'gap-4 p-4', 'attrs': og_attrs(['data-testid', 'lightbox']), 'children': c_10}, with_context = false) }}
+{{ include('compose/Dialog.html.twig', {'open': og_t(og_eq(v_lightbox, 'open')), 'size': 'xl', 'ariaLabel': og_s(og_first_of(v_photos, 'title')), 'class': 'gap-4 p-4', 'attrs': og_attrs(['data-slot', 'lightbox']), 'children': c_10}, with_context = false) }}

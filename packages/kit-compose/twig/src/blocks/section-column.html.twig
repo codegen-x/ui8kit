@@ -6,4 +6,4 @@
 {%- set c_1 -%}
   {{ og_slot((children ?? null))|raw }}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': '6', 'align': 'stretch', 'class': og_s(og_recipe('blocks/recipes/section-column.variants.json', {'measure': v_measure})), 'children': c_1}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': '6', 'align': 'stretch', 'class': og_s(og_recipe('blocks/recipes/section-column.variants.json', {'measure': v_measure})), 'attrs': og_attrs(['data-slot', 'section-column']), 'children': c_1}, with_context = false) }}

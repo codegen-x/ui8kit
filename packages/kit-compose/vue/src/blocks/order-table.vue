@@ -59,8 +59,8 @@ const {
         :labels="labels"
         :density="density"
       />
-      <Stack v-else gap="4" align="stretch" data-testid="order-cards">
-        <Card v-for="o in orders" :key="o.id" variant="default" data-testid="item">
+      <Stack v-else gap="4" align="stretch" data-slot="order-cards">
+        <Card v-for="o in orders" :key="o.id" variant="default">
           <CardContent class="flex flex-wrap items-center justify-between gap-4">
             <Stack gap="0">
               <Text size="sm" weight="semibold">

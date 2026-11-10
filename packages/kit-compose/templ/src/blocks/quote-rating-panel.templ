@@ -20,7 +20,7 @@ type QuoteRatingPanelProps struct {
 templ QuoteRatingPanel(p QuoteRatingPanelProps) {
 	{{ vExtras := p.Extras }}
 	{{ vLabels := p.Labels }}
-	@compose.Stack(compose.StackProps{Gap: "6", Align: "center", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-8 text-center", Attrs: uiutils.Attrs("data-testid", "quote-rating")}}) {
+	@compose.Stack(compose.StackProps{Gap: "6", Align: "center", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-8 text-center", Attrs: uiutils.Attrs("data-slot", "quote-rating")}}) {
 		@compose.Text(compose.TextProps{Size: "5xl", Weight: "bold", TextProps: text.TextProps{}}) {
 			{ uiutils.Text(uiutils.Get(vExtras, "score")) }
 		}
@@ -31,7 +31,7 @@ templ QuoteRatingPanel(p QuoteRatingPanelProps) {
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid w-full grid-cols-2 gap-4 border-t border-border pt-6"}}) {
 			for vI, vS := range uiutils.L(uiutils.Get(vExtras, "stats")) {
 				if uiutils.Lt(float64(vI), float64(2)) {
-					@compose.Stack(compose.StackProps{Gap: "0", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "quote-stat")}}) {
+					@compose.Stack(compose.StackProps{Gap: "0", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "quote-stat")}}) {
 						@compose.Text(compose.TextProps{Size: "2xl", Weight: "semibold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vS, "value")) }
 						}

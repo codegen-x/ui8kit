@@ -23,7 +23,7 @@ templ CompareMark(p CompareMarkProps) {
 	{{ vYes := p.Yes }}
 	{{ vNo := p.No }}
 	if uiutils.Eq(vValue, "yes") {
-		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "inline-flex items-center gap-2", Attrs: uiutils.Attrs("data-mark", "yes")}}) {
+		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "inline-flex items-center gap-2", Attrs: uiutils.Attrs("data-mark", "yes", "data-slot", "compare-mark")}}) {
 			@icons.LucideIcon(icons.LucideIconProps{Name: "check", Size: 16, Class: "text-foreground"})
 			@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "sr-only"}}) {
 				{ uiutils.Text(vYes) }
@@ -31,7 +31,7 @@ templ CompareMark(p CompareMarkProps) {
 		}
 	}
 	if uiutils.Eq(vValue, "no") {
-		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "inline-flex items-center gap-2 text-muted-foreground", Attrs: uiutils.Attrs("data-mark", "no")}}) {
+		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "inline-flex items-center gap-2 text-muted-foreground", Attrs: uiutils.Attrs("data-mark", "no", "data-slot", "compare-mark")}}) {
 			@icons.LucideIcon(icons.LucideIconProps{Name: "minus", Size: 16})
 			@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "sr-only"}}) {
 				{ uiutils.Text(vNo) }
@@ -39,7 +39,7 @@ templ CompareMark(p CompareMarkProps) {
 		}
 	}
 	if uiutils.T(uiutils.And(!uiutils.Eq(vValue, "yes"), !uiutils.Eq(vValue, "no"))) {
-		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {
+		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Attrs: uiutils.Attrs("data-slot", "compare-mark")}}) {
 			{ uiutils.Text(vValue) }
 		}
 	}

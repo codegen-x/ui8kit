@@ -6,7 +6,7 @@
 {%- set v_active = (p.active ?? null) -%}
 {%- set c_1 -%}
   {%- for v_s in og_l(v_steps) %}
-    {{ include('compose/Inline.html.twig', {'class': og_s(og_cnv(['size-2 rounded-full', (og_t(og_eq(og_get(v_s, ['id']), v_active)) ? 'bg-primary' : 'bg-border')])), 'attrs': og_attrs(['data-testid', 'story-dot'])}, with_context = false) }}
+    {{ include('compose/Inline.html.twig', {'class': og_s(og_cnv(['size-2 rounded-full', (og_t(og_eq(og_get(v_s, ['id']), v_active)) ? 'bg-primary' : 'bg-border')])), 'attrs': og_attrs(['data-slot', 'story-dot'])}, with_context = false) }}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'children': c_1}, with_context = false) }}
+{{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'attrs': og_attrs(['data-slot', 'story-dots']), 'children': c_1}, with_context = false) }}

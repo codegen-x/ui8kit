@@ -32,7 +32,7 @@ const { items, labels, cards = "grid3" } = defineProps<FaqCardsProps>();
       (cards as string) === 'grid4' ? 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4'
       : 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'
     "
-    data-testid="faq"
+    data-slot="faq"
   >
     <ArticleBlock
       v-for="q in items"

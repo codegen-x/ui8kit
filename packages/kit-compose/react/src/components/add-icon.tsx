@@ -11,7 +11,7 @@ export type AddIconProps = {
 
 export function AddIcon({ label, variant = "outline" }: AddIconProps) {
   return (
-    <Button variant={variant} size="sm" layout="icon" type="button" aria-label={label} data-testid="add">
+    <Button variant={variant} size="sm" layout="icon" type="button" aria-label={label}>
       <LucideIcon name="plus" size={16} />
     </Button>
   );

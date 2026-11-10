@@ -42,11 +42,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@kits"
     },
     {
-      "sel": "[data-testid=\"ingredients\"]",
+      "sel": "[data-slot=\"ingredients\"]",
       "n": "@kits"
     }
   ],

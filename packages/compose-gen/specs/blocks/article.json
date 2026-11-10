@@ -57,32 +57,32 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"article\"] > [data-testid=\"item\"]",
+      "sel": "[data-slot=\"article\"] > [data-slot=\"item\"]",
       "n": "@article"
     },
     {
-      "sel": "[data-testid=\"toc-link\"]",
+      "sel": "[data-slot=\"toc-link\"]",
       "n": "@article",
       "when": {
         "layout": "toc"
       }
     },
     {
-      "sel": "[data-testid=\"toc\"]",
+      "sel": "[data-slot=\"toc\"]",
       "n": 0,
       "when": {
         "layout": "column"
       }
     },
     {
-      "sel": "[data-testid=\"quote\"]",
+      "sel": "[data-slot=\"quote\"]",
       "n": 0,
       "when": {
         "quotes": "hide"
       }
     },
     {
-      "sel": "[data-testid=\"quote\"]",
+      "sel": "[data-slot=\"quote\"]",
       "n": 1,
       "when": {
         "quotes": "show"

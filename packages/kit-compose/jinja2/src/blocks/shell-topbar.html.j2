@@ -16,7 +16,7 @@
       {%- endset -%}
       {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Weight': 'bold', 'Class': og_s(('' if og_t(true) else 'sr-only'))}, 'children': c_1}) }}
     {%- endset -%}
-    {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': 'shrink-0', 'Attrs': og_attrs(['data-testid', 'brand'])}, 'children': c_2}) }}
+    {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': 'shrink-0', 'Attrs': og_attrs(['data-slot', 'brand'])}, 'children': c_2}) }}
   {%- endif %}
   {%- if og_t(og_and([og_eq(v_links, 'show'), og_gt(og_len(og_get(v_nav, ['links'])), 0)])) %}
     {%- set c_7 -%}
@@ -32,7 +32,7 @@
             {%- endset -%}
             {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_l, ['href']), 'className': og_cnv([og_cnv(['flex items-center gap-4 rounded py-2 text-sm', ('px-4' if og_t(true) else 'justify-center px-2'), ('bg-muted font-medium' if og_t(og_eq(og_get(v_l, ['id']), og_get(v_nav, ['current']))) else '')])]), 'current': og_eq(og_get(v_l, ['id']), og_get(v_nav, ['current'])), 'size': 'sm', 'testid': 'item'}, 'children': og_markup(c_4)}) }}
           {%- endset -%}
-          {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_5}) }}
+          {{ og_include('compose/list-item.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'links-row'])}, 'children': c_5}) }}
         {%- endfor %}
       {%- endset -%}
       {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none items-center gap-2 p-0'}, 'children': c_6}) }}
@@ -53,6 +53,6 @@
     {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'bell', 'Size': 20, 'Class': 'text-muted-foreground'}}) }}
     {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_nav, ['userName']), 'ratio': '1/1', 'className': og_cnv(['size-8 shrink-0 rounded-full'])}}) }}
   {%- endset -%}
-  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': og_s(('shrink-0' if og_t(og_and([og_eq(v_links, 'show'), og_eq(v_search, 'show')])) else 'ml-auto shrink-0')), 'Attrs': og_attrs(['data-testid', 'user'])}, 'children': c_9}) }}
+  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': og_s(('shrink-0' if og_t(og_and([og_eq(v_links, 'show'), og_eq(v_search, 'show')])) else 'ml-auto shrink-0')), 'Attrs': og_attrs(['data-slot', 'user'])}, 'children': c_9}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'header', 'Class': 'flex h-16 shrink-0 items-center gap-6 border-b border-border bg-background px-6', 'Attrs': og_attrs(['data-testid', 'topbar', 'aria-label', v_landmarkLabel])}, 'children': c_10}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'header', 'Class': 'flex h-16 shrink-0 items-center gap-6 border-b border-border bg-background px-6', 'Attrs': og_attrs(['aria-label', v_landmarkLabel, 'data-slot', 'topbar'])}, 'children': c_10}) }}

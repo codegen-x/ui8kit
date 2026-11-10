@@ -44,7 +44,7 @@
       "n": 3
     },
     {
-      "sel": "[data-testid=\"summary\"]",
+      "sel": "[data-slot=\"summary\"]",
       "n": 1
     }
   ],

@@ -111,10 +111,10 @@
         "Class": "relative border-b border-border bg-background"
       },
       "attrs": {
-        "data-testid": "mega-menu",
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "mega-menu"
       },
       "children": [
         {
@@ -222,7 +222,7 @@
                                 "false"
                               ]
                             },
-                            "data-testid": "mega-trigger"
+                            "data-slot": "mega-trigger"
                           },
                           "children": [
                             {
@@ -308,7 +308,7 @@
             "Class": "border-t border-border bg-card"
           },
           "attrs": {
-            "data-testid": "mega-panel"
+            "data-slot": "mega-panel"
           },
           "children": [
             {
@@ -380,7 +380,7 @@
                         "Class": "gap-6"
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -398,7 +398,7 @@
                                 "Gap": "2"
                               },
                               "attrs": {
-                                "data-testid": "item"
+                                "data-slot": "item"
                               },
                               "children": [
                                 {
@@ -472,7 +472,10 @@
                                                 }
                                               }
                                             }
-                                          ]
+                                          ],
+                                          "attrs": {
+                                            "data-slot": "links-row"
+                                          }
                                         }
                                       ]
                                     }
@@ -504,7 +507,7 @@
                         "Class": "rounded bg-card inset-ring inset-ring-border p-4"
                       },
                       "attrs": {
-                        "data-testid": "promo"
+                        "data-slot": "promo"
                       },
                       "children": [
                         {

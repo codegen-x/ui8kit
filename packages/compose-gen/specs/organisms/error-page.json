@@ -216,7 +216,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "error-code"
+                    "data-slot": "error-code"
                   },
                   "children": [
                     {

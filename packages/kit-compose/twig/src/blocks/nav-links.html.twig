@@ -18,5 +18,5 @@
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'flex-wrap', 'children': c_2}, with_context = false) }}
+  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['data-slot', 'nav-links']), 'children': c_2}, with_context = false) }}
 {%- endif %}

@@ -18,7 +18,12 @@ defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Block tag="nav" :class="cn(className)" :aria-label="(landmarkLabel ?? label)" :data-testid="testid">
+  <Block
+    tag="nav"
+    :class="cn(className)"
+    :aria-label="(landmarkLabel ?? label)"
+    :data-slot="(testid ?? 'nav-block')"
+  >
     <slot />
   </Block>
 </template>

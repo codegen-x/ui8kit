@@ -12,8 +12,8 @@
     {capture $c_1}
       {=og_text($v_word)}
     {/capture}
-    {=og_include('compose/Inline.latte', ['class' => og_s(og_nth($v_weights, $v_i)), 'children' => (string) $c_1])|noescape}
+    {=og_include('compose/Inline.latte', ['class' => og_s(og_nth($v_weights, $v_i)), 'attrs' => og_attrs(['data-slot', 'items-row']), 'children' => (string) $c_1])|noescape}
     {=og_text(' ')}
   {/foreach}
 {/capture}
-{=og_include('compose/Title.latte', ['as' => og_i($v_level), 'size' => '5xl', 'weight' => 'semibold', 'class' => og_s(og_cnv(['text-center tracking-tight text-background', og_preset('blocks/presets/defaults.json', ['hero', 'title'])])), 'attrs' => og_attrs(['id', $v_id]), 'children' => (string) $c_2])|noescape}
+{=og_include('compose/Title.latte', ['as' => og_i($v_level), 'size' => '5xl', 'weight' => 'semibold', 'class' => og_s(og_cnv(['text-center tracking-tight text-background', og_preset('blocks/presets/defaults.json', ['hero', 'title'])])), 'attrs' => og_attrs(['id', $v_id, 'data-slot', 'weighted-title']), 'children' => (string) $c_2])|noescape}

@@ -36,9 +36,6 @@
           "$": "label"
         }
       },
-      "attrs": {
-        "data-testid": "add"
-      },
       "children": [
         {
           "use": "LucideIcon",

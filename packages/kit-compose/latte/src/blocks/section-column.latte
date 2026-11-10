@@ -6,4 +6,4 @@
 {capture $c_1}
   {=og_slot(($children ?? null))|noescape}
 {/capture}
-{=og_include('compose/Stack.latte', ['gap' => '6', 'align' => 'stretch', 'class' => og_s(og_recipe('blocks/recipes/section-column.variants.json', ['measure' => $v_measure])), 'children' => (string) $c_1])|noescape}
+{=og_include('compose/Stack.latte', ['gap' => '6', 'align' => 'stretch', 'class' => og_s(og_recipe('blocks/recipes/section-column.variants.json', ['measure' => $v_measure])), 'attrs' => og_attrs(['data-slot', 'section-column']), 'children' => (string) $c_1])|noescape}

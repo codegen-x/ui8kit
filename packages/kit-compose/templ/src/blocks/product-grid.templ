@@ -45,15 +45,15 @@ templ ProductGrid(p ProductGridProps) {
 		if uiutils.Eq(uiutils.Len(vProducts), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "package", Title: uiutils.Get(vLabels, "empty")})
 		} else if uiutils.Eq(vLayout, "rail") {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex snap-x gap-4 overflow-x-auto pb-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex snap-x gap-4 overflow-x-auto pb-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vP := range uiutils.L(vProducts) {
-					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-64 shrink-0 snap-start"}}) {
+					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-64 shrink-0 snap-start", Attrs: uiutils.Attrs("data-slot", "product")}}) {
 						@ProductCard(ProductCardProps{Product: vP, Labels: vLabels, Badges: vBadges, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "horizontal", "vertical"), Ratio: vRatio, Rating: vRating, Action: vAction, Density: uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "compact", "default")})
 					}
 				}
 			}
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "1", vCols)), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "1", vCols)), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vP := range uiutils.L(vProducts) {
 					@ProductCard(ProductCardProps{Product: vP, Labels: vLabels, Badges: vBadges, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "horizontal", "vertical"), Ratio: vRatio, Rating: vRating, Action: vAction, Density: uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "compact", "default")})
 				}

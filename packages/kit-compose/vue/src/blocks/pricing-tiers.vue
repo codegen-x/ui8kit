@@ -67,7 +67,7 @@ const emit = defineEmits<{ select: [id: string], billing: [period: string] }>();
       align="center"
       justify="center"
       class="flex-wrap"
-      data-testid="billing"
+      data-slot="billing"
     >
       <Switcher :label="billingLabels.label">
         <SwitcherItem :active="((billing as string) === 'monthly')" @click="() => emit('billing', 'monthly')">
@@ -85,7 +85,7 @@ const emit = defineEmits<{ select: [id: string], billing: [period: string] }>();
     <Grid v-else
       :cols="(((layout as string) === 'stack') ? '1' : fitCols(cols, (plans?.length ?? 0)))"
       class="gap-4"
-      data-testid="tiers"
+      data-slot="tiers"
     >
       <PricingCard v-for="plan in plans" :key="plan.id"
         :plan="plan"

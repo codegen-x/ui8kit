@@ -16,12 +16,15 @@ export type SideChecksProps = {
 
 export function SideChecks({ name, legend, options }: SideChecksProps) {
   return (
-    <Fieldset className="flex flex-col gap-2" data-testid="sides">
+    <Fieldset className="flex flex-col gap-2" data-slot="sides">
       <Legend size="sm" className="mb-2">
         {legend}
       </Legend>
       {(options ?? []).map((o) => (
-        <Label key={o.id} className={"flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted"}>
+        <Label key={o.id}
+          className={"flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted"}
+          data-slot="dish-option"
+        >
           <Inline className="flex items-center gap-2">
             <Checkbox name={tpl("{0}-{1}", name, o.id)} value="on" />
             <Inline>

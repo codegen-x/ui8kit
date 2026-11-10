@@ -9,4 +9,4 @@
   {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'search', 'Size': 16, 'Class': 'pointer-events-none absolute top-2 left-3 text-muted-foreground'}}) }}
   {{ og_include('compose/input.html.j2', {'p': {'Size': 'sm', 'Type': 'search', 'Placeholder': og_s(v_placeholder), 'Class': 'pr-3 pl-10', 'Value': og_s(v_value), 'Attrs': og_attrs(['aria-label', v_label])}}) }}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['relative min-w-44 flex-1', og_def(p['className'], '')])), 'Attrs': og_attrs(['role', 'search'])}, 'children': c_1}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['relative min-w-44 flex-1', og_def(p['className'], '')])), 'Attrs': og_attrs(['role', 'search', 'data-slot', 'search-field'])}, 'children': c_1}) }}

@@ -62,9 +62,9 @@ const {
       (((layout as string) === 'card') ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')
     )"
     :aria-labelledby="(landmarkLabel ? undefined : tpl('{0}-title', id))"
-    data-testid="auth-card"
     :data-mode="mode"
     :aria-label="landmarkLabel"
+    data-slot="auth-card"
   >
     <Stack gap="2">
       <Title :as="level" size="2xl" weight="bold" :id="tpl('{0}-title', id)">
@@ -77,7 +77,7 @@ const {
     <Stack
       v-if="(((social as string) === 'first') && ((social as string) !== 'none') && ((mode as string) !== 'reset') && ((mode as string) !== 'magic'))"
       gap="4"
-      data-testid="social"
+      data-slot="social"
     >
       <Group gap="4" align="center">
         <Separator class="flex-1" />
@@ -99,7 +99,7 @@ const {
     <Stack
       v-if="(((social as string) !== 'first') && ((social as string) !== 'none') && ((mode as string) !== 'reset') && ((mode as string) !== 'magic'))"
       gap="4"
-      data-testid="social"
+      data-slot="social"
     >
       <Group gap="4" align="center">
         <Separator class="flex-1" />
@@ -120,7 +120,7 @@ const {
     <Text size="sm" class="text-center text-muted-foreground">
       {{ switchText }}
       {{ " " }}
-      <Link :href="urlOf(switchHref)" variant="default" data-testid="switch">
+      <Link :href="urlOf(switchHref)" variant="default" data-slot="switch">
         {{ switchLink }}
       </Link>
     </Text>

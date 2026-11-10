@@ -22,7 +22,7 @@ templ QuoteProof(p QuoteProofProps) {
 	{{ vQuote := p.Quote }}
 	{{ vQuoteBy := p.QuoteBy }}
 	{{ vCenter := uiutils.Def(p.Center, false) }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "figure", Class: uiutils.S(uiutils.Cnv("flex flex-col gap-2", uiutils.Cond(uiutils.T(vCenter), "items-center text-center", ""))), Attrs: uiutils.Attrs("data-testid", "proof")}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "figure", Class: uiutils.S(uiutils.Cnv("flex flex-col gap-2", uiutils.Cond(uiutils.T(vCenter), "items-center text-center", ""))), Attrs: uiutils.Attrs("data-slot", "proof")}}) {
 		@compose.Text(compose.TextProps{Size: "xl", TextProps: text.TextProps{}}) {
 			{ uiutils.Text(vQuote) }
 		}

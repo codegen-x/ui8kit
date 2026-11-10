@@ -33,7 +33,7 @@ const { content, alt, media = "picture" } = defineProps<HeroSplitMediaProps>();
   <Box
     v-if="(((media as string) === 'grid') && ((content.features?.length ?? 0) > 0))"
     class="grid grid-cols-2 gap-4"
-    data-testid="hero-grid"
+    data-slot="hero-grid"
   >
     <template v-for="(f, i) in content.features" :key="f.id">
       <FigureBlock v-if="(i < 4)" class="flex flex-col gap-2" testid="hero-tile">
@@ -47,7 +47,7 @@ const { content, alt, media = "picture" } = defineProps<HeroSplitMediaProps>();
   <Box
     v-if="(((media as string) === 'plans') && ((content.plans?.length ?? 0) > 0))"
     class="relative"
-    data-testid="hero-media"
+    data-slot="hero-media"
   >
     <MediaFrame :alt="alt" ratio="4/3" />
     <template v-for="(p, i) in content.plans" :key="p.id">
@@ -57,7 +57,7 @@ const { content, alt, media = "picture" } = defineProps<HeroSplitMediaProps>();
           'absolute w-48 rounded bg-card p-4 shadow-lg',
           ((i === 0) ? 'top-8 left-4' : 'right-4 bottom-8')
         )"
-        data-testid="hero-plan"
+        data-slot="hero-plan"
       >
         <Text size="sm" weight="semibold">
           {{ p.name }}

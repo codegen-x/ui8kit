@@ -32,7 +32,7 @@ const { labels, channels, landmarkLabel } = defineProps<FaqHelpProps>();
     tag="aside"
     class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6"
     :aria-label="(landmarkLabel ?? labels.asideTitle)"
-    data-testid="faq-help"
+    data-slot="faq-help"
   >
     <Stack gap="2">
       <Text size="lg" weight="semibold">
@@ -43,7 +43,7 @@ const { labels, channels, landmarkLabel } = defineProps<FaqHelpProps>();
       </Text>
     </Stack>
     <List class="m-0 flex list-none flex-col gap-4 p-0">
-      <ListItem v-for="c in channels" :key="c.id" class="flex items-start gap-4" data-testid="faq-channel">
+      <ListItem v-for="c in channels" :key="c.id" class="flex items-start gap-4" data-slot="faq-channel">
         <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
           <LucideIcon :name="c.icon" :size="20" />
         </Box>

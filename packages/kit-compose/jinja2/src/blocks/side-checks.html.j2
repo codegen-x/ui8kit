@@ -25,7 +25,7 @@
       {%- endset -%}
       {{ og_include('compose/inline.html.j2', {'p': {'Class': 'text-muted-foreground'}, 'children': c_4}) }}
     {%- endset -%}
-    {{ og_include('compose/label.html.j2', {'p': {'Class': 'flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted'}, 'children': c_5}) }}
+    {{ og_include('compose/label.html.j2', {'p': {'Class': 'flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted', 'Attrs': og_attrs(['data-slot', 'dish-option'])}, 'children': c_5}) }}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/fieldset.html.j2', {'p': {'Class': 'flex flex-col gap-2', 'Attrs': og_attrs(['data-testid', 'sides'])}, 'children': c_6}) }}
+{{ og_include('compose/fieldset.html.j2', {'p': {'Class': 'flex flex-col gap-2', 'Attrs': og_attrs(['data-slot', 'sides'])}, 'children': c_6}) }}

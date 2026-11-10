@@ -148,7 +148,7 @@
                     "Class": "gap-4"
                   },
                   "attrs": {
-                    "data-testid": "items"
+                    "data-slot": "items"
                   },
                   "children": [
                     {
@@ -203,8 +203,7 @@
                                               "$": "q.author"
                                             }
                                           ]
-                                        },
-                                        "data-testid": "play"
+                                        }
                                       },
                                       "on": {
                                         "click": {
@@ -243,7 +242,7 @@
                                             "Class": "absolute inset-x-0 bottom-0 rounded bg-background p-4"
                                           },
                                           "attrs": {
-                                            "data-testid": "caption"
+                                            "data-slot": "caption"
                                           },
                                           "children": [
                                             {
@@ -308,7 +307,7 @@
                                         "Tag": "figcaption"
                                       },
                                       "attrs": {
-                                        "data-testid": "caption"
+                                        "data-slot": "caption"
                                       },
                                       "children": [
                                         {

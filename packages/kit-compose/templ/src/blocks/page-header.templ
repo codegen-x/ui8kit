@@ -23,7 +23,7 @@ templ PageHeader(p PageHeaderProps) {
 	{{ vTitle := p.Title }}
 	{{ vSummary := p.Summary }}
 	{{ vId := p.Id }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between"}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between", Attrs: uiutils.Attrs("data-slot", "page-header")}}) {
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex min-w-0 flex-col gap-2"}}) {
 			@compose.Title(compose.TitleProps{As: "1", Size: "xl", Weight: "bold", TextProps: text.TextProps{Class: "m-0", Attrs: uiutils.Attrs("id", vId)}}) {
 				{ uiutils.Text(vTitle) }

@@ -41,18 +41,18 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@cuts"
     },
     {
-      "sel": "[data-testid=\"compare-table\"]",
+      "sel": "[data-slot=\"compare-table\"]",
       "n": 1,
       "when": {
         "layout": "table"
       }
     },
     {
-      "sel": "[data-testid=\"compare-table\"]",
+      "sel": "[data-slot=\"compare-table\"]",
       "n": 0,
       "when": {
         "layout": "cards"

@@ -66,26 +66,26 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"richtext-content\"]",
+      "sel": "[data-slot=\"richtext-content\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"richtext-content\"] h2",
+      "sel": "[data-slot=\"richtext-content\"] h2",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"richtext-meta\"]",
+      "sel": "[data-slot=\"richtext-meta\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"richtext-aside\"]",
+      "sel": "[data-slot=\"card\"]:has([data-slot=\"richtext-aside-content\"])",
       "n": 1,
       "when": {
         "layout": "sidebar"
       }
     },
     {
-      "sel": "[data-testid=\"richtext-aside\"]",
+      "sel": "[data-slot=\"card\"]:has([data-slot=\"richtext-aside-content\"])",
       "n": 0,
       "when": {
         "layout": [

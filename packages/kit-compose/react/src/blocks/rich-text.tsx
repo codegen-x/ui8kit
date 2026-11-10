@@ -57,7 +57,7 @@ export function RichText({
       landmarkLabel={landmarkLabel}
     >
       {(meta?.date || meta?.author || meta?.category) ? (
-        <Group gap="4" align="center" className="flex-wrap" data-testid="richtext-meta">
+        <Group gap="4" align="center" className="flex-wrap" data-slot="richtext-meta">
           {meta?.date ? (
             <Text size="sm" className="text-muted-foreground">
               {meta?.date}
@@ -89,13 +89,13 @@ export function RichText({
               <Prose
                 size="base"
                 width="none"
-                data-testid="richtext-content"
+                data-slot="richtext-content"
                 dangerouslySetInnerHTML={{ __html: htmlOf(content) }}
               />
             ) : null}
           </Box>
           {aside?.content ? (
-            <Card variant="compact" className="h-fit" data-testid="richtext-aside">
+            <Card variant="compact" className="h-fit">
               {aside?.title ? (
                 <Title as={((level === 1) ? 2 : 3)} size="lg" weight="semibold">
                   {aside?.title}
@@ -105,7 +105,7 @@ export function RichText({
                 <Prose
                   size="sm"
                   width="none"
-                  data-testid="richtext-aside-content"
+                  data-slot="richtext-aside-content"
                   dangerouslySetInnerHTML={{ __html: htmlOf(aside?.content) }}
                 />
               ) : null}
@@ -120,7 +120,7 @@ export function RichText({
             : (layout as string) === "hero" ? "narrow"
             : "none"
           }
-          data-testid="richtext-content"
+          data-slot="richtext-content"
           dangerouslySetInnerHTML={{ __html: htmlOf(content) }}
         />
       ) : null}

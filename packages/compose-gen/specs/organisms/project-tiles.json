@@ -81,7 +81,7 @@
         }
       },
       "attrs": {
-        "data-testid": "items"
+        "data-slot": "items"
       },
       "children": [
         {
@@ -231,9 +231,6 @@
                                 "Variant": "default",
                                 "Size": "default",
                                 "Class": "absolute left-4 top-4"
-                              },
-                              "attrs": {
-                                "data-testid": "featured"
                               },
                               "children": [
                                 {

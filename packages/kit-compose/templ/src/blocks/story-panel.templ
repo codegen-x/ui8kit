@@ -24,7 +24,7 @@ templ StoryPanel(p StoryPanelProps) {
 	{{ vIndex := p.Index }}
 	{{ vTotal := p.Total }}
 	{{ vLabels := p.Labels }}
-	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-testid", "story-panel")}}) {
+	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-slot", "story-panel")}}) {
 		@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
 			@compose.Badge(compose.BadgeProps{Variant: "secondary", Size: "sm", TextProps: text.TextProps{}}) {
 				{ uiutils.Text(uiutils.Get(vS, "date")) }

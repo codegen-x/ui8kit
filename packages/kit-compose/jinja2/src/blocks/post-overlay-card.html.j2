@@ -35,4 +35,4 @@
   {%- endset -%}
   {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'start', 'Class': 'absolute bottom-4 left-4 right-4 rounded bg-background p-4'}, 'children': c_7}) }}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'relative overflow-hidden rounded', 'Attrs': og_attrs(['data-testid', 'post-overlay'])}, 'children': c_8}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'relative overflow-hidden rounded', 'Attrs': og_attrs(['data-slot', 'post-overlay'])}, 'children': c_8}) }}

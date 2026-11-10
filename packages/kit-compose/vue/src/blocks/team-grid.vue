@@ -67,16 +67,10 @@ const {
         : (cols as string) === '1-3' ? 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'
         : 'grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4'
       "
-      data-testid="items"
+      data-slot="items"
     >
       <template v-for="m in members" :key="m.id">
-        <Stack
-          v-if="((layout as string) === 'minimal')"
-          gap="2"
-          align="center"
-          class="text-center"
-          data-testid="item"
-        >
+        <Stack v-if="((layout as string) === 'minimal')" gap="2" align="center" class="text-center" data-slot="item">
           <MediaFrame :alt="m.name" ratio="1/1" :class="cn('size-16', 'shrink-0')" />
           <Text size="sm" weight="semibold">
             {{ m.name }}
@@ -89,7 +83,7 @@ const {
           v-else-if="((layout as string) === 'cards')"
           gap="4"
           class="rounded bg-card inset-ring inset-ring-border p-4"
-          data-testid="item"
+          data-slot="item"
         >
           <MediaFrame :alt="m.name" ratio="1/1" />
           <Stack gap="2">

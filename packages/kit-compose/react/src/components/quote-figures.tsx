@@ -11,11 +11,11 @@ export type QuoteFiguresProps = {
 
 export function QuoteFigures({ extras }: QuoteFiguresProps) {
   return (
-    <Box className="grid grid-cols-3 gap-4 border-b border-border pb-8" data-testid="quote-figures">
+    <Box className="grid grid-cols-3 gap-4 border-b border-border pb-8" data-slot="quote-figures">
       {(extras.stats ?? []).map((s, i) => (
         <Fragment key={s.id}>
           {(i < 3) ? (
-            <Stack gap="0" data-testid="quote-stat">
+            <Stack gap="0" data-slot="quote-stat">
               <Text size="3xl" weight="bold">
                 {s.value}
               </Text>

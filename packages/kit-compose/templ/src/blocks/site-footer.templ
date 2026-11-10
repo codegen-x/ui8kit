@@ -26,9 +26,9 @@ templ SiteFooter(p SiteFooterProps) {
 	{{ vLayout := uiutils.Def(p.Layout, "minimal") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "footer", Class: "mt-12 border-t border-border", Attrs: uiutils.Attrs("data-testid", "site-footer", "data-layout", vLayout, "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "footer", Class: "mt-12 border-t border-border", Attrs: uiutils.Attrs("data-layout", vLayout, "aria-label", vLandmarkLabel, "data-slot", "site-footer")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", "flex flex-wrap items-center gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "py-4", "py-6"), uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "centered")), "flex-col text-center", "justify-between"))), Attrs: uiutils.Attrs("data-slot", "container")}}) {
-			@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "copyright")}}) {
+			@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "copyright")}}) {
 				{ uiutils.Text(uiutils.Get(vLabels, "copyright")) }
 			}
 			@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vLabels, "nav"), vLandmarkLabel)), uiutils.Get(vLabels, "nav"))}) {

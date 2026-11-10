@@ -24,9 +24,9 @@ export function ShellFooter({ nav, place = "full", landmarkLabel }: ShellFooterP
         "flex shrink-0 flex-wrap items-center justify-between gap-4 border-t border-border px-6 py-4",
         (((place as string) === "full") ? "bg-card" : "")
       )}
-      data-testid="footer"
       data-place={place}
       aria-label={landmarkLabel}
+      data-slot="footer"
     >
       <Text size="xs" class="text-muted-foreground">
         {nav.copyright}
@@ -40,7 +40,7 @@ export function ShellFooter({ nav, place = "full", landmarkLabel }: ShellFooterP
         >
           <List class="m-0 flex list-none items-center gap-4 p-0">
             <For each={nav.footer ?? []}>{(f) => (
-              <ListItem>
+              <ListItem data-slot="footer-row">
                 <MenuEntry href={f.href} class="text-xs text-muted-foreground" variant="muted" size="sm">
                   {f.name}
                 </MenuEntry>

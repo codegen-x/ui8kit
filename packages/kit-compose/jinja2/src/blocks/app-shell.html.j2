@@ -48,10 +48,10 @@
                     {%- endset -%}
                     {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_5}) }}
                   {%- endset -%}
-                  {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex flex-col gap-2', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_6}) }}
+                  {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex flex-col gap-2', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_6}) }}
                 {%- endfor %}
               {%- endset -%}
-              {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-4 p-0', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_7}) }}
+              {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-4 p-0', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_7}) }}
             {%- endset -%}
             {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_activity, ['title']), 'description': og_get(v_activity, ['text']), 'id': og_tpl('{0}-list', [v_id])}, 'children': og_markup(c_8)}) }}
           {%- endif %}
@@ -63,4 +63,4 @@
     {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'py-8'])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_10}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': 'bg-background', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else og_tpl('{0}-title', [v_id])), 'data-testid', 'app-shell', 'data-layout', v_layout, 'aria-label', v_landmarkLabel])}, 'children': c_11}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': 'bg-background', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else og_tpl('{0}-title', [v_id])), 'data-layout', v_layout, 'aria-label', v_landmarkLabel, 'data-slot', 'app-shell'])}, 'children': c_11}) }}

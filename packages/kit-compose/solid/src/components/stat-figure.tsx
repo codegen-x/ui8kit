@@ -24,7 +24,7 @@ export function StatFigure({ stat, item = "plain", align = "center" }: StatFigur
           gap="6"
           align={(((align as string) === "center") ? "center" : "start")}
           class={cn((((align as string) === "center") ? "text-center" : ""), defaults.stats.column)}
-          data-testid="item"
+          data-slot="item"
         >
           {((item as string) === "icon") ? (
             <LucideIcon name={stat.icon} size={24} />

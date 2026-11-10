@@ -32,7 +32,7 @@
       {%- endset -%}
       {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0'}, 'children': c_6}) }}
     {%- endset -%}
-    {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-testid', 'media-step'])}, 'children': c_7}) }}
+    {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-slot', 'media-step'])}, 'children': c_7}) }}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch'}, 'children': c_8}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'media-steps'])}, 'children': c_8}) }}

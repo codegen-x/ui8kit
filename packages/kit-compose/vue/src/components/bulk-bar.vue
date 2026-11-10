@@ -33,7 +33,6 @@ defineSlots<{ default?(): unknown }>();
     :aria-label="label"
     aria-live="polite"
     data-slot="bulk-bar"
-    data-testid="bulk-bar"
   >
     <Button
       variant="ghost"
@@ -46,7 +45,7 @@ defineSlots<{ default?(): unknown }>();
     >
       <LucideIcon name="x" :size="16" />
     </Button>
-    <Inline data-testid="bulk-count">
+    <Inline data-slot="bulk-count">
       {{ label }}
     </Inline>
     <Inline class="ml-auto flex flex-wrap items-center gap-2">

@@ -63,9 +63,6 @@
               "$": "decrease"
             }
           },
-          "attrs": {
-            "data-testid": "decrease"
-          },
           "children": [
             {
               "use": "LucideIcon",
@@ -106,9 +103,6 @@
             "AriaLabel": {
               "$": "increase"
             }
-          },
-          "attrs": {
-            "data-testid": "increase"
           },
           "children": [
             {

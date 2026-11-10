@@ -12,15 +12,15 @@
     {%- endset -%}
     {{ og_include('compose/label.html.j2', {'p': {'For': og_s(og_tpl('{0}-email', [v_id])), 'Class': 'sr-only'}, 'children': c_1}) }}
     {%- set c_3 -%}
-      {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Class': 'min-w-0 flex-1', 'Attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}}) }}
+      {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Class': 'min-w-0 flex-1', 'Attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}}) }}
       {%- set c_2 -%}
         {{ og_text(og_get(v_actions, ['cta'])) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit', 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_2}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit'}, 'children': c_2}) }}
     {%- endset -%}
     {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'start', 'Class': 'w-full flex-wrap'}, 'children': c_3}) }}
   {%- endset -%}
-  {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': og_s(og_cnv(['w-full max-w-md', ('mx-auto' if og_t(v_center) else '')])), 'Attrs': og_attrs(['data-testid', 'email-form'])}, 'children': c_4}) }}
+  {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': og_s(og_cnv(['w-full max-w-md', ('mx-auto' if og_t(v_center) else '')])), 'Attrs': og_attrs(['data-slot', 'email-form'])}, 'children': c_4}) }}
 {%- else %}
   {{ og_include('blocks/action-group.html.j2', {'p': {'primary': og_get(v_actions, ['cta']), 'primaryHref': og_get(v_actions, ['href']), 'secondary': (og_get(v_actions, ['secondary']) if og_t(og_eq(og_get(v_actions, ['mode']), 'two')) else none), 'secondaryHref': og_get(v_actions, ['secondaryHref']), 'align': ('center' if og_t(v_center) else 'start')}}) }}
 {%- endif %}

@@ -11,9 +11,9 @@ export type PostTagsProps = {
 
 export function PostTags({ tags, align = "start" }: PostTagsProps) {
   return (
-    <Group gap="2" justify={align} className="flex-wrap">
+    <Group gap="2" justify={align} className="flex-wrap" data-slot="post-tags">
       {(tags ?? []).map((tag) => (
-        <Badge key={tag.id} variant="secondary" size="sm" data-testid="post-tag">
+        <Badge key={tag.id} variant="secondary" size="sm">
           {tag.name}
         </Badge>
       ))}

@@ -24,7 +24,7 @@
         "Class": "grid grid-cols-2 gap-4"
       },
       "attrs": {
-        "data-testid": "quote-logos"
+        "data-slot": "quote-logos"
       },
       "children": [
         {
@@ -56,7 +56,7 @@
                     "Class": "rounded bg-card inset-ring inset-ring-border p-4 text-muted-foreground"
                   },
                   "attrs": {
-                    "data-testid": "quote-logo"
+                    "data-slot": "quote-logo"
                   },
                   "children": [
                     {

@@ -66,11 +66,11 @@ export function StoreHero({
             secondaryHref={actions.secondaryHref}
           />
           {((perks?.length ?? 0) > 0) ? (
-            <Grid cols="1-3" className="gap-4" data-testid="perks">
+            <Grid cols="1-3" className="gap-4" data-slot="perks">
               {(perks ?? []).map((p, i) => (
                 <Fragment key={p.id}>
                   {(i < 3) ? (
-                    <Group gap="4" align="start" data-testid="perk">
+                    <Group gap="4" align="start" data-slot="perk">
                       <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
                         <LucideIcon name={p.icon} size={20} />
                       </Box>
@@ -110,11 +110,11 @@ export function StoreHero({
             secondaryHref={actions.secondaryHref}
           />
           {((perks?.length ?? 0) > 0) ? (
-            <Grid cols="1-3" className="gap-4" data-testid="perks">
+            <Grid cols="1-3" className="gap-4" data-slot="perks">
               {(perks ?? []).map((p, i) => (
                 <Fragment key={p.id}>
                   {(i < 3) ? (
-                    <Group gap="4" align="start" data-testid="perk">
+                    <Group gap="4" align="start" data-slot="perk">
                       <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
                         <LucideIcon name={p.icon} size={20} />
                       </Box>

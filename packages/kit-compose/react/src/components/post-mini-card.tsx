@@ -17,7 +17,7 @@ export function PostMiniCard({ p, labels }: PostMiniCardProps) {
       gap="2"
       align="stretch"
       className="rounded bg-card inset-ring inset-ring-border p-2"
-      data-testid="post-mini"
+      data-slot="post-mini"
     >
       <MediaFrame alt={p.title} />
       <Stack gap="2" align="start" className="p-2">

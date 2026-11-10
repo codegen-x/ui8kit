@@ -12,7 +12,7 @@ export type ArticleBlockProps = {
 
 export function ArticleBlock({ testid, className, children }: ArticleBlockProps) {
   return (
-    <Block tag="article" className={cn(className)} data-testid={testid}>
+    <Block tag="article" className={cn(className)} data-slot={(testid ?? "article-block")}>
       {children}
     </Block>
   );

@@ -49,7 +49,7 @@ export function ComboBuilder({
             (layout as string) === "split" ? "flex flex-col gap-8 lg:col-span-2"
             : "flex flex-col gap-8 lg:col-span-3"
           }
-          data-testid="steps"
+          data-slot="steps"
         >
           <OptionChips name={tpl("{0}-main", id)} legend={labels.main} options={mains} extra="price" layout="column" />
           <OptionChips name={tpl("{0}-side", id)} legend={labels.side} options={sides} extra="price" layout="column" />
@@ -61,7 +61,7 @@ export function ComboBuilder({
             (layout as string) === "split" ? "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6 lg:sticky lg:top-8"
             : "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6"
           }
-          data-testid="summary"
+          data-slot="summary"
         >
           <Text size="lg" weight="semibold">
             {labels.summary}
@@ -70,7 +70,7 @@ export function ComboBuilder({
             <Text size="sm" class="text-muted-foreground">
               {labels.total}
             </Text>
-            <Inline class="text-2xl font-bold" role="status" aria-live="polite" data-testid="total">
+            <Inline class="text-2xl font-bold" role="status" aria-live="polite" data-slot="total">
               {fmtMoney(total, currency)}
             </Inline>
           </Group>

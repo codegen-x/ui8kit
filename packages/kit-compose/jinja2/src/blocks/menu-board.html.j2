@@ -55,10 +55,10 @@
               {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col'}, 'children': c_5}) }}
             {%- endif %}
           {%- endset -%}
-          {{ og_include('compose/stack.html.j2', {'p': {'Gap': og_s(('2' if og_t(og_eq(v_density, 'compact')) else '4')), 'Attrs': og_attrs(['id', og_tpl('{0}-{1}', [v_id, og_get(v_s, ['key'])]), 'data-testid', 'menusection'])}, 'children': c_6}) }}
+          {{ og_include('compose/stack.html.j2', {'p': {'Gap': og_s(('2' if og_t(og_eq(v_density, 'compact')) else '4')), 'Attrs': og_attrs(['id', og_tpl('{0}-{1}', [v_id, og_get(v_s, ['key'])]), 'data-slot', 'menusection'])}, 'children': c_6}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex flex-col gap-8', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_7}) }}
+      {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex flex-col gap-8', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_7}) }}
     {%- endset -%}
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '8', 'Align': 'stretch'}, 'children': c_8}) }}
   {%- endif %}

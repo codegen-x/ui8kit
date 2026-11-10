@@ -15,11 +15,11 @@ const storytabs = define({
     ["yearTabsMuted", "Year tabs, muted", { tone: "muted" }],
   ],
   facts: [
-    { sel: '[data-testid="story-tab"]', n: "@milestones", when: { layout: "years" } },
-    { sel: '[data-testid="story-panel"]', n: 1, when: { layout: "years" } },
-    { sel: '[data-testid="story-dot"]', n: "@milestones", when: { layout: "carousel" } },
-    { sel: '[data-testid="story-arrow"]', n: 2, when: { layout: "carousel" } },
-    { sel: '[data-testid="story-tab"]', n: 0, when: { layout: "carousel" } },
+    { sel: '[data-slot="story-tabs"] > [data-slot="button"]', n: "@milestones", when: { layout: "years" } },
+    { sel: '[data-slot="story-panel"]', n: 1, when: { layout: "years" } },
+    { sel: '[data-slot="story-dot"]', n: "@milestones", when: { layout: "carousel" } },
+    { sel: '[data-slot="button"]:has([data-lucide^="chevron"])', n: 2, when: { layout: "carousel" } },
+    { sel: '[data-slot="story-tabs"] > [data-slot="button"]', n: 0, when: { layout: "carousel" } },
   ],
   sample: { id: "storytabs", title: s("title"), lead: s("lead"), badge: s("badge"), steps: ref("milestones"), empty: t("empty.milestones"), active: "milestone-runtimes", labels: s("labels") },
 });

@@ -23,10 +23,10 @@
           {/capture}
           {=og_include('blocks/menu-entry.latte', ['p' => ['href' => og_get($v_tab, ['href']), 'className' => og_cnv([og_cnv(['flex flex-col items-center gap-2 py-2 text-xs', (og_t(og_eq(og_get($v_tab, ['id']), $v_current)) ? 'font-semibold text-primary' : 'text-muted-foreground')])]), 'current' => og_eq(og_get($v_tab, ['id']), $v_current), 'testid' => 'item'], 'children' => og_markup($c_2)])|noescape}
         {/capture}
-        {=og_include('compose/ListItem.latte', ['children' => (string) $c_3])|noescape}
+        {=og_include('compose/ListItem.latte', ['attrs' => og_attrs(['data-slot', 'tabs-row']), 'children' => (string) $c_3])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/List.latte', ['class' => 'm-0 grid list-none grid-flow-col auto-cols-fr p-0', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_4])|noescape}
+    {=og_include('compose/List.latte', ['class' => 'm-0 grid list-none grid-flow-col auto-cols-fr p-0', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_4])|noescape}
   {/capture}
-  {=og_include('compose/Block.latte', ['tag' => 'nav', 'class' => og_s(og_cnv(['mx-auto w-full max-w-md border-t border-border', (og_t(og_eq($v_tone, 'muted')) ? 'bg-muted' : 'bg-background'), (og_t(og_eq($v_position, 'sticky')) ? 'sticky bottom-0 z-40' : '')])), 'attrs' => og_attrs(['aria-label', og_coalesce([$v_landmarkLabel, $v_label]), 'data-testid', 'bottom-nav', 'data-position', $v_position]), 'children' => (string) $c_5])|noescape}
+  {=og_include('compose/Block.latte', ['tag' => 'nav', 'class' => og_s(og_cnv(['mx-auto w-full max-w-md border-t border-border', (og_t(og_eq($v_tone, 'muted')) ? 'bg-muted' : 'bg-background'), (og_t(og_eq($v_position, 'sticky')) ? 'sticky bottom-0 z-40' : '')])), 'attrs' => og_attrs(['aria-label', og_coalesce([$v_landmarkLabel, $v_label]), 'data-position', $v_position, 'data-slot', 'bottom-nav']), 'children' => (string) $c_5])|noescape}
 {/if}

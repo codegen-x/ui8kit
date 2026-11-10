@@ -45,7 +45,7 @@
             {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4'}, 'children': c_5}) }}
             {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_f, ['title']), 'ratio': '4/3'}}) }}
           {%- endset -%}
-          {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_panel, 'split')) else '1')), 'Class': 'items-center gap-8', 'Attrs': og_attrs(['data-testid', 'tab-panel', 'role', 'tabpanel'])}, 'children': c_6}) }}
+          {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_panel, 'split')) else '1')), 'Class': 'items-center gap-8', 'Attrs': og_attrs(['role', 'tabpanel', 'data-slot', 'tab-panel'])}, 'children': c_6}) }}
         {%- endif %}
       {%- endfor %}
     {%- endset -%}

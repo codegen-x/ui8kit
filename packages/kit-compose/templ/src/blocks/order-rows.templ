@@ -23,8 +23,8 @@ templ OrderRows(p OrderRowsProps) {
 	{{ vStatuses := p.Statuses }}
 	{{ vLabels := p.Labels }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-full overflow-x-auto"}}) {
-		@compose.Table(compose.TableProps{BoxProps: box.BoxProps{Class: "w-full text-left text-sm", Attrs: uiutils.Attrs("data-testid", "order-table")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-full overflow-x-auto", Attrs: uiutils.Attrs("data-slot", "order-rows")}}) {
+		@compose.Table(compose.TableProps{BoxProps: box.BoxProps{Class: "w-full text-left text-sm", Attrs: uiutils.Attrs("data-slot", "order-table")}}) {
 			@compose.TableCaption(compose.TableCaptionProps{BoxProps: box.BoxProps{Class: "sr-only"}}) {
 				{ uiutils.Text(uiutils.Get(vLabels, "caption")) }
 			}
@@ -49,7 +49,7 @@ templ OrderRows(p OrderRowsProps) {
 			}
 			@compose.TableBody(compose.TableBodyProps{BoxProps: box.BoxProps{}}) {
 				for _, vO := range uiutils.L(vOrders) {
-					@compose.TableRow(compose.TableRowProps{BoxProps: box.BoxProps{Class: "border-t border-border", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.TableRow(compose.TableRowProps{BoxProps: box.BoxProps{Class: "border-t border-border", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@compose.TableCell(compose.TableCellProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("font-semibold", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "py-2", "py-4")))}}) {
 							{ uiutils.Text(uiutils.Get(vO, "number")) }
 						}

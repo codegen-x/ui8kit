@@ -29,11 +29,11 @@ templ LogoRibbon(p LogoRibbonProps) {
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Tone: vTone, Density: vDensity, Measure: "fill", Align: "center", Class: uiutils.Cnv("py-0"), LandmarkLabel: vLandmarkLabel}) {
-		@compose.Stack(compose.StackProps{Gap: "6", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "logos-block")}}) {
+		@compose.Stack(compose.StackProps{Gap: "6", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "logos-block")}}) {
 			@compose.Title(compose.TitleProps{As: "2", Size: "xl", Weight: "semibold", TextProps: text.TextProps{Class: "leading-7", Attrs: uiutils.Attrs("id", uiutils.Add(vId, "-title"))}}) {
 				{ uiutils.Text(vTitle) }
 			}
-			@compose.Group(compose.GroupProps{Gap: "0", Justify: "center", Align: "start", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex w-full flex-wrap", uiutils.Get(presetDefaults, "logos", "row"))), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Group(compose.GroupProps{Gap: "0", Justify: "center", Align: "start", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex w-full flex-wrap", uiutils.Get(presetDefaults, "logos", "row"))), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vLogo := range uiutils.L(vLogos) {
 					@LogoSlot(LogoSlotProps{Name: uiutils.Get(vLogo, "name"), Icon: uiutils.Get(vLogo, "icon")})
 				}

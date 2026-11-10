@@ -15,7 +15,7 @@ export type RegionProps = {
 
 export function Region({ tag, landmarkLabel, class: className, children }: RegionProps) {
   return (
-    <Block tag={tag} class={className} aria-label={landmarkLabel}>
+    <Block tag={tag} class={className} aria-label={landmarkLabel} data-slot="region">
       {children}
     </Block>
   );

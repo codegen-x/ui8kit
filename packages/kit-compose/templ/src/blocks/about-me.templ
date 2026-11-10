@@ -46,9 +46,9 @@ templ AboutMe(p AboutMeProps) {
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge, "level": vLevel}, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, Tone: vTone, LandmarkLabel: vLandmarkLabel, Aside: aboutMeFill1(p, vTitle)}) {
 		if uiutils.Eq(vLayout, "facts") {
 			if uiutils.Gt(uiutils.Len(vFacts), float64(0)) {
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "grid grid-cols-1 gap-4 sm:grid-cols-2", Attrs: uiutils.Attrs("data-testid", "facts")}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "grid grid-cols-1 gap-4 sm:grid-cols-2", Attrs: uiutils.Attrs("data-slot", "facts")}}) {
 					for _, vF := range uiutils.L(vFacts) {
-						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4", Attrs: uiutils.Attrs("data-testid", "fact")}}) {
+						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4", Attrs: uiutils.Attrs("data-slot", "fact")}}) {
 							@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
 								{ uiutils.Text(uiutils.Get(vF, "label")) }
 							}
@@ -60,9 +60,9 @@ templ AboutMe(p AboutMeProps) {
 				}
 			}
 		} else if uiutils.Gt(uiutils.Len(vSkills), float64(0)) {
-			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "skills")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "skills")}}) {
 				for _, vS := range uiutils.L(vSkills) {
-					@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "skill")}}) {
+					@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "skill")}}) {
 						@compose.Group(compose.GroupProps{Gap: "4", Justify: "between", BoxProps: box.BoxProps{}}) {
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vS, "label")) }

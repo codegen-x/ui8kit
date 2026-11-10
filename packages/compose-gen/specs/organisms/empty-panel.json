@@ -91,7 +91,7 @@
             }
           ]
         },
-        "data-testid": "empty"
+        "data-slot": "empty"
       },
       "children": [
         {
@@ -143,7 +143,7 @@
                     "Class": "mx-auto max-w-md text-center"
                   },
                   "attrs": {
-                    "data-testid": "empty-visual"
+                    "data-slot": "empty-visual"
                   },
                   "children": [
                     {
@@ -204,9 +204,6 @@
                             "Href": {
                               "$": "ctaHref"
                             }
-                          },
-                          "attrs": {
-                            "data-testid": "empty-action"
                           },
                           "children": [
                             {
@@ -296,9 +293,6 @@
                                 "Href": {
                                   "$": "ctaHref"
                                 }
-                              },
-                              "attrs": {
-                                "data-testid": "empty-action"
                               },
                               "children": [
                                 {

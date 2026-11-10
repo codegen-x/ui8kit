@@ -41,9 +41,9 @@ templ StepsList(p StepsListProps) {
 		if uiutils.Eq(uiutils.Len(vSteps), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "list-ordered", Title: vEmpty})
 		} else {
-			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ol", Class: uiutils.S(uiutils.Cnv("grid gap-6", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "row")), "sm:grid-cols-2 md:grid-cols-4", ""))), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ol", Class: uiutils.S(uiutils.Cnv("grid gap-6", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "row")), "sm:grid-cols-2 md:grid-cols-4", ""))), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for vI, vStep := range uiutils.L(vSteps) {
-					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "row")), "flex-col", ""), uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "items-center text-center", ""))), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "row")), "flex-col", ""), uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "items-center text-center", ""))), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@compose.IconBadge(compose.IconBadgeProps{Variant: "primary", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-slot", "marker")}}) {
 							if uiutils.Eq(vMarker, "icon") {
 								@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vStep, "icon")), Size: 20})

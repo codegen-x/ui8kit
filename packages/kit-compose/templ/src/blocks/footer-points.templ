@@ -22,13 +22,13 @@ templ FooterPoints(p FooterPointsProps) {
 	{{ vExtras := p.Extras }}
 	{{ vTitle := p.Title }}
 	if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "points")), float64(0)) {
-		@compose.Stack(compose.StackProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{}}) {
+		@compose.Stack(compose.StackProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "footer-points")}}) {
 			@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 				{ uiutils.Text(vTitle) }
 			}
 			for vI, vP := range uiutils.L(uiutils.Get(vExtras, "points")) {
 				if uiutils.Lt(float64(vI), float64(4)) {
-					@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "footer-point")}}) {
+					@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "footer-point")}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vP, "icon")), Size: 16})
 						@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vP, "title")) }

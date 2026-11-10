@@ -36,7 +36,7 @@
         {/capture}
         {=og_include('compose/Stack.latte', ['gap' => '0', 'children' => (string) $c_7])|noescape}
       {/capture}
-      {=og_include('compose/ListItem.latte', ['class' => 'flex items-start gap-4', 'attrs' => og_attrs(['data-testid', 'faq-channel']), 'children' => (string) $c_8])|noescape}
+      {=og_include('compose/ListItem.latte', ['class' => 'flex items-start gap-4', 'attrs' => og_attrs(['data-slot', 'faq-channel']), 'children' => (string) $c_8])|noescape}
     {/foreach}
   {/capture}
   {=og_include('compose/List.latte', ['class' => 'm-0 flex list-none flex-col gap-4 p-0', 'children' => (string) $c_9])|noescape}
@@ -46,4 +46,4 @@
   {/capture}
   {=og_include('compose/Button.latte', ['variant' => 'link', 'size' => 'sm', 'class' => 'gap-2 px-0 font-medium', 'children' => (string) $c_10])|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'aside', 'class' => 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6', 'attrs' => og_attrs(['aria-label', og_coalesce([$v_landmarkLabel, og_get($v_labels, ['asideTitle'])]), 'data-testid', 'faq-help']), 'children' => (string) $c_11])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'aside', 'class' => 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6', 'attrs' => og_attrs(['aria-label', og_coalesce([$v_landmarkLabel, og_get($v_labels, ['asideTitle'])]), 'data-slot', 'faq-help']), 'children' => (string) $c_11])|noescape}

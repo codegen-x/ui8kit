@@ -21,9 +21,9 @@ type CutCardsProps struct {
 templ CutCards(p CutCardsProps) {
 	{{ vDishes := p.Dishes }}
 	{{ vLabels := p.Labels }}
-	@compose.Grid(compose.GridProps{Cols: "1-4", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+	@compose.Grid(compose.GridProps{Cols: "1-4", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 		for _, vD := range uiutils.L(vDishes) {
-			@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "4/3"})
 				@compose.Text(compose.TextProps{Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
 					{ uiutils.Text(uiutils.Get(vD, "name")) }

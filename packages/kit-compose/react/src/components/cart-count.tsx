@@ -19,7 +19,7 @@ export function CartCount({ count = 0, label }: CartCountProps) {
       className="inline-flex h-8 items-center gap-2 rounded bg-muted px-4 text-sm font-medium"
       role="status"
       aria-live="polite"
-      data-testid="cart-count"
+      data-slot="cart-count"
     >
       <LucideIcon name="shopping-bag" size={16} />
       <Inline>

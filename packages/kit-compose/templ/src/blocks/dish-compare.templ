@@ -37,7 +37,7 @@ templ DishCompare(p DishCompareProps) {
 		if uiutils.Eq(uiutils.Len(vDishes), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "scale", Title: vEmpty})
 		} else if uiutils.Eq(vLayout, "table") {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-full overflow-x-auto", Attrs: uiutils.Attrs("data-testid", "compare-table")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-full overflow-x-auto", Attrs: uiutils.Attrs("data-slot", "compare-table")}}) {
 				@compose.Table(compose.TableProps{BoxProps: box.BoxProps{Class: "w-full text-sm"}}) {
 					@compose.TableCaption(compose.TableCaptionProps{BoxProps: box.BoxProps{Class: "sr-only"}}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "caption")) }
@@ -66,7 +66,7 @@ templ DishCompare(p DishCompareProps) {
 					}
 					@compose.TableBody(compose.TableBodyProps{BoxProps: box.BoxProps{}}) {
 						for _, vD := range uiutils.L(vDishes) {
-							@compose.TableRow(compose.TableRowProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}}) {
+							@compose.TableRow(compose.TableRowProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "item")}}) {
 								@compose.TableHeadCell(compose.TableHeadCellProps{BoxProps: box.BoxProps{Class: "py-2 font-semibold", Attrs: uiutils.Attrs("scope", "row")}}) {
 									{ uiutils.Text(uiutils.Get(vD, "name")) }
 								}

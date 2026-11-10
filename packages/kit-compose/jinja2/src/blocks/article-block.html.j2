@@ -6,4 +6,4 @@
 {%- set c_1 -%}
   {{ og_slot(og_def(children, none))|safe }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'article', 'Class': og_s(og_cnv([og_def(p['className'], '')])), 'Attrs': og_attrs(['data-testid', v_testid])}, 'children': c_1}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'article', 'Class': og_s(og_cnv([og_def(p['className'], '')])), 'Attrs': og_attrs(['data-slot', og_coalesce([v_testid, 'article-block'])])}, 'children': c_1}) }}

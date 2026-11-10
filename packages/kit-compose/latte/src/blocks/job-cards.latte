@@ -82,14 +82,14 @@
             {/capture}
             {=og_include('compose/TableCell.latte', ['class' => 'pr-4 text-right', 'children' => (string) $c_17])|noescape}
           {/capture}
-          {=og_include('compose/TableRow.latte', ['class' => 'border-t border-border', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_18])|noescape}
+          {=og_include('compose/TableRow.latte', ['class' => 'border-t border-border', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_18])|noescape}
         {/foreach}
       {/capture}
       {=og_include('compose/TableBody.latte', ['children' => (string) $c_19])|noescape}
     {/capture}
-    {=og_include('compose/Table.latte', ['class' => 'w-full text-left text-sm', 'attrs' => og_attrs(['data-testid', 'job-table']), 'children' => (string) $c_20])|noescape}
+    {=og_include('compose/Table.latte', ['class' => 'w-full text-left text-sm', 'attrs' => og_attrs(['data-slot', 'job-table']), 'children' => (string) $c_20])|noescape}
   {/capture}
-  {=og_include('compose/Box.latte', ['class' => 'w-full overflow-x-auto rounded inset-ring inset-ring-border', 'children' => (string) $c_21])|noescape}
+  {=og_include('compose/Box.latte', ['class' => 'w-full overflow-x-auto rounded inset-ring inset-ring-border', 'attrs' => og_attrs(['data-slot', 'job-cards']), 'children' => (string) $c_21])|noescape}
 {else}
   {capture $c_36}
     {foreach og_l($v_jobs) as $v_j}
@@ -132,7 +132,7 @@
           {capture $c_31}
             {=og_text(og_get($v_j, ['salary']))}
           {/capture}
-          {=og_include('compose/Text.latte', ['size' => 'base', 'weight' => 'semibold', 'attrs' => og_attrs(['data-testid', 'salary']), 'children' => (string) $c_31])|noescape}
+          {=og_include('compose/Text.latte', ['size' => 'base', 'weight' => 'semibold', 'attrs' => og_attrs(['data-slot', 'salary']), 'children' => (string) $c_31])|noescape}
         {/if}
         {capture $c_34}
           {capture $c_32}
@@ -147,8 +147,8 @@
         {/capture}
         {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => 'between', 'class' => 'mt-auto', 'children' => (string) $c_34])|noescape}
       {/capture}
-      {=og_include('compose/Stack.latte', ['gap' => '4', 'class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_35])|noescape}
+      {=og_include('compose/Stack.latte', ['gap' => '4', 'class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_35])|noescape}
     {/foreach}
   {/capture}
-  {=og_include('compose/Grid.latte', ['cols' => '1-2', 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_36])|noescape}
+  {=og_include('compose/Grid.latte', ['cols' => '1-2', 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_36])|noescape}
 {/if}

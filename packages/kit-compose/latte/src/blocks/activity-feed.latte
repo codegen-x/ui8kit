@@ -40,14 +40,14 @@
               {/capture}
               {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'shrink-0 text-muted-foreground', 'children' => (string) $c_4])|noescape}
             {/capture}
-            {=og_include('compose/ListItem.latte', ['class' => og_s(og_cnv(['flex items-start justify-between gap-4 border-b border-border last:border-0', (og_t(og_eq($v_density, 'compact')) ? 'py-2' : 'py-4')])), 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_5])|noescape}
+            {=og_include('compose/ListItem.latte', ['class' => og_s(og_cnv(['flex items-start justify-between gap-4 border-b border-border last:border-0', (og_t(og_eq($v_density, 'compact')) ? 'py-2' : 'py-4')])), 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_5])|noescape}
           {/foreach}
         {/capture}
-        {=og_include('compose/List.latte', ['class' => 'm-0 flex list-none flex-col p-0', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_6])|noescape}
+        {=og_include('compose/List.latte', ['class' => 'm-0 flex list-none flex-col p-0', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_6])|noescape}
       {/if}
     {/capture}
     {=og_include('blocks/panel.latte', ['p' => ['title' => $v_title, 'description' => $v_text, 'id' => $v_id, 'className' => og_cnv([(og_t(og_eq($v_tone, 'muted')) ? 'bg-muted' : '')])], 'children' => og_markup($c_7)])|noescape}
   {/capture}
   {=og_include('compose/Container.latte', ['class' => 'mx-auto w-full max-w-6xl px-4 py-8', 'attrs' => og_attrs(['data-slot', 'container']), 'children' => (string) $c_8])|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'section', 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : (og_t(og_and([$v_title, $v_id])) ? og_tpl('{0}-t', [$v_id]) : null)), 'data-testid', 'panel-section', 'aria-label', $v_landmarkLabel]), 'children' => (string) $c_9])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'section', 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : (og_t(og_and([$v_title, $v_id])) ? og_tpl('{0}-t', [$v_id]) : null)), 'aria-label', $v_landmarkLabel, 'data-slot', 'panel-section']), 'children' => (string) $c_9])|noescape}

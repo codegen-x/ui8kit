@@ -62,9 +62,9 @@ export function AboutMe({
       {((layout as string) === "facts") ? (
         <>
           {((facts?.length ?? 0) > 0) ? (
-            <List tag="ul" className="grid grid-cols-1 gap-4 sm:grid-cols-2" data-testid="facts">
+            <List tag="ul" className="grid grid-cols-1 gap-4 sm:grid-cols-2" data-slot="facts">
               {(facts ?? []).map((f) => (
-                <ListItem key={f.id} className="rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4" data-testid="fact">
+                <ListItem key={f.id} className="rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4" data-slot="fact">
                   <Text size="xs" className="text-muted-foreground">
                     {f.label}
                   </Text>
@@ -77,9 +77,9 @@ export function AboutMe({
           ) : null}
         </>
       ) : ((skills?.length ?? 0) > 0) ? (
-        <Stack gap="4" align="stretch" data-testid="skills">
+        <Stack gap="4" align="stretch" data-slot="skills">
           {(skills ?? []).map((s) => (
-            <Stack key={s.id} gap="2" align="stretch" data-testid="skill">
+            <Stack key={s.id} gap="2" align="stretch" data-slot="skill">
               <Group gap="4" justify="between">
                 <Text size="sm" weight="semibold">
                   {s.label}

@@ -40,10 +40,10 @@
             {%- endset -%}
             {{ include('compose/Text.html.twig', {'size': 'sm', 'weight': og_s((og_t(og_eq(og_add(v_i, 1), v_current)) ? 'bold' : 'semibold')), 'children': c_4}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/ListItem.html.twig', {'class': 'flex flex-1 items-center gap-4', 'attrs': og_attrs(['data-testid', 'item', 'aria-current', (og_t(og_eq(og_add(v_i, 1), v_current)) ? 'step' : null)]), 'children': c_5}, with_context = false) }}
+          {{ include('compose/ListItem.html.twig', {'class': 'flex flex-1 items-center gap-4', 'attrs': og_attrs(['aria-current', (og_t(og_eq(og_add(v_i, 1), v_current)) ? 'step' : null), 'data-slot', 'item']), 'children': c_5}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/List.html.twig', {'tag': 'ol', 'class': og_s(og_cnv(['m-0 flex list-none gap-4 p-0', (og_t(og_eq(v_layout, 'vertical')) ? 'flex-col' : 'flex-col sm:flex-row')])), 'attrs': og_attrs(['data-testid', 'items']), 'children': c_6}, with_context = false) }}
+      {{ include('compose/List.html.twig', {'tag': 'ol', 'class': og_s(og_cnv(['m-0 flex list-none gap-4 p-0', (og_t(og_eq(v_layout, 'vertical')) ? 'flex-col' : 'flex-col sm:flex-row')])), 'attrs': og_attrs(['data-slot', 'items']), 'children': c_6}, with_context = false) }}
       {%- if og_t(og_eq(v_summary, 'show')) %}
         {%- for v_s in og_l(v_steps) %}
           {%- set v_i = loop.index0 -%}
@@ -69,12 +69,12 @@
               {%- endset -%}
               {{ include('compose/Group.html.twig', {'gap': '2', 'class': 'pt-2', 'children': c_11}, with_context = false) }}
             {%- endset -%}
-            {{ include('compose/Stack.html.twig', {'gap': '2', 'class': 'rounded bg-card p-6 inset-ring inset-ring-border', 'attrs': og_attrs(['data-testid', 'step-summary']), 'children': c_12}, with_context = false) }}
+            {{ include('compose/Stack.html.twig', {'gap': '2', 'class': 'rounded bg-card p-6 inset-ring inset-ring-border', 'attrs': og_attrs(['data-slot', 'step-summary']), 'children': c_12}, with_context = false) }}
           {%- endif %}
         {%- endfor %}
       {%- endif %}
     {%- endset -%}
-    {{ include('compose/Stack.html.twig', {'gap': '6', 'align': 'stretch', 'attrs': og_attrs(['data-testid', 'stepper']), 'children': c_13}, with_context = false) }}
+    {{ include('compose/Stack.html.twig', {'gap': '6', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'stepper']), 'children': c_13}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'measure': '3xl', 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_14)}, with_context = false) }}

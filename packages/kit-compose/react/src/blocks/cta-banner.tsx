@@ -21,17 +21,17 @@ export function CtaBanner({ id, title, text, cta, href, tone = "muted", landmark
       tag="section"
       className="w-full py-0"
       aria-labelledby={(landmarkLabel ? undefined : tpl("{0}-title", id))}
-      data-testid="section"
       data-tone={tone}
       data-density="compact"
       aria-label={landmarkLabel}
+      data-slot="section"
     >
       <Box
         className={cn(
           "flex w-full flex-col items-center gap-10 bg-muted px-6 text-center",
           defaults.cta.panel
         )}
-        data-testid="cta-banner"
+        data-slot="cta-banner"
       >
         <Title
           as={2}
@@ -45,13 +45,7 @@ export function CtaBanner({ id, title, text, cta, href, tone = "muted", landmark
         <Text size="xs" weight="semibold" className={cn("leading-5 text-muted-foreground", defaults.cta.text)}>
           {text}
         </Text>
-        <Button
-          variant="default"
-          size="lg"
-          href={urlOf(href)}
-          className={defaults.cta.button}
-          data-testid="action-primary"
-        >
+        <Button variant="default" size="lg" href={urlOf(href)} className={defaults.cta.button}>
           {cta}
         </Button>
       </Box>

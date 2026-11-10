@@ -72,7 +72,7 @@
                     "Align": "start"
                   },
                   "attrs": {
-                    "data-testid": "media-post"
+                    "data-slot": "media-post"
                   },
                   "children": [
                     {
@@ -149,7 +149,10 @@
           ],
           "index": "i"
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "media-posts"
+      }
     }
   ],
   "portable": {

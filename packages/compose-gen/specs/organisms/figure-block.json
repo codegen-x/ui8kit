@@ -9,7 +9,7 @@
     {
       "name": "testid",
       "type": "string",
-      "docs": "data-testid of the root"
+      "docs": "data-slot of the root (default: the component name)"
     }
   ],
   "className": true,
@@ -31,8 +31,14 @@
         }
       },
       "attrs": {
-        "data-testid": {
-          "$": "testid"
+        "data-slot": {
+          "op": "coalesce",
+          "args": [
+            {
+              "$": "testid"
+            },
+            "figure-block"
+          ]
         }
       },
       "children": [

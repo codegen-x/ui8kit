@@ -154,7 +154,7 @@
                         "Class": "flex-wrap text-muted-foreground"
                       },
                       "attrs": {
-                        "data-testid": "logos"
+                        "data-slot": "logos"
                       },
                       "children": [
                         {
@@ -173,7 +173,7 @@
                                 "Align": "center"
                               },
                               "attrs": {
-                                "data-testid": "logo"
+                                "data-slot": "logo"
                               },
                               "children": [
                                 {
@@ -243,7 +243,7 @@
                         "Class": "gap-6 text-center"
                       },
                       "attrs": {
-                        "data-testid": "stats"
+                        "data-slot": "stats"
                       },
                       "children": [
                         {
@@ -262,7 +262,7 @@
                                 "Align": "center"
                               },
                               "attrs": {
-                                "data-testid": "stat"
+                                "data-slot": "stat"
                               },
                               "children": [
                                 {

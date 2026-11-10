@@ -209,7 +209,6 @@
         }
       },
       "attrs": {
-        "data-testid": "nav-bar",
         "data-layout": {
           "$": "layout"
         },
@@ -218,7 +217,8 @@
         },
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "nav-bar"
       },
       "children": [
         {
@@ -250,7 +250,7 @@
                 "Class": "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border"
               },
               "attrs": {
-                "data-testid": "skip-link"
+                "data-slot": "skip-link"
               },
               "children": [
                 {

@@ -23,13 +23,14 @@ const { extras, mode = "grid" } = defineProps<MediaFiguresProps>();
       (mode as string) === 'grid' ? 'grid grid-cols-2 gap-6 text-center'
       : 'grid grid-cols-3 gap-6'
     "
+    data-slot="media-figures"
   >
     <template v-for="(s, i) in extras.stats" :key="s.id">
       <Stack
         v-if="(i < (((mode as string) === 'grid') ? 4 : 3))"
         gap="0"
         :align="(((mode as string) === 'grid') ? 'center' : 'start')"
-        data-testid="media-stat"
+        data-slot="media-stat"
       >
         <Text size="3xl" weight="bold">
           {{ s.value }}

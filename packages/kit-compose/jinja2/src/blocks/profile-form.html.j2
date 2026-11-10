@@ -25,18 +25,18 @@
                 {%- endset -%}
                 {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Type': 'button'}, 'children': c_1}) }}
               {%- endset -%}
-              {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Attrs': og_attrs(['data-testid', 'avatar'])}, 'children': c_2}) }}
+              {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Attrs': og_attrs(['data-slot', 'avatar'])}, 'children': c_2}) }}
             {%- endif %}
             {%- set c_3 -%}
-              {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'name', 'Attrs': og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [v_id]), 'data-testid', 'field'])}}) }}
+              {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'name', 'Attrs': og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [v_id]), 'data-slot', 'field'])}}) }}
             {%- endset -%}
             {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['name']), 'htmlFor': og_tpl('{0}-name', [v_id])}, 'children': og_markup(c_3)}) }}
             {%- set c_4 -%}
-              {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Attrs': og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}}) }}
+              {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Attrs': og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}}) }}
             {%- endset -%}
             {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['email']), 'htmlFor': og_tpl('{0}-email', [v_id])}, 'children': og_markup(c_4)}) }}
             {%- set c_5 -%}
-              {{ og_include('compose/textarea.html.j2', {'p': {'Rows': 4, 'Name': 'bio', 'Attrs': og_attrs(['id', og_tpl('{0}-bio', [v_id]), 'data-testid', 'field'])}}) }}
+              {{ og_include('compose/textarea.html.j2', {'p': {'Rows': 4, 'Name': 'bio', 'Attrs': og_attrs(['id', og_tpl('{0}-bio', [v_id]), 'data-slot', 'field'])}}) }}
             {%- endset -%}
             {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['bio']), 'htmlFor': og_tpl('{0}-bio', [v_id])}, 'children': og_markup(c_5)}) }}
           {%- endset -%}
@@ -64,7 +64,7 @@
               {%- endset -%}
               {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between'}, 'children': c_11}) }}
             {%- endset -%}
-            {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'prefs'])}, 'children': c_12}) }}
+            {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'prefs'])}, 'children': c_12}) }}
           {%- endif %}
         {%- endset -%}
         {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_layout, 'split')) else '1')), 'Class': 'items-start gap-8'}, 'children': c_13}) }}
@@ -72,7 +72,7 @@
           {%- set c_14 -%}
             {{ og_text(og_get(v_labels, ['save'])) }}
           {%- endset -%}
-          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit', 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_14}) }}
+          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit'}, 'children': c_14}) }}
           {%- set c_15 -%}
             {{ og_text(og_get(v_labels, ['cancel'])) }}
           {%- endset -%}
@@ -80,10 +80,10 @@
         {%- endset -%}
         {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Class': 'flex-wrap'}, 'children': c_16}) }}
       {%- endset -%}
-      {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': 'gap-6', 'Attrs': og_attrs(['data-testid', 'profile-form'])}, 'children': c_17}) }}
+      {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': 'gap-6', 'Attrs': og_attrs(['data-slot', 'profile-form'])}, 'children': c_17}) }}
     {%- endset -%}
     {{ og_include('blocks/panel.html.j2', {'p': {'title': v_title, 'description': v_text, 'id': v_id, 'className': og_cnv([og_cnv([('bg-muted' if og_t(og_eq(v_tone, 'muted')) else '')])])}, 'children': og_markup(c_18)}) }}
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4 py-8', 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_19}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else (og_tpl('{0}-t', [v_id]) if og_t(og_and([v_title, v_id])) else none)), 'data-testid', 'panel-section', 'aria-label', v_landmarkLabel])}, 'children': c_20}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else (og_tpl('{0}-t', [v_id]) if og_t(og_and([v_title, v_id])) else none)), 'aria-label', v_landmarkLabel, 'data-slot', 'panel-section'])}, 'children': c_20}) }}

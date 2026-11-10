@@ -34,14 +34,14 @@
                 {%- endset -%}
                 {{ include('compose/Text.html.twig', {'size': 'sm', 'children': c_2}, with_context = false) }}
               {%- endset -%}
-              {{ include('compose/ListItem.html.twig', {'class': 'flex items-start gap-4', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_3}, with_context = false) }}
+              {{ include('compose/ListItem.html.twig', {'class': 'flex items-start gap-4', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_3}, with_context = false) }}
             {%- endfor %}
           {%- endset -%}
           {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-col gap-4 p-0', 'children': c_4}, with_context = false) }}
         {%- endset -%}
         {{ include('compose/CardContent.html.twig', {'class': 'flex flex-col gap-4', 'children': c_5}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Card.html.twig', {'variant': 'muted', 'class': og_s(og_cnv(['h-full', (og_t(og_eq(v_density, 'compact')) ? 'gap-4 p-4' : '')])), 'attrs': og_attrs(['data-testid', 'side', 'data-side', 'before']), 'children': c_6}, with_context = false) }}
+      {{ include('compose/Card.html.twig', {'variant': 'muted', 'class': og_s(og_cnv(['h-full', (og_t(og_eq(v_density, 'compact')) ? 'gap-4 p-4' : '')])), 'attrs': og_attrs(['data-side', 'before']), 'children': c_6}, with_context = false) }}
       {%- set c_12 -%}
         {%- set c_11 -%}
           {%- set c_7 -%}
@@ -59,16 +59,16 @@
                 {%- endset -%}
                 {{ include('compose/Text.html.twig', {'size': 'sm', 'children': c_8}, with_context = false) }}
               {%- endset -%}
-              {{ include('compose/ListItem.html.twig', {'class': 'flex items-start gap-4', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_9}, with_context = false) }}
+              {{ include('compose/ListItem.html.twig', {'class': 'flex items-start gap-4', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_9}, with_context = false) }}
             {%- endfor %}
           {%- endset -%}
           {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-col gap-4 p-0', 'children': c_10}, with_context = false) }}
         {%- endset -%}
         {{ include('compose/CardContent.html.twig', {'class': 'flex flex-col gap-4', 'children': c_11}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Card.html.twig', {'variant': 'default', 'class': og_s(og_cnv(['h-full', (og_t(og_eq(v_density, 'compact')) ? 'gap-4 p-4' : '')])), 'attrs': og_attrs(['data-testid', 'side', 'data-side', 'after']), 'children': c_12}, with_context = false) }}
+      {{ include('compose/Card.html.twig', {'variant': 'default', 'class': og_s(og_cnv(['h-full', (og_t(og_eq(v_density, 'compact')) ? 'gap-4 p-4' : '')])), 'attrs': og_attrs(['data-side', 'after']), 'children': c_12}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': '1-2', 'class': 'items-stretch gap-4', 'attrs': og_attrs(['data-testid', 'sides']), 'children': c_13}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': '1-2', 'class': 'items-stretch gap-4', 'attrs': og_attrs(['data-slot', 'sides']), 'children': c_13}, with_context = false) }}
   {%- else %}
     {%- set c_20 -%}
       {%- for v_p in og_l(v_points) %}
@@ -98,10 +98,10 @@
           {%- endset -%}
           {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'start', 'children': c_18}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Grid.html.twig', {'cols': '1-3', 'class': og_s(og_cnv(['items-center gap-4', 'rounded bg-card inset-ring inset-ring-border p-4'])), 'attrs': og_attrs(['data-testid', 'item']), 'children': c_19}, with_context = false) }}
+        {{ include('compose/Grid.html.twig', {'cols': '1-3', 'class': og_s(og_cnv(['items-center gap-4', 'rounded bg-card inset-ring inset-ring-border p-4'])), 'attrs': og_attrs(['data-slot', 'item']), 'children': c_19}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Stack.html.twig', {'gap': '2', 'align': 'stretch', 'attrs': og_attrs(['data-testid', 'rows']), 'children': c_20}, with_context = false) }}
+    {{ include('compose/Stack.html.twig', {'gap': '2', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'rows']), 'children': c_20}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_21)}, with_context = false) }}

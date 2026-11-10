@@ -61,10 +61,10 @@ export function TemplateGrid({
               className="flex-wrap"
               role="group"
               aria-label={labels.filters}
-              data-testid="template-filters"
+              data-slot="template-filters"
             >
               {(filters ?? []).map((f) => (
-                <Button key={f.id} variant="outline" size="sm" type="button" className="gap-2" data-testid="template-filter">
+                <Button key={f.id} variant="outline" size="sm" type="button" className="gap-2">
                   {f.icon ? (
                     <LucideIcon name={f.icon} size={16} />
                   ) : null}
@@ -77,20 +77,20 @@ export function TemplateGrid({
         {((templates?.length ?? 0) === 0) ? (
           <EmptyState icon="layout-template" title={empty} />
         ) : (
-          <Grid cols={cols} className="w-full gap-6" data-testid="template-grid">
+          <Grid cols={cols} className="w-full gap-6" data-slot="template-grid">
             {(templates ?? []).map((t) => (
               <Box key={t.id}
                 className={cn(
                   "flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border",
                   defaults.templates.card
                 )}
-                data-testid="template-card"
+                data-slot="template-card"
               >
                 <Box className={cn("shrink-0 overflow-hidden", defaults.templates.image)}>
                   <MediaFrame alt={t.title} className={cn("size-full", defaults.media.rounded)} />
                 </Box>
-                <Group gap="4" align="center" className={cn("w-full", defaults.templates.footer)} data-testid="template-footer">
-                  <IconBadge size="sm" className="overflow-hidden" data-testid="template-avatar">
+                <Group gap="4" align="center" className={cn("w-full", defaults.templates.footer)} data-slot="template-footer">
+                  <IconBadge size="sm" className="overflow-hidden" data-slot="template-avatar">
                     <LucideIcon name="layout-template" size={16} />
                   </IconBadge>
                   <Stack gap="0" className="min-w-0 flex-1">
@@ -123,7 +123,7 @@ export function TemplateGrid({
             ))}
           </Grid>
         )}
-        <Button variant="outline" size="sm" href={urlOf(browseHref)} className="w-full" data-testid="template-browse">
+        <Button variant="outline" size="sm" href={urlOf(browseHref)} className="w-full">
           {labels.browse}
         </Button>
       </Stack>

@@ -21,9 +21,9 @@ type FaqDisclosuresProps struct {
 templ FaqDisclosures(p FaqDisclosuresProps) {
 	{{ vItems := p.Items }}
 	{{ vName := p.Name }}
-	@compose.Stack(compose.StackProps{Gap: "0", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "faq")}}) {
+	@compose.Stack(compose.StackProps{Gap: "0", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "faq")}}) {
 		for _, vQ := range uiutils.L(vItems) {
-			@compose.Disclosure(compose.DisclosureProps{Variant: "item", DisclosureProps: disclosure.DisclosureProps{Name: uiutils.S(vName), Attrs: uiutils.Attrs("data-testid", "faq-item")}}) {
+			@compose.Disclosure(compose.DisclosureProps{Variant: "item", DisclosureProps: disclosure.DisclosureProps{Name: uiutils.S(vName), Attrs: uiutils.Attrs("data-slot", "faq-item")}}) {
 				@compose.Summary(compose.SummaryProps{Variant: "item", SummaryProps: disclosure.SummaryProps{}}) {
 					{ uiutils.Text(uiutils.Get(vQ, "question")) }
 				}

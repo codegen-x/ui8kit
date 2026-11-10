@@ -38,10 +38,10 @@ templ EmptyPanel(p EmptyPanelProps) {
 	{{ vVisual := uiutils.Def(p.Visual, "icon") }}
 	{{ vSize := uiutils.Def(p.Size, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vTitle), "data-testid", "empty")}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vTitle), "data-slot", "empty")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", uiutils.Cond(uiutils.T(uiutils.Eq(vSize, "compact")), "py-4", "py-8"))), Attrs: uiutils.Attrs("data-slot", "container")}}) {
 			if uiutils.Eq(vVisual, "image") {
-				@compose.Stack(compose.StackProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "mx-auto max-w-md text-center", Attrs: uiutils.Attrs("data-testid", "empty-visual")}}) {
+				@compose.Stack(compose.StackProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "mx-auto max-w-md text-center", Attrs: uiutils.Attrs("data-slot", "empty-visual")}}) {
 					@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3", Class: uiutils.Cnv("w-full max-w-xs")})
 					@compose.Title(compose.TitleProps{As: "2", Size: "2xl", Weight: "bold", TextProps: text.TextProps{}}) {
 						{ uiutils.Text(vTitle) }
@@ -50,7 +50,7 @@ templ EmptyPanel(p EmptyPanelProps) {
 						{ uiutils.Text(vText) }
 					}
 					if uiutils.Eq(vActions, "button") {
-						@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vCtaHref, false), Attrs: uiutils.Attrs("data-testid", "empty-action")}}) {
+						@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vCtaHref, false)}}) {
 							{ uiutils.Text(vCta) }
 						}
 					}
@@ -64,7 +64,7 @@ templ EmptyPanel(p EmptyPanelProps) {
 
 templ emptyPanelFill1(p EmptyPanelProps, vCta any, vCtaHref any, vActions any) {
 	if uiutils.Eq(vActions, "button") {
-		@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vCtaHref, false), Attrs: uiutils.Attrs("data-testid", "empty-action")}}) {
+		@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Href: uiutils.URL(vCtaHref, false)}}) {
 			{ uiutils.Text(vCta) }
 		}
 	}

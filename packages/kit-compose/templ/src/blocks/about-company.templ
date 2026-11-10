@@ -37,9 +37,9 @@ templ AboutCompany(p AboutCompanyProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, Density: vDensity, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": true, "side": "start"}, LandmarkLabel: vLandmarkLabel, Aside: aboutCompanyFill1(p, vTitle)}) {
 		if uiutils.Gt(uiutils.Len(vStats), float64(0)) {
-			@compose.Grid(compose.GridProps{Cols: "2-4", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "stats")}}) {
+			@compose.Grid(compose.GridProps{Cols: "2-4", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "stats")}}) {
 				for _, vS := range uiutils.L(vStats) {
-					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "stat")}}) {
+					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "stat")}}) {
 						@compose.Text(compose.TextProps{Size: "3xl", Weight: "bold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vS, "value")) }
 						}
@@ -51,9 +51,9 @@ templ AboutCompany(p AboutCompanyProps) {
 			}
 		}
 		if uiutils.Gt(uiutils.Len(vValues), float64(0)) {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stacked")), "md:grid-cols-3", ""))), Attrs: uiutils.Attrs("data-testid", "values")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stacked")), "md:grid-cols-3", ""))), Attrs: uiutils.Attrs("data-slot", "values")}}) {
 				for _, vV := range uiutils.L(vValues) {
-					@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: "border-t border-border pt-4", Attrs: uiutils.Attrs("data-testid", "value")}}) {
+					@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: "border-t border-border pt-4", Attrs: uiutils.Attrs("data-slot", "value")}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vV, "icon")), Size: 20})
 						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
@@ -71,7 +71,7 @@ templ AboutCompany(p AboutCompanyProps) {
 }
 
 templ aboutCompanyFill1(p AboutCompanyProps, vTitle any) {
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-4", Attrs: uiutils.Attrs("data-testid", "strip")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-4", Attrs: uiutils.Attrs("data-slot", "strip")}}) {
 		@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "3/4"})
 		@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "3/4", Class: uiutils.Cnv("mt-8")})
 		@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "3/4"})

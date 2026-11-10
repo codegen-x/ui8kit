@@ -15,7 +15,7 @@
   {%- set c_1 -%}
     {{ og_text(og_get(v_labels, ['skip'])) }}
   {%- endset -%}
-  {{ include('compose/LinkPlain.html.twig', {'href': '#main-content', 'class': 'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border', 'attrs': og_attrs(['data-testid', 'skip-link']), 'children': c_1}, with_context = false) }}
+  {{ include('compose/LinkPlain.html.twig', {'href': '#main-content', 'class': 'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border', 'attrs': og_attrs(['data-slot', 'skip-link']), 'children': c_1}, with_context = false) }}
   {%- set c_10 -%}
     {%- set c_2 -%}
       {{ og_text(og_get(v_labels, ['brand'])) }}
@@ -39,16 +39,16 @@
       {%- set c_7 -%}
         {{ og_text(og_get(v_labels, ['theme'])) }}
       {%- endset -%}
-      {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'attrs': og_attrs(['data-testid', 'theme-toggle']), 'children': c_7}, with_context = false) }}
+      {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'children': c_7}, with_context = false) }}
       {%- if og_t(og_and([og_eq(v_actions, 'cta'), v_cta])) %}
         {%- set c_8 -%}
           {{ og_text(v_cta) }}
         {%- endset -%}
-        {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'sm', 'href': og_url(og_s(v_ctaHref)), 'attrs': og_attrs(['data-testid', 'header-cta']), 'children': c_8}, with_context = false) }}
+        {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'sm', 'href': og_url(og_s(v_ctaHref)), 'children': c_8}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'children': c_9}, with_context = false) }}
   {%- endset -%}
   {{ include('compose/Container.html.twig', {'class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'flex flex-wrap gap-4 py-4', (og_t(og_eq(v_layout, 'stacked')) ? 'flex-col items-center' : 'items-center justify-between')])), 'attrs': og_attrs(['data-slot', 'container']), 'children': c_10}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'header', 'class': og_s(og_cnv(['border-b border-border bg-background', (og_t(og_eq(v_position, 'sticky')) ? 'sticky top-0 z-40' : '')])), 'attrs': og_attrs(['data-testid', 'site-header', 'data-layout', v_layout, 'aria-label', v_landmarkLabel]), 'children': c_11}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'header', 'class': og_s(og_cnv(['border-b border-border bg-background', (og_t(og_eq(v_position, 'sticky')) ? 'sticky top-0 z-40' : '')])), 'attrs': og_attrs(['data-layout', v_layout, 'aria-label', v_landmarkLabel, 'data-slot', 'site-header']), 'children': c_11}, with_context = false) }}

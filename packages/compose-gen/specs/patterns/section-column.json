@@ -42,7 +42,10 @@
         {
           "slot": "children"
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "section-column"
+      }
     }
   ],
   "portable": {

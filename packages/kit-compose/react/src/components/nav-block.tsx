@@ -14,7 +14,12 @@ export type NavBlockProps = {
 
 export function NavBlock({ label, testid, landmarkLabel, className, children }: NavBlockProps) {
   return (
-    <Block tag="nav" className={cn(className)} aria-label={(landmarkLabel ?? label)} data-testid={testid}>
+    <Block
+      tag="nav"
+      className={cn(className)}
+      aria-label={(landmarkLabel ?? label)}
+      data-slot={(testid ?? "nav-block")}
+    >
       {children}
     </Block>
   );

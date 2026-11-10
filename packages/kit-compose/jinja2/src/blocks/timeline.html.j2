@@ -37,7 +37,7 @@
         {%- endset -%}
         {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex min-w-0 flex-1 flex-col gap-0'}, 'children': c_6}) }}
       {%- endset -%}
-      {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'relative flex min-w-0 gap-4 pb-4 last:pb-0', 'Attrs': og_attrs(['data-event', og_get(v_item, ['id'])])}, 'children': c_7}) }}
+      {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'relative flex min-w-0 gap-4 pb-4 last:pb-0', 'Attrs': og_attrs(['data-event', og_get(v_item, ['id']), 'data-slot', 'timeline-item'])}, 'children': c_7}) }}
     {%- endfor %}
   {%- endset -%}
   {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col p-0'}, 'children': c_8}) }}

@@ -1,4 +1,5 @@
 import { dropDefaultProps, withLandmarkLabels } from "../landmarks";
+import { withSlots } from "../slots";
 import { parts } from "../components/parts";
 import { patterns } from "../components/patterns";
 import { framePatterns } from "../components/frames";
@@ -82,3 +83,5 @@ export const allOrganisms = [
 // every organism that holds a landmark takes `landmarkLabel` (authoring/landmarks.ts); run once, before any page composes them
 withLandmarkLabels([...allOrganisms, ...parts, ...patterns, ...framePatterns]);
 dropDefaultProps([...allOrganisms, ...parts, ...patterns, ...framePatterns]);
+// data-slot on the root and the list rows of every component, data-testid -> data-slot (authoring/slots.ts, alexy-os/chaosbun#149)
+withSlots([...allOrganisms, ...parts, ...patterns, ...framePatterns], new Set(allOrganisms.map((o) => o.id)));

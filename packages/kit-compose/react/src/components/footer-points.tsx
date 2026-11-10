@@ -14,14 +14,14 @@ export function FooterPoints({ extras, title }: FooterPointsProps) {
   return (
     <>
       {((extras.points?.length ?? 0) > 0) ? (
-        <Stack gap="4" align="start">
+        <Stack gap="4" align="start" data-slot="footer-points">
           <Text size="sm" weight="semibold">
             {title}
           </Text>
           {(extras.points ?? []).map((p, i) => (
             <Fragment key={p.id}>
               {(i < 4) ? (
-                <Group gap="2" align="center" data-testid="footer-point">
+                <Group gap="2" align="center" data-slot="footer-point">
                   <LucideIcon name={p.icon} size={16} />
                   <Text size="sm">
                     {p.title}

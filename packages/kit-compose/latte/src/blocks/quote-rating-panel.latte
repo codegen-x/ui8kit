@@ -28,10 +28,10 @@
           {/capture}
           {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'text-muted-foreground', 'children' => (string) $c_4])|noescape}
         {/capture}
-        {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => 'center', 'attrs' => og_attrs(['data-testid', 'quote-stat']), 'children' => (string) $c_5])|noescape}
+        {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => 'center', 'attrs' => og_attrs(['data-slot', 'quote-stat']), 'children' => (string) $c_5])|noescape}
       {/if}
     {/foreach}
   {/capture}
   {=og_include('compose/Box.latte', ['class' => 'grid w-full grid-cols-2 gap-4 border-t border-border pt-6', 'children' => (string) $c_6])|noescape}
 {/capture}
-{=og_include('compose/Stack.latte', ['gap' => '6', 'align' => 'center', 'class' => 'rounded bg-card inset-ring inset-ring-border p-8 text-center', 'attrs' => og_attrs(['data-testid', 'quote-rating']), 'children' => (string) $c_7])|noescape}
+{=og_include('compose/Stack.latte', ['gap' => '6', 'align' => 'center', 'class' => 'rounded bg-card inset-ring inset-ring-border p-8 text-center', 'attrs' => og_attrs(['data-slot', 'quote-rating']), 'children' => (string) $c_7])|noescape}

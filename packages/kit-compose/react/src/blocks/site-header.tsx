@@ -43,15 +43,15 @@ export function SiteHeader({
         "border-b border-border bg-background",
         (((position as string) === "sticky") ? "sticky top-0 z-40" : "")
       )}
-      data-testid="site-header"
       data-layout={layout}
       aria-label={landmarkLabel}
+      data-slot="site-header"
     >
       <LinkPlain
         href="#main-content"
         className={"sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background " +
           "focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border"}
-        data-testid="skip-link"
+        data-slot="skip-link"
       >
         {labels.skip}
       </LinkPlain>
@@ -90,11 +90,11 @@ export function SiteHeader({
           </Group>
         </NavBlock>
         <Group gap="4" align="center">
-          <Button variant="outline" size="sm" data-testid="theme-toggle" onClick={() => onTheme?.()}>
+          <Button variant="outline" size="sm" onClick={() => onTheme?.()}>
             {labels.theme}
           </Button>
           {(((actions as string) === "cta") && cta) ? (
-            <Button variant="default" size="sm" href={urlOf(ctaHref)} data-testid="header-cta">
+            <Button variant="default" size="sm" href={urlOf(ctaHref)}>
               {cta}
             </Button>
           ) : null}

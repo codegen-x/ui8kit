@@ -55,7 +55,7 @@ export function LogoCloud({
               : "3-6"
             }
             class="gap-4"
-            data-testid="items"
+            data-slot="items"
           >
             <For each={logos ?? []}>{(logo) => (
               <Group
@@ -66,7 +66,7 @@ export function LogoCloud({
                   "text-muted-foreground",
                   (((item as string) === "tile") ? "flex-col rounded p-4 inset-ring inset-ring-border" : "")
                 )}
-                data-testid="item"
+                data-slot="item"
               >
                 <LucideIcon name={logo.icon} size={24} />
                 <Text size="sm" weight="semibold" class={(((item as string) === "icon") ? "sr-only" : "")}>

@@ -34,10 +34,10 @@
             {%- endset -%}
             {{ include('compose/Stack.html.twig', {'gap': '2', 'children': c_4}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Stack.html.twig', {'gap': '4', 'class': 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs': og_attrs(['data-testid', 'fact']), 'children': c_5}, with_context = false) }}
+          {{ include('compose/Stack.html.twig', {'gap': '4', 'class': 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs': og_attrs(['data-slot', 'fact']), 'children': c_5}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_layout, 'split')) ? '1-2' : '1-4')), 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'facts']), 'children': c_6}, with_context = false) }}
+      {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_layout, 'split')) ? '1-2' : '1-4')), 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'facts']), 'children': c_6}, with_context = false) }}
     {%- endif %}
     {%- if og_t(og_and([not (og_eq(v_layout, 'facts')), og_gt(og_len(v_zones), 0)])) %}
       {%- set c_15 -%}
@@ -68,7 +68,7 @@
               {%- endset -%}
               {{ include('compose/Text.html.twig', {'size': 'sm', 'weight': 'medium', 'children': c_12}, with_context = false) }}
             {%- endset -%}
-            {{ include('compose/Stack.html.twig', {'gap': '2', 'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'border-b border-border pb-4' : 'rounded bg-card inset-ring inset-ring-border p-6')), 'attrs': og_attrs(['data-testid', 'zone']), 'children': c_13}, with_context = false) }}
+            {{ include('compose/Stack.html.twig', {'gap': '2', 'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'border-b border-border pb-4' : 'rounded bg-card inset-ring inset-ring-border p-6')), 'attrs': og_attrs(['data-slot', 'zone']), 'children': c_13}, with_context = false) }}
           {%- endfor %}
         {%- endset -%}
         {{ include('compose/Box.html.twig', {'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'flex flex-col gap-4' : 'grid grid-cols-1 gap-4 md:grid-cols-3')), 'children': c_14}, with_context = false) }}

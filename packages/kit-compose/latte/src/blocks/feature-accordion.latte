@@ -39,10 +39,10 @@
           {/capture}
           {=og_include('compose/Text.latte', ['size' => 'sm', 'class' => 'pb-4 text-muted-foreground', 'children' => (string) $c_4])|noescape}
         {/capture}
-        {=og_include('compose/Disclosure.latte', ['variant' => 'item', 'name' => og_s((og_t($v_multiple) ? null : og_tpl('{0}-accordion', [og_coalesce([$v_id, 'accordion'])]))), 'open' => og_t(og_and([og_eq($v_expand, 'first'), og_eq($v_i, 0)])), 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_5])|noescape}
+        {=og_include('compose/Disclosure.latte', ['variant' => 'item', 'name' => og_s((og_t($v_multiple) ? null : og_tpl('{0}-accordion', [og_coalesce([$v_id, 'accordion'])]))), 'open' => og_t(og_and([og_eq($v_expand, 'first'), og_eq($v_i, 0)])), 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_5])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => 'stretch', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_6])|noescape}
+    {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_6])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'tone' => $v_tone, 'density' => $v_density, 'layout' => (og_t(og_eq($v_media, 'image')) ? 'split' : 'stack'), 'media' => ['show' => og_eq($v_media, 'image')], 'landmarkLabel' => $v_landmarkLabel, 'aside' => og_markup($f_7)], 'children' => og_markup($c_8)])|noescape}

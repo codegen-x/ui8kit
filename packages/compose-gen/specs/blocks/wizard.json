@@ -54,15 +54,15 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"wizard\"]",
+      "sel": "[data-slot=\"wizard\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"step\"]",
+      "sel": "[data-slot=\"step\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"step-item\"]",
+      "sel": "[data-slot=\"step-item\"]",
       "n": "@wizard",
       "when": {
         "progress": "list"
@@ -76,7 +76,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"field\"]",
+      "sel": "[data-slot=\"field\"]",
       "n": 2
     }
   ],

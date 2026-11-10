@@ -61,7 +61,7 @@ const {
     :landmarkLabel="landmarkLabel"
   >
     <EmptyState v-if="((photos?.length ?? 0) === 0)" icon="image" :title="empty" />
-    <Stack v-else-if="((layout as string) === 'featured')" gap="4" align="stretch" data-testid="featured">
+    <Stack v-else-if="((layout as string) === 'featured')" gap="4" align="stretch" data-slot="featured">
       <MediaFrame :alt="title" />
       <Group gap="4" align="center" justify="between">
         <Stack gap="0">
@@ -81,7 +81,7 @@ const {
           </Button>
         </Group>
       </Group>
-      <Box class="grid grid-cols-3 gap-2 sm:grid-cols-9" data-testid="thumbs">
+      <Box class="grid grid-cols-3 gap-2 sm:grid-cols-9" data-slot="thumbs">
         <MediaFrame
           v-for="(p, i) in photos"
           :key="p.id"
@@ -97,7 +97,7 @@ const {
         : (layout as string) === 'mosaic' ? 'grid grid-cols-2 gap-4 md:grid-cols-4'
         : 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'
       "
-      data-testid="items"
+      data-slot="items"
     >
       <FigureBlock v-for="(p, i) in photos" :key="p.id"
         :class="cn(
@@ -133,7 +133,7 @@ const {
         <Box
           v-if="(((captions as string) === 'show') && (((layout as string) === 'grid') || ((layout as string) === 'masonry')))"
           class="text-sm text-muted-foreground"
-          data-testid="caption"
+          data-slot="caption"
         >
           {{ p.title }}
         </Box>

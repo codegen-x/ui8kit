@@ -11,4 +11,4 @@
   {%- endset -%}
   {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Weight': 'semibold', 'Class': 'sr-only'}, 'children': c_1}) }}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex shrink-0 items-center justify-center text-muted-foreground', og_preset('blocks/presets/defaults.json', ['logos', 'slot'])])), 'Attrs': og_attrs(['data-testid', 'item', 'data-slot', 'logo-slot'])}, 'children': c_2}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex shrink-0 items-center justify-center text-muted-foreground', og_preset('blocks/presets/defaults.json', ['logos', 'slot'])])), 'Attrs': og_attrs(['data-slot', 'logo-slot'])}, 'children': c_2}) }}

@@ -70,13 +70,13 @@
         "Class": "mt-12 border-t border-border"
       },
       "attrs": {
-        "data-testid": "site-footer",
         "data-layout": {
           "$": "layout"
         },
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "site-footer"
       },
       "children": [
         {
@@ -133,7 +133,7 @@
                 "Class": "text-muted-foreground"
               },
               "attrs": {
-                "data-testid": "copyright"
+                "data-slot": "copyright"
               },
               "children": [
                 {

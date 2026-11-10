@@ -23,7 +23,7 @@ templ MemberRow(p MemberRowProps) {
 	{{ vMember := p.Member }}
 	{{ vDepts := p.Depts }}
 	{{ vLayout := uiutils.Def(p.Layout, "list") }}
-	@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "detailed")), "rounded bg-card inset-ring inset-ring-border flex-col p-6", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "directory")), "rounded bg-card inset-ring inset-ring-border p-4", "border-b border-border pb-4"))), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+	@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "detailed")), "rounded bg-card inset-ring inset-ring-border flex-col p-6", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "directory")), "rounded bg-card inset-ring inset-ring-border p-4", "border-b border-border pb-4"))), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 		@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vMember, "name"), Ratio: "1/1", Class: uiutils.Cnv(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "detailed")), "size-16", "size-12"), "shrink-0"))})
 		@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "min-w-0 flex-1"}}) {
 			@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {

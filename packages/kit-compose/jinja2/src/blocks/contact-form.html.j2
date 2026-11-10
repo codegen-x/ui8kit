@@ -19,22 +19,22 @@
     {%- set c_8 -%}
       {%- if og_t(og_eq(v_fields, 'full')) %}
         {%- set c_1 -%}
-          {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'name', 'Attrs': og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [v_id]), 'data-testid', 'field'])}}) }}
+          {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'name', 'Attrs': og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [v_id]), 'data-slot', 'field'])}}) }}
         {%- endset -%}
         {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['name']), 'htmlFor': og_tpl('{0}-name', [v_id])}, 'children': og_markup(c_1)}) }}
       {%- endif %}
       {%- set c_2 -%}
-        {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Attrs': og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}}) }}
+        {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Attrs': og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}}) }}
       {%- endset -%}
       {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['email']), 'htmlFor': og_tpl('{0}-email', [v_id])}, 'children': og_markup(c_2)}) }}
       {%- if og_t(og_eq(v_fields, 'full')) %}
         {%- set c_3 -%}
-          {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'subject', 'Attrs': og_attrs(['id', og_tpl('{0}-subject', [v_id]), 'data-testid', 'field'])}}) }}
+          {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'subject', 'Attrs': og_attrs(['id', og_tpl('{0}-subject', [v_id]), 'data-slot', 'field'])}}) }}
         {%- endset -%}
         {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['subject']), 'htmlFor': og_tpl('{0}-subject', [v_id])}, 'children': og_markup(c_3)}) }}
       {%- endif %}
       {%- set c_4 -%}
-        {{ og_include('compose/textarea.html.j2', {'p': {'Rows': 4, 'Name': 'message', 'Attrs': og_attrs(['id', og_tpl('{0}-message', [v_id]), 'data-testid', 'field'])}}) }}
+        {{ og_include('compose/textarea.html.j2', {'p': {'Rows': 4, 'Name': 'message', 'Attrs': og_attrs(['id', og_tpl('{0}-message', [v_id]), 'data-slot', 'field'])}}) }}
       {%- endset -%}
       {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['message']), 'htmlFor': og_tpl('{0}-message', [v_id])}, 'children': og_markup(c_4)}) }}
       {%- if og_t(og_eq(v_terms, 'show')) %}
@@ -50,9 +50,9 @@
       {%- set c_7 -%}
         {{ og_text(og_get(v_labels, ['submit'])) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit', 'Class': 'w-fit', 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_7}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit', 'Class': 'w-fit'}, 'children': c_7}) }}
     {%- endset -%}
-    {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': 'w-full gap-4', 'Attrs': og_attrs(['data-testid', 'contact-form'])}, 'children': c_8}) }}
+    {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': 'w-full gap-4', 'Attrs': og_attrs(['data-slot', 'contact-form'])}, 'children': c_8}) }}
     {%- if og_t(og_and([og_eq(v_layout, 'split'), og_gt(og_len(v_details), 0)])) %}
       {%- set c_13 -%}
         {%- for v_d in og_l(v_details) %}
@@ -70,10 +70,10 @@
             {%- endset -%}
             {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0'}, 'children': c_11}) }}
           {%- endset -%}
-          {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-testid', 'detail'])}, 'children': c_12}) }}
+          {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-slot', 'detail'])}, 'children': c_12}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Attrs': og_attrs(['data-testid', 'details'])}, 'children': c_13}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Attrs': og_attrs(['data-slot', 'details'])}, 'children': c_13}) }}
     {%- endif %}
   {%- endset -%}
   {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_layout, 'split')) else '1')), 'Class': 'items-start gap-8'}, 'children': c_14}) }}

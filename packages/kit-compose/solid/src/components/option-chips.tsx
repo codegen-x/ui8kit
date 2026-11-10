@@ -22,7 +22,7 @@ export function OptionChips({ name, legend, options, extra = "none", layout = "w
       class="flex flex-col gap-2"
       role="radiogroup"
       aria-labelledby={tpl("{0}-legend", name)}
-      data-testid="option-group"
+      data-slot="option-group"
     >
       <Legend size="sm" class="mb-2" id={tpl("{0}-legend", name)}>
         {legend}
@@ -35,7 +35,7 @@ export function OptionChips({ name, legend, options, extra = "none", layout = "w
                 "has-checked:inset-ring-foreground",
               (((layout as string) === "column") ? "justify-between" : "")
             )}
-            data-testid="option"
+            data-slot="option"
           >
             <Inline class="flex items-center gap-2">
               <Radio name={name} value={o.id} checked={(i === 0)} />

@@ -18,7 +18,7 @@ export type StatTileProps = {
 
 export function StatTile({ label, value, icon, href, hint }: StatTileProps) {
   return (
-    <Box class="min-w-0">
+    <Box class="min-w-0" data-slot="stat-tile">
       {href ? (
         <Link
           href={urlOf(href)}

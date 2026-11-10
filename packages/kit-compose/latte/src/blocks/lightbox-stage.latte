@@ -15,7 +15,7 @@
     {capture $c_2}
       {=og_include('icons/LucideIcon.latte', ['name' => 'x', 'size' => 16])|noescape}
     {/capture}
-    {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'layout' => 'icon', 'type' => 'button', 'ariaLabel' => og_s(og_get($v_labels, ['close'])), 'attrs' => og_attrs(['data-testid', 'lightbox-close']), 'children' => (string) $c_2])|noescape}
+    {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'layout' => 'icon', 'type' => 'button', 'ariaLabel' => og_s(og_get($v_labels, ['close'])), 'children' => (string) $c_2])|noescape}
   {/capture}
   {=og_include('compose/Group.latte', ['gap' => '2', 'align' => 'center', 'justify' => 'between', 'children' => (string) $c_3])|noescape}
   {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_first_of($v_photos, 'title'), 'ratio' => '4/3']])|noescape}
@@ -44,4 +44,4 @@
   {/capture}
   {=og_include('compose/Group.latte', ['gap' => '2', 'align' => 'center', 'justify' => 'between', 'children' => (string) $c_9])|noescape}
 {/capture}
-{=og_include('compose/Dialog.latte', ['open' => og_t(og_eq($v_lightbox, 'open')), 'size' => 'xl', 'ariaLabel' => og_s(og_first_of($v_photos, 'title')), 'class' => 'gap-4 p-4', 'attrs' => og_attrs(['data-testid', 'lightbox']), 'children' => (string) $c_10])|noescape}
+{=og_include('compose/Dialog.latte', ['open' => og_t(og_eq($v_lightbox, 'open')), 'size' => 'xl', 'ariaLabel' => og_s(og_first_of($v_photos, 'title')), 'class' => 'gap-4 p-4', 'attrs' => og_attrs(['data-slot', 'lightbox']), 'children' => (string) $c_10])|noescape}

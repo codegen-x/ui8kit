@@ -60,4 +60,4 @@
     {=og_include('compose/Box.latte', ['class' => 'flex min-w-0 flex-col gap-4 rounded bg-card p-6 text-foreground inset-ring inset-ring-border', 'children' => (string) $c_12])|noescape}
   {/if}
 {/capture}
-{=og_include('compose/Box.latte', ['class' => 'min-w-0', 'children' => (string) $c_13])|noescape}
+{=og_include('compose/Box.latte', ['class' => 'min-w-0', 'attrs' => og_attrs(['data-slot', 'stat-tile']), 'children' => (string) $c_13])|noescape}

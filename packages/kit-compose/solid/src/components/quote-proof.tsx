@@ -15,7 +15,7 @@ export function QuoteProof({ quote, quoteBy, center = false }: QuoteProofProps) 
     <Block
       tag="figure"
       class={cn("flex flex-col gap-2", (center ? "items-center text-center" : ""))}
-      data-testid="proof"
+      data-slot="proof"
     >
       <Text size="xl">
         {quote}

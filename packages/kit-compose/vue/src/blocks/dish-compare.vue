@@ -50,7 +50,7 @@ const {
 <template>
   <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((dishes?.length ?? 0) === 0)" icon="scale" :title="empty" />
-    <Box v-else-if="((layout as string) === 'table')" class="w-full overflow-x-auto" data-testid="compare-table">
+    <Box v-else-if="((layout as string) === 'table')" class="w-full overflow-x-auto" data-slot="compare-table">
       <Table class="w-full text-sm">
         <TableCaption class="sr-only">
           {{ labels.caption }}
@@ -78,7 +78,7 @@ const {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow v-for="d in dishes" :key="d.id" data-testid="item">
+          <TableRow v-for="d in dishes" :key="d.id" data-slot="item">
             <TableHeadCell scope="row" class="py-2 font-semibold">
               {{ d.name }}
             </TableHeadCell>

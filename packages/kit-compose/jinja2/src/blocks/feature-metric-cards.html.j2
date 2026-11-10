@@ -28,8 +28,8 @@
         {%- endset -%}
         {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Class': 'min-w-0'}, 'children': c_5}) }}
       {%- endset -%}
-      {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-testid', 'feature-stat'])}, 'children': c_6}) }}
+      {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-slot', 'feature-stat'])}, 'children': c_6}) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 gap-4 sm:grid-cols-2'}, 'children': c_7}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'Attrs': og_attrs(['data-slot', 'feature-metric-cards'])}, 'children': c_7}) }}

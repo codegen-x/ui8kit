@@ -53,10 +53,10 @@
           {%- endset -%}
           {{ include('compose/Box.html.twig', {'class': 'mr-auto max-w-xs sm:max-w-md rounded bg-muted px-4 py-4', 'children': c_6}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '2', 'align': 'stretch', 'attrs': og_attrs(['data-testid', 'faq-item']), 'children': c_7}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '2', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'faq-item']), 'children': c_7}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-testid', 'faq']), 'children': c_8}, with_context = false) }}
+    {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'faq']), 'children': c_8}, with_context = false) }}
   {%- else %}
     {%- set c_12 -%}
       {%- for v_item in og_l(v_shown) %}
@@ -70,10 +70,10 @@
           {%- endset -%}
           {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'pb-4 text-muted-foreground', 'children': c_10}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Disclosure.html.twig', {'variant': 'item', 'name': og_s((og_t(v_multiple) ? null : og_tpl('{0}-faq', [og_coalesce([v_id, 'faq'])]))), 'attrs': og_attrs(['data-testid', 'faq-item']), 'children': c_11}, with_context = false) }}
+        {{ include('compose/Disclosure.html.twig', {'variant': 'item', 'name': og_s((og_t(v_multiple) ? null : og_tpl('{0}-faq', [og_coalesce([v_id, 'faq'])]))), 'attrs': og_attrs(['data-slot', 'faq-item']), 'children': c_11}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_cols, '2')) ? '1-2' : '1')), 'class': 'items-start gap-x-8', 'attrs': og_attrs(['data-testid', 'faq']), 'children': c_12}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_cols, '2')) ? '1-2' : '1')), 'class': 'items-start gap-x-8', 'attrs': og_attrs(['data-slot', 'faq']), 'children': c_12}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': (og_t(og_eq(v_layout, 'chat')) ? '2xl' : 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_13)}, with_context = false) }}

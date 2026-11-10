@@ -28,8 +28,8 @@
         {/capture}
         {=og_include('compose/Stack.latte', ['gap' => '0', 'class' => 'min-w-0', 'children' => (string) $c_5])|noescape}
       {/capture}
-      {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-testid', 'feature-stat']), 'children' => (string) $c_6])|noescape}
+      {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-slot', 'feature-stat']), 'children' => (string) $c_6])|noescape}
     {/if}
   {/foreach}
 {/capture}
-{=og_include('compose/Box.latte', ['class' => 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'children' => (string) $c_7])|noescape}
+{=og_include('compose/Box.latte', ['class' => 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'attrs' => og_attrs(['data-slot', 'feature-metric-cards']), 'children' => (string) $c_7])|noescape}

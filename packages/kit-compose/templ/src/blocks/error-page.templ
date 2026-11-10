@@ -37,7 +37,7 @@ templ ErrorPage(p ErrorPageProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Heading: map[string]any{"level": vLevel}, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split")}, Align: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "start", "center"), Tone: vTone, Density: "roomy", LandmarkLabel: vLandmarkLabel, Aside: errorPageFill1(p, vTitle)}) {
 		if uiutils.Eq(vCode, "show") {
-			@compose.Text(compose.TextProps{Size: "4xl", Weight: "bold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("text-8xl text-muted-foreground", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "", "text-center"))), Attrs: uiutils.Attrs("data-testid", "error-code")}}) {
+			@compose.Text(compose.TextProps{Size: "4xl", Weight: "bold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("text-8xl text-muted-foreground", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "", "text-center"))), Attrs: uiutils.Attrs("data-slot", "error-code")}}) {
 				{ uiutils.Text(vStatus) }
 			}
 		}

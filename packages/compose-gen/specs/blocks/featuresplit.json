@@ -72,42 +72,42 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"feature-item\"]",
+      "sel": "[data-slot=\"feature-item\"]",
       "n": 4,
       "when": {
         "layout": "grid"
       }
     },
     {
-      "sel": "[data-testid=\"feature-item\"]",
+      "sel": "[data-slot=\"feature-item\"]",
       "n": 3,
       "when": {
         "layout": "stats"
       }
     },
     {
-      "sel": "[data-testid=\"feature-card\"]",
+      "sel": ":is([data-slot=\"feature-card\"], [data-slot=\"feature-grid\"] > [data-slot=\"card\"])",
       "n": "@features",
       "when": {
         "layout": "cards"
       }
     },
     {
-      "sel": "[data-testid=\"feature-stat\"]",
+      "sel": "[data-slot=\"feature-stat\"]",
       "n": 2,
       "when": {
         "layout": "stats"
       }
     },
     {
-      "sel": "[data-testid=\"feature-stat\"]",
+      "sel": "[data-slot=\"feature-stat\"]",
       "n": 4,
       "when": {
         "layout": "metrics"
       }
     },
     {
-      "sel": "[data-testid=\"action-primary\"]",
+      "sel": ":is([data-slot=\"action-group\"] > [data-slot=\"button\"]:first-child, [data-slot=\"post-feature\"] > [data-slot=\"button\"], [data-slot=\"post-actions\"] > [data-slot=\"button\"]:first-child)",
       "n": 1,
       "when": {
         "layout": [
@@ -117,7 +117,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"action-primary\"]",
+      "sel": ":is([data-slot=\"action-group\"] > [data-slot=\"button\"]:first-child, [data-slot=\"post-feature\"] > [data-slot=\"button\"], [data-slot=\"post-actions\"] > [data-slot=\"button\"]:first-child)",
       "n": 0,
       "when": {
         "layout": [

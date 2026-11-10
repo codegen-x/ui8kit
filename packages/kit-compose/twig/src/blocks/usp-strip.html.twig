@@ -23,10 +23,10 @@
           {%- endset -%}
           {{ include('compose/Inline.html.twig', {'children': c_1}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/ListItem.html.twig', {'class': 'flex items-center gap-2 text-sm font-medium', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_2}, with_context = false) }}
+        {{ include('compose/ListItem.html.twig', {'class': 'flex items-center gap-2 text-sm font-medium', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_2}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/List.html.twig', {'tag': 'ul', 'class': 'flex flex-wrap items-center justify-center gap-x-8 gap-y-4', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_3}, with_context = false) }}
+    {{ include('compose/List.html.twig', {'tag': 'ul', 'class': 'flex flex-wrap items-center justify-center gap-x-8 gap-y-4', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_3}, with_context = false) }}
   {%- else %}
     {%- set c_9 -%}
       {%- for v_p in og_l(v_perks) %}
@@ -47,10 +47,10 @@
           {%- endset -%}
           {{ include('compose/Stack.html.twig', {'gap': '2', 'children': c_7}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '4', 'class': og_s((og_t(og_eq(v_layout, 'cards')) ? 'rounded bg-card inset-ring inset-ring-border p-6' : '')), 'attrs': og_attrs(['data-testid', 'item']), 'children': c_8}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '4', 'class': og_s((og_t(og_eq(v_layout, 'cards')) ? 'rounded bg-card inset-ring inset-ring-border p-6' : '')), 'attrs': og_attrs(['data-slot', 'item']), 'children': c_8}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': '1-4', 'class': og_s(og_cnv(['gap-4', (og_t(og_eq(v_layout, 'strip')) ? 'rounded bg-muted p-6' : '')])), 'attrs': og_attrs(['data-testid', 'items']), 'children': c_9}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': '1-4', 'class': og_s(og_cnv(['gap-4', (og_t(og_eq(v_layout, 'strip')) ? 'rounded bg-muted p-6' : '')])), 'attrs': og_attrs(['data-slot', 'items']), 'children': c_9}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_10)}, with_context = false) }}

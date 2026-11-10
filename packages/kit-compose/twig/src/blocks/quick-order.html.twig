@@ -51,12 +51,12 @@
               {{ include('icons/LucideIcon.html.twig', {'name': 'zap', 'size': 16}, with_context = false) }}
               {{ og_text(og_get(v_labels, ['order'])) }}
             {%- endset -%}
-            {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'sm', 'type': 'button', 'ariaLabel': og_s(og_tpl(og_get(v_labels, ['orderOf']), [og_get(v_d, ['name'])])), 'attrs': og_attrs(['data-testid', 'order']), 'children': c_8}, with_context = false) }}
+            {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'sm', 'type': 'button', 'ariaLabel': og_s(og_tpl(og_get(v_labels, ['orderOf']), [og_get(v_d, ['name'])])), 'children': c_8}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/ListItem.html.twig', {'class': 'flex flex-wrap items-center gap-4 border-b border-border py-4', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_9}, with_context = false) }}
+          {{ include('compose/ListItem.html.twig', {'class': 'flex flex-wrap items-center gap-4 border-b border-border py-4', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_9}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/List.html.twig', {'tag': 'ul', 'class': 'flex flex-col', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_10}, with_context = false) }}
+      {{ include('compose/List.html.twig', {'tag': 'ul', 'class': 'flex flex-col', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_10}, with_context = false) }}
     {%- endset -%}
     {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': 'mx-auto w-full max-w-3xl', 'children': c_11}, with_context = false) }}
   {%- endif %}

@@ -37,7 +37,7 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 	{{ vField := uiutils.Def(p.Field, "promo") }}
 	{{ vProgress := uiutils.Def(p.Progress, "show") }}
 	{{ vValue := uiutils.Def(p.Value, float64(70)) }}
-	@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-testid", "summary")}}) {
+	@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-slot", "summary")}}) {
 		@compose.Group(compose.GroupProps{Gap: "4", Align: "baseline", Justify: "between", BoxProps: box.BoxProps{}}) {
 			@compose.Title(compose.TitleProps{As: "2", Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
 				{ uiutils.Text(uiutils.Get(vLabels, "title")) }
@@ -47,9 +47,9 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 			}
 		}
 		if uiutils.T(uiutils.And(uiutils.Eq(vItems, "show"), uiutils.Gt(uiutils.Len(vLines), float64(0)))) {
-			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col gap-4", Attrs: uiutils.Attrs("data-testid", "summary-lines")}}) {
+			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col gap-4", Attrs: uiutils.Attrs("data-slot", "summary-lines")}}) {
 				for _, vLine := range uiutils.L(vLines) {
-					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-4 text-sm"}}) {
+					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-4 text-sm", Attrs: uiutils.Attrs("data-slot", "cart-line")}}) {
 						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Ratio: "1/1", Class: uiutils.Cnv("size-12 shrink-0")})
 						@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "flex-1"}}) {
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
@@ -67,7 +67,7 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 			}
 		}
 		if uiutils.Eq(vPromo, "show") {
-			@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "promo")}}) {
+			@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "promo")}}) {
 				@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
 					@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: uiutils.S(vField), Placeholder: uiutils.S(uiutils.Get(vLabels, "promo")), Class: "min-w-0 flex-1", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vLabels, "promo"))}})
 					@compose.Button(compose.ButtonProps{Variant: "outline", Size: "default", ButtonProps: button.ButtonProps{Type: "button"}}) {
@@ -80,7 +80,7 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 							{ uiutils.Text(uiutils.Get(vLabels, "codes")) }
 						}
 						for _, vC := range uiutils.L(vPromos) {
-							@compose.Badge(compose.BadgeProps{Variant: "outline", Size: "sm", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-testid", "code")}}) {
+							@compose.Badge(compose.BadgeProps{Variant: "outline", Size: "sm", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vC, "code")) }
 							}
 						}
@@ -89,7 +89,7 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 			}
 		}
 		if uiutils.Eq(vProgress, "show") {
-			@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-muted p-4", Attrs: uiutils.Attrs("data-testid", "progress")}}) {
+			@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-muted p-4", Attrs: uiutils.Attrs("data-slot", "progress")}}) {
 				@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{}}) {
 					{ uiutils.Text(uiutils.Get(vLabels, "progress")) }
 				}
@@ -99,7 +99,7 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 		if uiutils.Gt(uiutils.Len(vRows), float64(0)) {
 			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col gap-2"}}) {
 				for _, vRow := range uiutils.L(vRows) {
-					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex items-center justify-between gap-4", uiutils.Cond(uiutils.T(uiutils.Get(vRow, "strong")), "border-t border-border pt-4 text-base font-bold", "text-sm text-muted-foreground"))), Attrs: uiutils.Attrs("data-testid", "row")}}) {
+					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex items-center justify-between gap-4", uiutils.Cond(uiutils.T(uiutils.Get(vRow, "strong")), "border-t border-border pt-4 text-base font-bold", "text-sm text-muted-foreground"))), Attrs: uiutils.Attrs("data-slot", "row")}}) {
 						@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vRow, "label")) }
 						}
@@ -110,7 +110,7 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 				}
 			}
 		}
-		@compose.Button(compose.ButtonProps{Variant: "default", Size: "lg", ButtonProps: button.ButtonProps{Class: "w-full", Attrs: uiutils.Attrs("data-testid", "checkout")}}) {
+		@compose.Button(compose.ButtonProps{Variant: "default", Size: "lg", ButtonProps: button.ButtonProps{Class: "w-full"}}) {
 			{ uiutils.Text(uiutils.Get(vLabels, "checkout")) }
 		}
 		@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {

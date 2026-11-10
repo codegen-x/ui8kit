@@ -222,7 +222,7 @@
                     "Class": "gap-4"
                   },
                   "attrs": {
-                    "data-testid": "items"
+                    "data-slot": "items"
                   },
                   "children": [
                     {
@@ -277,7 +277,6 @@
                             }
                           },
                           "attrs": {
-                            "data-testid": "item",
                             "data-badge": {
                               "$": "pack.badge"
                             }
@@ -399,9 +398,6 @@
                                                     "Size": "default",
                                                     "Class": "w-fit shrink-0"
                                                   },
-                                                  "attrs": {
-                                                    "data-testid": "badge"
-                                                  },
                                                   "children": [
                                                     {
                                                       "text": {
@@ -515,9 +511,6 @@
                                         }
                                       ]
                                     }
-                                  },
-                                  "attrs": {
-                                    "data-testid": "buy"
                                   },
                                   "children": [
                                     {

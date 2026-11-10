@@ -41,9 +41,9 @@ templ SupportChannels(p SupportChannelsProps) {
 		if uiutils.Eq(uiutils.Len(vChannels), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "life-buoy", Title: vEmpty})
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "1", vCols)), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "1", vCols)), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vC := range uiutils.L(vChannels) {
-					@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-full", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "flex-row items-center", ""))), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-full", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "flex-row items-center", "")))}}) {
 						@compose.CardContent(compose.CardContentProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex flex-1 gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "items-center", "flex-col")))}}) {
 							@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vC, "icon")), Size: 24})
 							@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "flex-1"}}) {

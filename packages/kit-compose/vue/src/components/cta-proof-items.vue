@@ -30,7 +30,7 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
   <Box
     v-if="(((proof as string) === 'logos') && ((content.logos?.length ?? 0) > 0))"
     class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6"
-    data-testid="cta-proof"
+    data-slot="cta-proof"
   >
     <Group
       v-for="l in content.logos"
@@ -39,7 +39,7 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
       align="center"
       justify="center"
       class="text-muted-foreground"
-      data-testid="cta-item"
+      data-slot="cta-item"
     >
       <LucideIcon :name="l.icon" :size="20" />
       <Text size="sm" weight="semibold">
@@ -50,7 +50,7 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
   <Box
     v-if="(((proof as string) === 'features') && ((content.features?.length ?? 0) > 0))"
     class="grid grid-cols-1 gap-4 text-left sm:grid-cols-2"
-    data-testid="cta-proof"
+    data-slot="cta-proof"
   >
     <Group
       v-for="f in content.features"
@@ -58,7 +58,7 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
       gap="4"
       align="start"
       class="rounded bg-card inset-ring inset-ring-border p-4"
-      data-testid="cta-item"
+      data-slot="cta-item"
     >
       <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
         <LucideIcon :name="f.icon" :size="20" />
@@ -76,10 +76,10 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
   <Box
     v-if="(((proof as string) === 'stats') && ((content.stats?.length ?? 0) > 0))"
     class="grid grid-cols-3 gap-4"
-    data-testid="cta-proof"
+    data-slot="cta-proof"
   >
     <template v-for="(s, i) in content.stats" :key="s.id">
-      <Stack v-if="(i < 3)" gap="0" :class="(center ? 'items-center text-center' : '')" data-testid="cta-item">
+      <Stack v-if="(i < 3)" gap="0" :class="(center ? 'items-center text-center' : '')" data-slot="cta-item">
         <Text size="3xl" weight="bold">
           {{ s.value }}
         </Text>
@@ -92,9 +92,9 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
   <List
     v-if="(((proof as string) === 'rows') && ((content.features?.length ?? 0) > 0))"
     class="m-0 flex list-none flex-col gap-4 p-0"
-    data-testid="cta-proof"
+    data-slot="cta-proof"
   >
-    <ListItem v-for="f in content.features" :key="f.id" class="flex items-start gap-4" data-testid="cta-item">
+    <ListItem v-for="f in content.features" :key="f.id" class="flex items-start gap-4" data-slot="cta-item">
       <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
         <LucideIcon :name="f.icon" :size="20" />
       </Box>
@@ -111,13 +111,13 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
   <List
     v-if="(((proof as string) === 'zones') && ((content.zones?.length ?? 0) > 0))"
     class="m-0 flex list-none flex-col p-0"
-    data-testid="cta-proof"
+    data-slot="cta-proof"
   >
     <ListItem
       v-for="z in content.zones"
       :key="z.id"
       class="flex items-start justify-between gap-4 border-b border-border py-4"
-      data-testid="cta-item"
+      data-slot="cta-item"
     >
       <Stack gap="0" class="min-w-0">
         <Text size="sm" weight="semibold">

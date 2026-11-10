@@ -14,9 +14,9 @@ export type FeatureRowsProps = {
 
 export function FeatureRows({ features, mediaSide = "end" }: FeatureRowsProps) {
   return (
-    <Stack gap="8" align="stretch" data-testid="feature-rows">
+    <Stack gap="8" align="stretch" data-slot="feature-rows">
       {(features ?? []).map((feature) => (
-        <Grid key={feature.id} cols="1-2" className="group items-center gap-8" data-testid="feature-card">
+        <Grid key={feature.id} cols="1-2" className="group items-center gap-8" data-slot="feature-card">
           <Stack gap="2" className="min-w-0">
             <LucideIcon name={feature.icon} size={24} />
             <Title as={3} size="xl" weight="bold">

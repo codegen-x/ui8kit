@@ -69,7 +69,7 @@
         }
       },
       "attrs": {
-        "data-testid": "feature-grid"
+        "data-slot": "feature-grid"
       },
       "children": [
         {
@@ -96,9 +96,6 @@
                   "use": "Card",
                   "props": {
                     "Variant": "compact"
-                  },
-                  "attrs": {
-                    "data-testid": "feature-card"
                   },
                   "children": [
                     {
@@ -179,7 +176,7 @@
                         "Class": "h-full gap-8 bg-background px-6 py-12 text-center"
                       },
                       "attrs": {
-                        "data-testid": "feature-card"
+                        "data-slot": "feature-card"
                       },
                       "children": [
                         {
@@ -189,7 +186,7 @@
                             "Size": "xl"
                           },
                           "attrs": {
-                            "data-testid": "feature-icon"
+                            "data-slot": "feature-icon"
                           },
                           "children": [
                             {
@@ -242,9 +239,6 @@
                       "use": "Card",
                       "props": {
                         "Variant": "default"
-                      },
-                      "attrs": {
-                        "data-testid": "feature-card"
                       },
                       "children": [
                         {

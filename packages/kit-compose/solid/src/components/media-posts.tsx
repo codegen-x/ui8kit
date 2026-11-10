@@ -13,14 +13,14 @@ export type MediaPostsProps = {
 
 export function MediaPosts({ extras, labels }: MediaPostsProps) {
   return (
-    <Stack gap="4" align="stretch">
+    <Stack gap="4" align="stretch" data-slot="media-posts">
       <Text size="sm" weight="semibold">
         {labels.list}
       </Text>
       <For each={extras.posts ?? []}>{(p, iOf) => { const i = iOf(); return (
         <>
           {(i < 3) ? (
-            <Group gap="4" align="start" data-testid="media-post">
+            <Group gap="4" align="start" data-slot="media-post">
               <Inline class="mt-2 size-2 shrink-0 rounded-full bg-primary" />
               <Stack gap="0">
                 <MenuEntry href={p.href} class="text-sm font-medium" size="sm">

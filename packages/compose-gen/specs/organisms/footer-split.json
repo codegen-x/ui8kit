@@ -204,13 +204,13 @@
         }
       },
       "attrs": {
-        "data-testid": "footer-split",
         "data-layout": {
           "$": "layout"
         },
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "footer-split"
       },
       "children": [
         {

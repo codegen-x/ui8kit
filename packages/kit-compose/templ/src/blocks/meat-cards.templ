@@ -24,13 +24,13 @@ templ MeatCards(p MeatCardsProps) {
 	{{ vName := p.Name }}
 	{{ vLegend := p.Legend }}
 	{{ vOptions := p.Options }}
-	@compose.Fieldset(compose.FieldsetProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-2", Attrs: uiutils.Attrs("role", "radiogroup", "aria-labelledby", uiutils.Tpl("{0}-legend", vName), "data-testid", "meat")}}) {
+	@compose.Fieldset(compose.FieldsetProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-2", Attrs: uiutils.Attrs("role", "radiogroup", "aria-labelledby", uiutils.Tpl("{0}-legend", vName), "data-slot", "meat")}}) {
 		@compose.Legend(compose.LegendProps{Size: "sm", TextProps: text.TextProps{Class: "mb-2", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-legend", vName))}}) {
 			{ uiutils.Text(vLegend) }
 		}
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-2 gap-4 md:grid-cols-4"}}) {
 			for vI, vO := range uiutils.L(vOptions) {
-				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-2 rounded p-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground", Attrs: uiutils.Attrs("data-testid", "option")}}) {
+				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-2 rounded p-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground", Attrs: uiutils.Attrs("data-slot", "option")}}) {
 					@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vO, "name"), Ratio: "4/3"})
 					@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{Class: "flex items-center gap-2 font-medium"}}) {
 						@compose.Radio(compose.RadioProps{RadioProps: radio.RadioProps{Name: uiutils.S(vName), Value: uiutils.SP(uiutils.Get(vO, "id")), Checked: uiutils.T(uiutils.Eq(float64(vI), float64(0)))}})

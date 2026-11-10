@@ -17,7 +17,7 @@
         {%- set c_1 -%}
           {{ og_text(og_get(v_dish, ['badge'])) }}
         {%- endset -%}
-        {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Class': 'absolute left-4 top-4', 'Attrs': og_attrs(['data-testid', 'badge'])}, 'children': c_1}) }}
+        {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Class': 'absolute left-4 top-4'}, 'children': c_1}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['relative shrink-0', ('sm:w-48' if og_t(og_eq(v_layout, 'horizontal')) else '')]))}, 'children': c_2}) }}
@@ -27,13 +27,13 @@
       {%- set c_3 -%}
         {{ og_text(og_get(v_dish, ['tag'])) }}
       {%- endset -%}
-      {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'uppercase tracking-wide text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'category'])}, 'children': c_3}) }}
+      {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'uppercase tracking-wide text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'category'])}, 'children': c_3}) }}
       {%- if og_t(og_eq(v_media, 'none')) %}
         {%- if og_t(og_get(v_dish, ['badge'])) %}
           {%- set c_4 -%}
             {{ og_text(og_get(v_dish, ['badge'])) }}
           {%- endset -%}
-          {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'secondary', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'badge'])}, 'children': c_4}) }}
+          {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'secondary', 'Size': 'sm'}, 'children': c_4}) }}
         {%- endif %}
       {%- endif %}
     {%- endset -%}
@@ -43,7 +43,7 @@
         {%- set c_6 -%}
           {{ og_text(og_get(v_dish, ['name'])) }}
         {%- endset -%}
-        {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_dish, ['href']))), 'Variant': 'default', 'Attrs': og_attrs(['data-testid', 'open'])}, 'children': c_6}) }}
+        {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_dish, ['href']))), 'Variant': 'default', 'Attrs': og_attrs(['data-slot', 'open'])}, 'children': c_6}) }}
       {%- else %}
         {{ og_text(og_get(v_dish, ['name'])) }}
       {%- endif %}
@@ -53,7 +53,7 @@
       {%- set c_8 -%}
         {{ og_text(og_get(v_dish, ['weight'])) }}
       {%- endset -%}
-      {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'portion'])}, 'children': c_8}) }}
+      {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'portion'])}, 'children': c_8}) }}
     {%- endif %}
     {%- if og_t(og_eq(v_density, 'default')) %}
       {%- set c_9 -%}
@@ -66,17 +66,17 @@
         {%- set c_10 -%}
           {{ og_text(og_money(og_get(v_dish, ['price']), og_get(v_dish, ['currency']))) }}
         {%- endset -%}
-        {{ og_include('compose/text.html.j2', {'p': {'Size': 'xl', 'Weight': 'bold', 'Attrs': og_attrs(['data-testid', 'price'])}, 'children': c_10}) }}
+        {{ og_include('compose/text.html.j2', {'p': {'Size': 'xl', 'Weight': 'bold', 'Attrs': og_attrs(['data-slot', 'price'])}, 'children': c_10}) }}
       {%- endif %}
       {%- if og_t(og_eq(v_action, 'button')) %}
         {%- set c_11 -%}
           {{ og_text(og_get(v_labels, ['add'])) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Type': 'button', 'Attrs': og_attrs(['data-testid', 'add'])}, 'children': c_11}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Type': 'button'}, 'children': c_11}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Justify': 'between', 'Class': 'mt-auto pt-2'}, 'children': c_12}) }}
   {%- endset -%}
   {{ og_include('compose/card-content.html.j2', {'p': {'Class': 'flex flex-1 flex-col gap-2'}, 'children': c_13}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'article', 'Class': og_s(og_cnv(['flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded', 'h-full gap-4 overflow-hidden', ('flex flex-col sm:flex-row' if og_t(og_eq(v_layout, 'horizontal')) else 'flex flex-col')])), 'Attrs': og_attrs(['data-slot', 'card', 'data-testid', 'item', 'data-layout', v_layout])}, 'children': c_14}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'article', 'Class': og_s(og_cnv(['flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded', 'h-full gap-4 overflow-hidden', ('flex flex-col sm:flex-row' if og_t(og_eq(v_layout, 'horizontal')) else 'flex flex-col')])), 'Attrs': og_attrs(['data-slot', 'card', 'data-layout', v_layout])}, 'children': c_14}) }}

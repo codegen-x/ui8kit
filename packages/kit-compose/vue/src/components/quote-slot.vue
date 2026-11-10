@@ -23,7 +23,7 @@ const { q, labels, kind = "card", layout = "grid", class: className } = definePr
 </script>
 
 <template>
-  <Box :class="className" data-testid="quote">
+  <Box :class="className" data-slot="quote">
     <QuoteCard
       :q="q"
       :labels="labels"

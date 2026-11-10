@@ -25,7 +25,7 @@
             {capture $c_1}
               {=og_include('icons/LucideIcon.latte', ['name' => 'play', 'size' => 20])|noescape}
             {/capture}
-            {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'default', 'type' => 'button', 'class' => 'absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0', 'attrs' => og_attrs(['aria-label', og_tpl($v_playLabel, [og_get($v_q, ['author'])]), 'data-testid', 'play']), 'children' => (string) $c_1])|noescape}
+            {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'default', 'type' => 'button', 'class' => 'absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0', 'attrs' => og_attrs(['aria-label', og_tpl($v_playLabel, [og_get($v_q, ['author'])])]), 'children' => (string) $c_1])|noescape}
             {if og_t(og_eq($v_caption, 'overlay'))}
               {capture $c_4}
                 {capture $c_2}
@@ -37,7 +37,7 @@
                 {/capture}
                 {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'text-muted-foreground', 'children' => (string) $c_3])|noescape}
               {/capture}
-              {=og_include('compose/Box.latte', ['class' => 'absolute inset-x-0 bottom-0 rounded bg-background p-4', 'attrs' => og_attrs(['data-testid', 'caption']), 'children' => (string) $c_4])|noescape}
+              {=og_include('compose/Box.latte', ['class' => 'absolute inset-x-0 bottom-0 rounded bg-background p-4', 'attrs' => og_attrs(['data-slot', 'caption']), 'children' => (string) $c_4])|noescape}
             {/if}
           {/capture}
           {=og_include('compose/Box.latte', ['class' => 'relative', 'children' => (string) $c_5])|noescape}
@@ -52,13 +52,13 @@
               {/capture}
               {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'text-muted-foreground', 'children' => (string) $c_7])|noescape}
             {/capture}
-            {=og_include('compose/Text.latte', ['tag' => 'figcaption', 'attrs' => og_attrs(['data-testid', 'caption']), 'children' => (string) $c_8])|noescape}
+            {=og_include('compose/Text.latte', ['tag' => 'figcaption', 'attrs' => og_attrs(['data-slot', 'caption']), 'children' => (string) $c_8])|noescape}
           {/if}
         {/capture}
         {=og_include('blocks/figure-block.latte', ['p' => ['className' => og_cnv(['m-0 flex flex-col gap-4']), 'testid' => 'item'], 'children' => og_markup($c_9)])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Grid.latte', ['cols' => og_s($v_cols), 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_10])|noescape}
+    {=og_include('compose/Grid.latte', ['cols' => og_s($v_cols), 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_10])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'tone' => $v_tone, 'density' => $v_density, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_11)])|noescape}

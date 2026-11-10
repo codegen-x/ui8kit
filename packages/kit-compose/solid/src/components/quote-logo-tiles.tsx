@@ -12,7 +12,7 @@ export type QuoteLogoTilesProps = {
 
 export function QuoteLogoTiles({ extras }: QuoteLogoTilesProps) {
   return (
-    <Box class="grid grid-cols-2 gap-4" data-testid="quote-logos">
+    <Box class="grid grid-cols-2 gap-4" data-slot="quote-logos">
       <For each={extras.logos ?? []}>{(l, iOf) => { const i = iOf(); return (
         <>
           {(i < 4) ? (
@@ -21,7 +21,7 @@ export function QuoteLogoTiles({ extras }: QuoteLogoTilesProps) {
               align="center"
               justify="center"
               class="rounded bg-card inset-ring inset-ring-border p-4 text-muted-foreground"
-              data-testid="quote-logo"
+              data-slot="quote-logo"
             >
               <LucideIcon name={l.icon} size={20} />
               <Text size="sm" weight="semibold">

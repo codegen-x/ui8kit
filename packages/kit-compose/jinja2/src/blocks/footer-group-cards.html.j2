@@ -29,15 +29,15 @@
                 {%- endset -%}
                 {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_item, ['href']), 'className': og_cnv(['text-sm text-muted-foreground']), 'variant': 'muted', 'size': 'sm'}, 'children': og_markup(c_4)}) }}
               {%- endset -%}
-              {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_5}) }}
+              {{ og_include('compose/list-item.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'links-row'])}, 'children': c_5}) }}
             {%- endfor %}
           {%- endset -%}
           {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-2 p-0'}, 'children': c_6}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-testid', 'group'])}, 'children': c_7}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-slot', 'group'])}, 'children': c_7}) }}
       {%- endfor %}
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4'}, 'children': c_8}) }}
   {%- endset -%}
-  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label])])}, 'children': c_9}) }}
+  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-slot', 'footer-group-cards'])}, 'children': c_9}) }}
 {%- endif %}

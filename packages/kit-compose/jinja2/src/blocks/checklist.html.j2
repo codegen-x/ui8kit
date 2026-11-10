@@ -25,7 +25,7 @@
         {%- set c_1 -%}
           {{ og_text(og_tpl(v_progressLabel, [og_count(v_tasks, 'done'), og_len(v_tasks)])) }}
         {%- endset -%}
-        {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'progress-text'])}, 'children': c_1}) }}
+        {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'progress-text'])}, 'children': c_1}) }}
       {%- endif %}
       {%- set c_10 -%}
         {%- for v_task in og_l(v_tasks) %}
@@ -50,7 +50,7 @@
                 {%- endset -%}
                 {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'pb-2 text-muted-foreground'}, 'children': c_4}) }}
               {%- endset -%}
-              {{ og_include('compose/disclosure.html.j2', {'p': {'Variant': 'ghost', 'Class': 'flex-1', 'Attrs': og_attrs(['data-testid', 'task-detail'])}, 'children': c_5}) }}
+              {{ og_include('compose/disclosure.html.j2', {'p': {'Variant': 'ghost', 'Class': 'flex-1', 'Attrs': og_attrs(['data-slot', 'task-detail'])}, 'children': c_5}) }}
             {%- else %}
               {%- set c_8 -%}
                 {%- set c_6 -%}
@@ -65,12 +65,12 @@
               {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0'}, 'children': c_8}) }}
             {%- endif %}
           {%- endset -%}
-          {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-start gap-4', 'Attrs': og_attrs(['data-testid', 'item', 'data-done', og_str(og_get(v_task, ['done']))])}, 'children': c_9}) }}
+          {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-start gap-4', 'Attrs': og_attrs(['data-done', og_str(og_get(v_task, ['done'])), 'data-slot', 'item'])}, 'children': c_9}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-4 p-0', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_10}) }}
+      {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-4 p-0', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_10}) }}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_layout, 'card')) else '')), 'Attrs': og_attrs(['data-testid', 'checklist'])}, 'children': c_11}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_layout, 'card')) else '')), 'Attrs': og_attrs(['data-slot', 'checklist'])}, 'children': c_11}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'measure': '2xl', 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_12)}) }}

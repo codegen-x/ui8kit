@@ -17,8 +17,8 @@ const { tags, align = "start" } = defineProps<PostTagsProps>();
 </script>
 
 <template>
-  <Group gap="2" :justify="align" class="flex-wrap">
-    <Badge v-for="tag in tags" :key="tag.id" variant="secondary" size="sm" data-testid="post-tag">
+  <Group gap="2" :justify="align" class="flex-wrap" data-slot="post-tags">
+    <Badge v-for="tag in tags" :key="tag.id" variant="secondary" size="sm">
       {{ tag.name }}
     </Badge>
   </Group>

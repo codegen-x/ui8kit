@@ -113,7 +113,7 @@
             "Class": "grid grid-cols-2 gap-4"
           },
           "attrs": {
-            "data-testid": "hero-grid"
+            "data-slot": "hero-grid"
           },
           "children": [
             {
@@ -218,7 +218,7 @@
             "Class": "relative"
           },
           "attrs": {
-            "data-testid": "hero-media"
+            "data-slot": "hero-media"
           },
           "children": [
             {
@@ -278,7 +278,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "hero-plan"
+                        "data-slot": "hero-plan"
                       },
                       "children": [
                         {

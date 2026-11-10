@@ -107,7 +107,6 @@
       },
       "attrs": {
         "data-slot": "card",
-        "data-testid": "item",
         "data-layout": {
           "$": "layout"
         }
@@ -173,9 +172,6 @@
                         "Size": "default",
                         "Class": "absolute left-4 top-4"
                       },
-                      "attrs": {
-                        "data-testid": "badge"
-                      },
                       "children": [
                         {
                           "text": {
@@ -211,7 +207,7 @@
                     "Class": "uppercase tracking-wide text-muted-foreground"
                   },
                   "attrs": {
-                    "data-testid": "category"
+                    "data-slot": "category"
                   },
                   "children": [
                     {
@@ -242,9 +238,6 @@
                           "props": {
                             "Variant": "secondary",
                             "Size": "sm"
-                          },
-                          "attrs": {
-                            "data-testid": "badge"
                           },
                           "children": [
                             {
@@ -282,7 +275,7 @@
                         "Variant": "default"
                       },
                       "attrs": {
-                        "data-testid": "open"
+                        "data-slot": "open"
                       },
                       "children": [
                         {
@@ -315,7 +308,7 @@
                     "Class": "text-muted-foreground"
                   },
                   "attrs": {
-                    "data-testid": "portion"
+                    "data-slot": "portion"
                   },
                   "children": [
                     {
@@ -380,7 +373,7 @@
                         "Weight": "bold"
                       },
                       "attrs": {
-                        "data-testid": "price"
+                        "data-slot": "price"
                       },
                       "children": [
                         {
@@ -417,9 +410,6 @@
                         "Variant": "default",
                         "Size": "sm",
                         "Type": "button"
-                      },
-                      "attrs": {
-                        "data-testid": "add"
                       },
                       "on": {
                         "click": {

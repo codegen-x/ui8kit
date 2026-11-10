@@ -60,9 +60,9 @@ templ FaqList(p FaqListProps) {
 			@EmptyState(EmptyStateProps{Icon: "circle-question-mark", Title: vEmpty})
 		}
 		if uiutils.Eq(vLayout, "chat") {
-			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "faq")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "faq")}}) {
 				for _, vItem := range uiutils.L(vShown) {
-					@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "faq-item")}}) {
+					@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "faq-item")}}) {
 						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "ml-auto max-w-xs sm:max-w-md rounded bg-primary px-4 py-4 text-primary-foreground"}}) {
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vItem, "question")) }
@@ -77,9 +77,9 @@ templ FaqList(p FaqListProps) {
 				}
 			}
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1")), BoxProps: box.BoxProps{Class: "items-start gap-x-8", Attrs: uiutils.Attrs("data-testid", "faq")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1")), BoxProps: box.BoxProps{Class: "items-start gap-x-8", Attrs: uiutils.Attrs("data-slot", "faq")}}) {
 				for _, vItem := range uiutils.L(vShown) {
-					@compose.Disclosure(compose.DisclosureProps{Variant: "item", DisclosureProps: disclosure.DisclosureProps{Name: uiutils.S(uiutils.Cond(uiutils.T(vMultiple), nil, uiutils.Tpl("{0}-faq", uiutils.Coalesce(vId, "faq")))), Attrs: uiutils.Attrs("data-testid", "faq-item")}}) {
+					@compose.Disclosure(compose.DisclosureProps{Variant: "item", DisclosureProps: disclosure.DisclosureProps{Name: uiutils.S(uiutils.Cond(uiutils.T(vMultiple), nil, uiutils.Tpl("{0}-faq", uiutils.Coalesce(vId, "faq")))), Attrs: uiutils.Attrs("data-slot", "faq-item")}}) {
 						@compose.Summary(compose.SummaryProps{Variant: "item", SummaryProps: disclosure.SummaryProps{}}) {
 							{ uiutils.Text(uiutils.Get(vItem, "question")) }
 						}

@@ -52,7 +52,7 @@
                 "Class": "rounded bg-muted p-6"
               },
               "attrs": {
-                "data-testid": "media-review"
+                "data-slot": "media-review"
               },
               "children": [
                 {

@@ -67,7 +67,7 @@ const {
         gap="4"
         align="stretch"
         class="rounded bg-card inset-ring inset-ring-border p-6"
-        data-testid="aside"
+        data-slot="aside"
       >
         <Field :label="labels.zone" :htmlFor="tpl('{0}-zone', id)">
           <Select :name="tpl('{0}-zone', id)" :id="tpl('{0}-zone', id)">

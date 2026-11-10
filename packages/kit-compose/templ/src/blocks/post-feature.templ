@@ -22,7 +22,7 @@ type PostFeatureProps struct {
 templ PostFeature(p PostFeatureProps) {
 	{{ vP := p.P }}
 	{{ vLabels := p.Labels }}
-	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "border-t border-border pt-6", Attrs: uiutils.Attrs("data-testid", "post-feature")}}) {
+	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "border-t border-border pt-6", Attrs: uiutils.Attrs("data-slot", "post-feature")}}) {
 		@compose.Badge(compose.BadgeProps{Variant: "secondary", Size: "sm", TextProps: text.TextProps{Class: "w-fit"}}) {
 			{ uiutils.Text(uiutils.Get(vP, "category")) }
 		}
@@ -43,7 +43,7 @@ templ PostFeature(p PostFeatureProps) {
 				}
 			}
 		}
-		@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.URL(uiutils.Get(vP, "href"), false), Class: "w-full gap-2", Attrs: uiutils.Attrs("data-testid", "action-primary")}}) {
+		@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.URL(uiutils.Get(vP, "href"), false), Class: "w-full gap-2"}}) {
 			{ uiutils.Text(uiutils.Get(vLabels, "read")) }
 			@icons.LucideIcon(icons.LucideIconProps{Name: "arrow-right", Size: 16})
 		}

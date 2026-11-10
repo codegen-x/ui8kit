@@ -45,7 +45,8 @@
             "Class": "inline-flex items-center gap-2"
           },
           "attrs": {
-            "data-mark": "yes"
+            "data-mark": "yes",
+            "data-slot": "compare-mark"
           },
           "children": [
             {
@@ -90,7 +91,8 @@
             "Class": "inline-flex items-center gap-2 text-muted-foreground"
           },
           "attrs": {
-            "data-mark": "no"
+            "data-mark": "no",
+            "data-slot": "compare-mark"
           },
           "children": [
             {
@@ -150,7 +152,10 @@
                 "$": "value"
               }
             }
-          ]
+          ],
+          "attrs": {
+            "data-slot": "compare-mark"
+          }
         }
       ]
     }

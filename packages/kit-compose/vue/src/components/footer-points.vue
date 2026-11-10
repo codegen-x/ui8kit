@@ -19,12 +19,12 @@ const { extras, title } = defineProps<FooterPointsProps>();
 </script>
 
 <template>
-  <Stack v-if="((extras.points?.length ?? 0) > 0)" gap="4" align="start">
+  <Stack v-if="((extras.points?.length ?? 0) > 0)" gap="4" align="start" data-slot="footer-points">
     <Text size="sm" weight="semibold">
       {{ title }}
     </Text>
     <template v-for="(p, i) in extras.points" :key="p.id">
-      <Group v-if="(i < 4)" gap="2" align="center" data-testid="footer-point">
+      <Group v-if="(i < 4)" gap="2" align="center" data-slot="footer-point">
         <LucideIcon :name="p.icon" :size="16" />
         <Text size="sm">
           {{ p.title }}

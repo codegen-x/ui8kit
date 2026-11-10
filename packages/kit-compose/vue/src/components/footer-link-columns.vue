@@ -23,15 +23,20 @@ const { label, groups, landmarkLabel } = defineProps<FooterLinkColumnsProps>();
 </script>
 
 <template>
-  <Block v-if="((groups?.length ?? 0) > 0)" tag="nav" :aria-label="(landmarkLabel ?? label)">
+  <Block
+    v-if="((groups?.length ?? 0) > 0)"
+    tag="nav"
+    :aria-label="(landmarkLabel ?? label)"
+    data-slot="footer-link-columns"
+  >
     <Box class="grid grid-cols-2 gap-8 sm:grid-cols-3">
       <template v-for="(g, i) in groups" :key="g.id">
-        <Stack v-if="(i < 3)" gap="2" data-testid="group">
+        <Stack v-if="(i < 3)" gap="2" data-slot="group">
           <Text size="sm" weight="semibold">
             {{ g.title }}
           </Text>
           <List class="m-0 flex list-none flex-col gap-2 p-0">
-            <ListItem v-for="item in g.links" :key="item.id">
+            <ListItem v-for="item in g.links" :key="item.id" data-slot="links-row">
               <MenuEntry :href="item.href" class="text-sm text-muted-foreground" variant="muted" size="sm">
                 {{ item.name }}
               </MenuEntry>

@@ -13,12 +13,12 @@ export type FeatureStatRowsProps = {
 
 export function FeatureStatRows({ features, stats }: FeatureStatRowsProps) {
   return (
-    <Stack gap="6" align="stretch">
+    <Stack gap="6" align="stretch" data-slot="feature-stat-rows">
       <Box class="grid grid-cols-2 gap-4">
         <For each={stats ?? []}>{(s, iOf) => { const i = iOf(); return (
           <>
             {(i < 2) ? (
-              <Stack gap="0" class="rounded bg-card inset-ring inset-ring-border p-4" data-testid="feature-stat">
+              <Stack gap="0" class="rounded bg-card inset-ring inset-ring-border p-4" data-slot="feature-stat">
                 <Text size="2xl" weight="bold">
                   {s.value}
                 </Text>
@@ -34,7 +34,7 @@ export function FeatureStatRows({ features, stats }: FeatureStatRowsProps) {
         <For each={features ?? []}>{(f, iOf) => { const i = iOf(); return (
           <>
             {(i < 3) ? (
-              <Group gap="4" align="start" data-testid="feature-item">
+              <Group gap="4" align="start" data-slot="feature-item">
                 <Inline class="flex size-6 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground">
                   <LucideIcon name="check" size={16} />
                 </Inline>

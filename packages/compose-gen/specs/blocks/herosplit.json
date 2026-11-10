@@ -93,7 +93,7 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"hero-stat\"]",
+      "sel": "[data-slot=\"hero-stat\"]",
       "n": 3,
       "when": {
         "extra": [
@@ -103,7 +103,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"hero-stat\"]",
+      "sel": "[data-slot=\"hero-stat\"]",
       "n": 0,
       "when": {
         "extra": [
@@ -114,14 +114,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"hero-proof\"]",
+      "sel": "[data-slot=\"hero-proof\"]",
       "n": 1,
       "when": {
         "extra": "avatars"
       }
     },
     {
-      "sel": "[data-testid=\"hero-proof\"]",
+      "sel": "[data-slot=\"hero-proof\"]",
       "n": 0,
       "when": {
         "extra": [
@@ -133,14 +133,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"hero-mini\"]",
+      "sel": "[data-slot=\"hero-mini\"]",
       "n": 2,
       "when": {
         "extra": "minis"
       }
     },
     {
-      "sel": "[data-testid=\"hero-mini\"]",
+      "sel": "[data-slot=\"hero-mini\"]",
       "n": 0,
       "when": {
         "extra": [
@@ -152,14 +152,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"hero-quote\"]",
+      "sel": "[data-slot=\"hero-quote\"]",
       "n": 1,
       "when": {
         "extra": "quote"
       }
     },
     {
-      "sel": "[data-testid=\"hero-quote\"]",
+      "sel": "[data-slot=\"hero-quote\"]",
       "n": 0,
       "when": {
         "extra": [
@@ -171,14 +171,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"offer-card\"]",
+      "sel": "[data-slot=\"offer-card\"]",
       "n": 1,
       "when": {
         "media": "card"
       }
     },
     {
-      "sel": "[data-testid=\"offer-card\"]",
+      "sel": "[data-slot=\"offer-card\"]",
       "n": 0,
       "when": {
         "media": [
@@ -189,14 +189,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"hero-tile\"]",
+      "sel": "[data-slot=\"hero-tile\"]",
       "n": 4,
       "when": {
         "media": "grid"
       }
     },
     {
-      "sel": "[data-testid=\"hero-tile\"]",
+      "sel": "[data-slot=\"hero-tile\"]",
       "n": 0,
       "when": {
         "media": [
@@ -207,14 +207,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"hero-plan\"]",
+      "sel": "[data-slot=\"hero-plan\"]",
       "n": 2,
       "when": {
         "media": "plans"
       }
     },
     {
-      "sel": "[data-testid=\"hero-plan\"]",
+      "sel": "[data-slot=\"hero-plan\"]",
       "n": 0,
       "when": {
         "media": [

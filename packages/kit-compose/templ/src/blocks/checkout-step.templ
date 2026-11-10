@@ -24,7 +24,7 @@ templ CheckoutStep(p CheckoutStepProps) {
 	{{ vTitle := p.Title }}
 	{{ vText := uiutils.Def(p.Text, "") }}
 	{{ vLayout := uiutils.Def(p.Layout, "cards") }}
-	@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "rounded bg-card inset-ring inset-ring-border p-6", "border-t border-border pt-6")), Attrs: uiutils.Attrs("data-testid", "step")}}) {
+	@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "rounded bg-card inset-ring inset-ring-border p-6", "border-t border-border pt-6")), Attrs: uiutils.Attrs("data-slot", "step")}}) {
 		@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{}}) {
 			if uiutils.Eq(vLayout, "numbered") {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex size-8 shrink-0 items-center justify-center rounded bg-primary text-sm font-medium text-primary-foreground"}}) {

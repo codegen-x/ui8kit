@@ -47,7 +47,7 @@
         }
       },
       "attrs": {
-        "data-testid": "quote"
+        "data-slot": "quote"
       },
       "children": [
         {

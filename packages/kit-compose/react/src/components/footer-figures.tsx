@@ -12,11 +12,11 @@ export function FooterFigures({ extras }: FooterFiguresProps) {
   return (
     <>
       {((extras.stats?.length ?? 0) > 0) ? (
-        <Group gap="8" className="flex-wrap">
+        <Group gap="8" className="flex-wrap" data-slot="footer-figures">
           {(extras.stats ?? []).map((s, i) => (
             <Fragment key={s.id}>
               {(i < 3) ? (
-                <Stack gap="0" data-testid="footer-stat">
+                <Stack gap="0" data-slot="footer-stat">
                   <Text size="xl" weight="bold">
                     {s.value}
                   </Text>

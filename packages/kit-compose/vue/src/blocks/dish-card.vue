@@ -53,7 +53,6 @@ const emit = defineEmits<{ add: [id: string] }>();
       (((layout as string) === 'horizontal') ? 'flex flex-col sm:flex-row' : 'flex flex-col')
     )"
     data-slot="card"
-    data-testid="item"
     :data-layout="layout"
   >
     <Box
@@ -61,37 +60,37 @@ const emit = defineEmits<{ add: [id: string] }>();
       :class="cn('relative shrink-0', (((layout as string) === 'horizontal') ? 'sm:w-48' : ''))"
     >
       <MediaFrame :alt="dish.name" ratio="4/3" class="h-full" />
-      <Badge v-if="dish.badge" variant="default" size="default" class="absolute left-4 top-4" data-testid="badge">
+      <Badge v-if="dish.badge" variant="default" size="default" class="absolute left-4 top-4">
         {{ dish.badge }}
       </Badge>
     </Box>
     <CardContent class="flex flex-1 flex-col gap-2">
       <Group gap="2" align="center" class="flex-wrap">
-        <Text size="xs" class="uppercase tracking-wide text-muted-foreground" data-testid="category">
+        <Text size="xs" class="uppercase tracking-wide text-muted-foreground" data-slot="category">
           {{ dish.tag }}
         </Text>
         <template v-if="((media as string) === 'none')">
-          <Badge v-if="dish.badge" variant="secondary" size="sm" data-testid="badge">
+          <Badge v-if="dish.badge" variant="secondary" size="sm">
             {{ dish.badge }}
           </Badge>
         </template>
       </Group>
       <Title :as="3" size="base" weight="bold">
-        <Link v-if="dish.href" :href="urlOf(dish.href)" variant="default" data-testid="open">
+        <Link v-if="dish.href" :href="urlOf(dish.href)" variant="default" data-slot="open">
           {{ dish.name }}
         </Link>
         <template v-else>
           {{ dish.name }}
         </template>
       </Title>
-      <Text v-if="dish.weight" size="xs" class="text-muted-foreground" data-testid="portion">
+      <Text v-if="dish.weight" size="xs" class="text-muted-foreground" data-slot="portion">
         {{ dish.weight }}
       </Text>
       <Text v-if="((density as string) === 'default')" size="sm" class="text-muted-foreground">
         {{ dish.summary }}
       </Text>
       <Group gap="4" justify="between" class="mt-auto pt-2">
-        <Text v-if="((prices as string) === 'show')" size="xl" weight="bold" data-testid="price">
+        <Text v-if="((prices as string) === 'show')" size="xl" weight="bold" data-slot="price">
           {{ fmtMoney(dish.price, dish.currency) }}
         </Text>
         <Button
@@ -99,7 +98,6 @@ const emit = defineEmits<{ add: [id: string] }>();
           variant="default"
           size="sm"
           type="button"
-          data-testid="add"
           @click="() => emit('add', dish.id)"
         >
           {{ labels.add }}

@@ -20,7 +20,7 @@ type AddIconProps struct {
 templ AddIcon(p AddIconProps) {
 	{{ vLabel := p.Label }}
 	{{ vVariant := uiutils.Def(p.Variant, "outline") }}
-	@compose.Button(compose.ButtonProps{Variant: uiutils.S(vVariant), Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(vLabel), Attrs: uiutils.Attrs("data-testid", "add")}}) {
+	@compose.Button(compose.ButtonProps{Variant: uiutils.S(vVariant), Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(vLabel)}}) {
 		@icons.LucideIcon(icons.LucideIconProps{Name: "plus", Size: 16})
 	}
 }

@@ -48,7 +48,7 @@ function metaOf(el: Element) {
   const pr = parent?.getBoundingClientRect();
   const cs = getComputedStyle(el);
   const block = el.closest("[data-block]");
-  const section = el.closest('[data-testid="section"], section[aria-labelledby]');
+  const section = el.closest('[data-slot="section"], section[aria-labelledby]');
   const ancestors: ReturnType<typeof brief>[] = [];
   for (let e = el.parentElement; e && ancestors.length < 3; e = e.parentElement) ancestors.push(brief(e));
   const root = document.documentElement;

@@ -55,16 +55,16 @@ const {
   >
     <EmptyState v-if="((logos?.length ?? 0) === 0)" icon="building-2" :title="empty" />
     <Grid v-else :cols="(((layout as string) === 'beside') ? '1-2' : '1')" class="items-center gap-8">
-      <Group gap="6" justify="center" class="flex-wrap text-muted-foreground" data-testid="logos">
-        <Group v-for="logo in logos" :key="logo.id" gap="2" align="center" data-testid="logo">
+      <Group gap="6" justify="center" class="flex-wrap text-muted-foreground" data-slot="logos">
+        <Group v-for="logo in logos" :key="logo.id" gap="2" align="center" data-slot="logo">
           <LucideIcon :name="logo.icon" :size="24" />
           <Text size="sm" weight="semibold" :class="(((logoStyle as string) === 'icon') ? 'sr-only' : '')">
             {{ logo.name }}
           </Text>
         </Group>
       </Group>
-      <Grid :cols="(((layout as string) === 'beside') ? '2' : '1-4')" class="gap-6 text-center" data-testid="stats">
-        <Stack v-for="stat in stats" :key="stat.id" gap="0" align="center" data-testid="stat">
+      <Grid :cols="(((layout as string) === 'beside') ? '2' : '1-4')" class="gap-6 text-center" data-slot="stats">
+        <Stack v-for="stat in stats" :key="stat.id" gap="0" align="center" data-slot="stat">
           <Text size="4xl" weight="bold">
             {{ stat.value }}
           </Text>

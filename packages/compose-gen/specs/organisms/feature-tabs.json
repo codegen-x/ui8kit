@@ -304,8 +304,8 @@
                                 "Class": "items-center gap-8"
                               },
                               "attrs": {
-                                "data-testid": "tab-panel",
-                                "role": "tabpanel"
+                                "role": "tabpanel",
+                                "data-slot": "tab-panel"
                               },
                               "children": [
                                 {

@@ -21,9 +21,9 @@ type OfferMediaProps struct {
 templ OfferMedia(p OfferMediaProps) {
 	{{ vAlt := p.Alt }}
 	{{ vCard := p.Card }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative", Attrs: uiutils.Attrs("data-testid", "hero-media")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative", Attrs: uiutils.Attrs("data-slot", "hero-media")}}) {
 		@MediaFrame(MediaFrameProps{Alt: vAlt, Ratio: "4/3"})
-		@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: "absolute bottom-4 left-4 mr-4 max-w-xs rounded bg-card p-4 shadow-lg", Attrs: uiutils.Attrs("data-testid", "offer-card")}}) {
+		@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: "absolute bottom-4 left-4 mr-4 max-w-xs rounded bg-card p-4 shadow-lg", Attrs: uiutils.Attrs("data-slot", "offer-card")}}) {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted"}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vCard, "icon")), Size: 20})
 			}

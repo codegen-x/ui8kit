@@ -43,9 +43,9 @@ export function ZoneTable({
       ) : ((layout as string) === "table") ? (
         <ZoneRows zones={zones} labels={labels} />
       ) : (
-        <Grid cols="1-3" className="gap-4" data-testid="items">
+        <Grid cols="1-3" className="gap-4" data-slot="items">
           {(zones ?? []).map((z) => (
-            <Stack key={z.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-6" data-testid="item">
+            <Stack key={z.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-6" data-slot="item">
               <Stack gap="2">
                 <Title as={3} size="lg" weight="bold">
                   {z.name}

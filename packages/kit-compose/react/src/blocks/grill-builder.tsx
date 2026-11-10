@@ -52,7 +52,7 @@ export function GrillBuilder({
             (layout as string) === "split" ? "flex flex-col gap-8 lg:col-span-2"
             : "flex flex-col gap-8 lg:col-span-3"
           }
-          data-testid="steps"
+          data-slot="steps"
         >
           <MeatCards name={tpl("{0}-meat", id)} legend={labels.meat} options={meats} />
           <OptionChips name={tpl("{0}-weight", id)} legend={labels.weight} options={weights} extra="note" />
@@ -64,7 +64,7 @@ export function GrillBuilder({
             (layout as string) === "split" ? "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6 lg:sticky lg:top-8"
             : "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6"
           }
-          data-testid="summary"
+          data-slot="summary"
         >
           <Text size="lg" weight="semibold">
             {labels.summary}
@@ -73,7 +73,7 @@ export function GrillBuilder({
             <Text size="sm" className="text-muted-foreground">
               {labels.total}
             </Text>
-            <Inline className="text-2xl font-bold" role="status" aria-live="polite" data-testid="total">
+            <Inline className="text-2xl font-bold" role="status" aria-live="polite" data-slot="total">
               {fmtMoney(total, currency)}
             </Inline>
           </Group>

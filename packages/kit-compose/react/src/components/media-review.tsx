@@ -17,7 +17,7 @@ export function MediaReview({ extras, labels }: MediaReviewProps) {
       {(extras.reviews ?? []).map((r, i) => (
         <Fragment key={r.id}>
           {(i < 1) ? (
-            <Stack gap="4" align="stretch" className="rounded bg-muted p-6" data-testid="media-review">
+            <Stack gap="4" align="stretch" className="rounded bg-muted p-6" data-slot="media-review">
               <Group gap="4" align="center" justify="between" className="flex-wrap">
                 <Text size="sm" weight="medium">
                   {labels.featured}

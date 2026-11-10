@@ -20,10 +20,10 @@
         {capture $c_2}
           {=og_include('blocks/stat-tile.latte', ['p' => ['label' => og_get($v_m, ['label']), 'value' => og_get($v_m, ['value']), 'icon' => og_get($v_m, ['icon']), 'hint' => og_get($v_m, ['hint'])]])|noescape}
         {/capture}
-        {=og_include('compose/Box.latte', ['attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_2])|noescape}
+        {=og_include('compose/Box.latte', ['attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_2])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Grid.latte', ['cols' => og_s($v_cols), 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_3])|noescape}
+    {=og_include('compose/Grid.latte', ['cols' => og_s($v_cols), 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_3])|noescape}
   {/if}
   {if og_t($v_activity)}
     {capture $c_6}
@@ -48,4 +48,4 @@
     {=og_include('blocks/panel.latte', ['p' => ['title' => og_get($v_chart, ['title']), 'description' => og_get($v_chart, ['text']), 'id' => og_tpl('{0}-chart', [$v_id]), 'className' => og_cnv(['h-full'])], 'children' => og_markup($c_7)])|noescape}
   {/if}
 {/capture}
-{=og_include('compose/Stack.latte', ['gap' => og_s((og_t(og_eq($v_density, 'compact')) ? '4' : '6')), 'align' => 'stretch', 'class' => 'min-w-0', 'attrs' => og_attrs(['data-testid', 'app-main']), 'children' => (string) $c_8])|noescape}
+{=og_include('compose/Stack.latte', ['gap' => og_s((og_t(og_eq($v_density, 'compact')) ? '4' : '6')), 'align' => 'stretch', 'class' => 'min-w-0', 'attrs' => og_attrs(['data-slot', 'app-main']), 'children' => (string) $c_8])|noescape}

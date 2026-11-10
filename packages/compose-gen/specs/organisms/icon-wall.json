@@ -224,7 +224,7 @@
                     "Class": "gap-4"
                   },
                   "attrs": {
-                    "data-testid": "items"
+                    "data-slot": "items"
                   },
                   "children": [
                     {
@@ -285,7 +285,7 @@
                             }
                           },
                           "attrs": {
-                            "data-testid": "item"
+                            "data-slot": "item"
                           },
                           "children": [
                             {

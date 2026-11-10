@@ -22,7 +22,7 @@ templ PageAside(p PageAsideProps) {
 	{{ vExtras := p.Extras }}
 	{{ vMode := uiutils.Def(p.Mode, "figure") }}
 	if uiutils.Eq(vMode, "figure") {
-		@compose.Stack(compose.StackProps{Gap: "0", Align: "end", BoxProps: box.BoxProps{Class: "text-end", Attrs: uiutils.Attrs("data-testid", "page-figure")}}) {
+		@compose.Stack(compose.StackProps{Gap: "0", Align: "end", BoxProps: box.BoxProps{Class: "text-end", Attrs: uiutils.Attrs("data-slot", "page-figure")}}) {
 			@compose.Text(compose.TextProps{Size: "4xl", Weight: "bold", TextProps: text.TextProps{}}) {
 				{ uiutils.Text(uiutils.Get(vExtras, "value")) }
 			}
@@ -32,7 +32,7 @@ templ PageAside(p PageAsideProps) {
 		}
 	}
 	if uiutils.Eq(vMode, "note") {
-		@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border max-w-xs p-4", Attrs: uiutils.Attrs("data-testid", "page-note")}}) {
+		@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border max-w-xs p-4", Attrs: uiutils.Attrs("data-slot", "page-note")}}) {
 			@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vExtras, "icon")), Size: 20})
 			@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 				@compose.Text(compose.TextProps{Size: "lg", Weight: "bold", TextProps: text.TextProps{}}) {
@@ -48,10 +48,10 @@ templ PageAside(p PageAsideProps) {
 		}
 	}
 	if uiutils.Eq(vMode, "facts") {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-2 gap-4"}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-2 gap-4", Attrs: uiutils.Attrs("data-slot", "page-aside")}}) {
 			for vI, vS := range uiutils.L(uiutils.Get(vExtras, "facts")) {
 				if uiutils.Lt(float64(vI), float64(4)) {
-					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "page-fact")}}) {
+					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "page-fact")}}) {
 						@compose.Text(compose.TextProps{Size: "lg", Weight: "bold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vS, "value")) }
 						}

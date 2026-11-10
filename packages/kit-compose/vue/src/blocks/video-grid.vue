@@ -53,7 +53,7 @@ const emit = defineEmits<{ play: [id: string] }>();
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((quotes?.length ?? 0) === 0)" icon="video" :title="empty" />
-    <Grid v-else :cols="cols" class="gap-4" data-testid="items">
+    <Grid v-else :cols="cols" class="gap-4" data-slot="items">
       <FigureBlock v-for="q in quotes" :key="q.id" class="m-0 flex flex-col gap-4" testid="item">
         <Box class="relative">
           <MediaFrame :alt="q.author" />
@@ -63,7 +63,6 @@ const emit = defineEmits<{ play: [id: string] }>();
             type="button"
             class="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0"
             :aria-label="tpl(playLabel, q.author)"
-            data-testid="play"
             @click="() => emit('play', q.id)"
           >
             <LucideIcon name="play" :size="20" />
@@ -71,7 +70,7 @@ const emit = defineEmits<{ play: [id: string] }>();
           <Box
             v-if="((caption as string) === 'overlay')"
             class="absolute inset-x-0 bottom-0 rounded bg-background p-4"
-            data-testid="caption"
+            data-slot="caption"
           >
             <Text size="sm" weight="semibold">
               {{ q.author }}
@@ -81,7 +80,7 @@ const emit = defineEmits<{ play: [id: string] }>();
             </Text>
           </Box>
         </Box>
-        <Text v-if="((caption as string) === 'below')" tag="figcaption" data-testid="caption">
+        <Text v-if="((caption as string) === 'below')" tag="figcaption" data-slot="caption">
           <Text size="sm" weight="semibold">
             {{ q.author }}
           </Text>

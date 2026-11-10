@@ -44,7 +44,7 @@ export function AuthLayout({
   landmarkLabel,
 }: AuthLayoutProps) {
   return (
-    <Block tag="div" className="w-full" data-testid="auth-layout" data-layout={layout}>
+    <Block tag="div" className="w-full" data-layout={layout} data-slot="auth-layout">
       <Container className={cn("mx-auto w-full max-w-6xl px-4", "py-12")} data-slot="container">
         {((layout as string) === "split") ? (
           <Grid cols="1-2" className="items-stretch gap-8">
@@ -72,7 +72,7 @@ export function AuthLayout({
                 "justify-end rounded bg-muted p-8",
                 (((side as string) === "start") ? "md:order-first" : "md:order-last")
               )}
-              data-testid="visual"
+              data-slot="visual"
             >
               <MediaFrame alt={visual.title} ratio="4/3" />
               <Title as={2} size="2xl" weight="bold">

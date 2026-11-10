@@ -48,9 +48,9 @@ export function DishCartGrid({
           <Group justify="end">
             <CartCount count={count} label={labels.inCart} />
           </Group>
-          <Grid cols="1-3" className="gap-4" data-testid="items">
+          <Grid cols="1-3" className="gap-4" data-slot="items">
             {(dishes ?? []).map((d) => (
-              <Stack key={d.id} gap="4" className="rounded bg-card inset-ring inset-ring-border overflow-hidden pb-4" data-testid="item">
+              <Stack key={d.id} gap="4" className="rounded bg-card inset-ring inset-ring-border overflow-hidden pb-4" data-slot="item">
                 {((media as string) === "image") ? (
                   <MediaFrame alt={d.name} />
                 ) : null}

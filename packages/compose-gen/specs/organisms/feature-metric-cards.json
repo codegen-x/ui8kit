@@ -51,7 +51,7 @@
                     "Class": "rounded bg-card inset-ring inset-ring-border p-4"
                   },
                   "attrs": {
-                    "data-testid": "feature-stat"
+                    "data-slot": "feature-stat"
                   },
                   "children": [
                     {
@@ -129,7 +129,10 @@
           ],
           "index": "i"
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "feature-metric-cards"
+      }
     }
   ],
   "portable": {

@@ -21,7 +21,7 @@ type FooterBrandProps struct {
 templ FooterBrand(p FooterBrandProps) {
 	{{ vBrand := p.Brand }}
 	{{ vTagline := p.Tagline }}
-	@compose.Stack(compose.StackProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "footer-brand")}}) {
+	@compose.Stack(compose.StackProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "footer-brand")}}) {
 		@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
 			@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex size-8 items-center justify-center rounded bg-foreground text-background"}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: "layers", Size: 16})

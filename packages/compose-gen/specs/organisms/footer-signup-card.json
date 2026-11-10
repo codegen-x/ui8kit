@@ -31,7 +31,7 @@
         "Class": "rounded bg-card inset-ring inset-ring-border p-6"
       },
       "attrs": {
-        "data-testid": "signup"
+        "data-slot": "signup"
       },
       "children": [
         {
@@ -84,7 +84,7 @@
             }
           },
           "attrs": {
-            "data-testid": "email-form"
+            "data-slot": "email-form"
           },
           "children": [
             {
@@ -134,7 +134,7 @@
                         }
                       ]
                     },
-                    "data-testid": "field"
+                    "data-slot": "field"
                   }
                 },
                 {
@@ -143,9 +143,6 @@
                     "Variant": "default",
                     "Size": "default",
                     "Type": "submit"
-                  },
-                  "attrs": {
-                    "data-testid": "submit"
                   },
                   "children": [
                     {

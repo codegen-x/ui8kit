@@ -39,10 +39,10 @@
           {/capture}
           {=og_include('compose/Group.latte', ['gap' => '2', 'align' => 'center', 'justify' => 'between', 'children' => (string) $c_5])|noescape}
         {/capture}
-        {=og_include('compose/ListItem.latte', ['class' => og_s((og_t(og_eq($v_size, 'lg')) ? 'flex w-64 shrink-0 snap-start flex-col gap-2' : 'flex w-48 shrink-0 snap-start flex-col gap-2')), 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_6])|noescape}
+        {=og_include('compose/ListItem.latte', ['class' => og_s((og_t(og_eq($v_size, 'lg')) ? 'flex w-64 shrink-0 snap-start flex-col gap-2' : 'flex w-48 shrink-0 snap-start flex-col gap-2')), 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_6])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => '-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4', 'attrs' => og_attrs(['tabindex', 0, 'aria-label', og_get($v_labels, ['strip']), 'data-testid', 'items']), 'children' => (string) $c_7])|noescape}
+    {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => '-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4', 'attrs' => og_attrs(['tabindex', 0, 'aria-label', og_get($v_labels, ['strip']), 'data-slot', 'items']), 'children' => (string) $c_7])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'lead' => $v_lead, 'tone' => $v_tone, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_8)])|noescape}

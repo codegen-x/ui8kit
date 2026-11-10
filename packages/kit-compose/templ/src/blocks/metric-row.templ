@@ -39,14 +39,14 @@ templ MetricRow(p MetricRowProps) {
 		if uiutils.Eq(uiutils.Len(vMetrics), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "gauge", Title: vEmpty})
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1-4")), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1-4")), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vM := range uiutils.L(vMetrics) {
 					if uiutils.Eq(vItem, "tile") {
-						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@StatTile(StatTileProps{Label: uiutils.Get(vM, "label"), Value: uiutils.Get(vM, "value"), Icon: uiutils.Get(vM, "icon"), Hint: uiutils.Get(vM, "hint")})
 						}
 					} else {
-						@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "rounded bg-card p-4 inset-ring inset-ring-border", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "rounded bg-card p-4 inset-ring inset-ring-border", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Class: "text-muted-foreground"}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vM, "icon")), Size: 16})
 								@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{}}) {

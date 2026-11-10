@@ -41,9 +41,9 @@ export function SushiSets({
       {((dishes?.length ?? 0) === 0) ? (
         <EmptyState icon="package" title={empty} />
       ) : (
-        <Grid cols={(((cols as string) === "3") ? "1-3" : "1-4")} className="gap-4" data-testid="items">
+        <Grid cols={(((cols as string) === "3") ? "1-3" : "1-4")} className="gap-4" data-slot="items">
           {(dishes ?? []).map((d) => (
-            <Stack key={d.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="item">
+            <Stack key={d.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
               <Box className="relative">
                 <MediaFrame alt={d.name} ratio="1/1" />
                 <Badge variant="default" size="default" className="absolute left-2 top-2">
@@ -59,7 +59,7 @@ export function SushiSets({
                 aria-label={tpl(labels.pieces, d.name)}
               >
                 {(d.items ?? []).map((r) => (
-                  <ListItem key={r} className="flex items-center gap-2">
+                  <ListItem key={r} className="flex items-center gap-2" data-slot="items-row">
                     <LucideIcon name="check" size={16} />
                     <Inline>
                       {r}

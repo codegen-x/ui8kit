@@ -51,12 +51,12 @@
               {=og_include('icons/LucideIcon.latte', ['name' => 'zap', 'size' => 16])|noescape}
               {=og_text(og_get($v_labels, ['order']))}
             {/capture}
-            {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'sm', 'type' => 'button', 'ariaLabel' => og_s(og_tpl(og_get($v_labels, ['orderOf']), [og_get($v_d, ['name'])])), 'attrs' => og_attrs(['data-testid', 'order']), 'children' => (string) $c_8])|noescape}
+            {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'sm', 'type' => 'button', 'ariaLabel' => og_s(og_tpl(og_get($v_labels, ['orderOf']), [og_get($v_d, ['name'])])), 'children' => (string) $c_8])|noescape}
           {/capture}
-          {=og_include('compose/ListItem.latte', ['class' => 'flex flex-wrap items-center gap-4 border-b border-border py-4', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_9])|noescape}
+          {=og_include('compose/ListItem.latte', ['class' => 'flex flex-wrap items-center gap-4 border-b border-border py-4', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_9])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => 'flex flex-col', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_10])|noescape}
+      {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => 'flex flex-col', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_10])|noescape}
     {/capture}
     {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'class' => 'mx-auto w-full max-w-3xl', 'children' => (string) $c_11])|noescape}
   {/if}

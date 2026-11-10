@@ -28,9 +28,9 @@
         {/capture}
         {=og_include('compose/Inline.latte', ['class' => 'text-xs text-muted-foreground', 'children' => (string) $c_4])|noescape}
       {/capture}
-      {=og_include('compose/Box.latte', ['class' => 'flex flex-col gap-2 rounded p-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', 'attrs' => og_attrs(['data-testid', 'option']), 'children' => (string) $c_5])|noescape}
+      {=og_include('compose/Box.latte', ['class' => 'flex flex-col gap-2 rounded p-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', 'attrs' => og_attrs(['data-slot', 'option']), 'children' => (string) $c_5])|noescape}
     {/foreach}
   {/capture}
   {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-2 gap-4 md:grid-cols-4', 'children' => (string) $c_6])|noescape}
 {/capture}
-{=og_include('compose/Fieldset.latte', ['class' => 'flex flex-col gap-2', 'attrs' => og_attrs(['role', 'radiogroup', 'aria-labelledby', og_tpl('{0}-legend', [$v_name]), 'data-testid', 'meat']), 'children' => (string) $c_7])|noescape}
+{=og_include('compose/Fieldset.latte', ['class' => 'flex flex-col gap-2', 'attrs' => og_attrs(['role', 'radiogroup', 'aria-labelledby', og_tpl('{0}-legend', [$v_name]), 'data-slot', 'meat']), 'children' => (string) $c_7])|noescape}

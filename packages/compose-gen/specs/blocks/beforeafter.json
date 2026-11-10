@@ -62,21 +62,21 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"side\"]",
+      "sel": "[data-slot=\"sides\"] > [data-slot=\"card\"]",
       "n": 2,
       "when": {
         "layout": "cards"
       }
     },
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@beforeafter*2",
       "when": {
         "layout": "cards"
       }
     },
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@beforeafter",
       "when": {
         "layout": "rows"

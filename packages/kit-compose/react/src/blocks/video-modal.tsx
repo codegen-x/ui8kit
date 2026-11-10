@@ -51,24 +51,17 @@ export function VideoModal({
         )}
         role="dialog"
         aria-label={title}
-        data-testid="video-modal"
+        data-slot="video-modal"
       >
         <Group gap="2" align="center" justify="between">
           <Text size="sm" className="text-muted-foreground">
             {text}
           </Text>
-          <Button
-            variant="ghost"
-            size="sm"
-            type="button"
-            className="shrink-0"
-            aria-label={close}
-            data-testid="modal-close"
-          >
+          <Button variant="ghost" size="sm" type="button" className="shrink-0" aria-label={close}>
             <LucideIcon name="x" size={16} />
           </Button>
         </Group>
-        <Box className="relative" data-testid="player">
+        <Box className="relative" data-slot="player">
           <MediaFrame alt={title} />
           <Button
             variant="default"
@@ -76,19 +69,18 @@ export function VideoModal({
             type="button"
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded"
             aria-label={play}
-            data-testid="play"
           >
             <LucideIcon name="play" size={24} />
           </Button>
         </Box>
         {(((outline as string) === "chapters") && ((chapters?.length ?? 0) > 0)) ? (
-          <Stack gap="2" data-testid="chapters">
+          <Stack gap="2" data-slot="chapters">
             <Title as={3} size="base" weight="bold">
               {chaptersTitle}
             </Title>
             <List className="m-0 flex list-none flex-col gap-2 p-0">
               {(chapters ?? []).map((c) => (
-                <ListItem key={c.id} className="flex items-baseline gap-4" data-testid="item">
+                <ListItem key={c.id} className="flex items-baseline gap-4" data-slot="item">
                   <Text size="sm" weight="semibold">
                     {c.title}
                   </Text>

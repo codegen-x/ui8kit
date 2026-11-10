@@ -39,15 +39,15 @@ export function MetricRow({
       {((metrics?.length ?? 0) === 0) ? (
         <EmptyState icon="gauge" title={empty} />
       ) : (
-        <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} className="gap-4" data-testid="items">
+        <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} className="gap-4" data-slot="items">
           {(metrics ?? []).map((m) => (
             <Fragment key={m.id}>
               {((item as string) === "tile") ? (
-                <Box data-testid="item">
+                <Box data-slot="item">
                   <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
                 </Box>
               ) : (
-                <Stack gap="0" className="rounded bg-card p-4 inset-ring inset-ring-border" data-testid="item">
+                <Stack gap="0" className="rounded bg-card p-4 inset-ring inset-ring-border" data-slot="item">
                   <Group gap="2" align="center" className="text-muted-foreground">
                     <LucideIcon name={m.icon} size={16} />
                     <Text size="xs">

@@ -26,10 +26,10 @@
           {/capture}
           {=og_include('compose/Text.latte', ['size' => 'sm', 'weight' => 'semibold', 'children' => (string) $c_1])|noescape}
         {/capture}
-        {=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['flex items-center gap-2', 'rounded bg-card inset-ring inset-ring-border', (og_t(og_eq($v_item, 'tile')) ? og_cnv(['flex-col justify-center text-center', (og_t(og_eq($v_density, 'compact')) ? 'p-4' : 'p-6')]) : 'px-4 py-2')])), 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_2])|noescape}
+        {=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['flex items-center gap-2', 'rounded bg-card inset-ring inset-ring-border', (og_t(og_eq($v_item, 'tile')) ? og_cnv(['flex-col justify-center text-center', (og_t(og_eq($v_density, 'compact')) ? 'p-4' : 'p-6')]) : 'px-4 py-2')])), 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_2])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Grid.latte', ['cols' => og_s($v_wallCols), 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_3])|noescape}
+    {=og_include('compose/Grid.latte', ['cols' => og_s($v_wallCols), 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_3])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'tone' => $v_tone, 'density' => $v_density, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_4)])|noescape}

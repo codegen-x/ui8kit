@@ -27,14 +27,14 @@ templ CheckoutSubmit(p CheckoutSubmitProps) {
 	{{ vConsent := p.Consent }}
 	{{ vSubmit := p.Submit }}
 	{{ vLegal := p.Legal }}
-	@compose.Stack(compose.StackProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{}}) {
+	@compose.Stack(compose.StackProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "checkout-submit")}}) {
 		@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("w-fit", ""))}}) {
 			@compose.Checkbox(compose.CheckboxProps{CheckboxProps: checkbox.CheckboxProps{Name: "consent", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-consent", vId))}})
 			@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{For: uiutils.S(uiutils.Tpl("{0}-consent", vId)), Class: "text-sm"}}) {
 				{ uiutils.Text(vConsent) }
 			}
 		}
-		@compose.Button(compose.ButtonProps{Variant: "default", Size: "lg", ButtonProps: button.ButtonProps{Type: "submit", Attrs: uiutils.Attrs("data-testid", "submit")}}) {
+		@compose.Button(compose.ButtonProps{Variant: "default", Size: "lg", ButtonProps: button.ButtonProps{Type: "submit"}}) {
 			{ uiutils.Text(vSubmit) }
 		}
 		@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {

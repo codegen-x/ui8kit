@@ -38,7 +38,7 @@ templ AppShell(p AppShellProps) {
 	{{ vLayout := uiutils.Def(p.Layout, "sidebar") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: "bg-background", Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Tpl("{0}-title", vId)), "data-testid", "app-shell", "data-layout", vLayout, "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: "bg-background", Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Tpl("{0}-title", vId)), "data-layout", vLayout, "aria-label", vLandmarkLabel, "data-slot", "app-shell")}}) {
 		if uiutils.Eq(vLayout, "top") {
 			@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{}}) {
 				@NavBar(NavBarProps{Label: uiutils.Get(vNav, "label"), Brand: uiutils.Get(vNav, "brand"), Links: uiutils.Get(vNav, "links"), Current: uiutils.Get(vNav, "current"), Search: vSearch, Actions: map[string]any{"mode": "none"}, Layout: "search", LandmarkLabel: vLandmarkLabel})
@@ -58,9 +58,9 @@ templ AppShell(p AppShellProps) {
 						@SidebarNav(SidebarNavProps{Label: uiutils.Get(vNav, "label"), Brand: uiutils.Get(vNav, "brand"), Links: uiutils.Get(vNav, "links"), Current: uiutils.Get(vNav, "current"), UserName: uiutils.Get(vUser, "name"), UserEmail: uiutils.Get(vUser, "email"), Width: "compact", Density: vDensity, LandmarkLabel: vLandmarkLabel})
 						if uiutils.Gt(uiutils.Len(uiutils.Get(vActivity, "events")), float64(0)) {
 							@Panel(PanelProps{Title: uiutils.Get(vActivity, "title"), Description: uiutils.Get(vActivity, "text"), Id: uiutils.Tpl("{0}-list", vId)}) {
-								@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-4 p-0", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+								@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-4 p-0", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 									for _, vE := range uiutils.L(uiutils.Get(vActivity, "events")) {
-										@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-2", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+										@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-2", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 											@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 												{ uiutils.Text(uiutils.Get(vE, "title")) }
 											}

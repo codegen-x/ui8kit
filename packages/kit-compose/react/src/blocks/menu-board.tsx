@@ -51,12 +51,12 @@ export function MenuBoard({
           {((layout as string) === "sections") ? (
             <MenuSectionNav label={labels.sections} sections={sections} prefix={id} landmarkLabel={landmarkLabel} />
           ) : null}
-          <Box className="flex flex-col gap-8" data-testid="items">
+          <Box className="flex flex-col gap-8" data-slot="items">
             {(sections ?? []).map((s) => (
               <Stack key={s.id}
                 gap={(((density as string) === "compact") ? "2" : "4")}
                 id={tpl("{0}-{1}", id, s.key)}
-                data-testid="menusection"
+                data-slot="menusection"
               >
                 <Stack gap="0" className="border-b border-border pb-2">
                   <Title as={3} size="xl" weight="bold">

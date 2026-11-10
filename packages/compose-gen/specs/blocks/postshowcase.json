@@ -69,21 +69,21 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"post-mini\"]",
+      "sel": "[data-slot=\"post-mini\"]",
       "n": 4,
       "when": {
         "layout": "intro"
       }
     },
     {
-      "sel": "[data-testid=\"post-feature\"]",
+      "sel": "[data-slot=\"post-feature\"]",
       "n": 1,
       "when": {
         "layout": "featured"
       }
     },
     {
-      "sel": "[data-testid=\"post-overlay\"]",
+      "sel": "[data-slot=\"post-overlay\"]",
       "n": 3,
       "when": {
         "layout": "overlay",
@@ -91,7 +91,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"post-overlay\"]",
+      "sel": "[data-slot=\"post-overlay\"]",
       "n": 2,
       "when": {
         "layout": "overlay",
@@ -99,7 +99,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"section-action\"]",
+      "sel": "[data-slot=\"section-action\"]",
       "n": 1,
       "when": {
         "layout": "intro"

@@ -86,8 +86,8 @@ const shown = computed(() =>
       </SwitcherItem>
     </Switcher>
     <EmptyState v-if="((shown?.length ?? 0) === 0)" icon="circle-question-mark" :title="empty" />
-    <Stack v-if="((layout as string) === 'chat')" gap="4" align="stretch" data-testid="faq">
-      <Stack v-for="item in shown" :key="item.id" gap="2" align="stretch" data-testid="faq-item">
+    <Stack v-if="((layout as string) === 'chat')" gap="4" align="stretch" data-slot="faq">
+      <Stack v-for="item in shown" :key="item.id" gap="2" align="stretch" data-slot="faq-item">
         <Box class="ml-auto max-w-xs sm:max-w-md rounded bg-primary px-4 py-4 text-primary-foreground">
           <Text size="sm" weight="semibold">
             {{ item.question }}
@@ -100,11 +100,13 @@ const shown = computed(() =>
         </Box>
       </Stack>
     </Stack>
-    <Grid v-else :cols="(((cols as string) === '2') ? '1-2' : '1')" class="items-start gap-x-8" data-testid="faq">
-      <Disclosure v-for="item in shown" :key="item.id"
+    <Grid v-else :cols="(((cols as string) === '2') ? '1-2' : '1')" class="items-start gap-x-8" data-slot="faq">
+      <Disclosure
+        v-for="item in shown"
+        :key="item.id"
         variant="item"
         :name="(multiple ? undefined : tpl('{0}-faq', (id ?? 'faq')))"
-        data-testid="faq-item"
+        data-slot="faq-item"
       >
         <Summary variant="item">
           {{ item.question }}

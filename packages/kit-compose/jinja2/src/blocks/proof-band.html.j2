@@ -26,10 +26,10 @@
             {%- endset -%}
             {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Weight': 'semibold', 'Class': og_s(('sr-only' if og_t(og_eq(v_logoStyle, 'icon')) else ''))}, 'children': c_1}) }}
           {%- endset -%}
-          {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Attrs': og_attrs(['data-testid', 'logo'])}, 'children': c_2}) }}
+          {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Attrs': og_attrs(['data-slot', 'logo'])}, 'children': c_2}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/group.html.j2', {'p': {'Gap': '6', 'Justify': 'center', 'Class': 'flex-wrap text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'logos'])}, 'children': c_3}) }}
+      {{ og_include('compose/group.html.j2', {'p': {'Gap': '6', 'Justify': 'center', 'Class': 'flex-wrap text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'logos'])}, 'children': c_3}) }}
       {%- set c_7 -%}
         {%- for v_stat in og_l(v_stats) %}
           {%- set c_6 -%}
@@ -42,10 +42,10 @@
             {%- endset -%}
             {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_5}) }}
           {%- endset -%}
-          {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': 'center', 'Attrs': og_attrs(['data-testid', 'stat'])}, 'children': c_6}) }}
+          {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': 'center', 'Attrs': og_attrs(['data-slot', 'stat'])}, 'children': c_6}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('2' if og_t(og_eq(v_layout, 'beside')) else '1-4')), 'Class': 'gap-6 text-center', 'Attrs': og_attrs(['data-testid', 'stats'])}, 'children': c_7}) }}
+      {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('2' if og_t(og_eq(v_layout, 'beside')) else '1-4')), 'Class': 'gap-6 text-center', 'Attrs': og_attrs(['data-slot', 'stats'])}, 'children': c_7}) }}
     {%- endset -%}
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_layout, 'beside')) else '1')), 'Class': 'items-center gap-8'}, 'children': c_8}) }}
   {%- endif %}

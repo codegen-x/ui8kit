@@ -27,14 +27,14 @@ const { days, name, item = "card" } = defineProps<SlotGridProps>();
 </script>
 
 <template>
-  <Stack gap="4" align="stretch" data-testid="days">
+  <Stack gap="4" align="stretch" data-slot="days">
     <Stack v-for="d in days" :key="d.id"
       gap="4"
       :class="
         (item as string) === 'card' ? 'rounded bg-card inset-ring inset-ring-border p-4'
         : 'border-b border-border pb-4'
       "
-      data-testid="day"
+      data-slot="day"
     >
       <Group gap="4" align="baseline" justify="between" class="flex-wrap">
         <Text size="sm" weight="semibold">
@@ -48,6 +48,7 @@ const { days, name, item = "card" } = defineProps<SlotGridProps>();
         <Label v-for="s in d.slots" :key="s"
           :class="'flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted ' +
             'has-checked:inset-ring-foreground'"
+          data-slot="slots-row"
         >
           <Radio :name="name" :value="tpl('{0} {1}', d.id, s)" />
           <Inline>
@@ -60,6 +61,7 @@ const { days, name, item = "card" } = defineProps<SlotGridProps>();
               'has-checked:inset-ring-foreground',
             'text-muted-foreground line-through'
           )"
+          data-slot="closed-row"
         >
           <Radio :name="name" :value="tpl('{0} {1}', d.id, s)" :disabled="true" />
           <Inline>

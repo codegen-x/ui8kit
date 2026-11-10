@@ -35,4 +35,4 @@
   {%- endset -%}
   {{ include('compose/Stack.html.twig', {'gap': '2', 'align': 'start', 'class': 'absolute bottom-4 left-4 right-4 rounded bg-background p-4', 'children': c_7}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': 'relative overflow-hidden rounded', 'attrs': og_attrs(['data-testid', 'post-overlay']), 'children': c_8}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': 'relative overflow-hidden rounded', 'attrs': og_attrs(['data-slot', 'post-overlay']), 'children': c_8}, with_context = false) }}

@@ -55,22 +55,22 @@ export function ContactForm({
       landmarkLabel={landmarkLabel}
     >
       <Grid cols={(((layout as string) === "split") ? "1-2" : "1")} className="items-start gap-8">
-        <Form method="dialog" className="w-full gap-4" data-testid="contact-form">
+        <Form method="dialog" className="w-full gap-4" data-slot="contact-form">
           {((fields as string) === "full") ? (
             <Field label={labels.name} htmlFor={tpl("{0}-name", id)}>
-              <Input type="text" name="name" autoComplete="name" id={tpl("{0}-name", id)} data-testid="field" />
+              <Input type="text" name="name" autoComplete="name" id={tpl("{0}-name", id)} data-slot="field" />
             </Field>
           ) : null}
           <Field label={labels.email} htmlFor={tpl("{0}-email", id)}>
-            <Input type="email" name="email" autoComplete="email" id={tpl("{0}-email", id)} data-testid="field" />
+            <Input type="email" name="email" autoComplete="email" id={tpl("{0}-email", id)} data-slot="field" />
           </Field>
           {((fields as string) === "full") ? (
             <Field label={labels.subject} htmlFor={tpl("{0}-subject", id)}>
-              <Input type="text" name="subject" id={tpl("{0}-subject", id)} data-testid="field" />
+              <Input type="text" name="subject" id={tpl("{0}-subject", id)} data-slot="field" />
             </Field>
           ) : null}
           <Field label={labels.message} htmlFor={tpl("{0}-message", id)}>
-            <Textarea rows={4} name="message" id={tpl("{0}-message", id)} data-testid="field" />
+            <Textarea rows={4} name="message" id={tpl("{0}-message", id)} data-slot="field" />
           </Field>
           {((terms as string) === "show") ? (
             <Group gap="2" align="center" className={cn("w-fit", "")}>
@@ -80,14 +80,14 @@ export function ContactForm({
               </Label>
             </Group>
           ) : null}
-          <Button variant="default" size="default" type="submit" className="w-fit" data-testid="submit">
+          <Button variant="default" size="default" type="submit" className="w-fit">
             {labels.submit}
           </Button>
         </Form>
         {(((layout as string) === "split") && ((details?.length ?? 0) > 0)) ? (
-          <Stack gap="4" data-testid="details">
+          <Stack gap="4" data-slot="details">
             {(details ?? []).map((d) => (
-              <Group key={d.id} gap="4" align="start" data-testid="detail">
+              <Group key={d.id} gap="4" align="start" data-slot="detail">
                 <LucideIcon name={d.icon} size={20} />
                 <Stack gap="0">
                   <Text size="base" weight="semibold">

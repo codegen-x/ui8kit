@@ -57,14 +57,14 @@ const {
     :landmarkLabel="landmarkLabel"
   >
     <EmptyState v-if="((projects?.length ?? 0) === 0)" icon="folder-open" :title="empty" />
-    <Stack v-else-if="((layout as string) === 'list')" gap="4" align="stretch" data-testid="items">
+    <Stack v-else-if="((layout as string) === 'list')" gap="4" align="stretch" data-slot="items">
       <Group
         v-for="p in projects"
         :key="p.id"
         gap="4"
         align="start"
         class="border-b border-border pb-4"
-        data-testid="item"
+        data-slot="item"
       >
         <MediaFrame :alt="p.title" ratio="1/1" class="size-16 shrink-0" />
         <Stack gap="2" align="stretch" class="flex-1">
@@ -84,7 +84,7 @@ const {
     </Stack>
     <ProjectTiles v-else :projects="projects" :labels="labels" :layout="layout" />
     <template #aside>
-      <Box class="grid grid-cols-2 gap-4" data-testid="collage">
+      <Box class="grid grid-cols-2 gap-4" data-slot="collage">
         <MediaFrame :alt="title" ratio="3/4" />
         <MediaFrame :alt="title" ratio="3/4" class="mt-8" />
       </Box>

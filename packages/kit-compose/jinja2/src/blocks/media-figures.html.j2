@@ -18,8 +18,8 @@
         {%- endset -%}
         {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_2}) }}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': og_s(('center' if og_t(og_eq(v_mode, 'grid')) else 'start')), 'Attrs': og_attrs(['data-testid', 'media-stat'])}, 'children': c_3}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': og_s(('center' if og_t(og_eq(v_mode, 'grid')) else 'start')), 'Attrs': og_attrs(['data-slot', 'media-stat'])}, 'children': c_3}) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('grid grid-cols-2 gap-6 text-center' if og_t(og_eq(v_mode, 'grid')) else 'grid grid-cols-3 gap-6'))}, 'children': c_4}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('grid grid-cols-2 gap-6 text-center' if og_t(og_eq(v_mode, 'grid')) else 'grid grid-cols-3 gap-6')), 'Attrs': og_attrs(['data-slot', 'media-figures'])}, 'children': c_4}) }}

@@ -20,7 +20,7 @@
     {%- set c_2 -%}
       {{ og_text(og_tpl(og_get(v_labels, ['stepOf']), [v_current, og_len(v_steps)])) }}
     {%- endset -%}
-    {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'text-muted-foreground', 'attrs': og_attrs(['data-testid', 'step-of']), 'children': c_2}, with_context = false) }}
+    {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'text-muted-foreground', 'attrs': og_attrs(['data-slot', 'step-of']), 'children': c_2}, with_context = false) }}
     {%- if og_t(og_eq(v_progress, 'bar')) %}
       {{ include('compose/Progress.html.twig', {'value': og_s(og_str(v_current)), 'max': og_s(og_str(og_len(v_steps))), 'attrs': og_attrs(['aria-label', og_get(v_labels, ['steps'])])}, with_context = false) }}
     {%- endif %}
@@ -32,10 +32,10 @@
             {{ include('icons/LucideIcon.html.twig', {'name': og_s((og_t(og_lt(og_add(v_i, 1), v_current)) ? 'circle-check' : og_get(v_s, ['icon']))), 'size': 16}, with_context = false) }}
             {{ og_text(og_get(v_s, ['title'])) }}
           {%- endset -%}
-          {{ include('compose/ListItem.html.twig', {'class': og_s(og_cnv(['flex items-center gap-4 text-sm', (og_t(og_eq(og_add(v_i, 1), v_current)) ? 'font-semibold' : 'text-muted-foreground')])), 'attrs': og_attrs(['aria-current', (og_t(og_eq(og_add(v_i, 1), v_current)) ? 'step' : null), 'data-testid', 'step-item']), 'children': c_3}, with_context = false) }}
+          {{ include('compose/ListItem.html.twig', {'class': og_s(og_cnv(['flex items-center gap-4 text-sm', (og_t(og_eq(og_add(v_i, 1), v_current)) ? 'font-semibold' : 'text-muted-foreground')])), 'attrs': og_attrs(['aria-current', (og_t(og_eq(og_add(v_i, 1), v_current)) ? 'step' : null), 'data-slot', 'step-item']), 'children': c_3}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-col gap-2 p-0', 'attrs': og_attrs(['aria-label', og_get(v_labels, ['steps']), 'data-testid', 'step-list']), 'children': c_4}, with_context = false) }}
+      {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-col gap-2 p-0', 'attrs': og_attrs(['aria-label', og_get(v_labels, ['steps']), 'data-slot', 'step-list']), 'children': c_4}, with_context = false) }}
     {%- endif %}
     {%- for v_s in og_l(v_steps) %}
       {%- set v_i = loop.index0 -%}
@@ -51,30 +51,30 @@
           {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'text-muted-foreground', 'children': c_6}, with_context = false) }}
           {%- set c_9 -%}
             {%- set c_7 -%}
-              {{ include('compose/Input.html.twig', {'type': 'text', 'name': og_s(og_tpl('{0}-a', [v_id])), 'attrs': og_attrs(['id', og_tpl('{0}-a', [v_id]), 'data-testid', 'field'])}, with_context = false) }}
+              {{ include('compose/Input.html.twig', {'type': 'text', 'name': og_s(og_tpl('{0}-a', [v_id])), 'attrs': og_attrs(['id', og_tpl('{0}-a', [v_id]), 'data-slot', 'field'])}, with_context = false) }}
             {%- endset -%}
             {{ include('blocks/field.html.twig', {'p': {'label': og_get(v_s, ['fieldA']), 'htmlFor': og_tpl('{0}-a', [v_id])}, 'children': og_markup(c_7)}, with_context = false) }}
             {%- set c_8 -%}
-              {{ include('compose/Input.html.twig', {'type': 'text', 'name': og_s(og_tpl('{0}-b', [v_id])), 'attrs': og_attrs(['id', og_tpl('{0}-b', [v_id]), 'data-testid', 'field'])}, with_context = false) }}
+              {{ include('compose/Input.html.twig', {'type': 'text', 'name': og_s(og_tpl('{0}-b', [v_id])), 'attrs': og_attrs(['id', og_tpl('{0}-b', [v_id]), 'data-slot', 'field'])}, with_context = false) }}
             {%- endset -%}
             {{ include('blocks/field.html.twig', {'p': {'label': og_get(v_s, ['fieldB']), 'htmlFor': og_tpl('{0}-b', [v_id])}, 'children': og_markup(c_8)}, with_context = false) }}
           {%- endset -%}
           {{ include('compose/Box.html.twig', {'class': 'grid gap-4', 'children': c_9}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-testid', 'step']), 'children': c_10}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'step']), 'children': c_10}, with_context = false) }}
       {%- endif %}
     {%- endfor %}
     {%- set c_13 -%}
       {%- set c_11 -%}
         {{ og_text(og_get(v_labels, ['back'])) }}
       {%- endset -%}
-      {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'default', 'type': 'button', 'disabled': og_t(og_lt(v_current, 2)), 'attrs': og_attrs(['data-testid', 'wizard-back']), 'children': c_11}, with_context = false) }}
+      {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'default', 'type': 'button', 'disabled': og_t(og_lt(v_current, 2)), 'children': c_11}, with_context = false) }}
       {%- set c_12 -%}
         {{ og_text((og_t(og_ge(v_current, og_len(v_steps))) ? og_get(v_labels, ['finish']) : og_get(v_labels, ['next']))) }}
       {%- endset -%}
-      {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'button', 'attrs': og_attrs(['data-testid', 'wizard-next']), 'children': c_12}, with_context = false) }}
+      {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'button', 'children': c_12}, with_context = false) }}
     {%- endset -%}
     {{ include('compose/Group.html.twig', {'gap': '2', 'justify': 'between', 'children': c_13}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Block.html.twig', {'tag': 'section', 'class': og_s(og_cnv(['mx-auto flex w-full max-w-lg flex-col gap-6 px-4 py-8', (og_t(og_eq(v_layout, 'card')) ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')])), 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : og_tpl('{0}-title', [v_id])), 'data-testid', 'wizard', 'data-current', og_str(v_current), 'aria-label', v_landmarkLabel]), 'children': c_14}, with_context = false) }}
+  {{ include('compose/Block.html.twig', {'tag': 'section', 'class': og_s(og_cnv(['mx-auto flex w-full max-w-lg flex-col gap-6 px-4 py-8', (og_t(og_eq(v_layout, 'card')) ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')])), 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : og_tpl('{0}-title', [v_id])), 'data-current', og_str(v_current), 'aria-label', v_landmarkLabel, 'data-slot', 'wizard']), 'children': c_14}, with_context = false) }}
 {%- endif %}

@@ -21,7 +21,7 @@ export function PostStats({ post, extras, labels, align = "start" }: PostStatsPr
       align="center"
       justify={align}
       className="flex-wrap text-muted-foreground"
-      data-testid="post-stats"
+      data-slot="post-stats"
     >
       <Group gap="2" align="center">
         <LucideIcon name="clock" size={16} />

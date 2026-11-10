@@ -46,9 +46,9 @@ export function QuickOrder({
               <Input type="tel" name={tpl("{0}-phone", id)} id={tpl("{0}-phone", id)} />
             </Field>
           ) : null}
-          <List tag="ul" className="flex flex-col" data-testid="items">
+          <List tag="ul" className="flex flex-col" data-slot="items">
             {(dishes ?? []).map((d) => (
-              <ListItem key={d.id} className="flex flex-wrap items-center gap-4 border-b border-border py-4" data-testid="item">
+              <ListItem key={d.id} className="flex flex-wrap items-center gap-4 border-b border-border py-4" data-slot="item">
                 <Stack gap="0" className="min-w-0 flex-1">
                   <Group gap="2" align="baseline">
                     <Text size="base" weight="semibold">
@@ -65,7 +65,7 @@ export function QuickOrder({
                 <Inline className="text-base font-bold">
                   {fmtMoney(d.price, d.currency)}
                 </Inline>
-                <Button variant="default" size="sm" type="button" aria-label={tpl(labels.orderOf, d.name)} data-testid="order">
+                <Button variant="default" size="sm" type="button" aria-label={tpl(labels.orderOf, d.name)}>
                   <LucideIcon name="zap" size={16} />
                   {labels.order}
                 </Button>

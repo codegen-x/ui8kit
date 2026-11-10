@@ -67,7 +67,7 @@
                         "Gap": "0"
                       },
                       "attrs": {
-                        "data-testid": "footer-stat"
+                        "data-slot": "footer-stat"
                       },
                       "children": [
                         {
@@ -105,7 +105,10 @@
               ],
               "index": "i"
             }
-          ]
+          ],
+          "attrs": {
+            "data-slot": "footer-figures"
+          }
         }
       ]
     }

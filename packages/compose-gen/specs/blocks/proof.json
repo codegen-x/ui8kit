@@ -62,11 +62,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"logo\"]",
+      "sel": "[data-slot=\"logo\"]",
       "n": "@logos"
     },
     {
-      "sel": "[data-testid=\"stat\"]",
+      "sel": "[data-slot=\"stat\"]",
       "n": "@stats"
     }
   ],

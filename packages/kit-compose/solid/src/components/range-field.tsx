@@ -39,7 +39,7 @@ export function RangeField({
             max={max}
             aria-label={fromLabel}
             value={(((from as string) === "") ? (min == null ? undefined : String(min)) : from)}
-            data-testid="range-from"
+            data-slot="range-from"
             onInput={(event: InputEvent & { currentTarget: HTMLInputElement }) => onChange?.(event.currentTarget.value, to)}
           />
           <Range
@@ -47,7 +47,7 @@ export function RangeField({
             max={max}
             aria-label={toLabel}
             value={(((to as string) === "") ? (max == null ? undefined : String(max)) : to)}
-            data-testid="range-to"
+            data-slot="range-to"
             onInput={(event: InputEvent & { currentTarget: HTMLInputElement }) => onChange?.(from, event.currentTarget.value)}
           />
         </>

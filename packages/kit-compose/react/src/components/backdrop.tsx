@@ -17,7 +17,7 @@ export function Backdrop({ kind = "none", alt = "" }: BackdropProps) {
   return (
     <>
       {((kind as string) === "image") ? (
-        <Box className="pointer-events-none absolute inset-0 -z-10" data-testid="backdrop">
+        <Box className="pointer-events-none absolute inset-0 -z-10" data-slot="backdrop">
           <MediaFrame alt={alt} ratio="21/9" className="size-full rounded-none opacity-30" />
         </Box>
       ) : null}

@@ -53,11 +53,11 @@ const named = computed(() => (mode as string) === "wide");
       )
     )"
     :aria-label="(landmarkLabel ?? nav.label)"
-    data-testid="sidebar"
     :data-mode="mode"
+    data-slot="sidebar"
   >
     <Box :class="cn('flex flex-col gap-6 py-4', (named ? 'w-64 px-4' : 'w-16 items-center px-2'))">
-      <Group v-if="((brand as string) === 'show')" gap="2" align="center" class="shrink-0" data-testid="brand">
+      <Group v-if="((brand as string) === 'show')" gap="2" align="center" class="shrink-0" data-slot="brand">
         <LucideIcon name="layers" :size="24" />
         <Text size="base" weight="bold" :class="(named ? '' : 'sr-only')">
           {{ nav.brand }}
@@ -67,8 +67,8 @@ const named = computed(() => (mode as string) === "wide");
         :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', nav.label, landmarkLabel)) : nav.label)"
         class="flex-1"
       >
-        <List class="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
-          <ListItem v-for="l in nav.links" :key="l.id">
+        <List class="m-0 flex list-none flex-col gap-2 p-0" data-slot="items">
+          <ListItem v-for="l in nav.links" :key="l.id" data-slot="links-row">
             <MenuEntry
               :href="l.href"
               :class="cn(
@@ -93,7 +93,7 @@ const named = computed(() => (mode as string) === "wide");
         class="inline-flex size-10 items-center justify-center rounded text-muted-foreground"
         :aria-label="nav.expand"
         :aria-expanded="(((mode as string) === 'wide') ? 'true' : 'false')"
-        data-testid="toggle"
+        data-slot="toggle"
         @click="() => emit('toggle')"
       >
         <LucideIcon name="panel-left" :size="20" />
@@ -104,14 +104,14 @@ const named = computed(() => (mode as string) === "wide");
         'flex w-56 flex-col gap-4 px-4 py-6',
         (((side as string) === 'end') ? 'border-r border-border' : 'border-l border-border')
       )"
-      data-testid="subnav"
+      data-slot="subnav"
     >
       <Text size="sm" weight="semibold" class="px-4">
         {{ nav.subTitle }}
       </Text>
       <NavBlock :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', nav.subTitle, landmarkLabel)) : nav.subTitle)">
         <List class="m-0 flex list-none flex-col gap-2 p-0">
-          <ListItem v-for="s in nav.sub" :key="s.id">
+          <ListItem v-for="s in nav.sub" :key="s.id" data-slot="sub-row">
             <MenuEntry
               :href="s.href"
               :class="cn(

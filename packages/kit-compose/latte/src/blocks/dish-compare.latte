@@ -81,14 +81,14 @@
               {/capture}
               {=og_include('compose/TableCell.latte', ['class' => 'font-semibold', 'children' => (string) $c_15])|noescape}
             {/capture}
-            {=og_include('compose/TableRow.latte', ['attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_16])|noescape}
+            {=og_include('compose/TableRow.latte', ['attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_16])|noescape}
           {/foreach}
         {/capture}
         {=og_include('compose/TableBody.latte', ['children' => (string) $c_17])|noescape}
       {/capture}
       {=og_include('compose/Table.latte', ['class' => 'w-full text-sm', 'children' => (string) $c_18])|noescape}
     {/capture}
-    {=og_include('compose/Box.latte', ['class' => 'w-full overflow-x-auto', 'attrs' => og_attrs(['data-testid', 'compare-table']), 'children' => (string) $c_19])|noescape}
+    {=og_include('compose/Box.latte', ['class' => 'w-full overflow-x-auto', 'attrs' => og_attrs(['data-slot', 'compare-table']), 'children' => (string) $c_19])|noescape}
   {else}
     {=og_include('blocks/cut-cards.latte', ['p' => ['dishes' => $v_dishes, 'labels' => $v_labels]])|noescape}
   {/if}

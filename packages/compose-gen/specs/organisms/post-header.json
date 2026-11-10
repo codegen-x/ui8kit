@@ -140,7 +140,7 @@
                     "Class": "flex-wrap"
                   },
                   "attrs": {
-                    "data-testid": "post-meta"
+                    "data-slot": "post-meta"
                   },
                   "children": [
                     {

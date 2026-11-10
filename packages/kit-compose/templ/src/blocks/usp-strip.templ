@@ -37,9 +37,9 @@ templ UspStrip(p UspStripProps) {
 		if uiutils.Eq(uiutils.Len(vPerks), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "truck", Title: vEmpty})
 		} else if uiutils.Eq(vLayout, "bar") {
-			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-wrap items-center justify-center gap-x-8 gap-y-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-wrap items-center justify-center gap-x-8 gap-y-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vP := range uiutils.L(vPerks) {
-					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-2 text-sm font-medium", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-2 text-sm font-medium", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vP, "icon")), Size: 16})
 						@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vP, "title")) }
@@ -48,9 +48,9 @@ templ UspStrip(p UspStripProps) {
 				}
 			}
 		} else {
-			@compose.Grid(compose.GridProps{Cols: "1-4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "strip")), "rounded bg-muted p-6", ""))), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: "1-4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "strip")), "rounded bg-muted p-6", ""))), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vP := range uiutils.L(vPerks) {
-					@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "rounded bg-card inset-ring inset-ring-border p-6", "")), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "rounded bg-card inset-ring inset-ring-border p-6", "")), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted"}}) {
 							@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vP, "icon")), Size: 20})
 						}

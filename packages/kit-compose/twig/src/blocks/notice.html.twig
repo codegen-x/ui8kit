@@ -12,4 +12,4 @@
     {{ include('compose/Text.html.twig', {'class': 'fixed right-4 bottom-4 z-40 m-0 flex items-center gap-2 rounded bg-foreground p-4 text-xs font-bold text-background shadow-lg', 'children': c_1}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': 'contents', 'attrs': og_attrs(['role', 'status', 'data-testid', 'notice']), 'children': c_2}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': 'contents', 'attrs': og_attrs(['role', 'status', 'data-slot', 'notice']), 'children': c_2}, with_context = false) }}

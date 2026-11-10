@@ -60,8 +60,8 @@ const emit = defineEmits<{ remove: [id: string] }>();
       :density="density"
       @remove="(arg: string) => emit('remove', arg)"
     />
-    <Stack v-else gap="4" align="stretch" data-testid="cart-cards">
-      <Card v-for="line in lines" :key="line.id" variant="default" data-testid="item">
+    <Stack v-else gap="4" align="stretch" data-slot="cart-cards">
+      <Card v-for="line in lines" :key="line.id" variant="default">
         <CardContent class="flex flex-wrap items-center gap-4">
           <MediaFrame v-if="((media as string) === 'image')" :alt="line.name" ratio="1/1" class="size-16 shrink-0" />
           <Stack gap="0" class="min-w-40 flex-1">
@@ -91,7 +91,6 @@ const emit = defineEmits<{ remove: [id: string] }>();
             size="sm"
             layout="icon"
             :aria-label="labels.remove"
-            data-testid="remove"
             @click="() => emit('remove', line.id)"
           >
             <LucideIcon name="x" :size="16" />

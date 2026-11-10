@@ -40,14 +40,14 @@
               {%- endset -%}
               {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'shrink-0 text-muted-foreground'}, 'children': c_4}) }}
             {%- endset -%}
-            {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(og_cnv(['flex items-start justify-between gap-4 border-b border-border last:border-0', ('py-2' if og_t(og_eq(v_density, 'compact')) else 'py-4')])), 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_5}) }}
+            {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(og_cnv(['flex items-start justify-between gap-4 border-b border-border last:border-0', ('py-2' if og_t(og_eq(v_density, 'compact')) else 'py-4')])), 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_5}) }}
           {%- endfor %}
         {%- endset -%}
-        {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col p-0', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_6}) }}
+        {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col p-0', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_6}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('blocks/panel.html.j2', {'p': {'title': v_title, 'description': v_text, 'id': v_id, 'className': og_cnv([('bg-muted' if og_t(og_eq(v_tone, 'muted')) else '')])}, 'children': og_markup(c_7)}) }}
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4 py-8', 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_8}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else (og_tpl('{0}-t', [v_id]) if og_t(og_and([v_title, v_id])) else none)), 'data-testid', 'panel-section', 'aria-label', v_landmarkLabel])}, 'children': c_9}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else (og_tpl('{0}-t', [v_id]) if og_t(og_and([v_title, v_id])) else none)), 'aria-label', v_landmarkLabel, 'data-slot', 'panel-section'])}, 'children': c_9}) }}

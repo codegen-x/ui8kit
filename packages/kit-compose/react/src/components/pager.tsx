@@ -44,7 +44,7 @@ export function Pager({
   return (
     <Box
       className={"flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-muted-foreground"}
-      data-testid="pager"
+      data-slot="pager"
     >
       <Inline className="flex flex-wrap items-center gap-4">
         <Inline>
@@ -53,7 +53,7 @@ export function Pager({
       </Inline>
       <Inline className="flex flex-wrap items-center gap-2">
         {(moreLabel && (page < pages)) ? (
-          <Button variant="outline" size="sm" type="button" data-testid="pager-more" onClick={() => onMore?.()}>
+          <Button variant="outline" size="sm" type="button" onClick={() => onMore?.()}>
             {moreLabel}
           </Button>
         ) : null}
@@ -73,14 +73,14 @@ export function Pager({
             {(numbers ?? []).map((n, i) => (
               <Fragment key={(n || tpl("gap{0}", i))}>
                 {(n === null) ? (
-                  <Inline className="w-8 text-center">
+                  <Inline className="w-8 text-center" data-slot="numbers-row">
                     {"…"}
                   </Inline>
                 ) : (n === page) ? (
                   <Inline
                     className={"flex h-8 min-w-8 items-center justify-center rounded bg-foreground px-2 font-bold text-background"}
                     aria-current="page"
-                    data-testid="pager-current"
+                    data-slot="pager-current"
                   >
                     {n}
                   </Inline>

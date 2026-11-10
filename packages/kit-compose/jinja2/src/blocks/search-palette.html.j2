@@ -12,4 +12,4 @@
   {%- endset -%}
   {{ og_include('compose/inline.html.j2', {'p': {'Class': 'pointer-events-none absolute top-2 right-2 rounded px-2 py-0 text-xs text-muted-foreground inset-ring inset-ring-border'}, 'children': c_1}) }}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'relative w-full max-w-sm', 'Attrs': og_attrs(['data-testid', 'palette'])}, 'children': c_2}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'relative w-full max-w-sm', 'Attrs': og_attrs(['data-slot', 'palette'])}, 'children': c_2}) }}

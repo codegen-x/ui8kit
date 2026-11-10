@@ -81,14 +81,14 @@
               {%- endset -%}
               {{ og_include('compose/table-cell.html.j2', {'p': {'Class': 'font-semibold'}, 'children': c_15}) }}
             {%- endset -%}
-            {{ og_include('compose/table-row.html.j2', {'p': {'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_16}) }}
+            {{ og_include('compose/table-row.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_16}) }}
           {%- endfor %}
         {%- endset -%}
         {{ og_include('compose/table-body.html.j2', {'p': {}, 'children': c_17}) }}
       {%- endset -%}
       {{ og_include('compose/table.html.j2', {'p': {'Class': 'w-full text-sm'}, 'children': c_18}) }}
     {%- endset -%}
-    {{ og_include('compose/box.html.j2', {'p': {'Class': 'w-full overflow-x-auto', 'Attrs': og_attrs(['data-testid', 'compare-table'])}, 'children': c_19}) }}
+    {{ og_include('compose/box.html.j2', {'p': {'Class': 'w-full overflow-x-auto', 'Attrs': og_attrs(['data-slot', 'compare-table'])}, 'children': c_19}) }}
   {%- else %}
     {{ og_include('blocks/cut-cards.html.j2', {'p': {'dishes': v_dishes, 'labels': v_labels}}) }}
   {%- endif %}

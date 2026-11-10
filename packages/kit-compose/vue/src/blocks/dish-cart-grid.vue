@@ -55,13 +55,13 @@ const {
       <Group justify="end">
         <CartCount :count="count" :label="labels.inCart" />
       </Group>
-      <Grid cols="1-3" class="gap-4" data-testid="items">
+      <Grid cols="1-3" class="gap-4" data-slot="items">
         <Stack
           v-for="d in dishes"
           :key="d.id"
           gap="4"
           class="rounded bg-card inset-ring inset-ring-border overflow-hidden pb-4"
-          data-testid="item"
+          data-slot="item"
         >
           <MediaFrame v-if="((media as string) === 'image')" :alt="d.name" />
           <Stack gap="2" :class="(((media as string) === 'image') ? 'px-4' : 'px-4 pt-4')">

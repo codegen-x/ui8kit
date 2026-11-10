@@ -53,19 +53,14 @@ const {
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((lanes?.length ?? 0) === 0)" icon="kanban" :title="empty" />
-    <Grid
-      v-else
-      :cols="(((cols as string) === '2') ? '1-2' : '1-3')"
-      class="items-start gap-4"
-      data-testid="lanes"
-    >
+    <Grid v-else :cols="(((cols as string) === '2') ? '1-2' : '1-3')" class="items-start gap-4" data-slot="lanes">
       <Stack
         v-for="lane in lanes"
         :key="lane.id"
         gap="4"
         align="stretch"
         class="rounded bg-muted p-4"
-        data-testid="lane"
+        data-slot="lane"
       >
         <Group gap="2" align="center" justify="between">
           <Title :as="3" size="base" weight="bold">
@@ -81,7 +76,7 @@ const {
               'flex flex-col rounded bg-card inset-ring inset-ring-border',
               (((density as string) === 'compact') ? 'gap-2 p-2' : 'gap-2 p-4')
             )"
-            data-testid="item"
+            data-slot="item"
           >
             <Text size="sm" weight="semibold">
               {{ c.title }}

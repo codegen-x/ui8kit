@@ -17,7 +17,7 @@ export function MediaReview({ extras, labels }: MediaReviewProps) {
       <For each={extras.reviews ?? []}>{(r, iOf) => { const i = iOf(); return (
         <>
           {(i < 1) ? (
-            <Stack gap="4" align="stretch" class="rounded bg-muted p-6" data-testid="media-review">
+            <Stack gap="4" align="stretch" class="rounded bg-muted p-6" data-slot="media-review">
               <Group gap="4" align="center" justify="between" class="flex-wrap">
                 <Text size="sm" weight="medium">
                   {labels.featured}

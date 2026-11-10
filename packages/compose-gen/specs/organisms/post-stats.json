@@ -50,7 +50,7 @@
         "Class": "flex-wrap text-muted-foreground"
       },
       "attrs": {
-        "data-testid": "post-stats"
+        "data-slot": "post-stats"
       },
       "children": [
         {

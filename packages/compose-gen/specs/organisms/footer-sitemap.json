@@ -34,7 +34,7 @@
             "Size": "sm"
           },
           "attrs": {
-            "data-testid": "footer-sitemap"
+            "data-slot": "footer-sitemap"
           },
           "children": [
             {

@@ -29,17 +29,17 @@
           {%- set c_3 -%}
             {{ og_text(v_cta) }}
           {%- endset -%}
-          {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'sm', 'href': og_url(og_s(v_ctaHref)), 'attrs': og_attrs(['data-testid', 'empty-action']), 'children': c_3}, with_context = false) }}
+          {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'sm', 'href': og_url(og_s(v_ctaHref)), 'children': c_3}, with_context = false) }}
         {%- endif %}
       {%- endset -%}
-      {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'center', 'class': 'mx-auto max-w-md text-center', 'attrs': og_attrs(['data-testid', 'empty-visual']), 'children': c_4}, with_context = false) }}
+      {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'center', 'class': 'mx-auto max-w-md text-center', 'attrs': og_attrs(['data-slot', 'empty-visual']), 'children': c_4}, with_context = false) }}
     {%- else %}
       {%- set f_5 -%}
         {%- if og_t(og_eq(v_actions, 'button')) %}
           {%- set c_6 -%}
             {{ og_text(v_cta) }}
           {%- endset -%}
-          {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'sm', 'href': og_url(og_s(v_ctaHref)), 'attrs': og_attrs(['data-testid', 'empty-action']), 'children': c_6}, with_context = false) }}
+          {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'sm', 'href': og_url(og_s(v_ctaHref)), 'children': c_6}, with_context = false) }}
         {%- endif %}
       {%- endset -%}
       {{ include('blocks/empty-state.html.twig', {'p': {'icon': v_icon, 'title': v_title, 'text': v_text, 'className': og_cnv([og_cnv(['mx-auto max-w-xl', (og_t(og_eq(v_layout, 'plain')) ? 'bg-transparent inset-ring-0' : ''), (og_t(og_eq(v_size, 'compact')) ? 'py-6' : '')])]), 'action': og_markup(f_5)}}, with_context = false) }}
@@ -47,4 +47,4 @@
   {%- endset -%}
   {{ include('compose/Container.html.twig', {'class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', (og_t(og_eq(v_size, 'compact')) ? 'py-4' : 'py-8')])), 'attrs': og_attrs(['data-slot', 'container']), 'children': c_7}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'section', 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_title]), 'data-testid', 'empty']), 'children': c_8}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'section', 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_title]), 'data-slot', 'empty']), 'children': c_8}, with_context = false) }}

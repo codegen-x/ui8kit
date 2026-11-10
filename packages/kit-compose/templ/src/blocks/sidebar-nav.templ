@@ -37,7 +37,7 @@ templ SidebarNav(p SidebarNavProps) {
 	{{ vUser := uiutils.Def(p.User, "show") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "aside", Class: uiutils.S(uiutils.Cnv("flex min-h-96 flex-col gap-6 rounded bg-card p-4 inset-ring inset-ring-border", uiutils.Cond(uiutils.T(uiutils.Eq(vWidth, "compact")), "w-20 items-center", "w-64"))), Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vBrand), "data-testid", "sidebar", "data-width", vWidth)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "aside", Class: uiutils.S(uiutils.Cnv("flex min-h-96 flex-col gap-6 rounded bg-card p-4 inset-ring inset-ring-border", uiutils.Cond(uiutils.T(uiutils.Eq(vWidth, "compact")), "w-20 items-center", "w-64"))), Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vBrand), "data-width", vWidth, "data-slot", "sidebar")}}) {
 		@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
 			@icons.LucideIcon(icons.LucideIconProps{Name: "layers", Size: 24})
 			@compose.Text(compose.TextProps{Size: "base", Weight: "bold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vWidth, "compact")), "sr-only", ""))}}) {
@@ -46,9 +46,9 @@ templ SidebarNav(p SidebarNavProps) {
 		}
 		if uiutils.Gt(uiutils.Len(vLinks), float64(0)) {
 			@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vLabel, vLandmarkLabel)), vLabel), Class: uiutils.Cnv("flex-1")}) {
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("m-0 flex list-none flex-col p-0", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-0", "gap-2"))), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("m-0 flex list-none flex-col p-0", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-0", "gap-2"))), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for _, vL := range uiutils.L(vLinks) {
-						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{}}) {
+						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "links-row")}}) {
 							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vL, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex items-center gap-4 rounded px-4 text-sm", "py-2", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "bg-muted font-semibold", ""))), Current: uiutils.Eq(uiutils.Get(vL, "id"), vCurrent), Testid: "item"}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vL, "icon")), Size: 16})
 								@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vWidth, "compact")), "sr-only", ""))}}) {
@@ -61,7 +61,7 @@ templ SidebarNav(p SidebarNavProps) {
 			}
 		}
 		if uiutils.Eq(vUser, "show") {
-			@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "border-t border-border pt-4", Attrs: uiutils.Attrs("data-testid", "user")}}) {
+			@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "border-t border-border pt-4", Attrs: uiutils.Attrs("data-slot", "user")}}) {
 				@MediaFrame(MediaFrameProps{Alt: vUserName, Ratio: "1/1", Class: uiutils.Cnv("size-10 shrink-0 rounded-full")})
 				@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vWidth, "compact")), "sr-only", "min-w-0"))}}) {
 					@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {

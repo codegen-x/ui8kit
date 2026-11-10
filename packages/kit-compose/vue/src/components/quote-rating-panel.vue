@@ -25,7 +25,7 @@ const { extras, labels } = defineProps<QuoteRatingPanelProps>();
     gap="6"
     align="center"
     class="rounded bg-card inset-ring inset-ring-border p-8 text-center"
-    data-testid="quote-rating"
+    data-slot="quote-rating"
   >
     <Text size="5xl" weight="bold">
       {{ extras.score }}
@@ -36,7 +36,7 @@ const { extras, labels } = defineProps<QuoteRatingPanelProps>();
     </Text>
     <Box class="grid w-full grid-cols-2 gap-4 border-t border-border pt-6">
       <template v-for="(s, i) in extras.stats" :key="s.id">
-        <Stack v-if="(i < 2)" gap="0" align="center" data-testid="quote-stat">
+        <Stack v-if="(i < 2)" gap="0" align="center" data-slot="quote-stat">
           <Text size="2xl" weight="semibold">
             {{ s.value }}
           </Text>

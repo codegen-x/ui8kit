@@ -21,12 +21,12 @@ export function FeatureCards({ features, cols = "1-3", item = "card" }: FeatureC
         (item as string) === "cell" ? cn("w-full gap-px overflow-hidden bg-border p-px", defaults.features.cells)
         : "gap-6"
       }
-      data-testid="feature-grid"
+      data-slot="feature-grid"
     >
       {(features ?? []).map((feature) => (
         <Fragment key={feature.id}>
           {((item as string) === "tile") ? (
-            <Card variant="compact" data-testid="feature-card">
+            <Card variant="compact">
               <Group gap="4" align="start">
                 <LucideIcon name={feature.icon} size={20} />
                 <Stack gap="2">
@@ -44,9 +44,9 @@ export function FeatureCards({ features, cols = "1-3", item = "card" }: FeatureC
               gap="2"
               align="center"
               className="h-full gap-8 bg-background px-6 py-12 text-center"
-              data-testid="feature-card"
+              data-slot="feature-card"
             >
-              <IconBadge variant="primary" size="xl" data-testid="feature-icon">
+              <IconBadge variant="primary" size="xl" data-slot="feature-icon">
                 <LucideIcon name={feature.icon} size={24} />
               </IconBadge>
               <Title as={3} size="xl" weight="semibold" className="leading-6">
@@ -57,7 +57,7 @@ export function FeatureCards({ features, cols = "1-3", item = "card" }: FeatureC
               </Text>
             </Stack>
           ) : (
-            <Card variant="default" data-testid="feature-card">
+            <Card variant="default">
               <CardHeader className="flex flex-col gap-4">
                 <LucideIcon name={feature.icon} size={24} />
                 <CardTitle as={3}>

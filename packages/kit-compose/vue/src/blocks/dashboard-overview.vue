@@ -55,13 +55,13 @@ const {
         v-if="((metrics?.length ?? 0) > 0)"
         :cols="(((cols as string) === '2') ? '1-2' : '1-4')"
         class="gap-4"
-        data-testid="items"
+        data-slot="items"
       >
-        <Box v-for="m in metrics" :key="m.id" data-testid="item">
+        <Box v-for="m in metrics" :key="m.id" data-slot="item">
           <StatTile :label="m.label" :value="m.value" :icon="m.icon" :hint="m.hint" />
         </Box>
       </Grid>
-      <Grid :cols="(((layout as string) === 'split') ? '1-2' : '1')" class="items-stretch gap-4" data-testid="panels">
+      <Grid :cols="(((layout as string) === 'split') ? '1-2' : '1')" class="items-stretch gap-4" data-slot="panels">
         <Panel
           v-if="((chart.series?.length ?? 0) > 0)"
           :title="chart.title"

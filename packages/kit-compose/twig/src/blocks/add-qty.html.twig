@@ -12,6 +12,6 @@
     {{ include('icons/LucideIcon.html.twig', {'name': 'plus', 'size': 16}, with_context = false) }}
     {{ og_text(og_get(v_labels, ['add'])) }}
   {%- endset -%}
-  {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'button', 'attrs': og_attrs(['data-testid', 'add']), 'children': c_1}, with_context = false) }}
+  {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'button', 'children': c_1}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'justify': 'between', 'class': 'flex-wrap', 'children': c_2}, with_context = false) }}
+{{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'justify': 'between', 'class': 'flex-wrap', 'attrs': og_attrs(['data-slot', 'add-qty']), 'children': c_2}, with_context = false) }}

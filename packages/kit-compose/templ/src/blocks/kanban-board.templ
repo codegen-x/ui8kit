@@ -42,9 +42,9 @@ templ KanbanBoard(p KanbanBoardProps) {
 		if uiutils.Eq(uiutils.Len(vLanes), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "kanban", Title: vEmpty})
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1-3")), BoxProps: box.BoxProps{Class: "items-start gap-4", Attrs: uiutils.Attrs("data-testid", "lanes")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1-3")), BoxProps: box.BoxProps{Class: "items-start gap-4", Attrs: uiutils.Attrs("data-slot", "lanes")}}) {
 				for _, vLane := range uiutils.L(vLanes) {
-					@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-muted p-4", Attrs: uiutils.Attrs("data-testid", "lane")}}) {
+					@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-muted p-4", Attrs: uiutils.Attrs("data-slot", "lane")}}) {
 						@compose.Group(compose.GroupProps{Gap: "2", Align: "center", Justify: "between", BoxProps: box.BoxProps{}}) {
 							@compose.Title(compose.TitleProps{As: "3", Size: "base", Weight: "bold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vLane, "title")) }
@@ -55,7 +55,7 @@ templ KanbanBoard(p KanbanBoardProps) {
 						}
 						@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-2 p-0"}}) {
 							for _, vC := range uiutils.L(uiutils.Where(vCards, "lane", uiutils.Get(vLane, "key"))) {
-								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex flex-col rounded bg-card inset-ring inset-ring-border", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-2 p-2", "gap-2 p-4"))), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex flex-col rounded bg-card inset-ring inset-ring-border", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-2 p-2", "gap-2 p-4"))), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 									@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 										{ uiutils.Text(uiutils.Get(vC, "title")) }
 									}

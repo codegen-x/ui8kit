@@ -81,14 +81,14 @@
               {%- endset -%}
               {{ include('compose/TableCell.html.twig', {'class': 'font-semibold', 'children': c_15}, with_context = false) }}
             {%- endset -%}
-            {{ include('compose/TableRow.html.twig', {'attrs': og_attrs(['data-testid', 'item']), 'children': c_16}, with_context = false) }}
+            {{ include('compose/TableRow.html.twig', {'attrs': og_attrs(['data-slot', 'item']), 'children': c_16}, with_context = false) }}
           {%- endfor %}
         {%- endset -%}
         {{ include('compose/TableBody.html.twig', {'children': c_17}, with_context = false) }}
       {%- endset -%}
       {{ include('compose/Table.html.twig', {'class': 'w-full text-sm', 'children': c_18}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Box.html.twig', {'class': 'w-full overflow-x-auto', 'attrs': og_attrs(['data-testid', 'compare-table']), 'children': c_19}, with_context = false) }}
+    {{ include('compose/Box.html.twig', {'class': 'w-full overflow-x-auto', 'attrs': og_attrs(['data-slot', 'compare-table']), 'children': c_19}, with_context = false) }}
   {%- else %}
     {{ include('blocks/cut-cards.html.twig', {'p': {'dishes': v_dishes, 'labels': v_labels}}, with_context = false) }}
   {%- endif %}

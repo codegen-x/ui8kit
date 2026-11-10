@@ -26,13 +26,13 @@ templ CtaActions(p CtaActionsProps) {
 	{{ vActions := p.Actions }}
 	{{ vCenter := uiutils.Def(p.Center, false) }}
 	if uiutils.Eq(uiutils.Get(vActions, "mode"), "form") {
-		@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: uiutils.S(uiutils.Cnv("w-full max-w-md", uiutils.Cond(uiutils.T(vCenter), "mx-auto", ""))), Attrs: uiutils.Attrs("data-testid", "email-form")}}) {
+		@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: uiutils.S(uiutils.Cnv("w-full max-w-md", uiutils.Cond(uiutils.T(vCenter), "mx-auto", ""))), Attrs: uiutils.Attrs("data-slot", "email-form")}}) {
 			@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{For: uiutils.S(uiutils.Tpl("{0}-email", vId)), Class: "sr-only"}}) {
 				{ uiutils.Text(uiutils.Get(vActions, "emailLabel")) }
 			}
 			@compose.Group(compose.GroupProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: "w-full flex-wrap"}}) {
-				@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Class: "min-w-0 flex-1", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-email", vId), "data-testid", "field")}})
-				@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit", Attrs: uiutils.Attrs("data-testid", "submit")}}) {
+				@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Class: "min-w-0 flex-1", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-email", vId), "data-slot", "field")}})
+				@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit"}}) {
 					{ uiutils.Text(uiutils.Get(vActions, "cta")) }
 				}
 			}

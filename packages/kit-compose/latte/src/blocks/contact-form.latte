@@ -19,22 +19,22 @@
     {capture $c_8}
       {if og_t(og_eq($v_fields, 'full'))}
         {capture $c_1}
-          {=og_include('compose/Input.latte', ['type' => 'text', 'name' => 'name', 'attrs' => og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [$v_id]), 'data-testid', 'field'])])|noescape}
+          {=og_include('compose/Input.latte', ['type' => 'text', 'name' => 'name', 'attrs' => og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [$v_id]), 'data-slot', 'field'])])|noescape}
         {/capture}
         {=og_include('blocks/field.latte', ['p' => ['label' => og_get($v_labels, ['name']), 'htmlFor' => og_tpl('{0}-name', [$v_id])], 'children' => og_markup($c_1)])|noescape}
       {/if}
       {capture $c_2}
-        {=og_include('compose/Input.latte', ['type' => 'email', 'name' => 'email', 'attrs' => og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [$v_id]), 'data-testid', 'field'])])|noescape}
+        {=og_include('compose/Input.latte', ['type' => 'email', 'name' => 'email', 'attrs' => og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [$v_id]), 'data-slot', 'field'])])|noescape}
       {/capture}
       {=og_include('blocks/field.latte', ['p' => ['label' => og_get($v_labels, ['email']), 'htmlFor' => og_tpl('{0}-email', [$v_id])], 'children' => og_markup($c_2)])|noescape}
       {if og_t(og_eq($v_fields, 'full'))}
         {capture $c_3}
-          {=og_include('compose/Input.latte', ['type' => 'text', 'name' => 'subject', 'attrs' => og_attrs(['id', og_tpl('{0}-subject', [$v_id]), 'data-testid', 'field'])])|noescape}
+          {=og_include('compose/Input.latte', ['type' => 'text', 'name' => 'subject', 'attrs' => og_attrs(['id', og_tpl('{0}-subject', [$v_id]), 'data-slot', 'field'])])|noescape}
         {/capture}
         {=og_include('blocks/field.latte', ['p' => ['label' => og_get($v_labels, ['subject']), 'htmlFor' => og_tpl('{0}-subject', [$v_id])], 'children' => og_markup($c_3)])|noescape}
       {/if}
       {capture $c_4}
-        {=og_include('compose/Textarea.latte', ['rows' => 4, 'name' => 'message', 'attrs' => og_attrs(['id', og_tpl('{0}-message', [$v_id]), 'data-testid', 'field'])])|noescape}
+        {=og_include('compose/Textarea.latte', ['rows' => 4, 'name' => 'message', 'attrs' => og_attrs(['id', og_tpl('{0}-message', [$v_id]), 'data-slot', 'field'])])|noescape}
       {/capture}
       {=og_include('blocks/field.latte', ['p' => ['label' => og_get($v_labels, ['message']), 'htmlFor' => og_tpl('{0}-message', [$v_id])], 'children' => og_markup($c_4)])|noescape}
       {if og_t(og_eq($v_terms, 'show'))}
@@ -50,9 +50,9 @@
       {capture $c_7}
         {=og_text(og_get($v_labels, ['submit']))}
       {/capture}
-      {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'default', 'type' => 'submit', 'class' => 'w-fit', 'attrs' => og_attrs(['data-testid', 'submit']), 'children' => (string) $c_7])|noescape}
+      {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'default', 'type' => 'submit', 'class' => 'w-fit', 'children' => (string) $c_7])|noescape}
     {/capture}
-    {=og_include('compose/Form.latte', ['method' => 'dialog', 'class' => 'w-full gap-4', 'attrs' => og_attrs(['data-testid', 'contact-form']), 'children' => (string) $c_8])|noescape}
+    {=og_include('compose/Form.latte', ['method' => 'dialog', 'class' => 'w-full gap-4', 'attrs' => og_attrs(['data-slot', 'contact-form']), 'children' => (string) $c_8])|noescape}
     {if og_t(og_and([og_eq($v_layout, 'split'), og_gt(og_len($v_details), 0)]))}
       {capture $c_13}
         {foreach og_l($v_details) as $v_d}
@@ -70,10 +70,10 @@
             {/capture}
             {=og_include('compose/Stack.latte', ['gap' => '0', 'children' => (string) $c_11])|noescape}
           {/capture}
-          {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'start', 'attrs' => og_attrs(['data-testid', 'detail']), 'children' => (string) $c_12])|noescape}
+          {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'start', 'attrs' => og_attrs(['data-slot', 'detail']), 'children' => (string) $c_12])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/Stack.latte', ['gap' => '4', 'attrs' => og_attrs(['data-testid', 'details']), 'children' => (string) $c_13])|noescape}
+      {=og_include('compose/Stack.latte', ['gap' => '4', 'attrs' => og_attrs(['data-slot', 'details']), 'children' => (string) $c_13])|noescape}
     {/if}
   {/capture}
   {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_layout, 'split')) ? '1-2' : '1')), 'class' => 'items-start gap-8', 'children' => (string) $c_14])|noescape}

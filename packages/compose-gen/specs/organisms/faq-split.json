@@ -286,9 +286,6 @@
                             "Variant": "default",
                             "Size": "default"
                           },
-                          "attrs": {
-                            "data-testid": "faq-cta"
-                          },
                           "children": [
                             {
                               "text": {
@@ -486,9 +483,6 @@
                           "props": {
                             "Variant": "default",
                             "Size": "default"
-                          },
-                          "attrs": {
-                            "data-testid": "faq-cta"
                           },
                           "children": [
                             {

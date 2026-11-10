@@ -58,11 +58,11 @@ const {
       defaults.hero.band
     )"
     :aria-labelledby="(landmarkLabel ? undefined : 'home-hero-title')"
-    data-testid="section"
     data-tone="inverse"
     :data-density="density"
     data-chrome="nav"
     :aria-label="landmarkLabel"
+    data-slot="section"
   >
     <Container :class="cn('mx-auto w-full px-8', defaults.hero.container)" data-slot="container">
       <Stack gap="0" align="stretch">
@@ -82,7 +82,7 @@ const {
           gap="0"
           align="center"
           :class="cn('mx-auto w-full pt-24 pb-16', defaults.hero.column)"
-          data-testid="hero-column"
+          data-slot="hero-column"
         >
           <HeroBadge v-if="badge" :label="badge" :mark="badgeMark" />
           <WeightedTitle id="home-hero-title" :title="title" :weights="defaults.hero.titleWeights" :level="level" />

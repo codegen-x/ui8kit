@@ -52,11 +52,10 @@ const {
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((points?.length ?? 0) === 0)" icon="git-compare" :title="empty" />
-    <Grid v-else-if="((layout as string) === 'cards')" cols="1-2" class="items-stretch gap-4" data-testid="sides">
+    <Grid v-else-if="((layout as string) === 'cards')" cols="1-2" class="items-stretch gap-4" data-slot="sides">
       <Card
         variant="muted"
         :class="cn('h-full', (((density as string) === 'compact') ? 'gap-4 p-4' : ''))"
-        data-testid="side"
         data-side="before"
       >
         <CardContent class="flex flex-col gap-4">
@@ -64,7 +63,7 @@ const {
             {{ labels.before }}
           </Title>
           <List class="m-0 flex list-none flex-col gap-4 p-0">
-            <ListItem v-for="p in points" :key="p.id" class="flex items-start gap-4" data-testid="item">
+            <ListItem v-for="p in points" :key="p.id" class="flex items-start gap-4" data-slot="item">
               <LucideIcon v-if="((icons as string) === 'show')" name="x" :size="16" class="h-lh shrink-0 text-sm" />
               <Text size="sm">
                 {{ p.before }}
@@ -76,7 +75,6 @@ const {
       <Card
         variant="default"
         :class="cn('h-full', (((density as string) === 'compact') ? 'gap-4 p-4' : ''))"
-        data-testid="side"
         data-side="after"
       >
         <CardContent class="flex flex-col gap-4">
@@ -84,7 +82,7 @@ const {
             {{ labels.after }}
           </Title>
           <List class="m-0 flex list-none flex-col gap-4 p-0">
-            <ListItem v-for="p in points" :key="p.id" class="flex items-start gap-4" data-testid="item">
+            <ListItem v-for="p in points" :key="p.id" class="flex items-start gap-4" data-slot="item">
               <LucideIcon v-if="((icons as string) === 'show')" name="check" :size="16" class="h-lh shrink-0 text-sm" />
               <Text size="sm">
                 {{ p.after }}
@@ -94,11 +92,11 @@ const {
         </CardContent>
       </Card>
     </Grid>
-    <Stack v-else gap="2" align="stretch" data-testid="rows">
+    <Stack v-else gap="2" align="stretch" data-slot="rows">
       <Grid v-for="p in points" :key="p.id"
         cols="1-3"
         :class="cn('items-center gap-4', 'rounded bg-card inset-ring inset-ring-border p-4')"
-        data-testid="item"
+        data-slot="item"
       >
         <Text size="base" weight="semibold">
           {{ p.title }}

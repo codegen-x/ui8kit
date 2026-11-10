@@ -38,9 +38,9 @@ templ DishStrip(p DishStripProps) {
 		if uiutils.Eq(uiutils.Len(vDishes), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "star", Title: vEmpty})
 		} else {
-			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4", Attrs: uiutils.Attrs("tabindex", float64(0), "aria-label", uiutils.Get(vLabels, "strip"), "data-testid", "items")}}) {
+			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4", Attrs: uiutils.Attrs("tabindex", float64(0), "aria-label", uiutils.Get(vLabels, "strip"), "data-slot", "items")}}) {
 				for _, vD := range uiutils.L(vDishes) {
-					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vSize, "lg")), "flex w-64 shrink-0 snap-start flex-col gap-2", "flex w-48 shrink-0 snap-start flex-col gap-2")), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vSize, "lg")), "flex w-64 shrink-0 snap-start flex-col gap-2", "flex w-48 shrink-0 snap-start flex-col gap-2")), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: uiutils.Cond(uiutils.T(uiutils.Eq(vSize, "lg")), "4/3", "1/1")})
 						@compose.Group(compose.GroupProps{Gap: "2", Align: "baseline", Justify: "between", BoxProps: box.BoxProps{}}) {
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {

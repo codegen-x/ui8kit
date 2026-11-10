@@ -23,7 +23,7 @@ templ NavLinks(p NavLinksProps) {
 	{{ vSide := uiutils.Def(p.Side, "all") }}
 	{{ vCount := any(uiutils.Len(vLinks)) }}
 	if uiutils.Gt(uiutils.Len(vLinks), float64(0)) {
-		@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
+		@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-slot", "nav-links")}}) {
 			for vI, vL := range uiutils.L(vLinks) {
 				if uiutils.T(uiutils.Or(uiutils.Eq(vSide, "all"), uiutils.Eq(uiutils.Lt(uiutils.Mul(float64(vI), float64(2)), vCount), uiutils.Eq(vSide, "left")))) {
 					@MenuEntry(MenuEntryProps{Href: uiutils.Get(vL, "href"), Class: uiutils.Cnv("text-sm"), Current: uiutils.Eq(uiutils.Get(vL, "id"), vCurrent), Testid: "nav-link"}) {

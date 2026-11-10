@@ -83,11 +83,11 @@
           {%- endset -%}
           {{ og_include('compose/table-cell.html.j2', {'p': {'Class': 'hidden pr-4 sm:table-cell'}, 'children': c_19}) }}
         {%- endset -%}
-        {{ og_include('compose/table-row.html.j2', {'p': {'Class': 'border-t border-border', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_20}) }}
+        {{ og_include('compose/table-row.html.j2', {'p': {'Class': 'border-t border-border', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_20}) }}
       {%- endfor %}
     {%- endset -%}
     {{ og_include('compose/table-body.html.j2', {'p': {}, 'children': c_21}) }}
   {%- endset -%}
-  {{ og_include('compose/table.html.j2', {'p': {'Class': 'w-full text-left text-sm', 'Attrs': og_attrs(['data-testid', 'zone-table'])}, 'children': c_22}) }}
+  {{ og_include('compose/table.html.j2', {'p': {'Class': 'w-full text-left text-sm', 'Attrs': og_attrs(['data-slot', 'zone-table'])}, 'children': c_22}) }}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'w-full overflow-x-auto rounded inset-ring inset-ring-border'}, 'children': c_23}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'w-full overflow-x-auto rounded inset-ring inset-ring-border', 'Attrs': og_attrs(['data-slot', 'zone-rows'])}, 'children': c_23}) }}

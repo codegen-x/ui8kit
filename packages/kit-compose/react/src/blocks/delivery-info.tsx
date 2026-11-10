@@ -47,9 +47,9 @@ export function DeliveryInfo({
         )}
       >
         {((facts?.length ?? 0) > 0) ? (
-          <Grid cols={(((layout as string) === "split") ? "1-2" : "1-4")} className="gap-4" data-testid="facts">
+          <Grid cols={(((layout as string) === "split") ? "1-2" : "1-4")} className="gap-4" data-slot="facts">
             {(facts ?? []).map((f) => (
-              <Stack key={f.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-6" data-testid="fact">
+              <Stack key={f.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-6" data-slot="fact">
                 <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
                   <LucideIcon name={f.icon} size={20} />
                 </Box>
@@ -83,7 +83,7 @@ export function DeliveryInfo({
                     (layout as string) === "split" ? "border-b border-border pb-4"
                     : "rounded bg-card inset-ring inset-ring-border p-6"
                   }
-                  data-testid="zone"
+                  data-slot="zone"
                 >
                   <Group gap="4" align="baseline" justify="between">
                     <Text size="sm" weight="semibold">

@@ -51,7 +51,7 @@ const {
 <template>
   <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((dishes?.length ?? 0) === 0)" icon="star" :title="empty" />
-    <Box v-else class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" data-testid="items">
+    <Box v-else class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" data-slot="items">
       <template v-for="(d, i) in dishes" :key="d.id">
         <Stack v-if="(i === 0)"
           gap="4"
@@ -59,7 +59,7 @@ const {
             'rounded bg-card inset-ring inset-ring-border p-6 sm:col-span-2 lg:row-span-2',
             (((feature as string) === 'end') ? 'lg:col-start-3 lg:row-start-1' : '')
           )"
-          data-testid="feature"
+          data-slot="feature"
         >
           <MediaFrame :alt="d.name" ratio="4/3" />
           <Badge variant="secondary" size="default" class="w-fit">
@@ -81,7 +81,7 @@ const {
             </Link>
           </Group>
         </Stack>
-        <Stack v-else gap="2" class="rounded bg-card inset-ring inset-ring-border p-4" data-testid="item">
+        <Stack v-else gap="2" class="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
           <MediaFrame :alt="d.name" />
           <Text size="sm" weight="semibold">
             {{ d.name }}

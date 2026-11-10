@@ -56,26 +56,26 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"step\"]",
+      "sel": "[data-slot=\"step\"]",
       "n": 4
     },
     {
-      "sel": "[data-testid=\"payment\"]",
+      "sel": "[data-slot=\"payment\"]",
       "n": "@payments"
     },
     {
-      "sel": "[data-testid=\"day\"]",
+      "sel": "[data-slot=\"day\"]",
       "n": "@days"
     },
     {
-      "sel": "[data-testid=\"aside\"]",
+      "sel": "[data-slot=\"aside\"]",
       "n": 1,
       "when": {
         "summary": "aside"
       }
     },
     {
-      "sel": "[data-testid=\"aside\"]",
+      "sel": "[data-slot=\"aside\"]",
       "n": 0,
       "when": {
         "summary": "none"

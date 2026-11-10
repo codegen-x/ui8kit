@@ -27,7 +27,7 @@
         "Class": "relative w-full max-w-sm"
       },
       "attrs": {
-        "data-testid": "palette"
+        "data-slot": "palette"
       },
       "children": [
         {

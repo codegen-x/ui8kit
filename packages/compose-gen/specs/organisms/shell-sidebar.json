@@ -104,10 +104,10 @@
             }
           ]
         },
-        "data-testid": "sidebar",
         "data-mode": {
           "$": "mode"
-        }
+        },
+        "data-slot": "sidebar"
       },
       "children": [
         {
@@ -150,7 +150,7 @@
                     "Class": "shrink-0"
                   },
                   "attrs": {
-                    "data-testid": "brand"
+                    "data-slot": "brand"
                   },
                   "children": [
                     {
@@ -247,7 +247,7 @@
                             "Class": "m-0 flex list-none flex-col gap-2 p-0"
                           },
                           "attrs": {
-                            "data-testid": "items"
+                            "data-slot": "items"
                           },
                           "children": [
                             {
@@ -355,7 +355,10 @@
                                         }
                                       }
                                     }
-                                  ]
+                                  ],
+                                  "attrs": {
+                                    "data-slot": "links-row"
+                                  }
                                 }
                               ]
                             }
@@ -404,7 +407,7 @@
                         "false"
                       ]
                     },
-                    "data-testid": "toggle"
+                    "data-slot": "toggle"
                   },
                   "on": {
                     "click": {
@@ -483,7 +486,7 @@
                 }
               },
               "attrs": {
-                "data-testid": "subnav"
+                "data-slot": "subnav"
               },
               "children": [
                 {
@@ -644,7 +647,10 @@
                                         }
                                       }
                                     }
-                                  ]
+                                  ],
+                                  "attrs": {
+                                    "data-slot": "sub-row"
+                                  }
                                 }
                               ]
                             }

@@ -9,7 +9,7 @@
     {%- set c_1 -%}
       {{ og_text(og_get(v_tag, ['name'])) }}
     {%- endset -%}
-    {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'secondary', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'post-tag'])}, 'children': c_1}) }}
+    {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'secondary', 'Size': 'sm'}, 'children': c_1}) }}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Justify': og_s(v_align), 'Class': 'flex-wrap'}, 'children': c_2}) }}
+{{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Justify': og_s(v_align), 'Class': 'flex-wrap', 'Attrs': og_attrs(['data-slot', 'post-tags'])}, 'children': c_2}) }}

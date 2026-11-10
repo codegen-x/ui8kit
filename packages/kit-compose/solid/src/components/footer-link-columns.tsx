@@ -15,18 +15,18 @@ export function FooterLinkColumns({ label, groups, landmarkLabel }: FooterLinkCo
   return (
     <>
       {((groups?.length ?? 0) > 0) ? (
-        <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
+        <Block tag="nav" aria-label={(landmarkLabel ?? label)} data-slot="footer-link-columns">
           <Box class="grid grid-cols-2 gap-8 sm:grid-cols-3">
             <For each={groups ?? []}>{(g, iOf) => { const i = iOf(); return (
               <>
                 {(i < 3) ? (
-                  <Stack gap="2" data-testid="group">
+                  <Stack gap="2" data-slot="group">
                     <Text size="sm" weight="semibold">
                       {g.title}
                     </Text>
                     <List class="m-0 flex list-none flex-col gap-2 p-0">
                       <For each={g.links ?? []}>{(item) => (
-                        <ListItem>
+                        <ListItem data-slot="links-row">
                           <MenuEntry href={item.href} class="text-sm text-muted-foreground" variant="muted" size="sm">
                             {item.name}
                           </MenuEntry>

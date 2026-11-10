@@ -17,8 +17,8 @@
         {%- endset -%}
         {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_2}) }}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Attrs': og_attrs(['data-testid', 'quote-stat'])}, 'children': c_3}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Attrs': og_attrs(['data-slot', 'quote-stat'])}, 'children': c_3}) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-3 gap-4 border-b border-border pb-8', 'Attrs': og_attrs(['data-testid', 'quote-figures'])}, 'children': c_4}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-3 gap-4 border-b border-border pb-8', 'Attrs': og_attrs(['data-slot', 'quote-figures'])}, 'children': c_4}) }}

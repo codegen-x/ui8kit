@@ -93,4 +93,4 @@
   {/capture}
   {=og_include('compose/Container.latte', ['class' => og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'py-12'])), 'attrs' => og_attrs(['data-slot', 'container']), 'children' => (string) $c_13])|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'footer', 'class' => og_s(og_cnv(['border-t border-border', (og_t(og_eq($v_tone, 'muted')) ? 'bg-muted' : '')])), 'attrs' => og_attrs(['data-testid', 'footer-split', 'data-layout', $v_layout, 'aria-label', $v_landmarkLabel]), 'children' => (string) $c_14])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'footer', 'class' => og_s(og_cnv(['border-t border-border', (og_t(og_eq($v_tone, 'muted')) ? 'bg-muted' : '')])), 'attrs' => og_attrs(['data-layout', $v_layout, 'aria-label', $v_landmarkLabel, 'data-slot', 'footer-split']), 'children' => (string) $c_14])|noescape}

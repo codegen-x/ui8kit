@@ -20,7 +20,7 @@
       {{ og_include('compose/inline.html.j2', {'p': {'Class': 'sr-only'}, 'children': c_2}) }}
       {{ og_text(og_money(v_compareAt, v_currency)) }}
     {%- endset -%}
-    {{ og_include('compose/text.html.j2', {'p': {'Tag': 'del', 'Size': 'lg', 'Class': 'relative text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'compare-at'])}, 'children': c_3}) }}
+    {{ og_include('compose/text.html.j2', {'p': {'Tag': 'del', 'Size': 'lg', 'Class': 'relative text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'compare-at'])}, 'children': c_3}) }}
   {%- endif %}
   {%- if og_t(v_badge) %}
     {%- set c_4 -%}
@@ -29,4 +29,4 @@
     {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'default', 'Size': 'default'}, 'children': c_4}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'flex-wrap'}, 'children': c_5}) }}
+{{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'flex-wrap', 'Attrs': og_attrs(['data-slot', 'product-price'])}, 'children': c_5}) }}

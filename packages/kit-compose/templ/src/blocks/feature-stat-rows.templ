@@ -21,11 +21,11 @@ type FeatureStatRowsProps struct {
 templ FeatureStatRows(p FeatureStatRowsProps) {
 	{{ vFeatures := p.Features }}
 	{{ vStats := p.Stats }}
-	@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{}}) {
+	@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "feature-stat-rows")}}) {
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-2 gap-4"}}) {
 			for vI, vS := range uiutils.L(vStats) {
 				if uiutils.Lt(float64(vI), float64(2)) {
-					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "feature-stat")}}) {
+					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "feature-stat")}}) {
 						@compose.Text(compose.TextProps{Size: "2xl", Weight: "bold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vS, "value")) }
 						}
@@ -39,7 +39,7 @@ templ FeatureStatRows(p FeatureStatRowsProps) {
 		@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{}}) {
 			for vI, vF := range uiutils.L(vFeatures) {
 				if uiutils.Lt(float64(vI), float64(3)) {
-					@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "feature-item")}}) {
+					@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "feature-item")}}) {
 						@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex size-6 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground"}}) {
 							@icons.LucideIcon(icons.LucideIconProps{Name: "check", Size: 16})
 						}

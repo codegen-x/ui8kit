@@ -70,11 +70,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@features"
     },
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "cols": "$cols",
       "when": {
         "item": "tile"

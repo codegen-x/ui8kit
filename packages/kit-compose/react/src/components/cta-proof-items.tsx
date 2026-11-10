@@ -19,9 +19,9 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
   return (
     <>
       {(((proof as string) === "logos") && ((content.logos?.length ?? 0) > 0)) ? (
-        <Box className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6" data-testid="cta-proof">
+        <Box className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6" data-slot="cta-proof">
           {(content.logos ?? []).map((l) => (
-            <Group key={l.id} gap="2" align="center" justify="center" className="text-muted-foreground" data-testid="cta-item">
+            <Group key={l.id} gap="2" align="center" justify="center" className="text-muted-foreground" data-slot="cta-item">
               <LucideIcon name={l.icon} size={20} />
               <Text size="sm" weight="semibold">
                 {l.name}
@@ -31,14 +31,9 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
         </Box>
       ) : null}
       {(((proof as string) === "features") && ((content.features?.length ?? 0) > 0)) ? (
-        <Box className="grid grid-cols-1 gap-4 text-left sm:grid-cols-2" data-testid="cta-proof">
+        <Box className="grid grid-cols-1 gap-4 text-left sm:grid-cols-2" data-slot="cta-proof">
           {(content.features ?? []).map((f) => (
-            <Group key={f.id}
-              gap="4"
-              align="start"
-              className="rounded bg-card inset-ring inset-ring-border p-4"
-              data-testid="cta-item"
-            >
+            <Group key={f.id} gap="4" align="start" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="cta-item">
               <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
                 <LucideIcon name={f.icon} size={20} />
               </Box>
@@ -55,11 +50,11 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
         </Box>
       ) : null}
       {(((proof as string) === "stats") && ((content.stats?.length ?? 0) > 0)) ? (
-        <Box className="grid grid-cols-3 gap-4" data-testid="cta-proof">
+        <Box className="grid grid-cols-3 gap-4" data-slot="cta-proof">
           {(content.stats ?? []).map((s, i) => (
             <Fragment key={s.id}>
               {(i < 3) ? (
-                <Stack gap="0" className={(center ? "items-center text-center" : "")} data-testid="cta-item">
+                <Stack gap="0" className={(center ? "items-center text-center" : "")} data-slot="cta-item">
                   <Text size="3xl" weight="bold">
                     {s.value}
                   </Text>
@@ -73,9 +68,9 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
         </Box>
       ) : null}
       {(((proof as string) === "rows") && ((content.features?.length ?? 0) > 0)) ? (
-        <List className="m-0 flex list-none flex-col gap-4 p-0" data-testid="cta-proof">
+        <List className="m-0 flex list-none flex-col gap-4 p-0" data-slot="cta-proof">
           {(content.features ?? []).map((f) => (
-            <ListItem key={f.id} className="flex items-start gap-4" data-testid="cta-item">
+            <ListItem key={f.id} className="flex items-start gap-4" data-slot="cta-item">
               <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
                 <LucideIcon name={f.icon} size={20} />
               </Box>
@@ -92,9 +87,9 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
         </List>
       ) : null}
       {(((proof as string) === "zones") && ((content.zones?.length ?? 0) > 0)) ? (
-        <List className="m-0 flex list-none flex-col p-0" data-testid="cta-proof">
+        <List className="m-0 flex list-none flex-col p-0" data-slot="cta-proof">
           {(content.zones ?? []).map((z) => (
-            <ListItem key={z.id} className="flex items-start justify-between gap-4 border-b border-border py-4" data-testid="cta-item">
+            <ListItem key={z.id} className="flex items-start justify-between gap-4 border-b border-border py-4" data-slot="cta-item">
               <Stack gap="0" className="min-w-0">
                 <Text size="sm" weight="semibold">
                   {z.name}

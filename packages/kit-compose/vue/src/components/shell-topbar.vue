@@ -43,10 +43,10 @@ const {
   <Block
     tag="header"
     class="flex h-16 shrink-0 items-center gap-6 border-b border-border bg-background px-6"
-    data-testid="topbar"
     :aria-label="landmarkLabel"
+    data-slot="topbar"
   >
-    <Group v-if="((brand as string) === 'show')" gap="2" align="center" class="shrink-0" data-testid="brand">
+    <Group v-if="((brand as string) === 'show')" gap="2" align="center" class="shrink-0" data-slot="brand">
       <LucideIcon name="layers" :size="24" />
       <Text size="base" weight="bold" :class="(true ? '' : 'sr-only')">
         {{ nav.brand }}
@@ -57,7 +57,7 @@ const {
       class="hidden lg:block"
     >
       <List class="m-0 flex list-none items-center gap-2 p-0">
-        <ListItem v-for="l in nav.links" :key="l.id">
+        <ListItem v-for="l in nav.links" :key="l.id" data-slot="links-row">
           <MenuEntry
             :href="l.href"
             :class="cn(
@@ -90,7 +90,7 @@ const {
         ((links as string) === 'show') && ((search as string) === 'show') ? 'shrink-0'
         : 'ml-auto shrink-0'
       "
-      data-testid="user"
+      data-slot="user"
     >
       <LucideIcon name="bell" :size="20" class="text-muted-foreground" />
       <MediaFrame :alt="nav.userName" ratio="1/1" class="size-8 shrink-0 rounded-full" />

@@ -155,10 +155,10 @@
             }
           ]
         },
-        "data-testid": "panel-section",
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "panel-section"
       },
       "children": [
         {
@@ -215,7 +215,7 @@
                         "Class": "gap-6"
                       },
                       "attrs": {
-                        "data-testid": "profile-form"
+                        "data-slot": "profile-form"
                       },
                       "children": [
                         {
@@ -265,7 +265,7 @@
                                         "Align": "center"
                                       },
                                       "attrs": {
-                                        "data-testid": "avatar"
+                                        "data-slot": "avatar"
                                       },
                                       "children": [
                                         {
@@ -334,7 +334,7 @@
                                                 }
                                               ]
                                             },
-                                            "data-testid": "field"
+                                            "data-slot": "field"
                                           }
                                         }
                                       ]
@@ -378,7 +378,7 @@
                                                 }
                                               ]
                                             },
-                                            "data-testid": "field"
+                                            "data-slot": "field"
                                           }
                                         }
                                       ]
@@ -421,7 +421,7 @@
                                                 }
                                               ]
                                             },
-                                            "data-testid": "field"
+                                            "data-slot": "field"
                                           }
                                         }
                                       ]
@@ -448,7 +448,7 @@
                                     "Align": "stretch"
                                   },
                                   "attrs": {
-                                    "data-testid": "prefs"
+                                    "data-slot": "prefs"
                                   },
                                   "children": [
                                     {
@@ -623,9 +623,6 @@
                                 "Variant": "default",
                                 "Size": "default",
                                 "Type": "submit"
-                              },
-                              "attrs": {
-                                "data-testid": "submit"
                               },
                               "children": [
                                 {

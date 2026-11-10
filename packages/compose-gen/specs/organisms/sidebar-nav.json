@@ -107,10 +107,10 @@
             }
           ]
         },
-        "data-testid": "sidebar",
         "data-width": {
           "$": "width"
-        }
+        },
+        "data-slot": "sidebar"
       },
       "children": [
         {
@@ -239,7 +239,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -343,7 +343,10 @@
                                     }
                                   }
                                 }
-                              ]
+                              ],
+                              "attrs": {
+                                "data-slot": "links-row"
+                              }
                             }
                           ]
                         }
@@ -374,7 +377,7 @@
                 "Class": "border-t border-border pt-4"
               },
               "attrs": {
-                "data-testid": "user"
+                "data-slot": "user"
               },
               "children": [
                 {

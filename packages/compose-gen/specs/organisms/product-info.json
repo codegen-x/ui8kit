@@ -182,7 +182,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -223,7 +223,7 @@
                                 }
                               },
                               "attrs": {
-                                "data-testid": "item"
+                                "data-slot": "item"
                               },
                               "children": [
                                 {
@@ -294,7 +294,7 @@
                         "Class": "rounded bg-card inset-ring inset-ring-border p-6"
                       },
                       "attrs": {
-                        "data-testid": "specs"
+                        "data-slot": "specs"
                       },
                       "children": [
                         {
@@ -334,7 +334,7 @@
                                     "Class": "flex items-center justify-between gap-4 border-b border-border py-2 text-sm last:border-b-0"
                                   },
                                   "attrs": {
-                                    "data-testid": "spec"
+                                    "data-slot": "spec"
                                   },
                                   "children": [
                                     {

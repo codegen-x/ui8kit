@@ -32,7 +32,7 @@
             "Class": "pointer-events-none absolute inset-0 -z-10"
           },
           "attrs": {
-            "data-testid": "over"
+            "data-slot": "over"
           },
           "children": [
             {

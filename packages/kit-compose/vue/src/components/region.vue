@@ -19,7 +19,7 @@ defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Block :tag="tag" :class="className" :aria-label="landmarkLabel">
+  <Block :tag="tag" :class="className" :aria-label="landmarkLabel" data-slot="region">
     <slot />
   </Block>
 </template>

@@ -14,7 +14,7 @@ export type FeatureMetricCardsProps = {
 
 export function FeatureMetricCards({ stats }: FeatureMetricCardsProps) {
   return (
-    <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2" data-slot="feature-metric-cards">
       {(stats ?? []).map((s, i) => (
         <Fragment key={s.id}>
           {(i < 4) ? (
@@ -22,7 +22,7 @@ export function FeatureMetricCards({ stats }: FeatureMetricCardsProps) {
               gap="4"
               align="center"
               className="rounded bg-card inset-ring inset-ring-border p-4"
-              data-testid="feature-stat"
+              data-slot="feature-stat"
             >
               <Inline className="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
                 <LucideIcon name={s.icon} size={20} />

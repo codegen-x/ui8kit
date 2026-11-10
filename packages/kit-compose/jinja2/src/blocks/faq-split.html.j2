@@ -31,7 +31,7 @@
         {%- set c_2 -%}
           {{ og_text(og_get(v_labels, ['cta'])) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Attrs': og_attrs(['data-testid', 'faq-cta'])}, 'children': c_2}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default'}, 'children': c_2}) }}
       {%- endset -%}
       {{ og_include('compose/box.html.j2', {'p': {}, 'children': c_3}) }}
     {%- endset -%}
@@ -56,7 +56,7 @@
         {%- set c_8 -%}
           {{ og_text(og_get(v_labels, ['cta'])) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Attrs': og_attrs(['data-testid', 'faq-cta'])}, 'children': c_8}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default'}, 'children': c_8}) }}
       {%- endset -%}
       {{ og_include('compose/box.html.j2', {'p': {}, 'children': c_9}) }}
     {%- endset -%}

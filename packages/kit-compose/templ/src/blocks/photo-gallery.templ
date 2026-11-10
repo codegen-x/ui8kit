@@ -44,7 +44,7 @@ templ PhotoGallery(p PhotoGalleryProps) {
 		if uiutils.Eq(uiutils.Len(vPhotos), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "image", Title: vEmpty})
 		} else if uiutils.Eq(vLayout, "featured") {
-			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "featured")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "featured")}}) {
 				@MediaFrame(MediaFrameProps{Alt: vTitle})
 				@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "between", BoxProps: box.BoxProps{}}) {
 					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
@@ -64,14 +64,14 @@ templ PhotoGallery(p PhotoGalleryProps) {
 						}
 					}
 				}
-				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-2 sm:grid-cols-9", Attrs: uiutils.Attrs("data-testid", "thumbs")}}) {
+				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-2 sm:grid-cols-9", Attrs: uiutils.Attrs("data-slot", "thumbs")}}) {
 					for vI, vP := range uiutils.L(vPhotos) {
 						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title"), Ratio: "1/1", Class: uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(float64(vI), float64(0))), "ring-2 ring-foreground", ""))})
 					}
 				}
 			}
 		} else {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "masonry")), "columns-1 gap-4 sm:columns-2 lg:columns-3", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "mosaic")), "grid grid-cols-2 gap-4 md:grid-cols-4", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"))), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "masonry")), "columns-1 gap-4 sm:columns-2 lg:columns-3", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "mosaic")), "grid grid-cols-2 gap-4 md:grid-cols-4", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"))), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for vI, vP := range uiutils.L(vPhotos) {
 					@FigureBlock(FigureBlockProps{Class: uiutils.Cnv(uiutils.Cnv("flex flex-col gap-2", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "masonry")), "mb-4 break-inside-avoid", ""), uiutils.Cond(uiutils.T(uiutils.And(uiutils.Eq(vLayout, "mosaic"), uiutils.Eq(float64(vI), float64(0)))), "col-span-2 row-span-2", ""), uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "rounded bg-card inset-ring inset-ring-border p-4", ""))), Testid: "item"}) {
 						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title"), Ratio: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "masonry")), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vP, "size"), "tall")), "3/4", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vP, "size"), "wide")), "16/9", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vP, "size"), "large")), "4/3", "1/1"))), uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "grid")), "4/3", "1/1")), Class: uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "mosaic")), "h-full", ""))})
@@ -86,7 +86,7 @@ templ PhotoGallery(p PhotoGalleryProps) {
 							}
 						}
 						if uiutils.T(uiutils.And(uiutils.Eq(vCaptions, "show"), uiutils.Or(uiutils.Eq(vLayout, "grid"), uiutils.Eq(vLayout, "masonry")))) {
-							@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "text-sm text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "caption")}}) {
+							@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "text-sm text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "caption")}}) {
 								{ uiutils.Text(uiutils.Get(vP, "title")) }
 							}
 						}

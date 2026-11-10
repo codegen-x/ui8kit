@@ -81,18 +81,18 @@
             {%- set c_18 -%}
               {{ include('icons/LucideIcon.html.twig', {'name': 'x', 'size': 16}, with_context = false) }}
             {%- endset -%}
-            {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'layout': 'icon', 'ariaLabel': og_s(og_get(v_labels, ['remove'])), 'attrs': og_attrs(['data-testid', 'remove']), 'children': c_18}, with_context = false) }}
+            {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'layout': 'icon', 'ariaLabel': og_s(og_get(v_labels, ['remove'])), 'children': c_18}, with_context = false) }}
           {%- endset -%}
           {{ include('compose/TableCell.html.twig', {'class': 'text-right', 'children': c_19}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/TableRow.html.twig', {'class': 'border-t border-border', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_20}, with_context = false) }}
+        {{ include('compose/TableRow.html.twig', {'class': 'border-t border-border', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_20}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
     {{ include('compose/TableBody.html.twig', {'children': c_21}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Table.html.twig', {'class': 'w-full text-left text-sm', 'attrs': og_attrs(['data-testid', 'cart-table']), 'children': c_22}, with_context = false) }}
+  {{ include('compose/Table.html.twig', {'class': 'w-full text-left text-sm', 'attrs': og_attrs(['data-slot', 'cart-table']), 'children': c_22}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': 'w-full overflow-x-auto', 'children': c_23}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': 'w-full overflow-x-auto', 'attrs': og_attrs(['data-slot', 'cart-table-root']), 'children': c_23}, with_context = false) }}
 {%- if og_t(og_gt(og_len(v_lines), 0)) %}
   {%- set c_26 -%}
     {%- set c_24 -%}
@@ -100,11 +100,11 @@
       {{ og_text(' ') }}
       {{ og_text(og_money(og_sum_by(v_lines, 'price', 'qty'), og_first_of(v_lines, 'currency'))) }}
     {%- endset -%}
-    {{ include('compose/Text.html.twig', {'size': 'base', 'weight': 'bold', 'attrs': og_attrs(['data-testid', 'subtotal']), 'children': c_24}, with_context = false) }}
+    {{ include('compose/Text.html.twig', {'size': 'base', 'weight': 'bold', 'attrs': og_attrs(['data-slot', 'subtotal']), 'children': c_24}, with_context = false) }}
     {%- set c_25 -%}
       {{ og_text(og_get(v_labels, ['checkout'])) }}
     {%- endset -%}
-    {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'attrs': og_attrs(['data-testid', 'checkout']), 'children': c_25}, with_context = false) }}
+    {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'children': c_25}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'between', 'class': 'mt-4 flex-wrap border-t border-border pt-4', 'attrs': og_attrs(['data-testid', 'cart-footer']), 'children': c_26}, with_context = false) }}
+  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'between', 'class': 'mt-4 flex-wrap border-t border-border pt-4', 'attrs': og_attrs(['data-slot', 'cart-footer']), 'children': c_26}, with_context = false) }}
 {%- endif %}

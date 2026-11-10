@@ -58,13 +58,13 @@
         }
       },
       "attrs": {
-        "data-testid": "footer",
         "data-place": {
           "$": "place"
         },
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "footer"
       },
       "children": [
         {
@@ -174,7 +174,10 @@
                                     }
                                   }
                                 }
-                              ]
+                              ],
+                              "attrs": {
+                                "data-slot": "footer-row"
+                              }
                             }
                           ]
                         }

@@ -13,17 +13,17 @@
   {%- set c_1 -%}
     {{ og_text(v_login) }}
   {%- endset -%}
-  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Href': og_url(og_s(v_loginHref)), 'Class': og_s(('text-background hover:bg-background/10' if og_t(og_eq(v_tone, 'inverse')) else '')), 'Attrs': og_attrs(['data-testid', 'nav-login'])}, 'children': c_1}) }}
+  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Href': og_url(og_s(v_loginHref)), 'Class': og_s(('text-background hover:bg-background/10' if og_t(og_eq(v_tone, 'inverse')) else ''))}, 'children': c_1}) }}
 {%- endif %}
 {%- if og_t(og_and([og_eq(v_actions, 'cta'), v_cta])) %}
   {%- set c_2 -%}
     {{ og_text(v_cta) }}
   {%- endset -%}
-  {{ og_include('compose/button.html.j2', {'p': {'Variant': og_s(('secondary' if og_t(og_eq(v_tone, 'inverse')) else 'default')), 'Size': 'sm', 'Href': og_url(og_s(v_ctaHref)), 'Attrs': og_attrs(['data-testid', 'header-cta'])}, 'children': c_2}) }}
+  {{ og_include('compose/button.html.j2', {'p': {'Variant': og_s(('secondary' if og_t(og_eq(v_tone, 'inverse')) else 'default')), 'Size': 'sm', 'Href': og_url(og_s(v_ctaHref))}, 'children': c_2}) }}
 {%- endif %}
 {%- if og_t(v_themeLabel) %}
   {%- set c_3 -%}
     {{ og_text(v_themeLabel) }}
   {%- endset -%}
-  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'theme-toggle'])}, 'children': c_3}) }}
+  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm'}, 'children': c_3}) }}
 {%- endif %}

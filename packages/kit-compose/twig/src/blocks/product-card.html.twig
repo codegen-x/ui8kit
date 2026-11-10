@@ -19,7 +19,7 @@
         {%- set c_1 -%}
           {{ og_text(og_at(v_badges, og_get(v_product, ['badge']))) }}
         {%- endset -%}
-        {{ include('compose/Badge.html.twig', {'variant': 'default', 'size': 'default', 'class': 'absolute left-4 top-4', 'attrs': og_attrs(['data-testid', 'badge']), 'children': c_1}, with_context = false) }}
+        {{ include('compose/Badge.html.twig', {'variant': 'default', 'size': 'default', 'class': 'absolute left-4 top-4', 'children': c_1}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['relative shrink-0', (og_t(og_eq(v_layout, 'horizontal')) ? 'sm:w-48' : '')])), 'children': c_2}, with_context = false) }}
@@ -34,7 +34,7 @@
         {%- set c_4 -%}
           {{ og_text(og_get(v_product, ['name'])) }}
         {%- endset -%}
-        {{ include('compose/Link.html.twig', {'href': og_url(og_s(og_get(v_product, ['href']))), 'variant': 'default', 'attrs': og_attrs(['data-testid', 'open']), 'children': c_4}, with_context = false) }}
+        {{ include('compose/Link.html.twig', {'href': og_url(og_s(og_get(v_product, ['href']))), 'variant': 'default', 'attrs': og_attrs(['data-slot', 'open']), 'children': c_4}, with_context = false) }}
       {%- else %}
         {{ og_text(og_get(v_product, ['name'])) }}
       {%- endif %}
@@ -70,7 +70,7 @@
             {{ include('compose/Inline.html.twig', {'class': 'sr-only', 'children': c_10}, with_context = false) }}
             {{ og_text(og_money(og_get(v_product, ['compareAt']), og_get(v_product, ['currency']))) }}
           {%- endset -%}
-          {{ include('compose/Text.html.twig', {'tag': 'del', 'size': 'sm', 'class': 'relative text-muted-foreground', 'attrs': og_attrs(['data-testid', 'compare-at']), 'children': c_11}, with_context = false) }}
+          {{ include('compose/Text.html.twig', {'tag': 'del', 'size': 'sm', 'class': 'relative text-muted-foreground', 'attrs': og_attrs(['data-slot', 'compare-at']), 'children': c_11}, with_context = false) }}
         {%- endif %}
       {%- endset -%}
       {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'baseline', 'class': 'flex-wrap', 'children': c_12}, with_context = false) }}
@@ -78,11 +78,11 @@
         {%- set c_13 -%}
           {{ og_text((og_t(og_get(v_product, ['inStock'])) ? og_get(v_labels, ['add']) : og_get(v_labels, ['soldOut']))) }}
         {%- endset -%}
-        {{ include('compose/Button.html.twig', {'variant': og_s((og_t(og_get(v_product, ['inStock'])) ? 'default' : 'outline')), 'size': 'sm', 'disabled': og_t(not (og_t(og_get(v_product, ['inStock'])))), 'attrs': og_attrs(['data-testid', 'add']), 'children': c_13}, with_context = false) }}
+        {{ include('compose/Button.html.twig', {'variant': og_s((og_t(og_get(v_product, ['inStock'])) ? 'default' : 'outline')), 'size': 'sm', 'disabled': og_t(not (og_t(og_get(v_product, ['inStock'])))), 'children': c_13}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('compose/Group.html.twig', {'gap': '4', 'justify': 'between', 'class': 'mt-auto pt-2', 'children': c_14}, with_context = false) }}
   {%- endset -%}
   {{ include('compose/CardContent.html.twig', {'class': 'flex flex-1 flex-col gap-2', 'children': c_15}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'article', 'class': og_s(og_cnv(['flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded', 'h-full gap-4 overflow-hidden', (og_t(og_eq(v_layout, 'horizontal')) ? 'flex flex-col sm:flex-row' : 'flex flex-col')])), 'attrs': og_attrs(['data-slot', 'card', 'data-testid', 'item', 'data-layout', v_layout]), 'children': c_16}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'article', 'class': og_s(og_cnv(['flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded', 'h-full gap-4 overflow-hidden', (og_t(og_eq(v_layout, 'horizontal')) ? 'flex flex-col sm:flex-row' : 'flex flex-col')])), 'attrs': og_attrs(['data-slot', 'card', 'data-layout', v_layout]), 'children': c_16}, with_context = false) }}

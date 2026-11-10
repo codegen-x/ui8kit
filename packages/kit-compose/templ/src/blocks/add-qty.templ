@@ -25,9 +25,9 @@ templ AddQty(p AddQtyProps) {
 	{{ vDish := p.Dish }}
 	{{ vLabels := p.Labels }}
 	{{ vValue := uiutils.Def(p.Value, "1") }}
-	@compose.Group(compose.GroupProps{Gap: "2", Align: "center", Justify: "between", BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
+	@compose.Group(compose.GroupProps{Gap: "2", Align: "center", Justify: "between", BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-slot", "add-qty")}}) {
 		@NumberField(NumberFieldProps{Value: vValue, Name: vName, Min: "0", Label: uiutils.Tpl(uiutils.Get(vLabels, "qtyOf"), vDish), Decrease: uiutils.Tpl(uiutils.Get(vLabels, "decreaseOf"), vDish), Increase: uiutils.Tpl(uiutils.Get(vLabels, "increaseOf"), vDish)})
-		@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "button", Attrs: uiutils.Attrs("data-testid", "add")}}) {
+		@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "button"}}) {
 			@icons.LucideIcon(icons.LucideIconProps{Name: "plus", Size: 16})
 			{ uiutils.Text(uiutils.Get(vLabels, "add")) }
 		}

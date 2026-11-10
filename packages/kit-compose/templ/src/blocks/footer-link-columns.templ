@@ -23,17 +23,17 @@ templ FooterLinkColumns(p FooterLinkColumnsProps) {
 	{{ vGroups := p.Groups }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	if uiutils.Gt(uiutils.Len(vGroups), float64(0)) {
-		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel))}}) {
+		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-slot", "footer-link-columns")}}) {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-2 gap-8 sm:grid-cols-3"}}) {
 				for vI, vG := range uiutils.L(vGroups) {
 					if uiutils.Lt(float64(vI), float64(3)) {
-						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "group")}}) {
+						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "group")}}) {
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vG, "title")) }
 							}
 							@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-2 p-0"}}) {
 								for _, vItem := range uiutils.L(uiutils.Get(vG, "links")) {
-									@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{}}) {
+									@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "links-row")}}) {
 										@MenuEntry(MenuEntryProps{Href: uiutils.Get(vItem, "href"), Class: uiutils.Cnv("text-sm text-muted-foreground"), Variant: "muted", Size: "sm"}) {
 											{ uiutils.Text(uiutils.Get(vItem, "name")) }
 										}

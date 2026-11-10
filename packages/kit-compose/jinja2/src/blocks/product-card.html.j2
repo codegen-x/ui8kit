@@ -19,7 +19,7 @@
         {%- set c_1 -%}
           {{ og_text(og_at(v_badges, og_get(v_product, ['badge']))) }}
         {%- endset -%}
-        {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Class': 'absolute left-4 top-4', 'Attrs': og_attrs(['data-testid', 'badge'])}, 'children': c_1}) }}
+        {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Class': 'absolute left-4 top-4'}, 'children': c_1}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['relative shrink-0', ('sm:w-48' if og_t(og_eq(v_layout, 'horizontal')) else '')]))}, 'children': c_2}) }}
@@ -34,7 +34,7 @@
         {%- set c_4 -%}
           {{ og_text(og_get(v_product, ['name'])) }}
         {%- endset -%}
-        {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_product, ['href']))), 'Variant': 'default', 'Attrs': og_attrs(['data-testid', 'open'])}, 'children': c_4}) }}
+        {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_product, ['href']))), 'Variant': 'default', 'Attrs': og_attrs(['data-slot', 'open'])}, 'children': c_4}) }}
       {%- else %}
         {{ og_text(og_get(v_product, ['name'])) }}
       {%- endif %}
@@ -70,7 +70,7 @@
             {{ og_include('compose/inline.html.j2', {'p': {'Class': 'sr-only'}, 'children': c_10}) }}
             {{ og_text(og_money(og_get(v_product, ['compareAt']), og_get(v_product, ['currency']))) }}
           {%- endset -%}
-          {{ og_include('compose/text.html.j2', {'p': {'Tag': 'del', 'Size': 'sm', 'Class': 'relative text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'compare-at'])}, 'children': c_11}) }}
+          {{ og_include('compose/text.html.j2', {'p': {'Tag': 'del', 'Size': 'sm', 'Class': 'relative text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'compare-at'])}, 'children': c_11}) }}
         {%- endif %}
       {%- endset -%}
       {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'baseline', 'Class': 'flex-wrap'}, 'children': c_12}) }}
@@ -78,11 +78,11 @@
         {%- set c_13 -%}
           {{ og_text((og_get(v_labels, ['add']) if og_t(og_get(v_product, ['inStock'])) else og_get(v_labels, ['soldOut']))) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': og_s(('default' if og_t(og_get(v_product, ['inStock'])) else 'outline')), 'Size': 'sm', 'Disabled': og_t(not (og_t(og_get(v_product, ['inStock'])))), 'Attrs': og_attrs(['data-testid', 'add'])}, 'children': c_13}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': og_s(('default' if og_t(og_get(v_product, ['inStock'])) else 'outline')), 'Size': 'sm', 'Disabled': og_t(not (og_t(og_get(v_product, ['inStock']))))}, 'children': c_13}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Justify': 'between', 'Class': 'mt-auto pt-2'}, 'children': c_14}) }}
   {%- endset -%}
   {{ og_include('compose/card-content.html.j2', {'p': {'Class': 'flex flex-1 flex-col gap-2'}, 'children': c_15}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'article', 'Class': og_s(og_cnv(['flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded', 'h-full gap-4 overflow-hidden', ('flex flex-col sm:flex-row' if og_t(og_eq(v_layout, 'horizontal')) else 'flex flex-col')])), 'Attrs': og_attrs(['data-slot', 'card', 'data-testid', 'item', 'data-layout', v_layout])}, 'children': c_16}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'article', 'Class': og_s(og_cnv(['flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded', 'h-full gap-4 overflow-hidden', ('flex flex-col sm:flex-row' if og_t(og_eq(v_layout, 'horizontal')) else 'flex flex-col')])), 'Attrs': og_attrs(['data-slot', 'card', 'data-layout', v_layout])}, 'children': c_16}) }}

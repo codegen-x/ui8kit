@@ -25,7 +25,7 @@ templ EmptyState(p EmptyStateProps) {
 	{{ vIcon := uiutils.Def(p.Icon, "inbox") }}
 	{{ vTitle := p.Title }}
 	{{ vText := p.Text }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex min-w-0 flex-col items-center gap-4 rounded bg-card px-6 py-14 text-center inset-ring inset-ring-border", p.Class)), Attrs: uiutils.Attrs("role", "status")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex min-w-0 flex-col items-center gap-4 rounded bg-card px-6 py-14 text-center inset-ring inset-ring-border", p.Class)), Attrs: uiutils.Attrs("role", "status", "data-slot", "empty-state")}}) {
 		@compose.IconBadge(compose.IconBadgeProps{Size: "lg", TextProps: text.TextProps{}}) {
 			@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(vIcon), Size: 20})
 		}

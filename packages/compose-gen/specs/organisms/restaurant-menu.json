@@ -201,7 +201,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -231,7 +231,7 @@
                                     }
                                   ]
                                 },
-                                "data-testid": "menusection"
+                                "data-slot": "menusection"
                               },
                               "children": [
                                 {
@@ -307,7 +307,7 @@
                                                 "Class": "flex flex-col gap-0"
                                               },
                                               "attrs": {
-                                                "data-testid": "item"
+                                                "data-slot": "item"
                                               },
                                               "children": [
                                                 {

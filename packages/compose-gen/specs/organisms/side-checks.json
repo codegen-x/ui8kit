@@ -34,7 +34,7 @@
         "Class": "flex flex-col gap-2"
       },
       "attrs": {
-        "data-testid": "sides"
+        "data-slot": "sides"
       },
       "children": [
         {
@@ -132,7 +132,10 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "attrs": {
+                "data-slot": "dish-option"
+              }
             }
           ]
         }

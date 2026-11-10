@@ -28,12 +28,12 @@ const { id, mode = "signin", labels, submit } = defineProps<AuthFormProps>();
 </script>
 
 <template>
-  <Form method="dialog" class="gap-4" data-testid="auth-form">
+  <Form method="dialog" class="gap-4" data-slot="auth-form">
     <Field v-if="((mode as string) === 'signup')" :label="labels.name" :htmlFor="tpl('{0}-name', id)">
-      <Input type="text" name="name" autocomplete="name" :id="tpl('{0}-name', id)" data-testid="field" />
+      <Input type="text" name="name" autocomplete="name" :id="tpl('{0}-name', id)" data-slot="field" />
     </Field>
     <Field :label="labels.email" :htmlFor="tpl('{0}-email', id)">
-      <Input type="email" name="email" autocomplete="email" :id="tpl('{0}-email', id)" data-testid="field" />
+      <Input type="email" name="email" autocomplete="email" :id="tpl('{0}-email', id)" data-slot="field" />
     </Field>
     <Field
       v-if="(((mode as string) !== 'reset') && ((mode as string) !== 'magic'))"
@@ -45,7 +45,7 @@ const { id, mode = "signin", labels, submit } = defineProps<AuthFormProps>();
         name="password"
         :autocomplete="(((mode as string) === 'signup') ? 'new-password' : 'current-password')"
         :id="tpl('{0}-password', id)"
-        data-testid="field"
+        data-slot="field"
       />
     </Field>
     <Group v-if="((mode as string) === 'signin')" justify="between" align="center" class="flex-wrap gap-2">
@@ -65,7 +65,7 @@ const { id, mode = "signin", labels, submit } = defineProps<AuthFormProps>();
         {{ labels.terms }}
       </Label>
     </Group>
-    <Button variant="default" size="default" type="submit" class="w-full" data-testid="submit">
+    <Button variant="default" size="default" type="submit" class="w-full">
       {{ submit }}
     </Button>
   </Form>

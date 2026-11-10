@@ -18,7 +18,7 @@ export type AddQtyProps = {
 
 export function AddQty({ name, dish, labels, value = "1" }: AddQtyProps) {
   return (
-    <Group gap="2" align="center" justify="between" class="flex-wrap">
+    <Group gap="2" align="center" justify="between" class="flex-wrap" data-slot="add-qty">
       <NumberField
         value={value}
         name={name}
@@ -27,7 +27,7 @@ export function AddQty({ name, dish, labels, value = "1" }: AddQtyProps) {
         decrease={tpl(labels.decreaseOf, dish)}
         increase={tpl(labels.increaseOf, dish)}
       />
-      <Button variant="default" size="default" type="button" data-testid="add">
+      <Button variant="default" size="default" type="button">
         <LucideIcon name="plus" size={16} />
         {labels.add}
       </Button>

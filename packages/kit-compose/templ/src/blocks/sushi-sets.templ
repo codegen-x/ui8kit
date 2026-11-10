@@ -39,9 +39,9 @@ templ SushiSets(p SushiSetsProps) {
 		if uiutils.Eq(uiutils.Len(vDishes), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "package", Title: vEmpty})
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "3")), "1-3", "1-4")), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "3")), "1-3", "1-4")), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vD := range uiutils.L(vDishes) {
-					@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative"}}) {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "1/1"})
 							@compose.Badge(compose.BadgeProps{Variant: "default", Size: "default", TextProps: text.TextProps{Class: "absolute left-2 top-2"}}) {
@@ -53,7 +53,7 @@ templ SushiSets(p SushiSetsProps) {
 						}
 						@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col gap-2 text-sm text-muted-foreground", Attrs: uiutils.Attrs("aria-label", uiutils.Tpl(uiutils.Get(vLabels, "pieces"), uiutils.Get(vD, "name")))}}) {
 							for _, vR := range uiutils.L(uiutils.Get(vD, "items")) {
-								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-2"}}) {
+								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-2", Attrs: uiutils.Attrs("data-slot", "items-row")}}) {
 									@icons.LucideIcon(icons.LucideIconProps{Name: "check", Size: 16})
 									@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {
 										{ uiutils.Text(vR) }

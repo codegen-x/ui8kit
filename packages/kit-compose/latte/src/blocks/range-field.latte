@@ -11,8 +11,8 @@
 {var $v_max = ($p['max'] ?? null)}
 {capture $c_3}
   {if og_t(og_and([og_eq($v_type, 'number'), og_has($v_min), og_has($v_max), og_lt($v_min, $v_max)]))}
-    {=og_include('compose/Range.latte', ['min' => og_i($v_min), 'max' => og_i($v_max), 'value' => og_s((og_t(og_eq($v_from, '')) ? og_str($v_min) : $v_from)), 'attrs' => og_attrs(['aria-label', $v_fromLabel, 'data-testid', 'range-from'])])|noescape}
-    {=og_include('compose/Range.latte', ['min' => og_i($v_min), 'max' => og_i($v_max), 'value' => og_s((og_t(og_eq($v_to, '')) ? og_str($v_max) : $v_to)), 'attrs' => og_attrs(['aria-label', $v_toLabel, 'data-testid', 'range-to'])])|noescape}
+    {=og_include('compose/Range.latte', ['min' => og_i($v_min), 'max' => og_i($v_max), 'value' => og_s((og_t(og_eq($v_from, '')) ? og_str($v_min) : $v_from)), 'attrs' => og_attrs(['aria-label', $v_fromLabel, 'data-slot', 'range-from'])])|noescape}
+    {=og_include('compose/Range.latte', ['min' => og_i($v_min), 'max' => og_i($v_max), 'value' => og_s((og_t(og_eq($v_to, '')) ? og_str($v_max) : $v_to)), 'attrs' => og_attrs(['aria-label', $v_toLabel, 'data-slot', 'range-to'])])|noescape}
   {/if}
   {capture $c_2}
     {=og_include('compose/Input.latte', ['type' => og_s($v_type), 'size' => 'sm', 'value' => og_s($v_from), 'min' => og_s(og_str($v_min)), 'max' => og_s(og_str($v_max)), 'attrs' => og_attrs(['aria-label', $v_fromLabel])])|noescape}

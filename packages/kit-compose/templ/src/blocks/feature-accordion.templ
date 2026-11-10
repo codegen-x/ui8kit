@@ -42,9 +42,9 @@ templ FeatureAccordion(p FeatureAccordionProps) {
 		if uiutils.Eq(uiutils.Len(vFeatures), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "layout-grid", Title: vEmpty})
 		} else {
-			@compose.Stack(compose.StackProps{Gap: "0", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Stack(compose.StackProps{Gap: "0", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for vI, vF := range uiutils.L(vFeatures) {
-					@compose.Disclosure(compose.DisclosureProps{Variant: "item", DisclosureProps: disclosure.DisclosureProps{Name: uiutils.S(uiutils.Cond(uiutils.T(vMultiple), nil, uiutils.Tpl("{0}-accordion", uiutils.Coalesce(vId, "accordion")))), Open: uiutils.T(uiutils.And(uiutils.Eq(vExpand, "first"), uiutils.Eq(float64(vI), float64(0)))), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Disclosure(compose.DisclosureProps{Variant: "item", DisclosureProps: disclosure.DisclosureProps{Name: uiutils.S(uiutils.Cond(uiutils.T(vMultiple), nil, uiutils.Tpl("{0}-accordion", uiutils.Coalesce(vId, "accordion")))), Open: uiutils.T(uiutils.And(uiutils.Eq(vExpand, "first"), uiutils.Eq(float64(vI), float64(0)))), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@compose.Summary(compose.SummaryProps{Variant: "item", SummaryProps: disclosure.SummaryProps{}}) {
 							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex min-w-0 items-center justify-start gap-4"}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 20})

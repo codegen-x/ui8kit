@@ -18,9 +18,9 @@ const { extras } = defineProps<QuoteFiguresProps>();
 </script>
 
 <template>
-  <Box class="grid grid-cols-3 gap-4 border-b border-border pb-8" data-testid="quote-figures">
+  <Box class="grid grid-cols-3 gap-4 border-b border-border pb-8" data-slot="quote-figures">
     <template v-for="(s, i) in extras.stats" :key="s.id">
-      <Stack v-if="(i < 3)" gap="0" data-testid="quote-stat">
+      <Stack v-if="(i < 3)" gap="0" data-slot="quote-stat">
         <Text size="3xl" weight="bold">
           {{ s.value }}
         </Text>

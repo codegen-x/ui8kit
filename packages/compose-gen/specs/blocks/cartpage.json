@@ -60,32 +60,32 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@cart"
     },
     {
-      "sel": "[data-testid=\"code\"]",
+      "sel": "[data-slot=\"promo\"] [data-slot=\"badge\"]",
       "n": "@promos",
       "when": {
         "promo": "show"
       }
     },
     {
-      "sel": "[data-testid=\"code\"]",
+      "sel": "[data-slot=\"promo\"] [data-slot=\"badge\"]",
       "n": 0,
       "when": {
         "promo": "hide"
       }
     },
     {
-      "sel": "[data-testid=\"progress\"]",
+      "sel": "[data-slot=\"progress\"]",
       "n": 1,
       "when": {
         "progress": "show"
       }
     },
     {
-      "sel": "[data-testid=\"progress\"]",
+      "sel": "[data-slot=\"progress\"]",
       "n": 0,
       "when": {
         "progress": "hide"

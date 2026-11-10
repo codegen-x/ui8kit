@@ -33,7 +33,7 @@
         "Class": "rounded bg-card inset-ring inset-ring-border p-2"
       },
       "attrs": {
-        "data-testid": "post-mini"
+        "data-slot": "post-mini"
       },
       "children": [
         {

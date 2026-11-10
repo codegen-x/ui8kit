@@ -58,14 +58,14 @@ export function TestimonialGrid({
             (layout as string) === "masonry" ? "columns-1 gap-4 md:columns-2 xl:columns-3"
             : "flex snap-x gap-4 overflow-x-auto pb-2"
           }
-          data-testid="items"
+          data-slot="items"
         >
           {(quotes ?? []).map((q) => (
             <QuoteCard key={q.id} q={q} labels={labels} item={item} layout={layout} />
           ))}
         </Block>
       ) : (
-        <Grid cols={(((layout as string) === "grid") ? cols : "1")} className="gap-4" data-testid="items">
+        <Grid cols={(((layout as string) === "grid") ? cols : "1")} className="gap-4" data-slot="items">
           {(quotes ?? []).map((q, i) => (
             <Fragment key={q.id}>
               {(((layout as string) !== "single") || (i === 0)) ? (

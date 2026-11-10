@@ -319,10 +319,10 @@
             }
           ]
         },
-        "data-testid": "category-nav",
         "data-layout": {
           "$": "layout"
-        }
+        },
+        "data-slot": "category-nav"
       },
       "children": [
         {
@@ -374,7 +374,7 @@
                     "Class": "mb-4 flex-wrap"
                   },
                   "attrs": {
-                    "data-testid": "toolbar"
+                    "data-slot": "toolbar"
                   },
                   "children": [
                     {
@@ -469,7 +469,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "items"
+                    "data-slot": "items"
                   },
                   "children": [
                     {
@@ -633,7 +633,10 @@
                                 }
                               }
                             }
-                          ]
+                          ],
+                          "attrs": {
+                            "data-slot": "categories-row"
+                          }
                         }
                       ]
                     }

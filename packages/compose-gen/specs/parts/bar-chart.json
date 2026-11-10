@@ -153,7 +153,8 @@
                           "$": "b.label"
                         }
                       ]
-                    }
+                    },
+                    "data-slot": "bar"
                   },
                   "children": [
                     {
@@ -260,7 +261,10 @@
                         }
                       ]
                     }
-                  ]
+                  ],
+                  "attrs": {
+                    "data-slot": "bar"
+                  }
                 }
               ]
             }

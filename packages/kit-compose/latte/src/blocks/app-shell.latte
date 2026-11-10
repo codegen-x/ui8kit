@@ -48,10 +48,10 @@
                     {/capture}
                     {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'text-muted-foreground', 'children' => (string) $c_5])|noescape}
                   {/capture}
-                  {=og_include('compose/ListItem.latte', ['class' => 'flex flex-col gap-2', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_6])|noescape}
+                  {=og_include('compose/ListItem.latte', ['class' => 'flex flex-col gap-2', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_6])|noescape}
                 {/foreach}
               {/capture}
-              {=og_include('compose/List.latte', ['class' => 'm-0 flex list-none flex-col gap-4 p-0', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_7])|noescape}
+              {=og_include('compose/List.latte', ['class' => 'm-0 flex list-none flex-col gap-4 p-0', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_7])|noescape}
             {/capture}
             {=og_include('blocks/panel.latte', ['p' => ['title' => og_get($v_activity, ['title']), 'description' => og_get($v_activity, ['text']), 'id' => og_tpl('{0}-list', [$v_id])], 'children' => og_markup($c_8)])|noescape}
           {/if}
@@ -63,4 +63,4 @@
     {=og_include('compose/Container.latte', ['class' => og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'py-8'])), 'attrs' => og_attrs(['data-slot', 'container']), 'children' => (string) $c_10])|noescape}
   {/if}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'section', 'class' => 'bg-background', 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : og_tpl('{0}-title', [$v_id])), 'data-testid', 'app-shell', 'data-layout', $v_layout, 'aria-label', $v_landmarkLabel]), 'children' => (string) $c_11])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'section', 'class' => 'bg-background', 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : og_tpl('{0}-title', [$v_id])), 'data-layout', $v_layout, 'aria-label', $v_landmarkLabel, 'data-slot', 'app-shell']), 'children' => (string) $c_11])|noescape}

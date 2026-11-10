@@ -68,32 +68,32 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"error-code\"]",
+      "sel": "[data-slot=\"error-code\"]",
       "n": 1,
       "when": {
         "code": "show"
       }
     },
     {
-      "sel": "[data-testid=\"error-code\"]",
+      "sel": "[data-slot=\"error-code\"]",
       "n": 0,
       "when": {
         "code": "hide"
       }
     },
     {
-      "sel": "[data-testid=\"action-primary\"]",
+      "sel": ":is([data-slot=\"action-group\"] > [data-slot=\"button\"]:first-child, [data-slot=\"post-feature\"] > [data-slot=\"button\"], [data-slot=\"post-actions\"] > [data-slot=\"button\"]:first-child)",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"action-secondary\"]",
+      "sel": "[data-slot=\"action-group\"] > [data-slot=\"button\"]:nth-child(2)",
       "n": 1,
       "when": {
         "actions.mode": "two"
       }
     },
     {
-      "sel": "[data-testid=\"action-secondary\"]",
+      "sel": "[data-slot=\"action-group\"] > [data-slot=\"button\"]:nth-child(2)",
       "n": 0,
       "when": {
         "actions.mode": "one"

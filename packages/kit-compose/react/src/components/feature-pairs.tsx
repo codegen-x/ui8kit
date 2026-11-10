@@ -11,11 +11,11 @@ export type FeaturePairsProps = {
 
 export function FeaturePairs({ features }: FeaturePairsProps) {
   return (
-    <Box className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+    <Box className="grid grid-cols-1 gap-6 sm:grid-cols-2" data-slot="feature-pairs">
       {(features ?? []).map((f, i) => (
         <Fragment key={f.id}>
           {(i < 4) ? (
-            <Group gap="4" align="start" data-testid="feature-item">
+            <Group gap="4" align="start" data-slot="feature-item">
               <Inline className={"flex size-8 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground"}>
                 <LucideIcon name={f.icon} size={16} />
               </Inline>

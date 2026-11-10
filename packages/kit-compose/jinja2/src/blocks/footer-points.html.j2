@@ -20,9 +20,9 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm'}, 'children': c_2}) }}
         {%- endset -%}
-        {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Attrs': og_attrs(['data-testid', 'footer-point'])}, 'children': c_3}) }}
+        {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Attrs': og_attrs(['data-slot', 'footer-point'])}, 'children': c_3}) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'start'}, 'children': c_4}) }}
+  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-slot', 'footer-points'])}, 'children': c_4}) }}
 {%- endif %}

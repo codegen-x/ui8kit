@@ -23,13 +23,14 @@ const { stats } = defineProps<FeatureMetricCardsProps>();
 </script>
 
 <template>
-  <Box class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+  <Box class="grid grid-cols-1 gap-4 sm:grid-cols-2" data-slot="feature-metric-cards">
     <template v-for="(s, i) in stats" :key="s.id">
-      <Group v-if="(i < 4)"
+      <Group
+        v-if="(i < 4)"
         gap="4"
         align="center"
         class="rounded bg-card inset-ring inset-ring-border p-4"
-        data-testid="feature-stat"
+        data-slot="feature-stat"
       >
         <Inline class="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
           <LucideIcon :name="s.icon" :size="20" />

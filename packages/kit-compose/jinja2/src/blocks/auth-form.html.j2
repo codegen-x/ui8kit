@@ -9,17 +9,17 @@
 {%- set c_11 -%}
   {%- if og_t(og_eq(v_mode, 'signup')) %}
     {%- set c_1 -%}
-      {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'name', 'Attrs': og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [v_id]), 'data-testid', 'field'])}}) }}
+      {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'name', 'Attrs': og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [v_id]), 'data-slot', 'field'])}}) }}
     {%- endset -%}
     {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['name']), 'htmlFor': og_tpl('{0}-name', [v_id])}, 'children': og_markup(c_1)}) }}
   {%- endif %}
   {%- set c_2 -%}
-    {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Attrs': og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}}) }}
+    {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Attrs': og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}}) }}
   {%- endset -%}
   {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['email']), 'htmlFor': og_tpl('{0}-email', [v_id])}, 'children': og_markup(c_2)}) }}
   {%- if og_t(og_and([not (og_eq(v_mode, 'reset')), not (og_eq(v_mode, 'magic'))])) %}
     {%- set c_3 -%}
-      {{ og_include('compose/input.html.j2', {'p': {'Type': 'password', 'Name': 'password', 'Attrs': og_attrs(['autocomplete', ('new-password' if og_t(og_eq(v_mode, 'signup')) else 'current-password'), 'id', og_tpl('{0}-password', [v_id]), 'data-testid', 'field'])}}) }}
+      {{ og_include('compose/input.html.j2', {'p': {'Type': 'password', 'Name': 'password', 'Attrs': og_attrs(['autocomplete', ('new-password' if og_t(og_eq(v_mode, 'signup')) else 'current-password'), 'id', og_tpl('{0}-password', [v_id]), 'data-slot', 'field'])}}) }}
     {%- endset -%}
     {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['password']), 'htmlFor': og_tpl('{0}-password', [v_id])}, 'children': og_markup(c_3)}) }}
   {%- endif %}
@@ -53,6 +53,6 @@
   {%- set c_10 -%}
     {{ og_text(v_submit) }}
   {%- endset -%}
-  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit', 'Class': 'w-full', 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_10}) }}
+  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit', 'Class': 'w-full'}, 'children': c_10}) }}
 {%- endset -%}
-{{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'auth-form'])}, 'children': c_11}) }}
+{{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'auth-form'])}, 'children': c_11}) }}

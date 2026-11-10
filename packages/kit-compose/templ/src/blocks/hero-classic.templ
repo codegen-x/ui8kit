@@ -50,13 +50,13 @@ templ HeroClassic(p HeroClassicProps) {
 		@Backdrop(BackdropProps{Kind: uiutils.Cond(uiutils.T(uiutils.Eq(vMediaKind, "backdrop")), "image", "none"), Alt: vTitle})
 		if uiutils.T(uiutils.Get(vActions, "cta")) {
 			if uiutils.Eq(uiutils.Get(vActions, "mode"), "form") {
-				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("w-full max-w-xl", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "centered")), "mx-auto", ""))), Attrs: uiutils.Attrs("data-testid", "email-form")}}) {
+				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("w-full max-w-xl", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "centered")), "mx-auto", ""))), Attrs: uiutils.Attrs("data-slot", "email-form")}}) {
 					@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{For: uiutils.S(uiutils.Tpl("{0}-email", vId)), Class: "sr-only"}}) {
 						{ uiutils.Text(uiutils.Get(vActions, "emailLabel")) }
 					}
 					@compose.Group(compose.GroupProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: "w-full flex-wrap"}}) {
-						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "prompt", Class: "min-w-0 flex-1", Placeholder: uiutils.S(uiutils.Get(vActions, "emailLabel")), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-email", vId), "data-testid", "field")}})
-						@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.URL(uiutils.Get(vActions, "href"), false), Attrs: uiutils.Attrs("data-testid", "submit")}}) {
+						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "prompt", Class: "min-w-0 flex-1", Placeholder: uiutils.S(uiutils.Get(vActions, "emailLabel")), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-email", vId), "data-slot", "field")}})
+						@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Href: uiutils.URL(uiutils.Get(vActions, "href"), false)}}) {
 							{ uiutils.Text(uiutils.Get(vActions, "cta")) }
 						}
 					}
@@ -76,7 +76,7 @@ templ heroClassicFill1(p HeroClassicProps, vTitle any, vMedia any, vMediaKind an
 		@CodeWindow(CodeWindowProps{Title: uiutils.Get(vMedia, "codeTitle"), Prompt: uiutils.Get(vMedia, "prompt"), Lines: uiutils.Get(vMedia, "lines")})
 	}
 	if uiutils.Eq(vMediaKind, "cluster") {
-		@compose.Grid(compose.GridProps{Cols: "3", BoxProps: box.BoxProps{Class: "items-end gap-4", Attrs: uiutils.Attrs("data-testid", "cluster")}}) {
+		@compose.Grid(compose.GridProps{Cols: "3", BoxProps: box.BoxProps{Class: "items-end gap-4", Attrs: uiutils.Attrs("data-slot", "cluster")}}) {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("w-full", ""))}}) {
 				@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "3/4"})
 			}

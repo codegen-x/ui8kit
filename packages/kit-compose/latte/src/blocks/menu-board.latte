@@ -55,10 +55,10 @@
               {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => 'flex flex-col', 'children' => (string) $c_5])|noescape}
             {/if}
           {/capture}
-          {=og_include('compose/Stack.latte', ['gap' => og_s((og_t(og_eq($v_density, 'compact')) ? '2' : '4')), 'attrs' => og_attrs(['id', og_tpl('{0}-{1}', [$v_id, og_get($v_s, ['key'])]), 'data-testid', 'menusection']), 'children' => (string) $c_6])|noescape}
+          {=og_include('compose/Stack.latte', ['gap' => og_s((og_t(og_eq($v_density, 'compact')) ? '2' : '4')), 'attrs' => og_attrs(['id', og_tpl('{0}-{1}', [$v_id, og_get($v_s, ['key'])]), 'data-slot', 'menusection']), 'children' => (string) $c_6])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/Box.latte', ['class' => 'flex flex-col gap-8', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_7])|noescape}
+      {=og_include('compose/Box.latte', ['class' => 'flex flex-col gap-8', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_7])|noescape}
     {/capture}
     {=og_include('compose/Stack.latte', ['gap' => '8', 'align' => 'stretch', 'children' => (string) $c_8])|noescape}
   {/if}

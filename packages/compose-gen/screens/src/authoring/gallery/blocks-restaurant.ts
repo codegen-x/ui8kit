@@ -7,7 +7,7 @@ import * as d from "./blocks-data";
 
 const r = (k: string) => t(`restaurant.${k}`);
 const base = { theme: "commerce" as const, group: "restaurant" };
-const items = (n: number | string) => [{ sel: '[data-testid="item"]', n }];
+const items = (n: number | string) => [{ sel: ':is([data-slot="item"], [data-slot="menusection"] [data-slot="card"])', n }];
 
 const dish = define({
   ...base, key: "dish", name: "Dish card", docs: "A dish as a card: picture, category, portion/weight, price and an order button. No rating.",
@@ -20,10 +20,10 @@ const dish = define({
     ["browse", "No order button", { action: "none" }],
   ],
   facts: [
-    { sel: '[data-testid="item"]', n: 1 },
-    { sel: '[data-testid="portion"]', n: 1 },
-    { sel: '[data-testid="add"]', n: 1, when: { action: "button" } },
-    { sel: '[data-testid="add"]', n: 0, when: { action: "none" } },
+    { sel: '[data-slot="card"]', n: 1 },
+    { sel: '[data-slot="portion"]', n: 1 },
+    { sel: '[data-slot="card"] [data-slot="button"][type="button"]', n: 1, when: { action: "button" } },
+    { sel: '[data-slot="card"] [data-slot="button"][type="button"]', n: 0, when: { action: "none" } },
   ],
   sample: { dish: pick(ref("meals"), "dish-meals-bowl"), labels: r("dish") },
 });
@@ -39,12 +39,12 @@ const menuboard = define({
     ["compact", "Compact grid of cards", { layout: "grid", density: "compact" }],
   ],
   facts: [
-    { sel: '[data-testid="menusection"]', n: "@menusections" },
+    { sel: '[data-slot="menusection"]', n: "@menusections" },
     ...items("@menudishes"),
-    { sel: '[data-testid="price"]', n: "@menudishes", when: { prices: "show" } },
-    { sel: '[data-testid="price"]', n: 0, when: { prices: "hide" } },
-    { sel: '[data-testid="section-nav"]', n: 1, when: { layout: "sections" } },
-    { sel: '[data-testid="section-nav"]', n: 0, when: { layout: ["grid", "list"] } },
+    { sel: '[data-slot="price"]', n: "@menudishes", when: { prices: "show" } },
+    { sel: '[data-slot="price"]', n: 0, when: { prices: "hide" } },
+    { sel: '[data-slot="section-nav"]', n: 1, when: { layout: "sections" } },
+    { sel: '[data-slot="section-nav"]', n: 0, when: { layout: ["grid", "list"] } },
   ],
   sample: { id: "menuboard", title: r("board.title"), lead: r("board.lead"), dishes: ref("menudishes"), sections: ref("menusections"), empty: t("empty.dishes"), labels: t("food.labels") },
 });
@@ -60,10 +60,10 @@ const reservation = define({
     ["dense", "Compact density, short fields", { fields: "compact", density: "compact" }],
   ],
   facts: [
-    { sel: '[data-testid="reservation-form"]', n: 1 },
-    { sel: '[data-testid="submit"]', n: 1 },
-    { sel: '[data-testid="details"]', n: 1, when: { layout: "split" } },
-    { sel: '[data-testid="details"]', n: 0, when: { layout: "single" } },
+    { sel: '[data-slot="reservation-form"]', n: 1 },
+    { sel: '[type="submit"]', n: 1 },
+    { sel: '[data-slot="details"]', n: 1, when: { layout: "split" } },
+    { sel: '[data-slot="details"]', n: 0, when: { layout: "single" } },
   ],
   sample: { id: "reservation", title: r("reservation.title"), text: r("reservation.text"), labels: r("reservation.labels"), details: ref("contacts") },
 });
@@ -78,12 +78,12 @@ const lightboxgallery = define({
     ["open", "Grid with the lightbox open", { lightbox: "open" }],
   ],
   facts: [
-    { sel: '[data-testid="item"]', n: "@photos", when: { layout: ["grid", "masonry"] } },
-    { sel: '[data-testid="thumbs"] [data-slot="media-frame"]', n: "@photos", when: { layout: "featured" } },
-    { sel: '[data-testid="caption"]', n: "@photos", when: { layout: ["grid", "masonry"], captions: "show" } },
-    { sel: '[data-testid="caption"]', n: 0, when: { captions: "hide" } },
-    { sel: '[data-testid="lightbox"][open]', n: 1, when: { lightbox: "open" } },
-    { sel: '[data-testid="lightbox"][open]', n: 0, when: { lightbox: "closed" } },
+    { sel: '[data-slot="item"]', n: "@photos", when: { layout: ["grid", "masonry"] } },
+    { sel: '[data-slot="thumbs"] [data-slot="media-frame"]', n: "@photos", when: { layout: "featured" } },
+    { sel: '[data-slot="caption"]', n: "@photos", when: { layout: ["grid", "masonry"], captions: "show" } },
+    { sel: '[data-slot="caption"]', n: 0, when: { captions: "hide" } },
+    { sel: '[data-slot="lightbox"][open]', n: 1, when: { lightbox: "open" } },
+    { sel: '[data-slot="lightbox"][open]', n: 0, when: { lightbox: "closed" } },
   ],
   sample: { id: "lightboxgallery", title: r("gallery.title"), lead: r("gallery.lead"), photos: ref("photos"), empty: t("empty.photos"), labels: r("gallery") },
 });

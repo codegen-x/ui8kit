@@ -28,8 +28,8 @@ templ CartTable(p CartTableProps) {
 	{{ vMedia := uiutils.Def(p.Media, "image") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vField := uiutils.Def(p.Field, "qty") }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-full overflow-x-auto"}}) {
-		@compose.Table(compose.TableProps{BoxProps: box.BoxProps{Class: "w-full text-left text-sm", Attrs: uiutils.Attrs("data-testid", "cart-table")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-full overflow-x-auto", Attrs: uiutils.Attrs("data-slot", "cart-table-root")}}) {
+		@compose.Table(compose.TableProps{BoxProps: box.BoxProps{Class: "w-full text-left text-sm", Attrs: uiutils.Attrs("data-slot", "cart-table")}}) {
 			@compose.TableCaption(compose.TableCaptionProps{BoxProps: box.BoxProps{Class: "sr-only"}}) {
 				{ uiutils.Text(uiutils.Get(vLabels, "caption")) }
 			}
@@ -56,7 +56,7 @@ templ CartTable(p CartTableProps) {
 			}
 			@compose.TableBody(compose.TableBodyProps{BoxProps: box.BoxProps{}}) {
 				for _, vLine := range uiutils.L(vLines) {
-					@compose.TableRow(compose.TableRowProps{BoxProps: box.BoxProps{Class: "border-t border-border", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.TableRow(compose.TableRowProps{BoxProps: box.BoxProps{Class: "border-t border-border", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@compose.TableCell(compose.TableCellProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "py-2", "py-4")))}}) {
 							@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{}}) {
 								if uiutils.Eq(vMedia, "image") {
@@ -82,7 +82,7 @@ templ CartTable(p CartTableProps) {
 							{ uiutils.Text(uiutils.Money(uiutils.Mul(uiutils.Get(vLine, "price"), uiutils.Get(vLine, "qty")), uiutils.Get(vLine, "currency"))) }
 						}
 						@compose.TableCell(compose.TableCellProps{BoxProps: box.BoxProps{Class: "text-right"}}) {
-							@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{AriaLabel: uiutils.S(uiutils.Get(vLabels, "remove")), Attrs: uiutils.Attrs("data-testid", "remove")}}) {
+							@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{AriaLabel: uiutils.S(uiutils.Get(vLabels, "remove"))}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: "x", Size: 16})
 							}
 						}
@@ -92,13 +92,13 @@ templ CartTable(p CartTableProps) {
 		}
 	}
 	if uiutils.Gt(uiutils.Len(vLines), float64(0)) {
-		@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "between", BoxProps: box.BoxProps{Class: "mt-4 flex-wrap border-t border-border pt-4", Attrs: uiutils.Attrs("data-testid", "cart-footer")}}) {
-			@compose.Text(compose.TextProps{Size: "base", Weight: "bold", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-testid", "subtotal")}}) {
+		@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "between", BoxProps: box.BoxProps{Class: "mt-4 flex-wrap border-t border-border pt-4", Attrs: uiutils.Attrs("data-slot", "cart-footer")}}) {
+			@compose.Text(compose.TextProps{Size: "base", Weight: "bold", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-slot", "subtotal")}}) {
 				{ uiutils.Text(uiutils.Get(vLabels, "subtotal")) }
 				{ uiutils.Text(" ") }
 				{ uiutils.Text(uiutils.Money(uiutils.SumBy(vLines, "price", "qty"), uiutils.FirstOf(vLines, "currency"))) }
 			}
-			@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Attrs: uiutils.Attrs("data-testid", "checkout")}}) {
+			@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{}}) {
 				{ uiutils.Text(uiutils.Get(vLabels, "checkout")) }
 			}
 		}

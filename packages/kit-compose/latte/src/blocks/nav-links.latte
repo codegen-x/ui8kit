@@ -18,5 +18,5 @@
       {/if}
     {/foreach}
   {/capture}
-  {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'flex-wrap', 'children' => (string) $c_2])|noescape}
+  {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'flex-wrap', 'attrs' => og_attrs(['data-slot', 'nav-links']), 'children' => (string) $c_2])|noescape}
 {/if}

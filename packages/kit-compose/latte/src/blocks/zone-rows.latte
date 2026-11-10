@@ -83,11 +83,11 @@
           {/capture}
           {=og_include('compose/TableCell.latte', ['class' => 'hidden pr-4 sm:table-cell', 'children' => (string) $c_19])|noescape}
         {/capture}
-        {=og_include('compose/TableRow.latte', ['class' => 'border-t border-border', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_20])|noescape}
+        {=og_include('compose/TableRow.latte', ['class' => 'border-t border-border', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_20])|noescape}
       {/foreach}
     {/capture}
     {=og_include('compose/TableBody.latte', ['children' => (string) $c_21])|noescape}
   {/capture}
-  {=og_include('compose/Table.latte', ['class' => 'w-full text-left text-sm', 'attrs' => og_attrs(['data-testid', 'zone-table']), 'children' => (string) $c_22])|noescape}
+  {=og_include('compose/Table.latte', ['class' => 'w-full text-left text-sm', 'attrs' => og_attrs(['data-slot', 'zone-table']), 'children' => (string) $c_22])|noescape}
 {/capture}
-{=og_include('compose/Box.latte', ['class' => 'w-full overflow-x-auto rounded inset-ring inset-ring-border', 'children' => (string) $c_23])|noescape}
+{=og_include('compose/Box.latte', ['class' => 'w-full overflow-x-auto rounded inset-ring inset-ring-border', 'attrs' => og_attrs(['data-slot', 'zone-rows']), 'children' => (string) $c_23])|noescape}

@@ -20,7 +20,7 @@ templ OverMedia(p OverMediaProps) {
 	{{ vOn := uiutils.Def(p.On, false) }}
 	{{ vAlt := p.Alt }}
 	if uiutils.T(vOn) {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "pointer-events-none absolute inset-0 -z-10", Attrs: uiutils.Attrs("data-testid", "over")}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "pointer-events-none absolute inset-0 -z-10", Attrs: uiutils.Attrs("data-slot", "over")}}) {
 			@MediaFrame(MediaFrameProps{Alt: vAlt, Ratio: "21/9", Class: uiutils.Cnv("size-full rounded-none opacity-40")})
 		}
 	}

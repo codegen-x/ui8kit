@@ -124,10 +124,10 @@
                 }
               ]
             },
-            "data-testid": "bottom-nav",
             "data-position": {
               "$": "position"
-            }
+            },
+            "data-slot": "bottom-nav"
           },
           "children": [
             {
@@ -136,7 +136,7 @@
                 "Class": "m-0 grid list-none grid-flow-col auto-cols-fr p-0"
               },
               "attrs": {
-                "data-testid": "items"
+                "data-slot": "items"
               },
               "children": [
                 {
@@ -239,7 +239,10 @@
                             }
                           }
                         }
-                      ]
+                      ],
+                      "attrs": {
+                        "data-slot": "tabs-row"
+                      }
                     }
                   ]
                 }

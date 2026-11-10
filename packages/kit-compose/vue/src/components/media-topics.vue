@@ -21,7 +21,7 @@ const { extras, labels } = defineProps<MediaTopicsProps>();
 </script>
 
 <template>
-  <Stack gap="4" align="stretch">
+  <Stack gap="4" align="stretch" data-slot="media-topics">
     <Text size="sm" weight="semibold">
       {{ labels.list }}
     </Text>

@@ -19,7 +19,7 @@ export function NavLinks({ links, current = "", side = "all" }: NavLinksProps) {
   return (
     <>
       {((links?.length ?? 0) > 0) ? (
-        <Group gap="4" align="center" class="flex-wrap">
+        <Group gap="4" align="center" class="flex-wrap" data-slot="nav-links">
           <For each={links ?? []}>{(l, iOf) => { const i = iOf(); return (
             <>
               {(((side as string) === "all") || (((i * 2) < count) === ((side as string) === "left"))) ? (

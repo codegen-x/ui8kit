@@ -19,7 +19,7 @@ const { href, label } = defineProps<FooterSitemapProps>();
 </script>
 
 <template>
-  <Link v-if="href" :href="urlOf(href)" size="sm" data-testid="footer-sitemap">
+  <Link v-if="href" :href="urlOf(href)" size="sm" data-slot="footer-sitemap">
     <LucideIcon name="arrow-right" :size="16" />
     {{ label }}
   </Link>

@@ -56,8 +56,8 @@ const {
       (((width as string) === 'compact') ? 'w-20 items-center' : 'w-64')
     )"
     :aria-label="(landmarkLabel ?? brand)"
-    data-testid="sidebar"
     :data-width="width"
+    data-slot="sidebar"
   >
     <Group gap="2" align="center">
       <LucideIcon name="layers" :size="24" />
@@ -75,9 +75,9 @@ const {
           'm-0 flex list-none flex-col p-0',
           (((density as string) === 'compact') ? 'gap-0' : 'gap-2')
         )"
-        data-testid="items"
+        data-slot="items"
       >
-        <ListItem v-for="l in links" :key="l.id">
+        <ListItem v-for="l in links" :key="l.id" data-slot="links-row">
           <MenuEntry
             :href="l.href"
             :class="cn(
@@ -101,7 +101,7 @@ const {
       gap="4"
       align="center"
       class="border-t border-border pt-4"
-      data-testid="user"
+      data-slot="user"
     >
       <MediaFrame :alt="userName" ratio="1/1" class="size-10 shrink-0 rounded-full" />
       <Stack gap="0" :class="(((width as string) === 'compact') ? 'sr-only' : 'min-w-0')">

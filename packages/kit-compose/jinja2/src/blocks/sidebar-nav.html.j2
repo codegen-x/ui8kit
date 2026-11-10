@@ -35,10 +35,10 @@
             {%- endset -%}
             {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_l, ['href']), 'className': og_cnv([og_cnv(['flex items-center gap-4 rounded px-4 text-sm', 'py-2', ('bg-muted font-semibold' if og_t(og_eq(og_get(v_l, ['id']), v_current)) else '')])]), 'current': og_eq(og_get(v_l, ['id']), v_current), 'testid': 'item'}, 'children': og_markup(c_4)}) }}
           {%- endset -%}
-          {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_5}) }}
+          {{ og_include('compose/list-item.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'links-row'])}, 'children': c_5}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/list.html.j2', {'p': {'Class': og_s(og_cnv(['m-0 flex list-none flex-col p-0', ('gap-0' if og_t(og_eq(v_density, 'compact')) else 'gap-2')])), 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_6}) }}
+      {{ og_include('compose/list.html.j2', {'p': {'Class': og_s(og_cnv(['m-0 flex list-none flex-col p-0', ('gap-0' if og_t(og_eq(v_density, 'compact')) else 'gap-2')])), 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_6}) }}
     {%- endset -%}
     {{ og_include('blocks/nav-block.html.j2', {'p': {'label': (og_uniq(og_tpl('{0}, {1}', [v_label, v_landmarkLabel])) if og_t(v_landmarkLabel) else v_label), 'className': og_cnv(['flex-1'])}, 'children': og_markup(c_7)}) }}
   {%- endif %}
@@ -57,7 +57,7 @@
       {%- endset -%}
       {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Class': og_s(('sr-only' if og_t(og_eq(v_width, 'compact')) else 'min-w-0'))}, 'children': c_10}) }}
     {%- endset -%}
-    {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'border-t border-border pt-4', 'Attrs': og_attrs(['data-testid', 'user'])}, 'children': c_11}) }}
+    {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'border-t border-border pt-4', 'Attrs': og_attrs(['data-slot', 'user'])}, 'children': c_11}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'aside', 'Class': og_s(og_cnv(['flex min-h-96 flex-col gap-6 rounded bg-card p-4 inset-ring inset-ring-border', ('w-20 items-center' if og_t(og_eq(v_width, 'compact')) else 'w-64')])), 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_brand]), 'data-testid', 'sidebar', 'data-width', v_width])}, 'children': c_12}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'aside', 'Class': og_s(og_cnv(['flex min-h-96 flex-col gap-6 rounded bg-card p-4 inset-ring inset-ring-border', ('w-20 items-center' if og_t(og_eq(v_width, 'compact')) else 'w-64')])), 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_brand]), 'data-width', v_width, 'data-slot', 'sidebar'])}, 'children': c_12}) }}

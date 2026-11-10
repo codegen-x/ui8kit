@@ -44,9 +44,9 @@ export function KanbanBoard({
       {((lanes?.length ?? 0) === 0) ? (
         <EmptyState icon="kanban" title={empty} />
       ) : (
-        <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} className="items-start gap-4" data-testid="lanes">
+        <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} className="items-start gap-4" data-slot="lanes">
           {(lanes ?? []).map((lane) => (
-            <Stack key={lane.id} gap="4" align="stretch" className="rounded bg-muted p-4" data-testid="lane">
+            <Stack key={lane.id} gap="4" align="stretch" className="rounded bg-muted p-4" data-slot="lane">
               <Group gap="2" align="center" justify="between">
                 <Title as={3} size="base" weight="bold">
                   {lane.title}
@@ -62,7 +62,7 @@ export function KanbanBoard({
                       "flex flex-col rounded bg-card inset-ring inset-ring-border",
                       (((density as string) === "compact") ? "gap-2 p-2" : "gap-2 p-4")
                     )}
-                    data-testid="item"
+                    data-slot="item"
                   >
                     <Text size="sm" weight="semibold">
                       {c.title}

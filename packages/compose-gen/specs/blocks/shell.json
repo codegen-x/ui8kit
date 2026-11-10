@@ -52,11 +52,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"app-shell\"]",
+      "sel": "[data-slot=\"app-shell\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"sidebar\"]",
+      "sel": "[data-slot=\"sidebar\"]",
       "n": 1,
       "when": {
         "layout": [
@@ -66,21 +66,21 @@
       }
     },
     {
-      "sel": "[data-testid=\"sidebar\"]",
+      "sel": "[data-slot=\"sidebar\"]",
       "n": 0,
       "when": {
         "layout": "top"
       }
     },
     {
-      "sel": "[data-testid=\"nav-bar\"]",
+      "sel": "[data-slot=\"nav-bar\"]",
       "n": 1,
       "when": {
         "layout": "top"
       }
     },
     {
-      "sel": "[data-testid=\"app-main\"] [data-testid=\"item\"]",
+      "sel": "[data-slot=\"app-main\"] [data-slot=\"item\"]",
       "n": "@metrics"
     },
     {

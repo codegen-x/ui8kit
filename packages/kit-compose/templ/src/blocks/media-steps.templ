@@ -21,12 +21,12 @@ type MediaStepsProps struct {
 templ MediaSteps(p MediaStepsProps) {
 	{{ vExtras := p.Extras }}
 	{{ vLabels := p.Labels }}
-	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{}}) {
+	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "media-steps")}}) {
 		@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 			{ uiutils.Text(uiutils.Get(vLabels, "list")) }
 		}
 		for vI, vS := range uiutils.L(uiutils.Get(vExtras, "steps")) {
-			@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "media-step")}}) {
+			@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "media-step")}}) {
 				@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{Class: "w-6 shrink-0 text-primary"}}) {
 					{ uiutils.Text(uiutils.Tpl("0{0}", uiutils.Str(uiutils.Add(float64(vI), float64(1))))) }
 				}

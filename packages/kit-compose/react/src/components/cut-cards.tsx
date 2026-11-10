@@ -17,9 +17,9 @@ export type CutCardsProps = {
 
 export function CutCards({ dishes, labels }: CutCardsProps) {
   return (
-    <Grid cols="1-4" className="gap-4" data-testid="items">
+    <Grid cols="1-4" className="gap-4" data-slot="items">
       {(dishes ?? []).map((d) => (
-        <Stack key={d.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="item">
+        <Stack key={d.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
           <MediaFrame alt={d.name} ratio="4/3" />
           <Text size="lg" weight="semibold">
             {d.name}

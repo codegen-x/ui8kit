@@ -53,7 +53,7 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" measure="3xl" :landmarkLabel="landmarkLabel">
-    <Stack v-if="((steps?.length ?? 0) > 0)" gap="6" align="stretch" data-testid="stepper">
+    <Stack v-if="((steps?.length ?? 0) > 0)" gap="6" align="stretch" data-slot="stepper">
       <Text size="sm" class="text-muted-foreground">
         {{ tpl(stepLabel, current, (steps?.length ?? 0)) }}
       </Text>
@@ -63,12 +63,12 @@ const {
           'm-0 flex list-none gap-4 p-0',
           (((layout as string) === 'vertical') ? 'flex-col' : 'flex-col sm:flex-row')
         )"
-        data-testid="items"
+        data-slot="items"
       >
         <ListItem v-for="(s, i) in steps" :key="s.id"
           class="flex flex-1 items-center gap-4"
-          data-testid="item"
           :aria-current="(((i + 1) === current) ? 'step' : undefined)"
+          data-slot="item"
         >
           <IconBadge
             :variant="(((i + 1) < (current + 1)) ? 'primary' : 'outline')"
@@ -91,7 +91,7 @@ const {
             v-if="((i + 1) === current)"
             gap="2"
             class="rounded bg-card p-6 inset-ring inset-ring-border"
-            data-testid="step-summary"
+            data-slot="step-summary"
           >
             <Title :as="3" size="xl" weight="bold">
               {{ s.title }}

@@ -40,8 +40,9 @@ const { jobs, departments, labels, layout = "grid", salary = "hide" } = definePr
   <Box
     v-if="((layout as string) === 'table')"
     class="w-full overflow-x-auto rounded inset-ring inset-ring-border"
+    data-slot="job-cards"
   >
-    <Table class="w-full text-left text-sm" data-testid="job-table">
+    <Table class="w-full text-left text-sm" data-slot="job-table">
       <TableCaption class="sr-only">
         {{ labels.caption }}
       </TableCaption>
@@ -70,7 +71,7 @@ const { jobs, departments, labels, layout = "grid", salary = "hide" } = definePr
         </TableRow>
       </TableHead>
       <TableBody>
-        <TableRow v-for="j in jobs" :key="j.id" class="border-t border-border" data-testid="item">
+        <TableRow v-for="j in jobs" :key="j.id" class="border-t border-border" data-slot="item">
           <TableCell class="px-4 py-4 font-medium">
             {{ j.title }}
           </TableCell>
@@ -95,13 +96,13 @@ const { jobs, departments, labels, layout = "grid", salary = "hide" } = definePr
       </TableBody>
     </Table>
   </Box>
-  <Grid v-else cols="1-2" class="gap-4" data-testid="items">
+  <Grid v-else cols="1-2" class="gap-4" data-slot="items">
     <Stack
       v-for="j in jobs"
       :key="j.id"
       gap="4"
       class="rounded bg-card inset-ring inset-ring-border p-6"
-      data-testid="item"
+      data-slot="item"
     >
       <Stack gap="2">
         <Text size="lg" weight="semibold">
@@ -128,7 +129,7 @@ const { jobs, departments, labels, layout = "grid", salary = "hide" } = definePr
           </Group>
         </Group>
       </Stack>
-      <Text v-if="((salary as string) === 'show')" size="base" weight="semibold" data-testid="salary">
+      <Text v-if="((salary as string) === 'show')" size="base" weight="semibold" data-slot="salary">
         {{ j.salary }}
       </Text>
       <Group gap="4" align="center" justify="between" class="mt-auto">

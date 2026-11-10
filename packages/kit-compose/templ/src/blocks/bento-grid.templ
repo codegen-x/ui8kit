@@ -45,9 +45,9 @@ templ BentoGrid(p BentoGridProps) {
 		if uiutils.Eq(uiutils.Len(vTiles), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "layout-dashboard", Title: vEmpty})
 		} else {
-			@compose.Grid(compose.GridProps{Cols: "1-4", BoxProps: box.BoxProps{Class: "auto-rows-fr gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: "1-4", BoxProps: box.BoxProps{Class: "auto-rows-fr gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vTile := range uiutils.L(vTiles) {
-					@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-full overflow-hidden", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-4 p-4", ""), uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "bento")), uiutils.At(bentoGridSpan, uiutils.Get(vTile, "size")), ""))), Attrs: uiutils.Attrs("data-testid", "item", "data-size", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "bento")), uiutils.Get(vTile, "size"), "even"))}}) {
+					@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-full overflow-hidden", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-4 p-4", ""), uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "bento")), uiutils.At(bentoGridSpan, uiutils.Get(vTile, "size")), ""))), Attrs: uiutils.Attrs("data-size", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "bento")), uiutils.Get(vTile, "size"), "even"))}}) {
 						@compose.CardContent(compose.CardContentProps{BoxProps: box.BoxProps{Class: "flex h-full flex-col gap-4"}}) {
 							@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vTile, "icon")), Size: 24})
 							@compose.Title(compose.TitleProps{As: "3", Size: "xl", Weight: "bold", TextProps: text.TextProps{}}) {

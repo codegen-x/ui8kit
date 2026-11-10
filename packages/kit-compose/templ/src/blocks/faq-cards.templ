@@ -24,7 +24,7 @@ templ FaqCards(p FaqCardsProps) {
 	{{ vItems := p.Items }}
 	{{ vLabels := p.Labels }}
 	{{ vCards := uiutils.Def(p.Cards, "grid3") }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCards, "grid4")), "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3")), Attrs: uiutils.Attrs("data-testid", "faq")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCards, "grid4")), "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3")), Attrs: uiutils.Attrs("data-slot", "faq")}}) {
 		for _, vQ := range uiutils.L(vItems) {
 			@ArticleBlock(ArticleBlockProps{Class: uiutils.Cnv("rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6"), Testid: "faq-card"}) {
 				if uiutils.Eq(vCards, "icons") {

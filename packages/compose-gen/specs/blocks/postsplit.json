@@ -96,7 +96,7 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"post-author\"]",
+      "sel": "[data-slot=\"post-author\"]",
       "n": 1,
       "when": {
         "layout": [
@@ -106,14 +106,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"post-author\"]",
+      "sel": "[data-slot=\"post-author\"]",
       "n": 0,
       "when": {
         "layout": "outline"
       }
     },
     {
-      "sel": "[data-testid=\"post-tag\"]",
+      "sel": "[data-slot=\"post-tags\"] > [data-slot=\"badge\"]",
       "n": "@posttags",
       "when": {
         "layout": [
@@ -123,14 +123,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"post-link\"]",
+      "sel": "[data-slot=\"post-link\"]",
       "n": "@outline",
       "when": {
         "layout": "outline"
       }
     },
     {
-      "sel": "[data-testid=\"post-link\"]",
+      "sel": "[data-slot=\"post-link\"]",
       "n": 0,
       "when": {
         "layout": [
@@ -140,14 +140,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"post-stats\"]",
+      "sel": "[data-slot=\"post-stats\"]",
       "n": 1,
       "when": {
         "layout": "center"
       }
     },
     {
-      "sel": "[data-testid=\"post-save\"]",
+      "sel": "[data-slot=\"button\"]:has([data-lucide=\"bookmark\"])",
       "n": 1,
       "when": {
         "actions": [
@@ -157,7 +157,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"post-save\"]",
+      "sel": "[data-slot=\"button\"]:has([data-lucide=\"bookmark\"])",
       "n": 0,
       "when": {
         "actions": "wide",
@@ -168,7 +168,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"action-primary\"]",
+      "sel": ":is([data-slot=\"action-group\"] > [data-slot=\"button\"]:first-child, [data-slot=\"post-feature\"] > [data-slot=\"button\"], [data-slot=\"post-actions\"] > [data-slot=\"button\"]:first-child)",
       "n": 1,
       "when": {
         "layout": [

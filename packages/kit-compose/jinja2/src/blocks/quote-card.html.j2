@@ -38,7 +38,7 @@
       {%- set c_6 -%}
         {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': og_s(og_get(v_q, ['mark'])), 'Size': 24}}) }}
       {%- endset -%}
-      {{ og_include('compose/inline.html.j2', {'p': {'Class': 'text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'mark'])}, 'children': c_6}) }}
+      {{ og_include('compose/inline.html.j2', {'p': {'Class': 'text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'mark'])}, 'children': c_6}) }}
     {%- endif %}
     {%- set c_7 -%}
       {{ og_text(og_get(v_q, ['quote'])) }}

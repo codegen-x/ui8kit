@@ -42,10 +42,10 @@ templ CategoryNav(p CategoryNavProps) {
 	{{ vCurrentLook := any(uiutils.Cond(uiutils.T(vChipLike), "bg-primary text-primary-foreground", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "bar")), "border-foreground font-semibold", uiutils.Cond(uiutils.T(vTiles), "inset-ring-foreground font-semibold", "bg-muted font-semibold")))) }}
 	{{ vOtherLook := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "bar")), "border-transparent", "")) }}
 	{{ vListShape := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "sidebar")), "flex flex-col gap-2", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "bar")), "flex flex-wrap gap-2 gap-x-4 border-b border-border", uiutils.Cond(uiutils.T(vTiles), "grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6", "flex flex-wrap gap-2")))) }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-testid", "category-nav", "data-layout", vLayout)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-layout", vLayout, "data-slot", "category-nav")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "py-2", "py-4"))), Attrs: uiutils.Attrs("data-slot", "container")}}) {
 			if uiutils.Eq(vLayout, "toolbar") {
-				@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "mb-4 flex-wrap", Attrs: uiutils.Attrs("data-testid", "toolbar")}}) {
+				@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "mb-4 flex-wrap", Attrs: uiutils.Attrs("data-slot", "toolbar")}}) {
 					@SearchField(SearchFieldProps{Value: uiutils.Coalesce(uiutils.Get(vTools, "query"), ""), Label: uiutils.Coalesce(uiutils.Get(vTools, "search"), ""), Placeholder: uiutils.Get(vTools, "search")})
 					@compose.Select(compose.SelectProps{Size: "sm", SelectProps: selectfield.SelectProps{Name: "sort", Class: "w-48", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vTools, "sort"))}}) {
 						@selectfield.SelectOption(selectfield.SelectOptionProps{Value: uiutils.SP("sort"), Selected: true, Attrs: uiutils.Attrs("label", uiutils.Get(vTools, "sortValue"))})
@@ -56,9 +56,9 @@ templ CategoryNav(p CategoryNavProps) {
 				}
 			}
 			if uiutils.Gt(uiutils.Len(vCategories), float64(0)) {
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(vListShape), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(vListShape), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for _, vC := range uiutils.L(vCategories) {
-						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{}}) {
+						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "categories-row")}}) {
 							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vC, "href"), Class: uiutils.Cnv(uiutils.Cnv("text-sm", vLinkShape, uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vC, "id"), vCurrent)), vCurrentLook, vOtherLook))), Current: uiutils.Eq(uiutils.Get(vC, "id"), vCurrent), Testid: "item", Block: true}) {
 								if uiutils.Eq(vIcon, "show") {
 									if uiutils.T(vTiles) {

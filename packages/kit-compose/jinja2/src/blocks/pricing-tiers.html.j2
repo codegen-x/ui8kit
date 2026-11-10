@@ -33,7 +33,7 @@
       {%- endset -%}
       {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'default', 'Size': 'default'}, 'children': c_4}) }}
     {%- endset -%}
-    {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'center', 'Class': 'flex-wrap', 'Attrs': og_attrs(['data-testid', 'billing'])}, 'children': c_5}) }}
+    {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'center', 'Class': 'flex-wrap', 'Attrs': og_attrs(['data-slot', 'billing'])}, 'children': c_5}) }}
   {%- endif %}
   {%- if og_t(og_eq(og_len(v_plans), 0)) %}
     {{ og_include('blocks/empty-state.html.j2', {'p': {'icon': 'layers', 'title': og_get(v_labels, ['empty'])}}) }}
@@ -43,7 +43,7 @@
         {{ og_include('blocks/pricing-card.html.j2', {'p': {'plan': v_plan, 'labels': v_labels, 'emphasis': v_emphasis, 'billing': ('annual' if og_t(og_eq(v_billing, 'annual')) else 'monthly'), 'density': ('compact' if og_t(og_eq(v_density, 'compact')) else 'default')}}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1' if og_t(og_eq(v_layout, 'stack')) else og_fit_cols(v_cols, og_len(v_plans)))), 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'tiers'])}, 'children': c_6}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1' if og_t(og_eq(v_layout, 'stack')) else og_fit_cols(v_cols, og_len(v_plans)))), 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'tiers'])}, 'children': c_6}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': ('md' if og_t(og_eq(v_layout, 'stack')) else 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_7)}) }}

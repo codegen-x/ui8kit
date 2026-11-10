@@ -71,13 +71,13 @@ const {
         v-if="((facts?.length ?? 0) > 0)"
         tag="ul"
         class="grid grid-cols-1 gap-4 sm:grid-cols-2"
-        data-testid="facts"
+        data-slot="facts"
       >
         <ListItem
           v-for="f in facts"
           :key="f.id"
           class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4"
-          data-testid="fact"
+          data-slot="fact"
         >
           <Text size="xs" class="text-muted-foreground">
             {{ f.label }}
@@ -88,8 +88,8 @@ const {
         </ListItem>
       </List>
     </template>
-    <Stack v-else-if="((skills?.length ?? 0) > 0)" gap="4" align="stretch" data-testid="skills">
-      <Stack v-for="s in skills" :key="s.id" gap="2" align="stretch" data-testid="skill">
+    <Stack v-else-if="((skills?.length ?? 0) > 0)" gap="4" align="stretch" data-slot="skills">
+      <Stack v-for="s in skills" :key="s.id" gap="2" align="stretch" data-slot="skill">
         <Group gap="4" justify="between">
           <Text size="sm" weight="semibold">
             {{ s.label }}

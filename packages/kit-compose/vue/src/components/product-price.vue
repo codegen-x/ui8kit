@@ -24,7 +24,7 @@ const { price, compareAt, currency, badge = "", was } = defineProps<ProductPrice
 </script>
 
 <template>
-  <Group gap="4" align="center" class="flex-wrap">
+  <Group gap="4" align="center" class="flex-wrap" data-slot="product-price">
     <Text size="4xl" weight="bold">
       {{ fmtMoney(price, currency) }}
     </Text>
@@ -33,7 +33,7 @@ const { price, compareAt, currency, badge = "", was } = defineProps<ProductPrice
       tag="del"
       size="lg"
       class="relative text-muted-foreground"
-      data-testid="compare-at"
+      data-slot="compare-at"
     >
       <Inline class="sr-only">
         {{ was }}

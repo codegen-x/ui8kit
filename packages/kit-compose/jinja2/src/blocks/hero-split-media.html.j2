@@ -27,7 +27,7 @@
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-2 gap-4', 'Attrs': og_attrs(['data-testid', 'hero-grid'])}, 'children': c_3}) }}
+  {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-2 gap-4', 'Attrs': og_attrs(['data-slot', 'hero-grid'])}, 'children': c_3}) }}
 {%- endif %}
 {%- if og_t(og_and([og_eq(v_media, 'plans'), og_gt(og_len(og_get(v_content, ['plans'])), 0)])) %}
   {%- set c_8 -%}
@@ -49,9 +49,9 @@
           {%- endset -%}
           {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center'}, 'children': c_6}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': og_s(og_cnv(['absolute w-48 rounded bg-card p-4 shadow-lg', ('top-8 left-4' if og_t(og_eq(v_i, 0)) else 'right-4 bottom-8')])), 'Attrs': og_attrs(['data-testid', 'hero-plan'])}, 'children': c_7}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': og_s(og_cnv(['absolute w-48 rounded bg-card p-4 shadow-lg', ('top-8 left-4' if og_t(og_eq(v_i, 0)) else 'right-4 bottom-8')])), 'Attrs': og_attrs(['data-slot', 'hero-plan'])}, 'children': c_7}) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ og_include('compose/box.html.j2', {'p': {'Class': 'relative', 'Attrs': og_attrs(['data-testid', 'hero-media'])}, 'children': c_8}) }}
+  {{ og_include('compose/box.html.j2', {'p': {'Class': 'relative', 'Attrs': og_attrs(['data-slot', 'hero-media'])}, 'children': c_8}) }}
 {%- endif %}

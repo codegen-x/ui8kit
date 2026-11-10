@@ -42,9 +42,9 @@ templ DishShowcase(p DishShowcaseProps) {
 		if uiutils.Eq(uiutils.Len(vDishes), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "star", Title: vEmpty})
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "4")), "2-4", "1-3")), BoxProps: box.BoxProps{Class: "gap-8", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "4")), "2-4", "1-3")), BoxProps: box.BoxProps{Class: "gap-8", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vD := range uiutils.L(vDishes) {
-					@compose.Link(compose.LinkProps{Variant: "block", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Coalesce(uiutils.Get(vD, "href"), uiutils.Tpl("#/dish/{0}", uiutils.Get(vD, "id"))), false), Class: "group flex-col items-stretch gap-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Link(compose.LinkProps{Variant: "block", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Coalesce(uiutils.Get(vD, "href"), uiutils.Tpl("#/dish/{0}", uiutils.Get(vD, "id"))), false), Class: "group flex-col items-stretch gap-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: vRatio})
 						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
 							if uiutils.T(uiutils.Get(vD, "badge")) {

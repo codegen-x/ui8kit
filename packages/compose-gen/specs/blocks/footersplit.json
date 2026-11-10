@@ -84,14 +84,14 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"group\"]",
+      "sel": "[data-slot=\"group\"]",
       "n": "@sitemap",
       "when": {
         "layout": "stats"
       }
     },
     {
-      "sel": "[data-testid=\"group\"]",
+      "sel": "[data-slot=\"group\"]",
       "n": 3,
       "when": {
         "layout": [
@@ -101,7 +101,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"group\"]",
+      "sel": "[data-slot=\"group\"]",
       "n": 0,
       "when": {
         "layout": [
@@ -112,7 +112,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"footer-stat\"]",
+      "sel": "[data-slot=\"footer-stat\"]",
       "n": 3,
       "when": {
         "layout": [
@@ -122,28 +122,28 @@
       }
     },
     {
-      "sel": "[data-testid=\"footer-point\"]",
+      "sel": "[data-slot=\"footer-point\"]",
       "n": 4,
       "when": {
         "layout": "points"
       }
     },
     {
-      "sel": "[data-testid=\"signup\"]",
+      "sel": "[data-slot=\"signup\"]",
       "n": 1,
       "when": {
         "layout": "newsletter"
       }
     },
     {
-      "sel": "[data-testid=\"footer-contact\"]",
+      "sel": "[data-slot=\"footer-contact\"]",
       "n": "@contacts",
       "when": {
         "layout": "contacts"
       }
     },
     {
-      "sel": "[data-testid=\"footer-channel\"]",
+      "sel": "[data-slot=\"footer-channel\"]",
       "n": 3,
       "when": {
         "layout": "channels"

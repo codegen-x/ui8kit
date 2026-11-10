@@ -62,7 +62,7 @@ const {
       :class="cn(
         (((layout as string) === 'card') ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')
       )"
-      data-testid="summary"
+      data-slot="summary"
     >
       <Stack gap="4" align="stretch">
         <List tag="ul" class="flex flex-col gap-4">
@@ -74,7 +74,7 @@ const {
                 : 'text-sm text-muted-foreground'
               )
             )"
-            data-testid="item"
+            data-slot="item"
           >
             <Inline>
               {{ row.label }}
@@ -84,13 +84,7 @@ const {
             </Inline>
           </ListItem>
         </List>
-        <Button
-          v-if="((cta as string) === 'show')"
-          variant="default"
-          size="default"
-          class="w-full"
-          data-testid="checkout"
-        >
+        <Button v-if="((cta as string) === 'show')" variant="default" size="default" class="w-full">
           {{ labels.checkout }}
         </Button>
         <Text v-if="((note as string) === 'show')" size="xs" class="text-muted-foreground">

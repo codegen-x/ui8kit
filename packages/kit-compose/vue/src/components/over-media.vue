@@ -19,7 +19,7 @@ const { on = false, alt } = defineProps<OverMediaProps>();
 </script>
 
 <template>
-  <Box v-if="on" class="pointer-events-none absolute inset-0 -z-10" data-testid="over">
+  <Box v-if="on" class="pointer-events-none absolute inset-0 -z-10" data-slot="over">
     <MediaFrame :alt="alt" ratio="21/9" class="size-full rounded-none opacity-40" />
   </Box>
 </template>

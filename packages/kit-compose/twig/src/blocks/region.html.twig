@@ -7,4 +7,4 @@
 {%- set c_1 -%}
   {{ og_slot((children ?? null))|raw }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': og_s(v_tag), 'class': og_s((p.className ?? '')), 'attrs': og_attrs(['aria-label', v_landmarkLabel]), 'children': c_1}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': og_s(v_tag), 'class': og_s((p.className ?? '')), 'attrs': og_attrs(['aria-label', v_landmarkLabel, 'data-slot', 'region']), 'children': c_1}, with_context = false) }}

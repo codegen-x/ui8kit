@@ -30,7 +30,7 @@
         "Class": "flex flex-col gap-0 border-b border-border py-2"
       },
       "attrs": {
-        "data-testid": "item"
+        "data-slot": "item"
       },
       "children": [
         {
@@ -99,7 +99,7 @@
                     "Class": "font-semibold"
                   },
                   "attrs": {
-                    "data-testid": "price"
+                    "data-slot": "price"
                   },
                   "children": [
                     {

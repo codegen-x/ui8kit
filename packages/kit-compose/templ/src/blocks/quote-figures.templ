@@ -18,10 +18,10 @@ type QuoteFiguresProps struct {
 // Three figures in a row above the quotes of QuoteSplit.
 templ QuoteFigures(p QuoteFiguresProps) {
 	{{ vExtras := p.Extras }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-4 border-b border-border pb-8", Attrs: uiutils.Attrs("data-testid", "quote-figures")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-4 border-b border-border pb-8", Attrs: uiutils.Attrs("data-slot", "quote-figures")}}) {
 		for vI, vS := range uiutils.L(uiutils.Get(vExtras, "stats")) {
 			if uiutils.Lt(float64(vI), float64(3)) {
-				@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "quote-stat")}}) {
+				@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "quote-stat")}}) {
 					@compose.Text(compose.TextProps{Size: "3xl", Weight: "bold", TextProps: text.TextProps{}}) {
 						{ uiutils.Text(uiutils.Get(vS, "value")) }
 					}

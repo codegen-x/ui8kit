@@ -22,7 +22,7 @@ templ ShellFooter(p ShellFooterProps) {
 	{{ vNav := p.Nav }}
 	{{ vPlace := uiutils.Def(p.Place, "full") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "footer", Class: uiutils.S(uiutils.Cnv("flex shrink-0 flex-wrap items-center justify-between gap-4 border-t border-border px-6 py-4", uiutils.Cond(uiutils.T(uiutils.Eq(vPlace, "full")), "bg-card", ""))), Attrs: uiutils.Attrs("data-testid", "footer", "data-place", vPlace, "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "footer", Class: uiutils.S(uiutils.Cnv("flex shrink-0 flex-wrap items-center justify-between gap-4 border-t border-border px-6 py-4", uiutils.Cond(uiutils.T(uiutils.Eq(vPlace, "full")), "bg-card", ""))), Attrs: uiutils.Attrs("data-place", vPlace, "aria-label", vLandmarkLabel, "data-slot", "footer")}}) {
 		@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
 			{ uiutils.Text(uiutils.Get(vNav, "copyright")) }
 		}
@@ -30,7 +30,7 @@ templ ShellFooter(p ShellFooterProps) {
 			@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vNav, "footerLabel"), vLandmarkLabel)), uiutils.Get(vNav, "footerLabel"))}) {
 				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none items-center gap-4 p-0"}}) {
 					for _, vF := range uiutils.L(uiutils.Get(vNav, "footer")) {
-						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{}}) {
+						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "footer-row")}}) {
 							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vF, "href"), Class: uiutils.Cnv("text-xs text-muted-foreground"), Variant: "muted", Size: "sm"}) {
 								{ uiutils.Text(uiutils.Get(vF, "name")) }
 							}

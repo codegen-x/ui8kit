@@ -63,7 +63,7 @@
         {%- set c_11 -%}
           {{ og_text(v_feature) }}
         {%- endset -%}
-        {{ include('compose/ListItem.html.twig', {'class': 'flex gap-2', 'children': c_11}, with_context = false) }}
+        {{ include('compose/ListItem.html.twig', {'class': 'flex gap-2', 'attrs': og_attrs(['data-slot', 'features-row']), 'children': c_11}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
     {{ include('compose/List.html.twig', {'tag': 'ul', 'class': 'flex flex-col gap-2 text-sm', 'children': c_12}, with_context = false) }}
@@ -73,7 +73,7 @@
     {%- set c_14 -%}
       {{ og_text(og_get(v_labels, ['cta'])) }}
     {%- endset -%}
-    {{ include('compose/Button.html.twig', {'variant': og_s((og_t(v_stand) ? 'default' : 'outline')), 'size': 'default', 'attrs': og_attrs(['data-testid', 'plan-select']), 'children': c_14}, with_context = false) }}
+    {{ include('compose/Button.html.twig', {'variant': og_s((og_t(v_stand) ? 'default' : 'outline')), 'size': 'default', 'children': c_14}, with_context = false) }}
     {%- if (p.footer ?? null) is not null %}
       {{ include(p.footer.t, p.footer.v|merge({'a0': v_plan}), with_context = false) }}
     {%- endif %}

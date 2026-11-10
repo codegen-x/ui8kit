@@ -75,14 +75,14 @@
             }
           ]
         },
-        "data-testid": "section",
         "data-tone": {
           "$": "tone"
         },
         "data-density": "compact",
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "section"
       },
       "children": [
         {
@@ -103,7 +103,7 @@
             }
           },
           "attrs": {
-            "data-testid": "cta-banner"
+            "data-slot": "cta-banner"
           },
           "children": [
             {
@@ -187,9 +187,6 @@
                     "cta.button"
                   ]
                 }
-              },
-              "attrs": {
-                "data-testid": "action-primary"
               },
               "children": [
                 {

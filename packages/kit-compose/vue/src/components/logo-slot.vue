@@ -20,7 +20,6 @@ const { name, icon } = defineProps<LogoSlotProps>();
 <template>
   <Box
     :class="cn('flex shrink-0 items-center justify-center text-muted-foreground', defaults.logos.slot)"
-    data-testid="item"
     data-slot="logo-slot"
   >
     <LucideIcon :name="icon" :size="defaults.logos.glyph" />

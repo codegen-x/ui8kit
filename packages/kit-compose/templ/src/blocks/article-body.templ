@@ -48,8 +48,8 @@ templ ArticleBody(p ArticleBodyProps) {
 							}
 							@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-2 p-0"}}) {
 								for _, vS := range uiutils.L(vSections) {
-									@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{}}) {
-										@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Tpl("#{0}-{1}", vId, uiutils.Get(vS, "id")), false), Class: "text-sm text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "toc-link")}}) {
+									@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "sections-row")}}) {
+										@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Tpl("#{0}-{1}", vId, uiutils.Get(vS, "id")), false), Class: "text-sm text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "toc-link")}}) {
 											{ uiutils.Text(uiutils.Get(vS, "title")) }
 										}
 									}
@@ -58,9 +58,9 @@ templ ArticleBody(p ArticleBodyProps) {
 						}
 					}
 				}
-				@compose.Stack(compose.StackProps{Gap: "8", Align: "stretch", BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-2xl min-w-0", Attrs: uiutils.Attrs("data-testid", "article")}}) {
+				@compose.Stack(compose.StackProps{Gap: "8", Align: "stretch", BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-2xl min-w-0", Attrs: uiutils.Attrs("data-slot", "article")}}) {
 					for _, vS := range uiutils.L(vSections) {
-						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-4", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-{1}", vId, uiutils.Get(vS, "id")), "data-testid", "item")}}) {
+						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-4", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-{1}", vId, uiutils.Get(vS, "id")), "data-slot", "item")}}) {
 							@compose.Title(compose.TitleProps{As: "3", Size: "2xl", Weight: "bold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vS, "title")) }
 							}
@@ -69,7 +69,7 @@ templ ArticleBody(p ArticleBodyProps) {
 							}
 							if uiutils.Eq(vQuotes, "show") {
 								if uiutils.T(uiutils.Get(vS, "quote")) {
-									@compose.Text(compose.TextProps{TextProps: text.TextProps{Tag: "blockquote", Class: "m-0 border-l border-border pl-4 text-lg", Attrs: uiutils.Attrs("data-testid", "quote")}}) {
+									@compose.Text(compose.TextProps{TextProps: text.TextProps{Tag: "blockquote", Class: "m-0 border-l border-border pl-4 text-lg", Attrs: uiutils.Attrs("data-slot", "quote")}}) {
 										{ uiutils.Text(uiutils.Get(vS, "quote")) }
 									}
 								}

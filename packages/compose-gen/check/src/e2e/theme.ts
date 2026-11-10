@@ -10,6 +10,8 @@ const PHONE = 390;
 const DESKTOP = 1100;
 /** the slack, in px, of the rounding of boxes */
 const SLACK = 2;
+/** visible label of the composed navbar theme button (ui.theme.toggle); the old data-testid hook was dropped when block testids became data-slot */
+const THEME_TOGGLE_LABEL = "Light or dark";
 
 export async function themeScenario(page: Page, base: string, screen: string, shot: Shot, snap: Snap): Promise<E2eResult> {
   const failures: string[] = [];
@@ -25,18 +27,18 @@ export async function themeScenario(page: Page, base: string, screen: string, sh
 
   for (const mode of ["light", "dark"] as const) {
     if (mode === "dark") {
-      await page.getByTestId("theme-toggle").first().click();
+      await page.getByRole("button", { name: THEME_TOGGLE_LABEL }).first().click();
       expect("the theme button sets dark", (await theme()) === "dark", await theme());
     }
     for (const p of app.pages) {
       const area = areaOf(p.path);
       const where = `${area}${mode === "dark" ? " (dark)" : ""}`;
       await visit(p.path);
-      if (mode === "dark" && (await theme()) !== "dark") await page.getByTestId("theme-toggle").first().click();
+      if (mode === "dark" && (await theme()) !== "dark") await page.getByRole("button", { name: THEME_TOGGLE_LABEL }).first().click();
       await pageChecks(page, expect, where);
       const want = texts[area]?.title;
       if (want !== undefined) expect(`${where}: the h1 is the title of the page`, (await page.locator("h1").first().innerText()) === want, [want, await page.locator("h1").first().innerText()]);
-      expect(`${where}: the frame has a header with the skip link, and a footer`, (await page.locator("header").count()) >= 1 && (await page.getByTestId("skip-link").count()) >= 1 && (await page.locator("footer").count()) >= 1);
+      expect(`${where}: the frame has a header with the skip link, and a footer`, (await page.locator("header").count()) >= 1 && (await page.locator('[data-slot="skip-link"]').count()) >= 1 && (await page.locator("footer").count()) >= 1);
       expect(`${where}: the page has at least one block besides the lead`, p.rest.length === 0 || (await page.locator("main section, main aside, main nav").count()) > 1, p.rest.length);
       for (const w of [DESKTOP, PHONE]) {
         await page.setViewportSize({ width: w, height: 900 });
@@ -50,7 +52,7 @@ export async function themeScenario(page: Page, base: string, screen: string, sh
     }
     expect(`${mode}: the theme stays across routes`, (await theme()) === mode, await theme());
   }
-  await page.getByTestId("theme-toggle").first().click();
+  await page.getByRole("button", { name: THEME_TOGGLE_LABEL }).first().click();
   expect("the theme toggles back to light", (await theme()) === "light", await theme());
 
   // keyboard: the first Tab lands on the skip link; Enter keeps the route and moves to main
@@ -58,7 +60,7 @@ export async function themeScenario(page: Page, base: string, screen: string, sh
   await page.reload();
   await page.waitForSelector("main#main-content h1");
   await page.keyboard.press("Tab");
-  expect("the first Tab lands on the skip link", (await page.evaluate(() => document.activeElement?.getAttribute("data-testid"))) === "skip-link");
+  expect("the first Tab lands on the skip link", (await page.evaluate(() => document.activeElement?.getAttribute("data-slot"))) === "skip-link");
   await page.keyboard.press("Enter");
   expect("the skip link moves focus to main", (await page.evaluate(() => document.activeElement?.id)) === "main-content");
 
@@ -68,7 +70,7 @@ export async function themeScenario(page: Page, base: string, screen: string, sh
   const menuLinks = (): Promise<Array<{ text: string; href: string; current: boolean }>> => page.evaluate(() => {
     const main = document.querySelector("main");
     const roots = [...document.querySelectorAll("header")].filter((h) => !main?.contains(h));
-    return roots.flatMap((h) => [...h.querySelectorAll<HTMLAnchorElement>('[data-testid="nav-link"]')].map((a) => ({ text: a.innerText.trim(), href: a.getAttribute("href") ?? "", current: a.getAttribute("aria-current") === "page" })));
+    return roots.flatMap((h) => [...h.querySelectorAll<HTMLAnchorElement>('[data-slot="nav-link"]')].map((a) => ({ text: a.innerText.trim(), href: a.getAttribute("href") ?? "", current: a.getAttribute("aria-current") === "page" })));
   });
   const labels = await menuLinks();
   expect("the menu of the bar has one link per page, in order", labels.length === app.pages.length && labels.every((l, i) => l.href === (app.pages[i]!.path === "" ? "#/" : `#/${app.pages[i]!.path}`)), labels);
@@ -79,7 +81,7 @@ export async function themeScenario(page: Page, base: string, screen: string, sh
     const clicked = await page.evaluate((n) => {
       const main = document.querySelector("main");
       const roots = [...document.querySelectorAll("header")].filter((h) => !main?.contains(h));
-      const a = roots.flatMap((h) => [...h.querySelectorAll<HTMLAnchorElement>('[data-testid="nav-link"]')])[n];
+      const a = roots.flatMap((h) => [...h.querySelectorAll<HTMLAnchorElement>('[data-slot="nav-link"]')])[n];
       if (!a) return null;
       a.click();
       return a.getAttribute("href");

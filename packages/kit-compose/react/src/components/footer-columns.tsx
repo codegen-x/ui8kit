@@ -15,16 +15,16 @@ export function FooterColumns({ label, groups, landmarkLabel }: FooterColumnsPro
   return (
     <>
       {((groups?.length ?? 0) > 0) ? (
-        <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
-          <Grid cols="1" className="grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" data-testid="footer-groups">
+        <Block tag="nav" aria-label={(landmarkLabel ?? label)} data-slot="footer-columns">
+          <Grid cols="1" className="grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" data-slot="footer-groups">
             {(groups ?? []).map((g) => (
-              <Stack key={g.id} gap="2" data-testid="group">
+              <Stack key={g.id} gap="2" data-slot="group">
                 <Text size="sm" weight="semibold">
                   {g.title}
                 </Text>
                 <List className="m-0 flex list-none flex-col gap-2 p-0">
                   {(g.links ?? []).map((item) => (
-                    <ListItem key={item.id}>
+                    <ListItem key={item.id} data-slot="links-row">
                       <MenuEntry href={item.href} className="text-sm text-muted-foreground">
                         {item.name}
                       </MenuEntry>

@@ -15,7 +15,7 @@ export type MenuRowProps = {
 
 export function MenuRow({ dish, prices = "show" }: MenuRowProps) {
   return (
-    <ListItem className="flex flex-col gap-0 border-b border-border py-2" data-testid="item">
+    <ListItem className="flex flex-col gap-0 border-b border-border py-2" data-slot="item">
       <Box className="flex items-baseline gap-2">
         <Inline className="font-semibold">
           {dish.name}
@@ -28,7 +28,7 @@ export function MenuRow({ dish, prices = "show" }: MenuRowProps) {
         {((prices as string) === "show") ? (
           <>
             <Inline className="flex-1 border-b border-dotted border-border" aria-hidden="true" />
-            <Inline className="font-semibold" data-testid="price">
+            <Inline className="font-semibold" data-slot="price">
               {fmtMoney(dish.price, dish.currency)}
             </Inline>
           </>

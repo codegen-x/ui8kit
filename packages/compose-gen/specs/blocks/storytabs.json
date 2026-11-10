@@ -48,35 +48,35 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"story-tab\"]",
+      "sel": "[data-slot=\"story-tabs\"] > [data-slot=\"button\"]",
       "n": "@milestones",
       "when": {
         "layout": "years"
       }
     },
     {
-      "sel": "[data-testid=\"story-panel\"]",
+      "sel": "[data-slot=\"story-panel\"]",
       "n": 1,
       "when": {
         "layout": "years"
       }
     },
     {
-      "sel": "[data-testid=\"story-dot\"]",
+      "sel": "[data-slot=\"story-dot\"]",
       "n": "@milestones",
       "when": {
         "layout": "carousel"
       }
     },
     {
-      "sel": "[data-testid=\"story-arrow\"]",
+      "sel": "[data-slot=\"button\"]:has([data-lucide^=\"chevron\"])",
       "n": 2,
       "when": {
         "layout": "carousel"
       }
     },
     {
-      "sel": "[data-testid=\"story-tab\"]",
+      "sel": "[data-slot=\"story-tabs\"] > [data-slot=\"button\"]",
       "n": 0,
       "when": {
         "layout": "carousel"

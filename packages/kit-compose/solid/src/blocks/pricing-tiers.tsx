@@ -58,7 +58,7 @@ export function PricingTiers({
       landmarkLabel={landmarkLabel}
     >
       {((billing as string) !== "off") ? (
-        <Group gap="4" align="center" justify="center" class="flex-wrap" data-testid="billing">
+        <Group gap="4" align="center" justify="center" class="flex-wrap" data-slot="billing">
           <Switcher label={billingLabels.label}>
             <SwitcherItem active={((billing as string) === "monthly")} onClick={() => onBilling?.("monthly")}>
               {billingLabels.monthly}
@@ -78,7 +78,7 @@ export function PricingTiers({
         <Grid
           cols={(((layout as string) === "stack") ? "1" : fitCols(cols, (plans?.length ?? 0)))}
           class="gap-4"
-          data-testid="tiers"
+          data-slot="tiers"
         >
           <For each={plans ?? []}>{(plan) => (
             <PricingCard

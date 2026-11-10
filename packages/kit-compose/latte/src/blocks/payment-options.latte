@@ -22,7 +22,7 @@
       {/capture}
       {=og_include('compose/Inline.latte', ['class' => 'flex flex-col items-start justify-start gap-0', 'children' => (string) $c_3])|noescape}
     {/capture}
-    {=og_include('compose/Label.latte', ['class' => 'flex items-center gap-4 rounded p-4 inset-ring inset-ring-border has-checked:inset-ring-foreground', 'attrs' => og_attrs(['data-testid', 'payment']), 'children' => (string) $c_4])|noescape}
+    {=og_include('compose/Label.latte', ['class' => 'flex items-center gap-4 rounded p-4 inset-ring inset-ring-border has-checked:inset-ring-foreground', 'attrs' => og_attrs(['data-slot', 'payment']), 'children' => (string) $c_4])|noescape}
   {/foreach}
 {/capture}
-{=og_include('compose/Grid.latte', ['cols' => '1-2', 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'payments']), 'children' => (string) $c_5])|noescape}
+{=og_include('compose/Grid.latte', ['cols' => '1-2', 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'payments']), 'children' => (string) $c_5])|noescape}

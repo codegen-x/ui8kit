@@ -58,7 +58,7 @@
       {/capture}
       {=og_include('compose/Badge.latte', ['variant' => 'secondary', 'size' => 'default', 'class' => 'w-fit', 'children' => (string) $c_13])|noescape}
     {/capture}
-    {=og_include('compose/Stack.latte', ['gap' => '4', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_14])|noescape}
+    {=og_include('compose/Stack.latte', ['gap' => '4', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_14])|noescape}
   {/foreach}
 {/capture}
-{=og_include('compose/Grid.latte', ['cols' => '1-4', 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_15])|noescape}
+{=og_include('compose/Grid.latte', ['cols' => '1-4', 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_15])|noescape}

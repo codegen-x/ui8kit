@@ -21,7 +21,7 @@
       {capture $c_3}
         {=og_text(og_money(og_get($v_dish, ['price']), og_get($v_dish, ['currency'])))}
       {/capture}
-      {=og_include('compose/Inline.latte', ['class' => 'font-semibold', 'attrs' => og_attrs(['data-testid', 'price']), 'children' => (string) $c_3])|noescape}
+      {=og_include('compose/Inline.latte', ['class' => 'font-semibold', 'attrs' => og_attrs(['data-slot', 'price']), 'children' => (string) $c_3])|noescape}
     {/if}
   {/capture}
   {=og_include('compose/Box.latte', ['class' => 'flex items-baseline gap-2', 'children' => (string) $c_4])|noescape}
@@ -30,4 +30,4 @@
   {/capture}
   {=og_include('compose/Inline.latte', ['class' => 'text-sm text-muted-foreground', 'children' => (string) $c_5])|noescape}
 {/capture}
-{=og_include('compose/ListItem.latte', ['class' => 'flex flex-col gap-0 border-b border-border py-2', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_6])|noescape}
+{=og_include('compose/ListItem.latte', ['class' => 'flex flex-col gap-0 border-b border-border py-2', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_6])|noescape}

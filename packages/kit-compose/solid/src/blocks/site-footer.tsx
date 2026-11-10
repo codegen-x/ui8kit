@@ -30,9 +30,9 @@ export function SiteFooter({
     <Block
       tag="footer"
       class="mt-12 border-t border-border"
-      data-testid="site-footer"
       data-layout={layout}
       aria-label={landmarkLabel}
+      data-slot="site-footer"
     >
       <Container
         class={cn(
@@ -43,7 +43,7 @@ export function SiteFooter({
         )}
         data-slot="container"
       >
-        <Text size="sm" class="text-muted-foreground" data-testid="copyright">
+        <Text size="sm" class="text-muted-foreground" data-slot="copyright">
           {labels.copyright}
         </Text>
         <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", labels.nav, landmarkLabel)) : labels.nav)}>

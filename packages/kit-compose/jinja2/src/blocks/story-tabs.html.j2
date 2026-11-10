@@ -32,10 +32,10 @@
           {%- endset -%}
           {{ og_include('compose/inline.html.j2', {'p': {'Class': 'text-xs'}, 'children': c_3}) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': og_s(('default' if og_t(og_eq(og_get(v_s, ['id']), v_active)) else 'outline')), 'Size': 'lg', 'Type': 'button', 'Class': 'h-auto flex-col items-start gap-0 py-2 text-start', 'Attrs': og_attrs(['data-testid', 'story-tab', 'data-active', ('true' if og_t(og_eq(og_get(v_s, ['id']), v_active)) else 'false')])}, 'children': c_4}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': og_s(('default' if og_t(og_eq(og_get(v_s, ['id']), v_active)) else 'outline')), 'Size': 'lg', 'Type': 'button', 'Class': 'h-auto flex-col items-start gap-0 py-2 text-start', 'Attrs': og_attrs(['data-active', ('true' if og_t(og_eq(og_get(v_s, ['id']), v_active)) else 'false')])}, 'children': c_4}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-2 gap-2 sm:grid-cols-4', 'Attrs': og_attrs(['data-testid', 'story-tabs'])}, 'children': c_5}) }}
+    {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-2 gap-2 sm:grid-cols-4', 'Attrs': og_attrs(['data-slot', 'story-tabs'])}, 'children': c_5}) }}
     {%- for v_s in og_l(v_steps) %}
       {%- set v_i = loop.index0 -%}
       {%- if og_t(og_eq(og_get(v_s, ['id']), v_active)) %}
@@ -52,12 +52,12 @@
         {%- set c_8 -%}
           {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'chevron-left', 'Size': 16}}) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(og_get(v_labels, ['previous'])), 'Attrs': og_attrs(['data-testid', 'story-arrow'])}, 'children': c_8}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(og_get(v_labels, ['previous']))}, 'children': c_8}) }}
         {{ og_include('blocks/story-dots.html.j2', {'p': {'steps': v_steps, 'active': v_active}}) }}
         {%- set c_9 -%}
           {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'chevron-right', 'Size': 16}}) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(og_get(v_labels, ['next'])), 'Attrs': og_attrs(['data-testid', 'story-arrow'])}, 'children': c_9}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(og_get(v_labels, ['next']))}, 'children': c_9}) }}
       {%- endset -%}
       {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between'}, 'children': c_10}) }}
     {%- endset -%}

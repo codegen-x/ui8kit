@@ -63,7 +63,7 @@
         "Class": "gap-4 p-4"
       },
       "attrs": {
-        "data-testid": "lightbox"
+        "data-slot": "lightbox"
       },
       "children": [
         {
@@ -104,9 +104,6 @@
                 "AriaLabel": {
                   "$": "labels.close"
                 }
-              },
-              "attrs": {
-                "data-testid": "lightbox-close"
               },
               "children": [
                 {

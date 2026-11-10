@@ -41,9 +41,9 @@ templ IconWall(p IconWallProps) {
 		if uiutils.Eq(uiutils.Len(vFeatures), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "layout-grid", Title: vEmpty})
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(vWallCols), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(vWallCols), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vF := range uiutils.L(vFeatures) {
-					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex items-center gap-2", "rounded bg-card inset-ring inset-ring-border", uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "tile")), uiutils.Cnv("flex-col justify-center text-center", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "p-4", "p-6")), "px-4 py-2"))), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex items-center gap-2", "rounded bg-card inset-ring inset-ring-border", uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "tile")), uiutils.Cnv("flex-col justify-center text-center", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "p-4", "p-6")), "px-4 py-2"))), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: uiutils.I(uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "tile")), float64(24), float64(16)))})
 						@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vF, "title")) }

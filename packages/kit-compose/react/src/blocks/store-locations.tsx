@@ -53,7 +53,7 @@ export function StoreLocations({
               (layout as string) === "cards" ? "grid grid-cols-1 gap-4 md:grid-cols-2"
               : "flex flex-col gap-4"
             }
-            data-testid="items"
+            data-slot="items"
           >
             {(stores ?? []).map((s) => (
               <Stack key={s.id}
@@ -62,7 +62,7 @@ export function StoreLocations({
                   (layout as string) === "list" ? "border-b border-border pb-4"
                   : "rounded bg-card inset-ring inset-ring-border p-6"
                 }
-                data-testid="item"
+                data-slot="item"
               >
                 <Stack gap="2">
                   <Badge variant="outline" size="default" className="w-fit">

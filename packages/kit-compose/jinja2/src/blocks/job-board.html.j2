@@ -50,15 +50,15 @@
                 {%- endset -%}
                 {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'outline', 'Size': 'default'}, 'children': c_7}) }}
               {%- endset -%}
-              {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex flex-wrap items-center justify-between gap-4 border-b border-border py-4', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_8}) }}
+              {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex flex-wrap items-center justify-between gap-4 border-b border-border py-4', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_8}) }}
             {%- endfor %}
           {%- endset -%}
           {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col'}, 'children': c_9}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'group'])}, 'children': c_10}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'group'])}, 'children': c_10}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '8', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'groups'])}, 'children': c_11}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '8', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'groups'])}, 'children': c_11}) }}
   {%- else %}
     {{ og_include('blocks/job-cards.html.j2', {'p': {'jobs': v_jobs, 'departments': v_departments, 'labels': v_labels, 'layout': v_layout, 'salary': v_salary}}) }}
   {%- endif %}

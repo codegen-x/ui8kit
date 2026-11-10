@@ -64,15 +64,15 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@testimonials"
     },
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "cols": "$cols"
     },
     {
-      "sel": "[data-testid=\"play\"]",
+      "sel": "[data-slot=\"button\"]:has([data-lucide=\"play\"])",
       "n": "@testimonials"
     }
   ],

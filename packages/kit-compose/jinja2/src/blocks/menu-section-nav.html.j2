@@ -15,9 +15,9 @@
         {%- endset -%}
         {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_tpl('#{0}-{1}', [v_prefix, og_get(v_s, ['key'])]))), 'Variant': 'nav', 'Size': 'sm', 'Class': 'h-8 rounded px-4 inset-ring inset-ring-border'}, 'children': c_1}) }}
       {%- endset -%}
-      {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_2}) }}
+      {{ og_include('compose/list-item.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'sections-row'])}, 'children': c_2}) }}
     {%- endfor %}
   {%- endset -%}
   {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-wrap gap-2'}, 'children': c_3}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-testid', 'section-nav'])}, 'children': c_4}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-slot', 'section-nav'])}, 'children': c_4}) }}

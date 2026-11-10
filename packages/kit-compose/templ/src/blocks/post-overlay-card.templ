@@ -23,7 +23,7 @@ templ PostOverlayCard(p PostOverlayCardProps) {
 	{{ vP := p.P }}
 	{{ vLabels := p.Labels }}
 	{{ vRatio := uiutils.Def(p.Ratio, "4/3") }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative overflow-hidden rounded", Attrs: uiutils.Attrs("data-testid", "post-overlay")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative overflow-hidden rounded", Attrs: uiutils.Attrs("data-slot", "post-overlay")}}) {
 		@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title"), Ratio: vRatio, Class: uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vRatio, "4/3")), "min-h-80", "min-h-64"))})
 		@compose.Stack(compose.StackProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: "absolute bottom-4 left-4 right-4 rounded bg-background p-4"}}) {
 			@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {

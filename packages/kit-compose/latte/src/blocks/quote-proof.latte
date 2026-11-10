@@ -15,4 +15,4 @@
   {/capture}
   {=og_include('compose/Text.latte', ['size' => 'sm', 'class' => 'text-muted-foreground', 'children' => (string) $c_2])|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'figure', 'class' => og_s(og_cnv(['flex flex-col gap-2', (og_t($v_center) ? 'items-center text-center' : '')])), 'attrs' => og_attrs(['data-testid', 'proof']), 'children' => (string) $c_3])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'figure', 'class' => og_s(og_cnv(['flex flex-col gap-2', (og_t($v_center) ? 'items-center text-center' : '')])), 'attrs' => og_attrs(['data-slot', 'proof']), 'children' => (string) $c_3])|noescape}

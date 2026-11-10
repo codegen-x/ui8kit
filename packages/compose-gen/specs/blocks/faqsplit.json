@@ -91,7 +91,7 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"faq-item\"]",
+      "sel": "[data-slot=\"faq-item\"]",
       "n": "@questions",
       "when": {
         "layout": [
@@ -102,21 +102,21 @@
       }
     },
     {
-      "sel": "[data-testid=\"faq-card\"]",
+      "sel": "[data-slot=\"faq-card\"]",
       "n": "@questions",
       "when": {
         "layout": "cards"
       }
     },
     {
-      "sel": "[data-testid=\"faq-help\"]",
+      "sel": "[data-slot=\"faq-help\"]",
       "n": 1,
       "when": {
         "layout": "aside"
       }
     },
     {
-      "sel": "[data-testid=\"faq-help\"]",
+      "sel": "[data-slot=\"faq-help\"]",
       "n": 0,
       "when": {
         "layout": [
@@ -128,14 +128,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"faq-finder\"]",
+      "sel": "[data-slot=\"faq-finder\"]",
       "n": 1,
       "when": {
         "layout": "search"
       }
     },
     {
-      "sel": "[data-testid=\"faq-finder\"]",
+      "sel": "[data-slot=\"faq-finder\"]",
       "n": 0,
       "when": {
         "layout": [
@@ -147,21 +147,21 @@
       }
     },
     {
-      "sel": "[data-testid=\"faq-topic\"]",
+      "sel": "[data-slot=\"faq-finder\"] [data-slot=\"button\"][data-value]",
       "n": "@faqtabs",
       "when": {
         "layout": "search"
       }
     },
     {
-      "sel": "[data-testid=\"faq-popular\"]",
+      "sel": "[data-slot=\"faq-popular\"]",
       "n": 3,
       "when": {
         "layout": "search"
       }
     },
     {
-      "sel": "[data-testid=\"faq-cta\"]",
+      "sel": "div:not([data-slot]) > [data-slot=\"button\"]:only-child",
       "n": 1,
       "when": {
         "layout": [

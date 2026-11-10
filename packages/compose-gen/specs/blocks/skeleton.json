@@ -55,7 +55,7 @@
       "n": 1
     },
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@placeholders",
       "when": {
         "shape": [
@@ -65,7 +65,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@placeholders",
       "when": {
         "shape": "article"

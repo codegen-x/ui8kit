@@ -30,8 +30,8 @@ const { zones, labels } = defineProps<ZoneRowsProps>();
 </script>
 
 <template>
-  <Box class="w-full overflow-x-auto rounded inset-ring inset-ring-border">
-    <Table class="w-full text-left text-sm" data-testid="zone-table">
+  <Box class="w-full overflow-x-auto rounded inset-ring inset-ring-border" data-slot="zone-rows">
+    <Table class="w-full text-left text-sm" data-slot="zone-table">
       <TableCaption class="sr-only">
         {{ labels.caption }}
       </TableCaption>
@@ -58,7 +58,7 @@ const { zones, labels } = defineProps<ZoneRowsProps>();
         </TableRow>
       </TableHead>
       <TableBody>
-        <TableRow v-for="z in zones" :key="z.id" class="border-t border-border" data-testid="item">
+        <TableRow v-for="z in zones" :key="z.id" class="border-t border-border" data-slot="item">
           <TableCell class="px-4 py-4">
             <Stack gap="0">
               <Text size="sm" weight="semibold">

@@ -27,7 +27,7 @@
       {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_2}) }}
     {%- endset -%}
     {{ og_include('compose/group.html.j2', {'p': {'Justify': 'between', 'Align': 'baseline'}, 'children': c_3}) }}
-    {{ og_include('compose/range.html.j2', {'p': {'Min': og_i(og_get(v_slider, ['min'])), 'Max': og_i(og_get(v_slider, ['max'])), 'Value': og_s(v_usage), 'Attrs': og_attrs(['aria-label', og_get(v_slider, ['label']), 'data-testid', 'slider'])}}) }}
+    {{ og_include('compose/range.html.j2', {'p': {'Min': og_i(og_get(v_slider, ['min'])), 'Max': og_i(og_get(v_slider, ['max'])), 'Value': og_s(v_usage), 'Attrs': og_attrs(['aria-label', og_get(v_slider, ['label']), 'data-slot', 'slider'])}}) }}
     {%- if og_t(og_eq(v_ends, 'show')) %}
       {%- set c_6 -%}
         {%- set c_4 -%}
@@ -39,7 +39,7 @@
         {%- endset -%}
         {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_5}) }}
       {%- endset -%}
-      {{ og_include('compose/group.html.j2', {'p': {'Justify': 'between', 'Attrs': og_attrs(['data-testid', 'ends'])}, 'children': c_6}) }}
+      {{ og_include('compose/group.html.j2', {'p': {'Justify': 'between', 'Attrs': og_attrs(['data-slot', 'ends'])}, 'children': c_6}) }}
     {%- endif %}
     {%- set c_11 -%}
       {%- set c_9 -%}
@@ -50,16 +50,16 @@
         {%- set c_8 -%}
           {{ og_text(og_money(og_mul(v_usage, og_get(v_price, ['rate'])), og_get(v_price, ['currency']))) }}
         {%- endset -%}
-        {{ og_include('compose/text.html.j2', {'p': {'Size': '4xl', 'Weight': 'bold', 'Attrs': og_attrs(['data-testid', 'estimate'])}, 'children': c_8}) }}
+        {{ og_include('compose/text.html.j2', {'p': {'Size': '4xl', 'Weight': 'bold', 'Attrs': og_attrs(['data-slot', 'estimate'])}, 'children': c_8}) }}
       {%- endset -%}
       {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0'}, 'children': c_9}) }}
       {%- set c_10 -%}
         {{ og_text(v_cta) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': og_url(og_s(v_href)), 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_10}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': og_url(og_s(v_href))}, 'children': c_10}) }}
     {%- endset -%}
     {{ og_include('compose/group.html.j2', {'p': {'Justify': 'between', 'Align': 'center', 'Class': 'flex-wrap'}, 'children': c_11}) }}
   {%- endset -%}
-  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(og_cnv(['mx-auto w-full max-w-xl', ('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_layout, 'card')) else '')])), 'Attrs': og_attrs(['data-testid', 'usage'])}, 'children': c_12}) }}
+  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(og_cnv(['mx-auto w-full max-w-xl', ('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_layout, 'card')) else '')])), 'Attrs': og_attrs(['data-slot', 'usage'])}, 'children': c_12}) }}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_text, 'tone': v_tone, 'align': 'center', 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_13)}) }}

@@ -60,10 +60,10 @@
                     {/capture}
                     {=og_include('compose/Inline.latte', ['children' => (string) $c_8])|noescape}
                   {/capture}
-                  {=og_include('compose/ListItem.latte', ['class' => 'flex items-center gap-2', 'children' => (string) $c_9])|noescape}
+                  {=og_include('compose/ListItem.latte', ['class' => 'flex items-center gap-2', 'attrs' => og_attrs(['data-slot', 'items-row']), 'children' => (string) $c_9])|noescape}
                 {/foreach}
               {/capture}
-              {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => 'grid grid-cols-1 gap-2 text-sm sm:grid-cols-2', 'attrs' => og_attrs(['data-testid', 'ingredients']), 'children' => (string) $c_10])|noescape}
+              {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => 'grid grid-cols-1 gap-2 text-sm sm:grid-cols-2', 'attrs' => og_attrs(['data-slot', 'ingredients']), 'children' => (string) $c_10])|noescape}
             {/capture}
             {=og_include('compose/Stack.latte', ['gap' => '2', 'children' => (string) $c_11])|noescape}
             {=og_include('blocks/option-chips.latte', ['p' => ['name' => og_tpl('{0}-portions-{1}', [$v_id, og_get($v_d, ['id'])]), 'legend' => og_get($v_labels, ['portions']), 'options' => $v_portions]])|noescape}
@@ -75,16 +75,16 @@
               {capture $c_13}
                 {=og_text(og_get($v_labels, ['add']))}
               {/capture}
-              {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'default', 'type' => 'button', 'ariaLabel' => og_s(og_tpl(og_get($v_labels, ['addOf']), [og_get($v_d, ['name'])])), 'attrs' => og_attrs(['data-testid', 'add']), 'children' => (string) $c_13])|noescape}
+              {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'default', 'type' => 'button', 'ariaLabel' => og_s(og_tpl(og_get($v_labels, ['addOf']), [og_get($v_d, ['name'])])), 'children' => (string) $c_13])|noescape}
             {/capture}
             {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => 'between', 'class' => 'mt-auto', 'children' => (string) $c_14])|noescape}
           {/capture}
           {=og_include('compose/Stack.latte', ['gap' => '4', 'children' => (string) $c_15])|noescape}
         {/capture}
-        {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'cards')) ? 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-4' : 'rounded bg-card inset-ring inset-ring-border grid grid-cols-1 gap-8 p-6 md:grid-cols-2')), 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_16])|noescape}
+        {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'cards')) ? 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-4' : 'rounded bg-card inset-ring inset-ring-border grid grid-cols-1 gap-8 p-6 md:grid-cols-2')), 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_16])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'cards')) ? 'grid grid-cols-1 gap-8 md:grid-cols-3' : 'flex flex-col gap-8')), 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_17])|noescape}
+    {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'cards')) ? 'grid grid-cols-1 gap-8 md:grid-cols-3' : 'flex flex-col gap-8')), 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_17])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'lead' => $v_lead, 'tone' => $v_tone, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_18)])|noescape}

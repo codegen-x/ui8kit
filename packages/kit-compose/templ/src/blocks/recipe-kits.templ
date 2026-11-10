@@ -42,9 +42,9 @@ templ RecipeKits(p RecipeKitsProps) {
 		if uiutils.Eq(uiutils.Len(vDishes), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "package", Title: vEmpty})
 		} else {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "grid grid-cols-1 gap-8 md:grid-cols-3", "flex flex-col gap-8")), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "grid grid-cols-1 gap-8 md:grid-cols-3", "flex flex-col gap-8")), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vD := range uiutils.L(vDishes) {
-					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-4", "rounded bg-card inset-ring inset-ring-border grid grid-cols-1 gap-8 p-6 md:grid-cols-2")), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-4", "rounded bg-card inset-ring inset-ring-border grid grid-cols-1 gap-8 p-6 md:grid-cols-2")), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "4/3"})
 						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{}}) {
 							@compose.Group(compose.GroupProps{Gap: "2", BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
@@ -70,9 +70,9 @@ templ RecipeKits(p RecipeKitsProps) {
 								@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 									{ uiutils.Text(uiutils.Get(vLabels, "ingredients")) }
 								}
-								@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "grid grid-cols-1 gap-2 text-sm sm:grid-cols-2", Attrs: uiutils.Attrs("data-testid", "ingredients")}}) {
+								@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "grid grid-cols-1 gap-2 text-sm sm:grid-cols-2", Attrs: uiutils.Attrs("data-slot", "ingredients")}}) {
 									for _, vX := range uiutils.L(uiutils.Get(vD, "items")) {
-										@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-2"}}) {
+										@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-2", Attrs: uiutils.Attrs("data-slot", "items-row")}}) {
 											@icons.LucideIcon(icons.LucideIconProps{Name: "check", Size: 16, Class: "text-primary"})
 											@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {
 												{ uiutils.Text(vX) }
@@ -86,7 +86,7 @@ templ RecipeKits(p RecipeKitsProps) {
 								@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-xl font-bold"}}) {
 									{ uiutils.Text(uiutils.Money(uiutils.Get(vD, "price"), uiutils.Get(vD, "currency"))) }
 								}
-								@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Tpl(uiutils.Get(vLabels, "addOf"), uiutils.Get(vD, "name"))), Attrs: uiutils.Attrs("data-testid", "add")}}) {
+								@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Tpl(uiutils.Get(vLabels, "addOf"), uiutils.Get(vD, "name")))}}) {
 									{ uiutils.Text(uiutils.Get(vLabels, "add")) }
 								}
 							}

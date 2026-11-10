@@ -24,8 +24,8 @@
         {%- endset -%}
         {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': 'min-w-0'}, 'children': c_4}) }}
       {%- endset -%}
-      {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-testid', 'feature-item'])}, 'children': c_5}) }}
+      {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-slot', 'feature-item'])}, 'children': c_5}) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 gap-6 sm:grid-cols-2'}, 'children': c_6}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 gap-6 sm:grid-cols-2', 'Attrs': og_attrs(['data-slot', 'feature-pairs'])}, 'children': c_6}) }}

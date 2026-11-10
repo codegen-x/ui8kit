@@ -46,7 +46,7 @@ export function IconWall({
       {((features?.length ?? 0) === 0) ? (
         <EmptyState icon="layout-grid" title={empty} />
       ) : (
-        <Grid cols={wallCols} className="gap-4" data-testid="items">
+        <Grid cols={wallCols} className="gap-4" data-slot="items">
           {(features ?? []).map((f) => (
             <Box key={f.id}
               className={cn(
@@ -57,7 +57,7 @@ export function IconWall({
                   : "px-4 py-2"
                 )
               )}
-              data-testid="item"
+              data-slot="item"
             >
               <LucideIcon name={f.icon} size={(((item as string) === "tile") ? 24 : 16)} />
               <Text size="sm" weight="semibold">

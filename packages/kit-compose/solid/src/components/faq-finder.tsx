@@ -18,11 +18,11 @@ export type FaqFinderProps = {
 
 export function FaqFinder({ items, labels, topics }: FaqFinderProps) {
   return (
-    <Stack gap="6" align="stretch" data-testid="faq-finder">
+    <Stack gap="6" align="stretch" data-slot="faq-finder">
       <SearchField label={labels.search} placeholder={labels.search} value={(labels.query ?? "")} />
       <Group gap="2" class="flex-wrap">
         <For each={topics ?? []}>{(t) => (
-          <Button variant="outline" size="sm" data-testid="faq-topic" data-value={t.value}>
+          <Button variant="outline" size="sm" data-value={t.value}>
             {t.title}
           </Button>
         )}</For>
@@ -35,7 +35,7 @@ export function FaqFinder({ items, labels, topics }: FaqFinderProps) {
           <For each={items ?? []}>{(q, iOf) => { const i = iOf(); return (
             <>
               {(i < 3) ? (
-                <ListItem data-testid="faq-popular">
+                <ListItem data-slot="faq-popular">
                   <MenuEntry href={q.href} class="text-sm font-medium" size="sm">
                     {q.question}
                   </MenuEntry>

@@ -38,7 +38,7 @@
         "Align": "stretch"
       },
       "attrs": {
-        "data-testid": "faq-finder"
+        "data-slot": "faq-finder"
       },
       "children": [
         {
@@ -84,7 +84,6 @@
                     "Size": "sm"
                   },
                   "attrs": {
-                    "data-testid": "faq-topic",
                     "data-value": {
                       "$": "t.value"
                     }
@@ -150,7 +149,7 @@
                         {
                           "use": "ListItem",
                           "attrs": {
-                            "data-testid": "faq-popular"
+                            "data-slot": "faq-popular"
                           },
                           "children": [
                             {

@@ -90,32 +90,32 @@
   },
   "facts": [
     {
-      "sel": "[data-testid=\"nav-link\"]",
+      "sel": "[data-slot=\"nav-link\"]",
       "n": "@navlinks"
     },
     {
-      "sel": "[data-testid=\"header-cta\"]",
+      "sel": "[data-slot=\"button\"][href=\"#/\"]",
       "n": 1,
       "when": {
         "actions.mode": "cta"
       }
     },
     {
-      "sel": "[data-testid=\"header-cta\"]",
+      "sel": "[data-slot=\"button\"][href=\"#/\"]",
       "n": 0,
       "when": {
         "actions.mode": "none"
       }
     },
     {
-      "sel": "[data-testid=\"palette\"]",
+      "sel": "[data-slot=\"palette\"]",
       "n": 1,
       "when": {
         "layout": "search"
       }
     },
     {
-      "sel": "[data-testid=\"palette\"]",
+      "sel": "[data-slot=\"palette\"]",
       "n": 0,
       "when": {
         "layout": [
@@ -125,14 +125,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"over\"]",
+      "sel": "[data-slot=\"over\"]",
       "n": 1,
       "when": {
         "over": "media"
       }
     },
     {
-      "sel": "[data-testid=\"over\"]",
+      "sel": "[data-slot=\"over\"]",
       "n": 0,
       "when": {
         "over": "none"

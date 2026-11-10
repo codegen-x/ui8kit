@@ -18,7 +18,7 @@ const team = define({
     ["list", "Rows beside a picture", { layout: "list" }],
     ["directory", "Directory, two columns, compact", { layout: "directory", density: "compact" }],
   ],
-  facts: [{ sel: '[data-testid="item"]', n: "@members" }, ...when2('[data-slot="media"]', 1, "layout", "list", ["cards", "minimal", "detailed", "directory"])],
+  facts: [{ sel: '[data-slot="item"]', n: "@members" }, ...when2('[data-slot="media"]', 1, "layout", "list", ["cards", "minimal", "detailed", "directory"])],
   sample: { id: "team", title: c("team.title"), lead: c("team.lead"), members: ref("members"), empty: t("empty.members"), depts: c("depts") },
 });
 
@@ -34,10 +34,10 @@ const photos = define({
     ["cards", "Cards with a tag, compact", { layout: "cards", density: "compact" }],
   ],
   facts: [
-    { sel: '[data-testid="item"]', n: "@photos", when: { layout: ["grid", "masonry", "mosaic", "cards"] } },
-    { sel: '[data-testid="thumbs"] [data-slot="media-frame"]', n: "@photos", when: { layout: "featured" } },
-    { sel: '[data-testid="caption"]', n: "@photos", when: { layout: ["grid", "masonry"], captions: "show" } },
-    { sel: '[data-testid="caption"]', n: 0, when: { captions: "hide" } },
+    { sel: '[data-slot="item"]', n: "@photos", when: { layout: ["grid", "masonry", "mosaic", "cards"] } },
+    { sel: '[data-slot="thumbs"] [data-slot="media-frame"]', n: "@photos", when: { layout: "featured" } },
+    { sel: '[data-slot="caption"]', n: "@photos", when: { layout: ["grid", "masonry"], captions: "show" } },
+    { sel: '[data-slot="caption"]', n: 0, when: { captions: "hide" } },
   ],
   sample: { id: "photos", title: c("photos.title"), lead: c("photos.lead"), photos: ref("photos"), empty: t("empty.photos"), labels: c("photos") },
 });
@@ -53,7 +53,7 @@ const projects = define({
     ["list", "List beside a collage", { layout: "list" }],
     ["cardsMuted", "Cards, muted, compact", { tone: "muted", density: "compact" }],
   ],
-  facts: [{ sel: '[data-testid="item"]', n: "@projects" }, { sel: '[data-testid="featured"]', n: 2, when: { layout: ["cards", "overlay", "bento"] } }, { sel: '[data-testid="featured"]', n: 0, when: { layout: ["compact", "list"] } }],
+  facts: [{ sel: '[data-slot="item"]', n: "@projects" }, { sel: '[data-slot="items"] [data-slot="badge"].absolute', n: 2, when: { layout: ["cards", "overlay", "bento"] } }, { sel: '[data-slot="items"] [data-slot="badge"].absolute', n: 0, when: { layout: ["compact", "list"] } }],
   sample: { id: "projects", title: c("projects.title"), lead: c("projects.lead"), projects: ref("projects"), empty: t("empty.projects"), labels: c("projects") },
 });
 
@@ -67,11 +67,11 @@ const jobs = define({
     ["table", "Table with the salary, muted", { layout: "table", salary: "show", tone: "muted" }],
   ],
   facts: [
-    { sel: '[data-testid="item"]', n: "@jobs" },
-    ...when2('[data-testid="group"]', "@departments", "layout", "grouped", ["grid", "table"]),
-    ...when2('[data-testid="job-table"]', 1, "layout", "table", ["grid", "grouped"]),
-    { sel: '[data-testid="salary"]', n: "@jobs", when: { layout: "grid", salary: "show" } },
-    { sel: '[data-testid="salary"]', n: 0, when: { salary: "hide" } },
+    { sel: '[data-slot="item"]', n: "@jobs" },
+    ...when2('[data-slot="group"]', "@departments", "layout", "grouped", ["grid", "table"]),
+    ...when2('[data-slot="job-table"]', 1, "layout", "table", ["grid", "grouped"]),
+    { sel: '[data-slot="salary"]', n: "@jobs", when: { layout: "grid", salary: "show" } },
+    { sel: '[data-slot="salary"]', n: 0, when: { salary: "hide" } },
   ],
   sample: { id: "jobs", title: c("jobs.title"), lead: c("jobs.lead"), jobs: ref("jobs"), empty: t("empty.jobs"), departments: ref("departments"), labels: c("jobs") },
 });
@@ -85,7 +85,7 @@ const aboutme = define({
     ["skills", "Skills with bars", { layout: "skills" }],
     ["skillsMuted", "Skills, portrait at the end, muted", { layout: "skills", mediaSide: "end", tone: "muted" }],
   ],
-  facts: [...when2('[data-testid="fact"]', "@profilefacts", "layout", "facts", "skills"), ...when2('[data-testid="skill"]', "@skills", "layout", "skills", "facts")],
+  facts: [...when2('[data-slot="fact"]', "@profilefacts", "layout", "facts", "skills"), ...when2('[data-slot="skill"]', "@skills", "layout", "skills", "facts")],
   sample: {
     id: "aboutme", title: c("aboutMe.title"), lead: c("aboutMe.lead"), badge: c("aboutMe.badge"), facts: ref("profilefacts"), skills: ref("skills"), labels: c("aboutMe"),
     actions: { mode: "two", cta: c("aboutMe.cta"), href: "#/work", secondary: c("aboutMe.more"), secondaryHref: "#/contact" },
@@ -96,7 +96,7 @@ const about = define({
   key: "about", theme: "marketing", group: "company", name: "About the company", docs: "The culture: a strip of pictures, figures and values.",
   organism: "AboutCompany", axes: ["layout", "tone", "density"], data: [d.stats, d.values],
   variants: [["split", "Pictures beside the text"], ["stacked", "Pictures below, values in a row", { layout: "stacked" }], ["muted", "Muted, compact", { tone: "muted", density: "compact" }]],
-  facts: [{ sel: '[data-testid="stat"]', n: "@stats" }, { sel: '[data-testid="value"]', n: "@values" }],
+  facts: [{ sel: '[data-slot="stat"]', n: "@stats" }, { sel: '[data-slot="value"]', n: "@values" }],
   sample: { id: "about", title: c("about.title"), lead: c("about.lead"), stats: ref("stats"), values: ref("values") },
 });
 
@@ -104,7 +104,7 @@ const timeline = define({
   key: "timeline", theme: "content", group: "story", name: "Timeline", docs: "Milestones on a vertical line beside a picture, in a narrow column, or in a row.",
   organism: "MilestoneTimeline", axes: ["layout", "tone", "density"], data: [d.milestones],
   variants: [["split", "Beside a picture"], ["stacked", "Narrow column", { layout: "stacked" }], ["row", "A row of columns", { layout: "row" }], ["rowMuted", "Row, muted, compact", { layout: "row", tone: "muted", density: "compact" }]],
-  facts: [{ sel: '[data-testid="item"]', n: "@milestones" }, ...when2('[data-slot="media"]', 1, "layout", "split", ["stacked", "row"])],
+  facts: [{ sel: '[data-slot="item"]', n: "@milestones" }, ...when2('[data-slot="media"]', 1, "layout", "split", ["stacked", "row"])],
   sample: { id: "timeline", title: c("timeline.title"), lead: c("timeline.lead"), milestones: ref("milestones"), empty: t("empty.milestones") },
 });
 

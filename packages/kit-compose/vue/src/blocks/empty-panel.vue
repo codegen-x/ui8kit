@@ -46,7 +46,7 @@ const {
 </script>
 
 <template>
-  <Block tag="section" :aria-label="(landmarkLabel ?? title)" data-testid="empty">
+  <Block tag="section" :aria-label="(landmarkLabel ?? title)" data-slot="empty">
     <Container
       :class="cn('mx-auto w-full max-w-6xl px-4', (((size as string) === 'compact') ? 'py-4' : 'py-8'))"
       data-slot="container"
@@ -56,7 +56,7 @@ const {
         gap="4"
         align="center"
         class="mx-auto max-w-md text-center"
-        data-testid="empty-visual"
+        data-slot="empty-visual"
       >
         <MediaFrame :alt="title" ratio="4/3" class="w-full max-w-xs" />
         <Title :as="2" size="2xl" weight="bold">
@@ -65,13 +65,7 @@ const {
         <Text size="sm" class="text-muted-foreground">
           {{ text }}
         </Text>
-        <Button
-          v-if="((actions as string) === 'button')"
-          variant="default"
-          size="sm"
-          :href="urlOf(ctaHref)"
-          data-testid="empty-action"
-        >
+        <Button v-if="((actions as string) === 'button')" variant="default" size="sm" :href="urlOf(ctaHref)">
           {{ cta }}
         </Button>
       </Stack>
@@ -86,13 +80,7 @@ const {
         )"
       >
         <template #action>
-          <Button
-            v-if="((actions as string) === 'button')"
-            variant="default"
-            size="sm"
-            :href="urlOf(ctaHref)"
-            data-testid="empty-action"
-          >
+          <Button v-if="((actions as string) === 'button')" variant="default" size="sm" :href="urlOf(ctaHref)">
             {{ cta }}
           </Button>
         </template>

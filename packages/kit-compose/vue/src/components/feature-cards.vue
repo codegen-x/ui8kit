@@ -35,10 +35,10 @@ const { features, cols = "1-3", item = "card" } = defineProps<FeatureCardsProps>
       (item as string) === 'cell' ? cn('w-full gap-px overflow-hidden bg-border p-px', defaults.features.cells)
       : 'gap-6'
     "
-    data-testid="feature-grid"
+    data-slot="feature-grid"
   >
     <template v-for="feature in features" :key="feature.id">
-      <Card v-if="((item as string) === 'tile')" variant="compact" data-testid="feature-card">
+      <Card v-if="((item as string) === 'tile')" variant="compact">
         <Group gap="4" align="start">
           <LucideIcon :name="feature.icon" :size="20" />
           <Stack gap="2">
@@ -55,9 +55,9 @@ const { features, cols = "1-3", item = "card" } = defineProps<FeatureCardsProps>
         gap="2"
         align="center"
         class="h-full gap-8 bg-background px-6 py-12 text-center"
-        data-testid="feature-card"
+        data-slot="feature-card"
       >
-        <IconBadge variant="primary" size="xl" data-testid="feature-icon">
+        <IconBadge variant="primary" size="xl" data-slot="feature-icon">
           <LucideIcon :name="feature.icon" :size="24" />
         </IconBadge>
         <Title :as="3" size="xl" weight="semibold" class="leading-6">
@@ -67,7 +67,7 @@ const { features, cols = "1-3", item = "card" } = defineProps<FeatureCardsProps>
           {{ feature.text }}
         </Text>
       </Stack>
-      <Card v-else variant="default" data-testid="feature-card">
+      <Card v-else variant="default">
         <CardHeader class="flex flex-col gap-4">
           <LucideIcon :name="feature.icon" :size="24" />
           <CardTitle :as="3">

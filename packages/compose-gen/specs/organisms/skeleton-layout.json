@@ -91,10 +91,10 @@
                 "aria-label": {
                   "$": "label"
                 },
-                "data-testid": "skeleton",
                 "data-shape": {
                   "$": "shape"
-                }
+                },
+                "data-slot": "skeleton"
               },
               "children": [
                 {
@@ -131,7 +131,7 @@
                                 "Class": "rounded bg-card inset-ring inset-ring-border p-4"
                               },
                               "attrs": {
-                                "data-testid": "item"
+                                "data-slot": "item"
                               },
                               "children": [
                                 {
@@ -194,7 +194,7 @@
                                     "Align": "center"
                                   },
                                   "attrs": {
-                                    "data-testid": "item"
+                                    "data-slot": "item"
                                   },
                                   "children": [
                                     {
@@ -261,7 +261,7 @@
                                     "Gap": "2"
                                   },
                                   "attrs": {
-                                    "data-testid": "item"
+                                    "data-slot": "item"
                                   },
                                   "children": [
                                     {

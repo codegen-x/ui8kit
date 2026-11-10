@@ -48,10 +48,10 @@ export function GroceryList({
             (cols as string) === "2" ? "grid grid-cols-1 gap-x-8 md:grid-cols-2"
             : "grid grid-cols-1"
           }
-          data-testid="items"
+          data-slot="items"
         >
           {(dishes ?? []).map((d) => (
-            <ListItem key={d.id} className="flex items-center gap-4 border-b border-border py-2" data-testid="item">
+            <ListItem key={d.id} className="flex items-center gap-4 border-b border-border py-2" data-slot="item">
               {((thumbs as string) === "show") ? (
                 <MediaFrame alt={d.name} ratio="1/1" className="size-12 shrink-0" />
               ) : null}

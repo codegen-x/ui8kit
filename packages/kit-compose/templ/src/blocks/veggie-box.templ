@@ -49,9 +49,9 @@ templ VeggieBox(p VeggieBoxProps) {
 			@EmptyState(EmptyStateProps{Icon: "package", Title: vEmpty})
 		} else {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 items-start gap-8 lg:grid-cols-3"}}) {
-				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "grid grid-cols-2 gap-4 md:grid-cols-3 lg:col-span-2", "grid grid-cols-2 gap-4 md:grid-cols-3 lg:col-span-3 lg:grid-cols-6")), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "grid grid-cols-2 gap-4 md:grid-cols-3 lg:col-span-2", "grid grid-cols-2 gap-4 md:grid-cols-3 lg:col-span-3 lg:grid-cols-6")), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for _, vD := range uiutils.L(vDishes) {
-						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "1/1"})
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vD, "name")) }
@@ -63,7 +63,7 @@ templ VeggieBox(p VeggieBoxProps) {
 						}
 					}
 				}
-				@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "rounded bg-card inset-ring inset-ring-border p-6 lg:sticky lg:top-8", "rounded bg-card inset-ring inset-ring-border p-6 lg:col-span-3")), Attrs: uiutils.Attrs("data-testid", "summary")}}) {
+				@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "rounded bg-card inset-ring inset-ring-border p-6 lg:sticky lg:top-8", "rounded bg-card inset-ring inset-ring-border p-6 lg:col-span-3")), Attrs: uiutils.Attrs("data-slot", "summary")}}) {
 					@compose.Text(compose.TextProps{Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "summary")) }
 					}
@@ -75,7 +75,7 @@ templ VeggieBox(p VeggieBoxProps) {
 						@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
 							{ uiutils.Text(uiutils.Get(vLabels, "total")) }
 						}
-						@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-2xl font-bold", Attrs: uiutils.Attrs("role", "status", "aria-live", "polite", "data-testid", "total")}}) {
+						@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-2xl font-bold", Attrs: uiutils.Attrs("role", "status", "aria-live", "polite", "data-slot", "total")}}) {
 							{ uiutils.Text(uiutils.Money(vTotal, vCurrency)) }
 						}
 					}

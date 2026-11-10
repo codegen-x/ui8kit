@@ -37,7 +37,7 @@
         {%- endset -%}
         {{ include('compose/Box.html.twig', {'class': 'flex min-w-0 flex-1 flex-col gap-0', 'children': c_6}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/ListItem.html.twig', {'class': 'relative flex min-w-0 gap-4 pb-4 last:pb-0', 'attrs': og_attrs(['data-event', og_get(v_item, ['id'])]), 'children': c_7}, with_context = false) }}
+      {{ include('compose/ListItem.html.twig', {'class': 'relative flex min-w-0 gap-4 pb-4 last:pb-0', 'attrs': og_attrs(['data-event', og_get(v_item, ['id']), 'data-slot', 'timeline-item']), 'children': c_7}, with_context = false) }}
     {%- endfor %}
   {%- endset -%}
   {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-col p-0', 'children': c_8}, with_context = false) }}

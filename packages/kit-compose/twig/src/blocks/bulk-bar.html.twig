@@ -12,10 +12,10 @@
   {%- set c_2 -%}
     {{ og_text(v_label) }}
   {%- endset -%}
-  {{ include('compose/Inline.html.twig', {'attrs': og_attrs(['data-testid', 'bulk-count']), 'children': c_2}, with_context = false) }}
+  {{ include('compose/Inline.html.twig', {'attrs': og_attrs(['data-slot', 'bulk-count']), 'children': c_2}, with_context = false) }}
   {%- set c_3 -%}
     {{ og_slot((children ?? null))|raw }}
   {%- endset -%}
   {{ include('compose/Inline.html.twig', {'class': 'ml-auto flex flex-wrap items-center gap-2', 'children': c_3}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['flex flex-wrap items-center gap-2 rounded bg-foreground px-4 py-2 text-xs font-bold text-background', (p.className ?? '')])), 'attrs': og_attrs(['role', 'region', 'aria-label', v_label, 'aria-live', 'polite', 'data-slot', 'bulk-bar', 'data-testid', 'bulk-bar']), 'children': c_4}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['flex flex-wrap items-center gap-2 rounded bg-foreground px-4 py-2 text-xs font-bold text-background', (p.className ?? '')])), 'attrs': og_attrs(['role', 'region', 'aria-label', v_label, 'aria-live', 'polite', 'data-slot', 'bulk-bar']), 'children': c_4}, with_context = false) }}

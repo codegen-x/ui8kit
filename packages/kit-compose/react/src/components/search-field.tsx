@@ -15,7 +15,7 @@ export type SearchFieldProps = {
 
 export function SearchField({ value, placeholder, label, className, onValue }: SearchFieldProps) {
   return (
-    <Box className={cn("relative min-w-44 flex-1", className)} role="search">
+    <Box className={cn("relative min-w-44 flex-1", className)} role="search" data-slot="search-field">
       <LucideIcon name="search" size={16} className="pointer-events-none absolute top-2 left-3 text-muted-foreground" />
       <Input
         size="sm"

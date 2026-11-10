@@ -79,7 +79,7 @@ const {
         : '3-6'
       "
       :class="cn('w-full items-center bg-muted px-6', defaults.stats.panel)"
-      data-testid="items"
+      data-slot="items"
     >
       <StatFigure v-for="stat in stats" :key="stat.id" :stat="stat" :item="item" :align="align" />
     </Grid>
@@ -92,7 +92,7 @@ const {
         : '3-6'
       "
       class="gap-6"
-      data-testid="items"
+      data-slot="items"
     >
       <StatFigure v-for="stat in stats" :key="stat.id" :stat="stat" :item="item" :align="align" />
     </Grid>

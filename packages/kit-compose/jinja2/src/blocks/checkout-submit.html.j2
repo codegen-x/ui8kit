@@ -18,10 +18,10 @@
   {%- set c_3 -%}
     {{ og_text(v_submit) }}
   {%- endset -%}
-  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'lg', 'Type': 'submit', 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_3}) }}
+  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'lg', 'Type': 'submit'}, 'children': c_3}) }}
   {%- set c_4 -%}
     {{ og_text(v_legal) }}
   {%- endset -%}
   {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_4}) }}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'start'}, 'children': c_5}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-slot', 'checkout-submit'])}, 'children': c_5}) }}

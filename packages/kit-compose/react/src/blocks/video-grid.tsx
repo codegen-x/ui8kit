@@ -48,7 +48,7 @@ export function VideoGrid({
       {((quotes?.length ?? 0) === 0) ? (
         <EmptyState icon="video" title={empty} />
       ) : (
-        <Grid cols={cols} className="gap-4" data-testid="items">
+        <Grid cols={cols} className="gap-4" data-slot="items">
           {(quotes ?? []).map((q) => (
             <FigureBlock key={q.id} className="m-0 flex flex-col gap-4" testid="item">
               <Box className="relative">
@@ -59,13 +59,12 @@ export function VideoGrid({
                   type="button"
                   className="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0"
                   aria-label={tpl(playLabel, q.author)}
-                  data-testid="play"
                   onClick={() => onPlay?.(q.id)}
                 >
                   <LucideIcon name="play" size={20} />
                 </Button>
                 {((caption as string) === "overlay") ? (
-                  <Box className="absolute inset-x-0 bottom-0 rounded bg-background p-4" data-testid="caption">
+                  <Box className="absolute inset-x-0 bottom-0 rounded bg-background p-4" data-slot="caption">
                     <Text size="sm" weight="semibold">
                       {q.author}
                     </Text>
@@ -76,7 +75,7 @@ export function VideoGrid({
                 ) : null}
               </Box>
               {((caption as string) === "below") ? (
-                <Text tag="figcaption" data-testid="caption">
+                <Text tag="figcaption" data-slot="caption">
                   <Text size="sm" weight="semibold">
                     {q.author}
                   </Text>

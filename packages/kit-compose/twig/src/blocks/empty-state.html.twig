@@ -22,4 +22,4 @@
   {%- endif %}
   {{ og_slot((p.action ?? null))|raw }}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['flex min-w-0 flex-col items-center gap-4 rounded bg-card px-6 py-14 text-center inset-ring inset-ring-border', (p.className ?? '')])), 'attrs': og_attrs(['role', 'status']), 'children': c_4}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['flex min-w-0 flex-col items-center gap-4 rounded bg-card px-6 py-14 text-center inset-ring inset-ring-border', (p.className ?? '')])), 'attrs': og_attrs(['role', 'status', 'data-slot', 'empty-state']), 'children': c_4}, with_context = false) }}

@@ -20,7 +20,7 @@
     {capture $c_1}
       {=og_text($v_status)}
     {/capture}
-    {=og_include('compose/Text.latte', ['size' => '4xl', 'weight' => 'bold', 'class' => og_s(og_cnv(['text-8xl text-muted-foreground', (og_t(og_eq($v_layout, 'split')) ? '' : 'text-center')])), 'attrs' => og_attrs(['data-testid', 'error-code']), 'children' => (string) $c_1])|noescape}
+    {=og_include('compose/Text.latte', ['size' => '4xl', 'weight' => 'bold', 'class' => og_s(og_cnv(['text-8xl text-muted-foreground', (og_t(og_eq($v_layout, 'split')) ? '' : 'text-center')])), 'attrs' => og_attrs(['data-slot', 'error-code']), 'children' => (string) $c_1])|noescape}
   {/if}
   {=og_include('blocks/action-group.latte', ['p' => ['primary' => og_get($v_actions, ['cta']), 'primaryHref' => og_get($v_actions, ['href']), 'secondary' => (og_t(og_eq(og_get($v_actions, ['mode']), 'two')) ? og_get($v_actions, ['secondary']) : null), 'secondaryHref' => og_get($v_actions, ['secondaryHref']), 'align' => (og_t(og_eq($v_layout, 'split')) ? 'start' : 'center')]])|noescape}
 {/capture}

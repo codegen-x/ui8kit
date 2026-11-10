@@ -182,7 +182,7 @@
                         "Class": "w-full text-left text-sm"
                       },
                       "attrs": {
-                        "data-testid": "compare"
+                        "data-slot": "compare"
                       },
                       "children": [
                         {
@@ -321,7 +321,7 @@
                                     "Class": "border-t border-border"
                                   },
                                   "attrs": {
-                                    "data-testid": "item"
+                                    "data-slot": "item"
                                   },
                                   "children": [
                                     {

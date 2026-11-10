@@ -57,7 +57,7 @@ const {
       gap="4"
       align="stretch"
       :class="(((layout as string) === 'card') ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')"
-      data-testid="checklist"
+      data-slot="checklist"
     >
       <Progress v-if="((progress as string) === 'bar')"
         :value="
@@ -71,15 +71,15 @@ const {
         v-if="((progress as string) === 'text')"
         size="sm"
         class="text-muted-foreground"
-        data-testid="progress-text"
+        data-slot="progress-text"
       >
         {{ tpl(progressLabel, tasks.filter((i) => i["done"]).length, (tasks?.length ?? 0)) }}
       </Text>
-      <List class="m-0 flex list-none flex-col gap-4 p-0" data-testid="items">
+      <List class="m-0 flex list-none flex-col gap-4 p-0" data-slot="items">
         <ListItem v-for="(task, i) in tasks" :key="task.id"
           class="flex items-start gap-4"
-          data-testid="item"
           :data-done="(task.done == null ? undefined : String(task.done))"
+          data-slot="item"
         >
           <IconBadge v-if="((marker as string) === 'number')" :variant="(task.done ? 'primary' : 'outline')" size="xs">
             {{ ((i + 1) == null ? undefined : String((i + 1))) }}
@@ -89,7 +89,7 @@ const {
             :size="24"
             :class="(task.done ? 'shrink-0 text-primary' : 'shrink-0 text-muted-foreground')"
           />
-          <Disclosure v-if="((detail as string) === 'expand')" variant="ghost" class="flex-1" data-testid="task-detail">
+          <Disclosure v-if="((detail as string) === 'expand')" variant="ghost" class="flex-1" data-slot="task-detail">
             <Summary variant="ghost">
               {{ task.title }}
             </Summary>

@@ -42,10 +42,10 @@ templ TeamGrid(p TeamGridProps) {
 		if uiutils.Eq(uiutils.Len(vMembers), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "users", Title: vEmpty})
 		} else {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "minimal")), "grid grid-cols-2 gap-8 md:grid-cols-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "directory")), "grid grid-cols-1 gap-4 md:grid-cols-2", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "flex flex-col gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "1-3")), "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3", "grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4"))))), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "minimal")), "grid grid-cols-2 gap-8 md:grid-cols-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "directory")), "grid grid-cols-1 gap-4 md:grid-cols-2", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "flex flex-col gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "1-3")), "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3", "grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4"))))), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vM := range uiutils.L(vMembers) {
 					if uiutils.Eq(vLayout, "minimal") {
-						@compose.Stack(compose.StackProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Class: "text-center", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.Stack(compose.StackProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Class: "text-center", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vM, "name"), Ratio: "1/1", Class: uiutils.Cnv(uiutils.Cnv("size-16", "shrink-0"))})
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vM, "name")) }
@@ -55,7 +55,7 @@ templ TeamGrid(p TeamGridProps) {
 							}
 						}
 					} else if uiutils.Eq(vLayout, "cards") {
-						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vM, "name"), Ratio: "1/1"})
 							@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
 								@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {

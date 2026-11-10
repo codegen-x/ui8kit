@@ -11,4 +11,4 @@
   {/capture}
   {=og_include('compose/Text.latte', ['size' => 'sm', 'weight' => 'semibold', 'class' => 'sr-only', 'children' => (string) $c_1])|noescape}
 {/capture}
-{=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['flex shrink-0 items-center justify-center text-muted-foreground', og_preset('blocks/presets/defaults.json', ['logos', 'slot'])])), 'attrs' => og_attrs(['data-testid', 'item', 'data-slot', 'logo-slot']), 'children' => (string) $c_2])|noescape}
+{=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['flex shrink-0 items-center justify-center text-muted-foreground', og_preset('blocks/presets/defaults.json', ['logos', 'slot'])])), 'attrs' => og_attrs(['data-slot', 'logo-slot']), 'children' => (string) $c_2])|noescape}

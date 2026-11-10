@@ -23,8 +23,8 @@
         {%- endset -%}
         {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0'}, 'children': c_4}) }}
       {%- endset -%}
-      {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Attrs': og_attrs(['data-testid', 'footer-contact'])}, 'children': c_5}) }}
+      {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Attrs': og_attrs(['data-slot', 'footer-contact'])}, 'children': c_5}) }}
     {%- endfor %}
   {%- endset -%}
-  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch'}, 'children': c_6}) }}
+  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'footer-contacts'])}, 'children': c_6}) }}
 {%- endif %}

@@ -79,7 +79,7 @@
         "Class": "min-w-0"
       },
       "attrs": {
-        "data-testid": "app-main"
+        "data-slot": "app-main"
       },
       "children": [
         {
@@ -133,7 +133,7 @@
                 "Class": "gap-4"
               },
               "attrs": {
-                "data-testid": "items"
+                "data-slot": "items"
               },
               "children": [
                 {
@@ -149,7 +149,7 @@
                       "use": "Box",
                       "props": {},
                       "attrs": {
-                        "data-testid": "item"
+                        "data-slot": "item"
                       },
                       "children": [
                         {

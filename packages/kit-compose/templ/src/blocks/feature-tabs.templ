@@ -51,7 +51,7 @@ templ FeatureTabs(p FeatureTabsProps) {
 				}
 				for vI, vF := range uiutils.L(vFeatures) {
 					if uiutils.T(uiutils.Or(uiutils.Eq(uiutils.Get(vF, "id"), vActive), uiutils.And(uiutils.Eq(vActive, ""), uiutils.Eq(float64(vI), float64(0))))) {
-						@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPanel, "split")), "1-2", "1")), BoxProps: box.BoxProps{Class: "items-center gap-8", Attrs: uiutils.Attrs("data-testid", "tab-panel", "role", "tabpanel")}}) {
+						@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPanel, "split")), "1-2", "1")), BoxProps: box.BoxProps{Class: "items-center gap-8", Attrs: uiutils.Attrs("role", "tabpanel", "data-slot", "tab-panel")}}) {
 							@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 24})
 								@compose.Title(compose.TitleProps{As: "3", Size: "2xl", Weight: "bold", TextProps: text.TextProps{}}) {

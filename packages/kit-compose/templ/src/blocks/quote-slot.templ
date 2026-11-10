@@ -24,7 +24,7 @@ templ QuoteSlot(p QuoteSlotProps) {
 	{{ vLabels := p.Labels }}
 	{{ vKind := uiutils.Def(p.Kind, "card") }}
 	{{ vLayout := uiutils.Def(p.Layout, "grid") }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("data-testid", "quote")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("data-slot", "quote")}}) {
 		@QuoteCard(QuoteCardProps{Q: vQ, Labels: vLabels, Item: map[string]any{"kind": vKind, "avatar": "image", "rating": "show", "mark": "none"}, Layout: vLayout})
 	}
 }

@@ -139,10 +139,10 @@
                 }
               },
               "attrs": {
-                "data-testid": "tour",
                 "data-placement": {
                   "$": "placement"
-                }
+                },
+                "data-slot": "tour"
               },
               "children": [
                 {
@@ -152,9 +152,6 @@
                     "Size": "default",
                     "Type": "button",
                     "Class": "inset-ring-foreground"
-                  },
-                  "attrs": {
-                    "data-testid": "tour-target"
                   },
                   "children": [
                     {
@@ -184,7 +181,7 @@
                     "aria-label": {
                       "$": "title"
                     },
-                    "data-testid": "tour-callout"
+                    "data-slot": "tour-callout"
                   },
                   "children": [
                     {

@@ -20,7 +20,7 @@
       {=og_include('compose/Inline.latte', ['class' => 'sr-only', 'children' => (string) $c_2])|noescape}
       {=og_text(og_money($v_compareAt, $v_currency))}
     {/capture}
-    {=og_include('compose/Text.latte', ['tag' => 'del', 'size' => 'lg', 'class' => 'relative text-muted-foreground', 'attrs' => og_attrs(['data-testid', 'compare-at']), 'children' => (string) $c_3])|noescape}
+    {=og_include('compose/Text.latte', ['tag' => 'del', 'size' => 'lg', 'class' => 'relative text-muted-foreground', 'attrs' => og_attrs(['data-slot', 'compare-at']), 'children' => (string) $c_3])|noescape}
   {/if}
   {if og_t($v_badge)}
     {capture $c_4}
@@ -29,4 +29,4 @@
     {=og_include('compose/Badge.latte', ['variant' => 'default', 'size' => 'default', 'children' => (string) $c_4])|noescape}
   {/if}
 {/capture}
-{=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'flex-wrap', 'children' => (string) $c_5])|noescape}
+{=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'flex-wrap', 'attrs' => og_attrs(['data-slot', 'product-price']), 'children' => (string) $c_5])|noescape}

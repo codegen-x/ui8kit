@@ -31,15 +31,15 @@ templ CtaBanner(p CtaBannerProps) {
 	{{ vHref := p.Href }}
 	{{ vTone := uiutils.Def(p.Tone, "muted") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: "w-full py-0", Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Tpl("{0}-title", vId)), "data-testid", "section", "data-tone", vTone, "data-density", "compact", "aria-label", vLandmarkLabel)}}) {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex w-full flex-col items-center gap-10 bg-muted px-6 text-center", uiutils.Get(presetDefaults, "cta", "panel"))), Attrs: uiutils.Attrs("data-testid", "cta-banner")}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: "w-full py-0", Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Tpl("{0}-title", vId)), "data-tone", vTone, "data-density", "compact", "aria-label", vLandmarkLabel, "data-slot", "section")}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex w-full flex-col items-center gap-10 bg-muted px-6 text-center", uiutils.Get(presetDefaults, "cta", "panel"))), Attrs: uiutils.Attrs("data-slot", "cta-banner")}}) {
 			@compose.Title(compose.TitleProps{As: "2", Size: "3xl", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv(uiutils.Get(presetDefaults, "cta", "title"), "leading-9")), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-title", vId))}}) {
 				{ uiutils.Text(vTitle) }
 			}
 			@compose.Text(compose.TextProps{Size: "xs", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("leading-5 text-muted-foreground", uiutils.Get(presetDefaults, "cta", "text")))}}) {
 				{ uiutils.Text(vText) }
 			}
-			@compose.Button(compose.ButtonProps{Variant: "default", Size: "lg", ButtonProps: button.ButtonProps{Href: uiutils.URL(vHref, false), Class: uiutils.S(uiutils.Get(presetDefaults, "cta", "button")), Attrs: uiutils.Attrs("data-testid", "action-primary")}}) {
+			@compose.Button(compose.ButtonProps{Variant: "default", Size: "lg", ButtonProps: button.ButtonProps{Href: uiutils.URL(vHref, false), Class: uiutils.S(uiutils.Get(presetDefaults, "cta", "button"))}}) {
 				{ uiutils.Text(vCta) }
 			}
 		}

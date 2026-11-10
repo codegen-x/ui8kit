@@ -128,7 +128,7 @@
                         "Class": "flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -146,7 +146,7 @@
                                 "Class": "flex items-center gap-2 text-sm font-medium"
                               },
                               "attrs": {
-                                "data-testid": "item"
+                                "data-slot": "item"
                               },
                               "children": [
                                 {
@@ -204,7 +204,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -238,7 +238,7 @@
                                 }
                               },
                               "attrs": {
-                                "data-testid": "item"
+                                "data-slot": "item"
                               },
                               "children": [
                                 {

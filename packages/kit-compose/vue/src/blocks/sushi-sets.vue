@@ -52,13 +52,13 @@ const {
 <template>
   <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((dishes?.length ?? 0) === 0)" icon="package" :title="empty" />
-    <Grid v-else :cols="(((cols as string) === '3') ? '1-3' : '1-4')" class="gap-4" data-testid="items">
+    <Grid v-else :cols="(((cols as string) === '3') ? '1-3' : '1-4')" class="gap-4" data-slot="items">
       <Stack
         v-for="d in dishes"
         :key="d.id"
         gap="4"
         class="rounded bg-card inset-ring inset-ring-border p-4"
-        data-testid="item"
+        data-slot="item"
       >
         <Box class="relative">
           <MediaFrame :alt="d.name" ratio="1/1" />
@@ -74,7 +74,7 @@ const {
           class="flex flex-col gap-2 text-sm text-muted-foreground"
           :aria-label="tpl(labels.pieces, d.name)"
         >
-          <ListItem v-for="r in d.items" :key="r" class="flex items-center gap-2">
+          <ListItem v-for="r in d.items" :key="r" class="flex items-center gap-2" data-slot="items-row">
             <LucideIcon name="check" :size="16" />
             <Inline>
               {{ r }}

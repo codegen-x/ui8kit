@@ -76,7 +76,7 @@ export function StatsBand({
             : "3-6"
           }
           className={cn("w-full items-center bg-muted px-6", defaults.stats.panel)}
-          data-testid="items"
+          data-slot="items"
         >
           {(stats ?? []).map((stat) => (
             <StatFigure key={stat.id} stat={stat} item={item} align={align} />
@@ -92,7 +92,7 @@ export function StatsBand({
             : "3-6"
           }
           className="gap-6"
-          data-testid="items"
+          data-slot="items"
         >
           {(stats ?? []).map((stat) => (
             <StatFigure key={stat.id} stat={stat} item={item} align={align} />

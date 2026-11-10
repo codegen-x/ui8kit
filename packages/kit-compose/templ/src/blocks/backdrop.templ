@@ -20,7 +20,7 @@ templ Backdrop(p BackdropProps) {
 	{{ vKind := uiutils.Def(p.Kind, "none") }}
 	{{ vAlt := uiutils.Def(p.Alt, "") }}
 	if uiutils.Eq(vKind, "image") {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "pointer-events-none absolute inset-0 -z-10", Attrs: uiutils.Attrs("data-testid", "backdrop")}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "pointer-events-none absolute inset-0 -z-10", Attrs: uiutils.Attrs("data-slot", "backdrop")}}) {
 			@MediaFrame(MediaFrameProps{Alt: vAlt, Ratio: "21/9", Class: uiutils.Cnv("size-full rounded-none opacity-30")})
 		}
 	}

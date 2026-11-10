@@ -59,9 +59,9 @@ const {
           (cols as string) === '2' ? 'grid grid-cols-1 gap-8 md:grid-cols-2'
           : 'flex flex-col gap-8'
         "
-        data-testid="items"
+        data-slot="items"
       >
-        <Stack v-for="s in sections" :key="s.id" gap="4" :id="tpl('{0}-{1}', id, s.key)" data-testid="menusection">
+        <Stack v-for="s in sections" :key="s.id" gap="4" :id="tpl('{0}-{1}', id, s.key)" data-slot="menusection">
           <Stack gap="0" class="border-b border-border pb-2">
             <Title :as="3" size="xl" weight="bold">
               {{ s.title }}
@@ -72,7 +72,7 @@ const {
           </Stack>
           <List tag="ul" class="flex flex-col gap-4">
             <template v-for="d in dishes" :key="d.id">
-              <ListItem v-if="(d.tag === s.key)" class="flex flex-col gap-0" data-testid="item">
+              <ListItem v-if="(d.tag === s.key)" class="flex flex-col gap-0" data-slot="item">
                 <Box class="flex items-baseline gap-2">
                   <Inline class="font-semibold">
                     {{ d.name }}

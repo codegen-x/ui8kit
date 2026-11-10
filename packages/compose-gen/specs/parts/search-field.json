@@ -51,7 +51,8 @@
         }
       },
       "attrs": {
-        "role": "search"
+        "role": "search",
+        "data-slot": "search-field"
       },
       "children": [
         {

@@ -20,7 +20,7 @@
     {%- set c_1 -%}
       {{ og_text(v_status) }}
     {%- endset -%}
-    {{ og_include('compose/text.html.j2', {'p': {'Size': '4xl', 'Weight': 'bold', 'Class': og_s(og_cnv(['text-8xl text-muted-foreground', ('' if og_t(og_eq(v_layout, 'split')) else 'text-center')])), 'Attrs': og_attrs(['data-testid', 'error-code'])}, 'children': c_1}) }}
+    {{ og_include('compose/text.html.j2', {'p': {'Size': '4xl', 'Weight': 'bold', 'Class': og_s(og_cnv(['text-8xl text-muted-foreground', ('' if og_t(og_eq(v_layout, 'split')) else 'text-center')])), 'Attrs': og_attrs(['data-slot', 'error-code'])}, 'children': c_1}) }}
   {%- endif %}
   {{ og_include('blocks/action-group.html.j2', {'p': {'primary': og_get(v_actions, ['cta']), 'primaryHref': og_get(v_actions, ['href']), 'secondary': (og_get(v_actions, ['secondary']) if og_t(og_eq(og_get(v_actions, ['mode']), 'two')) else none), 'secondaryHref': og_get(v_actions, ['secondaryHref']), 'align': ('start' if og_t(og_eq(v_layout, 'split')) else 'center')}}) }}
 {%- endset -%}

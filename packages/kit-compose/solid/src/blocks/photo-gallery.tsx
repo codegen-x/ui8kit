@@ -46,7 +46,7 @@ export function PhotoGallery({
       {((photos?.length ?? 0) === 0) ? (
         <EmptyState icon="image" title={empty} />
       ) : ((layout as string) === "featured") ? (
-        <Stack gap="4" align="stretch" data-testid="featured">
+        <Stack gap="4" align="stretch" data-slot="featured">
           <MediaFrame alt={title} />
           <Group gap="4" align="center" justify="between">
             <Stack gap="0">
@@ -66,7 +66,7 @@ export function PhotoGallery({
               </Button>
             </Group>
           </Group>
-          <Box class="grid grid-cols-3 gap-2 sm:grid-cols-9" data-testid="thumbs">
+          <Box class="grid grid-cols-3 gap-2 sm:grid-cols-9" data-slot="thumbs">
             <For each={photos ?? []}>{(p, iOf) => { const i = iOf(); return (
               <MediaFrame alt={p.title} ratio="1/1" class={((i === 0) ? "ring-2 ring-foreground" : "")} />
             ); }}</For>
@@ -79,7 +79,7 @@ export function PhotoGallery({
             : (layout as string) === "mosaic" ? "grid grid-cols-2 gap-4 md:grid-cols-4"
             : "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
           }
-          data-testid="items"
+          data-slot="items"
         >
           <For each={photos ?? []}>{(p, iOf) => { const i = iOf(); return (
             <FigureBlock
@@ -111,7 +111,7 @@ export function PhotoGallery({
                 </Group>
               ) : null}
               {(((captions as string) === "show") && (((layout as string) === "grid") || ((layout as string) === "masonry"))) ? (
-                <Box class="text-sm text-muted-foreground" data-testid="caption">
+                <Box class="text-sm text-muted-foreground" data-slot="caption">
                   {p.title}
                 </Box>
               ) : null}

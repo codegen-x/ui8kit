@@ -21,8 +21,8 @@ export function JobCards({ jobs, departments, labels, layout = "grid", salary = 
   return (
     <>
       {((layout as string) === "table") ? (
-        <Box className="w-full overflow-x-auto rounded inset-ring inset-ring-border">
-          <Table className="w-full text-left text-sm" data-testid="job-table">
+        <Box className="w-full overflow-x-auto rounded inset-ring inset-ring-border" data-slot="job-cards">
+          <Table className="w-full text-left text-sm" data-slot="job-table">
             <TableCaption className="sr-only">
               {labels.caption}
             </TableCaption>
@@ -54,7 +54,7 @@ export function JobCards({ jobs, departments, labels, layout = "grid", salary = 
             </TableHead>
             <TableBody>
               {(jobs ?? []).map((j) => (
-                <TableRow key={j.id} className="border-t border-border" data-testid="item">
+                <TableRow key={j.id} className="border-t border-border" data-slot="item">
                   <TableCell className="px-4 py-4 font-medium">
                     {j.title}
                   </TableCell>
@@ -83,9 +83,9 @@ export function JobCards({ jobs, departments, labels, layout = "grid", salary = 
           </Table>
         </Box>
       ) : (
-        <Grid cols="1-2" className="gap-4" data-testid="items">
+        <Grid cols="1-2" className="gap-4" data-slot="items">
           {(jobs ?? []).map((j) => (
-            <Stack key={j.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-6" data-testid="item">
+            <Stack key={j.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-6" data-slot="item">
               <Stack gap="2">
                 <Text size="lg" weight="semibold">
                   {j.title}
@@ -112,7 +112,7 @@ export function JobCards({ jobs, departments, labels, layout = "grid", salary = 
                 </Group>
               </Stack>
               {((salary as string) === "show") ? (
-                <Text size="base" weight="semibold" data-testid="salary">
+                <Text size="base" weight="semibold" data-slot="salary">
                   {j.salary}
                 </Text>
               ) : null}

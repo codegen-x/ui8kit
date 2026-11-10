@@ -37,7 +37,7 @@ templ ChartPanel(p ChartPanelProps) {
 	{{ vSize := uiutils.Def(p.Size, "default") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Cond(uiutils.T(uiutils.And(vTitle, vId)), uiutils.Tpl("{0}-t", vId), nil)), "data-testid", "panel-section", "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Cond(uiutils.T(uiutils.And(vTitle, vId)), uiutils.Tpl("{0}-t", vId), nil)), "aria-label", vLandmarkLabel, "data-slot", "panel-section")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-6xl px-4 py-8", Attrs: uiutils.Attrs("data-slot", "container")}}) {
 			@Panel(PanelProps{Title: vTitle, Description: vText, Id: vId, Class: uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", ""))}) {
 				if uiutils.Eq(uiutils.Len(vSeries), float64(0)) {
@@ -45,7 +45,7 @@ templ ChartPanel(p ChartPanelProps) {
 				} else if uiutils.Eq(vChart, "bars") {
 					@BarChart(BarChartProps{Bars: vSeries, Label: vSummary, Height: uiutils.Cond(uiutils.T(uiutils.Eq(vSize, "compact")), float64(96), float64(176))})
 				} else {
-					@compose.Stack(compose.StackProps{Gap: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vSize, "compact")), "0", "2")), Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "items")}}) {
+					@compose.Stack(compose.StackProps{Gap: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vSize, "compact")), "0", "2")), Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "items")}}) {
 						for _, vS := range uiutils.L(vSeries) {
 							@MeterRow(MeterRowProps{Label: uiutils.Get(vS, "label"), Value: uiutils.Get(vS, "value"), Caption: uiutils.Tpl(vPercent, uiutils.Get(vS, "value"))})
 						}

@@ -28,36 +28,36 @@ templ PromptComposer(p PromptComposerProps) {
 	{{ vModelLabel := p.ModelLabel }}
 	{{ vSend := p.Send }}
 	{{ vHref := p.Href }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto flex w-full flex-col gap-4 bg-background/10 p-6 inset-ring inset-ring-background/30", uiutils.Get(presetDefaults, "hero", "composer"))), Attrs: uiutils.Attrs("data-testid", "email-form")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto flex w-full flex-col gap-4 bg-background/10 p-6 inset-ring inset-ring-background/30", uiutils.Get(presetDefaults, "hero", "composer"))), Attrs: uiutils.Attrs("data-slot", "email-form")}}) {
 		if uiutils.T(vAttachLabel) {
-			@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "composer-attachments")}}) {
-				@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Class: uiutils.S(uiutils.Cnv("gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20", uiutils.Get(presetDefaults, "hero", "attach"))), Attrs: uiutils.Attrs("data-testid", "composer-attach")}}) {
+			@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "composer-attachments")}}) {
+				@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Class: uiutils.S(uiutils.Cnv("gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20", uiutils.Get(presetDefaults, "hero", "attach")))}}) {
 					@icons.LucideIcon(icons.LucideIconProps{Name: "file-text", Size: 16})
 					{ uiutils.Text(vAttachLabel) }
 				}
-				@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Class: uiutils.S(uiutils.Cnv("gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20", uiutils.Get(presetDefaults, "hero", "attach"))), Attrs: uiutils.Attrs("data-testid", "composer-attach")}}) {
+				@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Class: uiutils.S(uiutils.Cnv("gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20", uiutils.Get(presetDefaults, "hero", "attach")))}}) {
 					@icons.LucideIcon(icons.LucideIconProps{Name: "paperclip", Size: 16})
 					{ uiutils.Text(vAttachLabel) }
 				}
 			}
 		}
-		@compose.Text(compose.TextProps{Size: "xs", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("flex w-full items-center leading-5 text-background/80", uiutils.Get(presetDefaults, "hero", "promptLine"))), Attrs: uiutils.Attrs("data-testid", "field")}}) {
+		@compose.Text(compose.TextProps{Size: "xs", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("flex w-full items-center leading-5 text-background/80", uiutils.Get(presetDefaults, "hero", "promptLine"))), Attrs: uiutils.Attrs("data-slot", "field")}}) {
 			{ uiutils.Text(vLabel) }
 		}
-		@compose.Group(compose.GroupProps{Gap: "2", Align: "center", Justify: "between", BoxProps: box.BoxProps{Class: "h-8 w-full", Attrs: uiutils.Attrs("data-testid", "composer-tools")}}) {
+		@compose.Group(compose.GroupProps{Gap: "2", Align: "center", Justify: "between", BoxProps: box.BoxProps{Class: "h-8 w-full", Attrs: uiutils.Attrs("data-slot", "composer-tools")}}) {
 			@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
-				@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Class: "bg-background/10 text-background hover:bg-background/20", Attrs: uiutils.Attrs("data-testid", "composer-plus", "aria-label", uiutils.Coalesce(vAttachLabel, "Attach"))}}) {
+				@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Class: "bg-background/10 text-background hover:bg-background/20", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vAttachLabel, "Attach"))}}) {
 					@icons.LucideIcon(icons.LucideIconProps{Name: "plus", Size: 16})
 				}
 				if uiutils.T(vModelLabel) {
-					@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Class: uiutils.S(uiutils.Cnv("gap-2 bg-background/10 text-background hover:bg-background/20", uiutils.Get(presetDefaults, "hero", "model"))), Attrs: uiutils.Attrs("data-testid", "composer-model")}}) {
+					@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", ButtonProps: button.ButtonProps{Class: uiutils.S(uiutils.Cnv("gap-2 bg-background/10 text-background hover:bg-background/20", uiutils.Get(presetDefaults, "hero", "model")))}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: "sparkles", Size: 16})
 						{ uiutils.Text(vModelLabel) }
 						@icons.LucideIcon(icons.LucideIconProps{Name: "chevron-down", Size: 16})
 					}
 				}
 			}
-			@compose.Button(compose.ButtonProps{Variant: "secondary", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Href: uiutils.URL(vHref, false), Attrs: uiutils.Attrs("data-testid", "submit", "aria-label", uiutils.Coalesce(vSend, "Send"))}}) {
+			@compose.Button(compose.ButtonProps{Variant: "secondary", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Href: uiutils.URL(vHref, false), Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vSend, "Send"))}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: "arrow-up", Size: 16})
 			}
 		}

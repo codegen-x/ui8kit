@@ -26,10 +26,10 @@
           {%- endset -%}
           {{ include('compose/Text.html.twig', {'size': 'sm', 'weight': 'semibold', 'children': c_1}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['flex items-center gap-2', 'rounded bg-card inset-ring inset-ring-border', (og_t(og_eq(v_item, 'tile')) ? og_cnv(['flex-col justify-center text-center', (og_t(og_eq(v_density, 'compact')) ? 'p-4' : 'p-6')]) : 'px-4 py-2')])), 'attrs': og_attrs(['data-testid', 'item']), 'children': c_2}, with_context = false) }}
+        {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['flex items-center gap-2', 'rounded bg-card inset-ring inset-ring-border', (og_t(og_eq(v_item, 'tile')) ? og_cnv(['flex-col justify-center text-center', (og_t(og_eq(v_density, 'compact')) ? 'p-4' : 'p-6')]) : 'px-4 py-2')])), 'attrs': og_attrs(['data-slot', 'item']), 'children': c_2}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': og_s(v_wallCols), 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_3}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': og_s(v_wallCols), 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_3}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_4)}, with_context = false) }}

@@ -67,12 +67,12 @@ const {
             {{ tocTitle }}
           </Text>
           <List class="m-0 flex list-none flex-col gap-2 p-0">
-            <ListItem v-for="s in sections" :key="s.id">
+            <ListItem v-for="s in sections" :key="s.id" data-slot="sections-row">
               <Link
                 :href="urlOf(tpl('#{0}-{1}', id, s.id))"
                 variant="default"
                 class="text-sm text-muted-foreground"
-                data-testid="toc-link"
+                data-slot="toc-link"
               >
                 {{ s.title }}
               </Link>
@@ -80,13 +80,13 @@ const {
           </List>
         </Stack>
       </NavBlock>
-      <Stack gap="8" align="stretch" class="mx-auto w-full max-w-2xl min-w-0" data-testid="article">
+      <Stack gap="8" align="stretch" class="mx-auto w-full max-w-2xl min-w-0" data-slot="article">
         <Box
           v-for="s in sections"
           :key="s.id"
           class="flex flex-col gap-4"
           :id="tpl('{0}-{1}', id, s.id)"
-          data-testid="item"
+          data-slot="item"
         >
           <Title :as="3" size="2xl" weight="bold">
             {{ s.title }}
@@ -95,7 +95,7 @@ const {
             {{ s.text }}
           </Text>
           <template v-if="((quotes as string) === 'show')">
-            <Text v-if="s.quote" tag="blockquote" class="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
+            <Text v-if="s.quote" tag="blockquote" class="m-0 border-l border-border pl-4 text-lg" data-slot="quote">
               {{ s.quote }}
             </Text>
           </template>

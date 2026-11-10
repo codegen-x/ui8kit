@@ -40,7 +40,7 @@ templ CtaBand(p CtaBandProps) {
 	if uiutils.Eq(vLayout, "banner") {
 		@CtaBanner(CtaBannerProps{Id: vId, Title: vTitle, Text: vText, Cta: uiutils.Get(vActions, "cta"), Href: uiutils.Get(vActions, "href"), Tone: vTone, LandmarkLabel: vLandmarkLabel})
 	} else if uiutils.Eq(vLayout, "row") {
-		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: "py-8", Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Tpl("{0}-title", vId)), "data-testid", "section", "data-tone", vTone, "data-density", vDensity, "aria-label", vLandmarkLabel)}}) {
+		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: "py-8", Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Tpl("{0}-title", vId)), "data-tone", vTone, "data-density", vDensity, "aria-label", vLandmarkLabel, "data-slot", "section")}}) {
 			@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-6xl px-4", Attrs: uiutils.Attrs("data-slot", "container")}}) {
 				@compose.Card(compose.CardProps{Variant: "muted", BoxProps: box.BoxProps{}}) {
 					@compose.CardContent(compose.CardContentProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-4 md:flex-row md:items-center md:justify-between"}}) {

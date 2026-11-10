@@ -228,7 +228,7 @@
                             "Class": "rounded bg-card inset-ring inset-ring-border p-6"
                           },
                           "attrs": {
-                            "data-testid": "aside"
+                            "data-slot": "aside"
                           },
                           "children": [
                             {

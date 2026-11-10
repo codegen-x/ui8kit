@@ -29,14 +29,14 @@ const { id, title, text, cta, href, tone = "muted", landmarkLabel } = defineProp
     tag="section"
     class="w-full py-0"
     :aria-labelledby="(landmarkLabel ? undefined : tpl('{0}-title', id))"
-    data-testid="section"
     :data-tone="tone"
     data-density="compact"
     :aria-label="landmarkLabel"
+    data-slot="section"
   >
     <Box
       :class="cn('flex w-full flex-col items-center gap-10 bg-muted px-6 text-center', defaults.cta.panel)"
-      data-testid="cta-banner"
+      data-slot="cta-banner"
     >
       <Title
         :as="2"
@@ -50,13 +50,7 @@ const { id, title, text, cta, href, tone = "muted", landmarkLabel } = defineProp
       <Text size="xs" weight="semibold" :class="cn('leading-5 text-muted-foreground', defaults.cta.text)">
         {{ text }}
       </Text>
-      <Button
-        variant="default"
-        size="lg"
-        :href="urlOf(href)"
-        :class="defaults.cta.button"
-        data-testid="action-primary"
-      >
+      <Button variant="default" size="lg" :href="urlOf(href)" :class="defaults.cta.button">
         {{ cta }}
       </Button>
     </Box>

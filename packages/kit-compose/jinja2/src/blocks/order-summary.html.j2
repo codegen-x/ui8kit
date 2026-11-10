@@ -31,7 +31,7 @@
               {%- endset -%}
               {{ og_include('compose/inline.html.j2', {'p': {}, 'children': c_2}) }}
             {%- endset -%}
-            {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(og_cnv(['flex items-center justify-between gap-4', ('border-t border-border pt-4 text-base font-bold' if og_t(og_get(v_row, ['strong'])) else 'text-sm text-muted-foreground')])), 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_3}) }}
+            {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(og_cnv(['flex items-center justify-between gap-4', ('border-t border-border pt-4 text-base font-bold' if og_t(og_get(v_row, ['strong'])) else 'text-sm text-muted-foreground')])), 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_3}) }}
           {%- endfor %}
         {%- endset -%}
         {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col gap-4'}, 'children': c_4}) }}
@@ -39,7 +39,7 @@
           {%- set c_5 -%}
             {{ og_text(og_get(v_labels, ['checkout'])) }}
           {%- endset -%}
-          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Class': 'w-full', 'Attrs': og_attrs(['data-testid', 'checkout'])}, 'children': c_5}) }}
+          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Class': 'w-full'}, 'children': c_5}) }}
         {%- endif %}
         {%- if og_t(og_eq(v_note, 'show')) %}
           {%- set c_6 -%}
@@ -50,7 +50,7 @@
       {%- endset -%}
       {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch'}, 'children': c_7}) }}
     {%- endset -%}
-    {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv([('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_layout, 'card')) else '')])), 'Attrs': og_attrs(['data-testid', 'summary'])}, 'children': c_8}) }}
+    {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv([('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_layout, 'card')) else '')])), 'Attrs': og_attrs(['data-slot', 'summary'])}, 'children': c_8}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': 'md', 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_9)}) }}

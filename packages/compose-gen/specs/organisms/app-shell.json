@@ -149,13 +149,13 @@
             }
           ]
         },
-        "data-testid": "app-shell",
         "data-layout": {
           "$": "layout"
         },
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "app-shell"
       },
       "children": [
         {
@@ -419,7 +419,7 @@
                                         "Class": "m-0 flex list-none flex-col gap-4 p-0"
                                       },
                                       "attrs": {
-                                        "data-testid": "items"
+                                        "data-slot": "items"
                                       },
                                       "children": [
                                         {
@@ -437,7 +437,7 @@
                                                 "Class": "flex flex-col gap-2"
                                               },
                                               "attrs": {
-                                                "data-testid": "item"
+                                                "data-slot": "item"
                                               },
                                               "children": [
                                                 {

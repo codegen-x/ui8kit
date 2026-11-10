@@ -84,10 +84,10 @@
         }
       },
       "attrs": {
-        "data-testid": "hero-head",
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "hero-head"
       },
       "children": [
         {
@@ -102,7 +102,7 @@
                 "Class": "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:text-foreground focus:inset-ring focus:inset-ring-border"
               },
               "attrs": {
-                "data-testid": "skip-link"
+                "data-slot": "skip-link"
               },
               "children": [
                 {
@@ -262,7 +262,7 @@
                                     "Class": "text-xs font-medium leading-5 text-background"
                                   },
                                   "attrs": {
-                                    "data-testid": "nav-link"
+                                    "data-slot": "nav-link"
                                   },
                                   "children": [
                                     {
@@ -280,7 +280,7 @@
                                     "Class": "text-xs font-medium leading-5 text-background"
                                   },
                                   "attrs": {
-                                    "data-testid": "nav-link"
+                                    "data-slot": "nav-link"
                                   },
                                   "children": [
                                     {
@@ -324,9 +324,6 @@
                     "Size": "sm",
                     "Class": "text-background hover:bg-background/10"
                   },
-                  "attrs": {
-                    "data-testid": "nav-login"
-                  },
                   "children": [
                     {
                       "text": {
@@ -350,9 +347,6 @@
                     },
                     "Variant": "secondary",
                     "Size": "sm"
-                  },
-                  "attrs": {
-                    "data-testid": "header-cta"
                   },
                   "children": [
                     {

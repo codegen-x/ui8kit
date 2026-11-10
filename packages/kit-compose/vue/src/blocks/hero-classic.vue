@@ -85,7 +85,7 @@ const mediaSide = computed(() => media?.side ?? "end");
     <template v-if="actions?.cta">
       <Box v-if="(actions?.mode === 'form')"
         :class="cn('w-full max-w-xl', (((layout as string) === 'centered') ? 'mx-auto' : ''))"
-        data-testid="email-form"
+        data-slot="email-form"
       >
         <Label :for="tpl('{0}-email', id)" class="sr-only">
           {{ actions?.emailLabel }}
@@ -97,9 +97,9 @@ const mediaSide = computed(() => media?.side ?? "end");
             class="min-w-0 flex-1"
             :placeholder="actions?.emailLabel"
             :id="tpl('{0}-email', id)"
-            data-testid="field"
+            data-slot="field"
           />
-          <Button variant="default" size="default" :href="urlOf(actions?.href)" data-testid="submit">
+          <Button variant="default" size="default" :href="urlOf(actions?.href)">
             {{ actions?.cta }}
           </Button>
         </Group>
@@ -120,7 +120,7 @@ const mediaSide = computed(() => media?.side ?? "end");
         :prompt="media?.prompt"
         :lines="media?.lines"
       />
-      <Grid v-if="((mediaKind as string) === 'cluster')" cols="3" class="items-end gap-4" data-testid="cluster">
+      <Grid v-if="((mediaKind as string) === 'cluster')" cols="3" class="items-end gap-4" data-slot="cluster">
         <Box :class="cn('w-full', '')">
           <MediaFrame :alt="title" ratio="3/4" />
         </Box>

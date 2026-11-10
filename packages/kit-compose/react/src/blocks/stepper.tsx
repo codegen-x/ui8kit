@@ -41,7 +41,7 @@ export function Stepper({
   return (
     <SectionFrame id={id} title={title} measure="3xl" landmarkLabel={landmarkLabel}>
       {((steps?.length ?? 0) > 0) ? (
-        <Stack gap="6" align="stretch" data-testid="stepper">
+        <Stack gap="6" align="stretch" data-slot="stepper">
           <Text size="sm" className="text-muted-foreground">
             {tpl(stepLabel, current, (steps?.length ?? 0))}
           </Text>
@@ -51,13 +51,13 @@ export function Stepper({
               "m-0 flex list-none gap-4 p-0",
               (((layout as string) === "vertical") ? "flex-col" : "flex-col sm:flex-row")
             )}
-            data-testid="items"
+            data-slot="items"
           >
             {(steps ?? []).map((s, i) => (
               <ListItem key={s.id}
                 className="flex flex-1 items-center gap-4"
-                data-testid="item"
                 aria-current={(((i + 1) === current) ? "step" : undefined)}
+                data-slot="item"
               >
                 <IconBadge
                   variant={(((i + 1) < (current + 1)) ? "primary" : "outline")}
@@ -83,7 +83,7 @@ export function Stepper({
               {(steps ?? []).map((s, i) => (
                 <Fragment key={s.id}>
                   {((i + 1) === current) ? (
-                    <Stack gap="2" className="rounded bg-card p-6 inset-ring inset-ring-border" data-testid="step-summary">
+                    <Stack gap="2" className="rounded bg-card p-6 inset-ring inset-ring-border" data-slot="step-summary">
                       <Title as={3} size="xl" weight="bold">
                         {s.title}
                       </Title>

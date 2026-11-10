@@ -24,10 +24,10 @@ templ MenuSectionNav(p MenuSectionNavProps) {
 	{{ vSections := p.Sections }}
 	{{ vPrefix := p.Prefix }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-testid", "section-nav")}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-slot", "section-nav")}}) {
 		@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-wrap gap-2"}}) {
 			for _, vS := range uiutils.L(vSections) {
-				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{}}) {
+				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "sections-row")}}) {
 					@compose.Link(compose.LinkProps{Variant: "nav", Size: "sm", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Tpl("#{0}-{1}", vPrefix, uiutils.Get(vS, "key")), false), Class: "h-8 rounded px-4 inset-ring inset-ring-border"}}) {
 						{ uiutils.Text(uiutils.Get(vS, "title")) }
 					}

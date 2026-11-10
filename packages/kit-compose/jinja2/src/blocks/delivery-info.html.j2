@@ -34,10 +34,10 @@
             {%- endset -%}
             {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2'}, 'children': c_4}) }}
           {%- endset -%}
-          {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-testid', 'fact'])}, 'children': c_5}) }}
+          {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-slot', 'fact'])}, 'children': c_5}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_layout, 'split')) else '1-4')), 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'facts'])}, 'children': c_6}) }}
+      {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_layout, 'split')) else '1-4')), 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'facts'])}, 'children': c_6}) }}
     {%- endif %}
     {%- if og_t(og_and([not (og_eq(v_layout, 'facts')), og_gt(og_len(v_zones), 0)])) %}
       {%- set c_15 -%}
@@ -68,7 +68,7 @@
               {%- endset -%}
               {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Weight': 'medium'}, 'children': c_12}) }}
             {%- endset -%}
-            {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': og_s(('border-b border-border pb-4' if og_t(og_eq(v_layout, 'split')) else 'rounded bg-card inset-ring inset-ring-border p-6')), 'Attrs': og_attrs(['data-testid', 'zone'])}, 'children': c_13}) }}
+            {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': og_s(('border-b border-border pb-4' if og_t(og_eq(v_layout, 'split')) else 'rounded bg-card inset-ring inset-ring-border p-6')), 'Attrs': og_attrs(['data-slot', 'zone'])}, 'children': c_13}) }}
           {%- endfor %}
         {%- endset -%}
         {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('flex flex-col gap-4' if og_t(og_eq(v_layout, 'split')) else 'grid grid-cols-1 gap-4 md:grid-cols-3'))}, 'children': c_14}) }}

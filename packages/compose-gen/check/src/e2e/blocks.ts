@@ -58,52 +58,52 @@ export async function blocksScenario(page: Page, base: string, data: BlocksData,
       const at = (sel: string) => page.locator(`[data-testid="variant"][data-variant="${v.id}"] ${sel}`);
       const where = `${key}.${v.id}`;
       const n = async (sel: string): Promise<number> => at(sel).count();
-      if ("tone" in row && (await n('[data-testid="section"]')) > 0) {
-        expect(`${where}: the section carries its tone and density`, (await at('[data-testid="section"]').first().getAttribute("data-tone")) === row["tone"] && (!("density" in b.axes) || (await at('[data-testid="section"]').first().getAttribute("data-density")) === (row["density"] ?? "default")), [await at('[data-testid="section"]').first().getAttribute("data-tone"), row["tone"]]);
+      if ("tone" in row && (await n('[data-slot="section"]')) > 0) {
+        expect(`${where}: the section carries its tone and density`, (await at('[data-slot="section"]').first().getAttribute("data-tone")) === row["tone"] && (!("density" in b.axes) || (await at('[data-slot="section"]').first().getAttribute("data-density")) === (row["density"] ?? "default")), [await at('[data-slot="section"]').first().getAttribute("data-tone"), row["tone"]]);
       }
       if (b.facts) {
         await factsChecks(b.facts, row, where, n, (sel) => xs(`[data-testid="variant"][data-variant="${v.id}"] ${sel}`), withAliases(b, data.counts), expect);
       } else if (key === "header") {
-        expect(`${where}: layout is on the header`, (await at('[data-testid="site-header"]').getAttribute("data-layout")) === row["layout"]);
-        expect(`${where}: sticky only when asked`, (await at('[data-testid="site-header"]').evaluate((e) => getComputedStyle(e).position)) === (row["position"] === "sticky" ? "sticky" : "static"));
-        expect(`${where}: two links, only Home is current`, (await n('[data-testid="nav-link"]')) === 2 && (await n('[data-testid="nav-link"][aria-current="page"]')) === 1);
-        const brand = await at('[data-testid="brand"]').boundingBox(), nav = await at('[data-testid="site-nav"]').boundingBox();
+        expect(`${where}: layout is on the header`, (await at('[data-slot="site-header"]').getAttribute("data-layout")) === row["layout"]);
+        expect(`${where}: sticky only when asked`, (await at('[data-slot="site-header"]').evaluate((e) => getComputedStyle(e).position)) === (row["position"] === "sticky" ? "sticky" : "static"));
+        expect(`${where}: two links, only Home is current`, (await n('[data-slot="nav-link"]')) === 2 && (await n('[data-slot="nav-link"][aria-current="page"]')) === 1);
+        const brand = await at('[data-slot="brand"]').boundingBox(), nav = await at('[data-slot="site-nav"]').boundingBox();
         expect(`${where}: ${row["layout"] === "stacked" ? "brand above the links" : "brand and links in a row"}`, !!brand && !!nav && (row["layout"] === "stacked" ? nav.y > brand.y + brand.height - 1 : Math.abs(nav.y - brand.y) < 40), [brand?.y, nav?.y]);
       } else if (key === "footer") {
-        expect(`${where}: copyright and layout`, (await at('[data-testid="copyright"]').innerText()) === data.dict.site.footer.copyright && (await at('[data-testid="site-footer"]').getAttribute("data-layout")) === row["layout"]);
+        expect(`${where}: copyright and layout`, (await at('[data-slot="copyright"]').innerText()) === data.dict.site.footer.copyright && (await at('[data-slot="site-footer"]').getAttribute("data-layout")) === row["layout"]);
       } else if (key === "hero") {
         const own = (v.props?.["title"] as { $?: string } | undefined)?.$, wantTitle = own ? own.split(".").slice(1).reduce((o: any, k) => o[k], data.dict) : data.dict.site.home.title;
         expect(`${where}: the title is an h2 in the gallery${own ? ", from the case copy" : ""}`, (await at('h2[id$="-title"]').innerText()) === wantTitle, await at('h2[id$="-title"]').innerText());
-        expect(`${where}: actions: ${row["actions.mode"] === "form" ? "an email form instead of links" : `one primary${row["actions.mode"] === "two" ? " and one secondary" : ""}`}`, (await n('[data-testid="action-primary"]')) === (row["actions.mode"] === "form" ? 0 : 1) && (await n('[data-testid="action-secondary"]')) === (row["actions.mode"] === "two" ? 1 : 0) && (await n('[data-testid="email-form"]')) === (row["actions.mode"] === "form" ? 1 : 0));
+        expect(`${where}: actions: ${row["actions.mode"] === "form" ? "an email form instead of links" : `one primary${row["actions.mode"] === "two" ? " and one secondary" : ""}`}`, (await n(':is([data-slot="action-group"] > [data-slot="button"]:first-child, [data-slot="cta-banner"] [data-slot="button"])')) === (row["actions.mode"] === "form" ? 0 : 1) && (await n('[data-slot="action-group"] > [data-slot="button"]:nth-child(2)')) === (row["actions.mode"] === "two" ? 1 : 0) && (await n('[data-slot="email-form"]')) === (row["actions.mode"] === "form" ? 1 : 0));
         const media = ({ none: 0, image: 1, backdrop: 1, code: 0, cluster: 3 } as Record<string, number>)[row["media.kind"]!]!;
         expect(`${where}: media only when asked (${row["media.kind"]})`, (await n('[data-slot="media-frame"]')) === media, await n('[data-slot="media-frame"]'));
-        expect(`${where}: the terminal window only when asked`, (await n('[data-slot="code-window"], [data-testid="code-window"]')) === (row["media.kind"] === "code" ? 1 : 0));
+        expect(`${where}: the terminal window only when asked`, (await n('[data-slot="code-window"]')) === (row["media.kind"] === "code" ? 1 : 0));
         if (row["media.kind"] === "image" && row["layout"] === "split") {
           const m = await at('[data-slot="media-frame"]').boundingBox(), h = await at('h2[id$="-title"]').boundingBox();
           expect(`${where}: media at the ${row["media.side"]}`, !!m && !!h && (row["media.side"] === "start" ? m.x < h.x : m.x > h.x), [m?.x, h?.x]);
         }
       } else if (key === "features") {
-        expect(`${where}: one card per feature`, (await n('[data-testid="feature-card"]')) === data.features, await n('[data-testid="feature-card"]'));
-        expect(`${where}: every card has an icon`, (await n('[data-testid="feature-card"] svg')) >= data.features);
+        expect(`${where}: one card per feature`, (await n(':is([data-slot="feature-card"], [data-slot="feature-grid"] [data-slot="card"])')) === data.features, await n(':is([data-slot="feature-card"], [data-slot="feature-grid"] [data-slot="card"])'));
+        expect(`${where}: every card has an icon`, (await n(':is([data-slot="feature-card"], [data-slot="feature-grid"] [data-slot="card"]) svg')) >= data.features);
         if (row["layout"] === "rows") {
-          expect(`${where}: rows, one media per feature`, (await n('[data-testid="feature-rows"]')) === 1 && (await n('[data-slot="media-frame"]')) === data.features);
+          expect(`${where}: rows, one media per feature`, (await n('[data-slot="feature-rows"]')) === 1 && (await n('[data-slot="media-frame"]')) === data.features);
           const sides: string[] = [];
           for (let i = 0; i < data.features; i++) {
-            const card = at('[data-testid="feature-card"]').nth(i);
+            const card = at(':is([data-slot="feature-card"], [data-slot="feature-grid"] [data-slot="card"])').nth(i);
             const m = await card.locator('[data-slot="media-frame"]').boundingBox(), h = await card.locator("h3").boundingBox();
             sides.push(m && h ? (m.x > h.x ? "end" : "start") : "?");
           }
           const want = Array.from({ length: data.features }, (_, i) => row["mediaSide"] === "alternate" ? (i % 2 ? "start" : "end") : row["mediaSide"]!);
           expect(`${where}: media side ${row["mediaSide"]}`, JSON.stringify(sides) === JSON.stringify(want), sides);
         } else {
-          expect(`${where}: a grid of ${colsOf(row["cols"]!)} columns`, (await xs(`[data-testid="variant"][data-variant="${v.id}"] [data-testid="feature-card"]`)).length === Math.min(colsOf(row["cols"]!), data.features), await xs(`[data-testid="variant"][data-variant="${v.id}"] [data-testid="feature-card"]`));
+          expect(`${where}: a grid of ${colsOf(row["cols"]!)} columns`, (await xs(`[data-testid="variant"][data-variant="${v.id}"] :is([data-slot="feature-card"], [data-slot="feature-grid"] [data-slot="card"])`)).length === Math.min(colsOf(row["cols"]!), data.features), await xs(`[data-testid="variant"][data-variant="${v.id}"] :is([data-slot="feature-card"], [data-slot="feature-grid"] [data-slot="card"])`));
         }
       } else if (key === "pricing") {
         const want = row["emphasis"] === "auto" ? data.tiers.filter((x) => x.highlighted).length : 0;
         const plans = v.props?.["plans"] ? data.counts["duo"]! : data.tiers.length;
-        expect(`${where}: one card per tier`, (await n('[data-testid="tiers"] [data-highlighted]')) === plans);
+        expect(`${where}: one card per tier`, (await n('[data-slot="tiers"] [data-highlighted]')) === plans);
         expect(`${where}: emphasis on ${v.props?.["plans"] ? 0 : want} card(s)`, (await n('[data-highlighted="true"]')) === (v.props?.["plans"] ? 0 : want), await n('[data-highlighted="true"]'));
-        expect(`${where}: a billing toggle only when asked`, (await n('[data-testid="billing"]')) === (row["billing"] === "off" ? 0 : 1));
+        expect(`${where}: a billing toggle only when asked`, (await n('[data-slot="billing"]')) === (row["billing"] === "off" ? 0 : 1));
         if (row["billing"] !== "off") {
           const shown = await at('[data-highlighted] h2').allInnerTexts();
           expect(`${where}: prices follow the period (${row["billing"]})`, shown.length === plans, shown);
@@ -115,18 +115,18 @@ export async function blocksScenario(page: Page, base: string, data: BlocksData,
         expect(`${where}: emphasis ${row["emphasis"]}`, (await at("[data-highlighted]").getAttribute("data-highlighted")) === (row["emphasis"] === "auto" ? "true" : "false"));
       } else if (key === "faq") {
         const shown = row["filter.mode"] === "categories" ? data.counts["faq:billing"]! : data.faq;
-        expect(`${where}: one ${row["layout"] === "chat" ? "bubble pair" : "disclosure"} per question${row["filter.mode"] === "categories" ? " of the chosen category" : ""}`, (await n('[data-testid="faq-item"]')) === shown, await n('[data-testid="faq-item"]'));
+        expect(`${where}: one ${row["layout"] === "chat" ? "bubble pair" : "disclosure"} per question${row["filter.mode"] === "categories" ? " of the chosen category" : ""}`, (await n('[data-slot="faq-item"]')) === shown, await n('[data-slot="faq-item"]'));
         expect(`${where}: a search field only when asked`, (await n('[role="search"]')) === (row["search.mode"] === "field" ? 1 : 0));
         expect(`${where}: category tabs only when asked`, (await n('[data-slot="switcher"]')) === (row["filter.mode"] === "categories" ? 1 : 0));
         const cols = row["layout"] === "chat" ? 1 : Math.min(Number(row["cols"]), shown);
-        expect(`${where}: ${cols} column(s)`, (await xs(`[data-testid="variant"][data-variant="${v.id}"] [data-testid="faq-item"]`)).length === cols, await xs(`[data-testid="variant"][data-variant="${v.id}"] [data-testid="faq-item"]`));
+        expect(`${where}: ${cols} column(s)`, (await xs(`[data-testid="variant"][data-variant="${v.id}"] [data-slot="faq-item"]`)).length === cols, await xs(`[data-testid="variant"][data-variant="${v.id}"] [data-slot="faq-item"]`));
       } else if (key === "cta") {
         const mode = row["actions.mode"];
         const shape = mode === "form" ? "an email form instead of links" : `one primary${mode === "two" ? " and one secondary" : ""}`;
-        const primary = (await n('[data-testid="action-primary"]')) === (mode === "form" ? 0 : 1);
-        const secondary = (await n('[data-testid="action-secondary"]')) === (mode === "two" ? 1 : 0);
-        expect(`${where}: actions: ${shape}`, primary && secondary && (await n('[data-testid="email-form"]')) === (mode === "form" ? 1 : 0));
-        expect(`${where}: a customer quote only when asked`, (await n('[data-testid="proof"]')) === (row["proof"] === "quote" ? 1 : 0));
+        const primary = (await n(':is([data-slot="action-group"] > [data-slot="button"]:first-child, [data-slot="cta-banner"] [data-slot="button"])')) === (mode === "form" ? 0 : 1);
+        const secondary = (await n('[data-slot="action-group"] > [data-slot="button"]:nth-child(2)')) === (mode === "two" ? 1 : 0);
+        expect(`${where}: actions: ${shape}`, primary && secondary && (await n('[data-slot="email-form"]')) === (mode === "form" ? 1 : 0));
+        expect(`${where}: a customer quote only when asked`, (await n('[data-slot="proof"]')) === (row["proof"] === "quote" ? 1 : 0));
         expect(`${where}: media only in the split layout`, (await n('[data-slot="media-frame"]')) === (row["layout"] === "split" ? 1 : 0));
       } else {
         // a variant that passes a short list of its own (e.g. three of the four stats) is counted by that list
@@ -135,7 +135,7 @@ export async function blocksScenario(page: Page, base: string, data: BlocksData,
       }
     }
     if (key === "faq") {
-      const first = page.locator('[data-testid="faq-item"]').first();
+      const first = page.locator('[data-slot="faq-item"]').first();
       await first.locator("summary").click();
       expect("faq: a click opens a disclosure", (await first.getAttribute("open")) !== null);
       await first.locator("summary").click();

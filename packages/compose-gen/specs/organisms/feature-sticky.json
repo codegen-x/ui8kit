@@ -129,7 +129,7 @@
                     "Class": "items-start gap-8"
                   },
                   "attrs": {
-                    "data-testid": "sticky"
+                    "data-slot": "sticky"
                   },
                   "children": [
                     {
@@ -159,7 +159,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "sticky-media"
+                        "data-slot": "sticky-media"
                       },
                       "children": [
                         {
@@ -195,7 +195,7 @@
                         "Align": "stretch"
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -252,7 +252,6 @@
                                 }
                               },
                               "attrs": {
-                                "data-testid": "item",
                                 "aria-current": {
                                   "op": "cond",
                                   "args": [
@@ -273,7 +272,8 @@
                                       "args": []
                                     }
                                   ]
-                                }
+                                },
+                                "data-slot": "item"
                               },
                               "children": [
                                 {

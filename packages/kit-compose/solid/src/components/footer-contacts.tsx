@@ -13,9 +13,9 @@ export function FooterContacts({ extras }: FooterContactsProps) {
   return (
     <>
       {((extras.contacts?.length ?? 0) > 0) ? (
-        <Stack gap="4" align="stretch">
+        <Stack gap="4" align="stretch" data-slot="footer-contacts">
           <For each={extras.contacts ?? []}>{(c) => (
-            <Group gap="4" align="center" data-testid="footer-contact">
+            <Group gap="4" align="center" data-slot="footer-contact">
               <Inline class="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
                 <LucideIcon name={c.icon} size={20} />
               </Inline>

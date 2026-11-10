@@ -30,11 +30,11 @@ templ SkeletonLayout(p SkeletonLayoutProps) {
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
-		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "div", Class: "w-full", Attrs: uiutils.Attrs("role", "status", "aria-label", vLabel, "data-testid", "skeleton", "data-shape", vShape)}}) {
+		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "div", Class: "w-full", Attrs: uiutils.Attrs("role", "status", "aria-label", vLabel, "data-shape", vShape, "data-slot", "skeleton")}}) {
 			if uiutils.Eq(vShape, "cards") {
 				@compose.Grid(compose.GridProps{Cols: "1-3", BoxProps: box.BoxProps{Class: "gap-4"}}) {
 					for range uiutils.L(vLines) {
-						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@compose.Skeleton(compose.SkeletonProps{BoxProps: box.BoxProps{Class: "aspect-video w-full"}})
 							@compose.Skeleton(compose.SkeletonProps{BoxProps: box.BoxProps{Class: "h-4 w-2/3"}})
 							@compose.Skeleton(compose.SkeletonProps{BoxProps: box.BoxProps{Class: "h-4 w-full"}})
@@ -44,7 +44,7 @@ templ SkeletonLayout(p SkeletonLayoutProps) {
 			} else if uiutils.Eq(vShape, "list") {
 				@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{}}) {
 					for range uiutils.L(vLines) {
-						@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@compose.Skeleton(compose.SkeletonProps{BoxProps: box.BoxProps{Class: "size-10 shrink-0 rounded-full"}})
 							@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "flex-1"}}) {
 								@compose.Skeleton(compose.SkeletonProps{BoxProps: box.BoxProps{Class: "h-4 w-1/3"}})
@@ -57,7 +57,7 @@ templ SkeletonLayout(p SkeletonLayoutProps) {
 				@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "mx-auto max-w-2xl"}}) {
 					@compose.Skeleton(compose.SkeletonProps{BoxProps: box.BoxProps{Class: "h-8 w-3/4"}})
 					for range uiutils.L(vLines) {
-						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@compose.Skeleton(compose.SkeletonProps{BoxProps: box.BoxProps{Class: "h-4 w-full"}})
 							@compose.Skeleton(compose.SkeletonProps{BoxProps: box.BoxProps{Class: "h-4 w-5/6"}})
 						}

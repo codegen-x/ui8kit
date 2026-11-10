@@ -36,7 +36,7 @@ export function PostAuthor({
         (((mode as string) === "line") ? "" : "rounded bg-card inset-ring inset-ring-border p-4"),
         className
       )}
-      data-testid="post-author"
+      data-slot="post-author"
     >
       <Group gap="4" align="center">
         <MediaFrame alt={post.author} ratio="1/1" class="size-10 shrink-0 rounded-full" />
@@ -50,11 +50,11 @@ export function PostAuthor({
         </Stack>
         {share ? (
           <Group gap="2">
-            <Button variant="ghost" size="default" class="gap-2" data-testid="post-share">
+            <Button variant="ghost" size="default" class="gap-2">
               <LucideIcon name="share-2" size={16} />
               {labels.share}
             </Button>
-            <Button variant="ghost" size="default" class="gap-2" data-testid="post-save">
+            <Button variant="ghost" size="default" class="gap-2">
               <LucideIcon name="bookmark" size={16} />
               {labels.save}
             </Button>

@@ -40,7 +40,7 @@
         }
       },
       "attrs": {
-        "data-testid": "section-badge"
+        "data-slot": "section-badge"
       },
       "children": [
         {
@@ -53,9 +53,6 @@
               "props": {
                 "Variant": "secondary",
                 "Size": "sm"
-              },
-              "attrs": {
-                "data-testid": "badge-mark"
               },
               "children": [
                 {

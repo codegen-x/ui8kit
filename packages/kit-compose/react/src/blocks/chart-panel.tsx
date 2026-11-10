@@ -43,8 +43,8 @@ export function ChartPanel({
     <Block
       tag="section"
       aria-labelledby={(landmarkLabel ? undefined : ((title && id) ? tpl("{0}-t", id) : undefined))}
-      data-testid="panel-section"
       aria-label={landmarkLabel}
+      data-slot="panel-section"
     >
       <Container className="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
         <Panel title={title} description={text} id={id} className={(((tone as string) === "muted") ? "bg-muted" : "")}>
@@ -53,7 +53,7 @@ export function ChartPanel({
           ) : ((chart as string) === "bars") ? (
             <BarChart bars={series} label={summary} height={(((size as string) === "compact") ? 96 : 176)} />
           ) : (
-            <Stack gap={(((size as string) === "compact") ? "0" : "2")} align="stretch" data-testid="items">
+            <Stack gap={(((size as string) === "compact") ? "0" : "2")} align="stretch" data-slot="items">
               {(series ?? []).map((s) => (
                 <MeterRow key={s.id} label={s.label} value={s.value} caption={tpl(percent, s.value)} />
               ))}

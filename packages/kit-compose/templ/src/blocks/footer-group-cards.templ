@@ -24,10 +24,10 @@ templ FooterGroupCards(p FooterGroupCardsProps) {
 	{{ vGroups := p.Groups }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	if uiutils.Gt(uiutils.Len(vGroups), float64(0)) {
-		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel))}}) {
+		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-slot", "footer-group-cards")}}) {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"}}) {
 				for _, vG := range uiutils.L(vGroups) {
-					@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-testid", "group")}}) {
+					@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-slot", "group")}}) {
 						@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
 							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground"}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vG, "icon")), Size: 20})
@@ -38,7 +38,7 @@ templ FooterGroupCards(p FooterGroupCardsProps) {
 						}
 						@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-2 p-0"}}) {
 							for _, vItem := range uiutils.L(uiutils.Get(vG, "links")) {
-								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{}}) {
+								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "links-row")}}) {
 									@MenuEntry(MenuEntryProps{Href: uiutils.Get(vItem, "href"), Class: uiutils.Cnv("text-sm text-muted-foreground"), Variant: "muted", Size: "sm"}) {
 										{ uiutils.Text(uiutils.Get(vItem, "name")) }
 									}

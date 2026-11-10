@@ -23,14 +23,14 @@ const { features, stats } = defineProps<FeatureStatRowsProps>();
 </script>
 
 <template>
-  <Stack gap="6" align="stretch">
+  <Stack gap="6" align="stretch" data-slot="feature-stat-rows">
     <Box class="grid grid-cols-2 gap-4">
       <template v-for="(s, i) in stats" :key="s.id">
         <Stack
           v-if="(i < 2)"
           gap="0"
           class="rounded bg-card inset-ring inset-ring-border p-4"
-          data-testid="feature-stat"
+          data-slot="feature-stat"
         >
           <Text size="2xl" weight="bold">
             {{ s.value }}
@@ -43,7 +43,7 @@ const { features, stats } = defineProps<FeatureStatRowsProps>();
     </Box>
     <Stack gap="4" align="stretch">
       <template v-for="(f, i) in features" :key="f.id">
-        <Group v-if="(i < 3)" gap="4" align="start" data-testid="feature-item">
+        <Group v-if="(i < 3)" gap="4" align="start" data-slot="feature-item">
           <Inline class="flex size-6 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground">
             <LucideIcon name="check" :size="16" />
           </Inline>

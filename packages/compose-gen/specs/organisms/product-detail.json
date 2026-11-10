@@ -258,7 +258,7 @@
                     "Align": "stretch"
                   },
                   "attrs": {
-                    "data-testid": "buy-box"
+                    "data-slot": "buy-box"
                   },
                   "children": [
                     {
@@ -273,7 +273,7 @@
                             "Class": "uppercase tracking-wide text-muted-foreground"
                           },
                           "attrs": {
-                            "data-testid": "category"
+                            "data-slot": "category"
                           },
                           "children": [
                             {
@@ -388,7 +388,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "stock"
+                        "data-slot": "stock"
                       },
                       "children": [
                         {
@@ -465,9 +465,6 @@
                                 }
                               ]
                             }
-                          },
-                          "attrs": {
-                            "data-testid": "add"
                           },
                           "on": {
                             "click": {

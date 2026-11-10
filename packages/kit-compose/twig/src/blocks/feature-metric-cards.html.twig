@@ -28,8 +28,8 @@
         {%- endset -%}
         {{ include('compose/Stack.html.twig', {'gap': '0', 'class': 'min-w-0', 'children': c_5}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-testid', 'feature-stat']), 'children': c_6}, with_context = false) }}
+      {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-slot', 'feature-stat']), 'children': c_6}, with_context = false) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'children': c_7}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'attrs': og_attrs(['data-slot', 'feature-metric-cards']), 'children': c_7}, with_context = false) }}

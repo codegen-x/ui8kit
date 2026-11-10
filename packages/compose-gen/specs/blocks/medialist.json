@@ -315,14 +315,14 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"media-stat\"]",
+      "sel": "[data-slot=\"media-stat\"]",
       "n": 4,
       "when": {
         "layout": "figures"
       }
     },
     {
-      "sel": "[data-testid=\"media-stat\"]",
+      "sel": "[data-slot=\"media-stat\"]",
       "n": 3,
       "when": {
         "layout": [
@@ -332,42 +332,42 @@
       }
     },
     {
-      "sel": "[data-testid=\"media-review\"]",
+      "sel": "[data-slot=\"media-review\"]",
       "n": 1,
       "when": {
         "layout": "proof"
       }
     },
     {
-      "sel": "[data-testid=\"media-step\"]",
+      "sel": "[data-slot=\"media-step\"]",
       "n": "@steps",
       "when": {
         "layout": "steps"
       }
     },
     {
-      "sel": "[data-testid=\"media-post\"]",
+      "sel": "[data-slot=\"media-post\"]",
       "n": 3,
       "when": {
         "layout": "posts"
       }
     },
     {
-      "sel": "[data-testid=\"media-topic\"]",
+      "sel": "[data-slot=\"media-topic\"]",
       "n": 5,
       "when": {
         "layout": "topics"
       }
     },
     {
-      "sel": "[data-testid=\"media-channel\"]",
+      "sel": "[data-slot=\"media-contacts\"] [data-slot=\"button\"]",
       "n": "@channels",
       "when": {
         "layout": "contact"
       }
     },
     {
-      "sel": "[data-testid=\"action-primary\"]",
+      "sel": ":is([data-slot=\"action-group\"] > [data-slot=\"button\"]:first-child, [data-slot=\"post-feature\"] > [data-slot=\"button\"], [data-slot=\"post-actions\"] > [data-slot=\"button\"]:first-child)",
       "n": 1,
       "when": {
         "layout": [
@@ -380,7 +380,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"action-primary\"]",
+      "sel": ":is([data-slot=\"action-group\"] > [data-slot=\"button\"]:first-child, [data-slot=\"post-feature\"] > [data-slot=\"button\"], [data-slot=\"post-actions\"] > [data-slot=\"button\"]:first-child)",
       "n": 0,
       "when": {
         "layout": "contact"

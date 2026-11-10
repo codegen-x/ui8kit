@@ -35,7 +35,7 @@
         {{ include('blocks/pill.html.twig', {'p': {'tone': 'blue'}, 'children': og_markup(c_3)}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
-    {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['data-testid', 'richtext-meta']), 'children': c_4}, with_context = false) }}
+    {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['data-slot', 'richtext-meta']), 'children': c_4}, with_context = false) }}
   {%- endif %}
   {%- if og_t(og_or([og_eq(v_layout, 'hero'), og_eq(v_layout, 'media')])) %}
     {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_coalesce([og_get(v_media, ['alt']), v_title]), 'src': og_get(v_media, ['src']), 'ratio': (og_t(og_eq(v_layout, 'hero')) ? '21/9' : '16/9')}}, with_context = false) }}
@@ -47,7 +47,7 @@
           {%- set c_5 -%}
             {{ og_html(v_content)|raw }}
           {%- endset -%}
-          {{ include('compose/Prose.html.twig', {'size': 'base', 'width': 'none', 'attrs': og_attrs(['data-testid', 'richtext-content']), 'children': c_5}, with_context = false) }}
+          {{ include('compose/Prose.html.twig', {'size': 'base', 'width': 'none', 'attrs': og_attrs(['data-slot', 'richtext-content']), 'children': c_5}, with_context = false) }}
         {%- endif %}
       {%- endset -%}
       {{ include('compose/Box.html.twig', {'class': 'min-w-0 lg:col-span-2', 'children': c_6}, with_context = false) }}
@@ -63,10 +63,10 @@
             {%- set c_8 -%}
               {{ og_html(og_get(v_aside, ['content']))|raw }}
             {%- endset -%}
-            {{ include('compose/Prose.html.twig', {'size': 'sm', 'width': 'none', 'attrs': og_attrs(['data-testid', 'richtext-aside-content']), 'children': c_8}, with_context = false) }}
+            {{ include('compose/Prose.html.twig', {'size': 'sm', 'width': 'none', 'attrs': og_attrs(['data-slot', 'richtext-aside-content']), 'children': c_8}, with_context = false) }}
           {%- endif %}
         {%- endset -%}
-        {{ include('compose/Card.html.twig', {'variant': 'compact', 'class': 'h-fit', 'attrs': og_attrs(['data-testid', 'richtext-aside']), 'children': c_9}, with_context = false) }}
+        {{ include('compose/Card.html.twig', {'variant': 'compact', 'class': 'h-fit', 'children': c_9}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('compose/Grid.html.twig', {'cols': '1', 'class': 'gap-8 lg:grid-cols-3', 'children': c_10}, with_context = false) }}
@@ -74,7 +74,7 @@
     {%- set c_11 -%}
       {{ og_html(v_content)|raw }}
     {%- endset -%}
-    {{ include('compose/Prose.html.twig', {'size': 'base', 'width': og_s((og_t(og_eq(v_layout, 'wide')) ? 'wide' : (og_t(og_eq(v_layout, 'hero')) ? 'narrow' : 'none'))), 'attrs': og_attrs(['data-testid', 'richtext-content']), 'children': c_11}, with_context = false) }}
+    {{ include('compose/Prose.html.twig', {'size': 'base', 'width': og_s((og_t(og_eq(v_layout, 'wide')) ? 'wide' : (og_t(og_eq(v_layout, 'hero')) ? 'narrow' : 'none'))), 'attrs': og_attrs(['data-slot', 'richtext-content']), 'children': c_11}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'heading': {'level': v_level}, 'tone': v_tone, 'density': v_density, 'measure': (og_t(og_or([og_eq(v_layout, 'narrow'), og_eq(v_layout, 'media')])) ? '2xl' : (og_t(og_eq(v_layout, 'card')) ? '3xl' : 'default')), 'boxed': og_eq(v_layout, 'card'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_12)}, with_context = false) }}

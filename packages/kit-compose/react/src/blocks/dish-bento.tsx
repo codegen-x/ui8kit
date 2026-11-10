@@ -41,7 +41,7 @@ export function DishBento({
       {((dishes?.length ?? 0) === 0) ? (
         <EmptyState icon="star" title={empty} />
       ) : (
-        <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" data-testid="items">
+        <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" data-slot="items">
           {(dishes ?? []).map((d, i) => (
             <Fragment key={d.id}>
               {(i === 0) ? (
@@ -51,7 +51,7 @@ export function DishBento({
                     "rounded bg-card inset-ring inset-ring-border p-6 sm:col-span-2 lg:row-span-2",
                     (((feature as string) === "end") ? "lg:col-start-3 lg:row-start-1" : "")
                   )}
-                  data-testid="feature"
+                  data-slot="feature"
                 >
                   <MediaFrame alt={d.name} ratio="4/3" />
                   <Badge variant="secondary" size="default" className="w-fit">
@@ -74,7 +74,7 @@ export function DishBento({
                   </Group>
                 </Stack>
               ) : (
-                <Stack gap="2" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="item">
+                <Stack gap="2" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
                   <MediaFrame alt={d.name} />
                   <Text size="sm" weight="semibold">
                     {d.name}

@@ -21,12 +21,12 @@ const { extras, labels } = defineProps<MediaPostsProps>();
 </script>
 
 <template>
-  <Stack gap="4" align="stretch">
+  <Stack gap="4" align="stretch" data-slot="media-posts">
     <Text size="sm" weight="semibold">
       {{ labels.list }}
     </Text>
     <template v-for="(p, i) in extras.posts" :key="p.id">
-      <Group v-if="(i < 3)" gap="4" align="start" data-testid="media-post">
+      <Group v-if="(i < 3)" gap="4" align="start" data-slot="media-post">
         <Inline class="mt-2 size-2 shrink-0 rounded-full bg-primary" />
         <Stack gap="0">
           <MenuEntry :href="p.href" class="text-sm font-medium" size="sm">

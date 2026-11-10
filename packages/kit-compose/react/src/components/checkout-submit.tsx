@@ -13,14 +13,14 @@ export type CheckoutSubmitProps = {
 
 export function CheckoutSubmit({ id, consent, submit, legal }: CheckoutSubmitProps) {
   return (
-    <Stack gap="4" align="start">
+    <Stack gap="4" align="start" data-slot="checkout-submit">
       <Group gap="2" align="center" className={cn("w-fit", "")}>
         <Checkbox name="consent" id={tpl("{0}-consent", id)} />
         <Label htmlFor={tpl("{0}-consent", id)} className="text-sm">
           {consent}
         </Label>
       </Group>
-      <Button variant="default" size="lg" type="submit" data-testid="submit">
+      <Button variant="default" size="lg" type="submit">
         {submit}
       </Button>
       <Text size="xs" className="text-muted-foreground">

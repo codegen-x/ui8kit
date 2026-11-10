@@ -16,7 +16,7 @@
           {%- set c_1 -%}
             {{ og_text(og_get(v_labels, ['featured'])) }}
           {%- endset -%}
-          {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Class': 'absolute left-4 top-4', 'Attrs': og_attrs(['data-testid', 'featured'])}, 'children': c_1}) }}
+          {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Class': 'absolute left-4 top-4'}, 'children': c_1}) }}
         {%- endif %}
       {%- endset -%}
       {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('h-full' if og_t(v_over) else 'relative'))}, 'children': c_2}) }}
@@ -65,4 +65,4 @@
     {{ og_include('blocks/article-block.html.j2', {'p': {'className': og_cnv([og_cnv(['flex flex-col gap-4', ('relative' if og_t(v_over) else 'rounded bg-card inset-ring inset-ring-border p-4'), ('sm:col-span-2 lg:row-span-2' if og_t(og_and([og_eq(v_layout, 'bento'), og_eq(v_i, 0)])) else '')])]), 'testid': 'item'}, 'children': og_markup(c_12)}) }}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4' if og_t(og_eq(v_layout, 'compact')) else 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3')), 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_13}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4' if og_t(og_eq(v_layout, 'compact')) else 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3')), 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_13}) }}

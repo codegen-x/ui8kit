@@ -50,11 +50,12 @@ const {
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((channels?.length ?? 0) === 0)" icon="life-buoy" :title="empty" />
-    <Grid v-else :cols="(((layout as string) === 'list') ? '1' : cols)" class="gap-4" data-testid="items">
-      <Card v-for="c in channels" :key="c.id"
+    <Grid v-else :cols="(((layout as string) === 'list') ? '1' : cols)" class="gap-4" data-slot="items">
+      <Card
+        v-for="c in channels"
+        :key="c.id"
         variant="default"
         :class="cn('h-full', (((layout as string) === 'list') ? 'flex-row items-center' : ''))"
-        data-testid="item"
       >
         <CardContent :class="cn('flex flex-1 gap-4', (((layout as string) === 'list') ? 'items-center' : 'flex-col'))">
           <LucideIcon :name="c.icon" :size="24" />

@@ -19,18 +19,18 @@
     {%- endset -%}
     {{ include('compose/Label.html.twig', {'htmlFor': og_s(og_tpl('{0}-email', [v_id])), 'class': 'sr-only', 'children': c_3}, with_context = false) }}
     {%- set c_5 -%}
-      {{ include('compose/Input.html.twig', {'type': 'email', 'name': 'email', 'class': 'min-w-0 flex-1', 'attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}, with_context = false) }}
+      {{ include('compose/Input.html.twig', {'type': 'email', 'name': 'email', 'class': 'min-w-0 flex-1', 'attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}, with_context = false) }}
       {%- set c_4 -%}
         {{ og_text(og_get(v_labels, ['subscribe'])) }}
       {%- endset -%}
-      {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'submit', 'attrs': og_attrs(['data-testid', 'submit']), 'children': c_4}, with_context = false) }}
+      {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'submit', 'children': c_4}, with_context = false) }}
     {%- endset -%}
     {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'start', 'class': 'w-full flex-wrap', 'children': c_5}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Form.html.twig', {'method': 'dialog', 'class': og_s(og_cnv(['w-full max-w-md', (og_t(false) ? 'mx-auto' : '')])), 'attrs': og_attrs(['data-testid', 'email-form']), 'children': c_6}, with_context = false) }}
+  {{ include('compose/Form.html.twig', {'method': 'dialog', 'class': og_s(og_cnv(['w-full max-w-md', (og_t(false) ? 'mx-auto' : '')])), 'attrs': og_attrs(['data-slot', 'email-form']), 'children': c_6}, with_context = false) }}
   {%- set c_7 -%}
     {{ og_text(og_get(v_labels, ['note'])) }}
   {%- endset -%}
   {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_7}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs': og_attrs(['data-testid', 'signup']), 'children': c_8}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs': og_attrs(['data-slot', 'signup']), 'children': c_8}, with_context = false) }}

@@ -217,7 +217,10 @@
             }
           ]
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "stat-tile"
+      }
     }
   ],
   "portable": {

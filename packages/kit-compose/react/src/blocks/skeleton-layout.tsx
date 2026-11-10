@@ -30,11 +30,11 @@ export function SkeletonLayout({
 }: SkeletonLayoutProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
-      <Block tag="div" className="w-full" role="status" aria-label={label} data-testid="skeleton" data-shape={shape}>
+      <Block tag="div" className="w-full" role="status" aria-label={label} data-shape={shape} data-slot="skeleton">
         {((shape as string) === "cards") ? (
           <Grid cols="1-3" className="gap-4">
             {(lines ?? []).map((l) => (
-              <Stack key={l.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="item">
+              <Stack key={l.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
                 <Skeleton className="aspect-video w-full" />
                 <Skeleton className="h-4 w-2/3" />
                 <Skeleton className="h-4 w-full" />
@@ -44,7 +44,7 @@ export function SkeletonLayout({
         ) : ((shape as string) === "list") ? (
           <Stack gap="4" align="stretch">
             {(lines ?? []).map((l) => (
-              <Group key={l.id} gap="4" align="center" data-testid="item">
+              <Group key={l.id} gap="4" align="center" data-slot="item">
                 <Skeleton className="size-10 shrink-0 rounded-full" />
                 <Stack gap="2" className="flex-1">
                   <Skeleton className="h-4 w-1/3" />
@@ -57,7 +57,7 @@ export function SkeletonLayout({
           <Stack gap="4" align="stretch" className="mx-auto max-w-2xl">
             <Skeleton className="h-8 w-3/4" />
             {(lines ?? []).map((l) => (
-              <Stack key={l.id} gap="2" data-testid="item">
+              <Stack key={l.id} gap="2" data-slot="item">
                 <Skeleton className="h-4 w-full" />
                 <Skeleton className="h-4 w-5/6" />
               </Stack>

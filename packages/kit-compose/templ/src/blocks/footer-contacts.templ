@@ -20,9 +20,9 @@ type FooterContactsProps struct {
 templ FooterContacts(p FooterContactsProps) {
 	{{ vExtras := p.Extras }}
 	if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "contacts")), float64(0)) {
-		@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{}}) {
+		@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "footer-contacts")}}) {
 			for _, vC := range uiutils.L(uiutils.Get(vExtras, "contacts")) {
-				@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "footer-contact")}}) {
+				@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "footer-contact")}}) {
 					@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground"}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vC, "icon")), Size: 20})
 					}

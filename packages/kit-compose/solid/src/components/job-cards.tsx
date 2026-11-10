@@ -21,8 +21,8 @@ export function JobCards({ jobs, departments, labels, layout = "grid", salary = 
   return (
     <>
       {((layout as string) === "table") ? (
-        <Box class="w-full overflow-x-auto rounded inset-ring inset-ring-border">
-          <Table class="w-full text-left text-sm" data-testid="job-table">
+        <Box class="w-full overflow-x-auto rounded inset-ring inset-ring-border" data-slot="job-cards">
+          <Table class="w-full text-left text-sm" data-slot="job-table">
             <TableCaption class="sr-only">
               {labels.caption}
             </TableCaption>
@@ -54,7 +54,7 @@ export function JobCards({ jobs, departments, labels, layout = "grid", salary = 
             </TableHead>
             <TableBody>
               <For each={jobs ?? []}>{(j) => (
-                <TableRow class="border-t border-border" data-testid="item">
+                <TableRow class="border-t border-border" data-slot="item">
                   <TableCell class="px-4 py-4 font-medium">
                     {j.title}
                   </TableCell>
@@ -83,9 +83,9 @@ export function JobCards({ jobs, departments, labels, layout = "grid", salary = 
           </Table>
         </Box>
       ) : (
-        <Grid cols="1-2" class="gap-4" data-testid="items">
+        <Grid cols="1-2" class="gap-4" data-slot="items">
           <For each={jobs ?? []}>{(j) => (
-            <Stack gap="4" class="rounded bg-card inset-ring inset-ring-border p-6" data-testid="item">
+            <Stack gap="4" class="rounded bg-card inset-ring inset-ring-border p-6" data-slot="item">
               <Stack gap="2">
                 <Text size="lg" weight="semibold">
                   {j.title}
@@ -112,7 +112,7 @@ export function JobCards({ jobs, departments, labels, layout = "grid", salary = 
                 </Group>
               </Stack>
               {((salary as string) === "show") ? (
-                <Text size="base" weight="semibold" data-testid="salary">
+                <Text size="base" weight="semibold" data-slot="salary">
                   {j.salary}
                 </Text>
               ) : null}

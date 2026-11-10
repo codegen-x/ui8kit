@@ -53,13 +53,13 @@ export function FeatureAccordion({
       {((features?.length ?? 0) === 0) ? (
         <EmptyState icon="layout-grid" title={empty} />
       ) : (
-        <Stack gap="0" align="stretch" data-testid="items">
+        <Stack gap="0" align="stretch" data-slot="items">
           {(features ?? []).map((f, i) => (
             <Disclosure key={f.id}
               variant="item"
               name={(multiple ? undefined : tpl("{0}-accordion", (id ?? "accordion")))}
               open={(((expand as string) === "first") && (i === 0))}
-              data-testid="item"
+              data-slot="item"
             >
               <Summary variant="item">
                 <Inline className="flex min-w-0 items-center justify-start gap-4">

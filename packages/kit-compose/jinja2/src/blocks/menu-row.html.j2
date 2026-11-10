@@ -21,7 +21,7 @@
       {%- set c_3 -%}
         {{ og_text(og_money(og_get(v_dish, ['price']), og_get(v_dish, ['currency']))) }}
       {%- endset -%}
-      {{ og_include('compose/inline.html.j2', {'p': {'Class': 'font-semibold', 'Attrs': og_attrs(['data-testid', 'price'])}, 'children': c_3}) }}
+      {{ og_include('compose/inline.html.j2', {'p': {'Class': 'font-semibold', 'Attrs': og_attrs(['data-slot', 'price'])}, 'children': c_3}) }}
     {%- endif %}
   {%- endset -%}
   {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex items-baseline gap-2'}, 'children': c_4}) }}
@@ -30,4 +30,4 @@
   {%- endset -%}
   {{ og_include('compose/inline.html.j2', {'p': {'Class': 'text-sm text-muted-foreground'}, 'children': c_5}) }}
 {%- endset -%}
-{{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex flex-col gap-0 border-b border-border py-2', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_6}) }}
+{{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex flex-col gap-0 border-b border-border py-2', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_6}) }}

@@ -82,14 +82,14 @@
             {%- endset -%}
             {{ og_include('compose/table-cell.html.j2', {'p': {'Class': 'pr-4 text-right'}, 'children': c_17}) }}
           {%- endset -%}
-          {{ og_include('compose/table-row.html.j2', {'p': {'Class': 'border-t border-border', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_18}) }}
+          {{ og_include('compose/table-row.html.j2', {'p': {'Class': 'border-t border-border', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_18}) }}
         {%- endfor %}
       {%- endset -%}
       {{ og_include('compose/table-body.html.j2', {'p': {}, 'children': c_19}) }}
     {%- endset -%}
-    {{ og_include('compose/table.html.j2', {'p': {'Class': 'w-full text-left text-sm', 'Attrs': og_attrs(['data-testid', 'job-table'])}, 'children': c_20}) }}
+    {{ og_include('compose/table.html.j2', {'p': {'Class': 'w-full text-left text-sm', 'Attrs': og_attrs(['data-slot', 'job-table'])}, 'children': c_20}) }}
   {%- endset -%}
-  {{ og_include('compose/box.html.j2', {'p': {'Class': 'w-full overflow-x-auto rounded inset-ring inset-ring-border'}, 'children': c_21}) }}
+  {{ og_include('compose/box.html.j2', {'p': {'Class': 'w-full overflow-x-auto rounded inset-ring inset-ring-border', 'Attrs': og_attrs(['data-slot', 'job-cards'])}, 'children': c_21}) }}
 {%- else %}
   {%- set c_36 -%}
     {%- for v_j in og_l(v_jobs) %}
@@ -132,7 +132,7 @@
           {%- set c_31 -%}
             {{ og_text(og_get(v_j, ['salary'])) }}
           {%- endset -%}
-          {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Weight': 'semibold', 'Attrs': og_attrs(['data-testid', 'salary'])}, 'children': c_31}) }}
+          {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Weight': 'semibold', 'Attrs': og_attrs(['data-slot', 'salary'])}, 'children': c_31}) }}
         {%- endif %}
         {%- set c_34 -%}
           {%- set c_32 -%}
@@ -147,8 +147,8 @@
         {%- endset -%}
         {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Class': 'mt-auto'}, 'children': c_34}) }}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_35}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_35}) }}
     {%- endfor %}
   {%- endset -%}
-  {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-2', 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_36}) }}
+  {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-2', 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_36}) }}
 {%- endif %}

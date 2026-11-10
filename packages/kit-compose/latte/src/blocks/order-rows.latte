@@ -65,11 +65,11 @@
           {/capture}
           {=og_include('compose/TableCell.latte', ['children' => (string) $c_14])|noescape}
         {/capture}
-        {=og_include('compose/TableRow.latte', ['class' => 'border-t border-border', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_15])|noescape}
+        {=og_include('compose/TableRow.latte', ['class' => 'border-t border-border', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_15])|noescape}
       {/foreach}
     {/capture}
     {=og_include('compose/TableBody.latte', ['children' => (string) $c_16])|noescape}
   {/capture}
-  {=og_include('compose/Table.latte', ['class' => 'w-full text-left text-sm', 'attrs' => og_attrs(['data-testid', 'order-table']), 'children' => (string) $c_17])|noescape}
+  {=og_include('compose/Table.latte', ['class' => 'w-full text-left text-sm', 'attrs' => og_attrs(['data-slot', 'order-table']), 'children' => (string) $c_17])|noescape}
 {/capture}
-{=og_include('compose/Box.latte', ['class' => 'w-full overflow-x-auto', 'children' => (string) $c_18])|noescape}
+{=og_include('compose/Box.latte', ['class' => 'w-full overflow-x-auto', 'attrs' => og_attrs(['data-slot', 'order-rows']), 'children' => (string) $c_18])|noescape}

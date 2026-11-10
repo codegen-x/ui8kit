@@ -162,28 +162,28 @@
   ],
   "facts": [
     {
-      "sel": "nav[aria-label][data-testid=\"posts-pager\"]",
+      "sel": "nav[aria-label][data-slot=\"posts-pager\"]",
       "n": 1,
       "when": {
         "pager.mode": "pages"
       }
     },
     {
-      "sel": "[data-testid=\"posts-pager\"] [aria-current=\"page\"]",
+      "sel": "[data-slot=\"posts-pager\"] [aria-current=\"page\"]",
       "n": 1,
       "when": {
         "pager.mode": "pages"
       }
     },
     {
-      "sel": "[data-testid=\"posts-pager\"]",
+      "sel": "[data-slot=\"posts-pager\"]",
       "n": 0,
       "when": {
         "pager.mode": "none"
       }
     },
     {
-      "sel": "[data-testid=\"posts-pager\"] a",
+      "sel": "[data-slot=\"posts-pager\"] a",
       "n": 0,
       "when": {
         "pager.mode": "pages",
@@ -191,7 +191,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"posts-pager\"] a[href]",
+      "sel": "[data-slot=\"posts-pager\"] a[href]",
       "n": 3,
       "when": {
         "pager.mode": "pages",
@@ -199,7 +199,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"posts-pager\"] a[aria-current]",
+      "sel": "[data-slot=\"posts-pager\"] a[aria-current]",
       "n": 0,
       "when": {
         "pager.mode": "pages",
@@ -207,7 +207,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"posts-pager\"] button[disabled]:not([href])",
+      "sel": "[data-slot=\"posts-pager\"] button[disabled]:not([href])",
       "n": 1,
       "when": {
         "pager.mode": "pages",
@@ -215,7 +215,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"posts-pager\"] button",
+      "sel": "[data-slot=\"posts-pager\"] button",
       "n": 1,
       "when": {
         "pager.mode": "pages",

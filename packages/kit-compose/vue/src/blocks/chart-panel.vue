@@ -50,8 +50,8 @@ const {
   <Block
     tag="section"
     :aria-labelledby="(landmarkLabel ? undefined : ((title && id) ? tpl('{0}-t', id) : undefined))"
-    data-testid="panel-section"
     :aria-label="landmarkLabel"
+    data-slot="panel-section"
   >
     <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
       <Panel :title="title" :description="text" :id="id" :class="(((tone as string) === 'muted') ? 'bg-muted' : '')">
@@ -62,7 +62,7 @@ const {
           :label="summary"
           :height="(((size as string) === 'compact') ? 96 : 176)"
         />
-        <Stack v-else :gap="(((size as string) === 'compact') ? '0' : '2')" align="stretch" data-testid="items">
+        <Stack v-else :gap="(((size as string) === 'compact') ? '0' : '2')" align="stretch" data-slot="items">
           <MeterRow
             v-for="s in series"
             :key="s.id"

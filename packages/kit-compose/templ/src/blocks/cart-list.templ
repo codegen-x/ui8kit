@@ -44,9 +44,9 @@ templ CartList(p CartListProps) {
 		} else if uiutils.Eq(vLayout, "table") {
 			@CartTable(CartTableProps{Field: uiutils.Tpl("{0}-qty", vId), Lines: vLines, Labels: vLabels, Media: vMedia, Density: vDensity})
 		} else {
-			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "cart-cards")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "cart-cards")}}) {
 				for _, vLine := range uiutils.L(vLines) {
-					@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{}}) {
 						@compose.CardContent(compose.CardContentProps{BoxProps: box.BoxProps{Class: "flex flex-wrap items-center gap-4"}}) {
 							if uiutils.Eq(vMedia, "image") {
 								@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Ratio: "1/1", Class: uiutils.Cnv("size-16 shrink-0")})
@@ -66,7 +66,7 @@ templ CartList(p CartListProps) {
 							@compose.Text(compose.TextProps{Size: "base", Weight: "bold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Money(uiutils.Mul(uiutils.Get(vLine, "price"), uiutils.Get(vLine, "qty")), uiutils.Get(vLine, "currency"))) }
 							}
-							@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{AriaLabel: uiutils.S(uiutils.Get(vLabels, "remove")), Attrs: uiutils.Attrs("data-testid", "remove")}}) {
+							@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{AriaLabel: uiutils.S(uiutils.Get(vLabels, "remove"))}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: "x", Size: 16})
 							}
 						}

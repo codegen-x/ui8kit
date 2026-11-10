@@ -51,7 +51,7 @@ templ FaqSplit(p FaqSplitProps) {
 		if uiutils.Eq(vLayout, "head") {
 			@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": "end", "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill1(p, vId, vItems)}) {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{}}) {
-					@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Attrs: uiutils.Attrs("data-testid", "faq-cta")}}) {
+					@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{}}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "cta")) }
 					}
 				}
@@ -66,7 +66,7 @@ templ FaqSplit(p FaqSplitProps) {
 			@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide, "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill3(p, vTitle)}) {
 				@FaqDisclosures(FaqDisclosuresProps{Items: vItems, Name: uiutils.Tpl("{0}-faq", vId)})
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{}}) {
-					@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Attrs: uiutils.Attrs("data-testid", "faq-cta")}}) {
+					@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{}}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "cta")) }
 					}
 				}

@@ -51,10 +51,10 @@
         "Class": "flex h-16 shrink-0 items-center gap-6 border-b border-border bg-background px-6"
       },
       "attrs": {
-        "data-testid": "topbar",
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "topbar"
       },
       "children": [
         {
@@ -76,7 +76,7 @@
                 "Class": "shrink-0"
               },
               "attrs": {
-                "data-testid": "brand"
+                "data-slot": "brand"
               },
               "children": [
                 {
@@ -286,7 +286,10 @@
                                     }
                                   }
                                 }
-                              ]
+                              ],
+                              "attrs": {
+                                "data-slot": "links-row"
+                              }
                             }
                           ]
                         }
@@ -393,7 +396,7 @@
             }
           },
           "attrs": {
-            "data-testid": "user"
+            "data-slot": "user"
           },
           "children": [
             {

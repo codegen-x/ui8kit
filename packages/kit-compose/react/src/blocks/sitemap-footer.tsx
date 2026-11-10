@@ -51,9 +51,9 @@ export function SitemapFooter({
         <Block
           tag="footer"
           className="mt-12 border-t border-border"
-          data-testid="site-footer"
           data-layout={layout}
           aria-label={landmarkLabel}
+          data-slot="site-footer"
         >
           <Container
             className={cn(
@@ -64,17 +64,17 @@ export function SitemapFooter({
             data-slot="container"
           >
             {(signup?.mode === "first") ? (
-              <Stack gap="4" className="max-w-md" data-testid="signup">
+              <Stack gap="4" className="max-w-md" data-slot="signup">
                 <Title as={3} size="xl" weight="bold">
                   {signup?.title}
                 </Title>
-                <Form method="dialog" className={cn("w-full max-w-md", (false ? "mx-auto" : ""))} data-testid="email-form">
+                <Form method="dialog" className={cn("w-full max-w-md", (false ? "mx-auto" : ""))} data-slot="email-form">
                   <Label htmlFor={tpl("{0}-email", id)} className="sr-only">
                     {signup?.label}
                   </Label>
                   <Group gap="2" align="start" className="w-full flex-wrap">
-                    <Input type="email" name="email" className="min-w-0 flex-1" id={tpl("{0}-email", id)} data-testid="field" />
-                    <Button variant="default" size="default" type="submit" data-testid="submit">
+                    <Input type="email" name="email" className="min-w-0 flex-1" id={tpl("{0}-email", id)} data-slot="field" />
+                    <Button variant="default" size="default" type="submit">
                       {signup?.submit}
                     </Button>
                   </Group>

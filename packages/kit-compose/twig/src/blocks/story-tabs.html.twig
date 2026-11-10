@@ -32,10 +32,10 @@
           {%- endset -%}
           {{ include('compose/Inline.html.twig', {'class': 'text-xs', 'children': c_3}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Button.html.twig', {'variant': og_s((og_t(og_eq(og_get(v_s, ['id']), v_active)) ? 'default' : 'outline')), 'size': 'lg', 'type': 'button', 'class': 'h-auto flex-col items-start gap-0 py-2 text-start', 'attrs': og_attrs(['data-testid', 'story-tab', 'data-active', (og_t(og_eq(og_get(v_s, ['id']), v_active)) ? 'true' : 'false')]), 'children': c_4}, with_context = false) }}
+        {{ include('compose/Button.html.twig', {'variant': og_s((og_t(og_eq(og_get(v_s, ['id']), v_active)) ? 'default' : 'outline')), 'size': 'lg', 'type': 'button', 'class': 'h-auto flex-col items-start gap-0 py-2 text-start', 'attrs': og_attrs(['data-active', (og_t(og_eq(og_get(v_s, ['id']), v_active)) ? 'true' : 'false')]), 'children': c_4}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-2 gap-2 sm:grid-cols-4', 'attrs': og_attrs(['data-testid', 'story-tabs']), 'children': c_5}, with_context = false) }}
+    {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-2 gap-2 sm:grid-cols-4', 'attrs': og_attrs(['data-slot', 'story-tabs']), 'children': c_5}, with_context = false) }}
     {%- for v_s in og_l(v_steps) %}
       {%- set v_i = loop.index0 -%}
       {%- if og_t(og_eq(og_get(v_s, ['id']), v_active)) %}
@@ -52,12 +52,12 @@
         {%- set c_8 -%}
           {{ include('icons/LucideIcon.html.twig', {'name': 'chevron-left', 'size': 16}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'layout': 'icon', 'type': 'button', 'ariaLabel': og_s(og_get(v_labels, ['previous'])), 'attrs': og_attrs(['data-testid', 'story-arrow']), 'children': c_8}, with_context = false) }}
+        {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'layout': 'icon', 'type': 'button', 'ariaLabel': og_s(og_get(v_labels, ['previous'])), 'children': c_8}, with_context = false) }}
         {{ include('blocks/story-dots.html.twig', {'p': {'steps': v_steps, 'active': v_active}}, with_context = false) }}
         {%- set c_9 -%}
           {{ include('icons/LucideIcon.html.twig', {'name': 'chevron-right', 'size': 16}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'layout': 'icon', 'type': 'button', 'ariaLabel': og_s(og_get(v_labels, ['next'])), 'attrs': og_attrs(['data-testid', 'story-arrow']), 'children': c_9}, with_context = false) }}
+        {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'layout': 'icon', 'type': 'button', 'ariaLabel': og_s(og_get(v_labels, ['next'])), 'children': c_9}, with_context = false) }}
       {%- endset -%}
       {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'between', 'children': c_10}, with_context = false) }}
     {%- endset -%}

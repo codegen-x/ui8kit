@@ -206,7 +206,7 @@
                         "Size": "sm"
                       },
                       "attrs": {
-                        "data-testid": "section-action"
+                        "data-slot": "section-action"
                       },
                       "children": [
                         {

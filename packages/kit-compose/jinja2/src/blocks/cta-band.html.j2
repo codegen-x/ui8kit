@@ -42,7 +42,7 @@
     {%- endset -%}
     {{ og_include('compose/container.html.j2', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4', 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_6}) }}
   {%- endset -%}
-  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': 'py-8', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else og_tpl('{0}-title', [v_id])), 'data-testid', 'section', 'data-tone', v_tone, 'data-density', v_density, 'aria-label', v_landmarkLabel])}, 'children': c_7}) }}
+  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': 'py-8', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else og_tpl('{0}-title', [v_id])), 'data-tone', v_tone, 'data-density', v_density, 'aria-label', v_landmarkLabel, 'data-slot', 'section'])}, 'children': c_7}) }}
 {%- else %}
   {%- set f_8 -%}
     {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': v_title, 'ratio': '4/3'}}) }}

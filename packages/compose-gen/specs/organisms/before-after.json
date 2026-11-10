@@ -170,7 +170,7 @@
                         "Class": "items-stretch gap-4"
                       },
                       "attrs": {
-                        "data-testid": "sides"
+                        "data-slot": "sides"
                       },
                       "children": [
                         {
@@ -201,7 +201,6 @@
                             }
                           },
                           "attrs": {
-                            "data-testid": "side",
                             "data-side": "before"
                           },
                           "children": [
@@ -247,7 +246,7 @@
                                             "Class": "flex items-start gap-4"
                                           },
                                           "attrs": {
-                                            "data-testid": "item"
+                                            "data-slot": "item"
                                           },
                                           "children": [
                                             {
@@ -322,7 +321,6 @@
                             }
                           },
                           "attrs": {
-                            "data-testid": "side",
                             "data-side": "after"
                           },
                           "children": [
@@ -368,7 +366,7 @@
                                             "Class": "flex items-start gap-4"
                                           },
                                           "attrs": {
-                                            "data-testid": "item"
+                                            "data-slot": "item"
                                           },
                                           "children": [
                                             {
@@ -426,7 +424,7 @@
                         "Align": "stretch"
                       },
                       "attrs": {
-                        "data-testid": "rows"
+                        "data-slot": "rows"
                       },
                       "children": [
                         {
@@ -451,7 +449,7 @@
                                 }
                               },
                               "attrs": {
-                                "data-testid": "item"
+                                "data-slot": "item"
                               },
                               "children": [
                                 {

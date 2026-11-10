@@ -131,7 +131,7 @@
                         "Class": "w-full overflow-x-auto"
                       },
                       "attrs": {
-                        "data-testid": "compare-table"
+                        "data-slot": "compare-table"
                       },
                       "children": [
                         {
@@ -262,7 +262,7 @@
                                     {
                                       "use": "TableRow",
                                       "attrs": {
-                                        "data-testid": "item"
+                                        "data-slot": "item"
                                       },
                                       "children": [
                                         {

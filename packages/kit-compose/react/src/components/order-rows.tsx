@@ -15,8 +15,8 @@ export type OrderRowsProps = {
 
 export function OrderRows({ orders, statuses, labels, density = "default" }: OrderRowsProps) {
   return (
-    <Box className="w-full overflow-x-auto">
-      <Table className="w-full text-left text-sm" data-testid="order-table">
+    <Box className="w-full overflow-x-auto" data-slot="order-rows">
+      <Table className="w-full text-left text-sm" data-slot="order-table">
         <TableCaption className="sr-only">
           {labels.caption}
         </TableCaption>
@@ -41,7 +41,7 @@ export function OrderRows({ orders, statuses, labels, density = "default" }: Ord
         </TableHead>
         <TableBody>
           {(orders ?? []).map((o) => (
-            <TableRow key={o.id} className="border-t border-border" data-testid="item">
+            <TableRow key={o.id} className="border-t border-border" data-slot="item">
               <TableCell className={cn("font-semibold", (((density as string) === "compact") ? "py-2" : "py-4"))}>
                 {o.number}
               </TableCell>

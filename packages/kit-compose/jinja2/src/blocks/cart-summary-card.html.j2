@@ -44,10 +44,10 @@
           {%- endset -%}
           {{ og_include('compose/inline.html.j2', {'p': {'Class': 'font-medium'}, 'children': c_7}) }}
         {%- endset -%}
-        {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-4 text-sm'}, 'children': c_8}) }}
+        {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-4 text-sm', 'Attrs': og_attrs(['data-slot', 'cart-line'])}, 'children': c_8}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col gap-4', 'Attrs': og_attrs(['data-testid', 'summary-lines'])}, 'children': c_9}) }}
+    {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col gap-4', 'Attrs': og_attrs(['data-slot', 'summary-lines'])}, 'children': c_9}) }}
   {%- endif %}
   {%- if og_t(og_eq(v_promo, 'show')) %}
     {%- set c_15 -%}
@@ -69,13 +69,13 @@
             {%- set c_13 -%}
               {{ og_text(og_get(v_c, ['code'])) }}
             {%- endset -%}
-            {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'code'])}, 'children': c_13}) }}
+            {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm'}, 'children': c_13}) }}
           {%- endfor %}
         {%- endset -%}
         {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': 'flex-wrap'}, 'children': c_14}) }}
       {%- endif %}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'promo'])}, 'children': c_15}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'promo'])}, 'children': c_15}) }}
   {%- endif %}
   {%- if og_t(og_eq(v_progress, 'show')) %}
     {%- set c_17 -%}
@@ -85,7 +85,7 @@
       {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm'}, 'children': c_16}) }}
       {{ og_include('compose/progress.html.j2', {'p': {'Value': og_s(og_str(v_value)), 'Max': '100', 'Attrs': og_attrs(['aria-label', og_get(v_labels, ['progress'])])}}) }}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Class': 'rounded bg-muted p-4', 'Attrs': og_attrs(['data-testid', 'progress'])}, 'children': c_17}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Class': 'rounded bg-muted p-4', 'Attrs': og_attrs(['data-slot', 'progress'])}, 'children': c_17}) }}
   {%- endif %}
   {%- if og_t(og_gt(og_len(v_rows), 0)) %}
     {%- set c_21 -%}
@@ -100,7 +100,7 @@
           {%- endset -%}
           {{ og_include('compose/inline.html.j2', {'p': {}, 'children': c_19}) }}
         {%- endset -%}
-        {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(og_cnv(['flex items-center justify-between gap-4', ('border-t border-border pt-4 text-base font-bold' if og_t(og_get(v_row, ['strong'])) else 'text-sm text-muted-foreground')])), 'Attrs': og_attrs(['data-testid', 'row'])}, 'children': c_20}) }}
+        {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(og_cnv(['flex items-center justify-between gap-4', ('border-t border-border pt-4 text-base font-bold' if og_t(og_get(v_row, ['strong'])) else 'text-sm text-muted-foreground')])), 'Attrs': og_attrs(['data-slot', 'row'])}, 'children': c_20}) }}
       {%- endfor %}
     {%- endset -%}
     {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col gap-2'}, 'children': c_21}) }}
@@ -108,10 +108,10 @@
   {%- set c_22 -%}
     {{ og_text(og_get(v_labels, ['checkout'])) }}
   {%- endset -%}
-  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'lg', 'Class': 'w-full', 'Attrs': og_attrs(['data-testid', 'checkout'])}, 'children': c_22}) }}
+  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'lg', 'Class': 'w-full'}, 'children': c_22}) }}
   {%- set c_23 -%}
     {{ og_text(og_get(v_labels, ['note'])) }}
   {%- endset -%}
   {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_23}) }}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': 'stretch', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-testid', 'summary'])}, 'children': c_24}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': 'stretch', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-slot', 'summary'])}, 'children': c_24}) }}

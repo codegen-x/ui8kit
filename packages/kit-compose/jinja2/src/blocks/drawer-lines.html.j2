@@ -34,10 +34,10 @@
       {%- endset -%}
       {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Class': 'flex-1'}, 'children': c_5}) }}
     {%- endset -%}
-    {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_6}) }}
+    {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_6}) }}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'flex-1 p-4', 'Attrs': og_attrs(['data-testid', 'lines'])}, 'children': c_7}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'flex-1 p-4', 'Attrs': og_attrs(['data-slot', 'lines'])}, 'children': c_7}) }}
 {%- set c_15 -%}
   {%- set c_9 -%}
     {%- set c_8 -%}
@@ -46,7 +46,7 @@
     {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm'}, 'children': c_8}) }}
     {{ og_include('compose/progress.html.j2', {'p': {'Value': '96', 'Max': '100', 'Attrs': og_attrs(['aria-label', og_get(v_drawer, ['progress'])])}}) }}
   {%- endset -%}
-  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Class': 'rounded bg-muted p-4', 'Attrs': og_attrs(['data-testid', 'progress'])}, 'children': c_9}) }}
+  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Class': 'rounded bg-muted p-4', 'Attrs': og_attrs(['data-slot', 'progress'])}, 'children': c_9}) }}
   {%- set c_13 -%}
     {%- for v_row in og_l(v_rows) %}
       {%- set v_i = loop.index0 -%}
@@ -61,7 +61,7 @@
           {%- endset -%}
           {{ og_include('compose/inline.html.j2', {'p': {}, 'children': c_11}) }}
         {%- endset -%}
-        {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(('flex justify-between text-base font-bold' if og_t(og_get(v_row, ['strong'])) else 'flex justify-between text-sm text-muted-foreground'))}, 'children': c_12}) }}
+        {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(('flex justify-between text-base font-bold' if og_t(og_get(v_row, ['strong'])) else 'flex justify-between text-sm text-muted-foreground')), 'Attrs': og_attrs(['data-slot', 'summary-row'])}, 'children': c_12}) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
@@ -69,6 +69,6 @@
   {%- set c_14 -%}
     {{ og_text(og_get(v_labels, ['checkout'])) }}
   {%- endset -%}
-  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'lg', 'Class': 'w-full', 'Attrs': og_attrs(['data-testid', 'checkout'])}, 'children': c_14}) }}
+  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'lg', 'Class': 'w-full'}, 'children': c_14}) }}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'border-t border-border p-4'}, 'children': c_15}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'border-t border-border p-4', 'Attrs': og_attrs(['data-slot', 'drawer-lines'])}, 'children': c_15}) }}

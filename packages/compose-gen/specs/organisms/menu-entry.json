@@ -35,7 +35,7 @@
     {
       "name": "testid",
       "type": "string",
-      "docs": "the test id of the entry"
+      "docs": "data-slot of the entry (default: the component name)"
     },
     {
       "name": "block",
@@ -84,8 +84,14 @@
             }
           },
           "attrs": {
-            "data-testid": {
-              "$": "testid"
+            "data-slot": {
+              "op": "coalesce",
+              "args": [
+                {
+                  "$": "testid"
+                },
+                "menu-entry"
+              ]
             }
           },
           "children": [
@@ -122,8 +128,14 @@
                     }
                   ]
                 },
-                "data-testid": {
-                  "$": "testid"
+                "data-slot": {
+                  "op": "coalesce",
+                  "args": [
+                    {
+                      "$": "testid"
+                    },
+                    "menu-entry"
+                  ]
                 }
               },
               "children": [
@@ -155,8 +167,14 @@
                     }
                   ]
                 },
-                "data-testid": {
-                  "$": "testid"
+                "data-slot": {
+                  "op": "coalesce",
+                  "args": [
+                    {
+                      "$": "testid"
+                    },
+                    "menu-entry"
+                  ]
                 }
               },
               "children": [

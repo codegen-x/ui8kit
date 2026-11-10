@@ -228,7 +228,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "checkout-form"
+                    "data-slot": "checkout-form"
                   },
                   "children": [
                     {
@@ -293,7 +293,7 @@
                                                 }
                                               ]
                                             },
-                                            "data-testid": "field"
+                                            "data-slot": "field"
                                           }
                                         }
                                       ]
@@ -337,7 +337,7 @@
                                                 }
                                               ]
                                             },
-                                            "data-testid": "field"
+                                            "data-slot": "field"
                                           }
                                         }
                                       ]
@@ -381,7 +381,7 @@
                                                 }
                                               ]
                                             },
-                                            "data-testid": "field"
+                                            "data-slot": "field"
                                           }
                                         }
                                       ]
@@ -449,7 +449,7 @@
                                             }
                                           ]
                                         },
-                                        "data-testid": "field"
+                                        "data-slot": "field"
                                       }
                                     }
                                   ]
@@ -499,7 +499,7 @@
                                                 }
                                               ]
                                             },
-                                            "data-testid": "field"
+                                            "data-slot": "field"
                                           }
                                         }
                                       ]
@@ -542,7 +542,7 @@
                                                 }
                                               ]
                                             },
-                                            "data-testid": "field"
+                                            "data-slot": "field"
                                           }
                                         }
                                       ]
@@ -585,7 +585,7 @@
                                                 }
                                               ]
                                             },
-                                            "data-testid": "field"
+                                            "data-slot": "field"
                                           }
                                         }
                                       ]
@@ -628,7 +628,7 @@
                                                 }
                                               ]
                                             },
-                                            "data-testid": "field"
+                                            "data-slot": "field"
                                           }
                                         }
                                       ]
@@ -673,7 +673,7 @@
                                             }
                                           ]
                                         },
-                                        "data-testid": "field"
+                                        "data-slot": "field"
                                       }
                                     }
                                   ]
@@ -836,7 +836,7 @@
                         "Class": "lg:sticky lg:top-8"
                       },
                       "attrs": {
-                        "data-testid": "aside"
+                        "data-slot": "aside"
                       },
                       "children": [
                         {

@@ -45,20 +45,20 @@ templ SitemapFooter(p SitemapFooterProps) {
 	if uiutils.Eq(vLayout, "card") {
 		@FooterCard(FooterCardProps{Label: vLabel, Brand: vBrand, Groups: vGroups, LandmarkLabel: vLandmarkLabel})
 	} else {
-		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "footer", Class: "mt-12 border-t border-border", Attrs: uiutils.Attrs("data-testid", "site-footer", "data-layout", vLayout, "aria-label", vLandmarkLabel)}}) {
+		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "footer", Class: "mt-12 border-t border-border", Attrs: uiutils.Attrs("data-layout", vLayout, "aria-label", vLandmarkLabel, "data-slot", "site-footer")}}) {
 			@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", "flex flex-col gap-8", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "py-6", "py-12"))), Attrs: uiutils.Attrs("data-slot", "container")}}) {
 				if uiutils.Eq(uiutils.Get(vSignup, "mode"), "first") {
-					@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "max-w-md", Attrs: uiutils.Attrs("data-testid", "signup")}}) {
+					@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "max-w-md", Attrs: uiutils.Attrs("data-slot", "signup")}}) {
 						@compose.Title(compose.TitleProps{As: "3", Size: "xl", Weight: "bold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vSignup, "title")) }
 						}
-						@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: uiutils.S(uiutils.Cnv("w-full max-w-md", uiutils.Cond(uiutils.T(false), "mx-auto", ""))), Attrs: uiutils.Attrs("data-testid", "email-form")}}) {
+						@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: uiutils.S(uiutils.Cnv("w-full max-w-md", uiutils.Cond(uiutils.T(false), "mx-auto", ""))), Attrs: uiutils.Attrs("data-slot", "email-form")}}) {
 							@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{For: uiutils.S(uiutils.Tpl("{0}-email", vId)), Class: "sr-only"}}) {
 								{ uiutils.Text(uiutils.Get(vSignup, "label")) }
 							}
 							@compose.Group(compose.GroupProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: "w-full flex-wrap"}}) {
-								@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Class: "min-w-0 flex-1", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-email", vId), "data-testid", "field")}})
-								@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit", Attrs: uiutils.Attrs("data-testid", "submit")}}) {
+								@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Class: "min-w-0 flex-1", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-email", vId), "data-slot", "field")}})
+								@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit"}}) {
 									{ uiutils.Text(uiutils.Get(vSignup, "submit")) }
 								}
 							}

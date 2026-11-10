@@ -29,15 +29,15 @@
                 {/capture}
                 {=og_include('blocks/menu-entry.latte', ['p' => ['href' => og_get($v_item, ['href']), 'className' => og_cnv(['text-sm text-muted-foreground']), 'variant' => 'muted', 'size' => 'sm'], 'children' => og_markup($c_4)])|noescape}
               {/capture}
-              {=og_include('compose/ListItem.latte', ['children' => (string) $c_5])|noescape}
+              {=og_include('compose/ListItem.latte', ['attrs' => og_attrs(['data-slot', 'links-row']), 'children' => (string) $c_5])|noescape}
             {/foreach}
           {/capture}
           {=og_include('compose/List.latte', ['class' => 'm-0 flex list-none flex-col gap-2 p-0', 'children' => (string) $c_6])|noescape}
         {/capture}
-        {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs' => og_attrs(['data-testid', 'group']), 'children' => (string) $c_7])|noescape}
+        {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs' => og_attrs(['data-slot', 'group']), 'children' => (string) $c_7])|noescape}
       {/foreach}
     {/capture}
     {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4', 'children' => (string) $c_8])|noescape}
   {/capture}
-  {=og_include('compose/Block.latte', ['tag' => 'nav', 'attrs' => og_attrs(['aria-label', og_coalesce([$v_landmarkLabel, $v_label])]), 'children' => (string) $c_9])|noescape}
+  {=og_include('compose/Block.latte', ['tag' => 'nav', 'attrs' => og_attrs(['aria-label', og_coalesce([$v_landmarkLabel, $v_label]), 'data-slot', 'footer-group-cards']), 'children' => (string) $c_9])|noescape}
 {/if}

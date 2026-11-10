@@ -21,7 +21,7 @@ const { extras, labels } = defineProps<MediaReviewProps>();
 
 <template>
   <template v-for="(r, i) in extras.reviews" :key="r.id">
-    <Stack v-if="(i < 1)" gap="4" align="stretch" class="rounded bg-muted p-6" data-testid="media-review">
+    <Stack v-if="(i < 1)" gap="4" align="stretch" class="rounded bg-muted p-6" data-slot="media-review">
       <Group gap="4" align="center" justify="between" class="flex-wrap">
         <Text size="sm" weight="medium">
           {{ labels.featured }}

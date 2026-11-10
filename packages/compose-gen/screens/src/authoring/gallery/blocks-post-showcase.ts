@@ -16,11 +16,11 @@ const postshowcase = define({
     ["overlay2", "Two wide cards with the text over the picture", { layout: "overlay", cols: "2" }],
   ],
   facts: [
-    { sel: '[data-testid="post-mini"]', n: 4, when: { layout: "intro" } },
-    { sel: '[data-testid="post-feature"]', n: 1, when: { layout: "featured" } },
-    { sel: '[data-testid="post-overlay"]', n: 3, when: { layout: "overlay", cols: "3" } },
-    { sel: '[data-testid="post-overlay"]', n: 2, when: { layout: "overlay", cols: "2" } },
-    { sel: '[data-testid="section-action"]', n: 1, when: { layout: "intro" } },
+    { sel: '[data-slot="post-mini"]', n: 4, when: { layout: "intro" } },
+    { sel: '[data-slot="post-feature"]', n: 1, when: { layout: "featured" } },
+    { sel: '[data-slot="post-overlay"]', n: 3, when: { layout: "overlay", cols: "3" } },
+    { sel: '[data-slot="post-overlay"]', n: 2, when: { layout: "overlay", cols: "2" } },
+    { sel: '[data-slot="section-action"]', n: 1, when: { layout: "intro" } },
   ],
   sample: {
     id: "postshowcase", title: p("title"), lead: p("lead"), badge: p("badge"), posts: ref("posts"), empty: t("empty.posts"), labels: t("content.labels"),

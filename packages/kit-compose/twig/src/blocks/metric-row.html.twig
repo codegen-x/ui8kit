@@ -21,7 +21,7 @@
           {%- set c_1 -%}
             {{ include('blocks/stat-tile.html.twig', {'p': {'label': og_get(v_m, ['label']), 'value': og_get(v_m, ['value']), 'icon': og_get(v_m, ['icon']), 'hint': og_get(v_m, ['hint'])}}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Box.html.twig', {'attrs': og_attrs(['data-testid', 'item']), 'children': c_1}, with_context = false) }}
+          {{ include('compose/Box.html.twig', {'attrs': og_attrs(['data-slot', 'item']), 'children': c_1}, with_context = false) }}
         {%- else %}
           {%- set c_6 -%}
             {%- set c_3 -%}
@@ -41,11 +41,11 @@
             {%- endset -%}
             {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_5}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Stack.html.twig', {'gap': '0', 'class': 'rounded bg-card p-4 inset-ring inset-ring-border', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_6}, with_context = false) }}
+          {{ include('compose/Stack.html.twig', {'gap': '0', 'class': 'rounded bg-card p-4 inset-ring inset-ring-border', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_6}, with_context = false) }}
         {%- endif %}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_cols, '2')) ? '1-2' : '1-4')), 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_7}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_cols, '2')) ? '1-2' : '1-4')), 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_7}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_8)}, with_context = false) }}

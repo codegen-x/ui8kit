@@ -13,13 +13,13 @@
         {%- endif %}
         {{ og_text(og_get(v_topic, ['name'])) }}
       {%- endset -%}
-      {{ include('compose/Button.html.twig', {'href': og_url(og_s(og_get(v_topic, ['href']))), 'variant': 'ghost', 'size': 'sm', 'class': 'gap-2 text-background inset-ring-background/30 hover:bg-background/10', 'attrs': og_attrs(['data-testid', 'hero-topic']), 'children': c_1}, with_context = false) }}
+      {{ include('compose/Button.html.twig', {'href': og_url(og_s(og_get(v_topic, ['href']))), 'variant': 'ghost', 'size': 'sm', 'class': 'gap-2 text-background inset-ring-background/30 hover:bg-background/10', 'children': c_1}, with_context = false) }}
     {%- else %}
       {%- set c_2 -%}
         {{ og_text(og_get(v_topic, ['name'])) }}
       {%- endset -%}
-      {{ include('compose/Button.html.twig', {'href': og_url(og_s(og_get(v_topic, ['href']))), 'variant': 'outline', 'size': 'sm', 'attrs': og_attrs(['data-testid', 'hero-topic']), 'children': c_2}, with_context = false) }}
+      {{ include('compose/Button.html.twig', {'href': og_url(og_s(og_get(v_topic, ['href']))), 'variant': 'outline', 'size': 'sm', 'children': c_2}, with_context = false) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'justify': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['data-testid', 'hero-topics']), 'children': c_3}, with_context = false) }}
+{{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'justify': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['data-slot', 'hero-topics']), 'children': c_3}, with_context = false) }}

@@ -21,7 +21,7 @@ export function FaqHelp({ labels, channels, landmarkLabel }: FaqHelpProps) {
       tag="aside"
       className="rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6"
       aria-label={(landmarkLabel ?? labels.asideTitle)}
-      data-testid="faq-help"
+      data-slot="faq-help"
     >
       <Stack gap="2">
         <Text size="lg" weight="semibold">
@@ -33,7 +33,7 @@ export function FaqHelp({ labels, channels, landmarkLabel }: FaqHelpProps) {
       </Stack>
       <List className="m-0 flex list-none flex-col gap-4 p-0">
         {(channels ?? []).map((c) => (
-          <ListItem key={c.id} className="flex items-start gap-4" data-testid="faq-channel">
+          <ListItem key={c.id} className="flex items-start gap-4" data-slot="faq-channel">
             <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
               <LucideIcon name={c.icon} size={20} />
             </Box>

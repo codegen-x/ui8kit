@@ -43,17 +43,17 @@ export function FeatureSticky({
       {((features?.length ?? 0) === 0) ? (
         <EmptyState icon="layout-grid" title={empty} />
       ) : (
-        <Grid cols="1-2" className="items-start gap-8" data-testid="sticky">
+        <Grid cols="1-2" className="items-start gap-8" data-slot="sticky">
           <Box
             className={cn(
               "md:sticky md:top-8",
               (((mediaSide as string) === "start") ? "md:order-first" : "md:order-last")
             )}
-            data-testid="sticky-media"
+            data-slot="sticky-media"
           >
             <MediaFrame alt={title} ratio="4/3" />
           </Box>
-          <Stack gap={(((density as string) === "compact") ? "4" : "8")} align="stretch" data-testid="items">
+          <Stack gap={(((density as string) === "compact") ? "4" : "8")} align="stretch" data-slot="items">
             {(features ?? []).map((f) => (
               <Stack key={f.id}
                 gap="2"
@@ -61,8 +61,8 @@ export function FeatureSticky({
                   (((item as string) === "card") ? "rounded bg-card inset-ring inset-ring-border p-6" : "py-4"),
                   ((f.id === active) ? "inset-ring inset-ring-foreground" : "")
                 )}
-                data-testid="item"
                 aria-current={((f.id === active) ? "true" : undefined)}
+                data-slot="item"
               >
                 <LucideIcon name={f.icon} size={24} />
                 <Title as={3} size="2xl" weight="bold">

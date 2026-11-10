@@ -18,7 +18,7 @@ export type QuoteSlotProps = {
 
 export function QuoteSlot({ q, labels, kind = "card", layout = "grid", className }: QuoteSlotProps) {
   return (
-    <Box className={className} data-testid="quote">
+    <Box className={className} data-slot="quote">
       <QuoteCard q={q} labels={labels} item={{ kind, avatar: "image", rating: "show", mark: "none" }} layout={layout} />
     </Box>
   );

@@ -27,7 +27,7 @@ export function BarChart({ bars, label, max, height = 160, className }: BarChart
         style={{ height: `${cssValue(height)}px` }}
       >
         {(bars ?? []).map((b) => (
-          <Box key={b.id} className="flex h-full min-w-0 flex-1 items-end" title={(b.title ?? b.label)}>
+          <Box key={b.id} className="flex h-full min-w-0 flex-1 items-end" title={(b.title ?? b.label)} data-slot="bar">
             <Box
               className={cn("w-full rounded", (b.muted ? "bg-muted-foreground" : "bg-primary"))}
               style={{ height: `${cssValue(Math.max(2, Math.round(((b.value / top) * 100))))}%` }}
@@ -38,7 +38,7 @@ export function BarChart({ bars, label, max, height = 160, className }: BarChart
       </Box>
       <Box className="mt-2 flex min-w-0 gap-2" aria-hidden="true">
         {(bars ?? []).map((b) => (
-          <Box key={b.id} className="relative h-4 min-w-0 flex-1">
+          <Box key={b.id} className="relative h-4 min-w-0 flex-1" data-slot="bar">
             <Text className={"absolute left-1/2 top-0 m-0 -translate-x-1/2 whitespace-nowrap text-xs font-medium text-muted-foreground"}>
               {b.label}
             </Text>

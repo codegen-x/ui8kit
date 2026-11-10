@@ -20,9 +20,9 @@ type HeroBadgeProps struct {
 templ HeroBadge(p HeroBadgeProps) {
 	{{ vLabel := p.Label }}
 	{{ vMark := p.Mark }}
-	@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-8 justify-center rounded-full px-2 inset-ring inset-ring-background/30", uiutils.Get(presetDefaults, "hero", "badge"))), Attrs: uiutils.Attrs("data-testid", "section-badge")}}) {
+	@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-8 justify-center rounded-full px-2 inset-ring inset-ring-background/30", uiutils.Get(presetDefaults, "hero", "badge"))), Attrs: uiutils.Attrs("data-slot", "section-badge")}}) {
 		if uiutils.T(vMark) {
-			@compose.Badge(compose.BadgeProps{Variant: "secondary", Size: "sm", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-testid", "badge-mark")}}) {
+			@compose.Badge(compose.BadgeProps{Variant: "secondary", Size: "sm", TextProps: text.TextProps{}}) {
 				{ uiutils.Text(vMark) }
 			}
 		}

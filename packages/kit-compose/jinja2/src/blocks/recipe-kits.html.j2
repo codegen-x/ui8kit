@@ -60,10 +60,10 @@
                     {%- endset -%}
                     {{ og_include('compose/inline.html.j2', {'p': {}, 'children': c_8}) }}
                   {%- endset -%}
-                  {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-2'}, 'children': c_9}) }}
+                  {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-2', 'Attrs': og_attrs(['data-slot', 'items-row'])}, 'children': c_9}) }}
                 {%- endfor %}
               {%- endset -%}
-              {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'grid grid-cols-1 gap-2 text-sm sm:grid-cols-2', 'Attrs': og_attrs(['data-testid', 'ingredients'])}, 'children': c_10}) }}
+              {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'grid grid-cols-1 gap-2 text-sm sm:grid-cols-2', 'Attrs': og_attrs(['data-slot', 'ingredients'])}, 'children': c_10}) }}
             {%- endset -%}
             {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2'}, 'children': c_11}) }}
             {{ og_include('blocks/option-chips.html.j2', {'p': {'name': og_tpl('{0}-portions-{1}', [v_id, og_get(v_d, ['id'])]), 'legend': og_get(v_labels, ['portions']), 'options': v_portions}}) }}
@@ -75,16 +75,16 @@
               {%- set c_13 -%}
                 {{ og_text(og_get(v_labels, ['add'])) }}
               {%- endset -%}
-              {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'button', 'AriaLabel': og_s(og_tpl(og_get(v_labels, ['addOf']), [og_get(v_d, ['name'])])), 'Attrs': og_attrs(['data-testid', 'add'])}, 'children': c_13}) }}
+              {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'button', 'AriaLabel': og_s(og_tpl(og_get(v_labels, ['addOf']), [og_get(v_d, ['name'])]))}, 'children': c_13}) }}
             {%- endset -%}
             {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Class': 'mt-auto'}, 'children': c_14}) }}
           {%- endset -%}
           {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4'}, 'children': c_15}) }}
         {%- endset -%}
-        {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-4' if og_t(og_eq(v_layout, 'cards')) else 'rounded bg-card inset-ring inset-ring-border grid grid-cols-1 gap-8 p-6 md:grid-cols-2')), 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_16}) }}
+        {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-4' if og_t(og_eq(v_layout, 'cards')) else 'rounded bg-card inset-ring inset-ring-border grid grid-cols-1 gap-8 p-6 md:grid-cols-2')), 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_16}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('grid grid-cols-1 gap-8 md:grid-cols-3' if og_t(og_eq(v_layout, 'cards')) else 'flex flex-col gap-8')), 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_17}) }}
+    {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('grid grid-cols-1 gap-8 md:grid-cols-3' if og_t(og_eq(v_layout, 'cards')) else 'flex flex-col gap-8')), 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_17}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_18)}) }}

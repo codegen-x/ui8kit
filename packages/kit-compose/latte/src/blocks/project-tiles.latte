@@ -16,7 +16,7 @@
           {capture $c_1}
             {=og_text(og_get($v_labels, ['featured']))}
           {/capture}
-          {=og_include('compose/Badge.latte', ['variant' => 'default', 'size' => 'default', 'class' => 'absolute left-4 top-4', 'attrs' => og_attrs(['data-testid', 'featured']), 'children' => (string) $c_1])|noescape}
+          {=og_include('compose/Badge.latte', ['variant' => 'default', 'size' => 'default', 'class' => 'absolute left-4 top-4', 'children' => (string) $c_1])|noescape}
         {/if}
       {/capture}
       {=og_include('compose/Box.latte', ['class' => og_s((og_t($v_over) ? 'h-full' : 'relative')), 'children' => (string) $c_2])|noescape}
@@ -65,4 +65,4 @@
     {=og_include('blocks/article-block.latte', ['p' => ['className' => og_cnv([og_cnv(['flex flex-col gap-4', (og_t($v_over) ? 'relative' : 'rounded bg-card inset-ring inset-ring-border p-4'), (og_t(og_and([og_eq($v_layout, 'bento'), og_eq($v_i, 0)])) ? 'sm:col-span-2 lg:row-span-2' : '')])]), 'testid' => 'item'], 'children' => og_markup($c_12)])|noescape}
   {/foreach}
 {/capture}
-{=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'compact')) ? 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4' : 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3')), 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_13])|noescape}
+{=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'compact')) ? 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4' : 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3')), 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_13])|noescape}

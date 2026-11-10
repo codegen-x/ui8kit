@@ -50,7 +50,7 @@ export function UsageCalculator({
           "mx-auto w-full max-w-xl",
           (((layout as string) === "card") ? "rounded bg-card p-6 inset-ring inset-ring-border" : "")
         )}
-        data-testid="usage"
+        data-slot="usage"
       >
         <Group justify="between" align="baseline">
           <Text size="xl" weight="bold">
@@ -65,11 +65,11 @@ export function UsageCalculator({
           max={slider.max}
           value={usage}
           aria-label={slider.label}
-          data-testid="slider"
+          data-slot="slider"
           onChange={(event: ChangeEvent<HTMLInputElement>) => onUsage?.(event.currentTarget.value)}
         />
         {((ends as string) === "show") ? (
-          <Group justify="between" data-testid="ends">
+          <Group justify="between" data-slot="ends">
             <Text size="xs" className="text-muted-foreground">
               {tpl(slider.unit, slider.min)}
             </Text>
@@ -83,11 +83,11 @@ export function UsageCalculator({
             <Text size="xs" className="text-muted-foreground">
               {price.label}
             </Text>
-            <Text size="4xl" weight="bold" data-testid="estimate">
+            <Text size="4xl" weight="bold" data-slot="estimate">
               {fmtMoney((usage * price.rate), price.currency)}
             </Text>
           </Stack>
-          <Button variant="default" size="default" href={urlOf(href)} data-testid="submit">
+          <Button variant="default" size="default" href={urlOf(href)}>
             {cta}
           </Button>
         </Group>

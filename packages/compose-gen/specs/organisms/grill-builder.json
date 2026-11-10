@@ -136,7 +136,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "steps"
+                    "data-slot": "steps"
                   },
                   "children": [
                     {
@@ -224,7 +224,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "summary"
+                    "data-slot": "summary"
                   },
                   "children": [
                     {
@@ -271,7 +271,7 @@
                           "attrs": {
                             "role": "status",
                             "aria-live": "polite",
-                            "data-testid": "total"
+                            "data-slot": "total"
                           },
                           "children": [
                             {

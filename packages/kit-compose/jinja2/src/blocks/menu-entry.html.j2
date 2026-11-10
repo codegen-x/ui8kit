@@ -12,15 +12,15 @@
   {%- set c_1 -%}
     {{ og_slot(og_def(children, none))|safe }}
   {%- endset -%}
-  {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(v_href)), 'Variant': og_s(v_variant), 'Size': og_s(v_size), 'AriaCurrent': og_s(('page' if og_t(v_current) else none)), 'Class': og_s(og_def(p['className'], '')), 'Attrs': og_attrs(['data-testid', v_testid])}, 'children': c_1}) }}
+  {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(v_href)), 'Variant': og_s(v_variant), 'Size': og_s(v_size), 'AriaCurrent': og_s(('page' if og_t(v_current) else none)), 'Class': og_s(og_def(p['className'], '')), 'Attrs': og_attrs(['data-slot', og_coalesce([v_testid, 'menu-entry'])])}, 'children': c_1}) }}
 {%- elif og_t(v_block) %}
   {%- set c_2 -%}
     {{ og_slot(og_def(children, none))|safe }}
   {%- endset -%}
-  {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_def(p['className'], '')), 'Attrs': og_attrs(['aria-current', ('page' if og_t(v_current) else none), 'data-testid', v_testid])}, 'children': c_2}) }}
+  {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_def(p['className'], '')), 'Attrs': og_attrs(['aria-current', ('page' if og_t(v_current) else none), 'data-slot', og_coalesce([v_testid, 'menu-entry'])])}, 'children': c_2}) }}
 {%- else %}
   {%- set c_3 -%}
     {{ og_slot(og_def(children, none))|safe }}
   {%- endset -%}
-  {{ og_include('compose/inline.html.j2', {'p': {'Class': og_s(og_def(p['className'], '')), 'Attrs': og_attrs(['aria-current', ('page' if og_t(v_current) else none), 'data-testid', v_testid])}, 'children': c_3}) }}
+  {{ og_include('compose/inline.html.j2', {'p': {'Class': og_s(og_def(p['className'], '')), 'Attrs': og_attrs(['aria-current', ('page' if og_t(v_current) else none), 'data-slot', og_coalesce([v_testid, 'menu-entry'])])}, 'children': c_3}) }}
 {%- endif %}

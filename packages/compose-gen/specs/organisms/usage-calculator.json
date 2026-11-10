@@ -190,7 +190,7 @@
                 }
               },
               "attrs": {
-                "data-testid": "usage"
+                "data-slot": "usage"
               },
               "children": [
                 {
@@ -255,7 +255,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "slider"
+                    "data-slot": "slider"
                   },
                   "on": {
                     "input": {
@@ -285,7 +285,7 @@
                         "Justify": "between"
                       },
                       "attrs": {
-                        "data-testid": "ends"
+                        "data-slot": "ends"
                       },
                       "children": [
                         {
@@ -371,7 +371,7 @@
                             "Weight": "bold"
                           },
                           "attrs": {
-                            "data-testid": "estimate"
+                            "data-slot": "estimate"
                           },
                           "children": [
                             {
@@ -407,9 +407,6 @@
                         "Href": {
                           "$": "href"
                         }
-                      },
-                      "attrs": {
-                        "data-testid": "submit"
                       },
                       "children": [
                         {

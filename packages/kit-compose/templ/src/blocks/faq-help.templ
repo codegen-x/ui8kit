@@ -24,7 +24,7 @@ templ FaqHelp(p FaqHelpProps) {
 	{{ vLabels := p.Labels }}
 	{{ vChannels := p.Channels }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "aside", Class: "rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, uiutils.Get(vLabels, "asideTitle")), "data-testid", "faq-help")}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "aside", Class: "rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, uiutils.Get(vLabels, "asideTitle")), "data-slot", "faq-help")}}) {
 		@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
 			@compose.Text(compose.TextProps{Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
 				{ uiutils.Text(uiutils.Get(vLabels, "asideTitle")) }
@@ -35,7 +35,7 @@ templ FaqHelp(p FaqHelpProps) {
 		}
 		@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-4 p-0"}}) {
 			for _, vC := range uiutils.L(vChannels) {
-				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start gap-4", Attrs: uiutils.Attrs("data-testid", "faq-channel")}}) {
+				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start gap-4", Attrs: uiutils.Attrs("data-slot", "faq-channel")}}) {
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted"}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vC, "icon")), Size: 20})
 					}

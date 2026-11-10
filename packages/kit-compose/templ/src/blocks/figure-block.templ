@@ -18,7 +18,7 @@ type FigureBlockProps struct {
 // Self-contained content with an optional caption (a quote, a picture, a stat) in its own file: Block tag figure.
 templ FigureBlock(p FigureBlockProps) {
 	{{ vTestid := p.Testid }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "figure", Class: uiutils.S(uiutils.Cnv(p.Class)), Attrs: uiutils.Attrs("data-testid", vTestid)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "figure", Class: uiutils.S(uiutils.Cnv(p.Class)), Attrs: uiutils.Attrs("data-slot", uiutils.Coalesce(vTestid, "figure-block"))}}) {
 		{ children... }
 	}
 }

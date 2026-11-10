@@ -49,7 +49,7 @@ templ SlotBoard(p SlotBoardProps) {
 					@SlotGrid(SlotGridProps{Days: vDays, Name: uiutils.Tpl("{0}-slot", vId), Item: vItem})
 				}
 				if uiutils.Eq(vLayout, "split") {
-					@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-testid", "aside")}}) {
+					@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-slot", "aside")}}) {
 						@Field(FieldProps{Label: uiutils.Get(vLabels, "zone"), HtmlFor: uiutils.Tpl("{0}-zone", vId)}) {
 							@compose.Select(compose.SelectProps{SelectProps: selectfield.SelectProps{Name: uiutils.S(uiutils.Tpl("{0}-zone", vId)), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-zone", vId))}}) {
 								@selectfield.SelectOption(selectfield.SelectOptionProps{Value: uiutils.SP(uiutils.Get(vZone, "id")), Selected: true, Attrs: uiutils.Attrs("label", uiutils.Get(vZone, "name"))})

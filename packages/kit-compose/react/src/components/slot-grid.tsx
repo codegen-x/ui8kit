@@ -16,7 +16,7 @@ export type SlotGridProps = {
 
 export function SlotGrid({ days, name, item = "card" }: SlotGridProps) {
   return (
-    <Stack gap="4" align="stretch" data-testid="days">
+    <Stack gap="4" align="stretch" data-slot="days">
       {(days ?? []).map((d) => (
         <Stack key={d.id}
           gap="4"
@@ -24,7 +24,7 @@ export function SlotGrid({ days, name, item = "card" }: SlotGridProps) {
             (item as string) === "card" ? "rounded bg-card inset-ring inset-ring-border p-4"
             : "border-b border-border pb-4"
           }
-          data-testid="day"
+          data-slot="day"
         >
           <Group gap="4" align="baseline" justify="between" className="flex-wrap">
             <Text size="sm" weight="semibold">
@@ -39,6 +39,7 @@ export function SlotGrid({ days, name, item = "card" }: SlotGridProps) {
               <Label key={s}
                 className={"flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted " +
                   "has-checked:inset-ring-foreground"}
+                data-slot="slots-row"
               >
                 <Radio name={name} value={tpl("{0} {1}", d.id, s)} />
                 <Inline>
@@ -53,6 +54,7 @@ export function SlotGrid({ days, name, item = "card" }: SlotGridProps) {
                     "has-checked:inset-ring-foreground",
                   "text-muted-foreground line-through"
                 )}
+                data-slot="closed-row"
               >
                 <Radio name={name} value={tpl("{0} {1}", d.id, s)} disabled={true} />
                 <Inline>

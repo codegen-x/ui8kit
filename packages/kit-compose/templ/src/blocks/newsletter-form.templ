@@ -43,18 +43,18 @@ templ NewsletterForm(p NewsletterFormProps) {
 	{{ vAlign := uiutils.Def(p.Align, "center") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Tone: vTone, Align: vAlign, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split")}, LandmarkLabel: vLandmarkLabel, Aside: newsletterFormFill1(p, vTitle)}) {
-		@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: uiutils.S(uiutils.Cnv("w-full max-w-md", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "mx-auto", ""))), Attrs: uiutils.Attrs("data-testid", "newsletter-form")}}) {
+		@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: uiutils.S(uiutils.Cnv("w-full max-w-md", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "mx-auto", ""))), Attrs: uiutils.Attrs("data-slot", "newsletter-form")}}) {
 			@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{For: uiutils.S(uiutils.Tpl("{0}-email", vId)), Class: "sr-only"}}) {
 				{ uiutils.Text(vLabel) }
 			}
 			@compose.Group(compose.GroupProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("w-full", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stacked")), "flex-col items-stretch", "flex-wrap")))}}) {
-				@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Class: "min-w-0 flex-1", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-email", vId), "data-testid", "field")}})
-				@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit", Attrs: uiutils.Attrs("data-testid", "submit")}}) {
+				@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Class: "min-w-0 flex-1", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-email", vId), "data-slot", "field")}})
+				@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit"}}) {
 					{ uiutils.Text(vSubmit) }
 				}
 			}
 			if uiutils.T(uiutils.And(uiutils.Eq(vTerms, "show"), vConsent)) {
-				@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "consent")}}) {
+				@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "consent")}}) {
 					{ uiutils.Text(vConsent) }
 				}
 			}

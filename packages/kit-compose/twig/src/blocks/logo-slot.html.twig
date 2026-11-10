@@ -11,4 +11,4 @@
   {%- endset -%}
   {{ include('compose/Text.html.twig', {'size': 'sm', 'weight': 'semibold', 'class': 'sr-only', 'children': c_1}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['flex shrink-0 items-center justify-center text-muted-foreground', og_preset('blocks/presets/defaults.json', ['logos', 'slot'])])), 'attrs': og_attrs(['data-testid', 'item', 'data-slot', 'logo-slot']), 'children': c_2}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['flex shrink-0 items-center justify-center text-muted-foreground', og_preset('blocks/presets/defaults.json', ['logos', 'slot'])])), 'attrs': og_attrs(['data-slot', 'logo-slot']), 'children': c_2}, with_context = false) }}

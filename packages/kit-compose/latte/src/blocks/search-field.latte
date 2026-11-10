@@ -9,4 +9,4 @@
   {=og_include('icons/LucideIcon.latte', ['name' => 'search', 'size' => 16, 'class' => 'pointer-events-none absolute top-2 left-3 text-muted-foreground'])|noescape}
   {=og_include('compose/Input.latte', ['size' => 'sm', 'type' => 'search', 'placeholder' => og_s($v_placeholder), 'class' => 'pr-3 pl-10', 'value' => og_s($v_value), 'attrs' => og_attrs(['aria-label', $v_label])])|noescape}
 {/capture}
-{=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['relative min-w-44 flex-1', ($p['className'] ?? '')])), 'attrs' => og_attrs(['role', 'search']), 'children' => (string) $c_1])|noescape}
+{=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['relative min-w-44 flex-1', ($p['className'] ?? '')])), 'attrs' => og_attrs(['role', 'search', 'data-slot', 'search-field']), 'children' => (string) $c_1])|noescape}

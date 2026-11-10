@@ -16,12 +16,12 @@
             {%- set c_1 -%}
               {{ og_text(og_get(v_c, ['name'])) }}
             {%- endset -%}
-            {{ include('compose/Link.html.twig', {'href': og_url(og_s(og_get(v_c, ['href']))), 'variant': 'muted', 'size': 'sm', 'attrs': og_attrs(['data-testid', 'crumb']), 'children': c_1}, with_context = false) }}
+            {{ include('compose/Link.html.twig', {'href': og_url(og_s(og_get(v_c, ['href']))), 'variant': 'muted', 'size': 'sm', 'attrs': og_attrs(['data-slot', 'crumb']), 'children': c_1}, with_context = false) }}
           {%- else %}
             {%- set c_2 -%}
               {{ og_text(og_get(v_c, ['name'])) }}
             {%- endset -%}
-            {{ include('compose/Inline.html.twig', {'attrs': og_attrs(['data-testid', 'crumb']), 'children': c_2}, with_context = false) }}
+            {{ include('compose/Inline.html.twig', {'attrs': og_attrs(['data-slot', 'crumb']), 'children': c_2}, with_context = false) }}
           {%- endif %}
           {{ include('icons/LucideIcon.html.twig', {'name': 'chevron-right', 'size': 16}, with_context = false) }}
         {%- else %}
@@ -31,9 +31,9 @@
           {{ include('compose/Inline.html.twig', {'class': 'font-medium text-foreground', 'attrs': og_attrs(['aria-current', 'page']), 'children': c_3}, with_context = false) }}
         {%- endif %}
       {%- endset -%}
-      {{ include('compose/ListItem.html.twig', {'class': 'flex items-center gap-2', 'children': c_4}, with_context = false) }}
+      {{ include('compose/ListItem.html.twig', {'class': 'flex items-center gap-2', 'attrs': og_attrs(['data-slot', 'crumbs-row']), 'children': c_4}, with_context = false) }}
     {%- endfor %}
   {%- endset -%}
   {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground', 'children': c_5}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'nav', 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-testid', 'crumbs']), 'children': c_6}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'nav', 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-slot', 'crumbs']), 'children': c_6}, with_context = false) }}

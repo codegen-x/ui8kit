@@ -32,10 +32,10 @@ templ BottomNav(p BottomNavProps) {
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	if uiutils.Gt(uiutils.Len(vTabs), float64(0)) {
-		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-md border-t border-border", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", "bg-background"), uiutils.Cond(uiutils.T(uiutils.Eq(vPosition, "sticky")), "sticky bottom-0 z-40", ""))), Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-testid", "bottom-nav", "data-position", vPosition)}}) {
-			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 grid list-none grid-flow-col auto-cols-fr p-0", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+		@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-md border-t border-border", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", "bg-background"), uiutils.Cond(uiutils.T(uiutils.Eq(vPosition, "sticky")), "sticky bottom-0 z-40", ""))), Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-position", vPosition, "data-slot", "bottom-nav")}}) {
+			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 grid list-none grid-flow-col auto-cols-fr p-0", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vTab := range uiutils.L(vTabs) {
-					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{}}) {
+					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "tabs-row")}}) {
 						@MenuEntry(MenuEntryProps{Href: uiutils.Get(vTab, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex flex-col items-center gap-2 py-2 text-xs", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vTab, "id"), vCurrent)), "font-semibold text-primary", "text-muted-foreground"))), Current: uiutils.Eq(uiutils.Get(vTab, "id"), vCurrent), Testid: "item"}) {
 							@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vTab, "icon")), Size: 20})
 							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLabels, "hide")), "sr-only", ""))}}) {

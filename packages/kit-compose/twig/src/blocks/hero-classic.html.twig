@@ -36,7 +36,7 @@
       {%- endset -%}
       {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['w-full', ''])), 'children': c_8}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': '3', 'class': 'items-end gap-4', 'attrs': og_attrs(['data-testid', 'cluster']), 'children': c_9}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': '3', 'class': 'items-end gap-4', 'attrs': og_attrs(['data-slot', 'cluster']), 'children': c_9}, with_context = false) }}
   {%- endif %}
   {%- if og_t(og_or([og_eq(v_mediaKind, 'image')])) %}
     {{ include('blocks/media-frame.html.twig', {'p': {'alt': v_title, 'ratio': '4/3'}}, with_context = false) }}
@@ -52,15 +52,15 @@
         {%- endset -%}
         {{ include('compose/Label.html.twig', {'htmlFor': og_s(og_tpl('{0}-email', [v_id])), 'class': 'sr-only', 'children': c_1}, with_context = false) }}
         {%- set c_3 -%}
-          {{ include('compose/Input.html.twig', {'type': 'text', 'name': 'prompt', 'class': 'min-w-0 flex-1', 'placeholder': og_s(og_get(v_actions, ['emailLabel'])), 'attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}, with_context = false) }}
+          {{ include('compose/Input.html.twig', {'type': 'text', 'name': 'prompt', 'class': 'min-w-0 flex-1', 'placeholder': og_s(og_get(v_actions, ['emailLabel'])), 'attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}, with_context = false) }}
           {%- set c_2 -%}
             {{ og_text(og_get(v_actions, ['cta'])) }}
           {%- endset -%}
-          {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'href': og_url(og_s(og_get(v_actions, ['href']))), 'attrs': og_attrs(['data-testid', 'submit']), 'children': c_2}, with_context = false) }}
+          {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'href': og_url(og_s(og_get(v_actions, ['href']))), 'children': c_2}, with_context = false) }}
         {%- endset -%}
         {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'start', 'class': 'w-full flex-wrap', 'children': c_3}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['w-full max-w-xl', (og_t(og_eq(v_layout, 'centered')) ? 'mx-auto' : '')])), 'attrs': og_attrs(['data-testid', 'email-form']), 'children': c_4}, with_context = false) }}
+      {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['w-full max-w-xl', (og_t(og_eq(v_layout, 'centered')) ? 'mx-auto' : '')])), 'attrs': og_attrs(['data-slot', 'email-form']), 'children': c_4}, with_context = false) }}
     {%- else %}
       {{ include('blocks/action-group.html.twig', {'p': {'primary': og_get(v_actions, ['cta']), 'primaryHref': og_get(v_actions, ['href']), 'secondary': (og_t(og_eq(og_get(v_actions, ['mode']), 'two')) ? og_get(v_actions, ['secondary']) : null), 'secondaryHref': og_get(v_actions, ['secondaryHref']), 'align': (og_t(og_eq(v_layout, 'centered')) ? 'center' : 'start')}}, with_context = false) }}
     {%- endif %}

@@ -69,9 +69,9 @@ export function ProductDetail({
             <ProductGallery name={product?.name} image={product?.image} thumbs={thumbs} />
           )}
         >
-          <Stack gap="4" align="stretch" data-testid="buy-box">
+          <Stack gap="4" align="stretch" data-slot="buy-box">
             {product?.category ? (
-              <Text size="xs" class="uppercase tracking-wide text-muted-foreground" data-testid="category">
+              <Text size="xs" class="uppercase tracking-wide text-muted-foreground" data-slot="category">
                 {product?.category}
               </Text>
             ) : null}
@@ -92,7 +92,7 @@ export function ProductDetail({
               size="sm"
               weight="medium"
               class={(product?.inStock ? "text-foreground" : "text-destructive")}
-              data-testid="stock"
+              data-slot="stock"
             >
               {(product?.inStock ? labels.inStock : labels.soldOut)}
             </Text>
@@ -107,7 +107,7 @@ export function ProductDetail({
                   increase={labels.increase}
                 />
               ) : null}
-              <Button disabled={!product?.inStock} data-testid="add" onClick={() => onAdd?.(product?.id)}>
+              <Button disabled={!product?.inStock} onClick={() => onAdd?.(product?.id)}>
                 {labels.add}
               </Button>
             </Group>

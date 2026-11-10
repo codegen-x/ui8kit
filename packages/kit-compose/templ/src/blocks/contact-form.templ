@@ -49,22 +49,22 @@ templ ContactForm(p ContactFormProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Heading: map[string]any{"level": vLevel}, Tone: vTone, Density: uiutils.Cond(uiutils.T(uiutils.Eq(vPage, "full")), "roomy", "default"), Align: uiutils.Cond(uiutils.T(uiutils.Eq(vPage, "full")), "center", "start"), Measure: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "single")), "xl", "default"), LandmarkLabel: vLandmarkLabel}) {
 		@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "1-2", "1")), BoxProps: box.BoxProps{Class: "items-start gap-8"}}) {
-			@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: "w-full gap-4", Attrs: uiutils.Attrs("data-testid", "contact-form")}}) {
+			@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: "w-full gap-4", Attrs: uiutils.Attrs("data-slot", "contact-form")}}) {
 				if uiutils.Eq(vFields, "full") {
 					@Field(FieldProps{Label: uiutils.Get(vLabels, "name"), HtmlFor: uiutils.Tpl("{0}-name", vId)}) {
-						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "name", Attrs: uiutils.Attrs("autocomplete", "name", "id", uiutils.Tpl("{0}-name", vId), "data-testid", "field")}})
+						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "name", Attrs: uiutils.Attrs("autocomplete", "name", "id", uiutils.Tpl("{0}-name", vId), "data-slot", "field")}})
 					}
 				}
 				@Field(FieldProps{Label: uiutils.Get(vLabels, "email"), HtmlFor: uiutils.Tpl("{0}-email", vId)}) {
-					@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Attrs: uiutils.Attrs("autocomplete", "email", "id", uiutils.Tpl("{0}-email", vId), "data-testid", "field")}})
+					@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Attrs: uiutils.Attrs("autocomplete", "email", "id", uiutils.Tpl("{0}-email", vId), "data-slot", "field")}})
 				}
 				if uiutils.Eq(vFields, "full") {
 					@Field(FieldProps{Label: uiutils.Get(vLabels, "subject"), HtmlFor: uiutils.Tpl("{0}-subject", vId)}) {
-						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "subject", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-subject", vId), "data-testid", "field")}})
+						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "subject", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-subject", vId), "data-slot", "field")}})
 					}
 				}
 				@Field(FieldProps{Label: uiutils.Get(vLabels, "message"), HtmlFor: uiutils.Tpl("{0}-message", vId)}) {
-					@compose.Textarea(compose.TextareaProps{TextareaProps: textarea.TextareaProps{Rows: "4", Name: "message", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-message", vId), "data-testid", "field")}})
+					@compose.Textarea(compose.TextareaProps{TextareaProps: textarea.TextareaProps{Rows: "4", Name: "message", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-message", vId), "data-slot", "field")}})
 				}
 				if uiutils.Eq(vTerms, "show") {
 					@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("w-fit", ""))}}) {
@@ -74,14 +74,14 @@ templ ContactForm(p ContactFormProps) {
 						}
 					}
 				}
-				@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit", Class: "w-fit", Attrs: uiutils.Attrs("data-testid", "submit")}}) {
+				@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit", Class: "w-fit"}}) {
 					{ uiutils.Text(uiutils.Get(vLabels, "submit")) }
 				}
 			}
 			if uiutils.T(uiutils.And(uiutils.Eq(vLayout, "split"), uiutils.Gt(uiutils.Len(vDetails), float64(0)))) {
-				@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "details")}}) {
+				@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "details")}}) {
 					for _, vD := range uiutils.L(vDetails) {
-						@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "detail")}}) {
+						@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "detail")}}) {
 							@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vD, "icon")), Size: 20})
 							@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 								@compose.Text(compose.TextProps{Size: "base", Weight: "semibold", TextProps: text.TextProps{}}) {

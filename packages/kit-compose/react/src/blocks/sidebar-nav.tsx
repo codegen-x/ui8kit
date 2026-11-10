@@ -45,8 +45,8 @@ export function SidebarNav({
         (((width as string) === "compact") ? "w-20 items-center" : "w-64")
       )}
       aria-label={(landmarkLabel ?? brand)}
-      data-testid="sidebar"
       data-width={width}
+      data-slot="sidebar"
     >
       <Group gap="2" align="center">
         <LucideIcon name="layers" size={24} />
@@ -61,10 +61,10 @@ export function SidebarNav({
               "m-0 flex list-none flex-col p-0",
               (((density as string) === "compact") ? "gap-0" : "gap-2")
             )}
-            data-testid="items"
+            data-slot="items"
           >
             {(links ?? []).map((l) => (
-              <ListItem key={l.id}>
+              <ListItem key={l.id} data-slot="links-row">
                 <MenuEntry
                   href={l.href}
                   className={cn(
@@ -86,7 +86,7 @@ export function SidebarNav({
         </NavBlock>
       ) : null}
       {((user as string) === "show") ? (
-        <Group gap="4" align="center" className="border-t border-border pt-4" data-testid="user">
+        <Group gap="4" align="center" className="border-t border-border pt-4" data-slot="user">
           <MediaFrame alt={userName} ratio="1/1" className="size-10 shrink-0 rounded-full" />
           <Stack gap="0" className={(((width as string) === "compact") ? "sr-only" : "min-w-0")}>
             <Text size="sm" weight="semibold">

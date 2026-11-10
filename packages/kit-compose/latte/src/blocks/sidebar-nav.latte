@@ -35,10 +35,10 @@
             {/capture}
             {=og_include('blocks/menu-entry.latte', ['p' => ['href' => og_get($v_l, ['href']), 'className' => og_cnv([og_cnv(['flex items-center gap-4 rounded px-4 text-sm', 'py-2', (og_t(og_eq(og_get($v_l, ['id']), $v_current)) ? 'bg-muted font-semibold' : '')])]), 'current' => og_eq(og_get($v_l, ['id']), $v_current), 'testid' => 'item'], 'children' => og_markup($c_4)])|noescape}
           {/capture}
-          {=og_include('compose/ListItem.latte', ['children' => (string) $c_5])|noescape}
+          {=og_include('compose/ListItem.latte', ['attrs' => og_attrs(['data-slot', 'links-row']), 'children' => (string) $c_5])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/List.latte', ['class' => og_s(og_cnv(['m-0 flex list-none flex-col p-0', (og_t(og_eq($v_density, 'compact')) ? 'gap-0' : 'gap-2')])), 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_6])|noescape}
+      {=og_include('compose/List.latte', ['class' => og_s(og_cnv(['m-0 flex list-none flex-col p-0', (og_t(og_eq($v_density, 'compact')) ? 'gap-0' : 'gap-2')])), 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_6])|noescape}
     {/capture}
     {=og_include('blocks/nav-block.latte', ['p' => ['label' => (og_t($v_landmarkLabel) ? og_uniq(og_tpl('{0}, {1}', [$v_label, $v_landmarkLabel])) : $v_label), 'className' => og_cnv(['flex-1'])], 'children' => og_markup($c_7)])|noescape}
   {/if}
@@ -57,7 +57,7 @@
       {/capture}
       {=og_include('compose/Stack.latte', ['gap' => '0', 'class' => og_s((og_t(og_eq($v_width, 'compact')) ? 'sr-only' : 'min-w-0')), 'children' => (string) $c_10])|noescape}
     {/capture}
-    {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'border-t border-border pt-4', 'attrs' => og_attrs(['data-testid', 'user']), 'children' => (string) $c_11])|noescape}
+    {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'border-t border-border pt-4', 'attrs' => og_attrs(['data-slot', 'user']), 'children' => (string) $c_11])|noescape}
   {/if}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'aside', 'class' => og_s(og_cnv(['flex min-h-96 flex-col gap-6 rounded bg-card p-4 inset-ring inset-ring-border', (og_t(og_eq($v_width, 'compact')) ? 'w-20 items-center' : 'w-64')])), 'attrs' => og_attrs(['aria-label', og_coalesce([$v_landmarkLabel, $v_brand]), 'data-testid', 'sidebar', 'data-width', $v_width]), 'children' => (string) $c_12])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'aside', 'class' => og_s(og_cnv(['flex min-h-96 flex-col gap-6 rounded bg-card p-4 inset-ring inset-ring-border', (og_t(og_eq($v_width, 'compact')) ? 'w-20 items-center' : 'w-64')])), 'attrs' => og_attrs(['aria-label', og_coalesce([$v_landmarkLabel, $v_brand]), 'data-width', $v_width, 'data-slot', 'sidebar']), 'children' => (string) $c_12])|noescape}

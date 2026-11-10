@@ -43,9 +43,9 @@ templ StoreLocations(p StoreLocationsProps) {
 			@EmptyState(EmptyStateProps{Icon: "store", Title: vEmpty})
 		} else {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-8", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "map")), "items-start md:grid-cols-2", "")))}}) {
-				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "grid grid-cols-1 gap-4 md:grid-cols-2", "flex flex-col gap-4")), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "grid grid-cols-1 gap-4 md:grid-cols-2", "flex flex-col gap-4")), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for _, vS := range uiutils.L(vStores) {
-						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "border-b border-border pb-4", "rounded bg-card inset-ring inset-ring-border p-6")), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "border-b border-border pb-4", "rounded bg-card inset-ring inset-ring-border p-6")), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
 								@compose.Badge(compose.BadgeProps{Variant: "outline", Size: "default", TextProps: text.TextProps{Class: "w-fit"}}) {
 									{ uiutils.Text(uiutils.At(vKinds, uiutils.Get(vS, "kind"))) }

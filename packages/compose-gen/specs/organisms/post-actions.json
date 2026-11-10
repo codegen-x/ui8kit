@@ -49,9 +49,6 @@
                 "Size": "default",
                 "Class": "gap-2"
               },
-              "attrs": {
-                "data-testid": "action-primary"
-              },
               "children": [
                 {
                   "use": "LucideIcon",
@@ -74,9 +71,6 @@
                 "Size": "default",
                 "Class": "gap-2"
               },
-              "attrs": {
-                "data-testid": "post-save"
-              },
               "children": [
                 {
                   "use": "LucideIcon",
@@ -92,7 +86,10 @@
                 }
               ]
             }
-          ]
+          ],
+          "attrs": {
+            "data-slot": "post-actions"
+          }
         }
       ],
       "else": [
@@ -108,9 +105,6 @@
                 "Variant": "default",
                 "Size": "default",
                 "Class": "gap-2 flex-1"
-              },
-              "attrs": {
-                "data-testid": "action-primary"
               },
               "children": [
                 {
@@ -148,9 +142,6 @@
                       "$": "labels.share"
                     }
                   },
-                  "attrs": {
-                    "data-testid": "post-share"
-                  },
                   "children": [
                     {
                       "use": "LucideIcon",
@@ -171,9 +162,6 @@
                       "$": "labels.save"
                     }
                   },
-                  "attrs": {
-                    "data-testid": "post-save"
-                  },
                   "children": [
                     {
                       "use": "LucideIcon",
@@ -186,7 +174,10 @@
                 }
               ]
             }
-          ]
+          ],
+          "attrs": {
+            "data-slot": "post-actions"
+          }
         }
       ]
     }

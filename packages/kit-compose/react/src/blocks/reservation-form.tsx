@@ -49,27 +49,27 @@ export function ReservationForm({
       landmarkLabel={landmarkLabel}
     >
       <Grid cols={(((layout as string) === "split") ? "1-2" : "1")} className="items-start gap-8">
-        <Form method="dialog" className="flex w-full flex-col gap-4" data-testid="reservation-form">
+        <Form method="dialog" className="flex w-full flex-col gap-4" data-slot="reservation-form">
           <Field label={labels.name} htmlFor={tpl("{0}-name", id)}>
-            <Input type="text" name="name" autoComplete="name" id={tpl("{0}-name", id)} data-testid="field" />
+            <Input type="text" name="name" autoComplete="name" id={tpl("{0}-name", id)} data-slot="field" />
           </Field>
           <Field label={labels.phone} htmlFor={tpl("{0}-phone", id)}>
-            <Input type="tel" name="phone" autoComplete="tel" id={tpl("{0}-phone", id)} data-testid="field" />
+            <Input type="tel" name="phone" autoComplete="tel" id={tpl("{0}-phone", id)} data-slot="field" />
           </Field>
           {((fields as string) === "full") ? (
             <Field label={labels.email} htmlFor={tpl("{0}-email", id)}>
-              <Input type="email" name="email" autoComplete="email" id={tpl("{0}-email", id)} data-testid="field" />
+              <Input type="email" name="email" autoComplete="email" id={tpl("{0}-email", id)} data-slot="field" />
             </Field>
           ) : null}
           <Group gap="4" className="flex-wrap">
             <Box className="min-w-0 flex-1">
               <Field label={labels.date} htmlFor={tpl("{0}-date", id)}>
-                <Input type="date" name="date" id={tpl("{0}-date", id)} data-testid="field" />
+                <Input type="date" name="date" id={tpl("{0}-date", id)} data-slot="field" />
               </Field>
             </Box>
             <Box className="min-w-0 flex-1">
               <Field label={labels.time} htmlFor={tpl("{0}-time", id)}>
-                <Input type="time" name="time" id={tpl("{0}-time", id)} data-testid="field" />
+                <Input type="time" name="time" id={tpl("{0}-time", id)} data-slot="field" />
               </Field>
             </Box>
           </Group>
@@ -88,7 +88,7 @@ export function ReservationForm({
           </Stack>
           {((fields as string) === "full") ? (
             <Field label={labels.notes} htmlFor={tpl("{0}-notes", id)}>
-              <Textarea rows={4} name="notes" id={tpl("{0}-notes", id)} data-testid="field" />
+              <Textarea rows={4} name="notes" id={tpl("{0}-notes", id)} data-slot="field" />
             </Field>
           ) : null}
           {((terms as string) === "show") ? (
@@ -99,14 +99,14 @@ export function ReservationForm({
               </Label>
             </Group>
           ) : null}
-          <Button variant="default" size="default" type="submit" className="w-fit" data-testid="submit">
+          <Button variant="default" size="default" type="submit" className="w-fit">
             {labels.submit}
           </Button>
         </Form>
         {(((layout as string) === "split") && ((details?.length ?? 0) > 0)) ? (
-          <Stack gap="4" data-testid="details">
+          <Stack gap="4" data-slot="details">
             {(details ?? []).map((d) => (
-              <Group key={d.id} gap="4" align="start" data-testid="detail">
+              <Group key={d.id} gap="4" align="start" data-slot="detail">
                 <LucideIcon name={d.icon} size={20} />
                 <Stack gap="0">
                   <Text size="base" weight="semibold">

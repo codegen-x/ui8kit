@@ -26,11 +26,11 @@
             {{ og_include('blocks/meter-row.html.j2', {'p': {'label': og_get(v_s, ['label']), 'value': og_get(v_s, ['value']), 'caption': og_tpl(v_percent, [og_get(v_s, ['value'])])}}) }}
           {%- endfor %}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': og_s(('0' if og_t(og_eq(v_size, 'compact')) else '2')), 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_1}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': og_s(('0' if og_t(og_eq(v_size, 'compact')) else '2')), 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_1}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('blocks/panel.html.j2', {'p': {'title': v_title, 'description': v_text, 'id': v_id, 'className': og_cnv([('bg-muted' if og_t(og_eq(v_tone, 'muted')) else '')])}, 'children': og_markup(c_2)}) }}
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4 py-8', 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_3}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else (og_tpl('{0}-t', [v_id]) if og_t(og_and([v_title, v_id])) else none)), 'data-testid', 'panel-section', 'aria-label', v_landmarkLabel])}, 'children': c_4}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else (og_tpl('{0}-t', [v_id]) if og_t(og_and([v_title, v_id])) else none)), 'aria-label', v_landmarkLabel, 'data-slot', 'panel-section'])}, 'children': c_4}) }}

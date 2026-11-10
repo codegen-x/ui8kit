@@ -29,7 +29,12 @@ const { label, groups, landmarkLabel } = defineProps<FooterGroupCardsProps>();
 </script>
 
 <template>
-  <Block v-if="((groups?.length ?? 0) > 0)" tag="nav" :aria-label="(landmarkLabel ?? label)">
+  <Block
+    v-if="((groups?.length ?? 0) > 0)"
+    tag="nav"
+    :aria-label="(landmarkLabel ?? label)"
+    data-slot="footer-group-cards"
+  >
     <Box class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <Stack
         v-for="g in groups"
@@ -37,7 +42,7 @@ const { label, groups, landmarkLabel } = defineProps<FooterGroupCardsProps>();
         gap="4"
         align="stretch"
         class="rounded bg-card inset-ring inset-ring-border p-6"
-        data-testid="group"
+        data-slot="group"
       >
         <Group gap="2" align="center">
           <Inline class="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
@@ -48,7 +53,7 @@ const { label, groups, landmarkLabel } = defineProps<FooterGroupCardsProps>();
           </Text>
         </Group>
         <List class="m-0 flex list-none flex-col gap-2 p-0">
-          <ListItem v-for="item in g.links" :key="item.id">
+          <ListItem v-for="item in g.links" :key="item.id" data-slot="links-row">
             <MenuEntry :href="item.href" class="text-sm text-muted-foreground" variant="muted" size="sm">
               {{ item.name }}
             </MenuEntry>

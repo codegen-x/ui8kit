@@ -81,18 +81,18 @@
             {%- set c_18 -%}
               {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'x', 'Size': 16}}) }}
             {%- endset -%}
-            {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'AriaLabel': og_s(og_get(v_labels, ['remove'])), 'Attrs': og_attrs(['data-testid', 'remove'])}, 'children': c_18}) }}
+            {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'AriaLabel': og_s(og_get(v_labels, ['remove']))}, 'children': c_18}) }}
           {%- endset -%}
           {{ og_include('compose/table-cell.html.j2', {'p': {'Class': 'text-right'}, 'children': c_19}) }}
         {%- endset -%}
-        {{ og_include('compose/table-row.html.j2', {'p': {'Class': 'border-t border-border', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_20}) }}
+        {{ og_include('compose/table-row.html.j2', {'p': {'Class': 'border-t border-border', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_20}) }}
       {%- endfor %}
     {%- endset -%}
     {{ og_include('compose/table-body.html.j2', {'p': {}, 'children': c_21}) }}
   {%- endset -%}
-  {{ og_include('compose/table.html.j2', {'p': {'Class': 'w-full text-left text-sm', 'Attrs': og_attrs(['data-testid', 'cart-table'])}, 'children': c_22}) }}
+  {{ og_include('compose/table.html.j2', {'p': {'Class': 'w-full text-left text-sm', 'Attrs': og_attrs(['data-slot', 'cart-table'])}, 'children': c_22}) }}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'w-full overflow-x-auto'}, 'children': c_23}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'w-full overflow-x-auto', 'Attrs': og_attrs(['data-slot', 'cart-table-root'])}, 'children': c_23}) }}
 {%- if og_t(og_gt(og_len(v_lines), 0)) %}
   {%- set c_26 -%}
     {%- set c_24 -%}
@@ -100,11 +100,11 @@
       {{ og_text(' ') }}
       {{ og_text(og_money(og_sum_by(v_lines, 'price', 'qty'), og_first_of(v_lines, 'currency'))) }}
     {%- endset -%}
-    {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Weight': 'bold', 'Attrs': og_attrs(['data-testid', 'subtotal'])}, 'children': c_24}) }}
+    {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Weight': 'bold', 'Attrs': og_attrs(['data-slot', 'subtotal'])}, 'children': c_24}) }}
     {%- set c_25 -%}
       {{ og_text(og_get(v_labels, ['checkout'])) }}
     {%- endset -%}
-    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Attrs': og_attrs(['data-testid', 'checkout'])}, 'children': c_25}) }}
+    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default'}, 'children': c_25}) }}
   {%- endset -%}
-  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Class': 'mt-4 flex-wrap border-t border-border pt-4', 'Attrs': og_attrs(['data-testid', 'cart-footer'])}, 'children': c_26}) }}
+  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Class': 'mt-4 flex-wrap border-t border-border pt-4', 'Attrs': og_attrs(['data-slot', 'cart-footer'])}, 'children': c_26}) }}
 {%- endif %}

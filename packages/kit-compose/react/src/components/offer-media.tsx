@@ -16,13 +16,13 @@ export type OfferMediaProps = {
 
 export function OfferMedia({ alt, card }: OfferMediaProps) {
   return (
-    <Box className="relative" data-testid="hero-media">
+    <Box className="relative" data-slot="hero-media">
       <MediaFrame alt={alt} ratio="4/3" />
       <Group
         gap="4"
         align="start"
         className="absolute bottom-4 left-4 mr-4 max-w-xs rounded bg-card p-4 shadow-lg"
-        data-testid="offer-card"
+        data-slot="offer-card"
       >
         <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
           <LucideIcon name={card.icon} size={20} />

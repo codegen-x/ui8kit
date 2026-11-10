@@ -43,7 +43,7 @@
         "Class": "gap-4"
       },
       "attrs": {
-        "data-testid": "auth-form"
+        "data-slot": "auth-form"
       },
       "children": [
         {
@@ -94,7 +94,7 @@
                             }
                           ]
                         },
-                        "data-testid": "field"
+                        "data-slot": "field"
                       }
                     }
                   ]
@@ -140,7 +140,7 @@
                         }
                       ]
                     },
-                    "data-testid": "field"
+                    "data-slot": "field"
                   }
                 }
               ]
@@ -224,7 +224,7 @@
                             }
                           ]
                         },
-                        "data-testid": "field"
+                        "data-slot": "field"
                       }
                     }
                   ]
@@ -401,9 +401,6 @@
             "Size": "default",
             "Type": "submit",
             "Class": "w-full"
-          },
-          "attrs": {
-            "data-testid": "submit"
           },
           "children": [
             {

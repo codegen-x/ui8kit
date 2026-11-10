@@ -49,8 +49,8 @@ const {
 <template>
   <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((sections?.length ?? 0) === 0)" icon="calendar" :title="empty" />
-    <Box v-else class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5" data-testid="items">
-      <Stack v-for="s in sections" :key="s.id" gap="2" class="border-t-2 border-primary pt-4" data-testid="day">
+    <Box v-else class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5" data-slot="items">
+      <Stack v-for="s in sections" :key="s.id" gap="2" class="border-t-2 border-primary pt-4" data-slot="day">
         <Text size="sm" weight="semibold">
           {{ s.title }}
         </Text>
@@ -62,7 +62,7 @@ const {
             v-if="(d.tag === s.key)"
             gap="2"
             class="rounded bg-card inset-ring inset-ring-border p-4"
-            data-testid="item"
+            data-slot="item"
           >
             <MediaFrame v-if="((media as string) === 'image')" :alt="d.name" ratio="4/3" />
             <Text size="sm" weight="semibold">

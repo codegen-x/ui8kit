@@ -63,11 +63,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"lane\"]",
+      "sel": "[data-slot=\"lane\"]",
       "n": "@lanes"
     },
     {
-      "sel": "[data-testid=\"lane\"] [data-testid=\"item\"]",
+      "sel": "[data-slot=\"lane\"] [data-slot=\"item\"]",
       "n": "@cards"
     },
     {

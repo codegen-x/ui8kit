@@ -62,11 +62,11 @@ const {
         (layout as string) === 'masonry' ? 'columns-1 gap-4 md:columns-2 xl:columns-3'
         : 'flex snap-x gap-4 overflow-x-auto pb-2'
       "
-      data-testid="items"
+      data-slot="items"
     >
       <QuoteCard v-for="q in quotes" :key="q.id" :q="q" :labels="labels" :item="item" :layout="layout" />
     </Block>
-    <Grid v-else :cols="(((layout as string) === 'grid') ? cols : '1')" class="gap-4" data-testid="items">
+    <Grid v-else :cols="(((layout as string) === 'grid') ? cols : '1')" class="gap-4" data-slot="items">
       <template v-for="(q, i) in quotes" :key="q.id">
         <QuoteCard
           v-if="(((layout as string) !== 'single') || (i === 0))"

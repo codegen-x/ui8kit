@@ -72,7 +72,7 @@ const {
       gap="4"
       align="center"
       class="flex-wrap"
-      data-testid="richtext-meta"
+      data-slot="richtext-meta"
     >
       <Text v-if="meta?.date" size="sm" class="text-muted-foreground">
         {{ meta?.date }}
@@ -91,9 +91,9 @@ const {
     />
     <Grid v-if="((layout as string) === 'sidebar')" cols="1" class="gap-8 lg:grid-cols-3">
       <Box class="min-w-0 lg:col-span-2">
-        <Prose v-if="content" size="base" width="none" data-testid="richtext-content" :innerHTML="htmlOf(content)" />
+        <Prose v-if="content" size="base" width="none" data-slot="richtext-content" :innerHTML="htmlOf(content)" />
       </Box>
-      <Card v-if="aside?.content" variant="compact" class="h-fit" data-testid="richtext-aside">
+      <Card v-if="aside?.content" variant="compact" class="h-fit">
         <Title v-if="aside?.title" :as="((level === 1) ? 2 : 3)" size="lg" weight="semibold">
           {{ aside?.title }}
         </Title>
@@ -101,7 +101,7 @@ const {
           v-if="aside?.content"
           size="sm"
           width="none"
-          data-testid="richtext-aside-content"
+          data-slot="richtext-aside-content"
           :innerHTML="htmlOf(aside?.content)"
         />
       </Card>
@@ -113,7 +113,7 @@ const {
         : (layout as string) === 'hero' ? 'narrow'
         : 'none'
       "
-      data-testid="richtext-content"
+      data-slot="richtext-content"
       :innerHTML="htmlOf(content)"
     />
   </SectionFrame>

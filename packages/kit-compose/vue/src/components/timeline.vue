@@ -38,6 +38,7 @@ const { items, class: className } = defineProps<TimelineProps>();
         :key="item.id"
         class="relative flex min-w-0 gap-4 pb-4 last:pb-0"
         :data-event="item.id"
+        data-slot="timeline-item"
       >
         <Box class="relative flex w-2 shrink-0 justify-center">
           <Inline v-if="(i < ((items?.length ?? 0) - 1))" class="absolute top-4 -bottom-0 w-px bg-border" />

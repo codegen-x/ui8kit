@@ -48,9 +48,9 @@ templ ProductDetail(p ProductDetailProps) {
 		}
 	} else {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: uiutils.Get(vProduct, "name"), Lead: uiutils.Get(vProduct, "summary"), Heading: map[string]any{"level": vLevel}, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": true, "side": vMediaSide, "align": "start"}, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel, Aside: productDetailFill1(p, vProduct, vThumbs)}) {
-			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "buy-box")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "buy-box")}}) {
 				if uiutils.T(uiutils.Get(vProduct, "category")) {
-					@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "uppercase tracking-wide text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "category")}}) {
+					@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "uppercase tracking-wide text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "category")}}) {
 						{ uiutils.Text(uiutils.Get(vProduct, "category")) }
 					}
 				}
@@ -61,14 +61,14 @@ templ ProductDetail(p ProductDetailProps) {
 						{ uiutils.Text(uiutils.Tpl(uiutils.Get(vLabels, "reviews"), uiutils.Get(vProduct, "reviews"))) }
 					}
 				}
-				@compose.Text(compose.TextProps{Size: "sm", Weight: "medium", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "inStock")), "text-foreground", "text-destructive")), Attrs: uiutils.Attrs("data-testid", "stock")}}) {
+				@compose.Text(compose.TextProps{Size: "sm", Weight: "medium", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "inStock")), "text-foreground", "text-destructive")), Attrs: uiutils.Attrs("data-slot", "stock")}}) {
 					{ uiutils.Text(uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "inStock")), uiutils.Get(vLabels, "inStock"), uiutils.Get(vLabels, "soldOut"))) }
 				}
 				@compose.Group(compose.GroupProps{Gap: "4", BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
 					if uiutils.Eq(vBuy, "full") {
 						@NumberField(NumberFieldProps{Value: "1", Name: uiutils.Tpl("{0}-qty", vId), Min: "1", Label: uiutils.Get(vLabels, "qty"), Decrease: uiutils.Get(vLabels, "decrease"), Increase: uiutils.Get(vLabels, "increase")})
 					}
-					@compose.Button(compose.ButtonProps{ButtonProps: button.ButtonProps{Disabled: uiutils.T(!uiutils.T(uiutils.Get(vProduct, "inStock"))), Attrs: uiutils.Attrs("data-testid", "add")}}) {
+					@compose.Button(compose.ButtonProps{ButtonProps: button.ButtonProps{Disabled: uiutils.T(!uiutils.T(uiutils.Get(vProduct, "inStock")))}}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "add")) }
 					}
 				}

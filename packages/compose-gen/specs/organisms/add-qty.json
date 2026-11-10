@@ -95,9 +95,6 @@
             "Size": "default",
             "Type": "button"
           },
-          "attrs": {
-            "data-testid": "add"
-          },
           "children": [
             {
               "use": "LucideIcon",
@@ -113,7 +110,10 @@
             }
           ]
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "add-qty"
+      }
     }
   ],
   "portable": {

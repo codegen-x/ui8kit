@@ -83,7 +83,7 @@
             }
           ]
         },
-        "data-testid": "option-group"
+        "data-slot": "option-group"
       },
       "children": [
         {
@@ -168,7 +168,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "option"
+                    "data-slot": "option"
                   },
                   "children": [
                     {

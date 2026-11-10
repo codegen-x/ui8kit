@@ -34,4 +34,4 @@
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'children': c_7}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'media-topics']), 'children': c_7}, with_context = false) }}

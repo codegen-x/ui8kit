@@ -21,7 +21,7 @@ type MediaTopicsProps struct {
 templ MediaTopics(p MediaTopicsProps) {
 	{{ vExtras := p.Extras }}
 	{{ vLabels := p.Labels }}
-	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{}}) {
+	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "media-topics")}}) {
 		@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 			{ uiutils.Text(uiutils.Get(vLabels, "list")) }
 		}

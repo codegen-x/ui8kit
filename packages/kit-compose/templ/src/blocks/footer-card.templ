@@ -25,10 +25,10 @@ templ FooterCard(p FooterCardProps) {
 	{{ vBrand := p.Brand }}
 	{{ vGroups := p.Groups }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "footer", Class: "py-8", Attrs: uiutils.Attrs("data-testid", "site-footer", "data-layout", "card", "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "footer", Class: "py-8", Attrs: uiutils.Attrs("data-layout", "card", "aria-label", vLandmarkLabel, "data-slot", "site-footer")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv(uiutils.Cnv("mx-auto w-full px-4", uiutils.Get(presetDefaults, "section", "landing")), "px-0")), Attrs: uiutils.Attrs("data-slot", "container")}}) {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex w-full flex-row items-start overflow-hidden bg-muted p-10", uiutils.Get(presetDefaults, "footer", "card"))), Attrs: uiutils.Attrs("data-testid", "footer-card")}}) {
-				@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-8 shrink-0", uiutils.Get(presetDefaults, "footer", "brand"))), Attrs: uiutils.Attrs("data-testid", "footer-brand")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex w-full flex-row items-start overflow-hidden bg-muted p-10", uiutils.Get(presetDefaults, "footer", "card"))), Attrs: uiutils.Attrs("data-slot", "footer-card")}}) {
+				@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-8 shrink-0", uiutils.Get(presetDefaults, "footer", "brand"))), Attrs: uiutils.Attrs("data-slot", "footer-brand")}}) {
 					@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex size-8 items-center justify-center rounded bg-foreground text-background"}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: "hexagon", Size: 16})
 					}
@@ -38,15 +38,15 @@ templ FooterCard(p FooterCardProps) {
 				}
 				if uiutils.Gt(uiutils.Len(vGroups), float64(0)) {
 					@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vLabel, vLandmarkLabel)), vLabel), Class: uiutils.Cnv("min-w-0 flex-1")}) {
-						@compose.Group(compose.GroupProps{Gap: "0", Align: "start", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex w-full flex-nowrap justify-between", uiutils.Get(presetDefaults, "footer", "groups"))), Attrs: uiutils.Attrs("data-testid", "footer-groups")}}) {
+						@compose.Group(compose.GroupProps{Gap: "0", Align: "start", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex w-full flex-nowrap justify-between", uiutils.Get(presetDefaults, "footer", "groups"))), Attrs: uiutils.Attrs("data-slot", "footer-groups")}}) {
 							for _, vG := range uiutils.L(vGroups) {
-								@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "group")}}) {
+								@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "group")}}) {
 									@compose.Text(compose.TextProps{Size: "xs", Weight: "semibold", TextProps: text.TextProps{Class: "leading-5"}}) {
 										{ uiutils.Text(uiutils.Get(vG, "title")) }
 									}
 									@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-4 p-0"}}) {
 										for _, vItem := range uiutils.L(uiutils.Get(vG, "links")) {
-											@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{}}) {
+											@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "links-row")}}) {
 												@MenuEntry(MenuEntryProps{Href: uiutils.Get(vItem, "href"), Class: uiutils.Cnv("text-xs leading-5 text-muted-foreground")}) {
 													{ uiutils.Text(uiutils.Get(vItem, "name")) }
 												}

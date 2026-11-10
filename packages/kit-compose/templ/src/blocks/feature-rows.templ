@@ -21,9 +21,9 @@ type FeatureRowsProps struct {
 templ FeatureRows(p FeatureRowsProps) {
 	{{ vFeatures := p.Features }}
 	{{ vMediaSide := uiutils.Def(p.MediaSide, "end") }}
-	@compose.Stack(compose.StackProps{Gap: "8", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "feature-rows")}}) {
+	@compose.Stack(compose.StackProps{Gap: "8", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "feature-rows")}}) {
 		for _, vFeature := range uiutils.L(vFeatures) {
-			@compose.Grid(compose.GridProps{Cols: "1-2", BoxProps: box.BoxProps{Class: "group items-center gap-8", Attrs: uiutils.Attrs("data-testid", "feature-card")}}) {
+			@compose.Grid(compose.GridProps{Cols: "1-2", BoxProps: box.BoxProps{Class: "group items-center gap-8", Attrs: uiutils.Attrs("data-slot", "feature-card")}}) {
 				@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "min-w-0"}}) {
 					@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vFeature, "icon")), Size: 24})
 					@compose.Title(compose.TitleProps{As: "3", Size: "xl", Weight: "bold", TextProps: text.TextProps{}}) {

@@ -19,14 +19,14 @@ const { extras } = defineProps<QuoteLogoTilesProps>();
 </script>
 
 <template>
-  <Box class="grid grid-cols-2 gap-4" data-testid="quote-logos">
+  <Box class="grid grid-cols-2 gap-4" data-slot="quote-logos">
     <template v-for="(l, i) in extras.logos" :key="l.id">
       <Group v-if="(i < 4)"
         gap="2"
         align="center"
         justify="center"
         class="rounded bg-card inset-ring inset-ring-border p-4 text-muted-foreground"
-        data-testid="quote-logo"
+        data-slot="quote-logo"
       >
         <LucideIcon :name="l.icon" :size="20" />
         <Text size="sm" weight="semibold">

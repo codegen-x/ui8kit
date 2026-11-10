@@ -35,7 +35,7 @@ const emit = defineEmits<{ change: [from: string, to: string] }>();
         :max="max"
         :aria-label="fromLabel"
         :value="(((from as string) === '') ? (min == null ? undefined : String(min)) : from)"
-        data-testid="range-from"
+        data-slot="range-from"
         @input="(event: Event & { currentTarget: HTMLInputElement }) => emit('change', event.currentTarget.value, to)"
       />
       <Range
@@ -43,7 +43,7 @@ const emit = defineEmits<{ change: [from: string, to: string] }>();
         :max="max"
         :aria-label="toLabel"
         :value="(((to as string) === '') ? (max == null ? undefined : String(max)) : to)"
-        data-testid="range-to"
+        data-slot="range-to"
         @input="(event: Event & { currentTarget: HTMLInputElement }) => emit('change', from, event.currentTarget.value)"
       />
     </template>

@@ -15,8 +15,8 @@ export type ZoneRowsProps = {
 
 export function ZoneRows({ zones, labels }: ZoneRowsProps) {
   return (
-    <Box className="w-full overflow-x-auto rounded inset-ring inset-ring-border">
-      <Table className="w-full text-left text-sm" data-testid="zone-table">
+    <Box className="w-full overflow-x-auto rounded inset-ring inset-ring-border" data-slot="zone-rows">
+      <Table className="w-full text-left text-sm" data-slot="zone-table">
         <TableCaption className="sr-only">
           {labels.caption}
         </TableCaption>
@@ -44,7 +44,7 @@ export function ZoneRows({ zones, labels }: ZoneRowsProps) {
         </TableHead>
         <TableBody>
           {(zones ?? []).map((z) => (
-            <TableRow key={z.id} className="border-t border-border" data-testid="item">
+            <TableRow key={z.id} className="border-t border-border" data-slot="item">
               <TableCell className="px-4 py-4">
                 <Stack gap="0">
                   <Text size="sm" weight="semibold">

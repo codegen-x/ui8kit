@@ -40,10 +40,10 @@ templ DishBento(p DishBentoProps) {
 		if uiutils.Eq(uiutils.Len(vDishes), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "star", Title: vEmpty})
 		} else {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for vI, vD := range uiutils.L(vDishes) {
 					if uiutils.Eq(float64(vI), float64(0)) {
-						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("rounded bg-card inset-ring inset-ring-border p-6 sm:col-span-2 lg:row-span-2", uiutils.Cond(uiutils.T(uiutils.Eq(vFeature, "end")), "lg:col-start-3 lg:row-start-1", ""))), Attrs: uiutils.Attrs("data-testid", "feature")}}) {
+						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("rounded bg-card inset-ring inset-ring-border p-6 sm:col-span-2 lg:row-span-2", uiutils.Cond(uiutils.T(uiutils.Eq(vFeature, "end")), "lg:col-start-3 lg:row-start-1", ""))), Attrs: uiutils.Attrs("data-slot", "feature")}}) {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "4/3"})
 							@compose.Badge(compose.BadgeProps{Variant: "secondary", Size: "default", TextProps: text.TextProps{Class: "w-fit"}}) {
 								{ uiutils.Text(uiutils.Get(vD, "weight")) }
@@ -65,7 +65,7 @@ templ DishBento(p DishBentoProps) {
 							}
 						}
 					} else {
-						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name")})
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vD, "name")) }

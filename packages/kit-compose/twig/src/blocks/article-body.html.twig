@@ -29,9 +29,9 @@
                   {%- set c_2 -%}
                     {{ og_text(og_get(v_s, ['title'])) }}
                   {%- endset -%}
-                  {{ include('compose/Link.html.twig', {'href': og_url(og_s(og_tpl('#{0}-{1}', [v_id, og_get(v_s, ['id'])]))), 'variant': 'default', 'class': 'text-sm text-muted-foreground', 'attrs': og_attrs(['data-testid', 'toc-link']), 'children': c_2}, with_context = false) }}
+                  {{ include('compose/Link.html.twig', {'href': og_url(og_s(og_tpl('#{0}-{1}', [v_id, og_get(v_s, ['id'])]))), 'variant': 'default', 'class': 'text-sm text-muted-foreground', 'attrs': og_attrs(['data-slot', 'toc-link']), 'children': c_2}, with_context = false) }}
                 {%- endset -%}
-                {{ include('compose/ListItem.html.twig', {'children': c_3}, with_context = false) }}
+                {{ include('compose/ListItem.html.twig', {'attrs': og_attrs(['data-slot', 'sections-row']), 'children': c_3}, with_context = false) }}
               {%- endfor %}
             {%- endset -%}
             {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-col gap-2 p-0', 'children': c_4}, with_context = false) }}
@@ -56,14 +56,14 @@
                 {%- set c_9 -%}
                   {{ og_text(og_get(v_s, ['quote'])) }}
                 {%- endset -%}
-                {{ include('compose/Text.html.twig', {'tag': 'blockquote', 'class': 'm-0 border-l border-border pl-4 text-lg', 'attrs': og_attrs(['data-testid', 'quote']), 'children': c_9}, with_context = false) }}
+                {{ include('compose/Text.html.twig', {'tag': 'blockquote', 'class': 'm-0 border-l border-border pl-4 text-lg', 'attrs': og_attrs(['data-slot', 'quote']), 'children': c_9}, with_context = false) }}
               {%- endif %}
             {%- endif %}
           {%- endset -%}
-          {{ include('compose/Box.html.twig', {'class': 'flex flex-col gap-4', 'attrs': og_attrs(['id', og_tpl('{0}-{1}', [v_id, og_get(v_s, ['id'])]), 'data-testid', 'item']), 'children': c_10}, with_context = false) }}
+          {{ include('compose/Box.html.twig', {'class': 'flex flex-col gap-4', 'attrs': og_attrs(['id', og_tpl('{0}-{1}', [v_id, og_get(v_s, ['id'])]), 'data-slot', 'item']), 'children': c_10}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/Stack.html.twig', {'gap': '8', 'align': 'stretch', 'class': 'mx-auto w-full max-w-2xl min-w-0', 'attrs': og_attrs(['data-testid', 'article']), 'children': c_11}, with_context = false) }}
+      {{ include('compose/Stack.html.twig', {'gap': '8', 'align': 'stretch', 'class': 'mx-auto w-full max-w-2xl min-w-0', 'attrs': og_attrs(['data-slot', 'article']), 'children': c_11}, with_context = false) }}
     {%- endset -%}
     {{ include('compose/Grid.html.twig', {'cols': '1', 'class': og_s(og_cnv(['items-start gap-8', (og_t(og_eq(v_layout, 'toc')) ? 'md:grid-cols-[14rem_minmax(0,1fr)]' : '')])), 'children': c_12}, with_context = false) }}
   {%- endif %}

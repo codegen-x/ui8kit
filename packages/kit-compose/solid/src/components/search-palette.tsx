@@ -11,7 +11,7 @@ export type SearchPaletteProps = {
 
 export function SearchPalette({ label, shortcut }: SearchPaletteProps) {
   return (
-    <Box class="relative w-full max-w-sm" data-testid="palette">
+    <Box class="relative w-full max-w-sm" data-slot="palette">
       <LucideIcon name="search" size={16} class="pointer-events-none absolute top-2 left-3 text-muted-foreground" />
       <Input type="search" size="sm" placeholder={label} aria-label={label} class="pr-12 pl-10" />
       <Inline

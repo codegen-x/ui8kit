@@ -73,36 +73,28 @@ const {
           class="flex-wrap"
           role="group"
           :aria-label="labels.filters"
-          data-testid="template-filters"
+          data-slot="template-filters"
         >
-          <Button
-            v-for="f in filters"
-            :key="f.id"
-            variant="outline"
-            size="sm"
-            type="button"
-            class="gap-2"
-            data-testid="template-filter"
-          >
+          <Button v-for="f in filters" :key="f.id" variant="outline" size="sm" type="button" class="gap-2">
             <LucideIcon v-if="f.icon" :name="f.icon" :size="16" />
             {{ f.title }}
           </Button>
         </Group>
       </Group>
       <EmptyState v-if="((templates?.length ?? 0) === 0)" icon="layout-template" :title="empty" />
-      <Grid v-else :cols="cols" class="w-full gap-6" data-testid="template-grid">
+      <Grid v-else :cols="cols" class="w-full gap-6" data-slot="template-grid">
         <Box v-for="t in templates" :key="t.id"
           :class="cn(
             'flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border',
             defaults.templates.card
           )"
-          data-testid="template-card"
+          data-slot="template-card"
         >
           <Box :class="cn('shrink-0 overflow-hidden', defaults.templates.image)">
             <MediaFrame :alt="t.title" :class="cn('size-full', defaults.media.rounded)" />
           </Box>
-          <Group gap="4" align="center" :class="cn('w-full', defaults.templates.footer)" data-testid="template-footer">
-            <IconBadge size="sm" class="overflow-hidden" data-testid="template-avatar">
+          <Group gap="4" align="center" :class="cn('w-full', defaults.templates.footer)" data-slot="template-footer">
+            <IconBadge size="sm" class="overflow-hidden" data-slot="template-avatar">
               <LucideIcon name="layout-template" :size="16" />
             </IconBadge>
             <Stack gap="0" class="min-w-0 flex-1">
@@ -133,7 +125,7 @@ const {
           </Group>
         </Box>
       </Grid>
-      <Button variant="outline" size="sm" :href="urlOf(browseHref)" class="w-full" data-testid="template-browse">
+      <Button variant="outline" size="sm" :href="urlOf(browseHref)" class="w-full">
         {{ labels.browse }}
       </Button>
     </Stack>

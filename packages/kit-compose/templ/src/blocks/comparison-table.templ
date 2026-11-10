@@ -38,7 +38,7 @@ templ ComparisonTable(p ComparisonTableProps) {
 			@EmptyState(EmptyStateProps{Icon: "table", Title: vEmpty})
 		} else {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative w-full overflow-x-auto"}}) {
-				@compose.Table(compose.TableProps{BoxProps: box.BoxProps{Class: "w-full text-left text-sm", Attrs: uiutils.Attrs("data-testid", "compare")}}) {
+				@compose.Table(compose.TableProps{BoxProps: box.BoxProps{Class: "w-full text-left text-sm", Attrs: uiutils.Attrs("data-slot", "compare")}}) {
 					@compose.TableCaption(compose.TableCaptionProps{BoxProps: box.BoxProps{Class: "sr-only"}}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "caption")) }
 					}
@@ -60,7 +60,7 @@ templ ComparisonTable(p ComparisonTableProps) {
 					}
 					@compose.TableBody(compose.TableBodyProps{BoxProps: box.BoxProps{}}) {
 						for _, vRow := range uiutils.L(vRows) {
-							@compose.TableRow(compose.TableRowProps{BoxProps: box.BoxProps{Class: "border-t border-border", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+							@compose.TableRow(compose.TableRowProps{BoxProps: box.BoxProps{Class: "border-t border-border", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 								@compose.TableHeadCell(compose.TableHeadCellProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("font-medium", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "py-2", "py-4"))), Attrs: uiutils.Attrs("scope", "row")}}) {
 									{ uiutils.Text(uiutils.Get(vRow, "label")) }
 								}

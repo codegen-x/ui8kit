@@ -350,7 +350,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "email-form"
+                        "data-slot": "email-form"
                       },
                       "children": [
                         {
@@ -403,7 +403,7 @@
                                     }
                                   ]
                                 },
-                                "data-testid": "field"
+                                "data-slot": "field"
                               }
                             },
                             {
@@ -414,9 +414,6 @@
                                 "Href": {
                                   "$": "actions.href"
                                 }
-                              },
-                              "attrs": {
-                                "data-testid": "submit"
                               },
                               "children": [
                                 {
@@ -599,7 +596,7 @@
                     "Class": "items-end gap-4"
                   },
                   "attrs": {
-                    "data-testid": "cluster"
+                    "data-slot": "cluster"
                   },
                   "children": [
                     {

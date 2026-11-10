@@ -27,12 +27,12 @@
           {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'share-2', 'Size': 16}}) }}
           {{ og_text(og_get(v_labels, ['share'])) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'default', 'Class': 'gap-2', 'Attrs': og_attrs(['data-testid', 'post-share'])}, 'children': c_4}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'default', 'Class': 'gap-2'}, 'children': c_4}) }}
         {%- set c_5 -%}
           {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'bookmark', 'Size': 16}}) }}
           {{ og_text(og_get(v_labels, ['save'])) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'default', 'Class': 'gap-2', 'Attrs': og_attrs(['data-testid', 'post-save'])}, 'children': c_5}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'default', 'Class': 'gap-2'}, 'children': c_5}) }}
       {%- endset -%}
       {{ og_include('compose/group.html.j2', {'p': {'Gap': '2'}, 'children': c_6}) }}
     {%- else %}
@@ -57,4 +57,4 @@
     {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_11}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(og_cnv([('' if og_t(og_eq(v_mode, 'line')) else 'rounded bg-card inset-ring inset-ring-border p-4'), og_def(p['className'], '')])), 'Attrs': og_attrs(['data-testid', 'post-author'])}, 'children': c_12}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(og_cnv([('' if og_t(og_eq(v_mode, 'line')) else 'rounded bg-card inset-ring inset-ring-border p-4'), og_def(p['className'], '')])), 'Attrs': og_attrs(['data-slot', 'post-author'])}, 'children': c_12}) }}

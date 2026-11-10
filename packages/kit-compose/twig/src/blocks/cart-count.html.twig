@@ -11,4 +11,4 @@
   {%- endset -%}
   {{ include('compose/Inline.html.twig', {'children': c_1}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Inline.html.twig', {'class': 'inline-flex h-8 items-center gap-2 rounded bg-muted px-4 text-sm font-medium', 'attrs': og_attrs(['role', 'status', 'aria-live', 'polite', 'data-testid', 'cart-count']), 'children': c_2}, with_context = false) }}
+{{ include('compose/Inline.html.twig', {'class': 'inline-flex h-8 items-center gap-2 rounded bg-muted px-4 text-sm font-medium', 'attrs': og_attrs(['role', 'status', 'aria-live', 'polite', 'data-slot', 'cart-count']), 'children': c_2}, with_context = false) }}

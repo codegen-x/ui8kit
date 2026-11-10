@@ -51,10 +51,10 @@
               {/capture}
               {=og_include('compose/CardContent.latte', ['class' => 'flex flex-wrap items-center justify-between gap-4', 'children' => (string) $c_7])|noescape}
             {/capture}
-            {=og_include('compose/Card.latte', ['variant' => 'default', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_8])|noescape}
+            {=og_include('compose/Card.latte', ['variant' => 'default', 'children' => (string) $c_8])|noescape}
           {/foreach}
         {/capture}
-        {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-testid', 'order-cards']), 'children' => (string) $c_9])|noescape}
+        {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'order-cards']), 'children' => (string) $c_9])|noescape}
       {/if}
       {if og_t(og_eq($v_pager, 'show'))}
         {=og_include('blocks/pager.latte', ['p' => ['page' => 1, 'pages' => 3, 'summary' => og_tpl(og_get($v_labels, ['summary']), [1, 4, 12]), 'previousLabel' => og_get($v_labels, ['previous']), 'nextLabel' => og_get($v_labels, ['next'])]])|noescape}

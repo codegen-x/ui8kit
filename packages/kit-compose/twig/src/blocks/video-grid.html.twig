@@ -25,7 +25,7 @@
             {%- set c_1 -%}
               {{ include('icons/LucideIcon.html.twig', {'name': 'play', 'size': 20}, with_context = false) }}
             {%- endset -%}
-            {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'button', 'class': 'absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0', 'attrs': og_attrs(['aria-label', og_tpl(v_playLabel, [og_get(v_q, ['author'])]), 'data-testid', 'play']), 'children': c_1}, with_context = false) }}
+            {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'button', 'class': 'absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0', 'attrs': og_attrs(['aria-label', og_tpl(v_playLabel, [og_get(v_q, ['author'])])]), 'children': c_1}, with_context = false) }}
             {%- if og_t(og_eq(v_caption, 'overlay')) %}
               {%- set c_4 -%}
                 {%- set c_2 -%}
@@ -37,7 +37,7 @@
                 {%- endset -%}
                 {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_3}, with_context = false) }}
               {%- endset -%}
-              {{ include('compose/Box.html.twig', {'class': 'absolute inset-x-0 bottom-0 rounded bg-background p-4', 'attrs': og_attrs(['data-testid', 'caption']), 'children': c_4}, with_context = false) }}
+              {{ include('compose/Box.html.twig', {'class': 'absolute inset-x-0 bottom-0 rounded bg-background p-4', 'attrs': og_attrs(['data-slot', 'caption']), 'children': c_4}, with_context = false) }}
             {%- endif %}
           {%- endset -%}
           {{ include('compose/Box.html.twig', {'class': 'relative', 'children': c_5}, with_context = false) }}
@@ -52,13 +52,13 @@
               {%- endset -%}
               {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_7}, with_context = false) }}
             {%- endset -%}
-            {{ include('compose/Text.html.twig', {'tag': 'figcaption', 'attrs': og_attrs(['data-testid', 'caption']), 'children': c_8}, with_context = false) }}
+            {{ include('compose/Text.html.twig', {'tag': 'figcaption', 'attrs': og_attrs(['data-slot', 'caption']), 'children': c_8}, with_context = false) }}
           {%- endif %}
         {%- endset -%}
         {{ include('blocks/figure-block.html.twig', {'p': {'className': og_cnv(['m-0 flex flex-col gap-4']), 'testid': 'item'}, 'children': og_markup(c_9)}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': og_s(v_cols), 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_10}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': og_s(v_cols), 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_10}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_11)}, with_context = false) }}

@@ -11,9 +11,9 @@ export type FaqDisclosuresProps = {
 
 export function FaqDisclosures({ items, name }: FaqDisclosuresProps) {
   return (
-    <Stack gap="0" align="stretch" data-testid="faq">
+    <Stack gap="0" align="stretch" data-slot="faq">
       {(items ?? []).map((q) => (
-        <Disclosure key={q.id} variant="item" name={name} data-testid="faq-item">
+        <Disclosure key={q.id} variant="item" name={name} data-slot="faq-item">
           <Summary variant="item">
             {q.question}
           </Summary>

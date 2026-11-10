@@ -51,11 +51,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"stat\"]",
+      "sel": "[data-slot=\"stat\"]",
       "n": "@stats"
     },
     {
-      "sel": "[data-testid=\"value\"]",
+      "sel": "[data-slot=\"value\"]",
       "n": "@values"
     }
   ],

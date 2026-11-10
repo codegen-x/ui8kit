@@ -40,7 +40,7 @@ templ FooterSplit(p FooterSplitProps) {
 	{{ vMediaSide := uiutils.Def(p.MediaSide, "end") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "footer", Class: uiutils.S(uiutils.Cnv("border-t border-border", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", ""))), Attrs: uiutils.Attrs("data-testid", "footer-split", "data-layout", vLayout, "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "footer", Class: uiutils.S(uiutils.Cnv("border-t border-border", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", ""))), Attrs: uiutils.Attrs("data-layout", vLayout, "aria-label", vLandmarkLabel, "data-slot", "footer-split")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", "py-12")), Attrs: uiutils.Attrs("data-slot", "container")}}) {
 			if uiutils.Eq(vLayout, "stats") {
 				@compose.Stack(compose.StackProps{Gap: "8", Align: "stretch", BoxProps: box.BoxProps{}}) {

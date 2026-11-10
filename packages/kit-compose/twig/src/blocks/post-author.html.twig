@@ -27,12 +27,12 @@
           {{ include('icons/LucideIcon.html.twig', {'name': 'share-2', 'size': 16}, with_context = false) }}
           {{ og_text(og_get(v_labels, ['share'])) }}
         {%- endset -%}
-        {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'default', 'class': 'gap-2', 'attrs': og_attrs(['data-testid', 'post-share']), 'children': c_4}, with_context = false) }}
+        {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'default', 'class': 'gap-2', 'children': c_4}, with_context = false) }}
         {%- set c_5 -%}
           {{ include('icons/LucideIcon.html.twig', {'name': 'bookmark', 'size': 16}, with_context = false) }}
           {{ og_text(og_get(v_labels, ['save'])) }}
         {%- endset -%}
-        {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'default', 'class': 'gap-2', 'attrs': og_attrs(['data-testid', 'post-save']), 'children': c_5}, with_context = false) }}
+        {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'default', 'class': 'gap-2', 'children': c_5}, with_context = false) }}
       {%- endset -%}
       {{ include('compose/Group.html.twig', {'gap': '2', 'children': c_6}, with_context = false) }}
     {%- else %}
@@ -57,4 +57,4 @@
     {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'text-muted-foreground', 'children': c_11}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': og_s(og_cnv([(og_t(og_eq(v_mode, 'line')) ? '' : 'rounded bg-card inset-ring inset-ring-border p-4'), (p.className ?? '')])), 'attrs': og_attrs(['data-testid', 'post-author']), 'children': c_12}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': og_s(og_cnv([(og_t(og_eq(v_mode, 'line')) ? '' : 'rounded bg-card inset-ring inset-ring-border p-4'), (p.className ?? '')])), 'attrs': og_attrs(['data-slot', 'post-author']), 'children': c_12}, with_context = false) }}

@@ -26,7 +26,7 @@
           {{ og_text(v_trigger) }}
           {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'chevron-down', 'Size': 16}}) }}
         {%- endset -%}
-        {{ og_include('compose/button-plain.html.j2', {'p': {'Type': 'button', 'Class': 'inline-flex items-center gap-2 text-sm font-semibold', 'Attrs': og_attrs(['aria-expanded', ('true' if og_t(og_eq(v_panel, 'open')) else 'false'), 'data-testid', 'mega-trigger'])}, 'children': c_2}) }}
+        {{ og_include('compose/button-plain.html.j2', {'p': {'Type': 'button', 'Class': 'inline-flex items-center gap-2 text-sm font-semibold', 'Attrs': og_attrs(['aria-expanded', ('true' if og_t(og_eq(v_panel, 'open')) else 'false'), 'data-slot', 'mega-trigger'])}, 'children': c_2}) }}
         {%- for v_l in og_l(v_links) %}
           {%- set c_3 -%}
             {{ og_text(og_get(v_l, ['name'])) }}
@@ -40,7 +40,7 @@
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'flex flex-wrap items-center gap-6 py-4'])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_6}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'header', 'Class': 'relative border-b border-border bg-background', 'Attrs': og_attrs(['data-testid', 'mega-menu', 'aria-label', v_landmarkLabel])}, 'children': c_7}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'header', 'Class': 'relative border-b border-border bg-background', 'Attrs': og_attrs(['aria-label', v_landmarkLabel, 'data-slot', 'mega-menu'])}, 'children': c_7}) }}
 {%- if og_t(og_eq(v_panel, 'open')) %}
   {%- set c_19 -%}
     {%- set c_18 -%}
@@ -64,15 +64,15 @@
                     {%- endset -%}
                     {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_item, ['href']), 'className': og_cnv(['text-sm text-muted-foreground'])}, 'children': og_markup(c_10)}) }}
                   {%- endset -%}
-                  {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_11}) }}
+                  {{ og_include('compose/list-item.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'links-row'])}, 'children': c_11}) }}
                 {%- endfor %}
               {%- endset -%}
               {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-2 p-0'}, 'children': c_12}) }}
             {%- endset -%}
-            {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_13}) }}
+            {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_13}) }}
           {%- endfor %}
         {%- endset -%}
-        {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_cols, '2')) else '1-3')), 'Class': 'gap-6', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_14}) }}
+        {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-2' if og_t(og_eq(v_cols, '2')) else '1-3')), 'Class': 'gap-6', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_14}) }}
       {%- endif %}
       {%- if og_t(og_eq(v_promo, 'card')) %}
         {%- set c_17 -%}
@@ -86,10 +86,10 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_16}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-testid', 'promo'])}, 'children': c_17}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-slot', 'promo'])}, 'children': c_17}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'grid gap-8 py-6', ('md:grid-cols-[1fr_16rem]' if og_t(og_eq(v_promo, 'card')) else '')])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_18}) }}
   {%- endset -%}
-  {{ og_include('compose/box.html.j2', {'p': {'Class': 'border-t border-border bg-card', 'Attrs': og_attrs(['data-testid', 'mega-panel'])}, 'children': c_19}) }}
+  {{ og_include('compose/box.html.j2', {'p': {'Class': 'border-t border-border bg-card', 'Attrs': og_attrs(['data-slot', 'mega-panel'])}, 'children': c_19}) }}
 {%- endif %}

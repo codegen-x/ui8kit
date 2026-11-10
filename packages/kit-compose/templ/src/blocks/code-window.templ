@@ -31,7 +31,7 @@ templ CodeWindow(p CodeWindowProps) {
 		}
 		@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-2 p-4 font-mono text-sm"}}) {
 			for _, vLine := range uiutils.L(vLines) {
-				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex gap-2", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vLine, "kind"), "command")), "text-foreground", "text-muted-foreground"))), Attrs: uiutils.Attrs("data-kind", uiutils.Get(vLine, "kind"))}}) {
+				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex gap-2", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vLine, "kind"), "command")), "text-foreground", "text-muted-foreground"))), Attrs: uiutils.Attrs("data-kind", uiutils.Get(vLine, "kind"), "data-slot", "code-line")}}) {
 					if uiutils.Eq(uiutils.Get(vLine, "kind"), "command") {
 						@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "select-none text-muted-foreground"}}) {
 							{ uiutils.Text(vPrompt) }

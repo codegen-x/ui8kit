@@ -29,7 +29,7 @@
         {capture $c_2}
           {=og_text(og_get($v_product, ['category']))}
         {/capture}
-        {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'uppercase tracking-wide text-muted-foreground', 'attrs' => og_attrs(['data-testid', 'category']), 'children' => (string) $c_2])|noescape}
+        {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'uppercase tracking-wide text-muted-foreground', 'attrs' => og_attrs(['data-slot', 'category']), 'children' => (string) $c_2])|noescape}
       {/if}
       {=og_include('blocks/product-price.latte', ['p' => ['price' => og_get($v_product, ['price']), 'compareAt' => og_get($v_product, ['compareAt']), 'currency' => og_get($v_product, ['currency']), 'badge' => (og_t(og_get($v_product, ['badge'])) ? og_at($v_badges, og_get($v_product, ['badge'])) : ''), 'was' => og_get($v_labels, ['was'])]])|noescape}
       {capture $c_4}
@@ -43,7 +43,7 @@
       {capture $c_5}
         {=og_text((og_t(og_get($v_product, ['inStock'])) ? og_get($v_labels, ['inStock']) : og_get($v_labels, ['soldOut'])))}
       {/capture}
-      {=og_include('compose/Text.latte', ['size' => 'sm', 'weight' => 'medium', 'class' => og_s((og_t(og_get($v_product, ['inStock'])) ? 'text-foreground' : 'text-destructive')), 'attrs' => og_attrs(['data-testid', 'stock']), 'children' => (string) $c_5])|noescape}
+      {=og_include('compose/Text.latte', ['size' => 'sm', 'weight' => 'medium', 'class' => og_s((og_t(og_get($v_product, ['inStock'])) ? 'text-foreground' : 'text-destructive')), 'attrs' => og_attrs(['data-slot', 'stock']), 'children' => (string) $c_5])|noescape}
       {capture $c_7}
         {if og_t(og_eq($v_buy, 'full'))}
           {=og_include('blocks/number-field.latte', ['p' => ['value' => '1', 'name' => og_tpl('{0}-qty', [$v_id]), 'min' => '1', 'label' => og_get($v_labels, ['qty']), 'decrease' => og_get($v_labels, ['decrease']), 'increase' => og_get($v_labels, ['increase'])]])|noescape}
@@ -51,7 +51,7 @@
         {capture $c_6}
           {=og_text(og_get($v_labels, ['add']))}
         {/capture}
-        {=og_include('compose/Button.latte', ['disabled' => og_t(!(og_t(og_get($v_product, ['inStock'])))), 'attrs' => og_attrs(['data-testid', 'add']), 'children' => (string) $c_6])|noescape}
+        {=og_include('compose/Button.latte', ['disabled' => og_t(!(og_t(og_get($v_product, ['inStock'])))), 'children' => (string) $c_6])|noescape}
       {/capture}
       {=og_include('compose/Group.latte', ['gap' => '4', 'class' => 'flex-wrap', 'children' => (string) $c_7])|noescape}
       {if og_t(og_eq($v_buy, 'full'))}
@@ -76,7 +76,7 @@
         {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => 'flex flex-col gap-2 text-sm text-muted-foreground', 'children' => (string) $c_12])|noescape}
       {/if}
     {/capture}
-    {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-testid', 'buy-box']), 'children' => (string) $c_13])|noescape}
+    {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'buy-box']), 'children' => (string) $c_13])|noescape}
   {/capture}
   {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => og_get($v_product, ['name']), 'lead' => og_get($v_product, ['summary']), 'heading' => ['level' => $v_level], 'layout' => (og_t(og_eq($v_layout, 'split')) ? 'split' : 'stack'), 'media' => ['show' => true, 'side' => $v_mediaSide, 'align' => 'start'], 'tone' => $v_tone, 'density' => $v_density, 'landmarkLabel' => $v_landmarkLabel, 'aside' => og_markup($f_14)], 'children' => og_markup($c_15)])|noescape}
 {/if}

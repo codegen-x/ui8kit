@@ -39,14 +39,14 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :landmarkLabel="landmarkLabel">
-    <Block tag="div" class="w-full" role="status" :aria-label="label" data-testid="skeleton" :data-shape="shape">
+    <Block tag="div" class="w-full" role="status" :aria-label="label" :data-shape="shape" data-slot="skeleton">
       <Grid v-if="((shape as string) === 'cards')" cols="1-3" class="gap-4">
         <Stack
           v-for="l in lines"
           :key="l.id"
           gap="4"
           class="rounded bg-card inset-ring inset-ring-border p-4"
-          data-testid="item"
+          data-slot="item"
         >
           <Skeleton class="aspect-video w-full" />
           <Skeleton class="h-4 w-2/3" />
@@ -54,7 +54,7 @@ const {
         </Stack>
       </Grid>
       <Stack v-else-if="((shape as string) === 'list')" gap="4" align="stretch">
-        <Group v-for="l in lines" :key="l.id" gap="4" align="center" data-testid="item">
+        <Group v-for="l in lines" :key="l.id" gap="4" align="center" data-slot="item">
           <Skeleton class="size-10 shrink-0 rounded-full" />
           <Stack gap="2" class="flex-1">
             <Skeleton class="h-4 w-1/3" />
@@ -64,7 +64,7 @@ const {
       </Stack>
       <Stack v-else gap="4" align="stretch" class="mx-auto max-w-2xl">
         <Skeleton class="h-8 w-3/4" />
-        <Stack v-for="l in lines" :key="l.id" gap="2" data-testid="item">
+        <Stack v-for="l in lines" :key="l.id" gap="2" data-slot="item">
           <Skeleton class="h-4 w-full" />
           <Skeleton class="h-4 w-5/6" />
         </Stack>

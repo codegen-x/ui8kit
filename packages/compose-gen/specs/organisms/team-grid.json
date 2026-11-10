@@ -258,7 +258,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "items"
+                    "data-slot": "items"
                   },
                   "children": [
                     {
@@ -289,7 +289,7 @@
                                 "Class": "text-center"
                               },
                               "attrs": {
-                                "data-testid": "item"
+                                "data-slot": "item"
                               },
                               "children": [
                                 {
@@ -358,7 +358,7 @@
                                     "Class": "rounded bg-card inset-ring inset-ring-border p-4"
                                   },
                                   "attrs": {
-                                    "data-testid": "item"
+                                    "data-slot": "item"
                                   },
                                   "children": [
                                     {

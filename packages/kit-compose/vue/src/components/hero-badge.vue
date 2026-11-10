@@ -25,9 +25,9 @@ const { label, mark } = defineProps<HeroBadgeProps>();
       'h-8 justify-center rounded-full px-2 inset-ring inset-ring-background/30',
       defaults.hero.badge
     )"
-    data-testid="section-badge"
+    data-slot="section-badge"
   >
-    <Badge v-if="mark" variant="secondary" size="sm" data-testid="badge-mark">
+    <Badge v-if="mark" variant="secondary" size="sm">
       {{ mark }}
     </Badge>
     <Text size="xs" weight="bold" class="leading-5 text-background">

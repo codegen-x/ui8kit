@@ -190,7 +190,6 @@
                 }
               ]
             },
-            "data-testid": "wizard",
             "data-current": {
               "op": "str",
               "args": [
@@ -201,7 +200,8 @@
             },
             "aria-label": {
               "$": "landmarkLabel"
-            }
+            },
+            "data-slot": "wizard"
           },
           "children": [
             {
@@ -239,7 +239,7 @@
                 "Class": "text-muted-foreground"
               },
               "attrs": {
-                "data-testid": "step-of"
+                "data-slot": "step-of"
               },
               "children": [
                 {
@@ -329,7 +329,7 @@
                     "aria-label": {
                       "$": "labels.steps"
                     },
-                    "data-testid": "step-list"
+                    "data-slot": "step-list"
                   },
                   "children": [
                     {
@@ -403,7 +403,7 @@
                                 }
                               ]
                             },
-                            "data-testid": "step-item"
+                            "data-slot": "step-item"
                           },
                           "children": [
                             {
@@ -487,7 +487,7 @@
                         "Align": "stretch"
                       },
                       "attrs": {
-                        "data-testid": "step"
+                        "data-slot": "step"
                       },
                       "children": [
                         {
@@ -569,7 +569,7 @@
                                             }
                                           ]
                                         },
-                                        "data-testid": "field"
+                                        "data-slot": "field"
                                       }
                                     }
                                   ]
@@ -620,7 +620,7 @@
                                             }
                                           ]
                                         },
-                                        "data-testid": "field"
+                                        "data-slot": "field"
                                       }
                                     }
                                   ]
@@ -659,9 +659,6 @@
                       ]
                     }
                   },
-                  "attrs": {
-                    "data-testid": "wizard-back"
-                  },
                   "on": {
                     "click": {
                       "call": "emit.go",
@@ -692,9 +689,6 @@
                     "Variant": "default",
                     "Size": "default",
                     "Type": "button"
-                  },
-                  "attrs": {
-                    "data-testid": "wizard-next"
                   },
                   "on": {
                     "click": {

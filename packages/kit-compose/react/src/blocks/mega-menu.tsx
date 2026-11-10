@@ -48,8 +48,8 @@ export function MegaMenu({
       <Block
         tag="header"
         className="relative border-b border-border bg-background"
-        data-testid="mega-menu"
         aria-label={landmarkLabel}
+        data-slot="mega-menu"
       >
         <Container
           className={cn("mx-auto w-full max-w-6xl px-4", "flex flex-wrap items-center gap-6 py-4")}
@@ -64,7 +64,7 @@ export function MegaMenu({
                 type="button"
                 className="inline-flex items-center gap-2 text-sm font-semibold"
                 aria-expanded={(((panel as string) === "open") ? "true" : "false")}
-                data-testid="mega-trigger"
+                data-slot="mega-trigger"
               >
                 {trigger}
                 <LucideIcon name="chevron-down" size={16} />
@@ -79,7 +79,7 @@ export function MegaMenu({
         </Container>
       </Block>
       {((panel as string) === "open") ? (
-        <Box className="border-t border-border bg-card" data-testid="mega-panel">
+        <Box className="border-t border-border bg-card" data-slot="mega-panel">
           <Container
             className={cn(
               "mx-auto w-full max-w-6xl px-4",
@@ -89,9 +89,9 @@ export function MegaMenu({
             data-slot="container"
           >
             {((groups?.length ?? 0) > 0) ? (
-              <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} className="gap-6" data-testid="items">
+              <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} className="gap-6" data-slot="items">
                 {(groups ?? []).map((g) => (
-                  <Stack key={g.id} gap="2" data-testid="item">
+                  <Stack key={g.id} gap="2" data-slot="item">
                     <Group gap="2" align="center">
                       <LucideIcon name={g.icon} size={16} />
                       <Text size="sm" weight="semibold">
@@ -100,7 +100,7 @@ export function MegaMenu({
                     </Group>
                     <List className="m-0 flex list-none flex-col gap-2 p-0">
                       {(g.links ?? []).map((item) => (
-                        <ListItem key={item.id}>
+                        <ListItem key={item.id} data-slot="links-row">
                           <MenuEntry href={item.href} className="text-sm text-muted-foreground">
                             {item.name}
                           </MenuEntry>
@@ -112,7 +112,7 @@ export function MegaMenu({
               </Grid>
             ) : null}
             {((promo as string) === "card") ? (
-              <Stack gap="2" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="promo">
+              <Stack gap="2" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="promo">
                 <MediaFrame alt={(promoTitle ?? "")} ratio="4/3" />
                 <Text size="base" weight="semibold">
                   {promoTitle}

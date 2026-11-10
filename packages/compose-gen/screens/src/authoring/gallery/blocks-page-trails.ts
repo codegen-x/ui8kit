@@ -16,11 +16,11 @@ const pagetrail = define({
     ["keyFacts", "With four key facts beside it, muted", { aside: "facts", tone: "muted" }],
   ],
   facts: [
-    { sel: '[data-testid="crumb"]', n: 2 },
-    { sel: '[data-testid="page-figure"]', n: 1, when: { aside: "figure" } },
-    { sel: '[data-testid="page-note"]', n: 1, when: { aside: "note" } },
-    { sel: '[data-testid="page-fact"]', n: 4, when: { aside: "facts" } },
-    { sel: '[data-testid="page-fact"]', n: 0, when: { aside: ["none", "figure", "note"] } },
+    { sel: '[data-slot="crumb"]', n: 2 },
+    { sel: '[data-slot="page-figure"]', n: 1, when: { aside: "figure" } },
+    { sel: '[data-slot="page-note"]', n: 1, when: { aside: "note" } },
+    { sel: '[data-slot="page-fact"]', n: 4, when: { aside: "facts" } },
+    { sel: '[data-slot="page-fact"]', n: 0, when: { aside: ["none", "figure", "note"] } },
   ],
   sample: {
     id: "pagetrail", title: p("title"), lead: p("lead"), badge: p("badge"), label: p("label"), crumbs: ref("crumbs"),

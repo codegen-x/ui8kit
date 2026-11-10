@@ -45,18 +45,18 @@ templ Checklist(p ChecklistProps) {
 		if uiutils.Eq(uiutils.Len(vTasks), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "list-checks", Title: vEmpty})
 		} else {
-			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "rounded bg-card p-6 inset-ring inset-ring-border", "")), Attrs: uiutils.Attrs("data-testid", "checklist")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "rounded bg-card p-6 inset-ring inset-ring-border", "")), Attrs: uiutils.Attrs("data-slot", "checklist")}}) {
 				if uiutils.Eq(vProgress, "bar") {
 					@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.SP(uiutils.Str(uiutils.Round(uiutils.Div(uiutils.Mul(uiutils.Count(vTasks, "done"), float64(100)), uiutils.Len(vTasks))))), Max: "100", Attrs: uiutils.Attrs("aria-label", uiutils.Tpl(vProgressLabel, uiutils.Count(vTasks, "done"), uiutils.Len(vTasks)))}})
 				}
 				if uiutils.Eq(vProgress, "text") {
-					@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "progress-text")}}) {
+					@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "progress-text")}}) {
 						{ uiutils.Text(uiutils.Tpl(vProgressLabel, uiutils.Count(vTasks, "done"), uiutils.Len(vTasks))) }
 					}
 				}
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-4 p-0", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-4 p-0", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for vI, vTask := range uiutils.L(vTasks) {
-						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start gap-4", Attrs: uiutils.Attrs("data-testid", "item", "data-done", uiutils.Str(uiutils.Get(vTask, "done")))}}) {
+						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start gap-4", Attrs: uiutils.Attrs("data-done", uiutils.Str(uiutils.Get(vTask, "done")), "data-slot", "item")}}) {
 							if uiutils.Eq(vMarker, "number") {
 								@compose.IconBadge(compose.IconBadgeProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vTask, "done")), "primary", "outline")), Size: "xs", TextProps: text.TextProps{}}) {
 									{ uiutils.Text(uiutils.Str(uiutils.Add(float64(vI), float64(1)))) }
@@ -65,7 +65,7 @@ templ Checklist(p ChecklistProps) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vTask, "done")), "circle-check", "circle")), Size: 24, Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vTask, "done")), "shrink-0 text-primary", "shrink-0 text-muted-foreground"))})
 							}
 							if uiutils.Eq(vDetail, "expand") {
-								@compose.Disclosure(compose.DisclosureProps{Variant: "ghost", DisclosureProps: disclosure.DisclosureProps{Class: "flex-1", Attrs: uiutils.Attrs("data-testid", "task-detail")}}) {
+								@compose.Disclosure(compose.DisclosureProps{Variant: "ghost", DisclosureProps: disclosure.DisclosureProps{Class: "flex-1", Attrs: uiutils.Attrs("data-slot", "task-detail")}}) {
 									@compose.Summary(compose.SummaryProps{Variant: "ghost", SummaryProps: disclosure.SummaryProps{}}) {
 										{ uiutils.Text(uiutils.Get(vTask, "title")) }
 									}

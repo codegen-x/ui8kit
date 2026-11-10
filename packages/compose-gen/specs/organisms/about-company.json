@@ -134,7 +134,7 @@
                     "Class": "gap-4"
                   },
                   "attrs": {
-                    "data-testid": "stats"
+                    "data-slot": "stats"
                   },
                   "children": [
                     {
@@ -152,7 +152,7 @@
                             "Gap": "0"
                           },
                           "attrs": {
-                            "data-testid": "stat"
+                            "data-slot": "stat"
                           },
                           "children": [
                             {
@@ -234,7 +234,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "values"
+                    "data-slot": "values"
                   },
                   "children": [
                     {
@@ -254,7 +254,7 @@
                             "Class": "border-t border-border pt-4"
                           },
                           "attrs": {
-                            "data-testid": "value"
+                            "data-slot": "value"
                           },
                           "children": [
                             {
@@ -321,7 +321,7 @@
                 "Class": "grid grid-cols-3 gap-4"
               },
               "attrs": {
-                "data-testid": "strip"
+                "data-slot": "strip"
               },
               "children": [
                 {

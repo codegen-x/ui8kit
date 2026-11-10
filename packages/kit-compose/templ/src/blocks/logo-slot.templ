@@ -21,7 +21,7 @@ type LogoSlotProps struct {
 templ LogoSlot(p LogoSlotProps) {
 	{{ vName := p.Name }}
 	{{ vIcon := p.Icon }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex shrink-0 items-center justify-center text-muted-foreground", uiutils.Get(presetDefaults, "logos", "slot"))), Attrs: uiutils.Attrs("data-testid", "item", "data-slot", "logo-slot")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex shrink-0 items-center justify-center text-muted-foreground", uiutils.Get(presetDefaults, "logos", "slot"))), Attrs: uiutils.Attrs("data-slot", "logo-slot")}}) {
 		@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(vIcon), Size: uiutils.I(uiutils.Get(presetDefaults, "logos", "glyph"))})
 		@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{Class: "sr-only"}}) {
 			{ uiutils.Text(vName) }

@@ -56,7 +56,7 @@ export function PostHeader({
             align="center"
             justify={(((layout as string) === "center") ? "center" : "start")}
             class="flex-wrap"
-            data-testid="post-meta"
+            data-slot="post-meta"
           >
             <MediaFrame alt={post?.author} ratio="1/1" class="size-10 shrink-0 rounded-full" />
             <Text size="sm" weight="semibold">

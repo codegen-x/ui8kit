@@ -160,7 +160,7 @@
                 }
               },
               "attrs": {
-                "data-testid": "range-from"
+                "data-slot": "range-from"
               },
               "on": {
                 "input": {
@@ -215,7 +215,7 @@
                 }
               },
               "attrs": {
-                "data-testid": "range-to"
+                "data-slot": "range-to"
               },
               "on": {
                 "input": {

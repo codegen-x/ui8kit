@@ -29,7 +29,7 @@
       "attrs": {
         "role": "status",
         "aria-live": "polite",
-        "data-testid": "cart-count"
+        "data-slot": "cart-count"
       },
       "children": [
         {

@@ -39,9 +39,9 @@ templ WeekMenu(p WeekMenuProps) {
 		if uiutils.Eq(uiutils.Len(vSections), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "calendar", Title: vEmpty})
 		} else {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vS := range uiutils.L(vSections) {
-					@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "border-t-2 border-primary pt-4", Attrs: uiutils.Attrs("data-testid", "day")}}) {
+					@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "border-t-2 border-primary pt-4", Attrs: uiutils.Attrs("data-slot", "day")}}) {
 						@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vS, "title")) }
 						}
@@ -50,7 +50,7 @@ templ WeekMenu(p WeekMenuProps) {
 						}
 						for _, vD := range uiutils.L(vDishes) {
 							if uiutils.T(uiutils.Eq(uiutils.Get(vD, "tag"), uiutils.Get(vS, "key"))) {
-								@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+								@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 									if uiutils.Eq(vMedia, "image") {
 										@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "4/3"})
 									}

@@ -67,22 +67,22 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"card\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"portion\"]",
+      "sel": "[data-slot=\"portion\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"add\"]",
+      "sel": "[data-slot=\"card\"] [data-slot=\"button\"][type=\"button\"]",
       "n": 1,
       "when": {
         "action": "button"
       }
     },
     {
-      "sel": "[data-testid=\"add\"]",
+      "sel": "[data-slot=\"card\"] [data-slot=\"button\"][type=\"button\"]",
       "n": 0,
       "when": {
         "action": "none"

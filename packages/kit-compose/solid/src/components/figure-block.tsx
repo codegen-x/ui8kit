@@ -15,7 +15,7 @@ export type FigureBlockProps = {
 
 export function FigureBlock({ testid, class: className, children }: FigureBlockProps) {
   return (
-    <Block tag="figure" class={cn(className)} data-testid={testid}>
+    <Block tag="figure" class={cn(className)} data-slot={(testid ?? "figure-block")}>
       {children}
     </Block>
   );

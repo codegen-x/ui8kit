@@ -53,4 +53,4 @@
   {%- endset -%}
   {{ include('compose/Stack.html.twig', {'gap': '2', 'class': 'min-w-0 flex-1', 'children': c_10}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'class': og_s((og_t(og_eq(v_layout, 'detailed')) ? 'rounded bg-card inset-ring inset-ring-border flex-col p-6' : (og_t(og_eq(v_layout, 'directory')) ? 'rounded bg-card inset-ring inset-ring-border p-4' : 'border-b border-border pb-4'))), 'attrs': og_attrs(['data-testid', 'item']), 'children': c_11}, with_context = false) }}
+{{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'class': og_s((og_t(og_eq(v_layout, 'detailed')) ? 'rounded bg-card inset-ring inset-ring-border flex-col p-6' : (og_t(og_eq(v_layout, 'directory')) ? 'rounded bg-card inset-ring inset-ring-border p-4' : 'border-b border-border pb-4'))), 'attrs': og_attrs(['data-slot', 'item']), 'children': c_11}, with_context = false) }}

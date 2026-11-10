@@ -32,12 +32,12 @@ export function SectionHeader({
   return (
     <>
       {heading?.badge ? (
-        <Badge variant="outline" size="lg" class={(center ? "mx-auto w-fit" : "w-fit")} data-testid="section-badge">
+        <Badge variant="outline" size="lg" class={(center ? "mx-auto w-fit" : "w-fit")}>
           {heading?.badge}
         </Badge>
       ) : null}
       {(((title as string) !== "") && hasAction) ? (
-        <Group gap="4" align="center" justify="between" class="w-full flex-wrap">
+        <Group gap="4" align="center" justify="between" class="w-full flex-wrap" data-slot="section-header">
           <Title
             as={level}
             size={((level === 1) ? "5xl" : "xl")}
@@ -55,7 +55,7 @@ export function SectionHeader({
             href={urlOf(action?.href)}
             variant="default"
             class={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
-            data-testid="section-action"
+            data-slot="section-action"
           >
             {action?.label}
           </Link>
@@ -72,24 +72,29 @@ export function SectionHeader({
             : "leading-7"
           }
           id={titleId}
+          data-slot="section-header"
         >
           {title}
         </Title>
       ) : null}
       {(((title as string) === "") && hasAction) ? (
-        <Group gap="4" align="center" justify="end" class="w-full">
+        <Group gap="4" align="center" justify="end" class="w-full" data-slot="section-header">
           <Link
             href={urlOf(action?.href)}
             variant="default"
             class={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
-            data-testid="section-action"
+            data-slot="section-action"
           >
             {action?.label}
           </Link>
         </Group>
       ) : null}
       {lead ? (
-        <Text size="base" class={cn("max-w-2xl text-muted-foreground", (center ? "mx-auto" : ""))}>
+        <Text
+          size="base"
+          class={cn("max-w-2xl text-muted-foreground", (center ? "mx-auto" : ""))}
+          data-slot="section-header"
+        >
           {lead}
         </Text>
       ) : null}

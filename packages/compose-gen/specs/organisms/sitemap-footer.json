@@ -155,13 +155,13 @@
             "Class": "mt-12 border-t border-border"
           },
           "attrs": {
-            "data-testid": "site-footer",
             "data-layout": {
               "$": "layout"
             },
             "aria-label": {
               "$": "landmarkLabel"
-            }
+            },
+            "data-slot": "site-footer"
           },
           "children": [
             {
@@ -213,7 +213,7 @@
                         "Class": "max-w-md"
                       },
                       "attrs": {
-                        "data-testid": "signup"
+                        "data-slot": "signup"
                       },
                       "children": [
                         {
@@ -251,7 +251,7 @@
                             }
                           },
                           "attrs": {
-                            "data-testid": "email-form"
+                            "data-slot": "email-form"
                           },
                           "children": [
                             {
@@ -301,7 +301,7 @@
                                         }
                                       ]
                                     },
-                                    "data-testid": "field"
+                                    "data-slot": "field"
                                   }
                                 },
                                 {
@@ -310,9 +310,6 @@
                                     "Variant": "default",
                                     "Size": "default",
                                     "Type": "submit"
-                                  },
-                                  "attrs": {
-                                    "data-testid": "submit"
                                   },
                                   "children": [
                                     {

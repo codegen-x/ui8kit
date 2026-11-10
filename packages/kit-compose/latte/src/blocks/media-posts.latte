@@ -26,8 +26,8 @@
         {/capture}
         {=og_include('compose/Stack.latte', ['gap' => '0', 'children' => (string) $c_4])|noescape}
       {/capture}
-      {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'start', 'attrs' => og_attrs(['data-testid', 'media-post']), 'children' => (string) $c_5])|noescape}
+      {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'start', 'attrs' => og_attrs(['data-slot', 'media-post']), 'children' => (string) $c_5])|noescape}
     {/if}
   {/foreach}
 {/capture}
-{=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'children' => (string) $c_6])|noescape}
+{=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'media-posts']), 'children' => (string) $c_6])|noescape}

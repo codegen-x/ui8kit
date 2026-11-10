@@ -23,13 +23,13 @@ const { features, mediaSide = "end" } = defineProps<FeatureRowsProps>();
 </script>
 
 <template>
-  <Stack gap="8" align="stretch" data-testid="feature-rows">
+  <Stack gap="8" align="stretch" data-slot="feature-rows">
     <Grid
       v-for="feature in features"
       :key="feature.id"
       cols="1-2"
       class="group items-center gap-8"
-      data-testid="feature-card"
+      data-slot="feature-card"
     >
       <Stack gap="2" class="min-w-0">
         <LucideIcon :name="feature.icon" :size="24" />

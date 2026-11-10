@@ -53,7 +53,7 @@
         "Class": "flex-wrap"
       },
       "attrs": {
-        "data-testid": "hero-topics"
+        "data-slot": "hero-topics"
       },
       "children": [
         {
@@ -85,9 +85,6 @@
                     "Variant": "ghost",
                     "Size": "sm",
                     "Class": "gap-2 text-background inset-ring-background/30 hover:bg-background/10"
-                  },
-                  "attrs": {
-                    "data-testid": "hero-topic"
                   },
                   "children": [
                     {
@@ -123,9 +120,6 @@
                     },
                     "Variant": "outline",
                     "Size": "sm"
-                  },
-                  "attrs": {
-                    "data-testid": "hero-topic"
                   },
                   "children": [
                     {

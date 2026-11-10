@@ -20,7 +20,7 @@
       {{ include('compose/Inline.html.twig', {'class': 'sr-only', 'children': c_2}, with_context = false) }}
       {{ og_text(og_money(v_compareAt, v_currency)) }}
     {%- endset -%}
-    {{ include('compose/Text.html.twig', {'tag': 'del', 'size': 'lg', 'class': 'relative text-muted-foreground', 'attrs': og_attrs(['data-testid', 'compare-at']), 'children': c_3}, with_context = false) }}
+    {{ include('compose/Text.html.twig', {'tag': 'del', 'size': 'lg', 'class': 'relative text-muted-foreground', 'attrs': og_attrs(['data-slot', 'compare-at']), 'children': c_3}, with_context = false) }}
   {%- endif %}
   {%- if og_t(v_badge) %}
     {%- set c_4 -%}
@@ -29,4 +29,4 @@
     {{ include('compose/Badge.html.twig', {'variant': 'default', 'size': 'default', 'children': c_4}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
-{{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'flex-wrap', 'children': c_5}, with_context = false) }}
+{{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['data-slot', 'product-price']), 'children': c_5}, with_context = false) }}

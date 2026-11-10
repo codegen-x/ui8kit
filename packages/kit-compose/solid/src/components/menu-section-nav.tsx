@@ -16,10 +16,10 @@ export type MenuSectionNavProps = {
 
 export function MenuSectionNav({ label, sections, prefix, landmarkLabel }: MenuSectionNavProps) {
   return (
-    <Block tag="nav" aria-label={(landmarkLabel ?? label)} data-testid="section-nav">
+    <Block tag="nav" aria-label={(landmarkLabel ?? label)} data-slot="section-nav">
       <List tag="ul" class="flex flex-wrap gap-2">
         <For each={sections ?? []}>{(s) => (
-          <ListItem>
+          <ListItem data-slot="sections-row">
             <Link
               href={urlOf(tpl("#{0}-{1}", prefix, s.key))}
               variant="nav"

@@ -31,7 +31,7 @@
         {%- set c_2 -%}
           {{ og_text(og_get(v_labels, ['cta'])) }}
         {%- endset -%}
-        {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'attrs': og_attrs(['data-testid', 'faq-cta']), 'children': c_2}, with_context = false) }}
+        {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'children': c_2}, with_context = false) }}
       {%- endset -%}
       {{ include('compose/Box.html.twig', {'children': c_3}, with_context = false) }}
     {%- endset -%}
@@ -56,7 +56,7 @@
         {%- set c_8 -%}
           {{ og_text(og_get(v_labels, ['cta'])) }}
         {%- endset -%}
-        {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'attrs': og_attrs(['data-testid', 'faq-cta']), 'children': c_8}, with_context = false) }}
+        {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'children': c_8}, with_context = false) }}
       {%- endset -%}
       {{ include('compose/Box.html.twig', {'children': c_9}, with_context = false) }}
     {%- endset -%}

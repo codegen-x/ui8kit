@@ -24,5 +24,5 @@
     {%- endset -%}
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': og_s(('center' if og_t(og_eq(v_align, 'center')) else 'start'))}, 'children': c_3}) }}
   {%- endset -%}
-  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': og_s(('center' if og_t(og_eq(v_align, 'center')) else 'start')), 'Class': og_s(og_cnv([('text-center' if og_t(og_eq(v_align, 'center')) else ''), og_preset('blocks/presets/defaults.json', ['stats', 'column'])])), 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_4}) }}
+  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': og_s(('center' if og_t(og_eq(v_align, 'center')) else 'start')), 'Class': og_s(og_cnv([('text-center' if og_t(og_eq(v_align, 'center')) else ''), og_preset('blocks/presets/defaults.json', ['stats', 'column'])])), 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_4}) }}
 {%- endif %}

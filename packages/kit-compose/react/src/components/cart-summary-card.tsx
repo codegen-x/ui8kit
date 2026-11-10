@@ -35,12 +35,7 @@ export function CartSummaryCard({
   value = 70,
 }: CartSummaryCardProps) {
   return (
-    <Stack
-      gap="6"
-      align="stretch"
-      className="rounded bg-card inset-ring inset-ring-border p-6"
-      data-testid="summary"
-    >
+    <Stack gap="6" align="stretch" className="rounded bg-card inset-ring inset-ring-border p-6" data-slot="summary">
       <Group gap="4" align="baseline" justify="between">
         <Title as={2} size="lg" weight="semibold">
           {labels.title}
@@ -50,9 +45,9 @@ export function CartSummaryCard({
         </Text>
       </Group>
       {(((items as string) === "show") && ((lines?.length ?? 0) > 0)) ? (
-        <List tag="ul" className="flex flex-col gap-4" data-testid="summary-lines">
+        <List tag="ul" className="flex flex-col gap-4" data-slot="summary-lines">
           {(lines ?? []).map((line) => (
-            <ListItem key={line.id} className="flex items-center gap-4 text-sm">
+            <ListItem key={line.id} className="flex items-center gap-4 text-sm" data-slot="cart-line">
               <MediaFrame alt={line.name} ratio="1/1" className="size-12 shrink-0" />
               <Stack gap="0" className="flex-1">
                 <Text size="sm" weight="semibold">
@@ -70,7 +65,7 @@ export function CartSummaryCard({
         </List>
       ) : null}
       {((promo as string) === "show") ? (
-        <Stack gap="2" align="stretch" data-testid="promo">
+        <Stack gap="2" align="stretch" data-slot="promo">
           <Group gap="2" align="center">
             <Input type="text" name={field} aria-label={labels.promo} placeholder={labels.promo} className="min-w-0 flex-1" />
             <Button variant="outline" size="default" type="button">
@@ -83,7 +78,7 @@ export function CartSummaryCard({
                 {labels.codes}
               </Text>
               {(promos ?? []).map((c) => (
-                <Badge key={c.id} variant="outline" size="sm" data-testid="code">
+                <Badge key={c.id} variant="outline" size="sm">
                   {c.code}
                 </Badge>
               ))}
@@ -92,7 +87,7 @@ export function CartSummaryCard({
         </Stack>
       ) : null}
       {((progress as string) === "show") ? (
-        <Stack gap="2" align="stretch" className="rounded bg-muted p-4" data-testid="progress">
+        <Stack gap="2" align="stretch" className="rounded bg-muted p-4" data-slot="progress">
           <Text size="sm">
             {labels.progress}
           </Text>
@@ -110,7 +105,7 @@ export function CartSummaryCard({
                   : "text-sm text-muted-foreground"
                 )
               )}
-              data-testid="row"
+              data-slot="row"
             >
               <Inline>
                 {row.label}
@@ -122,7 +117,7 @@ export function CartSummaryCard({
           ))}
         </List>
       ) : null}
-      <Button variant="default" size="lg" className="w-full" data-testid="checkout">
+      <Button variant="default" size="lg" className="w-full">
         {labels.checkout}
       </Button>
       <Text size="xs" className="text-muted-foreground">

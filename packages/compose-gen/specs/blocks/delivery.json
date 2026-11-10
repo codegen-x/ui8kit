@@ -52,11 +52,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"fact\"]",
+      "sel": "[data-slot=\"fact\"]",
       "n": "@deliveryfacts"
     },
     {
-      "sel": "[data-testid=\"zone\"]",
+      "sel": "[data-slot=\"zone\"]",
       "n": "@zones",
       "when": {
         "layout": [
@@ -66,7 +66,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"zone\"]",
+      "sel": "[data-slot=\"zone\"]",
       "n": 0,
       "when": {
         "layout": "facts"

@@ -39,6 +39,7 @@ export function CodeWindow({ title, prompt, lines, className }: CodeWindowProps)
               ((line.kind === "command") ? "text-foreground" : "text-muted-foreground")
             )}
             data-kind={line.kind}
+            data-slot="code-line"
           >
             {(line.kind === "command") ? (
               <Inline className="select-none text-muted-foreground">

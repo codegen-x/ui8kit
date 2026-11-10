@@ -19,10 +19,10 @@ type FooterFiguresProps struct {
 templ FooterFigures(p FooterFiguresProps) {
 	{{ vExtras := p.Extras }}
 	if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "stats")), float64(0)) {
-		@compose.Group(compose.GroupProps{Gap: "8", BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
+		@compose.Group(compose.GroupProps{Gap: "8", BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-slot", "footer-figures")}}) {
 			for vI, vS := range uiutils.L(uiutils.Get(vExtras, "stats")) {
 				if uiutils.Lt(float64(vI), float64(3)) {
-					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "footer-stat")}}) {
+					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "footer-stat")}}) {
 						@compose.Text(compose.TextProps{Size: "xl", Weight: "bold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vS, "value")) }
 						}

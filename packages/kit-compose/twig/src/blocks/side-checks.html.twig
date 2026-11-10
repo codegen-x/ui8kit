@@ -25,7 +25,7 @@
       {%- endset -%}
       {{ include('compose/Inline.html.twig', {'class': 'text-muted-foreground', 'children': c_4}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Label.html.twig', {'class': 'flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted', 'children': c_5}, with_context = false) }}
+    {{ include('compose/Label.html.twig', {'class': 'flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted', 'attrs': og_attrs(['data-slot', 'dish-option']), 'children': c_5}, with_context = false) }}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Fieldset.html.twig', {'class': 'flex flex-col gap-2', 'attrs': og_attrs(['data-testid', 'sides']), 'children': c_6}, with_context = false) }}
+{{ include('compose/Fieldset.html.twig', {'class': 'flex flex-col gap-2', 'attrs': og_attrs(['data-slot', 'sides']), 'children': c_6}, with_context = false) }}

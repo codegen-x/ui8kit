@@ -29,9 +29,9 @@
                   {capture $c_2}
                     {=og_text(og_get($v_s, ['title']))}
                   {/capture}
-                  {=og_include('compose/Link.latte', ['href' => og_url(og_s(og_tpl('#{0}-{1}', [$v_id, og_get($v_s, ['id'])]))), 'variant' => 'default', 'class' => 'text-sm text-muted-foreground', 'attrs' => og_attrs(['data-testid', 'toc-link']), 'children' => (string) $c_2])|noescape}
+                  {=og_include('compose/Link.latte', ['href' => og_url(og_s(og_tpl('#{0}-{1}', [$v_id, og_get($v_s, ['id'])]))), 'variant' => 'default', 'class' => 'text-sm text-muted-foreground', 'attrs' => og_attrs(['data-slot', 'toc-link']), 'children' => (string) $c_2])|noescape}
                 {/capture}
-                {=og_include('compose/ListItem.latte', ['children' => (string) $c_3])|noescape}
+                {=og_include('compose/ListItem.latte', ['attrs' => og_attrs(['data-slot', 'sections-row']), 'children' => (string) $c_3])|noescape}
               {/foreach}
             {/capture}
             {=og_include('compose/List.latte', ['class' => 'm-0 flex list-none flex-col gap-2 p-0', 'children' => (string) $c_4])|noescape}
@@ -56,14 +56,14 @@
                 {capture $c_9}
                   {=og_text(og_get($v_s, ['quote']))}
                 {/capture}
-                {=og_include('compose/Text.latte', ['tag' => 'blockquote', 'class' => 'm-0 border-l border-border pl-4 text-lg', 'attrs' => og_attrs(['data-testid', 'quote']), 'children' => (string) $c_9])|noescape}
+                {=og_include('compose/Text.latte', ['tag' => 'blockquote', 'class' => 'm-0 border-l border-border pl-4 text-lg', 'attrs' => og_attrs(['data-slot', 'quote']), 'children' => (string) $c_9])|noescape}
               {/if}
             {/if}
           {/capture}
-          {=og_include('compose/Box.latte', ['class' => 'flex flex-col gap-4', 'attrs' => og_attrs(['id', og_tpl('{0}-{1}', [$v_id, og_get($v_s, ['id'])]), 'data-testid', 'item']), 'children' => (string) $c_10])|noescape}
+          {=og_include('compose/Box.latte', ['class' => 'flex flex-col gap-4', 'attrs' => og_attrs(['id', og_tpl('{0}-{1}', [$v_id, og_get($v_s, ['id'])]), 'data-slot', 'item']), 'children' => (string) $c_10])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/Stack.latte', ['gap' => '8', 'align' => 'stretch', 'class' => 'mx-auto w-full max-w-2xl min-w-0', 'attrs' => og_attrs(['data-testid', 'article']), 'children' => (string) $c_11])|noescape}
+      {=og_include('compose/Stack.latte', ['gap' => '8', 'align' => 'stretch', 'class' => 'mx-auto w-full max-w-2xl min-w-0', 'attrs' => og_attrs(['data-slot', 'article']), 'children' => (string) $c_11])|noescape}
     {/capture}
     {=og_include('compose/Grid.latte', ['cols' => '1', 'class' => og_s(og_cnv(['items-start gap-8', (og_t(og_eq($v_layout, 'toc')) ? 'md:grid-cols-[14rem_minmax(0,1fr)]' : '')])), 'children' => (string) $c_12])|noescape}
   {/if}

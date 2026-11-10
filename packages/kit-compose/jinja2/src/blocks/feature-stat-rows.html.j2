@@ -19,7 +19,7 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_2}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-testid', 'feature-stat'])}, 'children': c_3}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-slot', 'feature-stat'])}, 'children': c_3}) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
@@ -45,10 +45,10 @@
           {%- endset -%}
           {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': 'min-w-0'}, 'children': c_8}) }}
         {%- endset -%}
-        {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-testid', 'feature-item'])}, 'children': c_9}) }}
+        {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-slot', 'feature-item'])}, 'children': c_9}) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
   {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch'}, 'children': c_10}) }}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': 'stretch'}, 'children': c_11}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'feature-stat-rows'])}, 'children': c_11}) }}

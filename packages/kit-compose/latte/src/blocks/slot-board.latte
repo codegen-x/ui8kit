@@ -80,7 +80,7 @@
           {/capture}
           {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'text-muted-foreground', 'children' => (string) $c_16])|noescape}
         {/capture}
-        {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs' => og_attrs(['data-testid', 'aside']), 'children' => (string) $c_17])|noescape}
+        {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs' => og_attrs(['data-slot', 'aside']), 'children' => (string) $c_17])|noescape}
       {/if}
     {/capture}
     {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-1 items-start gap-8 lg:grid-cols-3', 'children' => (string) $c_18])|noescape}

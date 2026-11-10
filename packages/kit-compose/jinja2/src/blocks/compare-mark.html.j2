@@ -13,7 +13,7 @@
     {%- endset -%}
     {{ og_include('compose/inline.html.j2', {'p': {'Class': 'sr-only'}, 'children': c_1}) }}
   {%- endset -%}
-  {{ og_include('compose/inline.html.j2', {'p': {'Class': 'inline-flex items-center gap-2', 'Attrs': og_attrs(['data-mark', 'yes'])}, 'children': c_2}) }}
+  {{ og_include('compose/inline.html.j2', {'p': {'Class': 'inline-flex items-center gap-2', 'Attrs': og_attrs(['data-mark', 'yes', 'data-slot', 'compare-mark'])}, 'children': c_2}) }}
 {%- endif %}
 {%- if og_t(og_eq(v_value, 'no')) %}
   {%- set c_4 -%}
@@ -23,11 +23,11 @@
     {%- endset -%}
     {{ og_include('compose/inline.html.j2', {'p': {'Class': 'sr-only'}, 'children': c_3}) }}
   {%- endset -%}
-  {{ og_include('compose/inline.html.j2', {'p': {'Class': 'inline-flex items-center gap-2 text-muted-foreground', 'Attrs': og_attrs(['data-mark', 'no'])}, 'children': c_4}) }}
+  {{ og_include('compose/inline.html.j2', {'p': {'Class': 'inline-flex items-center gap-2 text-muted-foreground', 'Attrs': og_attrs(['data-mark', 'no', 'data-slot', 'compare-mark'])}, 'children': c_4}) }}
 {%- endif %}
 {%- if og_t(og_and([not (og_eq(v_value, 'yes')), not (og_eq(v_value, 'no'))])) %}
   {%- set c_5 -%}
     {{ og_text(v_value) }}
   {%- endset -%}
-  {{ og_include('compose/inline.html.j2', {'p': {}, 'children': c_5}) }}
+  {{ og_include('compose/inline.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'compare-mark'])}, 'children': c_5}) }}
 {%- endif %}

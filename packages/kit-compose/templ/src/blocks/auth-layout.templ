@@ -42,14 +42,14 @@ templ AuthLayout(p AuthLayoutProps) {
 	{{ vMode := uiutils.Def(p.Mode, "signin") }}
 	{{ vSocial := uiutils.Def(p.Social, "none") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "div", Class: "w-full", Attrs: uiutils.Attrs("data-testid", "auth-layout", "data-layout", vLayout)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "div", Class: "w-full", Attrs: uiutils.Attrs("data-layout", vLayout, "data-slot", "auth-layout")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", "py-12")), Attrs: uiutils.Attrs("data-slot", "container")}}) {
 			if uiutils.Eq(vLayout, "split") {
 				@compose.Grid(compose.GridProps{Cols: "1-2", BoxProps: box.BoxProps{Class: "items-stretch gap-8"}}) {
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "mx-auto flex w-full max-w-sm items-center"}}) {
 						@AuthCard(AuthCardProps{Id: vId, Title: vTitle, Text: vText, Submit: vSubmit, SwitchText: uiutils.Get(vSwitchTo, "text"), SwitchLink: uiutils.Get(vSwitchTo, "link"), SwitchHref: uiutils.Get(vSwitchTo, "href"), Labels: vLabels, Mode: vMode, Layout: "plain", Social: vSocial, Level: vLevel, LandmarkLabel: vLandmarkLabel})
 					}
-					@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("justify-end rounded bg-muted p-8", uiutils.Cond(uiutils.T(uiutils.Eq(vSide, "start")), "md:order-first", "md:order-last"))), Attrs: uiutils.Attrs("data-testid", "visual")}}) {
+					@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("justify-end rounded bg-muted p-8", uiutils.Cond(uiutils.T(uiutils.Eq(vSide, "start")), "md:order-first", "md:order-last"))), Attrs: uiutils.Attrs("data-slot", "visual")}}) {
 						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vVisual, "title"), Ratio: "4/3"})
 						@compose.Title(compose.TitleProps{As: "2", Size: "2xl", Weight: "bold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vVisual, "title")) }

@@ -49,9 +49,6 @@
                 "Variant": "secondary",
                 "Size": "sm"
               },
-              "attrs": {
-                "data-testid": "post-tag"
-              },
               "children": [
                 {
                   "text": {
@@ -62,7 +59,10 @@
             }
           ]
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "post-tags"
+      }
     }
   ],
   "portable": {

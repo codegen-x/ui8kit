@@ -30,10 +30,10 @@
           {=og_include('blocks/topic-chips.latte', ['p' => ['topics' => $v_topics, 'tone' => 'inverse']])|noescape}
         {/if}
       {/capture}
-      {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => 'center', 'class' => og_s(og_cnv(['mx-auto w-full pt-24 pb-16', og_preset('blocks/presets/defaults.json', ['hero', 'column'])])), 'attrs' => og_attrs(['data-testid', 'hero-column']), 'children' => (string) $c_1])|noescape}
+      {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => 'center', 'class' => og_s(og_cnv(['mx-auto w-full pt-24 pb-16', og_preset('blocks/presets/defaults.json', ['hero', 'column'])])), 'attrs' => og_attrs(['data-slot', 'hero-column']), 'children' => (string) $c_1])|noescape}
     {/capture}
     {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => 'stretch', 'children' => (string) $c_2])|noescape}
   {/capture}
   {=og_include('compose/Container.latte', ['class' => og_s(og_cnv(['mx-auto w-full px-8', og_preset('blocks/presets/defaults.json', ['hero', 'container'])])), 'attrs' => og_attrs(['data-slot', 'container']), 'children' => (string) $c_3])|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'section', 'class' => og_s(og_cnv(['flex w-full flex-col bg-foreground text-background py-8 [&_.text-muted-foreground]:text-background/70', og_preset('blocks/presets/defaults.json', ['hero', 'band'])])), 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : 'home-hero-title'), 'data-testid', 'section', 'data-tone', 'inverse', 'data-density', $v_density, 'data-chrome', 'nav', 'aria-label', $v_landmarkLabel]), 'children' => (string) $c_4])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'section', 'class' => og_s(og_cnv(['flex w-full flex-col bg-foreground text-background py-8 [&_.text-muted-foreground]:text-background/70', og_preset('blocks/presets/defaults.json', ['hero', 'band'])])), 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : 'home-hero-title'), 'data-tone', 'inverse', 'data-density', $v_density, 'data-chrome', 'nav', 'aria-label', $v_landmarkLabel, 'data-slot', 'section']), 'children' => (string) $c_4])|noescape}

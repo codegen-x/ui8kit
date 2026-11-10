@@ -55,32 +55,32 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"crumb\"]",
+      "sel": "[data-slot=\"crumb\"]",
       "n": 2
     },
     {
-      "sel": "[data-testid=\"page-figure\"]",
+      "sel": "[data-slot=\"page-figure\"]",
       "n": 1,
       "when": {
         "aside": "figure"
       }
     },
     {
-      "sel": "[data-testid=\"page-note\"]",
+      "sel": "[data-slot=\"page-note\"]",
       "n": 1,
       "when": {
         "aside": "note"
       }
     },
     {
-      "sel": "[data-testid=\"page-fact\"]",
+      "sel": "[data-slot=\"page-fact\"]",
       "n": 4,
       "when": {
         "aside": "facts"
       }
     },
     {
-      "sel": "[data-testid=\"page-fact\"]",
+      "sel": "[data-slot=\"page-fact\"]",
       "n": 0,
       "when": {
         "aside": [

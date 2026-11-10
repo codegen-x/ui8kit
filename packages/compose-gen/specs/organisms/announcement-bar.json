@@ -143,10 +143,10 @@
             }
           ]
         },
-        "data-testid": "announcement",
         "data-layout": {
           "$": "layout"
-        }
+        },
+        "data-slot": "announcement"
       },
       "children": [
         {
@@ -249,7 +249,7 @@
                         "Class": "rounded px-2 py-0 text-xs font-semibold inset-ring inset-ring-current"
                       },
                       "attrs": {
-                        "data-testid": "announcement-badge"
+                        "data-slot": "announcement-badge"
                       },
                       "children": [
                         {
@@ -288,7 +288,7 @@
                         "Class": "inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4"
                       },
                       "attrs": {
-                        "data-testid": "announcement-cta"
+                        "data-slot": "announcement-cta"
                       },
                       "children": [
                         {
@@ -331,8 +331,7 @@
                   "attrs": {
                     "aria-label": {
                       "$": "dismissLabel"
-                    },
-                    "data-testid": "dismiss"
+                    }
                   },
                   "children": [
                     {

@@ -125,7 +125,7 @@
         "Class": "rounded bg-card inset-ring inset-ring-border p-6"
       },
       "attrs": {
-        "data-testid": "summary"
+        "data-slot": "summary"
       },
       "children": [
         {
@@ -222,7 +222,7 @@
                 "Class": "flex flex-col gap-4"
               },
               "attrs": {
-                "data-testid": "summary-lines"
+                "data-slot": "summary-lines"
               },
               "children": [
                 {
@@ -333,7 +333,10 @@
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "attrs": {
+                        "data-slot": "cart-line"
+                      }
                     }
                   ]
                 }
@@ -359,7 +362,7 @@
                 "Align": "stretch"
               },
               "attrs": {
-                "data-testid": "promo"
+                "data-slot": "promo"
               },
               "children": [
                 {
@@ -455,9 +458,6 @@
                                 "Variant": "outline",
                                 "Size": "sm"
                               },
-                              "attrs": {
-                                "data-testid": "code"
-                              },
                               "children": [
                                 {
                                   "text": {
@@ -495,7 +495,7 @@
                 "Class": "rounded bg-muted p-4"
               },
               "attrs": {
-                "data-testid": "progress"
+                "data-slot": "progress"
               },
               "children": [
                 {
@@ -587,7 +587,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "row"
+                        "data-slot": "row"
                       },
                       "children": [
                         {
@@ -632,9 +632,6 @@
             "Variant": "default",
             "Size": "lg",
             "Class": "w-full"
-          },
-          "attrs": {
-            "data-testid": "checkout"
           },
           "children": [
             {

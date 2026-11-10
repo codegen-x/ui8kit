@@ -28,10 +28,10 @@
           {%- endset -%}
           {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_4}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '0', 'align': 'center', 'attrs': og_attrs(['data-testid', 'quote-stat']), 'children': c_5}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '0', 'align': 'center', 'attrs': og_attrs(['data-slot', 'quote-stat']), 'children': c_5}, with_context = false) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
   {{ include('compose/Box.html.twig', {'class': 'grid w-full grid-cols-2 gap-4 border-t border-border pt-6', 'children': c_6}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': '6', 'align': 'center', 'class': 'rounded bg-card inset-ring inset-ring-border p-8 text-center', 'attrs': og_attrs(['data-testid', 'quote-rating']), 'children': c_7}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': '6', 'align': 'center', 'class': 'rounded bg-card inset-ring inset-ring-border p-8 text-center', 'attrs': og_attrs(['data-slot', 'quote-rating']), 'children': c_7}, with_context = false) }}

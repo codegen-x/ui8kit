@@ -20,13 +20,13 @@ type MediaPostsProps struct {
 templ MediaPosts(p MediaPostsProps) {
 	{{ vExtras := p.Extras }}
 	{{ vLabels := p.Labels }}
-	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{}}) {
+	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "media-posts")}}) {
 		@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 			{ uiutils.Text(uiutils.Get(vLabels, "list")) }
 		}
 		for vI, vP := range uiutils.L(uiutils.Get(vExtras, "posts")) {
 			if uiutils.Lt(float64(vI), float64(3)) {
-				@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "media-post")}}) {
+				@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "media-post")}}) {
 					@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "mt-2 size-2 shrink-0 rounded-full bg-primary"}})
 					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 						@MenuEntry(MenuEntryProps{Href: uiutils.Get(vP, "href"), Class: uiutils.Cnv("text-sm font-medium"), Size: "sm"}) {

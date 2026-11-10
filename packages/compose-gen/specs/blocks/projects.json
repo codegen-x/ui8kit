@@ -74,11 +74,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@projects"
     },
     {
-      "sel": "[data-testid=\"featured\"]",
+      "sel": "[data-slot=\"items\"] [data-slot=\"badge\"].absolute",
       "n": 2,
       "when": {
         "layout": [
@@ -89,7 +89,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"featured\"]",
+      "sel": "[data-slot=\"items\"] [data-slot=\"badge\"].absolute",
       "n": 0,
       "when": {
         "layout": [

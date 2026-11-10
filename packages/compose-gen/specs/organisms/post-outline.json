@@ -39,7 +39,7 @@
         "Align": "stretch"
       },
       "attrs": {
-        "data-testid": "post-outline"
+        "data-slot": "post-outline"
       },
       "children": [
         {

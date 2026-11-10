@@ -41,11 +41,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"day\"]",
+      "sel": "[data-slot=\"day\"]",
       "n": "@weekdays"
     },
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@weekmeals"
     }
   ],

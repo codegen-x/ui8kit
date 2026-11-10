@@ -116,7 +116,7 @@
                     "Align": "stretch"
                   },
                   "attrs": {
-                    "data-testid": "stepper"
+                    "data-slot": "stepper"
                   },
                   "children": [
                     {
@@ -177,7 +177,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -195,7 +195,6 @@
                                 "Class": "flex flex-1 items-center gap-4"
                               },
                               "attrs": {
-                                "data-testid": "item",
                                 "aria-current": {
                                   "op": "cond",
                                   "args": [
@@ -222,7 +221,8 @@
                                       "args": []
                                     }
                                   ]
-                                }
+                                },
+                                "data-slot": "item"
                               },
                               "children": [
                                 {
@@ -431,7 +431,7 @@
                                     "Class": "rounded bg-card p-6 inset-ring inset-ring-border"
                                   },
                                   "attrs": {
-                                    "data-testid": "step-summary"
+                                    "data-slot": "step-summary"
                                   },
                                   "children": [
                                     {

@@ -45,14 +45,13 @@ export function ProductCard({
         (((layout as string) === "horizontal") ? "flex flex-col sm:flex-row" : "flex flex-col")
       )}
       data-slot="card"
-      data-testid="item"
       data-layout={layout}
     >
       {((media as string) === "image") ? (
         <Box class={cn("relative shrink-0", (((layout as string) === "horizontal") ? "sm:w-48" : ""))}>
           <MediaFrame alt={product.name} src={product.image} ratio={ratio} class="h-full" />
           {product.badge ? (
-            <Badge variant="default" size="default" class="absolute left-4 top-4" data-testid="badge">
+            <Badge variant="default" size="default" class="absolute left-4 top-4">
               {at(badges, product.badge)}
             </Badge>
           ) : null}
@@ -64,7 +63,7 @@ export function ProductCard({
         </Text>
         <Title as={3} size="base" weight="bold">
           {product.href ? (
-            <Link href={urlOf(product.href)} variant="default" data-testid="open">
+            <Link href={urlOf(product.href)} variant="default" data-slot="open">
               {product.name}
             </Link>
           ) : (
@@ -92,7 +91,7 @@ export function ProductCard({
               {fmtMoney(product.price, product.currency)}
             </Text>
             {(product.compareAt && (product.compareAt > product.price)) ? (
-              <Text tag="del" size="sm" class="relative text-muted-foreground" data-testid="compare-at">
+              <Text tag="del" size="sm" class="relative text-muted-foreground" data-slot="compare-at">
                 <Inline class="sr-only">
                   {labels.was}
                 </Inline>
@@ -105,7 +104,6 @@ export function ProductCard({
               variant={(product.inStock ? "default" : "outline")}
               size="sm"
               disabled={!product.inStock}
-              data-testid="add"
               onClick={() => onAdd?.(product.id)}
             >
               {(product.inStock ? labels.add : labels.soldOut)}

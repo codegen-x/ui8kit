@@ -20,9 +20,9 @@ type PostTagsProps struct {
 templ PostTags(p PostTagsProps) {
 	{{ vTags := p.Tags }}
 	{{ vAlign := uiutils.Def(p.Align, "start") }}
-	@compose.Group(compose.GroupProps{Gap: "2", Justify: uiutils.S(vAlign), BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
+	@compose.Group(compose.GroupProps{Gap: "2", Justify: uiutils.S(vAlign), BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-slot", "post-tags")}}) {
 		for _, vTag := range uiutils.L(vTags) {
-			@compose.Badge(compose.BadgeProps{Variant: "secondary", Size: "sm", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-testid", "post-tag")}}) {
+			@compose.Badge(compose.BadgeProps{Variant: "secondary", Size: "sm", TextProps: text.TextProps{}}) {
 				{ uiutils.Text(uiutils.Get(vTag, "name")) }
 			}
 		}

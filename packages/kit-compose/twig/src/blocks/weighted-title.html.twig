@@ -12,8 +12,8 @@
     {%- set c_1 -%}
       {{ og_text(v_word) }}
     {%- endset -%}
-    {{ include('compose/Inline.html.twig', {'class': og_s(og_nth(v_weights, v_i)), 'children': c_1}, with_context = false) }}
+    {{ include('compose/Inline.html.twig', {'class': og_s(og_nth(v_weights, v_i)), 'attrs': og_attrs(['data-slot', 'items-row']), 'children': c_1}, with_context = false) }}
     {{ og_text(' ') }}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Title.html.twig', {'as': og_i(v_level), 'size': '5xl', 'weight': 'semibold', 'class': og_s(og_cnv(['text-center tracking-tight text-background', og_preset('blocks/presets/defaults.json', ['hero', 'title'])])), 'attrs': og_attrs(['id', v_id]), 'children': c_2}, with_context = false) }}
+{{ include('compose/Title.html.twig', {'as': og_i(v_level), 'size': '5xl', 'weight': 'semibold', 'class': og_s(og_cnv(['text-center tracking-tight text-background', og_preset('blocks/presets/defaults.json', ['hero', 'title'])])), 'attrs': og_attrs(['id', v_id, 'data-slot', 'weighted-title']), 'children': c_2}, with_context = false) }}

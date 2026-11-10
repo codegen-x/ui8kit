@@ -18,7 +18,7 @@
     {%- set c_1 -%}
       {{ og_text(v_target) }}
     {%- endset -%}
-    {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'default', 'type': 'button', 'class': 'inset-ring-foreground', 'attrs': og_attrs(['data-testid', 'tour-target']), 'children': c_1}, with_context = false) }}
+    {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'default', 'type': 'button', 'class': 'inset-ring-foreground', 'children': c_1}, with_context = false) }}
     {%- set c_8 -%}
       {%- set c_2 -%}
         {{ og_text(v_position) }}
@@ -44,8 +44,8 @@
       {%- endset -%}
       {{ include('compose/Group.html.twig', {'gap': '2', 'justify': 'end', 'children': c_7}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': og_s(og_cnv(['w-full max-w-sm', 'rounded bg-card inset-ring inset-ring-border', 'p-4', 'shadow-md'])), 'attrs': og_attrs(['role', 'group', 'aria-label', v_title, 'data-testid', 'tour-callout']), 'children': c_8}, with_context = false) }}
+    {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': og_s(og_cnv(['w-full max-w-sm', 'rounded bg-card inset-ring inset-ring-border', 'p-4', 'shadow-md'])), 'attrs': og_attrs(['role', 'group', 'aria-label', v_title, 'data-slot', 'tour-callout']), 'children': c_8}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Block.html.twig', {'tag': 'div', 'class': og_s(og_cnv(['flex gap-4', (og_t(og_eq(v_placement, 'end')) ? 'flex-col items-start md:flex-row md:items-center' : (og_t(og_eq(v_placement, 'above')) ? 'flex-col-reverse items-start' : 'flex-col items-start'))])), 'attrs': og_attrs(['data-testid', 'tour', 'data-placement', v_placement]), 'children': c_9}, with_context = false) }}
+  {{ include('compose/Block.html.twig', {'tag': 'div', 'class': og_s(og_cnv(['flex gap-4', (og_t(og_eq(v_placement, 'end')) ? 'flex-col items-start md:flex-row md:items-center' : (og_t(og_eq(v_placement, 'above')) ? 'flex-col-reverse items-start' : 'flex-col items-start'))])), 'attrs': og_attrs(['data-placement', v_placement, 'data-slot', 'tour']), 'children': c_9}, with_context = false) }}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_10)}, with_context = false) }}

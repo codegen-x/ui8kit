@@ -157,9 +157,6 @@
                             "Variant": "default",
                             "Class": "h-full gap-4 overflow-hidden"
                           },
-                          "attrs": {
-                            "data-testid": "showcase-card"
-                          },
                           "children": [
                             {
                               "when": {
@@ -188,7 +185,7 @@
                                     "Class": "flex aspect-video items-center justify-center rounded bg-muted text-foreground"
                                   },
                                   "attrs": {
-                                    "data-testid": "showcase-panel"
+                                    "data-slot": "showcase-panel"
                                   },
                                   "children": [
                                     {

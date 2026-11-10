@@ -18,14 +18,14 @@ export type AuthFormProps = {
 
 export function AuthForm({ id, mode = "signin", labels, submit }: AuthFormProps) {
   return (
-    <Form method="dialog" className="gap-4" data-testid="auth-form">
+    <Form method="dialog" className="gap-4" data-slot="auth-form">
       {((mode as string) === "signup") ? (
         <Field label={labels.name} htmlFor={tpl("{0}-name", id)}>
-          <Input type="text" name="name" autoComplete="name" id={tpl("{0}-name", id)} data-testid="field" />
+          <Input type="text" name="name" autoComplete="name" id={tpl("{0}-name", id)} data-slot="field" />
         </Field>
       ) : null}
       <Field label={labels.email} htmlFor={tpl("{0}-email", id)}>
-        <Input type="email" name="email" autoComplete="email" id={tpl("{0}-email", id)} data-testid="field" />
+        <Input type="email" name="email" autoComplete="email" id={tpl("{0}-email", id)} data-slot="field" />
       </Field>
       {(((mode as string) !== "reset") && ((mode as string) !== "magic")) ? (
         <Field label={labels.password} htmlFor={tpl("{0}-password", id)}>
@@ -34,7 +34,7 @@ export function AuthForm({ id, mode = "signin", labels, submit }: AuthFormProps)
             name="password"
             autoComplete={(((mode as string) === "signup") ? "new-password" : "current-password")}
             id={tpl("{0}-password", id)}
-            data-testid="field"
+            data-slot="field"
           />
         </Field>
       ) : null}
@@ -59,7 +59,7 @@ export function AuthForm({ id, mode = "signin", labels, submit }: AuthFormProps)
           </Label>
         </Group>
       ) : null}
-      <Button variant="default" size="default" type="submit" className="w-full" data-testid="submit">
+      <Button variant="default" size="default" type="submit" className="w-full">
         {submit}
       </Button>
     </Form>

@@ -23,9 +23,9 @@ templ WeightedTitle(p WeightedTitleProps) {
 	{{ vTitle := p.Title }}
 	{{ vWeights := p.Weights }}
 	{{ vLevel := uiutils.Def(p.Level, float64(1)) }}
-	@compose.Title(compose.TitleProps{As: uiutils.S(vLevel), Size: "5xl", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("text-center tracking-tight text-background", uiutils.Get(presetDefaults, "hero", "title"))), Attrs: uiutils.Attrs("id", vId)}}) {
+	@compose.Title(compose.TitleProps{As: uiutils.S(vLevel), Size: "5xl", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("text-center tracking-tight text-background", uiutils.Get(presetDefaults, "hero", "title"))), Attrs: uiutils.Attrs("id", vId, "data-slot", "weighted-title")}}) {
 		for vI, vWord := range uiutils.L(uiutils.Words(vTitle)) {
-			@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: uiutils.S(uiutils.Nth(vWeights, float64(vI)))}}) {
+			@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: uiutils.S(uiutils.Nth(vWeights, float64(vI))), Attrs: uiutils.Attrs("data-slot", "items-row")}}) {
 				{ uiutils.Text(vWord) }
 			}
 			{ uiutils.Text(" ") }

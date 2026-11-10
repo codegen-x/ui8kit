@@ -62,15 +62,15 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"template-card\"]",
+      "sel": "[data-slot=\"template-card\"]",
       "n": "@templates"
     },
     {
-      "sel": "[data-testid=\"template-filter\"]",
+      "sel": "[data-slot=\"template-filters\"] > [data-slot=\"button\"]",
       "n": "@templateFilters"
     },
     {
-      "sel": "[data-testid=\"template-browse\"]",
+      "sel": "[data-slot=\"template-grid\"] ~ [data-slot=\"button\"]",
       "n": 1
     }
   ],

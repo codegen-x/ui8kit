@@ -42,7 +42,7 @@
         "Class": "flex-1 p-6"
       },
       "attrs": {
-        "data-testid": "content"
+        "data-slot": "content"
       },
       "children": [
         {
@@ -93,7 +93,7 @@
           },
           "attrs": {
             "aria-hidden": "true",
-            "data-testid": "panels"
+            "data-slot": "panels"
           },
           "children": [
             {
@@ -125,7 +125,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "panel"
+                        "data-slot": "panel"
                       },
                       "children": [
                         {
@@ -166,7 +166,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "panel"
+                        "data-slot": "panel"
                       },
                       "children": [
                         {
@@ -207,7 +207,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "panel"
+                        "data-slot": "panel"
                       },
                       "children": [
                         {
@@ -248,7 +248,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "panel"
+                        "data-slot": "panel"
                       },
                       "children": [
                         {
@@ -291,7 +291,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "panel"
+                    "data-slot": "panel"
                   },
                   "children": [
                     {
@@ -351,7 +351,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "panel"
+                        "data-slot": "panel"
                       },
                       "children": [
                         {
@@ -392,7 +392,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "panel"
+                        "data-slot": "panel"
                       },
                       "children": [
                         {
@@ -435,7 +435,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "panel"
+                    "data-slot": "panel"
                   },
                   "children": [
                     {
@@ -534,7 +534,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "panel"
+                    "data-slot": "panel"
                   },
                   "children": [
                     {

@@ -35,16 +35,16 @@
           {%- set c_5 -%}
             {{ og_text(v_settings) }}
           {%- endset -%}
-          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Type': 'button', 'Attrs': og_attrs(['data-testid', 'cookie-settings'])}, 'children': c_5}) }}
+          {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Type': 'button'}, 'children': c_5}) }}
         {%- endif %}
         {%- set c_6 -%}
           {{ og_text(v_decline) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Type': 'button', 'Attrs': og_attrs(['data-testid', 'cookie-decline'])}, 'children': c_6}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Type': 'button'}, 'children': c_6}) }}
         {%- set c_7 -%}
           {{ og_text(v_accept) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Type': 'button', 'Attrs': og_attrs(['data-testid', 'cookie-accept'])}, 'children': c_7}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Type': 'button'}, 'children': c_7}) }}
       {%- endset -%}
       {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Class': 'shrink-0 flex-wrap'}, 'children': c_8}) }}
     {%- endset -%}
@@ -52,4 +52,4 @@
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'py-4'])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_10}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else og_tpl('{0}-title', [v_id])), 'data-testid', 'cookie', 'data-layout', v_layout, 'aria-label', v_landmarkLabel])}, 'children': c_11}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else og_tpl('{0}-title', [v_id])), 'data-layout', v_layout, 'aria-label', v_landmarkLabel, 'data-slot', 'cookie'])}, 'children': c_11}) }}

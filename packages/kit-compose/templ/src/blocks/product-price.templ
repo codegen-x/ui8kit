@@ -26,12 +26,12 @@ templ ProductPrice(p ProductPriceProps) {
 	{{ vCurrency := p.Currency }}
 	{{ vBadge := uiutils.Def(p.Badge, "") }}
 	{{ vWas := p.Was }}
-	@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
+	@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-slot", "product-price")}}) {
 		@compose.Text(compose.TextProps{Size: "4xl", Weight: "bold", TextProps: text.TextProps{}}) {
 			{ uiutils.Text(uiutils.Money(vPrice, vCurrency)) }
 		}
 		if uiutils.T(uiutils.And(vCompareAt, uiutils.Gt(vCompareAt, vPrice))) {
-			@compose.Text(compose.TextProps{Size: "lg", TextProps: text.TextProps{Tag: "del", Class: "relative text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "compare-at")}}) {
+			@compose.Text(compose.TextProps{Size: "lg", TextProps: text.TextProps{Tag: "del", Class: "relative text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "compare-at")}}) {
 				@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "sr-only"}}) {
 					{ uiutils.Text(vWas) }
 				}

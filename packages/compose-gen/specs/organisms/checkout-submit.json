@@ -100,9 +100,6 @@
             "Size": "lg",
             "Type": "submit"
           },
-          "attrs": {
-            "data-testid": "submit"
-          },
           "children": [
             {
               "text": {
@@ -125,7 +122,10 @@
             }
           ]
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "checkout-submit"
+      }
     }
   ],
   "portable": {

@@ -37,16 +37,20 @@ export function MenuEntry({
           size={size}
           aria-current={(current ? "page" : undefined)}
           className={className}
-          data-testid={testid}
+          data-slot={(testid ?? "menu-entry")}
         >
           {children}
         </Link>
       ) : block ? (
-        <Box className={className} aria-current={(current ? "page" : undefined)} data-testid={testid}>
+        <Box className={className} aria-current={(current ? "page" : undefined)} data-slot={(testid ?? "menu-entry")}>
           {children}
         </Box>
       ) : (
-        <Inline className={className} aria-current={(current ? "page" : undefined)} data-testid={testid}>
+        <Inline
+          className={className}
+          aria-current={(current ? "page" : undefined)}
+          data-slot={(testid ?? "menu-entry")}
+        >
           {children}
         </Inline>
       )}

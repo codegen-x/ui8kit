@@ -38,9 +38,9 @@ templ MilestoneTimeline(p MilestoneTimelineProps) {
 		if uiutils.Eq(uiutils.Len(vMilestones), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "milestone", Title: vEmpty})
 		} else {
-			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ol", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "row")), "grid grid-cols-1 gap-8 border-t border-border sm:grid-cols-2 lg:grid-cols-4", "flex flex-col gap-8 border-l border-border")), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ol", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "row")), "grid grid-cols-1 gap-8 border-t border-border sm:grid-cols-2 lg:grid-cols-4", "flex flex-col gap-8 border-l border-border")), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vM := range uiutils.L(vMilestones) {
-					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "row")), "relative flex flex-col gap-2 pt-6", "relative flex flex-col gap-2 pl-6")), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "row")), "relative flex flex-col gap-2 pt-6", "relative flex flex-col gap-2 pl-6")), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "row")), "absolute top-0 left-0 size-2 -translate-y-1/2 rounded bg-primary", "absolute top-2 left-0 size-2 -translate-x-1/2 rounded bg-primary")), Attrs: uiutils.Attrs("aria-hidden", "true")}})
 						@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {

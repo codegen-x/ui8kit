@@ -30,10 +30,10 @@
           {{ og_include('blocks/topic-chips.html.j2', {'p': {'topics': v_topics, 'tone': 'inverse'}}) }}
         {%- endif %}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': 'center', 'Class': og_s(og_cnv(['mx-auto w-full pt-24 pb-16', og_preset('blocks/presets/defaults.json', ['hero', 'column'])])), 'Attrs': og_attrs(['data-testid', 'hero-column'])}, 'children': c_1}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': 'center', 'Class': og_s(og_cnv(['mx-auto w-full pt-24 pb-16', og_preset('blocks/presets/defaults.json', ['hero', 'column'])])), 'Attrs': og_attrs(['data-slot', 'hero-column'])}, 'children': c_1}) }}
     {%- endset -%}
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': 'stretch'}, 'children': c_2}) }}
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full px-8', og_preset('blocks/presets/defaults.json', ['hero', 'container'])])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_3}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': og_s(og_cnv(['flex w-full flex-col bg-foreground text-background py-8 [&_.text-muted-foreground]:text-background/70', og_preset('blocks/presets/defaults.json', ['hero', 'band'])])), 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else 'home-hero-title'), 'data-testid', 'section', 'data-tone', 'inverse', 'data-density', v_density, 'data-chrome', 'nav', 'aria-label', v_landmarkLabel])}, 'children': c_4}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': og_s(og_cnv(['flex w-full flex-col bg-foreground text-background py-8 [&_.text-muted-foreground]:text-background/70', og_preset('blocks/presets/defaults.json', ['hero', 'band'])])), 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else 'home-hero-title'), 'data-tone', 'inverse', 'data-density', v_density, 'data-chrome', 'nav', 'aria-label', v_landmarkLabel, 'data-slot', 'section'])}, 'children': c_4}) }}

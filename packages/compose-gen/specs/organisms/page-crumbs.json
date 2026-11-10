@@ -64,7 +64,7 @@
             }
           ]
         },
-        "data-testid": "crumbs"
+        "data-slot": "crumbs"
       },
       "children": [
         {
@@ -116,7 +116,7 @@
                                 "Size": "sm"
                               },
                               "attrs": {
-                                "data-testid": "crumb"
+                                "data-slot": "crumb"
                               },
                               "children": [
                                 {
@@ -131,7 +131,7 @@
                             {
                               "use": "Inline",
                               "attrs": {
-                                "data-testid": "crumb"
+                                "data-slot": "crumb"
                               },
                               "children": [
                                 {
@@ -170,7 +170,10 @@
                         }
                       ]
                     }
-                  ]
+                  ],
+                  "attrs": {
+                    "data-slot": "crumbs-row"
+                  }
                 }
               ],
               "index": "i"

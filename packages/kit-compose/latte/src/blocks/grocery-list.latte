@@ -39,10 +39,10 @@
           {=og_include('compose/Inline.latte', ['class' => 'text-sm font-bold', 'children' => (string) $c_4])|noescape}
           {=og_include('blocks/add-icon.latte', ['p' => ['label' => og_tpl(og_get($v_labels, ['addOf']), [og_get($v_d, ['name'])])]])|noescape}
         {/capture}
-        {=og_include('compose/ListItem.latte', ['class' => 'flex items-center gap-4 border-b border-border py-2', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_5])|noescape}
+        {=og_include('compose/ListItem.latte', ['class' => 'flex items-center gap-4 border-b border-border py-2', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_5])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s((og_t(og_eq($v_cols, '2')) ? 'grid grid-cols-1 gap-x-8 md:grid-cols-2' : 'grid grid-cols-1')), 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_6])|noescape}
+    {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s((og_t(og_eq($v_cols, '2')) ? 'grid grid-cols-1 gap-x-8 md:grid-cols-2' : 'grid grid-cols-1')), 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_6])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'lead' => $v_lead, 'tone' => $v_tone, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_7)])|noescape}

@@ -48,7 +48,7 @@ export function LightboxGallery({
       ) : (
         <>
           {((layout as string) === "featured") ? (
-            <Stack gap="4" align="stretch" data-testid="featured">
+            <Stack gap="4" align="stretch" data-slot="featured">
               <MediaFrame alt={title} />
               <Group gap="4" align="center" justify="between">
                 <Stack gap="0">
@@ -68,7 +68,7 @@ export function LightboxGallery({
                   </Button>
                 </Group>
               </Group>
-              <Box className="grid grid-cols-3 gap-2 sm:grid-cols-9" data-testid="thumbs">
+              <Box className="grid grid-cols-3 gap-2 sm:grid-cols-9" data-slot="thumbs">
                 {(photos ?? []).map((p, i) => (
                   <MediaFrame key={p.id} alt={p.title} ratio="1/1" className={((i === 0) ? "ring-2 ring-foreground" : "")} />
                 ))}
@@ -80,7 +80,7 @@ export function LightboxGallery({
                 (layout as string) === "masonry" ? "columns-1 gap-4 sm:columns-2 lg:columns-3"
                 : "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
               }
-              data-testid="items"
+              data-slot="items"
             >
               {(photos ?? []).map((p, i) => (
                 <FigureBlock key={p.id}
@@ -104,12 +104,11 @@ export function LightboxGallery({
                     type="button"
                     className="absolute right-2 top-2 bg-background"
                     aria-label={labels.open}
-                    data-testid="open"
                   >
                     <LucideIcon name="arrow-up-right" size={16} />
                   </Button>
                   {(((captions as string) === "show") && (((layout as string) === "grid") || ((layout as string) === "masonry"))) ? (
-                    <Box className="text-sm text-muted-foreground" data-testid="caption">
+                    <Box className="text-sm text-muted-foreground" data-slot="caption">
                       {p.title}
                     </Box>
                   ) : null}

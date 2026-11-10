@@ -12,10 +12,10 @@
   {%- set c_2 -%}
     {{ og_text(v_label) }}
   {%- endset -%}
-  {{ og_include('compose/inline.html.j2', {'p': {'Attrs': og_attrs(['data-testid', 'bulk-count'])}, 'children': c_2}) }}
+  {{ og_include('compose/inline.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'bulk-count'])}, 'children': c_2}) }}
   {%- set c_3 -%}
     {{ og_slot(og_def(children, none))|safe }}
   {%- endset -%}
   {{ og_include('compose/inline.html.j2', {'p': {'Class': 'ml-auto flex flex-wrap items-center gap-2'}, 'children': c_3}) }}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex flex-wrap items-center gap-2 rounded bg-foreground px-4 py-2 text-xs font-bold text-background', og_def(p['className'], '')])), 'Attrs': og_attrs(['role', 'region', 'aria-label', v_label, 'aria-live', 'polite', 'data-slot', 'bulk-bar', 'data-testid', 'bulk-bar'])}, 'children': c_4}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex flex-wrap items-center gap-2 rounded bg-foreground px-4 py-2 text-xs font-bold text-background', og_def(p['className'], '')])), 'Attrs': og_attrs(['role', 'region', 'aria-label', v_label, 'aria-live', 'polite', 'data-slot', 'bulk-bar'])}, 'children': c_4}) }}

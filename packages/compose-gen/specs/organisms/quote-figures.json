@@ -24,7 +24,7 @@
         "Class": "grid grid-cols-3 gap-4 border-b border-border pb-8"
       },
       "attrs": {
-        "data-testid": "quote-figures"
+        "data-slot": "quote-figures"
       },
       "children": [
         {
@@ -53,7 +53,7 @@
                     "Gap": "0"
                   },
                   "attrs": {
-                    "data-testid": "quote-stat"
+                    "data-slot": "quote-stat"
                   },
                   "children": [
                     {

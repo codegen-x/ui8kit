@@ -5,7 +5,7 @@ import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { spec } from "../kit";
 
 const P = "pattern.";
-const testid = { name: "testid", type: "string" as const, docs: "data-testid of the root" };
+const testid = { name: "testid", type: "string" as const, docs: "data-slot of the root (default: the component name)" };
 
 const navBlock = spec(`${P}nav-block`, "NavBlock", "A navigation region in its own file: Block tag nav named by `label`.", {
   props: [{ name: "label", type: "string", docs: "accessible name of the navigation" }, testid],

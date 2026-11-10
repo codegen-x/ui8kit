@@ -45,9 +45,9 @@ templ LogoCloud(p LogoCloudProps) {
 		@LogoRibbon(LogoRibbonProps{Id: vId, Title: vTitle, Logos: vLogos, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel})
 	} else {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, Align: "center", LandmarkLabel: vLandmarkLabel}) {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "2", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "3")), "2-3", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "4")), "2-4", "3-6")))), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "2", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "3")), "2-3", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "4")), "2-4", "3-6")))), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vLogo := range uiutils.L(vLogos) {
-					@compose.Group(compose.GroupProps{Gap: "2", Align: "center", Justify: "center", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("text-muted-foreground", uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "tile")), "flex-col rounded p-4 inset-ring inset-ring-border", ""))), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Group(compose.GroupProps{Gap: "2", Align: "center", Justify: "center", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("text-muted-foreground", uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "tile")), "flex-col rounded p-4 inset-ring inset-ring-border", ""))), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vLogo, "icon")), Size: 24})
 						@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "icon")), "sr-only", ""))}}) {
 							{ uiutils.Text(uiutils.Get(vLogo, "name")) }

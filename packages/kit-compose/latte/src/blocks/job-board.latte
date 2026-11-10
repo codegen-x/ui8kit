@@ -50,15 +50,15 @@
                 {/capture}
                 {=og_include('compose/Badge.latte', ['variant' => 'outline', 'size' => 'default', 'children' => (string) $c_7])|noescape}
               {/capture}
-              {=og_include('compose/ListItem.latte', ['class' => 'flex flex-wrap items-center justify-between gap-4 border-b border-border py-4', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_8])|noescape}
+              {=og_include('compose/ListItem.latte', ['class' => 'flex flex-wrap items-center justify-between gap-4 border-b border-border py-4', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_8])|noescape}
             {/foreach}
           {/capture}
           {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => 'flex flex-col', 'children' => (string) $c_9])|noescape}
         {/capture}
-        {=og_include('compose/Stack.latte', ['gap' => '2', 'align' => 'stretch', 'attrs' => og_attrs(['data-testid', 'group']), 'children' => (string) $c_10])|noescape}
+        {=og_include('compose/Stack.latte', ['gap' => '2', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'group']), 'children' => (string) $c_10])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Stack.latte', ['gap' => '8', 'align' => 'stretch', 'attrs' => og_attrs(['data-testid', 'groups']), 'children' => (string) $c_11])|noescape}
+    {=og_include('compose/Stack.latte', ['gap' => '8', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'groups']), 'children' => (string) $c_11])|noescape}
   {else}
     {=og_include('blocks/job-cards.latte', ['p' => ['jobs' => $v_jobs, 'departments' => $v_departments, 'labels' => $v_labels, 'layout' => $v_layout, 'salary' => $v_salary]])|noescape}
   {/if}

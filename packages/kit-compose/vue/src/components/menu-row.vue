@@ -23,7 +23,7 @@ const { dish, prices = "show" } = defineProps<MenuRowProps>();
 </script>
 
 <template>
-  <ListItem class="flex flex-col gap-0 border-b border-border py-2" data-testid="item">
+  <ListItem class="flex flex-col gap-0 border-b border-border py-2" data-slot="item">
     <Box class="flex items-baseline gap-2">
       <Inline class="font-semibold">
         {{ dish.name }}
@@ -33,7 +33,7 @@ const { dish, prices = "show" } = defineProps<MenuRowProps>();
       </Badge>
       <template v-if="((prices as string) === 'show')">
         <Inline class="flex-1 border-b border-dotted border-border" aria-hidden="true" />
-        <Inline class="font-semibold" data-testid="price">
+        <Inline class="font-semibold" data-slot="price">
           {{ fmtMoney(dish.price, dish.currency) }}
         </Inline>
       </template>

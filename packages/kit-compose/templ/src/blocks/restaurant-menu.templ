@@ -42,9 +42,9 @@ templ RestaurantMenu(p RestaurantMenuProps) {
 		} else {
 			@compose.Stack(compose.StackProps{Gap: "8", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "1")), "mx-auto w-full max-w-3xl", ""))}}) {
 				@MenuSectionNav(MenuSectionNavProps{Label: uiutils.Get(vLabels, "sections"), Sections: vSections, Prefix: vId, LandmarkLabel: vLandmarkLabel})
-				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "grid grid-cols-1 gap-8 md:grid-cols-2", "flex flex-col gap-8")), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "grid grid-cols-1 gap-8 md:grid-cols-2", "flex flex-col gap-8")), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for _, vS := range uiutils.L(vSections) {
-						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-{1}", vId, uiutils.Get(vS, "key")), "data-testid", "menusection")}}) {
+						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-{1}", vId, uiutils.Get(vS, "key")), "data-slot", "menusection")}}) {
 							@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "border-b border-border pb-2"}}) {
 								@compose.Title(compose.TitleProps{As: "3", Size: "xl", Weight: "bold", TextProps: text.TextProps{}}) {
 									{ uiutils.Text(uiutils.Get(vS, "title")) }
@@ -56,7 +56,7 @@ templ RestaurantMenu(p RestaurantMenuProps) {
 							@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col gap-4"}}) {
 								for _, vD := range uiutils.L(vDishes) {
 									if uiutils.T(uiutils.Eq(uiutils.Get(vD, "tag"), uiutils.Get(vS, "key"))) {
-										@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-0", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+										@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-0", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 											@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex items-baseline gap-2"}}) {
 												@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "font-semibold"}}) {
 													{ uiutils.Text(uiutils.Get(vD, "name")) }

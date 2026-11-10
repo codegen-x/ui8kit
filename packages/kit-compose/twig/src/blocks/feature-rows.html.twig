@@ -24,7 +24,7 @@
       {%- endset -%}
       {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['w-full min-w-0', (og_t(og_eq(v_mediaSide, 'start')) ? 'md:order-first' : (og_t(og_eq(v_mediaSide, 'alternate')) ? 'md:group-even:order-first' : ''))])), 'children': c_4}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': '1-2', 'class': 'group items-center gap-8', 'attrs': og_attrs(['data-testid', 'feature-card']), 'children': c_5}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': '1-2', 'class': 'group items-center gap-8', 'attrs': og_attrs(['data-slot', 'feature-card']), 'children': c_5}, with_context = false) }}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': '8', 'align': 'stretch', 'attrs': og_attrs(['data-testid', 'feature-rows']), 'children': c_6}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': '8', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'feature-rows']), 'children': c_6}, with_context = false) }}

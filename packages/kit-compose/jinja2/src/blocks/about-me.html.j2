@@ -33,10 +33,10 @@
             {%- endset -%}
             {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Weight': 'semibold'}, 'children': c_2}) }}
           {%- endset -%}
-          {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4', 'Attrs': og_attrs(['data-testid', 'fact'])}, 'children': c_3}) }}
+          {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4', 'Attrs': og_attrs(['data-slot', 'fact'])}, 'children': c_3}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'Attrs': og_attrs(['data-testid', 'facts'])}, 'children': c_4}) }}
+      {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'Attrs': og_attrs(['data-slot', 'facts'])}, 'children': c_4}) }}
     {%- endif %}
   {%- elif og_t(og_gt(og_len(v_skills), 0)) %}
     {%- set c_9 -%}
@@ -55,10 +55,10 @@
           {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Justify': 'between'}, 'children': c_7}) }}
           {{ og_include('compose/progress.html.j2', {'p': {'Value': og_s(og_str(og_get(v_s, ['level']))), 'Max': '100', 'Attrs': og_attrs(['aria-label', og_get(v_s, ['label'])])}}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'skill'])}, 'children': c_8}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'skill'])}, 'children': c_8}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'skills'])}, 'children': c_9}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'skills'])}, 'children': c_9}) }}
   {%- endif %}
   {{ og_include('blocks/action-group.html.j2', {'p': {'primary': og_get(v_actions, ['cta']), 'primaryHref': og_get(v_actions, ['href']), 'secondary': (og_get(v_actions, ['secondary']) if og_t(og_eq(og_get(v_actions, ['mode']), 'two')) else none), 'secondaryHref': og_get(v_actions, ['secondaryHref'])}}) }}
 {%- endset -%}

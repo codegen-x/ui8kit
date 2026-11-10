@@ -29,9 +29,9 @@
                   {%- set c_2 -%}
                     {{ og_text(og_get(v_s, ['title'])) }}
                   {%- endset -%}
-                  {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_tpl('#{0}-{1}', [v_id, og_get(v_s, ['id'])]))), 'Variant': 'default', 'Class': 'text-sm text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'toc-link'])}, 'children': c_2}) }}
+                  {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_tpl('#{0}-{1}', [v_id, og_get(v_s, ['id'])]))), 'Variant': 'default', 'Class': 'text-sm text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'toc-link'])}, 'children': c_2}) }}
                 {%- endset -%}
-                {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_3}) }}
+                {{ og_include('compose/list-item.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'sections-row'])}, 'children': c_3}) }}
               {%- endfor %}
             {%- endset -%}
             {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-2 p-0'}, 'children': c_4}) }}
@@ -56,14 +56,14 @@
                 {%- set c_9 -%}
                   {{ og_text(og_get(v_s, ['quote'])) }}
                 {%- endset -%}
-                {{ og_include('compose/text.html.j2', {'p': {'Tag': 'blockquote', 'Class': 'm-0 border-l border-border pl-4 text-lg', 'Attrs': og_attrs(['data-testid', 'quote'])}, 'children': c_9}) }}
+                {{ og_include('compose/text.html.j2', {'p': {'Tag': 'blockquote', 'Class': 'm-0 border-l border-border pl-4 text-lg', 'Attrs': og_attrs(['data-slot', 'quote'])}, 'children': c_9}) }}
               {%- endif %}
             {%- endif %}
           {%- endset -%}
-          {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex flex-col gap-4', 'Attrs': og_attrs(['id', og_tpl('{0}-{1}', [v_id, og_get(v_s, ['id'])]), 'data-testid', 'item'])}, 'children': c_10}) }}
+          {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex flex-col gap-4', 'Attrs': og_attrs(['id', og_tpl('{0}-{1}', [v_id, og_get(v_s, ['id'])]), 'data-slot', 'item'])}, 'children': c_10}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '8', 'Align': 'stretch', 'Class': 'mx-auto w-full max-w-2xl min-w-0', 'Attrs': og_attrs(['data-testid', 'article'])}, 'children': c_11}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '8', 'Align': 'stretch', 'Class': 'mx-auto w-full max-w-2xl min-w-0', 'Attrs': og_attrs(['data-slot', 'article'])}, 'children': c_11}) }}
     {%- endset -%}
     {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1', 'Class': og_s(og_cnv(['items-start gap-8', ('md:grid-cols-[14rem_minmax(0,1fr)]' if og_t(og_eq(v_layout, 'toc')) else '')]))}, 'children': c_12}) }}
   {%- endif %}

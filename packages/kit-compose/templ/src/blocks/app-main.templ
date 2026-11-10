@@ -30,14 +30,14 @@ templ AppMain(p AppMainProps) {
 	{{ vActivity := p.Activity }}
 	{{ vCols := uiutils.Def(p.Cols, "1-2") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
-	@compose.Stack(compose.StackProps{Gap: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "4", "6")), Align: "stretch", BoxProps: box.BoxProps{Class: "min-w-0", Attrs: uiutils.Attrs("data-testid", "app-main")}}) {
+	@compose.Stack(compose.StackProps{Gap: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "4", "6")), Align: "stretch", BoxProps: box.BoxProps{Class: "min-w-0", Attrs: uiutils.Attrs("data-slot", "app-main")}}) {
 		@compose.Title(compose.TitleProps{As: "2", Size: "2xl", Weight: "bold", TextProps: text.TextProps{Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-title", vId))}}) {
 			{ uiutils.Text(vTitle) }
 		}
 		if uiutils.Gt(uiutils.Len(vMetrics), float64(0)) {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(vCols), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(vCols), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vM := range uiutils.L(vMetrics) {
-					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@StatTile(StatTileProps{Label: uiutils.Get(vM, "label"), Value: uiutils.Get(vM, "value"), Icon: uiutils.Get(vM, "icon"), Hint: uiutils.Get(vM, "hint")})
 					}
 				}

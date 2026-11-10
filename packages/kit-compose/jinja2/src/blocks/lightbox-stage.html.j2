@@ -15,7 +15,7 @@
     {%- set c_2 -%}
       {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'x', 'Size': 16}}) }}
     {%- endset -%}
-    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(og_get(v_labels, ['close'])), 'Attrs': og_attrs(['data-testid', 'lightbox-close'])}, 'children': c_2}) }}
+    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(og_get(v_labels, ['close']))}, 'children': c_2}) }}
   {%- endset -%}
   {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Justify': 'between'}, 'children': c_3}) }}
   {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_first_of(v_photos, 'title'), 'ratio': '4/3'}}) }}
@@ -44,4 +44,4 @@
   {%- endset -%}
   {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Justify': 'between'}, 'children': c_9}) }}
 {%- endset -%}
-{{ og_include('compose/dialog.html.j2', {'p': {'Open': og_t(og_eq(v_lightbox, 'open')), 'Size': 'xl', 'AriaLabel': og_s(og_first_of(v_photos, 'title')), 'Class': 'gap-4 p-4', 'Attrs': og_attrs(['data-testid', 'lightbox'])}, 'children': c_10}) }}
+{{ og_include('compose/dialog.html.j2', {'p': {'Open': og_t(og_eq(v_lightbox, 'open')), 'Size': 'xl', 'AriaLabel': og_s(og_first_of(v_photos, 'title')), 'Class': 'gap-4 p-4', 'Attrs': og_attrs(['data-slot', 'lightbox'])}, 'children': c_10}) }}

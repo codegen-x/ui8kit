@@ -21,6 +21,7 @@ export function EmptyState({ icon = "inbox", title, text, class: className, acti
         className
       )}
       role="status"
+      data-slot="empty-state"
     >
       <IconBadge size="lg">
         <LucideIcon name={icon} size={20} />

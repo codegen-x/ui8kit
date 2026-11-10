@@ -41,12 +41,12 @@ export function ShellSidebar({
         )
       )}
       aria-label={(landmarkLabel ?? nav.label)}
-      data-testid="sidebar"
       data-mode={mode}
+      data-slot="sidebar"
     >
       <Box class={cn("flex flex-col gap-6 py-4", (named ? "w-64 px-4" : "w-16 items-center px-2"))}>
         {((brand as string) === "show") ? (
-          <Group gap="2" align="center" class="shrink-0" data-testid="brand">
+          <Group gap="2" align="center" class="shrink-0" data-slot="brand">
             <LucideIcon name="layers" size={24} />
             <Text size="base" weight="bold" class={(named ? "" : "sr-only")}>
               {nav.brand}
@@ -58,9 +58,9 @@ export function ShellSidebar({
             label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.label, landmarkLabel)) : nav.label)}
             class="flex-1"
           >
-            <List class="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
+            <List class="m-0 flex list-none flex-col gap-2 p-0" data-slot="items">
               <For each={nav.links ?? []}>{(l) => (
-                <ListItem>
+                <ListItem data-slot="links-row">
                   <MenuEntry
                     href={l.href}
                     class={cn(
@@ -88,7 +88,7 @@ export function ShellSidebar({
             class="inline-flex size-10 items-center justify-center rounded text-muted-foreground"
             aria-label={nav.expand}
             aria-expanded={(((mode as string) === "wide") ? "true" : "false")}
-            data-testid="toggle"
+            data-slot="toggle"
             onClick={() => onToggle?.()}
           >
             <LucideIcon name="panel-left" size={20} />
@@ -101,7 +101,7 @@ export function ShellSidebar({
             "flex w-56 flex-col gap-4 px-4 py-6",
             (((side as string) === "end") ? "border-r border-border" : "border-l border-border")
           )}
-          data-testid="subnav"
+          data-slot="subnav"
         >
           <Text size="sm" weight="semibold" class="px-4">
             {nav.subTitle}
@@ -109,7 +109,7 @@ export function ShellSidebar({
           <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.subTitle, landmarkLabel)) : nav.subTitle)}>
             <List class="m-0 flex list-none flex-col gap-2 p-0">
               <For each={nav.sub ?? []}>{(s) => (
-                <ListItem>
+                <ListItem data-slot="sub-row">
                   <MenuEntry
                     href={s.href}
                     class={cn(

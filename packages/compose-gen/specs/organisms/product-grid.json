@@ -173,7 +173,7 @@
                         "Class": "flex snap-x gap-4 overflow-x-auto pb-4"
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -256,7 +256,10 @@
                                     }
                                   }
                                 }
-                              ]
+                              ],
+                              "attrs": {
+                                "data-slot": "product"
+                              }
                             }
                           ]
                         }
@@ -288,7 +291,7 @@
                         "Class": "gap-4"
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {

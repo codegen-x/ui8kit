@@ -42,13 +42,13 @@ export function DishShowcase({
       {((dishes?.length ?? 0) === 0) ? (
         <EmptyState icon="star" title={empty} />
       ) : (
-        <Grid cols={(((cols as string) === "4") ? "2-4" : "1-3")} class="gap-8" data-testid="items">
+        <Grid cols={(((cols as string) === "4") ? "2-4" : "1-3")} class="gap-8" data-slot="items">
           <For each={dishes ?? []}>{(d) => (
             <Link
               href={urlOf((d.href ?? tpl("#/dish/{0}", d.id)))}
               variant="block"
               class="group flex-col items-stretch gap-4"
-              data-testid="item"
+              data-slot="item"
             >
               <MediaFrame alt={d.name} ratio={ratio} />
               <Stack gap="2">

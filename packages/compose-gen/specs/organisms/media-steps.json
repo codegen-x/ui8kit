@@ -61,7 +61,7 @@
                 "Align": "start"
               },
               "attrs": {
-                "data-testid": "media-step"
+                "data-slot": "media-step"
               },
               "children": [
                 {
@@ -154,7 +154,10 @@
           ],
           "index": "i"
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "media-steps"
+      }
     }
   ],
   "portable": {

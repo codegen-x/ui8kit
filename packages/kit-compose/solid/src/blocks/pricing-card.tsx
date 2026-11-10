@@ -85,19 +85,14 @@ export function PricingCard({
         </Text>
         <List tag="ul" class="flex flex-col gap-2 text-sm">
           <For each={plan.features ?? []}>{(feature) => (
-            <ListItem class="flex gap-2">
+            <ListItem class="flex gap-2" data-slot="features-row">
               {feature}
             </ListItem>
           )}</For>
         </List>
       </CardContent>
       <CardFooter class="flex flex-wrap items-center gap-2">
-        <Button
-          variant={(stand ? "default" : "outline")}
-          size="default"
-          data-testid="plan-select"
-          onClick={() => onSelect?.(plan.id)}
-        >
+        <Button variant={(stand ? "default" : "outline")} size="default" onClick={() => onSelect?.(plan.id)}>
           {labels.cta}
         </Button>
         {footer?.(plan)}

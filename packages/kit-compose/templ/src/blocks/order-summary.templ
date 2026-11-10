@@ -43,11 +43,11 @@ templ OrderSummary(p OrderSummaryProps) {
 		if uiutils.Eq(uiutils.Len(vRows), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "receipt", Title: vEmpty})
 		} else {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "rounded bg-card p-6 inset-ring inset-ring-border", ""))), Attrs: uiutils.Attrs("data-testid", "summary")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "rounded bg-card p-6 inset-ring inset-ring-border", ""))), Attrs: uiutils.Attrs("data-slot", "summary")}}) {
 				@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{}}) {
 					@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col gap-4"}}) {
 						for _, vRow := range uiutils.L(vRows) {
-							@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex items-center justify-between gap-4", uiutils.Cond(uiutils.T(uiutils.Get(vRow, "strong")), "border-t border-border pt-4 text-base font-bold", "text-sm text-muted-foreground"))), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+							@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex items-center justify-between gap-4", uiutils.Cond(uiutils.T(uiutils.Get(vRow, "strong")), "border-t border-border pt-4 text-base font-bold", "text-sm text-muted-foreground"))), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 								@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {
 									{ uiutils.Text(uiutils.Get(vRow, "label")) }
 								}
@@ -58,7 +58,7 @@ templ OrderSummary(p OrderSummaryProps) {
 						}
 					}
 					if uiutils.Eq(vCta, "show") {
-						@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Class: "w-full", Attrs: uiutils.Attrs("data-testid", "checkout")}}) {
+						@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Class: "w-full"}}) {
 							{ uiutils.Text(uiutils.Get(vLabels, "checkout")) }
 						}
 					}

@@ -51,10 +51,10 @@
               {%- endset -%}
               {{ og_include('compose/card-content.html.j2', {'p': {'Class': 'flex flex-wrap items-center justify-between gap-4'}, 'children': c_7}) }}
             {%- endset -%}
-            {{ og_include('compose/card.html.j2', {'p': {'Variant': 'default', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_8}) }}
+            {{ og_include('compose/card.html.j2', {'p': {'Variant': 'default'}, 'children': c_8}) }}
           {%- endfor %}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'order-cards'])}, 'children': c_9}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'order-cards'])}, 'children': c_9}) }}
       {%- endif %}
       {%- if og_t(og_eq(v_pager, 'show')) %}
         {{ og_include('blocks/pager.html.j2', {'p': {'page': 1, 'pages': 3, 'summary': og_tpl(og_get(v_labels, ['summary']), [1, 4, 12]), 'previousLabel': og_get(v_labels, ['previous']), 'nextLabel': og_get(v_labels, ['next'])}}) }}

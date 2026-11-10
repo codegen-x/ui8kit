@@ -35,7 +35,7 @@
         "Align": "stretch"
       },
       "attrs": {
-        "data-testid": "gallery"
+        "data-slot": "gallery"
       },
       "children": [
         {
@@ -68,7 +68,7 @@
                 "Class": "gap-4"
               },
               "attrs": {
-                "data-testid": "thumbs"
+                "data-slot": "thumbs"
               },
               "children": [
                 {

@@ -45,10 +45,10 @@ export function ProductInfo({
             gap="0"
             align="stretch"
             className={(((layout as string) === "split") ? "lg:col-span-2" : "")}
-            data-testid="items"
+            data-slot="items"
           >
             {(details ?? []).map((d, i) => (
-              <Disclosure key={d.id} variant="item" open={(((expand as string) === "first") && (i === 0))} data-testid="item">
+              <Disclosure key={d.id} variant="item" open={(((expand as string) === "first") && (i === 0))} data-slot="item">
                 <Summary variant="item">
                   <Inline className="text-base font-semibold">
                     {d.title}
@@ -62,7 +62,7 @@ export function ProductInfo({
           </Stack>
         ) : null}
         {((specs?.length ?? 0) > 0) ? (
-          <Stack gap="4" align="stretch" className="rounded bg-card inset-ring inset-ring-border p-6" data-testid="specs">
+          <Stack gap="4" align="stretch" className="rounded bg-card inset-ring inset-ring-border p-6" data-slot="specs">
             <Title as={3} size="lg" weight="bold">
               {labels.specs}
             </Title>
@@ -70,7 +70,7 @@ export function ProductInfo({
               {(specs ?? []).map((s) => (
                 <ListItem key={s.id}
                   className={"flex items-center justify-between gap-4 border-b border-border py-2 text-sm last:border-b-0"}
-                  data-testid="spec"
+                  data-slot="spec"
                 >
                   <Inline className="text-muted-foreground">
                     {s.label}

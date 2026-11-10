@@ -6,4 +6,4 @@
 {capture $c_1}
   {=og_slot(($children ?? null))|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'article', 'class' => og_s(og_cnv([($p['className'] ?? '')])), 'attrs' => og_attrs(['data-testid', $v_testid]), 'children' => (string) $c_1])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'article', 'class' => og_s(og_cnv([($p['className'] ?? '')])), 'attrs' => og_attrs(['data-slot', og_coalesce([$v_testid, 'article-block'])]), 'children' => (string) $c_1])|noescape}

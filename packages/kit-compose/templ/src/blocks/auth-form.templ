@@ -28,18 +28,18 @@ templ AuthForm(p AuthFormProps) {
 	{{ vMode := uiutils.Def(p.Mode, "signin") }}
 	{{ vLabels := p.Labels }}
 	{{ vSubmit := p.Submit }}
-	@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "auth-form")}}) {
+	@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "auth-form")}}) {
 		if uiutils.Eq(vMode, "signup") {
 			@Field(FieldProps{Label: uiutils.Get(vLabels, "name"), HtmlFor: uiutils.Tpl("{0}-name", vId)}) {
-				@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "name", Attrs: uiutils.Attrs("autocomplete", "name", "id", uiutils.Tpl("{0}-name", vId), "data-testid", "field")}})
+				@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "name", Attrs: uiutils.Attrs("autocomplete", "name", "id", uiutils.Tpl("{0}-name", vId), "data-slot", "field")}})
 			}
 		}
 		@Field(FieldProps{Label: uiutils.Get(vLabels, "email"), HtmlFor: uiutils.Tpl("{0}-email", vId)}) {
-			@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Attrs: uiutils.Attrs("autocomplete", "email", "id", uiutils.Tpl("{0}-email", vId), "data-testid", "field")}})
+			@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Attrs: uiutils.Attrs("autocomplete", "email", "id", uiutils.Tpl("{0}-email", vId), "data-slot", "field")}})
 		}
 		if uiutils.T(uiutils.And(!uiutils.Eq(vMode, "reset"), !uiutils.Eq(vMode, "magic"))) {
 			@Field(FieldProps{Label: uiutils.Get(vLabels, "password"), HtmlFor: uiutils.Tpl("{0}-password", vId)}) {
-				@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "password", Name: "password", Attrs: uiutils.Attrs("autocomplete", uiutils.Cond(uiutils.T(uiutils.Eq(vMode, "signup")), "new-password", "current-password"), "id", uiutils.Tpl("{0}-password", vId), "data-testid", "field")}})
+				@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "password", Name: "password", Attrs: uiutils.Attrs("autocomplete", uiutils.Cond(uiutils.T(uiutils.Eq(vMode, "signup")), "new-password", "current-password"), "id", uiutils.Tpl("{0}-password", vId), "data-slot", "field")}})
 			}
 		}
 		if uiutils.Eq(vMode, "signin") {
@@ -63,7 +63,7 @@ templ AuthForm(p AuthFormProps) {
 				}
 			}
 		}
-		@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit", Class: "w-full", Attrs: uiutils.Attrs("data-testid", "submit")}}) {
+		@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit", Class: "w-full"}}) {
 			{ uiutils.Text(vSubmit) }
 		}
 	}

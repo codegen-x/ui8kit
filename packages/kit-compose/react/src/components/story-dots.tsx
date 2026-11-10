@@ -13,11 +13,11 @@ export type StoryDotsProps = {
 
 export function StoryDots({ steps, active }: StoryDotsProps) {
   return (
-    <Group gap="2" align="center">
+    <Group gap="2" align="center" data-slot="story-dots">
       {(steps ?? []).map((s) => (
         <Inline key={s.id}
           className={cn("size-2 rounded-full", ((s.id === active) ? "bg-primary" : "bg-border"))}
-          data-testid="story-dot"
+          data-slot="story-dot"
         />
       ))}
     </Group>

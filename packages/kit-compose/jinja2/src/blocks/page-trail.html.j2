@@ -32,4 +32,4 @@
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'flex flex-col gap-6'])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_3}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': og_s(og_cnv(['py-8', ('bg-muted' if og_t(og_eq(v_tone, 'muted')) else '')])), 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else v_titleId), 'data-testid', 'section', 'data-tone', v_tone, 'data-aside', v_aside, 'aria-label', v_landmarkLabel])}, 'children': c_4}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': og_s(og_cnv(['py-8', ('bg-muted' if og_t(og_eq(v_tone, 'muted')) else '')])), 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else v_titleId), 'data-tone', v_tone, 'data-aside', v_aside, 'aria-label', v_landmarkLabel, 'data-slot', 'section'])}, 'children': c_4}) }}

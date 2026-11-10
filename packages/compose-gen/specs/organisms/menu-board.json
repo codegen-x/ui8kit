@@ -171,7 +171,7 @@
                         "Class": "flex flex-col gap-8"
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -216,7 +216,7 @@
                                     }
                                   ]
                                 },
-                                "data-testid": "menusection"
+                                "data-slot": "menusection"
                               },
                               "children": [
                                 {

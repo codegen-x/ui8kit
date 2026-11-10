@@ -25,7 +25,7 @@ templ PostStats(p PostStatsProps) {
 	{{ vExtras := p.Extras }}
 	{{ vLabels := p.Labels }}
 	{{ vAlign := uiutils.Def(p.Align, "start") }}
-	@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: uiutils.S(vAlign), BoxProps: box.BoxProps{Class: "flex-wrap text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "post-stats")}}) {
+	@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: uiutils.S(vAlign), BoxProps: box.BoxProps{Class: "flex-wrap text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "post-stats")}}) {
 		@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
 			@icons.LucideIcon(icons.LucideIconProps{Name: "clock", Size: 16})
 			@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{}}) {

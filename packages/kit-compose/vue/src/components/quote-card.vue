@@ -65,7 +65,7 @@ const { q, labels, item, layout = "grid" } = defineProps<QuoteCardProps>();
     </template>
     <template v-else>
       <Rating v-if="(item?.rating !== 'hide')" :value="q.rating" :label="tpl(labels.rating, q.rating)" />
-      <Inline v-if="(item?.mark === 'icon')" class="text-muted-foreground" data-testid="mark">
+      <Inline v-if="(item?.mark === 'icon')" class="text-muted-foreground" data-slot="mark">
         <LucideIcon :name="q.mark" :size="24" />
       </Inline>
       <Text :size="(((layout as string) === 'single') ? 'xl' : 'base')">

@@ -46,9 +46,9 @@ templ MenuBoard(p MenuBoardProps) {
 				if uiutils.Eq(vLayout, "sections") {
 					@MenuSectionNav(MenuSectionNavProps{Label: uiutils.Get(vLabels, "sections"), Sections: vSections, Prefix: vId, LandmarkLabel: vLandmarkLabel})
 				}
-				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-8", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-8", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for _, vS := range uiutils.L(vSections) {
-						@compose.Stack(compose.StackProps{Gap: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "2", "4")), BoxProps: box.BoxProps{Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-{1}", vId, uiutils.Get(vS, "key")), "data-testid", "menusection")}}) {
+						@compose.Stack(compose.StackProps{Gap: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "2", "4")), BoxProps: box.BoxProps{Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-{1}", vId, uiutils.Get(vS, "key")), "data-slot", "menusection")}}) {
 							@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "border-b border-border pb-2"}}) {
 								@compose.Title(compose.TitleProps{As: "3", Size: "xl", Weight: "bold", TextProps: text.TextProps{}}) {
 									{ uiutils.Text(uiutils.Get(vS, "title")) }

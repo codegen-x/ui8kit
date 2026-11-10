@@ -12,11 +12,11 @@
   {capture $c_1}
     {=og_include('icons/LucideIcon.latte', ['name' => 'minus', 'size' => 16])|noescape}
   {/capture}
-  {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'layout' => 'icon', 'type' => 'button', 'ariaLabel' => og_s($v_decrease), 'attrs' => og_attrs(['data-testid', 'decrease']), 'children' => (string) $c_1])|noescape}
+  {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'layout' => 'icon', 'type' => 'button', 'ariaLabel' => og_s($v_decrease), 'children' => (string) $c_1])|noescape}
   {=og_include('compose/Input.latte', ['type' => 'number', 'name' => og_s($v_name), 'value' => og_s($v_value), 'min' => og_s($v_min), 'size' => 'sm', 'class' => 'number-bare w-8 bg-transparent px-0 text-center inset-ring-0', 'attrs' => og_attrs(['aria-label', $v_label])])|noescape}
   {capture $c_2}
     {=og_include('icons/LucideIcon.latte', ['name' => 'plus', 'size' => 16])|noescape}
   {/capture}
-  {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'layout' => 'icon', 'type' => 'button', 'ariaLabel' => og_s($v_increase), 'attrs' => og_attrs(['data-testid', 'increase']), 'children' => (string) $c_2])|noescape}
+  {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'layout' => 'icon', 'type' => 'button', 'ariaLabel' => og_s($v_increase), 'children' => (string) $c_2])|noescape}
 {/capture}
 {=og_include('compose/Box.latte', ['class' => 'inline-flex h-10 items-center gap-1 rounded bg-background p-1 inset-ring inset-ring-input', 'attrs' => og_attrs(['data-slot', 'number-field']), 'children' => (string) $c_3])|noescape}

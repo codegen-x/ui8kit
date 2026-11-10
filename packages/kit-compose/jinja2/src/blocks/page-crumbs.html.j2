@@ -16,12 +16,12 @@
             {%- set c_1 -%}
               {{ og_text(og_get(v_c, ['name'])) }}
             {%- endset -%}
-            {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_c, ['href']))), 'Variant': 'muted', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'crumb'])}, 'children': c_1}) }}
+            {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_c, ['href']))), 'Variant': 'muted', 'Size': 'sm', 'Attrs': og_attrs(['data-slot', 'crumb'])}, 'children': c_1}) }}
           {%- else %}
             {%- set c_2 -%}
               {{ og_text(og_get(v_c, ['name'])) }}
             {%- endset -%}
-            {{ og_include('compose/inline.html.j2', {'p': {'Attrs': og_attrs(['data-testid', 'crumb'])}, 'children': c_2}) }}
+            {{ og_include('compose/inline.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'crumb'])}, 'children': c_2}) }}
           {%- endif %}
           {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'chevron-right', 'Size': 16}}) }}
         {%- else %}
@@ -31,9 +31,9 @@
           {{ og_include('compose/inline.html.j2', {'p': {'Class': 'font-medium text-foreground', 'Attrs': og_attrs(['aria-current', 'page'])}, 'children': c_3}) }}
         {%- endif %}
       {%- endset -%}
-      {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-2'}, 'children': c_4}) }}
+      {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-2', 'Attrs': og_attrs(['data-slot', 'crumbs-row'])}, 'children': c_4}) }}
     {%- endfor %}
   {%- endset -%}
   {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground'}, 'children': c_5}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-testid', 'crumbs'])}, 'children': c_6}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-slot', 'crumbs'])}, 'children': c_6}) }}

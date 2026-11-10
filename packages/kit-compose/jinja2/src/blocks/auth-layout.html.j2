@@ -34,7 +34,7 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_3}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(og_cnv(['justify-end rounded bg-muted p-8', ('md:order-first' if og_t(og_eq(v_side, 'start')) else 'md:order-last')])), 'Attrs': og_attrs(['data-testid', 'visual'])}, 'children': c_4}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(og_cnv(['justify-end rounded bg-muted p-8', ('md:order-first' if og_t(og_eq(v_side, 'start')) else 'md:order-last')])), 'Attrs': og_attrs(['data-slot', 'visual'])}, 'children': c_4}) }}
       {%- endset -%}
       {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-2', 'Class': 'items-stretch gap-8'}, 'children': c_5}) }}
     {%- elif og_t(og_eq(v_layout, 'centered')) %}
@@ -51,4 +51,4 @@
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'py-12'])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_8}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'div', 'Class': 'w-full', 'Attrs': og_attrs(['data-testid', 'auth-layout', 'data-layout', v_layout])}, 'children': c_9}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'div', 'Class': 'w-full', 'Attrs': og_attrs(['data-layout', v_layout, 'data-slot', 'auth-layout'])}, 'children': c_9}) }}

@@ -67,7 +67,7 @@
             "Class": "w-full text-left text-sm"
           },
           "attrs": {
-            "data-testid": "cart-table"
+            "data-slot": "cart-table"
           },
           "children": [
             {
@@ -189,7 +189,7 @@
                         "Class": "border-t border-border"
                       },
                       "attrs": {
-                        "data-testid": "item"
+                        "data-slot": "item"
                       },
                       "children": [
                         {
@@ -397,9 +397,6 @@
                                   "$": "labels.remove"
                                 }
                               },
-                              "attrs": {
-                                "data-testid": "remove"
-                              },
                               "on": {
                                 "click": {
                                   "call": "emit.remove",
@@ -430,7 +427,10 @@
             }
           ]
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "cart-table-root"
+      }
     },
     {
       "when": {
@@ -457,7 +457,7 @@
             "Class": "mt-4 flex-wrap border-t border-border pt-4"
           },
           "attrs": {
-            "data-testid": "cart-footer"
+            "data-slot": "cart-footer"
           },
           "children": [
             {
@@ -467,7 +467,7 @@
                 "Weight": "bold"
               },
               "attrs": {
-                "data-testid": "subtotal"
+                "data-slot": "subtotal"
               },
               "children": [
                 {
@@ -511,9 +511,6 @@
               "props": {
                 "Variant": "default",
                 "Size": "default"
-              },
-              "attrs": {
-                "data-testid": "checkout"
               },
               "children": [
                 {

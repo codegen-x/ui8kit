@@ -35,11 +35,11 @@ templ HeroPrompt(p HeroPromptProps) {
 	{{ vTopics := p.Topics }}
 	{{ vDensity := uiutils.Def(p.Density, "roomy") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cnv("flex w-full flex-col bg-foreground text-background py-8 [&_.text-muted-foreground]:text-background/70", uiutils.Get(presetDefaults, "hero", "band"))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, "home-hero-title"), "data-testid", "section", "data-tone", "inverse", "data-density", vDensity, "data-chrome", "nav", "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cnv("flex w-full flex-col bg-foreground text-background py-8 [&_.text-muted-foreground]:text-background/70", uiutils.Get(presetDefaults, "hero", "band"))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, "home-hero-title"), "data-tone", "inverse", "data-density", vDensity, "data-chrome", "nav", "aria-label", vLandmarkLabel, "data-slot", "section")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full px-8", uiutils.Get(presetDefaults, "hero", "container"))), Attrs: uiutils.Attrs("data-slot", "container")}}) {
 			@compose.Stack(compose.StackProps{Gap: "0", Align: "stretch", BoxProps: box.BoxProps{}}) {
 				@HeroHead(HeroHeadProps{Brand: uiutils.Get(vNav, "brand"), Links: uiutils.Get(vNav, "links"), Current: uiutils.Get(vNav, "current"), Login: uiutils.Get(vNav, "login"), LoginHref: uiutils.Get(vNav, "loginHref"), Skip: uiutils.Get(vNav, "skip"), NavLabel: uiutils.Get(vNav, "label"), Cta: uiutils.Get(vActions, "cta"), Href: uiutils.Get(vActions, "href"), LandmarkLabel: vLandmarkLabel})
-				@compose.Stack(compose.StackProps{Gap: "0", Align: "center", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full pt-24 pb-16", uiutils.Get(presetDefaults, "hero", "column"))), Attrs: uiutils.Attrs("data-testid", "hero-column")}}) {
+				@compose.Stack(compose.StackProps{Gap: "0", Align: "center", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full pt-24 pb-16", uiutils.Get(presetDefaults, "hero", "column"))), Attrs: uiutils.Attrs("data-slot", "hero-column")}}) {
 					if uiutils.T(vBadge) {
 						@HeroBadge(HeroBadgeProps{Label: vBadge, Mark: vBadgeMark})
 					}

@@ -12,4 +12,4 @@
   {/capture}
   {=og_include('compose/Inline.latte', ['class' => 'pointer-events-none absolute top-2 right-2 rounded px-2 py-0 text-xs text-muted-foreground inset-ring inset-ring-border', 'children' => (string) $c_1])|noescape}
 {/capture}
-{=og_include('compose/Box.latte', ['class' => 'relative w-full max-w-sm', 'attrs' => og_attrs(['data-testid', 'palette']), 'children' => (string) $c_2])|noescape}
+{=og_include('compose/Box.latte', ['class' => 'relative w-full max-w-sm', 'attrs' => og_attrs(['data-slot', 'palette']), 'children' => (string) $c_2])|noescape}

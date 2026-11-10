@@ -18,7 +18,7 @@ export function QuoteRatingPanel({ extras, labels }: QuoteRatingPanelProps) {
       gap="6"
       align="center"
       class="rounded bg-card inset-ring inset-ring-border p-8 text-center"
-      data-testid="quote-rating"
+      data-slot="quote-rating"
     >
       <Text size="5xl" weight="bold">
         {extras.score}
@@ -31,7 +31,7 @@ export function QuoteRatingPanel({ extras, labels }: QuoteRatingPanelProps) {
         <For each={extras.stats ?? []}>{(s, iOf) => { const i = iOf(); return (
           <>
             {(i < 2) ? (
-              <Stack gap="0" align="center" data-testid="quote-stat">
+              <Stack gap="0" align="center" data-slot="quote-stat">
                 <Text size="2xl" weight="semibold">
                   {s.value}
                 </Text>

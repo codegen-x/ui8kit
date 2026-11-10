@@ -51,7 +51,7 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"section\"]",
+      "sel": "[data-slot=\"section\"]",
       "n": 1
     }
   ],

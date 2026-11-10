@@ -54,10 +54,10 @@ export function VeggieBox({
               (layout as string) === "split" ? "grid grid-cols-2 gap-4 md:grid-cols-3 lg:col-span-2"
               : "grid grid-cols-2 gap-4 md:grid-cols-3 lg:col-span-3 lg:grid-cols-6"
             }
-            data-testid="items"
+            data-slot="items"
           >
             {(dishes ?? []).map((d) => (
-              <Stack key={d.id} gap="2" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="item">
+              <Stack key={d.id} gap="2" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
                 <MediaFrame alt={d.name} ratio="1/1" />
                 <Text size="sm" weight="semibold">
                   {d.name}
@@ -82,7 +82,7 @@ export function VeggieBox({
               (layout as string) === "split" ? "rounded bg-card inset-ring inset-ring-border p-6 lg:sticky lg:top-8"
               : "rounded bg-card inset-ring inset-ring-border p-6 lg:col-span-3"
             }
-            data-testid="summary"
+            data-slot="summary"
           >
             <Text size="lg" weight="semibold">
               {labels.summary}
@@ -95,7 +95,7 @@ export function VeggieBox({
               <Text size="sm" className="text-muted-foreground">
                 {labels.total}
               </Text>
-              <Inline className="text-2xl font-bold" role="status" aria-live="polite" data-testid="total">
+              <Inline className="text-2xl font-bold" role="status" aria-live="polite" data-slot="total">
                 {fmtMoney(total, currency)}
               </Inline>
             </Group>

@@ -27,12 +27,12 @@ templ LightboxStage(p LightboxStageProps) {
 	{{ vLabels := p.Labels }}
 	{{ vCaptions := uiutils.Def(p.Captions, "show") }}
 	{{ vLightbox := uiutils.Def(p.Lightbox, "closed") }}
-	@compose.Dialog(compose.DialogProps{Size: "xl", DialogProps: dialog.DialogProps{Open: uiutils.T(uiutils.Eq(vLightbox, "open")), AriaLabel: uiutils.S(uiutils.FirstOf(vPhotos, "title")), Class: "gap-4 p-4", Attrs: uiutils.Attrs("data-testid", "lightbox")}}) {
+	@compose.Dialog(compose.DialogProps{Size: "xl", DialogProps: dialog.DialogProps{Open: uiutils.T(uiutils.Eq(vLightbox, "open")), AriaLabel: uiutils.S(uiutils.FirstOf(vPhotos, "title")), Class: "gap-4 p-4", Attrs: uiutils.Attrs("data-slot", "lightbox")}}) {
 		@compose.Group(compose.GroupProps{Gap: "2", Align: "center", Justify: "between", BoxProps: box.BoxProps{}}) {
 			@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 				{ uiutils.Text(uiutils.FirstOf(vPhotos, "title")) }
 			}
-			@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Get(vLabels, "close")), Attrs: uiutils.Attrs("data-testid", "lightbox-close")}}) {
+			@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Get(vLabels, "close"))}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: "x", Size: 16})
 			}
 		}

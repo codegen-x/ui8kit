@@ -40,7 +40,7 @@ defineSlots<{ default?(): unknown }>();
     :size="size"
     :aria-current="(current ? 'page' : undefined)"
     :class="className"
-    :data-testid="testid"
+    :data-slot="(testid ?? 'menu-entry')"
   >
     <slot />
   </Link>
@@ -48,11 +48,16 @@ defineSlots<{ default?(): unknown }>();
     v-else-if="block"
     :class="className"
     :aria-current="(current ? 'page' : undefined)"
-    :data-testid="testid"
+    :data-slot="(testid ?? 'menu-entry')"
   >
     <slot />
   </Box>
-  <Inline v-else :class="className" :aria-current="(current ? 'page' : undefined)" :data-testid="testid">
+  <Inline
+    v-else
+    :class="className"
+    :aria-current="(current ? 'page' : undefined)"
+    :data-slot="(testid ?? 'menu-entry')"
+  >
     <slot />
   </Inline>
 </template>

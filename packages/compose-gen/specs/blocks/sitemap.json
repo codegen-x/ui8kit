@@ -77,25 +77,25 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"group\"]",
+      "sel": "[data-slot=\"group\"]",
       "n": "@sitemap"
     },
     {
-      "sel": "[data-testid=\"group\"]",
+      "sel": "[data-slot=\"group\"]",
       "cols": "@sitemap",
       "when": {
         "layout": "columns"
       }
     },
     {
-      "sel": "[data-testid=\"signup\"]",
+      "sel": "[data-slot=\"signup\"]",
       "n": 1,
       "when": {
         "signup.mode": "first"
       }
     },
     {
-      "sel": "[data-testid=\"signup\"]",
+      "sel": "[data-slot=\"signup\"]",
       "n": 0,
       "when": {
         "signup.mode": "none"

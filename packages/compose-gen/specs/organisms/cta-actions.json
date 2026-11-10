@@ -98,7 +98,7 @@
             }
           },
           "attrs": {
-            "data-testid": "email-form"
+            "data-slot": "email-form"
           },
           "children": [
             {
@@ -148,7 +148,7 @@
                         }
                       ]
                     },
-                    "data-testid": "field"
+                    "data-slot": "field"
                   }
                 },
                 {
@@ -157,9 +157,6 @@
                     "Variant": "default",
                     "Size": "default",
                     "Type": "submit"
-                  },
-                  "attrs": {
-                    "data-testid": "submit"
                   },
                   "children": [
                     {

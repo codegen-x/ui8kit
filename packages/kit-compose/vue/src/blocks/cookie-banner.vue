@@ -48,9 +48,9 @@ const {
   <Block
     tag="section"
     :aria-labelledby="(landmarkLabel ? undefined : tpl('{0}-title', id))"
-    data-testid="cookie"
     :data-layout="layout"
     :aria-label="landmarkLabel"
+    data-slot="cookie"
   >
     <Container :class="cn('mx-auto w-full max-w-6xl px-4', 'py-4')" data-slot="container">
       <Box
@@ -75,19 +75,13 @@ const {
           </Stack>
         </Group>
         <Group gap="2" class="shrink-0 flex-wrap">
-          <Button
-            v-if="(((actions as string) === 'three') && settings)"
-            variant="ghost"
-            size="sm"
-            type="button"
-            data-testid="cookie-settings"
-          >
+          <Button v-if="(((actions as string) === 'three') && settings)" variant="ghost" size="sm" type="button">
             {{ settings }}
           </Button>
-          <Button variant="outline" size="sm" type="button" data-testid="cookie-decline">
+          <Button variant="outline" size="sm" type="button">
             {{ decline }}
           </Button>
-          <Button variant="default" size="sm" type="button" data-testid="cookie-accept">
+          <Button variant="default" size="sm" type="button">
             {{ accept }}
           </Button>
         </Group>

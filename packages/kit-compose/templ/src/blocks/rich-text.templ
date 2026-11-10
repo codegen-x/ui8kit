@@ -40,7 +40,7 @@ templ RichText(p RichTextProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Heading: map[string]any{"level": vLevel}, Tone: vTone, Density: vDensity, Measure: uiutils.Cond(uiutils.T(uiutils.Or(uiutils.Eq(vLayout, "narrow"), uiutils.Eq(vLayout, "media"))), "2xl", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "3xl", "default")), Boxed: uiutils.Eq(vLayout, "card"), LandmarkLabel: vLandmarkLabel}) {
 		if uiutils.T(uiutils.Or(uiutils.Get(vMeta, "date"), uiutils.Get(vMeta, "author"), uiutils.Get(vMeta, "category"))) {
-			@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-testid", "richtext-meta")}}) {
+			@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-slot", "richtext-meta")}}) {
 				if uiutils.T(uiutils.Get(vMeta, "date")) {
 					@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
 						{ uiutils.Text(uiutils.Get(vMeta, "date")) }
@@ -65,20 +65,20 @@ templ RichText(p RichTextProps) {
 			@compose.Grid(compose.GridProps{Cols: "1", BoxProps: box.BoxProps{Class: "gap-8 lg:grid-cols-3"}}) {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "min-w-0 lg:col-span-2"}}) {
 					if uiutils.T(vContent) {
-						@compose.Prose(compose.ProseProps{Size: "base", Width: "none", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "richtext-content")}}) {
+						@compose.Prose(compose.ProseProps{Size: "base", Width: "none", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "richtext-content")}}) {
 							@templ.Raw(uiutils.Html(vContent))
 						}
 					}
 				}
 				if uiutils.T(uiutils.Get(vAside, "content")) {
-					@compose.Card(compose.CardProps{Variant: "compact", BoxProps: box.BoxProps{Class: "h-fit", Attrs: uiutils.Attrs("data-testid", "richtext-aside")}}) {
+					@compose.Card(compose.CardProps{Variant: "compact", BoxProps: box.BoxProps{Class: "h-fit"}}) {
 						if uiutils.T(uiutils.Get(vAside, "title")) {
 							@compose.Title(compose.TitleProps{As: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLevel, float64(1))), float64(2), float64(3))), Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vAside, "title")) }
 							}
 						}
 						if uiutils.T(uiutils.Get(vAside, "content")) {
-							@compose.Prose(compose.ProseProps{Size: "sm", Width: "none", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "richtext-aside-content")}}) {
+							@compose.Prose(compose.ProseProps{Size: "sm", Width: "none", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "richtext-aside-content")}}) {
 								@templ.Raw(uiutils.Html(uiutils.Get(vAside, "content")))
 							}
 						}
@@ -86,7 +86,7 @@ templ RichText(p RichTextProps) {
 				}
 			}
 		} else if uiutils.T(vContent) {
-			@compose.Prose(compose.ProseProps{Size: "base", Width: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "wide")), "wide", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "hero")), "narrow", "none"))), BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "richtext-content")}}) {
+			@compose.Prose(compose.ProseProps{Size: "base", Width: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "wide")), "wide", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "hero")), "narrow", "none"))), BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "richtext-content")}}) {
 				@templ.Raw(uiutils.Html(vContent))
 			}
 		}

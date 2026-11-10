@@ -46,10 +46,10 @@ templ StoreHero(p StoreHeroProps) {
 			@Backdrop(BackdropProps{Kind: "image", Alt: vTitle})
 			@ActionGroup(ActionGroupProps{Primary: uiutils.Get(vActions, "cta"), PrimaryHref: uiutils.Get(vActions, "href"), Secondary: uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vActions, "mode"), "two")), uiutils.Get(vActions, "secondary"), nil), SecondaryHref: uiutils.Get(vActions, "secondaryHref")})
 			if uiutils.Gt(uiutils.Len(vPerks), float64(0)) {
-				@compose.Grid(compose.GridProps{Cols: "1-3", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "perks")}}) {
+				@compose.Grid(compose.GridProps{Cols: "1-3", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "perks")}}) {
 					for vI, vP := range uiutils.L(vPerks) {
 						if uiutils.Lt(float64(vI), float64(3)) {
-							@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "perk")}}) {
+							@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "perk")}}) {
 								@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted"}}) {
 									@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vP, "icon")), Size: 20})
 								}
@@ -71,10 +71,10 @@ templ StoreHero(p StoreHeroProps) {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge, "level": vLevel}, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, Tone: vTone, LandmarkLabel: vLandmarkLabel, Aside: storeHeroFill1(p, vTitle, vCard)}) {
 			@ActionGroup(ActionGroupProps{Primary: uiutils.Get(vActions, "cta"), PrimaryHref: uiutils.Get(vActions, "href"), Secondary: uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vActions, "mode"), "two")), uiutils.Get(vActions, "secondary"), nil), SecondaryHref: uiutils.Get(vActions, "secondaryHref")})
 			if uiutils.Gt(uiutils.Len(vPerks), float64(0)) {
-				@compose.Grid(compose.GridProps{Cols: "1-3", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "perks")}}) {
+				@compose.Grid(compose.GridProps{Cols: "1-3", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "perks")}}) {
 					for vI, vP := range uiutils.L(vPerks) {
 						if uiutils.Lt(float64(vI), float64(3)) {
-							@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "perk")}}) {
+							@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "perk")}}) {
 								@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted"}}) {
 									@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vP, "icon")), Size: 20})
 								}

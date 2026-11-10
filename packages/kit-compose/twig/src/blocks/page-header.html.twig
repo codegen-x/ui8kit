@@ -26,4 +26,4 @@
     {{ include('compose/Box.html.twig', {'class': 'flex flex-wrap items-center gap-2', 'children': c_4}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': 'flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between', 'children': c_5}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': 'flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between', 'attrs': og_attrs(['data-slot', 'page-header']), 'children': c_5}, with_context = false) }}

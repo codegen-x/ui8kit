@@ -6,4 +6,4 @@
 {%- set c_1 -%}
   {{ og_slot((children ?? null))|raw }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'figure', 'class': og_s(og_cnv([(p.className ?? '')])), 'attrs': og_attrs(['data-testid', v_testid]), 'children': c_1}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'figure', 'class': og_s(og_cnv([(p.className ?? '')])), 'attrs': og_attrs(['data-slot', og_coalesce([v_testid, 'figure-block'])]), 'children': c_1}, with_context = false) }}

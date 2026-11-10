@@ -25,7 +25,7 @@ const { label, value, icon, href, hint } = defineProps<StatTileProps>();
 </script>
 
 <template>
-  <Box class="min-w-0">
+  <Box class="min-w-0" data-slot="stat-tile">
     <Link v-if="href"
       :href="urlOf(href)"
       variant="block"

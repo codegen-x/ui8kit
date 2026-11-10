@@ -184,7 +184,7 @@
                         "Class": "grid grid-cols-1 gap-4 sm:grid-cols-2"
                       },
                       "attrs": {
-                        "data-testid": "facts"
+                        "data-slot": "facts"
                       },
                       "children": [
                         {
@@ -202,7 +202,7 @@
                                 "Class": "rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4"
                               },
                               "attrs": {
-                                "data-testid": "fact"
+                                "data-slot": "fact"
                               },
                               "children": [
                                 {
@@ -266,7 +266,7 @@
                         "Align": "stretch"
                       },
                       "attrs": {
-                        "data-testid": "skills"
+                        "data-slot": "skills"
                       },
                       "children": [
                         {
@@ -285,7 +285,7 @@
                                 "Align": "stretch"
                               },
                               "attrs": {
-                                "data-testid": "skill"
+                                "data-slot": "skill"
                               },
                               "children": [
                                 {

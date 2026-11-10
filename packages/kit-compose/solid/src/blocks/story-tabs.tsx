@@ -52,14 +52,13 @@ export function StoryTabs({
         </SectionFrame>
       ) : ((layout as string) === "years") ? (
         <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
-          <Box class="grid grid-cols-2 gap-2 sm:grid-cols-4" data-testid="story-tabs">
+          <Box class="grid grid-cols-2 gap-2 sm:grid-cols-4" data-slot="story-tabs">
             <For each={steps ?? []}>{(s) => (
               <Button
                 variant={((s.id === active) ? "default" : "outline")}
                 size="lg"
                 type="button"
                 class="h-auto flex-col items-start gap-0 py-2 text-start"
-                data-testid="story-tab"
                 data-active={((s.id === active) ? "true" : "false")}
                 onClick={() => onSelect?.(s.id)}
               >
@@ -94,25 +93,11 @@ export function StoryTabs({
             <Stack gap="4" align="stretch">
               <MediaFrame alt={title} ratio="4/3" />
               <Group gap="4" align="center" justify="between">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  layout="icon"
-                  type="button"
-                  aria-label={labels.previous}
-                  data-testid="story-arrow"
-                >
+                <Button variant="outline" size="sm" layout="icon" type="button" aria-label={labels.previous}>
                   <LucideIcon name="chevron-left" size={16} />
                 </Button>
                 <StoryDots steps={steps} active={active} />
-                <Button
-                  variant="outline"
-                  size="sm"
-                  layout="icon"
-                  type="button"
-                  aria-label={labels.next}
-                  data-testid="story-arrow"
-                >
+                <Button variant="outline" size="sm" layout="icon" type="button" aria-label={labels.next}>
                   <LucideIcon name="chevron-right" size={16} />
                 </Button>
               </Group>

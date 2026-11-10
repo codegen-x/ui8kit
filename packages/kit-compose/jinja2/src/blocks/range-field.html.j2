@@ -11,8 +11,8 @@
 {%- set v_max = og_def(p['max'], none) -%}
 {%- set c_3 -%}
   {%- if og_t(og_and([og_eq(v_type, 'number'), og_has(v_min), og_has(v_max), og_lt(v_min, v_max)])) %}
-    {{ og_include('compose/range.html.j2', {'p': {'Min': og_i(v_min), 'Max': og_i(v_max), 'Value': og_s((og_str(v_min) if og_t(og_eq(v_from, '')) else v_from)), 'Attrs': og_attrs(['aria-label', v_fromLabel, 'data-testid', 'range-from'])}}) }}
-    {{ og_include('compose/range.html.j2', {'p': {'Min': og_i(v_min), 'Max': og_i(v_max), 'Value': og_s((og_str(v_max) if og_t(og_eq(v_to, '')) else v_to)), 'Attrs': og_attrs(['aria-label', v_toLabel, 'data-testid', 'range-to'])}}) }}
+    {{ og_include('compose/range.html.j2', {'p': {'Min': og_i(v_min), 'Max': og_i(v_max), 'Value': og_s((og_str(v_min) if og_t(og_eq(v_from, '')) else v_from)), 'Attrs': og_attrs(['aria-label', v_fromLabel, 'data-slot', 'range-from'])}}) }}
+    {{ og_include('compose/range.html.j2', {'p': {'Min': og_i(v_min), 'Max': og_i(v_max), 'Value': og_s((og_str(v_max) if og_t(og_eq(v_to, '')) else v_to)), 'Attrs': og_attrs(['aria-label', v_toLabel, 'data-slot', 'range-to'])}}) }}
   {%- endif %}
   {%- set c_2 -%}
     {{ og_include('compose/input.html.j2', {'p': {'Type': og_s(v_type), 'Size': 'sm', 'Value': og_s(v_from), 'Min': og_s(og_str(v_min)), 'Max': og_s(og_str(v_max)), 'Attrs': og_attrs(['aria-label', v_fromLabel])}}) }}

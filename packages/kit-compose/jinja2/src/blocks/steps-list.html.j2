@@ -43,10 +43,10 @@
           {%- endset -%}
           {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': og_s(('center' if og_t(og_eq(v_align, 'center')) else 'start'))}, 'children': c_5}) }}
         {%- endset -%}
-        {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(og_cnv(['flex gap-4', ('flex-col' if og_t(og_eq(v_layout, 'row')) else ''), ('items-center text-center' if og_t(og_eq(v_align, 'center')) else '')])), 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_6}) }}
+        {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(og_cnv(['flex gap-4', ('flex-col' if og_t(og_eq(v_layout, 'row')) else ''), ('items-center text-center' if og_t(og_eq(v_align, 'center')) else '')])), 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_6}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ol', 'Class': og_s(og_cnv(['grid gap-6', ('sm:grid-cols-2 md:grid-cols-4' if og_t(og_eq(v_layout, 'row')) else '')])), 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_7}) }}
+    {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ol', 'Class': og_s(og_cnv(['grid gap-6', ('sm:grid-cols-2 md:grid-cols-4' if og_t(og_eq(v_layout, 'row')) else '')])), 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_7}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'align': v_align, 'measure': ('default' if og_t(og_eq(v_layout, 'row')) else '2xl'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_8)}) }}

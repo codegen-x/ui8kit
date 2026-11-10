@@ -9,11 +9,11 @@
     {%- set c_1 -%}
       {{ og_text(v_mark) }}
     {%- endset -%}
-    {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'secondary', 'Size': 'sm', 'Attrs': og_attrs(['data-testid', 'badge-mark'])}, 'children': c_1}) }}
+    {{ og_include('compose/badge.html.j2', {'p': {'Variant': 'secondary', 'Size': 'sm'}, 'children': c_1}) }}
   {%- endif %}
   {%- set c_2 -%}
     {{ og_text(v_label) }}
   {%- endset -%}
   {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Weight': 'bold', 'Class': 'leading-5 text-background'}, 'children': c_2}) }}
 {%- endset -%}
-{{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': og_s(og_cnv(['h-8 justify-center rounded-full px-2 inset-ring inset-ring-background/30', og_preset('blocks/presets/defaults.json', ['hero', 'badge'])])), 'Attrs': og_attrs(['data-testid', 'section-badge'])}, 'children': c_3}) }}
+{{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': og_s(og_cnv(['h-8 justify-center rounded-full px-2 inset-ring inset-ring-background/30', og_preset('blocks/presets/defaults.json', ['hero', 'badge'])])), 'Attrs': og_attrs(['data-slot', 'section-badge'])}, 'children': c_3}) }}

@@ -28,7 +28,7 @@ templ StatTile(p StatTileProps) {
 	{{ vIcon := p.Icon }}
 	{{ vHref := p.Href }}
 	{{ vHint := p.Hint }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "min-w-0"}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "min-w-0", Attrs: uiutils.Attrs("data-slot", "stat-tile")}}) {
 		if uiutils.T(vHref) {
 			@compose.Link(compose.LinkProps{Variant: "block", LinkProps: link.LinkProps{Href: uiutils.URL(vHref, false), Class: "flex min-w-0 flex-col gap-4 rounded bg-card p-6 text-foreground no-underline inset-ring inset-ring-border hover:bg-muted"}}) {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex items-center justify-between gap-2"}}) {

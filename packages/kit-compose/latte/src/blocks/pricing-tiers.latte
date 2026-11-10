@@ -33,7 +33,7 @@
       {/capture}
       {=og_include('compose/Badge.latte', ['variant' => 'default', 'size' => 'default', 'children' => (string) $c_4])|noescape}
     {/capture}
-    {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => 'center', 'class' => 'flex-wrap', 'attrs' => og_attrs(['data-testid', 'billing']), 'children' => (string) $c_5])|noescape}
+    {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => 'center', 'class' => 'flex-wrap', 'attrs' => og_attrs(['data-slot', 'billing']), 'children' => (string) $c_5])|noescape}
   {/if}
   {if og_t(og_eq(og_len($v_plans), 0))}
     {=og_include('blocks/empty-state.latte', ['p' => ['icon' => 'layers', 'title' => og_get($v_labels, ['empty'])]])|noescape}
@@ -43,7 +43,7 @@
         {=og_include('blocks/pricing-card.latte', ['p' => ['plan' => $v_plan, 'labels' => $v_labels, 'emphasis' => $v_emphasis, 'billing' => (og_t(og_eq($v_billing, 'annual')) ? 'annual' : 'monthly'), 'density' => (og_t(og_eq($v_density, 'compact')) ? 'compact' : 'default')]])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_layout, 'stack')) ? '1' : og_fit_cols($v_cols, og_len($v_plans)))), 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'tiers']), 'children' => (string) $c_6])|noescape}
+    {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_layout, 'stack')) ? '1' : og_fit_cols($v_cols, og_len($v_plans)))), 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'tiers']), 'children' => (string) $c_6])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'tone' => $v_tone, 'density' => $v_density, 'measure' => (og_t(og_eq($v_layout, 'stack')) ? 'md' : 'default'), 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_7)])|noescape}

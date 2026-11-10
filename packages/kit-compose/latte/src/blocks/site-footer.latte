@@ -12,7 +12,7 @@
     {capture $c_1}
       {=og_text(og_get($v_labels, ['copyright']))}
     {/capture}
-    {=og_include('compose/Text.latte', ['size' => 'sm', 'class' => 'text-muted-foreground', 'attrs' => og_attrs(['data-testid', 'copyright']), 'children' => (string) $c_1])|noescape}
+    {=og_include('compose/Text.latte', ['size' => 'sm', 'class' => 'text-muted-foreground', 'attrs' => og_attrs(['data-slot', 'copyright']), 'children' => (string) $c_1])|noescape}
     {capture $c_5}
       {capture $c_4}
         {capture $c_2}
@@ -30,4 +30,4 @@
   {/capture}
   {=og_include('compose/Container.latte', ['class' => og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'flex flex-wrap items-center gap-4', (og_t(og_eq($v_density, 'compact')) ? 'py-4' : 'py-6'), (og_t(og_eq($v_layout, 'centered')) ? 'flex-col text-center' : 'justify-between')])), 'attrs' => og_attrs(['data-slot', 'container']), 'children' => (string) $c_6])|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'footer', 'class' => 'mt-12 border-t border-border', 'attrs' => og_attrs(['data-testid', 'site-footer', 'data-layout', $v_layout, 'aria-label', $v_landmarkLabel]), 'children' => (string) $c_7])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'footer', 'class' => 'mt-12 border-t border-border', 'attrs' => og_attrs(['data-layout', $v_layout, 'aria-label', $v_landmarkLabel, 'data-slot', 'site-footer']), 'children' => (string) $c_7])|noescape}

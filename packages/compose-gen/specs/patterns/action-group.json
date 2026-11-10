@@ -73,9 +73,6 @@
               "$": "primaryHref"
             }
           },
-          "attrs": {
-            "data-testid": "action-primary"
-          },
           "children": [
             {
               "text": {
@@ -97,9 +94,6 @@
                 "Href": {
                   "$": "secondaryHref"
                 }
-              },
-              "attrs": {
-                "data-testid": "action-secondary"
               },
               "children": [
                 {

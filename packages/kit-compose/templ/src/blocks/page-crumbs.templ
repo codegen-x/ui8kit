@@ -25,17 +25,17 @@ templ PageCrumbs(p PageCrumbsProps) {
 	{{ vCrumbs := p.Crumbs }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	{{ vLast := any(uiutils.Sub(uiutils.Len(vCrumbs), float64(1))) }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-testid", "crumbs")}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-slot", "crumbs")}}) {
 		@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground"}}) {
 			for vI, vC := range uiutils.L(vCrumbs) {
-				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-2"}}) {
+				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-2", Attrs: uiutils.Attrs("data-slot", "crumbs-row")}}) {
 					if uiutils.Lt(float64(vI), vLast) {
 						if uiutils.T(uiutils.Get(vC, "href")) {
-							@compose.Link(compose.LinkProps{Variant: "muted", Size: "sm", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vC, "href"), false), Attrs: uiutils.Attrs("data-testid", "crumb")}}) {
+							@compose.Link(compose.LinkProps{Variant: "muted", Size: "sm", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vC, "href"), false), Attrs: uiutils.Attrs("data-slot", "crumb")}}) {
 								{ uiutils.Text(uiutils.Get(vC, "name")) }
 							}
 						} else {
-							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Attrs: uiutils.Attrs("data-testid", "crumb")}}) {
+							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Attrs: uiutils.Attrs("data-slot", "crumb")}}) {
 								{ uiutils.Text(uiutils.Get(vC, "name")) }
 							}
 						}

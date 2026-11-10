@@ -67,32 +67,32 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"perk\"]",
+      "sel": "[data-slot=\"perk\"]",
       "n": 3
     },
     {
-      "sel": "[data-testid=\"offer-card\"]",
+      "sel": "[data-slot=\"offer-card\"]",
       "n": 1,
       "when": {
         "layout": "overlay"
       }
     },
     {
-      "sel": "[data-testid=\"offer-card\"]",
+      "sel": "[data-slot=\"offer-card\"]",
       "n": 0,
       "when": {
         "layout": "backdrop"
       }
     },
     {
-      "sel": "[data-testid=\"backdrop\"]",
+      "sel": "[data-slot=\"backdrop\"]",
       "n": 1,
       "when": {
         "layout": "backdrop"
       }
     },
     {
-      "sel": "[data-testid=\"backdrop\"]",
+      "sel": "[data-slot=\"backdrop\"]",
       "n": 0,
       "when": {
         "layout": "overlay"

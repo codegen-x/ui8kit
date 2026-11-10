@@ -15,4 +15,4 @@
   {%- endset -%}
   {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_2}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'figure', 'Class': og_s(og_cnv(['flex flex-col gap-2', ('items-center text-center' if og_t(v_center) else '')])), 'Attrs': og_attrs(['data-testid', 'proof'])}, 'children': c_3}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'figure', 'Class': og_s(og_cnv(['flex flex-col gap-2', ('items-center text-center' if og_t(v_center) else '')])), 'Attrs': og_attrs(['data-slot', 'proof'])}, 'children': c_3}) }}

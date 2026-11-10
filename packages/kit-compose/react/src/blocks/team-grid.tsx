@@ -65,12 +65,12 @@ export function TeamGrid({
             : (cols as string) === "1-3" ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
             : "grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4"
           }
-          data-testid="items"
+          data-slot="items"
         >
           {(members ?? []).map((m) => (
             <Fragment key={m.id}>
               {((layout as string) === "minimal") ? (
-                <Stack gap="2" align="center" className="text-center" data-testid="item">
+                <Stack gap="2" align="center" className="text-center" data-slot="item">
                   <MediaFrame alt={m.name} ratio="1/1" className={cn("size-16", "shrink-0")} />
                   <Text size="sm" weight="semibold">
                     {m.name}
@@ -80,7 +80,7 @@ export function TeamGrid({
                   </Text>
                 </Stack>
               ) : ((layout as string) === "cards") ? (
-                <Stack gap="4" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="item">
+                <Stack gap="4" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
                   <MediaFrame alt={m.name} ratio="1/1" />
                   <Stack gap="2">
                     <Stack gap="0">

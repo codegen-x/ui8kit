@@ -16,7 +16,7 @@ export type TopicChipsProps = {
 
 export function TopicChips({ topics, tone = "default" }: TopicChipsProps) {
   return (
-    <Group gap="2" align="center" justify="center" className="flex-wrap" data-testid="hero-topics">
+    <Group gap="2" align="center" justify="center" className="flex-wrap" data-slot="hero-topics">
       {(topics ?? []).map((topic) => (
         <Fragment key={topic.id}>
           {((tone as string) === "inverse") ? (
@@ -25,7 +25,6 @@ export function TopicChips({ topics, tone = "default" }: TopicChipsProps) {
               variant="ghost"
               size="sm"
               className="gap-2 text-background inset-ring-background/30 hover:bg-background/10"
-              data-testid="hero-topic"
             >
               {topic.icon ? (
                 <LucideIcon name={topic.icon} size={16} />
@@ -33,7 +32,7 @@ export function TopicChips({ topics, tone = "default" }: TopicChipsProps) {
               {topic.name}
             </Button>
           ) : (
-            <Button href={urlOf(topic.href)} variant="outline" size="sm" data-testid="hero-topic">
+            <Button href={urlOf(topic.href)} variant="outline" size="sm">
               {topic.name}
             </Button>
           )}

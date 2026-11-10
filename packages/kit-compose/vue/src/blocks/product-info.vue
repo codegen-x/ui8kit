@@ -57,14 +57,14 @@ const {
         gap="0"
         align="stretch"
         :class="(((layout as string) === 'split') ? 'lg:col-span-2' : '')"
-        data-testid="items"
+        data-slot="items"
       >
         <Disclosure
           v-for="(d, i) in details"
           :key="d.id"
           variant="item"
           :open="(((expand as string) === 'first') && (i === 0))"
-          data-testid="item"
+          data-slot="item"
         >
           <Summary variant="item">
             <Inline class="text-base font-semibold">
@@ -81,7 +81,7 @@ const {
         gap="4"
         align="stretch"
         class="rounded bg-card inset-ring inset-ring-border p-6"
-        data-testid="specs"
+        data-slot="specs"
       >
         <Title :as="3" size="lg" weight="bold">
           {{ labels.specs }}
@@ -89,7 +89,7 @@ const {
         <List tag="ul" class="flex flex-col">
           <ListItem v-for="s in specs" :key="s.id"
             class="flex items-center justify-between gap-4 border-b border-border py-2 text-sm last:border-b-0"
-            data-testid="spec"
+            data-slot="spec"
           >
             <Inline class="text-muted-foreground">
               {{ s.label }}

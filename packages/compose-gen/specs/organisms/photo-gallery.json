@@ -182,7 +182,7 @@
                         "Align": "stretch"
                       },
                       "attrs": {
-                        "data-testid": "featured"
+                        "data-slot": "featured"
                       },
                       "children": [
                         {
@@ -313,7 +313,7 @@
                             "Class": "grid grid-cols-3 gap-2 sm:grid-cols-9"
                           },
                           "attrs": {
-                            "data-testid": "thumbs"
+                            "data-slot": "thumbs"
                           },
                           "children": [
                             {
@@ -395,7 +395,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -694,7 +694,7 @@
                                             "Class": "text-sm text-muted-foreground"
                                           },
                                           "attrs": {
-                                            "data-testid": "caption"
+                                            "data-slot": "caption"
                                           },
                                           "children": [
                                             {

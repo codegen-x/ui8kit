@@ -13,7 +13,7 @@ export function FooterChannels({ extras }: FooterChannelsProps) {
   return (
     <>
       {((extras.channels?.length ?? 0) > 0) ? (
-        <Box className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <Box className="grid grid-cols-1 gap-4 sm:grid-cols-3" data-slot="footer-channels">
           {(extras.channels ?? []).map((c, i) => (
             <Fragment key={c.id}>
               {(i < 3) ? (
@@ -21,7 +21,7 @@ export function FooterChannels({ extras }: FooterChannelsProps) {
                   gap="2"
                   align="start"
                   className="rounded bg-card inset-ring inset-ring-border p-4"
-                  data-testid="footer-channel"
+                  data-slot="footer-channel"
                 >
                   <Inline className="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
                     <LucideIcon name={c.icon} size={20} />

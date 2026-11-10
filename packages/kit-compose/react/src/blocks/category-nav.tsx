@@ -54,7 +54,7 @@ export function CategoryNav({
     : tiles ? "grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6"
     : "flex flex-wrap gap-2";
   return (
-    <Block tag="nav" aria-label={(landmarkLabel ?? label)} data-testid="category-nav" data-layout={layout}>
+    <Block tag="nav" aria-label={(landmarkLabel ?? label)} data-layout={layout} data-slot="category-nav">
       <Container
         className={cn(
           "mx-auto w-full max-w-6xl px-4",
@@ -63,7 +63,7 @@ export function CategoryNav({
         data-slot="container"
       >
         {((layout as string) === "toolbar") ? (
-          <Group gap="4" align="center" className="mb-4 flex-wrap" data-testid="toolbar">
+          <Group gap="4" align="center" className="mb-4 flex-wrap" data-slot="toolbar">
             <SearchField value={(tools?.query ?? "")} label={(tools?.search ?? "")} placeholder={tools?.search} />
             <Select name="sort" size="sm" aria-label={tools?.sort} className="w-48">
               <SelectOption value="sort" label={tools?.sortValue} selected={true} />
@@ -74,9 +74,9 @@ export function CategoryNav({
           </Group>
         ) : null}
         {((categories?.length ?? 0) > 0) ? (
-          <List tag="ul" className={listShape} data-testid="items">
+          <List tag="ul" className={listShape} data-slot="items">
             {(categories ?? []).map((c) => (
-              <ListItem key={c.id}>
+              <ListItem key={c.id} data-slot="categories-row">
                 <MenuEntry
                   href={c.href}
                   className={cn("text-sm", linkShape, ((c.id === current) ? currentLook : otherLook))}

@@ -52,7 +52,7 @@
         }
       },
       "attrs": {
-        "data-testid": "email-form"
+        "data-slot": "email-form"
       },
       "children": [
         {
@@ -67,7 +67,7 @@
                 "Align": "center"
               },
               "attrs": {
-                "data-testid": "composer-attachments"
+                "data-slot": "composer-attachments"
               },
               "children": [
                 {
@@ -88,9 +88,6 @@
                         }
                       ]
                     }
-                  },
-                  "attrs": {
-                    "data-testid": "composer-attach"
                   },
                   "children": [
                     {
@@ -125,9 +122,6 @@
                         }
                       ]
                     }
-                  },
-                  "attrs": {
-                    "data-testid": "composer-attach"
                   },
                   "children": [
                     {
@@ -168,7 +162,7 @@
             }
           },
           "attrs": {
-            "data-testid": "field"
+            "data-slot": "field"
           },
           "children": [
             {
@@ -187,7 +181,7 @@
             "Class": "h-8 w-full"
           },
           "attrs": {
-            "data-testid": "composer-tools"
+            "data-slot": "composer-tools"
           },
           "children": [
             {
@@ -206,7 +200,6 @@
                     "Class": "bg-background/10 text-background hover:bg-background/20"
                   },
                   "attrs": {
-                    "data-testid": "composer-plus",
                     "aria-label": {
                       "op": "coalesce",
                       "args": [
@@ -251,9 +244,6 @@
                           ]
                         }
                       },
-                      "attrs": {
-                        "data-testid": "composer-model"
-                      },
                       "children": [
                         {
                           "use": "LucideIcon",
@@ -291,7 +281,6 @@
                 "Layout": "icon"
               },
               "attrs": {
-                "data-testid": "submit",
                 "aria-label": {
                   "op": "coalesce",
                   "args": [

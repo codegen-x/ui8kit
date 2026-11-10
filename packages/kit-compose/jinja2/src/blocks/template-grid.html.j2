@@ -29,10 +29,10 @@
               {%- endif %}
               {{ og_text(og_get(v_f, ['title'])) }}
             {%- endset -%}
-            {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Type': 'button', 'Class': 'gap-2', 'Attrs': og_attrs(['data-testid', 'template-filter'])}, 'children': c_2}) }}
+            {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Type': 'button', 'Class': 'gap-2'}, 'children': c_2}) }}
           {%- endfor %}
         {%- endset -%}
-        {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'flex-wrap', 'Attrs': og_attrs(['role', 'group', 'aria-label', og_get(v_labels, ['filters']), 'data-testid', 'template-filters'])}, 'children': c_3}) }}
+        {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'flex-wrap', 'Attrs': og_attrs(['role', 'group', 'aria-label', og_get(v_labels, ['filters']), 'data-slot', 'template-filters'])}, 'children': c_3}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Class': 'h-8 w-full flex-wrap'}, 'children': c_4}) }}
@@ -50,7 +50,7 @@
               {%- set c_6 -%}
                 {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'layout-template', 'Size': 16}}) }}
               {%- endset -%}
-              {{ og_include('compose/icon-badge.html.j2', {'p': {'Size': 'sm', 'Class': 'overflow-hidden', 'Attrs': og_attrs(['data-testid', 'template-avatar'])}, 'children': c_6}) }}
+              {{ og_include('compose/icon-badge.html.j2', {'p': {'Size': 'sm', 'Class': 'overflow-hidden', 'Attrs': og_attrs(['data-slot', 'template-avatar'])}, 'children': c_6}) }}
               {%- set c_15 -%}
                 {%- set c_7 -%}
                   {{ og_text(og_get(v_t, ['title'])) }}
@@ -86,17 +86,17 @@
               {%- endset -%}
               {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Class': 'min-w-0 flex-1'}, 'children': c_15}) }}
             {%- endset -%}
-            {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': og_s(og_cnv(['w-full', og_preset('blocks/presets/defaults.json', ['templates', 'footer'])])), 'Attrs': og_attrs(['data-testid', 'template-footer'])}, 'children': c_16}) }}
+            {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': og_s(og_cnv(['w-full', og_preset('blocks/presets/defaults.json', ['templates', 'footer'])])), 'Attrs': og_attrs(['data-slot', 'template-footer'])}, 'children': c_16}) }}
           {%- endset -%}
-          {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border', og_preset('blocks/presets/defaults.json', ['templates', 'card'])])), 'Attrs': og_attrs(['data-testid', 'template-card'])}, 'children': c_17}) }}
+          {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border', og_preset('blocks/presets/defaults.json', ['templates', 'card'])])), 'Attrs': og_attrs(['data-slot', 'template-card'])}, 'children': c_17}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(v_cols), 'Class': 'w-full gap-6', 'Attrs': og_attrs(['data-testid', 'template-grid'])}, 'children': c_18}) }}
+      {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(v_cols), 'Class': 'w-full gap-6', 'Attrs': og_attrs(['data-slot', 'template-grid'])}, 'children': c_18}) }}
     {%- endif %}
     {%- set c_19 -%}
       {{ og_text(og_get(v_labels, ['browse'])) }}
     {%- endset -%}
-    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Href': og_url(og_s(v_browseHref)), 'Class': 'w-full', 'Attrs': og_attrs(['data-testid', 'template-browse'])}, 'children': c_19}) }}
+    {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Href': og_url(og_s(v_browseHref)), 'Class': 'w-full'}, 'children': c_19}) }}
   {%- endset -%}
   {{ og_include('compose/stack.html.j2', {'p': {'Gap': '8', 'Align': 'stretch'}, 'children': c_20}) }}
 {%- endset -%}

@@ -101,7 +101,7 @@
         "Class": "flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-muted-foreground"
       },
       "attrs": {
-        "data-testid": "pager"
+        "data-slot": "pager"
       },
       "children": [
         {
@@ -155,9 +155,6 @@
                     "Variant": "outline",
                     "Size": "sm",
                     "Type": "button"
-                  },
-                  "attrs": {
-                    "data-testid": "pager-more"
                   },
                   "on": {
                     "click": {
@@ -346,7 +343,10 @@
                             {
                               "text": "…"
                             }
-                          ]
+                          ],
+                          "attrs": {
+                            "data-slot": "numbers-row"
+                          }
                         }
                       ],
                       "else": [
@@ -370,7 +370,7 @@
                               },
                               "attrs": {
                                 "aria-current": "page",
-                                "data-testid": "pager-current"
+                                "data-slot": "pager-current"
                               },
                               "children": [
                                 {

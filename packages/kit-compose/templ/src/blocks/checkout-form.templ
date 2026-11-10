@@ -46,40 +46,40 @@ templ CheckoutForm(p CheckoutFormProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 items-start gap-8 lg:grid-cols-3"}}) {
-			@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vSummary, "aside")), "flex flex-col gap-6 lg:col-span-2", "flex flex-col gap-6 lg:col-span-3")), Attrs: uiutils.Attrs("data-testid", "checkout-form")}}) {
+			@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vSummary, "aside")), "flex flex-col gap-6 lg:col-span-2", "flex flex-col gap-6 lg:col-span-3")), Attrs: uiutils.Attrs("data-slot", "checkout-form")}}) {
 				@CheckoutStep(CheckoutStepProps{Number: "1", Title: uiutils.Get(vLabels, "contacts"), Text: uiutils.Get(vLabels, "contactsText"), Layout: vLayout}) {
 					@compose.Grid(compose.GridProps{Cols: "1-2", BoxProps: box.BoxProps{Class: "gap-4"}}) {
 						@Field(FieldProps{Label: uiutils.Get(vLabels, "name"), HtmlFor: uiutils.Tpl("{0}-name", vId)}) {
-							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "name", Attrs: uiutils.Attrs("autocomplete", "name", "id", uiutils.Tpl("{0}-name", vId), "data-testid", "field")}})
+							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "name", Attrs: uiutils.Attrs("autocomplete", "name", "id", uiutils.Tpl("{0}-name", vId), "data-slot", "field")}})
 						}
 						@Field(FieldProps{Label: uiutils.Get(vLabels, "phone"), HtmlFor: uiutils.Tpl("{0}-phone", vId)}) {
-							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "tel", Name: "phone", Attrs: uiutils.Attrs("autocomplete", "tel", "id", uiutils.Tpl("{0}-phone", vId), "data-testid", "field")}})
+							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "tel", Name: "phone", Attrs: uiutils.Attrs("autocomplete", "tel", "id", uiutils.Tpl("{0}-phone", vId), "data-slot", "field")}})
 						}
 						@Field(FieldProps{Label: uiutils.Get(vLabels, "email"), HtmlFor: uiutils.Tpl("{0}-email", vId)}) {
-							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Attrs: uiutils.Attrs("autocomplete", "email", "id", uiutils.Tpl("{0}-email", vId), "data-testid", "field")}})
+							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Attrs: uiutils.Attrs("autocomplete", "email", "id", uiutils.Tpl("{0}-email", vId), "data-slot", "field")}})
 						}
 					}
 				}
 				@CheckoutStep(CheckoutStepProps{Number: "2", Title: uiutils.Get(vLabels, "address"), Text: uiutils.Get(vLabels, "addressText"), Layout: vLayout}) {
 					@Field(FieldProps{Label: uiutils.Get(vLabels, "street"), HtmlFor: uiutils.Tpl("{0}-street", vId)}) {
-						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "street", Attrs: uiutils.Attrs("autocomplete", "address-line1", "id", uiutils.Tpl("{0}-street", vId), "data-testid", "field")}})
+						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "street", Attrs: uiutils.Attrs("autocomplete", "address-line1", "id", uiutils.Tpl("{0}-street", vId), "data-slot", "field")}})
 					}
 					@compose.Grid(compose.GridProps{Cols: "2-4", BoxProps: box.BoxProps{Class: "gap-4"}}) {
 						@Field(FieldProps{Label: uiutils.Get(vLabels, "house"), HtmlFor: uiutils.Tpl("{0}-house", vId)}) {
-							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "house", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-house", vId), "data-testid", "field")}})
+							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "house", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-house", vId), "data-slot", "field")}})
 						}
 						@Field(FieldProps{Label: uiutils.Get(vLabels, "flat"), HtmlFor: uiutils.Tpl("{0}-flat", vId)}) {
-							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "flat", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-flat", vId), "data-testid", "field")}})
+							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "flat", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-flat", vId), "data-slot", "field")}})
 						}
 						@Field(FieldProps{Label: uiutils.Get(vLabels, "entrance"), HtmlFor: uiutils.Tpl("{0}-entrance", vId)}) {
-							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "entrance", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-entrance", vId), "data-testid", "field")}})
+							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "entrance", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-entrance", vId), "data-slot", "field")}})
 						}
 						@Field(FieldProps{Label: uiutils.Get(vLabels, "floor"), HtmlFor: uiutils.Tpl("{0}-floor", vId)}) {
-							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "floor", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-floor", vId), "data-testid", "field")}})
+							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "floor", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-floor", vId), "data-slot", "field")}})
 						}
 					}
 					@Field(FieldProps{Label: uiutils.Get(vLabels, "comment"), HtmlFor: uiutils.Tpl("{0}-comment", vId)}) {
-						@compose.Textarea(compose.TextareaProps{TextareaProps: textarea.TextareaProps{Rows: "4", Name: "comment", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-comment", vId), "data-testid", "field")}})
+						@compose.Textarea(compose.TextareaProps{TextareaProps: textarea.TextareaProps{Rows: "4", Name: "comment", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-comment", vId), "data-slot", "field")}})
 					}
 				}
 				@CheckoutStep(CheckoutStepProps{Number: "3", Title: uiutils.Get(vLabels, "slot"), Text: uiutils.Get(vLabels, "slotText"), Layout: vLayout}) {
@@ -95,7 +95,7 @@ templ CheckoutForm(p CheckoutFormProps) {
 				@CheckoutSubmit(CheckoutSubmitProps{Id: vId, Consent: uiutils.Get(vLabels, "consent"), Submit: uiutils.Get(vLabels, "submit"), Legal: uiutils.Get(vLabels, "legal")})
 			}
 			if uiutils.Eq(vSummary, "aside") {
-				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "lg:sticky lg:top-8", Attrs: uiutils.Attrs("data-testid", "aside")}}) {
+				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "lg:sticky lg:top-8", Attrs: uiutils.Attrs("data-slot", "aside")}}) {
 					@CartSummaryCard(CartSummaryCardProps{Field: uiutils.Tpl("{0}-promo", vId), Lines: vLines, Rows: vRows, Promos: vPromos, Labels: vTotals, Items: "show"})
 				}
 			}

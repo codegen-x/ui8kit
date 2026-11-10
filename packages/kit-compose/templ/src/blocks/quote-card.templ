@@ -49,7 +49,7 @@ templ QuoteCard(p QuoteCardProps) {
 				@Rating(RatingProps{Value: uiutils.Get(vQ, "rating"), Label: uiutils.Tpl(uiutils.Get(vLabels, "rating"), uiutils.Get(vQ, "rating"))})
 			}
 			if uiutils.Eq(uiutils.Get(vItem, "mark"), "icon") {
-				@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "mark")}}) {
+				@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "mark")}}) {
 					@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vQ, "mark")), Size: 24})
 				}
 			}

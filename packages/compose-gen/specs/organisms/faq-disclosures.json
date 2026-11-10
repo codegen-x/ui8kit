@@ -30,7 +30,7 @@
         "Align": "stretch"
       },
       "attrs": {
-        "data-testid": "faq"
+        "data-slot": "faq"
       },
       "children": [
         {
@@ -51,7 +51,7 @@
                 }
               },
               "attrs": {
-                "data-testid": "faq-item"
+                "data-slot": "faq-item"
               },
               "children": [
                 {

@@ -36,7 +36,7 @@
         {%- endset -%}
         {{ include('compose/Stack.html.twig', {'gap': '0', 'children': c_7}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/ListItem.html.twig', {'class': 'flex items-start gap-4', 'attrs': og_attrs(['data-testid', 'faq-channel']), 'children': c_8}, with_context = false) }}
+      {{ include('compose/ListItem.html.twig', {'class': 'flex items-start gap-4', 'attrs': og_attrs(['data-slot', 'faq-channel']), 'children': c_8}, with_context = false) }}
     {%- endfor %}
   {%- endset -%}
   {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-col gap-4 p-0', 'children': c_9}, with_context = false) }}
@@ -46,4 +46,4 @@
   {%- endset -%}
   {{ include('compose/Button.html.twig', {'variant': 'link', 'size': 'sm', 'class': 'gap-2 px-0 font-medium', 'children': c_10}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'aside', 'class': 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6', 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, og_get(v_labels, ['asideTitle'])]), 'data-testid', 'faq-help']), 'children': c_11}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'aside', 'class': 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6', 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, og_get(v_labels, ['asideTitle'])]), 'data-slot', 'faq-help']), 'children': c_11}, with_context = false) }}

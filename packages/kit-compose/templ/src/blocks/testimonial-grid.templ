@@ -41,13 +41,13 @@ templ TestimonialGrid(p TestimonialGridProps) {
 		if uiutils.Eq(uiutils.Len(vQuotes), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "message-square-quote", Title: vEmpty})
 		} else if uiutils.T(uiutils.Or(uiutils.Eq(vLayout, "masonry"), uiutils.Eq(vLayout, "strip"))) {
-			@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "div", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "masonry")), "columns-1 gap-4 md:columns-2 xl:columns-3", "flex snap-x gap-4 overflow-x-auto pb-2")), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "div", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "masonry")), "columns-1 gap-4 md:columns-2 xl:columns-3", "flex snap-x gap-4 overflow-x-auto pb-2")), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vQ := range uiutils.L(vQuotes) {
 					@QuoteCard(QuoteCardProps{Q: vQ, Labels: vLabels, Item: vItem, Layout: vLayout})
 				}
 			}
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "grid")), vCols, "1")), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "grid")), vCols, "1")), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for vI, vQ := range uiutils.L(vQuotes) {
 					if uiutils.T(uiutils.Or(!uiutils.Eq(vLayout, "single"), uiutils.Eq(float64(vI), float64(0)))) {
 						@QuoteCard(QuoteCardProps{Q: vQ, Labels: vLabels, Item: vItem, Layout: vLayout})

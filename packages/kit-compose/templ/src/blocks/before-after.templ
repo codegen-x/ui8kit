@@ -41,15 +41,15 @@ templ BeforeAfter(p BeforeAfterProps) {
 		if uiutils.Eq(uiutils.Len(vPoints), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "git-compare", Title: vEmpty})
 		} else if uiutils.Eq(vLayout, "cards") {
-			@compose.Grid(compose.GridProps{Cols: "1-2", BoxProps: box.BoxProps{Class: "items-stretch gap-4", Attrs: uiutils.Attrs("data-testid", "sides")}}) {
-				@compose.Card(compose.CardProps{Variant: "muted", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-full", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-4 p-4", ""))), Attrs: uiutils.Attrs("data-testid", "side", "data-side", "before")}}) {
+			@compose.Grid(compose.GridProps{Cols: "1-2", BoxProps: box.BoxProps{Class: "items-stretch gap-4", Attrs: uiutils.Attrs("data-slot", "sides")}}) {
+				@compose.Card(compose.CardProps{Variant: "muted", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-full", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-4 p-4", ""))), Attrs: uiutils.Attrs("data-side", "before")}}) {
 					@compose.CardContent(compose.CardContentProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-4"}}) {
 						@compose.Title(compose.TitleProps{As: "3", Size: "xl", Weight: "bold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vLabels, "before")) }
 						}
 						@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-4 p-0"}}) {
 							for _, vP := range uiutils.L(vPoints) {
-								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start gap-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start gap-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 									if uiutils.Eq(vIcons, "show") {
 										@icons.LucideIcon(icons.LucideIconProps{Name: "x", Size: 16, Class: "h-lh shrink-0 text-sm"})
 									}
@@ -61,14 +61,14 @@ templ BeforeAfter(p BeforeAfterProps) {
 						}
 					}
 				}
-				@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-full", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-4 p-4", ""))), Attrs: uiutils.Attrs("data-testid", "side", "data-side", "after")}}) {
+				@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-full", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-4 p-4", ""))), Attrs: uiutils.Attrs("data-side", "after")}}) {
 					@compose.CardContent(compose.CardContentProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-4"}}) {
 						@compose.Title(compose.TitleProps{As: "3", Size: "xl", Weight: "bold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vLabels, "after")) }
 						}
 						@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-4 p-0"}}) {
 							for _, vP := range uiutils.L(vPoints) {
-								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start gap-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+								@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start gap-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 									if uiutils.Eq(vIcons, "show") {
 										@icons.LucideIcon(icons.LucideIconProps{Name: "check", Size: 16, Class: "h-lh shrink-0 text-sm"})
 									}
@@ -82,9 +82,9 @@ templ BeforeAfter(p BeforeAfterProps) {
 				}
 			}
 		} else {
-			@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "rows")}}) {
+			@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "rows")}}) {
 				for _, vP := range uiutils.L(vPoints) {
-					@compose.Grid(compose.GridProps{Cols: "1-3", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("items-center gap-4", "rounded bg-card inset-ring inset-ring-border p-4")), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Grid(compose.GridProps{Cols: "1-3", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("items-center gap-4", "rounded bg-card inset-ring inset-ring-border p-4")), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@compose.Text(compose.TextProps{Size: "base", Weight: "semibold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vP, "title")) }
 						}

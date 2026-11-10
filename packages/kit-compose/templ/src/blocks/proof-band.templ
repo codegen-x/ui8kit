@@ -42,9 +42,9 @@ templ ProofBand(p ProofBandProps) {
 			@EmptyState(EmptyStateProps{Icon: "building-2", Title: vEmpty})
 		} else {
 			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "beside")), "1-2", "1")), BoxProps: box.BoxProps{Class: "items-center gap-8"}}) {
-				@compose.Group(compose.GroupProps{Gap: "6", Justify: "center", BoxProps: box.BoxProps{Class: "flex-wrap text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "logos")}}) {
+				@compose.Group(compose.GroupProps{Gap: "6", Justify: "center", BoxProps: box.BoxProps{Class: "flex-wrap text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "logos")}}) {
 					for _, vLogo := range uiutils.L(vLogos) {
-						@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "logo")}}) {
+						@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "logo")}}) {
 							@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vLogo, "icon")), Size: 24})
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLogoStyle, "icon")), "sr-only", ""))}}) {
 								{ uiutils.Text(uiutils.Get(vLogo, "name")) }
@@ -52,9 +52,9 @@ templ ProofBand(p ProofBandProps) {
 						}
 					}
 				}
-				@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "beside")), "2", "1-4")), BoxProps: box.BoxProps{Class: "gap-6 text-center", Attrs: uiutils.Attrs("data-testid", "stats")}}) {
+				@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "beside")), "2", "1-4")), BoxProps: box.BoxProps{Class: "gap-6 text-center", Attrs: uiutils.Attrs("data-slot", "stats")}}) {
 					for _, vStat := range uiutils.L(vStats) {
-						@compose.Stack(compose.StackProps{Gap: "0", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "stat")}}) {
+						@compose.Stack(compose.StackProps{Gap: "0", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "stat")}}) {
 							@compose.Text(compose.TextProps{Size: "4xl", Weight: "bold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vStat, "value")) }
 							}

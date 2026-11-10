@@ -50,7 +50,7 @@ export function ReviewList({
       {((reviews?.length ?? 0) === 0) ? (
         <EmptyState icon="message-square-quote" title={labels.empty} />
       ) : null}
-      <Grid cols={(((layout as string) === "grid") ? "1-3" : "1")} className="gap-4" data-testid="items">
+      <Grid cols={(((layout as string) === "grid") ? "1-3" : "1")} className="gap-4" data-slot="items">
         {(reviews ?? []).map((r) => (
           <ArticleBlock key={r.id}
             className={cn(

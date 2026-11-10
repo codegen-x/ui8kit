@@ -82,14 +82,14 @@
             {%- endset -%}
             {{ include('compose/TableCell.html.twig', {'class': 'pr-4 text-right', 'children': c_17}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/TableRow.html.twig', {'class': 'border-t border-border', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_18}, with_context = false) }}
+          {{ include('compose/TableRow.html.twig', {'class': 'border-t border-border', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_18}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
       {{ include('compose/TableBody.html.twig', {'children': c_19}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Table.html.twig', {'class': 'w-full text-left text-sm', 'attrs': og_attrs(['data-testid', 'job-table']), 'children': c_20}, with_context = false) }}
+    {{ include('compose/Table.html.twig', {'class': 'w-full text-left text-sm', 'attrs': og_attrs(['data-slot', 'job-table']), 'children': c_20}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Box.html.twig', {'class': 'w-full overflow-x-auto rounded inset-ring inset-ring-border', 'children': c_21}, with_context = false) }}
+  {{ include('compose/Box.html.twig', {'class': 'w-full overflow-x-auto rounded inset-ring inset-ring-border', 'attrs': og_attrs(['data-slot', 'job-cards']), 'children': c_21}, with_context = false) }}
 {%- else %}
   {%- set c_36 -%}
     {%- for v_j in og_l(v_jobs) %}
@@ -132,7 +132,7 @@
           {%- set c_31 -%}
             {{ og_text(og_get(v_j, ['salary'])) }}
           {%- endset -%}
-          {{ include('compose/Text.html.twig', {'size': 'base', 'weight': 'semibold', 'attrs': og_attrs(['data-testid', 'salary']), 'children': c_31}, with_context = false) }}
+          {{ include('compose/Text.html.twig', {'size': 'base', 'weight': 'semibold', 'attrs': og_attrs(['data-slot', 'salary']), 'children': c_31}, with_context = false) }}
         {%- endif %}
         {%- set c_34 -%}
           {%- set c_32 -%}
@@ -147,8 +147,8 @@
         {%- endset -%}
         {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'between', 'class': 'mt-auto', 'children': c_34}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Stack.html.twig', {'gap': '4', 'class': 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_35}, with_context = false) }}
+      {{ include('compose/Stack.html.twig', {'gap': '4', 'class': 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_35}, with_context = false) }}
     {%- endfor %}
   {%- endset -%}
-  {{ include('compose/Grid.html.twig', {'cols': '1-2', 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_36}, with_context = false) }}
+  {{ include('compose/Grid.html.twig', {'cols': '1-2', 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_36}, with_context = false) }}
 {%- endif %}

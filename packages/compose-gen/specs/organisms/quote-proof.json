@@ -45,7 +45,7 @@
         }
       },
       "attrs": {
-        "data-testid": "proof"
+        "data-slot": "proof"
       },
       "children": [
         {

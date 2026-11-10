@@ -94,18 +94,13 @@ const amount = computed(() => yearlyOn.value ? plan.yearly : plan.price);
         {{ tpl(labels.storage, plan.storage) }}
       </Text>
       <List tag="ul" class="flex flex-col gap-2 text-sm">
-        <ListItem v-for="feature in plan.features" :key="feature" class="flex gap-2">
+        <ListItem v-for="feature in plan.features" :key="feature" class="flex gap-2" data-slot="features-row">
           {{ feature }}
         </ListItem>
       </List>
     </CardContent>
     <CardFooter class="flex flex-wrap items-center gap-2">
-      <Button
-        :variant="(stand ? 'default' : 'outline')"
-        size="default"
-        data-testid="plan-select"
-        @click="() => emit('select', plan.id)"
-      >
+      <Button :variant="(stand ? 'default' : 'outline')" size="default" @click="() => emit('select', plan.id)">
         {{ labels.cta }}
       </Button>
       <slot name="footer" :plan="plan" />

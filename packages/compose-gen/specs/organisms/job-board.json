@@ -242,7 +242,7 @@
                         "Align": "stretch"
                       },
                       "attrs": {
-                        "data-testid": "groups"
+                        "data-slot": "groups"
                       },
                       "children": [
                         {
@@ -261,7 +261,7 @@
                                 "Align": "stretch"
                               },
                               "attrs": {
-                                "data-testid": "group"
+                                "data-slot": "group"
                               },
                               "children": [
                                 {
@@ -356,7 +356,7 @@
                                             "Class": "flex flex-wrap items-center justify-between gap-4 border-b border-border py-4"
                                           },
                                           "attrs": {
-                                            "data-testid": "item"
+                                            "data-slot": "item"
                                           },
                                           "children": [
                                             {

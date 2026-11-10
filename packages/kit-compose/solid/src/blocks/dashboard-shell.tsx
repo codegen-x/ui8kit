@@ -52,11 +52,11 @@ export function DashboardShell({
       class={(((frame as string) === "window") ? "bg-background py-12" : "bg-background")}
       id={id}
       aria-labelledby={(landmarkLabel ? undefined : titleId)}
-      data-testid="dashboard-shell"
       data-topbar={topbar}
       data-sidebar={sidebar}
       data-footer={footer}
       aria-label={landmarkLabel}
+      data-slot="dashboard-shell"
     >
       <Box class={(((frame as string) === "window") ? "mx-auto w-full max-w-6xl px-4" : "")}>
         <Box
@@ -64,7 +64,7 @@ export function DashboardShell({
             "flex flex-col overflow-hidden bg-background",
             (((frame as string) === "window") ? "min-h-160 rounded border border-border" : "min-h-screen")
           )}
-          data-testid="window"
+          data-slot="window"
         >
           {((topbar as string) === "full") ? (
             <ShellTopbar

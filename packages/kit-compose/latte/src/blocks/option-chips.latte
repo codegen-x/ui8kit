@@ -37,9 +37,9 @@
           {=og_include('compose/Inline.latte', ['class' => 'text-muted-foreground', 'children' => (string) $c_5])|noescape}
         {/if}
       {/capture}
-      {=og_include('compose/Label.latte', ['class' => og_s(og_cnv(['flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', (og_t(og_eq($v_layout, 'column')) ? 'justify-between' : '')])), 'attrs' => og_attrs(['data-testid', 'option']), 'children' => (string) $c_6])|noescape}
+      {=og_include('compose/Label.latte', ['class' => og_s(og_cnv(['flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', (og_t(og_eq($v_layout, 'column')) ? 'justify-between' : '')])), 'attrs' => og_attrs(['data-slot', 'option']), 'children' => (string) $c_6])|noescape}
     {/foreach}
   {/capture}
   {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'column')) ? 'flex flex-col gap-2' : 'flex flex-wrap gap-2')), 'children' => (string) $c_7])|noescape}
 {/capture}
-{=og_include('compose/Fieldset.latte', ['class' => 'flex flex-col gap-2', 'attrs' => og_attrs(['role', 'radiogroup', 'aria-labelledby', og_tpl('{0}-legend', [$v_name]), 'data-testid', 'option-group']), 'children' => (string) $c_8])|noescape}
+{=og_include('compose/Fieldset.latte', ['class' => 'flex flex-col gap-2', 'attrs' => og_attrs(['role', 'radiogroup', 'aria-labelledby', og_tpl('{0}-legend', [$v_name]), 'data-slot', 'option-group']), 'children' => (string) $c_8])|noescape}

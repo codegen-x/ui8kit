@@ -13,19 +13,13 @@ export type MediaContactsProps = {
 
 export function MediaContacts({ extras, labels }: MediaContactsProps) {
   return (
-    <Stack gap="6" align="stretch">
+    <Stack gap="6" align="stretch" data-slot="media-contacts">
       <Stack gap="2" align="stretch">
         <Text size="sm" weight="semibold">
           {labels.list}
         </Text>
         {(extras.channels ?? []).map((c, i) => (
-          <Button key={c.id}
-            variant="outline"
-            size="default"
-            href={urlOf(c.href)}
-            className="w-full gap-2"
-            data-testid="media-channel"
-          >
+          <Button key={c.id} variant="outline" size="default" href={urlOf(c.href)} className="w-full gap-2">
             <LucideIcon name={c.icon} size={16} />
             {c.title}
           </Button>
@@ -38,7 +32,7 @@ export function MediaContacts({ extras, labels }: MediaContactsProps) {
         {(extras.stats ?? []).map((s, i) => (
           <Fragment key={s.id}>
             {(i < 3) ? (
-              <Group gap="4" align="center" justify="between" data-testid="media-stat">
+              <Group gap="4" align="center" justify="between" data-slot="media-stat">
                 <Text size="sm" className="text-muted-foreground">
                   {s.label}
                 </Text>

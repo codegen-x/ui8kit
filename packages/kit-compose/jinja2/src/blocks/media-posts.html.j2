@@ -26,8 +26,8 @@
         {%- endset -%}
         {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0'}, 'children': c_4}) }}
       {%- endset -%}
-      {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-testid', 'media-post'])}, 'children': c_5}) }}
+      {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Attrs': og_attrs(['data-slot', 'media-post'])}, 'children': c_5}) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch'}, 'children': c_6}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'media-posts'])}, 'children': c_6}) }}

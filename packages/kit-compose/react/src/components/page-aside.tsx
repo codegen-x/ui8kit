@@ -17,7 +17,7 @@ export function PageAside({ extras, mode = "figure" }: PageAsideProps) {
   return (
     <>
       {((mode as string) === "figure") ? (
-        <Stack gap="0" align="end" className="text-end" data-testid="page-figure">
+        <Stack gap="0" align="end" className="text-end" data-slot="page-figure">
           <Text size="4xl" weight="bold">
             {extras.value}
           </Text>
@@ -31,7 +31,7 @@ export function PageAside({ extras, mode = "figure" }: PageAsideProps) {
           gap="4"
           align="start"
           className="rounded bg-card inset-ring inset-ring-border max-w-xs p-4"
-          data-testid="page-note"
+          data-slot="page-note"
         >
           <LucideIcon name={extras.icon} size={20} />
           <Stack gap="0">
@@ -48,11 +48,11 @@ export function PageAside({ extras, mode = "figure" }: PageAsideProps) {
         </Group>
       ) : null}
       {((mode as string) === "facts") ? (
-        <Box className="grid grid-cols-2 gap-4">
+        <Box className="grid grid-cols-2 gap-4" data-slot="page-aside">
           {(extras.facts ?? []).map((s, i) => (
             <Fragment key={s.id}>
               {(i < 4) ? (
-                <Stack gap="0" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="page-fact">
+                <Stack gap="0" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="page-fact">
                   <Text size="lg" weight="bold">
                     {s.value}
                   </Text>

@@ -76,7 +76,7 @@
                 "Align": "center"
               },
               "attrs": {
-                "data-testid": "logos-block"
+                "data-slot": "logos-block"
               },
               "children": [
                 {
@@ -127,7 +127,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "items"
+                    "data-slot": "items"
                   },
                   "children": [
                     {

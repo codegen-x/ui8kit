@@ -59,12 +59,12 @@ export function ArticleBody({
                 </Text>
                 <List className="m-0 flex list-none flex-col gap-2 p-0">
                   {(sections ?? []).map((s) => (
-                    <ListItem key={s.id}>
+                    <ListItem key={s.id} data-slot="sections-row">
                       <Link
                         href={urlOf(tpl("#{0}-{1}", id, s.id))}
                         variant="default"
                         className="text-sm text-muted-foreground"
-                        data-testid="toc-link"
+                        data-slot="toc-link"
                       >
                         {s.title}
                       </Link>
@@ -74,9 +74,9 @@ export function ArticleBody({
               </Stack>
             </NavBlock>
           ) : null}
-          <Stack gap="8" align="stretch" className="mx-auto w-full max-w-2xl min-w-0" data-testid="article">
+          <Stack gap="8" align="stretch" className="mx-auto w-full max-w-2xl min-w-0" data-slot="article">
             {(sections ?? []).map((s) => (
-              <Box key={s.id} className="flex flex-col gap-4" id={tpl("{0}-{1}", id, s.id)} data-testid="item">
+              <Box key={s.id} className="flex flex-col gap-4" id={tpl("{0}-{1}", id, s.id)} data-slot="item">
                 <Title as={3} size="2xl" weight="bold">
                   {s.title}
                 </Title>
@@ -86,7 +86,7 @@ export function ArticleBody({
                 {((quotes as string) === "show") ? (
                   <>
                     {s.quote ? (
-                      <Text tag="blockquote" className="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
+                      <Text tag="blockquote" className="m-0 border-l border-border pl-4 text-lg" data-slot="quote">
                         {s.quote}
                       </Text>
                     ) : null}

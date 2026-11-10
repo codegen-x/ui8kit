@@ -23,7 +23,7 @@
         {capture $c_1}
           {=og_text($v_badgeLabel)}
         {/capture}
-        {=og_include('compose/Inline.latte', ['class' => 'rounded px-2 py-0 text-xs font-semibold inset-ring inset-ring-current', 'attrs' => og_attrs(['data-testid', 'announcement-badge']), 'children' => (string) $c_1])|noescape}
+        {=og_include('compose/Inline.latte', ['class' => 'rounded px-2 py-0 text-xs font-semibold inset-ring inset-ring-current', 'attrs' => og_attrs(['data-slot', 'announcement-badge']), 'children' => (string) $c_1])|noescape}
       {/if}
       {capture $c_2}
         {=og_text($v_text)}
@@ -34,7 +34,7 @@
           {=og_text($v_cta)}
           {=og_include('icons/LucideIcon.latte', ['name' => 'arrow-right', 'size' => 16])|noescape}
         {/capture}
-        {=og_include('compose/LinkPlain.latte', ['href' => og_url(og_s($v_ctaHref)), 'class' => 'inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4', 'attrs' => og_attrs(['data-testid', 'announcement-cta']), 'children' => (string) $c_3])|noescape}
+        {=og_include('compose/LinkPlain.latte', ['href' => og_url(og_s($v_ctaHref)), 'class' => 'inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4', 'attrs' => og_attrs(['data-slot', 'announcement-cta']), 'children' => (string) $c_3])|noescape}
       {/if}
     {/capture}
     {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => og_s(og_cnv(['min-w-0 flex-wrap', (og_t(og_and([og_eq($v_layout, 'center'), og_eq($v_dismiss, 'show')])) ? 'ml-auto' : '')])), 'children' => (string) $c_4])|noescape}
@@ -42,9 +42,9 @@
       {capture $c_5}
         {=og_include('icons/LucideIcon.latte', ['name' => 'x', 'size' => 16])|noescape}
       {/capture}
-      {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'class' => 'ml-auto shrink-0 text-current', 'type' => 'button', 'attrs' => og_attrs(['aria-label', $v_dismissLabel, 'data-testid', 'dismiss']), 'children' => (string) $c_5])|noescape}
+      {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'class' => 'ml-auto shrink-0 text-current', 'type' => 'button', 'attrs' => og_attrs(['aria-label', $v_dismissLabel]), 'children' => (string) $c_5])|noescape}
     {/if}
   {/capture}
   {=og_include('compose/Container.latte', ['class' => og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'flex items-center gap-4 py-2', (og_t(og_eq($v_layout, 'split')) ? 'justify-between' : 'justify-center')])), 'attrs' => og_attrs(['data-slot', 'container']), 'children' => (string) $c_6])|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'aside', 'class' => og_s(og_cnv(['w-full', (og_t(og_eq($v_position, 'bottom')) ? 'sticky bottom-0 z-40 border-t border-border' : ''), (og_t(og_eq($v_tone, 'muted')) ? 'bg-muted text-foreground' : 'bg-primary text-primary-foreground')])), 'attrs' => og_attrs(['aria-label', og_coalesce([$v_landmarkLabel, $v_label]), 'data-testid', 'announcement', 'data-layout', $v_layout]), 'children' => (string) $c_7])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'aside', 'class' => og_s(og_cnv(['w-full', (og_t(og_eq($v_position, 'bottom')) ? 'sticky bottom-0 z-40 border-t border-border' : ''), (og_t(og_eq($v_tone, 'muted')) ? 'bg-muted text-foreground' : 'bg-primary text-primary-foreground')])), 'attrs' => og_attrs(['aria-label', og_coalesce([$v_landmarkLabel, $v_label]), 'data-layout', $v_layout, 'data-slot', 'announcement']), 'children' => (string) $c_7])|noescape}

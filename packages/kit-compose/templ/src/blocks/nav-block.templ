@@ -22,7 +22,7 @@ templ NavBlock(p NavBlockProps) {
 	{{ vLabel := p.Label }}
 	{{ vTestid := p.Testid }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Class: uiutils.S(uiutils.Cnv(p.Class)), Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-testid", vTestid)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Class: uiutils.S(uiutils.Cnv(p.Class)), Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-slot", uiutils.Coalesce(vTestid, "nav-block"))}}) {
 		{ children... }
 	}
 }

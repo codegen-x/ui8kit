@@ -42,7 +42,7 @@ const {
     class="py-0"
     :landmarkLabel="landmarkLabel"
   >
-    <Stack gap="6" align="center" data-testid="logos-block">
+    <Stack gap="6" align="center" data-slot="logos-block">
       <Title :as="2" size="xl" weight="semibold" class="leading-7" :id="(id + '-title')">
         {{ title }}
       </Title>
@@ -51,7 +51,7 @@ const {
         justify="center"
         align="start"
         :class="cn('flex w-full flex-wrap', defaults.logos.row)"
-        data-testid="items"
+        data-slot="items"
       >
         <LogoSlot v-for="logo in logos" :key="logo.id" :name="logo.name" :icon="logo.icon" />
       </Group>

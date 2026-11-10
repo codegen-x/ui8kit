@@ -26,7 +26,7 @@ templ StatFigure(p StatFigureProps) {
 	if uiutils.Eq(vItem, "card") {
 		@StatTile(StatTileProps{Label: uiutils.Get(vStat, "label"), Value: uiutils.Get(vStat, "value"), Icon: uiutils.Get(vStat, "icon"), Hint: uiutils.Get(vStat, "hint")})
 	} else {
-		@compose.Stack(compose.StackProps{Gap: "6", Align: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "center", "start")), BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "text-center", ""), uiutils.Get(presetDefaults, "stats", "column"))), Attrs: uiutils.Attrs("data-testid", "item")}}) {
+		@compose.Stack(compose.StackProps{Gap: "6", Align: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "center", "start")), BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "text-center", ""), uiutils.Get(presetDefaults, "stats", "column"))), Attrs: uiutils.Attrs("data-slot", "item")}}) {
 			if uiutils.Eq(vItem, "icon") {
 				@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vStat, "icon")), Size: 24})
 			}

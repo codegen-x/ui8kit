@@ -32,4 +32,4 @@
   {%- endset -%}
   {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'children': c_6}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': og_s(v_align), 'class': 'flex-wrap text-muted-foreground', 'attrs': og_attrs(['data-testid', 'post-stats']), 'children': c_7}, with_context = false) }}
+{{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': og_s(v_align), 'class': 'flex-wrap text-muted-foreground', 'attrs': og_attrs(['data-slot', 'post-stats']), 'children': c_7}, with_context = false) }}

@@ -45,9 +45,9 @@ export function DashboardOverview({
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Stack gap="6" align="stretch">
         {((metrics?.length ?? 0) > 0) ? (
-          <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} className="gap-4" data-testid="items">
+          <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} className="gap-4" data-slot="items">
             {(metrics ?? []).map((m) => (
-              <Box key={m.id} data-testid="item">
+              <Box key={m.id} data-slot="item">
                 <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
               </Box>
             ))}
@@ -56,7 +56,7 @@ export function DashboardOverview({
         <Grid
           cols={(((layout as string) === "split") ? "1-2" : "1")}
           className="items-stretch gap-4"
-          data-testid="panels"
+          data-slot="panels"
         >
           {((chart.series?.length ?? 0) > 0) ? (
             <Panel title={chart.title} description={chart.text} id={tpl("{0}-chart", id)} className="h-full">

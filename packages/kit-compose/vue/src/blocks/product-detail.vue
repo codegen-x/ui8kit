@@ -73,12 +73,12 @@ const emit = defineEmits<{ add: [id: string] }>();
     :density="density"
     :landmarkLabel="landmarkLabel"
   >
-    <Stack gap="4" align="stretch" data-testid="buy-box">
+    <Stack gap="4" align="stretch" data-slot="buy-box">
       <Text
         v-if="product?.category"
         size="xs"
         class="uppercase tracking-wide text-muted-foreground"
-        data-testid="category"
+        data-slot="category"
       >
         {{ product?.category }}
       </Text>
@@ -99,7 +99,7 @@ const emit = defineEmits<{ add: [id: string] }>();
         size="sm"
         weight="medium"
         :class="(product?.inStock ? 'text-foreground' : 'text-destructive')"
-        data-testid="stock"
+        data-slot="stock"
       >
         {{ (product?.inStock ? labels.inStock : labels.soldOut) }}
       </Text>
@@ -112,7 +112,7 @@ const emit = defineEmits<{ add: [id: string] }>();
           :decrease="labels.decrease"
           :increase="labels.increase"
         />
-        <Button :disabled="!product?.inStock" data-testid="add" @click="() => emit('add', product?.id)">
+        <Button :disabled="!product?.inStock" @click="() => emit('add', product?.id)">
           {{ labels.add }}
         </Button>
       </Group>

@@ -33,7 +33,7 @@ const { stat, item = "plain", align = "center" } = defineProps<StatFigureProps>(
     gap="6"
     :align="(((align as string) === 'center') ? 'center' : 'start')"
     :class="cn((((align as string) === 'center') ? 'text-center' : ''), defaults.stats.column)"
-    data-testid="item"
+    data-slot="item"
   >
     <LucideIcon v-if="((item as string) === 'icon')" :name="stat.icon" :size="24" />
     <Stack gap="2" :align="(((align as string) === 'center') ? 'center' : 'start')">

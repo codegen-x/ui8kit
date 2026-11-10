@@ -23,20 +23,20 @@
     {%- endset -%}
     {{ include('compose/Label.html.twig', {'htmlFor': og_s(og_tpl('{0}-email', [v_id])), 'class': 'sr-only', 'children': c_1}, with_context = false) }}
     {%- set c_3 -%}
-      {{ include('compose/Input.html.twig', {'type': 'email', 'name': 'email', 'class': 'min-w-0 flex-1', 'attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}, with_context = false) }}
+      {{ include('compose/Input.html.twig', {'type': 'email', 'name': 'email', 'class': 'min-w-0 flex-1', 'attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}, with_context = false) }}
       {%- set c_2 -%}
         {{ og_text(v_submit) }}
       {%- endset -%}
-      {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'submit', 'attrs': og_attrs(['data-testid', 'submit']), 'children': c_2}, with_context = false) }}
+      {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'submit', 'children': c_2}, with_context = false) }}
     {%- endset -%}
     {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'start', 'class': og_s(og_cnv(['w-full', (og_t(og_eq(v_layout, 'stacked')) ? 'flex-col items-stretch' : 'flex-wrap')])), 'children': c_3}, with_context = false) }}
     {%- if og_t(og_and([og_eq(v_terms, 'show'), v_consent])) %}
       {%- set c_4 -%}
         {{ og_text(v_consent) }}
       {%- endset -%}
-      {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'attrs': og_attrs(['data-testid', 'consent']), 'children': c_4}, with_context = false) }}
+      {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'attrs': og_attrs(['data-slot', 'consent']), 'children': c_4}, with_context = false) }}
     {%- endif %}
   {%- endset -%}
-  {{ include('compose/Form.html.twig', {'method': 'dialog', 'class': og_s(og_cnv(['w-full max-w-md', (og_t(og_eq(v_align, 'center')) ? 'mx-auto' : '')])), 'attrs': og_attrs(['data-testid', 'newsletter-form']), 'children': c_5}, with_context = false) }}
+  {{ include('compose/Form.html.twig', {'method': 'dialog', 'class': og_s(og_cnv(['w-full max-w-md', (og_t(og_eq(v_align, 'center')) ? 'mx-auto' : '')])), 'attrs': og_attrs(['data-slot', 'newsletter-form']), 'children': c_5}, with_context = false) }}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'lead': v_text, 'tone': v_tone, 'align': v_align, 'layout': (og_t(og_eq(v_layout, 'split')) ? 'split' : 'stack'), 'media': {'show': og_eq(v_layout, 'split')}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_6)}, 'children': og_markup(c_7)}, with_context = false) }}

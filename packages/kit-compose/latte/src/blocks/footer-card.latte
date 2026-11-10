@@ -19,7 +19,7 @@
         {/capture}
         {=og_include('compose/Text.latte', ['size' => 'base', 'weight' => 'bold', 'children' => (string) $c_2])|noescape}
       {/capture}
-      {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => og_s(og_cnv(['h-8 shrink-0', og_preset('blocks/presets/defaults.json', ['footer', 'brand'])])), 'attrs' => og_attrs(['data-testid', 'footer-brand']), 'children' => (string) $c_3])|noescape}
+      {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => og_s(og_cnv(['h-8 shrink-0', og_preset('blocks/presets/defaults.json', ['footer', 'brand'])])), 'attrs' => og_attrs(['data-slot', 'footer-brand']), 'children' => (string) $c_3])|noescape}
       {if og_t(og_gt(og_len($v_groups), 0))}
         {capture $c_10}
           {capture $c_9}
@@ -37,21 +37,21 @@
                       {/capture}
                       {=og_include('blocks/menu-entry.latte', ['p' => ['href' => og_get($v_item, ['href']), 'className' => og_cnv(['text-xs leading-5 text-muted-foreground'])], 'children' => og_markup($c_5)])|noescape}
                     {/capture}
-                    {=og_include('compose/ListItem.latte', ['children' => (string) $c_6])|noescape}
+                    {=og_include('compose/ListItem.latte', ['attrs' => og_attrs(['data-slot', 'links-row']), 'children' => (string) $c_6])|noescape}
                   {/foreach}
                 {/capture}
                 {=og_include('compose/List.latte', ['class' => 'm-0 flex list-none flex-col gap-4 p-0', 'children' => (string) $c_7])|noescape}
               {/capture}
-              {=og_include('compose/Stack.latte', ['gap' => '4', 'attrs' => og_attrs(['data-testid', 'group']), 'children' => (string) $c_8])|noescape}
+              {=og_include('compose/Stack.latte', ['gap' => '4', 'attrs' => og_attrs(['data-slot', 'group']), 'children' => (string) $c_8])|noescape}
             {/foreach}
           {/capture}
-          {=og_include('compose/Group.latte', ['gap' => '0', 'align' => 'start', 'class' => og_s(og_cnv(['flex w-full flex-nowrap justify-between', og_preset('blocks/presets/defaults.json', ['footer', 'groups'])])), 'attrs' => og_attrs(['data-testid', 'footer-groups']), 'children' => (string) $c_9])|noescape}
+          {=og_include('compose/Group.latte', ['gap' => '0', 'align' => 'start', 'class' => og_s(og_cnv(['flex w-full flex-nowrap justify-between', og_preset('blocks/presets/defaults.json', ['footer', 'groups'])])), 'attrs' => og_attrs(['data-slot', 'footer-groups']), 'children' => (string) $c_9])|noescape}
         {/capture}
         {=og_include('blocks/nav-block.latte', ['p' => ['label' => (og_t($v_landmarkLabel) ? og_uniq(og_tpl('{0}, {1}', [$v_label, $v_landmarkLabel])) : $v_label), 'className' => og_cnv(['min-w-0 flex-1'])], 'children' => og_markup($c_10)])|noescape}
       {/if}
     {/capture}
-    {=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['flex w-full flex-row items-start overflow-hidden bg-muted p-10', og_preset('blocks/presets/defaults.json', ['footer', 'card'])])), 'attrs' => og_attrs(['data-testid', 'footer-card']), 'children' => (string) $c_11])|noescape}
+    {=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['flex w-full flex-row items-start overflow-hidden bg-muted p-10', og_preset('blocks/presets/defaults.json', ['footer', 'card'])])), 'attrs' => og_attrs(['data-slot', 'footer-card']), 'children' => (string) $c_11])|noescape}
   {/capture}
   {=og_include('compose/Container.latte', ['class' => og_s(og_cnv([og_cnv(['mx-auto w-full px-4', og_preset('blocks/presets/defaults.json', ['section', 'landing'])]), 'px-0'])), 'attrs' => og_attrs(['data-slot', 'container']), 'children' => (string) $c_12])|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'footer', 'class' => 'py-8', 'attrs' => og_attrs(['data-testid', 'site-footer', 'data-layout', 'card', 'aria-label', $v_landmarkLabel]), 'children' => (string) $c_13])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'footer', 'class' => 'py-8', 'attrs' => og_attrs(['data-layout', 'card', 'aria-label', $v_landmarkLabel, 'data-slot', 'site-footer']), 'children' => (string) $c_13])|noescape}

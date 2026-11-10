@@ -22,10 +22,10 @@ templ HeroSplitExtras(p HeroSplitExtrasProps) {
 	{{ vContent := p.Content }}
 	{{ vExtra := uiutils.Def(p.Extra, "none") }}
 	if uiutils.T(uiutils.And(uiutils.Eq(vExtra, "stats"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "stats")), float64(0)))) {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-4", Attrs: uiutils.Attrs("data-testid", "hero-stats")}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-4", Attrs: uiutils.Attrs("data-slot", "hero-stats")}}) {
 			for vI, vS := range uiutils.L(uiutils.Get(vContent, "stats")) {
 				if uiutils.Lt(float64(vI), float64(3)) {
-					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "hero-stat")}}) {
+					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "hero-stat")}}) {
 						@compose.Text(compose.TextProps{Size: "2xl", Weight: "semibold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vS, "value")) }
 						}
@@ -38,7 +38,7 @@ templ HeroSplitExtras(p HeroSplitExtrasProps) {
 		}
 	}
 	if uiutils.T(uiutils.And(uiutils.Eq(vExtra, "avatars"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "people")), float64(0)))) {
-		@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-testid", "hero-proof")}}) {
+		@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-slot", "hero-proof")}}) {
 			@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
 				for vI, vP := range uiutils.L(uiutils.Get(vContent, "people")) {
 					if uiutils.Lt(float64(vI), float64(4)) {
@@ -52,10 +52,10 @@ templ HeroSplitExtras(p HeroSplitExtrasProps) {
 		}
 	}
 	if uiutils.T(uiutils.And(uiutils.Eq(vExtra, "minis"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "features")), float64(0)))) {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-2", Attrs: uiutils.Attrs("data-testid", "hero-minis")}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-2", Attrs: uiutils.Attrs("data-slot", "hero-minis")}}) {
 			for vI, vF := range uiutils.L(uiutils.Get(vContent, "features")) {
 				if uiutils.Lt(float64(vI), float64(2)) {
-					@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "hero-mini")}}) {
+					@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "hero-mini")}}) {
 						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted"}}) {
 							@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 20})
 						}
@@ -73,7 +73,7 @@ templ HeroSplitExtras(p HeroSplitExtrasProps) {
 		}
 	}
 	if uiutils.T(uiutils.And(uiutils.Eq(vExtra, "quote"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "people")), float64(0)))) {
-		@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{}}) {
+		@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "hero-split-extras")}}) {
 			for vI, vP := range uiutils.L(uiutils.Get(vContent, "people")) {
 				if uiutils.Lt(float64(vI), float64(1)) {
 					@FigureBlock(FigureBlockProps{Class: uiutils.Cnv("flex flex-col gap-4"), Testid: "hero-quote"}) {
@@ -94,10 +94,10 @@ templ HeroSplitExtras(p HeroSplitExtrasProps) {
 					}
 				}
 			}
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-4", Attrs: uiutils.Attrs("data-testid", "hero-stats")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-4", Attrs: uiutils.Attrs("data-slot", "hero-stats")}}) {
 				for vI, vS := range uiutils.L(uiutils.Get(vContent, "stats")) {
 					if uiutils.Lt(float64(vI), float64(3)) {
-						@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "hero-stat")}}) {
+						@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "hero-stat")}}) {
 							@compose.Text(compose.TextProps{Size: "2xl", Weight: "semibold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vS, "value")) }
 							}

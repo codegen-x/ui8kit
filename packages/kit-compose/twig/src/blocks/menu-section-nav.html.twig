@@ -15,9 +15,9 @@
         {%- endset -%}
         {{ include('compose/Link.html.twig', {'href': og_url(og_s(og_tpl('#{0}-{1}', [v_prefix, og_get(v_s, ['key'])]))), 'variant': 'nav', 'size': 'sm', 'class': 'h-8 rounded px-4 inset-ring inset-ring-border', 'children': c_1}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/ListItem.html.twig', {'children': c_2}, with_context = false) }}
+      {{ include('compose/ListItem.html.twig', {'attrs': og_attrs(['data-slot', 'sections-row']), 'children': c_2}, with_context = false) }}
     {%- endfor %}
   {%- endset -%}
   {{ include('compose/List.html.twig', {'tag': 'ul', 'class': 'flex flex-wrap gap-2', 'children': c_3}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'nav', 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-testid', 'section-nav']), 'children': c_4}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'nav', 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-slot', 'section-nav']), 'children': c_4}, with_context = false) }}

@@ -48,7 +48,7 @@ const numbers = computed(() => pageWindow(page, pages));
 <template>
   <Box
     :class="'flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-muted-foreground'"
-    data-testid="pager"
+    data-slot="pager"
   >
     <Inline class="flex flex-wrap items-center gap-4">
       <Inline>
@@ -61,7 +61,6 @@ const numbers = computed(() => pageWindow(page, pages));
         variant="outline"
         size="sm"
         type="button"
-        data-testid="pager-more"
         @click="() => emit('more')"
       >
         {{ moreLabel }}
@@ -79,13 +78,13 @@ const numbers = computed(() => pageWindow(page, pages));
       </Button>
       <template v-if="numbered">
         <template v-for="(n, i) in numbers" :key="(n || tpl('gap{0}', i))">
-          <Inline v-if="(n === null)" class="w-8 text-center">
+          <Inline v-if="(n === null)" class="w-8 text-center" data-slot="numbers-row">
             {{ "…" }}
           </Inline>
           <Inline v-else-if="(n === page)"
             :class="'flex h-8 min-w-8 items-center justify-center rounded bg-foreground px-2 font-bold text-background'"
             aria-current="page"
-            data-testid="pager-current"
+            data-slot="pager-current"
           >
             {{ n }}
           </Inline>

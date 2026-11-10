@@ -52,7 +52,7 @@ export function StepsList({
         <List
           tag="ol"
           class={cn("grid gap-6", (((layout as string) === "row") ? "sm:grid-cols-2 md:grid-cols-4" : ""))}
-          data-testid="items"
+          data-slot="items"
         >
           <For each={steps ?? []}>{(step, iOf) => { const i = iOf(); return (
             <ListItem
@@ -61,7 +61,7 @@ export function StepsList({
                 (((layout as string) === "row") ? "flex-col" : ""),
                 (((align as string) === "center") ? "items-center text-center" : "")
               )}
-              data-testid="item"
+              data-slot="item"
             >
               <IconBadge variant="primary" data-slot="marker">
                 {((marker as string) === "icon") ? (

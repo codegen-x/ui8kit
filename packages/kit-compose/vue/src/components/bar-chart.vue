@@ -33,7 +33,13 @@ const top = computed(() => Math.max(1, (max ?? bars.reduce((m, i) => Math.max(m,
       :aria-label="label"
       :style="`height:${cssValue(height)}px`"
     >
-      <Box v-for="b in bars" :key="b.id" class="flex h-full min-w-0 flex-1 items-end" :title="(b.title ?? b.label)">
+      <Box
+        v-for="b in bars"
+        :key="b.id"
+        class="flex h-full min-w-0 flex-1 items-end"
+        :title="(b.title ?? b.label)"
+        data-slot="bar"
+      >
         <Box
           :class="cn('w-full rounded', (b.muted ? 'bg-muted-foreground' : 'bg-primary'))"
           :style="`height:${cssValue(Math.max(2, Math.round(((b.value / top) * 100))))}%`"
@@ -42,7 +48,7 @@ const top = computed(() => Math.max(1, (max ?? bars.reduce((m, i) => Math.max(m,
       </Box>
     </Box>
     <Box class="mt-2 flex min-w-0 gap-2" aria-hidden="true">
-      <Box v-for="b in bars" :key="b.id" class="relative h-4 min-w-0 flex-1">
+      <Box v-for="b in bars" :key="b.id" class="relative h-4 min-w-0 flex-1" data-slot="bar">
         <Text :class="'absolute left-1/2 top-0 m-0 -translate-x-1/2 whitespace-nowrap text-xs font-medium text-muted-foreground'">
           {{ b.label }}
         </Text>

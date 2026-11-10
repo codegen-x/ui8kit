@@ -18,16 +18,16 @@ export type FooterCardProps = {
 
 export function FooterCard({ label, brand, groups, landmarkLabel }: FooterCardProps) {
   return (
-    <Block tag="footer" className="py-8" data-testid="site-footer" data-layout="card" aria-label={landmarkLabel}>
+    <Block tag="footer" className="py-8" data-layout="card" aria-label={landmarkLabel} data-slot="site-footer">
       <Container className={cn(cn("mx-auto w-full px-4", defaults.section.landing), "px-0")} data-slot="container">
         <Box
           className={cn(
             "flex w-full flex-row items-start overflow-hidden bg-muted p-10",
             defaults.footer.card
           )}
-          data-testid="footer-card"
+          data-slot="footer-card"
         >
-          <Group gap="4" align="center" className={cn("h-8 shrink-0", defaults.footer.brand)} data-testid="footer-brand">
+          <Group gap="4" align="center" className={cn("h-8 shrink-0", defaults.footer.brand)} data-slot="footer-brand">
             <Inline className="flex size-8 items-center justify-center rounded bg-foreground text-background">
               <LucideIcon name="hexagon" size={16} />
             </Inline>
@@ -44,16 +44,16 @@ export function FooterCard({ label, brand, groups, landmarkLabel }: FooterCardPr
                 gap="0"
                 align="start"
                 className={cn("flex w-full flex-nowrap justify-between", defaults.footer.groups)}
-                data-testid="footer-groups"
+                data-slot="footer-groups"
               >
                 {(groups ?? []).map((g) => (
-                  <Stack key={g.id} gap="4" data-testid="group">
+                  <Stack key={g.id} gap="4" data-slot="group">
                     <Text size="xs" weight="semibold" className="leading-5">
                       {g.title}
                     </Text>
                     <List className="m-0 flex list-none flex-col gap-4 p-0">
                       {(g.links ?? []).map((item) => (
-                        <ListItem key={item.id}>
+                        <ListItem key={item.id} data-slot="links-row">
                           <MenuEntry href={item.href} className="text-xs leading-5 text-muted-foreground">
                             {item.name}
                           </MenuEntry>

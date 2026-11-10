@@ -55,9 +55,9 @@ export function CartList({
           onRemove={(arg: string) => onRemove?.(arg)}
         />
       ) : (
-        <Stack gap="4" align="stretch" data-testid="cart-cards">
+        <Stack gap="4" align="stretch" data-slot="cart-cards">
           {(lines ?? []).map((line) => (
-            <Card key={line.id} variant="default" data-testid="item">
+            <Card key={line.id} variant="default">
               <CardContent className="flex flex-wrap items-center gap-4">
                 {((media as string) === "image") ? (
                   <MediaFrame alt={line.name} ratio="1/1" className="size-16 shrink-0" />
@@ -84,14 +84,7 @@ export function CartList({
                 <Text size="base" weight="bold">
                   {fmtMoney((line.price * line.qty), line.currency)}
                 </Text>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  layout="icon"
-                  aria-label={labels.remove}
-                  data-testid="remove"
-                  onClick={() => onRemove?.(line.id)}
-                >
+                <Button variant="ghost" size="sm" layout="icon" aria-label={labels.remove} onClick={() => onRemove?.(line.id)}>
                   <LucideIcon name="x" size={16} />
                 </Button>
               </CardContent>

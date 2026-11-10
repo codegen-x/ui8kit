@@ -64,7 +64,7 @@ export function FeatureGrid({
                 href={urlOf(action?.href)}
                 variant="default"
                 className={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
-                data-testid="section-action"
+                data-slot="section-action"
               >
                 {action?.label}
               </Link>

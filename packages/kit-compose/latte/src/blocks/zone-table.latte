@@ -79,10 +79,10 @@
             {=og_include('compose/Badge.latte', ['variant' => 'secondary', 'size' => 'default', 'class' => 'w-fit', 'children' => (string) $c_15])|noescape}
           {/if}
         {/capture}
-        {=og_include('compose/Stack.latte', ['gap' => '4', 'class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_16])|noescape}
+        {=og_include('compose/Stack.latte', ['gap' => '4', 'class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_16])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Grid.latte', ['cols' => '1-3', 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_17])|noescape}
+    {=og_include('compose/Grid.latte', ['cols' => '1-3', 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_17])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'lead' => $v_lead, 'tone' => $v_tone, 'density' => $v_density, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_18)])|noescape}

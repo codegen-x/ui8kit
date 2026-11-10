@@ -57,7 +57,7 @@ export function RichText({
       landmarkLabel={landmarkLabel}
     >
       {(meta?.date || meta?.author || meta?.category) ? (
-        <Group gap="4" align="center" class="flex-wrap" data-testid="richtext-meta">
+        <Group gap="4" align="center" class="flex-wrap" data-slot="richtext-meta">
           {meta?.date ? (
             <Text size="sm" class="text-muted-foreground">
               {meta?.date}
@@ -86,18 +86,18 @@ export function RichText({
         <Grid cols="1" class="gap-8 lg:grid-cols-3">
           <Box class="min-w-0 lg:col-span-2">
             {content ? (
-              <Prose size="base" width="none" data-testid="richtext-content" innerHTML={htmlOf(content)} />
+              <Prose size="base" width="none" data-slot="richtext-content" innerHTML={htmlOf(content)} />
             ) : null}
           </Box>
           {aside?.content ? (
-            <Card variant="compact" class="h-fit" data-testid="richtext-aside">
+            <Card variant="compact" class="h-fit">
               {aside?.title ? (
                 <Title as={((level === 1) ? 2 : 3)} size="lg" weight="semibold">
                   {aside?.title}
                 </Title>
               ) : null}
               {aside?.content ? (
-                <Prose size="sm" width="none" data-testid="richtext-aside-content" innerHTML={htmlOf(aside?.content)} />
+                <Prose size="sm" width="none" data-slot="richtext-aside-content" innerHTML={htmlOf(aside?.content)} />
               ) : null}
             </Card>
           ) : null}
@@ -110,7 +110,7 @@ export function RichText({
             : (layout as string) === "hero" ? "narrow"
             : "none"
           }
-          data-testid="richtext-content"
+          data-slot="richtext-content"
           innerHTML={htmlOf(content)}
         />
       ) : null}

@@ -15,7 +15,7 @@
     {/capture}
     {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'text-muted-foreground', 'children' => (string) $c_2])|noescape}
   {/capture}
-  {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => 'end', 'class' => 'text-end', 'attrs' => og_attrs(['data-testid', 'page-figure']), 'children' => (string) $c_3])|noescape}
+  {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => 'end', 'class' => 'text-end', 'attrs' => og_attrs(['data-slot', 'page-figure']), 'children' => (string) $c_3])|noescape}
 {/if}
 {if og_t(og_eq($v_mode, 'note'))}
   {capture $c_8}
@@ -36,7 +36,7 @@
     {/capture}
     {=og_include('compose/Stack.latte', ['gap' => '0', 'children' => (string) $c_7])|noescape}
   {/capture}
-  {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'start', 'class' => 'rounded bg-card inset-ring inset-ring-border max-w-xs p-4', 'attrs' => og_attrs(['data-testid', 'page-note']), 'children' => (string) $c_8])|noescape}
+  {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'start', 'class' => 'rounded bg-card inset-ring inset-ring-border max-w-xs p-4', 'attrs' => og_attrs(['data-slot', 'page-note']), 'children' => (string) $c_8])|noescape}
 {/if}
 {if og_t(og_eq($v_mode, 'facts'))}
   {capture $c_13}
@@ -57,9 +57,9 @@
           {/capture}
           {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'text-muted-foreground', 'children' => (string) $c_11])|noescape}
         {/capture}
-        {=og_include('compose/Stack.latte', ['gap' => '0', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-testid', 'page-fact']), 'children' => (string) $c_12])|noescape}
+        {=og_include('compose/Stack.latte', ['gap' => '0', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-slot', 'page-fact']), 'children' => (string) $c_12])|noescape}
       {/if}
     {/foreach}
   {/capture}
-  {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-2 gap-4', 'children' => (string) $c_13])|noescape}
+  {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-2 gap-4', 'attrs' => og_attrs(['data-slot', 'page-aside']), 'children' => (string) $c_13])|noescape}
 {/if}

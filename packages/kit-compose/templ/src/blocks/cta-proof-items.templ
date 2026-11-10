@@ -24,9 +24,9 @@ templ CtaProofItems(p CtaProofItemsProps) {
 	{{ vProof := uiutils.Def(p.Proof, "stats") }}
 	{{ vCenter := uiutils.Def(p.Center, false) }}
 	if uiutils.T(uiutils.And(uiutils.Eq(vProof, "logos"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "logos")), float64(0)))) {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6", Attrs: uiutils.Attrs("data-testid", "cta-proof")}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6", Attrs: uiutils.Attrs("data-slot", "cta-proof")}}) {
 			for _, vL := range uiutils.L(uiutils.Get(vContent, "logos")) {
-				@compose.Group(compose.GroupProps{Gap: "2", Align: "center", Justify: "center", BoxProps: box.BoxProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "cta-item")}}) {
+				@compose.Group(compose.GroupProps{Gap: "2", Align: "center", Justify: "center", BoxProps: box.BoxProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "cta-item")}}) {
 					@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vL, "icon")), Size: 20})
 					@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 						{ uiutils.Text(uiutils.Get(vL, "name")) }
@@ -36,9 +36,9 @@ templ CtaProofItems(p CtaProofItemsProps) {
 		}
 	}
 	if uiutils.T(uiutils.And(uiutils.Eq(vProof, "features"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "features")), float64(0)))) {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-4 text-left sm:grid-cols-2", Attrs: uiutils.Attrs("data-testid", "cta-proof")}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-4 text-left sm:grid-cols-2", Attrs: uiutils.Attrs("data-slot", "cta-proof")}}) {
 			for _, vF := range uiutils.L(uiutils.Get(vContent, "features")) {
-				@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "cta-item")}}) {
+				@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "cta-item")}}) {
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted"}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 20})
 					}
@@ -55,10 +55,10 @@ templ CtaProofItems(p CtaProofItemsProps) {
 		}
 	}
 	if uiutils.T(uiutils.And(uiutils.Eq(vProof, "stats"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "stats")), float64(0)))) {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-4", Attrs: uiutils.Attrs("data-testid", "cta-proof")}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-4", Attrs: uiutils.Attrs("data-slot", "cta-proof")}}) {
 			for vI, vS := range uiutils.L(uiutils.Get(vContent, "stats")) {
 				if uiutils.Lt(float64(vI), float64(3)) {
-					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(vCenter), "items-center text-center", "")), Attrs: uiutils.Attrs("data-testid", "cta-item")}}) {
+					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(vCenter), "items-center text-center", "")), Attrs: uiutils.Attrs("data-slot", "cta-item")}}) {
 						@compose.Text(compose.TextProps{Size: "3xl", Weight: "bold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vS, "value")) }
 						}
@@ -71,9 +71,9 @@ templ CtaProofItems(p CtaProofItemsProps) {
 		}
 	}
 	if uiutils.T(uiutils.And(uiutils.Eq(vProof, "rows"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "features")), float64(0)))) {
-		@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-4 p-0", Attrs: uiutils.Attrs("data-testid", "cta-proof")}}) {
+		@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-4 p-0", Attrs: uiutils.Attrs("data-slot", "cta-proof")}}) {
 			for _, vF := range uiutils.L(uiutils.Get(vContent, "features")) {
-				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start gap-4", Attrs: uiutils.Attrs("data-testid", "cta-item")}}) {
+				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start gap-4", Attrs: uiutils.Attrs("data-slot", "cta-item")}}) {
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted"}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 20})
 					}
@@ -90,9 +90,9 @@ templ CtaProofItems(p CtaProofItemsProps) {
 		}
 	}
 	if uiutils.T(uiutils.And(uiutils.Eq(vProof, "zones"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "zones")), float64(0)))) {
-		@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col p-0", Attrs: uiutils.Attrs("data-testid", "cta-proof")}}) {
+		@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col p-0", Attrs: uiutils.Attrs("data-slot", "cta-proof")}}) {
 			for _, vZ := range uiutils.L(uiutils.Get(vContent, "zones")) {
-				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start justify-between gap-4 border-b border-border py-4", Attrs: uiutils.Attrs("data-testid", "cta-item")}}) {
+				@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-start justify-between gap-4 border-b border-border py-4", Attrs: uiutils.Attrs("data-slot", "cta-item")}}) {
 					@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "min-w-0"}}) {
 						@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vZ, "name")) }

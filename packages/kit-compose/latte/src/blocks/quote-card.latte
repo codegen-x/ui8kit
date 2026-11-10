@@ -38,7 +38,7 @@
       {capture $c_6}
         {=og_include('icons/LucideIcon.latte', ['name' => og_s(og_get($v_q, ['mark'])), 'size' => 24])|noescape}
       {/capture}
-      {=og_include('compose/Inline.latte', ['class' => 'text-muted-foreground', 'attrs' => og_attrs(['data-testid', 'mark']), 'children' => (string) $c_6])|noescape}
+      {=og_include('compose/Inline.latte', ['class' => 'text-muted-foreground', 'attrs' => og_attrs(['data-slot', 'mark']), 'children' => (string) $c_6])|noescape}
     {/if}
     {capture $c_7}
       {=og_text(og_get($v_q, ['quote']))}

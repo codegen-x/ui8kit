@@ -13,7 +13,7 @@
       {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': v_name, 'ratio': '1/1'}}) }}
       {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': v_name, 'ratio': '1/1'}}) }}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '3', 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'thumbs'])}, 'children': c_1}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '3', 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'thumbs'])}, 'children': c_1}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'gallery'])}, 'children': c_2}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'gallery'])}, 'children': c_2}) }}

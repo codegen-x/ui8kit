@@ -22,7 +22,7 @@
       {%- endset -%}
       {{ og_include('compose/inline.html.j2', {'p': {'Class': 'flex flex-col items-start justify-start gap-0'}, 'children': c_3}) }}
     {%- endset -%}
-    {{ og_include('compose/label.html.j2', {'p': {'Class': 'flex items-center gap-4 rounded p-4 inset-ring inset-ring-border has-checked:inset-ring-foreground', 'Attrs': og_attrs(['data-testid', 'payment'])}, 'children': c_4}) }}
+    {{ og_include('compose/label.html.j2', {'p': {'Class': 'flex items-center gap-4 rounded p-4 inset-ring inset-ring-border has-checked:inset-ring-foreground', 'Attrs': og_attrs(['data-slot', 'payment'])}, 'children': c_4}) }}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-2', 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'payments'])}, 'children': c_5}) }}
+{{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-2', 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'payments'])}, 'children': c_5}) }}

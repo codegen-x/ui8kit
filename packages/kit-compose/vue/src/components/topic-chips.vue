@@ -22,19 +22,18 @@ const { topics, tone = "default" } = defineProps<TopicChipsProps>();
 </script>
 
 <template>
-  <Group gap="2" align="center" justify="center" class="flex-wrap" data-testid="hero-topics">
+  <Group gap="2" align="center" justify="center" class="flex-wrap" data-slot="hero-topics">
     <template v-for="topic in topics" :key="topic.id">
       <Button v-if="((tone as string) === 'inverse')"
         :href="urlOf(topic.href)"
         variant="ghost"
         size="sm"
         class="gap-2 text-background inset-ring-background/30 hover:bg-background/10"
-        data-testid="hero-topic"
       >
         <LucideIcon v-if="topic.icon" :name="topic.icon" :size="16" />
         {{ topic.name }}
       </Button>
-      <Button v-else :href="urlOf(topic.href)" variant="outline" size="sm" data-testid="hero-topic">
+      <Button v-else :href="urlOf(topic.href)" variant="outline" size="sm">
         {{ topic.name }}
       </Button>
     </template>

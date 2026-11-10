@@ -51,12 +51,12 @@
               {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'zap', 'Size': 16}}) }}
               {{ og_text(og_get(v_labels, ['order'])) }}
             {%- endset -%}
-            {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Type': 'button', 'AriaLabel': og_s(og_tpl(og_get(v_labels, ['orderOf']), [og_get(v_d, ['name'])])), 'Attrs': og_attrs(['data-testid', 'order'])}, 'children': c_8}) }}
+            {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'sm', 'Type': 'button', 'AriaLabel': og_s(og_tpl(og_get(v_labels, ['orderOf']), [og_get(v_d, ['name'])]))}, 'children': c_8}) }}
           {%- endset -%}
-          {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex flex-wrap items-center gap-4 border-b border-border py-4', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_9}) }}
+          {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex flex-wrap items-center gap-4 border-b border-border py-4', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_9}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_10}) }}
+      {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_10}) }}
     {%- endset -%}
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'mx-auto w-full max-w-3xl'}, 'children': c_11}) }}
   {%- endif %}

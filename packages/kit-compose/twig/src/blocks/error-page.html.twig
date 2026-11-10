@@ -20,7 +20,7 @@
     {%- set c_1 -%}
       {{ og_text(v_status) }}
     {%- endset -%}
-    {{ include('compose/Text.html.twig', {'size': '4xl', 'weight': 'bold', 'class': og_s(og_cnv(['text-8xl text-muted-foreground', (og_t(og_eq(v_layout, 'split')) ? '' : 'text-center')])), 'attrs': og_attrs(['data-testid', 'error-code']), 'children': c_1}, with_context = false) }}
+    {{ include('compose/Text.html.twig', {'size': '4xl', 'weight': 'bold', 'class': og_s(og_cnv(['text-8xl text-muted-foreground', (og_t(og_eq(v_layout, 'split')) ? '' : 'text-center')])), 'attrs': og_attrs(['data-slot', 'error-code']), 'children': c_1}, with_context = false) }}
   {%- endif %}
   {{ include('blocks/action-group.html.twig', {'p': {'primary': og_get(v_actions, ['cta']), 'primaryHref': og_get(v_actions, ['href']), 'secondary': (og_t(og_eq(og_get(v_actions, ['mode']), 'two')) ? og_get(v_actions, ['secondary']) : null), 'secondaryHref': og_get(v_actions, ['secondaryHref']), 'align': (og_t(og_eq(v_layout, 'split')) ? 'start' : 'center')}}, with_context = false) }}
 {%- endset -%}

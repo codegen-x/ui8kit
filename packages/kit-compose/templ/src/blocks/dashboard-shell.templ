@@ -40,9 +40,9 @@ templ DashboardShell(p DashboardShellProps) {
 	{{ vFrame := uiutils.Def(p.Frame, "window") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	{{ vTitleId := any(uiutils.Tpl("{0}-title", vId)) }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vFrame, "window")), "bg-background py-12", "bg-background")), Attrs: uiutils.Attrs("id", vId, "aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "data-testid", "dashboard-shell", "data-topbar", vTopbar, "data-sidebar", vSidebar, "data-footer", vFooter, "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vFrame, "window")), "bg-background py-12", "bg-background")), Attrs: uiutils.Attrs("id", vId, "aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "data-topbar", vTopbar, "data-sidebar", vSidebar, "data-footer", vFooter, "aria-label", vLandmarkLabel, "data-slot", "dashboard-shell")}}) {
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vFrame, "window")), "mx-auto w-full max-w-6xl px-4", ""))}}) {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex flex-col overflow-hidden bg-background", uiutils.Cond(uiutils.T(uiutils.Eq(vFrame, "window")), "min-h-160 rounded border border-border", "min-h-screen"))), Attrs: uiutils.Attrs("data-testid", "window")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex flex-col overflow-hidden bg-background", uiutils.Cond(uiutils.T(uiutils.Eq(vFrame, "window")), "min-h-160 rounded border border-border", "min-h-screen"))), Attrs: uiutils.Attrs("data-slot", "window")}}) {
 				if uiutils.Eq(vTopbar, "full") {
 					@ShellTopbar(ShellTopbarProps{Nav: vNav, Links: uiutils.Cond(uiutils.T(uiutils.Eq(vSidebar, "none")), "show", "hide"), Search: vSearch, LandmarkLabel: vLandmarkLabel})
 				}

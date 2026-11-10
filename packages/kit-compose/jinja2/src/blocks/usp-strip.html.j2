@@ -23,10 +23,10 @@
           {%- endset -%}
           {{ og_include('compose/inline.html.j2', {'p': {}, 'children': c_1}) }}
         {%- endset -%}
-        {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-2 text-sm font-medium', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_2}) }}
+        {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-2 text-sm font-medium', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_2}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-wrap items-center justify-center gap-x-8 gap-y-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_3}) }}
+    {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-wrap items-center justify-center gap-x-8 gap-y-4', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_3}) }}
   {%- else %}
     {%- set c_9 -%}
       {%- for v_p in og_l(v_perks) %}
@@ -47,10 +47,10 @@
           {%- endset -%}
           {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2'}, 'children': c_7}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': og_s(('rounded bg-card inset-ring inset-ring-border p-6' if og_t(og_eq(v_layout, 'cards')) else '')), 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_8}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': og_s(('rounded bg-card inset-ring inset-ring-border p-6' if og_t(og_eq(v_layout, 'cards')) else '')), 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_8}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-4', 'Class': og_s(og_cnv(['gap-4', ('rounded bg-muted p-6' if og_t(og_eq(v_layout, 'strip')) else '')])), 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_9}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-4', 'Class': og_s(og_cnv(['gap-4', ('rounded bg-muted p-6' if og_t(og_eq(v_layout, 'strip')) else '')])), 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_9}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_10)}) }}

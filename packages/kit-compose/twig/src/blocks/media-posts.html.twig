@@ -26,8 +26,8 @@
         {%- endset -%}
         {{ include('compose/Stack.html.twig', {'gap': '0', 'children': c_4}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'attrs': og_attrs(['data-testid', 'media-post']), 'children': c_5}, with_context = false) }}
+      {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'attrs': og_attrs(['data-slot', 'media-post']), 'children': c_5}, with_context = false) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'children': c_6}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'media-posts']), 'children': c_6}, with_context = false) }}

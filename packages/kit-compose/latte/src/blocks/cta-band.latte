@@ -42,7 +42,7 @@
     {/capture}
     {=og_include('compose/Container.latte', ['class' => 'mx-auto w-full max-w-6xl px-4', 'attrs' => og_attrs(['data-slot', 'container']), 'children' => (string) $c_6])|noescape}
   {/capture}
-  {=og_include('compose/Block.latte', ['tag' => 'section', 'class' => 'py-8', 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : og_tpl('{0}-title', [$v_id])), 'data-testid', 'section', 'data-tone', $v_tone, 'data-density', $v_density, 'aria-label', $v_landmarkLabel]), 'children' => (string) $c_7])|noescape}
+  {=og_include('compose/Block.latte', ['tag' => 'section', 'class' => 'py-8', 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : og_tpl('{0}-title', [$v_id])), 'data-tone', $v_tone, 'data-density', $v_density, 'aria-label', $v_landmarkLabel, 'data-slot', 'section']), 'children' => (string) $c_7])|noescape}
 {else}
   {capture $f_8}
     {=og_include('blocks/media-frame.latte', ['p' => ['alt' => $v_title, 'ratio' => '4/3']])|noescape}

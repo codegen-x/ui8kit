@@ -54,7 +54,7 @@ export function NewsletterForm({
       <Form
         method="dialog"
         className={cn("w-full max-w-md", (((align as string) === "center") ? "mx-auto" : ""))}
-        data-testid="newsletter-form"
+        data-slot="newsletter-form"
       >
         <Label htmlFor={tpl("{0}-email", id)} className="sr-only">
           {label}
@@ -67,13 +67,13 @@ export function NewsletterForm({
             (((layout as string) === "stacked") ? "flex-col items-stretch" : "flex-wrap")
           )}
         >
-          <Input type="email" name="email" className="min-w-0 flex-1" id={tpl("{0}-email", id)} data-testid="field" />
-          <Button variant="default" size="default" type="submit" data-testid="submit">
+          <Input type="email" name="email" className="min-w-0 flex-1" id={tpl("{0}-email", id)} data-slot="field" />
+          <Button variant="default" size="default" type="submit">
             {submit}
           </Button>
         </Group>
         {(((terms as string) === "show") && consent) ? (
-          <Text size="xs" className="text-muted-foreground" data-testid="consent">
+          <Text size="xs" className="text-muted-foreground" data-slot="consent">
             {consent}
           </Text>
         ) : null}

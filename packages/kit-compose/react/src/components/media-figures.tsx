@@ -16,11 +16,12 @@ export function MediaFigures({ extras, mode = "grid" }: MediaFiguresProps) {
         (mode as string) === "grid" ? "grid grid-cols-2 gap-6 text-center"
         : "grid grid-cols-3 gap-6"
       }
+      data-slot="media-figures"
     >
       {(extras.stats ?? []).map((s, i) => (
         <Fragment key={s.id}>
           {(i < (((mode as string) === "grid") ? 4 : 3)) ? (
-            <Stack gap="0" align={(((mode as string) === "grid") ? "center" : "start")} data-testid="media-stat">
+            <Stack gap="0" align={(((mode as string) === "grid") ? "center" : "start")} data-slot="media-stat">
               <Text size="3xl" weight="bold">
                 {s.value}
               </Text>

@@ -17,7 +17,7 @@
     {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': v_title, 'ratio': '3/4'}}) }}
     {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': v_title, 'ratio': '3/4', 'className': og_cnv(['mt-8'])}}) }}
   {%- endset -%}
-  {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-2 gap-4', 'Attrs': og_attrs(['data-testid', 'collage'])}, 'children': c_9}) }}
+  {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-2 gap-4', 'Attrs': og_attrs(['data-slot', 'collage'])}, 'children': c_9}) }}
 {%- endset -%}
 {%- set c_10 -%}
   {%- if og_t(og_eq(og_len(v_projects), 0)) %}
@@ -46,10 +46,10 @@
           {%- endset -%}
           {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Class': 'flex-1'}, 'children': c_5}) }}
         {%- endset -%}
-        {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Class': 'border-b border-border pb-4', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_6}) }}
+        {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Class': 'border-b border-border pb-4', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_6}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_7}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_7}) }}
   {%- else %}
     {{ og_include('blocks/project-tiles.html.j2', {'p': {'projects': v_projects, 'labels': v_labels, 'layout': v_layout}}) }}
   {%- endif %}

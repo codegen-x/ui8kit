@@ -70,3 +70,15 @@ export function partsFromKit(): Parts {
   }
   return out;
 }
+
+/** the data-slot a composition renders on its own element (a fixed attribute of the map, or the icon primitive): the
+ *  style hook of kit.css that a spec never overrides (screens/src/authoring/slots.ts) */
+export function intrinsicSlots(): Map<string, string> {
+  const out = new Map<string, string>();
+  for (const [name, m] of Object.entries(BRICKS)) {
+    const fixed = m.fixed?.["data-slot"];
+    if (typeof fixed === "string") out.set(name, fixed);
+    else if (m.primitive === "Icon") out.set(name, "icon");
+  }
+  return out;
+}

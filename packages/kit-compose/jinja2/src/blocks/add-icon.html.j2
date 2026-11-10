@@ -7,4 +7,4 @@
 {%- set c_1 -%}
   {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'plus', 'Size': 16}}) }}
 {%- endset -%}
-{{ og_include('compose/button.html.j2', {'p': {'Variant': og_s(v_variant), 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(v_label), 'Attrs': og_attrs(['data-testid', 'add'])}, 'children': c_1}) }}
+{{ og_include('compose/button.html.j2', {'p': {'Variant': og_s(v_variant), 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(v_label)}, 'children': c_1}) }}

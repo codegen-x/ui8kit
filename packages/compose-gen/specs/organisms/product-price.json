@@ -97,7 +97,7 @@
                 "Class": "relative text-muted-foreground"
               },
               "attrs": {
-                "data-testid": "compare-at"
+                "data-slot": "compare-at"
               },
               "children": [
                 {
@@ -151,7 +151,10 @@
             }
           ]
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "product-price"
+      }
     }
   ],
   "portable": {

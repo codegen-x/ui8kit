@@ -22,4 +22,4 @@
   {%- endif %}
   {{ og_slot(og_def(p['action'], none))|safe }}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex min-w-0 flex-col items-center gap-4 rounded bg-card px-6 py-14 text-center inset-ring inset-ring-border', og_def(p['className'], '')])), 'Attrs': og_attrs(['role', 'status'])}, 'children': c_4}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex min-w-0 flex-col items-center gap-4 rounded bg-card px-6 py-14 text-center inset-ring inset-ring-border', og_def(p['className'], '')])), 'Attrs': og_attrs(['role', 'status', 'data-slot', 'empty-state'])}, 'children': c_4}) }}

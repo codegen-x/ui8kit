@@ -34,4 +34,4 @@
     {/if}
   {/foreach}
 {/capture}
-{=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'children' => (string) $c_7])|noescape}
+{=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'media-topics']), 'children' => (string) $c_7])|noescape}

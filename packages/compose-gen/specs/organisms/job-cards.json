@@ -68,7 +68,7 @@
                 "Class": "w-full text-left text-sm"
               },
               "attrs": {
-                "data-testid": "job-table"
+                "data-slot": "job-table"
               },
               "children": [
                 {
@@ -220,7 +220,7 @@
                             "Class": "border-t border-border"
                           },
                           "attrs": {
-                            "data-testid": "item"
+                            "data-slot": "item"
                           },
                           "children": [
                             {
@@ -350,7 +350,10 @@
                 }
               ]
             }
-          ]
+          ],
+          "attrs": {
+            "data-slot": "job-cards"
+          }
         }
       ],
       "else": [
@@ -361,7 +364,7 @@
             "Class": "gap-4"
           },
           "attrs": {
-            "data-testid": "items"
+            "data-slot": "items"
           },
           "children": [
             {
@@ -380,7 +383,7 @@
                     "Class": "rounded bg-card inset-ring inset-ring-border p-6"
                   },
                   "attrs": {
-                    "data-testid": "item"
+                    "data-slot": "item"
                   },
                   "children": [
                     {
@@ -510,7 +513,7 @@
                             "Weight": "semibold"
                           },
                           "attrs": {
-                            "data-testid": "salary"
+                            "data-slot": "salary"
                           },
                           "children": [
                             {

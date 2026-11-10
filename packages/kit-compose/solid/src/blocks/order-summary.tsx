@@ -46,7 +46,7 @@ export function OrderSummary({
           class={cn(
             (((layout as string) === "card") ? "rounded bg-card p-6 inset-ring inset-ring-border" : "")
           )}
-          data-testid="summary"
+          data-slot="summary"
         >
           <Stack gap="4" align="stretch">
             <List tag="ul" class="flex flex-col gap-4">
@@ -59,7 +59,7 @@ export function OrderSummary({
                       : "text-sm text-muted-foreground"
                     )
                   )}
-                  data-testid="item"
+                  data-slot="item"
                 >
                   <Inline>
                     {row.label}
@@ -71,7 +71,7 @@ export function OrderSummary({
               )}</For>
             </List>
             {((cta as string) === "show") ? (
-              <Button variant="default" size="default" class="w-full" data-testid="checkout">
+              <Button variant="default" size="default" class="w-full">
                 {labels.checkout}
               </Button>
             ) : null}

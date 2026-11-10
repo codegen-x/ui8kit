@@ -17,7 +17,7 @@ export function OverMedia({ on = false, alt }: OverMediaProps) {
   return (
     <>
       {on ? (
-        <Box className="pointer-events-none absolute inset-0 -z-10" data-testid="over">
+        <Box className="pointer-events-none absolute inset-0 -z-10" data-slot="over">
           <MediaFrame alt={alt} ratio="21/9" className="size-full rounded-none opacity-40" />
         </Box>
       ) : null}

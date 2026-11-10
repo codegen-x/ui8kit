@@ -47,9 +47,9 @@ templ QuickOrder(p QuickOrderProps) {
 						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "tel", Name: uiutils.S(uiutils.Tpl("{0}-phone", vId)), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-phone", vId))}})
 					}
 				}
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for _, vD := range uiutils.L(vDishes) {
-						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-wrap items-center gap-4 border-b border-border py-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-wrap items-center gap-4 border-b border-border py-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "min-w-0 flex-1"}}) {
 								@compose.Group(compose.GroupProps{Gap: "2", Align: "baseline", BoxProps: box.BoxProps{}}) {
 									@compose.Text(compose.TextProps{Size: "base", Weight: "semibold", TextProps: text.TextProps{}}) {
@@ -66,7 +66,7 @@ templ QuickOrder(p QuickOrderProps) {
 							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-base font-bold"}}) {
 								{ uiutils.Text(uiutils.Money(uiutils.Get(vD, "price"), uiutils.Get(vD, "currency"))) }
 							}
-							@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Tpl(uiutils.Get(vLabels, "orderOf"), uiutils.Get(vD, "name"))), Attrs: uiutils.Attrs("data-testid", "order")}}) {
+							@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Tpl(uiutils.Get(vLabels, "orderOf"), uiutils.Get(vD, "name")))}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: "zap", Size: 16})
 								{ uiutils.Text(uiutils.Get(vLabels, "order")) }
 							}

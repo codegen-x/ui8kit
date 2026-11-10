@@ -46,12 +46,12 @@ templ ShoppingCart(p ShoppingCartProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "grid grid-cols-1 items-start gap-8 lg:grid-cols-3", "grid grid-cols-1 gap-8"))}}) {
-			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "lg:col-span-2", "")), Attrs: uiutils.Attrs("data-testid", "lines")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "lg:col-span-2", "")), Attrs: uiutils.Attrs("data-slot", "lines")}}) {
 				if uiutils.Eq(uiutils.Len(vLines), float64(0)) {
 					@EmptyState(EmptyStateProps{Icon: "shopping-cart", Title: uiutils.Get(vActions, "empty")})
 				}
 				for _, vLine := range uiutils.L(vLines) {
-					@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border flex-wrap p-4", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border flex-wrap p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Ratio: "1/1", Class: uiutils.Cnv("size-20 shrink-0")})
 						@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "min-w-40 flex-1"}}) {
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
@@ -68,7 +68,7 @@ templ ShoppingCart(p ShoppingCartProps) {
 						@compose.Text(compose.TextProps{Size: "base", Weight: "bold", TextProps: text.TextProps{Class: "w-24 text-right"}}) {
 							{ uiutils.Text(uiutils.Money(uiutils.Mul(uiutils.Get(vLine, "price"), uiutils.Get(vLine, "qty")), uiutils.Get(vLine, "currency"))) }
 						}
-						@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{AriaLabel: uiutils.S(uiutils.Get(vLabels, "remove")), Attrs: uiutils.Attrs("data-testid", "remove")}}) {
+						@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{AriaLabel: uiutils.S(uiutils.Get(vLabels, "remove"))}}) {
 							@icons.LucideIcon(icons.LucideIconProps{Name: "trash", Size: 16})
 						}
 					}
@@ -83,7 +83,7 @@ templ ShoppingCart(p ShoppingCartProps) {
 					}
 				}
 			}
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "lg:sticky lg:top-8", "")), Attrs: uiutils.Attrs("data-testid", "aside")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "lg:sticky lg:top-8", "")), Attrs: uiutils.Attrs("data-slot", "aside")}}) {
 				@CartSummaryCard(CartSummaryCardProps{Field: uiutils.Tpl("{0}-promo", vId), Lines: vLines, Rows: vRows, Promos: vPromos, Labels: vTotals, Promo: vPromo, Progress: vProgress})
 			}
 		}

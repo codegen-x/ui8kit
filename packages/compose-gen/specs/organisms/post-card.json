@@ -146,11 +146,11 @@
             }
           },
           "attrs": {
-            "data-testid": "item",
             "data-layout": {
               "$": "layout"
             },
-            "data-meta": "news"
+            "data-meta": "news",
+            "data-slot": "item"
           },
           "children": [
             {
@@ -171,7 +171,7 @@
                 }
               },
               "attrs": {
-                "data-testid": "news-cover"
+                "data-slot": "news-cover"
               },
               "children": [
                 {
@@ -219,7 +219,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "news-title"
+                    "data-slot": "news-title"
                   },
                   "children": [
                     {
@@ -251,7 +251,7 @@
                 }
               },
               "attrs": {
-                "data-testid": "news-date"
+                "data-slot": "news-date"
               },
               "children": [
                 {
@@ -334,7 +334,6 @@
           },
           "attrs": {
             "data-slot": "card",
-            "data-testid": "item",
             "data-layout": {
               "$": "layout"
             },
@@ -635,7 +634,7 @@
                         "Variant": "default"
                       },
                       "attrs": {
-                        "data-testid": "read"
+                        "data-slot": "read"
                       },
                       "children": [
                         {

@@ -174,7 +174,7 @@
                         "Class": "gap-4"
                       },
                       "attrs": {
-                        "data-testid": "facts"
+                        "data-slot": "facts"
                       },
                       "children": [
                         {
@@ -193,7 +193,7 @@
                                 "Class": "rounded bg-card inset-ring inset-ring-border p-6"
                               },
                               "attrs": {
-                                "data-testid": "fact"
+                                "data-slot": "fact"
                               },
                               "children": [
                                 {
@@ -361,7 +361,7 @@
                                     }
                                   },
                                   "attrs": {
-                                    "data-testid": "zone"
+                                    "data-slot": "zone"
                                   },
                                   "children": [
                                     {

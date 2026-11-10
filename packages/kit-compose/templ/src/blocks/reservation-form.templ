@@ -45,27 +45,27 @@ templ ReservationForm(p ReservationFormProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Density: vDensity, Measure: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "single")), "xl", "default"), LandmarkLabel: vLandmarkLabel}) {
 		@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "1-2", "1")), BoxProps: box.BoxProps{Class: "items-start gap-8"}}) {
-			@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: "flex w-full flex-col gap-4", Attrs: uiutils.Attrs("data-testid", "reservation-form")}}) {
+			@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: "flex w-full flex-col gap-4", Attrs: uiutils.Attrs("data-slot", "reservation-form")}}) {
 				@Field(FieldProps{Label: uiutils.Get(vLabels, "name"), HtmlFor: uiutils.Tpl("{0}-name", vId)}) {
-					@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "name", Attrs: uiutils.Attrs("autocomplete", "name", "id", uiutils.Tpl("{0}-name", vId), "data-testid", "field")}})
+					@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "text", Name: "name", Attrs: uiutils.Attrs("autocomplete", "name", "id", uiutils.Tpl("{0}-name", vId), "data-slot", "field")}})
 				}
 				@Field(FieldProps{Label: uiutils.Get(vLabels, "phone"), HtmlFor: uiutils.Tpl("{0}-phone", vId)}) {
-					@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "tel", Name: "phone", Attrs: uiutils.Attrs("autocomplete", "tel", "id", uiutils.Tpl("{0}-phone", vId), "data-testid", "field")}})
+					@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "tel", Name: "phone", Attrs: uiutils.Attrs("autocomplete", "tel", "id", uiutils.Tpl("{0}-phone", vId), "data-slot", "field")}})
 				}
 				if uiutils.Eq(vFields, "full") {
 					@Field(FieldProps{Label: uiutils.Get(vLabels, "email"), HtmlFor: uiutils.Tpl("{0}-email", vId)}) {
-						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Attrs: uiutils.Attrs("autocomplete", "email", "id", uiutils.Tpl("{0}-email", vId), "data-testid", "field")}})
+						@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "email", Name: "email", Attrs: uiutils.Attrs("autocomplete", "email", "id", uiutils.Tpl("{0}-email", vId), "data-slot", "field")}})
 					}
 				}
 				@compose.Group(compose.GroupProps{Gap: "4", BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "min-w-0 flex-1"}}) {
 						@Field(FieldProps{Label: uiutils.Get(vLabels, "date"), HtmlFor: uiutils.Tpl("{0}-date", vId)}) {
-							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "date", Name: "date", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-date", vId), "data-testid", "field")}})
+							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "date", Name: "date", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-date", vId), "data-slot", "field")}})
 						}
 					}
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "min-w-0 flex-1"}}) {
 						@Field(FieldProps{Label: uiutils.Get(vLabels, "time"), HtmlFor: uiutils.Tpl("{0}-time", vId)}) {
-							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "time", Name: "time", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-time", vId), "data-testid", "field")}})
+							@compose.Input(compose.InputProps{InputProps: input.InputProps{Type: "time", Name: "time", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-time", vId), "data-slot", "field")}})
 						}
 					}
 				}
@@ -77,7 +77,7 @@ templ ReservationForm(p ReservationFormProps) {
 				}
 				if uiutils.Eq(vFields, "full") {
 					@Field(FieldProps{Label: uiutils.Get(vLabels, "notes"), HtmlFor: uiutils.Tpl("{0}-notes", vId)}) {
-						@compose.Textarea(compose.TextareaProps{TextareaProps: textarea.TextareaProps{Rows: "4", Name: "notes", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-notes", vId), "data-testid", "field")}})
+						@compose.Textarea(compose.TextareaProps{TextareaProps: textarea.TextareaProps{Rows: "4", Name: "notes", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-notes", vId), "data-slot", "field")}})
 					}
 				}
 				if uiutils.Eq(vTerms, "show") {
@@ -88,14 +88,14 @@ templ ReservationForm(p ReservationFormProps) {
 						}
 					}
 				}
-				@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit", Class: "w-fit", Attrs: uiutils.Attrs("data-testid", "submit")}}) {
+				@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "submit", Class: "w-fit"}}) {
 					{ uiutils.Text(uiutils.Get(vLabels, "submit")) }
 				}
 			}
 			if uiutils.T(uiutils.And(uiutils.Eq(vLayout, "split"), uiutils.Gt(uiutils.Len(vDetails), float64(0)))) {
-				@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "details")}}) {
+				@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "details")}}) {
 					for _, vD := range uiutils.L(vDetails) {
-						@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "detail")}}) {
+						@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "detail")}}) {
 							@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vD, "icon")), Size: 20})
 							@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 								@compose.Text(compose.TextProps{Size: "base", Weight: "semibold", TextProps: text.TextProps{}}) {

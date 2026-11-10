@@ -33,7 +33,7 @@
         "Class": "border-t border-border pt-6"
       },
       "attrs": {
-        "data-testid": "post-feature"
+        "data-slot": "post-feature"
       },
       "children": [
         {
@@ -161,9 +161,6 @@
               "$": "p.href"
             },
             "Class": "w-full gap-2"
-          },
-          "attrs": {
-            "data-testid": "action-primary"
           },
           "children": [
             {

@@ -29,16 +29,10 @@ const { primary, primaryHref, secondary, secondaryHref, align = "start" } = defi
     class="flex-wrap"
     data-slot="action-group"
   >
-    <Button variant="default" size="default" :href="urlOf(primaryHref)" data-testid="action-primary">
+    <Button variant="default" size="default" :href="urlOf(primaryHref)">
       {{ primary }}
     </Button>
-    <Button
-      v-if="secondary"
-      variant="outline"
-      size="default"
-      :href="urlOf(secondaryHref)"
-      data-testid="action-secondary"
-    >
+    <Button v-if="secondary" variant="outline" size="default" :href="urlOf(secondaryHref)">
       {{ secondary }}
     </Button>
   </Group>

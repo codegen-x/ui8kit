@@ -39,7 +39,7 @@
                 {%- endset -%}
                 {{ og_include('compose/inline.html.j2', {'p': {}, 'children': c_4}) }}
               {%- endset -%}
-              {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-2'}, 'children': c_5}) }}
+              {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-2', 'Attrs': og_attrs(['data-slot', 'items-row'])}, 'children': c_5}) }}
             {%- endfor %}
           {%- endset -%}
           {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col gap-2 text-sm text-muted-foreground', 'Attrs': og_attrs(['aria-label', og_tpl(og_get(v_labels, ['pieces']), [og_get(v_d, ['name'])])])}, 'children': c_6}) }}
@@ -52,10 +52,10 @@
           {%- endset -%}
           {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Justify': 'between', 'Class': 'mt-auto'}, 'children': c_8}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_9}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_9}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-3' if og_t(og_eq(v_cols, '3')) else '1-4')), 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_10}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1-3' if og_t(og_eq(v_cols, '3')) else '1-4')), 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_10}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_11)}) }}

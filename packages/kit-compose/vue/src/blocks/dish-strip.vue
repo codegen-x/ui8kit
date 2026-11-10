@@ -52,14 +52,14 @@ const {
       class="-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4"
       :tabindex="0"
       :aria-label="labels.strip"
-      data-testid="items"
+      data-slot="items"
     >
       <ListItem v-for="d in dishes" :key="d.id"
         :class="
           (size as string) === 'lg' ? 'flex w-64 shrink-0 snap-start flex-col gap-2'
           : 'flex w-48 shrink-0 snap-start flex-col gap-2'
         "
-        data-testid="item"
+        data-slot="item"
       >
         <MediaFrame :alt="d.name" :ratio="(((size as string) === 'lg') ? '4/3' : '1/1')" />
         <Group gap="2" align="baseline" justify="between">

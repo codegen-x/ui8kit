@@ -26,7 +26,7 @@ export function Timeline({ items, className }: TimelineProps) {
     <Box className={cn("min-w-0", className)} data-slot="timeline">
       <List className="m-0 flex list-none flex-col p-0">
         {(items ?? []).map((item, i) => (
-          <ListItem key={item.id} className="relative flex min-w-0 gap-4 pb-4 last:pb-0" data-event={item.id}>
+          <ListItem key={item.id} className="relative flex min-w-0 gap-4 pb-4 last:pb-0" data-event={item.id} data-slot="timeline-item">
             <Box className="relative flex w-2 shrink-0 justify-center">
               {(i < ((items?.length ?? 0) - 1)) ? (
                 <Inline className="absolute top-4 -bottom-0 w-px bg-border" />

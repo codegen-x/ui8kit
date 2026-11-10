@@ -25,6 +25,6 @@
       {%- endset -%}
       {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_4}) }}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'rounded bg-muted p-6', 'Attrs': og_attrs(['data-testid', 'media-review'])}, 'children': c_5}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'rounded bg-muted p-6', 'Attrs': og_attrs(['data-slot', 'media-review'])}, 'children': c_5}) }}
   {%- endif %}
 {%- endfor %}

@@ -13,7 +13,7 @@
     {/capture}
     {=og_include('compose/Inline.latte', ['class' => 'sr-only', 'children' => (string) $c_1])|noescape}
   {/capture}
-  {=og_include('compose/Inline.latte', ['class' => 'inline-flex items-center gap-2', 'attrs' => og_attrs(['data-mark', 'yes']), 'children' => (string) $c_2])|noescape}
+  {=og_include('compose/Inline.latte', ['class' => 'inline-flex items-center gap-2', 'attrs' => og_attrs(['data-mark', 'yes', 'data-slot', 'compare-mark']), 'children' => (string) $c_2])|noescape}
 {/if}
 {if og_t(og_eq($v_value, 'no'))}
   {capture $c_4}
@@ -23,11 +23,11 @@
     {/capture}
     {=og_include('compose/Inline.latte', ['class' => 'sr-only', 'children' => (string) $c_3])|noescape}
   {/capture}
-  {=og_include('compose/Inline.latte', ['class' => 'inline-flex items-center gap-2 text-muted-foreground', 'attrs' => og_attrs(['data-mark', 'no']), 'children' => (string) $c_4])|noescape}
+  {=og_include('compose/Inline.latte', ['class' => 'inline-flex items-center gap-2 text-muted-foreground', 'attrs' => og_attrs(['data-mark', 'no', 'data-slot', 'compare-mark']), 'children' => (string) $c_4])|noescape}
 {/if}
 {if og_t(og_and([!(og_eq($v_value, 'yes')), !(og_eq($v_value, 'no'))]))}
   {capture $c_5}
     {=og_text($v_value)}
   {/capture}
-  {=og_include('compose/Inline.latte', ['children' => (string) $c_5])|noescape}
+  {=og_include('compose/Inline.latte', ['attrs' => og_attrs(['data-slot', 'compare-mark']), 'children' => (string) $c_5])|noescape}
 {/if}

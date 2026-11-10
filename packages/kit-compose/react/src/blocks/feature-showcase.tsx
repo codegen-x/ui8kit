@@ -50,13 +50,13 @@ export function FeatureShowcase({
           }
         >
           {(features ?? []).map((f) => (
-            <Card key={f.id} variant="default" className="h-full gap-4 overflow-hidden" data-testid="showcase-card">
+            <Card key={f.id} variant="default" className="h-full gap-4 overflow-hidden">
               {((item as string) === "picture") ? (
                 <MediaFrame alt={f.title} />
               ) : (
                 <Box
                   className="flex aspect-video items-center justify-center rounded bg-muted text-foreground"
-                  data-testid="showcase-panel"
+                  data-slot="showcase-panel"
                 >
                   <LucideIcon name={f.icon} size={32} />
                 </Box>

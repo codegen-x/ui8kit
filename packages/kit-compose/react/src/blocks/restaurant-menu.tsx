@@ -49,10 +49,10 @@ export function RestaurantMenu({
               (cols as string) === "2" ? "grid grid-cols-1 gap-8 md:grid-cols-2"
               : "flex flex-col gap-8"
             }
-            data-testid="items"
+            data-slot="items"
           >
             {(sections ?? []).map((s) => (
-              <Stack key={s.id} gap="4" id={tpl("{0}-{1}", id, s.key)} data-testid="menusection">
+              <Stack key={s.id} gap="4" id={tpl("{0}-{1}", id, s.key)} data-slot="menusection">
                 <Stack gap="0" className="border-b border-border pb-2">
                   <Title as={3} size="xl" weight="bold">
                     {s.title}
@@ -65,7 +65,7 @@ export function RestaurantMenu({
                   {(dishes ?? []).map((d) => (
                     <Fragment key={d.id}>
                       {(d.tag === s.key) ? (
-                        <ListItem className="flex flex-col gap-0" data-testid="item">
+                        <ListItem className="flex flex-col gap-0" data-slot="item">
                           <Box className="flex items-baseline gap-2">
                             <Inline className="font-semibold">
                               {d.name}

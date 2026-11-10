@@ -153,7 +153,7 @@
                         "Class": "gap-4"
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -172,7 +172,7 @@
                                 "Class": "rounded bg-card inset-ring inset-ring-border overflow-hidden pb-4"
                               },
                               "attrs": {
-                                "data-testid": "item"
+                                "data-slot": "item"
                               },
                               "children": [
                                 {

@@ -20,7 +20,7 @@ type RegionProps struct {
 templ Region(p RegionProps) {
 	{{ vTag := p.Tag }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: uiutils.S(vTag), Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: uiutils.S(vTag), Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("aria-label", vLandmarkLabel, "data-slot", "region")}}) {
 		{ children... }
 	}
 }

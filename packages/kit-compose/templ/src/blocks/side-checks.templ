@@ -24,12 +24,12 @@ templ SideChecks(p SideChecksProps) {
 	{{ vName := p.Name }}
 	{{ vLegend := p.Legend }}
 	{{ vOptions := p.Options }}
-	@compose.Fieldset(compose.FieldsetProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-2", Attrs: uiutils.Attrs("data-testid", "sides")}}) {
+	@compose.Fieldset(compose.FieldsetProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-2", Attrs: uiutils.Attrs("data-slot", "sides")}}) {
 		@compose.Legend(compose.LegendProps{Size: "sm", TextProps: text.TextProps{Class: "mb-2"}}) {
 			{ uiutils.Text(vLegend) }
 		}
 		for _, vO := range uiutils.L(vOptions) {
-			@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{Class: "flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted"}}) {
+			@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{Class: "flex items-center justify-between gap-4 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted", Attrs: uiutils.Attrs("data-slot", "dish-option")}}) {
 				@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex items-center gap-2"}}) {
 					@compose.Checkbox(compose.CheckboxProps{CheckboxProps: checkbox.CheckboxProps{Name: uiutils.S(uiutils.Tpl("{0}-{1}", vName, uiutils.Get(vO, "id"))), Value: uiutils.SP("on")}})
 					@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {

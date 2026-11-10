@@ -71,7 +71,7 @@ const {
       :secondaryHref="actions.secondaryHref"
       :align="(((layout as string) === 'center') ? 'center' : 'start')"
     />
-    <Text v-if="note" size="xs" class="text-muted-foreground" data-testid="cta-note">
+    <Text v-if="note" size="xs" class="text-muted-foreground" data-slot="cta-note">
       {{ note }}
     </Text>
     <template #aside>

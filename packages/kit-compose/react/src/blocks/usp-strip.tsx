@@ -37,9 +37,9 @@ export function UspStrip({
       {((perks?.length ?? 0) === 0) ? (
         <EmptyState icon="truck" title={empty} />
       ) : ((layout as string) === "bar") ? (
-        <List tag="ul" className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4" data-testid="items">
+        <List tag="ul" className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4" data-slot="items">
           {(perks ?? []).map((p) => (
-            <ListItem key={p.id} className="flex items-center gap-2 text-sm font-medium" data-testid="item">
+            <ListItem key={p.id} className="flex items-center gap-2 text-sm font-medium" data-slot="item">
               <LucideIcon name={p.icon} size={16} />
               <Inline>
                 {p.title}
@@ -51,7 +51,7 @@ export function UspStrip({
         <Grid
           cols="1-4"
           className={cn("gap-4", (((layout as string) === "strip") ? "rounded bg-muted p-6" : ""))}
-          data-testid="items"
+          data-slot="items"
         >
           {(perks ?? []).map((p) => (
             <Stack key={p.id}
@@ -60,7 +60,7 @@ export function UspStrip({
                 (layout as string) === "cards" ? "rounded bg-card inset-ring inset-ring-border p-6"
                 : ""
               }
-              data-testid="item"
+              data-slot="item"
             >
               <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
                 <LucideIcon name={p.icon} size={20} />

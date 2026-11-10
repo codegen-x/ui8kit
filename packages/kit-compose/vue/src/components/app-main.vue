@@ -47,13 +47,13 @@ const {
     :gap="(((density as string) === 'compact') ? '4' : '6')"
     align="stretch"
     class="min-w-0"
-    data-testid="app-main"
+    data-slot="app-main"
   >
     <Title :as="2" size="2xl" weight="bold" :id="tpl('{0}-title', id)">
       {{ title }}
     </Title>
-    <Grid v-if="((metrics?.length ?? 0) > 0)" :cols="cols" class="gap-4" data-testid="items">
-      <Box v-for="m in metrics" :key="m.id" data-testid="item">
+    <Grid v-if="((metrics?.length ?? 0) > 0)" :cols="cols" class="gap-4" data-slot="items">
+      <Box v-for="m in metrics" :key="m.id" data-slot="item">
         <StatTile :label="m.label" :value="m.value" :icon="m.icon" :hint="m.hint" />
       </Box>
     </Grid>

@@ -23,7 +23,7 @@ const count = computed(() => links?.length ?? 0);
 </script>
 
 <template>
-  <Group v-if="((links?.length ?? 0) > 0)" gap="4" align="center" class="flex-wrap">
+  <Group v-if="((links?.length ?? 0) > 0)" gap="4" align="center" class="flex-wrap" data-slot="nav-links">
     <template v-for="(l, i) in links" :key="l.id">
       <MenuEntry
         v-if="(((side as string) === 'all') || (((i * 2) < count) === ((side as string) === 'left')))"

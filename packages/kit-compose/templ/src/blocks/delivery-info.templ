@@ -40,9 +40,9 @@ templ DeliveryInfo(p DeliveryInfoProps) {
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-8", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "items-start md:grid-cols-2", "")))}}) {
 			if uiutils.Gt(uiutils.Len(vFacts), float64(0)) {
-				@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "1-2", "1-4")), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "facts")}}) {
+				@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "1-2", "1-4")), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "facts")}}) {
 					for _, vF := range uiutils.L(vFacts) {
-						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-testid", "fact")}}) {
+						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-slot", "fact")}}) {
 							@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted"}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 20})
 							}
@@ -65,7 +65,7 @@ templ DeliveryInfo(p DeliveryInfoProps) {
 					}
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "flex flex-col gap-4", "grid grid-cols-1 gap-4 md:grid-cols-3"))}}) {
 						for _, vZ := range uiutils.L(vZones) {
-							@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "border-b border-border pb-4", "rounded bg-card inset-ring inset-ring-border p-6")), Attrs: uiutils.Attrs("data-testid", "zone")}}) {
+							@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "border-b border-border pb-4", "rounded bg-card inset-ring inset-ring-border p-6")), Attrs: uiutils.Attrs("data-slot", "zone")}}) {
 								@compose.Group(compose.GroupProps{Gap: "4", Align: "baseline", Justify: "between", BoxProps: box.BoxProps{}}) {
 									@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 										{ uiutils.Text(uiutils.Get(vZ, "name")) }

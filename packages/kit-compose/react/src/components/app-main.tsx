@@ -39,15 +39,15 @@ export function AppMain({
       gap={(((density as string) === "compact") ? "4" : "6")}
       align="stretch"
       className="min-w-0"
-      data-testid="app-main"
+      data-slot="app-main"
     >
       <Title as={2} size="2xl" weight="bold" id={tpl("{0}-title", id)}>
         {title}
       </Title>
       {((metrics?.length ?? 0) > 0) ? (
-        <Grid cols={cols} className="gap-4" data-testid="items">
+        <Grid cols={cols} className="gap-4" data-slot="items">
           {(metrics ?? []).map((m) => (
-            <Box key={m.id} data-testid="item">
+            <Box key={m.id} data-slot="item">
               <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
             </Box>
           ))}

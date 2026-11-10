@@ -58,7 +58,6 @@ const emit = defineEmits<{ add: [id: string] }>();
       (((layout as string) === 'horizontal') ? 'flex flex-col sm:flex-row' : 'flex flex-col')
     )"
     data-slot="card"
-    data-testid="item"
     :data-layout="layout"
   >
     <Box
@@ -66,13 +65,7 @@ const emit = defineEmits<{ add: [id: string] }>();
       :class="cn('relative shrink-0', (((layout as string) === 'horizontal') ? 'sm:w-48' : ''))"
     >
       <MediaFrame :alt="product.name" :src="product.image" :ratio="ratio" class="h-full" />
-      <Badge
-        v-if="product.badge"
-        variant="default"
-        size="default"
-        class="absolute left-4 top-4"
-        data-testid="badge"
-      >
+      <Badge v-if="product.badge" variant="default" size="default" class="absolute left-4 top-4">
         {{ at(badges, product.badge) }}
       </Badge>
     </Box>
@@ -81,7 +74,7 @@ const emit = defineEmits<{ add: [id: string] }>();
         {{ product.category }}
       </Text>
       <Title :as="3" size="base" weight="bold">
-        <Link v-if="product.href" :href="urlOf(product.href)" variant="default" data-testid="open">
+        <Link v-if="product.href" :href="urlOf(product.href)" variant="default" data-slot="open">
           {{ product.name }}
         </Link>
         <template v-else>
@@ -107,7 +100,7 @@ const emit = defineEmits<{ add: [id: string] }>();
             tag="del"
             size="sm"
             class="relative text-muted-foreground"
-            data-testid="compare-at"
+            data-slot="compare-at"
           >
             <Inline class="sr-only">
               {{ labels.was }}
@@ -119,7 +112,6 @@ const emit = defineEmits<{ add: [id: string] }>();
           :variant="(product.inStock ? 'default' : 'outline')"
           size="sm"
           :disabled="!product.inStock"
-          data-testid="add"
           @click="() => emit('add', product.id)"
         >
           {{ (product.inStock ? labels.add : labels.soldOut) }}

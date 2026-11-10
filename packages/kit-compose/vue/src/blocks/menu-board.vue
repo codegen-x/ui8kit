@@ -63,11 +63,11 @@ const {
         :prefix="id"
         :landmarkLabel="landmarkLabel"
       />
-      <Box class="flex flex-col gap-8" data-testid="items">
+      <Box class="flex flex-col gap-8" data-slot="items">
         <Stack v-for="s in sections" :key="s.id"
           :gap="(((density as string) === 'compact') ? '2' : '4')"
           :id="tpl('{0}-{1}', id, s.key)"
-          data-testid="menusection"
+          data-slot="menusection"
         >
           <Stack gap="0" class="border-b border-border pb-2">
             <Title :as="3" size="xl" weight="bold">

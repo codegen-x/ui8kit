@@ -12,7 +12,7 @@
     {%- set c_1 -%}
       {{ og_text(og_get(v_labels, ['copyright'])) }}
     {%- endset -%}
-    {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'copyright'])}, 'children': c_1}) }}
+    {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'copyright'])}, 'children': c_1}) }}
     {%- set c_5 -%}
       {%- set c_4 -%}
         {%- set c_2 -%}
@@ -30,4 +30,4 @@
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'flex flex-wrap items-center gap-4', ('py-4' if og_t(og_eq(v_density, 'compact')) else 'py-6'), ('flex-col text-center' if og_t(og_eq(v_layout, 'centered')) else 'justify-between')])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_6}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'footer', 'Class': 'mt-12 border-t border-border', 'Attrs': og_attrs(['data-testid', 'site-footer', 'data-layout', v_layout, 'aria-label', v_landmarkLabel])}, 'children': c_7}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'footer', 'Class': 'mt-12 border-t border-border', 'Attrs': og_attrs(['data-layout', v_layout, 'aria-label', v_landmarkLabel, 'data-slot', 'site-footer'])}, 'children': c_7}) }}

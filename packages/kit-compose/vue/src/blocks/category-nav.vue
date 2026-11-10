@@ -71,7 +71,7 @@ const listShape = computed(() =>
 </script>
 
 <template>
-  <Block tag="nav" :aria-label="(landmarkLabel ?? label)" data-testid="category-nav" :data-layout="layout">
+  <Block tag="nav" :aria-label="(landmarkLabel ?? label)" :data-layout="layout" data-slot="category-nav">
     <Container
       :class="cn('mx-auto w-full max-w-6xl px-4', (((density as string) === 'compact') ? 'py-2' : 'py-4'))"
       data-slot="container"
@@ -81,7 +81,7 @@ const listShape = computed(() =>
         gap="4"
         align="center"
         class="mb-4 flex-wrap"
-        data-testid="toolbar"
+        data-slot="toolbar"
       >
         <SearchField :value="(tools?.query ?? '')" :label="(tools?.search ?? '')" :placeholder="tools?.search" />
         <Select name="sort" size="sm" :aria-label="tools?.sort" class="w-48">
@@ -91,8 +91,8 @@ const listShape = computed(() =>
           {{ tools?.shown }}
         </Text>
       </Group>
-      <List v-if="((categories?.length ?? 0) > 0)" tag="ul" :class="listShape" data-testid="items">
-        <ListItem v-for="c in categories" :key="c.id">
+      <List v-if="((categories?.length ?? 0) > 0)" tag="ul" :class="listShape" data-slot="items">
+        <ListItem v-for="c in categories" :key="c.id" data-slot="categories-row">
           <MenuEntry
             :href="c.href"
             :class="cn('text-sm', linkShape, ((c.id === current) ? currentLook : otherLook))"

@@ -23,7 +23,7 @@
       {%- set c_2 -%}
         {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'x', 'Size': 16}}) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Type': 'button', 'Class': 'shrink-0', 'Attrs': og_attrs(['aria-label', v_close, 'data-testid', 'modal-close'])}, 'children': c_2}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Type': 'button', 'Class': 'shrink-0', 'Attrs': og_attrs(['aria-label', v_close])}, 'children': c_2}) }}
     {%- endset -%}
     {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Justify': 'between'}, 'children': c_3}) }}
     {%- set c_5 -%}
@@ -31,9 +31,9 @@
       {%- set c_4 -%}
         {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'play', 'Size': 24}}) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'button', 'Class': 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded', 'Attrs': og_attrs(['aria-label', v_play, 'data-testid', 'play'])}, 'children': c_4}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'button', 'Class': 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded', 'Attrs': og_attrs(['aria-label', v_play])}, 'children': c_4}) }}
     {%- endset -%}
-    {{ og_include('compose/box.html.j2', {'p': {'Class': 'relative', 'Attrs': og_attrs(['data-testid', 'player'])}, 'children': c_5}) }}
+    {{ og_include('compose/box.html.j2', {'p': {'Class': 'relative', 'Attrs': og_attrs(['data-slot', 'player'])}, 'children': c_5}) }}
     {%- if og_t(og_and([og_eq(v_outline, 'chapters'), og_gt(og_len(v_chapters), 0)])) %}
       {%- set c_11 -%}
         {%- set c_6 -%}
@@ -52,14 +52,14 @@
               {%- endset -%}
               {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_8}) }}
             {%- endset -%}
-            {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-baseline gap-4', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_9}) }}
+            {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-baseline gap-4', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_9}) }}
           {%- endfor %}
         {%- endset -%}
         {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-2 p-0'}, 'children': c_10}) }}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Attrs': og_attrs(['data-testid', 'chapters'])}, 'children': c_11}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Attrs': og_attrs(['data-slot', 'chapters'])}, 'children': c_11}) }}
     {%- endif %}
   {%- endset -%}
-  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(og_cnv(['mx-auto w-full', ('max-w-4xl' if og_t(og_eq(v_size, 'wide')) else 'max-w-2xl'), 'rounded bg-card inset-ring inset-ring-border p-4 shadow-lg'])), 'Attrs': og_attrs(['role', 'dialog', 'aria-label', v_title, 'data-testid', 'video-modal'])}, 'children': c_12}) }}
+  {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': og_s(og_cnv(['mx-auto w-full', ('max-w-4xl' if og_t(og_eq(v_size, 'wide')) else 'max-w-2xl'), 'rounded bg-card inset-ring inset-ring-border p-4 shadow-lg'])), 'Attrs': og_attrs(['role', 'dialog', 'aria-label', v_title, 'data-slot', 'video-modal'])}, 'children': c_12}) }}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_13)}) }}

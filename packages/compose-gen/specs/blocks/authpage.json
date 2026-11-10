@@ -154,22 +154,22 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"auth-layout\"]",
+      "sel": "[data-slot=\"auth-layout\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"auth-card\"]",
+      "sel": "[data-slot=\"auth-card\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"visual\"]",
+      "sel": "[data-slot=\"visual\"]",
       "n": 1,
       "when": {
         "layout": "split"
       }
     },
     {
-      "sel": "[data-testid=\"visual\"]",
+      "sel": "[data-slot=\"visual\"]",
       "n": 0,
       "when": {
         "layout": [
@@ -179,7 +179,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"social\"]",
+      "sel": "[data-slot=\"social\"]",
       "n": 1,
       "when": {
         "social": [
@@ -193,28 +193,28 @@
       }
     },
     {
-      "sel": "[data-testid=\"social\"]",
+      "sel": "[data-slot=\"social\"]",
       "n": 0,
       "when": {
         "social": "none"
       }
     },
     {
-      "sel": "[data-testid=\"field\"]",
+      "sel": "[data-slot=\"field\"]",
       "n": 2,
       "when": {
         "mode": "signin"
       }
     },
     {
-      "sel": "[data-testid=\"field\"]",
+      "sel": "[data-slot=\"field\"]",
       "n": 3,
       "when": {
         "mode": "signup"
       }
     },
     {
-      "sel": "[data-testid=\"field\"]",
+      "sel": "[data-slot=\"field\"]",
       "n": 1,
       "when": {
         "mode": [

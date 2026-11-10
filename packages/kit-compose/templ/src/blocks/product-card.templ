@@ -36,12 +36,12 @@ templ ProductCard(p ProductCardProps) {
 	{{ vRating := uiutils.Def(p.Rating, "show") }}
 	{{ vAction := uiutils.Def(p.Action, "button") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "article", Class: uiutils.S(uiutils.Cnv("flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded", "h-full gap-4 overflow-hidden", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "horizontal")), "flex flex-col sm:flex-row", "flex flex-col"))), Attrs: uiutils.Attrs("data-slot", "card", "data-testid", "item", "data-layout", vLayout)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "article", Class: uiutils.S(uiutils.Cnv("flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded", "h-full gap-4 overflow-hidden", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "horizontal")), "flex flex-col sm:flex-row", "flex flex-col"))), Attrs: uiutils.Attrs("data-slot", "card", "data-layout", vLayout)}}) {
 		if uiutils.Eq(vMedia, "image") {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("relative shrink-0", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "horizontal")), "sm:w-48", "")))}}) {
 				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vProduct, "name"), Src: uiutils.Get(vProduct, "image"), Ratio: vRatio, Class: uiutils.Cnv("h-full")})
 				if uiutils.T(uiutils.Get(vProduct, "badge")) {
-					@compose.Badge(compose.BadgeProps{Variant: "default", Size: "default", TextProps: text.TextProps{Class: "absolute left-4 top-4", Attrs: uiutils.Attrs("data-testid", "badge")}}) {
+					@compose.Badge(compose.BadgeProps{Variant: "default", Size: "default", TextProps: text.TextProps{Class: "absolute left-4 top-4"}}) {
 						{ uiutils.Text(uiutils.At(vBadges, uiutils.Get(vProduct, "badge"))) }
 					}
 				}
@@ -53,7 +53,7 @@ templ ProductCard(p ProductCardProps) {
 			}
 			@compose.Title(compose.TitleProps{As: "3", Size: "base", Weight: "bold", TextProps: text.TextProps{}}) {
 				if uiutils.T(uiutils.Get(vProduct, "href")) {
-					@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vProduct, "href"), false), Attrs: uiutils.Attrs("data-testid", "open")}}) {
+					@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vProduct, "href"), false), Attrs: uiutils.Attrs("data-slot", "open")}}) {
 						{ uiutils.Text(uiutils.Get(vProduct, "name")) }
 					}
 				} else {
@@ -79,7 +79,7 @@ templ ProductCard(p ProductCardProps) {
 						{ uiutils.Text(uiutils.Money(uiutils.Get(vProduct, "price"), uiutils.Get(vProduct, "currency"))) }
 					}
 					if uiutils.T(uiutils.And(uiutils.Get(vProduct, "compareAt"), uiutils.Gt(uiutils.Get(vProduct, "compareAt"), uiutils.Get(vProduct, "price")))) {
-						@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Tag: "del", Class: "relative text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "compare-at")}}) {
+						@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Tag: "del", Class: "relative text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "compare-at")}}) {
 							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "sr-only"}}) {
 								{ uiutils.Text(uiutils.Get(vLabels, "was")) }
 							}
@@ -88,7 +88,7 @@ templ ProductCard(p ProductCardProps) {
 					}
 				}
 				if uiutils.Eq(vAction, "button") {
-					@compose.Button(compose.ButtonProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "inStock")), "default", "outline")), Size: "sm", ButtonProps: button.ButtonProps{Disabled: uiutils.T(!uiutils.T(uiutils.Get(vProduct, "inStock"))), Attrs: uiutils.Attrs("data-testid", "add")}}) {
+					@compose.Button(compose.ButtonProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "inStock")), "default", "outline")), Size: "sm", ButtonProps: button.ButtonProps{Disabled: uiutils.T(!uiutils.T(uiutils.Get(vProduct, "inStock")))}}) {
 						{ uiutils.Text(uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "inStock")), uiutils.Get(vLabels, "add"), uiutils.Get(vLabels, "soldOut"))) }
 					}
 				}

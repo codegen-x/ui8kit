@@ -139,10 +139,10 @@
             }
           ]
         },
-        "data-testid": "panel-section",
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "panel-section"
       },
       "children": [
         {
@@ -276,7 +276,7 @@
                                 "Align": "stretch"
                               },
                               "attrs": {
-                                "data-testid": "items"
+                                "data-slot": "items"
                               },
                               "children": [
                                 {

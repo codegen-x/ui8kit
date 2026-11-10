@@ -8,5 +8,5 @@
   {capture $c_1}
     {=og_include('blocks/media-frame.latte', ['p' => ['alt' => $v_alt, 'ratio' => '21/9', 'className' => og_cnv(['size-full rounded-none opacity-40'])]])|noescape}
   {/capture}
-  {=og_include('compose/Box.latte', ['class' => 'pointer-events-none absolute inset-0 -z-10', 'attrs' => og_attrs(['data-testid', 'over']), 'children' => (string) $c_1])|noescape}
+  {=og_include('compose/Box.latte', ['class' => 'pointer-events-none absolute inset-0 -z-10', 'attrs' => og_attrs(['data-slot', 'over']), 'children' => (string) $c_1])|noescape}
 {/if}

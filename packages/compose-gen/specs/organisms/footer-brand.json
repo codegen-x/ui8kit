@@ -27,7 +27,7 @@
         "Align": "start"
       },
       "attrs": {
-        "data-testid": "footer-brand"
+        "data-slot": "footer-brand"
       },
       "children": [
         {

@@ -31,4 +31,4 @@
   {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'children': c_5}, with_context = false) }}
   {{ og_slot((children ?? null))|raw }}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': '6', 'align': 'stretch', 'class': og_s((og_t(og_eq(v_layout, 'cards')) ? 'rounded bg-card inset-ring inset-ring-border p-6' : 'border-t border-border pt-6')), 'attrs': og_attrs(['data-testid', 'step']), 'children': c_6}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': '6', 'align': 'stretch', 'class': og_s((og_t(og_eq(v_layout, 'cards')) ? 'rounded bg-card inset-ring inset-ring-border p-6' : 'border-t border-border pt-6')), 'attrs': og_attrs(['data-slot', 'step']), 'children': c_6}, with_context = false) }}

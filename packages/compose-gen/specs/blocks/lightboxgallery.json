@@ -61,7 +61,7 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@photos",
       "when": {
         "layout": [
@@ -71,14 +71,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"thumbs\"] [data-slot=\"media-frame\"]",
+      "sel": "[data-slot=\"thumbs\"] [data-slot=\"media-frame\"]",
       "n": "@photos",
       "when": {
         "layout": "featured"
       }
     },
     {
-      "sel": "[data-testid=\"caption\"]",
+      "sel": "[data-slot=\"caption\"]",
       "n": "@photos",
       "when": {
         "layout": [
@@ -89,21 +89,21 @@
       }
     },
     {
-      "sel": "[data-testid=\"caption\"]",
+      "sel": "[data-slot=\"caption\"]",
       "n": 0,
       "when": {
         "captions": "hide"
       }
     },
     {
-      "sel": "[data-testid=\"lightbox\"][open]",
+      "sel": "[data-slot=\"lightbox\"][open]",
       "n": 1,
       "when": {
         "lightbox": "open"
       }
     },
     {
-      "sel": "[data-testid=\"lightbox\"][open]",
+      "sel": "[data-slot=\"lightbox\"][open]",
       "n": 0,
       "when": {
         "lightbox": "closed"

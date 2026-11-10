@@ -144,7 +144,7 @@
                 "aria-label": {
                   "$": "title"
                 },
-                "data-testid": "video-modal"
+                "data-slot": "video-modal"
               },
               "children": [
                 {
@@ -180,8 +180,7 @@
                       "attrs": {
                         "aria-label": {
                           "$": "close"
-                        },
-                        "data-testid": "modal-close"
+                        }
                       },
                       "children": [
                         {
@@ -201,7 +200,7 @@
                     "Class": "relative"
                   },
                   "attrs": {
-                    "data-testid": "player"
+                    "data-slot": "player"
                   },
                   "children": [
                     {
@@ -223,8 +222,7 @@
                       "attrs": {
                         "aria-label": {
                           "$": "play"
-                        },
-                        "data-testid": "play"
+                        }
                       },
                       "children": [
                         {
@@ -274,7 +272,7 @@
                         "Gap": "2"
                       },
                       "attrs": {
-                        "data-testid": "chapters"
+                        "data-slot": "chapters"
                       },
                       "children": [
                         {
@@ -313,7 +311,7 @@
                                     "Class": "flex items-baseline gap-4"
                                   },
                                   "attrs": {
-                                    "data-testid": "item"
+                                    "data-slot": "item"
                                   },
                                   "children": [
                                     {

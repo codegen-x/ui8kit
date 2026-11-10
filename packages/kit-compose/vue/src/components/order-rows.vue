@@ -27,8 +27,8 @@ const { orders, statuses, labels, density = "default" } = defineProps<OrderRowsP
 </script>
 
 <template>
-  <Box class="w-full overflow-x-auto">
-    <Table class="w-full text-left text-sm" data-testid="order-table">
+  <Box class="w-full overflow-x-auto" data-slot="order-rows">
+    <Table class="w-full text-left text-sm" data-slot="order-table">
       <TableCaption class="sr-only">
         {{ labels.caption }}
       </TableCaption>
@@ -52,7 +52,7 @@ const { orders, statuses, labels, density = "default" } = defineProps<OrderRowsP
         </TableRow>
       </TableHead>
       <TableBody>
-        <TableRow v-for="o in orders" :key="o.id" class="border-t border-border" data-testid="item">
+        <TableRow v-for="o in orders" :key="o.id" class="border-t border-border" data-slot="item">
           <TableCell :class="cn('font-semibold', (((density as string) === 'compact') ? 'py-2' : 'py-4'))">
             {{ o.number }}
           </TableCell>

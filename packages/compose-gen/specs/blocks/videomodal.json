@@ -60,22 +60,22 @@
       "n": 1
     },
     {
-      "sel": "[data-testid=\"play\"]",
+      "sel": "[data-slot=\"button\"]:has([data-lucide=\"play\"])",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"modal-close\"]",
+      "sel": "[data-slot=\"video-modal\"] > div:not([data-slot]) > [data-slot=\"button\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"chapters\"] [data-testid=\"item\"]",
+      "sel": "[data-slot=\"chapters\"] [data-slot=\"item\"]",
       "n": "@chapters",
       "when": {
         "outline": "chapters"
       }
     },
     {
-      "sel": "[data-testid=\"chapters\"]",
+      "sel": "[data-slot=\"chapters\"]",
       "n": 0,
       "when": {
         "outline": "none"

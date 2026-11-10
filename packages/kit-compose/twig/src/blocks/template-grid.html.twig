@@ -29,10 +29,10 @@
               {%- endif %}
               {{ og_text(og_get(v_f, ['title'])) }}
             {%- endset -%}
-            {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'type': 'button', 'class': 'gap-2', 'attrs': og_attrs(['data-testid', 'template-filter']), 'children': c_2}, with_context = false) }}
+            {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'type': 'button', 'class': 'gap-2', 'children': c_2}, with_context = false) }}
           {%- endfor %}
         {%- endset -%}
-        {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['role', 'group', 'aria-label', og_get(v_labels, ['filters']), 'data-testid', 'template-filters']), 'children': c_3}, with_context = false) }}
+        {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['role', 'group', 'aria-label', og_get(v_labels, ['filters']), 'data-slot', 'template-filters']), 'children': c_3}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'between', 'class': 'h-8 w-full flex-wrap', 'children': c_4}, with_context = false) }}
@@ -50,7 +50,7 @@
               {%- set c_6 -%}
                 {{ include('icons/LucideIcon.html.twig', {'name': 'layout-template', 'size': 16}, with_context = false) }}
               {%- endset -%}
-              {{ include('compose/IconBadge.html.twig', {'size': 'sm', 'class': 'overflow-hidden', 'attrs': og_attrs(['data-testid', 'template-avatar']), 'children': c_6}, with_context = false) }}
+              {{ include('compose/IconBadge.html.twig', {'size': 'sm', 'class': 'overflow-hidden', 'attrs': og_attrs(['data-slot', 'template-avatar']), 'children': c_6}, with_context = false) }}
               {%- set c_15 -%}
                 {%- set c_7 -%}
                   {{ og_text(og_get(v_t, ['title'])) }}
@@ -86,17 +86,17 @@
               {%- endset -%}
               {{ include('compose/Stack.html.twig', {'gap': '0', 'class': 'min-w-0 flex-1', 'children': c_15}, with_context = false) }}
             {%- endset -%}
-            {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': og_s(og_cnv(['w-full', og_preset('blocks/presets/defaults.json', ['templates', 'footer'])])), 'attrs': og_attrs(['data-testid', 'template-footer']), 'children': c_16}, with_context = false) }}
+            {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': og_s(og_cnv(['w-full', og_preset('blocks/presets/defaults.json', ['templates', 'footer'])])), 'attrs': og_attrs(['data-slot', 'template-footer']), 'children': c_16}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border', og_preset('blocks/presets/defaults.json', ['templates', 'card'])])), 'attrs': og_attrs(['data-testid', 'template-card']), 'children': c_17}, with_context = false) }}
+          {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border', og_preset('blocks/presets/defaults.json', ['templates', 'card'])])), 'attrs': og_attrs(['data-slot', 'template-card']), 'children': c_17}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/Grid.html.twig', {'cols': og_s(v_cols), 'class': 'w-full gap-6', 'attrs': og_attrs(['data-testid', 'template-grid']), 'children': c_18}, with_context = false) }}
+      {{ include('compose/Grid.html.twig', {'cols': og_s(v_cols), 'class': 'w-full gap-6', 'attrs': og_attrs(['data-slot', 'template-grid']), 'children': c_18}, with_context = false) }}
     {%- endif %}
     {%- set c_19 -%}
       {{ og_text(og_get(v_labels, ['browse'])) }}
     {%- endset -%}
-    {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'href': og_url(og_s(v_browseHref)), 'class': 'w-full', 'attrs': og_attrs(['data-testid', 'template-browse']), 'children': c_19}, with_context = false) }}
+    {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'href': og_url(og_s(v_browseHref)), 'class': 'w-full', 'children': c_19}, with_context = false) }}
   {%- endset -%}
   {{ include('compose/Stack.html.twig', {'gap': '8', 'align': 'stretch', 'children': c_20}, with_context = false) }}
 {%- endset -%}

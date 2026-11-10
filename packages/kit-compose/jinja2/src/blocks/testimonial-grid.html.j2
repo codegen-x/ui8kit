@@ -22,7 +22,7 @@
         {{ og_include('blocks/quote-card.html.j2', {'p': {'q': v_q, 'labels': v_labels, 'item': v_item, 'layout': v_layout}}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/block.html.j2', {'p': {'Tag': 'div', 'Class': og_s(('columns-1 gap-4 md:columns-2 xl:columns-3' if og_t(og_eq(v_layout, 'masonry')) else 'flex snap-x gap-4 overflow-x-auto pb-2')), 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_1}) }}
+    {{ og_include('compose/block.html.j2', {'p': {'Tag': 'div', 'Class': og_s(('columns-1 gap-4 md:columns-2 xl:columns-3' if og_t(og_eq(v_layout, 'masonry')) else 'flex snap-x gap-4 overflow-x-auto pb-2')), 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_1}) }}
   {%- else %}
     {%- set c_2 -%}
       {%- for v_q in og_l(v_quotes) %}
@@ -32,7 +32,7 @@
         {%- endif %}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s((v_cols if og_t(og_eq(v_layout, 'grid')) else '1')), 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_2}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s((v_cols if og_t(og_eq(v_layout, 'grid')) else '1')), 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_2}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'align': ('center' if og_t(og_eq(v_layout, 'single')) else 'start'), 'measure': ('default' if og_t(og_eq(v_layout, 'grid')) else '2xl'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_3)}) }}

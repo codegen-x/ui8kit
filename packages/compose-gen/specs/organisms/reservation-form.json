@@ -188,7 +188,7 @@
                     "Class": "flex w-full flex-col gap-4"
                   },
                   "attrs": {
-                    "data-testid": "reservation-form"
+                    "data-slot": "reservation-form"
                   },
                   "children": [
                     {
@@ -228,7 +228,7 @@
                                     }
                                   ]
                                 },
-                                "data-testid": "field"
+                                "data-slot": "field"
                               }
                             }
                           ]
@@ -272,7 +272,7 @@
                                     }
                                   ]
                                 },
-                                "data-testid": "field"
+                                "data-slot": "field"
                               }
                             }
                           ]
@@ -327,7 +327,7 @@
                                         }
                                       ]
                                     },
-                                    "data-testid": "field"
+                                    "data-slot": "field"
                                   }
                                 }
                               ]
@@ -385,7 +385,7 @@
                                             }
                                           ]
                                         },
-                                        "data-testid": "field"
+                                        "data-slot": "field"
                                       }
                                     }
                                   ]
@@ -436,7 +436,7 @@
                                             }
                                           ]
                                         },
-                                        "data-testid": "field"
+                                        "data-slot": "field"
                                       }
                                     }
                                   ]
@@ -540,7 +540,7 @@
                                         }
                                       ]
                                     },
-                                    "data-testid": "field"
+                                    "data-slot": "field"
                                   }
                                 }
                               ]
@@ -625,9 +625,6 @@
                         "Type": "submit",
                         "Class": "w-fit"
                       },
-                      "attrs": {
-                        "data-testid": "submit"
-                      },
                       "children": [
                         {
                           "text": {
@@ -674,7 +671,7 @@
                         "Gap": "4"
                       },
                       "attrs": {
-                        "data-testid": "details"
+                        "data-slot": "details"
                       },
                       "children": [
                         {
@@ -693,7 +690,7 @@
                                 "Align": "start"
                               },
                               "attrs": {
-                                "data-testid": "detail"
+                                "data-slot": "detail"
                               },
                               "children": [
                                 {

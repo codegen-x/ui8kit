@@ -36,6 +36,7 @@ export function CodeWindow({ title, prompt, lines, class: className }: CodeWindo
           <ListItem
             class={cn("flex gap-2", ((line.kind === "command") ? "text-foreground" : "text-muted-foreground"))}
             data-kind={line.kind}
+            data-slot="code-line"
           >
             {(line.kind === "command") ? (
               <Inline class="select-none text-muted-foreground">

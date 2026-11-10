@@ -41,11 +41,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"menusection\"]",
+      "sel": "[data-slot=\"menusection\"]",
       "n": "@menusections"
     },
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@menudishes"
     }
   ],

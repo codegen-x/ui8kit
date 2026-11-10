@@ -20,10 +20,10 @@
         {%- set c_2 -%}
           {{ og_include('blocks/stat-tile.html.j2', {'p': {'label': og_get(v_m, ['label']), 'value': og_get(v_m, ['value']), 'icon': og_get(v_m, ['icon']), 'hint': og_get(v_m, ['hint'])}}) }}
         {%- endset -%}
-        {{ og_include('compose/box.html.j2', {'p': {'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_2}) }}
+        {{ og_include('compose/box.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_2}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(v_cols), 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_3}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(v_cols), 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_3}) }}
   {%- endif %}
   {%- if og_t(v_activity) %}
     {%- set c_6 -%}
@@ -48,4 +48,4 @@
     {{ og_include('blocks/panel.html.j2', {'p': {'title': og_get(v_chart, ['title']), 'description': og_get(v_chart, ['text']), 'id': og_tpl('{0}-chart', [v_id]), 'className': og_cnv(['h-full'])}, 'children': og_markup(c_7)}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': og_s(('4' if og_t(og_eq(v_density, 'compact')) else '6')), 'Align': 'stretch', 'Class': 'min-w-0', 'Attrs': og_attrs(['data-testid', 'app-main'])}, 'children': c_8}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': og_s(('4' if og_t(og_eq(v_density, 'compact')) else '6')), 'Align': 'stretch', 'Class': 'min-w-0', 'Attrs': og_attrs(['data-slot', 'app-main'])}, 'children': c_8}) }}

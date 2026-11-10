@@ -39,8 +39,8 @@ const emit = defineEmits<{ remove: [id: string] }>();
 </script>
 
 <template>
-  <Box class="w-full overflow-x-auto">
-    <Table class="w-full text-left text-sm" data-testid="cart-table">
+  <Box class="w-full overflow-x-auto" data-slot="cart-table-root">
+    <Table class="w-full text-left text-sm" data-slot="cart-table">
       <TableCaption class="sr-only">
         {{ labels.caption }}
       </TableCaption>
@@ -66,7 +66,7 @@ const emit = defineEmits<{ remove: [id: string] }>();
         </TableRow>
       </TableHead>
       <TableBody>
-        <TableRow v-for="line in lines" :key="line.id" class="border-t border-border" data-testid="item">
+        <TableRow v-for="line in lines" :key="line.id" class="border-t border-border" data-slot="item">
           <TableCell :class="cn((((density as string) === 'compact') ? 'py-2' : 'py-4'))">
             <Group gap="4" align="center">
               <MediaFrame
@@ -107,7 +107,6 @@ const emit = defineEmits<{ remove: [id: string] }>();
               size="sm"
               layout="icon"
               :aria-label="labels.remove"
-              data-testid="remove"
               @click="() => emit('remove', line.id)"
             >
               <LucideIcon name="x" :size="16" />
@@ -122,14 +121,14 @@ const emit = defineEmits<{ remove: [id: string] }>();
     align="center"
     justify="between"
     class="mt-4 flex-wrap border-t border-border pt-4"
-    data-testid="cart-footer"
+    data-slot="cart-footer"
   >
-    <Text size="base" weight="bold" data-testid="subtotal">
+    <Text size="base" weight="bold" data-slot="subtotal">
       {{ labels.subtotal }}
       {{ " " }}
       {{ fmtMoney(lines.reduce((s, i) => s + i.price * i.qty, 0), lines[0]?.currency ?? "") }}
     </Text>
-    <Button variant="default" size="default" data-testid="checkout">
+    <Button variant="default" size="default">
       {{ labels.checkout }}
     </Button>
   </Group>

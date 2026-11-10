@@ -30,10 +30,10 @@
             {/capture}
             {=og_include('compose/Text.latte', ['size' => 'sm', 'class' => 'pb-4 text-muted-foreground', 'children' => (string) $c_3])|noescape}
           {/capture}
-          {=og_include('compose/Disclosure.latte', ['variant' => 'item', 'open' => og_t(og_and([og_eq($v_expand, 'first'), og_eq($v_i, 0)])), 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_4])|noescape}
+          {=og_include('compose/Disclosure.latte', ['variant' => 'item', 'open' => og_t(og_and([og_eq($v_expand, 'first'), og_eq($v_i, 0)])), 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_4])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => 'stretch', 'class' => og_s((og_t(og_eq($v_layout, 'split')) ? 'lg:col-span-2' : '')), 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_5])|noescape}
+      {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => 'stretch', 'class' => og_s((og_t(og_eq($v_layout, 'split')) ? 'lg:col-span-2' : '')), 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_5])|noescape}
     {/if}
     {if og_t(og_gt(og_len($v_specs), 0))}
       {capture $c_11}
@@ -53,12 +53,12 @@
               {/capture}
               {=og_include('compose/Inline.latte', ['class' => 'font-medium', 'children' => (string) $c_8])|noescape}
             {/capture}
-            {=og_include('compose/ListItem.latte', ['class' => 'flex items-center justify-between gap-4 border-b border-border py-2 text-sm last:border-b-0', 'attrs' => og_attrs(['data-testid', 'spec']), 'children' => (string) $c_9])|noescape}
+            {=og_include('compose/ListItem.latte', ['class' => 'flex items-center justify-between gap-4 border-b border-border py-2 text-sm last:border-b-0', 'attrs' => og_attrs(['data-slot', 'spec']), 'children' => (string) $c_9])|noescape}
           {/foreach}
         {/capture}
         {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => 'flex flex-col', 'children' => (string) $c_10])|noescape}
       {/capture}
-      {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs' => og_attrs(['data-testid', 'specs']), 'children' => (string) $c_11])|noescape}
+      {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs' => og_attrs(['data-slot', 'specs']), 'children' => (string) $c_11])|noescape}
     {/if}
   {/capture}
   {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'split')) ? 'grid grid-cols-1 items-start gap-8 lg:grid-cols-3' : 'grid grid-cols-1 gap-8')), 'children' => (string) $c_12])|noescape}

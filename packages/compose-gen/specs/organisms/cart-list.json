@@ -259,7 +259,7 @@
                         "Align": "stretch"
                       },
                       "attrs": {
-                        "data-testid": "cart-cards"
+                        "data-slot": "cart-cards"
                       },
                       "children": [
                         {
@@ -275,9 +275,6 @@
                               "use": "Card",
                               "props": {
                                 "Variant": "default"
-                              },
-                              "attrs": {
-                                "data-testid": "item"
                               },
                               "children": [
                                 {
@@ -441,9 +438,6 @@
                                         "AriaLabel": {
                                           "$": "labels.remove"
                                         }
-                                      },
-                                      "attrs": {
-                                        "data-testid": "remove"
                                       },
                                       "on": {
                                         "click": {

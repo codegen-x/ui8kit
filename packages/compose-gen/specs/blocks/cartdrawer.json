@@ -45,25 +45,25 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"drawer\"]",
+      "sel": "[data-slot=\"drawer\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@cart",
       "when": {
         "state": "filled"
       }
     },
     {
-      "sel": "[data-testid=\"empty\"]",
+      "sel": "[data-slot=\"empty\"]",
       "n": 1,
       "when": {
         "state": "empty"
       }
     },
     {
-      "sel": "[data-testid=\"empty\"]",
+      "sel": "[data-slot=\"empty\"]",
       "n": 0,
       "when": {
         "state": "filled"

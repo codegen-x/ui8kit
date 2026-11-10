@@ -22,7 +22,7 @@
       },
       "attrs": {
         "role": "status",
-        "data-testid": "notice"
+        "data-slot": "notice"
       },
       "children": [
         {

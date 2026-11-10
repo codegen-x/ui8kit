@@ -79,10 +79,10 @@
             {{ include('compose/Badge.html.twig', {'variant': 'secondary', 'size': 'default', 'class': 'w-fit', 'children': c_15}, with_context = false) }}
           {%- endif %}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '4', 'class': 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_16}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '4', 'class': 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_16}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': '1-3', 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_17}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': '1-3', 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_17}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_18)}, with_context = false) }}

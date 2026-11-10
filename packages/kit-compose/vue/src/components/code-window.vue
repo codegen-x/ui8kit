@@ -44,6 +44,7 @@ const { title, prompt, lines, class: className } = defineProps<CodeWindowProps>(
       <ListItem v-for="line in lines" :key="line.id"
         :class="cn('flex gap-2', ((line.kind === 'command') ? 'text-foreground' : 'text-muted-foreground'))"
         :data-kind="line.kind"
+        data-slot="code-line"
       >
         <Inline v-if="(line.kind === 'command')" class="select-none text-muted-foreground">
           {{ prompt }}

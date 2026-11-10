@@ -28,7 +28,7 @@
                     {%- set c_1 -%}
                       {{ og_text(og_at(v_badges, og_get(v_pack, ['badge']))) }}
                     {%- endset -%}
-                    {{ include('compose/Badge.html.twig', {'variant': 'default', 'size': 'default', 'class': 'w-fit shrink-0', 'attrs': og_attrs(['data-testid', 'badge']), 'children': c_1}, with_context = false) }}
+                    {{ include('compose/Badge.html.twig', {'variant': 'default', 'size': 'default', 'class': 'w-fit shrink-0', 'children': c_1}, with_context = false) }}
                   {%- endif %}
                 {%- endset -%}
                 {{ include('compose/Box.html.twig', {'class': 'flex min-h-6 items-center', 'attrs': og_attrs(['data-slot', 'badge-slot']), 'children': c_2}, with_context = false) }}
@@ -49,14 +49,14 @@
             {%- set c_7 -%}
               {{ og_text(v_buy) }}
             {%- endset -%}
-            {{ include('compose/Button.html.twig', {'variant': og_s((og_t(og_eq(og_get(v_pack, ['badge']), 'popular')) ? 'default' : 'outline')), 'size': 'sm', 'type': 'button', 'class': og_s(og_cnv(['w-fit shrink-0', (og_t(og_eq(v_item, 'row')) ? '' : 'mt-auto')])), 'attrs': og_attrs(['data-testid', 'buy']), 'children': c_7}, with_context = false) }}
+            {{ include('compose/Button.html.twig', {'variant': og_s((og_t(og_eq(og_get(v_pack, ['badge']), 'popular')) ? 'default' : 'outline')), 'size': 'sm', 'type': 'button', 'class': og_s(og_cnv(['w-fit shrink-0', (og_t(og_eq(v_item, 'row')) ? '' : 'mt-auto')])), 'children': c_7}, with_context = false) }}
           {%- endset -%}
           {{ include('compose/CardContent.html.twig', {'class': og_s(og_cnv(['flex h-full gap-4', (og_t(og_eq(v_item, 'row')) ? 'flex-row flex-wrap items-center justify-between' : 'flex-col')])), 'children': c_8}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Card.html.twig', {'variant': 'default', 'class': og_s(og_cnv(['h-full', (og_t(og_eq(v_item, 'row')) ? 'gap-4 p-4' : (og_t(og_eq(v_density, 'compact')) ? 'gap-4 p-4' : ''))])), 'attrs': og_attrs(['data-testid', 'item', 'data-badge', og_get(v_pack, ['badge'])]), 'children': c_9}, with_context = false) }}
+        {{ include('compose/Card.html.twig', {'variant': 'default', 'class': og_s(og_cnv(['h-full', (og_t(og_eq(v_item, 'row')) ? 'gap-4 p-4' : (og_t(og_eq(v_density, 'compact')) ? 'gap-4 p-4' : ''))])), 'attrs': og_attrs(['data-badge', og_get(v_pack, ['badge'])]), 'children': c_9}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_item, 'row')) ? '1' : og_fit_cols((og_t(og_eq(v_cols, '2')) ? '1-2' : '1-4'), og_len(v_packs)))), 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_10}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_item, 'row')) ? '1' : og_fit_cols((og_t(og_eq(v_cols, '2')) ? '1-2' : '1-4'), og_len(v_packs)))), 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_10}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': (og_t(og_eq(v_item, 'row')) ? '2xl' : 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_11)}, with_context = false) }}

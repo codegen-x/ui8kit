@@ -81,7 +81,7 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"quote\"]",
+      "sel": "[data-slot=\"quote\"]",
       "n": 1,
       "when": {
         "layout": [
@@ -92,14 +92,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"quote\"]",
+      "sel": "[data-slot=\"quote\"]",
       "n": 3,
       "when": {
         "layout": "stack"
       }
     },
     {
-      "sel": "[data-testid=\"quote\"]",
+      "sel": "[data-slot=\"quote\"]",
       "n": "@testimonials",
       "when": {
         "layout": [
@@ -109,7 +109,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"quote-logo\"]",
+      "sel": "[data-slot=\"quote-logo\"]",
       "n": 4,
       "when": {
         "layout": [
@@ -118,7 +118,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"quote-logo\"]",
+      "sel": "[data-slot=\"quote-logo\"]",
       "n": 0,
       "when": {
         "layout": [
@@ -131,7 +131,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"quote-rating\"]",
+      "sel": "[data-slot=\"quote-rating\"]",
       "n": 1,
       "when": {
         "layout": [
@@ -140,7 +140,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"quote-rating\"]",
+      "sel": "[data-slot=\"quote-rating\"]",
       "n": 0,
       "when": {
         "layout": [
@@ -153,7 +153,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"quote-figures\"]",
+      "sel": "[data-slot=\"quote-figures\"]",
       "n": 1,
       "when": {
         "layout": [
@@ -162,7 +162,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"quote-figures\"]",
+      "sel": "[data-slot=\"quote-figures\"]",
       "n": 0,
       "when": {
         "layout": [
@@ -175,7 +175,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"action-primary\"]",
+      "sel": ":is([data-slot=\"action-group\"] > [data-slot=\"button\"]:first-child, [data-slot=\"post-feature\"] > [data-slot=\"button\"], [data-slot=\"post-actions\"] > [data-slot=\"button\"]:first-child)",
       "n": 1,
       "when": {
         "layout": [

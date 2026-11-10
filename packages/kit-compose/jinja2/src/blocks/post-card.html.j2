@@ -15,9 +15,9 @@
       {%- set c_1 -%}
         {{ og_text(og_get(v_post, ['title'])) }}
       {%- endset -%}
-      {{ og_include('compose/title.html.j2', {'p': {'As': 3, 'Size': 'xs', 'Weight': 'semibold', 'Class': og_s(og_cnv(['pointer-events-none absolute inset-x-12 line-clamp-2 text-center leading-5 text-foreground', og_preset('blocks/presets/defaults.json', ['news', 'title'])])), 'Attrs': og_attrs(['data-testid', 'news-title'])}, 'children': c_1}) }}
+      {{ og_include('compose/title.html.j2', {'p': {'As': 3, 'Size': 'xs', 'Weight': 'semibold', 'Class': og_s(og_cnv(['pointer-events-none absolute inset-x-12 line-clamp-2 text-center leading-5 text-foreground', og_preset('blocks/presets/defaults.json', ['news', 'title'])])), 'Attrs': og_attrs(['data-slot', 'news-title'])}, 'children': c_1}) }}
     {%- endset -%}
-    {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['relative shrink-0 overflow-hidden', og_preset('blocks/presets/defaults.json', ['news', 'cover'])])), 'Attrs': og_attrs(['data-testid', 'news-cover'])}, 'children': c_2}) }}
+    {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['relative shrink-0 overflow-hidden', og_preset('blocks/presets/defaults.json', ['news', 'cover'])])), 'Attrs': og_attrs(['data-slot', 'news-cover'])}, 'children': c_2}) }}
     {%- set c_5 -%}
       {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'calendar', 'Size': 16}}) }}
       {%- set c_3 -%}
@@ -31,9 +31,9 @@
         {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Weight': 'bold', 'Class': 'leading-4'}, 'children': c_4}) }}
       {%- endif %}
     {%- endset -%}
-    {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': og_s(og_cnv(['w-full px-2 text-muted-foreground', og_preset('blocks/presets/defaults.json', ['news', 'strip'])])), 'Attrs': og_attrs(['data-testid', 'news-date'])}, 'children': c_5}) }}
+    {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': og_s(og_cnv(['w-full px-2 text-muted-foreground', og_preset('blocks/presets/defaults.json', ['news', 'strip'])])), 'Attrs': og_attrs(['data-slot', 'news-date'])}, 'children': c_5}) }}
   {%- endset -%}
-  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'article', 'Class': og_s(og_cnv(['flex flex-col gap-2 overflow-hidden rounded p-0 inset-ring inset-ring-border', og_preset('blocks/presets/defaults.json', ['news', 'card'])])), 'Attrs': og_attrs(['data-testid', 'item', 'data-layout', v_layout, 'data-meta', 'news'])}, 'children': c_6}) }}
+  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'article', 'Class': og_s(og_cnv(['flex flex-col gap-2 overflow-hidden rounded p-0 inset-ring inset-ring-border', og_preset('blocks/presets/defaults.json', ['news', 'card'])])), 'Attrs': og_attrs(['data-layout', v_layout, 'data-meta', 'news', 'data-slot', 'item'])}, 'children': c_6}) }}
 {%- else %}
   {%- set c_18 -%}
     {%- if og_t(og_eq(v_media, 'image')) %}
@@ -88,10 +88,10 @@
         {%- set c_16 -%}
           {{ og_text(og_get(v_labels, ['read'])) }}
         {%- endset -%}
-        {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_post, ['href']))), 'Variant': 'default', 'Attrs': og_attrs(['data-testid', 'read'])}, 'children': c_16}) }}
+        {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(og_get(v_post, ['href']))), 'Variant': 'default', 'Attrs': og_attrs(['data-slot', 'read'])}, 'children': c_16}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/card-content.html.j2', {'p': {'Class': 'flex flex-1 flex-col gap-2'}, 'children': c_17}) }}
   {%- endset -%}
-  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'article', 'Class': og_s(og_cnv(['flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded', 'h-full gap-4 overflow-hidden', ('flex flex-col sm:flex-row' if og_t(og_eq(v_layout, 'horizontal')) else 'flex flex-col')])), 'Attrs': og_attrs(['data-slot', 'card', 'data-testid', 'item', 'data-layout', v_layout, 'data-meta', v_meta])}, 'children': c_18}) }}
+  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'article', 'Class': og_s(og_cnv(['flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded', 'h-full gap-4 overflow-hidden', ('flex flex-col sm:flex-row' if og_t(og_eq(v_layout, 'horizontal')) else 'flex flex-col')])), 'Attrs': og_attrs(['data-slot', 'card', 'data-layout', v_layout, 'data-meta', v_meta])}, 'children': c_18}) }}
 {%- endif %}

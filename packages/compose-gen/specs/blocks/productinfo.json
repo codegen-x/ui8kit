@@ -54,7 +54,7 @@
       "n": "@details"
     },
     {
-      "sel": "[data-testid=\"spec\"]",
+      "sel": "[data-slot=\"spec\"]",
       "n": "@specs"
     },
     {

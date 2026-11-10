@@ -21,15 +21,15 @@
       {%- set c_5 -%}
         {%- set c_4 -%}
           {%- set c_1 -%}
-            {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'name', 'Attrs': og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [v_id]), 'data-testid', 'field'])}}) }}
+            {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'name', 'Attrs': og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [v_id]), 'data-slot', 'field'])}}) }}
           {%- endset -%}
           {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['name']), 'htmlFor': og_tpl('{0}-name', [v_id])}, 'children': og_markup(c_1)}) }}
           {%- set c_2 -%}
-            {{ og_include('compose/input.html.j2', {'p': {'Type': 'tel', 'Name': 'phone', 'Attrs': og_attrs(['autocomplete', 'tel', 'id', og_tpl('{0}-phone', [v_id]), 'data-testid', 'field'])}}) }}
+            {{ og_include('compose/input.html.j2', {'p': {'Type': 'tel', 'Name': 'phone', 'Attrs': og_attrs(['autocomplete', 'tel', 'id', og_tpl('{0}-phone', [v_id]), 'data-slot', 'field'])}}) }}
           {%- endset -%}
           {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['phone']), 'htmlFor': og_tpl('{0}-phone', [v_id])}, 'children': og_markup(c_2)}) }}
           {%- set c_3 -%}
-            {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Attrs': og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}}) }}
+            {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Attrs': og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}}) }}
           {%- endset -%}
           {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['email']), 'htmlFor': og_tpl('{0}-email', [v_id])}, 'children': og_markup(c_3)}) }}
         {%- endset -%}
@@ -38,30 +38,30 @@
       {{ og_include('blocks/checkout-step.html.j2', {'p': {'number': '1', 'title': og_get(v_labels, ['contacts']), 'text': og_get(v_labels, ['contactsText']), 'layout': v_layout}, 'children': og_markup(c_5)}) }}
       {%- set c_13 -%}
         {%- set c_6 -%}
-          {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'street', 'Attrs': og_attrs(['autocomplete', 'address-line1', 'id', og_tpl('{0}-street', [v_id]), 'data-testid', 'field'])}}) }}
+          {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'street', 'Attrs': og_attrs(['autocomplete', 'address-line1', 'id', og_tpl('{0}-street', [v_id]), 'data-slot', 'field'])}}) }}
         {%- endset -%}
         {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['street']), 'htmlFor': og_tpl('{0}-street', [v_id])}, 'children': og_markup(c_6)}) }}
         {%- set c_11 -%}
           {%- set c_7 -%}
-            {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'house', 'Attrs': og_attrs(['id', og_tpl('{0}-house', [v_id]), 'data-testid', 'field'])}}) }}
+            {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'house', 'Attrs': og_attrs(['id', og_tpl('{0}-house', [v_id]), 'data-slot', 'field'])}}) }}
           {%- endset -%}
           {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['house']), 'htmlFor': og_tpl('{0}-house', [v_id])}, 'children': og_markup(c_7)}) }}
           {%- set c_8 -%}
-            {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'flat', 'Attrs': og_attrs(['id', og_tpl('{0}-flat', [v_id]), 'data-testid', 'field'])}}) }}
+            {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'flat', 'Attrs': og_attrs(['id', og_tpl('{0}-flat', [v_id]), 'data-slot', 'field'])}}) }}
           {%- endset -%}
           {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['flat']), 'htmlFor': og_tpl('{0}-flat', [v_id])}, 'children': og_markup(c_8)}) }}
           {%- set c_9 -%}
-            {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'entrance', 'Attrs': og_attrs(['id', og_tpl('{0}-entrance', [v_id]), 'data-testid', 'field'])}}) }}
+            {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'entrance', 'Attrs': og_attrs(['id', og_tpl('{0}-entrance', [v_id]), 'data-slot', 'field'])}}) }}
           {%- endset -%}
           {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['entrance']), 'htmlFor': og_tpl('{0}-entrance', [v_id])}, 'children': og_markup(c_9)}) }}
           {%- set c_10 -%}
-            {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'floor', 'Attrs': og_attrs(['id', og_tpl('{0}-floor', [v_id]), 'data-testid', 'field'])}}) }}
+            {{ og_include('compose/input.html.j2', {'p': {'Type': 'text', 'Name': 'floor', 'Attrs': og_attrs(['id', og_tpl('{0}-floor', [v_id]), 'data-slot', 'field'])}}) }}
           {%- endset -%}
           {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['floor']), 'htmlFor': og_tpl('{0}-floor', [v_id])}, 'children': og_markup(c_10)}) }}
         {%- endset -%}
         {{ og_include('compose/grid.html.j2', {'p': {'Cols': '2-4', 'Class': 'gap-4'}, 'children': c_11}) }}
         {%- set c_12 -%}
-          {{ og_include('compose/textarea.html.j2', {'p': {'Rows': 4, 'Name': 'comment', 'Attrs': og_attrs(['id', og_tpl('{0}-comment', [v_id]), 'data-testid', 'field'])}}) }}
+          {{ og_include('compose/textarea.html.j2', {'p': {'Rows': 4, 'Name': 'comment', 'Attrs': og_attrs(['id', og_tpl('{0}-comment', [v_id]), 'data-slot', 'field'])}}) }}
         {%- endset -%}
         {{ og_include('blocks/field.html.j2', {'p': {'label': og_get(v_labels, ['comment']), 'htmlFor': og_tpl('{0}-comment', [v_id])}, 'children': og_markup(c_12)}) }}
       {%- endset -%}
@@ -80,12 +80,12 @@
       {{ og_include('blocks/checkout-step.html.j2', {'p': {'number': '4', 'title': og_get(v_labels, ['payment']), 'text': og_get(v_labels, ['paymentText']), 'layout': v_layout}, 'children': og_markup(c_15)}) }}
       {{ og_include('blocks/checkout-submit.html.j2', {'p': {'id': v_id, 'consent': og_get(v_labels, ['consent']), 'submit': og_get(v_labels, ['submit']), 'legal': og_get(v_labels, ['legal'])}}) }}
     {%- endset -%}
-    {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': og_s(('flex flex-col gap-6 lg:col-span-2' if og_t(og_eq(v_summary, 'aside')) else 'flex flex-col gap-6 lg:col-span-3')), 'Attrs': og_attrs(['data-testid', 'checkout-form'])}, 'children': c_16}) }}
+    {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': og_s(('flex flex-col gap-6 lg:col-span-2' if og_t(og_eq(v_summary, 'aside')) else 'flex flex-col gap-6 lg:col-span-3')), 'Attrs': og_attrs(['data-slot', 'checkout-form'])}, 'children': c_16}) }}
     {%- if og_t(og_eq(v_summary, 'aside')) %}
       {%- set c_17 -%}
         {{ og_include('blocks/cart-summary-card.html.j2', {'p': {'field': og_tpl('{0}-promo', [v_id]), 'lines': v_lines, 'rows': v_rows, 'promos': v_promos, 'labels': v_totals, 'items': 'show'}}) }}
       {%- endset -%}
-      {{ og_include('compose/box.html.j2', {'p': {'Class': 'lg:sticky lg:top-8', 'Attrs': og_attrs(['data-testid', 'aside'])}, 'children': c_17}) }}
+      {{ og_include('compose/box.html.j2', {'p': {'Class': 'lg:sticky lg:top-8', 'Attrs': og_attrs(['data-slot', 'aside'])}, 'children': c_17}) }}
     {%- endif %}
   {%- endset -%}
   {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 items-start gap-8 lg:grid-cols-3'}, 'children': c_18}) }}

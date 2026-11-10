@@ -29,7 +29,7 @@ templ PostAuthor(p PostAuthorProps) {
 	{{ vLabels := p.Labels }}
 	{{ vMode := uiutils.Def(p.Mode, "line") }}
 	{{ vShare := uiutils.Def(p.Share, false) }}
-	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vMode, "line")), "", "rounded bg-card inset-ring inset-ring-border p-4"), p.Class)), Attrs: uiutils.Attrs("data-testid", "post-author")}}) {
+	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vMode, "line")), "", "rounded bg-card inset-ring inset-ring-border p-4"), p.Class)), Attrs: uiutils.Attrs("data-slot", "post-author")}}) {
 		@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{}}) {
 			@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vPost, "author"), Ratio: "1/1", Class: uiutils.Cnv("size-10 shrink-0 rounded-full")})
 			@compose.Stack(compose.StackProps{Gap: "0", Align: "start", BoxProps: box.BoxProps{Class: "min-w-0 flex-1 text-start"}}) {
@@ -42,11 +42,11 @@ templ PostAuthor(p PostAuthorProps) {
 			}
 			if uiutils.T(vShare) {
 				@compose.Group(compose.GroupProps{Gap: "2", BoxProps: box.BoxProps{}}) {
-					@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "default", ButtonProps: button.ButtonProps{Class: "gap-2", Attrs: uiutils.Attrs("data-testid", "post-share")}}) {
+					@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "default", ButtonProps: button.ButtonProps{Class: "gap-2"}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: "share-2", Size: 16})
 						{ uiutils.Text(uiutils.Get(vLabels, "share")) }
 					}
-					@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "default", ButtonProps: button.ButtonProps{Class: "gap-2", Attrs: uiutils.Attrs("data-testid", "post-save")}}) {
+					@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "default", ButtonProps: button.ButtonProps{Class: "gap-2"}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: "bookmark", Size: 16})
 						{ uiutils.Text(uiutils.Get(vLabels, "save")) }
 					}

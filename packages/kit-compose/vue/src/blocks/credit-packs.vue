@@ -66,7 +66,7 @@ const {
         : fitCols((((cols as string) === '2') ? '1-2' : '1-4'), (packs?.length ?? 0))
       "
       class="gap-4"
-      data-testid="items"
+      data-slot="items"
     >
       <Card v-for="pack in packs" :key="pack.id"
         variant="default"
@@ -78,7 +78,6 @@ const {
             : ''
           )
         )"
-        data-testid="item"
         :data-badge="pack.badge"
       >
         <CardContent
@@ -93,7 +92,7 @@ const {
               class="flex min-h-6 items-center"
               data-slot="badge-slot"
             >
-              <Badge v-if="pack.badge" variant="default" size="default" class="w-fit shrink-0" data-testid="badge">
+              <Badge v-if="pack.badge" variant="default" size="default" class="w-fit shrink-0">
                 {{ at(badges, pack.badge) }}
               </Badge>
             </Box>
@@ -111,7 +110,6 @@ const {
             size="sm"
             type="button"
             :class="cn('w-fit shrink-0', (((item as string) === 'row') ? '' : 'mt-auto'))"
-            data-testid="buy"
           >
             {{ buy }}
           </Button>

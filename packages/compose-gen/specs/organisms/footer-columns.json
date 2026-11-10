@@ -60,7 +60,8 @@
                   "$": "label"
                 }
               ]
-            }
+            },
+            "data-slot": "footer-columns"
           },
           "children": [
             {
@@ -70,7 +71,7 @@
                 "Class": "grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5"
               },
               "attrs": {
-                "data-testid": "footer-groups"
+                "data-slot": "footer-groups"
               },
               "children": [
                 {
@@ -88,7 +89,7 @@
                         "Gap": "2"
                       },
                       "attrs": {
-                        "data-testid": "group"
+                        "data-slot": "group"
                       },
                       "children": [
                         {
@@ -144,7 +145,10 @@
                                         }
                                       }
                                     }
-                                  ]
+                                  ],
+                                  "attrs": {
+                                    "data-slot": "links-row"
+                                  }
                                 }
                               ]
                             }

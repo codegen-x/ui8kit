@@ -30,9 +30,9 @@ templ DrawerLines(p DrawerLinesProps) {
 	{{ vDrawer := p.Drawer }}
 	{{ vMedia := uiutils.Def(p.Media, "image") }}
 	{{ vField := uiutils.Def(p.Field, "qty") }}
-	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "flex-1 p-4", Attrs: uiutils.Attrs("data-testid", "lines")}}) {
+	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "flex-1 p-4", Attrs: uiutils.Attrs("data-slot", "lines")}}) {
 		for _, vLine := range uiutils.L(vLines) {
-			@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}}) {
+			@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "item")}}) {
 				if uiutils.Eq(vMedia, "image") {
 					@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Ratio: "1/1", Class: uiutils.Cnv("size-16 shrink-0")})
 				}
@@ -53,8 +53,8 @@ templ DrawerLines(p DrawerLinesProps) {
 			}
 		}
 	}
-	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "border-t border-border p-4"}}) {
-		@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-muted p-4", Attrs: uiutils.Attrs("data-testid", "progress")}}) {
+	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "border-t border-border p-4", Attrs: uiutils.Attrs("data-slot", "drawer-lines")}}) {
+		@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-muted p-4", Attrs: uiutils.Attrs("data-slot", "progress")}}) {
 			@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{}}) {
 				{ uiutils.Text(uiutils.Get(vDrawer, "progress")) }
 			}
@@ -63,7 +63,7 @@ templ DrawerLines(p DrawerLinesProps) {
 		@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col gap-2"}}) {
 			for vI, vRow := range uiutils.L(vRows) {
 				if uiutils.T(uiutils.Cond(uiutils.T(uiutils.Get(vRow, "strong")), true, uiutils.Eq(float64(vI), float64(0)))) {
-					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vRow, "strong")), "flex justify-between text-base font-bold", "flex justify-between text-sm text-muted-foreground"))}}) {
+					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vRow, "strong")), "flex justify-between text-base font-bold", "flex justify-between text-sm text-muted-foreground")), Attrs: uiutils.Attrs("data-slot", "summary-row")}}) {
 						@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vRow, "label")) }
 						}
@@ -74,7 +74,7 @@ templ DrawerLines(p DrawerLinesProps) {
 				}
 			}
 		}
-		@compose.Button(compose.ButtonProps{Variant: "default", Size: "lg", ButtonProps: button.ButtonProps{Class: "w-full", Attrs: uiutils.Attrs("data-testid", "checkout")}}) {
+		@compose.Button(compose.ButtonProps{Variant: "default", Size: "lg", ButtonProps: button.ButtonProps{Class: "w-full"}}) {
 			{ uiutils.Text(uiutils.Get(vLabels, "checkout")) }
 		}
 	}

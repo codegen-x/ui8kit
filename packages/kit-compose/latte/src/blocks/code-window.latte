@@ -27,7 +27,7 @@
         {/capture}
         {=og_include('compose/Inline.latte', ['children' => (string) $c_4])|noescape}
       {/capture}
-      {=og_include('compose/ListItem.latte', ['class' => og_s(og_cnv(['flex gap-2', (og_t(og_eq(og_get($v_line, ['kind']), 'command')) ? 'text-foreground' : 'text-muted-foreground')])), 'attrs' => og_attrs(['data-kind', og_get($v_line, ['kind'])]), 'children' => (string) $c_5])|noescape}
+      {=og_include('compose/ListItem.latte', ['class' => og_s(og_cnv(['flex gap-2', (og_t(og_eq(og_get($v_line, ['kind']), 'command')) ? 'text-foreground' : 'text-muted-foreground')])), 'attrs' => og_attrs(['data-kind', og_get($v_line, ['kind']), 'data-slot', 'code-line']), 'children' => (string) $c_5])|noescape}
     {/foreach}
   {/capture}
   {=og_include('compose/List.latte', ['class' => 'm-0 flex list-none flex-col gap-2 p-4 font-mono text-sm', 'children' => (string) $c_6])|noescape}

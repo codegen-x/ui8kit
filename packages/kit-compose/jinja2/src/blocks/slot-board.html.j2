@@ -80,7 +80,7 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_16}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-testid', 'aside'])}, 'children': c_17}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-slot', 'aside'])}, 'children': c_17}) }}
       {%- endif %}
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 items-start gap-8 lg:grid-cols-3'}, 'children': c_18}) }}

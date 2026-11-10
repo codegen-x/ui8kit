@@ -20,10 +20,11 @@ export function WeightedTitle({ id, title, weights, level = 1 }: WeightedTitlePr
       weight="semibold"
       className={cn("text-center tracking-tight text-background", defaults.hero.title)}
       id={id}
+      data-slot="weighted-title"
     >
       {((title ?? "").split(" ") ?? []).map((word, i) => (
         <Fragment key={i}>
-          <Inline className={weights?.[i]}>
+          <Inline className={weights?.[i]} data-slot="items-row">
             {word}
           </Inline>
           {" "}

@@ -19,10 +19,10 @@ type FeaturePairsProps struct {
 // Four features of FeatureSplit in two columns: a glyph tile beside the title and text, without cards.
 templ FeaturePairs(p FeaturePairsProps) {
 	{{ vFeatures := p.Features }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-6 sm:grid-cols-2"}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-6 sm:grid-cols-2", Attrs: uiutils.Attrs("data-slot", "feature-pairs")}}) {
 		for vI, vF := range uiutils.L(vFeatures) {
 			if uiutils.Lt(float64(vI), float64(4)) {
-				@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "feature-item")}}) {
+				@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "feature-item")}}) {
 					@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex size-8 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground"}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 16})
 					}

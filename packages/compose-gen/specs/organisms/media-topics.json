@@ -158,7 +158,10 @@
           ],
           "index": "i"
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "media-topics"
+      }
     }
   ],
   "portable": {

@@ -305,13 +305,13 @@
             }
           ]
         },
-        "data-testid": "section",
         "data-tone": {
           "$": "tone"
         },
         "data-density": {
           "$": "density"
-        }
+        },
+        "data-slot": "section"
       },
       "children": [
         {

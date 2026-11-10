@@ -19,7 +19,7 @@ type NoticeProps struct {
 // A short confirmation toast: fixed bottom right, read out by screen readers through role status. Empty text renders nothing visible.
 templ Notice(p NoticeProps) {
 	{{ vText := p.Text }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "contents", Attrs: uiutils.Attrs("role", "status", "data-testid", "notice")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "contents", Attrs: uiutils.Attrs("role", "status", "data-slot", "notice")}}) {
 		if uiutils.T(vText) {
 			@compose.Text(compose.TextProps{TextProps: text.TextProps{Class: "fixed right-4 bottom-4 z-40 m-0 flex items-center gap-2 rounded bg-foreground p-4 text-xs font-bold text-background shadow-lg"}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: "circle-check", Size: 16})

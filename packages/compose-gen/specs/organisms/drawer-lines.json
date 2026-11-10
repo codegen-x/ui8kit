@@ -59,7 +59,7 @@
         "Class": "flex-1 p-4"
       },
       "attrs": {
-        "data-testid": "lines"
+        "data-slot": "lines"
       },
       "children": [
         {
@@ -78,7 +78,7 @@
                 "Align": "start"
               },
               "attrs": {
-                "data-testid": "item"
+                "data-slot": "item"
               },
               "children": [
                 {
@@ -238,7 +238,7 @@
             "Class": "rounded bg-muted p-4"
           },
           "attrs": {
-            "data-testid": "progress"
+            "data-slot": "progress"
           },
           "children": [
             {
@@ -347,7 +347,10 @@
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "attrs": {
+                        "data-slot": "summary-row"
+                      }
                     }
                   ]
                 }
@@ -363,9 +366,6 @@
             "Size": "lg",
             "Class": "w-full"
           },
-          "attrs": {
-            "data-testid": "checkout"
-          },
           "children": [
             {
               "text": {
@@ -374,7 +374,10 @@
             }
           ]
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "drawer-lines"
+      }
     }
   ],
   "portable": {

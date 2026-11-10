@@ -46,12 +46,12 @@ const {
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((metrics?.length ?? 0) === 0)" icon="gauge" :title="empty" />
-    <Grid v-else :cols="(((cols as string) === '2') ? '1-2' : '1-4')" class="gap-4" data-testid="items">
+    <Grid v-else :cols="(((cols as string) === '2') ? '1-2' : '1-4')" class="gap-4" data-slot="items">
       <template v-for="m in metrics" :key="m.id">
-        <Box v-if="((item as string) === 'tile')" data-testid="item">
+        <Box v-if="((item as string) === 'tile')" data-slot="item">
           <StatTile :label="m.label" :value="m.value" :icon="m.icon" :hint="m.hint" />
         </Box>
-        <Stack v-else gap="0" class="rounded bg-card p-4 inset-ring inset-ring-border" data-testid="item">
+        <Stack v-else gap="0" class="rounded bg-card p-4 inset-ring inset-ring-border" data-slot="item">
           <Group gap="2" align="center" class="text-muted-foreground">
             <LucideIcon :name="m.icon" :size="16" />
             <Text size="xs">

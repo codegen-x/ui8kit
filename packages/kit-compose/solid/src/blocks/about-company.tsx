@@ -46,7 +46,7 @@ export function AboutCompany({
       media={{ show: true, side: "start" }}
       landmarkLabel={landmarkLabel}
       aside={(
-        <Box class="grid grid-cols-3 gap-4" data-testid="strip">
+        <Box class="grid grid-cols-3 gap-4" data-slot="strip">
           <MediaFrame alt={title} ratio="3/4" />
           <MediaFrame alt={title} ratio="3/4" class="mt-8" />
           <MediaFrame alt={title} ratio="3/4" />
@@ -54,9 +54,9 @@ export function AboutCompany({
       )}
     >
       {((stats?.length ?? 0) > 0) ? (
-        <Grid cols="2-4" class="gap-4" data-testid="stats">
+        <Grid cols="2-4" class="gap-4" data-slot="stats">
           <For each={stats ?? []}>{(s) => (
-            <Stack gap="0" data-testid="stat">
+            <Stack gap="0" data-slot="stat">
               <Text size="3xl" weight="bold">
                 {s.value}
               </Text>
@@ -70,10 +70,10 @@ export function AboutCompany({
       {((values?.length ?? 0) > 0) ? (
         <Box
           class={cn("grid grid-cols-1 gap-4", (((layout as string) === "stacked") ? "md:grid-cols-3" : ""))}
-          data-testid="values"
+          data-slot="values"
         >
           <For each={values ?? []}>{(v) => (
-            <Group gap="4" align="start" class="border-t border-border pt-4" data-testid="value">
+            <Group gap="4" align="start" class="border-t border-border pt-4" data-slot="value">
               <LucideIcon name={v.icon} size={20} />
               <Stack gap="2">
                 <Text size="sm" weight="semibold">

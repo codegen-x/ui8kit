@@ -108,9 +108,6 @@
               ]
             }
           },
-          "attrs": {
-            "data-testid": "section-badge"
-          },
           "children": [
             {
               "text": {
@@ -239,7 +236,7 @@
                 }
               },
               "attrs": {
-                "data-testid": "section-action"
+                "data-slot": "section-action"
               },
               "children": [
                 {
@@ -249,7 +246,10 @@
                 }
               ]
             }
-          ]
+          ],
+          "attrs": {
+            "data-slot": "section-header"
+          }
         }
       ]
     },
@@ -335,7 +335,8 @@
           "attrs": {
             "id": {
               "$": "titleId"
-            }
+            },
+            "data-slot": "section-header"
           },
           "children": [
             {
@@ -397,7 +398,7 @@
                 }
               },
               "attrs": {
-                "data-testid": "section-action"
+                "data-slot": "section-action"
               },
               "children": [
                 {
@@ -407,7 +408,10 @@
                 }
               ]
             }
-          ]
+          ],
+          "attrs": {
+            "data-slot": "section-header"
+          }
         }
       ]
     },
@@ -443,7 +447,10 @@
                 "$": "lead"
               }
             }
-          ]
+          ],
+          "attrs": {
+            "data-slot": "section-header"
+          }
         }
       ]
     }

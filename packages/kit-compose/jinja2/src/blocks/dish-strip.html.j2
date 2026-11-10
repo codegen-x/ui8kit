@@ -39,10 +39,10 @@
           {%- endset -%}
           {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Justify': 'between'}, 'children': c_5}) }}
         {%- endset -%}
-        {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(('flex w-64 shrink-0 snap-start flex-col gap-2' if og_t(og_eq(v_size, 'lg')) else 'flex w-48 shrink-0 snap-start flex-col gap-2')), 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_6}) }}
+        {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(('flex w-64 shrink-0 snap-start flex-col gap-2' if og_t(og_eq(v_size, 'lg')) else 'flex w-48 shrink-0 snap-start flex-col gap-2')), 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_6}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': '-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4', 'Attrs': og_attrs(['tabindex', 0, 'aria-label', og_get(v_labels, ['strip']), 'data-testid', 'items'])}, 'children': c_7}) }}
+    {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': '-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4', 'Attrs': og_attrs(['tabindex', 0, 'aria-label', og_get(v_labels, ['strip']), 'data-slot', 'items'])}, 'children': c_7}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_8)}) }}

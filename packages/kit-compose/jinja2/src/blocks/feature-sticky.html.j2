@@ -20,7 +20,7 @@
       {%- set c_1 -%}
         {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': v_title, 'ratio': '4/3'}}) }}
       {%- endset -%}
-      {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['md:sticky md:top-8', ('md:order-first' if og_t(og_eq(v_mediaSide, 'start')) else 'md:order-last')])), 'Attrs': og_attrs(['data-testid', 'sticky-media'])}, 'children': c_1}) }}
+      {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['md:sticky md:top-8', ('md:order-first' if og_t(og_eq(v_mediaSide, 'start')) else 'md:order-last')])), 'Attrs': og_attrs(['data-slot', 'sticky-media'])}, 'children': c_1}) }}
       {%- set c_5 -%}
         {%- for v_f in og_l(v_features) %}
           {%- set c_4 -%}
@@ -34,12 +34,12 @@
             {%- endset -%}
             {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Class': 'text-muted-foreground'}, 'children': c_3}) }}
           {%- endset -%}
-          {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': og_s(og_cnv([('rounded bg-card inset-ring inset-ring-border p-6' if og_t(og_eq(v_item, 'card')) else 'py-4'), ('inset-ring inset-ring-foreground' if og_t(og_eq(og_get(v_f, ['id']), v_active)) else '')])), 'Attrs': og_attrs(['data-testid', 'item', 'aria-current', ('true' if og_t(og_eq(og_get(v_f, ['id']), v_active)) else none)])}, 'children': c_4}) }}
+          {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': og_s(og_cnv([('rounded bg-card inset-ring inset-ring-border p-6' if og_t(og_eq(v_item, 'card')) else 'py-4'), ('inset-ring inset-ring-foreground' if og_t(og_eq(og_get(v_f, ['id']), v_active)) else '')])), 'Attrs': og_attrs(['aria-current', ('true' if og_t(og_eq(og_get(v_f, ['id']), v_active)) else none), 'data-slot', 'item'])}, 'children': c_4}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': og_s(('4' if og_t(og_eq(v_density, 'compact')) else '8')), 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_5}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': og_s(('4' if og_t(og_eq(v_density, 'compact')) else '8')), 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_5}) }}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-2', 'Class': 'items-start gap-8', 'Attrs': og_attrs(['data-testid', 'sticky'])}, 'children': c_6}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-2', 'Class': 'items-start gap-8', 'Attrs': og_attrs(['data-slot', 'sticky'])}, 'children': c_6}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_7)}) }}

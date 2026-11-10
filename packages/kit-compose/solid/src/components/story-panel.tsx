@@ -18,12 +18,7 @@ export type StoryPanelProps = {
 
 export function StoryPanel({ s, index, total, labels }: StoryPanelProps) {
   return (
-    <Stack
-      gap="4"
-      align="stretch"
-      class="rounded bg-card inset-ring inset-ring-border p-6"
-      data-testid="story-panel"
-    >
+    <Stack gap="4" align="stretch" class="rounded bg-card inset-ring inset-ring-border p-6" data-slot="story-panel">
       <Group gap="2" align="center">
         <Badge variant="secondary" size="sm">
           {s.date}

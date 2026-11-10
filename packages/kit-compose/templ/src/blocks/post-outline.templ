@@ -23,7 +23,7 @@ templ PostOutline(p PostOutlineProps) {
 	{{ vPost := p.Post }}
 	{{ vExtras := p.Extras }}
 	{{ vLabels := p.Labels }}
-	@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "post-outline")}}) {
+	@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "post-outline")}}) {
 		@compose.Stack(compose.StackProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: "text-muted-foreground"}}) {
 			@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: "user", Size: 16})

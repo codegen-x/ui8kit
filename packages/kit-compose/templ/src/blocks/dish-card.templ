@@ -32,12 +32,12 @@ templ DishCard(p DishCardProps) {
 	{{ vPrices := uiutils.Def(p.Prices, "show") }}
 	{{ vAction := uiutils.Def(p.Action, "button") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "article", Class: uiutils.S(uiutils.Cnv("flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded", "h-full gap-4 overflow-hidden", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "horizontal")), "flex flex-col sm:flex-row", "flex flex-col"))), Attrs: uiutils.Attrs("data-slot", "card", "data-testid", "item", "data-layout", vLayout)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "article", Class: uiutils.S(uiutils.Cnv("flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded", "h-full gap-4 overflow-hidden", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "horizontal")), "flex flex-col sm:flex-row", "flex flex-col"))), Attrs: uiutils.Attrs("data-slot", "card", "data-layout", vLayout)}}) {
 		if uiutils.Eq(vMedia, "image") {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("relative shrink-0", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "horizontal")), "sm:w-48", "")))}}) {
 				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vDish, "name"), Ratio: "4/3", Class: uiutils.Cnv("h-full")})
 				if uiutils.T(uiutils.Get(vDish, "badge")) {
-					@compose.Badge(compose.BadgeProps{Variant: "default", Size: "default", TextProps: text.TextProps{Class: "absolute left-4 top-4", Attrs: uiutils.Attrs("data-testid", "badge")}}) {
+					@compose.Badge(compose.BadgeProps{Variant: "default", Size: "default", TextProps: text.TextProps{Class: "absolute left-4 top-4"}}) {
 						{ uiutils.Text(uiutils.Get(vDish, "badge")) }
 					}
 				}
@@ -45,12 +45,12 @@ templ DishCard(p DishCardProps) {
 		}
 		@compose.CardContent(compose.CardContentProps{BoxProps: box.BoxProps{Class: "flex flex-1 flex-col gap-2"}}) {
 			@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
-				@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "uppercase tracking-wide text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "category")}}) {
+				@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "uppercase tracking-wide text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "category")}}) {
 					{ uiutils.Text(uiutils.Get(vDish, "tag")) }
 				}
 				if uiutils.Eq(vMedia, "none") {
 					if uiutils.T(uiutils.Get(vDish, "badge")) {
-						@compose.Badge(compose.BadgeProps{Variant: "secondary", Size: "sm", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-testid", "badge")}}) {
+						@compose.Badge(compose.BadgeProps{Variant: "secondary", Size: "sm", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vDish, "badge")) }
 						}
 					}
@@ -58,7 +58,7 @@ templ DishCard(p DishCardProps) {
 			}
 			@compose.Title(compose.TitleProps{As: "3", Size: "base", Weight: "bold", TextProps: text.TextProps{}}) {
 				if uiutils.T(uiutils.Get(vDish, "href")) {
-					@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vDish, "href"), false), Attrs: uiutils.Attrs("data-testid", "open")}}) {
+					@compose.Link(compose.LinkProps{Variant: "default", LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vDish, "href"), false), Attrs: uiutils.Attrs("data-slot", "open")}}) {
 						{ uiutils.Text(uiutils.Get(vDish, "name")) }
 					}
 				} else {
@@ -66,7 +66,7 @@ templ DishCard(p DishCardProps) {
 				}
 			}
 			if uiutils.T(uiutils.Get(vDish, "weight")) {
-				@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "portion")}}) {
+				@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-slot", "portion")}}) {
 					{ uiutils.Text(uiutils.Get(vDish, "weight")) }
 				}
 			}
@@ -77,12 +77,12 @@ templ DishCard(p DishCardProps) {
 			}
 			@compose.Group(compose.GroupProps{Gap: "4", Justify: "between", BoxProps: box.BoxProps{Class: "mt-auto pt-2"}}) {
 				if uiutils.Eq(vPrices, "show") {
-					@compose.Text(compose.TextProps{Size: "xl", Weight: "bold", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-testid", "price")}}) {
+					@compose.Text(compose.TextProps{Size: "xl", Weight: "bold", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-slot", "price")}}) {
 						{ uiutils.Text(uiutils.Money(uiutils.Get(vDish, "price"), uiutils.Get(vDish, "currency"))) }
 					}
 				}
 				if uiutils.Eq(vAction, "button") {
-					@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Type: "button", Attrs: uiutils.Attrs("data-testid", "add")}}) {
+					@compose.Button(compose.ButtonProps{Variant: "default", Size: "sm", ButtonProps: button.ButtonProps{Type: "button"}}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "add")) }
 					}
 				}

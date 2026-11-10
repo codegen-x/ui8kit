@@ -76,7 +76,7 @@ export function PostGrid({
       {((posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0) > 0) ? (
         <>
           {((layout as string) === "magazine") ? (
-            <Stack gap="6" align="stretch" data-testid="items">
+            <Stack gap="6" align="stretch" data-slot="items">
               {(posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []).map((p, i) => (
                 <Fragment key={p.id}>
                   {(i === 0) ? (
@@ -101,7 +101,7 @@ export function PostGrid({
                 : fitCols(cols, (posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0))
               }
               className="w-full gap-6"
-              data-testid="items"
+              data-slot="items"
             >
               {(posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []).map((p) => (
                 <PostCard key={p.id}
@@ -124,7 +124,7 @@ export function PostGrid({
             landmarkLabel ? uniqLabel(tpl("{0}, {1}", pager?.label, landmarkLabel))
             : pager?.label
           }
-          data-testid="posts-pager"
+          data-slot="posts-pager"
         >
           <Pager
             page={(pager?.page ?? 1)}

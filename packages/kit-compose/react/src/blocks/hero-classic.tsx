@@ -75,7 +75,7 @@ export function HeroClassic({
             <CodeWindow title={media?.codeTitle} prompt={media?.prompt} lines={media?.lines} />
           ) : null}
           {((mediaKind as string) === "cluster") ? (
-            <Grid cols="3" className="items-end gap-4" data-testid="cluster">
+            <Grid cols="3" className="items-end gap-4" data-slot="cluster">
               <Box className={cn("w-full", "")}>
                 <MediaFrame alt={title} ratio="3/4" />
               </Box>
@@ -99,7 +99,7 @@ export function HeroClassic({
           {(actions?.mode === "form") ? (
             <Box
               className={cn("w-full max-w-xl", (((layout as string) === "centered") ? "mx-auto" : ""))}
-              data-testid="email-form"
+              data-slot="email-form"
             >
               <Label htmlFor={tpl("{0}-email", id)} className="sr-only">
                 {actions?.emailLabel}
@@ -111,9 +111,9 @@ export function HeroClassic({
                   className="min-w-0 flex-1"
                   placeholder={actions?.emailLabel}
                   id={tpl("{0}-email", id)}
-                  data-testid="field"
+                  data-slot="field"
                 />
-                <Button variant="default" size="default" href={urlOf(actions?.href)} data-testid="submit">
+                <Button variant="default" size="default" href={urlOf(actions?.href)}>
                   {actions?.cta}
                 </Button>
               </Group>

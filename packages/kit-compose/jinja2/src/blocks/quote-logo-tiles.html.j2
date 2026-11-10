@@ -14,8 +14,8 @@
         {%- endset -%}
         {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Weight': 'semibold'}, 'children': c_1}) }}
       {%- endset -%}
-      {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Justify': 'center', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4 text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'quote-logo'])}, 'children': c_2}) }}
+      {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Justify': 'center', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4 text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'quote-logo'])}, 'children': c_2}) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-2 gap-4', 'Attrs': og_attrs(['data-testid', 'quote-logos'])}, 'children': c_3}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-2 gap-4', 'Attrs': og_attrs(['data-slot', 'quote-logos'])}, 'children': c_3}) }}

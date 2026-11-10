@@ -12,10 +12,10 @@
   {capture $c_2}
     {=og_text($v_label)}
   {/capture}
-  {=og_include('compose/Inline.latte', ['attrs' => og_attrs(['data-testid', 'bulk-count']), 'children' => (string) $c_2])|noescape}
+  {=og_include('compose/Inline.latte', ['attrs' => og_attrs(['data-slot', 'bulk-count']), 'children' => (string) $c_2])|noescape}
   {capture $c_3}
     {=og_slot(($children ?? null))|noescape}
   {/capture}
   {=og_include('compose/Inline.latte', ['class' => 'ml-auto flex flex-wrap items-center gap-2', 'children' => (string) $c_3])|noescape}
 {/capture}
-{=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['flex flex-wrap items-center gap-2 rounded bg-foreground px-4 py-2 text-xs font-bold text-background', ($p['className'] ?? '')])), 'attrs' => og_attrs(['role', 'region', 'aria-label', $v_label, 'aria-live', 'polite', 'data-slot', 'bulk-bar', 'data-testid', 'bulk-bar']), 'children' => (string) $c_4])|noescape}
+{=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['flex flex-wrap items-center gap-2 rounded bg-foreground px-4 py-2 text-xs font-bold text-background', ($p['className'] ?? '')])), 'attrs' => og_attrs(['role', 'region', 'aria-label', $v_label, 'aria-live', 'polite', 'data-slot', 'bulk-bar']), 'children' => (string) $c_4])|noescape}

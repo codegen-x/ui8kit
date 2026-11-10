@@ -43,11 +43,11 @@ templ FeatureShowcase(p FeatureShowcaseProps) {
 		} else {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "4")), "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4", "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-3"))}}) {
 				for _, vF := range uiutils.L(vFeatures) {
-					@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Class: "h-full gap-4 overflow-hidden", Attrs: uiutils.Attrs("data-testid", "showcase-card")}}) {
+					@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Class: "h-full gap-4 overflow-hidden"}}) {
 						if uiutils.Eq(vItem, "picture") {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vF, "title")})
 						} else {
-							@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex aspect-video items-center justify-center rounded bg-muted text-foreground", Attrs: uiutils.Attrs("data-testid", "showcase-panel")}}) {
+							@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex aspect-video items-center justify-center rounded bg-muted text-foreground", Attrs: uiutils.Attrs("data-slot", "showcase-panel")}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 32})
 							}
 						}

@@ -27,7 +27,7 @@
         {%- endset -%}
         {{ og_include('compose/inline.html.j2', {'p': {}, 'children': c_4}) }}
       {%- endset -%}
-      {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(og_cnv(['flex gap-2', ('text-foreground' if og_t(og_eq(og_get(v_line, ['kind']), 'command')) else 'text-muted-foreground')])), 'Attrs': og_attrs(['data-kind', og_get(v_line, ['kind'])])}, 'children': c_5}) }}
+      {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(og_cnv(['flex gap-2', ('text-foreground' if og_t(og_eq(og_get(v_line, ['kind']), 'command')) else 'text-muted-foreground')])), 'Attrs': og_attrs(['data-kind', og_get(v_line, ['kind']), 'data-slot', 'code-line'])}, 'children': c_5}) }}
     {%- endfor %}
   {%- endset -%}
   {{ og_include('compose/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-2 p-4 font-mono text-sm'}, 'children': c_6}) }}

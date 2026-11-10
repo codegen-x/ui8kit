@@ -21,10 +21,10 @@ templ ProductGallery(p ProductGalleryProps) {
 	{{ vName := p.Name }}
 	{{ vImage := p.Image }}
 	{{ vThumbs := uiutils.Def(p.Thumbs, "below") }}
-	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "gallery")}}) {
+	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "gallery")}}) {
 		@MediaFrame(MediaFrameProps{Alt: vName, Src: vImage, Ratio: "1/1"})
 		if uiutils.Eq(vThumbs, "below") {
-			@compose.Grid(compose.GridProps{Cols: "3", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "thumbs")}}) {
+			@compose.Grid(compose.GridProps{Cols: "3", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "thumbs")}}) {
 				@MediaFrame(MediaFrameProps{Alt: vName, Src: vImage, Ratio: "1/1", Class: uiutils.Cnv("ring-2 ring-foreground")})
 				@MediaFrame(MediaFrameProps{Alt: vName, Ratio: "1/1"})
 				@MediaFrame(MediaFrameProps{Alt: vName, Ratio: "1/1"})

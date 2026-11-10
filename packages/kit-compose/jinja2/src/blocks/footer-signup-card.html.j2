@@ -19,18 +19,18 @@
     {%- endset -%}
     {{ og_include('compose/label.html.j2', {'p': {'For': og_s(og_tpl('{0}-email', [v_id])), 'Class': 'sr-only'}, 'children': c_3}) }}
     {%- set c_5 -%}
-      {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Class': 'min-w-0 flex-1', 'Attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}}) }}
+      {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Class': 'min-w-0 flex-1', 'Attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}}) }}
       {%- set c_4 -%}
         {{ og_text(og_get(v_labels, ['subscribe'])) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit', 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_4}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit'}, 'children': c_4}) }}
     {%- endset -%}
     {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'start', 'Class': 'w-full flex-wrap'}, 'children': c_5}) }}
   {%- endset -%}
-  {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': og_s(og_cnv(['w-full max-w-md', ('mx-auto' if og_t(false) else '')])), 'Attrs': og_attrs(['data-testid', 'email-form'])}, 'children': c_6}) }}
+  {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': og_s(og_cnv(['w-full max-w-md', ('mx-auto' if og_t(false) else '')])), 'Attrs': og_attrs(['data-slot', 'email-form'])}, 'children': c_6}) }}
   {%- set c_7 -%}
     {{ og_text(og_get(v_labels, ['note'])) }}
   {%- endset -%}
   {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_7}) }}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-testid', 'signup'])}, 'children': c_8}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': og_attrs(['data-slot', 'signup'])}, 'children': c_8}) }}

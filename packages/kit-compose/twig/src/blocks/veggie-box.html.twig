@@ -33,10 +33,10 @@
             {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_2}, with_context = false) }}
             {{ include('blocks/number-field.html.twig', {'p': {'value': '1', 'name': og_tpl('{0}-kg-{1}', [v_id, og_get(v_d, ['id'])]), 'min': '0', 'label': og_tpl(og_get(v_labels, ['weightOf']), [og_get(v_d, ['name'])]), 'decrease': og_tpl(og_get(v_labels, ['decreaseOf']), [og_get(v_d, ['name'])]), 'increase': og_tpl(og_get(v_labels, ['increaseOf']), [og_get(v_d, ['name'])])}}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Stack.html.twig', {'gap': '2', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_3}, with_context = false) }}
+          {{ include('compose/Stack.html.twig', {'gap': '2', 'class': 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_3}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/Box.html.twig', {'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'grid grid-cols-2 gap-4 md:grid-cols-3 lg:col-span-2' : 'grid grid-cols-2 gap-4 md:grid-cols-3 lg:col-span-3 lg:grid-cols-6')), 'attrs': og_attrs(['data-testid', 'items']), 'children': c_4}, with_context = false) }}
+      {{ include('compose/Box.html.twig', {'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'grid grid-cols-2 gap-4 md:grid-cols-3 lg:col-span-2' : 'grid grid-cols-2 gap-4 md:grid-cols-3 lg:col-span-3 lg:grid-cols-6')), 'attrs': og_attrs(['data-slot', 'items']), 'children': c_4}, with_context = false) }}
       {%- set c_11 -%}
         {%- set c_5 -%}
           {{ og_text(og_get(v_labels, ['summary'])) }}
@@ -55,7 +55,7 @@
           {%- set c_8 -%}
             {{ og_text(og_money(v_total, v_currency)) }}
           {%- endset -%}
-          {{ include('compose/Inline.html.twig', {'class': 'text-2xl font-bold', 'attrs': og_attrs(['role', 'status', 'aria-live', 'polite', 'data-testid', 'total']), 'children': c_8}, with_context = false) }}
+          {{ include('compose/Inline.html.twig', {'class': 'text-2xl font-bold', 'attrs': og_attrs(['role', 'status', 'aria-live', 'polite', 'data-slot', 'total']), 'children': c_8}, with_context = false) }}
         {%- endset -%}
         {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'baseline', 'justify': 'between', 'children': c_9}, with_context = false) }}
         {%- set c_10 -%}
@@ -64,7 +64,7 @@
         {%- endset -%}
         {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'lg', 'type': 'button', 'class': 'w-full', 'children': c_10}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Stack.html.twig', {'gap': '4', 'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'rounded bg-card inset-ring inset-ring-border p-6 lg:sticky lg:top-8' : 'rounded bg-card inset-ring inset-ring-border p-6 lg:col-span-3')), 'attrs': og_attrs(['data-testid', 'summary']), 'children': c_11}, with_context = false) }}
+      {{ include('compose/Stack.html.twig', {'gap': '4', 'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'rounded bg-card inset-ring inset-ring-border p-6 lg:sticky lg:top-8' : 'rounded bg-card inset-ring inset-ring-border p-6 lg:col-span-3')), 'attrs': og_attrs(['data-slot', 'summary']), 'children': c_11}, with_context = false) }}
     {%- endset -%}
     {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-1 items-start gap-8 lg:grid-cols-3', 'children': c_12}, with_context = false) }}
   {%- endif %}

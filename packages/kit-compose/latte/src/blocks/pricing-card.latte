@@ -63,7 +63,7 @@
         {capture $c_11}
           {=og_text($v_feature)}
         {/capture}
-        {=og_include('compose/ListItem.latte', ['class' => 'flex gap-2', 'children' => (string) $c_11])|noescape}
+        {=og_include('compose/ListItem.latte', ['class' => 'flex gap-2', 'attrs' => og_attrs(['data-slot', 'features-row']), 'children' => (string) $c_11])|noescape}
       {/foreach}
     {/capture}
     {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => 'flex flex-col gap-2 text-sm', 'children' => (string) $c_12])|noescape}
@@ -73,7 +73,7 @@
     {capture $c_14}
       {=og_text(og_get($v_labels, ['cta']))}
     {/capture}
-    {=og_include('compose/Button.latte', ['variant' => og_s((og_t($v_stand) ? 'default' : 'outline')), 'size' => 'default', 'attrs' => og_attrs(['data-testid', 'plan-select']), 'children' => (string) $c_14])|noescape}
+    {=og_include('compose/Button.latte', ['variant' => og_s((og_t($v_stand) ? 'default' : 'outline')), 'size' => 'default', 'children' => (string) $c_14])|noescape}
     {if (($p['footer'] ?? null) !== null)}
       {=og_include($p['footer']['t'], array_merge($p['footer']['v'], ['a0' => $v_plan]))|noescape}
     {/if}

@@ -36,7 +36,7 @@ templ PostHeader(p PostHeaderProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	if uiutils.T(vPost) {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: uiutils.Get(vPost, "title"), Lead: uiutils.Get(vPost, "excerpt"), Heading: map[string]any{"level": vLevel}, Align: vLayout, Tone: vTone, Media: map[string]any{"show": uiutils.Eq(vCover, "show")}, LandmarkLabel: vLandmarkLabel, Aside: postHeaderFill1(p, vPost)}) {
-			@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "center")), "center", "start")), BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-testid", "post-meta")}}) {
+			@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "center")), "center", "start")), BoxProps: box.BoxProps{Class: "flex-wrap", Attrs: uiutils.Attrs("data-slot", "post-meta")}}) {
 				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vPost, "author"), Ratio: "1/1", Class: uiutils.Cnv("size-10 shrink-0 rounded-full")})
 				@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 					{ uiutils.Text(uiutils.Get(vPost, "author")) }

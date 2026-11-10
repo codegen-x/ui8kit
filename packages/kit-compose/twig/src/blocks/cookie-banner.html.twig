@@ -35,16 +35,16 @@
           {%- set c_5 -%}
             {{ og_text(v_settings) }}
           {%- endset -%}
-          {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'type': 'button', 'attrs': og_attrs(['data-testid', 'cookie-settings']), 'children': c_5}, with_context = false) }}
+          {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'type': 'button', 'children': c_5}, with_context = false) }}
         {%- endif %}
         {%- set c_6 -%}
           {{ og_text(v_decline) }}
         {%- endset -%}
-        {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'type': 'button', 'attrs': og_attrs(['data-testid', 'cookie-decline']), 'children': c_6}, with_context = false) }}
+        {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'sm', 'type': 'button', 'children': c_6}, with_context = false) }}
         {%- set c_7 -%}
           {{ og_text(v_accept) }}
         {%- endset -%}
-        {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'sm', 'type': 'button', 'attrs': og_attrs(['data-testid', 'cookie-accept']), 'children': c_7}, with_context = false) }}
+        {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'sm', 'type': 'button', 'children': c_7}, with_context = false) }}
       {%- endset -%}
       {{ include('compose/Group.html.twig', {'gap': '2', 'class': 'shrink-0 flex-wrap', 'children': c_8}, with_context = false) }}
     {%- endset -%}
@@ -52,4 +52,4 @@
   {%- endset -%}
   {{ include('compose/Container.html.twig', {'class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'py-4'])), 'attrs': og_attrs(['data-slot', 'container']), 'children': c_10}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'section', 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : og_tpl('{0}-title', [v_id])), 'data-testid', 'cookie', 'data-layout', v_layout, 'aria-label', v_landmarkLabel]), 'children': c_11}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'section', 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : og_tpl('{0}-title', [v_id])), 'data-layout', v_layout, 'aria-label', v_landmarkLabel, 'data-slot', 'cookie']), 'children': c_11}, with_context = false) }}

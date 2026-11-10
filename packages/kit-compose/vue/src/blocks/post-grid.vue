@@ -79,7 +79,7 @@ const emit = defineEmits<{ topic: [value: string], page: [page: number] }>();
       </SwitcherItem>
     </Switcher>
     <template v-if="((posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)?.length ?? 0) > 0)">
-      <Stack v-if="((layout as string) === 'magazine')" gap="6" align="stretch" data-testid="items">
+      <Stack v-if="((layout as string) === 'magazine')" gap="6" align="stretch" data-slot="items">
         <template v-for="(p, i) in posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)" :key="p.id">
           <PostCard
             v-if="(i === 0)"
@@ -103,7 +103,7 @@ const emit = defineEmits<{ topic: [value: string], page: [page: number] }>();
           : fitCols(cols, (posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)?.length ?? 0))
         "
         class="w-full gap-6"
-        data-testid="items"
+        data-slot="items"
       >
         <PostCard v-for="p in posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)" :key="p.id"
           :post="p"
@@ -121,7 +121,7 @@ const emit = defineEmits<{ topic: [value: string], page: [page: number] }>();
         landmarkLabel ? uniqLabel(tpl('{0}, {1}', pager?.label, landmarkLabel))
         : pager?.label
       "
-      data-testid="posts-pager"
+      data-slot="posts-pager"
     >
       <Pager
         :page="(pager?.page ?? 1)"

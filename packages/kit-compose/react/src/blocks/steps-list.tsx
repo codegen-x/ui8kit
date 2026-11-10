@@ -55,7 +55,7 @@ export function StepsList({
             "grid gap-6",
             (((layout as string) === "row") ? "sm:grid-cols-2 md:grid-cols-4" : "")
           )}
-          data-testid="items"
+          data-slot="items"
         >
           {(steps ?? []).map((step, i) => (
             <ListItem key={step.id}
@@ -64,7 +64,7 @@ export function StepsList({
                 (((layout as string) === "row") ? "flex-col" : ""),
                 (((align as string) === "center") ? "items-center text-center" : "")
               )}
-              data-testid="item"
+              data-slot="item"
             >
               <IconBadge variant="primary" data-slot="marker">
                 {((marker as string) === "icon") ? (

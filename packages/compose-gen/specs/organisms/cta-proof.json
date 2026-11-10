@@ -260,7 +260,7 @@
                     "Class": "text-muted-foreground"
                   },
                   "attrs": {
-                    "data-testid": "cta-note"
+                    "data-slot": "cta-note"
                   },
                   "children": [
                     {

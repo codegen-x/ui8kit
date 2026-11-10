@@ -43,15 +43,15 @@ templ CreditPacks(p CreditPacksProps) {
 		if uiutils.Eq(uiutils.Len(vPacks), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "coins", Title: vEmpty})
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "row")), "1", uiutils.FitCols(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1-4"), uiutils.Len(vPacks)))), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "row")), "1", uiutils.FitCols(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1-4"), uiutils.Len(vPacks)))), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vPack := range uiutils.L(vPacks) {
-					@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-full", uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "row")), "gap-4 p-4", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-4 p-4", "")))), Attrs: uiutils.Attrs("data-testid", "item", "data-badge", uiutils.Get(vPack, "badge"))}}) {
+					@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("h-full", uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "row")), "gap-4 p-4", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-4 p-4", "")))), Attrs: uiutils.Attrs("data-badge", uiutils.Get(vPack, "badge"))}}) {
 						@compose.CardContent(compose.CardContentProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex h-full gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "row")), "flex-row flex-wrap items-center justify-between", "flex-col")))}}) {
 							@compose.Stack(compose.StackProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("min-w-0", uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "row")), "flex-1", "")))}}) {
 								if uiutils.T(uiutils.Or(uiutils.Get(vPack, "badge"), uiutils.And(!uiutils.Eq(vItem, "row"), uiutils.Gt(uiutils.Count(vPacks, "badge"), float64(0))))) {
 									@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex min-h-6 items-center", Attrs: uiutils.Attrs("data-slot", "badge-slot")}}) {
 										if uiutils.T(uiutils.Get(vPack, "badge")) {
-											@compose.Badge(compose.BadgeProps{Variant: "default", Size: "default", TextProps: text.TextProps{Class: "w-fit shrink-0", Attrs: uiutils.Attrs("data-testid", "badge")}}) {
+											@compose.Badge(compose.BadgeProps{Variant: "default", Size: "default", TextProps: text.TextProps{Class: "w-fit shrink-0"}}) {
 												{ uiutils.Text(uiutils.At(vBadges, uiutils.Get(vPack, "badge"))) }
 											}
 										}
@@ -66,7 +66,7 @@ templ CreditPacks(p CreditPacksProps) {
 									}
 								}
 							}
-							@compose.Button(compose.ButtonProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vPack, "badge"), "popular")), "default", "outline")), Size: "sm", ButtonProps: button.ButtonProps{Type: "button", Class: uiutils.S(uiutils.Cnv("w-fit shrink-0", uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "row")), "", "mt-auto"))), Attrs: uiutils.Attrs("data-testid", "buy")}}) {
+							@compose.Button(compose.ButtonProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vPack, "badge"), "popular")), "default", "outline")), Size: "sm", ButtonProps: button.ButtonProps{Type: "button", Class: uiutils.S(uiutils.Cnv("w-fit shrink-0", uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "row")), "", "mt-auto")))}}) {
 								{ uiutils.Text(vBuy) }
 							}
 						}

@@ -70,28 +70,28 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"showcase-card\"]",
+      "sel": "[data-slot=\"card\"]",
       "n": "@values",
       "when": {
         "cols": "3"
       }
     },
     {
-      "sel": "[data-testid=\"showcase-card\"]",
+      "sel": "[data-slot=\"card\"]",
       "n": "@features",
       "when": {
         "cols": "4"
       }
     },
     {
-      "sel": "[data-testid=\"showcase-panel\"]",
+      "sel": "[data-slot=\"showcase-panel\"]",
       "n": 0,
       "when": {
         "item": "picture"
       }
     },
     {
-      "sel": "[data-testid=\"read\"]",
+      "sel": "[data-slot=\"read\"]",
       "n": 0,
       "when": {
         "item": "panel"

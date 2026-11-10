@@ -46,11 +46,11 @@ const {
       (((position as string) === 'sticky') ? 'sticky bottom-0 z-40' : '')
     )"
     :aria-label="(landmarkLabel ?? label)"
-    data-testid="bottom-nav"
     :data-position="position"
+    data-slot="bottom-nav"
   >
-    <List class="m-0 grid list-none grid-flow-col auto-cols-fr p-0" data-testid="items">
-      <ListItem v-for="tab in tabs" :key="tab.id">
+    <List class="m-0 grid list-none grid-flow-col auto-cols-fr p-0" data-slot="items">
+      <ListItem v-for="tab in tabs" :key="tab.id" data-slot="tabs-row">
         <MenuEntry
           :href="tab.href"
           :class="cn(

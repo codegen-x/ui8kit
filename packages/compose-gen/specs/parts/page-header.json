@@ -103,7 +103,10 @@
             }
           ]
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "page-header"
+      }
     }
   ],
   "portable": {

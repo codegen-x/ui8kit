@@ -51,7 +51,7 @@
             }
           ]
         },
-        "data-testid": "section-nav"
+        "data-slot": "section-nav"
       },
       "children": [
         {
@@ -100,7 +100,10 @@
                         }
                       ]
                     }
-                  ]
+                  ],
+                  "attrs": {
+                    "data-slot": "sections-row"
+                  }
                 }
               ]
             }

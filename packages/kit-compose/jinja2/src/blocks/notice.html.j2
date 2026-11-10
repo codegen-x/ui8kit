@@ -12,4 +12,4 @@
     {{ og_include('compose/text.html.j2', {'p': {'Class': 'fixed right-4 bottom-4 z-40 m-0 flex items-center gap-2 rounded bg-foreground p-4 text-xs font-bold text-background shadow-lg'}, 'children': c_1}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'contents', 'Attrs': og_attrs(['role', 'status', 'data-testid', 'notice'])}, 'children': c_2}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'contents', 'Attrs': og_attrs(['role', 'status', 'data-slot', 'notice'])}, 'children': c_2}) }}

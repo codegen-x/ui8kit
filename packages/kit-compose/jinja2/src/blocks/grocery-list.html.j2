@@ -39,10 +39,10 @@
           {{ og_include('compose/inline.html.j2', {'p': {'Class': 'text-sm font-bold'}, 'children': c_4}) }}
           {{ og_include('blocks/add-icon.html.j2', {'p': {'label': og_tpl(og_get(v_labels, ['addOf']), [og_get(v_d, ['name'])])}}) }}
         {%- endset -%}
-        {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-4 border-b border-border py-2', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_5}) }}
+        {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex items-center gap-4 border-b border-border py-2', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_5}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(('grid grid-cols-1 gap-x-8 md:grid-cols-2' if og_t(og_eq(v_cols, '2')) else 'grid grid-cols-1')), 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_6}) }}
+    {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(('grid grid-cols-1 gap-x-8 md:grid-cols-2' if og_t(og_eq(v_cols, '2')) else 'grid grid-cols-1')), 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_6}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_7)}) }}

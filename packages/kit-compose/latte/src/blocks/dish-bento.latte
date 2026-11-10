@@ -46,7 +46,7 @@
             {/capture}
             {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => 'between', 'class' => 'mt-auto', 'children' => (string) $c_6])|noescape}
           {/capture}
-          {=og_include('compose/Stack.latte', ['gap' => '4', 'class' => og_s(og_cnv(['rounded bg-card inset-ring inset-ring-border p-6 sm:col-span-2 lg:row-span-2', (og_t(og_eq($v_feature, 'end')) ? 'lg:col-start-3 lg:row-start-1' : '')])), 'attrs' => og_attrs(['data-testid', 'feature']), 'children' => (string) $c_7])|noescape}
+          {=og_include('compose/Stack.latte', ['gap' => '4', 'class' => og_s(og_cnv(['rounded bg-card inset-ring inset-ring-border p-6 sm:col-span-2 lg:row-span-2', (og_t(og_eq($v_feature, 'end')) ? 'lg:col-start-3 lg:row-start-1' : '')])), 'attrs' => og_attrs(['data-slot', 'feature']), 'children' => (string) $c_7])|noescape}
         {else}
           {capture $c_11}
             {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name'])]])|noescape}
@@ -63,11 +63,11 @@
             {/capture}
             {=og_include('compose/Group.latte', ['gap' => '2', 'align' => 'center', 'justify' => 'between', 'children' => (string) $c_10])|noescape}
           {/capture}
-          {=og_include('compose/Stack.latte', ['gap' => '2', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_11])|noescape}
+          {=og_include('compose/Stack.latte', ['gap' => '2', 'class' => 'rounded bg-card inset-ring inset-ring-border p-4', 'attrs' => og_attrs(['data-slot', 'item']), 'children' => (string) $c_11])|noescape}
         {/if}
       {/foreach}
     {/capture}
-    {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_12])|noescape}
+    {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_12])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'lead' => $v_lead, 'tone' => $v_tone, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_13)])|noescape}

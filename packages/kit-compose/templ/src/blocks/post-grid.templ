@@ -55,7 +55,7 @@ templ PostGrid(p PostGridProps) {
 		}
 		if uiutils.Gt(uiutils.Len(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic"))), float64(0)) {
 			if uiutils.Eq(vLayout, "magazine") {
-				@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for vI, vP := range uiutils.L(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic"))) {
 						if uiutils.Eq(float64(vI), float64(0)) {
 							@PostCard(PostCardProps{Post: vP, Labels: vLabels, Layout: "horizontal", Media: vMedia, Meta: vMeta, Density: vDensity})
@@ -70,7 +70,7 @@ templ PostGrid(p PostGridProps) {
 					}
 				}
 			} else {
-				@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "1", uiutils.FitCols(vCols, uiutils.Len(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic")))))), BoxProps: box.BoxProps{Class: "w-full gap-6", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "1", uiutils.FitCols(vCols, uiutils.Len(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic")))))), BoxProps: box.BoxProps{Class: "w-full gap-6", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for _, vP := range uiutils.L(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic"))) {
 						@PostCard(PostCardProps{Post: vP, Labels: vLabels, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "horizontal", "vertical"), Media: vMedia, Meta: vMeta, Density: vDensity})
 					}
@@ -78,7 +78,7 @@ templ PostGrid(p PostGridProps) {
 			}
 		}
 		if uiutils.T(uiutils.And(uiutils.Eq(uiutils.Get(vPager, "mode"), "pages"), uiutils.Gt(uiutils.Len(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic"))), float64(0)))) {
-			@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vPager, "label"), vLandmarkLabel)), uiutils.Get(vPager, "label")), "data-testid", "posts-pager")}}) {
+			@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vPager, "label"), vLandmarkLabel)), uiutils.Get(vPager, "label")), "data-slot", "posts-pager")}}) {
 				@Pager(PagerProps{Page: uiutils.Coalesce(uiutils.Get(vPager, "page"), float64(1)), Pages: uiutils.Coalesce(uiutils.Get(vPager, "pages"), float64(1)), Summary: uiutils.Tpl(uiutils.Get(vPager, "summary"), uiutils.Coalesce(uiutils.Get(vPager, "page"), float64(1)), uiutils.Coalesce(uiutils.Get(vPager, "pages"), float64(1))), PreviousLabel: uiutils.Coalesce(uiutils.Get(vPager, "previous"), ""), NextLabel: uiutils.Coalesce(uiutils.Get(vPager, "next"), ""), Numbered: true, PageLabel: uiutils.Get(vPager, "pageLabel"), PageUrl: uiutils.Get(vPager, "url"), FirstUrl: uiutils.Get(vPager, "firstUrl")})
 			}
 		}

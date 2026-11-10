@@ -33,7 +33,7 @@
       {%- endset -%}
       {{ include('compose/Badge.html.twig', {'variant': 'default', 'size': 'default', 'children': c_4}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['data-testid', 'billing']), 'children': c_5}, with_context = false) }}
+    {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'center', 'class': 'flex-wrap', 'attrs': og_attrs(['data-slot', 'billing']), 'children': c_5}, with_context = false) }}
   {%- endif %}
   {%- if og_t(og_eq(og_len(v_plans), 0)) %}
     {{ include('blocks/empty-state.html.twig', {'p': {'icon': 'layers', 'title': og_get(v_labels, ['empty'])}}, with_context = false) }}
@@ -43,7 +43,7 @@
         {{ include('blocks/pricing-card.html.twig', {'p': {'plan': v_plan, 'labels': v_labels, 'emphasis': v_emphasis, 'billing': (og_t(og_eq(v_billing, 'annual')) ? 'annual' : 'monthly'), 'density': (og_t(og_eq(v_density, 'compact')) ? 'compact' : 'default')}}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_layout, 'stack')) ? '1' : og_fit_cols(v_cols, og_len(v_plans)))), 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'tiers']), 'children': c_6}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_layout, 'stack')) ? '1' : og_fit_cols(v_cols, og_len(v_plans)))), 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'tiers']), 'children': c_6}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'measure': (og_t(og_eq(v_layout, 'stack')) ? 'md' : 'default'), 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_7)}, with_context = false) }}

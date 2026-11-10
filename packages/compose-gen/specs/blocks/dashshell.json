@@ -154,11 +154,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"dashboard-shell\"]",
+      "sel": "[data-slot=\"dashboard-shell\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"topbar\"]",
+      "sel": "[data-slot=\"topbar\"]",
       "n": 1,
       "when": {
         "topbar": [
@@ -168,14 +168,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"topbar\"]",
+      "sel": "[data-slot=\"topbar\"]",
       "n": 0,
       "when": {
         "topbar": "none"
       }
     },
     {
-      "sel": "[data-testid=\"sidebar\"]",
+      "sel": "[data-slot=\"sidebar\"]",
       "n": 1,
       "when": {
         "sidebar": [
@@ -187,21 +187,21 @@
       }
     },
     {
-      "sel": "[data-testid=\"sidebar\"]",
+      "sel": "[data-slot=\"sidebar\"]",
       "n": 0,
       "when": {
         "sidebar": "none"
       }
     },
     {
-      "sel": "[data-testid=\"subnav\"]",
+      "sel": "[data-slot=\"subnav\"]",
       "n": 1,
       "when": {
         "sidebar": "twolevel"
       }
     },
     {
-      "sel": "[data-testid=\"subnav\"]",
+      "sel": "[data-slot=\"subnav\"]",
       "n": 0,
       "when": {
         "sidebar": [
@@ -213,14 +213,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"toggle\"]",
+      "sel": "[data-slot=\"toggle\"]",
       "n": 1,
       "when": {
         "sidebar": "collapsed"
       }
     },
     {
-      "sel": "[data-testid=\"toggle\"]",
+      "sel": "[data-slot=\"toggle\"]",
       "n": 0,
       "when": {
         "sidebar": [
@@ -232,7 +232,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"footer\"]",
+      "sel": "[data-slot=\"footer\"]",
       "n": 1,
       "when": {
         "footer": [
@@ -242,14 +242,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"footer\"]",
+      "sel": "[data-slot=\"footer\"]",
       "n": 0,
       "when": {
         "footer": "none"
       }
     },
     {
-      "sel": "[data-testid=\"sidebar\"] [data-testid=\"items\"] [data-testid=\"item\"]",
+      "sel": "[data-slot=\"sidebar\"] [data-slot=\"items\"] [data-slot=\"item\"]",
       "n": "@sidenav",
       "when": {
         "sidebar": [
@@ -261,14 +261,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"subnav\"] [data-testid=\"item\"]",
+      "sel": "[data-slot=\"subnav\"] [data-slot=\"item\"]",
       "n": "@subnav",
       "when": {
         "sidebar": "twolevel"
       }
     },
     {
-      "sel": "[data-testid=\"footer\"] li",
+      "sel": "[data-slot=\"footer\"] li",
       "n": "@helplinks",
       "when": {
         "footer": [
@@ -278,21 +278,21 @@
       }
     },
     {
-      "sel": "[data-testid=\"panel\"]",
+      "sel": "[data-slot=\"panel\"]",
       "n": 5,
       "when": {
         "content": "grid"
       }
     },
     {
-      "sel": "[data-testid=\"panel\"]",
+      "sel": "[data-slot=\"panel\"]",
       "n": 3,
       "when": {
         "content": "split"
       }
     },
     {
-      "sel": "[data-testid=\"panel\"]",
+      "sel": "[data-slot=\"panel\"]",
       "n": 1,
       "when": {
         "content": "list"

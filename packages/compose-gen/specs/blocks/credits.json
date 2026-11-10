@@ -62,11 +62,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"items\"] > [data-slot=\"card\"]",
       "n": "@credits"
     },
     {
-      "sel": "[data-testid=\"buy\"]",
+      "sel": "[data-slot=\"items\"] [data-slot=\"button\"]",
       "n": "@credits"
     }
   ],

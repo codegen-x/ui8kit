@@ -20,10 +20,10 @@ type MediaFiguresProps struct {
 templ MediaFigures(p MediaFiguresProps) {
 	{{ vExtras := p.Extras }}
 	{{ vMode := uiutils.Def(p.Mode, "grid") }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vMode, "grid")), "grid grid-cols-2 gap-6 text-center", "grid grid-cols-3 gap-6"))}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vMode, "grid")), "grid grid-cols-2 gap-6 text-center", "grid grid-cols-3 gap-6")), Attrs: uiutils.Attrs("data-slot", "media-figures")}}) {
 		for vI, vS := range uiutils.L(uiutils.Get(vExtras, "stats")) {
 			if uiutils.T(uiutils.Lt(float64(vI), uiutils.Cond(uiutils.T(uiutils.Eq(vMode, "grid")), float64(4), float64(3)))) {
-				@compose.Stack(compose.StackProps{Gap: "0", Align: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vMode, "grid")), "center", "start")), BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "media-stat")}}) {
+				@compose.Stack(compose.StackProps{Gap: "0", Align: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vMode, "grid")), "center", "start")), BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "media-stat")}}) {
 					@compose.Text(compose.TextProps{Size: "3xl", Weight: "bold", TextProps: text.TextProps{}}) {
 						{ uiutils.Text(uiutils.Get(vS, "value")) }
 					}

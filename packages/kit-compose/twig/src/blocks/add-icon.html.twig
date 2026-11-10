@@ -7,4 +7,4 @@
 {%- set c_1 -%}
   {{ include('icons/LucideIcon.html.twig', {'name': 'plus', 'size': 16}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Button.html.twig', {'variant': og_s(v_variant), 'size': 'sm', 'layout': 'icon', 'type': 'button', 'ariaLabel': og_s(v_label), 'attrs': og_attrs(['data-testid', 'add']), 'children': c_1}, with_context = false) }}
+{{ include('compose/Button.html.twig', {'variant': og_s(v_variant), 'size': 'sm', 'layout': 'icon', 'type': 'button', 'ariaLabel': og_s(v_label), 'children': c_1}, with_context = false) }}

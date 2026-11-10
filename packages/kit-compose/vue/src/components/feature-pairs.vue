@@ -21,9 +21,9 @@ const { features } = defineProps<FeaturePairsProps>();
 </script>
 
 <template>
-  <Box class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+  <Box class="grid grid-cols-1 gap-6 sm:grid-cols-2" data-slot="feature-pairs">
     <template v-for="(f, i) in features" :key="f.id">
-      <Group v-if="(i < 4)" gap="4" align="start" data-testid="feature-item">
+      <Group v-if="(i < 4)" gap="4" align="start" data-slot="feature-item">
         <Inline class="flex size-8 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground">
           <LucideIcon :name="f.icon" :size="16" />
         </Inline>

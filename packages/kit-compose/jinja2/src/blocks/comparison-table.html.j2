@@ -63,12 +63,12 @@
               {%- endset -%}
               {{ og_include('compose/table-cell.html.j2', {'p': {'Class': og_s(('py-2' if og_t(og_eq(v_density, 'compact')) else 'py-4'))}, 'children': c_11}) }}
             {%- endset -%}
-            {{ og_include('compose/table-row.html.j2', {'p': {'Class': 'border-t border-border', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_12}) }}
+            {{ og_include('compose/table-row.html.j2', {'p': {'Class': 'border-t border-border', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_12}) }}
           {%- endfor %}
         {%- endset -%}
         {{ og_include('compose/table-body.html.j2', {'p': {}, 'children': c_13}) }}
       {%- endset -%}
-      {{ og_include('compose/table.html.j2', {'p': {'Class': 'w-full text-left text-sm', 'Attrs': og_attrs(['data-testid', 'compare'])}, 'children': c_14}) }}
+      {{ og_include('compose/table.html.j2', {'p': {'Class': 'w-full text-left text-sm', 'Attrs': og_attrs(['data-slot', 'compare'])}, 'children': c_14}) }}
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': 'relative w-full overflow-x-auto'}, 'children': c_15}) }}
   {%- endif %}

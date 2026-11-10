@@ -17,7 +17,7 @@
     {{ include('blocks/media-frame.html.twig', {'p': {'alt': v_title, 'ratio': '3/4', 'className': og_cnv(['mt-8'])}}, with_context = false) }}
     {{ include('blocks/media-frame.html.twig', {'p': {'alt': v_title, 'ratio': '3/4'}}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-3 gap-4', 'attrs': og_attrs(['data-testid', 'strip']), 'children': c_11}, with_context = false) }}
+  {{ include('compose/Box.html.twig', {'class': 'grid grid-cols-3 gap-4', 'attrs': og_attrs(['data-slot', 'strip']), 'children': c_11}, with_context = false) }}
 {%- endset -%}
 {%- set c_12 -%}
   {%- if og_t(og_gt(og_len(v_stats), 0)) %}
@@ -33,10 +33,10 @@
           {%- endset -%}
           {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_2}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Stack.html.twig', {'gap': '0', 'attrs': og_attrs(['data-testid', 'stat']), 'children': c_3}, with_context = false) }}
+        {{ include('compose/Stack.html.twig', {'gap': '0', 'attrs': og_attrs(['data-slot', 'stat']), 'children': c_3}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': '2-4', 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'stats']), 'children': c_4}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': '2-4', 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'stats']), 'children': c_4}, with_context = false) }}
   {%- endif %}
   {%- if og_t(og_gt(og_len(v_values), 0)) %}
     {%- set c_9 -%}
@@ -55,10 +55,10 @@
           {%- endset -%}
           {{ include('compose/Stack.html.twig', {'gap': '2', 'children': c_7}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'class': 'border-t border-border pt-4', 'attrs': og_attrs(['data-testid', 'value']), 'children': c_8}, with_context = false) }}
+        {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'class': 'border-t border-border pt-4', 'attrs': og_attrs(['data-slot', 'value']), 'children': c_8}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['grid grid-cols-1 gap-4', (og_t(og_eq(v_layout, 'stacked')) ? 'md:grid-cols-3' : '')])), 'attrs': og_attrs(['data-testid', 'values']), 'children': c_9}, with_context = false) }}
+    {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['grid grid-cols-1 gap-4', (og_t(og_eq(v_layout, 'stacked')) ? 'md:grid-cols-3' : '')])), 'attrs': og_attrs(['data-slot', 'values']), 'children': c_9}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'density': v_density, 'layout': (og_t(og_eq(v_layout, 'split')) ? 'split' : 'stack'), 'media': {'show': true, 'side': 'start'}, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_10)}, 'children': og_markup(c_12)}, with_context = false) }}

@@ -25,7 +25,7 @@
             {%- set c_1 -%}
               {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': og_s(og_get(v_f, ['icon'])), 'Size': 32}}) }}
             {%- endset -%}
-            {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex aspect-video items-center justify-center rounded bg-muted text-foreground', 'Attrs': og_attrs(['data-testid', 'showcase-panel'])}, 'children': c_1}) }}
+            {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex aspect-video items-center justify-center rounded bg-muted text-foreground', 'Attrs': og_attrs(['data-slot', 'showcase-panel'])}, 'children': c_1}) }}
           {%- endif %}
           {%- set c_5 -%}
             {%- set c_2 -%}
@@ -46,7 +46,7 @@
           {%- endset -%}
           {{ og_include('compose/card-content.html.j2', {'p': {'Class': 'flex flex-1 flex-col gap-2'}, 'children': c_5}) }}
         {%- endset -%}
-        {{ og_include('compose/card.html.j2', {'p': {'Variant': 'default', 'Class': 'h-full gap-4 overflow-hidden', 'Attrs': og_attrs(['data-testid', 'showcase-card'])}, 'children': c_6}) }}
+        {{ og_include('compose/card.html.j2', {'p': {'Variant': 'default', 'Class': 'h-full gap-4 overflow-hidden'}, 'children': c_6}) }}
       {%- endfor %}
     {%- endset -%}
     {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4' if og_t(og_eq(v_cols, '4')) else 'grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-3'))}, 'children': c_7}) }}

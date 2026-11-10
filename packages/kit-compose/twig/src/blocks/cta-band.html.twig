@@ -42,7 +42,7 @@
     {%- endset -%}
     {{ include('compose/Container.html.twig', {'class': 'mx-auto w-full max-w-6xl px-4', 'attrs': og_attrs(['data-slot', 'container']), 'children': c_6}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Block.html.twig', {'tag': 'section', 'class': 'py-8', 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : og_tpl('{0}-title', [v_id])), 'data-testid', 'section', 'data-tone', v_tone, 'data-density', v_density, 'aria-label', v_landmarkLabel]), 'children': c_7}, with_context = false) }}
+  {{ include('compose/Block.html.twig', {'tag': 'section', 'class': 'py-8', 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : og_tpl('{0}-title', [v_id])), 'data-tone', v_tone, 'data-density', v_density, 'aria-label', v_landmarkLabel, 'data-slot', 'section']), 'children': c_7}, with_context = false) }}
 {%- else %}
   {%- set f_8 -%}
     {{ include('blocks/media-frame.html.twig', {'p': {'alt': v_title, 'ratio': '4/3'}}, with_context = false) }}

@@ -19,22 +19,22 @@
     {%- set c_8 -%}
       {%- if og_t(og_eq(v_fields, 'full')) %}
         {%- set c_1 -%}
-          {{ include('compose/Input.html.twig', {'type': 'text', 'name': 'name', 'attrs': og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [v_id]), 'data-testid', 'field'])}, with_context = false) }}
+          {{ include('compose/Input.html.twig', {'type': 'text', 'name': 'name', 'attrs': og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [v_id]), 'data-slot', 'field'])}, with_context = false) }}
         {%- endset -%}
         {{ include('blocks/field.html.twig', {'p': {'label': og_get(v_labels, ['name']), 'htmlFor': og_tpl('{0}-name', [v_id])}, 'children': og_markup(c_1)}, with_context = false) }}
       {%- endif %}
       {%- set c_2 -%}
-        {{ include('compose/Input.html.twig', {'type': 'email', 'name': 'email', 'attrs': og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}, with_context = false) }}
+        {{ include('compose/Input.html.twig', {'type': 'email', 'name': 'email', 'attrs': og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}, with_context = false) }}
       {%- endset -%}
       {{ include('blocks/field.html.twig', {'p': {'label': og_get(v_labels, ['email']), 'htmlFor': og_tpl('{0}-email', [v_id])}, 'children': og_markup(c_2)}, with_context = false) }}
       {%- if og_t(og_eq(v_fields, 'full')) %}
         {%- set c_3 -%}
-          {{ include('compose/Input.html.twig', {'type': 'text', 'name': 'subject', 'attrs': og_attrs(['id', og_tpl('{0}-subject', [v_id]), 'data-testid', 'field'])}, with_context = false) }}
+          {{ include('compose/Input.html.twig', {'type': 'text', 'name': 'subject', 'attrs': og_attrs(['id', og_tpl('{0}-subject', [v_id]), 'data-slot', 'field'])}, with_context = false) }}
         {%- endset -%}
         {{ include('blocks/field.html.twig', {'p': {'label': og_get(v_labels, ['subject']), 'htmlFor': og_tpl('{0}-subject', [v_id])}, 'children': og_markup(c_3)}, with_context = false) }}
       {%- endif %}
       {%- set c_4 -%}
-        {{ include('compose/Textarea.html.twig', {'rows': 4, 'name': 'message', 'attrs': og_attrs(['id', og_tpl('{0}-message', [v_id]), 'data-testid', 'field'])}, with_context = false) }}
+        {{ include('compose/Textarea.html.twig', {'rows': 4, 'name': 'message', 'attrs': og_attrs(['id', og_tpl('{0}-message', [v_id]), 'data-slot', 'field'])}, with_context = false) }}
       {%- endset -%}
       {{ include('blocks/field.html.twig', {'p': {'label': og_get(v_labels, ['message']), 'htmlFor': og_tpl('{0}-message', [v_id])}, 'children': og_markup(c_4)}, with_context = false) }}
       {%- if og_t(og_eq(v_terms, 'show')) %}
@@ -50,9 +50,9 @@
       {%- set c_7 -%}
         {{ og_text(og_get(v_labels, ['submit'])) }}
       {%- endset -%}
-      {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'submit', 'class': 'w-fit', 'attrs': og_attrs(['data-testid', 'submit']), 'children': c_7}, with_context = false) }}
+      {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'submit', 'class': 'w-fit', 'children': c_7}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Form.html.twig', {'method': 'dialog', 'class': 'w-full gap-4', 'attrs': og_attrs(['data-testid', 'contact-form']), 'children': c_8}, with_context = false) }}
+    {{ include('compose/Form.html.twig', {'method': 'dialog', 'class': 'w-full gap-4', 'attrs': og_attrs(['data-slot', 'contact-form']), 'children': c_8}, with_context = false) }}
     {%- if og_t(og_and([og_eq(v_layout, 'split'), og_gt(og_len(v_details), 0)])) %}
       {%- set c_13 -%}
         {%- for v_d in og_l(v_details) %}
@@ -70,10 +70,10 @@
             {%- endset -%}
             {{ include('compose/Stack.html.twig', {'gap': '0', 'children': c_11}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'attrs': og_attrs(['data-testid', 'detail']), 'children': c_12}, with_context = false) }}
+          {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'attrs': og_attrs(['data-slot', 'detail']), 'children': c_12}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/Stack.html.twig', {'gap': '4', 'attrs': og_attrs(['data-testid', 'details']), 'children': c_13}, with_context = false) }}
+      {{ include('compose/Stack.html.twig', {'gap': '4', 'attrs': og_attrs(['data-slot', 'details']), 'children': c_13}, with_context = false) }}
     {%- endif %}
   {%- endset -%}
   {{ include('compose/Grid.html.twig', {'cols': og_s((og_t(og_eq(v_layout, 'split')) ? '1-2' : '1')), 'class': 'items-start gap-8', 'children': c_14}, with_context = false) }}

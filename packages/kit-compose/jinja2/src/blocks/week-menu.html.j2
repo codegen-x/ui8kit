@@ -48,14 +48,14 @@
                 {%- endset -%}
                 {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'baseline', 'Justify': 'between'}, 'children': c_6}) }}
               {%- endset -%}
-              {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_7}) }}
+              {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_7}) }}
             {%- endif %}
           {%- endfor %}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': 'border-t-2 border-primary pt-4', 'Attrs': og_attrs(['data-testid', 'day'])}, 'children': c_8}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': 'border-t-2 border-primary pt-4', 'Attrs': og_attrs(['data-slot', 'day'])}, 'children': c_8}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_9}) }}
+    {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_9}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_10)}) }}

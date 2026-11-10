@@ -202,7 +202,6 @@
             }
           ]
         },
-        "data-testid": "dashboard-shell",
         "data-topbar": {
           "$": "topbar"
         },
@@ -214,7 +213,8 @@
         },
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "dashboard-shell"
       },
       "children": [
         {
@@ -265,7 +265,7 @@
                 }
               },
               "attrs": {
-                "data-testid": "window"
+                "data-slot": "window"
               },
               "children": [
                 {

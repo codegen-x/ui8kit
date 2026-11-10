@@ -60,7 +60,7 @@ const {
     <Form
       method="dialog"
       :class="cn('w-full max-w-md', (((align as string) === 'center') ? 'mx-auto' : ''))"
-      data-testid="newsletter-form"
+      data-slot="newsletter-form"
     >
       <Label :for="tpl('{0}-email', id)" class="sr-only">
         {{ label }}
@@ -70,8 +70,8 @@ const {
         align="start"
         :class="cn('w-full', (((layout as string) === 'stacked') ? 'flex-col items-stretch' : 'flex-wrap'))"
       >
-        <Input type="email" name="email" class="min-w-0 flex-1" :id="tpl('{0}-email', id)" data-testid="field" />
-        <Button variant="default" size="default" type="submit" data-testid="submit">
+        <Input type="email" name="email" class="min-w-0 flex-1" :id="tpl('{0}-email', id)" data-slot="field" />
+        <Button variant="default" size="default" type="submit">
           {{ submit }}
         </Button>
       </Group>
@@ -79,7 +79,7 @@ const {
         v-if="(((terms as string) === 'show') && consent)"
         size="xs"
         class="text-muted-foreground"
-        data-testid="consent"
+        data-slot="consent"
       >
         {{ consent }}
       </Text>

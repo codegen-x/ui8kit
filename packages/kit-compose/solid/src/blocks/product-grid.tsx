@@ -49,9 +49,9 @@ export function ProductGrid({
       {((products?.length ?? 0) === 0) ? (
         <EmptyState icon="package" title={labels.empty} />
       ) : ((layout as string) === "rail") ? (
-        <Box class="flex snap-x gap-4 overflow-x-auto pb-4" data-testid="items">
+        <Box class="flex snap-x gap-4 overflow-x-auto pb-4" data-slot="items">
           <For each={products ?? []}>{(p) => (
-            <Box class="w-64 shrink-0 snap-start">
+            <Box class="w-64 shrink-0 snap-start" data-slot="product">
               <ProductCard
                 product={p}
                 labels={labels}
@@ -67,7 +67,7 @@ export function ProductGrid({
           )}</For>
         </Box>
       ) : (
-        <Grid cols={(((layout as string) === "list") ? "1" : cols)} class="gap-4" data-testid="items">
+        <Grid cols={(((layout as string) === "list") ? "1" : cols)} class="gap-4" data-slot="items">
           <For each={products ?? []}>{(p) => (
             <ProductCard
               product={p}

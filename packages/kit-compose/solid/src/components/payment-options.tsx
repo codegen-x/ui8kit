@@ -13,11 +13,11 @@ export type PaymentOptionsProps = {
 
 export function PaymentOptions({ payments, name, checked = "" }: PaymentOptionsProps) {
   return (
-    <Grid cols="1-2" class="gap-4" data-testid="payments">
+    <Grid cols="1-2" class="gap-4" data-slot="payments">
       <For each={payments ?? []}>{(p) => (
         <Label
           class={"flex items-center gap-4 rounded p-4 inset-ring inset-ring-border has-checked:inset-ring-foreground"}
-          data-testid="payment"
+          data-slot="payment"
         >
           <Radio name={name} value={p.id} checked={(p.id === checked)} />
           <LucideIcon name={p.icon} size={20} class="shrink-0" />

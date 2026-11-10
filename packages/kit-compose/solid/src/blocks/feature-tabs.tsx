@@ -63,8 +63,8 @@ export function FeatureTabs({
                 <Grid
                   cols={(((panel as string) === "split") ? "1-2" : "1")}
                   class="items-center gap-8"
-                  data-testid="tab-panel"
                   role="tabpanel"
+                  data-slot="tab-panel"
                 >
                   <Stack gap="4">
                     <LucideIcon name={f.icon} size={24} />

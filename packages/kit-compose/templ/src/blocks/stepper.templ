@@ -42,13 +42,13 @@ templ Stepper(p StepperProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Measure: "3xl", LandmarkLabel: vLandmarkLabel}) {
 		if uiutils.Gt(uiutils.Len(vSteps), float64(0)) {
-			@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "stepper")}}) {
+			@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "stepper")}}) {
 				@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
 					{ uiutils.Text(uiutils.Tpl(vStepLabel, vCurrent, uiutils.Len(vSteps))) }
 				}
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ol", Class: uiutils.S(uiutils.Cnv("m-0 flex list-none gap-4 p-0", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "vertical")), "flex-col", "flex-col sm:flex-row"))), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ol", Class: uiutils.S(uiutils.Cnv("m-0 flex list-none gap-4 p-0", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "vertical")), "flex-col", "flex-col sm:flex-row"))), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for vI, vS := range uiutils.L(vSteps) {
-						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-1 items-center gap-4", Attrs: uiutils.Attrs("data-testid", "item", "aria-current", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Add(float64(vI), float64(1)), vCurrent)), "step", nil))}}) {
+						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-1 items-center gap-4", Attrs: uiutils.Attrs("aria-current", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Add(float64(vI), float64(1)), vCurrent)), "step", nil), "data-slot", "item")}}) {
 							@compose.IconBadge(compose.IconBadgeProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Lt(uiutils.Add(float64(vI), float64(1)), uiutils.Add(vCurrent, float64(1)))), "primary", "outline")), Size: "sm", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Lt(uiutils.Add(float64(vI), float64(1)), uiutils.Add(vCurrent, float64(1)))), "text-sm", "text-sm text-muted-foreground"))}}) {
 								if uiutils.Eq(vMarker, "icon") {
 									@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vS, "icon")), Size: 16})
@@ -67,7 +67,7 @@ templ Stepper(p StepperProps) {
 				if uiutils.Eq(vSummary, "show") {
 					for vI, vS := range uiutils.L(vSteps) {
 						if uiutils.Eq(uiutils.Add(float64(vI), float64(1)), vCurrent) {
-							@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "rounded bg-card p-6 inset-ring inset-ring-border", Attrs: uiutils.Attrs("data-testid", "step-summary")}}) {
+							@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: "rounded bg-card p-6 inset-ring inset-ring-border", Attrs: uiutils.Attrs("data-slot", "step-summary")}}) {
 								@compose.Title(compose.TitleProps{As: "3", Size: "xl", Weight: "bold", TextProps: text.TextProps{}}) {
 									{ uiutils.Text(uiutils.Get(vS, "title")) }
 								}

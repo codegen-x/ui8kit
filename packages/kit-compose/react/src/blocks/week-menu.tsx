@@ -42,9 +42,9 @@ export function WeekMenu({
       {((sections?.length ?? 0) === 0) ? (
         <EmptyState icon="calendar" title={empty} />
       ) : (
-        <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5" data-testid="items">
+        <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5" data-slot="items">
           {(sections ?? []).map((s) => (
-            <Stack key={s.id} gap="2" className="border-t-2 border-primary pt-4" data-testid="day">
+            <Stack key={s.id} gap="2" className="border-t-2 border-primary pt-4" data-slot="day">
               <Text size="sm" weight="semibold">
                 {s.title}
               </Text>
@@ -54,7 +54,7 @@ export function WeekMenu({
               {(dishes ?? []).map((d) => (
                 <Fragment key={d.id}>
                   {(d.tag === s.key) ? (
-                    <Stack gap="2" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="item">
+                    <Stack gap="2" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
                       {((media as string) === "image") ? (
                         <MediaFrame alt={d.name} ratio="4/3" />
                       ) : null}

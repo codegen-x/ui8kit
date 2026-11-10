@@ -20,10 +20,10 @@ type FooterChannelsProps struct {
 templ FooterChannels(p FooterChannelsProps) {
 	{{ vExtras := p.Extras }}
 	if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "channels")), float64(0)) {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-3"}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-3", Attrs: uiutils.Attrs("data-slot", "footer-channels")}}) {
 			for vI, vC := range uiutils.L(uiutils.Get(vExtras, "channels")) {
 				if uiutils.Lt(float64(vI), float64(3)) {
-					@compose.Stack(compose.StackProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-testid", "footer-channel")}}) {
+					@compose.Stack(compose.StackProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "footer-channel")}}) {
 						@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground"}}) {
 							@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vC, "icon")), Size: 20})
 						}

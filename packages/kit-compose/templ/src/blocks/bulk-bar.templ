@@ -23,11 +23,11 @@ type BulkBarProps struct {
 templ BulkBar(p BulkBarProps) {
 	{{ vLabel := p.Label }}
 	{{ vClearLabel := p.ClearLabel }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex flex-wrap items-center gap-2 rounded bg-foreground px-4 py-2 text-xs font-bold text-background", p.Class)), Attrs: uiutils.Attrs("role", "region", "aria-label", vLabel, "aria-live", "polite", "data-slot", "bulk-bar", "data-testid", "bulk-bar")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex flex-wrap items-center gap-2 rounded bg-foreground px-4 py-2 text-xs font-bold text-background", p.Class)), Attrs: uiutils.Attrs("role", "region", "aria-label", vLabel, "aria-live", "polite", "data-slot", "bulk-bar")}}) {
 		@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(vClearLabel), Class: "text-background hover:bg-background/15 hover:text-background"}}) {
 			@icons.LucideIcon(icons.LucideIconProps{Name: "x", Size: 16})
 		}
-		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Attrs: uiutils.Attrs("data-testid", "bulk-count")}}) {
+		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Attrs: uiutils.Attrs("data-slot", "bulk-count")}}) {
 			{ uiutils.Text(vLabel) }
 		}
 		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "ml-auto flex flex-wrap items-center gap-2"}}) {

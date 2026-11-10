@@ -23,7 +23,7 @@
       {%- set c_2 -%}
         {{ include('icons/LucideIcon.html.twig', {'name': 'x', 'size': 16}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'type': 'button', 'class': 'shrink-0', 'attrs': og_attrs(['aria-label', v_close, 'data-testid', 'modal-close']), 'children': c_2}, with_context = false) }}
+      {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'type': 'button', 'class': 'shrink-0', 'attrs': og_attrs(['aria-label', v_close]), 'children': c_2}, with_context = false) }}
     {%- endset -%}
     {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'justify': 'between', 'children': c_3}, with_context = false) }}
     {%- set c_5 -%}
@@ -31,9 +31,9 @@
       {%- set c_4 -%}
         {{ include('icons/LucideIcon.html.twig', {'name': 'play', 'size': 24}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'button', 'class': 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded', 'attrs': og_attrs(['aria-label', v_play, 'data-testid', 'play']), 'children': c_4}, with_context = false) }}
+      {{ include('compose/Button.html.twig', {'variant': 'default', 'size': 'default', 'type': 'button', 'class': 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded', 'attrs': og_attrs(['aria-label', v_play]), 'children': c_4}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Box.html.twig', {'class': 'relative', 'attrs': og_attrs(['data-testid', 'player']), 'children': c_5}, with_context = false) }}
+    {{ include('compose/Box.html.twig', {'class': 'relative', 'attrs': og_attrs(['data-slot', 'player']), 'children': c_5}, with_context = false) }}
     {%- if og_t(og_and([og_eq(v_outline, 'chapters'), og_gt(og_len(v_chapters), 0)])) %}
       {%- set c_11 -%}
         {%- set c_6 -%}
@@ -52,14 +52,14 @@
               {%- endset -%}
               {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'text-muted-foreground', 'children': c_8}, with_context = false) }}
             {%- endset -%}
-            {{ include('compose/ListItem.html.twig', {'class': 'flex items-baseline gap-4', 'attrs': og_attrs(['data-testid', 'item']), 'children': c_9}, with_context = false) }}
+            {{ include('compose/ListItem.html.twig', {'class': 'flex items-baseline gap-4', 'attrs': og_attrs(['data-slot', 'item']), 'children': c_9}, with_context = false) }}
           {%- endfor %}
         {%- endset -%}
         {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-col gap-2 p-0', 'children': c_10}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Stack.html.twig', {'gap': '2', 'attrs': og_attrs(['data-testid', 'chapters']), 'children': c_11}, with_context = false) }}
+      {{ include('compose/Stack.html.twig', {'gap': '2', 'attrs': og_attrs(['data-slot', 'chapters']), 'children': c_11}, with_context = false) }}
     {%- endif %}
   {%- endset -%}
-  {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': og_s(og_cnv(['mx-auto w-full', (og_t(og_eq(v_size, 'wide')) ? 'max-w-4xl' : 'max-w-2xl'), 'rounded bg-card inset-ring inset-ring-border p-4 shadow-lg'])), 'attrs': og_attrs(['role', 'dialog', 'aria-label', v_title, 'data-testid', 'video-modal']), 'children': c_12}, with_context = false) }}
+  {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': og_s(og_cnv(['mx-auto w-full', (og_t(og_eq(v_size, 'wide')) ? 'max-w-4xl' : 'max-w-2xl'), 'rounded bg-card inset-ring inset-ring-border p-4 shadow-lg'])), 'attrs': og_attrs(['role', 'dialog', 'aria-label', v_title, 'data-slot', 'video-modal']), 'children': c_12}, with_context = false) }}
 {%- endset -%}
 {{ include('blocks/section-frame.html.twig', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_13)}, with_context = false) }}

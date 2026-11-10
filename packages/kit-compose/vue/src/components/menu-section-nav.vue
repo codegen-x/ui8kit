@@ -23,9 +23,9 @@ const { label, sections, prefix, landmarkLabel } = defineProps<MenuSectionNavPro
 </script>
 
 <template>
-  <Block tag="nav" :aria-label="(landmarkLabel ?? label)" data-testid="section-nav">
+  <Block tag="nav" :aria-label="(landmarkLabel ?? label)" data-slot="section-nav">
     <List tag="ul" class="flex flex-wrap gap-2">
-      <ListItem v-for="s in sections" :key="s.id">
+      <ListItem v-for="s in sections" :key="s.id" data-slot="sections-row">
         <Link
           :href="urlOf(tpl('#{0}-{1}', prefix, s.key))"
           variant="nav"

@@ -18,9 +18,9 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_2}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Attrs': og_attrs(['data-testid', 'footer-stat'])}, 'children': c_3}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Attrs': og_attrs(['data-slot', 'footer-stat'])}, 'children': c_3}) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ og_include('compose/group.html.j2', {'p': {'Gap': '8', 'Class': 'flex-wrap'}, 'children': c_4}) }}
+  {{ og_include('compose/group.html.j2', {'p': {'Gap': '8', 'Class': 'flex-wrap', 'Attrs': og_attrs(['data-slot', 'footer-figures'])}, 'children': c_4}) }}
 {%- endif %}

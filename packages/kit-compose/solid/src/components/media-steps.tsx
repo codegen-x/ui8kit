@@ -13,12 +13,12 @@ export type MediaStepsProps = {
 
 export function MediaSteps({ extras, labels }: MediaStepsProps) {
   return (
-    <Stack gap="4" align="stretch">
+    <Stack gap="4" align="stretch" data-slot="media-steps">
       <Text size="sm" weight="semibold">
         {labels.list}
       </Text>
       <For each={extras.steps ?? []}>{(s, iOf) => { const i = iOf(); return (
-        <Group gap="4" align="start" data-testid="media-step">
+        <Group gap="4" align="start" data-slot="media-step">
           <Text size="sm" weight="semibold" class="w-6 shrink-0 text-primary">
             {tpl("0{0}", ((i + 1) == null ? undefined : String((i + 1))))}
           </Text>

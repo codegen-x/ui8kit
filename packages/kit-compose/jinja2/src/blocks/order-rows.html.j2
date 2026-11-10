@@ -65,11 +65,11 @@
           {%- endset -%}
           {{ og_include('compose/table-cell.html.j2', {'p': {}, 'children': c_14}) }}
         {%- endset -%}
-        {{ og_include('compose/table-row.html.j2', {'p': {'Class': 'border-t border-border', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_15}) }}
+        {{ og_include('compose/table-row.html.j2', {'p': {'Class': 'border-t border-border', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_15}) }}
       {%- endfor %}
     {%- endset -%}
     {{ og_include('compose/table-body.html.j2', {'p': {}, 'children': c_16}) }}
   {%- endset -%}
-  {{ og_include('compose/table.html.j2', {'p': {'Class': 'w-full text-left text-sm', 'Attrs': og_attrs(['data-testid', 'order-table'])}, 'children': c_17}) }}
+  {{ og_include('compose/table.html.j2', {'p': {'Class': 'w-full text-left text-sm', 'Attrs': og_attrs(['data-slot', 'order-table'])}, 'children': c_17}) }}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'w-full overflow-x-auto'}, 'children': c_18}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'w-full overflow-x-auto', 'Attrs': og_attrs(['data-slot', 'order-rows'])}, 'children': c_18}) }}

@@ -20,7 +20,7 @@ type CartCountProps struct {
 templ CartCount(p CartCountProps) {
 	{{ vCount := uiutils.Def(p.Count, float64(0)) }}
 	{{ vLabel := p.Label }}
-	@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "inline-flex h-8 items-center gap-2 rounded bg-muted px-4 text-sm font-medium", Attrs: uiutils.Attrs("role", "status", "aria-live", "polite", "data-testid", "cart-count")}}) {
+	@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "inline-flex h-8 items-center gap-2 rounded bg-muted px-4 text-sm font-medium", Attrs: uiutils.Attrs("role", "status", "aria-live", "polite", "data-slot", "cart-count")}}) {
 		@icons.LucideIcon(icons.LucideIconProps{Name: "shopping-bag", Size: 16})
 		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {
 			{ uiutils.Text(uiutils.Tpl(vLabel, uiutils.Str(vCount))) }

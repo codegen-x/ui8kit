@@ -20,7 +20,7 @@
     {%- set c_1 -%}
       {{ og_text(v_skip) }}
     {%- endset -%}
-    {{ og_include('compose/link-plain.html.j2', {'p': {'Href': '#main-content', 'Class': 'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border', 'Attrs': og_attrs(['data-testid', 'skip-link'])}, 'children': c_1}) }}
+    {{ og_include('compose/link-plain.html.j2', {'p': {'Href': '#main-content', 'Class': 'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border', 'Attrs': og_attrs(['data-slot', 'skip-link'])}, 'children': c_1}) }}
   {%- endif %}
   {%- set c_11 -%}
     {%- set c_10 -%}
@@ -66,4 +66,4 @@
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4', 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_11}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'header', 'Class': og_s(og_cnv(['relative', ('border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background' if og_t(og_eq(v_tone, 'inverse')) else 'border-b border-border bg-background'), ('isolate overflow-hidden border-0 bg-transparent' if og_t(og_eq(v_over, 'media')) else '')])), 'Attrs': og_attrs(['data-testid', 'nav-bar', 'data-layout', v_layout, 'data-tone', v_tone, 'aria-label', v_landmarkLabel])}, 'children': c_12}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'header', 'Class': og_s(og_cnv(['relative', ('border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background' if og_t(og_eq(v_tone, 'inverse')) else 'border-b border-border bg-background'), ('isolate overflow-hidden border-0 bg-transparent' if og_t(og_eq(v_over, 'media')) else '')])), 'Attrs': og_attrs(['data-layout', v_layout, 'data-tone', v_tone, 'aria-label', v_landmarkLabel, 'data-slot', 'nav-bar'])}, 'children': c_12}) }}

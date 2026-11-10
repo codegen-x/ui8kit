@@ -52,7 +52,7 @@
         }
       },
       "attrs": {
-        "data-testid": "faq"
+        "data-slot": "faq"
       },
       "children": [
         {

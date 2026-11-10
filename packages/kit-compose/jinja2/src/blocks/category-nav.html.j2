@@ -31,7 +31,7 @@
         {%- endset -%}
         {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_2}) }}
       {%- endset -%}
-      {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'mb-4 flex-wrap', 'Attrs': og_attrs(['data-testid', 'toolbar'])}, 'children': c_3}) }}
+      {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'mb-4 flex-wrap', 'Attrs': og_attrs(['data-slot', 'toolbar'])}, 'children': c_3}) }}
     {%- endif %}
     {%- if og_t(og_gt(og_len(v_categories), 0)) %}
       {%- set c_9 -%}
@@ -61,12 +61,12 @@
             {%- endset -%}
             {{ og_include('blocks/menu-entry.html.j2', {'p': {'href': og_get(v_c, ['href']), 'className': og_cnv([og_cnv(['text-sm', v_linkShape, (v_currentLook if og_t(og_eq(og_get(v_c, ['id']), v_current)) else v_otherLook)])]), 'current': og_eq(og_get(v_c, ['id']), v_current), 'testid': 'item', 'block': true}, 'children': og_markup(c_7)}) }}
           {%- endset -%}
-          {{ og_include('compose/list-item.html.j2', {'p': {}, 'children': c_8}) }}
+          {{ og_include('compose/list-item.html.j2', {'p': {'Attrs': og_attrs(['data-slot', 'categories-row'])}, 'children': c_8}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(v_listShape), 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_9}) }}
+      {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(v_listShape), 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_9}) }}
     {%- endif %}
   {%- endset -%}
   {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', ('py-2' if og_t(og_eq(v_density, 'compact')) else 'py-4')])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_10}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-testid', 'category-nav', 'data-layout', v_layout])}, 'children': c_11}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'nav', 'Attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-layout', v_layout, 'data-slot', 'category-nav'])}, 'children': c_11}) }}

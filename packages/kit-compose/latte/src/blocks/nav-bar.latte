@@ -20,7 +20,7 @@
     {capture $c_1}
       {=og_text($v_skip)}
     {/capture}
-    {=og_include('compose/LinkPlain.latte', ['href' => '#main-content', 'class' => 'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border', 'attrs' => og_attrs(['data-testid', 'skip-link']), 'children' => (string) $c_1])|noescape}
+    {=og_include('compose/LinkPlain.latte', ['href' => '#main-content', 'class' => 'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border', 'attrs' => og_attrs(['data-slot', 'skip-link']), 'children' => (string) $c_1])|noescape}
   {/if}
   {capture $c_11}
     {capture $c_10}
@@ -66,4 +66,4 @@
   {/capture}
   {=og_include('compose/Container.latte', ['class' => 'mx-auto w-full max-w-6xl px-4', 'attrs' => og_attrs(['data-slot', 'container']), 'children' => (string) $c_11])|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'header', 'class' => og_s(og_cnv(['relative', (og_t(og_eq($v_tone, 'inverse')) ? 'border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background' : 'border-b border-border bg-background'), (og_t(og_eq($v_over, 'media')) ? 'isolate overflow-hidden border-0 bg-transparent' : '')])), 'attrs' => og_attrs(['data-testid', 'nav-bar', 'data-layout', $v_layout, 'data-tone', $v_tone, 'aria-label', $v_landmarkLabel]), 'children' => (string) $c_12])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'header', 'class' => og_s(og_cnv(['relative', (og_t(og_eq($v_tone, 'inverse')) ? 'border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background' : 'border-b border-border bg-background'), (og_t(og_eq($v_over, 'media')) ? 'isolate overflow-hidden border-0 bg-transparent' : '')])), 'attrs' => og_attrs(['data-layout', $v_layout, 'data-tone', $v_tone, 'aria-label', $v_landmarkLabel, 'data-slot', 'nav-bar']), 'children' => (string) $c_12])|noescape}

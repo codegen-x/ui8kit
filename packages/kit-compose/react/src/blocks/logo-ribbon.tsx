@@ -35,7 +35,7 @@ export function LogoRibbon({
       className="py-0"
       landmarkLabel={landmarkLabel}
     >
-      <Stack gap="6" align="center" data-testid="logos-block">
+      <Stack gap="6" align="center" data-slot="logos-block">
         <Title as={2} size="xl" weight="semibold" className="leading-7" id={(id + "-title")}>
           {title}
         </Title>
@@ -44,7 +44,7 @@ export function LogoRibbon({
           justify="center"
           align="start"
           className={cn("flex w-full flex-wrap", defaults.logos.row)}
-          data-testid="items"
+          data-slot="items"
         >
           {(logos ?? []).map((logo) => (
             <LogoSlot key={logo.id} name={logo.name} icon={logo.icon} />

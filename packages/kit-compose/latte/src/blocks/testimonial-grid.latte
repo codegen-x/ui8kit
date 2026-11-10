@@ -22,7 +22,7 @@
         {=og_include('blocks/quote-card.latte', ['p' => ['q' => $v_q, 'labels' => $v_labels, 'item' => $v_item, 'layout' => $v_layout]])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Block.latte', ['tag' => 'div', 'class' => og_s((og_t(og_eq($v_layout, 'masonry')) ? 'columns-1 gap-4 md:columns-2 xl:columns-3' : 'flex snap-x gap-4 overflow-x-auto pb-2')), 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_1])|noescape}
+    {=og_include('compose/Block.latte', ['tag' => 'div', 'class' => og_s((og_t(og_eq($v_layout, 'masonry')) ? 'columns-1 gap-4 md:columns-2 xl:columns-3' : 'flex snap-x gap-4 overflow-x-auto pb-2')), 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_1])|noescape}
   {else}
     {capture $c_2}
       {foreach og_l($v_quotes) as $v_q}
@@ -32,7 +32,7 @@
         {/if}
       {/foreach}
     {/capture}
-    {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_layout, 'grid')) ? $v_cols : '1')), 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_2])|noescape}
+    {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_layout, 'grid')) ? $v_cols : '1')), 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_2])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'tone' => $v_tone, 'density' => $v_density, 'align' => (og_t(og_eq($v_layout, 'single')) ? 'center' : 'start'), 'measure' => (og_t(og_eq($v_layout, 'grid')) ? 'default' : '2xl'), 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_3)])|noescape}

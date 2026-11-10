@@ -43,11 +43,11 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@meals"
     },
     {
-      "sel": "[data-testid=\"cart-count\"]",
+      "sel": "[data-slot=\"cart-count\"]",
       "n": 1
     }
   ],

@@ -285,7 +285,7 @@
                     "Class": "flex-wrap"
                   },
                   "attrs": {
-                    "data-testid": "richtext-meta"
+                    "data-slot": "richtext-meta"
                   },
                   "children": [
                     {
@@ -457,7 +457,7 @@
                                 "Width": "none"
                               },
                               "attrs": {
-                                "data-testid": "richtext-content"
+                                "data-slot": "richtext-content"
                               },
                               "children": [
                                 {
@@ -481,9 +481,6 @@
                           "props": {
                             "Variant": "compact",
                             "Class": "h-fit"
-                          },
-                          "attrs": {
-                            "data-testid": "richtext-aside"
                           },
                           "children": [
                             {
@@ -535,7 +532,7 @@
                                     "Width": "none"
                                   },
                                   "attrs": {
-                                    "data-testid": "richtext-aside-content"
+                                    "data-slot": "richtext-aside-content"
                                   },
                                   "children": [
                                     {
@@ -597,7 +594,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "richtext-content"
+                        "data-slot": "richtext-content"
                       },
                       "children": [
                         {

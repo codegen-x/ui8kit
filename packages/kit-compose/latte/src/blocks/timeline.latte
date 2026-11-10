@@ -37,7 +37,7 @@
         {/capture}
         {=og_include('compose/Box.latte', ['class' => 'flex min-w-0 flex-1 flex-col gap-0', 'children' => (string) $c_6])|noescape}
       {/capture}
-      {=og_include('compose/ListItem.latte', ['class' => 'relative flex min-w-0 gap-4 pb-4 last:pb-0', 'attrs' => og_attrs(['data-event', og_get($v_item, ['id'])]), 'children' => (string) $c_7])|noescape}
+      {=og_include('compose/ListItem.latte', ['class' => 'relative flex min-w-0 gap-4 pb-4 last:pb-0', 'attrs' => og_attrs(['data-event', og_get($v_item, ['id']), 'data-slot', 'timeline-item']), 'children' => (string) $c_7])|noescape}
     {/foreach}
   {/capture}
   {=og_include('compose/List.latte', ['class' => 'm-0 flex list-none flex-col p-0', 'children' => (string) $c_8])|noescape}

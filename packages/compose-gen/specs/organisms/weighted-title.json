@@ -61,7 +61,8 @@
       "attrs": {
         "id": {
           "$": "id"
-        }
+        },
+        "data-slot": "weighted-title"
       },
       "children": [
         {
@@ -99,7 +100,10 @@
                     "$": "word"
                   }
                 }
-              ]
+              ],
+              "attrs": {
+                "data-slot": "items-row"
+              }
             },
             {
               "text": " "

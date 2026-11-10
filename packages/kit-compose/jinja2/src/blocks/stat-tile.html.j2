@@ -60,4 +60,4 @@
     {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex min-w-0 flex-col gap-4 rounded bg-card p-6 text-foreground inset-ring inset-ring-border'}, 'children': c_12}) }}
   {%- endif %}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'min-w-0'}, 'children': c_13}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'min-w-0', 'Attrs': og_attrs(['data-slot', 'stat-tile'])}, 'children': c_13}) }}

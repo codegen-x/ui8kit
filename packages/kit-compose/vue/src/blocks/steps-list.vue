@@ -61,7 +61,7 @@ const {
     <List v-else
       tag="ol"
       :class="cn('grid gap-6', (((layout as string) === 'row') ? 'sm:grid-cols-2 md:grid-cols-4' : ''))"
-      data-testid="items"
+      data-slot="items"
     >
       <ListItem v-for="(step, i) in steps" :key="step.id"
         :class="cn(
@@ -69,7 +69,7 @@ const {
           (((layout as string) === 'row') ? 'flex-col' : ''),
           (((align as string) === 'center') ? 'items-center text-center' : '')
         )"
-        data-testid="item"
+        data-slot="item"
       >
         <IconBadge variant="primary" data-slot="marker">
           <LucideIcon v-if="((marker as string) === 'icon')" :name="step.icon" :size="20" />

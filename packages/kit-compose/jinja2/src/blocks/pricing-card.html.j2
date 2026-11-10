@@ -63,7 +63,7 @@
         {%- set c_11 -%}
           {{ og_text(v_feature) }}
         {%- endset -%}
-        {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex gap-2'}, 'children': c_11}) }}
+        {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex gap-2', 'Attrs': og_attrs(['data-slot', 'features-row'])}, 'children': c_11}) }}
       {%- endfor %}
     {%- endset -%}
     {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col gap-2 text-sm'}, 'children': c_12}) }}
@@ -73,7 +73,7 @@
     {%- set c_14 -%}
       {{ og_text(og_get(v_labels, ['cta'])) }}
     {%- endset -%}
-    {{ og_include('compose/button.html.j2', {'p': {'Variant': og_s(('default' if og_t(v_stand) else 'outline')), 'Size': 'default', 'Attrs': og_attrs(['data-testid', 'plan-select'])}, 'children': c_14}) }}
+    {{ og_include('compose/button.html.j2', {'p': {'Variant': og_s(('default' if og_t(v_stand) else 'outline')), 'Size': 'default'}, 'children': c_14}) }}
     {%- if og_def(p['footer'], none) is not none %}
       {{ og_include(p['footer']['t'], og_merge(p['footer']['v'], {'a0': v_plan})) }}
     {%- endif %}

@@ -330,7 +330,7 @@
                     "Class": "gap-8"
                   },
                   "attrs": {
-                    "data-testid": "items"
+                    "data-slot": "items"
                   },
                   "children": [
                     {
@@ -366,7 +366,7 @@
                             "Class": "group flex-col items-stretch gap-4"
                           },
                           "attrs": {
-                            "data-testid": "item"
+                            "data-slot": "item"
                           },
                           "children": [
                             {

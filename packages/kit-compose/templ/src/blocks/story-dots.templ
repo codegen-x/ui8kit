@@ -20,9 +20,9 @@ type StoryDotsProps struct {
 templ StoryDots(p StoryDotsProps) {
 	{{ vSteps := p.Steps }}
 	{{ vActive := p.Active }}
-	@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
+	@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "story-dots")}}) {
 		for _, vS := range uiutils.L(vSteps) {
-			@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("size-2 rounded-full", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vS, "id"), vActive)), "bg-primary", "bg-border"))), Attrs: uiutils.Attrs("data-testid", "story-dot")}})
+			@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("size-2 rounded-full", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vS, "id"), vActive)), "bg-primary", "bg-border"))), Attrs: uiutils.Attrs("data-slot", "story-dot")}})
 		}
 	}
 }

@@ -23,10 +23,10 @@ templ FeatureCards(p FeatureCardsProps) {
 	{{ vFeatures := p.Features }}
 	{{ vCols := uiutils.Def(p.Cols, "1-3") }}
 	{{ vItem := uiutils.Def(p.Item, "card") }}
-	@compose.Grid(compose.GridProps{Cols: uiutils.S(vCols), BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "cell")), uiutils.Cnv("w-full gap-px overflow-hidden bg-border p-px", uiutils.Get(presetDefaults, "features", "cells")), "gap-6")), Attrs: uiutils.Attrs("data-testid", "feature-grid")}}) {
+	@compose.Grid(compose.GridProps{Cols: uiutils.S(vCols), BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "cell")), uiutils.Cnv("w-full gap-px overflow-hidden bg-border p-px", uiutils.Get(presetDefaults, "features", "cells")), "gap-6")), Attrs: uiutils.Attrs("data-slot", "feature-grid")}}) {
 		for _, vFeature := range uiutils.L(vFeatures) {
 			if uiutils.Eq(vItem, "tile") {
-				@compose.Card(compose.CardProps{Variant: "compact", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "feature-card")}}) {
+				@compose.Card(compose.CardProps{Variant: "compact", BoxProps: box.BoxProps{}}) {
 					@compose.Group(compose.GroupProps{Gap: "4", Align: "start", BoxProps: box.BoxProps{}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vFeature, "icon")), Size: 20})
 						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
@@ -40,8 +40,8 @@ templ FeatureCards(p FeatureCardsProps) {
 					}
 				}
 			} else if uiutils.Eq(vItem, "cell") {
-				@compose.Stack(compose.StackProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Class: "h-full gap-8 bg-background px-6 py-12 text-center", Attrs: uiutils.Attrs("data-testid", "feature-card")}}) {
-					@compose.IconBadge(compose.IconBadgeProps{Variant: "primary", Size: "xl", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-testid", "feature-icon")}}) {
+				@compose.Stack(compose.StackProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Class: "h-full gap-8 bg-background px-6 py-12 text-center", Attrs: uiutils.Attrs("data-slot", "feature-card")}}) {
+					@compose.IconBadge(compose.IconBadgeProps{Variant: "primary", Size: "xl", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-slot", "feature-icon")}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vFeature, "icon")), Size: 24})
 					}
 					@compose.Title(compose.TitleProps{As: "3", Size: "xl", Weight: "semibold", TextProps: text.TextProps{Class: "leading-6"}}) {
@@ -52,7 +52,7 @@ templ FeatureCards(p FeatureCardsProps) {
 					}
 				}
 			} else {
-				@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "feature-card")}}) {
+				@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{}}) {
 					@compose.CardHeader(compose.CardHeaderProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-4"}}) {
 						@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vFeature, "icon")), Size: 24})
 						@compose.CardTitle(compose.CardTitleProps{As: "3", TextProps: text.TextProps{}}) {

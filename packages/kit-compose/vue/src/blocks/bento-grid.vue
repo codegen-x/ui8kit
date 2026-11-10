@@ -53,7 +53,7 @@ const {
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((tiles?.length ?? 0) === 0)" icon="layout-dashboard" :title="empty" />
-    <Grid v-else cols="1-4" class="auto-rows-fr gap-4" data-testid="items">
+    <Grid v-else cols="1-4" class="auto-rows-fr gap-4" data-slot="items">
       <Card v-for="tile in tiles" :key="tile.id"
         variant="default"
         :class="cn(
@@ -61,7 +61,6 @@ const {
           (((density as string) === 'compact') ? 'gap-4 p-4' : ''),
           (((layout as string) === 'bento') ? at(SPAN, tile.size) : '')
         )"
-        data-testid="item"
         :data-size="(((layout as string) === 'bento') ? tile.size : 'even')"
       >
         <CardContent class="flex h-full flex-col gap-4">

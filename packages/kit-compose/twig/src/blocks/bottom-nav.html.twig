@@ -23,10 +23,10 @@
           {%- endset -%}
           {{ include('blocks/menu-entry.html.twig', {'p': {'href': og_get(v_tab, ['href']), 'className': og_cnv([og_cnv(['flex flex-col items-center gap-2 py-2 text-xs', (og_t(og_eq(og_get(v_tab, ['id']), v_current)) ? 'font-semibold text-primary' : 'text-muted-foreground')])]), 'current': og_eq(og_get(v_tab, ['id']), v_current), 'testid': 'item'}, 'children': og_markup(c_2)}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/ListItem.html.twig', {'children': c_3}, with_context = false) }}
+        {{ include('compose/ListItem.html.twig', {'attrs': og_attrs(['data-slot', 'tabs-row']), 'children': c_3}, with_context = false) }}
       {%- endfor %}
     {%- endset -%}
-    {{ include('compose/List.html.twig', {'class': 'm-0 grid list-none grid-flow-col auto-cols-fr p-0', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_4}, with_context = false) }}
+    {{ include('compose/List.html.twig', {'class': 'm-0 grid list-none grid-flow-col auto-cols-fr p-0', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_4}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Block.html.twig', {'tag': 'nav', 'class': og_s(og_cnv(['mx-auto w-full max-w-md border-t border-border', (og_t(og_eq(v_tone, 'muted')) ? 'bg-muted' : 'bg-background'), (og_t(og_eq(v_position, 'sticky')) ? 'sticky bottom-0 z-40' : '')])), 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-testid', 'bottom-nav', 'data-position', v_position]), 'children': c_5}, with_context = false) }}
+  {{ include('compose/Block.html.twig', {'tag': 'nav', 'class': og_s(og_cnv(['mx-auto w-full max-w-md border-t border-border', (og_t(og_eq(v_tone, 'muted')) ? 'bg-muted' : 'bg-background'), (og_t(og_eq(v_position, 'sticky')) ? 'sticky bottom-0 z-40' : '')])), 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-position', v_position, 'data-slot', 'bottom-nav']), 'children': c_5}, with_context = false) }}
 {%- endif %}

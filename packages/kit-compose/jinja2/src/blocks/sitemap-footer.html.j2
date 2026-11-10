@@ -30,17 +30,17 @@
             {%- endset -%}
             {{ og_include('compose/label.html.j2', {'p': {'For': og_s(og_tpl('{0}-email', [v_id])), 'Class': 'sr-only'}, 'children': c_2}) }}
             {%- set c_4 -%}
-              {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Class': 'min-w-0 flex-1', 'Attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-testid', 'field'])}}) }}
+              {{ og_include('compose/input.html.j2', {'p': {'Type': 'email', 'Name': 'email', 'Class': 'min-w-0 flex-1', 'Attrs': og_attrs(['id', og_tpl('{0}-email', [v_id]), 'data-slot', 'field'])}}) }}
               {%- set c_3 -%}
                 {{ og_text(og_get(v_signup, ['submit'])) }}
               {%- endset -%}
-              {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit', 'Attrs': og_attrs(['data-testid', 'submit'])}, 'children': c_3}) }}
+              {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit'}, 'children': c_3}) }}
             {%- endset -%}
             {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'start', 'Class': 'w-full flex-wrap'}, 'children': c_4}) }}
           {%- endset -%}
-          {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': og_s(og_cnv(['w-full max-w-md', ('mx-auto' if og_t(false) else '')])), 'Attrs': og_attrs(['data-testid', 'email-form'])}, 'children': c_5}) }}
+          {{ og_include('compose/form.html.j2', {'p': {'Method': 'dialog', 'Class': og_s(og_cnv(['w-full max-w-md', ('mx-auto' if og_t(false) else '')])), 'Attrs': og_attrs(['data-slot', 'email-form'])}, 'children': c_5}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': 'max-w-md', 'Attrs': og_attrs(['data-testid', 'signup'])}, 'children': c_6}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': 'max-w-md', 'Attrs': og_attrs(['data-slot', 'signup'])}, 'children': c_6}) }}
       {%- endif %}
       {%- if og_t(og_eq(v_layout, 'columns')) %}
         {%- set c_11 -%}
@@ -100,5 +100,5 @@
     {%- endset -%}
     {{ og_include('compose/container.html.j2', {'p': {'Class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'flex flex-col gap-8', ('py-6' if og_t(og_eq(v_density, 'compact')) else 'py-12')])), 'Attrs': og_attrs(['data-slot', 'container'])}, 'children': c_20}) }}
   {%- endset -%}
-  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'footer', 'Class': 'mt-12 border-t border-border', 'Attrs': og_attrs(['data-testid', 'site-footer', 'data-layout', v_layout, 'aria-label', v_landmarkLabel])}, 'children': c_21}) }}
+  {{ og_include('compose/block.html.j2', {'p': {'Tag': 'footer', 'Class': 'mt-12 border-t border-border', 'Attrs': og_attrs(['data-layout', v_layout, 'aria-label', v_landmarkLabel, 'data-slot', 'site-footer'])}, 'children': c_21}) }}
 {%- endif %}

@@ -40,11 +40,11 @@
         "Class": "py-8"
       },
       "attrs": {
-        "data-testid": "site-footer",
         "data-layout": "card",
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "site-footer"
       },
       "children": [
         {
@@ -92,7 +92,7 @@
                 }
               },
               "attrs": {
-                "data-testid": "footer-card"
+                "data-slot": "footer-card"
               },
               "children": [
                 {
@@ -115,7 +115,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "footer-brand"
+                    "data-slot": "footer-brand"
                   },
                   "children": [
                     {
@@ -222,7 +222,7 @@
                                 }
                               },
                               "attrs": {
-                                "data-testid": "footer-groups"
+                                "data-slot": "footer-groups"
                               },
                               "children": [
                                 {
@@ -240,7 +240,7 @@
                                         "Gap": "4"
                                       },
                                       "attrs": {
-                                        "data-testid": "group"
+                                        "data-slot": "group"
                                       },
                                       "children": [
                                         {
@@ -297,7 +297,10 @@
                                                         }
                                                       }
                                                     }
-                                                  ]
+                                                  ],
+                                                  "attrs": {
+                                                    "data-slot": "links-row"
+                                                  }
                                                 }
                                               ]
                                             }

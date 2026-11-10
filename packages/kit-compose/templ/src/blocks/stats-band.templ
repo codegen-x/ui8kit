@@ -44,13 +44,13 @@ templ StatsBand(p StatsBandProps) {
 		if uiutils.Eq(uiutils.Len(vStats), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "chart-column", Title: vEmpty})
 		} else if uiutils.Eq(vSurface, "panel") {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "2", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "3")), "2-3", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "4")), "2-4", "3-6")))), BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("w-full items-center bg-muted px-6", uiutils.Get(presetDefaults, "stats", "panel"))), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "2", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "3")), "2-3", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "4")), "2-4", "3-6")))), BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("w-full items-center bg-muted px-6", uiutils.Get(presetDefaults, "stats", "panel"))), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vStat := range uiutils.L(vStats) {
 					@StatFigure(StatFigureProps{Stat: vStat, Item: vItem, Align: vAlign})
 				}
 			}
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stack")), "1", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "2", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "3")), "2-3", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "4")), "2-4", "3-6"))))), BoxProps: box.BoxProps{Class: "gap-6", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stack")), "1", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "2", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "3")), "2-3", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "4")), "2-4", "3-6"))))), BoxProps: box.BoxProps{Class: "gap-6", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vStat := range uiutils.L(vStats) {
 					@StatFigure(StatFigureProps{Stat: vStat, Item: vItem, Align: vAlign})
 				}

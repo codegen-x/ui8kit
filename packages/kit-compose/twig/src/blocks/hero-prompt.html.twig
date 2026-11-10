@@ -30,10 +30,10 @@
           {{ include('blocks/topic-chips.html.twig', {'p': {'topics': v_topics, 'tone': 'inverse'}}, with_context = false) }}
         {%- endif %}
       {%- endset -%}
-      {{ include('compose/Stack.html.twig', {'gap': '0', 'align': 'center', 'class': og_s(og_cnv(['mx-auto w-full pt-24 pb-16', og_preset('blocks/presets/defaults.json', ['hero', 'column'])])), 'attrs': og_attrs(['data-testid', 'hero-column']), 'children': c_1}, with_context = false) }}
+      {{ include('compose/Stack.html.twig', {'gap': '0', 'align': 'center', 'class': og_s(og_cnv(['mx-auto w-full pt-24 pb-16', og_preset('blocks/presets/defaults.json', ['hero', 'column'])])), 'attrs': og_attrs(['data-slot', 'hero-column']), 'children': c_1}, with_context = false) }}
     {%- endset -%}
     {{ include('compose/Stack.html.twig', {'gap': '0', 'align': 'stretch', 'children': c_2}, with_context = false) }}
   {%- endset -%}
   {{ include('compose/Container.html.twig', {'class': og_s(og_cnv(['mx-auto w-full px-8', og_preset('blocks/presets/defaults.json', ['hero', 'container'])])), 'attrs': og_attrs(['data-slot', 'container']), 'children': c_3}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'section', 'class': og_s(og_cnv(['flex w-full flex-col bg-foreground text-background py-8 [&_.text-muted-foreground]:text-background/70', og_preset('blocks/presets/defaults.json', ['hero', 'band'])])), 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : 'home-hero-title'), 'data-testid', 'section', 'data-tone', 'inverse', 'data-density', v_density, 'data-chrome', 'nav', 'aria-label', v_landmarkLabel]), 'children': c_4}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'section', 'class': og_s(og_cnv(['flex w-full flex-col bg-foreground text-background py-8 [&_.text-muted-foreground]:text-background/70', og_preset('blocks/presets/defaults.json', ['hero', 'band'])])), 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : 'home-hero-title'), 'data-tone', 'inverse', 'data-density', v_density, 'data-chrome', 'nav', 'aria-label', v_landmarkLabel, 'data-slot', 'section']), 'children': c_4}, with_context = false) }}

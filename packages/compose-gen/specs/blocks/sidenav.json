@@ -57,18 +57,18 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": "[data-slot=\"item\"]",
       "n": "@sidenav"
     },
     {
-      "sel": "[data-testid=\"user\"]",
+      "sel": "[data-slot=\"user\"]",
       "n": 1,
       "when": {
         "user": "show"
       }
     },
     {
-      "sel": "[data-testid=\"user\"]",
+      "sel": "[data-slot=\"user\"]",
       "n": 0,
       "when": {
         "user": "hide"

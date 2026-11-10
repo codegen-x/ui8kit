@@ -31,15 +31,15 @@ templ MenuEntry(p MenuEntryProps) {
 	{{ vTestid := p.Testid }}
 	{{ vBlock := uiutils.Def(p.Block, false) }}
 	if uiutils.T(vHref) {
-		@compose.Link(compose.LinkProps{Variant: uiutils.S(vVariant), Size: uiutils.S(vSize), LinkProps: link.LinkProps{Href: uiutils.URL(vHref, false), AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(vCurrent), "page", nil)), Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("data-testid", vTestid)}}) {
+		@compose.Link(compose.LinkProps{Variant: uiutils.S(vVariant), Size: uiutils.S(vSize), LinkProps: link.LinkProps{Href: uiutils.URL(vHref, false), AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(vCurrent), "page", nil)), Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("data-slot", uiutils.Coalesce(vTestid, "menu-entry"))}}) {
 			{ children... }
 		}
 	} else if uiutils.T(vBlock) {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("aria-current", uiutils.Cond(uiutils.T(vCurrent), "page", nil), "data-testid", vTestid)}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("aria-current", uiutils.Cond(uiutils.T(vCurrent), "page", nil), "data-slot", uiutils.Coalesce(vTestid, "menu-entry"))}}) {
 			{ children... }
 		}
 	} else {
-		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("aria-current", uiutils.Cond(uiutils.T(vCurrent), "page", nil), "data-testid", vTestid)}}) {
+		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: uiutils.S(p.Class), Attrs: uiutils.Attrs("aria-current", uiutils.Cond(uiutils.T(vCurrent), "page", nil), "data-slot", uiutils.Coalesce(vTestid, "menu-entry"))}}) {
 			{ children... }
 		}
 	}

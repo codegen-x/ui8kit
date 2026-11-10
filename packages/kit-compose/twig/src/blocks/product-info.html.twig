@@ -30,10 +30,10 @@
             {%- endset -%}
             {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'pb-4 text-muted-foreground', 'children': c_3}, with_context = false) }}
           {%- endset -%}
-          {{ include('compose/Disclosure.html.twig', {'variant': 'item', 'open': og_t(og_and([og_eq(v_expand, 'first'), og_eq(v_i, 0)])), 'attrs': og_attrs(['data-testid', 'item']), 'children': c_4}, with_context = false) }}
+          {{ include('compose/Disclosure.html.twig', {'variant': 'item', 'open': og_t(og_and([og_eq(v_expand, 'first'), og_eq(v_i, 0)])), 'attrs': og_attrs(['data-slot', 'item']), 'children': c_4}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/Stack.html.twig', {'gap': '0', 'align': 'stretch', 'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'lg:col-span-2' : '')), 'attrs': og_attrs(['data-testid', 'items']), 'children': c_5}, with_context = false) }}
+      {{ include('compose/Stack.html.twig', {'gap': '0', 'align': 'stretch', 'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'lg:col-span-2' : '')), 'attrs': og_attrs(['data-slot', 'items']), 'children': c_5}, with_context = false) }}
     {%- endif %}
     {%- if og_t(og_gt(og_len(v_specs), 0)) %}
       {%- set c_11 -%}
@@ -53,12 +53,12 @@
               {%- endset -%}
               {{ include('compose/Inline.html.twig', {'class': 'font-medium', 'children': c_8}, with_context = false) }}
             {%- endset -%}
-            {{ include('compose/ListItem.html.twig', {'class': 'flex items-center justify-between gap-4 border-b border-border py-2 text-sm last:border-b-0', 'attrs': og_attrs(['data-testid', 'spec']), 'children': c_9}, with_context = false) }}
+            {{ include('compose/ListItem.html.twig', {'class': 'flex items-center justify-between gap-4 border-b border-border py-2 text-sm last:border-b-0', 'attrs': og_attrs(['data-slot', 'spec']), 'children': c_9}, with_context = false) }}
           {%- endfor %}
         {%- endset -%}
         {{ include('compose/List.html.twig', {'tag': 'ul', 'class': 'flex flex-col', 'children': c_10}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs': og_attrs(['data-testid', 'specs']), 'children': c_11}, with_context = false) }}
+      {{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'class': 'rounded bg-card inset-ring inset-ring-border p-6', 'attrs': og_attrs(['data-slot', 'specs']), 'children': c_11}, with_context = false) }}
     {%- endif %}
   {%- endset -%}
   {{ include('compose/Box.html.twig', {'class': og_s((og_t(og_eq(v_layout, 'split')) ? 'grid grid-cols-1 items-start gap-8 lg:grid-cols-3' : 'grid grid-cols-1 gap-8')), 'children': c_12}, with_context = false) }}

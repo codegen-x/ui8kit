@@ -19,7 +19,7 @@ export type PostOverlayCardProps = {
 
 export function PostOverlayCard({ p, labels, ratio = "4/3" }: PostOverlayCardProps) {
   return (
-    <Box className="relative overflow-hidden rounded" data-testid="post-overlay">
+    <Box className="relative overflow-hidden rounded" data-slot="post-overlay">
       <MediaFrame alt={p.title} ratio={ratio} className={(((ratio as string) === "4/3") ? "min-h-80" : "min-h-64")} />
       <Stack gap="2" align="start" className="absolute bottom-4 left-4 right-4 rounded bg-background p-4">
         <Group gap="2" align="center">

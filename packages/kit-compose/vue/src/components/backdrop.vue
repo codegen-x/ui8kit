@@ -22,7 +22,7 @@ const { kind = "none", alt = "" } = defineProps<BackdropProps>();
   <Box
     v-if="((kind as string) === 'image')"
     class="pointer-events-none absolute inset-0 -z-10"
-    data-testid="backdrop"
+    data-slot="backdrop"
   >
     <MediaFrame :alt="alt" ratio="21/9" class="size-full rounded-none opacity-30" />
   </Box>

@@ -41,8 +41,8 @@
         {{ og_include('blocks/shell-footer.html.j2', {'p': {'nav': v_nav, 'landmarkLabel': v_landmarkLabel}}) }}
       {%- endif %}
     {%- endset -%}
-    {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex flex-col overflow-hidden bg-background', ('min-h-160 rounded border border-border' if og_t(og_eq(v_frame, 'window')) else 'min-h-screen')])), 'Attrs': og_attrs(['data-testid', 'window'])}, 'children': c_3}) }}
+    {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['flex flex-col overflow-hidden bg-background', ('min-h-160 rounded border border-border' if og_t(og_eq(v_frame, 'window')) else 'min-h-screen')])), 'Attrs': og_attrs(['data-slot', 'window'])}, 'children': c_3}) }}
   {%- endset -%}
   {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('mx-auto w-full max-w-6xl px-4' if og_t(og_eq(v_frame, 'window')) else ''))}, 'children': c_4}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': og_s(('bg-background py-12' if og_t(og_eq(v_frame, 'window')) else 'bg-background')), 'Attrs': og_attrs(['id', v_id, 'aria-labelledby', (none if og_t(v_landmarkLabel) else v_titleId), 'data-testid', 'dashboard-shell', 'data-topbar', v_topbar, 'data-sidebar', v_sidebar, 'data-footer', v_footer, 'aria-label', v_landmarkLabel])}, 'children': c_5}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': og_s(('bg-background py-12' if og_t(og_eq(v_frame, 'window')) else 'bg-background')), 'Attrs': og_attrs(['id', v_id, 'aria-labelledby', (none if og_t(v_landmarkLabel) else v_titleId), 'data-topbar', v_topbar, 'data-sidebar', v_sidebar, 'data-footer', v_footer, 'aria-label', v_landmarkLabel, 'data-slot', 'dashboard-shell'])}, 'children': c_5}) }}

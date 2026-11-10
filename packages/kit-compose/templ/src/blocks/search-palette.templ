@@ -22,7 +22,7 @@ type SearchPaletteProps struct {
 templ SearchPalette(p SearchPaletteProps) {
 	{{ vLabel := p.Label }}
 	{{ vShortcut := p.Shortcut }}
-	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative w-full max-w-sm", Attrs: uiutils.Attrs("data-testid", "palette")}}) {
+	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative w-full max-w-sm", Attrs: uiutils.Attrs("data-slot", "palette")}}) {
 		@icons.LucideIcon(icons.LucideIconProps{Name: "search", Size: 16, Class: "pointer-events-none absolute top-2 left-3 text-muted-foreground"})
 		@compose.Input(compose.InputProps{Size: "sm", InputProps: input.InputProps{Type: "search", Placeholder: uiutils.S(vLabel), Class: "pr-12 pl-10", Attrs: uiutils.Attrs("aria-label", vLabel)}})
 		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "pointer-events-none absolute top-2 right-2 rounded px-2 py-0 text-xs text-muted-foreground inset-ring inset-ring-border"}}) {

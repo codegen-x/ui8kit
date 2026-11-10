@@ -28,7 +28,7 @@
             {/capture}
             {=og_include('compose/Inline.latte', ['children' => (string) $c_4])|noescape}
           {/capture}
-          {=og_include('compose/Label.latte', ['class' => 'flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', 'children' => (string) $c_5])|noescape}
+          {=og_include('compose/Label.latte', ['class' => 'flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', 'attrs' => og_attrs(['data-slot', 'slots-row']), 'children' => (string) $c_5])|noescape}
         {/foreach}
         {foreach og_l(og_get($v_d, ['closed'])) as $v_s}
           {capture $c_7}
@@ -38,12 +38,12 @@
             {/capture}
             {=og_include('compose/Inline.latte', ['children' => (string) $c_6])|noescape}
           {/capture}
-          {=og_include('compose/Label.latte', ['class' => og_s(og_cnv(['flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', 'text-muted-foreground line-through'])), 'children' => (string) $c_7])|noescape}
+          {=og_include('compose/Label.latte', ['class' => og_s(og_cnv(['flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', 'text-muted-foreground line-through'])), 'attrs' => og_attrs(['data-slot', 'closed-row']), 'children' => (string) $c_7])|noescape}
         {/foreach}
       {/capture}
       {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-2 gap-2 sm:grid-cols-3', 'children' => (string) $c_8])|noescape}
     {/capture}
-    {=og_include('compose/Stack.latte', ['gap' => '4', 'class' => og_s((og_t(og_eq($v_item, 'card')) ? 'rounded bg-card inset-ring inset-ring-border p-4' : 'border-b border-border pb-4')), 'attrs' => og_attrs(['data-testid', 'day']), 'children' => (string) $c_9])|noescape}
+    {=og_include('compose/Stack.latte', ['gap' => '4', 'class' => og_s((og_t(og_eq($v_item, 'card')) ? 'rounded bg-card inset-ring inset-ring-border p-4' : 'border-b border-border pb-4')), 'attrs' => og_attrs(['data-slot', 'day']), 'children' => (string) $c_9])|noescape}
   {/foreach}
 {/capture}
-{=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-testid', 'days']), 'children' => (string) $c_10])|noescape}
+{=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'days']), 'children' => (string) $c_10])|noescape}

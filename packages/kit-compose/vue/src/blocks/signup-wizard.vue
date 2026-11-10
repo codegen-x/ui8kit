@@ -58,14 +58,14 @@ const emit = defineEmits<{ go: [step: number] }>();
       (((layout as string) === 'card') ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')
     )"
     :aria-labelledby="(landmarkLabel ? undefined : tpl('{0}-title', id))"
-    data-testid="wizard"
     :data-current="(current == null ? undefined : String(current))"
     :aria-label="landmarkLabel"
+    data-slot="wizard"
   >
     <Title :as="level" size="2xl" weight="bold" :id="tpl('{0}-title', id)">
       {{ title }}
     </Title>
-    <Text size="sm" class="text-muted-foreground" data-testid="step-of">
+    <Text size="sm" class="text-muted-foreground" data-slot="step-of">
       {{ tpl(labels.stepOf, current, (steps?.length ?? 0)) }}
     </Text>
     <Progress v-if="((progress as string) === 'bar')"
@@ -77,7 +77,7 @@ const emit = defineEmits<{ go: [step: number] }>();
       v-if="((progress as string) === 'list')"
       class="m-0 flex list-none flex-col gap-2 p-0"
       :aria-label="labels.steps"
-      data-testid="step-list"
+      data-slot="step-list"
     >
       <ListItem v-for="(s, i) in steps" :key="s.id"
         :class="cn(
@@ -85,14 +85,14 @@ const emit = defineEmits<{ go: [step: number] }>();
           (((i + 1) === current) ? 'font-semibold' : 'text-muted-foreground')
         )"
         :aria-current="(((i + 1) === current) ? 'step' : undefined)"
-        data-testid="step-item"
+        data-slot="step-item"
       >
         <LucideIcon :name="(((i + 1) < current) ? 'circle-check' : s.icon)" :size="16" />
         {{ s.title }}
       </ListItem>
     </List>
     <template v-for="(s, i) in steps" :key="s.id">
-      <Stack v-if="((i + 1) === current)" gap="4" align="stretch" data-testid="step">
+      <Stack v-if="((i + 1) === current)" gap="4" align="stretch" data-slot="step">
         <Title :as="3" size="xl" weight="bold">
           {{ s.title }}
         </Title>
@@ -101,10 +101,10 @@ const emit = defineEmits<{ go: [step: number] }>();
         </Text>
         <Box class="grid gap-4">
           <Field :label="s.fieldA" :htmlFor="tpl('{0}-a', id)">
-            <Input type="text" :name="tpl('{0}-a', id)" :id="tpl('{0}-a', id)" data-testid="field" />
+            <Input type="text" :name="tpl('{0}-a', id)" :id="tpl('{0}-a', id)" data-slot="field" />
           </Field>
           <Field :label="s.fieldB" :htmlFor="tpl('{0}-b', id)">
-            <Input type="text" :name="tpl('{0}-b', id)" :id="tpl('{0}-b', id)" data-testid="field" />
+            <Input type="text" :name="tpl('{0}-b', id)" :id="tpl('{0}-b', id)" data-slot="field" />
           </Field>
         </Box>
       </Stack>
@@ -115,18 +115,11 @@ const emit = defineEmits<{ go: [step: number] }>();
         size="default"
         type="button"
         :disabled="(current < 2)"
-        data-testid="wizard-back"
         @click="() => emit('go', (current - 1))"
       >
         {{ labels.back }}
       </Button>
-      <Button
-        variant="default"
-        size="default"
-        type="button"
-        data-testid="wizard-next"
-        @click="() => emit('go', (current + 1))"
-      >
+      <Button variant="default" size="default" type="button" @click="() => emit('go', (current + 1))">
         {{ ((current >= (steps?.length ?? 0)) ? labels.finish : labels.next) }}
       </Button>
     </Group>

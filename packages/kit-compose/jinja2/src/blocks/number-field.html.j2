@@ -12,11 +12,11 @@
   {%- set c_1 -%}
     {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'minus', 'Size': 16}}) }}
   {%- endset -%}
-  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(v_decrease), 'Attrs': og_attrs(['data-testid', 'decrease'])}, 'children': c_1}) }}
+  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(v_decrease)}, 'children': c_1}) }}
   {{ og_include('compose/input.html.j2', {'p': {'Type': 'number', 'Name': og_s(v_name), 'Value': og_s(v_value), 'Min': og_s(v_min), 'Size': 'sm', 'Class': 'number-bare w-8 bg-transparent px-0 text-center inset-ring-0', 'Attrs': og_attrs(['aria-label', v_label])}}) }}
   {%- set c_2 -%}
     {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'plus', 'Size': 16}}) }}
   {%- endset -%}
-  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(v_increase), 'Attrs': og_attrs(['data-testid', 'increase'])}, 'children': c_2}) }}
+  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'Type': 'button', 'AriaLabel': og_s(v_increase)}, 'children': c_2}) }}
 {%- endset -%}
 {{ og_include('compose/box.html.j2', {'p': {'Class': 'inline-flex h-10 items-center gap-1 rounded bg-background p-1 inset-ring inset-ring-input', 'Attrs': og_attrs(['data-slot', 'number-field'])}, 'children': c_3}) }}

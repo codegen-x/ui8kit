@@ -35,10 +35,10 @@
           {%- endset -%}
           {{ og_include('compose/card-content.html.j2', {'p': {'Class': 'flex h-full flex-col gap-4'}, 'children': c_3}) }}
         {%- endset -%}
-        {{ og_include('compose/card.html.j2', {'p': {'Variant': 'default', 'Class': og_s(og_cnv(['h-full overflow-hidden', ('gap-4 p-4' if og_t(og_eq(v_density, 'compact')) else ''), (og_at(k_SPAN, og_get(v_tile, ['size'])) if og_t(og_eq(v_layout, 'bento')) else '')])), 'Attrs': og_attrs(['data-testid', 'item', 'data-size', (og_get(v_tile, ['size']) if og_t(og_eq(v_layout, 'bento')) else 'even')])}, 'children': c_4}) }}
+        {{ og_include('compose/card.html.j2', {'p': {'Variant': 'default', 'Class': og_s(og_cnv(['h-full overflow-hidden', ('gap-4 p-4' if og_t(og_eq(v_density, 'compact')) else ''), (og_at(k_SPAN, og_get(v_tile, ['size'])) if og_t(og_eq(v_layout, 'bento')) else '')])), 'Attrs': og_attrs(['data-size', (og_get(v_tile, ['size']) if og_t(og_eq(v_layout, 'bento')) else 'even')])}, 'children': c_4}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-4', 'Class': 'auto-rows-fr gap-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_5}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': '1-4', 'Class': 'auto-rows-fr gap-4', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_5}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_6)}) }}

@@ -11,9 +11,9 @@ export type PostTagsProps = {
 
 export function PostTags({ tags, align = "start" }: PostTagsProps) {
   return (
-    <Group gap="2" justify={align} class="flex-wrap">
+    <Group gap="2" justify={align} class="flex-wrap" data-slot="post-tags">
       <For each={tags ?? []}>{(tag) => (
-        <Badge variant="secondary" size="sm" data-testid="post-tag">
+        <Badge variant="secondary" size="sm">
           {tag.name}
         </Badge>
       )}</For>

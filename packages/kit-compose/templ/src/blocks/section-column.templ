@@ -17,7 +17,7 @@ type SectionColumnProps struct {
 // The stacked body of a SectionFrame: the heading, the children and the media in one column; a narrow measure (xs to 3xl) holds the column at that width, centred.
 templ SectionColumn(p SectionColumnProps) {
 	{{ vMeasure := uiutils.Def(p.Measure, "default") }}
-	@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(recipeSectionColumn.Of(map[string]any{"measure": vMeasure}))}}) {
+	@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(recipeSectionColumn.Of(map[string]any{"measure": vMeasure})), Attrs: uiutils.Attrs("data-slot", "section-column")}}) {
 		{ children... }
 	}
 }

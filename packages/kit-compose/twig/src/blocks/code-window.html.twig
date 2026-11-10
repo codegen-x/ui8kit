@@ -27,7 +27,7 @@
         {%- endset -%}
         {{ include('compose/Inline.html.twig', {'children': c_4}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/ListItem.html.twig', {'class': og_s(og_cnv(['flex gap-2', (og_t(og_eq(og_get(v_line, ['kind']), 'command')) ? 'text-foreground' : 'text-muted-foreground')])), 'attrs': og_attrs(['data-kind', og_get(v_line, ['kind'])]), 'children': c_5}, with_context = false) }}
+      {{ include('compose/ListItem.html.twig', {'class': og_s(og_cnv(['flex gap-2', (og_t(og_eq(og_get(v_line, ['kind']), 'command')) ? 'text-foreground' : 'text-muted-foreground')])), 'attrs': og_attrs(['data-kind', og_get(v_line, ['kind']), 'data-slot', 'code-line']), 'children': c_5}, with_context = false) }}
     {%- endfor %}
   {%- endset -%}
   {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-col gap-2 p-4 font-mono text-sm', 'children': c_6}, with_context = false) }}

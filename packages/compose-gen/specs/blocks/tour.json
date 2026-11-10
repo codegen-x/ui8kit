@@ -57,15 +57,15 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"tour-target\"]",
+      "sel": "[data-slot=\"tour\"] > [data-slot=\"button\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"tour-callout\"]",
+      "sel": "[data-slot=\"tour-callout\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"tour\"]",
+      "sel": "[data-slot=\"tour\"]",
       "n": 1
     }
   ],

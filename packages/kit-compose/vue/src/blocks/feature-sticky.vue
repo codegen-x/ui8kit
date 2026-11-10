@@ -50,25 +50,25 @@ const {
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <EmptyState v-if="((features?.length ?? 0) === 0)" icon="layout-grid" :title="empty" />
-    <Grid v-else cols="1-2" class="items-start gap-8" data-testid="sticky">
+    <Grid v-else cols="1-2" class="items-start gap-8" data-slot="sticky">
       <Box
         :class="cn(
           'md:sticky md:top-8',
           (((mediaSide as string) === 'start') ? 'md:order-first' : 'md:order-last')
         )"
-        data-testid="sticky-media"
+        data-slot="sticky-media"
       >
         <MediaFrame :alt="title" ratio="4/3" />
       </Box>
-      <Stack :gap="(((density as string) === 'compact') ? '4' : '8')" align="stretch" data-testid="items">
+      <Stack :gap="(((density as string) === 'compact') ? '4' : '8')" align="stretch" data-slot="items">
         <Stack v-for="f in features" :key="f.id"
           gap="2"
           :class="cn(
             (((item as string) === 'card') ? 'rounded bg-card inset-ring inset-ring-border p-6' : 'py-4'),
             ((f.id === active) ? 'inset-ring inset-ring-foreground' : '')
           )"
-          data-testid="item"
           :aria-current="((f.id === active) ? 'true' : undefined)"
+          data-slot="item"
         >
           <LucideIcon :name="f.icon" :size="24" />
           <Title :as="3" size="2xl" weight="bold">

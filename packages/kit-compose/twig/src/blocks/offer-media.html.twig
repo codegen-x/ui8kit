@@ -23,6 +23,6 @@
     {%- endset -%}
     {{ include('compose/Stack.html.twig', {'gap': '0', 'children': c_4}, with_context = false) }}
   {%- endset -%}
-  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'class': 'absolute bottom-4 left-4 mr-4 max-w-xs rounded bg-card p-4 shadow-lg', 'attrs': og_attrs(['data-testid', 'offer-card']), 'children': c_5}, with_context = false) }}
+  {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'class': 'absolute bottom-4 left-4 mr-4 max-w-xs rounded bg-card p-4 shadow-lg', 'attrs': og_attrs(['data-slot', 'offer-card']), 'children': c_5}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': 'relative', 'attrs': og_attrs(['data-testid', 'hero-media']), 'children': c_6}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': 'relative', 'attrs': og_attrs(['data-slot', 'hero-media']), 'children': c_6}, with_context = false) }}

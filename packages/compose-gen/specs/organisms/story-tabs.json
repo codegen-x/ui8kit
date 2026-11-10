@@ -207,7 +207,7 @@
                         "Class": "grid grid-cols-2 gap-2 sm:grid-cols-4"
                       },
                       "attrs": {
-                        "data-testid": "story-tabs"
+                        "data-slot": "story-tabs"
                       },
                       "children": [
                         {
@@ -245,7 +245,6 @@
                                 "Class": "h-auto flex-col items-start gap-0 py-2 text-start"
                               },
                               "attrs": {
-                                "data-testid": "story-tab",
                                 "data-active": {
                                   "op": "cond",
                                   "args": [
@@ -434,9 +433,6 @@
                                   "$": "labels.previous"
                                 }
                               },
-                              "attrs": {
-                                "data-testid": "story-arrow"
-                              },
                               "children": [
                                 {
                                   "use": "LucideIcon",
@@ -468,9 +464,6 @@
                                 "AriaLabel": {
                                   "$": "labels.next"
                                 }
-                              },
-                              "attrs": {
-                                "data-testid": "story-arrow"
                               },
                               "children": [
                                 {

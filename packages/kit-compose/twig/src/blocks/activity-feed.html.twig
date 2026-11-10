@@ -40,14 +40,14 @@
               {%- endset -%}
               {{ include('compose/Text.html.twig', {'size': 'xs', 'class': 'shrink-0 text-muted-foreground', 'children': c_4}, with_context = false) }}
             {%- endset -%}
-            {{ include('compose/ListItem.html.twig', {'class': og_s(og_cnv(['flex items-start justify-between gap-4 border-b border-border last:border-0', (og_t(og_eq(v_density, 'compact')) ? 'py-2' : 'py-4')])), 'attrs': og_attrs(['data-testid', 'item']), 'children': c_5}, with_context = false) }}
+            {{ include('compose/ListItem.html.twig', {'class': og_s(og_cnv(['flex items-start justify-between gap-4 border-b border-border last:border-0', (og_t(og_eq(v_density, 'compact')) ? 'py-2' : 'py-4')])), 'attrs': og_attrs(['data-slot', 'item']), 'children': c_5}, with_context = false) }}
           {%- endfor %}
         {%- endset -%}
-        {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-col p-0', 'attrs': og_attrs(['data-testid', 'items']), 'children': c_6}, with_context = false) }}
+        {{ include('compose/List.html.twig', {'class': 'm-0 flex list-none flex-col p-0', 'attrs': og_attrs(['data-slot', 'items']), 'children': c_6}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('blocks/panel.html.twig', {'p': {'title': v_title, 'description': v_text, 'id': v_id, 'className': og_cnv([(og_t(og_eq(v_tone, 'muted')) ? 'bg-muted' : '')])}, 'children': og_markup(c_7)}, with_context = false) }}
   {%- endset -%}
   {{ include('compose/Container.html.twig', {'class': 'mx-auto w-full max-w-6xl px-4 py-8', 'attrs': og_attrs(['data-slot', 'container']), 'children': c_8}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'section', 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : (og_t(og_and([v_title, v_id])) ? og_tpl('{0}-t', [v_id]) : null)), 'data-testid', 'panel-section', 'aria-label', v_landmarkLabel]), 'children': c_9}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'section', 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : (og_t(og_and([v_title, v_id])) ? og_tpl('{0}-t', [v_id]) : null)), 'aria-label', v_landmarkLabel, 'data-slot', 'panel-section']), 'children': c_9}, with_context = false) }}

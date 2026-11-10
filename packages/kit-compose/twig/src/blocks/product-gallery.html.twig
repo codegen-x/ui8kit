@@ -13,7 +13,7 @@
       {{ include('blocks/media-frame.html.twig', {'p': {'alt': v_name, 'ratio': '1/1'}}, with_context = false) }}
       {{ include('blocks/media-frame.html.twig', {'p': {'alt': v_name, 'ratio': '1/1'}}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Grid.html.twig', {'cols': '3', 'class': 'gap-4', 'attrs': og_attrs(['data-testid', 'thumbs']), 'children': c_1}, with_context = false) }}
+    {{ include('compose/Grid.html.twig', {'cols': '3', 'class': 'gap-4', 'attrs': og_attrs(['data-slot', 'thumbs']), 'children': c_1}, with_context = false) }}
   {%- endif %}
 {%- endset -%}
-{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-testid', 'gallery']), 'children': c_2}, with_context = false) }}
+{{ include('compose/Stack.html.twig', {'gap': '4', 'align': 'stretch', 'attrs': og_attrs(['data-slot', 'gallery']), 'children': c_2}, with_context = false) }}

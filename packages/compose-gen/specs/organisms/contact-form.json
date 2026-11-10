@@ -220,7 +220,7 @@
                     "Class": "w-full gap-4"
                   },
                   "attrs": {
-                    "data-testid": "contact-form"
+                    "data-slot": "contact-form"
                   },
                   "children": [
                     {
@@ -271,7 +271,7 @@
                                         }
                                       ]
                                     },
-                                    "data-testid": "field"
+                                    "data-slot": "field"
                                   }
                                 }
                               ]
@@ -317,7 +317,7 @@
                                     }
                                   ]
                                 },
-                                "data-testid": "field"
+                                "data-slot": "field"
                               }
                             }
                           ]
@@ -371,7 +371,7 @@
                                         }
                                       ]
                                     },
-                                    "data-testid": "field"
+                                    "data-slot": "field"
                                   }
                                 }
                               ]
@@ -416,7 +416,7 @@
                                     }
                                   ]
                                 },
-                                "data-testid": "field"
+                                "data-slot": "field"
                               }
                             }
                           ]
@@ -499,9 +499,6 @@
                         "Type": "submit",
                         "Class": "w-fit"
                       },
-                      "attrs": {
-                        "data-testid": "submit"
-                      },
                       "children": [
                         {
                           "text": {
@@ -548,7 +545,7 @@
                         "Gap": "4"
                       },
                       "attrs": {
-                        "data-testid": "details"
+                        "data-slot": "details"
                       },
                       "children": [
                         {
@@ -567,7 +564,7 @@
                                 "Align": "start"
                               },
                               "attrs": {
-                                "data-testid": "detail"
+                                "data-slot": "detail"
                               },
                               "children": [
                                 {

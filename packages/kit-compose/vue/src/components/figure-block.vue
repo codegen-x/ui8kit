@@ -19,7 +19,7 @@ defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Block tag="figure" :class="cn(className)" :data-testid="testid">
+  <Block tag="figure" :class="cn(className)" :data-slot="(testid ?? 'figure-block')">
     <slot />
   </Block>
 </template>

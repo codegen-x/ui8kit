@@ -51,16 +51,16 @@ const posts = define({
   organism: "PostGrid", axes: ["layout", "cols", "media", "meta", "filter.mode", "pager.mode", "tone", "density"], data: [d.posts, d.topics],
   // the pager: a nav landmark with its name, the current page marked aria-current="page"
   facts: [
-    { sel: 'nav[aria-label][data-testid="posts-pager"]', n: 1, when: { "pager.mode": "pages" } },
-    { sel: '[data-testid="posts-pager"] [aria-current="page"]', n: 1, when: { "pager.mode": "pages" } },
-    { sel: '[data-testid="posts-pager"]', n: 0, when: { "pager.mode": "none" } },
+    { sel: 'nav[aria-label][data-slot="posts-pager"]', n: 1, when: { "pager.mode": "pages" } },
+    { sel: '[data-slot="posts-pager"] [aria-current="page"]', n: 1, when: { "pager.mode": "pages" } },
+    { sel: '[data-slot="posts-pager"]', n: 0, when: { "pager.mode": "none" } },
     // button mode (no pager.url): no address; link mode (listLinks, page 1 of 5: 1 2 … 5): pages 2 and 5 and next are links, the current page is
     // not, and the previous page is a disabled button without an address
-    { sel: '[data-testid="posts-pager"] a', n: 0, when: { "pager.mode": "pages", media: "image" } },
-    { sel: '[data-testid="posts-pager"] a[href]', n: 3, when: { "pager.mode": "pages", media: "none" } },
-    { sel: '[data-testid="posts-pager"] a[aria-current]', n: 0, when: { "pager.mode": "pages", media: "none" } },
-    { sel: '[data-testid="posts-pager"] button[disabled]:not([href])', n: 1, when: { "pager.mode": "pages", media: "none" } },
-    { sel: '[data-testid="posts-pager"] button', n: 1, when: { "pager.mode": "pages", media: "none" } },
+    { sel: '[data-slot="posts-pager"] a', n: 0, when: { "pager.mode": "pages", media: "image" } },
+    { sel: '[data-slot="posts-pager"] a[href]', n: 3, when: { "pager.mode": "pages", media: "none" } },
+    { sel: '[data-slot="posts-pager"] a[aria-current]', n: 0, when: { "pager.mode": "pages", media: "none" } },
+    { sel: '[data-slot="posts-pager"] button[disabled]:not([href])', n: 1, when: { "pager.mode": "pages", media: "none" } },
+    { sel: '[data-slot="posts-pager"] button', n: 1, when: { "pager.mode": "pages", media: "none" } },
   ],
   variants: [
     ["grid", "Grid, three columns"],
@@ -240,9 +240,9 @@ const templates = define({
     ["roomy", "Roomy", { density: "roomy" }],
   ],
   facts: [
-    { sel: '[data-testid="template-card"]', n: "@templates" },
-    { sel: '[data-testid="template-filter"]', n: "@templateFilters" },
-    { sel: '[data-testid="template-browse"]', n: 1 },
+    { sel: '[data-slot="template-card"]', n: "@templates" },
+    { sel: '[data-slot="template-filters"] > [data-slot="button"]', n: "@templateFilters" },
+    { sel: '[data-slot="template-grid"] ~ [data-slot="button"]', n: 1 },
   ],
   sample: { id: "templates", title: t("vibe.templates.title"), templates: ref("templates"), filters: ref("templateFilters"), labels: t("vibe.templates"), browseHref: "#/", empty: t("empty.templates") },
 });

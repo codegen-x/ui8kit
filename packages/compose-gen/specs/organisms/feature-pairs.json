@@ -50,7 +50,7 @@
                     "Align": "start"
                   },
                   "attrs": {
-                    "data-testid": "feature-item"
+                    "data-slot": "feature-item"
                   },
                   "children": [
                     {
@@ -115,7 +115,10 @@
           ],
           "index": "i"
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "feature-pairs"
+      }
     }
   ],
   "portable": {

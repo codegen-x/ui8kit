@@ -42,9 +42,9 @@ export function ProofBand({
         <EmptyState icon="building-2" title={empty} />
       ) : (
         <Grid cols={(((layout as string) === "beside") ? "1-2" : "1")} class="items-center gap-8">
-          <Group gap="6" justify="center" class="flex-wrap text-muted-foreground" data-testid="logos">
+          <Group gap="6" justify="center" class="flex-wrap text-muted-foreground" data-slot="logos">
             <For each={logos ?? []}>{(logo) => (
-              <Group gap="2" align="center" data-testid="logo">
+              <Group gap="2" align="center" data-slot="logo">
                 <LucideIcon name={logo.icon} size={24} />
                 <Text size="sm" weight="semibold" class={(((logoStyle as string) === "icon") ? "sr-only" : "")}>
                   {logo.name}
@@ -52,9 +52,9 @@ export function ProofBand({
               </Group>
             )}</For>
           </Group>
-          <Grid cols={(((layout as string) === "beside") ? "2" : "1-4")} class="gap-6 text-center" data-testid="stats">
+          <Grid cols={(((layout as string) === "beside") ? "2" : "1-4")} class="gap-6 text-center" data-slot="stats">
             <For each={stats ?? []}>{(stat) => (
-              <Stack gap="0" align="center" data-testid="stat">
+              <Stack gap="0" align="center" data-slot="stat">
                 <Text size="4xl" weight="bold">
                   {stat.value}
                 </Text>

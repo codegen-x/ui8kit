@@ -93,13 +93,13 @@
             }
           ]
         },
-        "data-testid": "cookie",
         "data-layout": {
           "$": "layout"
         },
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "cookie"
       },
       "children": [
         {
@@ -258,9 +258,6 @@
                             "Size": "sm",
                             "Type": "button"
                           },
-                          "attrs": {
-                            "data-testid": "cookie-settings"
-                          },
                           "children": [
                             {
                               "text": {
@@ -278,9 +275,6 @@
                         "Size": "sm",
                         "Type": "button"
                       },
-                      "attrs": {
-                        "data-testid": "cookie-decline"
-                      },
                       "children": [
                         {
                           "text": {
@@ -295,9 +289,6 @@
                         "Variant": "default",
                         "Size": "sm",
                         "Type": "button"
-                      },
-                      "attrs": {
-                        "data-testid": "cookie-accept"
                       },
                       "children": [
                         {

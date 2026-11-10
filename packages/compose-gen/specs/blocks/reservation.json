@@ -69,22 +69,22 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"reservation-form\"]",
+      "sel": "[data-slot=\"reservation-form\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"submit\"]",
+      "sel": "[type=\"submit\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"details\"]",
+      "sel": "[data-slot=\"details\"]",
       "n": 1,
       "when": {
         "layout": "split"
       }
     },
     {
-      "sel": "[data-testid=\"details\"]",
+      "sel": "[data-slot=\"details\"]",
       "n": 0,
       "when": {
         "layout": "single"

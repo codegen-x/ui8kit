@@ -55,8 +55,8 @@ const {
     :media="{ show: true, side: 'start' }"
     :landmarkLabel="landmarkLabel"
   >
-    <Grid v-if="((stats?.length ?? 0) > 0)" cols="2-4" class="gap-4" data-testid="stats">
-      <Stack v-for="s in stats" :key="s.id" gap="0" data-testid="stat">
+    <Grid v-if="((stats?.length ?? 0) > 0)" cols="2-4" class="gap-4" data-slot="stats">
+      <Stack v-for="s in stats" :key="s.id" gap="0" data-slot="stat">
         <Text size="3xl" weight="bold">
           {{ s.value }}
         </Text>
@@ -67,7 +67,7 @@ const {
     </Grid>
     <Box v-if="((values?.length ?? 0) > 0)"
       :class="cn('grid grid-cols-1 gap-4', (((layout as string) === 'stacked') ? 'md:grid-cols-3' : ''))"
-      data-testid="values"
+      data-slot="values"
     >
       <Group
         v-for="v in values"
@@ -75,7 +75,7 @@ const {
         gap="4"
         align="start"
         class="border-t border-border pt-4"
-        data-testid="value"
+        data-slot="value"
       >
         <LucideIcon :name="v.icon" :size="20" />
         <Stack gap="2">
@@ -89,7 +89,7 @@ const {
       </Group>
     </Box>
     <template #aside>
-      <Box class="grid grid-cols-3 gap-4" data-testid="strip">
+      <Box class="grid grid-cols-3 gap-4" data-slot="strip">
         <MediaFrame :alt="title" ratio="3/4" />
         <MediaFrame :alt="title" ratio="3/4" class="mt-8" />
         <MediaFrame :alt="title" ratio="3/4" />

@@ -48,16 +48,10 @@ export function TourCallout({
             : "flex-col items-start"
           )
         )}
-        data-testid="tour"
         data-placement={placement}
+        data-slot="tour"
       >
-        <Button
-          variant="outline"
-          size="default"
-          type="button"
-          className="inset-ring-foreground"
-          data-testid="tour-target"
-        >
+        <Button variant="outline" size="default" type="button" className="inset-ring-foreground">
           {target}
         </Button>
         <Stack
@@ -71,7 +65,7 @@ export function TourCallout({
           )}
           role="group"
           aria-label={title}
-          data-testid="tour-callout"
+          data-slot="tour-callout"
         >
           <Text size="xs" className="text-muted-foreground">
             {position}

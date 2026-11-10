@@ -69,18 +69,18 @@ const {
     :landmarkLabel="landmarkLabel"
   >
     <Grid :cols="(((layout as string) === 'split') ? '1-2' : '1')" class="items-start gap-8">
-      <Form method="dialog" class="w-full gap-4" data-testid="contact-form">
+      <Form method="dialog" class="w-full gap-4" data-slot="contact-form">
         <Field v-if="((fields as string) === 'full')" :label="labels.name" :htmlFor="tpl('{0}-name', id)">
-          <Input type="text" name="name" autocomplete="name" :id="tpl('{0}-name', id)" data-testid="field" />
+          <Input type="text" name="name" autocomplete="name" :id="tpl('{0}-name', id)" data-slot="field" />
         </Field>
         <Field :label="labels.email" :htmlFor="tpl('{0}-email', id)">
-          <Input type="email" name="email" autocomplete="email" :id="tpl('{0}-email', id)" data-testid="field" />
+          <Input type="email" name="email" autocomplete="email" :id="tpl('{0}-email', id)" data-slot="field" />
         </Field>
         <Field v-if="((fields as string) === 'full')" :label="labels.subject" :htmlFor="tpl('{0}-subject', id)">
-          <Input type="text" name="subject" :id="tpl('{0}-subject', id)" data-testid="field" />
+          <Input type="text" name="subject" :id="tpl('{0}-subject', id)" data-slot="field" />
         </Field>
         <Field :label="labels.message" :htmlFor="tpl('{0}-message', id)">
-          <Textarea :rows="4" name="message" :id="tpl('{0}-message', id)" data-testid="field" />
+          <Textarea :rows="4" name="message" :id="tpl('{0}-message', id)" data-slot="field" />
         </Field>
         <Group v-if="((terms as string) === 'show')" gap="2" align="center" :class="cn('w-fit', '')">
           <Checkbox name="consent" :id="tpl('{0}-consent', id)" />
@@ -88,16 +88,12 @@ const {
             {{ labels.consent }}
           </Label>
         </Group>
-        <Button variant="default" size="default" type="submit" class="w-fit" data-testid="submit">
+        <Button variant="default" size="default" type="submit" class="w-fit">
           {{ labels.submit }}
         </Button>
       </Form>
-      <Stack
-        v-if="(((layout as string) === 'split') && ((details?.length ?? 0) > 0))"
-        gap="4"
-        data-testid="details"
-      >
-        <Group v-for="d in details" :key="d.id" gap="4" align="start" data-testid="detail">
+      <Stack v-if="(((layout as string) === 'split') && ((details?.length ?? 0) > 0))" gap="4" data-slot="details">
+        <Group v-for="d in details" :key="d.id" gap="4" align="start" data-slot="detail">
           <LucideIcon :name="d.icon" :size="20" />
           <Stack gap="0">
             <Text size="base" weight="semibold">

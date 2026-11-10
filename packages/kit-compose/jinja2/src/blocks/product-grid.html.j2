@@ -24,17 +24,17 @@
         {%- set c_1 -%}
           {{ og_include('blocks/product-card.html.j2', {'p': {'product': v_p, 'labels': v_labels, 'badges': v_badges, 'layout': ('horizontal' if og_t(og_eq(v_layout, 'list')) else 'vertical'), 'ratio': v_ratio, 'rating': v_rating, 'action': v_action, 'density': ('compact' if og_t(og_eq(v_density, 'compact')) else 'default')}}) }}
         {%- endset -%}
-        {{ og_include('compose/box.html.j2', {'p': {'Class': 'w-64 shrink-0 snap-start'}, 'children': c_1}) }}
+        {{ og_include('compose/box.html.j2', {'p': {'Class': 'w-64 shrink-0 snap-start', 'Attrs': og_attrs(['data-slot', 'product'])}, 'children': c_1}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex snap-x gap-4 overflow-x-auto pb-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_2}) }}
+    {{ og_include('compose/box.html.j2', {'p': {'Class': 'flex snap-x gap-4 overflow-x-auto pb-4', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_2}) }}
   {%- else %}
     {%- set c_3 -%}
       {%- for v_p in og_l(v_products) %}
         {{ og_include('blocks/product-card.html.j2', {'p': {'product': v_p, 'labels': v_labels, 'badges': v_badges, 'layout': ('horizontal' if og_t(og_eq(v_layout, 'list')) else 'vertical'), 'ratio': v_ratio, 'rating': v_rating, 'action': v_action, 'density': ('compact' if og_t(og_eq(v_density, 'compact')) else 'default')}}) }}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1' if og_t(og_eq(v_layout, 'list')) else v_cols)), 'Class': 'gap-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_3}) }}
+    {{ og_include('compose/grid.html.j2', {'p': {'Cols': og_s(('1' if og_t(og_eq(v_layout, 'list')) else v_cols)), 'Class': 'gap-4', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_3}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_4)}) }}

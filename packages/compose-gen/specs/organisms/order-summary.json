@@ -190,7 +190,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "summary"
+                    "data-slot": "summary"
                   },
                   "children": [
                     {
@@ -237,7 +237,7 @@
                                     }
                                   },
                                   "attrs": {
-                                    "data-testid": "item"
+                                    "data-slot": "item"
                                   },
                                   "children": [
                                     {
@@ -291,9 +291,6 @@
                                 "Variant": "default",
                                 "Size": "default",
                                 "Class": "w-full"
-                              },
-                              "attrs": {
-                                "data-testid": "checkout"
                               },
                               "children": [
                                 {

@@ -49,9 +49,9 @@ export function OrderTable({
           {((layout as string) === "table") ? (
             <OrderRows orders={orders} statuses={statuses} labels={labels} density={density} />
           ) : (
-            <Stack gap="4" align="stretch" data-testid="order-cards">
+            <Stack gap="4" align="stretch" data-slot="order-cards">
               {(orders ?? []).map((o) => (
-                <Card key={o.id} variant="default" data-testid="item">
+                <Card key={o.id} variant="default">
                   <CardContent className="flex flex-wrap items-center justify-between gap-4">
                     <Stack gap="0">
                       <Text size="sm" weight="semibold">

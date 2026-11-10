@@ -37,13 +37,13 @@ export function EmptyPanel({
   landmarkLabel,
 }: EmptyPanelProps) {
   return (
-    <Block tag="section" aria-label={(landmarkLabel ?? title)} data-testid="empty">
+    <Block tag="section" aria-label={(landmarkLabel ?? title)} data-slot="empty">
       <Container
         class={cn("mx-auto w-full max-w-6xl px-4", (((size as string) === "compact") ? "py-4" : "py-8"))}
         data-slot="container"
       >
         {((visual as string) === "image") ? (
-          <Stack gap="4" align="center" class="mx-auto max-w-md text-center" data-testid="empty-visual">
+          <Stack gap="4" align="center" class="mx-auto max-w-md text-center" data-slot="empty-visual">
             <MediaFrame alt={title} ratio="4/3" class="w-full max-w-xs" />
             <Title as={2} size="2xl" weight="bold">
               {title}
@@ -52,7 +52,7 @@ export function EmptyPanel({
               {text}
             </Text>
             {((actions as string) === "button") ? (
-              <Button variant="default" size="sm" href={urlOf(ctaHref)} data-testid="empty-action">
+              <Button variant="default" size="sm" href={urlOf(ctaHref)}>
                 {cta}
               </Button>
             ) : null}
@@ -70,7 +70,7 @@ export function EmptyPanel({
             action={(
               <>
                 {((actions as string) === "button") ? (
-                  <Button variant="default" size="sm" href={urlOf(ctaHref)} data-testid="empty-action">
+                  <Button variant="default" size="sm" href={urlOf(ctaHref)}>
                     {cta}
                   </Button>
                 ) : null}

@@ -17,7 +17,7 @@ export function FooterSitemap({ href, label }: FooterSitemapProps) {
   return (
     <>
       {href ? (
-        <Link href={urlOf(href)} size="sm" data-testid="footer-sitemap">
+        <Link href={urlOf(href)} size="sm" data-slot="footer-sitemap">
           <LucideIcon name="arrow-right" size={16} />
           {label}
         </Link>

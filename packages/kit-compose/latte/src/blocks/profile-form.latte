@@ -25,18 +25,18 @@
                 {/capture}
                 {=og_include('compose/Button.latte', ['variant' => 'outline', 'size' => 'sm', 'type' => 'button', 'children' => (string) $c_1])|noescape}
               {/capture}
-              {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'attrs' => og_attrs(['data-testid', 'avatar']), 'children' => (string) $c_2])|noescape}
+              {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'attrs' => og_attrs(['data-slot', 'avatar']), 'children' => (string) $c_2])|noescape}
             {/if}
             {capture $c_3}
-              {=og_include('compose/Input.latte', ['type' => 'text', 'name' => 'name', 'attrs' => og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [$v_id]), 'data-testid', 'field'])])|noescape}
+              {=og_include('compose/Input.latte', ['type' => 'text', 'name' => 'name', 'attrs' => og_attrs(['autocomplete', 'name', 'id', og_tpl('{0}-name', [$v_id]), 'data-slot', 'field'])])|noescape}
             {/capture}
             {=og_include('blocks/field.latte', ['p' => ['label' => og_get($v_labels, ['name']), 'htmlFor' => og_tpl('{0}-name', [$v_id])], 'children' => og_markup($c_3)])|noescape}
             {capture $c_4}
-              {=og_include('compose/Input.latte', ['type' => 'email', 'name' => 'email', 'attrs' => og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [$v_id]), 'data-testid', 'field'])])|noescape}
+              {=og_include('compose/Input.latte', ['type' => 'email', 'name' => 'email', 'attrs' => og_attrs(['autocomplete', 'email', 'id', og_tpl('{0}-email', [$v_id]), 'data-slot', 'field'])])|noescape}
             {/capture}
             {=og_include('blocks/field.latte', ['p' => ['label' => og_get($v_labels, ['email']), 'htmlFor' => og_tpl('{0}-email', [$v_id])], 'children' => og_markup($c_4)])|noescape}
             {capture $c_5}
-              {=og_include('compose/Textarea.latte', ['rows' => 4, 'name' => 'bio', 'attrs' => og_attrs(['id', og_tpl('{0}-bio', [$v_id]), 'data-testid', 'field'])])|noescape}
+              {=og_include('compose/Textarea.latte', ['rows' => 4, 'name' => 'bio', 'attrs' => og_attrs(['id', og_tpl('{0}-bio', [$v_id]), 'data-slot', 'field'])])|noescape}
             {/capture}
             {=og_include('blocks/field.latte', ['p' => ['label' => og_get($v_labels, ['bio']), 'htmlFor' => og_tpl('{0}-bio', [$v_id])], 'children' => og_markup($c_5)])|noescape}
           {/capture}
@@ -64,7 +64,7 @@
               {/capture}
               {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => 'between', 'children' => (string) $c_11])|noescape}
             {/capture}
-            {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-testid', 'prefs']), 'children' => (string) $c_12])|noescape}
+            {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'prefs']), 'children' => (string) $c_12])|noescape}
           {/if}
         {/capture}
         {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_layout, 'split')) ? '1-2' : '1')), 'class' => 'items-start gap-8', 'children' => (string) $c_13])|noescape}
@@ -72,7 +72,7 @@
           {capture $c_14}
             {=og_text(og_get($v_labels, ['save']))}
           {/capture}
-          {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'default', 'type' => 'submit', 'attrs' => og_attrs(['data-testid', 'submit']), 'children' => (string) $c_14])|noescape}
+          {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'default', 'type' => 'submit', 'children' => (string) $c_14])|noescape}
           {capture $c_15}
             {=og_text(og_get($v_labels, ['cancel']))}
           {/capture}
@@ -80,10 +80,10 @@
         {/capture}
         {=og_include('compose/Group.latte', ['gap' => '2', 'class' => 'flex-wrap', 'children' => (string) $c_16])|noescape}
       {/capture}
-      {=og_include('compose/Form.latte', ['method' => 'dialog', 'class' => 'gap-6', 'attrs' => og_attrs(['data-testid', 'profile-form']), 'children' => (string) $c_17])|noescape}
+      {=og_include('compose/Form.latte', ['method' => 'dialog', 'class' => 'gap-6', 'attrs' => og_attrs(['data-slot', 'profile-form']), 'children' => (string) $c_17])|noescape}
     {/capture}
     {=og_include('blocks/panel.latte', ['p' => ['title' => $v_title, 'description' => $v_text, 'id' => $v_id, 'className' => og_cnv([og_cnv([(og_t(og_eq($v_tone, 'muted')) ? 'bg-muted' : '')])])], 'children' => og_markup($c_18)])|noescape}
   {/capture}
   {=og_include('compose/Container.latte', ['class' => 'mx-auto w-full max-w-6xl px-4 py-8', 'attrs' => og_attrs(['data-slot', 'container']), 'children' => (string) $c_19])|noescape}
 {/capture}
-{=og_include('compose/Block.latte', ['tag' => 'section', 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : (og_t(og_and([$v_title, $v_id])) ? og_tpl('{0}-t', [$v_id]) : null)), 'data-testid', 'panel-section', 'aria-label', $v_landmarkLabel]), 'children' => (string) $c_20])|noescape}
+{=og_include('compose/Block.latte', ['tag' => 'section', 'attrs' => og_attrs(['aria-labelledby', (og_t($v_landmarkLabel) ? null : (og_t(og_and([$v_title, $v_id])) ? og_tpl('{0}-t', [$v_id]) : null)), 'aria-label', $v_landmarkLabel, 'data-slot', 'panel-section']), 'children' => (string) $c_20])|noescape}

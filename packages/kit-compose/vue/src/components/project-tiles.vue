@@ -41,7 +41,7 @@ const over = computed(() =>
       (layout as string) === 'compact' ? 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4'
       : 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'
     "
-    data-testid="items"
+    data-slot="items"
   >
     <ArticleBlock v-for="(p, i) in projects" :key="p.id"
       :class="cn(
@@ -62,7 +62,6 @@ const over = computed(() =>
           variant="default"
           size="default"
           class="absolute left-4 top-4"
-          data-testid="featured"
         >
           {{ labels.featured }}
         </Badge>

@@ -42,9 +42,9 @@ templ ZoneTable(p ZoneTableProps) {
 		} else if uiutils.Eq(vLayout, "table") {
 			@ZoneRows(ZoneRowsProps{Zones: vZones, Labels: vLabels})
 		} else {
-			@compose.Grid(compose.GridProps{Cols: "1-3", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: "1-3", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vZ := range uiutils.L(vZones) {
-					@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
 							@compose.Title(compose.TitleProps{As: "3", Size: "lg", Weight: "bold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vZ, "name")) }

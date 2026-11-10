@@ -13,13 +13,13 @@
         {/if}
         {=og_text(og_get($v_topic, ['name']))}
       {/capture}
-      {=og_include('compose/Button.latte', ['href' => og_url(og_s(og_get($v_topic, ['href']))), 'variant' => 'ghost', 'size' => 'sm', 'class' => 'gap-2 text-background inset-ring-background/30 hover:bg-background/10', 'attrs' => og_attrs(['data-testid', 'hero-topic']), 'children' => (string) $c_1])|noescape}
+      {=og_include('compose/Button.latte', ['href' => og_url(og_s(og_get($v_topic, ['href']))), 'variant' => 'ghost', 'size' => 'sm', 'class' => 'gap-2 text-background inset-ring-background/30 hover:bg-background/10', 'children' => (string) $c_1])|noescape}
     {else}
       {capture $c_2}
         {=og_text(og_get($v_topic, ['name']))}
       {/capture}
-      {=og_include('compose/Button.latte', ['href' => og_url(og_s(og_get($v_topic, ['href']))), 'variant' => 'outline', 'size' => 'sm', 'attrs' => og_attrs(['data-testid', 'hero-topic']), 'children' => (string) $c_2])|noescape}
+      {=og_include('compose/Button.latte', ['href' => og_url(og_s(og_get($v_topic, ['href']))), 'variant' => 'outline', 'size' => 'sm', 'children' => (string) $c_2])|noescape}
     {/if}
   {/foreach}
 {/capture}
-{=og_include('compose/Group.latte', ['gap' => '2', 'align' => 'center', 'justify' => 'center', 'class' => 'flex-wrap', 'attrs' => og_attrs(['data-testid', 'hero-topics']), 'children' => (string) $c_3])|noescape}
+{=og_include('compose/Group.latte', ['gap' => '2', 'align' => 'center', 'justify' => 'center', 'class' => 'flex-wrap', 'attrs' => og_attrs(['data-slot', 'hero-topics']), 'children' => (string) $c_3])|noescape}

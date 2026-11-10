@@ -41,10 +41,10 @@
           {/capture}
           {=og_include('compose/CardContent.latte', ['class' => og_s(og_cnv(['flex flex-1 gap-4', (og_t(og_eq($v_layout, 'list')) ? 'items-center' : 'flex-col')])), 'children' => (string) $c_5])|noescape}
         {/capture}
-        {=og_include('compose/Card.latte', ['variant' => 'default', 'class' => og_s(og_cnv(['h-full', (og_t(og_eq($v_layout, 'list')) ? 'flex-row items-center' : '')])), 'attrs' => og_attrs(['data-testid', 'item']), 'children' => (string) $c_6])|noescape}
+        {=og_include('compose/Card.latte', ['variant' => 'default', 'class' => og_s(og_cnv(['h-full', (og_t(og_eq($v_layout, 'list')) ? 'flex-row items-center' : '')])), 'children' => (string) $c_6])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_layout, 'list')) ? '1' : $v_cols)), 'class' => 'gap-4', 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_7])|noescape}
+    {=og_include('compose/Grid.latte', ['cols' => og_s((og_t(og_eq($v_layout, 'list')) ? '1' : $v_cols)), 'class' => 'gap-4', 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_7])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'tone' => $v_tone, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_8)])|noescape}

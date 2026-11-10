@@ -16,7 +16,7 @@
         {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': og_s(og_get(v_c, ['icon'])), 'Size': 16}}) }}
         {{ og_text(og_get(v_c, ['title'])) }}
       {%- endset -%}
-      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'default', 'Href': og_url(og_s(og_get(v_c, ['href']))), 'Class': 'w-full gap-2', 'Attrs': og_attrs(['data-testid', 'media-channel'])}, 'children': c_2}) }}
+      {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'default', 'Href': og_url(og_s(og_get(v_c, ['href']))), 'Class': 'w-full gap-2'}, 'children': c_2}) }}
     {%- endfor %}
   {%- endset -%}
   {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch'}, 'children': c_3}) }}
@@ -38,10 +38,10 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Weight': 'semibold'}, 'children': c_6}) }}
         {%- endset -%}
-        {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Attrs': og_attrs(['data-testid', 'media-stat'])}, 'children': c_7}) }}
+        {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Attrs': og_attrs(['data-slot', 'media-stat'])}, 'children': c_7}) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
   {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4'}, 'children': c_8}) }}
 {%- endset -%}
-{{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': 'stretch'}, 'children': c_9}) }}
+{{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'media-contacts'])}, 'children': c_9}) }}

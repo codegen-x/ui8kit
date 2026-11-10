@@ -66,36 +66,36 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"menusection\"]",
+      "sel": "[data-slot=\"menusection\"]",
       "n": "@menusections"
     },
     {
-      "sel": "[data-testid=\"item\"]",
+      "sel": ":is([data-slot=\"item\"], [data-slot=\"menusection\"] [data-slot=\"card\"])",
       "n": "@menudishes"
     },
     {
-      "sel": "[data-testid=\"price\"]",
+      "sel": "[data-slot=\"price\"]",
       "n": "@menudishes",
       "when": {
         "prices": "show"
       }
     },
     {
-      "sel": "[data-testid=\"price\"]",
+      "sel": "[data-slot=\"price\"]",
       "n": 0,
       "when": {
         "prices": "hide"
       }
     },
     {
-      "sel": "[data-testid=\"section-nav\"]",
+      "sel": "[data-slot=\"section-nav\"]",
       "n": 1,
       "when": {
         "layout": "sections"
       }
     },
     {
-      "sel": "[data-testid=\"section-nav\"]",
+      "sel": "[data-slot=\"section-nav\"]",
       "n": 0,
       "when": {
         "layout": [

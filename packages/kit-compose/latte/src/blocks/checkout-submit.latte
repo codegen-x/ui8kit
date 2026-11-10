@@ -18,10 +18,10 @@
   {capture $c_3}
     {=og_text($v_submit)}
   {/capture}
-  {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'lg', 'type' => 'submit', 'attrs' => og_attrs(['data-testid', 'submit']), 'children' => (string) $c_3])|noescape}
+  {=og_include('compose/Button.latte', ['variant' => 'default', 'size' => 'lg', 'type' => 'submit', 'children' => (string) $c_3])|noescape}
   {capture $c_4}
     {=og_text($v_legal)}
   {/capture}
   {=og_include('compose/Text.latte', ['size' => 'xs', 'class' => 'text-muted-foreground', 'children' => (string) $c_4])|noescape}
 {/capture}
-{=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'start', 'children' => (string) $c_5])|noescape}
+{=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'start', 'attrs' => og_attrs(['data-slot', 'checkout-submit']), 'children' => (string) $c_5])|noescape}

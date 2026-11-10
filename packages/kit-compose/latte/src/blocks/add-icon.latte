@@ -7,4 +7,4 @@
 {capture $c_1}
   {=og_include('icons/LucideIcon.latte', ['name' => 'plus', 'size' => 16])|noescape}
 {/capture}
-{=og_include('compose/Button.latte', ['variant' => og_s($v_variant), 'size' => 'sm', 'layout' => 'icon', 'type' => 'button', 'ariaLabel' => og_s($v_label), 'attrs' => og_attrs(['data-testid', 'add']), 'children' => (string) $c_1])|noescape}
+{=og_include('compose/Button.latte', ['variant' => og_s($v_variant), 'size' => 'sm', 'layout' => 'icon', 'type' => 'button', 'ariaLabel' => og_s($v_label), 'children' => (string) $c_1])|noescape}

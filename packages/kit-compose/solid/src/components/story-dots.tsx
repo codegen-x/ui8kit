@@ -13,11 +13,11 @@ export type StoryDotsProps = {
 
 export function StoryDots({ steps, active }: StoryDotsProps) {
   return (
-    <Group gap="2" align="center">
+    <Group gap="2" align="center" data-slot="story-dots">
       <For each={steps ?? []}>{(s) => (
         <Inline
           class={cn("size-2 rounded-full", ((s.id === active) ? "bg-primary" : "bg-border"))}
-          data-testid="story-dot"
+          data-slot="story-dot"
         />
       )}</For>
     </Group>

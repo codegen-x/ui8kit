@@ -93,7 +93,8 @@
                   "attrs": {
                     "data-event": {
                       "$": "item.id"
-                    }
+                    },
+                    "data-slot": "timeline-item"
                   },
                   "children": [
                     {

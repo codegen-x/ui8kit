@@ -44,16 +44,16 @@ templ VideoGrid(p VideoGridProps) {
 		if uiutils.Eq(uiutils.Len(vQuotes), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "video", Title: vEmpty})
 		} else {
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(vCols), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(vCols), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vQ := range uiutils.L(vQuotes) {
 					@FigureBlock(FigureBlockProps{Class: uiutils.Cnv("m-0 flex flex-col gap-4"), Testid: "item"}) {
 						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative"}}) {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vQ, "author")})
-							@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "button", Class: "absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0", Attrs: uiutils.Attrs("aria-label", uiutils.Tpl(vPlayLabel, uiutils.Get(vQ, "author")), "data-testid", "play")}}) {
+							@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "button", Class: "absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0", Attrs: uiutils.Attrs("aria-label", uiutils.Tpl(vPlayLabel, uiutils.Get(vQ, "author")))}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: "play", Size: 20})
 							}
 							if uiutils.Eq(vCaption, "overlay") {
-								@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "absolute inset-x-0 bottom-0 rounded bg-background p-4", Attrs: uiutils.Attrs("data-testid", "caption")}}) {
+								@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "absolute inset-x-0 bottom-0 rounded bg-background p-4", Attrs: uiutils.Attrs("data-slot", "caption")}}) {
 									@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 										{ uiutils.Text(uiutils.Get(vQ, "author")) }
 									}
@@ -64,7 +64,7 @@ templ VideoGrid(p VideoGridProps) {
 							}
 						}
 						if uiutils.Eq(vCaption, "below") {
-							@compose.Text(compose.TextProps{TextProps: text.TextProps{Tag: "figcaption", Attrs: uiutils.Attrs("data-testid", "caption")}}) {
+							@compose.Text(compose.TextProps{TextProps: text.TextProps{Tag: "figcaption", Attrs: uiutils.Attrs("data-slot", "caption")}}) {
 								@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 									{ uiutils.Text(uiutils.Get(vQ, "author")) }
 								}

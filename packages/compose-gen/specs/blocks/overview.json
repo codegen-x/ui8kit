@@ -65,7 +65,7 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"items\"] > [data-testid=\"item\"]",
+      "sel": "[data-slot=\"items\"] > [data-slot=\"item\"]",
       "n": "@metrics"
     },
     {
@@ -77,14 +77,14 @@
       "n": 1
     },
     {
-      "sel": "[data-testid=\"panels\"] > section",
+      "sel": "[data-slot=\"panels\"] > section",
       "cols": 2,
       "when": {
         "layout": "split"
       }
     },
     {
-      "sel": "[data-testid=\"panels\"] > section",
+      "sel": "[data-slot=\"panels\"] > section",
       "cols": 1,
       "when": {
         "layout": "stacked"

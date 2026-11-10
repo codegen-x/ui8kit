@@ -37,9 +37,9 @@
           {{ og_include('compose/inline.html.j2', {'p': {'Class': 'text-muted-foreground'}, 'children': c_5}) }}
         {%- endif %}
       {%- endset -%}
-      {{ og_include('compose/label.html.j2', {'p': {'Class': og_s(og_cnv(['flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', ('justify-between' if og_t(og_eq(v_layout, 'column')) else '')])), 'Attrs': og_attrs(['data-testid', 'option'])}, 'children': c_6}) }}
+      {{ og_include('compose/label.html.j2', {'p': {'Class': og_s(og_cnv(['flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground', ('justify-between' if og_t(og_eq(v_layout, 'column')) else '')])), 'Attrs': og_attrs(['data-slot', 'option'])}, 'children': c_6}) }}
     {%- endfor %}
   {%- endset -%}
   {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(('flex flex-col gap-2' if og_t(og_eq(v_layout, 'column')) else 'flex flex-wrap gap-2'))}, 'children': c_7}) }}
 {%- endset -%}
-{{ og_include('compose/fieldset.html.j2', {'p': {'Class': 'flex flex-col gap-2', 'Attrs': og_attrs(['role', 'radiogroup', 'aria-labelledby', og_tpl('{0}-legend', [v_name]), 'data-testid', 'option-group'])}, 'children': c_8}) }}
+{{ og_include('compose/fieldset.html.j2', {'p': {'Class': 'flex flex-col gap-2', 'Attrs': og_attrs(['role', 'radiogroup', 'aria-labelledby', og_tpl('{0}-legend', [v_name]), 'data-slot', 'option-group'])}, 'children': c_8}) }}

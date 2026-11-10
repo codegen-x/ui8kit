@@ -19,11 +19,11 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
   return (
     <>
       {(((extra as string) === "stats") && ((content.stats?.length ?? 0) > 0)) ? (
-        <Box className="grid grid-cols-3 gap-4" data-testid="hero-stats">
+        <Box className="grid grid-cols-3 gap-4" data-slot="hero-stats">
           {(content.stats ?? []).map((s, i) => (
             <Fragment key={s.id}>
               {(i < 3) ? (
-                <Stack gap="0" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="hero-stat">
+                <Stack gap="0" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="hero-stat">
                   <Text size="2xl" weight="semibold">
                     {s.value}
                   </Text>
@@ -37,7 +37,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
         </Box>
       ) : null}
       {(((extra as string) === "avatars") && ((content.people?.length ?? 0) > 0)) ? (
-        <Group gap="4" align="center" className="flex-wrap" data-testid="hero-proof">
+        <Group gap="4" align="center" className="flex-wrap" data-slot="hero-proof">
           <Group gap="2" align="center">
             {(content.people ?? []).map((p, i) => (
               <Fragment key={p.id}>
@@ -53,16 +53,11 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
         </Group>
       ) : null}
       {(((extra as string) === "minis") && ((content.features?.length ?? 0) > 0)) ? (
-        <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2" data-testid="hero-minis">
+        <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2" data-slot="hero-minis">
           {(content.features ?? []).map((f, i) => (
             <Fragment key={f.id}>
               {(i < 2) ? (
-                <Group
-                  gap="4"
-                  align="start"
-                  className="rounded bg-card inset-ring inset-ring-border p-4"
-                  data-testid="hero-mini"
-                >
+                <Group gap="4" align="start" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="hero-mini">
                   <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
                     <LucideIcon name={f.icon} size={20} />
                   </Box>
@@ -81,7 +76,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
         </Box>
       ) : null}
       {(((extra as string) === "quote") && ((content.people?.length ?? 0) > 0)) ? (
-        <Stack gap="6" align="stretch">
+        <Stack gap="6" align="stretch" data-slot="hero-split-extras">
           {(content.people ?? []).map((p, i) => (
             <Fragment key={p.id}>
               {(i < 1) ? (
@@ -104,11 +99,11 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
               ) : null}
             </Fragment>
           ))}
-          <Box className="grid grid-cols-3 gap-4" data-testid="hero-stats">
+          <Box className="grid grid-cols-3 gap-4" data-slot="hero-stats">
             {(content.stats ?? []).map((s, i) => (
               <Fragment key={s.id}>
                 {(i < 3) ? (
-                  <Stack gap="0" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="hero-stat">
+                  <Stack gap="0" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="hero-stat">
                     <Text size="2xl" weight="semibold">
                       {s.value}
                     </Text>

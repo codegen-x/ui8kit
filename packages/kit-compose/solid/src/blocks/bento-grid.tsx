@@ -47,7 +47,7 @@ export function BentoGrid({
       {((tiles?.length ?? 0) === 0) ? (
         <EmptyState icon="layout-dashboard" title={empty} />
       ) : (
-        <Grid cols="1-4" class="auto-rows-fr gap-4" data-testid="items">
+        <Grid cols="1-4" class="auto-rows-fr gap-4" data-slot="items">
           <For each={tiles ?? []}>{(tile) => (
             <Card
               variant="default"
@@ -56,7 +56,6 @@ export function BentoGrid({
                 (((density as string) === "compact") ? "gap-4 p-4" : ""),
                 (((layout as string) === "bento") ? at(SPAN, tile.size) : "")
               )}
-              data-testid="item"
               data-size={(((layout as string) === "bento") ? tile.size : "even")}
             >
               <CardContent class="flex h-full flex-col gap-4">

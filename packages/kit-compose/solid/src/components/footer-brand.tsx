@@ -11,7 +11,7 @@ export type FooterBrandProps = {
 
 export function FooterBrand({ brand, tagline }: FooterBrandProps) {
   return (
-    <Stack gap="2" align="start" data-testid="footer-brand">
+    <Stack gap="2" align="start" data-slot="footer-brand">
       <Group gap="2" align="center">
         <Inline class="flex size-8 items-center justify-center rounded bg-foreground text-background">
           <LucideIcon name="layers" size={16} />

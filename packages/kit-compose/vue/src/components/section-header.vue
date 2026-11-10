@@ -33,13 +33,7 @@ const hasAction = computed(() => action?.label && action?.href);
 </script>
 
 <template>
-  <Badge
-    v-if="heading?.badge"
-    variant="outline"
-    size="lg"
-    :class="(center ? 'mx-auto w-fit' : 'w-fit')"
-    data-testid="section-badge"
-  >
+  <Badge v-if="heading?.badge" variant="outline" size="lg" :class="(center ? 'mx-auto w-fit' : 'w-fit')">
     {{ heading?.badge }}
   </Badge>
   <Group
@@ -48,6 +42,7 @@ const hasAction = computed(() => action?.label && action?.href);
     align="center"
     justify="between"
     class="w-full flex-wrap"
+    data-slot="section-header"
   >
     <Title
       :as="level"
@@ -66,7 +61,7 @@ const hasAction = computed(() => action?.label && action?.href);
       :href="urlOf(action?.href)"
       variant="default"
       :class="cn(defaults.text.tiny, 'shrink-0 font-medium leading-5')"
-      data-testid="section-action"
+      data-slot="section-action"
     >
       {{ action?.label }}
     </Link>
@@ -81,20 +76,32 @@ const hasAction = computed(() => action?.label && action?.href);
       : 'leading-7'
     "
     :id="titleId"
+    data-slot="section-header"
   >
     {{ title }}
   </Title>
-  <Group v-if="(((title as string) === '') && hasAction)" gap="4" align="center" justify="end" class="w-full">
+  <Group
+    v-if="(((title as string) === '') && hasAction)"
+    gap="4"
+    align="center"
+    justify="end"
+    class="w-full"
+    data-slot="section-header"
+  >
     <Link
       :href="urlOf(action?.href)"
       variant="default"
       :class="cn(defaults.text.tiny, 'shrink-0 font-medium leading-5')"
-      data-testid="section-action"
+      data-slot="section-action"
     >
       {{ action?.label }}
     </Link>
   </Group>
-  <Text v-if="lead" size="base" :class="cn('max-w-2xl text-muted-foreground', (center ? 'mx-auto' : ''))">
+  <Text v-if="lead"
+    size="base"
+    :class="cn('max-w-2xl text-muted-foreground', (center ? 'mx-auto' : ''))"
+    data-slot="section-header"
+  >
     {{ lead }}
   </Text>
 </template>

@@ -42,7 +42,7 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"feature\"]",
+      "sel": "[data-slot=\"feature\"]",
       "n": 1
     }
   ],

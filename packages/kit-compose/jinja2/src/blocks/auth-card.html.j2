@@ -49,7 +49,7 @@
       {%- endset -%}
       {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'default', 'Type': 'button', 'Class': 'w-full'}, 'children': c_7}) }}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Attrs': og_attrs(['data-testid', 'social'])}, 'children': c_8}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Attrs': og_attrs(['data-slot', 'social'])}, 'children': c_8}) }}
   {%- endif %}
   {{ og_include('blocks/auth-form.html.j2', {'p': {'id': v_id, 'mode': v_mode, 'labels': v_labels, 'submit': v_submit}}) }}
   {%- if og_t(og_and([not (og_eq(v_social, 'first')), not (og_eq(v_social, 'none')), not (og_eq(v_mode, 'reset')), not (og_eq(v_mode, 'magic'))])) %}
@@ -74,7 +74,7 @@
       {%- endset -%}
       {{ og_include('compose/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'default', 'Type': 'button', 'Class': 'w-full'}, 'children': c_12}) }}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Attrs': og_attrs(['data-testid', 'social'])}, 'children': c_13}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Attrs': og_attrs(['data-slot', 'social'])}, 'children': c_13}) }}
   {%- endif %}
   {%- set c_15 -%}
     {{ og_text(v_switchText) }}
@@ -82,8 +82,8 @@
     {%- set c_14 -%}
       {{ og_text(v_switchLink) }}
     {%- endset -%}
-    {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(v_switchHref)), 'Variant': 'default', 'Attrs': og_attrs(['data-testid', 'switch'])}, 'children': c_14}) }}
+    {{ og_include('compose/link.html.j2', {'p': {'Href': og_url(og_s(v_switchHref)), 'Variant': 'default', 'Attrs': og_attrs(['data-slot', 'switch'])}, 'children': c_14}) }}
   {%- endset -%}
   {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-center text-muted-foreground'}, 'children': c_15}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': og_s(og_cnv(['flex w-full flex-col gap-6', ('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_layout, 'card')) else '')])), 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else og_tpl('{0}-title', [v_id])), 'data-testid', 'auth-card', 'data-mode', v_mode, 'aria-label', v_landmarkLabel])}, 'children': c_16}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': og_s(og_cnv(['flex w-full flex-col gap-6', ('rounded bg-card p-6 inset-ring inset-ring-border' if og_t(og_eq(v_layout, 'card')) else '')])), 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else og_tpl('{0}-title', [v_id])), 'data-mode', v_mode, 'aria-label', v_landmarkLabel, 'data-slot', 'auth-card'])}, 'children': c_16}) }}

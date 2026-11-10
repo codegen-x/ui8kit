@@ -47,7 +47,8 @@
         }
       },
       "attrs": {
-        "role": "status"
+        "role": "status",
+        "data-slot": "empty-state"
       },
       "children": [
         {

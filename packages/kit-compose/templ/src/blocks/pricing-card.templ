@@ -72,14 +72,14 @@ templ PricingCard(p PricingCardProps) {
 			}
 			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col gap-2 text-sm"}}) {
 				for _, vFeature := range uiutils.L(uiutils.Get(vPlan, "features")) {
-					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex gap-2"}}) {
+					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex gap-2", Attrs: uiutils.Attrs("data-slot", "features-row")}}) {
 						{ uiutils.Text(vFeature) }
 					}
 				}
 			}
 		}
 		@compose.CardFooter(compose.CardFooterProps{BoxProps: box.BoxProps{Class: "flex flex-wrap items-center gap-2"}}) {
-			@compose.Button(compose.ButtonProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(vStand), "default", "outline")), Size: "default", ButtonProps: button.ButtonProps{Attrs: uiutils.Attrs("data-testid", "plan-select")}}) {
+			@compose.Button(compose.ButtonProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(vStand), "default", "outline")), Size: "default", ButtonProps: button.ButtonProps{}}) {
 				{ uiutils.Text(uiutils.Get(vLabels, "cta")) }
 			}
 			if p.Footer != nil {

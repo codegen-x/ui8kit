@@ -28,17 +28,10 @@ const { items, labels, topics } = defineProps<FaqFinderProps>();
 </script>
 
 <template>
-  <Stack gap="6" align="stretch" data-testid="faq-finder">
+  <Stack gap="6" align="stretch" data-slot="faq-finder">
     <SearchField :label="labels.search" :placeholder="labels.search" :value="(labels.query ?? '')" />
     <Group gap="2" class="flex-wrap">
-      <Button
-        v-for="t in topics"
-        :key="t.id"
-        variant="outline"
-        size="sm"
-        data-testid="faq-topic"
-        :data-value="t.value"
-      >
+      <Button v-for="t in topics" :key="t.id" variant="outline" size="sm" :data-value="t.value">
         {{ t.title }}
       </Button>
     </Group>
@@ -48,7 +41,7 @@ const { items, labels, topics } = defineProps<FaqFinderProps>();
       </Text>
       <List class="m-0 flex list-none flex-col gap-2 p-0">
         <template v-for="(q, i) in items" :key="q.id">
-          <ListItem v-if="(i < 3)" data-testid="faq-popular">
+          <ListItem v-if="(i < 3)" data-slot="faq-popular">
             <MenuEntry :href="q.href" class="text-sm font-medium" size="sm">
               {{ q.question }}
             </MenuEntry>

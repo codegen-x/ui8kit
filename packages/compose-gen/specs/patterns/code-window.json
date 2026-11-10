@@ -132,7 +132,8 @@
                   "attrs": {
                     "data-kind": {
                       "$": "line.kind"
-                    }
+                    },
+                    "data-slot": "code-line"
                   },
                   "children": [
                     {

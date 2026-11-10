@@ -49,7 +49,7 @@
       {%- endset -%}
       {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'default', 'type': 'button', 'class': 'w-full', 'children': c_7}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Stack.html.twig', {'gap': '4', 'attrs': og_attrs(['data-testid', 'social']), 'children': c_8}, with_context = false) }}
+    {{ include('compose/Stack.html.twig', {'gap': '4', 'attrs': og_attrs(['data-slot', 'social']), 'children': c_8}, with_context = false) }}
   {%- endif %}
   {{ include('blocks/auth-form.html.twig', {'p': {'id': v_id, 'mode': v_mode, 'labels': v_labels, 'submit': v_submit}}, with_context = false) }}
   {%- if og_t(og_and([not (og_eq(v_social, 'first')), not (og_eq(v_social, 'none')), not (og_eq(v_mode, 'reset')), not (og_eq(v_mode, 'magic'))])) %}
@@ -74,7 +74,7 @@
       {%- endset -%}
       {{ include('compose/Button.html.twig', {'variant': 'outline', 'size': 'default', 'type': 'button', 'class': 'w-full', 'children': c_12}, with_context = false) }}
     {%- endset -%}
-    {{ include('compose/Stack.html.twig', {'gap': '4', 'attrs': og_attrs(['data-testid', 'social']), 'children': c_13}, with_context = false) }}
+    {{ include('compose/Stack.html.twig', {'gap': '4', 'attrs': og_attrs(['data-slot', 'social']), 'children': c_13}, with_context = false) }}
   {%- endif %}
   {%- set c_15 -%}
     {{ og_text(v_switchText) }}
@@ -82,8 +82,8 @@
     {%- set c_14 -%}
       {{ og_text(v_switchLink) }}
     {%- endset -%}
-    {{ include('compose/Link.html.twig', {'href': og_url(og_s(v_switchHref)), 'variant': 'default', 'attrs': og_attrs(['data-testid', 'switch']), 'children': c_14}, with_context = false) }}
+    {{ include('compose/Link.html.twig', {'href': og_url(og_s(v_switchHref)), 'variant': 'default', 'attrs': og_attrs(['data-slot', 'switch']), 'children': c_14}, with_context = false) }}
   {%- endset -%}
   {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'text-center text-muted-foreground', 'children': c_15}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'section', 'class': og_s(og_cnv(['flex w-full flex-col gap-6', (og_t(og_eq(v_layout, 'card')) ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')])), 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : og_tpl('{0}-title', [v_id])), 'data-testid', 'auth-card', 'data-mode', v_mode, 'aria-label', v_landmarkLabel]), 'children': c_16}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'section', 'class': og_s(og_cnv(['flex w-full flex-col gap-6', (og_t(og_eq(v_layout, 'card')) ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')])), 'attrs': og_attrs(['aria-labelledby', (og_t(v_landmarkLabel) ? null : og_tpl('{0}-title', [v_id])), 'data-mode', v_mode, 'aria-label', v_landmarkLabel, 'data-slot', 'auth-card']), 'children': c_16}, with_context = false) }}

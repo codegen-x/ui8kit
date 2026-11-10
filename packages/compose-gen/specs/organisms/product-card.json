@@ -200,7 +200,6 @@
       },
       "attrs": {
         "data-slot": "card",
-        "data-testid": "item",
         "data-layout": {
           "$": "layout"
         }
@@ -271,9 +270,6 @@
                         "Size": "default",
                         "Class": "absolute left-4 top-4"
                       },
-                      "attrs": {
-                        "data-testid": "badge"
-                      },
                       "children": [
                         {
                           "text": {
@@ -338,7 +334,7 @@
                         "Variant": "default"
                       },
                       "attrs": {
-                        "data-testid": "open"
+                        "data-slot": "open"
                       },
                       "children": [
                         {
@@ -515,7 +511,7 @@
                             "Class": "relative text-muted-foreground"
                           },
                           "attrs": {
-                            "data-testid": "compare-at"
+                            "data-slot": "compare-at"
                           },
                           "children": [
                             {
@@ -583,9 +579,6 @@
                             }
                           ]
                         }
-                      },
-                      "attrs": {
-                        "data-testid": "add"
                       },
                       "on": {
                         "click": {

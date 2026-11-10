@@ -22,7 +22,7 @@ templ MediaReview(p MediaReviewProps) {
 	{{ vLabels := p.Labels }}
 	for vI, vR := range uiutils.L(uiutils.Get(vExtras, "reviews")) {
 		if uiutils.Lt(float64(vI), float64(1)) {
-			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-muted p-6", Attrs: uiutils.Attrs("data-testid", "media-review")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-muted p-6", Attrs: uiutils.Attrs("data-slot", "media-review")}}) {
 				@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "between", BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
 					@compose.Text(compose.TextProps{Size: "sm", Weight: "medium", TextProps: text.TextProps{}}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "featured")) }

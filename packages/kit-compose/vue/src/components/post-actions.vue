@@ -22,26 +22,26 @@ const { labels, mode = "pair" } = defineProps<PostActionsProps>();
 </script>
 
 <template>
-  <Group v-if="((mode as string) === 'pair')" gap="2" class="flex-wrap">
-    <Button variant="default" size="default" class="gap-2" data-testid="action-primary">
+  <Group v-if="((mode as string) === 'pair')" gap="2" class="flex-wrap" data-slot="post-actions">
+    <Button variant="default" size="default" class="gap-2">
       <LucideIcon name="share-2" :size="16" />
       {{ labels.share }}
     </Button>
-    <Button variant="outline" size="default" class="gap-2" data-testid="post-save">
+    <Button variant="outline" size="default" class="gap-2">
       <LucideIcon name="bookmark" :size="16" />
       {{ labels.save }}
     </Button>
   </Group>
-  <Group v-else gap="2">
-    <Button variant="default" size="default" class="gap-2 flex-1" data-testid="action-primary">
+  <Group v-else gap="2" data-slot="post-actions">
+    <Button variant="default" size="default" class="gap-2 flex-1">
       <LucideIcon name="book-open" :size="16" />
       {{ labels.read }}
     </Button>
     <template v-if="((mode as string) === 'icons')">
-      <Button variant="outline" size="default" layout="icon" :aria-label="labels.share" data-testid="post-share">
+      <Button variant="outline" size="default" layout="icon" :aria-label="labels.share">
         <LucideIcon name="share-2" :size="16" />
       </Button>
-      <Button variant="outline" size="default" layout="icon" :aria-label="labels.save" data-testid="post-save">
+      <Button variant="outline" size="default" layout="icon" :aria-label="labels.save">
         <LucideIcon name="bookmark" :size="16" />
       </Button>
     </template>

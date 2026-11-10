@@ -33,7 +33,7 @@
         "Class": "rounded bg-card inset-ring inset-ring-border p-8 text-center"
       },
       "attrs": {
-        "data-testid": "quote-rating"
+        "data-slot": "quote-rating"
       },
       "children": [
         {
@@ -117,7 +117,7 @@
                         "Align": "center"
                       },
                       "attrs": {
-                        "data-testid": "quote-stat"
+                        "data-slot": "quote-stat"
                       },
                       "children": [
                         {

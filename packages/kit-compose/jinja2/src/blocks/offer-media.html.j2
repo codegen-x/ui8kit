@@ -23,6 +23,6 @@
     {%- endset -%}
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0'}, 'children': c_4}) }}
   {%- endset -%}
-  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Class': 'absolute bottom-4 left-4 mr-4 max-w-xs rounded bg-card p-4 shadow-lg', 'Attrs': og_attrs(['data-testid', 'offer-card'])}, 'children': c_5}) }}
+  {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'start', 'Class': 'absolute bottom-4 left-4 mr-4 max-w-xs rounded bg-card p-4 shadow-lg', 'Attrs': og_attrs(['data-slot', 'offer-card'])}, 'children': c_5}) }}
 {%- endset -%}
-{{ og_include('compose/box.html.j2', {'p': {'Class': 'relative', 'Attrs': og_attrs(['data-testid', 'hero-media'])}, 'children': c_6}) }}
+{{ og_include('compose/box.html.j2', {'p': {'Class': 'relative', 'Attrs': og_attrs(['data-slot', 'hero-media'])}, 'children': c_6}) }}

@@ -141,13 +141,13 @@
         }
       },
       "attrs": {
-        "data-testid": "site-header",
         "data-layout": {
           "$": "layout"
         },
         "aria-label": {
           "$": "landmarkLabel"
-        }
+        },
+        "data-slot": "site-header"
       },
       "children": [
         {
@@ -157,7 +157,7 @@
             "Class": "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border"
           },
           "attrs": {
-            "data-testid": "skip-link"
+            "data-slot": "skip-link"
           },
           "children": [
             {
@@ -345,9 +345,6 @@
                     "Variant": "outline",
                     "Size": "sm"
                   },
-                  "attrs": {
-                    "data-testid": "theme-toggle"
-                  },
                   "on": {
                     "click": {
                       "call": "emit.theme",
@@ -389,9 +386,6 @@
                         "Href": {
                           "$": "ctaHref"
                         }
-                      },
-                      "attrs": {
-                        "data-testid": "header-cta"
                       },
                       "children": [
                         {

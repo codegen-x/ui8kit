@@ -44,12 +44,12 @@ templ GrillBuilder(p GrillBuilderProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 items-start gap-8 lg:grid-cols-3"}}) {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "flex flex-col gap-8 lg:col-span-2", "flex flex-col gap-8 lg:col-span-3")), Attrs: uiutils.Attrs("data-testid", "steps")}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "flex flex-col gap-8 lg:col-span-2", "flex flex-col gap-8 lg:col-span-3")), Attrs: uiutils.Attrs("data-slot", "steps")}}) {
 				@MeatCards(MeatCardsProps{Name: uiutils.Tpl("{0}-meat", vId), Legend: uiutils.Get(vLabels, "meat"), Options: vMeats})
 				@OptionChips(OptionChipsProps{Name: uiutils.Tpl("{0}-weight", vId), Legend: uiutils.Get(vLabels, "weight"), Options: vWeights, Extra: "note"})
 				@SideChecks(SideChecksProps{Name: uiutils.Tpl("{0}-sides", vId), Legend: uiutils.Get(vLabels, "sides"), Options: vSides})
 			}
-			@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6 lg:sticky lg:top-8", "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6")), Attrs: uiutils.Attrs("data-testid", "summary")}}) {
+			@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6 lg:sticky lg:top-8", "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6")), Attrs: uiutils.Attrs("data-slot", "summary")}}) {
 				@compose.Text(compose.TextProps{Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
 					{ uiutils.Text(uiutils.Get(vLabels, "summary")) }
 				}
@@ -57,7 +57,7 @@ templ GrillBuilder(p GrillBuilderProps) {
 					@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "total")) }
 					}
-					@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-2xl font-bold", Attrs: uiutils.Attrs("role", "status", "aria-live", "polite", "data-testid", "total")}}) {
+					@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-2xl font-bold", Attrs: uiutils.Attrs("role", "status", "aria-live", "polite", "data-slot", "total")}}) {
 						{ uiutils.Text(uiutils.Money(vTotal, vCurrency)) }
 					}
 				}

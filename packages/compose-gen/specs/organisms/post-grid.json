@@ -421,7 +421,7 @@
                         "Align": "stretch"
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -594,7 +594,7 @@
                         "Class": "w-full gap-6"
                       },
                       "attrs": {
-                        "data-testid": "items"
+                        "data-slot": "items"
                       },
                       "children": [
                         {
@@ -732,7 +732,7 @@
                         }
                       ]
                     },
-                    "data-testid": "posts-pager"
+                    "data-slot": "posts-pager"
                   },
                   "children": [
                     {

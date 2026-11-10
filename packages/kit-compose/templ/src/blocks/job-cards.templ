@@ -28,8 +28,8 @@ templ JobCards(p JobCardsProps) {
 	{{ vLayout := uiutils.Def(p.Layout, "grid") }}
 	{{ vSalary := uiutils.Def(p.Salary, "hide") }}
 	if uiutils.Eq(vLayout, "table") {
-		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-full overflow-x-auto rounded inset-ring inset-ring-border"}}) {
-			@compose.Table(compose.TableProps{BoxProps: box.BoxProps{Class: "w-full text-left text-sm", Attrs: uiutils.Attrs("data-testid", "job-table")}}) {
+		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-full overflow-x-auto rounded inset-ring inset-ring-border", Attrs: uiutils.Attrs("data-slot", "job-cards")}}) {
+			@compose.Table(compose.TableProps{BoxProps: box.BoxProps{Class: "w-full text-left text-sm", Attrs: uiutils.Attrs("data-slot", "job-table")}}) {
 				@compose.TableCaption(compose.TableCaptionProps{BoxProps: box.BoxProps{Class: "sr-only"}}) {
 					{ uiutils.Text(uiutils.Get(vLabels, "caption")) }
 				}
@@ -61,7 +61,7 @@ templ JobCards(p JobCardsProps) {
 				}
 				@compose.TableBody(compose.TableBodyProps{BoxProps: box.BoxProps{}}) {
 					for _, vJ := range uiutils.L(vJobs) {
-						@compose.TableRow(compose.TableRowProps{BoxProps: box.BoxProps{Class: "border-t border-border", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.TableRow(compose.TableRowProps{BoxProps: box.BoxProps{Class: "border-t border-border", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@compose.TableCell(compose.TableCellProps{BoxProps: box.BoxProps{Class: "px-4 py-4 font-medium"}}) {
 								{ uiutils.Text(uiutils.Get(vJ, "title")) }
 							}
@@ -90,9 +90,9 @@ templ JobCards(p JobCardsProps) {
 			}
 		}
 	} else {
-		@compose.Grid(compose.GridProps{Cols: "1-2", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+		@compose.Grid(compose.GridProps{Cols: "1-2", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 			for _, vJ := range uiutils.L(vJobs) {
-				@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+				@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 					@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
 						@compose.Text(compose.TextProps{Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vJ, "title")) }
@@ -119,7 +119,7 @@ templ JobCards(p JobCardsProps) {
 						}
 					}
 					if uiutils.Eq(vSalary, "show") {
-						@compose.Text(compose.TextProps{Size: "base", Weight: "semibold", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-testid", "salary")}}) {
+						@compose.Text(compose.TextProps{Size: "base", Weight: "semibold", TextProps: text.TextProps{Attrs: uiutils.Attrs("data-slot", "salary")}}) {
 							{ uiutils.Text(uiutils.Get(vJ, "salary")) }
 						}
 					}

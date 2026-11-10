@@ -49,8 +49,7 @@
           "$": "label"
         },
         "aria-live": "polite",
-        "data-slot": "bulk-bar",
-        "data-testid": "bulk-bar"
+        "data-slot": "bulk-bar"
       },
       "children": [
         {
@@ -84,7 +83,7 @@
         {
           "use": "Inline",
           "attrs": {
-            "data-testid": "bulk-count"
+            "data-slot": "bulk-count"
           },
           "children": [
             {

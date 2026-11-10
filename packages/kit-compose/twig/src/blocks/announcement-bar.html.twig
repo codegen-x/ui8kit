@@ -23,7 +23,7 @@
         {%- set c_1 -%}
           {{ og_text(v_badgeLabel) }}
         {%- endset -%}
-        {{ include('compose/Inline.html.twig', {'class': 'rounded px-2 py-0 text-xs font-semibold inset-ring inset-ring-current', 'attrs': og_attrs(['data-testid', 'announcement-badge']), 'children': c_1}, with_context = false) }}
+        {{ include('compose/Inline.html.twig', {'class': 'rounded px-2 py-0 text-xs font-semibold inset-ring inset-ring-current', 'attrs': og_attrs(['data-slot', 'announcement-badge']), 'children': c_1}, with_context = false) }}
       {%- endif %}
       {%- set c_2 -%}
         {{ og_text(v_text) }}
@@ -34,7 +34,7 @@
           {{ og_text(v_cta) }}
           {{ include('icons/LucideIcon.html.twig', {'name': 'arrow-right', 'size': 16}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/LinkPlain.html.twig', {'href': og_url(og_s(v_ctaHref)), 'class': 'inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4', 'attrs': og_attrs(['data-testid', 'announcement-cta']), 'children': c_3}, with_context = false) }}
+        {{ include('compose/LinkPlain.html.twig', {'href': og_url(og_s(v_ctaHref)), 'class': 'inline-flex items-center gap-2 text-sm font-semibold underline underline-offset-4', 'attrs': og_attrs(['data-slot', 'announcement-cta']), 'children': c_3}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'class': og_s(og_cnv(['min-w-0 flex-wrap', (og_t(og_and([og_eq(v_layout, 'center'), og_eq(v_dismiss, 'show')])) ? 'ml-auto' : '')])), 'children': c_4}, with_context = false) }}
@@ -42,9 +42,9 @@
       {%- set c_5 -%}
         {{ include('icons/LucideIcon.html.twig', {'name': 'x', 'size': 16}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'class': 'ml-auto shrink-0 text-current', 'type': 'button', 'attrs': og_attrs(['aria-label', v_dismissLabel, 'data-testid', 'dismiss']), 'children': c_5}, with_context = false) }}
+      {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'class': 'ml-auto shrink-0 text-current', 'type': 'button', 'attrs': og_attrs(['aria-label', v_dismissLabel]), 'children': c_5}, with_context = false) }}
     {%- endif %}
   {%- endset -%}
   {{ include('compose/Container.html.twig', {'class': og_s(og_cnv(['mx-auto w-full max-w-6xl px-4', 'flex items-center gap-4 py-2', (og_t(og_eq(v_layout, 'split')) ? 'justify-between' : 'justify-center')])), 'attrs': og_attrs(['data-slot', 'container']), 'children': c_6}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Block.html.twig', {'tag': 'aside', 'class': og_s(og_cnv(['w-full', (og_t(og_eq(v_position, 'bottom')) ? 'sticky bottom-0 z-40 border-t border-border' : ''), (og_t(og_eq(v_tone, 'muted')) ? 'bg-muted text-foreground' : 'bg-primary text-primary-foreground')])), 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-testid', 'announcement', 'data-layout', v_layout]), 'children': c_7}, with_context = false) }}
+{{ include('compose/Block.html.twig', {'tag': 'aside', 'class': og_s(og_cnv(['w-full', (og_t(og_eq(v_position, 'bottom')) ? 'sticky bottom-0 z-40 border-t border-border' : ''), (og_t(og_eq(v_tone, 'muted')) ? 'bg-muted text-foreground' : 'bg-primary text-primary-foreground')])), 'attrs': og_attrs(['aria-label', og_coalesce([v_landmarkLabel, v_label]), 'data-layout', v_layout, 'data-slot', 'announcement']), 'children': c_7}, with_context = false) }}

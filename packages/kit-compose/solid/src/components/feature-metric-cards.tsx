@@ -14,16 +14,11 @@ export type FeatureMetricCardsProps = {
 
 export function FeatureMetricCards({ stats }: FeatureMetricCardsProps) {
   return (
-    <Box class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <Box class="grid grid-cols-1 gap-4 sm:grid-cols-2" data-slot="feature-metric-cards">
       <For each={stats ?? []}>{(s, iOf) => { const i = iOf(); return (
         <>
           {(i < 4) ? (
-            <Group
-              gap="4"
-              align="center"
-              class="rounded bg-card inset-ring inset-ring-border p-4"
-              data-testid="feature-stat"
-            >
+            <Group gap="4" align="center" class="rounded bg-card inset-ring inset-ring-border p-4" data-slot="feature-stat">
               <Inline class="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
                 <LucideIcon name={s.icon} size={20} />
               </Inline>

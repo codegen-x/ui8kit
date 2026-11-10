@@ -13,25 +13,20 @@ export type FooterSignupCardProps = {
 
 export function FooterSignupCard({ id, labels }: FooterSignupCardProps) {
   return (
-    <Stack
-      gap="4"
-      align="stretch"
-      className="rounded bg-card inset-ring inset-ring-border p-6"
-      data-testid="signup"
-    >
+    <Stack gap="4" align="stretch" className="rounded bg-card inset-ring inset-ring-border p-6" data-slot="signup">
       <Group gap="2" align="center">
         <LucideIcon name="mail" size={16} />
         <Text size="sm" weight="semibold">
           {labels.signup}
         </Text>
       </Group>
-      <Form method="dialog" className={cn("w-full max-w-md", (false ? "mx-auto" : ""))} data-testid="email-form">
+      <Form method="dialog" className={cn("w-full max-w-md", (false ? "mx-auto" : ""))} data-slot="email-form">
         <Label htmlFor={tpl("{0}-email", id)} className="sr-only">
           {labels.email}
         </Label>
         <Group gap="2" align="start" className="w-full flex-wrap">
-          <Input type="email" name="email" className="min-w-0 flex-1" id={tpl("{0}-email", id)} data-testid="field" />
-          <Button variant="default" size="default" type="submit" data-testid="submit">
+          <Input type="email" name="email" className="min-w-0 flex-1" id={tpl("{0}-email", id)} data-slot="field" />
+          <Button variant="default" size="default" type="submit">
             {labels.subscribe}
           </Button>
         </Group>

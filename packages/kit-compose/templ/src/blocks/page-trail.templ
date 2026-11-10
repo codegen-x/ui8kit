@@ -38,7 +38,7 @@ templ PageTrail(p PageTrailProps) {
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	{{ vTitleId := any(uiutils.Add(vId, "-title")) }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cnv("py-8", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", ""))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "data-testid", "section", "data-tone", vTone, "data-aside", vAside, "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cnv("py-8", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", ""))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "data-tone", vTone, "data-aside", vAside, "aria-label", vLandmarkLabel, "data-slot", "section")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", "flex flex-col gap-6")), Attrs: uiutils.Attrs("data-slot", "container")}}) {
 			if uiutils.Gt(uiutils.Len(vCrumbs), float64(0)) {
 				@PageCrumbs(PageCrumbsProps{Label: vLabel, Crumbs: vCrumbs, LandmarkLabel: vLandmarkLabel})

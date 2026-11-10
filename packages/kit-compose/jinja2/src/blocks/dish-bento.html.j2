@@ -46,7 +46,7 @@
             {%- endset -%}
             {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Class': 'mt-auto'}, 'children': c_6}) }}
           {%- endset -%}
-          {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': og_s(og_cnv(['rounded bg-card inset-ring inset-ring-border p-6 sm:col-span-2 lg:row-span-2', ('lg:col-start-3 lg:row-start-1' if og_t(og_eq(v_feature, 'end')) else '')])), 'Attrs': og_attrs(['data-testid', 'feature'])}, 'children': c_7}) }}
+          {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': og_s(og_cnv(['rounded bg-card inset-ring inset-ring-border p-6 sm:col-span-2 lg:row-span-2', ('lg:col-start-3 lg:row-start-1' if og_t(og_eq(v_feature, 'end')) else '')])), 'Attrs': og_attrs(['data-slot', 'feature'])}, 'children': c_7}) }}
         {%- else %}
           {%- set c_11 -%}
             {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_d, ['name'])}}) }}
@@ -63,11 +63,11 @@
             {%- endset -%}
             {{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Justify': 'between'}, 'children': c_10}) }}
           {%- endset -%}
-          {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-testid', 'item'])}, 'children': c_11}) }}
+          {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-slot', 'item'])}, 'children': c_11}) }}
         {%- endif %}
       {%- endfor %}
     {%- endset -%}
-    {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4', 'Attrs': og_attrs(['data-testid', 'items'])}, 'children': c_12}) }}
+    {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4', 'Attrs': og_attrs(['data-slot', 'items'])}, 'children': c_12}) }}
   {%- endif %}
 {%- endset -%}
 {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': v_title, 'lead': v_lead, 'tone': v_tone, 'landmarkLabel': v_landmarkLabel}, 'children': og_markup(c_13)}) }}

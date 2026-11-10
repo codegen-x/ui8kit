@@ -29,7 +29,7 @@
         {%- set c_2 -%}
           {{ og_text(og_get(v_product, ['category'])) }}
         {%- endset -%}
-        {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'uppercase tracking-wide text-muted-foreground', 'Attrs': og_attrs(['data-testid', 'category'])}, 'children': c_2}) }}
+        {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'uppercase tracking-wide text-muted-foreground', 'Attrs': og_attrs(['data-slot', 'category'])}, 'children': c_2}) }}
       {%- endif %}
       {{ og_include('blocks/product-price.html.j2', {'p': {'price': og_get(v_product, ['price']), 'compareAt': og_get(v_product, ['compareAt']), 'currency': og_get(v_product, ['currency']), 'badge': (og_at(v_badges, og_get(v_product, ['badge'])) if og_t(og_get(v_product, ['badge'])) else ''), 'was': og_get(v_labels, ['was'])}}) }}
       {%- set c_4 -%}
@@ -43,7 +43,7 @@
       {%- set c_5 -%}
         {{ og_text((og_get(v_labels, ['inStock']) if og_t(og_get(v_product, ['inStock'])) else og_get(v_labels, ['soldOut']))) }}
       {%- endset -%}
-      {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Weight': 'medium', 'Class': og_s(('text-foreground' if og_t(og_get(v_product, ['inStock'])) else 'text-destructive')), 'Attrs': og_attrs(['data-testid', 'stock'])}, 'children': c_5}) }}
+      {{ og_include('compose/text.html.j2', {'p': {'Size': 'sm', 'Weight': 'medium', 'Class': og_s(('text-foreground' if og_t(og_get(v_product, ['inStock'])) else 'text-destructive')), 'Attrs': og_attrs(['data-slot', 'stock'])}, 'children': c_5}) }}
       {%- set c_7 -%}
         {%- if og_t(og_eq(v_buy, 'full')) %}
           {{ og_include('blocks/number-field.html.j2', {'p': {'value': '1', 'name': og_tpl('{0}-qty', [v_id]), 'min': '1', 'label': og_get(v_labels, ['qty']), 'decrease': og_get(v_labels, ['decrease']), 'increase': og_get(v_labels, ['increase'])}}) }}
@@ -51,7 +51,7 @@
         {%- set c_6 -%}
           {{ og_text(og_get(v_labels, ['add'])) }}
         {%- endset -%}
-        {{ og_include('compose/button.html.j2', {'p': {'Disabled': og_t(not (og_t(og_get(v_product, ['inStock'])))), 'Attrs': og_attrs(['data-testid', 'add'])}, 'children': c_6}) }}
+        {{ og_include('compose/button.html.j2', {'p': {'Disabled': og_t(not (og_t(og_get(v_product, ['inStock']))))}, 'children': c_6}) }}
       {%- endset -%}
       {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Class': 'flex-wrap'}, 'children': c_7}) }}
       {%- if og_t(og_eq(v_buy, 'full')) %}
@@ -76,7 +76,7 @@
         {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col gap-2 text-sm text-muted-foreground'}, 'children': c_12}) }}
       {%- endif %}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-testid', 'buy-box'])}, 'children': c_13}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': 'stretch', 'Attrs': og_attrs(['data-slot', 'buy-box'])}, 'children': c_13}) }}
   {%- endset -%}
   {{ og_include('blocks/section-frame.html.j2', {'p': {'id': v_id, 'title': og_get(v_product, ['name']), 'lead': og_get(v_product, ['summary']), 'heading': {'level': v_level}, 'layout': ('split' if og_t(og_eq(v_layout, 'split')) else 'stack'), 'media': {'show': true, 'side': v_mediaSide, 'align': 'start'}, 'tone': v_tone, 'density': v_density, 'landmarkLabel': v_landmarkLabel, 'aside': og_markup(f_14)}, 'children': og_markup(c_15)}) }}
 {%- endif %}

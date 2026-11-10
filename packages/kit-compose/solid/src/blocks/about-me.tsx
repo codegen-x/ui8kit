@@ -62,9 +62,9 @@ export function AboutMe({
       {((layout as string) === "facts") ? (
         <>
           {((facts?.length ?? 0) > 0) ? (
-            <List tag="ul" class="grid grid-cols-1 gap-4 sm:grid-cols-2" data-testid="facts">
+            <List tag="ul" class="grid grid-cols-1 gap-4 sm:grid-cols-2" data-slot="facts">
               <For each={facts ?? []}>{(f) => (
-                <ListItem class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4" data-testid="fact">
+                <ListItem class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4" data-slot="fact">
                   <Text size="xs" class="text-muted-foreground">
                     {f.label}
                   </Text>
@@ -77,9 +77,9 @@ export function AboutMe({
           ) : null}
         </>
       ) : ((skills?.length ?? 0) > 0) ? (
-        <Stack gap="4" align="stretch" data-testid="skills">
+        <Stack gap="4" align="stretch" data-slot="skills">
           <For each={skills ?? []}>{(s) => (
-            <Stack gap="2" align="stretch" data-testid="skill">
+            <Stack gap="2" align="stretch" data-slot="skill">
               <Group gap="4" justify="between">
                 <Text size="sm" weight="semibold">
                   {s.label}

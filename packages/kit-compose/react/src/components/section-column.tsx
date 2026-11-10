@@ -33,7 +33,12 @@ export type SectionColumnProps = {
 
 export function SectionColumn({ measure = "default", children }: SectionColumnProps) {
   return (
-    <Stack gap="6" align="stretch" className={sectionColumnVariants({ measure: measure })}>
+    <Stack
+      gap="6"
+      align="stretch"
+      className={sectionColumnVariants({ measure: measure })}
+      data-slot="section-column"
+    >
       {children}
     </Stack>
   );

@@ -12,6 +12,6 @@
     {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'plus', 'Size': 16}}) }}
     {{ og_text(og_get(v_labels, ['add'])) }}
   {%- endset -%}
-  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'button', 'Attrs': og_attrs(['data-testid', 'add'])}, 'children': c_1}) }}
+  {{ og_include('compose/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'button'}, 'children': c_1}) }}
 {%- endset -%}
-{{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Justify': 'between', 'Class': 'flex-wrap'}, 'children': c_2}) }}
+{{ og_include('compose/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Justify': 'between', 'Class': 'flex-wrap', 'Attrs': og_attrs(['data-slot', 'add-qty'])}, 'children': c_2}) }}

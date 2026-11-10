@@ -103,18 +103,18 @@
   ],
   "facts": [
     {
-      "sel": "[data-testid=\"cta-proof\"]",
+      "sel": "[data-slot=\"cta-proof\"]",
       "n": 1
     },
     {
-      "sel": "[data-testid=\"cta-item\"]",
+      "sel": "[data-slot=\"cta-item\"]",
       "n": "@logos",
       "when": {
         "proof": "logos"
       }
     },
     {
-      "sel": "[data-testid=\"cta-item\"]",
+      "sel": "[data-slot=\"cta-item\"]",
       "n": "@features",
       "when": {
         "proof": [
@@ -124,14 +124,14 @@
       }
     },
     {
-      "sel": "[data-testid=\"cta-item\"]",
+      "sel": "[data-slot=\"cta-item\"]",
       "n": 3,
       "when": {
         "proof": "stats"
       }
     },
     {
-      "sel": "[data-testid=\"cta-item\"]",
+      "sel": "[data-slot=\"cta-item\"]",
       "n": "@zones",
       "when": {
         "proof": "zones"

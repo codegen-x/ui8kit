@@ -9,4 +9,4 @@
 {%- set c_1 -%}
   {{ include('blocks/quote-card.html.twig', {'p': {'q': v_q, 'labels': v_labels, 'item': {'kind': v_kind, 'avatar': 'image', 'rating': 'show', 'mark': 'none'}, 'layout': v_layout}}, with_context = false) }}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': og_s((p.className ?? '')), 'attrs': og_attrs(['data-testid', 'quote']), 'children': c_1}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': og_s((p.className ?? '')), 'attrs': og_attrs(['data-slot', 'quote']), 'children': c_1}, with_context = false) }}

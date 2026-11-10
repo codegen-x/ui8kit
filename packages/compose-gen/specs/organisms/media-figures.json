@@ -102,7 +102,7 @@
                     }
                   },
                   "attrs": {
-                    "data-testid": "media-stat"
+                    "data-slot": "media-stat"
                   },
                   "children": [
                     {
@@ -140,7 +140,10 @@
           ],
           "index": "i"
         }
-      ]
+      ],
+      "attrs": {
+        "data-slot": "media-figures"
+      }
     }
   ],
   "portable": {

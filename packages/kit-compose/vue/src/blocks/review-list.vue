@@ -57,7 +57,7 @@ const {
     :landmarkLabel="landmarkLabel"
   >
     <EmptyState v-if="((reviews?.length ?? 0) === 0)" icon="message-square-quote" :title="labels.empty" />
-    <Grid :cols="(((layout as string) === 'grid') ? '1-3' : '1')" class="gap-4" data-testid="items">
+    <Grid :cols="(((layout as string) === 'grid') ? '1-3' : '1')" class="gap-4" data-slot="items">
       <ArticleBlock v-for="r in reviews" :key="r.id"
         :class="cn(
           'flex h-full flex-col gap-4',

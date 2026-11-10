@@ -52,14 +52,14 @@ const {
   <Block
     tag="header"
     :class="cn('flex w-full flex-wrap items-center justify-between pr-4', defaults.hero.head)"
-    data-testid="hero-head"
     :aria-label="landmarkLabel"
+    data-slot="hero-head"
   >
     <LinkPlain v-if="skip"
       href="#main-content"
       :class="'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background ' +
         'focus:px-4 focus:py-2 focus:text-sm focus:text-foreground focus:inset-ring focus:inset-ring-border'"
-      data-testid="skip-link"
+      data-slot="skip-link"
     >
       {{ skip }}
     </LinkPlain>
@@ -81,27 +81,27 @@ const {
             variant="default"
             :aria-current="((l.id === current) ? 'page' : undefined)"
             class="text-xs font-medium leading-5 text-background"
-            data-testid="nav-link"
+            data-slot="nav-link"
           >
             {{ l.name }}
           </Link>
-          <Inline v-else class="text-xs font-medium leading-5 text-background" data-testid="nav-link">
+          <Inline v-else class="text-xs font-medium leading-5 text-background" data-slot="nav-link">
             {{ l.name }}
           </Inline>
         </template>
       </Group>
     </NavBlock>
     <Group gap="2" align="center">
-      <Button v-if="login"
+      <Button
+        v-if="login"
         :href="urlOf(loginHref)"
         variant="ghost"
         size="sm"
         class="text-background hover:bg-background/10"
-        data-testid="nav-login"
       >
         {{ login }}
       </Button>
-      <Button v-if="cta" :href="urlOf(href)" variant="secondary" size="sm" data-testid="header-cta">
+      <Button v-if="cta" :href="urlOf(href)" variant="secondary" size="sm">
         {{ cta }}
       </Button>
     </Group>

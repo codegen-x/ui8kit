@@ -38,15 +38,15 @@ templ DashboardOverview(p DashboardOverviewProps) {
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
 		@compose.Stack(compose.StackProps{Gap: "6", Align: "stretch", BoxProps: box.BoxProps{}}) {
 			if uiutils.Gt(uiutils.Len(vMetrics), float64(0)) {
-				@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1-4")), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}}) {
+				@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1-4")), BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for _, vM := range uiutils.L(vMetrics) {
-						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}}) {
+						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							@StatTile(StatTileProps{Label: uiutils.Get(vM, "label"), Value: uiutils.Get(vM, "value"), Icon: uiutils.Get(vM, "icon"), Hint: uiutils.Get(vM, "hint")})
 						}
 					}
 				}
 			}
-			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "1-2", "1")), BoxProps: box.BoxProps{Class: "items-stretch gap-4", Attrs: uiutils.Attrs("data-testid", "panels")}}) {
+			@compose.Grid(compose.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "1-2", "1")), BoxProps: box.BoxProps{Class: "items-stretch gap-4", Attrs: uiutils.Attrs("data-slot", "panels")}}) {
 				if uiutils.Gt(uiutils.Len(uiutils.Get(vChart, "series")), float64(0)) {
 					@Panel(PanelProps{Title: uiutils.Get(vChart, "title"), Description: uiutils.Get(vChart, "text"), Id: uiutils.Tpl("{0}-chart", vId), Class: uiutils.Cnv("h-full")}) {
 						@BarChart(BarChartProps{Bars: uiutils.Get(vChart, "series"), Label: uiutils.Get(vChart, "summary"), Height: float64(144)})

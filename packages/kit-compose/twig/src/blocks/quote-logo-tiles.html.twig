@@ -14,8 +14,8 @@
         {%- endset -%}
         {{ include('compose/Text.html.twig', {'size': 'sm', 'weight': 'semibold', 'children': c_1}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'justify': 'center', 'class': 'rounded bg-card inset-ring inset-ring-border p-4 text-muted-foreground', 'attrs': og_attrs(['data-testid', 'quote-logo']), 'children': c_2}, with_context = false) }}
+      {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'justify': 'center', 'class': 'rounded bg-card inset-ring inset-ring-border p-4 text-muted-foreground', 'attrs': og_attrs(['data-slot', 'quote-logo']), 'children': c_2}, with_context = false) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Box.html.twig', {'class': 'grid grid-cols-2 gap-4', 'attrs': og_attrs(['data-testid', 'quote-logos']), 'children': c_3}, with_context = false) }}
+{{ include('compose/Box.html.twig', {'class': 'grid grid-cols-2 gap-4', 'attrs': og_attrs(['data-slot', 'quote-logos']), 'children': c_3}, with_context = false) }}

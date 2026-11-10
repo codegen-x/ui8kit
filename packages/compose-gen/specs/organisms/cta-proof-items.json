@@ -66,7 +66,7 @@
             "Class": "grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6"
           },
           "attrs": {
-            "data-testid": "cta-proof"
+            "data-slot": "cta-proof"
           },
           "children": [
             {
@@ -87,7 +87,7 @@
                     "Class": "text-muted-foreground"
                   },
                   "attrs": {
-                    "data-testid": "cta-item"
+                    "data-slot": "cta-item"
                   },
                   "children": [
                     {
@@ -157,7 +157,7 @@
             "Class": "grid grid-cols-1 gap-4 text-left sm:grid-cols-2"
           },
           "attrs": {
-            "data-testid": "cta-proof"
+            "data-slot": "cta-proof"
           },
           "children": [
             {
@@ -177,7 +177,7 @@
                     "Class": "rounded bg-card inset-ring inset-ring-border p-4"
                   },
                   "attrs": {
-                    "data-testid": "cta-item"
+                    "data-slot": "cta-item"
                   },
                   "children": [
                     {
@@ -277,7 +277,7 @@
             "Class": "grid grid-cols-3 gap-4"
           },
           "attrs": {
-            "data-testid": "cta-proof"
+            "data-slot": "cta-proof"
           },
           "children": [
             {
@@ -316,7 +316,7 @@
                         }
                       },
                       "attrs": {
-                        "data-testid": "cta-item"
+                        "data-slot": "cta-item"
                       },
                       "children": [
                         {
@@ -394,7 +394,7 @@
             "Class": "m-0 flex list-none flex-col gap-4 p-0"
           },
           "attrs": {
-            "data-testid": "cta-proof"
+            "data-slot": "cta-proof"
           },
           "children": [
             {
@@ -412,7 +412,7 @@
                     "Class": "flex items-start gap-4"
                   },
                   "attrs": {
-                    "data-testid": "cta-item"
+                    "data-slot": "cta-item"
                   },
                   "children": [
                     {
@@ -512,7 +512,7 @@
             "Class": "m-0 flex list-none flex-col p-0"
           },
           "attrs": {
-            "data-testid": "cta-proof"
+            "data-slot": "cta-proof"
           },
           "children": [
             {
@@ -530,7 +530,7 @@
                     "Class": "flex items-start justify-between gap-4 border-b border-border py-4"
                   },
                   "attrs": {
-                    "data-testid": "cta-item"
+                    "data-slot": "cta-item"
                   },
                   "children": [
                     {

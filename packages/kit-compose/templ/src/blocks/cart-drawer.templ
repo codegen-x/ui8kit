@@ -34,7 +34,7 @@ templ CartDrawer(p CartDrawerProps) {
 	{{ vState := uiutils.Def(p.State, "filled") }}
 	{{ vMedia := uiutils.Def(p.Media, "image") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: "py-8", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, uiutils.Get(vDrawer, "title")), "data-testid", "section")}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: "py-8", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, uiutils.Get(vDrawer, "title")), "data-slot", "section")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-6xl px-4", Attrs: uiutils.Attrs("data-slot", "container")}}) {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex min-h-160 overflow-hidden rounded bg-muted inset-ring inset-ring-border"}}) {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "hidden flex-1 flex-col gap-4 p-8 sm:flex", Attrs: uiutils.Attrs("aria-hidden", "true")}}) {
@@ -42,7 +42,7 @@ templ CartDrawer(p CartDrawerProps) {
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "h-40 rounded bg-background"}})
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "h-40 rounded bg-background"}})
 				}
-				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex w-full flex-col bg-background shadow-lg sm:max-w-sm", Attrs: uiutils.Attrs("role", "group", "aria-label", uiutils.Get(vDrawer, "title"), "data-testid", "drawer")}}) {
+				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex w-full flex-col bg-background shadow-lg sm:max-w-sm", Attrs: uiutils.Attrs("role", "group", "aria-label", uiutils.Get(vDrawer, "title"), "data-slot", "drawer")}}) {
 					@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "between", BoxProps: box.BoxProps{Class: "border-b border-border p-4"}}) {
 						@compose.Title(compose.TitleProps{As: "2", Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(uiutils.Get(vDrawer, "title")) }
@@ -52,7 +52,7 @@ templ CartDrawer(p CartDrawerProps) {
 						}
 					}
 					if uiutils.T(uiutils.Or(uiutils.Eq(vState, "empty"), uiutils.Eq(uiutils.Len(vLines), float64(0)))) {
-						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex flex-1 flex-col justify-center p-4", Attrs: uiutils.Attrs("data-testid", "empty")}}) {
+						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex flex-1 flex-col justify-center p-4", Attrs: uiutils.Attrs("data-slot", "empty")}}) {
 							@EmptyState(EmptyStateProps{Icon: "shopping-bag", Title: uiutils.Get(vDrawer, "empty"), Text: uiutils.Get(vDrawer, "emptyText"), Action: cartDrawerFill1(p, vDrawer)})
 						}
 					} else {

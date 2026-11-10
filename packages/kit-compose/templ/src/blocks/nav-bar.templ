@@ -40,10 +40,10 @@ templ NavBar(p NavBarProps) {
 	{{ vOver := uiutils.Def(p.Over, "none") }}
 	{{ vSkip := p.Skip }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "header", Class: uiutils.S(uiutils.Cnv("relative", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "inverse")), "border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background", "border-b border-border bg-background"), uiutils.Cond(uiutils.T(uiutils.Eq(vOver, "media")), "isolate overflow-hidden border-0 bg-transparent", ""))), Attrs: uiutils.Attrs("data-testid", "nav-bar", "data-layout", vLayout, "data-tone", vTone, "aria-label", vLandmarkLabel)}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "header", Class: uiutils.S(uiutils.Cnv("relative", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "inverse")), "border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background", "border-b border-border bg-background"), uiutils.Cond(uiutils.T(uiutils.Eq(vOver, "media")), "isolate overflow-hidden border-0 bg-transparent", ""))), Attrs: uiutils.Attrs("data-layout", vLayout, "data-tone", vTone, "aria-label", vLandmarkLabel, "data-slot", "nav-bar")}}) {
 		@OverMedia(OverMediaProps{On: uiutils.Eq(vOver, "media"), Alt: vBrand})
 		if uiutils.T(vSkip) {
-			@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border", Attrs: uiutils.Attrs("data-testid", "skip-link")}}) {
+			@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border", Attrs: uiutils.Attrs("data-slot", "skip-link")}}) {
 				{ uiutils.Text(vSkip) }
 			}
 		}

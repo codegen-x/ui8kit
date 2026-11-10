@@ -25,13 +25,13 @@
         {%- endset -%}
         {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'start', 'children': c_4}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Card.html.twig', {'variant': 'compact', 'attrs': og_attrs(['data-testid', 'feature-card']), 'children': c_5}, with_context = false) }}
+      {{ include('compose/Card.html.twig', {'variant': 'compact', 'children': c_5}, with_context = false) }}
     {%- elseif og_t(og_eq(v_item, 'cell')) %}
       {%- set c_9 -%}
         {%- set c_6 -%}
           {{ include('icons/LucideIcon.html.twig', {'name': og_s(og_get(v_feature, ['icon'])), 'size': 24}, with_context = false) }}
         {%- endset -%}
-        {{ include('compose/IconBadge.html.twig', {'variant': 'primary', 'size': 'xl', 'attrs': og_attrs(['data-testid', 'feature-icon']), 'children': c_6}, with_context = false) }}
+        {{ include('compose/IconBadge.html.twig', {'variant': 'primary', 'size': 'xl', 'attrs': og_attrs(['data-slot', 'feature-icon']), 'children': c_6}, with_context = false) }}
         {%- set c_7 -%}
           {{ og_text(og_get(v_feature, ['title'])) }}
         {%- endset -%}
@@ -41,7 +41,7 @@
         {%- endset -%}
         {{ include('compose/Text.html.twig', {'size': 'sm', 'weight': 'semibold', 'class': 'leading-5 text-muted-foreground', 'children': c_8}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Stack.html.twig', {'gap': '2', 'align': 'center', 'class': 'h-full gap-8 bg-background px-6 py-12 text-center', 'attrs': og_attrs(['data-testid', 'feature-card']), 'children': c_9}, with_context = false) }}
+      {{ include('compose/Stack.html.twig', {'gap': '2', 'align': 'center', 'class': 'h-full gap-8 bg-background px-6 py-12 text-center', 'attrs': og_attrs(['data-slot', 'feature-card']), 'children': c_9}, with_context = false) }}
     {%- else %}
       {%- set c_14 -%}
         {%- set c_11 -%}
@@ -60,8 +60,8 @@
         {%- endset -%}
         {{ include('compose/CardContent.html.twig', {'children': c_13}, with_context = false) }}
       {%- endset -%}
-      {{ include('compose/Card.html.twig', {'variant': 'default', 'attrs': og_attrs(['data-testid', 'feature-card']), 'children': c_14}, with_context = false) }}
+      {{ include('compose/Card.html.twig', {'variant': 'default', 'children': c_14}, with_context = false) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}
-{{ include('compose/Grid.html.twig', {'cols': og_s(v_cols), 'class': og_s((og_t(og_eq(v_item, 'cell')) ? og_cnv(['w-full gap-px overflow-hidden bg-border p-px', og_preset('blocks/presets/defaults.json', ['features', 'cells'])]) : 'gap-6')), 'attrs': og_attrs(['data-testid', 'feature-grid']), 'children': c_15}, with_context = false) }}
+{{ include('compose/Grid.html.twig', {'cols': og_s(v_cols), 'class': og_s((og_t(og_eq(v_item, 'cell')) ? og_cnv(['w-full gap-px overflow-hidden bg-border p-px', og_preset('blocks/presets/defaults.json', ['features', 'cells'])]) : 'gap-6')), 'attrs': og_attrs(['data-slot', 'feature-grid']), 'children': c_15}, with_context = false) }}

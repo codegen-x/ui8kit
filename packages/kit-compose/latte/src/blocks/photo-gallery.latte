@@ -50,9 +50,9 @@
           {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'ratio' => '1/1', 'className' => og_cnv([(og_t(og_eq($v_i, 0)) ? 'ring-2 ring-foreground' : '')])]])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-3 gap-2 sm:grid-cols-9', 'attrs' => og_attrs(['data-testid', 'thumbs']), 'children' => (string) $c_8])|noescape}
+      {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-3 gap-2 sm:grid-cols-9', 'attrs' => og_attrs(['data-slot', 'thumbs']), 'children' => (string) $c_8])|noescape}
     {/capture}
-    {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-testid', 'featured']), 'children' => (string) $c_9])|noescape}
+    {=og_include('compose/Stack.latte', ['gap' => '4', 'align' => 'stretch', 'attrs' => og_attrs(['data-slot', 'featured']), 'children' => (string) $c_9])|noescape}
   {else}
     {capture $c_15}
       {foreach og_l($v_photos) as $v_p}
@@ -76,13 +76,13 @@
             {capture $c_13}
               {=og_text(og_get($v_p, ['title']))}
             {/capture}
-            {=og_include('compose/Box.latte', ['class' => 'text-sm text-muted-foreground', 'attrs' => og_attrs(['data-testid', 'caption']), 'children' => (string) $c_13])|noescape}
+            {=og_include('compose/Box.latte', ['class' => 'text-sm text-muted-foreground', 'attrs' => og_attrs(['data-slot', 'caption']), 'children' => (string) $c_13])|noescape}
           {/if}
         {/capture}
         {=og_include('blocks/figure-block.latte', ['p' => ['className' => og_cnv([og_cnv(['flex flex-col gap-2', (og_t(og_eq($v_layout, 'masonry')) ? 'mb-4 break-inside-avoid' : ''), (og_t(og_and([og_eq($v_layout, 'mosaic'), og_eq($v_i, 0)])) ? 'col-span-2 row-span-2' : ''), (og_t(og_eq($v_layout, 'cards')) ? 'rounded bg-card inset-ring inset-ring-border p-4' : '')])]), 'testid' => 'item'], 'children' => og_markup($c_14)])|noescape}
       {/foreach}
     {/capture}
-    {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'masonry')) ? 'columns-1 gap-4 sm:columns-2 lg:columns-3' : (og_t(og_eq($v_layout, 'mosaic')) ? 'grid grid-cols-2 gap-4 md:grid-cols-4' : 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'))), 'attrs' => og_attrs(['data-testid', 'items']), 'children' => (string) $c_15])|noescape}
+    {=og_include('compose/Box.latte', ['class' => og_s((og_t(og_eq($v_layout, 'masonry')) ? 'columns-1 gap-4 sm:columns-2 lg:columns-3' : (og_t(og_eq($v_layout, 'mosaic')) ? 'grid grid-cols-2 gap-4 md:grid-cols-4' : 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'))), 'attrs' => og_attrs(['data-slot', 'items']), 'children' => (string) $c_15])|noescape}
   {/if}
 {/capture}
 {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => $v_title, 'lead' => $v_lead, 'tone' => $v_tone, 'density' => $v_density, 'landmarkLabel' => $v_landmarkLabel], 'children' => og_markup($c_16)])|noescape}

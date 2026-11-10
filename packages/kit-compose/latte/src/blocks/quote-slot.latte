@@ -9,4 +9,4 @@
 {capture $c_1}
   {=og_include('blocks/quote-card.latte', ['p' => ['q' => $v_q, 'labels' => $v_labels, 'item' => ['kind' => $v_kind, 'avatar' => 'image', 'rating' => 'show', 'mark' => 'none'], 'layout' => $v_layout]])|noescape}
 {/capture}
-{=og_include('compose/Box.latte', ['class' => og_s(($p['className'] ?? '')), 'attrs' => og_attrs(['data-testid', 'quote']), 'children' => (string) $c_1])|noescape}
+{=og_include('compose/Box.latte', ['class' => og_s(($p['className'] ?? '')), 'attrs' => og_attrs(['data-slot', 'quote']), 'children' => (string) $c_1])|noescape}

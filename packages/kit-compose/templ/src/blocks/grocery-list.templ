@@ -40,9 +40,9 @@ templ GroceryList(p GroceryListProps) {
 		if uiutils.Eq(uiutils.Len(vDishes), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "shopping-bag", Title: vEmpty})
 		} else {
-			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "grid grid-cols-1 gap-x-8 md:grid-cols-2", "grid grid-cols-1")), Attrs: uiutils.Attrs("data-testid", "items")}}) {
+			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "grid grid-cols-1 gap-x-8 md:grid-cols-2", "grid grid-cols-1")), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vD := range uiutils.L(vDishes) {
-					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-4 border-b border-border py-2", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-4 border-b border-border py-2", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						if uiutils.Eq(vThumbs, "show") {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "1/1", Class: uiutils.Cnv("size-12 shrink-0")})
 						}

@@ -29,10 +29,10 @@
               {/if}
               {=og_text(og_get($v_f, ['title']))}
             {/capture}
-            {=og_include('compose/Button.latte', ['variant' => 'outline', 'size' => 'sm', 'type' => 'button', 'class' => 'gap-2', 'attrs' => og_attrs(['data-testid', 'template-filter']), 'children' => (string) $c_2])|noescape}
+            {=og_include('compose/Button.latte', ['variant' => 'outline', 'size' => 'sm', 'type' => 'button', 'class' => 'gap-2', 'children' => (string) $c_2])|noescape}
           {/foreach}
         {/capture}
-        {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'flex-wrap', 'attrs' => og_attrs(['role', 'group', 'aria-label', og_get($v_labels, ['filters']), 'data-testid', 'template-filters']), 'children' => (string) $c_3])|noescape}
+        {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => 'flex-wrap', 'attrs' => og_attrs(['role', 'group', 'aria-label', og_get($v_labels, ['filters']), 'data-slot', 'template-filters']), 'children' => (string) $c_3])|noescape}
       {/if}
     {/capture}
     {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => 'between', 'class' => 'h-8 w-full flex-wrap', 'children' => (string) $c_4])|noescape}
@@ -50,7 +50,7 @@
               {capture $c_6}
                 {=og_include('icons/LucideIcon.latte', ['name' => 'layout-template', 'size' => 16])|noescape}
               {/capture}
-              {=og_include('compose/IconBadge.latte', ['size' => 'sm', 'class' => 'overflow-hidden', 'attrs' => og_attrs(['data-testid', 'template-avatar']), 'children' => (string) $c_6])|noescape}
+              {=og_include('compose/IconBadge.latte', ['size' => 'sm', 'class' => 'overflow-hidden', 'attrs' => og_attrs(['data-slot', 'template-avatar']), 'children' => (string) $c_6])|noescape}
               {capture $c_15}
                 {capture $c_7}
                   {=og_text(og_get($v_t, ['title']))}
@@ -86,17 +86,17 @@
               {/capture}
               {=og_include('compose/Stack.latte', ['gap' => '0', 'class' => 'min-w-0 flex-1', 'children' => (string) $c_15])|noescape}
             {/capture}
-            {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => og_s(og_cnv(['w-full', og_preset('blocks/presets/defaults.json', ['templates', 'footer'])])), 'attrs' => og_attrs(['data-testid', 'template-footer']), 'children' => (string) $c_16])|noescape}
+            {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'class' => og_s(og_cnv(['w-full', og_preset('blocks/presets/defaults.json', ['templates', 'footer'])])), 'attrs' => og_attrs(['data-slot', 'template-footer']), 'children' => (string) $c_16])|noescape}
           {/capture}
-          {=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border', og_preset('blocks/presets/defaults.json', ['templates', 'card'])])), 'attrs' => og_attrs(['data-testid', 'template-card']), 'children' => (string) $c_17])|noescape}
+          {=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border', og_preset('blocks/presets/defaults.json', ['templates', 'card'])])), 'attrs' => og_attrs(['data-slot', 'template-card']), 'children' => (string) $c_17])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/Grid.latte', ['cols' => og_s($v_cols), 'class' => 'w-full gap-6', 'attrs' => og_attrs(['data-testid', 'template-grid']), 'children' => (string) $c_18])|noescape}
+      {=og_include('compose/Grid.latte', ['cols' => og_s($v_cols), 'class' => 'w-full gap-6', 'attrs' => og_attrs(['data-slot', 'template-grid']), 'children' => (string) $c_18])|noescape}
     {/if}
     {capture $c_19}
       {=og_text(og_get($v_labels, ['browse']))}
     {/capture}
-    {=og_include('compose/Button.latte', ['variant' => 'outline', 'size' => 'sm', 'href' => og_url(og_s($v_browseHref)), 'class' => 'w-full', 'attrs' => og_attrs(['data-testid', 'template-browse']), 'children' => (string) $c_19])|noescape}
+    {=og_include('compose/Button.latte', ['variant' => 'outline', 'size' => 'sm', 'href' => og_url(og_s($v_browseHref)), 'class' => 'w-full', 'children' => (string) $c_19])|noescape}
   {/capture}
   {=og_include('compose/Stack.latte', ['gap' => '8', 'align' => 'stretch', 'children' => (string) $c_20])|noescape}
 {/capture}

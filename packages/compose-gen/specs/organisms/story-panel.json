@@ -43,7 +43,7 @@
         "Class": "rounded bg-card inset-ring inset-ring-border p-6"
       },
       "attrs": {
-        "data-testid": "story-panel"
+        "data-slot": "story-panel"
       },
       "children": [
         {

@@ -20,7 +20,7 @@ type MenuRowProps struct {
 templ MenuRow(p MenuRowProps) {
 	{{ vDish := p.Dish }}
 	{{ vPrices := uiutils.Def(p.Prices, "show") }}
-	@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-0 border-b border-border py-2", Attrs: uiutils.Attrs("data-testid", "item")}}) {
+	@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex flex-col gap-0 border-b border-border py-2", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex items-baseline gap-2"}}) {
 			@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "font-semibold"}}) {
 				{ uiutils.Text(uiutils.Get(vDish, "name")) }
@@ -32,7 +32,7 @@ templ MenuRow(p MenuRowProps) {
 			}
 			if uiutils.Eq(vPrices, "show") {
 				@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex-1 border-b border-dotted border-border", Attrs: uiutils.Attrs("aria-hidden", "true")}})
-				@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "font-semibold", Attrs: uiutils.Attrs("data-testid", "price")}}) {
+				@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "font-semibold", Attrs: uiutils.Attrs("data-slot", "price")}}) {
 					{ uiutils.Text(uiutils.Money(uiutils.Get(vDish, "price"), uiutils.Get(vDish, "currency"))) }
 				}
 			}

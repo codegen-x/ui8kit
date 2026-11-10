@@ -22,9 +22,9 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_3}) }}
         {%- endset -%}
-        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'start', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-testid', 'footer-channel'])}, 'children': c_4}) }}
+        {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Align': 'start', 'Class': 'rounded bg-card inset-ring inset-ring-border p-4', 'Attrs': og_attrs(['data-slot', 'footer-channel'])}, 'children': c_4}) }}
       {%- endif %}
     {%- endfor %}
   {%- endset -%}
-  {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 gap-4 sm:grid-cols-3'}, 'children': c_5}) }}
+  {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-1 gap-4 sm:grid-cols-3', 'Attrs': og_attrs(['data-slot', 'footer-channels'])}, 'children': c_5}) }}
 {%- endif %}
