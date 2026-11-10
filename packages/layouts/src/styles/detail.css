@@ -27,6 +27,7 @@
   .ui8-summary-actions { @apply border-t border-border pt-6; }
   .ui8-summary-action { @apply w-full gap-2; }
   .ui8-summary-link { @apply self-center; }
+  .ui8-summary-saved { @apply text-primary *:fill-current; }
   .ui8-install { @apply border-t border-border pt-6; }
   .ui8-install-runtime { @apply min-w-0; }
   .ui8-install-label { @apply text-sm text-muted-foreground; }

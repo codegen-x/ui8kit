@@ -85,7 +85,8 @@
   {#snippet main()}
     {#if view}
       <DetailMain {t} {view} back={visit.back} devices={DEVICES} full={fullDevice} side={fullSide} {onfull}
-        mode={stock.state.mode} onmode={(m) => themeCtl.setField("mode", m)} src={frameHash(view.key)} {related}>
+        mode={stock.state.mode} onmode={(m) => themeCtl.setField("mode", m)} src={frameHash(view.key)} {related}
+        collection={activeOf(shelf.value).title} saved={kept(shelf.value, view.key)} onsave={asset ? () => keep(toggleKept(shelf.value, asset, new Date())) : undefined}>
         {#snippet card(c: CardView)}
           {@const own = byId.get(c.key)}
           <AssetCard {t} card={c} onvariants={(spec) => search({ spec, variants: "all" })} collection={activeOf(shelf.value).title} saved={kept(shelf.value, c.key)}

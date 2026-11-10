@@ -48,7 +48,7 @@
             {/if}
             {#if onsave}
               <Button variant={saved ? "secondary" : "ghost"} size="sm" class="size-8 p-0" pressed={saved} aria-label={saveLabel} title={saveLabel} onclick={onsave} data-testid="card-save">
-                <LucideIcon name="heart" size={16} class={saved ? "fill-current text-primary" : ""} />
+                <LucideIcon name="heart" size={16} class={saved ? "text-primary *:fill-current" : ""} />
               </Button>
             {/if}
           </Group>

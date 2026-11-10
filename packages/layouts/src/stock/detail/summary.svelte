@@ -1,13 +1,19 @@
 <!-- The key information beside the preview: the name and what it is, the key facts (type, the blocks of a page or the
      variants of a block, the composition pattern, the runtimes), the labels as links into the catalog, and the actions (full
-     screen, similar ones in the catalog). A missing label says so ("no label"); nothing is filled in. -->
+     screen, keep it in the active collection when the app passes `onsave`, similar ones in the catalog). A missing label says so
+     ("no label"); nothing is filled in. -->
 <script lang="ts">
   import { Badge, Block, Box, Button, Group, Link, List, ListItem, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import InstallPanel from "./install-panel.svelte";
-  import type { DetailView, StockText } from "../text";
+  import { fmt, type DetailView, type StockText } from "../text";
 
-  let { t, view, onfull }: { t: StockText; view: DetailView; onfull: () => void } = $props();
+  let { t, view, onfull, collection = "", saved = false, onsave }: {
+    t: StockText; view: DetailView; onfull: () => void;
+    /** the title of the active collection, `saved` the asset is in it, `onsave` toggles it (absent: no button) */
+    collection?: string; saved?: boolean; onsave?: () => void;
+  } = $props();
   const screen = $derived(view.type === "screen");
+  const saveLabel = $derived(fmt(saved ? t.card.unsave : t.card.save, { name: collection }));
 </script>
 
 <Block tag="section" aria-labelledby="detail-title" class="ui8-summary" data-testid="detail-summary">
@@ -67,6 +73,12 @@
         <LucideIcon name="monitor-smartphone" size={16} />
         <Text tag="span">{t.detail.preview.full}</Text>
       </Button>
+      {#if onsave}
+        <Button variant={saved ? "secondary" : "outline"} size="default" class="ui8-summary-action" pressed={saved} onclick={onsave} data-testid="detail-save">
+          <LucideIcon name="heart" size={16} class={saved ? "ui8-summary-saved" : ""} />
+          <Text tag="span">{saveLabel}</Text>
+        </Button>
+      {/if}
       {#each view.similarBy as s (s.id)}
         <Link href={s.href} size="sm" class="ui8-summary-link" data-testid={"detail-similar-" + s.id}>
           <LucideIcon name={s.id === "pattern" ? "layout-grid" : "layers"} size={16} />

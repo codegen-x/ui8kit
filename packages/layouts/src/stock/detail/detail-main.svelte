@@ -12,7 +12,7 @@
   import Summary from "./summary.svelte";
   import type { CardView, DetailView, DeviceView, PassportLink, RelatedView, StockText } from "../text";
 
-  let { t, view, back, devices, full, side = false, onfull, mode, onmode, src, related, card, thumb }: {
+  let { t, view, back, devices, full, side = false, onfull, mode, onmode, src, related, card, thumb, collection = "", saved = false, onsave }: {
     t: StockText; view: DetailView; back: string; devices: readonly DeviceView[];
     /** the device of the open full-screen preview (null: closed); `onfull` opens it at a device or closes it (null) */
     full: DeviceView | null; onfull: (device: string | null) => void;
@@ -20,6 +20,8 @@
     side?: boolean;
     mode: string; onmode: (mode: string) => void; src: string; related: RelatedView[];
     card: Snippet<[CardView]>; thumb: Snippet<[PassportLink]>;
+    /** keep the asset in the active collection (Summary): its title, whether it is in, the toggle (absent: no button) */
+    collection?: string; saved?: boolean; onsave?: () => void;
   } = $props();
   const screen = $derived(view.type === "screen");
   // the part of the page the concepts column points at (a screen page's block), outlined in the preview
@@ -38,7 +40,7 @@
     <Link href={back} size="sm" variant="muted" class="ui8-detail-back" data-testid="detail-back"><LucideIcon name="arrow-left" size={16} /><Text tag="span">{t.detail.back}</Text></Link>
     <Box id="detail-head" class="ui8-detail-split" data-testid="detail-head">
       <PreviewPanel {t} title={view.title} device={devices[0]!} {src} parts={screen ? view.map.length : 0} {point} {reveal} onfull={() => onfull(devices[0]!.id)} />
-      <Summary {t} {view} onfull={() => onfull(devices[0]!.id)} />
+      <Summary {t} {view} onfull={() => onfull(devices[0]!.id)} {collection} {saved} {onsave} />
     </Box>
     <Box class="ui8-detail-split ui8-detail-body" data-testid="detail-body">
       <Concepts {t} {view} {point} onpoint={(i) => (point = i)} onlocate={locate} {thumb} />
