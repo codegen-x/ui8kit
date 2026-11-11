@@ -1,6 +1,6 @@
 /**
  * WCAG AA for the destructive fill: text-destructive-foreground on bg-destructive must reach 4.5:1 in the theme and every
- * skin, light and dark (theme.css + 17 skin files x 2 = 36 combinations), at rest and on hover (bg-destructive-hover). Skins inherit what they do not set from theme.css.
+ * skin, light and dark (theme.css + 18 skin files x 2 = 38 combinations), at rest and on hover (bg-destructive-hover). Skins inherit what they do not set from theme.css.
  */
 import { describe, expect, it } from "bun:test";
 import { readFileSync, readdirSync } from "node:fs";
@@ -39,7 +39,7 @@ const base = blocks(readFileSync(join(STYLES, "theme.css"), "utf8"));
 const files = ["theme.css", ...readdirSync(join(STYLES, "skins")).filter((f) => f.endsWith(".css")).sort().map((f) => `skins/${f}`)];
 
 describe("destructive contrast (AA 4.5)", () => {
-  it("covers 36 combinations", () => expect(files.length * 2).toBe(36));
+  it("covers 38 combinations", () => expect(files.length * 2).toBe(38));
   for (const f of files) {
     const own = blocks(readFileSync(join(STYLES, f), "utf8"));
     for (const mode of ["light", "dark"] as const) {

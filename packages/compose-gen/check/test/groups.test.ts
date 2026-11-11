@@ -15,10 +15,10 @@ test("every group passes on the repository", () => {
   expect(results.filter((r) => r.problems.length).map((r) => `${r.name}: ${r.problems.slice(0, 3).join("; ")}`)).toEqual([]);
 });
 
-test("the context: 267 organism specs, 108 blocks, 17 screens, 4 host apps", () => {
-  expect(ctx.inputs.organisms.length).toBe(267);
-  expect(ctx.inputs.blocks.length).toBe(108);
-  expect(ctx.inputs.screens.length).toBe(17);
+test("the context: 273 organism specs, 112 blocks, 18 screens, 4 host apps", () => {
+  expect(ctx.inputs.organisms.length).toBe(273);
+  expect(ctx.inputs.blocks.length).toBe(112);
+  expect(ctx.inputs.screens.length).toBe(18);
   expect(ctx.apps.map((a) => a.app.runtime).sort()).toEqual(["react", "solid", "svelte", "vue"]);
 });
 

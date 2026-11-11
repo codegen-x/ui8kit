@@ -144,10 +144,10 @@ test("the DOM check sees what it must refuse", () => {
 test("the Pager link mode: hostile address templates give no link; safe ones the asked pages, aria-current on the current page", async () => {
   const render = await jsRenderer(loaded.organisms);
   /** the addresses of the links in the posts pager (the post cards link too) */
-  const hrefs = (html: string) => [...(/data-testid="posts-pager"[\s\S]*?<\/nav>/.exec(html)?.[0] ?? "").matchAll(/<a\b[^>]*?\bhref="([^"]*)"/g)].map((m) => m[1]);
+  const hrefs = (html: string) => [...(/data-slot="posts-pager"[\s\S]*?<\/nav>/.exec(html)?.[0] ?? "").matchAll(/<a\b[^>]*?\bhref="([^"]*)"/g)].map((m) => m[1]);
   for (const c of pagerCases.slice(0, -1)) {
     const html = await render("react", c);
-    expect([c.label, /<nav\b[^>]*data-testid="posts-pager"/.test(html), hrefs(html)]).toEqual([c.label, true, []]);
+    expect([c.label, /<nav\b[^>]*data-slot="posts-pager"/.test(html), hrefs(html)]).toEqual([c.label, true, []]);
     expect([c.label, domProblems(html)]).toEqual([c.label, []]);
   }
   const html = await render("react", pagerCases.at(-1)!);

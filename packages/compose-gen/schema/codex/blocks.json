@@ -7897,7 +7897,7 @@
       "id": "screen.catalog",
       "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/catalog.json",
-      "status": "done",
+      "status": "todo",
       "data": [
         {
           "prop": "AboutCompany.stats",
