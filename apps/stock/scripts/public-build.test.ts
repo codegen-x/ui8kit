@@ -34,11 +34,12 @@ function fingerprints(rt: string): string[] {
 }
 
 describe("the public build", () => {
-  test("serves the page and its assets only: index.html, scripts, styles, fonts", () => {
+  test("serves the page and its assets only: index.html, scripts, styles, fonts, the WebP thumbnails", () => {
     expect(files).toContain("index.html");
-    expect(files.filter((f) => f !== "index.html" && !/^assets\/[\w.-]+\.(js|css|woff2)$/.test(f))).toEqual([]);
+    expect(files.filter((f) => f !== "index.html" && !/^assets\/[\w.-]+\.(js|css|woff2)$/.test(f) && !/^thumbs\/[\w.-]+\.webp$/.test(f))).toEqual([]);
     expect(files.filter((f) => /\.(json|map|svelte|tsx?|jsx|vue|templ|twig|latte|j2|go|py|php)$/i.test(f))).toEqual([]);
-    expect(files.filter((f) => /dataset|source|snippet|code/i.test(f))).toEqual([]);
+    // a thumbnail is named by its asset id (block.hero/code is a hero with a code sample) and is a picture, not code
+    expect(files.filter((f) => !/^thumbs\/[\w.-]+\.webp$/.test(f) && /dataset|source|snippet|code/i.test(f))).toEqual([]);
   });
 
   test("holds no source code of any of the 8 runtimes (sampled lines of every runtime's generated blocks)", () => {

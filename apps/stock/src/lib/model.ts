@@ -8,8 +8,9 @@ export type { Clause, Facet, FacetUi, FacetValue, Locale, QuickFilter, Rule, Sor
 export type { BlockRecipe, BlockUse, Recipes as Previews, ScreenRecipe, SpecValue } from "@ui8kit/layouts/preview/recipe";
 
 export type Preview = PreviewRef;
-/** a block variant names its registry item (`registry`: the kebab name of the organism that draws it, see src/lib/install.ts) */
-export type Asset = AnyAsset<Preview> & { registry?: string };
+/** a block variant names its registry item (`registry`: the kebab name of the organism that draws it, see src/lib/install.ts);
+ *  `thumb`: its WebP picture relative to the app root (thumbs/<id>.webp?v=<sha8>, scripts/thumbs.ts), when one was captured */
+export type Asset = AnyAsset<Preview> & { registry?: string; thumb?: string };
 /** a facet every asset carries with the same labels (hidden from the filters: it does not discriminate), kept as a fact of all */
 export type SharedFacet = { facet: string; label: Text; values: { id: string; label: Text }[] };
 export type Index = Omit<AnyIndex<Preview>, "assets"> & { assets: Asset[]; shared?: SharedFacet[] };

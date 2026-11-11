@@ -14,6 +14,7 @@ import { isModular, rootGrid, variantProps, type PatternMap, type TermFile } fro
 import { install, kebab, DOCS_URL, REGISTRY_URL, RUNTIMES, type Install, type InstallIndex } from "../../src/lib/install";
 import { axisProps, mergeProps, type VariantIndex, type VariantItem } from "../../src/lib/variants";
 import { propsIndex, type PropsIndex, type PropsSpec } from "./props";
+import { thumbOf } from "./thumbs";
 import { lucideIcons } from "../../../../packages/compose-gen/lucide";
 import type { Asset, BlockRecipe, BlockUse, Clause, Facet, FacetValue, Index, Preview, Previews, Rule, ScreenRecipe, SpecValue, Vocabulary } from "../../src/lib/model";
 
@@ -166,7 +167,8 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
     // the words of the labels (value names and synonyms) are added by the engine when it loads the index (src/lib/search.ts)
     const fields = a.words.filter((f) => f.words.length);
     const { words: _w, ...rest } = a;
-    return { ...rest, order, added: addedOf(a.spec), labels: ordered, weak, missing, fields };
+    const thumb = thumbOf(a.id);
+    return { ...rest, ...(thumb ? { thumb } : {}), order, added: addedOf(a.spec), labels: ordered, weak, missing, fields };
   }
 
   const runtimesOf = (names: string[]): string[] => {

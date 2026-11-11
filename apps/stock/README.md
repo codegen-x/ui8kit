@@ -10,6 +10,7 @@ both work).
     bun run test         # unit tests (also part of the root bun run test)
     bun run index        # rebuild the index: content/assets.v0.json, content/previews.v0.json, content/install.v0.json, content/variants.v0.json, content/props.v0.json, src/lib/collections.gen.ts
     bun run index:check  # fail when the committed index differs from a fresh build (deterministic: same inputs, same digest)
+    bun scripts/thumbs.ts  # on demand, with a build served by `bun run preview`: public/thumbs/<id>.webp of every asset (#/frame/<id>, 640x400 WebP), then `bun run index`
 
 ## Collections and Compare (alexy-os/chaosbun#151)
 
@@ -56,7 +57,11 @@ no asset carries (`index.hidden` names both). Each asset lists its `weak` facets
 ## Install (code on Buildy)
 
 Every block variant names its registry item (`registry` on the asset: the kebab name of the organism that draws it, so `hero` variants
-with `chrome=nav` are `hero-prompt`). `content/install.v0.json` (built with the index by `src/lib/install.ts`, plain JSON, English keys,
+with `chrome=nav` are `hero-prompt`). An asset carries `thumb` (`thumbs/<id>.webp?v=<sha8>`, relative to the app root) when `public/thumbs/` has its picture:
+the top 1280x800 of its live render at half scale, captured by `scripts/thumbs.ts` (headless Chromium, one fresh load of
+`#/frame/<id>` per asset, light theme); Vercel serves `thumbs/` with a one-year immutable cache (the `v` query changes with the file).
+
+`content/install.v0.json` (built with the index by `src/lib/install.ts`, plain JSON, English keys,
 meant to be served as is later, e.g. by an MCP server) holds one install object per registry block (`blocks`) and per screen page
 (`screens`, by asset id: the blocks of the page, each once, in page order):
 
