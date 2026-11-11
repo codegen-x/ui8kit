@@ -9,7 +9,6 @@ export interface ComposeGenPaths {
   /** fixtures/taxonomies: one Codex v0.4 taxonomy bundle (definition + terms) per file */
   taxonomies: string;
   dictionary: string;
-  lucide: string;
   nonportable: string;
   docs: string;
 }
@@ -20,7 +19,6 @@ export const composeGenPaths = (root: string): ComposeGenPaths => ({
   fixtures: join(root, "fixtures"),
   taxonomies: join(root, "fixtures", "taxonomies"),
   dictionary: join(root, "content", "ui", "en.json"),
-  lucide: join(root, "specs", "assets", "lucide-icons.json"),
   nonportable: join(root, "specs", "_nonportable.json"),
   docs: join(root, "docs"),
 });

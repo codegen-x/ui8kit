@@ -10,7 +10,7 @@ step that deletes `xgen/` (and `vendor/codegen`), everything below moves into co
 | --- | --- | --- | --- |
 | `xgen/specs/{organisms,parts,patterns}` | 243 organism specs (224 portable) | JSON | `compose-gen/specs/organisms/...` (as is) |
 | `xgen/specs/{blocks,recipes,presets,screens}` | gallery blocks (case table), organism recipes, frame presets, screens (next steps) | JSON | `compose-gen/specs/...` |
-| `xgen/specs/assets/lucide-icons.json` | glyph registry (symlink into vendor/codegen) | JSON | `compose-gen/specs/assets/` (copy, ISC notice kept) |
+| `xgen/specs/assets/lucide-icons.json` | glyph registry (symlink into vendor/codegen) | JSON | replaced by the pinned `lucide-static` package (`compose-gen/lucide.ts`; JS runtimes render through `lucide`) |
 | `xgen/specs/ui` (symlink into vendor/codegen) | v2 brick specs: only the prop tables (PartRef) the emitters use to name props | JSON | derived from `kit-compose/src/map.ts` + recipes + the v3 primitive specs (`specs/primitives.json` of @ui8kit/registry): no v2 brick spec left |
 | `xgen/content`, collections, taxonomies | dictionary + data of the gallery cases | JSON | `compose-gen/content/` |
 | `xgen/schema` (`@ui8kit/xgen-schema`) | JSON schemas + paths for the loader | ~500 lines | `compose-gen/src/schema` (organism/block/preset/recipe schemas only) |

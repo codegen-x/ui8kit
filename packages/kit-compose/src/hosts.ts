@@ -6,7 +6,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { ROOT as GEN, portableTo, tierDir, fileName, type OrganismSpec } from "../../compose-gen";
+import { ROOT as GEN, portableTo, tierDir, fileName, LUCIDE_VERSION, type OrganismSpec } from "../../compose-gen";
 import { APP_FILE, findApps, loadApp, sourcesOf, type AppSpec, type ScreenSpec } from "../../compose-gen/screens/src/index";
 import { BANNER, HOST_GEN, SHARED, SHARED_DIR, decksFile, jsonFile, sharedPackage, type GeneratedFile } from "../../compose-gen/runtimes/core/src/index";
 import * as react from "../../compose-gen/runtimes/react/src/index";
@@ -62,7 +62,7 @@ function composePackage(r: JsRuntime, organisms: OrganismSpec[]): GeneratedFile[
         blockRoot: ["src/blocks", ...organisms.filter((o) => (o as { frame?: unknown }).frame && tierDir(o.id) === "components").map((o) => `src/components/${fileName(o.name)}.${EXT[r]}`).sort()],
       },
       exports: { ".": { ...(r === "svelte" ? { svelte: "./src/index.ts" } : {}), types: "./src/index.ts", default: "./src/index.ts" }, "./styles/*": "./src/styles/*", "./package.json": "./package.json" },
-      dependencies: { clsx: "^2.1.1", "tailwind-merge": "^3.7.0" },
+      dependencies: { clsx: "^2.1.1", lucide: LUCIDE_VERSION, "tailwind-merge": "^3.7.0" },
       peerDependencies: { ...{ svelte: { svelte: "^5.57.0" }, react: { react: "^19.2.0" }, vue: { vue: "^3.5.43" }, solid: { "solid-js": "^1.9.0" } }[r], tailwindcss: "^4.3.3" },
     }),
   ];

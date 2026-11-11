@@ -6,7 +6,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, rmSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { portableTo, loadInputs, partsFromKit, validateOrganism, tierDir, fileName, emitPreset, reactOrganism, svelteOrganism, vueOrganism, solidOrganism, ROOT, type OrganismSpec } from "../../compose-gen";
+import { portableTo, loadInputs, partsFromKit, validateOrganism, tierDir, fileName, emitPreset, reactOrganism, svelteOrganism, vueOrganism, solidOrganism, ROOT, LUCIDE_VERSION, type OrganismSpec } from "../../compose-gen";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const COMPOSE_GEN = ROOT; // packages/compose-gen: specs, content, emitters
@@ -36,10 +36,15 @@ export function loadOrganisms() {
 }
 
 function lucideRegistry(): string {
-  const { icons } = JSON.parse(readFileSync(path.join(COMPOSE_GEN, "specs/assets/lucide-icons.json"), "utf8")) as { icons: Record<string, unknown> };
-  return [`// ${HEAD}`, `// Lucide icons (ISC license, https://lucide.dev), from packages/compose-gen/specs/assets/lucide-icons.json.`,
-    `export const LUCIDE: Record<string, Array<[string, Record<string, string>]>> = {`,
-    ...Object.entries(icons).map(([n, v]) => `  ${JSON.stringify(n)}: ${JSON.stringify(v)},`), `};`, ``].join("\n");
+  return [`// ${HEAD}`, `// Lucide icons (ISC license, https://lucide.dev): every glyph of the \`lucide\` package (${LUCIDE_VERSION}, a dependency of this package), by kebab-case name.`,
+    `import { icons } from "lucide";`, ``,
+    `export type LucideNode = [string, Record<string, string | number>];`,
+    `const ICONS = icons as unknown as Record<string, LucideNode[] | undefined>;`,
+    `const pascal = (name: string): string => name.replace(/(^|-)([a-z0-9])/g, (_m: string, _d: string, c: string) => c.toUpperCase());`, ``,
+    `/** the nodes of a Lucide glyph by kebab-case name (\`chef-hat\`), undefined for a name Lucide does not have */`,
+    `export function lucideNodes(name: string): LucideNode[] | undefined {`,
+    `  return /^[a-z0-9]+(-[a-z0-9]+)*$/.test(name) ? ICONS[pascal(name)] : undefined;`,
+    `}`, ``].join("\n");
 }
 
 export function runtimeFiles(r: JsRuntime, loaded = loadOrganisms()): Map<string, string> {

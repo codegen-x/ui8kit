@@ -10,7 +10,7 @@
 //   (`export type FeatureGridProps = { ... }`); a prop the organism does not have is an error, not ignored.
 //   required: the props with `required: true` and the record fields without `optional` (the `?` of the generated types).
 //   icon: a text that reaches the Name of LucideIcon in a view (directly, through a loop or a nested organism) is one of the
-//   glyphs the kit ships (packages/compose-gen/specs/assets/lucide-icons.json), $defs.lucideIcon.
+//   glyphs of the pinned Lucide package (packages/compose-gen/lucide.ts), $defs.lucideIcon.
 //   out of the schema: events and render-prop slots (functions, named per runtime), listed beside the schema.
 //   viewMap: where each prop lands in the DOM of the block (data-slot names, scripts/lib/viewmap.ts, alexy-os/chaosbun#149).
 import { createHash } from "node:crypto";
@@ -190,7 +190,7 @@ function baseDefs(icons: string[]): Record<string, JsonSchema> {
     data: { anyOf: [REF("dataRef"), REF("dataOp")] },
     text: { anyOf: [{ type: "string" }, REF("uiRef"), REF("data")] },
     trustedHtml: { description: "markup from a trusted source ({ __html })", anyOf: [{ type: "object", properties: { __html: { type: "string" } }, required: ["__html"], additionalProperties: false }, REF("data")] },
-    lucideIcon: { description: "a Lucide icon the kit ships (packages/compose-gen/specs/assets/lucide-icons.json)", type: "string", enum: [...icons].sort() },
+    lucideIcon: { description: "a Lucide icon by kebab-case name: any glyph of the pinned lucide package (packages/compose-gen/lucide.ts)", type: "string", enum: [...icons].sort() },
   };
 }
 

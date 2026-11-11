@@ -1,15 +1,15 @@
 /**
- * LucideIcon: a Lucide glyph (ISC license) by kebab-case name from the registry next to this file, inside the Icon primitive
+ * LucideIcon: a Lucide glyph (ISC license) by kebab-case name (any glyph of the `lucide` package, through ./lucide-icons), inside the Icon primitive
  * (the kit-compose LucideIcon frame: span[data-slot=icon]). Decorative (the frame is aria-hidden) unless a `label` is given.
  */
 import { createElement } from "react";
 import { LucideIcon as Frame } from "../compose";
-import { LUCIDE } from "./lucide-icons";
+import { lucideNodes } from "./lucide-icons";
 
 export type LucideIconProps = { name: string; size?: number; strokeWidth?: number; label?: string; className?: string };
 
 export function LucideIcon({ name, size = 16, strokeWidth = 2, label, className }: LucideIconProps) {
-  const nodes = LUCIDE[name] ?? LUCIDE["circle"] ?? [];
+  const nodes = lucideNodes(name) ?? lucideNodes("circle") ?? [];
   return (
     <Frame label={label} className={className} data-lucide={name}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor"

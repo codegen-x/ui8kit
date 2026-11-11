@@ -14,6 +14,7 @@ import { isModular, rootGrid, variantProps, type PatternMap, type TermFile } fro
 import { install, kebab, DOCS_URL, REGISTRY_URL, RUNTIMES, type Install, type InstallIndex } from "../../src/lib/install";
 import { axisProps, mergeProps, type VariantIndex, type VariantItem } from "../../src/lib/variants";
 import { propsIndex, type PropsIndex, type PropsSpec } from "./props";
+import { lucideIcons } from "../../../../packages/compose-gen/lucide";
 import type { Asset, BlockRecipe, BlockUse, Clause, Facet, FacetValue, Index, Preview, Previews, Rule, ScreenRecipe, SpecValue, Vocabulary } from "../../src/lib/model";
 
 export const ROOT = join(import.meta.dir, "..", "..", "..", "..");
@@ -341,7 +342,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
   const variants: VariantIndex = { version: variantBody.version, digest: "sha256:" + createHash("sha256").update(JSON.stringify(variantBody)).digest("hex"), registry: variantBody.registry, items: variantBody.items };
   // the props schemas (content/props.v0.json): one per organism of the organism tier, from the props and records of every spec (scripts/lib/props.ts)
   const allSpecs = ["organisms", "parts", "patterns"].flatMap((d) => jsonFiles(join(SPECS, d)).map((f) => readJson<PropsSpec>(join(SPECS, d, f))));
-  const icons = Object.keys(readJson<{ icons: Record<string, unknown> }>(join(SPECS, "assets", "lucide-icons.json")).icons);
+  const icons = Object.keys(lucideIcons());
   const props = propsIndex({ specs: allSpecs, icons, version: vocab.version, registry: REGISTRY_URL, kebab });
   return { index, previews, collections, install: installIndex, variants, props };
 }

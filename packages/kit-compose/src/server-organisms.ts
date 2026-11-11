@@ -5,7 +5,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync, rmSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { ROOT as GEN, type OrganismSpec } from "../../compose-gen";
+import { ROOT as GEN, lucideIcons, LUCIDE_VERSION, type OrganismSpec } from "../../compose-gen";
 import { emitTemplOrganism, presetVar, recipeVar, type ComposeTarget } from "../../compose-gen/runtimes/templ/src/organism";
 import { emitTwigOrganism, jinja, twig, latte, type Dialect } from "../../compose-gen/runtimes/twig/src/index";
 import type { PartRef } from "../../compose-gen/runtimes/core/src/index";
@@ -102,9 +102,9 @@ function templFiles(loaded: ReturnType<typeof loadOrganisms>): Map<string, strin
   for (const f of readdirSync(go).filter((f) => f.endsWith(".go") && !f.endsWith("_test.go")).sort())
     out.set(`templ/src/orgutils/${f}`, `// ${HEAD}\n\n${readFileSync(path.join(go, f), "utf8")}`);
   out.set("templ/src/icons/lucide-icon.templ", `// ${HEAD}\n${readFileSync(path.join(root, "src/assets/templ/lucide-icon.templ"), "utf8")}`);
-  const { icons } = JSON.parse(readFileSync(path.join(GEN, "specs/assets/lucide-icons.json"), "utf8")) as { icons: Record<string, Array<[string, Record<string, string>]>> };
+  const icons = lucideIcons();
   const node = ([tag, attrs]: [string, Record<string, string>]) => `{${JSON.stringify(tag)}, map[string]string{${Object.entries(attrs).map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(", ")}}}`;
-  out.set("templ/src/icons/lucide_icons.go", [`// ${HEAD}`, `// Lucide icons (ISC license, https://lucide.dev), from packages/compose-gen/specs/assets/lucide-icons.json.`, ``, `package icons`, ``,
+  out.set("templ/src/icons/lucide_icons.go", [`// ${HEAD}`, `// Lucide icons (ISC license, https://lucide.dev): every glyph of lucide-static ${LUCIDE_VERSION}, by kebab-case name.`, ``, `package icons`, ``,
     `type glyphNode struct {\n\tTag   string\n\tAttrs map[string]string\n}`, ``, `var lucide = map[string][]glyphNode{`,
     ...Object.entries(icons).map(([n, nodes]) => `\t${JSON.stringify(n)}: {\n${nodes.map((x) => `\t\t${node(x)},`).join("\n")}\n\t},`), `}`, ``].join("\n"));
   return out;
@@ -131,8 +131,9 @@ export function serverOrganismFiles(r: ServerOrgRuntime, loaded = loadOrganisms(
   if (problems.length) throw new Error(`server organisms (${r}):\n${problems.join("\n")}`);
   for (const n of [...recipes].sort()) out.set(`${r}/src/${deps.recipePath(n)}`, json(inputs.recipes.find((x) => x.name === n)!.value));
   for (const n of [...presets].sort()) out.set(`${r}/src/${deps.presetPath(n)}`, json(inputs.presets.find((x) => x.value.name === n)!.value));
-  const { icons } = JSON.parse(readFileSync(path.join(GEN, "specs/assets/lucide-icons.json"), "utf8")) as { icons: unknown };
-  out.set(`${r}/src/icons/lucide-icons.json`, json({ icons }));
+  const icons = lucideIcons();
+  // one glyph per line: ~2k icons stay a readable diff and a third of the indented size
+  out.set(`${r}/src/icons/lucide-icons.json`, `{\n  "//": ${JSON.stringify(HEAD)},\n  "icons": {\n${Object.entries(icons).map(([n, v]) => `    ${JSON.stringify(n)}: ${JSON.stringify(v)}`).join(",\n")}\n  }\n}\n`);
   if (r === "twig" || r === "latte") {
     const ext = r === "twig" ? ".html.twig" : ".latte", ns = r === "twig" ? "Twig" : "Latte";
     out.set(`${r}/src/icons/LucideIcon${ext}`, readFileSync(path.join(root, `src/assets/${r}/LucideIcon${ext}`), "utf8").replace(/^(\{#- |\{\* )/, (m) => `${m}${HEAD}\n    `));
