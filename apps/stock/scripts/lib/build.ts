@@ -45,6 +45,8 @@ type Ctx = {
   labels: string[]; skin?: string; colours: string[]; screen?: string; area?: string; facets: Record<string, string[]>;
   /** the composition patterns of a block variant: computed (modular-grid) and the draft table (pattern.ts) */
   patterns?: string[];
+  /** the variant is covered end to end by the BuildY Inspector (content/buildy.v0.json) */
+  buildy?: boolean;
 };
 
 const has = (list: string[] | undefined, v: string | undefined): boolean => !!list && v !== undefined && list.includes(v);
@@ -89,6 +91,12 @@ export const loadAdded = (): AddedMap => {
   try { return readJson<AddedMap>(p); } catch { return { specs: {} }; }
 };
 const DEFAULT_ADDED = "2025-01-01";
+/** the block variants the BuildY chat Inspector covers end to end (content/buildy.v0.json, generated from buildytech/chat): asset ids */
+export type BuildyMap = { assets: string[] };
+export const loadBuildy = (): BuildyMap => {
+  const p = join(APP, "content", "buildy.v0.json");
+  try { return readJson<BuildyMap>(p); } catch { return { assets: [] }; }
+};
 
 export function build(vocab: Vocabulary = loadVocabulary()): Built {
   const blocks = jsonFiles(join(SPECS, "blocks")).map((f) => readJson<BlockSpec>(join(SPECS, "blocks", f)));
@@ -134,6 +142,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       else if (f.derive === "rules") vals = deriveRules(f, x);
       else if (f.derive === "pattern") vals = f.values.map((v) => v.id).filter((v) => x.patterns?.includes(v));
       else if (f.derive === "runtime") vals = runtimes;
+      else if (f.derive === "buildy") vals = x.buildy ? f.values.map((v) => v.id) : [];
       else if (f.derive.startsWith("axis:")) vals = x.axes[f.derive.slice(5)] !== undefined ? [x.axes[f.derive.slice(5)]!] : [];
       out[f.id] = vals;
       x.facets[f.id] = vals;
@@ -197,6 +206,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
   /** every variant's labels, for the pages made of them */
   const variantLabels = new Map<string, Record<string, string[]>>();
   const patternMap = loadPatternMap();
+  const buildy = new Set(loadBuildy().assets);
 
   // the install objects: one per registry block a variant is drawn by, one per screen page (its blocks, each once, in page order)
   const installBlocks: Record<string, Install> = {};
@@ -234,7 +244,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       }
       const o = orgByName.get(org);
       const computed = o && isModular(rootGrid(o.view, variantProps(o.props, b.sample.props, (b.data ?? []).map((d) => d.as), { ...b.defaults, ...v.set }, v.props), orgByName)) ? ["modular-grid"] : [];
-      const ctx = { ...blockCtx(b, v.set), patterns: [...computed, ...(patternMap.labels[key] ?? []), ...(patternMap.labels[`${key}/${v.id}`] ?? [])] };
+      const ctx = { ...blockCtx(b, v.set), patterns: [...computed, ...(patternMap.labels[key] ?? []), ...(patternMap.labels[`${key}/${v.id}`] ?? [])], buildy: buildy.has(`block.${key}/${v.id}`) };
       const labels = labelsOf("block", ctx, runtimesOf([org]));
       variantLabels.set(`${key}/${v.id}`, labels);
       const preview: Preview = { kind: "block", block: key, variant: v.id };
@@ -293,6 +303,10 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       });
     }
   }
+
+  // a covered variant that is no block asset is a stale list (content/buildy.v0.json): fail rather than label nothing
+  const blockIds = new Set(raws.filter((r) => r.type === "block").map((r) => r.id));
+  for (const id of buildy) if (!blockIds.has(id)) throw new Error(`build-index: content/buildy.v0.json lists ${id}, which is not a block asset`);
 
   // hide the facets that do not discriminate: no asset carries a label, or every asset the facet applies to carries the same labels
   const hidden: NonNullable<Index["hidden"]> = { facets: [], values: [] };

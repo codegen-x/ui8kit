@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { build, deriveRules, loadPatternMap, loadTerms, loadVocabulary, matches, OUTPUTS, ROOT, serialise } from "./lib/build";
+import { build, deriveRules, loadBuildy, loadPatternMap, loadTerms, loadVocabulary, matches, OUTPUTS, ROOT, serialise } from "./lib/build";
 
 const vocab = loadVocabulary();
 const built = build(vocab);
@@ -207,5 +207,24 @@ describe("composition pattern (facet pattern)", () => {
     expect(f.values.find((v) => v.id === "z-pattern")!.draft).toBe(true);
     for (const v of f.values) expect(index.assets.some((a) => a.labels["pattern"]?.includes(v.id))).toBe(true);
     expect(index.hidden!.values.filter((v) => v.facet === "pattern").map((v) => v.value).sort()).toEqual(["circular", "cross", "diagonal", "radial", "v-arrangement"]);
+  });
+});
+
+describe("buildy label", () => {
+  const listed = loadBuildy().assets;
+  const blocks = () => index.assets.filter((a) => a.type === "block");
+  test("the list is unique and names block assets only (the builder fails on a stale id)", () => {
+    expect(new Set(listed).size).toBe(listed.length);
+    const ids = new Set(blocks().map((a) => a.id));
+    for (const id of listed) expect(ids.has(id)).toBe(true);
+  });
+  test("exactly the listed block variants carry the label, no screen does", () => {
+    const labelled = index.assets.filter((a) => (a.labels["buildy"] ?? []).length > 0);
+    expect(labelled.map((a) => a.id).sort()).toEqual([...listed].sort());
+    expect(labelled.every((a) => a.type === "block")).toBe(true);
+    expect(index.facets.find((f) => f.id === "buildy")?.values.map((v) => v.id)).toEqual(["inspector"]);
+  });
+  test("the label never counts as a missing or weak facet", () => {
+    for (const a of blocks()) { expect(a.missing).not.toContain("buildy"); expect(a.weak).not.toContain("buildy"); }
   });
 });

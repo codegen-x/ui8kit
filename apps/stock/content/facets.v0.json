@@ -4386,6 +4386,44 @@
         }
       ],
       "order": 17
+    },
+    {
+      "id": "buildy",
+      "label": {
+        "en": "BuildY",
+        "fr": "BuildY",
+        "de": "BuildY",
+        "es": "BuildY",
+        "ru": "BuildY"
+      },
+      "ui": "checkbox",
+      "scope": "typed",
+      "types": [
+        "block"
+      ],
+      "source": "system",
+      "derive": "buildy",
+      "values": [
+        {
+          "id": "inspector",
+          "label": {
+            "en": "Covered by the BuildY Inspector",
+            "fr": "Couvert par l’Inspector BuildY",
+            "de": "Vom BuildY Inspector abgedeckt",
+            "es": "Cubierto por el Inspector de BuildY",
+            "ru": "Покрыто инспектором BuildY"
+          },
+          "synonyms": {
+            "en": [
+              "buildy",
+              "inspector",
+              "editable",
+              "builder"
+            ]
+          }
+        }
+      ],
+      "order": 18
     }
   ],
   "quick": [
