@@ -5,12 +5,12 @@
     "repo": "buildytech/chat",
     "script": "scripts/inspector-coverage.mjs",
     "manifest": "catalog/inspector-coverage.json",
-    "commit": "fa625b8c66ed345d007493aa518ac3d5e06b9f45",
+    "commit": "5d311f506be49bb182eeef1c2cbf0cc817793cd7",
     "inputs": {
       "propsDigest": "sha256:bb4ae0ac537ba08d921557046bf75ee59ea592da181dc5ba3a020ccce9b31896",
       "registrySourceCommit": "9e57f9ccaf710eb3b50d5599e6e49355fcc32136",
       "stockContentCommit": "afc826c13dcf32dd356a694fea12905c446df2cd",
-      "inspectorDigest": "b4631259017067e9"
+      "inspectorDigest": "a65bf87a4feb2787"
     }
   },
   "counts": {
