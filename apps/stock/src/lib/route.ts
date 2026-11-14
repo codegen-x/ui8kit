@@ -1,5 +1,6 @@
 // The routes of Stock (hash routing, so the same build works under any base: `/` on Vercel, `/stock/` elsewhere):
 //   #/search?q=…&job=…&page=2  the storefront (also every other hash, and none)
+//   …&skin=sky                 on any hash: the skin of the link (lib/theme.ts skinOfHash); not a search facet, parseSearch ignores it
 //   #/asset/<asset id>         the detail page of a block variant or a screen page (ids: block.about/split, screen.site/home)
 //   #/asset/<id>?view=full&device=phone   the same page with its full-screen preview open, at a device width (desktop by default;
 //                                         device=side: desktop and phone side by side)

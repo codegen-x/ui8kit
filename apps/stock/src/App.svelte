@@ -8,7 +8,7 @@
   import { writeLocale } from "./lib/i18n";
   import { visit } from "./lib/locale.svelte";
   import { parseRoute, type Route } from "./lib/route";
-  import { applyState } from "./lib/theme";
+  import { applyState, withHashSkin } from "./lib/theme";
   import { stock } from "./lib/theme-ctl.svelte";
 
   const first = parseRoute(location.hash);
@@ -20,6 +20,7 @@
       const next = parseRoute(location.hash);
       if (next.kind !== route.kind || (next.kind === "asset" && route.kind === "asset" && next.id !== route.id)) window.scrollTo({ top: 0 });
       route = next;
+      stock.state = withHashSkin(stock.state, location.hash);   // a link to another skin, opened in a visit that is already running
     };
     window.addEventListener("hashchange", sync);
     return () => window.removeEventListener("hashchange", sync);
