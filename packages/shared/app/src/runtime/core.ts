@@ -176,7 +176,7 @@ export function readPath(source: unknown, path: string, opts: ReadOptions = {}):
   // markup from the Codex (the body of an entry) is trusted: the TrustedHtml marker of the runtimes (assets/ts/html.ts), printed
   // without escaping by an `html` view node; a value read without this pipe stays text and is escaped. Only a string with text (not blank
   // as PHP trim()) is markup: a blank string, a number, a boolean, a list or nothing gives nothing (wp-fasty ReadPath gives null), so a block that
-  // shows a part only when its markup is set (the RichText side note) leaves it out
+  // shows a part only when its markup is set (an optional side note) leaves it out
   if (pipe === "html") return typeof cur === "string" && cur.replace(/^[ \t\n\r\0\x0B]+|[ \t\n\r\0\x0B]+$/g, "") !== "" ? { __html: cur } : undefined;
   if (pipe === "reading-minutes") return Math.ceil(wordsOf(cur).length / WORDS_PER_MINUTE);
   // the names of every term of that taxonomy the entry has, in its order (a term not in `terms` is left out)

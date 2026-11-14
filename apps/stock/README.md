@@ -31,7 +31,7 @@ of ui8kit/contract. `scripts/fixtures/collection.schema.json` is a copy of the c
 ## Index (S1)
 
 `scripts/build-index.ts` (logic in `scripts/lib/build.ts`) reads the facet vocabulary `content/facets.v0.json` and the specs:
-`packages/compose-gen/specs/blocks` (112 blocks, 532 variants, axes, samples), `packages/compose-gen/schema/codex/blocks.json` (data/kind/
+`packages/compose-gen/specs/blocks` (111 blocks, 526 variants, axes, samples), `packages/compose-gen/schema/codex/blocks.json` (data/kind/
 record and label props: the slots), `specs/organisms` (runtimes) and `specs/screens` (one asset per page of a composed screen). Two
 categories: **Blocks** (one asset per variant; the variants of a block share a collapse key) and **Screens** (the 80 pages of the
 composed screens, each made of kit blocks only; checked by a test). An organism is shown through the block variants that draw it
@@ -61,7 +61,7 @@ list is the data file `content/buildy.v0.json` (asset ids, like `added.v0.json` 
 github.com/buildytech/chat by `node scripts/inspector-coverage.mjs` (manifest `catalog/inspector-coverage.json`, keyed by registry item and
 variant; the `source` block of the file pins the chat commit and the inputs digests); a covered `item/variant` is the asset whose `registry`
 and `variant` are those. Re-generate it when the Inspector or the block props change. The builder fails on an id that is not a block asset;
-an empty `assets` list hides the facet (nothing carries it). It is a facet of the column (collapsed), not a quick filter: add
+an empty `assets` list hides the facet (nothing carries it), and so does a list that covers every block variant (526 of 526 since the RichText block was removed: the facet is uniform, hidden, kept as a shared fact). It is a facet of the column (collapsed), not a quick filter: add
 `{ "facet": "buildy", "value": "inspector" }` to `quick` in `facets.v0.json` to put it in the quick row.
 
 ## Install (code on Buildy)
@@ -113,7 +113,7 @@ or a field of the data; a record may also be a dictionary group (`labels`); list
 reads (`{ "$": "<as>" }` or a data operation of `OPS`). Axes are string enums; a text that reaches `LucideIcon` is one of the glyphs
 the kit ships (`$defs.lucideIcon`). Closed: `additionalProperties: false` on the props and every record, like the generated
 TypeScript types; required = `required: true` props and record fields without `optional`. Events and render-prop slots are listed
-beside the schema, not in it. `scripts/props.test.ts` validates all 532 variants (sample content under the props, and the preset
+beside the schema, not in it. `scripts/props.test.ts` validates all 526 variants (sample content under the props, and the preset
 alone without required lists), negative cases, and the prop names and required ones against the svelte, react and templ files.
 
 ## Search (S2)

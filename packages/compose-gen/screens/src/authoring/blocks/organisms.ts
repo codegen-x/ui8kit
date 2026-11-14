@@ -65,7 +65,6 @@ import { featureShowcaseOrganisms } from "./feature-showcase";
 import { storyTabsParts } from "../components/story-tabs-parts";
 import { storyTabsOrganisms } from "./story-tabs";
 import { landmarkParts } from "../components/landmarks";
-import { richTextOrganisms } from "./rich-text";
 
 export const allOrganisms = [
   pricingCard, ...siteOrganisms, ...landingOrganisms, ...pricingOrganisms, ...showcaseOrganisms, ...navigationOrganisms, ...workspaceOrganisms,
@@ -77,7 +76,7 @@ export const allOrganisms = [
   ...postSplitParts, ...postSplitOrganisms, ...footerSplitParts, ...footerSplitOrganisms,
   ...featureSplitParts, ...featureSplitOrganisms, ...pageTrailParts, ...pageTrailOrganisms,
   ...postShowcaseParts, ...postShowcaseOrganisms, ...mediaListParts, ...mediaListOrganisms,
-  ...featureShowcaseOrganisms, ...storyTabsParts, ...storyTabsOrganisms, ...landmarkParts, ...richTextOrganisms
+  ...featureShowcaseOrganisms, ...storyTabsParts, ...storyTabsOrganisms, ...landmarkParts
 ];
 
 // every organism that holds a landmark takes `landmarkLabel` (authoring/landmarks.ts); run once, before any page composes them

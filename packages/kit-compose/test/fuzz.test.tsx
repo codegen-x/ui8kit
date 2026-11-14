@@ -50,7 +50,7 @@ function mutate(v: Json, round: number, key = "", at = { i: 0 }): Json {
   if (v && typeof v === "object") return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, k === "__html" ? x : mutate(x, round, k, at)]));
   return v;
 }
-/** TrustedHtml markers at any depth outside the TrustedHtml props (RichText content, aside.content): every object in the props (each
+/** TrustedHtml markers at any depth outside the TrustedHtml props (the `content|html` fields): every object in the props (each
  *  record, each item, at any depth) also carries `__html` with a payload, so a runtime that took any object with the key as markup shows it */
 function markers(v: Json, trusted: Set<string>, path = ""): Json {
   if (Array.isArray(v)) return v.map((x) => markers(x, trusted, path));

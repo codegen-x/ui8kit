@@ -39,7 +39,7 @@ fails on any import or path back into them). Skins: `packages/skins`; rules gate
 - `packages/ui-gates` (portable, no repo deps): `ui-gates source <dirs>` fails on a raw HTML tag where a primitive exists and on a Box/Text
   `tag` outside the HTML5 allowlist (tsx/jsx, svelte, vue, templ, twig, latte, jinja2); `ui-gates html <cases.json>` runs html-validate +
   axe-core. `bun run gates:source` is part of `bun run check`.
-- Migration status: compositions and the 224 organisms on all 8 runtimes (parity with React on the 474 gallery block cases of the 92
+- Migration status: compositions and the 253 organisms on all 8 runtimes (parity with React on the 526 gallery block cases of the 111
   blocks), screens and the 4 host apps on compose-gen; magazine, discovery, panorama and taste-screens import `@codegen-x/svelte-compose`.
 
 ## Rules for agents

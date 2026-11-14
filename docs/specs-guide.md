@@ -16,7 +16,7 @@ Above them you write **specs**, and `packages/compose-gen` generates the same UI
 | Latte (PHP) | `packages/kit-compose/latte` | none |
 
 The four TypeScript runtimes have host apps that serve every screen. The four template runtimes (templ, Twig, Jinja2,
-Latte) are checked by the kit-compose tests: every composition case and every gallery block case (474 cases of 92 blocks)
+Latte) are checked by the kit-compose tests: every composition case and every gallery block case (526 cases of 111 blocks)
 is rendered with the real engine and its DOM compared with React.
 
 ## 1. The golden rules

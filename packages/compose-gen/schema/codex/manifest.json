@@ -1101,13 +1101,8 @@
         "id": "page",
         "label": "Page",
         "scope": "workspace",
-        "description": "fixtures: crumbs, pages",
+        "description": "fixtures: crumbs",
         "fields": [
-          {
-            "id": "aside",
-            "label": "Aside",
-            "type": "string"
-          },
           {
             "id": "icon",
             "label": "Icon",

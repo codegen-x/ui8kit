@@ -3,7 +3,7 @@
   "package": "packages/kit-compose/svelte",
   "totals": {
     "block-root": 0,
-    "raw-html": 3,
+    "raw-html": 0,
     "dynamic-tag": 0,
     "raw-native-tag": 0,
     "reactive-aria": 19,
@@ -11,9 +11,7 @@
   },
   "counts": {
     "block-root": {},
-    "raw-html": {
-      "src/blocks/rich-text.svelte": 3
-    },
+    "raw-html": {},
     "dynamic-tag": {},
     "raw-native-tag": {},
     "reactive-aria": {

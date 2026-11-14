@@ -235,8 +235,6 @@ export { default as RestaurantMenu } from "./blocks/restaurant-menu.svelte";
 export type * from "./blocks/restaurant-menu.types";
 export { default as ReviewList } from "./blocks/review-list.svelte";
 export type * from "./blocks/review-list.types";
-export { default as RichText } from "./blocks/rich-text.svelte";
-export type * from "./blocks/rich-text.types";
 export { default as SearchPalette } from "./components/search-palette.svelte";
 export { default as ShellContent } from "./components/shell-content.svelte";
 export { default as ShellFooter } from "./components/shell-footer.svelte";

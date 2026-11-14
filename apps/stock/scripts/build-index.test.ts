@@ -218,8 +218,14 @@ describe("buildy label", () => {
     const ids = new Set(blocks().map((a) => a.id));
     for (const id of listed) expect(ids.has(id)).toBe(true);
   });
-  test("exactly the listed block variants carry the label, no screen does", () => {
+  test("exactly the listed block variants carry the label, no screen does (a list that covers every block makes the facet uniform: hidden, kept as a shared fact)", () => {
     const labelled = index.assets.filter((a) => (a.labels["buildy"] ?? []).length > 0);
+    if (listed.length === blocks().length) {
+      expect(labelled).toEqual([]);
+      expect(index.hidden!.facets).toContainEqual({ facet: "buildy", reason: "uniform" });
+      expect(index.shared!.find((s) => s.facet === "buildy")?.values.map((v) => v.id)).toEqual(["inspector"]);
+      return;
+    }
     expect(labelled.map((a) => a.id).sort()).toEqual([...listed].sort());
     expect(labelled.every((a) => a.type === "block")).toBe(true);
     expect(index.facets.find((f) => f.id === "buildy")?.values.map((v) => v.id)).toEqual(["inspector"]);

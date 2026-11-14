@@ -73,8 +73,8 @@ Never edit `packages/kit/**` by hand (`ui8kit check` fails).
 - `packages/ui-gates` (portable, no repo deps): `ui-gates source <dirs>` fails on a raw HTML tag where a primitive exists and on a Box/Text
   `tag` outside the HTML5 allowlist (tsx/jsx, svelte, vue, templ, twig, latte, jinja2); `ui-gates html <cases.json>` runs html-validate +
   axe-core. `bun run gates:source` is part of `bun run check`.
-- Migration status: done. Compositions and the 224 organisms on all 8 runtimes (parity with React on the 474 gallery block cases of the
-  92 blocks), screens and the 4 host apps on compose-gen; magazine, discovery, panorama and taste-screens import `@codegen-x/svelte-compose`.
+- Migration status: done. Compositions and the 253 organisms on all 8 runtimes (parity with React on the 526 gallery block cases of the
+  111 blocks), screens and the 4 host apps on compose-gen; magazine, discovery, panorama and taste-screens import `@codegen-x/svelte-compose`.
   The private xgen copy (`xgen/`, `vendor/codegen`, `packages/<runtime>/ui`) is removed; its last state is the tag `xgen-archive-2026-10-24`.
 
 ## Commands
@@ -109,8 +109,8 @@ holds the rules and the style groups (corners, shadows, hardcode, spacing).
 |---|---|
 | primitives | 19 UI8Kit 3 primitives + slot per runtime (`packages/kit/<rt>`) |
 | compositions | the former bricks (Stack, Group, Grid, Container, Title, Card*, Badge, List*, Table*, ...) as compositions over the primitives (`packages/kit-compose/src/map.ts` + `variants/`) |
-| parts / patterns / organisms | **23 / 36 / 184** specs (`packages/compose-gen/specs/{parts,patterns,organisms}`), 224 organisms generated per runtime |
-| blocks | **92** blocks, **474** variants (`packages/compose-gen/specs/blocks`) |
+| parts / patterns / organisms | **23 / 36 / 213** specs (`packages/compose-gen/specs/{parts,patterns,organisms}`), 253 organisms generated per runtime |
+| blocks | **111** blocks, **526** variants (`packages/compose-gen/specs/blocks`) |
 | screens | **15** screen specs: plans, site, blocks gallery, catalog, skins and ten themes |
 | data | Codex collections in `packages/compose-gen/fixtures`, texts in `packages/compose-gen/content/ui/en.json` |
 | runtimes | Svelte 5, React 19, Vue 3, Solid (packages + host apps); Go templ, Twig, Jinja2, Latte (template packages) |

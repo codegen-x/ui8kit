@@ -235,8 +235,6 @@ export * from "./blocks/restaurant-menu";
 export type * from "./blocks/restaurant-menu.types";
 export * from "./blocks/review-list";
 export type * from "./blocks/review-list.types";
-export * from "./blocks/rich-text";
-export type * from "./blocks/rich-text.types";
 export * from "./components/search-palette";
 export * from "./components/shell-content";
 export * from "./components/shell-footer";

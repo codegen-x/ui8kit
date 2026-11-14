@@ -1503,8 +1503,7 @@
               "any": {
                 "block": [
                   "article",
-                  "postheader",
-                  "richtext"
+                  "postheader"
                 ],
                 "group": [
                   "story"

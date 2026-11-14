@@ -11,15 +11,15 @@ import { blockCases, normalizeHtml } from "../../compose-gen";
 import { loadOrganisms } from "../src/organisms";
 import { serverOrganismFiles, SERVER_ORG_RT } from "../src/server-organisms";
 import { checkHtml } from "../../ui-gates/src/html.mjs";
-import { norm as tokens, probeProblems, trustedProbes } from "./shared";
+import { norm as tokens } from "./shared";
 import { quiet, REQUIRED, ROOT, SERVER } from "./render-all";
 import * as R from "../react/src/organisms";
 
 const norm = (html: string) => normalizeHtml(tokens(html)).replace(/ style="([^"]*?);"/g, ' style="$1"');
 const loaded = loadOrganisms();
 const gallery = blockCases(loaded.inputs, new Set(loaded.organisms.map((o) => o.name))).cases;
-// the gallery cases, then the TrustedHtml probes (a plain string escaped, TrustedHtml raw, the page heading)
-const cases = [...gallery, ...trustedProbes(gallery)];
+// the gallery cases
+const cases = [...gallery];
 const react = cases.map((c) => quiet(() => renderToStaticMarkup(createElement((R as Record<string, ComponentType<Record<string, unknown>>>)[c.organism]!, c.props))));
 
 const LANDMARK = new Set(["main", "header", "footer", "nav"]);
@@ -61,10 +61,6 @@ for (const rt of SERVER_ORG_RT.filter((r) => !process.env.ORG_RT || process.env.
       expect(problems.length).toBe(0);
       expect(cases.length).toBeGreaterThan(400);
     }, 600000);
-    test(`${rt}: TrustedHtml printed as it is (${rt === "latte" ? "|noescape" : rt === "twig" ? "|raw" : rt === "jinja2" ? "|safe" : "templ.Raw"}), a plain string escaped; one h1 only for the page heading`, () => {
-      expect(html.length).toBe(cases.length);
-      expect(cases.flatMap((c, i) => probeProblems(`${c.label} ${rt}`, html[i] ?? ""))).toEqual([]);
-    });
     test(`${rt}: html-validate + axe on the raw output of every case`, async () => {
       const docs = cases.map((c, i) => ({ id: c.label, html: doc(c.label, html[i] ?? "") }));
       const problems = (await checkHtml(docs)).map((p: { id: string; tool: string; rule: string; message: string }) => `${p.id} ${p.tool}/${p.rule} ${p.message}`);
