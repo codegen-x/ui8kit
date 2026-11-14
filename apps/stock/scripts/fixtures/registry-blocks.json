@@ -1,7 +1,7 @@
 {
  "source": "https://registry.buildy.tw/<runtime>/index.json",
- "fetched": "2026-11-09",
- "note": "registry:block names served by all 8 runtime roots (117); written by scripts/registry-fixture.ts",
+ "fetched": "2026-11-14",
+ "note": "registry:block names served by all 8 runtime roots (116); written by scripts/registry-fixture.ts",
  "names": [
   "about-company",
   "about-me",
@@ -92,7 +92,6 @@
   "reservation-form",
   "restaurant-menu",
   "review-list",
-  "rich-text",
   "shopping-cart",
   "sidebar-nav",
   "signup-wizard",
