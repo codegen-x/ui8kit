@@ -3,7 +3,7 @@ import { and, cn, gt, len, cond, each, eq, ref, text, undef, use, when, organism
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
-import { empty, id, orEmpty, title, tone, tsOf, toneLite } from "../props";
+import { empty, id, imageProps, orEmpty, pictureOf, title, tone, toneLite, tsOf } from "../props";
 import { checkRow, fid, inputField, kids, textField } from "../forms";
 import { menuEntry } from "../components/nav";
 
@@ -76,6 +76,7 @@ const newsletterForm = spec(`${O}newsletter-form`, "NewsletterForm", "An email s
     { name: "terms", type: tsOf("show", "hide"), default: "hide" },
     { name: "tone", type: tone, default: "default" },
     { name: "align", type: tsOf("start", "center"), default: "center" },
+    ...imageProps,
   ],
   view: [frame(
     { id: ref("id"), title: ref("title"), lead: ref("text"), tone: ref("tone"), align: ref("align"), layout: cond(eq(ref("layout"), "split"), "split", "stack"), hasMedia: eq(ref("layout"), "split") },
@@ -85,7 +86,7 @@ const newsletterForm = spec(`${O}newsletter-form`, "NewsletterForm", "An email s
         use("Input", { props: { Type: "email", Name: "email", Class: "min-w-0 flex-1" }, attrs: { id: fid("email"), "data-testid": "field" } }),
         use("Button", { props: { Variant: "default", Size: "default", Type: "submit" }, attrs: { "data-testid": "submit" } }, text(ref("submit")))),
       when(and(eq(ref("terms"), "show"), ref("consent")), [use("Text", { props: { Size: "xs", Class: "text-muted-foreground" }, attrs: { "data-testid": "consent" } }, text(ref("consent")))]))],
-    [organism("MediaFrame", { alt: ref("title"), ratio: "4/3" })])],
+    [pictureOf("4/3")])],
 });
 
 const contactForm = spec(`${O}contact-form`, "ContactForm", "A contact section: a form (name, email, subject, message, consent) and, in the split layout, the ways to reach us beside it. Axes: layout (single, split), fields (short: email and message, full), terms (show, hide), tone (default, muted).", {

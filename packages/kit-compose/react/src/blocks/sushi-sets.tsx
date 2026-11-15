@@ -45,7 +45,7 @@ export function SushiSets({
           {(dishes ?? []).map((d) => (
             <Stack key={d.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
               <Box className="relative">
-                <MediaFrame alt={d.name} ratio="1/1" />
+                <MediaFrame alt={d.name} src={d.image} ratio="1/1" />
                 <Badge variant="default" size="default" className="absolute left-2 top-2">
                   {d.weight}
                 </Badge>

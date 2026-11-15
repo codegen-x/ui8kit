@@ -87,7 +87,7 @@ export function TemplateGrid({
                 data-slot="template-card"
               >
                 <Box className={cn("shrink-0 overflow-hidden", defaults.templates.image)}>
-                  <MediaFrame alt={t.title} className={cn("size-full", defaults.media.rounded)} />
+                  <MediaFrame alt={t.title} src={t.image} className={cn("size-full", defaults.media.rounded)} />
                 </Box>
                 <Group gap="4" align="center" className={cn("w-full", defaults.templates.footer)} data-slot="template-footer">
                   <IconBadge size="sm" className="overflow-hidden" data-slot="template-avatar">

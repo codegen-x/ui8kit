@@ -50,7 +50,7 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 			@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col gap-4", Attrs: uiutils.Attrs("data-slot", "summary-lines")}}) {
 				for _, vLine := range uiutils.L(vLines) {
 					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-4 text-sm", Attrs: uiutils.Attrs("data-slot", "cart-line")}}) {
-						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Ratio: "1/1", Class: uiutils.Cnv("size-12 shrink-0")})
+						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Src: uiutils.Get(vLine, "image"), Ratio: "1/1", Class: uiutils.Cnv("size-12 shrink-0")})
 						@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "flex-1"}}) {
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vLine, "name")) }

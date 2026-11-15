@@ -20,7 +20,7 @@
       {%- endset -%}
       {{ include('compose/Stack.html.twig', {'gap': '2', 'class': 'min-w-0', 'children': c_3}, with_context = false) }}
       {%- set c_4 -%}
-        {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_feature, ['title']), 'ratio': '4/3'}}, with_context = false) }}
+        {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_feature, ['title']), 'src': og_get(v_feature, ['image']), 'ratio': '4/3'}}, with_context = false) }}
       {%- endset -%}
       {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['w-full min-w-0', (og_t(og_eq(v_mediaSide, 'start')) ? 'md:order-first' : (og_t(og_eq(v_mediaSide, 'alternate')) ? 'md:group-even:order-first' : ''))])), 'children': c_4}, with_context = false) }}
     {%- endset -%}

@@ -43,7 +43,7 @@
         {foreach og_l($v_templates) as $v_t}
           {capture $c_17}
             {capture $c_5}
-              {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_t, ['title']), 'className' => og_cnv([og_cnv(['size-full', og_preset('blocks/presets/defaults.json', ['media', 'rounded'])])])]])|noescape}
+              {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_t, ['title']), 'src' => og_get($v_t, ['image']), 'className' => og_cnv([og_cnv(['size-full', og_preset('blocks/presets/defaults.json', ['media', 'rounded'])])])]])|noescape}
             {/capture}
             {=og_include('compose/Box.latte', ['class' => og_s(og_cnv(['shrink-0 overflow-hidden', og_preset('blocks/presets/defaults.json', ['templates', 'image'])])), 'children' => (string) $c_5])|noescape}
             {capture $c_16}

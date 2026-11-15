@@ -37,7 +37,13 @@ const { lines, rows, labels, drawer, media = "image", field = "qty" } = definePr
 <template>
   <Stack gap="4" align="stretch" class="flex-1 p-4" data-slot="lines">
     <Group v-for="line in lines" :key="line.id" gap="4" align="start" data-slot="item">
-      <MediaFrame v-if="((media as string) === 'image')" :alt="line.name" ratio="1/1" class="size-16 shrink-0" />
+      <MediaFrame
+        v-if="((media as string) === 'image')"
+        :alt="line.name"
+        :src="line.image"
+        ratio="1/1"
+        class="size-16 shrink-0"
+      />
       <Stack gap="2" align="stretch" class="flex-1">
         <Group gap="2" justify="between" align="start">
           <Text size="sm" weight="semibold">

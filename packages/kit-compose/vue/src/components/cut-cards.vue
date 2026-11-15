@@ -36,7 +36,7 @@ const { dishes, labels } = defineProps<CutCardsProps>();
       class="rounded bg-card inset-ring inset-ring-border p-4"
       data-slot="item"
     >
-      <MediaFrame :alt="d.name" ratio="4/3" />
+      <MediaFrame :alt="d.name" :src="d.image" ratio="4/3" />
       <Text size="lg" weight="semibold">
         {{ d.name }}
       </Text>

@@ -16,6 +16,8 @@ export type FeatureAccordionProps = {
   multiple?: boolean;
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -42,6 +44,8 @@ const {
   multiple = false,
   tone = "default",
   density = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<FeatureAccordionProps>();
 </script>
@@ -78,7 +82,7 @@ const {
       </Disclosure>
     </Stack>
     <template #aside>
-      <MediaFrame :alt="title" ratio="4/3" />
+      <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="4/3" />
     </template>
   </SectionFrame>
 </template>

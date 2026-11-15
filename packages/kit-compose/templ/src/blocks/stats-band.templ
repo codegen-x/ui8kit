@@ -22,6 +22,8 @@ type StatsBandProps struct {
 	Align any `json:"align"`
 	Tone any `json:"tone"`
 	Density any `json:"density"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -38,9 +40,11 @@ templ StatsBand(p StatsBandProps) {
 	{{ vAlign := uiutils.Def(p.Align, "center") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, Align: vAlign, Measure: uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "panel")), "fill", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stack")), "xs", "default")), Class: uiutils.Cnv(uiutils.Cnv(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "image")), "bg-transparent", ""), uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "panel")), "py-0", "")), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "image")), "image", "none"), "image")), "relative isolate overflow-hidden", ""))), LandmarkLabel: vLandmarkLabel}) {
-		@Backdrop(BackdropProps{Kind: uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "image")), "image", "none"), Alt: vTitle})
+		@Backdrop(BackdropProps{Kind: uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "image")), "image", "none"), Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Image: vImage})
 		if uiutils.Eq(uiutils.Len(vStats), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "chart-column", Title: vEmpty})
 		} else if uiutils.Eq(vSurface, "panel") {

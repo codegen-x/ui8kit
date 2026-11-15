@@ -5,7 +5,7 @@
 {%- set v_p = og_def(p['p'], none) -%}
 {%- set v_labels = og_def(p['labels'], none) -%}
 {%- set c_5 -%}
-  {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title'])}}) }}
+  {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'src': og_get(v_p, ['image'])}}) }}
   {%- set c_4 -%}
     {%- set c_1 -%}
       {{ og_text(og_get(v_p, ['category'])) }}

@@ -44,7 +44,7 @@ templ GroceryList(p GroceryListProps) {
 				for _, vD := range uiutils.L(vDishes) {
 					@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: "flex items-center gap-4 border-b border-border py-2", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						if uiutils.Eq(vThumbs, "show") {
-							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "1/1", Class: uiutils.Cnv("size-12 shrink-0")})
+							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Src: uiutils.Get(vD, "image"), Ratio: "1/1", Class: uiutils.Cnv("size-12 shrink-0")})
 						}
 						@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "min-w-0 flex-1"}}) {
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {

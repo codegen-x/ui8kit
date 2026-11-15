@@ -242,6 +242,9 @@
                                         "alt": {
                                           "$": "line.name"
                                         },
+                                        "src": {
+                                          "$": "line.image"
+                                        },
                                         "ratio": "1/1",
                                         "className": "hidden size-14 shrink-0 sm:block"
                                       }

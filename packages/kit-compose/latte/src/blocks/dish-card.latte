@@ -12,7 +12,7 @@
 {capture $c_14}
   {if og_t(og_eq($v_media, 'image'))}
     {capture $c_2}
-      {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_dish, ['name']), 'ratio' => '4/3', 'className' => og_cnv(['h-full'])]])|noescape}
+      {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_dish, ['name']), 'src' => og_get($v_dish, ['image']), 'ratio' => '4/3', 'className' => og_cnv(['h-full'])]])|noescape}
       {if og_t(og_get($v_dish, ['badge']))}
         {capture $c_1}
           {=og_text(og_get($v_dish, ['badge']))}

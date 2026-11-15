@@ -26,6 +26,8 @@ export type StatsBandProps = {
   align?: "start" | "center";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -41,6 +43,8 @@ export function StatsBand({
   align = "center",
   tone = "default",
   density = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: StatsBandProps) {
   return (
@@ -64,7 +68,11 @@ export function StatsBand({
       )}
       landmarkLabel={landmarkLabel}
     >
-      <Backdrop kind={(((surface as string) === "image") ? "image" : "none")} alt={title} />
+      <Backdrop
+        kind={(((surface as string) === "image") ? "image" : "none")}
+        alt={(imageAlt ? imageAlt : title)}
+        image={image}
+      />
       {((stats?.length ?? 0) === 0) ? (
         <EmptyState icon="chart-column" title={empty} />
       ) : ((surface as string) === "panel") ? (

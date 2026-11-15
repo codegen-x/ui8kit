@@ -21,7 +21,7 @@ templ PostMiniCard(p PostMiniCardProps) {
 	{{ vP := p.P }}
 	{{ vLabels := p.Labels }}
 	@compose.Stack(compose.StackProps{Gap: "2", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-2", Attrs: uiutils.Attrs("data-slot", "post-mini")}}) {
-		@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title")})
+		@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title"), Src: uiutils.Get(vP, "image")})
 		@compose.Stack(compose.StackProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: "p-2"}}) {
 			@compose.Badge(compose.BadgeProps{Variant: "secondary", Size: "sm", TextProps: text.TextProps{}}) {
 				{ uiutils.Text(uiutils.Get(vP, "category")) }

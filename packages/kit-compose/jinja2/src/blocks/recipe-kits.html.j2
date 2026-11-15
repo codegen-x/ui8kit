@@ -19,7 +19,7 @@
     {%- set c_17 -%}
       {%- for v_d in og_l(v_dishes) %}
         {%- set c_16 -%}
-          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_d, ['name']), 'ratio': '4/3'}}) }}
+          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_d, ['name']), 'src': og_get(v_d, ['image']), 'ratio': '4/3'}}) }}
           {%- set c_15 -%}
             {%- set c_3 -%}
               {%- set c_1 -%}

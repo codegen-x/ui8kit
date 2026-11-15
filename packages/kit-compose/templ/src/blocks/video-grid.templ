@@ -48,7 +48,7 @@ templ VideoGrid(p VideoGridProps) {
 				for _, vQ := range uiutils.L(vQuotes) {
 					@FigureBlock(FigureBlockProps{Class: uiutils.Cnv("m-0 flex flex-col gap-4"), Testid: "item"}) {
 						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative"}}) {
-							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vQ, "author")})
+							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vQ, "author"), Src: uiutils.Get(vQ, "image")})
 							@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "button", Class: "absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0", Attrs: uiutils.Attrs("aria-label", uiutils.Tpl(vPlayLabel, uiutils.Get(vQ, "author")))}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: "play", Size: 20})
 							}

@@ -21,6 +21,8 @@ type CtaBandProps struct {
 	Tone any `json:"tone"`
 	Proof any `json:"proof"`
 	Density any `json:"density"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -35,6 +37,8 @@ templ CtaBand(p CtaBandProps) {
 	{{ vTone := uiutils.Def(p.Tone, "muted") }}
 	{{ vProof := uiutils.Def(p.Proof, "none") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	{{ vCenter := any(uiutils.Or(uiutils.Eq(vLayout, "band"), uiutils.Eq(vLayout, "banner"))) }}
 	if uiutils.Eq(vLayout, "banner") {
@@ -61,7 +65,7 @@ templ CtaBand(p CtaBandProps) {
 			}
 		}
 	} else {
-		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Align: uiutils.Cond(uiutils.T(vCenter), "center", "start"), Boxed: uiutils.Eq(vLayout, "card"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split")}, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel, Aside: ctaBandFill1(p, vTitle)}) {
+		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Align: uiutils.Cond(uiutils.T(vCenter), "center", "start"), Boxed: uiutils.Eq(vLayout, "card"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split")}, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel, Aside: ctaBandFill1(p, vTitle, vImage, vImageAlt)}) {
 			if uiutils.Eq(vProof, "quote") {
 				@QuoteProof(QuoteProofProps{Quote: uiutils.Get(vQuote, "text"), QuoteBy: uiutils.Get(vQuote, "by"), Center: vCenter})
 			}
@@ -70,6 +74,6 @@ templ CtaBand(p CtaBandProps) {
 	}
 }
 
-templ ctaBandFill1(p CtaBandProps, vTitle any) {
-	@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3"})
+templ ctaBandFill1(p CtaBandProps, vTitle any, vImage any, vImageAlt any) {
+	@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "4/3"})
 }

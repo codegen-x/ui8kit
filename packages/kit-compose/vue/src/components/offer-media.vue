@@ -8,6 +8,7 @@ import type { OfferCard } from "../blocks/store-hero.types";
 
 export type OfferMediaProps = {
   alt: string;
+  image?: string;
   card: OfferCard;
 };
 </script>
@@ -20,12 +21,12 @@ import Stack from "../compose/Stack.vue";
 import Text from "../compose/Text.vue";
 import MediaFrame from "../components/media-frame.vue";
 
-const { alt, card } = defineProps<OfferMediaProps>();
+const { alt, image, card } = defineProps<OfferMediaProps>();
 </script>
 
 <template>
   <Box class="relative" data-slot="hero-media">
-    <MediaFrame :alt="alt" ratio="4/3" />
+    <MediaFrame :alt="alt" :src="image" ratio="4/3" />
     <Group
       gap="4"
       align="start"

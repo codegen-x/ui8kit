@@ -5,7 +5,7 @@
 {var $v_p = ($p['p'] ?? null)}
 {var $v_labels = ($p['labels'] ?? null)}
 {capture $c_5}
-  {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title'])]])|noescape}
+  {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'src' => og_get($v_p, ['image'])]])|noescape}
   {capture $c_4}
     {capture $c_1}
       {=og_text(og_get($v_p, ['category']))}

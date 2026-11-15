@@ -4,7 +4,7 @@ import { fields, spec, ts } from "../kit";
 import { cols, mediaOf, tsOf } from "../props";
 import { layoutOf } from "../presets";
 
-export const featureRecord = fields(["id", "string"], ["title", "string"], ["text", "string"], ["icon", "string"], ["href", "string", true]);
+export const featureRecord = fields(["id", "string"], ["title", "string"], ["text", "string"], ["icon", "string"], ["href", "string", true], ["image", "string", true]);
 export const featureItem = { name: "item", type: tsOf("card", "tile", "cell"), default: "card", docs: "card: icon, title and text stacked; tile: compact icon beside title and text; cell: bordered cell with a round icon" };
 
 export const featureCards = spec("pattern.feature-cards", "FeatureCards", "The features as a grid of cards, tiles or bordered cells (the body of FeatureGrid). Icons are Lucide names.", {
@@ -55,6 +55,6 @@ export const featureRows = spec("pattern.feature-rows", "FeatureRows", "The feat
             use("Title", { props: { As: 3, Size: "xl", Weight: "bold" } }, text(ref("feature.title"))),
             use("Text", { props: { Size: "base", Class: "text-muted-foreground" } }, text(ref("feature.text")))),
           use("Box", { props: { Class: cn("w-full min-w-0", cond(eq(ref("mediaSide"), "start"), "md:order-first", cond(eq(ref("mediaSide"), "alternate"), "md:group-even:order-first", ""))) } },
-            ...mediaOf(ref("feature.title")))))),
+            ...mediaOf(ref("feature.title"), ref("feature.image")))))),
   ],
 });

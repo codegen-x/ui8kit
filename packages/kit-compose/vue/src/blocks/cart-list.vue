@@ -63,7 +63,13 @@ const emit = defineEmits<{ remove: [id: string] }>();
     <Stack v-else gap="4" align="stretch" data-slot="cart-cards">
       <Card v-for="line in lines" :key="line.id" variant="default">
         <CardContent class="flex flex-wrap items-center gap-4">
-          <MediaFrame v-if="((media as string) === 'image')" :alt="line.name" ratio="1/1" class="size-16 shrink-0" />
+          <MediaFrame
+            v-if="((media as string) === 'image')"
+            :alt="line.name"
+            :src="line.image"
+            ratio="1/1"
+            class="size-16 shrink-0"
+          />
           <Stack gap="0" class="min-w-40 flex-1">
             <Text size="sm" weight="semibold">
               {{ line.name }}

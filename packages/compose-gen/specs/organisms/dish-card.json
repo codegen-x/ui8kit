@@ -156,6 +156,9 @@
                     "alt": {
                       "$": "dish.name"
                     },
+                    "src": {
+                      "$": "dish.image"
+                    },
                     "ratio": "4/3",
                     "className": "h-full"
                   }

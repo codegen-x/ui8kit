@@ -41,6 +41,7 @@ export function ProjectTiles({ projects, labels, layout = "cards" }: ProjectTile
           <Box class={(over ? "h-full" : "relative")}>
             <MediaFrame
               alt={p.title}
+              src={p.image}
               ratio={(((layout as string) === "compact") ? "1/1" : (over ? "3/4" : "4/3"))}
               class={(over ? "h-full" : "")}
             />

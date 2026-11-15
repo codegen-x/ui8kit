@@ -5,7 +5,7 @@ import { and, cn, gt, len, coalesce, cond, eq, or, ref, use, when, organism } fr
 import type { OrganismSpec } from "../../ir";
 import { groupFields, rec, spec, ts } from "../kit";
 import { behind, frame } from "../components/frames";
-import { actions, density, id, mediaOf, title, tsOf } from "../props";
+import { actions, density, id, imageAlt, imageProps, pictureOf, title, tsOf } from "../props";
 import { fid } from "../forms";
 import { layoutOf } from "../presets";
 import { titleWeights } from "../components/hero-components";
@@ -62,7 +62,7 @@ export const heroClassic = spec(`${O}hero-classic`, "HeroClassic", "The top of a
   typeImports: [{ from: "CtaActions", names: ["ActionSet"] }, { from: "CodeWindow", names: ["CodeLine"] }, { from: "TopicChips", names: ["Topic"] }],
   props: [id, title, p("text", undefined, { required: true }), level, p("badge"), topics,
     { name: "actions", type: ts("ActionSet") }, { name: "media", type: rec("HeroMedia") },
-    { name: "layout", type: tsOf("centered", "split"), default: "centered" }, ...look],
+    { name: "layout", type: tsOf("centered", "split"), default: "centered" }, ...look, ...imageProps],
   derived: [{ name: "mediaKind", value: coalesce(ref("media.kind"), "none") }, { name: "mediaSide", value: coalesce(ref("media.side"), "end") }],
   view: (() => {
     const kind = (k: string) => eq(ref("mediaKind"), k);
@@ -81,9 +81,9 @@ export const heroClassic = spec(`${O}hero-classic`, "HeroClassic", "The top of a
     const mediaNodes = [
       when(and(kind("code"), ref("media.lines"), gt(len(ref("media.lines")), 0), ref("media.codeTitle"), ref("media.prompt")), [organism("CodeWindow", { title: ref("media.codeTitle"), prompt: ref("media.prompt"), lines: ref("media.lines") })]),
       when(kind("cluster"), [use("Grid", { props: { Cols: "3", Class: "items-end gap-4" }, attrs: { "data-testid": "cluster" } }, card("3/4"), card("4/3", "-translate-y-4"), card("3/4"))]),
-      when(or(kind("image")), mediaOf(ref("title"))),
+      when(or(kind("image")), [pictureOf("4/3")]),
     ];
     // with a backdrop the media box is not shown (has is false), so one frame serves both
-    return [behind(cond(kind("backdrop"), "image", "none"), ref("title"), frame(props, body, mediaNodes))];
+    return [behind(cond(kind("backdrop"), "image", "none"), imageAlt(), frame(props, body, mediaNodes), ref("image"))];
   })(),
 });

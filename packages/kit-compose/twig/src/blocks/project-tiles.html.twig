@@ -11,7 +11,7 @@
     {%- set v_i = loop.index0 -%}
     {%- set c_12 -%}
       {%- set c_2 -%}
-        {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_p, ['title']), 'ratio': (og_t(og_eq(v_layout, 'compact')) ? '1/1' : (og_t(v_over) ? '3/4' : '4/3')), 'className': og_cnv([(og_t(v_over) ? 'h-full' : '')])}}, with_context = false) }}
+        {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_p, ['title']), 'src': og_get(v_p, ['image']), 'ratio': (og_t(og_eq(v_layout, 'compact')) ? '1/1' : (og_t(v_over) ? '3/4' : '4/3')), 'className': og_cnv([(og_t(v_over) ? 'h-full' : '')])}}, with_context = false) }}
         {%- if og_t(og_and([og_get(v_p, ['featured']), not (og_eq(v_layout, 'compact'))])) %}
           {%- set c_1 -%}
             {{ og_text(og_get(v_labels, ['featured'])) }}

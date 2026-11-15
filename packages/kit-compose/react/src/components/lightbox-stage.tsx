@@ -40,7 +40,7 @@ export function LightboxStage({
           <LucideIcon name="x" size={16} />
         </Button>
       </Group>
-      <MediaFrame alt={photos[0]?.title ?? ""} ratio="4/3" />
+      <MediaFrame alt={photos[0]?.title ?? ""} src={photos[0]?.image ?? ""} ratio="4/3" />
       {((captions as string) === "show") ? (
         <Text size="sm" className="text-muted-foreground">
           {photos[0]?.tag ?? ""}

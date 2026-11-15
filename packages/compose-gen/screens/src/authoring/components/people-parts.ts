@@ -9,7 +9,7 @@ import { menuEntry } from "./nav";
 const meta = (icon: string, value: string) =>
   use("Group", { props: { Gap: "2", Align: "center" } }, use("LucideIcon", { props: { Name: icon, Size: 16 } }), use("Inline", {}, text(ref(value))));
 /** a square portrait (a plain rounded picture) of the given size class */
-export const portrait = (alt: string, size: Value) => organism("MediaFrame", { alt: ref(alt), ratio: "1/1", className: cn(size, "shrink-0") });
+export const portrait = (alt: string, size: Value, src: string) => organism("MediaFrame", { alt: ref(alt), src: ref(src), ratio: "1/1", className: cn(size, "shrink-0") });
 /** a wrapping row of small secondary badges, one per string of the list */
 export const tags = (list: string) => use("Group", { props: { Gap: "2", Class: "flex-wrap" } }, each(ref(list), "k", ref("k"), use("Badge", { props: { Variant: "secondary", Size: "sm" } }, text(ref("k")))));
 const head = (label: string, cls = "py-2") => use("TableHeadCell", { props: { Scope: "col", Class: cls } }, text(ref(label)));
@@ -23,7 +23,7 @@ export const memberRow = spec("pattern.member-row", "MemberRow", "One member of 
     { name: "layout", type: tsOf("cards", "minimal", "detailed", "list", "directory"), default: "list", docs: "the TeamGrid layout; cards and minimal draw as a list row" },
   ],
   view: [use("Group", { props: { Gap: "4", Align: "start", Class: cond(eq(ref("layout"), "detailed"), surface("flex-col p-6"), cond(eq(ref("layout"), "directory"), surface("p-4"), "border-b border-border pb-4")) }, attrs: { "data-testid": "item" } },
-    portrait("member.name", cond(eq(ref("layout"), "detailed"), "size-16", "size-12")),
+    portrait("member.name", cond(eq(ref("layout"), "detailed"), "size-16", "size-12"), "member.image"),
     use("Stack", { props: { Gap: "2", Class: "min-w-0 flex-1" } },
       use("Stack", { props: { Gap: "0" } }, strong(ref("member.name")), muted(ref("member.role"))),
       when(ne(ref("layout"), "list"), [use("Group", { props: { Gap: "2", Align: "center", Class: "flex-wrap text-xs text-muted-foreground" } },

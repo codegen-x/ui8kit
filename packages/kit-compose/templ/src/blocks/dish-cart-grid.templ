@@ -48,7 +48,7 @@ templ DishCartGrid(p DishCartGridProps) {
 					for _, vD := range uiutils.L(vDishes) {
 						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border overflow-hidden pb-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 							if uiutils.Eq(vMedia, "image") {
-								@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name")})
+								@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Src: uiutils.Get(vD, "image")})
 							}
 							@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "image")), "px-4", "px-4 pt-4"))}}) {
 								@compose.Group(compose.GroupProps{Gap: "2", Align: "baseline", Justify: "between", BoxProps: box.BoxProps{}}) {

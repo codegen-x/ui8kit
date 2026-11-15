@@ -37,7 +37,7 @@ export function QuoteCard({ q, labels, item, layout = "grid" }: QuoteCardProps) 
         <>
           <Group gap="4" align="center">
             {(item?.avatar !== "none") ? (
-              <MediaFrame alt={q.author} ratio="1/1" class="size-12 shrink-0 rounded-full" />
+              <MediaFrame alt={q.author} src={q.image} ratio="1/1" class="size-12 shrink-0 rounded-full" />
             ) : null}
             <Stack gap="0">
               <Text size="sm" weight="semibold">
@@ -68,7 +68,7 @@ export function QuoteCard({ q, labels, item, layout = "grid" }: QuoteCardProps) 
           </Text>
           <Group gap="4" align="center">
             {(item?.avatar !== "none") ? (
-              <MediaFrame alt={q.author} ratio="1/1" class="size-12 shrink-0 rounded-full" />
+              <MediaFrame alt={q.author} src={q.image} ratio="1/1" class="size-12 shrink-0 rounded-full" />
             ) : null}
             <Stack gap="0">
               <Text size="sm" weight="semibold">

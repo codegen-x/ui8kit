@@ -15,7 +15,7 @@ const labels = { name: "labels", type: ts("FoodLabels"), required: true };
 const opts = (name: string, docs: string) => ({ name, type: ts("DishOption[]"), required: true, docs });
 const types = [{ from: "DishShowcase", names: ["Dish", "FoodLabels"] }, { from: "OptionChips", names: ["DishOption"] }];
 const priceOf = (d = "d") => money(ref(`${d}.price`), ref(`${d}.currency`));
-const pic = (alt: Value, ratio: string, cls = "") => organism("MediaFrame", { alt, ratio, ...(cls ? { className: cls } : {}) });
+const pic = (alt: Value, ratio: string, cls = "") => organism("MediaFrame", { alt, src: ref("d.image"), ratio, ...(cls ? { className: cls } : {}) });
 const chips = (name: Value, legend: string, options: string, extra = "none", layout = "wrap") => organism("OptionChips", { name, legend: ref(legend), options: ref(options), extra, layout });
 const split = (aside: boolean) => cond(eq(ref("layout"), "split"), aside ? surface("flex flex-col gap-4 p-6 lg:sticky lg:top-8") : "flex flex-col gap-8 lg:col-span-2", aside ? surface("flex flex-col gap-4 p-6") : "flex flex-col gap-8 lg:col-span-3");
 /** the summary card of a builder: a line, the total and the order button */

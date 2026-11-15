@@ -3,7 +3,7 @@ import { cond, eq, or, ref, undef, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, ifAny, tsOf, toneLite } from "../props";
+import { id, ifAny, imageProps, pictureOf, toneLite, tsOf } from "../props";
 
 const featureSplit = spec("organism.feature-split", "FeatureSplit", "Features beside a picture. Axes: layout (grid: four plain features in two columns, cards: four features as cards and the actions, stats: two figure cards over three checked rows beside a square picture, metrics: four metric cards and the actions), mediaSide, tone.", {
   typeImports: [{ from: "FeatureGrid", names: ["Feature"] }, { from: "StatsBand", names: ["Stat"] }, { from: "ErrorPage", names: ["LinkActions"] }],
@@ -19,6 +19,7 @@ const featureSplit = spec("organism.feature-split", "FeatureSplit", "Features be
     { name: "layout", type: tsOf("grid", "cards", "stats", "metrics"), default: "grid" },
     { name: "mediaSide", type: tsOf("end", "start"), default: "end" },
     { name: "tone", type: toneLite, default: "default" },
+    ...imageProps,
   ],
   view: (() => {
     const is = (l: string) => eq(ref("layout"), l);
@@ -31,7 +32,7 @@ const featureSplit = spec("organism.feature-split", "FeatureSplit", "Features be
       when(is("stats"), [ifAny("features", [organism("FeatureStatRows", { features: ref("features"), stats: ref("stats") })])]),
       when(is("metrics"), [ifAny("stats", [organism("FeatureMetricCards", { stats: ref("stats") })])]),
       when(or(is("cards"), is("metrics")), [actions]),
-    ], [organism("MediaFrame", { alt: ref("title"), ratio: cond(is("stats"), "1/1", "4/3") })])];
+    ], [pictureOf(cond(is("stats"), "1/1", "4/3"))])];
   })(),
 });
 

@@ -4,7 +4,7 @@ import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
 import { portrait, tags } from "../components/people-parts";
-import { empty, id, ifAny, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
+import { denseLite, empty, id, ifAny, imageProps, orEmpty, pictureOf, title, toneLite, tsOf } from "../props";
 import { heading, muted, strong, surface } from "../ux";
 import { menuEntry } from "../components/nav";
 
@@ -12,7 +12,7 @@ const O = "organism.";
 const lead = { name: "lead", type: "string" as const, default: "" };
 const common = { id: ref("id"), title: ref("title"), lead: ref("lead"), tone: ref("tone"), density: ref("density") };
 const teamGrid = spec(`${O}team-grid`, "TeamGrid", "The people of a team: portrait cards, a minimal grid of small portraits, detailed cards with skills, rows beside a picture, or a directory of two columns. Axes: layout (cards, minimal, detailed, list, directory), cols, tone, density.", {
-  records: { Member: fields(["id", "string"], ["name", "string"], ["role", "string"], ["dept", "string"], ["location", "string"], ["bio", "string"], ["skills", "string[]"]) },
+  records: { Member: fields(["id", "string"], ["name", "string"], ["role", "string"], ["dept", "string"], ["location", "string"], ["bio", "string"], ["skills", "string[]"], ["image", "string", true]) },
   props: [
     id, title, lead,
     { name: "members", type: ts("Member[]"), required: true },
@@ -22,18 +22,19 @@ const teamGrid = spec(`${O}team-grid`, "TeamGrid", "The people of a team: portra
     { name: "cols", type: tsOf("1-3", "1-4"), default: "1-4" },
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
+    ...imageProps,
   ],
   view: [frame({ ...common, layout: cond(eq(ref("layout"), "list"), "split", "stack"), hasMedia: eq(ref("layout"), "list"), mediaSide: "start", mediaAlign: "start" }, [orEmpty("members", "users", [
     use("Box", { props: { Class: cond(eq(ref("layout"), "minimal"), "grid grid-cols-2 gap-8 md:grid-cols-4", cond(eq(ref("layout"), "directory"), "grid grid-cols-1 gap-4 md:grid-cols-2", cond(eq(ref("layout"), "list"), "flex flex-col gap-4", cond(eq(ref("cols"), "1-3"), "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3", "grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4")))) }, attrs: { "data-testid": "items" } },
       each(ref("members"), "m", ref("m.id"),
         when(eq(ref("layout"), "minimal"),
-          [use("Stack", { props: { Gap: "2", Align: "center", Class: "text-center" }, attrs: { "data-testid": "item" } }, portrait("m.name", "size-16"), strong(ref("m.name"), "sm"), muted(ref("m.role"), "xs"))],
+          [use("Stack", { props: { Gap: "2", Align: "center", Class: "text-center" }, attrs: { "data-testid": "item" } }, portrait("m.name", "size-16", "m.image"), strong(ref("m.name"), "sm"), muted(ref("m.role"), "xs"))],
           [when(eq(ref("layout"), "cards"),
             [use("Stack", { props: { Gap: "4", Class: surface("p-4") }, attrs: { "data-testid": "item" } },
-              organism("MediaFrame", { alt: ref("m.name"), ratio: "1/1" }),
+              organism("MediaFrame", { alt: ref("m.name"), src: ref("m.image"), ratio: "1/1" }),
               use("Stack", { props: { Gap: "2" } }, use("Stack", { props: { Gap: "0" } }, strong(ref("m.name")), muted(ref("m.role"))), muted(ref("m.bio"))))],
             [organism("MemberRow", { member: ref("m"), depts: ref("depts"), layout: ref("layout") })])])))]),
-  ], [organism("MediaFrame", { alt: ref("title"), ratio: "3/4" })])],
+  ], [pictureOf("3/4")])],
 });
 
 const jobBoard = spec(`${O}job-board`, "JobBoard", "Open jobs as cards in two columns, grouped by department, or as a table: the title, the department, the place, the type, an optional salary and an apply link. Axes: layout (grid, grouped, table), salary (show, hide), tone.", {
@@ -77,6 +78,7 @@ const aboutMe = spec(`${O}about-me`, "AboutMe", "A personal about section beside
     { name: "layout", type: tsOf("facts", "skills"), default: "facts" },
     { name: "mediaSide", type: tsOf("start", "end"), default: "start" },
     { name: "tone", type: toneLite, default: "default" },
+    ...imageProps,
   ],
   view: [frame({ id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), level: ref("level"), layout: "split", hasMedia: true, mediaSide: ref("mediaSide"), tone: ref("tone"), density: "default" }, [
     when(eq(ref("layout"), "facts"),
@@ -89,7 +91,7 @@ const aboutMe = spec(`${O}about-me`, "AboutMe", "A personal about section beside
             use("Group", { props: { Gap: "4", Justify: "between" } }, strong(ref("s.label"), "sm"), muted(tpl(ref("labels.level"), ref("s.level")), "xs")),
             use("Progress", { props: { Value: str(ref("s.level")), Max: "100" }, attrs: { "aria-label": ref("s.label") } }))))])]),
     organism("ActionGroup", { primary: ref("actions.cta"), primaryHref: ref("actions.href"), secondary: cond(eq(ref("actions.mode"), "two"), ref("actions.secondary"), undef()), secondaryHref: ref("actions.secondaryHref"), align: "start" }),
-  ], [organism("MediaFrame", { alt: ref("title"), ratio: "3/4" })])],
+  ], [pictureOf("3/4")])],
 });
 
 const aboutCompany = spec(`${O}about-company`, "AboutCompany", "The culture of a company: a strip of three pictures, the heading, a few figures and the values. Axes: layout (split: the pictures beside the text, stacked: the pictures under it), tone, density.", {

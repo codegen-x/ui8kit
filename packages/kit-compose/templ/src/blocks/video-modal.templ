@@ -24,6 +24,8 @@ type VideoModalProps struct {
 	Size any `json:"size"`
 	Outline any `json:"outline"`
 	Tone any `json:"tone"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -39,6 +41,8 @@ templ VideoModal(p VideoModalProps) {
 	{{ vSize := uiutils.Def(p.Size, "default") }}
 	{{ vOutline := uiutils.Def(p.Outline, "none") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
 		@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full", uiutils.Cond(uiutils.T(uiutils.Eq(vSize, "wide")), "max-w-4xl", "max-w-2xl"), "rounded bg-card inset-ring inset-ring-border p-4 shadow-lg")), Attrs: uiutils.Attrs("role", "dialog", "aria-label", vTitle, "data-slot", "video-modal")}}) {
@@ -51,7 +55,7 @@ templ VideoModal(p VideoModalProps) {
 				}
 			}
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative", Attrs: uiutils.Attrs("data-slot", "player")}}) {
-				@MediaFrame(MediaFrameProps{Alt: vTitle})
+				@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage})
 				@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{Type: "button", Class: "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded", Attrs: uiutils.Attrs("aria-label", vPlay)}}) {
 					@icons.LucideIcon(icons.LucideIconProps{Name: "play", Size: 24})
 				}

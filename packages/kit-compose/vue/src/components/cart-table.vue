@@ -72,6 +72,7 @@ const emit = defineEmits<{ remove: [id: string] }>();
               <MediaFrame
                 v-if="((media as string) === 'image')"
                 :alt="line.name"
+                :src="line.image"
                 ratio="1/1"
                 class="hidden size-14 shrink-0 sm:block"
               />

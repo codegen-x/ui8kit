@@ -8,7 +8,7 @@ import { tsOf } from "../props";
 
 const media = () => when(eq(ref("media"), "image"), [
   use("Box", { props: { Class: cn("relative shrink-0", cond(eq(ref("layout"), "horizontal"), "sm:w-48", "")) } },
-    organism("MediaFrame", { alt: ref("dish.name"), ratio: "4/3", className: "h-full" }),
+    organism("MediaFrame", { alt: ref("dish.name"), src: ref("dish.image"), ratio: "4/3", className: "h-full" }),
     when(ref("dish.badge"), [use("Badge", { props: { Variant: "default", Size: "default", Class: "absolute left-4 top-4" }, attrs: { "data-testid": "badge" } }, text(ref("dish.badge")))])),
 ]);
 

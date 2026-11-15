@@ -22,6 +22,8 @@ export type HeroClassicProps = {
   scale?: "default" | "display";
   tone?: "default" | "muted" | "inverse";
   density?: "roomy" | "default" | "compact";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -55,6 +57,8 @@ const {
   scale = "default",
   tone = "default",
   density = "roomy",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<HeroClassicProps>();
 const mediaKind = computed(() => media?.kind ?? "none");
@@ -81,7 +85,11 @@ const mediaSide = computed(() => media?.side ?? "end");
     "
     :landmarkLabel="landmarkLabel"
   >
-    <Backdrop :kind="(((mediaKind as string) === 'backdrop') ? 'image' : 'none')" :alt="title" />
+    <Backdrop
+      :kind="(((mediaKind as string) === 'backdrop') ? 'image' : 'none')"
+      :alt="(imageAlt ? imageAlt : title)"
+      :image="image"
+    />
     <template v-if="actions?.cta">
       <Box v-if="(actions?.mode === 'form')"
         :class="cn('w-full max-w-xl', (((layout as string) === 'centered') ? 'mx-auto' : ''))"
@@ -131,7 +139,12 @@ const mediaSide = computed(() => media?.side ?? "end");
           <MediaFrame :alt="title" ratio="3/4" />
         </Box>
       </Grid>
-      <MediaFrame v-if="(((mediaKind as string) === 'image'))" :alt="title" ratio="4/3" />
+      <MediaFrame
+        v-if="(((mediaKind as string) === 'image'))"
+        :alt="(imageAlt ? imageAlt : title)"
+        :src="image"
+        ratio="4/3"
+      />
     </template>
   </SectionFrame>
 </template>

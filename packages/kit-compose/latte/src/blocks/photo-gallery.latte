@@ -18,7 +18,7 @@
     {=og_include('blocks/empty-state.latte', ['p' => ['icon' => 'image', 'title' => $v_empty]])|noescape}
   {elseif og_t(og_eq($v_layout, 'featured'))}
     {capture $c_9}
-      {=og_include('blocks/media-frame.latte', ['p' => ['alt' => $v_title]])|noescape}
+      {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_first_of($v_photos, 'title'), 'src' => og_first_of($v_photos, 'image')]])|noescape}
       {capture $c_7}
         {capture $c_3}
           {capture $c_1}
@@ -47,7 +47,7 @@
       {capture $c_8}
         {foreach og_l($v_photos) as $v_p}
           {var $v_i = $iterator->counter0}
-          {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'ratio' => '1/1', 'className' => og_cnv([(og_t(og_eq($v_i, 0)) ? 'ring-2 ring-foreground' : '')])]])|noescape}
+          {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'src' => og_get($v_p, ['image']), 'ratio' => '1/1', 'className' => og_cnv([(og_t(og_eq($v_i, 0)) ? 'ring-2 ring-foreground' : '')])]])|noescape}
         {/foreach}
       {/capture}
       {=og_include('compose/Box.latte', ['class' => 'grid grid-cols-3 gap-2 sm:grid-cols-9', 'attrs' => og_attrs(['data-slot', 'thumbs']), 'children' => (string) $c_8])|noescape}
@@ -58,7 +58,7 @@
       {foreach og_l($v_photos) as $v_p}
         {var $v_i = $iterator->counter0}
         {capture $c_14}
-          {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'ratio' => (og_t(og_eq($v_layout, 'masonry')) ? (og_t(og_eq(og_get($v_p, ['size']), 'tall')) ? '3/4' : (og_t(og_eq(og_get($v_p, ['size']), 'wide')) ? '16/9' : (og_t(og_eq(og_get($v_p, ['size']), 'large')) ? '4/3' : '1/1'))) : (og_t(og_eq($v_layout, 'grid')) ? '4/3' : '1/1')), 'className' => og_cnv([(og_t(og_eq($v_layout, 'mosaic')) ? 'h-full' : '')])]])|noescape}
+          {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'src' => og_get($v_p, ['image']), 'ratio' => (og_t(og_eq($v_layout, 'masonry')) ? (og_t(og_eq(og_get($v_p, ['size']), 'tall')) ? '3/4' : (og_t(og_eq(og_get($v_p, ['size']), 'wide')) ? '16/9' : (og_t(og_eq(og_get($v_p, ['size']), 'large')) ? '4/3' : '1/1'))) : (og_t(og_eq($v_layout, 'grid')) ? '4/3' : '1/1')), 'className' => og_cnv([(og_t(og_eq($v_layout, 'mosaic')) ? 'h-full' : '')])]])|noescape}
           {if og_t(og_and([og_eq($v_captions, 'show'), og_eq($v_layout, 'cards')]))}
             {capture $c_12}
               {capture $c_10}

@@ -34,6 +34,8 @@ export type MediaListProps = {
   layout?: "figures" | "proof" | "steps" | "posts" | "topics" | "contact";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -48,6 +50,8 @@ export function MediaList({
   layout = "figures",
   mediaSide = "end",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: MediaListProps) {
   return (
@@ -62,7 +66,8 @@ export function MediaList({
       landmarkLabel={landmarkLabel}
       aside={(
         <MediaFrame
-          alt={title}
+          alt={(imageAlt ? imageAlt : title)}
+          src={image}
           ratio={((((layout as string) === "steps") || ((layout as string) === "topics")) ? "1/1" : "4/3")}
         />
       )}

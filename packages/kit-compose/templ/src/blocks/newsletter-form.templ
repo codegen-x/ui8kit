@@ -26,6 +26,8 @@ type NewsletterFormProps struct {
 	Terms any `json:"terms"`
 	Tone any `json:"tone"`
 	Align any `json:"align"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -41,8 +43,10 @@ templ NewsletterForm(p NewsletterFormProps) {
 	{{ vTerms := uiutils.Def(p.Terms, "hide") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vAlign := uiutils.Def(p.Align, "center") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Tone: vTone, Align: vAlign, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split")}, LandmarkLabel: vLandmarkLabel, Aside: newsletterFormFill1(p, vTitle)}) {
+	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Tone: vTone, Align: vAlign, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split")}, LandmarkLabel: vLandmarkLabel, Aside: newsletterFormFill1(p, vTitle, vImage, vImageAlt)}) {
 		@compose.Form(compose.FormProps{FormProps: form.FormProps{Method: "dialog", Class: uiutils.S(uiutils.Cnv("w-full max-w-md", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "mx-auto", ""))), Attrs: uiutils.Attrs("data-slot", "newsletter-form")}}) {
 			@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{For: uiutils.S(uiutils.Tpl("{0}-email", vId)), Class: "sr-only"}}) {
 				{ uiutils.Text(vLabel) }
@@ -62,6 +66,6 @@ templ NewsletterForm(p NewsletterFormProps) {
 	}
 }
 
-templ newsletterFormFill1(p NewsletterFormProps, vTitle any) {
-	@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3"})
+templ newsletterFormFill1(p NewsletterFormProps, vTitle any, vImage any, vImageAlt any) {
+	@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "4/3"})
 }

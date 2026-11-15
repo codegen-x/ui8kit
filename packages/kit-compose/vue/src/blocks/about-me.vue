@@ -22,6 +22,8 @@ export type AboutMeProps = {
   layout?: "facts" | "skills";
   mediaSide?: "start" | "end";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -51,6 +53,8 @@ const {
   layout = "facts",
   mediaSide = "start",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<AboutMeProps>();
 </script>
@@ -108,7 +112,7 @@ const {
       :secondaryHref="actions.secondaryHref"
     />
     <template #aside>
-      <MediaFrame :alt="title" ratio="3/4" />
+      <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="3/4" />
     </template>
   </SectionFrame>
 </template>

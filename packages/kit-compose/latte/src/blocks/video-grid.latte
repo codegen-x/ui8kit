@@ -21,7 +21,7 @@
       {foreach og_l($v_quotes) as $v_q}
         {capture $c_9}
           {capture $c_5}
-            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_q, ['author'])]])|noescape}
+            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_q, ['author']), 'src' => og_get($v_q, ['image'])]])|noescape}
             {capture $c_1}
               {=og_include('icons/LucideIcon.latte', ['name' => 'play', 'size' => 20])|noescape}
             {/capture}

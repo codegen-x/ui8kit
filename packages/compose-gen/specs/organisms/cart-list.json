@@ -29,6 +29,11 @@
       {
         "name": "qty",
         "type": "number"
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": true
       }
     ],
     "CartLabels": [
@@ -299,6 +304,9 @@
                                           "props": {
                                             "alt": {
                                               "$": "line.name"
+                                            },
+                                            "src": {
+                                              "$": "line.image"
                                             },
                                             "ratio": "1/1",
                                             "className": "size-16 shrink-0"

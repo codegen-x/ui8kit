@@ -47,6 +47,9 @@
             "alt": {
               "$": "p.title"
             },
+            "src": {
+              "$": "p.image"
+            },
             "ratio": {
               "$": "ratio"
             },

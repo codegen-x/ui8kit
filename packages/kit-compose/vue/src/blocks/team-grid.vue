@@ -18,6 +18,8 @@ export type TeamGridProps = {
   cols?: "1-3" | "1-4";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -43,6 +45,8 @@ const {
   cols = "1-4",
   tone = "default",
   density = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<TeamGridProps>();
 </script>
@@ -71,7 +75,7 @@ const {
     >
       <template v-for="m in members" :key="m.id">
         <Stack v-if="((layout as string) === 'minimal')" gap="2" align="center" class="text-center" data-slot="item">
-          <MediaFrame :alt="m.name" ratio="1/1" :class="cn('size-16', 'shrink-0')" />
+          <MediaFrame :alt="m.name" :src="m.image" ratio="1/1" :class="cn('size-16', 'shrink-0')" />
           <Text size="sm" weight="semibold">
             {{ m.name }}
           </Text>
@@ -85,7 +89,7 @@ const {
           class="rounded bg-card inset-ring inset-ring-border p-4"
           data-slot="item"
         >
-          <MediaFrame :alt="m.name" ratio="1/1" />
+          <MediaFrame :alt="m.name" :src="m.image" ratio="1/1" />
           <Stack gap="2">
             <Stack gap="0">
               <Text size="base" weight="semibold">
@@ -104,7 +108,7 @@ const {
       </template>
     </Box>
     <template #aside>
-      <MediaFrame :alt="title" ratio="3/4" />
+      <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="3/4" />
     </template>
   </SectionFrame>
 </template>

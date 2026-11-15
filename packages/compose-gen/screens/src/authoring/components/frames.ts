@@ -88,15 +88,16 @@ const backdrop = spec(`${P}backdrop`, "Backdrop", "A faint full-size picture beh
   props: [
     prop("kind", ts('"none" | "image"'), "what is drawn behind", { default: "none" }),
     prop("alt", "string", "accessible name of the picture (image)", { default: "" }),
+    prop("image", "string", "address of the picture (image); none: the placeholder"),
   ],
   view: [when(eq(ref("kind"), "image"),
     [use("Box", { props: { Class: "pointer-events-none absolute inset-0 -z-10" }, attrs: { "data-testid": "backdrop" } },
-      organism("MediaFrame", { alt: ref("alt"), ratio: "21/9", className: "size-full rounded-none opacity-30" }))])],
+      organism("MediaFrame", { alt: ref("alt"), src: ref("image"), ratio: "21/9", className: "size-full rounded-none opacity-30" }))])],
 });
 /** a picture of the given kind (none, image) behind a section: the SectionFrame (or Block) `node` stays the root, gets
  *  `relative isolate overflow-hidden` for an image and holds the Backdrop as its first child */
-export function behind(kind: Value, alt: Value, node: ViewNode): ViewNode {
-  const layer = organism("Backdrop", { kind, alt });
+export function behind(kind: Value, alt: Value, node: ViewNode, image?: Value): ViewNode {
+  const layer = organism("Backdrop", { kind, alt, ...(image !== undefined ? { image } : {}) });
   const shell = cond(eq(kind, "image"), "relative isolate overflow-hidden", "");
   if ("organism" in node && node.slots?.["children"]) {
     const props = { ...(node.props ?? {}), className: node.props?.["className"] !== undefined ? cn(node.props["className"]!, shell) : shell };
@@ -135,24 +136,31 @@ const sectionHeader = spec(`${P}section-header`, "SectionHeader", "The head of a
   })(),
 });
 
-const mediaFrame = spec(`${P}media-frame`, "MediaFrame", "A picture in a fixed ratio that follows the theme. `src` is the picture of the light theme, `darkSrc` the one of the dark theme (without it the dark theme shows `src`). Without both it shows the built-in neutral placeholders (base64 data URIs, one light and one dark), so a page can be laid out before it has pictures; the placeholder stands in for a real `src` and is switched by the theme token. `ratio` comes from the recipe; the corners are the plain theme radius.", {
+const mediaFrame = spec(`${P}media-frame`, "MediaFrame",
+  "A picture in a fixed ratio that follows the theme. `src` is the picture of the light theme, `darkSrc` the one of the dark theme (without it the dark theme shows `src`). " +
+  "Without both (an empty string counts as none) it shows the built-in neutral placeholders (base64 data URIs, one light and one dark), so a page can be laid out before it has pictures; " +
+  "the placeholder is decorative (`alt` is empty), stands in for a real `src` and is switched by the theme token. A real picture gets `alt` and loads lazily. " +
+  "`ratio` comes from the recipe; the corners are the plain theme radius.", {
   props: [
-    req("alt", "string", "accessible name of the picture"),
-    prop("src", "string", "address of the picture (light theme); none: the built-in light placeholder"),
-    prop("darkSrc", "string", "address of the picture for the dark theme; none: `src`, or the built-in dark placeholder when there is no `src`"),
+    req("alt", "string", "accessible name of the picture; used only when there is a `src` (the placeholder is decorative)"),
+    prop("src", "string", "address of the picture (light theme); none or empty: the built-in light placeholder"),
+    prop("darkSrc", "string", "address of the picture for the dark theme; none or empty: `src`, or the built-in dark placeholder when there is no `src`"),
     prop("ratio", union("media-frame", "ratio"), "width to height", { default: defaultOf("media-frame", "ratio") }),
   ],
   className: true,
   consts: { PLACEHOLDER: placeholders },
   recipes: { mediaFrame: "media-frame" },
   derived: [
-    { name: "lightSrc", value: coalesce(ref("src"), at(ref("PLACEHOLDER"), "light")) },
-    { name: "nightSrc", value: coalesce(ref("darkSrc"), ref("src"), at(ref("PLACEHOLDER"), "dark")) },
+    { name: "lightSrc", value: cond(ref("src"), ref("src"), at(ref("PLACEHOLDER"), "light")) },
+    { name: "nightSrc", value: cond(ref("darkSrc"), ref("darkSrc"), cond(ref("src"), ref("src"), at(ref("PLACEHOLDER"), "dark"))) },
+    { name: "shownAlt", value: cond(ref("src"), ref("alt"), "") },
+    { name: "loadHint", value: cond(ref("src"), "lazy", undef()) },
+    { name: "decodeHint", value: cond(ref("src"), "async", undef()) },
   ],
   examples: recipeExamples("media-frame", { ratio: "ratio" }, { alt: "Picture" }),
   view: [use("Box", { props: { Class: cn(op("recipe", "mediaFrame", "ratio", ref("ratio")), ref("className")) }, attrs: { "data-slot": "media-frame", "data-placeholder": cond(ref("src"), "false", "true") } },
-    use("Image", { props: { Src: ref("lightSrc"), Alt: ref("alt"), Class: "absolute inset-0 size-full object-cover dark:hidden" }, attrs: { "data-theme-src": "light" } }),
-    use("Image", { props: { Src: ref("nightSrc"), Alt: ref("alt"), Class: "absolute inset-0 hidden size-full object-cover dark:block" }, attrs: { "data-theme-src": "dark" } }))],
+    use("Image", { props: { Src: ref("lightSrc"), Alt: ref("shownAlt"), Loading: ref("loadHint"), Decoding: ref("decodeHint"), Class: "absolute inset-0 size-full object-cover dark:hidden" }, attrs: { "data-theme-src": "light" } }),
+    use("Image", { props: { Src: ref("nightSrc"), Alt: ref("shownAlt"), Loading: ref("loadHint"), Decoding: ref("decodeHint"), Class: "absolute inset-0 hidden size-full object-cover dark:block" }, attrs: { "data-theme-src": "dark" } }))],
 });
 
 const actionGroup = spec(`${P}action-group`, "ActionGroup", "One or two calls to action side by side: a filled primary button and an outline secondary one. Links, not handlers: the page decides what they open.", {

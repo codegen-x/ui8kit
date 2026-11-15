@@ -19,6 +19,8 @@ export type StoryTabsProps = {
   labels: StoryLabels;
   layout?: "years" | "carousel";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -47,6 +49,8 @@ const {
   labels,
   layout = "years",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<StoryTabsProps>();
 const emit = defineEmits<{ select: [id: string] }>();
@@ -104,7 +108,7 @@ const emit = defineEmits<{ select: [id: string] }>();
   >
     <template #aside>
       <Stack gap="4" align="stretch">
-        <MediaFrame :alt="title" ratio="4/3" />
+        <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="4/3" />
         <Group gap="4" align="center" justify="between">
           <Button variant="outline" size="sm" layout="icon" type="button" :aria-label="labels.previous">
             <LucideIcon name="chevron-left" :size="16" />

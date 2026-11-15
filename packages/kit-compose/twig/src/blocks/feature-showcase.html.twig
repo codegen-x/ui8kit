@@ -20,7 +20,7 @@
       {%- for v_f in og_l(v_features) %}
         {%- set c_6 -%}
           {%- if og_t(og_eq(v_item, 'picture')) %}
-            {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_f, ['title'])}}, with_context = false) }}
+            {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_f, ['title']), 'src': og_get(v_f, ['image'])}}, with_context = false) }}
           {%- else %}
             {%- set c_1 -%}
               {{ include('icons/LucideIcon.html.twig', {'name': og_s(og_get(v_f, ['icon'])), 'size': 32}, with_context = false) }}

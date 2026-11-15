@@ -12,7 +12,7 @@
 {%- set c_14 -%}
   {%- if og_t(og_eq(v_media, 'image')) %}
     {%- set c_2 -%}
-      {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_dish, ['name']), 'ratio': '4/3', 'className': og_cnv(['h-full'])}}) }}
+      {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_dish, ['name']), 'src': og_get(v_dish, ['image']), 'ratio': '4/3', 'className': og_cnv(['h-full'])}}) }}
       {%- if og_t(og_get(v_dish, ['badge'])) %}
         {%- set c_1 -%}
           {{ og_text(og_get(v_dish, ['badge'])) }}

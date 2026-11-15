@@ -45,7 +45,7 @@ export function DishCard({
     >
       {((media as string) === "image") ? (
         <Box className={cn("relative shrink-0", (((layout as string) === "horizontal") ? "sm:w-48" : ""))}>
-          <MediaFrame alt={dish.name} ratio="4/3" className="h-full" />
+          <MediaFrame alt={dish.name} src={dish.image} ratio="4/3" className="h-full" />
           {dish.badge ? (
             <Badge variant="default" size="default" className="absolute left-4 top-4">
               {dish.badge}

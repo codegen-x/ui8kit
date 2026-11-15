@@ -25,6 +25,11 @@
       {
         "name": "size",
         "type": "string"
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": true
       }
     ]
   },
@@ -327,6 +332,9 @@
                                       "props": {
                                         "alt": {
                                           "$": "tile.title"
+                                        },
+                                        "src": {
+                                          "$": "tile.image"
                                         },
                                         "ratio": "4/3",
                                         "className": "mt-auto"

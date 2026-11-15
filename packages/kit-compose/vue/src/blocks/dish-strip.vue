@@ -61,7 +61,7 @@ const {
         "
         data-slot="item"
       >
-        <MediaFrame :alt="d.name" :ratio="(((size as string) === 'lg') ? '4/3' : '1/1')" />
+        <MediaFrame :alt="d.name" :src="d.image" :ratio="(((size as string) === 'lg') ? '4/3' : '1/1')" />
         <Group gap="2" align="baseline" justify="between">
           <Text size="sm" weight="semibold">
             {{ d.name }}

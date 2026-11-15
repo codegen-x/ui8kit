@@ -44,7 +44,7 @@ templ LightboxGallery(p LightboxGalleryProps) {
 		} else {
 			if uiutils.Eq(vLayout, "featured") {
 				@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "featured")}}) {
-					@MediaFrame(MediaFrameProps{Alt: vTitle})
+					@MediaFrame(MediaFrameProps{Alt: uiutils.FirstOf(vPhotos, "title"), Src: uiutils.FirstOf(vPhotos, "image")})
 					@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "between", BoxProps: box.BoxProps{}}) {
 						@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 							@compose.Text(compose.TextProps{Size: "base", Weight: "semibold", TextProps: text.TextProps{}}) {
@@ -65,7 +65,7 @@ templ LightboxGallery(p LightboxGalleryProps) {
 					}
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-3 gap-2 sm:grid-cols-9", Attrs: uiutils.Attrs("data-slot", "thumbs")}}) {
 						for vI, vP := range uiutils.L(vPhotos) {
-							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title"), Ratio: "1/1", Class: uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(float64(vI), float64(0))), "ring-2 ring-foreground", ""))})
+							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title"), Src: uiutils.Get(vP, "image"), Ratio: "1/1", Class: uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(float64(vI), float64(0))), "ring-2 ring-foreground", ""))})
 						}
 					}
 				}
@@ -73,7 +73,7 @@ templ LightboxGallery(p LightboxGalleryProps) {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "masonry")), "columns-1 gap-4 sm:columns-2 lg:columns-3", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3")), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 					for _, vP := range uiutils.L(vPhotos) {
 						@FigureBlock(FigureBlockProps{Class: uiutils.Cnv(uiutils.Cnv("relative flex flex-col gap-2", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "masonry")), "mb-4 break-inside-avoid", ""))), Testid: "item"}) {
-							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title"), Ratio: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "masonry")), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vP, "size"), "tall")), "3/4", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vP, "size"), "wide")), "16/9", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vP, "size"), "large")), "4/3", "1/1"))), "4/3")})
+							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title"), Src: uiutils.Get(vP, "image"), Ratio: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "masonry")), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vP, "size"), "tall")), "3/4", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vP, "size"), "wide")), "16/9", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vP, "size"), "large")), "4/3", "1/1"))), "4/3")})
 							@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", Class: "absolute right-2 top-2 bg-background", AriaLabel: uiutils.S(uiutils.Get(vLabels, "open"))}}) {
 								@icons.LucideIcon(icons.LucideIconProps{Name: "arrow-up-right", Size: 16})
 							}

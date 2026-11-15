@@ -19,6 +19,8 @@ type MediaListProps struct {
 	Layout any `json:"layout"`
 	MediaSide any `json:"mediaSide"`
 	Tone any `json:"tone"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -34,8 +36,10 @@ templ MediaList(p MediaListProps) {
 	{{ vLayout := uiutils.Def(p.Layout, "figures") }}
 	{{ vMediaSide := uiutils.Def(p.MediaSide, "end") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, LandmarkLabel: vLandmarkLabel, Aside: mediaListFill1(p, vTitle, vLayout)}) {
+	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, LandmarkLabel: vLandmarkLabel, Aside: mediaListFill1(p, vTitle, vLayout, vImage, vImageAlt)}) {
 		if uiutils.T(uiutils.Or(uiutils.Eq(vLayout, "figures"), uiutils.Eq(vLayout, "proof"))) {
 			if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "stats")), float64(0)) {
 				@MediaFigures(MediaFiguresProps{Extras: vExtras, Mode: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "proof")), "row", "grid")})
@@ -72,6 +76,6 @@ templ MediaList(p MediaListProps) {
 	}
 }
 
-templ mediaListFill1(p MediaListProps, vTitle any, vLayout any) {
-	@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: uiutils.Cond(uiutils.T(uiutils.Or(uiutils.Eq(vLayout, "steps"), uiutils.Eq(vLayout, "topics"))), "1/1", "4/3")})
+templ mediaListFill1(p MediaListProps, vTitle any, vLayout any, vImage any, vImageAlt any) {
+	@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: uiutils.Cond(uiutils.T(uiutils.Or(uiutils.Eq(vLayout, "steps"), uiutils.Eq(vLayout, "topics"))), "1/1", "4/3")})
 }

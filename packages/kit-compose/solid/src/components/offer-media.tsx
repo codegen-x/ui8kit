@@ -11,13 +11,14 @@ import type { OfferCard } from "../blocks/store-hero.types";
 
 export type OfferMediaProps = {
   alt: string;
+  image?: string;
   card: OfferCard;
 };
 
-export function OfferMedia({ alt, card }: OfferMediaProps) {
+export function OfferMedia({ alt, image, card }: OfferMediaProps) {
   return (
     <Box class="relative" data-slot="hero-media">
-      <MediaFrame alt={alt} ratio="4/3" />
+      <MediaFrame alt={alt} src={image} ratio="4/3" />
       <Group
         gap="4"
         align="start"

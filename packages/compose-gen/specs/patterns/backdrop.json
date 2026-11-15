@@ -19,6 +19,11 @@
       "type": "string",
       "docs": "accessible name of the picture (image)",
       "default": ""
+    },
+    {
+      "name": "image",
+      "type": "string",
+      "docs": "address of the picture (image); none: the placeholder"
     }
   ],
   "slots": [],
@@ -49,6 +54,9 @@
               "props": {
                 "alt": {
                   "$": "alt"
+                },
+                "src": {
+                  "$": "image"
                 },
                 "ratio": "21/9",
                 "className": "size-full rounded-none opacity-30"

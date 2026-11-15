@@ -3,7 +3,7 @@ import { add, cn, cond, div, count, each, eachAt, eq, len, lt, mul, ref, round, 
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame, panelSection, wide } from "../components/frames";
-import { empty, id, ifAny, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
+import { denseLite, empty, id, ifAny, imageProps, orEmpty, pictureOf, title, toneLite, tsOf } from "../props";
 import { fid, kids } from "../forms";
 
 const O = "organism.";
@@ -91,13 +91,14 @@ const emptyPanel = spec(`${O}empty-panel`, "EmptyPanel", "An empty list or an em
     { name: "actions", type: tsOf("button", "none"), default: "button" },
     { name: "visual", type: tsOf("icon", "image"), default: "icon", docs: "image: a picture instead of the round icon" },
     { name: "size", type: denseLite, default: "default" },
+    ...imageProps,
   ],
   view: [
     use("Block", { props: { Tag: "section" }, attrs: { "aria-label": ref("title"), "data-testid": "empty" } },
       use("Container", { props: { Class: cn(wide, cond(eq(ref("size"), "compact"), "py-4", "py-8")) }, attrs: { "data-slot": "container" } },
         when(eq(ref("visual"), "image"),
           [use("Stack", { props: { Gap: "4", Align: "center", Class: "mx-auto max-w-md text-center" }, attrs: { "data-testid": "empty-visual" } },
-            organism("MediaFrame", { alt: ref("title"), ratio: "4/3", className: "w-full max-w-xs" }),
+            pictureOf("4/3", "w-full max-w-xs"),
             use("Title", { props: { As: 2, Size: "2xl", Weight: "bold" } }, text(ref("title"))),
             use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("text"))),
             when(eq(ref("actions"), "button"), [use("Button", { props: { Variant: "default", Size: "sm", Href: ref("ctaHref") }, attrs: { "data-testid": "empty-action" } }, text(ref("cta")))]))],

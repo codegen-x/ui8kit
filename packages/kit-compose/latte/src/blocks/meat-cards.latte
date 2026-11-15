@@ -14,7 +14,7 @@
     {foreach og_l($v_options) as $v_o}
       {var $v_i = $iterator->counter0}
       {capture $c_5}
-        {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_o, ['name']), 'ratio' => '4/3']])|noescape}
+        {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_o, ['name']), 'src' => og_get($v_o, ['image']), 'ratio' => '4/3']])|noescape}
         {capture $c_3}
           {=og_include('compose/Radio.latte', ['name' => og_s($v_name), 'value' => og_s(og_get($v_o, ['id'])), 'checked' => og_t(og_eq($v_i, 0))])|noescape}
           {capture $c_2}

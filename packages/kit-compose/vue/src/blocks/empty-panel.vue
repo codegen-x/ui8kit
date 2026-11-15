@@ -15,6 +15,8 @@ export type EmptyPanelProps = {
   actions?: "button" | "none";
   visual?: "icon" | "image";
   size?: "default" | "compact";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -41,6 +43,8 @@ const {
   actions = "button",
   visual = "icon",
   size = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<EmptyPanelProps>();
 </script>
@@ -58,7 +62,7 @@ const {
         class="mx-auto max-w-md text-center"
         data-slot="empty-visual"
       >
-        <MediaFrame :alt="title" ratio="4/3" class="w-full max-w-xs" />
+        <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="4/3" class="w-full max-w-xs" />
         <Title :as="2" size="2xl" weight="bold">
           {{ title }}
         </Title>

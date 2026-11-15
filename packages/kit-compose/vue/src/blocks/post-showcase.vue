@@ -21,6 +21,8 @@ export type PostShowcaseProps = {
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
   empty?: string;
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -50,6 +52,8 @@ const {
   mediaSide = "start",
   tone = "default",
   empty = "",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<PostShowcaseProps>();
 </script>
@@ -101,7 +105,7 @@ const {
       <PostFeature v-if="(i < 1)" :p="p" :labels="labels" />
     </template>
     <template #aside>
-      <MediaFrame :alt="title" ratio="4/3" />
+      <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="4/3" />
     </template>
   </SectionFrame>
   <SectionFrame v-else

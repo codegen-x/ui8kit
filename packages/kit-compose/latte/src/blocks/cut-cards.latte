@@ -7,7 +7,7 @@
 {capture $c_15}
   {foreach og_l($v_dishes) as $v_d}
     {capture $c_14}
-      {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name']), 'ratio' => '4/3']])|noescape}
+      {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name']), 'src' => og_get($v_d, ['image']), 'ratio' => '4/3']])|noescape}
       {capture $c_1}
         {=og_text(og_get($v_d, ['name']))}
       {/capture}

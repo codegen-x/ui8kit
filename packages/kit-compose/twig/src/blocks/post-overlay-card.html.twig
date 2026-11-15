@@ -6,7 +6,7 @@
 {%- set v_labels = (p.labels ?? null) -%}
 {%- set v_ratio = (p.ratio ?? '4/3') -%}
 {%- set c_8 -%}
-  {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_p, ['title']), 'ratio': v_ratio, 'className': og_cnv([(og_t(og_eq(v_ratio, '4/3')) ? 'min-h-80' : 'min-h-64')])}}, with_context = false) }}
+  {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_p, ['title']), 'src': og_get(v_p, ['image']), 'ratio': v_ratio, 'className': og_cnv([(og_t(og_eq(v_ratio, '4/3')) ? 'min-h-80' : 'min-h-64')])}}, with_context = false) }}
   {%- set c_7 -%}
     {%- set c_3 -%}
       {%- set c_1 -%}

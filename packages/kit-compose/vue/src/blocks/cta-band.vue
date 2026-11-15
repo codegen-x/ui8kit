@@ -18,6 +18,8 @@ export type CtaBandProps = {
   tone?: "default" | "muted";
   proof?: "none" | "quote";
   density?: "roomy" | "default" | "compact";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -48,6 +50,8 @@ const {
   tone = "muted",
   proof = "none",
   density = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<CtaBandProps>();
 const center = computed(() => ((layout as string) === "band") || ((layout as string) === "banner"));
@@ -114,7 +118,7 @@ const center = computed(() => ((layout as string) === "band") || ((layout as str
     />
     <CtaActions :id="id" :actions="actions" :center="center" />
     <template #aside>
-      <MediaFrame :alt="title" ratio="4/3" />
+      <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="4/3" />
     </template>
   </SectionFrame>
 </template>

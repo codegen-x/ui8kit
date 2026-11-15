@@ -27,7 +27,7 @@
     {capture $c_9}
       {foreach og_l($v_lines) as $v_line}
         {capture $c_8}
-          {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_line, ['name']), 'ratio' => '1/1', 'className' => og_cnv(['size-12 shrink-0'])]])|noescape}
+          {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_line, ['name']), 'src' => og_get($v_line, ['image']), 'ratio' => '1/1', 'className' => og_cnv(['size-12 shrink-0'])]])|noescape}
           {capture $c_6}
             {capture $c_4}
               {=og_text(og_get($v_line, ['name']))}

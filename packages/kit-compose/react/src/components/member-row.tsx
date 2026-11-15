@@ -30,6 +30,7 @@ export function MemberRow({ member, depts, layout = "list" }: MemberRowProps) {
     >
       <MediaFrame
         alt={member.name}
+        src={member.image}
         ratio="1/1"
         className={cn((((layout as string) === "detailed") ? "size-16" : "size-12"), "shrink-0")}
       />

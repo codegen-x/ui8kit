@@ -4,7 +4,7 @@ import { and, cn, cond, each, eq, gt, len, ref, text, tpl, undef, use, when, org
 import type { OrganismSpec } from "../../ir";
 import { fields, rec, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { empty, id, linkActions, orEmpty, title, tone, tsOf, toneLite, denseLite } from "../props";
+import { denseLite, empty, id, imageProps, linkActions, orEmpty, pictureOf, title, tone, toneLite, tsOf } from "../props";
 import { kids } from "../forms";
 import { muted, strong, heading, surface } from "../ux";
 import { navBlockOf } from "../components/landmarks";
@@ -47,6 +47,7 @@ const videoModal = spec(`${O}video-modal`, "VideoModal", "A dialog with a walkth
     { name: "size", type: tsOf("default", "wide"), default: "default" },
     { name: "outline", type: tsOf("none", "chapters"), default: "none" },
     { name: "tone", type: toneLite, default: "default" },
+    ...imageProps,
   ],
   view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: "default" }, [
     use("Stack", { props: { Gap: "4", Align: "stretch", Class: cn("mx-auto w-full", cond(eq(ref("size"), "wide"), "max-w-4xl", "max-w-2xl"), surface("p-4 shadow-lg")) }, attrs: { role: "dialog", "aria-label": ref("title"), "data-testid": "video-modal" } },
@@ -54,7 +55,7 @@ const videoModal = spec(`${O}video-modal`, "VideoModal", "A dialog with a walkth
         muted(ref("text")),
         use("Button", { props: { Variant: "ghost", Size: "sm", Type: "button", Class: "shrink-0" }, attrs: { "aria-label": ref("close"), "data-testid": "modal-close" } }, use("LucideIcon", { props: { Name: "x", Size: 16 } }))),
       use("Box", { props: { Class: "relative" }, attrs: { "data-testid": "player" } },
-        organism("MediaFrame", { alt: ref("title"), ratio: "16/9" }),
+        pictureOf("16/9"),
         use("Button", { props: { Variant: "default", Size: "default", Type: "button", Class: "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded" }, attrs: { "aria-label": ref("play"), "data-testid": "play" } }, use("LucideIcon", { props: { Name: "play", Size: 24 } }))),
       when(and(eq(ref("outline"), "chapters"), gt(len(ref("chapters")), 0)), [use("Stack", { props: { Gap: "2" }, attrs: { "data-testid": "chapters" } },
         heading(ref("chaptersTitle"), "base"),
@@ -73,11 +74,12 @@ const errorPage = spec(`${O}error-page`, "ErrorPage", "A page that tells the vis
     { name: "layout", type: tsOf("centered", "split"), default: "centered" },
     { name: "code", type: tsOf("show", "hide"), default: "show" },
     { name: "tone", type: toneLite, default: "default" },
+    ...imageProps,
   ],
   view: [frame({ id: ref("id"), title: ref("title"), lead: ref("text"), level: ref("level"), layout: cond(eq(ref("layout"), "split"), "split", "stack"), hasMedia: eq(ref("layout"), "split"), align: cond(eq(ref("layout"), "split"), "start", "center"), tone: ref("tone"), density: "roomy" }, [
     when(eq(ref("code"), "show"), [use("Text", { props: { Size: "4xl", Weight: "bold", Class: cn("text-8xl text-muted-foreground", cond(eq(ref("layout"), "split"), "", "text-center")) }, attrs: { "data-testid": "error-code" } }, text(ref("status")))]),
     organism("ActionGroup", { primary: ref("actions.cta"), primaryHref: ref("actions.href"), secondary: cond(eq(ref("actions.mode"), "two"), ref("actions.secondary"), undef()), secondaryHref: ref("actions.secondaryHref"), align: cond(eq(ref("layout"), "split"), "start", "center") }),
-  ], [organism("MediaFrame", { alt: ref("title"), ratio: "4/3" })])],
+  ], [pictureOf("4/3")])],
 });
 
 const Line = fields(["id", "string"]);

@@ -28,7 +28,7 @@ export const cartTable = spec("pattern.cart-table", "CartTable", "The lines of a
       use("TableRow", { props: { Class: "border-t border-border" }, attrs: { "data-testid": "item" } },
         use("TableCell", { props: { Class: cn(cond(eq(ref("density"), "compact"), "py-2", "py-4")) } },
           use("Group", { props: { Gap: "4", Align: "center" } },
-            when(eq(ref("media"), "image"), [organism("MediaFrame", { alt: ref("line.name"), ratio: "1/1", className: "hidden size-14 shrink-0 sm:block" })]),
+            when(eq(ref("media"), "image"), [organism("MediaFrame", { alt: ref("line.name"), src: ref("line.image"), ratio: "1/1", className: "hidden size-14 shrink-0 sm:block" })]),
             use("Stack", { props: { Gap: "0" } },
               use("Text", { props: { Size: "sm", Weight: "semibold" } }, text(ref("line.name"))),
               use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(ref("line.variant")))))),

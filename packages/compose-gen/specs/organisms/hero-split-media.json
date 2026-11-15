@@ -18,7 +18,12 @@
       "name": "alt",
       "type": "string",
       "required": true,
-      "docs": "accessible name of the pictures"
+      "docs": "accessible name of the picture"
+    },
+    {
+      "name": "image",
+      "type": "string",
+      "docs": "address of the picture (picture, card and plans media); none: the placeholder"
     },
     {
       "name": "media",
@@ -48,6 +53,9 @@
             "alt": {
               "$": "alt"
             },
+            "src": {
+              "$": "image"
+            },
             "ratio": "4/3"
           }
         }
@@ -69,6 +77,9 @@
           "props": {
             "alt": {
               "$": "alt"
+            },
+            "image": {
+              "$": "image"
             },
             "card": {
               "$": "content.card"
@@ -152,6 +163,9 @@
                                 "alt": {
                                   "$": "f.title"
                                 },
+                                "src": {
+                                  "$": "f.image"
+                                },
                                 "ratio": "1/1"
                               }
                             },
@@ -226,6 +240,9 @@
               "props": {
                 "alt": {
                   "$": "alt"
+                },
+                "src": {
+                  "$": "image"
                 },
                 "ratio": "4/3"
               }

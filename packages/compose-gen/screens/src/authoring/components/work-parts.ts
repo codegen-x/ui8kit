@@ -23,7 +23,7 @@ export const projectTiles = spec("pattern.project-tiles", "ProjectTiles", "The p
     eachAt(ref("projects"), "p", "i", ref("p.id"),
       articleBlockOf(cn("flex flex-col gap-4", cond(ref("over"), "relative", surface("p-4")), cond(and(eq(ref("layout"), "bento"), eq(ref("i"), 0)), "sm:col-span-2 lg:row-span-2", "")), "item",
         use("Box", { props: { Class: cond(ref("over"), "h-full", "relative") } },
-          organism("MediaFrame", { alt: ref("p.title"), ratio: cond(eq(ref("layout"), "compact"), "1/1", cond(ref("over"), "3/4", "4/3")), className: cond(ref("over"), "h-full", "") }),
+          organism("MediaFrame", { alt: ref("p.title"), src: ref("p.image"), ratio: cond(eq(ref("layout"), "compact"), "1/1", cond(ref("over"), "3/4", "4/3")), className: cond(ref("over"), "h-full", "") }),
           when(and(ref("p.featured"), ne(ref("layout"), "compact")), [use("Badge", { props: { Variant: "default", Size: "default", Class: "absolute left-4 top-4" }, attrs: { "data-testid": "featured" } }, text(ref("labels.featured")))])),
         use("Stack", { props: { Gap: "2", Align: "stretch", Class: cond(ref("over"), "absolute right-4 bottom-4 left-4 rounded bg-background p-4", "") } },
           muted(tpl("{0}, {1}", ref("p.category"), ref("p.year")), "xs"),

@@ -22,6 +22,8 @@ type TeamGridProps struct {
 	Cols any `json:"cols"`
 	Tone any `json:"tone"`
 	Density any `json:"density"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -37,8 +39,10 @@ templ TeamGrid(p TeamGridProps) {
 	{{ vCols := uiutils.Def(p.Cols, "1-4") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, Density: vDensity, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vLayout, "list"), "side": "start", "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: teamGridFill1(p, vTitle)}) {
+	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, Density: vDensity, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vLayout, "list"), "side": "start", "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: teamGridFill1(p, vTitle, vImage, vImageAlt)}) {
 		if uiutils.Eq(uiutils.Len(vMembers), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "users", Title: vEmpty})
 		} else {
@@ -46,7 +50,7 @@ templ TeamGrid(p TeamGridProps) {
 				for _, vM := range uiutils.L(vMembers) {
 					if uiutils.Eq(vLayout, "minimal") {
 						@compose.Stack(compose.StackProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{Class: "text-center", Attrs: uiutils.Attrs("data-slot", "item")}}) {
-							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vM, "name"), Ratio: "1/1", Class: uiutils.Cnv(uiutils.Cnv("size-16", "shrink-0"))})
+							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vM, "name"), Src: uiutils.Get(vM, "image"), Ratio: "1/1", Class: uiutils.Cnv(uiutils.Cnv("size-16", "shrink-0"))})
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vM, "name")) }
 							}
@@ -56,7 +60,7 @@ templ TeamGrid(p TeamGridProps) {
 						}
 					} else if uiutils.Eq(vLayout, "cards") {
 						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
-							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vM, "name"), Ratio: "1/1"})
+							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vM, "name"), Src: uiutils.Get(vM, "image"), Ratio: "1/1"})
 							@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
 								@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 									@compose.Text(compose.TextProps{Size: "base", Weight: "semibold", TextProps: text.TextProps{}}) {
@@ -80,6 +84,6 @@ templ TeamGrid(p TeamGridProps) {
 	}
 }
 
-templ teamGridFill1(p TeamGridProps, vTitle any) {
-	@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "3/4"})
+templ teamGridFill1(p TeamGridProps, vTitle any, vImage any, vImageAlt any) {
+	@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "3/4"})
 }

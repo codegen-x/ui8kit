@@ -4,7 +4,7 @@ import { cond, eq, ne, or, ref, undef, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, ifAny, tsOf, toneLite } from "../props";
+import { id, ifAny, imageProps, pictureOf, toneLite, tsOf } from "../props";
 
 const mediaList = spec("organism.media-list", "MediaList", "A list or figures beside a picture. Axes: layout (figures: four figures in two columns, proof: three figures and a featured review, steps: numbered steps, posts: the latest posts, topics: topic rows with counts, contact: contact buttons and support figures), mediaSide, tone. The actions follow every layout but contact.", {
   typeImports: [{ from: "StatsBand", names: ["Stat"] }, { from: "StepsList", names: ["Step"] }, { from: "PostCard", names: ["Post"] }, { from: "CategoryNav", names: ["Category"] },
@@ -24,6 +24,7 @@ const mediaList = spec("organism.media-list", "MediaList", "A list or figures be
     { name: "layout", type: tsOf("figures", "proof", "steps", "posts", "topics", "contact"), default: "figures" },
     { name: "mediaSide", type: tsOf("end", "start"), default: "end" },
     { name: "tone", type: toneLite, default: "default" },
+    ...imageProps,
   ],
   view: (() => {
     const is = (l: string) => eq(ref("layout"), l);
@@ -38,7 +39,7 @@ const mediaList = spec("organism.media-list", "MediaList", "A list or figures be
       when(is("topics"), [ifAny("extras.topics", [organism("MediaTopics", both)])]),
       when(is("contact"), [ifAny("extras.channels", [organism("MediaContacts", both)])]),
       when(ne(ref("layout"), "contact"), [actions]),
-    ], [organism("MediaFrame", { alt: ref("title"), ratio: cond(or(is("steps"), is("topics")), "1/1", "4/3") })])];
+    ], [pictureOf(cond(or(is("steps"), is("topics")), "1/1", "4/3"))])];
   })(),
 });
 

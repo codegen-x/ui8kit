@@ -22,6 +22,8 @@ export type ErrorPageProps = {
   layout?: "centered" | "split";
   code?: "show" | "hide";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -35,6 +37,8 @@ export function ErrorPage({
   layout = "centered",
   code = "show",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: ErrorPageProps) {
   return (
@@ -50,7 +54,7 @@ export function ErrorPage({
       density="roomy"
       landmarkLabel={landmarkLabel}
       aside={(
-        <MediaFrame alt={title} ratio="4/3" />
+        <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} ratio="4/3" />
       )}
     >
       {((code as string) === "show") ? (

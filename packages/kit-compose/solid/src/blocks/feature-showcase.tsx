@@ -52,7 +52,7 @@ export function FeatureShowcase({
           <For each={features ?? []}>{(f) => (
             <Card variant="default" class="h-full gap-4 overflow-hidden">
               {((item as string) === "picture") ? (
-                <MediaFrame alt={f.title} />
+                <MediaFrame alt={f.title} src={f.image} />
               ) : (
                 <Box
                   class="flex aspect-video items-center justify-center rounded bg-muted text-foreground"

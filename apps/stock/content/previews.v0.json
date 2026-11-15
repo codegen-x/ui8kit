@@ -179,6 +179,8 @@
      "layout",
      "mediaSide",
      "tone",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -252,6 +254,8 @@
      "multiple",
      "tone",
      "density",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -758,6 +762,8 @@
      "tone",
      "proof",
      "density",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -929,6 +935,8 @@
      "proof",
      "mediaSide",
      "tone",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -1202,6 +1210,8 @@
      "cards",
      "mediaSide",
      "tone",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -1536,6 +1546,8 @@
      "layout",
      "mediaSide",
      "tone",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -1801,6 +1813,8 @@
      "layout",
      "mediaSide",
      "tone",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -2161,6 +2175,8 @@
      "scale",
      "tone",
      "density",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ],
     "HeroPrompt": [
@@ -2351,6 +2367,8 @@
      "media",
      "mediaSide",
      "tone",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -3040,6 +3058,8 @@
      "layout",
      "mediaSide",
      "tone",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -4041,6 +4061,8 @@
      "mediaSide",
      "tone",
      "empty",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -4294,6 +4316,8 @@
      "align",
      "tone",
      "density",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -4455,6 +4479,8 @@
      "item",
      "tone",
      "density",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -4551,6 +4577,8 @@
      "cols",
      "tone",
      "density",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -7565,6 +7593,8 @@
      "layout",
      "mediaSide",
      "tone",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -8288,6 +8318,8 @@
      "terms",
      "tone",
      "align",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -8742,6 +8774,8 @@
      "mediaSide",
      "tone",
      "empty",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -8958,6 +8992,8 @@
      "labels",
      "layout",
      "tone",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -9033,6 +9069,8 @@
      "layout",
      "tone",
      "density",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -10079,6 +10117,8 @@
      "actions",
      "visual",
      "size",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -10973,6 +11013,8 @@
      "size",
      "outline",
      "tone",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }
@@ -11219,6 +11261,8 @@
      "layout",
      "code",
      "tone",
+     "image",
+     "imageAlt",
      "landmarkLabel"
     ]
    }

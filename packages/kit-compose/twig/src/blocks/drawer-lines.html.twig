@@ -12,7 +12,7 @@
   {%- for v_line in og_l(v_lines) %}
     {%- set c_6 -%}
       {%- if og_t(og_eq(v_media, 'image')) %}
-        {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_line, ['name']), 'ratio': '1/1', 'className': og_cnv(['size-16 shrink-0'])}}, with_context = false) }}
+        {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_line, ['name']), 'src': og_get(v_line, ['image']), 'ratio': '1/1', 'className': og_cnv(['size-16 shrink-0'])}}, with_context = false) }}
       {%- endif %}
       {%- set c_5 -%}
         {%- set c_3 -%}

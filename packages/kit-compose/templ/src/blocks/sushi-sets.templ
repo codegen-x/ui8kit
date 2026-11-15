@@ -43,7 +43,7 @@ templ SushiSets(p SushiSetsProps) {
 				for _, vD := range uiutils.L(vDishes) {
 					@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
 						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative"}}) {
-							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "1/1"})
+							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Src: uiutils.Get(vD, "image"), Ratio: "1/1"})
 							@compose.Badge(compose.BadgeProps{Variant: "default", Size: "default", TextProps: text.TextProps{Class: "absolute left-2 top-2"}}) {
 								{ uiutils.Text(uiutils.Get(vD, "weight")) }
 							}

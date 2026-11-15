@@ -3,7 +3,7 @@ import { cn, cond, each, eachAt, eq, lt, ref, text, undef, use, when, organism }
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { behind, frame } from "../components/frames";
-import { empty, id, ifAny, orEmpty, tsOf, toneLite, denseLite } from "../props";
+import { denseLite, empty, id, ifAny, imageAlt, imageProps, orEmpty, toneLite, tsOf } from "../props";
 import { muted, strong, surface } from "../ux";
 
 const O = "organism.";
@@ -37,14 +37,15 @@ const storeHero = spec(`${O}store-hero`, "StoreHero", "The hero of a store: a ba
     { name: "layout", type: tsOf("overlay", "backdrop"), default: "overlay" },
     { name: "mediaSide", type: tsOf("end", "start"), default: "end" },
     { name: "tone", type: toneLite, default: "default" },
+    ...imageProps,
   ],
   view: [when(eq(ref("layout"), "backdrop"),
-    [behind("image", ref("title"),
+    [behind("image", imageAlt(),
       frame({ id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), level: ref("level"), tone: ref("tone"), density: "roomy", measure: "3xl" },
-        [heroActions, ifAny("perks", [heroPerks])]))],
+        [heroActions, ifAny("perks", [heroPerks])]), ref("image"))],
     [frame({ id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), level: ref("level"), layout: "split", hasMedia: true, mediaSide: ref("mediaSide"), tone: ref("tone"), density: "default" },
       [heroActions, ifAny("perks", [heroPerks])],
-      [organism("OfferMedia", { alt: ref("title"), card: ref("card") })])])],
+      [organism("OfferMedia", { alt: imageAlt(), image: ref("image"), card: ref("card") })])])],
 });
 
 const uspStrip = spec(`${O}usp-strip`, "UspStrip", "The promises of a store in one band: free delivery, returns, warranty, help. Axes: layout (strip: one muted panel, cards: a card each, bar: a thin line of icons and titles), tone, density.", {

@@ -63,7 +63,7 @@ const {
           class="rounded bg-card inset-ring inset-ring-border overflow-hidden pb-4"
           data-slot="item"
         >
-          <MediaFrame v-if="((media as string) === 'image')" :alt="d.name" />
+          <MediaFrame v-if="((media as string) === 'image')" :alt="d.name" :src="d.image" />
           <Stack gap="2" :class="(((media as string) === 'image') ? 'px-4' : 'px-4 pt-4')">
             <Group gap="2" align="baseline" justify="between">
               <Text size="base" weight="semibold">

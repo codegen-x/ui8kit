@@ -30,7 +30,7 @@
             {%- endset -%}
             {{ include('compose/Text.html.twig', {'size': 'sm', 'class': 'text-muted-foreground', 'children': c_2}, with_context = false) }}
             {%- if og_t(og_and([og_eq(v_media, 'image'), og_or([og_eq(og_get(v_tile, ['size']), 'large'), og_eq(v_layout, 'even')])])) %}
-              {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_tile, ['title']), 'ratio': '4/3', 'className': og_cnv(['mt-auto'])}}, with_context = false) }}
+              {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_tile, ['title']), 'src': og_get(v_tile, ['image']), 'ratio': '4/3', 'className': og_cnv(['mt-auto'])}}, with_context = false) }}
             {%- endif %}
           {%- endset -%}
           {{ include('compose/CardContent.html.twig', {'class': 'flex h-full flex-col gap-4', 'children': c_3}, with_context = false) }}

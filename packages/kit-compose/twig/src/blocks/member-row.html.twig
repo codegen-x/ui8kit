@@ -6,7 +6,7 @@
 {%- set v_depts = (p.depts ?? null) -%}
 {%- set v_layout = (p.layout ?? 'list') -%}
 {%- set c_11 -%}
-  {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_member, ['name']), 'ratio': '1/1', 'className': og_cnv([og_cnv([(og_t(og_eq(v_layout, 'detailed')) ? 'size-16' : 'size-12'), 'shrink-0'])])}}, with_context = false) }}
+  {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_member, ['name']), 'src': og_get(v_member, ['image']), 'ratio': '1/1', 'className': og_cnv([og_cnv([(og_t(og_eq(v_layout, 'detailed')) ? 'size-16' : 'size-12'), 'shrink-0'])])}}, with_context = false) }}
   {%- set c_10 -%}
     {%- set c_3 -%}
       {%- set c_1 -%}

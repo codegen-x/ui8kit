@@ -23,6 +23,8 @@ export type FooterSplitProps = {
   layout?: "stats" | "points" | "links" | "newsletter" | "contacts" | "channels";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -59,6 +61,8 @@ const {
   layout = "stats",
   mediaSide = "end",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<FooterSplitProps>();
 </script>
@@ -88,7 +92,12 @@ const {
         </Box>
       </Stack>
       <Box v-else class="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
-        <MediaFrame v-if="((mediaSide as string) === 'start')" :alt="brand" ratio="4/3" />
+        <MediaFrame
+          v-if="((mediaSide as string) === 'start')"
+          :alt="(imageAlt ? imageAlt : brand)"
+          :src="image"
+          ratio="4/3"
+        />
         <Stack gap="8" align="stretch">
           <FooterBrand
             v-if="(((layout as string) === 'points') || ((layout as string) === 'links'))"
@@ -130,7 +139,12 @@ const {
             </Text>
           </Box>
         </Stack>
-        <MediaFrame v-if="((mediaSide as string) !== 'start')" :alt="brand" ratio="4/3" />
+        <MediaFrame
+          v-if="((mediaSide as string) !== 'start')"
+          :alt="(imageAlt ? imageAlt : brand)"
+          :src="image"
+          ratio="4/3"
+        />
       </Box>
     </Container>
   </Block>

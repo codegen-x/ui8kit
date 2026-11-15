@@ -28,6 +28,8 @@ export type FeatureSplitProps = {
   layout?: "grid" | "cards" | "stats" | "metrics";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -43,6 +45,8 @@ export function FeatureSplit({
   layout = "grid",
   mediaSide = "end",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: FeatureSplitProps) {
   return (
@@ -56,7 +60,11 @@ export function FeatureSplit({
       media={{ show: true, side: mediaSide }}
       landmarkLabel={landmarkLabel}
       aside={(
-        <MediaFrame alt={title} ratio={(((layout as string) === "stats") ? "1/1" : "4/3")} />
+        <MediaFrame
+          alt={(imageAlt ? imageAlt : title)}
+          src={image}
+          ratio={(((layout as string) === "stats") ? "1/1" : "4/3")}
+        />
       )}
     >
       {((layout as string) === "grid") ? (

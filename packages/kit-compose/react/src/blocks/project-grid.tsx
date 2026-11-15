@@ -60,7 +60,7 @@ export function ProjectGrid({
         <Stack gap="4" align="stretch" data-slot="items">
           {(projects ?? []).map((p) => (
             <Group key={p.id} gap="4" align="start" className="border-b border-border pb-4" data-slot="item">
-              <MediaFrame alt={p.title} ratio="1/1" className="size-16 shrink-0" />
+              <MediaFrame alt={p.title} src={p.image} ratio="1/1" className="size-16 shrink-0" />
               <Stack gap="2" align="stretch" className="flex-1">
                 <Group gap="4" justify="between">
                   <Text size="sm" weight="semibold">

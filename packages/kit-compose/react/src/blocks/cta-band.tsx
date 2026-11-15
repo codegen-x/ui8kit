@@ -25,6 +25,8 @@ export type CtaBandProps = {
   tone?: "default" | "muted";
   proof?: "none" | "quote";
   density?: "roomy" | "default" | "compact";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -38,6 +40,8 @@ export function CtaBand({
   tone = "muted",
   proof = "none",
   density = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: CtaBandProps) {
   const center = ((layout as string) === "band") || ((layout as string) === "banner");
@@ -95,7 +99,7 @@ export function CtaBand({
           density={density}
           landmarkLabel={landmarkLabel}
           aside={(
-            <MediaFrame alt={title} ratio="4/3" />
+            <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} ratio="4/3" />
           )}
         >
           {((proof as string) === "quote") ? (

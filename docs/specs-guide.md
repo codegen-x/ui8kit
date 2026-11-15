@@ -191,6 +191,17 @@ Block rules (detector `block-root` of `bun run rules`):
   still has distinct landmarks. Give your root landmark a name anyway: `attrs: { "aria-label": ref("title") }` or
   `aria-labelledby` pointing at the heading.
 
+### 5.1 Pictures
+
+A picture is always the `MediaFrame` pattern (never a bare image). Without an address it draws the built-in token-neutral placeholder, which is
+decorative (`alt` is empty); with an address (an empty string counts as none) it draws that picture with its alt text, lazy and async.
+Two flat shapes carry the address, both optional, both added by the helpers of `authoring/props.ts`:
+
+- a section picture: the props `image` and `imageAlt` (`...imageProps`; `imageAlt` falls back to the title) and `pictureOf(ratio)` in the view;
+- a picture per record: an optional `image` field on the record (`["image", "string", true]`) and `src: ref("item.image")` on the MediaFrame.
+
+`image` and `imageAlt` are not counted by the 12-prop limit of the readability group. Never put a stock URL in a sample: the placeholder is the sample.
+
 ## 6. ARIA
 
 ARIA goes through `attrs` (`Attrs` on bricks); there are no role props. Prefer static ARIA (`"aria-hidden": "true"`,

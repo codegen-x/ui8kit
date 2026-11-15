@@ -21,6 +21,8 @@ export type FeatureSplitProps = {
   layout?: "grid" | "cards" | "stats" | "metrics";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -46,6 +48,8 @@ const {
   layout = "grid",
   mediaSide = "end",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<FeatureSplitProps>();
 </script>
@@ -80,7 +84,11 @@ const {
       :secondaryHref="actions.secondaryHref"
     />
     <template #aside>
-      <MediaFrame :alt="title" :ratio="(((layout as string) === 'stats') ? '1/1' : '4/3')" />
+      <MediaFrame
+        :alt="(imageAlt ? imageAlt : title)"
+        :src="image"
+        :ratio="(((layout as string) === 'stats') ? '1/1' : '4/3')"
+      />
     </template>
   </SectionFrame>
 </template>

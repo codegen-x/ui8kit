@@ -58,7 +58,7 @@ export function VeggieBox({
           >
             {(dishes ?? []).map((d) => (
               <Stack key={d.id} gap="2" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
-                <MediaFrame alt={d.name} ratio="1/1" />
+                <MediaFrame alt={d.name} src={d.image} ratio="1/1" />
                 <Text size="sm" weight="semibold">
                   {d.name}
                 </Text>

@@ -18,7 +18,7 @@
     {=og_include('compose/Button.latte', ['variant' => 'ghost', 'size' => 'sm', 'layout' => 'icon', 'type' => 'button', 'ariaLabel' => og_s(og_get($v_labels, ['close'])), 'children' => (string) $c_2])|noescape}
   {/capture}
   {=og_include('compose/Group.latte', ['gap' => '2', 'align' => 'center', 'justify' => 'between', 'children' => (string) $c_3])|noescape}
-  {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_first_of($v_photos, 'title'), 'ratio' => '4/3']])|noescape}
+  {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_first_of($v_photos, 'title'), 'src' => og_first_of($v_photos, 'image'), 'ratio' => '4/3']])|noescape}
   {if og_t(og_eq($v_captions, 'show'))}
     {capture $c_4}
       {=og_text(og_first_of($v_photos, 'tag'))}

@@ -31,7 +31,7 @@
       {%- for v_p in og_l(og_get(v_content, ['people'])) %}
         {%- set v_i = loop.index0 -%}
         {%- if og_t(og_lt(v_i, 4)) %}
-          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['author']), 'ratio': '1/1', 'className': og_cnv(['size-10 shrink-0 rounded-full'])}}) }}
+          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['author']), 'src': og_get(v_p, ['image']), 'ratio': '1/1', 'className': og_cnv(['size-10 shrink-0 rounded-full'])}}) }}
         {%- endif %}
       {%- endfor %}
     {%- endset -%}
@@ -82,7 +82,7 @@
           {%- endset -%}
           {{ og_include('compose/text.html.j2', {'p': {'Tag': 'blockquote', 'Class': 'text-lg font-medium'}, 'children': c_14}) }}
           {%- set c_18 -%}
-            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['author']), 'ratio': '1/1', 'className': og_cnv(['size-10 shrink-0 rounded-full'])}}) }}
+            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['author']), 'src': og_get(v_p, ['image']), 'ratio': '1/1', 'className': og_cnv(['size-10 shrink-0 rounded-full'])}}) }}
             {%- set c_17 -%}
               {%- set c_15 -%}
                 {{ og_text(og_get(v_p, ['author'])) }}

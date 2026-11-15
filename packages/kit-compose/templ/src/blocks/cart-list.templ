@@ -49,7 +49,7 @@ templ CartList(p CartListProps) {
 					@compose.Card(compose.CardProps{Variant: "default", BoxProps: box.BoxProps{}}) {
 						@compose.CardContent(compose.CardContentProps{BoxProps: box.BoxProps{Class: "flex flex-wrap items-center gap-4"}}) {
 							if uiutils.Eq(vMedia, "image") {
-								@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Ratio: "1/1", Class: uiutils.Cnv("size-16 shrink-0")})
+								@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Src: uiutils.Get(vLine, "image"), Ratio: "1/1", Class: uiutils.Cnv("size-16 shrink-0")})
 							}
 							@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "min-w-40 flex-1"}}) {
 								@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {

@@ -21,6 +21,11 @@
       {
         "name": "size",
         "type": "string"
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": true
       }
     ],
     "PhotoLabels": [
@@ -189,7 +194,22 @@
                           "organism": "MediaFrame",
                           "props": {
                             "alt": {
-                              "$": "title"
+                              "op": "firstOf",
+                              "args": [
+                                {
+                                  "$": "photos"
+                                },
+                                "title"
+                              ]
+                            },
+                            "src": {
+                              "op": "firstOf",
+                              "args": [
+                                {
+                                  "$": "photos"
+                                },
+                                "image"
+                              ]
                             }
                           }
                         },
@@ -330,6 +350,9 @@
                                   "props": {
                                     "alt": {
                                       "$": "p.title"
+                                    },
+                                    "src": {
+                                      "$": "p.image"
                                     },
                                     "ratio": "1/1",
                                     "className": {
@@ -489,6 +512,9 @@
                                       "props": {
                                         "alt": {
                                           "$": "p.title"
+                                        },
+                                        "src": {
+                                          "$": "p.image"
                                         },
                                         "ratio": {
                                           "op": "cond",

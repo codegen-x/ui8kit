@@ -15,17 +15,18 @@ import type { HeroContent } from "../blocks/hero-split.types";
 export type HeroSplitMediaProps = {
   content: HeroContent;
   alt: string;
+  image?: string;
   media?: "picture" | "card" | "grid" | "plans";
 };
 
-export function HeroSplitMedia({ content, alt, media = "picture" }: HeroSplitMediaProps) {
+export function HeroSplitMedia({ content, alt, image, media = "picture" }: HeroSplitMediaProps) {
   return (
     <>
       {((media as string) === "picture") ? (
-        <MediaFrame alt={alt} ratio="4/3" />
+        <MediaFrame alt={alt} src={image} ratio="4/3" />
       ) : null}
       {((media as string) === "card") ? (
-        <OfferMedia alt={alt} card={content.card} />
+        <OfferMedia alt={alt} image={image} card={content.card} />
       ) : null}
       {(((media as string) === "grid") && ((content.features?.length ?? 0) > 0)) ? (
         <Box class="grid grid-cols-2 gap-4" data-slot="hero-grid">
@@ -33,7 +34,7 @@ export function HeroSplitMedia({ content, alt, media = "picture" }: HeroSplitMed
             <>
               {(i < 4) ? (
                 <FigureBlock class="flex flex-col gap-2" testid="hero-tile">
-                  <MediaFrame alt={f.title} ratio="1/1" />
+                  <MediaFrame alt={f.title} src={f.image} ratio="1/1" />
                   <Text size="xs" class="text-muted-foreground">
                     {f.title}
                   </Text>
@@ -45,7 +46,7 @@ export function HeroSplitMedia({ content, alt, media = "picture" }: HeroSplitMed
       ) : null}
       {(((media as string) === "plans") && ((content.plans?.length ?? 0) > 0)) ? (
         <Box class="relative" data-slot="hero-media">
-          <MediaFrame alt={alt} ratio="4/3" />
+          <MediaFrame alt={alt} src={image} ratio="4/3" />
           <For each={content.plans ?? []}>{(p, iOf) => { const i = iOf(); return (
             <>
               {(i < 2) ? (

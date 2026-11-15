@@ -5,7 +5,7 @@
 {%- set v_p = (p.p ?? null) -%}
 {%- set v_labels = (p.labels ?? null) -%}
 {%- set c_5 -%}
-  {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_p, ['title'])}}, with_context = false) }}
+  {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_p, ['title']), 'src': og_get(v_p, ['image'])}}, with_context = false) }}
   {%- set c_4 -%}
     {%- set c_1 -%}
       {{ og_text(og_get(v_p, ['category'])) }}

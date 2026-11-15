@@ -25,7 +25,7 @@
         {%- for v_d in og_l(v_dishes) %}
           {%- set c_8 -%}
             {%- if og_t(og_eq(v_media, 'image')) %}
-              {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_d, ['name'])}}, with_context = false) }}
+              {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_d, ['name']), 'src': og_get(v_d, ['image'])}}, with_context = false) }}
             {%- endif %}
             {%- set c_6 -%}
               {%- set c_4 -%}

@@ -195,7 +195,7 @@ const reviewList = spec(`${O}review-list`, "ReviewList", "Customer reviews as ca
 });
 
 const cartList = spec(`${O}cart-list`, "CartList", "The lines of a cart as a table or as cards: product, variant, price, quantity, line total and a remove button. Axes: layout (table, cards), media (image, none), density, tone.", {
-  records: { CartLine: fields(["id", "string"], ["name", "string"], ["variant", "string"], ["price", "number"], ["currency", "string"], ["qty", "number"]), CartLabels: fields(["caption", "string"], ["product", "string"], ["price", "string"], ["qty", "string"], ["total", "string"], ["remove", "string"], ["subtotal", "string"], ["checkout", "string"], ["decrease", "string"], ["increase", "string"]) },
+  records: { CartLine: fields(["id", "string"], ["name", "string"], ["variant", "string"], ["price", "number"], ["currency", "string"], ["qty", "number"], ["image", "string", true]), CartLabels: fields(["caption", "string"], ["product", "string"], ["price", "string"], ["qty", "string"], ["total", "string"], ["remove", "string"], ["subtotal", "string"], ["checkout", "string"], ["decrease", "string"], ["increase", "string"]) },
   props: [
     id, title,
     { name: "lines", type: ts("CartLine[]"), required: true },
@@ -214,7 +214,7 @@ const cartList = spec(`${O}cart-list`, "CartList", "The lines of a cart as a tab
         each(ref("lines"), "line", ref("line.id"),
           use("Card", { props: { Variant: "default" }, attrs: { "data-testid": "item" } },
             use("CardContent", { props: { Class: "flex flex-wrap items-center gap-4" } },
-              when(eq(ref("media"), "image"), [organism("MediaFrame", { alt: ref("line.name"), ratio: "1/1", className: "size-16 shrink-0" })]),
+              when(eq(ref("media"), "image"), [organism("MediaFrame", { alt: ref("line.name"), src: ref("line.image"), ratio: "1/1", className: "size-16 shrink-0" })]),
               use("Stack", { props: { Gap: "0", Class: "min-w-40 flex-1" } },
                 use("Text", { props: { Size: "sm", Weight: "semibold" } }, text(ref("line.name"))),
                 use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(ref("line.variant"))),

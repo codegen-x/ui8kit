@@ -30,7 +30,7 @@
             {if og_t(og_eq(og_get($v_d, ['tag']), og_get($v_s, ['key'])))}
               {capture $c_7}
                 {if og_t(og_eq($v_media, 'image'))}
-                  {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name']), 'ratio' => '4/3']])|noescape}
+                  {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name']), 'src' => og_get($v_d, ['image']), 'ratio' => '4/3']])|noescape}
                 {/if}
                 {capture $c_3}
                   {=og_text(og_get($v_d, ['name']))}

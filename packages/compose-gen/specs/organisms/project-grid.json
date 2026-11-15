@@ -42,6 +42,11 @@
         "name": "href",
         "type": "string",
         "optional": true
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": true
       }
     ],
     "ProjectLabels": [
@@ -252,6 +257,9 @@
                                   "props": {
                                     "alt": {
                                       "$": "p.title"
+                                    },
+                                    "src": {
+                                      "$": "p.image"
                                     },
                                     "ratio": "1/1",
                                     "className": "size-16 shrink-0"

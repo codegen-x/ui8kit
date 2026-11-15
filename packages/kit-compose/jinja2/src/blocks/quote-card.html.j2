@@ -10,7 +10,7 @@
   {%- if og_t(og_eq(og_get(v_item, ['kind']), 'social')) %}
     {%- set c_4 -%}
       {%- if og_t(not (og_eq(og_get(v_item, ['avatar']), 'none'))) %}
-        {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_q, ['author']), 'ratio': '1/1', 'className': og_cnv(['size-12 shrink-0 rounded-full'])}}) }}
+        {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_q, ['author']), 'src': og_get(v_q, ['image']), 'ratio': '1/1', 'className': og_cnv(['size-12 shrink-0 rounded-full'])}}) }}
       {%- endif %}
       {%- set c_3 -%}
         {%- set c_1 -%}
@@ -46,7 +46,7 @@
     {{ og_include('compose/text.html.j2', {'p': {'Size': og_s(('xl' if og_t(og_eq(v_layout, 'single')) else 'base'))}, 'children': c_7}) }}
     {%- set c_11 -%}
       {%- if og_t(not (og_eq(og_get(v_item, ['avatar']), 'none'))) %}
-        {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_q, ['author']), 'ratio': '1/1', 'className': og_cnv(['size-12 shrink-0 rounded-full'])}}) }}
+        {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_q, ['author']), 'src': og_get(v_q, ['image']), 'ratio': '1/1', 'className': og_cnv(['size-12 shrink-0 rounded-full'])}}) }}
       {%- endif %}
       {%- set c_10 -%}
         {%- set c_8 -%}

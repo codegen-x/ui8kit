@@ -43,7 +43,7 @@ const { photos, labels, captions = "show", lightbox = "closed" } = defineProps<L
         <LucideIcon name="x" :size="16" />
       </Button>
     </Group>
-    <MediaFrame :alt="photos[0]?.title ?? ''" ratio="4/3" />
+    <MediaFrame :alt="photos[0]?.title ?? ''" :src="photos[0]?.image ?? ''" ratio="4/3" />
     <Text v-if="((captions as string) === 'show')" size="sm" class="text-muted-foreground">
       {{ photos[0]?.tag ?? "" }}
     </Text>

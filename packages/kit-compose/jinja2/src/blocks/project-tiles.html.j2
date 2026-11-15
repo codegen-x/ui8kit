@@ -11,7 +11,7 @@
     {%- set v_i = loop.index0 -%}
     {%- set c_12 -%}
       {%- set c_2 -%}
-        {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'ratio': ('1/1' if og_t(og_eq(v_layout, 'compact')) else ('3/4' if og_t(v_over) else '4/3')), 'className': og_cnv([('h-full' if og_t(v_over) else '')])}}) }}
+        {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'src': og_get(v_p, ['image']), 'ratio': ('1/1' if og_t(og_eq(v_layout, 'compact')) else ('3/4' if og_t(v_over) else '4/3')), 'className': og_cnv([('h-full' if og_t(v_over) else '')])}}) }}
         {%- if og_t(og_and([og_get(v_p, ['featured']), not (og_eq(v_layout, 'compact'))])) %}
           {%- set c_1 -%}
             {{ og_text(og_get(v_labels, ['featured'])) }}

@@ -57,7 +57,7 @@ const {
         class="group flex-col items-stretch gap-4"
         data-slot="item"
       >
-        <MediaFrame :alt="d.name" :ratio="ratio" />
+        <MediaFrame :alt="d.name" :src="d.image" :ratio="ratio" />
         <Stack gap="2">
           <Badge v-if="d.badge" variant="secondary" size="sm" class="w-fit">
             {{ d.badge }}

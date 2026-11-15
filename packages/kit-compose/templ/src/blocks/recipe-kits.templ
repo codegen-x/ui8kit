@@ -45,7 +45,7 @@ templ RecipeKits(p RecipeKitsProps) {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "grid grid-cols-1 gap-8 md:grid-cols-3", "flex flex-col gap-8")), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vD := range uiutils.L(vDishes) {
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-4", "rounded bg-card inset-ring inset-ring-border grid grid-cols-1 gap-8 p-6 md:grid-cols-2")), Attrs: uiutils.Attrs("data-slot", "item")}}) {
-						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "4/3"})
+						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Src: uiutils.Get(vD, "image"), Ratio: "4/3"})
 						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{}}) {
 							@compose.Group(compose.GroupProps{Gap: "2", BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
 								@compose.Badge(compose.BadgeProps{Variant: "secondary", Size: "default", TextProps: text.TextProps{}}) {

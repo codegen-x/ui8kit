@@ -67,7 +67,7 @@ export function BentoGrid({
                   {tile.text}
                 </Text>
                 {(((media as string) === "image") && ((tile.size === "large") || ((layout as string) === "even"))) ? (
-                  <MediaFrame alt={tile.title} ratio="4/3" class="mt-auto" />
+                  <MediaFrame alt={tile.title} src={tile.image} ratio="4/3" class="mt-auto" />
                 ) : null}
               </CardContent>
             </Card>

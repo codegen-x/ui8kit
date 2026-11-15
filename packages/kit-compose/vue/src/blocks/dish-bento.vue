@@ -61,7 +61,7 @@ const {
           )"
           data-slot="feature"
         >
-          <MediaFrame :alt="d.name" ratio="4/3" />
+          <MediaFrame :alt="d.name" :src="d.image" ratio="4/3" />
           <Badge variant="secondary" size="default" class="w-fit">
             {{ d.weight }}
           </Badge>
@@ -82,7 +82,7 @@ const {
           </Group>
         </Stack>
         <Stack v-else gap="2" class="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
-          <MediaFrame :alt="d.name" />
+          <MediaFrame :alt="d.name" :src="d.image" />
           <Text size="sm" weight="semibold">
             {{ d.name }}
           </Text>

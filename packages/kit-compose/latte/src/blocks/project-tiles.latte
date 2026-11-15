@@ -11,7 +11,7 @@
     {var $v_i = $iterator->counter0}
     {capture $c_12}
       {capture $c_2}
-        {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'ratio' => (og_t(og_eq($v_layout, 'compact')) ? '1/1' : (og_t($v_over) ? '3/4' : '4/3')), 'className' => og_cnv([(og_t($v_over) ? 'h-full' : '')])]])|noescape}
+        {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'src' => og_get($v_p, ['image']), 'ratio' => (og_t(og_eq($v_layout, 'compact')) ? '1/1' : (og_t($v_over) ? '3/4' : '4/3')), 'className' => og_cnv([(og_t($v_over) ? 'h-full' : '')])]])|noescape}
         {if og_t(og_and([og_get($v_p, ['featured']), !(og_eq($v_layout, 'compact'))]))}
           {capture $c_1}
             {=og_text(og_get($v_labels, ['featured']))}

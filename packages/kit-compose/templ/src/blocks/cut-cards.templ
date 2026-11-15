@@ -24,7 +24,7 @@ templ CutCards(p CutCardsProps) {
 	@compose.Grid(compose.GridProps{Cols: "1-4", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 		for _, vD := range uiutils.L(vDishes) {
 			@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
-				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "4/3"})
+				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Src: uiutils.Get(vD, "image"), Ratio: "4/3"})
 				@compose.Text(compose.TextProps{Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
 					{ uiutils.Text(uiutils.Get(vD, "name")) }
 				}

@@ -22,6 +22,8 @@ export type FaqSplitProps = {
   cards?: "grid3" | "grid4" | "icons";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -50,6 +52,8 @@ const {
   cards = "grid3",
   mediaSide = "end",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<FaqSplitProps>();
 </script>
@@ -117,7 +121,7 @@ const {
         </Button>
       </Box>
       <template #aside>
-        <MediaFrame :alt="title" ratio="4/3" />
+        <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="4/3" />
       </template>
     </SectionFrame>
     <SectionFrame v-if="((layout as string) === 'search')"
@@ -132,7 +136,7 @@ const {
     >
       <FaqFinder :items="items" :labels="labels" :topics="topics" />
       <template #aside>
-        <MediaFrame :alt="title" ratio="4/3" />
+        <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="4/3" />
       </template>
     </SectionFrame>
   </template>

@@ -4,7 +4,7 @@ import { and, cond, eachAt, eq, lt, or, ref, undef, use, when, organism } from "
 import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { empty, id, orEmpty, tsOf, toneLite } from "../props";
+import { empty, id, imageProps, orEmpty, pictureOf, toneLite, tsOf } from "../props";
 
 const quoteSplit = spec("organism.quote-split", "QuoteSplit", "Testimonials in a split or with figures. Axes: layout (media: one quote card and an action beside a picture, logos: one quote over four logo tiles beside a picture, rating: one quote beside a rating panel, stack: three stacked quote cards beside a picture, compact: four short quote cards in a row, bento: figures over a featured quote beside a stack), mediaSide, tone.", {
   typeImports: [{ from: "TestimonialGrid", names: ["Quote", "QuoteLabels"] }, { from: "StatsBand", names: ["Stat"] }, { from: "LogoCloud", names: ["Logo"] }, { from: "ErrorPage", names: ["LinkActions"] }],
@@ -22,6 +22,7 @@ const quoteSplit = spec("organism.quote-split", "QuoteSplit", "Testimonials in a
     { name: "mediaSide", type: tsOf("end", "start"), default: "end" },
     { name: "tone", type: toneLite, default: "default" },
     empty,
+    ...imageProps,
   ],
   view: (() => {
     const card = (kind: Value, layout: Value, cls: Value = ""): ViewNode => organism("QuoteSlot", { q: ref("q"), labels: ref("labels"), kind, layout, className: cls });
@@ -29,7 +30,7 @@ const quoteSplit = spec("organism.quote-split", "QuoteSplit", "Testimonials in a
     const actions = organism("ActionGroup", { primary: ref("actions.cta"), primaryHref: ref("actions.href"), secondary: cond(eq(ref("actions.mode"), "two"), ref("actions.secondary"), undef()), secondaryHref: ref("actions.secondaryHref"), align: "start" });
     const common = { id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), tone: ref("tone"), density: "default" };
     const split = { ...common, layout: "split", hasMedia: true, mediaSide: ref("mediaSide") };
-    const picture = organism("MediaFrame", { alt: ref("title"), ratio: "4/3" });
+    const picture = pictureOf("4/3");
     const is = (l: string) => eq(ref("layout"), l);
     const one = or(is("media"), is("logos"), is("rating"));
     return [orEmpty("quotes", "quote", [

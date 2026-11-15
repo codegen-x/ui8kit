@@ -14,7 +14,7 @@
     {%- for v_o in og_l(v_options) %}
       {%- set v_i = loop.index0 -%}
       {%- set c_5 -%}
-        {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_o, ['name']), 'ratio': '4/3'}}, with_context = false) }}
+        {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_o, ['name']), 'src': og_get(v_o, ['image']), 'ratio': '4/3'}}, with_context = false) }}
         {%- set c_3 -%}
           {{ include('compose/Radio.html.twig', {'name': og_s(v_name), 'value': og_s(og_get(v_o, ['id'])), 'checked': og_t(og_eq(v_i, 0))}, with_context = false) }}
           {%- set c_2 -%}

@@ -16,7 +16,7 @@
 {var $v_landmarkLabel = ($p['landmarkLabel'] ?? null)}
 {if og_t(og_eq($v_layout, 'center'))}
   {capture $f_1}
-    {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_post, ['title']), 'ratio' => (og_t(og_eq($v_layout, 'center')) ? '21/9' : (og_t(og_eq($v_cover, 'square')) ? '1/1' : '4/3'))]])|noescape}
+    {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_post, ['title']), 'src' => og_get($v_post, ['image']), 'ratio' => (og_t(og_eq($v_layout, 'center')) ? '21/9' : (og_t(og_eq($v_cover, 'square')) ? '1/1' : '4/3'))]])|noescape}
   {/capture}
   {capture $c_2}
     {if og_t(og_gt(og_len(og_get($v_extras, ['tags'])), 0))}
@@ -28,7 +28,7 @@
   {=og_include('blocks/section-frame.latte', ['p' => ['id' => $v_id, 'title' => og_get($v_post, ['title']), 'lead' => og_get($v_post, ['excerpt']), 'heading' => ['badge' => og_get($v_post, ['category']), 'level' => $v_level], 'tone' => $v_tone, 'media' => ['show' => true], 'align' => 'center', 'landmarkLabel' => $v_landmarkLabel, 'aside' => og_markup($f_1)], 'children' => og_markup($c_2)])|noescape}
 {else}
   {capture $f_3}
-    {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_post, ['title']), 'ratio' => (og_t(og_eq($v_layout, 'center')) ? '21/9' : (og_t(og_eq($v_cover, 'square')) ? '1/1' : '4/3'))]])|noescape}
+    {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_post, ['title']), 'src' => og_get($v_post, ['image']), 'ratio' => (og_t(og_eq($v_layout, 'center')) ? '21/9' : (og_t(og_eq($v_cover, 'square')) ? '1/1' : '4/3'))]])|noescape}
   {/capture}
   {capture $c_4}
     {if og_t(og_eq($v_layout, 'outline'))}

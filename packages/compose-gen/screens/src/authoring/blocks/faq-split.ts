@@ -3,7 +3,7 @@ import { eq, ref, text, tpl, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, ifAny, tsOf, toneLite } from "../props";
+import { id, ifAny, imageProps, pictureOf, toneLite, tsOf } from "../props";
 
 const faqSplit = spec("organism.faq-split", "FaqSplit", "Questions in a split or as cards. Axes: layout (head: the heading and an action beside the disclosures, aside: the disclosures beside a help card, media: the disclosures and an action beside a picture, search: a finder beside a picture, cards: the questions as cards), cards (grid3, grid4, icons), mediaSide, tone.", {
   typeImports: [{ from: "FeatureGrid", names: ["Feature"] }, { from: "FaqList", names: ["FaqTab"] }],
@@ -24,12 +24,13 @@ const faqSplit = spec("organism.faq-split", "FaqSplit", "Questions in a split or
     { name: "cards", type: tsOf("grid3", "grid4", "icons"), default: "grid3" },
     { name: "mediaSide", type: tsOf("end", "start"), default: "end" },
     { name: "tone", type: toneLite, default: "default" },
+    ...imageProps,
   ],
   view: (() => {
     const list = organism("FaqDisclosures", { items: ref("items"), name: tpl("{0}-faq", ref("id")) });
     const cta = use("Box", {}, use("Button", { props: { Variant: "default", Size: "default" }, attrs: { "data-testid": "faq-cta" } }, text(ref("labels.cta"))));
     const common = { id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), tone: ref("tone"), density: "default" };
-    const picture = organism("MediaFrame", { alt: ref("title"), ratio: "4/3" });
+    const picture = pictureOf("4/3");
     // emptyMode omit: a FAQ section without questions is left out whole
     return [ifAny("items", [
       when(eq(ref("layout"), "cards"), [frame(common, [organism("FaqCards", { items: ref("items"), labels: ref("labels"), cards: ref("cards") })])]),

@@ -21,7 +21,7 @@
       {%- for v_q in og_l(v_quotes) %}
         {%- set c_9 -%}
           {%- set c_5 -%}
-            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_q, ['author'])}}) }}
+            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_q, ['author']), 'src': og_get(v_q, ['image'])}}) }}
             {%- set c_1 -%}
               {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': 'play', 'Size': 20}}) }}
             {%- endset -%}

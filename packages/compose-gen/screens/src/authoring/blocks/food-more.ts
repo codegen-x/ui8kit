@@ -15,7 +15,7 @@ const labels = { name: "labels", type: ts("FoodLabels"), required: true };
 const sections = { name: "sections", type: ts("DishSection[]"), required: true };
 const dishTypes = [{ from: "DishShowcase", names: ["Dish", "FoodLabels"] }];
 const priceOf = (d = "d") => money(ref(`${d}.price`), ref(`${d}.currency`));
-const pic = (alt: Value, ratio: string, cls = "") => organism("MediaFrame", { alt, ratio, ...(cls ? { className: cls } : {}) });
+const pic = (alt: Value, ratio: string, cls = "") => organism("MediaFrame", { alt, src: ref("d.image"), ratio, ...(cls ? { className: cls } : {}) });
 const add = (d = "d", variant = "outline") => organism("AddIcon", { label: tpl(ref("labels.addOf"), ref(`${d}.name`)), variant });
 
 const sushiSets = spec(`${O}sushi-sets`, "SushiSets", "Sushi sets as a dense grid of tiles: a square picture with the piece count over it, the name, the rolls of the set as a list, the price and an add button. Axes: cols (3, 4), tone.", {

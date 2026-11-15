@@ -149,6 +149,9 @@
                         "alt": {
                           "$": "feature.title"
                         },
+                        "src": {
+                          "$": "feature.image"
+                        },
                         "ratio": "4/3"
                       }
                     }

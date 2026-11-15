@@ -52,7 +52,7 @@ templ ShoppingCart(p ShoppingCartProps) {
 				}
 				for _, vLine := range uiutils.L(vLines) {
 					@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border flex-wrap p-4", Attrs: uiutils.Attrs("data-slot", "item")}}) {
-						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Ratio: "1/1", Class: uiutils.Cnv("size-20 shrink-0")})
+						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Src: uiutils.Get(vLine, "image"), Ratio: "1/1", Class: uiutils.Cnv("size-20 shrink-0")})
 						@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{Class: "min-w-40 flex-1"}}) {
 							@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 								{ uiutils.Text(uiutils.Get(vLine, "name")) }

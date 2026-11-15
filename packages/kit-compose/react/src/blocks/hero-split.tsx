@@ -30,6 +30,8 @@ export type HeroSplitProps = {
   media?: "picture" | "card" | "grid" | "plans";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -45,6 +47,8 @@ export function HeroSplit({
   media = "picture",
   mediaSide = "end",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: HeroSplitProps) {
   return (
@@ -58,7 +62,7 @@ export function HeroSplit({
       tone={tone}
       landmarkLabel={landmarkLabel}
       aside={(
-        <HeroSplitMedia content={content} alt={title} media={media} />
+        <HeroSplitMedia content={content} alt={(imageAlt ? imageAlt : title)} image={image} media={media} />
       )}
     >
       <HeroSplitExtras content={content} extra={extra} />

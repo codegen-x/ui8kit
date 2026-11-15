@@ -70,7 +70,7 @@ const cartPage = spec(`${O}shopping-cart`, "ShoppingCart", "The cart as a page: 
         when(eq(len(ref("lines")), 0), [organism("EmptyState", { icon: "shopping-cart", title: ref("actions.empty") })]),
         each(ref("lines"), "line", ref("line.id"),
           use("Group", { props: { Gap: "4", Align: "center", Class: surface("flex-wrap p-4") }, attrs: { "data-testid": "item" } },
-            organism("MediaFrame", { alt: ref("line.name"), ratio: "1/1", className: "size-20 shrink-0" }),
+            organism("MediaFrame", { alt: ref("line.name"), src: ref("line.image"), ratio: "1/1", className: "size-20 shrink-0" }),
             use("Stack", { props: { Gap: "0", Class: "min-w-40 flex-1" } }, strong(ref("line.name"), "sm"), muted(ref("line.variant"), "xs"), use("Text", { props: { Size: "sm" } }, text(money(ref("line.price"), ref("line.currency"))))),
             organism("NumberField", { value: str(ref("line.qty")), name: tpl("{0}-qty-{1}", ref("id"), ref("line.id")), min: "1", label: ref("labels.qty"), decrease: ref("labels.decrease"), increase: ref("labels.increase") }),
             use("Text", { props: { Size: "base", Weight: "bold", Class: "w-24 text-right" } }, text(money(mul(ref("line.price"), ref("line.qty")), ref("line.currency")))),

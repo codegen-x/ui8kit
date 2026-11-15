@@ -23,6 +23,8 @@ type FooterSplitProps struct {
 	Layout any `json:"layout"`
 	MediaSide any `json:"mediaSide"`
 	Tone any `json:"tone"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -39,6 +41,8 @@ templ FooterSplit(p FooterSplitProps) {
 	{{ vLayout := uiutils.Def(p.Layout, "stats") }}
 	{{ vMediaSide := uiutils.Def(p.MediaSide, "end") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "footer", Class: uiutils.S(uiutils.Cnv("border-t border-border", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", ""))), Attrs: uiutils.Attrs("data-layout", vLayout, "aria-label", vLandmarkLabel, "data-slot", "footer-split")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", "py-12")), Attrs: uiutils.Attrs("data-slot", "container")}}) {
@@ -61,7 +65,7 @@ templ FooterSplit(p FooterSplitProps) {
 			} else {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-1 items-center gap-8 lg:grid-cols-2"}}) {
 					if uiutils.Eq(vMediaSide, "start") {
-						@MediaFrame(MediaFrameProps{Alt: vBrand, Ratio: "4/3"})
+						@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vBrand), Src: vImage, Ratio: "4/3"})
 					}
 					@compose.Stack(compose.StackProps{Gap: "8", Align: "stretch", BoxProps: box.BoxProps{}}) {
 						if uiutils.T(uiutils.Or(uiutils.Eq(vLayout, "points"), uiutils.Eq(vLayout, "links"))) {
@@ -100,7 +104,7 @@ templ FooterSplit(p FooterSplitProps) {
 						}
 					}
 					if !uiutils.Eq(vMediaSide, "start") {
-						@MediaFrame(MediaFrameProps{Alt: vBrand, Ratio: "4/3"})
+						@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vBrand), Src: vImage, Ratio: "4/3"})
 					}
 				}
 			}

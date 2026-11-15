@@ -25,7 +25,7 @@
         {foreach og_l($v_dishes) as $v_d}
           {capture $c_8}
             {if og_t(og_eq($v_media, 'image'))}
-              {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name'])]])|noescape}
+              {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name']), 'src' => og_get($v_d, ['image'])]])|noescape}
             {/if}
             {capture $c_6}
               {capture $c_4}

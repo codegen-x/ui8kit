@@ -19,7 +19,7 @@ export function PostMiniCard({ p, labels }: PostMiniCardProps) {
       className="rounded bg-card inset-ring inset-ring-border p-2"
       data-slot="post-mini"
     >
-      <MediaFrame alt={p.title} />
+      <MediaFrame alt={p.title} src={p.image} />
       <Stack gap="2" align="start" className="p-2">
         <Badge variant="secondary" size="sm">
           {p.category}

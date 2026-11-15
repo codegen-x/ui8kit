@@ -29,7 +29,7 @@ templ QuoteCard(p QuoteCardProps) {
 		if uiutils.Eq(uiutils.Get(vItem, "kind"), "social") {
 			@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{}}) {
 				if !uiutils.Eq(uiutils.Get(vItem, "avatar"), "none") {
-					@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vQ, "author"), Ratio: "1/1", Class: uiutils.Cnv("size-12 shrink-0 rounded-full")})
+					@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vQ, "author"), Src: uiutils.Get(vQ, "image"), Ratio: "1/1", Class: uiutils.Cnv("size-12 shrink-0 rounded-full")})
 				}
 				@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 					@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
@@ -58,7 +58,7 @@ templ QuoteCard(p QuoteCardProps) {
 			}
 			@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{}}) {
 				if !uiutils.Eq(uiutils.Get(vItem, "avatar"), "none") {
-					@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vQ, "author"), Ratio: "1/1", Class: uiutils.Cnv("size-12 shrink-0 rounded-full")})
+					@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vQ, "author"), Src: uiutils.Get(vQ, "image"), Ratio: "1/1", Class: uiutils.Cnv("size-12 shrink-0 rounded-full")})
 				}
 				@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 					@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {

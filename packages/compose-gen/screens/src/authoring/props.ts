@@ -1,7 +1,7 @@
 // Prop helpers every block shares: literal unions (tsOf), the common axes (tone, density, cols), id and title,
 // the action set of a section and its picture. Blocks and components import them from here.
 import { cond, eq, gt, len, ref, undef, organism, when } from "../build";
-import type { ViewNode } from "../ir";
+import type { Value, ViewNode } from "../ir";
 import { groupFields, requireFields, ts } from "./kit";
 
 export const tsOf = (...v: string[]) => ts(v.map((x) => JSON.stringify(x)).join(" | "));
@@ -38,7 +38,18 @@ export const actionSet = requireFields(groupFields(
 export const linkActions = actionSet
   .filter((f) => f.name !== "emailLabel")
   .map((f) => (f.name === "mode" ? { ...f, type: `"one" | "two"`, docs: "one or two links" } : f));
-export const mediaOf = (alt: ReturnType<typeof ref>): ViewNode[] => [organism("MediaFrame", { alt, ratio: "4/3" })];
+export const mediaOf = (alt: ReturnType<typeof ref>, src?: ReturnType<typeof ref>): ViewNode[] => [organism("MediaFrame", { alt, ...(src ? { src } : {}), ratio: "4/3" })];
+
+/** the picture of a section: an optional address (https URL or path) and its alt text; without an address the block shows the placeholder */
+export const imageProps = [
+  { name: "image", type: "string" as const, docs: "address of the picture (an https URL or a path); none: the placeholder" },
+  { name: "imageAlt", type: "string" as const, docs: "alt text of the picture; none: the title" },
+];
+/** the alt text of the picture of a section: `imageAlt`, else the value of `fallback` (the title) */
+export const imageAlt = (fallback: Value = ref("title")): Value => cond(ref("imageAlt"), ref("imageAlt"), fallback);
+/** the MediaFrame of a section picture: `image` as its address, `imageAlt` (else the title) as its alt text */
+export const pictureOf = (ratio: Value, className?: Value, alt: Value = imageAlt()): ViewNode =>
+  organism("MediaFrame", { alt, src: ref("image"), ratio, ...(className !== undefined ? { className } : {}) });
 
 /** the two-value axes of the lighter blocks */
 export const toneLite = tsOf("default", "muted");

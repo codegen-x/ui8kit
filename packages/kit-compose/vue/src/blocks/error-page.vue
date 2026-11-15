@@ -17,6 +17,8 @@ export type ErrorPageProps = {
   layout?: "centered" | "split";
   code?: "show" | "hide";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -38,6 +40,8 @@ const {
   layout = "centered",
   code = "show",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<ErrorPageProps>();
 </script>
@@ -74,7 +78,7 @@ const {
       :align="(((layout as string) === 'split') ? 'start' : 'center')"
     />
     <template #aside>
-      <MediaFrame :alt="title" ratio="4/3" />
+      <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="4/3" />
     </template>
   </SectionFrame>
 </template>

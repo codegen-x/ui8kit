@@ -27,6 +27,8 @@ export type StoreHeroProps = {
   layout?: "overlay" | "backdrop";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -42,6 +44,8 @@ export function StoreHero({
   layout = "overlay",
   mediaSide = "end",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: StoreHeroProps) {
   return (
@@ -58,7 +62,7 @@ export function StoreHero({
           class={(("image" === "image") ? "relative isolate overflow-hidden" : "")}
           landmarkLabel={landmarkLabel}
         >
-          <Backdrop kind="image" alt={title} />
+          <Backdrop kind="image" alt={(imageAlt ? imageAlt : title)} image={image} />
           <ActionGroup
             primary={actions.cta}
             primaryHref={actions.href}
@@ -100,7 +104,7 @@ export function StoreHero({
           tone={tone}
           landmarkLabel={landmarkLabel}
           aside={(
-            <OfferMedia alt={title} card={card} />
+            <OfferMedia alt={(imageAlt ? imageAlt : title)} image={image} card={card} />
           )}
         >
           <ActionGroup

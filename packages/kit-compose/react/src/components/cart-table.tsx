@@ -62,7 +62,7 @@ export function CartTable({
                 <TableCell className={cn((((density as string) === "compact") ? "py-2" : "py-4"))}>
                   <Group gap="4" align="center">
                     {((media as string) === "image") ? (
-                      <MediaFrame alt={line.name} ratio="1/1" className="hidden size-14 shrink-0 sm:block" />
+                      <MediaFrame alt={line.name} src={line.image} ratio="1/1" className="hidden size-14 shrink-0 sm:block" />
                     ) : null}
                     <Stack gap="0">
                       <Text size="sm" weight="semibold">

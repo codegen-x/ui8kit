@@ -34,6 +34,8 @@ export type QuoteSplitProps = {
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
   empty?: string;
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -50,6 +52,8 @@ export function QuoteSplit({
   mediaSide = "end",
   tone = "default",
   empty = "",
+  image,
+  imageAlt,
   landmarkLabel,
 }: QuoteSplitProps) {
   return (
@@ -94,7 +98,7 @@ export function QuoteSplit({
               {((layout as string) === "rating") ? (
                 <QuoteRatingPanel extras={extras} labels={labels} />
               ) : (
-                <MediaFrame alt={title} ratio="4/3" />
+                <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} ratio="4/3" />
               )}
             </>
           )}

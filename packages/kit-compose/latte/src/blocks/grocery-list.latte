@@ -20,7 +20,7 @@
       {foreach og_l($v_dishes) as $v_d}
         {capture $c_5}
           {if og_t(og_eq($v_thumbs, 'show'))}
-            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name']), 'ratio' => '1/1', 'className' => og_cnv(['size-12 shrink-0'])]])|noescape}
+            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name']), 'src' => og_get($v_d, ['image']), 'ratio' => '1/1', 'className' => og_cnv(['size-12 shrink-0'])]])|noescape}
           {/if}
           {capture $c_3}
             {capture $c_1}

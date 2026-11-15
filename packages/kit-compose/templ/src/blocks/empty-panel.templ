@@ -23,6 +23,8 @@ type EmptyPanelProps struct {
 	Actions any `json:"actions"`
 	Visual any `json:"visual"`
 	Size any `json:"size"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -37,12 +39,14 @@ templ EmptyPanel(p EmptyPanelProps) {
 	{{ vActions := uiutils.Def(p.Actions, "button") }}
 	{{ vVisual := uiutils.Def(p.Visual, "icon") }}
 	{{ vSize := uiutils.Def(p.Size, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vTitle), "data-slot", "empty")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", uiutils.Cond(uiutils.T(uiutils.Eq(vSize, "compact")), "py-4", "py-8"))), Attrs: uiutils.Attrs("data-slot", "container")}}) {
 			if uiutils.Eq(vVisual, "image") {
 				@compose.Stack(compose.StackProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "mx-auto max-w-md text-center", Attrs: uiutils.Attrs("data-slot", "empty-visual")}}) {
-					@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3", Class: uiutils.Cnv("w-full max-w-xs")})
+					@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "4/3", Class: uiutils.Cnv("w-full max-w-xs")})
 					@compose.Title(compose.TitleProps{As: "2", Size: "2xl", Weight: "bold", TextProps: text.TextProps{}}) {
 						{ uiutils.Text(vTitle) }
 					}

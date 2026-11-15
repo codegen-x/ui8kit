@@ -43,7 +43,7 @@
         {%- for v_t in og_l(v_templates) %}
           {%- set c_17 -%}
             {%- set c_5 -%}
-              {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_t, ['title']), 'className': og_cnv([og_cnv(['size-full', og_preset('blocks/presets/defaults.json', ['media', 'rounded'])])])}}, with_context = false) }}
+              {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_t, ['title']), 'src': og_get(v_t, ['image']), 'className': og_cnv([og_cnv(['size-full', og_preset('blocks/presets/defaults.json', ['media', 'rounded'])])])}}, with_context = false) }}
             {%- endset -%}
             {{ include('compose/Box.html.twig', {'class': og_s(og_cnv(['shrink-0 overflow-hidden', og_preset('blocks/presets/defaults.json', ['templates', 'image'])])), 'children': c_5}, with_context = false) }}
             {%- set c_16 -%}

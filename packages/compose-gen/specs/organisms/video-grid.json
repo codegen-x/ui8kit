@@ -181,6 +181,9 @@
                                       "props": {
                                         "alt": {
                                           "$": "q.author"
+                                        },
+                                        "src": {
+                                          "$": "q.image"
                                         }
                                       }
                                     },

@@ -42,7 +42,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
             <For each={content.people ?? []}>{(p, iOf) => { const i = iOf(); return (
               <>
                 {(i < 4) ? (
-                  <MediaFrame alt={p.author} ratio="1/1" class="size-10 shrink-0 rounded-full" />
+                  <MediaFrame alt={p.author} src={p.image} ratio="1/1" class="size-10 shrink-0 rounded-full" />
                 ) : null}
               </>
             ); }}</For>
@@ -85,7 +85,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
                     {p.quote}
                   </Text>
                   <Group gap="4" align="center">
-                    <MediaFrame alt={p.author} ratio="1/1" class="size-10 shrink-0 rounded-full" />
+                    <MediaFrame alt={p.author} src={p.image} ratio="1/1" class="size-10 shrink-0 rounded-full" />
                     <Stack gap="0">
                       <Text size="sm" weight="semibold">
                         {p.author}

@@ -13,6 +13,11 @@
       "docs": "accessible name of the picture"
     },
     {
+      "name": "image",
+      "type": "string",
+      "docs": "address of the picture; none: the placeholder"
+    },
+    {
       "name": "card",
       "type": {
         "ts": "OfferCard"
@@ -37,6 +42,9 @@
           "props": {
             "alt": {
               "$": "alt"
+            },
+            "src": {
+              "$": "image"
             },
             "ratio": "4/3"
           }

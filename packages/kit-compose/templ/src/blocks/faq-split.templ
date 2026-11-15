@@ -24,6 +24,8 @@ type FaqSplitProps struct {
 	Cards any `json:"cards"`
 	MediaSide any `json:"mediaSide"`
 	Tone any `json:"tone"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -41,6 +43,8 @@ templ FaqSplit(p FaqSplitProps) {
 	{{ vCards := uiutils.Def(p.Cards, "grid3") }}
 	{{ vMediaSide := uiutils.Def(p.MediaSide, "end") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	if uiutils.Gt(uiutils.Len(vItems), float64(0)) {
 		if uiutils.Eq(vLayout, "cards") {
@@ -63,7 +67,7 @@ templ FaqSplit(p FaqSplitProps) {
 			}
 		}
 		if uiutils.Eq(vLayout, "media") {
-			@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide, "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill3(p, vTitle)}) {
+			@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide, "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill3(p, vTitle, vImage, vImageAlt)}) {
 				@FaqDisclosures(FaqDisclosuresProps{Items: vItems, Name: uiutils.Tpl("{0}-faq", vId)})
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{}}) {
 					@compose.Button(compose.ButtonProps{Variant: "default", Size: "default", ButtonProps: button.ButtonProps{}}) {
@@ -73,7 +77,7 @@ templ FaqSplit(p FaqSplitProps) {
 			}
 		}
 		if uiutils.Eq(vLayout, "search") {
-			@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill4(p, vTitle)}) {
+			@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill4(p, vTitle, vImage, vImageAlt)}) {
 				@FaqFinder(FaqFinderProps{Items: vItems, Labels: vLabels, Topics: vTopics})
 			}
 		}
@@ -88,10 +92,10 @@ templ faqSplitFill2(p FaqSplitProps, vChannels any, vLabels any, vLandmarkLabel 
 	@FaqHelp(FaqHelpProps{Labels: vLabels, Channels: vChannels, LandmarkLabel: vLandmarkLabel})
 }
 
-templ faqSplitFill3(p FaqSplitProps, vTitle any) {
-	@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3"})
+templ faqSplitFill3(p FaqSplitProps, vTitle any, vImage any, vImageAlt any) {
+	@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "4/3"})
 }
 
-templ faqSplitFill4(p FaqSplitProps, vTitle any) {
-	@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3"})
+templ faqSplitFill4(p FaqSplitProps, vTitle any, vImage any, vImageAlt any) {
+	@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "4/3"})
 }

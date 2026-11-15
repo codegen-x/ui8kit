@@ -36,6 +36,8 @@ export type FooterSplitProps = {
   layout?: "stats" | "points" | "links" | "newsletter" | "contacts" | "channels";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -51,6 +53,8 @@ export function FooterSplit({
   layout = "stats",
   mediaSide = "end",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: FooterSplitProps) {
   return (
@@ -81,7 +85,7 @@ export function FooterSplit({
         ) : (
           <Box class="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
             {((mediaSide as string) === "start") ? (
-              <MediaFrame alt={brand} ratio="4/3" />
+              <MediaFrame alt={(imageAlt ? imageAlt : brand)} src={image} ratio="4/3" />
             ) : null}
             <Stack gap="8" align="stretch">
               {(((layout as string) === "points") || ((layout as string) === "links")) ? (
@@ -129,7 +133,7 @@ export function FooterSplit({
               </Box>
             </Stack>
             {((mediaSide as string) !== "start") ? (
-              <MediaFrame alt={brand} ratio="4/3" />
+              <MediaFrame alt={(imageAlt ? imageAlt : brand)} src={image} ratio="4/3" />
             ) : null}
           </Box>
         )}

@@ -26,7 +26,7 @@
     {%- set c_7 -%}
       {%- for v_p in og_l(v_projects) %}
         {%- set c_6 -%}
-          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'ratio': '1/1', 'className': og_cnv(['size-16 shrink-0'])}}) }}
+          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'src': og_get(v_p, ['image']), 'ratio': '1/1', 'className': og_cnv(['size-16 shrink-0'])}}) }}
           {%- set c_5 -%}
             {%- set c_3 -%}
               {%- set c_1 -%}

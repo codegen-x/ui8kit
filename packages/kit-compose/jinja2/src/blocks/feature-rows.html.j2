@@ -20,7 +20,7 @@
       {%- endset -%}
       {{ og_include('compose/stack.html.j2', {'p': {'Gap': '2', 'Class': 'min-w-0'}, 'children': c_3}) }}
       {%- set c_4 -%}
-        {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_feature, ['title']), 'ratio': '4/3'}}) }}
+        {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_feature, ['title']), 'src': og_get(v_feature, ['image']), 'ratio': '4/3'}}) }}
       {%- endset -%}
       {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['w-full min-w-0', ('md:order-first' if og_t(og_eq(v_mediaSide, 'start')) else ('md:group-even:order-first' if og_t(og_eq(v_mediaSide, 'alternate')) else ''))]))}, 'children': c_4}) }}
     {%- endset -%}

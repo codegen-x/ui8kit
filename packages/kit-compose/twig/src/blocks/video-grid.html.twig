@@ -21,7 +21,7 @@
       {%- for v_q in og_l(v_quotes) %}
         {%- set c_9 -%}
           {%- set c_5 -%}
-            {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_q, ['author'])}}, with_context = false) }}
+            {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_q, ['author']), 'src': og_get(v_q, ['image'])}}, with_context = false) }}
             {%- set c_1 -%}
               {{ include('icons/LucideIcon.html.twig', {'name': 'play', 'size': 20}, with_context = false) }}
             {%- endset -%}

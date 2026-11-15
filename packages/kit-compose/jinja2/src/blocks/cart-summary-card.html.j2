@@ -27,7 +27,7 @@
     {%- set c_9 -%}
       {%- for v_line in og_l(v_lines) %}
         {%- set c_8 -%}
-          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_line, ['name']), 'ratio': '1/1', 'className': og_cnv(['size-12 shrink-0'])}}) }}
+          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_line, ['name']), 'src': og_get(v_line, ['image']), 'ratio': '1/1', 'className': og_cnv(['size-12 shrink-0'])}}) }}
           {%- set c_6 -%}
             {%- set c_4 -%}
               {{ og_text(og_get(v_line, ['name'])) }}

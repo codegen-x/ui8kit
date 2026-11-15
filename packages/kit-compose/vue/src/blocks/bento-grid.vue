@@ -74,6 +74,7 @@ const {
           <MediaFrame
             v-if="(((media as string) === 'image') && ((tile.size === 'large') || ((layout as string) === 'even')))"
             :alt="tile.title"
+            :src="tile.image"
             ratio="4/3"
             class="mt-auto"
           />

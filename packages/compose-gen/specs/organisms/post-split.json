@@ -264,6 +264,9 @@
                     "alt": {
                       "$": "post.title"
                     },
+                    "src": {
+                      "$": "post.image"
+                    },
                     "ratio": {
                       "op": "cond",
                       "args": [
@@ -479,6 +482,9 @@
                   "props": {
                     "alt": {
                       "$": "post.title"
+                    },
+                    "src": {
+                      "$": "post.image"
                     },
                     "ratio": {
                       "op": "cond",

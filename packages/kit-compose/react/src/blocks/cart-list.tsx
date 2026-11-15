@@ -60,7 +60,7 @@ export function CartList({
             <Card key={line.id} variant="default">
               <CardContent className="flex flex-wrap items-center gap-4">
                 {((media as string) === "image") ? (
-                  <MediaFrame alt={line.name} ratio="1/1" className="size-16 shrink-0" />
+                  <MediaFrame alt={line.name} src={line.image} ratio="1/1" className="size-16 shrink-0" />
                 ) : null}
                 <Stack gap="0" className="min-w-40 flex-1">
                   <Text size="sm" weight="semibold">

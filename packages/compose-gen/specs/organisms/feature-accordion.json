@@ -64,6 +64,16 @@
       "default": "default"
     },
     {
+      "name": "image",
+      "type": "string",
+      "docs": "address of the picture (an https URL or a path); none: the placeholder"
+    },
+    {
+      "name": "imageAlt",
+      "type": "string",
+      "docs": "alt text of the picture; none: the title"
+    },
+    {
       "name": "landmarkLabel",
       "type": "string",
       "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
@@ -297,7 +307,21 @@
               "organism": "MediaFrame",
               "props": {
                 "alt": {
-                  "$": "title"
+                  "op": "cond",
+                  "args": [
+                    {
+                      "$": "imageAlt"
+                    },
+                    {
+                      "$": "imageAlt"
+                    },
+                    {
+                      "$": "title"
+                    }
+                  ]
+                },
+                "src": {
+                  "$": "image"
                 },
                 "ratio": "4/3"
               }

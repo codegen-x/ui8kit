@@ -23,7 +23,7 @@
         {capture $c_8}
           {capture $c_7}
             {if og_t(og_eq($v_media, 'image'))}
-              {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_line, ['name']), 'ratio' => '1/1', 'className' => og_cnv(['size-16 shrink-0'])]])|noescape}
+              {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_line, ['name']), 'src' => og_get($v_line, ['image']), 'ratio' => '1/1', 'className' => og_cnv(['size-16 shrink-0'])]])|noescape}
             {/if}
             {capture $c_4}
               {capture $c_1}

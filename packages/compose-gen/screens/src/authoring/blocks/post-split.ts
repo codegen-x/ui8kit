@@ -31,7 +31,7 @@ const postSplit = spec("organism.post-split", "PostSplit", "A post header with t
     const head = { id: ref("id"), title: ref("post.title"), lead: ref("post.excerpt"), badge: ref("post.category"), level: ref("level"), tone: ref("tone"), hasMedia: true };
     // emptyMode omit: no tags, no tag row; no outline facts, no outline column
     const tags = (align: string) => ifAny("extras.tags", [organism("PostTags", { tags: ref("extras.tags"), align })]);
-    const cover = organism("MediaFrame", { alt: ref("post.title"), ratio: cond(is("center"), "21/9", cond(eq(ref("cover"), "square"), "1/1", "4/3")) });
+    const cover = organism("MediaFrame", { alt: ref("post.title"), src: ref("post.image"), ratio: cond(is("center"), "21/9", cond(eq(ref("cover"), "square"), "1/1", "4/3")) });
     return [when(is("center"), [frame({ ...head, align: "center" }, [
       tags("center"),
       organism("PostStats", { ...base, align: "center" }),

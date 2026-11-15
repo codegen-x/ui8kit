@@ -79,6 +79,9 @@
             "alt": {
               "$": "member.name"
             },
+            "src": {
+              "$": "member.image"
+            },
             "ratio": "1/1",
             "className": {
               "op": "cn",

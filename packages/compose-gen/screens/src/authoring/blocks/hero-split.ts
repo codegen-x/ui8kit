@@ -4,7 +4,7 @@ import { cond, eq, ref, undef, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, tsOf, toneLite } from "../props";
+import { id, imageAlt, imageProps, tsOf, toneLite } from "../props";
 
 const heroSplit = spec("organism.hero-split", "HeroSplit", "A split hero: a badge, the heading, a lead, an extra under it and one or two actions, beside the media. Axes: extra (stats: three figures, avatars: faces and a proof line, minis: two small feature cards, quote: a quote over three figures, none), media (picture, card: a floating card on the picture, grid: four pictures with captions, plans: two plan cards on the picture), mediaSide, tone.", {
   typeImports: [{ from: "StatsBand", names: ["Stat"] }, { from: "FeatureGrid", names: ["Feature"] }, { from: "TestimonialGrid", names: ["Quote"] }, { from: "StoreHero", names: ["OfferCard"] }, { from: "PricingCard", names: ["Plan"] }, { from: "ErrorPage", names: ["LinkActions"] }],
@@ -21,11 +21,12 @@ const heroSplit = spec("organism.hero-split", "HeroSplit", "A split hero: a badg
     { name: "media", type: tsOf("picture", "card", "grid", "plans"), default: "picture" },
     { name: "mediaSide", type: tsOf("end", "start"), default: "end" },
     { name: "tone", type: toneLite, default: "default" },
+    ...imageProps,
   ],
   view: [frame({ id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), level: ref("level"), layout: "split", hasMedia: true, mediaSide: ref("mediaSide"), tone: ref("tone"), density: "default" }, [
     organism("HeroSplitExtras", { content: ref("content"), extra: ref("extra") }),
     organism("ActionGroup", { primary: ref("actions.cta"), primaryHref: ref("actions.href"), secondary: cond(eq(ref("actions.mode"), "two"), ref("actions.secondary"), undef()), secondaryHref: ref("actions.secondaryHref"), align: "start" }),
-  ], [organism("HeroSplitMedia", { content: ref("content"), alt: ref("title"), media: ref("media") })])],
+  ], [organism("HeroSplitMedia", { content: ref("content"), alt: imageAlt(), image: ref("image"), media: ref("media") })])],
 });
 
 export const heroSplitOrganisms: OrganismSpec[] = [heroSplit];

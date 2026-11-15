@@ -18,7 +18,7 @@
     {{ include('compose/Button.html.twig', {'variant': 'ghost', 'size': 'sm', 'layout': 'icon', 'type': 'button', 'ariaLabel': og_s(og_get(v_labels, ['close'])), 'children': c_2}, with_context = false) }}
   {%- endset -%}
   {{ include('compose/Group.html.twig', {'gap': '2', 'align': 'center', 'justify': 'between', 'children': c_3}, with_context = false) }}
-  {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_first_of(v_photos, 'title'), 'ratio': '4/3'}}, with_context = false) }}
+  {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_first_of(v_photos, 'title'), 'src': og_first_of(v_photos, 'image'), 'ratio': '4/3'}}, with_context = false) }}
   {%- if og_t(og_eq(v_captions, 'show')) %}
     {%- set c_4 -%}
       {{ og_text(og_first_of(v_photos, 'tag')) }}

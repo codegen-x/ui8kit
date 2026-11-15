@@ -62,7 +62,7 @@ const {
   >
     <EmptyState v-if="((photos?.length ?? 0) === 0)" icon="image" :title="empty" />
     <Stack v-else-if="((layout as string) === 'featured')" gap="4" align="stretch" data-slot="featured">
-      <MediaFrame :alt="title" />
+      <MediaFrame :alt="photos[0]?.title ?? ''" :src="photos[0]?.image ?? ''" />
       <Group gap="4" align="center" justify="between">
         <Stack gap="0">
           <Text size="base" weight="semibold">
@@ -86,6 +86,7 @@ const {
           v-for="(p, i) in photos"
           :key="p.id"
           :alt="p.title"
+          :src="p.image"
           ratio="1/1"
           :class="((i === 0) ? 'ring-2 ring-foreground' : '')"
         />
@@ -110,6 +111,7 @@ const {
       >
         <MediaFrame
           :alt="p.title"
+          :src="p.image"
           :ratio="
             (layout as string) === 'masonry' ? ((p.size === 'tall') ? '3/4' : ((p.size === 'wide') ? '16/9' : ((p.size === 'large') ? '4/3' : '1/1')))
             : (layout as string) === 'grid' ? '4/3'

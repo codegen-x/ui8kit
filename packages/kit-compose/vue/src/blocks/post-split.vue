@@ -75,6 +75,7 @@ const {
     <template #aside>
       <MediaFrame
         :alt="post.title"
+        :src="post.image"
         :ratio="
           (layout as string) === 'center' ? '21/9'
           : (cover as string) === 'square' ? '1/1'
@@ -105,6 +106,7 @@ const {
     <template #aside>
       <MediaFrame
         :alt="post.title"
+        :src="post.image"
         :ratio="
           (layout as string) === 'center' ? '21/9'
           : (cover as string) === 'square' ? '1/1'

@@ -25,6 +25,8 @@ export type QuoteSplitProps = {
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
   empty?: string;
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -54,6 +56,8 @@ const {
   mediaSide = "end",
   tone = "default",
   empty = "",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<QuoteSplitProps>();
 </script>
@@ -127,7 +131,7 @@ const {
     />
     <template #aside>
       <QuoteRatingPanel v-if="((layout as string) === 'rating')" :extras="extras" :labels="labels" />
-      <MediaFrame v-else :alt="title" ratio="4/3" />
+      <MediaFrame v-else :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="4/3" />
     </template>
   </SectionFrame>
 </template>

@@ -26,6 +26,8 @@ type HeroClassicProps struct {
 	Scale any `json:"scale"`
 	Tone any `json:"tone"`
 	Density any `json:"density"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -43,11 +45,13 @@ templ HeroClassic(p HeroClassicProps) {
 	{{ vScale := uiutils.Def(p.Scale, "default") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vDensity := uiutils.Def(p.Density, "roomy") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	{{ vMediaKind := any(uiutils.Coalesce(uiutils.Get(vMedia, "kind"), "none")) }}
 	{{ vMediaSide := any(uiutils.Coalesce(uiutils.Get(vMedia, "side"), "end")) }}
-	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Heading: map[string]any{"level": vLevel, "scale": vScale, "badge": vBadge}, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Align: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "start", "center"), Media: map[string]any{"show": uiutils.Or(uiutils.Eq(vMediaKind, "image"), uiutils.Eq(vMediaKind, "code"), uiutils.Eq(vMediaKind, "cluster")), "side": vMediaSide}, Tone: vTone, Density: vDensity, Class: uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Cond(uiutils.T(uiutils.Eq(vMediaKind, "backdrop")), "image", "none"), "image")), "relative isolate overflow-hidden", "")), LandmarkLabel: vLandmarkLabel, Aside: heroClassicFill1(p, vTitle, vMedia, vMediaKind)}) {
-		@Backdrop(BackdropProps{Kind: uiutils.Cond(uiutils.T(uiutils.Eq(vMediaKind, "backdrop")), "image", "none"), Alt: vTitle})
+	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Heading: map[string]any{"level": vLevel, "scale": vScale, "badge": vBadge}, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Align: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "start", "center"), Media: map[string]any{"show": uiutils.Or(uiutils.Eq(vMediaKind, "image"), uiutils.Eq(vMediaKind, "code"), uiutils.Eq(vMediaKind, "cluster")), "side": vMediaSide}, Tone: vTone, Density: vDensity, Class: uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Cond(uiutils.T(uiutils.Eq(vMediaKind, "backdrop")), "image", "none"), "image")), "relative isolate overflow-hidden", "")), LandmarkLabel: vLandmarkLabel, Aside: heroClassicFill1(p, vTitle, vMedia, vImage, vImageAlt, vMediaKind)}) {
+		@Backdrop(BackdropProps{Kind: uiutils.Cond(uiutils.T(uiutils.Eq(vMediaKind, "backdrop")), "image", "none"), Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Image: vImage})
 		if uiutils.T(uiutils.Get(vActions, "cta")) {
 			if uiutils.Eq(uiutils.Get(vActions, "mode"), "form") {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("w-full max-w-xl", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "centered")), "mx-auto", ""))), Attrs: uiutils.Attrs("data-slot", "email-form")}}) {
@@ -71,7 +75,7 @@ templ HeroClassic(p HeroClassicProps) {
 	}
 }
 
-templ heroClassicFill1(p HeroClassicProps, vTitle any, vMedia any, vMediaKind any) {
+templ heroClassicFill1(p HeroClassicProps, vTitle any, vMedia any, vImage any, vImageAlt any, vMediaKind any) {
 	if uiutils.T(uiutils.And(uiutils.Eq(vMediaKind, "code"), uiutils.Get(vMedia, "lines"), uiutils.Gt(uiutils.Len(uiutils.Get(vMedia, "lines")), float64(0)), uiutils.Get(vMedia, "codeTitle"), uiutils.Get(vMedia, "prompt"))) {
 		@CodeWindow(CodeWindowProps{Title: uiutils.Get(vMedia, "codeTitle"), Prompt: uiutils.Get(vMedia, "prompt"), Lines: uiutils.Get(vMedia, "lines")})
 	}
@@ -89,6 +93,6 @@ templ heroClassicFill1(p HeroClassicProps, vTitle any, vMedia any, vMediaKind an
 		}
 	}
 	if uiutils.T(uiutils.Or(uiutils.Eq(vMediaKind, "image"))) {
-		@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3"})
+		@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "4/3"})
 	}
 }

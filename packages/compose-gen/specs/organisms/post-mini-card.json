@@ -41,6 +41,9 @@
           "props": {
             "alt": {
               "$": "p.title"
+            },
+            "src": {
+              "$": "p.image"
             }
           }
         },

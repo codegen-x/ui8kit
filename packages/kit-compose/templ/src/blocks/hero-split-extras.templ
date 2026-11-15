@@ -42,7 +42,7 @@ templ HeroSplitExtras(p HeroSplitExtrasProps) {
 			@compose.Group(compose.GroupProps{Gap: "2", Align: "center", BoxProps: box.BoxProps{}}) {
 				for vI, vP := range uiutils.L(uiutils.Get(vContent, "people")) {
 					if uiutils.Lt(float64(vI), float64(4)) {
-						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "author"), Ratio: "1/1", Class: uiutils.Cnv("size-10 shrink-0 rounded-full")})
+						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "author"), Src: uiutils.Get(vP, "image"), Ratio: "1/1", Class: uiutils.Cnv("size-10 shrink-0 rounded-full")})
 					}
 				}
 			}
@@ -81,7 +81,7 @@ templ HeroSplitExtras(p HeroSplitExtrasProps) {
 							{ uiutils.Text(uiutils.Get(vP, "quote")) }
 						}
 						@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{}}) {
-							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "author"), Ratio: "1/1", Class: uiutils.Cnv("size-10 shrink-0 rounded-full")})
+							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "author"), Src: uiutils.Get(vP, "image"), Ratio: "1/1", Class: uiutils.Cnv("size-10 shrink-0 rounded-full")})
 							@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 								@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
 									{ uiutils.Text(uiutils.Get(vP, "author")) }

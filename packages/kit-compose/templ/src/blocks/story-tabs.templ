@@ -24,6 +24,8 @@ type StoryTabsProps struct {
 	Labels any `json:"labels"`
 	Layout any `json:"layout"`
 	Tone any `json:"tone"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -39,6 +41,8 @@ templ StoryTabs(p StoryTabsProps) {
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "years") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	if uiutils.Eq(uiutils.Len(vSteps), float64(0)) {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
@@ -65,13 +69,13 @@ templ StoryTabs(p StoryTabsProps) {
 			}
 		}
 	} else {
-		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true}, LandmarkLabel: vLandmarkLabel, Aside: storyTabsFill1(p, vTitle, vSteps, vActive, vLabels)})
+		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true}, LandmarkLabel: vLandmarkLabel, Aside: storyTabsFill1(p, vTitle, vSteps, vActive, vLabels, vImage, vImageAlt)})
 	}
 }
 
-templ storyTabsFill1(p StoryTabsProps, vTitle any, vSteps any, vActive any, vLabels any) {
+templ storyTabsFill1(p StoryTabsProps, vTitle any, vSteps any, vActive any, vLabels any, vImage any, vImageAlt any) {
 	@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{}}) {
-		@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3"})
+		@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "4/3"})
 		@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "between", BoxProps: box.BoxProps{}}) {
 			@compose.Button(compose.ButtonProps{Variant: "outline", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(uiutils.Get(vLabels, "previous"))}}) {
 				@icons.LucideIcon(icons.LucideIconProps{Name: "chevron-left", Size: 16})

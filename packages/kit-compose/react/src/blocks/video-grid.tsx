@@ -52,7 +52,7 @@ export function VideoGrid({
           {(quotes ?? []).map((q) => (
             <FigureBlock key={q.id} className="m-0 flex flex-col gap-4" testid="item">
               <Box className="relative">
-                <MediaFrame alt={q.author} />
+                <MediaFrame alt={q.author} src={q.image} />
                 <Button
                   variant="default"
                   size="default"

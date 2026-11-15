@@ -232,6 +232,9 @@
                                 "alt": {
                                   "$": "line.name"
                                 },
+                                "src": {
+                                  "$": "line.image"
+                                },
                                 "ratio": "1/1",
                                 "className": "size-20 shrink-0"
                               }

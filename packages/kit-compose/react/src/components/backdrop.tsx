@@ -11,14 +11,15 @@ import { MediaFrame } from "../components/media-frame";
 export type BackdropProps = {
   kind?: "none" | "image";
   alt?: string;
+  image?: string;
 };
 
-export function Backdrop({ kind = "none", alt = "" }: BackdropProps) {
+export function Backdrop({ kind = "none", alt = "", image }: BackdropProps) {
   return (
     <>
       {((kind as string) === "image") ? (
         <Box className="pointer-events-none absolute inset-0 -z-10" data-slot="backdrop">
-          <MediaFrame alt={alt} ratio="21/9" className="size-full rounded-none opacity-30" />
+          <MediaFrame alt={alt} src={image} ratio="21/9" className="size-full rounded-none opacity-30" />
         </Box>
       ) : null}
     </>

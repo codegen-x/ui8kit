@@ -57,7 +57,7 @@ templ BentoGrid(p BentoGridProps) {
 								{ uiutils.Text(uiutils.Get(vTile, "text")) }
 							}
 							if uiutils.T(uiutils.And(uiutils.Eq(vMedia, "image"), uiutils.Or(uiutils.Eq(uiutils.Get(vTile, "size"), "large"), uiutils.Eq(vLayout, "even")))) {
-								@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vTile, "title"), Ratio: "4/3", Class: uiutils.Cnv("mt-auto")})
+								@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vTile, "title"), Src: uiutils.Get(vTile, "image"), Ratio: "4/3", Class: uiutils.Cnv("mt-auto")})
 							}
 						}
 					}

@@ -137,6 +137,9 @@
                             "alt": {
                               "$": "q.author"
                             },
+                            "src": {
+                              "$": "q.image"
+                            },
                             "ratio": "1/1",
                             "className": "size-12 shrink-0 rounded-full"
                           }
@@ -331,6 +334,9 @@
                           "props": {
                             "alt": {
                               "$": "q.author"
+                            },
+                            "src": {
+                              "$": "q.image"
                             },
                             "ratio": "1/1",
                             "className": "size-12 shrink-0 rounded-full"

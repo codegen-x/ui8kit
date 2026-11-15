@@ -4,7 +4,7 @@ import { and, at, call, cn, coalesce, cond, each, eachAt, eq, or, ref, text, tpl
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { empty, id, orEmpty, title, tone, tsOf, toneLite, denseLite } from "../props";
+import { denseLite, empty, id, imageProps, orEmpty, pictureOf, title, tone, toneLite, tsOf } from "../props";
 import { kids } from "../forms";
 import { fluidCols, heading, muted, strong, strongSpan, surface, fitCols } from "../ux";
 import { figureBlockOf } from "../components/landmarks";
@@ -13,7 +13,7 @@ const O = "organism.";
 const base = (extra: Record<string, unknown> = {}) => ({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density"), ...extra });
 
 const bentoGrid = spec(`${O}bento-grid`, "BentoGrid", "Tiles of different sizes in one grid: the large and wide tiles hold the important features. Sizes come from the data (large, wide, small). Axes: layout (bento, even: all tiles alike), media (none, image: a picture in the large tiles), tone, density.", {
-  records: { Tile: fields(["id", "string"], ["title", "string"], ["text", "string"], ["icon", "string"], ["size", "string"]) },
+  records: { Tile: fields(["id", "string"], ["title", "string"], ["text", "string"], ["icon", "string"], ["size", "string"], ["image", "string", true]) },
   consts: { SPAN: { large: "md:col-span-2 md:row-span-2", wide: "md:col-span-2", small: "" } },
   props: [
     id, title,
@@ -32,7 +32,7 @@ const bentoGrid = spec(`${O}bento-grid`, "BentoGrid", "Tiles of different sizes 
             use("LucideIcon", { props: { Name: ref("tile.icon"), Size: 24 } }),
             heading(ref("tile.title"), "xl"),
             muted(ref("tile.text")),
-            when(and(eq(ref("media"), "image"), or(eq(ref("tile.size"), "large"), eq(ref("layout"), "even"))), [organism("MediaFrame", { alt: ref("tile.title"), ratio: "4/3", className: "mt-auto" })]))))),])
+            when(and(eq(ref("media"), "image"), or(eq(ref("tile.size"), "large"), eq(ref("layout"), "even"))), [organism("MediaFrame", { alt: ref("tile.title"), src: ref("tile.image"), ratio: "4/3", className: "mt-auto" })]))))),])
   ])],
 });
 
@@ -57,7 +57,7 @@ const featureTabs = spec(`${O}feature-tabs`, "FeatureTabs", "Features behind a t
         when(or(eq(ref("f.id"), ref("active")), and(eq(ref("active"), ""), eq(ref("i"), 0))), [
           use("Grid", { props: { Cols: cond(eq(ref("panel"), "split"), "1-2", "1"), Class: "items-center gap-8" }, attrs: { "data-testid": "tab-panel", role: "tabpanel" } },
             use("Stack", { props: { Gap: "4" } }, use("LucideIcon", { props: { Name: ref("f.icon"), Size: 24 } }), heading(ref("f.title"), "2xl"), muted(ref("f.text"), "base")),
-            organism("MediaFrame", { alt: ref("f.title"), ratio: "4/3" }))]))),])
+            organism("MediaFrame", { alt: ref("f.title"), src: ref("f.image"), ratio: "4/3" }))]))),])
   ])],
 });
 
@@ -72,6 +72,7 @@ const featureAccordion = spec(`${O}feature-accordion`, "FeatureAccordion", "Feat
     { name: "multiple", type: "boolean", default: false, docs: "true: several can be open at once; false: opening one closes the others (native details name)" },
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
+    ...imageProps,
   ],
   view: [frame(base({ layout: cond(eq(ref("media"), "image"), "split", "stack"), hasMedia: eq(ref("media"), "image") }), [orEmpty("features", "layout-grid", [
     use("Stack", { props: { Gap: "0", Align: "stretch" }, attrs: { "data-testid": "items" } },
@@ -79,7 +80,7 @@ const featureAccordion = spec(`${O}feature-accordion`, "FeatureAccordion", "Feat
         use("Disclosure", { props: { Variant: "item", Name: cond(ref("multiple"), undef(), tpl("{0}-accordion", coalesce(ref("id"), "accordion"))), Open: and(eq(ref("expand"), "first"), eq(ref("i"), 0)) }, attrs: { "data-testid": "item" } },
           use("Summary", { props: { Variant: "item" } }, use("Inline", { props: { Class: "flex min-w-0 items-center justify-start gap-4" } }, use("LucideIcon", { props: { Name: ref("f.icon"), Size: 20 } }), strongSpan(ref("f.title")))),
           use("Text", { props: { Size: "sm", Class: "pb-4 text-muted-foreground" } }, text(ref("f.text")))))),])
-  ], [organism("MediaFrame", { alt: ref("title"), ratio: "4/3" })])],
+  ], [pictureOf("4/3")])],
 });
 
 const featureSticky = spec(`${O}feature-sticky`, "FeatureSticky", "A picture that stays in view while the feature descriptions scroll beside it. `active` marks the description that is current (the page follows the scroll; that is a port contract). Axes: mediaSide (end, start), item (plain, card), tone, density.", {
@@ -93,10 +94,11 @@ const featureSticky = spec(`${O}feature-sticky`, "FeatureSticky", "A picture tha
     { name: "item", type: tsOf("plain", "card"), default: "plain" },
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
+    ...imageProps,
   ],
   view: [frame(base(), [orEmpty("features", "layout-grid", [
     use("Grid", { props: { Cols: "1-2", Class: "items-start gap-8" }, attrs: { "data-testid": "sticky" } },
-      use("Box", { props: { Class: cn("md:sticky md:top-8", cond(eq(ref("mediaSide"), "start"), "md:order-first", "md:order-last")) }, attrs: { "data-testid": "sticky-media" } }, organism("MediaFrame", { alt: ref("title"), ratio: "4/3" })),
+      use("Box", { props: { Class: cn("md:sticky md:top-8", cond(eq(ref("mediaSide"), "start"), "md:order-first", "md:order-last")) }, attrs: { "data-testid": "sticky-media" } }, pictureOf("4/3")),
       use("Stack", { props: { Gap: cond(eq(ref("density"), "compact"), "4", "8"), Align: "stretch" }, attrs: { "data-testid": "items" } },
         each(ref("features"), "f", ref("f.id"),
           use("Stack", { props: { Gap: "2", Class: cn(cond(eq(ref("item"), "card"), surface("p-6"), "py-4"), cond(eq(ref("f.id"), ref("active")), "inset-ring inset-ring-foreground", "")) }, attrs: { "data-testid": "item", "aria-current": cond(eq(ref("f.id"), ref("active")), "true", undef()) } },
@@ -199,7 +201,7 @@ const videoGrid = spec(`${O}video-grid`, "VideoGrid", "Video testimonials as thu
       each(ref("quotes"), "q", ref("q.id"),
         figureBlockOf("m-0 flex flex-col gap-4", "item",
           use("Box", { props: { Class: "relative" } },
-            organism("MediaFrame", { alt: ref("q.author"), ratio: "16/9" }),
+            organism("MediaFrame", { alt: ref("q.author"), src: ref("q.image"), ratio: "16/9" }),
             use("Button", { props: { Variant: "default", Size: "default", Type: "button", Class: "absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0" }, on: { click: call("emit.play", ref("q.id")) }, attrs: { "aria-label": tpl(ref("playLabel"), ref("q.author")), "data-testid": "play" } },
               use("LucideIcon", { props: { Name: "play", Size: 20 } })),
             when(eq(ref("caption"), "overlay"), [use("Box", { props: { Class: "absolute inset-x-0 bottom-0 rounded bg-background p-4" }, attrs: { "data-testid": "caption" } }, strong(ref("q.author"), "sm"), muted(tpl(ref("byLine"), ref("q.role"), ref("q.company")), "xs"))])),

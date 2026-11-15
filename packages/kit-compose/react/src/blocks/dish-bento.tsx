@@ -53,7 +53,7 @@ export function DishBento({
                   )}
                   data-slot="feature"
                 >
-                  <MediaFrame alt={d.name} ratio="4/3" />
+                  <MediaFrame alt={d.name} src={d.image} ratio="4/3" />
                   <Badge variant="secondary" size="default" className="w-fit">
                     {d.weight}
                   </Badge>
@@ -75,7 +75,7 @@ export function DishBento({
                 </Stack>
               ) : (
                 <Stack gap="2" className="rounded bg-card inset-ring inset-ring-border p-4" data-slot="item">
-                  <MediaFrame alt={d.name} />
+                  <MediaFrame alt={d.name} src={d.image} />
                   <Text size="sm" weight="semibold">
                     {d.name}
                   </Text>

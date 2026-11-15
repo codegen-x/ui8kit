@@ -20,7 +20,7 @@
         {%- set v_i = loop.index0 -%}
         {%- if og_t(og_eq(v_i, 0)) %}
           {%- set c_7 -%}
-            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_d, ['name']), 'ratio': '4/3'}}) }}
+            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_d, ['name']), 'src': og_get(v_d, ['image']), 'ratio': '4/3'}}) }}
             {%- set c_1 -%}
               {{ og_text(og_get(v_d, ['weight'])) }}
             {%- endset -%}
@@ -49,7 +49,7 @@
           {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Class': og_s(og_cnv(['rounded bg-card inset-ring inset-ring-border p-6 sm:col-span-2 lg:row-span-2', ('lg:col-start-3 lg:row-start-1' if og_t(og_eq(v_feature, 'end')) else '')])), 'Attrs': og_attrs(['data-slot', 'feature'])}, 'children': c_7}) }}
         {%- else %}
           {%- set c_11 -%}
-            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_d, ['name'])}}) }}
+            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_d, ['name']), 'src': og_get(v_d, ['image'])}}) }}
             {%- set c_8 -%}
               {{ og_text(og_get(v_d, ['name'])) }}
             {%- endset -%}

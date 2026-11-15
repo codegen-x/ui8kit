@@ -4,7 +4,7 @@ import { cn, cond, eachAt, each, eq, ne, or, add, op, ref, text, str, undef, use
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { fields, groupFields, rec, requireFields, spec, ts } from "../kit";
 import { behind, frame } from "../components/frames";
-import { density, empty, id, orEmpty, title, tone, tsOf } from "../props";
+import { density, empty, id, imageAlt, imageProps, orEmpty, title, tone, tsOf } from "../props";
 import { fluidCols } from "../ux";
 import { layoutOf } from "../presets";
 import { logoSlot, statFigure, testimonialLayout, quoteCard, quoteCardOf } from "../components/marketing";
@@ -60,6 +60,7 @@ const statsBand = spec(`${O}stats-band`, "StatsBand", "Key numbers in a row or g
     { name: "align", type: tsOf("start", "center"), default: "center" },
     { name: "tone", type: tone, default: "default" },
     { name: "density", type: density, default: "default" },
+    ...imageProps,
   ],
   view: (() => {
     const item = organism("StatFigure", { stat: ref("stat"), item: ref("item"), align: ref("align") });
@@ -77,13 +78,13 @@ const statsBand = spec(`${O}stats-band`, "StatsBand", "Key numbers in a row or g
       density: ref("density"),
       className: cn(cond(eq(ref("surface"), "image"), "bg-transparent", ""), cond(eq(ref("surface"), "panel"), "py-0", "")),
     }, [when(eq(len(ref("stats")), 0), [organism("EmptyState", { icon: "chart-column", title: ref("empty") })], [when(eq(ref("surface"), "panel"), [panel], [grid])])]);
-    return [behind(cond(eq(ref("surface"), "image"), "image", "none"), ref("title"), main)];
+    return [behind(cond(eq(ref("surface"), "image"), "image", "none"), imageAlt(), main, ref("image"))];
   })(),
 });
 
 const testimonials = spec(`${O}testimonial-grid`, "TestimonialGrid", "Customer quotes as cards, plain figures or social posts, in a grid, a masonry, a scroll strip, one featured quote or one narrow column. Axes: layout (grid, single, stack, masonry, strip), columns, item kind (card, plain, social), item avatar, item rating, item mark (a company glyph), density, tone. A carousel is the Carousel port contract around the single layout.", {
   records: {
-    Quote: fields(["id", "string"], ["author", "string"], ["role", "string"], ["company", "string"], ["quote", "string"], ["rating", "number"], ["handle", "string"], ["time", "string"], ["mark", "string"]),
+    Quote: fields(["id", "string"], ["author", "string"], ["role", "string"], ["company", "string"], ["quote", "string"], ["rating", "number"], ["handle", "string"], ["time", "string"], ["mark", "string"], ["image", "string", true]),
     QuoteLabels: requireFields(groupFields(
       ["rating", "string", "template of the rating's accessible name, e.g. `{0} out of 5`"],
       ["byLine", "string", "template of the line under the author, e.g. `{0}, {1}` (role, company)"],

@@ -191,6 +191,9 @@
                                       "props": {
                                         "alt": {
                                           "$": "d.name"
+                                        },
+                                        "src": {
+                                          "$": "d.image"
                                         }
                                       }
                                     }

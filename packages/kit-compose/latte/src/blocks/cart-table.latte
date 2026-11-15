@@ -48,7 +48,7 @@
           {capture $c_14}
             {capture $c_13}
               {if og_t(og_eq($v_media, 'image'))}
-                {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_line, ['name']), 'ratio' => '1/1', 'className' => og_cnv(['hidden size-14 shrink-0 sm:block'])]])|noescape}
+                {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_line, ['name']), 'src' => og_get($v_line, ['image']), 'ratio' => '1/1', 'className' => og_cnv(['hidden size-14 shrink-0 sm:block'])]])|noescape}
               {/if}
               {capture $c_12}
                 {capture $c_10}

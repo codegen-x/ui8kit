@@ -6,7 +6,7 @@
 {%- set v_labels = og_def(p['labels'], none) -%}
 {%- set v_ratio = og_def(p['ratio'], '4/3') -%}
 {%- set c_8 -%}
-  {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'ratio': v_ratio, 'className': og_cnv([('min-h-80' if og_t(og_eq(v_ratio, '4/3')) else 'min-h-64')])}}) }}
+  {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'src': og_get(v_p, ['image']), 'ratio': v_ratio, 'className': og_cnv([('min-h-80' if og_t(og_eq(v_ratio, '4/3')) else 'min-h-64')])}}) }}
   {%- set c_7 -%}
     {%- set c_3 -%}
       {%- set c_1 -%}

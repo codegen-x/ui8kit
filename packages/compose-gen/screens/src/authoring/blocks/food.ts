@@ -10,7 +10,7 @@ import { muted, strong, surface } from "../ux";
 const O = "organism.";
 const lead = { name: "lead", type: "string" as const, default: "" };
 const common = { id: ref("id"), title: ref("title"), lead: ref("lead"), tone: ref("tone"), density: "default" };
-export const Dish = fields(["id", "string"], ["name", "string"], ["summary", "string"], ["price", "number"], ["currency", "string"], ["weight", "string"], ["tag", "string"], ["items", "string[]"], ["minutes", "number"], ["badge", "string", true], ["href", "string", true]);
+export const Dish = fields(["id", "string"], ["name", "string"], ["summary", "string"], ["price", "number"], ["currency", "string"], ["weight", "string"], ["tag", "string"], ["items", "string[]"], ["minutes", "number"], ["badge", "string", true], ["href", "string", true], ["image", "string", true]);
 /** the words of every food block: one dictionary object (ui.food.labels) */
 export const FoodLabels = fields(["add", "string"], ["open", "string"], ["order", "string"], ["qtyOf", "string"], ["decreaseOf", "string"], ["increaseOf", "string"], ["addOf", "string"], ["orderOf", "string"],
   ["inCart", "string"], ["total", "string"], ["minutes", "string"], ["ingredients", "string"], ["portions", "string"], ["size", "string"], ["crust", "string"], ["perKg", "string"], ["weightOf", "string"],
@@ -20,7 +20,7 @@ const dishes = { name: "dishes", type: ts("Dish[]"), required: true };
 const labels = { name: "labels", type: ts("FoodLabels"), required: true };
 const dishTypes = [{ from: "DishShowcase", names: ["Dish", "FoodLabels"] }];
 const priceOf = (d = "d") => money(ref(`${d}.price`), ref(`${d}.currency`));
-const pic = (alt: Value, ratio: string, cls = "") => organism("MediaFrame", { alt, ratio, ...(cls ? { className: cls } : {}) });
+const pic = (alt: Value, ratio: string, cls = "") => organism("MediaFrame", { alt, src: ref("d.image"), ratio, ...(cls ? { className: cls } : {}) });
 const badge = (d = "d") => when(ref(`${d}.badge`), [use("Badge", { props: { Variant: "secondary", Size: "sm", Class: "w-fit" } }, text(ref(`${d}.badge`)))]);
 
 const showcase = spec(`${O}dish-showcase`, "DishShowcase", "A showcase of dishes: each card is one link to the dish page (picture, badge, name, weight, summary, price and an arrow). No cart here. Axes: cols (3, 4), ratio (4/3, 1/1), tone.", {

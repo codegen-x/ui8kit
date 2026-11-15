@@ -21,6 +21,8 @@ export type StoreHeroProps = {
   layout?: "overlay" | "backdrop";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -49,6 +51,8 @@ const {
   layout = "overlay",
   mediaSide = "end",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<StoreHeroProps>();
 </script>
@@ -65,7 +69,7 @@ const {
     :class="(('image' === 'image') ? 'relative isolate overflow-hidden' : '')"
     :landmarkLabel="landmarkLabel"
   >
-    <Backdrop kind="image" :alt="title" />
+    <Backdrop kind="image" :alt="(imageAlt ? imageAlt : title)" :image="image" />
     <ActionGroup
       :primary="actions.cta"
       :primaryHref="actions.href"
@@ -124,7 +128,7 @@ const {
       </template>
     </Grid>
     <template #aside>
-      <OfferMedia :alt="title" :card="card" />
+      <OfferMedia :alt="(imageAlt ? imageAlt : title)" :image="image" :card="card" />
     </template>
   </SectionFrame>
 </template>

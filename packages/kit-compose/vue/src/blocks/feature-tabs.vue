@@ -76,7 +76,7 @@ const emit = defineEmits<{ select: [id: string] }>();
               {{ f.text }}
             </Text>
           </Stack>
-          <MediaFrame :alt="f.title" ratio="4/3" />
+          <MediaFrame :alt="f.title" :src="f.image" ratio="4/3" />
         </Grid>
       </template>
     </Stack>

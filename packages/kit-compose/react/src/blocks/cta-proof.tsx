@@ -29,6 +29,8 @@ export type CtaProofProps = {
   proof?: "logos" | "features" | "stats" | "rows" | "zones";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -44,6 +46,8 @@ export function CtaProof({
   proof = "stats",
   mediaSide = "end",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: CtaProofProps) {
   return (
@@ -58,7 +62,7 @@ export function CtaProof({
       media={{ show: ((layout as string) === "split"), side: mediaSide }}
       landmarkLabel={landmarkLabel}
       aside={(
-        <MediaFrame alt={title} ratio="4/3" />
+        <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} ratio="4/3" />
       )}
     >
       <CtaProofItems content={content} proof={proof} center={((layout as string) === "center")} />

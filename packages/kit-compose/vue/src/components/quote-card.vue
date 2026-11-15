@@ -46,6 +46,7 @@ const { q, labels, item, layout = "grid" } = defineProps<QuoteCardProps>();
         <MediaFrame
           v-if="(item?.avatar !== 'none')"
           :alt="q.author"
+          :src="q.image"
           ratio="1/1"
           class="size-12 shrink-0 rounded-full"
         />
@@ -75,6 +76,7 @@ const { q, labels, item, layout = "grid" } = defineProps<QuoteCardProps>();
         <MediaFrame
           v-if="(item?.avatar !== 'none')"
           :alt="q.author"
+          :src="q.image"
           ratio="1/1"
           class="size-12 shrink-0 rounded-full"
         />

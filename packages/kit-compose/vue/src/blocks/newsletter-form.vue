@@ -16,6 +16,8 @@ export type NewsletterFormProps = {
   terms?: "show" | "hide";
   tone?: "default" | "muted";
   align?: "start" | "center";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -42,6 +44,8 @@ const {
   terms = "hide",
   tone = "default",
   align = "center",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<NewsletterFormProps>();
 </script>
@@ -85,7 +89,7 @@ const {
       </Text>
     </Form>
     <template #aside>
-      <MediaFrame :alt="title" ratio="4/3" />
+      <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="4/3" />
     </template>
   </SectionFrame>
 </template>

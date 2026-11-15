@@ -166,7 +166,22 @@
                           "organism": "MediaFrame",
                           "props": {
                             "alt": {
-                              "$": "title"
+                              "op": "firstOf",
+                              "args": [
+                                {
+                                  "$": "photos"
+                                },
+                                "title"
+                              ]
+                            },
+                            "src": {
+                              "op": "firstOf",
+                              "args": [
+                                {
+                                  "$": "photos"
+                                },
+                                "image"
+                              ]
                             }
                           }
                         },
@@ -310,6 +325,9 @@
                                     "alt": {
                                       "$": "p.title"
                                     },
+                                    "src": {
+                                      "$": "p.image"
+                                    },
                                     "ratio": "1/1",
                                     "className": {
                                       "op": "cond",
@@ -407,6 +425,9 @@
                                       "props": {
                                         "alt": {
                                           "$": "p.title"
+                                        },
+                                        "src": {
+                                          "$": "p.image"
                                         },
                                         "ratio": {
                                           "op": "cond",

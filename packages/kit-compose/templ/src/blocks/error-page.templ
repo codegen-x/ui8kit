@@ -20,6 +20,8 @@ type ErrorPageProps struct {
 	Layout any `json:"layout"`
 	Code any `json:"code"`
 	Tone any `json:"tone"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -34,8 +36,10 @@ templ ErrorPage(p ErrorPageProps) {
 	{{ vLayout := uiutils.Def(p.Layout, "centered") }}
 	{{ vCode := uiutils.Def(p.Code, "show") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Heading: map[string]any{"level": vLevel}, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split")}, Align: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "start", "center"), Tone: vTone, Density: "roomy", LandmarkLabel: vLandmarkLabel, Aside: errorPageFill1(p, vTitle)}) {
+	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vText, Heading: map[string]any{"level": vLevel}, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split")}, Align: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "start", "center"), Tone: vTone, Density: "roomy", LandmarkLabel: vLandmarkLabel, Aside: errorPageFill1(p, vTitle, vImage, vImageAlt)}) {
 		if uiutils.Eq(vCode, "show") {
 			@compose.Text(compose.TextProps{Size: "4xl", Weight: "bold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("text-8xl text-muted-foreground", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "", "text-center"))), Attrs: uiutils.Attrs("data-slot", "error-code")}}) {
 				{ uiutils.Text(vStatus) }
@@ -45,6 +49,6 @@ templ ErrorPage(p ErrorPageProps) {
 	}
 }
 
-templ errorPageFill1(p ErrorPageProps, vTitle any) {
-	@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3"})
+templ errorPageFill1(p ErrorPageProps, vTitle any, vImage any, vImageAlt any) {
+	@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "4/3"})
 }

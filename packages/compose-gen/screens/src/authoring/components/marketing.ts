@@ -41,7 +41,7 @@ export const quoteCardView = (): ViewNode => {
   const social = eq(ref("item.kind"), "social");
   const cardLike = cond(eq(ref("item.kind"), "plain"), "", "rounded p-6 inset-ring inset-ring-border bg-card");
   const sizeFor = cond(eq(ref("layout"), "masonry"), "mb-4 break-inside-avoid", cond(eq(ref("layout"), "strip"), "w-80 shrink-0 snap-start", "h-full"));
-  const avatar = when(ne(ref("item.avatar"), "none"), [organism("MediaFrame", { alt: ref("q.author"), ratio: "1/1", className: "size-12 shrink-0 rounded-full" })]);
+  const avatar = when(ne(ref("item.avatar"), "none"), [organism("MediaFrame", { alt: ref("q.author"), src: ref("q.image"), ratio: "1/1", className: "size-12 shrink-0 rounded-full" })]);
   const rating = when(ne(ref("item.rating"), "hide"), [organism("Rating", { value: ref("q.rating"), label: tpl(ref("labels.rating"), ref("q.rating")), size: 16 })]);
   return figureBlockOf(cn("m-0 flex flex-col gap-4", cardLike, sizeFor), "item",
     when(social,

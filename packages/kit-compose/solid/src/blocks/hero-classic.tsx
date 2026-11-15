@@ -30,6 +30,8 @@ export type HeroClassicProps = {
   scale?: "default" | "display";
   tone?: "default" | "muted" | "inverse";
   density?: "roomy" | "default" | "compact";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -46,6 +48,8 @@ export function HeroClassic({
   scale = "default",
   tone = "default",
   density = "roomy",
+  image,
+  imageAlt,
   landmarkLabel,
 }: HeroClassicProps) {
   const mediaKind = media?.kind ?? "none";
@@ -88,12 +92,16 @@ export function HeroClassic({
             </Grid>
           ) : null}
           {(((mediaKind as string) === "image")) ? (
-            <MediaFrame alt={title} ratio="4/3" />
+            <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} ratio="4/3" />
           ) : null}
         </>
       )}
     >
-      <Backdrop kind={(((mediaKind as string) === "backdrop") ? "image" : "none")} alt={title} />
+      <Backdrop
+        kind={(((mediaKind as string) === "backdrop") ? "image" : "none")}
+        alt={(imageAlt ? imageAlt : title)}
+        image={image}
+      />
       {actions?.cta ? (
         <>
           {(actions?.mode === "form") ? (

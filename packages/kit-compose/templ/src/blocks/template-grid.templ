@@ -66,7 +66,7 @@ templ TemplateGrid(p TemplateGridProps) {
 					for _, vT := range uiutils.L(vTemplates) {
 						@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border", uiutils.Get(presetDefaults, "templates", "card"))), Attrs: uiutils.Attrs("data-slot", "template-card")}}) {
 							@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("shrink-0 overflow-hidden", uiutils.Get(presetDefaults, "templates", "image")))}}) {
-								@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vT, "title"), Class: uiutils.Cnv(uiutils.Cnv("size-full", uiutils.Get(presetDefaults, "media", "rounded")))})
+								@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vT, "title"), Src: uiutils.Get(vT, "image"), Class: uiutils.Cnv(uiutils.Cnv("size-full", uiutils.Get(presetDefaults, "media", "rounded")))})
 							}
 							@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("w-full", uiutils.Get(presetDefaults, "templates", "footer"))), Attrs: uiutils.Attrs("data-slot", "template-footer")}}) {
 								@compose.IconBadge(compose.IconBadgeProps{Size: "sm", TextProps: text.TextProps{Class: "overflow-hidden", Attrs: uiutils.Attrs("data-slot", "template-avatar")}}) {

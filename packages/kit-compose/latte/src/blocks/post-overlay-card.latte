@@ -6,7 +6,7 @@
 {var $v_labels = ($p['labels'] ?? null)}
 {var $v_ratio = ($p['ratio'] ?? '4/3')}
 {capture $c_8}
-  {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'ratio' => $v_ratio, 'className' => og_cnv([(og_t(og_eq($v_ratio, '4/3')) ? 'min-h-80' : 'min-h-64')])]])|noescape}
+  {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'src' => og_get($v_p, ['image']), 'ratio' => $v_ratio, 'className' => og_cnv([(og_t(og_eq($v_ratio, '4/3')) ? 'min-h-80' : 'min-h-64')])]])|noescape}
   {capture $c_7}
     {capture $c_3}
       {capture $c_1}

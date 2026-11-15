@@ -129,6 +129,15 @@
                 "title"
               ]
             },
+            "src": {
+              "op": "firstOf",
+              "args": [
+                {
+                  "$": "photos"
+                },
+                "image"
+              ]
+            },
             "ratio": "4/3"
           }
         },

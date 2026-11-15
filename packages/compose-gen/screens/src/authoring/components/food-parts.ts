@@ -10,7 +10,7 @@ const P = "pattern.";
 const chip = "flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground";
 
 export const optionChips = spec(`${P}option-chips`, "OptionChips", "One choice as a radio group drawn as chips: a fieldset with role radiogroup named by its legend, one radio per option (the first checked), the name and an optional price or note. Static markup.", {
-  records: { DishOption: fields(["id", "string"], ["name", "string"], ["price", "number"], ["currency", "string"], ["note", "string"]) },
+  records: { DishOption: fields(["id", "string"], ["name", "string"], ["price", "number"], ["currency", "string"], ["note", "string"], ["image", "string", true]) },
   props: [
     { name: "name", type: "string", required: true, docs: "name of the radio group; the legend id is `<name>-legend`" },
     { name: "legend", type: "string", required: true, docs: "the visible name of the group" },

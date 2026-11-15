@@ -31,7 +31,7 @@
       {foreach og_l(og_get($v_content, ['people'])) as $v_p}
         {var $v_i = $iterator->counter0}
         {if og_t(og_lt($v_i, 4))}
-          {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['author']), 'ratio' => '1/1', 'className' => og_cnv(['size-10 shrink-0 rounded-full'])]])|noescape}
+          {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['author']), 'src' => og_get($v_p, ['image']), 'ratio' => '1/1', 'className' => og_cnv(['size-10 shrink-0 rounded-full'])]])|noescape}
         {/if}
       {/foreach}
     {/capture}
@@ -82,7 +82,7 @@
           {/capture}
           {=og_include('compose/Text.latte', ['tag' => 'blockquote', 'class' => 'text-lg font-medium', 'children' => (string) $c_14])|noescape}
           {capture $c_18}
-            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['author']), 'ratio' => '1/1', 'className' => og_cnv(['size-10 shrink-0 rounded-full'])]])|noescape}
+            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['author']), 'src' => og_get($v_p, ['image']), 'ratio' => '1/1', 'className' => og_cnv(['size-10 shrink-0 rounded-full'])]])|noescape}
             {capture $c_17}
               {capture $c_15}
                 {=og_text(og_get($v_p, ['author']))}

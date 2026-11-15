@@ -20,7 +20,7 @@
       {%- for v_d in og_l(v_dishes) %}
         {%- set c_5 -%}
           {%- if og_t(og_eq(v_thumbs, 'show')) %}
-            {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_d, ['name']), 'ratio': '1/1', 'className': og_cnv(['size-12 shrink-0'])}}, with_context = false) }}
+            {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_d, ['name']), 'src': og_get(v_d, ['image']), 'ratio': '1/1', 'className': og_cnv(['size-12 shrink-0'])}}, with_context = false) }}
           {%- endif %}
           {%- set c_3 -%}
             {%- set c_1 -%}

@@ -25,6 +25,8 @@ type AboutMeProps struct {
 	Layout any `json:"layout"`
 	MediaSide any `json:"mediaSide"`
 	Tone any `json:"tone"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -42,8 +44,10 @@ templ AboutMe(p AboutMeProps) {
 	{{ vLayout := uiutils.Def(p.Layout, "facts") }}
 	{{ vMediaSide := uiutils.Def(p.MediaSide, "start") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge, "level": vLevel}, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, Tone: vTone, LandmarkLabel: vLandmarkLabel, Aside: aboutMeFill1(p, vTitle)}) {
+	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge, "level": vLevel}, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, Tone: vTone, LandmarkLabel: vLandmarkLabel, Aside: aboutMeFill1(p, vTitle, vImage, vImageAlt)}) {
 		if uiutils.Eq(vLayout, "facts") {
 			if uiutils.Gt(uiutils.Len(vFacts), float64(0)) {
 				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "grid grid-cols-1 gap-4 sm:grid-cols-2", Attrs: uiutils.Attrs("data-slot", "facts")}}) {
@@ -80,6 +84,6 @@ templ AboutMe(p AboutMeProps) {
 	}
 }
 
-templ aboutMeFill1(p AboutMeProps, vTitle any) {
-	@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "3/4"})
+templ aboutMeFill1(p AboutMeProps, vTitle any, vImage any, vImageAlt any) {
+	@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "3/4"})
 }

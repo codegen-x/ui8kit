@@ -27,6 +27,8 @@ export type AboutMeProps = {
   layout?: "facts" | "skills";
   mediaSide?: "start" | "end";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -43,6 +45,8 @@ export function AboutMe({
   layout = "facts",
   mediaSide = "start",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: AboutMeProps) {
   return (
@@ -56,7 +60,7 @@ export function AboutMe({
       tone={tone}
       landmarkLabel={landmarkLabel}
       aside={(
-        <MediaFrame alt={title} ratio="3/4" />
+        <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} ratio="3/4" />
       )}
     >
       {((layout as string) === "facts") ? (

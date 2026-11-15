@@ -3,7 +3,7 @@ import { call, cn, coalesce, cond, each, eq, ne, or, ref, text, tpl, undef, use,
 import type { OrganismSpec } from "../../ir";
 import { fields, groupFields, rec, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
-import { density, id, mediaOf, title, tone, tsOf, cols } from "../props";
+import { density, id, imageProps, pictureOf, title, tone, tsOf, cols } from "../props";
 import { fid, kids } from "../forms";
 import { muted, fitCols } from "../ux";
 import { heroClassic, heroPrompt } from "./landing-hero";
@@ -26,6 +26,7 @@ const ctaBand = spec(`${O}cta-band`, "CtaBand", "A closing call to action: a hea
     { name: "tone", type: tone, default: "muted" },
     { name: "proof", type: tsOf("none", "quote"), default: "none" },
     { name: "density", type: density, default: "default" },
+    ...imageProps,
   ],
   derived: [{ name: "center", value: or(eq(ref("layout"), "band"), eq(ref("layout"), "banner")) }],
   view: (() => {
@@ -35,7 +36,7 @@ const ctaBand = spec(`${O}cta-band`, "CtaBand", "A closing call to action: a hea
     const main = frame(
       { id: ref("id"), title: ref("title"), lead: ref("text"), layout: cond(eq(ref("layout"), "split"), "split", "stack"), align: cond(center, "center", "start"),
         boxed: eq(ref("layout"), "card"), hasMedia: eq(ref("layout"), "split"), tone: ref("tone"), density: ref("density") },
-      [proof, act], mediaOf(ref("title")));
+      [proof, act], [pictureOf("4/3")]);
     const row = use("Block", { props: { Tag: "section", Class: "py-8" }, attrs: { "aria-labelledby": fid("title"), "data-testid": "section", "data-tone": ref("tone"), "data-density": ref("density") } },
       use("Container", { props: { Class: wide }, attrs: { "data-slot": "container" } },
         use("Card", { props: { Variant: "muted" } },

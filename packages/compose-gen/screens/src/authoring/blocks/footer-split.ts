@@ -4,7 +4,7 @@ import { cn, cond, eq, ne, or, ref, use, when, organism } from "../../build";
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { wide } from "../components/frames";
-import { tsOf, toneLite } from "../props";
+import { imageAlt, imageProps, pictureOf, toneLite, tsOf } from "../props";
 import { muted, strong } from "../ux";
 
 const footerSplit = spec("organism.footer-split", "FooterSplit", "A footer with more than links. Axes: layout (stats: the brand with three figures and a sitemap link over the link groups as cards; points, links, newsletter, contacts, channels: a split beside a picture with the brand and four points, the brand and small link columns, a newsletter card and link columns, the contacts and two actions, or the community channels and figures), mediaSide, tone.", {
@@ -25,6 +25,7 @@ const footerSplit = spec("organism.footer-split", "FooterSplit", "A footer with 
     { name: "layout", type: tsOf("stats", "points", "links", "newsletter", "contacts", "channels"), default: "stats" },
     { name: "mediaSide", type: tsOf("end", "start"), default: "end" },
     { name: "tone", type: toneLite, default: "default" },
+    ...imageProps,
   ],
   view: (() => {
     const is = (l: string) => eq(ref("layout"), l);
@@ -34,7 +35,7 @@ const footerSplit = spec("organism.footer-split", "FooterSplit", "A footer with 
     const pick = (key: string) => cond(is("newsletter"), ref(`labels.loop${key}`), cond(is("channels"), ref(`labels.join${key}`), ref(`labels.${key.toLowerCase()}`)));
     const head = use("Stack", { props: { Gap: "2", Align: "start" } }, strong(pick("Title"), "xl", "bold"), muted(pick("Text")));
     const copyright = use("Box", { props: { Class: "border-t border-border pt-6" } }, muted(ref("copyright")));
-    const picture = (start: boolean): ViewNode => when(start ? eq(ref("mediaSide"), "start") : ne(ref("mediaSide"), "start"), [organism("MediaFrame", { alt: ref("brand"), ratio: "4/3" })]);
+    const picture = (start: boolean): ViewNode => when(start ? eq(ref("mediaSide"), "start") : ne(ref("mediaSide"), "start"), [pictureOf("4/3", undefined, imageAlt(ref("brand")))]);
     const stats = use("Stack", { props: { Gap: "8", Align: "stretch" } },
       use("Group", { props: { Gap: "6", Align: "start", Justify: "between", Class: "flex-wrap" } },
         use("Stack", { props: { Gap: "6", Align: "start" } }, brand, organism("FooterFigures", ex)),

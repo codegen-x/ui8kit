@@ -43,7 +43,7 @@
         {%- for v_t in og_l(v_templates) %}
           {%- set c_17 -%}
             {%- set c_5 -%}
-              {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_t, ['title']), 'className': og_cnv([og_cnv(['size-full', og_preset('blocks/presets/defaults.json', ['media', 'rounded'])])])}}) }}
+              {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_t, ['title']), 'src': og_get(v_t, ['image']), 'className': og_cnv([og_cnv(['size-full', og_preset('blocks/presets/defaults.json', ['media', 'rounded'])])])}}) }}
             {%- endset -%}
             {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv(['shrink-0 overflow-hidden', og_preset('blocks/presets/defaults.json', ['templates', 'image'])]))}, 'children': c_5}) }}
             {%- set c_16 -%}

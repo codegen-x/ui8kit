@@ -25,7 +25,7 @@
         {%- for v_d in og_l(v_dishes) %}
           {%- set c_8 -%}
             {%- if og_t(og_eq(v_media, 'image')) %}
-              {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_d, ['name'])}}) }}
+              {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_d, ['name']), 'src': og_get(v_d, ['image'])}}) }}
             {%- endif %}
             {%- set c_6 -%}
               {%- set c_4 -%}

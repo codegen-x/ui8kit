@@ -23,6 +23,8 @@ export type FeatureStickyProps = {
   item?: "plain" | "card";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -36,6 +38,8 @@ export function FeatureSticky({
   item = "plain",
   tone = "default",
   density = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: FeatureStickyProps) {
   return (
@@ -51,7 +55,7 @@ export function FeatureSticky({
             )}
             data-slot="sticky-media"
           >
-            <MediaFrame alt={title} ratio="4/3" />
+            <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} ratio="4/3" />
           </Box>
           <Stack gap={(((density as string) === "compact") ? "4" : "8")} align="stretch" data-slot="items">
             {(features ?? []).map((f) => (

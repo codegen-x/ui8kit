@@ -22,6 +22,8 @@ type CtaProofProps struct {
 	Proof any `json:"proof"`
 	MediaSide any `json:"mediaSide"`
 	Tone any `json:"tone"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -38,8 +40,10 @@ templ CtaProof(p CtaProofProps) {
 	{{ vProof := uiutils.Def(p.Proof, "stats") }}
 	{{ vMediaSide := uiutils.Def(p.MediaSide, "end") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Align: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "center")), "center", "start"), Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "center")), "stack", "split"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split"), "side": vMediaSide}, LandmarkLabel: vLandmarkLabel, Aside: ctaProofFill1(p, vTitle)}) {
+	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Align: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "center")), "center", "start"), Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "center")), "stack", "split"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split"), "side": vMediaSide}, LandmarkLabel: vLandmarkLabel, Aside: ctaProofFill1(p, vTitle, vImage, vImageAlt)}) {
 		@CtaProofItems(CtaProofItemsProps{Content: vContent, Proof: vProof, Center: uiutils.Eq(vLayout, "center")})
 		@ActionGroup(ActionGroupProps{Primary: uiutils.Get(vActions, "cta"), PrimaryHref: uiutils.Get(vActions, "href"), Secondary: uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vActions, "mode"), "two")), uiutils.Get(vActions, "secondary"), nil), SecondaryHref: uiutils.Get(vActions, "secondaryHref"), Align: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "center")), "center", "start")})
 		if uiutils.T(vNote) {
@@ -50,6 +54,6 @@ templ CtaProof(p CtaProofProps) {
 	}
 }
 
-templ ctaProofFill1(p CtaProofProps, vTitle any) {
-	@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3"})
+templ ctaProofFill1(p CtaProofProps, vTitle any, vImage any, vImageAlt any) {
+	@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "4/3"})
 }

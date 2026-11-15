@@ -22,6 +22,8 @@ export type FeatureAccordionProps = {
   multiple?: boolean;
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -35,6 +37,8 @@ export function FeatureAccordion({
   multiple = false,
   tone = "default",
   density = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: FeatureAccordionProps) {
   return (
@@ -47,7 +51,7 @@ export function FeatureAccordion({
       media={{ show: ((media as string) === "image") }}
       landmarkLabel={landmarkLabel}
       aside={(
-        <MediaFrame alt={title} ratio="4/3" />
+        <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} ratio="4/3" />
       )}
     >
       {((features?.length ?? 0) === 0) ? (

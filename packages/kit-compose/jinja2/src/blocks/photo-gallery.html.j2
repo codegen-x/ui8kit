@@ -18,7 +18,7 @@
     {{ og_include('blocks/empty-state.html.j2', {'p': {'icon': 'image', 'title': v_empty}}) }}
   {%- elif og_t(og_eq(v_layout, 'featured')) %}
     {%- set c_9 -%}
-      {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': v_title}}) }}
+      {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_first_of(v_photos, 'title'), 'src': og_first_of(v_photos, 'image')}}) }}
       {%- set c_7 -%}
         {%- set c_3 -%}
           {%- set c_1 -%}
@@ -47,7 +47,7 @@
       {%- set c_8 -%}
         {%- for v_p in og_l(v_photos) %}
           {%- set v_i = loop.index0 -%}
-          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'ratio': '1/1', 'className': og_cnv([('ring-2 ring-foreground' if og_t(og_eq(v_i, 0)) else '')])}}) }}
+          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'src': og_get(v_p, ['image']), 'ratio': '1/1', 'className': og_cnv([('ring-2 ring-foreground' if og_t(og_eq(v_i, 0)) else '')])}}) }}
         {%- endfor %}
       {%- endset -%}
       {{ og_include('compose/box.html.j2', {'p': {'Class': 'grid grid-cols-3 gap-2 sm:grid-cols-9', 'Attrs': og_attrs(['data-slot', 'thumbs'])}, 'children': c_8}) }}
@@ -58,7 +58,7 @@
       {%- for v_p in og_l(v_photos) %}
         {%- set v_i = loop.index0 -%}
         {%- set c_14 -%}
-          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'ratio': (('3/4' if og_t(og_eq(og_get(v_p, ['size']), 'tall')) else ('16/9' if og_t(og_eq(og_get(v_p, ['size']), 'wide')) else ('4/3' if og_t(og_eq(og_get(v_p, ['size']), 'large')) else '1/1'))) if og_t(og_eq(v_layout, 'masonry')) else ('4/3' if og_t(og_eq(v_layout, 'grid')) else '1/1')), 'className': og_cnv([('h-full' if og_t(og_eq(v_layout, 'mosaic')) else '')])}}) }}
+          {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'src': og_get(v_p, ['image']), 'ratio': (('3/4' if og_t(og_eq(og_get(v_p, ['size']), 'tall')) else ('16/9' if og_t(og_eq(og_get(v_p, ['size']), 'wide')) else ('4/3' if og_t(og_eq(og_get(v_p, ['size']), 'large')) else '1/1'))) if og_t(og_eq(v_layout, 'masonry')) else ('4/3' if og_t(og_eq(v_layout, 'grid')) else '1/1')), 'className': og_cnv([('h-full' if og_t(og_eq(v_layout, 'mosaic')) else '')])}}) }}
           {%- if og_t(og_and([og_eq(v_captions, 'show'), og_eq(v_layout, 'cards')])) %}
             {%- set c_12 -%}
               {%- set c_10 -%}

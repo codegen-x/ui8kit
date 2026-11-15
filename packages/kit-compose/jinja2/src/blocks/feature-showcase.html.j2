@@ -20,7 +20,7 @@
       {%- for v_f in og_l(v_features) %}
         {%- set c_6 -%}
           {%- if og_t(og_eq(v_item, 'picture')) %}
-            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_f, ['title'])}}) }}
+            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_f, ['title']), 'src': og_get(v_f, ['image'])}}) }}
           {%- else %}
             {%- set c_1 -%}
               {{ og_include('icons/lucide-icon.html.j2', {'p': {'Name': og_s(og_get(v_f, ['icon'])), 'Size': 32}}) }}

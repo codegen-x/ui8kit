@@ -4,7 +4,7 @@ import { call, cond, each, eachAt, eq, len, ref, text, use, when, organism } fro
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { empty, id, orEmpty, tsOf, toneLite } from "../props";
+import { empty, id, imageProps, orEmpty, pictureOf, toneLite, tsOf } from "../props";
 
 const storyTabs = spec("organism.story-tabs", "StoryTabs", "A story in steps (years or slides). Axes: layout (years: a row of year tabs over the panel of the active year with its badge, step, title, text and tag; carousel: the heading beside a picture with previous and next arrows and one dot per step), tone. Choosing a step emits `select`.", {
   typeImports: [{ from: "MilestoneTimeline", names: ["Milestone"] }],
@@ -21,6 +21,7 @@ const storyTabs = spec("organism.story-tabs", "StoryTabs", "A story in steps (ye
     { name: "labels", type: { record: "StoryLabels" }, required: true, docs: "template step `Step {0} of {1}`; the accessible names of the arrows" },
     { name: "layout", type: tsOf("years", "carousel"), default: "years" },
     { name: "tone", type: toneLite, default: "default" },
+    ...imageProps,
   ],
   view: (() => {
     const head = { id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), tone: ref("tone") };
@@ -36,7 +37,7 @@ const storyTabs = spec("organism.story-tabs", "StoryTabs", "A story in steps (ye
       eachAt(ref("steps"), "s", "i", ref("s.id"), when(on, [panel])),
     ]);
     const carousel = frame({ ...head, layout: "split", hasMedia: true }, [], [use("Stack", { props: { Gap: "4", Align: "stretch" } },
-      organism("MediaFrame", { alt: ref("title"), ratio: "4/3" }),
+      pictureOf("4/3"),
       use("Group", { props: { Gap: "4", Align: "center", Justify: "between" } }, arrow("chevron-left", "labels.previous"), dots, arrow("chevron-right", "labels.next")))]);
     return [orEmpty("steps", "milestone", [when(eq(ref("layout"), "years"), [years], [carousel])], (n) => [frame(head, n)])];
   })(),

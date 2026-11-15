@@ -16,6 +16,8 @@ export type MilestoneTimelineProps = {
   layout?: "split" | "stacked" | "row";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -41,6 +43,8 @@ const {
   layout = "split",
   tone = "default",
   density = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 } = defineProps<MilestoneTimelineProps>();
 </script>
@@ -97,7 +101,7 @@ const {
       </ListItem>
     </List>
     <template #aside>
-      <MediaFrame :alt="title" ratio="3/4" />
+      <MediaFrame :alt="(imageAlt ? imageAlt : title)" :src="image" ratio="3/4" />
     </template>
   </SectionFrame>
 </template>

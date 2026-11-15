@@ -30,6 +30,8 @@ export type FaqSplitProps = {
   cards?: "grid3" | "grid4" | "icons";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -46,6 +48,8 @@ export function FaqSplit({
   cards = "grid3",
   mediaSide = "end",
   tone = "default",
+  image,
+  imageAlt,
   landmarkLabel,
 }: FaqSplitProps) {
   return (
@@ -106,7 +110,7 @@ export function FaqSplit({
               media={{ show: true, side: mediaSide, align: "start" }}
               landmarkLabel={landmarkLabel}
               aside={(
-                <MediaFrame alt={title} ratio="4/3" />
+                <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} ratio="4/3" />
               )}
             >
               <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
@@ -128,7 +132,7 @@ export function FaqSplit({
               media={{ show: true, side: mediaSide }}
               landmarkLabel={landmarkLabel}
               aside={(
-                <MediaFrame alt={title} ratio="4/3" />
+                <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} ratio="4/3" />
               )}
             >
               <FaqFinder items={items} labels={labels} topics={topics} />

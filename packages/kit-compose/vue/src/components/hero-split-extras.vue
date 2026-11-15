@@ -50,7 +50,7 @@ const { content, extra = "none" } = defineProps<HeroSplitExtrasProps>();
   >
     <Group gap="2" align="center">
       <template v-for="(p, i) in content.people" :key="p.id">
-        <MediaFrame v-if="(i < 4)" :alt="p.author" ratio="1/1" class="size-10 shrink-0 rounded-full" />
+        <MediaFrame v-if="(i < 4)" :alt="p.author" :src="p.image" ratio="1/1" class="size-10 shrink-0 rounded-full" />
       </template>
     </Group>
     <Text size="sm" class="text-muted-foreground">
@@ -96,7 +96,7 @@ const { content, extra = "none" } = defineProps<HeroSplitExtrasProps>();
           {{ p.quote }}
         </Text>
         <Group gap="4" align="center">
-          <MediaFrame :alt="p.author" ratio="1/1" class="size-10 shrink-0 rounded-full" />
+          <MediaFrame :alt="p.author" :src="p.image" ratio="1/1" class="size-10 shrink-0 rounded-full" />
           <Stack gap="0">
             <Text size="sm" weight="semibold">
               {{ p.author }}

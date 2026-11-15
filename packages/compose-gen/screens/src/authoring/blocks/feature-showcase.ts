@@ -23,7 +23,7 @@ const featureShowcase = spec("organism.feature-showcase", "FeatureShowcase", "Fe
   view: [frame({ id: ref("id"), title: ref("title"), lead: ref("lead"), tone: ref("tone"), align: "center" }, [orEmpty("features", "layout-grid", [
     use("Box", { props: { Class: cond(eq(ref("cols"), "4"), "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4", "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-3") } },
       each(ref("features"), "f", ref("f.id"), use("Card", { props: { Variant: "default", Class: "h-full gap-4 overflow-hidden" }, attrs: { "data-testid": "showcase-card" } },
-        when(eq(ref("item"), "picture"), [organism("MediaFrame", { alt: ref("f.title"), ratio: "16/9" })],
+        when(eq(ref("item"), "picture"), [organism("MediaFrame", { alt: ref("f.title"), src: ref("f.image"), ratio: "16/9" })],
           [use("Box", { props: { Class: "flex aspect-video items-center justify-center rounded bg-muted text-foreground" }, attrs: { "data-testid": "showcase-panel" } }, use("LucideIcon", { props: { Name: ref("f.icon"), Size: 32 } }))]),
         use("CardContent", { props: { Class: "flex flex-1 flex-col gap-2" } },
           use("Title", { props: { As: 3, Size: "base", Weight: "semibold" } }, text(ref("f.title"))),

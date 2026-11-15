@@ -51,6 +51,11 @@
         "name": "href",
         "type": "string",
         "optional": true
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": true
       }
     ],
     "FoodLabels": [
@@ -374,6 +379,9 @@
                               "props": {
                                 "alt": {
                                   "$": "d.name"
+                                },
+                                "src": {
+                                  "$": "d.image"
                                 },
                                 "ratio": {
                                   "$": "ratio"

@@ -30,6 +30,8 @@ export type PostShowcaseProps = {
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
   empty?: string;
+  image?: string;
+  imageAlt?: string;
   landmarkLabel?: string;
 };
 
@@ -46,6 +48,8 @@ export function PostShowcase({
   mediaSide = "start",
   tone = "default",
   empty = "",
+  image,
+  imageAlt,
   landmarkLabel,
 }: PostShowcaseProps) {
   return (
@@ -92,7 +96,7 @@ export function PostShowcase({
           media={{ show: true, side: mediaSide }}
           landmarkLabel={landmarkLabel}
           aside={(
-            <MediaFrame alt={title} ratio="4/3" />
+            <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} ratio="4/3" />
           )}
         >
           {(posts ?? []).map((p, i) => (

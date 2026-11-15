@@ -48,7 +48,7 @@
           {%- set c_14 -%}
             {%- set c_13 -%}
               {%- if og_t(og_eq(v_media, 'image')) %}
-                {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_line, ['name']), 'ratio': '1/1', 'className': og_cnv(['hidden size-14 shrink-0 sm:block'])}}) }}
+                {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_line, ['name']), 'src': og_get(v_line, ['image']), 'ratio': '1/1', 'className': og_cnv(['hidden size-14 shrink-0 sm:block'])}}) }}
               {%- endif %}
               {%- set c_12 -%}
                 {%- set c_10 -%}

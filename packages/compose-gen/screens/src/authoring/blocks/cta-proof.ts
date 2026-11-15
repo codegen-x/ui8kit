@@ -3,7 +3,7 @@ import { cond, eq, ref, text, undef, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, tsOf, toneLite } from "../props";
+import { id, imageProps, pictureOf, toneLite, tsOf } from "../props";
 
 const ctaProof = spec("organism.cta-proof", "CtaProof", "A call to action with proof: a badge, the heading, a lead, the proof, one or two actions and an optional note. Axes: layout (center: everything centred, the proof above the actions; split: beside a picture), proof (logos, features, stats, rows, zones), mediaSide, tone.", {
   typeImports: [{ from: "LogoCloud", names: ["Logo"] }, { from: "FeatureGrid", names: ["Feature"] }, { from: "StatsBand", names: ["Stat"] }, { from: "ZoneTable", names: ["Zone"] }, { from: "ErrorPage", names: ["LinkActions"] }],
@@ -20,6 +20,7 @@ const ctaProof = spec("organism.cta-proof", "CtaProof", "A call to action with p
     { name: "proof", type: tsOf("logos", "features", "stats", "rows", "zones"), default: "stats" },
     { name: "mediaSide", type: tsOf("end", "start"), default: "end" },
     { name: "tone", type: toneLite, default: "default" },
+    ...imageProps,
   ],
   view: (() => {
     const center = eq(ref("layout"), "center");
@@ -29,7 +30,7 @@ const ctaProof = spec("organism.cta-proof", "CtaProof", "A call to action with p
       when(ref("note"), [use("Text", { props: { Size: "xs", Class: "text-muted-foreground" }, attrs: { "data-testid": "cta-note" } }, text(ref("note")))]),
     ];
     return [frame({ id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), tone: ref("tone"), density: "default", align: cond(center, "center", "start"),
-      layout: cond(center, "stack", "split"), hasMedia: eq(ref("layout"), "split"), mediaSide: ref("mediaSide") }, body, [organism("MediaFrame", { alt: ref("title"), ratio: "4/3" })])];
+      layout: cond(center, "stack", "split"), hasMedia: eq(ref("layout"), "split"), mediaSide: ref("mediaSide") }, body, [pictureOf("4/3")])];
   })(),
 });
 

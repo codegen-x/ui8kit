@@ -46,7 +46,7 @@ templ PizzaPicker(p PizzaPickerProps) {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "rows")), "flex flex-col gap-4", "grid grid-cols-1 gap-4 md:grid-cols-3")), Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vD := range uiutils.L(vDishes) {
 					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "rows")), "rounded bg-card inset-ring inset-ring-border grid grid-cols-1 gap-4 p-4 md:grid-cols-3", "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-4")), Attrs: uiutils.Attrs("data-slot", "item")}}) {
-						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Ratio: "1/1"})
+						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vD, "name"), Src: uiutils.Get(vD, "image"), Ratio: "1/1"})
 						@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "rows")), "md:col-span-2", ""))}}) {
 							@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
 								@compose.Text(compose.TextProps{Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {

@@ -35,7 +35,7 @@ export function DrawerLines({
         {(lines ?? []).map((line) => (
           <Group key={line.id} gap="4" align="start" data-slot="item">
             {((media as string) === "image") ? (
-              <MediaFrame alt={line.name} ratio="1/1" className="size-16 shrink-0" />
+              <MediaFrame alt={line.name} src={line.image} ratio="1/1" className="size-16 shrink-0" />
             ) : null}
             <Stack gap="2" align="stretch" className="flex-1">
               <Group gap="2" justify="between" align="start">

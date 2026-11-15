@@ -14,6 +14,7 @@ const Template = fields(
   ["views", "string"],
   ["likes", "string"],
   ["topic", "string"],
+  ["image", "string", true],
 );
 const Filter = fields(["id", "string"], ["title", "string"], ["value", "string"], ["icon", "string", true]);
 
@@ -44,7 +45,7 @@ const templateGrid = spec(`${O}template-grid`, "TemplateGrid", "Template gallery
       attrs: { "data-testid": "template-card" },
     },
       use("Box", { props: { Class: cn("shrink-0 overflow-hidden", layoutOf("templates.image")) } },
-        organism("MediaFrame", { alt: ref("t.title"), ratio: "16/9", className: cn("size-full", layoutOf("media.rounded")) })),
+        organism("MediaFrame", { alt: ref("t.title"), src: ref("t.image"), ratio: "16/9", className: cn("size-full", layoutOf("media.rounded")) })),
       // Footer 243×46: avatar circle 32 + title 15/24 + meta row h16
       use("Group", { props: { Gap: "4", Align: "center", Class: cn("w-full", layoutOf("templates.footer")) }, attrs: { "data-testid": "template-footer" } },
         use("IconBadge", { props: { Size: "sm", Class: "overflow-hidden" }, attrs: { "data-testid": "template-avatar" } },

@@ -15,6 +15,7 @@ import (
 type HeroSplitMediaProps struct {
 	Content any `json:"content"`
 	Alt any `json:"alt"`
+	Image any `json:"image"`
 	Media any `json:"media"`
 }
 
@@ -22,19 +23,20 @@ type HeroSplitMediaProps struct {
 templ HeroSplitMedia(p HeroSplitMediaProps) {
 	{{ vContent := p.Content }}
 	{{ vAlt := p.Alt }}
+	{{ vImage := p.Image }}
 	{{ vMedia := uiutils.Def(p.Media, "picture") }}
 	if uiutils.Eq(vMedia, "picture") {
-		@MediaFrame(MediaFrameProps{Alt: vAlt, Ratio: "4/3"})
+		@MediaFrame(MediaFrameProps{Alt: vAlt, Src: vImage, Ratio: "4/3"})
 	}
 	if uiutils.Eq(vMedia, "card") {
-		@OfferMedia(OfferMediaProps{Alt: vAlt, Card: uiutils.Get(vContent, "card")})
+		@OfferMedia(OfferMediaProps{Alt: vAlt, Image: vImage, Card: uiutils.Get(vContent, "card")})
 	}
 	if uiutils.T(uiutils.And(uiutils.Eq(vMedia, "grid"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "features")), float64(0)))) {
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-2 gap-4", Attrs: uiutils.Attrs("data-slot", "hero-grid")}}) {
 			for vI, vF := range uiutils.L(uiutils.Get(vContent, "features")) {
 				if uiutils.Lt(float64(vI), float64(4)) {
 					@FigureBlock(FigureBlockProps{Class: uiutils.Cnv("flex flex-col gap-2"), Testid: "hero-tile"}) {
-						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vF, "title"), Ratio: "1/1"})
+						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vF, "title"), Src: uiutils.Get(vF, "image"), Ratio: "1/1"})
 						@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
 							{ uiutils.Text(uiutils.Get(vF, "title")) }
 						}
@@ -45,7 +47,7 @@ templ HeroSplitMedia(p HeroSplitMediaProps) {
 	}
 	if uiutils.T(uiutils.And(uiutils.Eq(vMedia, "plans"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "plans")), float64(0)))) {
 		@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "relative", Attrs: uiutils.Attrs("data-slot", "hero-media")}}) {
-			@MediaFrame(MediaFrameProps{Alt: vAlt, Ratio: "4/3"})
+			@MediaFrame(MediaFrameProps{Alt: vAlt, Src: vImage, Ratio: "4/3"})
 			for vI, vP := range uiutils.L(uiutils.Get(vContent, "plans")) {
 				if uiutils.Lt(float64(vI), float64(2)) {
 					@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("absolute w-48 rounded bg-card p-4 shadow-lg", uiutils.Cond(uiutils.T(uiutils.Eq(float64(vI), float64(0))), "top-8 left-4", "right-4 bottom-8"))), Attrs: uiutils.Attrs("data-slot", "hero-plan")}}) {

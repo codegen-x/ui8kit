@@ -57,7 +57,7 @@ const {
       "
     >
       <Card v-for="f in features" :key="f.id" variant="default" class="h-full gap-4 overflow-hidden">
-        <MediaFrame v-if="((item as string) === 'picture')" :alt="f.title" />
+        <MediaFrame v-if="((item as string) === 'picture')" :alt="f.title" :src="f.image" />
         <Box v-else
           class="flex aspect-video items-center justify-center rounded bg-muted text-foreground"
           data-slot="showcase-panel"

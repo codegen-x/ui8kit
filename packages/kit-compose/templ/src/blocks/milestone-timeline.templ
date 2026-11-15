@@ -20,6 +20,8 @@ type MilestoneTimelineProps struct {
 	Layout any `json:"layout"`
 	Tone any `json:"tone"`
 	Density any `json:"density"`
+	Image any `json:"image"`
+	ImageAlt any `json:"imageAlt"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -33,8 +35,10 @@ templ MilestoneTimeline(p MilestoneTimelineProps) {
 	{{ vLayout := uiutils.Def(p.Layout, "split") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
+	{{ vImage := p.Image }}
+	{{ vImageAlt := p.ImageAlt }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, Density: vDensity, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split"), "side": "start", "align": "start"}, Measure: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stacked")), "2xl", "default"), LandmarkLabel: vLandmarkLabel, Aside: milestoneTimelineFill1(p, vTitle)}) {
+	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, Density: vDensity, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vLayout, "split"), "side": "start", "align": "start"}, Measure: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stacked")), "2xl", "default"), LandmarkLabel: vLandmarkLabel, Aside: milestoneTimelineFill1(p, vTitle, vImage, vImageAlt)}) {
 		if uiutils.Eq(uiutils.Len(vMilestones), float64(0)) {
 			@EmptyState(EmptyStateProps{Icon: "milestone", Title: vEmpty})
 		} else {
@@ -63,6 +67,6 @@ templ MilestoneTimeline(p MilestoneTimelineProps) {
 	}
 }
 
-templ milestoneTimelineFill1(p MilestoneTimelineProps, vTitle any) {
-	@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "3/4"})
+templ milestoneTimelineFill1(p MilestoneTimelineProps, vTitle any, vImage any, vImageAlt any) {
+	@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, Ratio: "3/4"})
 }

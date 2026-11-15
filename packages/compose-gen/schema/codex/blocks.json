@@ -107,6 +107,8 @@
         "layout",
         "mediaSide",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -176,6 +178,8 @@
         "multiple",
         "tone",
         "density",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -1558,6 +1562,8 @@
         "tone",
         "proof",
         "density",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -1679,6 +1685,8 @@
         "proof",
         "mediaSide",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -2366,6 +2374,8 @@
         "actions",
         "visual",
         "size",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -2400,6 +2410,8 @@
         "layout",
         "code",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -2561,6 +2573,8 @@
         "cards",
         "mediaSide",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -2784,6 +2798,8 @@
         "layout",
         "mediaSide",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -2982,6 +2998,8 @@
         "layout",
         "mediaSide",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -3301,6 +3319,8 @@
         "scale",
         "tone",
         "density",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -3470,6 +3490,8 @@
         "media",
         "mediaSide",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -3985,6 +4007,8 @@
         "layout",
         "mediaSide",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -4338,6 +4362,8 @@
         "terms",
         "tone",
         "align",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -5076,6 +5102,8 @@
         "cols",
         "mediaSide",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -5823,6 +5851,8 @@
         "layout",
         "mediaSide",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -6597,6 +6627,8 @@
         "align",
         "tone",
         "density",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -6745,6 +6777,8 @@
         "item",
         "tone",
         "density",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -6790,6 +6824,8 @@
         "layout",
         "mediaSide",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -6860,6 +6896,8 @@
         "active",
         "layout",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -7063,6 +7101,8 @@
         "cols",
         "tone",
         "density",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -7261,6 +7301,8 @@
         "layout",
         "tone",
         "density",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [
@@ -7540,6 +7582,8 @@
         "size",
         "outline",
         "tone",
+        "image",
+        "imageAlt",
         "landmarkLabel"
       ],
       "labels": [

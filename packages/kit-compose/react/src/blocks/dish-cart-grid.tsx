@@ -52,7 +52,7 @@ export function DishCartGrid({
             {(dishes ?? []).map((d) => (
               <Stack key={d.id} gap="4" className="rounded bg-card inset-ring inset-ring-border overflow-hidden pb-4" data-slot="item">
                 {((media as string) === "image") ? (
-                  <MediaFrame alt={d.name} />
+                  <MediaFrame alt={d.name} src={d.image} />
                 ) : null}
                 <Stack gap="2" className={(((media as string) === "image") ? "px-4" : "px-4 pt-4")}>
                   <Group gap="2" align="baseline" justify="between">

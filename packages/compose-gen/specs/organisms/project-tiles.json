@@ -169,6 +169,9 @@
                             "alt": {
                               "$": "p.title"
                             },
+                            "src": {
+                              "$": "p.image"
+                            },
                             "ratio": {
                               "op": "cond",
                               "args": [

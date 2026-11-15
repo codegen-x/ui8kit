@@ -20,7 +20,7 @@
         {var $v_i = $iterator->counter0}
         {if og_t(og_eq($v_i, 0))}
           {capture $c_7}
-            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name']), 'ratio' => '4/3']])|noescape}
+            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name']), 'src' => og_get($v_d, ['image']), 'ratio' => '4/3']])|noescape}
             {capture $c_1}
               {=og_text(og_get($v_d, ['weight']))}
             {/capture}
@@ -49,7 +49,7 @@
           {=og_include('compose/Stack.latte', ['gap' => '4', 'class' => og_s(og_cnv(['rounded bg-card inset-ring inset-ring-border p-6 sm:col-span-2 lg:row-span-2', (og_t(og_eq($v_feature, 'end')) ? 'lg:col-start-3 lg:row-start-1' : '')])), 'attrs' => og_attrs(['data-slot', 'feature']), 'children' => (string) $c_7])|noescape}
         {else}
           {capture $c_11}
-            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name'])]])|noescape}
+            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_d, ['name']), 'src' => og_get($v_d, ['image'])]])|noescape}
             {capture $c_8}
               {=og_text(og_get($v_d, ['name']))}
             {/capture}

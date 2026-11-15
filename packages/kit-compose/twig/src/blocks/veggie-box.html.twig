@@ -22,7 +22,7 @@
       {%- set c_4 -%}
         {%- for v_d in og_l(v_dishes) %}
           {%- set c_3 -%}
-            {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_d, ['name']), 'ratio': '1/1'}}, with_context = false) }}
+            {{ include('blocks/media-frame.html.twig', {'p': {'alt': og_get(v_d, ['name']), 'src': og_get(v_d, ['image']), 'ratio': '1/1'}}, with_context = false) }}
             {%- set c_1 -%}
               {{ og_text(og_get(v_d, ['name'])) }}
             {%- endset -%}

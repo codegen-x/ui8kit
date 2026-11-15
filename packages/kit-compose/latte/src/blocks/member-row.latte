@@ -6,7 +6,7 @@
 {var $v_depts = ($p['depts'] ?? null)}
 {var $v_layout = ($p['layout'] ?? 'list')}
 {capture $c_11}
-  {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_member, ['name']), 'ratio' => '1/1', 'className' => og_cnv([og_cnv([(og_t(og_eq($v_layout, 'detailed')) ? 'size-16' : 'size-12'), 'shrink-0'])])]])|noescape}
+  {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_member, ['name']), 'src' => og_get($v_member, ['image']), 'ratio' => '1/1', 'className' => og_cnv([og_cnv([(og_t(og_eq($v_layout, 'detailed')) ? 'size-16' : 'size-12'), 'shrink-0'])])]])|noescape}
   {capture $c_10}
     {capture $c_3}
       {capture $c_1}

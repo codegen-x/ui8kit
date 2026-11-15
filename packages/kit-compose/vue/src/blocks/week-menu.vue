@@ -64,7 +64,7 @@ const {
             class="rounded bg-card inset-ring inset-ring-border p-4"
             data-slot="item"
           >
-            <MediaFrame v-if="((media as string) === 'image')" :alt="d.name" ratio="4/3" />
+            <MediaFrame v-if="((media as string) === 'image')" :alt="d.name" :src="d.image" ratio="4/3" />
             <Text size="sm" weight="semibold">
               {{ d.name }}
             </Text>

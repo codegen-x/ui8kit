@@ -63,7 +63,13 @@ const {
         class="flex items-center gap-4 border-b border-border py-2"
         data-slot="item"
       >
-        <MediaFrame v-if="((thumbs as string) === 'show')" :alt="d.name" ratio="1/1" class="size-12 shrink-0" />
+        <MediaFrame
+          v-if="((thumbs as string) === 'show')"
+          :alt="d.name"
+          :src="d.image"
+          ratio="1/1"
+          class="size-12 shrink-0"
+        />
         <Stack gap="0" class="min-w-0 flex-1">
           <Text size="sm" weight="semibold">
             {{ d.name }}

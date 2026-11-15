@@ -33,6 +33,11 @@
       {
         "name": "skills",
         "type": "string[]"
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": true
       }
     ]
   },
@@ -100,6 +105,16 @@
         "ts": "\"default\" | \"compact\""
       },
       "default": "default"
+    },
+    {
+      "name": "image",
+      "type": "string",
+      "docs": "address of the picture (an https URL or a path); none: the placeholder"
+    },
+    {
+      "name": "imageAlt",
+      "type": "string",
+      "docs": "alt text of the picture; none: the title"
     },
     {
       "name": "landmarkLabel",
@@ -298,6 +313,9 @@
                                     "alt": {
                                       "$": "m.name"
                                     },
+                                    "src": {
+                                      "$": "m.image"
+                                    },
                                     "ratio": "1/1",
                                     "className": {
                                       "op": "cn",
@@ -366,6 +384,9 @@
                                       "props": {
                                         "alt": {
                                           "$": "m.name"
+                                        },
+                                        "src": {
+                                          "$": "m.image"
                                         },
                                         "ratio": "1/1"
                                       }
@@ -465,7 +486,21 @@
               "organism": "MediaFrame",
               "props": {
                 "alt": {
-                  "$": "title"
+                  "op": "cond",
+                  "args": [
+                    {
+                      "$": "imageAlt"
+                    },
+                    {
+                      "$": "imageAlt"
+                    },
+                    {
+                      "$": "title"
+                    }
+                  ]
+                },
+                "src": {
+                  "$": "image"
                 },
                 "ratio": "3/4"
               }

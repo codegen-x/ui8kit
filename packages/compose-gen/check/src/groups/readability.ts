@@ -10,11 +10,15 @@ export const READABILITY = { fileLines: 150, screenLines: 600, fileBytes: 8000, 
 export interface Measure { lines?: number; long?: number; bytes?: number; props?: number }
 export type Allowance = Measure & { why: string };
 export const READABILITY_ALLOW: Record<string, Allowance> = {
+  "footer-split": { lines: 152, why: "the optional picture pair (image, imageAlt) of the split layouts on top of 150 lines; split pending: the layouts into parts" },
+  "hero-classic": { lines: 151, why: "the optional picture pair (image, imageAlt) on top of 150 lines; split pending: the media kinds into a part" },
   "post-grid": { props: 13, why: "the pager prop wp-fasty asked for (audit codegen-gap item 4) on top of 12; split pending: the list options (layout, cols, media, meta) into one group" },
 };
 
 /** HeroSection.svelte, hero-section.tsx -> hero-section: one key for every runtime and naming style */
 export const kebab = (stem: string): string => stem.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/([A-Z])([A-Z][a-z])/g, "$1-$2").toLowerCase();
+/** props that are not counted: the landmark name, and the optional picture pair of a section (`image`, `imageAlt`; flat on purpose, ADR 0049 of the chat) */
+const UNCOUNTED = ["landmarkLabel", "image", "imageAlt"];
 const COMPONENT = /\.(svelte|vue|tsx)$/;
 const SKIP = [/\.types\.ts$/, /\/index\.ts$/];
 
@@ -37,7 +41,7 @@ export function measure(ctx: Ctx, files?: Array<{ path: string; contents: string
     if (!f.screen && f.contents.length > READABILITY.fileBytes) m.bytes = f.contents.length;
     put(key, m);
   }
-  for (const o of ctx.inputs.organisms) { const n = o.value.props.filter((p) => p.name !== "landmarkLabel").length; if (n > READABILITY.props) put(kebab(o.value.name), { props: n }); }
+  for (const o of ctx.inputs.organisms) { const n = o.value.props.filter((p) => !UNCOUNTED.includes(p.name)).length; if (n > READABILITY.props) put(kebab(o.value.name), { props: n }); }
   for (const k of Object.keys(out)) if (!Object.keys(out[k]!).length) delete out[k];
   return out;
 }

@@ -49,7 +49,7 @@ export function LightboxGallery({
         <>
           {((layout as string) === "featured") ? (
             <Stack gap="4" align="stretch" data-slot="featured">
-              <MediaFrame alt={title} />
+              <MediaFrame alt={photos[0]?.title ?? ""} src={photos[0]?.image ?? ""} />
               <Group gap="4" align="center" justify="between">
                 <Stack gap="0">
                   <Text size="base" weight="semibold">
@@ -70,7 +70,7 @@ export function LightboxGallery({
               </Group>
               <Box className="grid grid-cols-3 gap-2 sm:grid-cols-9" data-slot="thumbs">
                 {(photos ?? []).map((p, i) => (
-                  <MediaFrame key={p.id} alt={p.title} ratio="1/1" className={((i === 0) ? "ring-2 ring-foreground" : "")} />
+                  <MediaFrame key={p.id} alt={p.title} src={p.image} ratio="1/1" className={((i === 0) ? "ring-2 ring-foreground" : "")} />
                 ))}
               </Box>
             </Stack>
@@ -92,6 +92,7 @@ export function LightboxGallery({
                 >
                   <MediaFrame
                     alt={p.title}
+                    src={p.image}
                     ratio={
                       (layout as string) === "masonry" ? ((p.size === "tall") ? "3/4" : ((p.size === "wide") ? "16/9" : ((p.size === "large") ? "4/3" : "1/1")))
                       : "4/3"

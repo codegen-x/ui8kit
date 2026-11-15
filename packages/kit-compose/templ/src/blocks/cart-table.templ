@@ -60,7 +60,7 @@ templ CartTable(p CartTableProps) {
 						@compose.TableCell(compose.TableCellProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "py-2", "py-4")))}}) {
 							@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{}}) {
 								if uiutils.Eq(vMedia, "image") {
-									@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Ratio: "1/1", Class: uiutils.Cnv("hidden size-14 shrink-0 sm:block")})
+									@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Src: uiutils.Get(vLine, "image"), Ratio: "1/1", Class: uiutils.Cnv("hidden size-14 shrink-0 sm:block")})
 								}
 								@compose.Stack(compose.StackProps{Gap: "0", BoxProps: box.BoxProps{}}) {
 									@compose.Text(compose.TextProps{Size: "sm", Weight: "semibold", TextProps: text.TextProps{}}) {
