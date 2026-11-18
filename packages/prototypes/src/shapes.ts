@@ -39,7 +39,7 @@ export const SHAPE = {
     [use("Box", { props: { Class: "bg-primary rounded h-10 w-24 shrink-0" }, attrs: hooks("cta", "cta-primary", "button") })]),
   ShapeMedia: shape("shape-media", "ShapeMedia", "The frame of a picture (wireframe): muted, full width, at the ratio of the picture (aspect-*).", [
     { name: "aspect", type: ts("aspect-square", "aspect-4/3", "aspect-3/4", "aspect-21/9", "aspect-video"), default: "aspect-4/3" },
-  ], [use("Box", { props: { Class: cn("bg-muted rounded w-full", ref("aspect")) }, attrs: hooks("media", "media", "media") })]),
+  ], [use("Box", { props: { Class: cn("bg-muted rounded w-full", ref("aspect")) }, attrs: hooks("media", "media", "media-frame") })]),
   ShapeAvatar: shape("shape-avatar", "ShapeAvatar", "The disc of a portrait (wireframe): accent, h-16 w-16, round.", [],
     [use("Box", { props: { Class: "bg-accent rounded-full h-16 w-16 shrink-0" }, attrs: hooks("avatar", "avatar") })]),
 } satisfies Record<string, OrganismSpec>;

@@ -34,8 +34,14 @@ const LAYOUT: Record<string, Lowering> = {
   List: { tagProp: "Tag", tag: "ul", base: "" },
   ListItem: { tag: "li", base: "" },
   // a card as a plain bordered surface (a border token, no inset ring, no shadow)
-  Card: { tag: "div", base: "bg-card border border-border rounded", attrs: { "data-slot": "card" } },
+  Card: { tag: "div", base: "bg-card border border-border rounded", attrs: { "data-slot": "card", "data-role": "surface" } },
 };
+/** classes the wireframe drops: list-none is the preflight of Tailwind v4 already (ul, ol: list-style none), and the li are flex */
+const PREFLIGHT = new Set(["list-none"]);
+const dropPreflight = (v: Value): Value =>
+  typeof v === "string" ? v.split(/\s+/).filter((t) => t && !PREFLIGHT.has(t)).join(" ")
+  : isOp(v) && (v.op === "cn" || v.op === "cond") ? { ...v, args: v.args.map((a, i) => (v.op === "cond" && i === 0 ? a : dropPreflight(a))) }
+  : v;
 function fail(msg: string): never { throw new Error(`prototypes: ${msg}`); }
 
 /** the refs of a value, deep */
@@ -148,7 +154,7 @@ class Projector {
     const props = n.props ?? {};
     const classes: Value[] = l.base ? [l.base] : [];
     for (const [k, v] of Object.entries(props)) {
-      if (k === "Class") { this.check(v); classes.push(v); continue; }
+      if (k === "Class") { this.check(v); classes.push(dropPreflight(v)); continue; }
       if (k === l.tagProp) continue;
       const key = l.keys?.[k] ?? fail(`${n.use} prop ${k} has no wireframe lowering`);
       if (typeof v !== "string") fail(`${n.use} ${k} is not a literal`);

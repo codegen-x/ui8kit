@@ -42,7 +42,7 @@
       <Box
         tag="ul"
         class={cn(
-          "m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2",
+          "m-0 grid w-full grid-cols-1 gap-8 p-0 sm:grid-cols-2",
           (
             (cols as string) === "2" ? ""
             : (cols as string) === "3" ? "md:grid-cols-3"
@@ -56,6 +56,7 @@
               tag="div"
               class={cn("bg-card border border-border rounded", "flex w-full flex-col gap-4 p-6")}
               data-slot="card"
+              data-role="surface"
             >
               <ShapeAvatar place="members.avatar" field="/members/0/avatar" />
               <Box class={cn("flex flex-col", "gap-2")}>
@@ -77,6 +78,7 @@
               tag="div"
               class={cn("bg-card border border-border rounded", "flex w-full flex-col gap-4 p-6")}
               data-slot="card"
+              data-role="surface"
             >
               <ShapeAvatar place="members.avatar" field="/members/1/avatar" />
               <Box class={cn("flex flex-col", "gap-2")}>
@@ -98,6 +100,7 @@
               tag="div"
               class={cn("bg-card border border-border rounded", "flex w-full flex-col gap-4 p-6")}
               data-slot="card"
+              data-role="surface"
             >
               <ShapeAvatar place="members.avatar" field="/members/2/avatar" />
               <Box class={cn("flex flex-col", "gap-2")}>

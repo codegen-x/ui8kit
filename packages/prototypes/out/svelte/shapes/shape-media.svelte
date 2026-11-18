@@ -22,7 +22,7 @@
   aria-hidden="true"
   data-shape="media"
   data-role="media"
-  data-slot="media"
+  data-slot="media-frame"
   data-place={place}
   data-field={field}
 />
