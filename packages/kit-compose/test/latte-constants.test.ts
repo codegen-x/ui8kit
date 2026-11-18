@@ -45,6 +45,14 @@ test("latte: no unqualified PHP constants in the generators that emit Latte (sta
   expect(bad).toEqual([]);
 });
 
+// php -n loads no shared extensions: where tokenizer/ctype are shared (setup-php on CI) and not compiled in (the static
+// PHP builds), load them explicitly; Latte's compiler needs token_get_all(). Never load a compiled-in one twice (a warning).
+const loaded = (args: string[], ext: string) =>
+  spawnSync("php", [...args, "-r", `exit(extension_loaded("${ext}") ? 0 : 1);`], { stdio: "ignore" }).status === 0;
+const PHP_N = ["-n"];
+for (const ext of ["tokenizer", "ctype"])
+  if (!loaded(PHP_N, ext) && loaded(["-n", "-d", `extension=${ext}`], ext)) PHP_N.push("-d", `extension=${ext}`);
+
 const php = spawnSync("php", ["-n", "-v"], { stdio: "ignore" }).status === 0 && existsSync(path.join(SRV, "vendor/autoload.php"))
   ? null : "php or test/server/vendor missing (composer install -d packages/kit-compose/test/server)";
 if (php && !REQUIRED) {
@@ -53,7 +61,7 @@ if (php && !REQUIRED) {
 } else test("latte: every .latte compiles without notices (php -n, cold)", () => {
   if (php) throw new Error(php);
   // php -n: no php.ini, so display_errors goes to stdout as on a bare PHP; the script itself catches every notice
-  const raw = execFileSync("php", ["-n", path.join(SRV, "latte-lint.php"), ...LATTE], { cwd: REPO, encoding: "utf8", maxBuffer: 16 << 20 });
+  const raw = execFileSync("php", [...PHP_N, path.join(SRV, "latte-lint.php"), ...LATTE], { cwd: REPO, encoding: "utf8", maxBuffer: 16 << 20 });
   const notices = JSON.parse(raw) as { file: string; message: string }[];
   expect(notices.map((n) => `${n.file}: ${n.message}`)).toEqual([]);
 }, 120000);
