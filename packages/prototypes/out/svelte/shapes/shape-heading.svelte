@@ -12,8 +12,8 @@
 </script>
 
 <script lang="ts">
-  import Box from "../compose/Box.svelte";
-  import { cn } from "../utils";
+  import Box from "@ui8kit/kit/ui/box/Box.svelte";
+  import { cn } from "@ui8kit/kit/utils";
 
   let { size = "md", width = "3/4", place, field }: ShapeHeadingProps = $props();
 </script>

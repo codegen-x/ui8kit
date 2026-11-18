@@ -2,79 +2,40 @@
 <!--
   The simple hero (model hero@1): an optional badge, the heading, a description, one link as the action (a link
   styled as a button: drawn only when the label and the address are both set) and one picture. Axes: media (end:
-  the picture after the copy, start: before it, top: above it, wide). Prototype (packages/prototypes): mode
-  wireframe draws the places as shapes, mode page draws the content with data-place and data-field on each
-  place.
+  the picture after the copy, start: before it, top: above it, wide). Prototype (packages/prototypes): the
+  wireframe, rectangles only; each shape carries data-place and data-field.
 -->
 <script lang="ts" module>
   import type { Snippet } from "svelte";
 
   export type HeroSimpleProps = {
-    id: string;
-    badge?: string;
-    title: string;
-    description?: string;
-    image?: string;
-    imageAlt?: string;
-    imageDark?: string;
-    actionLabel?: string;
-    actionHref?: string;
-    level?: 1 | 2 | 3;
     padding?: "compact" | "standard" | "spacious";
     media?: "end" | "start" | "top";
-    landmarkLabel?: string;
-    mode?: "wireframe" | "page";
   };
 </script>
 
 <script lang="ts">
-  import Badge from "../compose/Badge.svelte";
-  import Block from "../compose/Block.svelte";
-  import Box from "../compose/Box.svelte";
-  import Container from "../compose/Container.svelte";
-  import LinkButton from "../compose/LinkButton.svelte";
-  import Stack from "../compose/Stack.svelte";
-  import Text from "../compose/Text.svelte";
-  import Title from "../compose/Title.svelte";
-  import MediaFramePlace from "../shapes/media-frame-place.svelte";
+  import Box from "@ui8kit/kit/ui/box/Box.svelte";
   import ShapeBadge from "../shapes/shape-badge.svelte";
   import ShapeCta from "../shapes/shape-cta.svelte";
   import ShapeHeading from "../shapes/shape-heading.svelte";
+  import ShapeMedia from "../shapes/shape-media.svelte";
   import ShapeText from "../shapes/shape-text.svelte";
-  import { cn, urlOf } from "../utils";
+  import { cn } from "@ui8kit/kit/utils";
 
-  let {
-    id,
-    badge = "",
-    title,
-    description = "",
-    image,
-    imageAlt,
-    imageDark,
-    actionLabel = "",
-    actionHref = "",
-    level = 2,
-    padding = "standard",
-    media = "end",
-    landmarkLabel,
-    mode = "wireframe",
-  }: HeroSimpleProps = $props();
-  const titleId = $derived(id + "-title");
-  const wire = $derived((mode as string) === "wireframe");
+  let { padding = "standard", media = "end" }: HeroSimpleProps = $props();
 </script>
 
-<Block
+<Box
   tag="section"
   class={
     (padding as string) === "compact" ? "py-8 lg:py-16"
     : (padding as string) === "spacious" ? "py-24 lg:py-40"
     : "py-16 lg:py-32"
   }
-  aria-labelledby={(wire ? undefined : (landmarkLabel ? undefined : titleId))}
-  aria-label={landmarkLabel}
   data-slot="hero-simple"
 >
-  <Container class="mx-auto w-full max-w-6xl px-4">
+  <Box class="mx-auto w-full max-w-6xl px-4">
     <Box
       class={cn(
         "grid grid-cols-1 gap-8",
@@ -82,83 +43,21 @@
       )}
     >
       {#if ((media as string) !== "end")}
-        {#if wire}
-          <MediaFramePlace
-            alt={(imageAlt ? imageAlt : title)}
-            ratio={(((media as string) === "top") ? "21/9" : "4/3")}
-            place="media"
-            field="/image"
-            shape="media"
-          />
-        {:else}
-          <MediaFramePlace
-            alt={(imageAlt ? imageAlt : title)}
-            src={image}
-            darkSrc={imageDark}
-            ratio={(((media as string) === "top") ? "21/9" : "4/3")}
-            place="media"
-            field="/image"
-          />
-        {/if}
+        <ShapeMedia
+          aspect={(((media as string) === "top") ? "aspect-21/9" : "aspect-4/3")}
+          place="media"
+          field="/image /imageAlt /imageDark"
+        />
       {/if}
-      <Stack gap="6" align="start">
-        {#if (wire || badge)}
-          {#if wire}
-            <ShapeBadge place="badge" field="/badge" />
-          {:else}
-            <Badge variant="secondary" data-place="badge" data-field="/badge">
-              {badge}
-            </Badge>
-          {/if}
-        {/if}
-        {#if wire}
-          <ShapeHeading size="lg" width="3/4" place="title" field="/title" />
-        {:else}
-          <Title
-            as={level}
-            size="4xl"
-            weight="bold"
-            class="tracking-tight"
-            id={titleId}
-            data-place="title"
-            data-field="/title"
-          >
-            {title}
-          </Title>
-        {/if}
-        {#if (wire || description)}
-          {#if wire}
-            <ShapeText lines="2" place="description" field="/description" />
-          {:else}
-            <Text size="lg" class="text-muted-foreground" data-place="description" data-field="/description">
-              {description}
-            </Text>
-          {/if}
-        {/if}
-        {#if (wire || (actionLabel && actionHref))}
-          {#if wire}
-            <ShapeCta place="action" field="/actionLabel" />
-          {:else}
-            <LinkButton variant="default" size="lg" href={urlOf(actionHref)} data-place="action" data-field="/actionLabel">
-              {actionLabel}
-            </LinkButton>
-          {/if}
-        {/if}
-      </Stack>
+      <Box class={cn("flex flex-col", "gap-6", "items-start")}>
+        <ShapeBadge place="badge" field="/badge" />
+        <ShapeHeading size="lg" width="3/4" place="title" field="/title" />
+        <ShapeText lines="2" place="description" field="/description" />
+        <ShapeCta place="action" field="/actionLabel /actionHref" />
+      </Box>
       {#if ((media as string) === "end")}
-        {#if wire}
-          <MediaFramePlace alt={(imageAlt ? imageAlt : title)} ratio="4/3" place="media" field="/image" shape="media" />
-        {:else}
-          <MediaFramePlace
-            alt={(imageAlt ? imageAlt : title)}
-            src={image}
-            darkSrc={imageDark}
-            ratio="4/3"
-            place="media"
-            field="/image"
-          />
-        {/if}
+        <ShapeMedia aspect="aspect-4/3" place="media" field="/image /imageAlt /imageDark" />
       {/if}
     </Box>
-  </Container>
-</Block>
+  </Box>
+</Box>

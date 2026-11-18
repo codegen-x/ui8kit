@@ -1,6 +1,7 @@
-// The shapes of a wireframe: one organism per role, a Box with a token background and a height on the 8+4 grid (the role table of
-// ui8kit/prototypes packages/blocks/src/classes.ts). Decorative (aria-hidden), with data-shape / data-role / data-slot hooks for the
-// per-element tokens (tokens.css) and the place they stand for (data-place, data-field). Emitted to out/svelte/shapes.
+// The shapes of a wireframe: one organism per role, a kit Box with a token background and a height on the 8+4 grid (the role table
+// of ui8kit/prototypes packages/blocks/src/classes.ts); rectangles only: no state, effect or transition class. Decorative
+// (aria-hidden), with data-shape / data-role / data-slot hooks for the per-element tokens (tokens.css) and the place they stand for
+// (data-place, data-field: the builder's inspector). Emitted to out/svelte/shapes.
 import { cn, cond, eq, ne, ref, use, when } from "../../compose-gen/screens/src/build";
 import type { OrganismSpec, Value, ViewNode } from "../../compose-gen/screens/src/ir";
 
@@ -36,6 +37,11 @@ export const SHAPE = {
     [use("Box", { props: { Class: "bg-accent rounded-full h-6 w-16 shrink-0" }, attrs: hooks("badge", "badge", "badge") })]),
   ShapeCta: shape("shape-cta", "ShapeCta", "The bar of an action (wireframe): primary, h-10 w-24; geometry only, not a link.", [],
     [use("Box", { props: { Class: "bg-primary rounded h-10 w-24 shrink-0" }, attrs: hooks("cta", "cta-primary", "button") })]),
+  ShapeMedia: shape("shape-media", "ShapeMedia", "The frame of a picture (wireframe): muted, full width, at the ratio of the picture (aspect-*).", [
+    { name: "aspect", type: ts("aspect-square", "aspect-4/3", "aspect-3/4", "aspect-21/9", "aspect-video"), default: "aspect-4/3" },
+  ], [use("Box", { props: { Class: cn("bg-muted rounded w-full", ref("aspect")) }, attrs: hooks("media", "media", "media") })]),
+  ShapeAvatar: shape("shape-avatar", "ShapeAvatar", "The disc of a portrait (wireframe): accent, h-16 w-16, round.", [],
+    [use("Box", { props: { Class: "bg-accent rounded-full h-16 w-16 shrink-0" }, attrs: hooks("avatar", "avatar") })]),
 } satisfies Record<string, OrganismSpec>;
 export type ShapeName = keyof typeof SHAPE;
 export const shapes: OrganismSpec[] = Object.values(SHAPE);

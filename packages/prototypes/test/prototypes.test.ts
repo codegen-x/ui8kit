@@ -1,6 +1,7 @@
-// packages/prototypes: the places cover the model, the page mode of a prototype is the clean block (same DOM once data-place and
-// data-field are stripped), the wireframe draws shapes only (three members), the clean outputs carry no builder attribute, and out/
-// is what the driver writes.
+// packages/prototypes: the places cover the model, every place of a contract has its shape in the wireframe (data-place, data-field),
+// the wireframe draws shapes only (three members) and imports only svelte and the kit, the clean outputs carry no builder attribute,
+// and out/ is what the driver writes. The clean block itself (page DOM, the action link, the width of the team) is checked here on the
+// kit-compose output, not through the prototype: no clean code ships with a prototype.
 import { describe, expect, test } from "bun:test";
 import { cpSync, existsSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -35,7 +36,7 @@ const built = build();
 const models = loadModels(ROOT);
 const inputs = loadInputs(ROOT);
 const simple = built.contracts;
-const BUILDER = /\s(data-place|data-field|data-shape|mode)="[^"]*"/g;
+const CLEAN = path.resolve(import.meta.dir, "../../kit-compose/svelte/src/blocks");
 const norm = (html: string) => html.replace(/<!--[\s\S]*?-->/g, "").replace(/\s+/g, " ").replace(/> </g, "><").trim();
 const ssr = async (file: string, props: Record<string, unknown>): Promise<string> => {
   const C = (await import(file)).default;
@@ -57,6 +58,20 @@ test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", (
   expect(Object.keys(manifest.files).length).toBe(built.files.size - 1);
 });
 
+test("out/ ships wireframes, shapes, contracts, models and the manifest only (no clean block, composition or recipe)", () => {
+  expect([...built.files.keys()].sort()).toEqual([
+    "contracts/hero-simple/1.json", "contracts/team-simple/1.json", "contracts/v0.json", "manifest.json",
+    "models/hero@1.schema.json", "models/hero@1.ts", "models/team@1.schema.json", "models/team@1.ts", "models/validate.ts",
+    "svelte/blocks/hero-simple.svelte", "svelte/blocks/team-simple.svelte", "svelte/index.ts",
+    ...["avatar", "badge", "cta", "heading", "media", "text"].map((s) => `svelte/shapes/shape-${s}.svelte`),
+  ]);
+  for (const [f, body] of built.files) if (f.startsWith("svelte/")) {
+    const ext = [...body.matchAll(/(?:from|import)\s+["']([^"'.][^"']*)["']/g)].map((m) => m[1]!);
+    expect({ f, ext: ext.filter((x) => !["svelte", "@ui8kit/kit/ui/box/Box.svelte", "@ui8kit/kit/utils"].includes(x)) }).toEqual({ f, ext: [] });
+    expect({ f, hit: /\b(rc|recipes|transition|shadow|ring|hover:|focus)/.exec(body.replace(/<!--[\s\S]*?-->/, ""))?.[0] ?? null }).toEqual({ f, hit: null });
+  }
+});
+
 describe("places", () => {
   for (const c of simple) test(`${c.item}: every field of ${c.model} has a place, every place field is in the model`, () => {
     const m = models.get(c.model)!.model;
@@ -67,16 +82,14 @@ describe("places", () => {
   });
 });
 
-describe("page mode = the clean block", () => {
+describe("every place of the contract has its shape in the wireframe", () => {
   for (const c of cases) test(c.label, async () => {
-    const item = itemOf(c.organism);
-    const props = c.props as Record<string, unknown>;
-    for (const p of [props, { ...props, landmarkLabel: undefined }]) {
-      const clean = await ssr(path.resolve(import.meta.dir, `../../kit-compose/svelte/src/blocks/${item}.svelte`), p);
-      const page = await ssr(path.join(RENDER, `blocks/${item}.svelte`), { ...p, mode: "page" });
-      expect(page).toContain('data-place="title"');
-      expect(norm(page.replace(BUILDER, ""))).toBe(norm(clean));
-    }
+    const contract = simple.find((x) => x.organism === c.organism)!;
+    const html = await ssr(path.join(RENDER, `blocks/${contract.item}.svelte`), c.props as Record<string, unknown>);
+    const drawn = new Set([...html.matchAll(/data-place="([^"]+)"/g)].map((m) => m[1]!));
+    expect([...drawn].sort()).toEqual(contract.places.map((p) => p.place).sort());
+    const pointers = new Set(contract.places.flatMap((p) => p.fields));
+    for (const m of html.matchAll(/data-field="([^"]+)"/g)) for (const f of m[1]!.split(" ")) expect(pointers.has(f.replace(/^\/(\w+)\/\d+\//, "/$1/*/"))).toBe(true);
   });
 });
 
@@ -117,21 +130,19 @@ test("out/models: the schemas are schemaOf(model), the emitted validate() agrees
   }
 });
 
-test("the prototype organisms name their mode and keep every clean prop", () => {
-  const byName = Object.fromEntries(inputs.organisms.map((o) => [o.value.name, o.value as OrganismSpec]));
-  for (const o of built.organisms.filter((x) => organisms.has(x.name))) {
-    expect(o.props.map((p) => p.name)).toEqual([...byName[o.name]!.props.map((p) => p.name), "mode"]);
-  }
+test("a prototype takes its layout axes and the padding setting, no content", () => {
+  for (const c of simple) expect(built.organisms.find((o) => o.name === c.organism)!.props.map((p) => p.name).sort()).toEqual([...Object.keys(c.axes), "padding"].sort());
 });
 
-describe("layout, padding and the action (round 6)", () => {
+describe("layout, padding and the action: the wireframe and the clean block", () => {
   const hero = c0("HeroSimple"), team = c0("TeamSimple");
   function c0(name: string) { return cases.find((c) => c.organism === name)!.props as Record<string, unknown>; }
+  const fileOf = (item: string, mode: string) => (mode === "clean" ? path.join(CLEAN, `${item}.svelte`) : path.join(RENDER, `blocks/${item}.svelte`));
   const PRESETS = { compact: "py-8 lg:py-16", standard: "py-16 lg:py-32", spacious: "py-24 lg:py-40" } as const;
 
-  for (const item of ["hero-simple", "team-simple"]) for (const mode of ["wireframe", "page"]) test(`${item} (${mode}): padding presets on the section, standard by default`, async () => {
+  for (const item of ["hero-simple", "team-simple"]) for (const mode of ["wireframe", "clean"]) test(`${item} (${mode}): padding presets on the section, standard by default`, async () => {
     const props = item === "hero-simple" ? hero : team;
-    const cls = async (p: Record<string, unknown>) => (await ssr(path.join(RENDER, `blocks/${item}.svelte`), { ...props, ...p, mode })).match(/<section[^>]*class="([^"]*)"/)![1]!.split(/\s+/);
+    const cls = async (p: Record<string, unknown>) => (await ssr(fileOf(item, mode), { ...props, ...p })).match(/<section[^>]*class="([^"]*)"/)![1]!.split(/\s+/);
     expect(await cls({})).toEqual(expect.arrayContaining(PRESETS.standard.split(" ")));
     for (const [k, v] of Object.entries(PRESETS)) {
       const got = await cls({ padding: k });
@@ -147,8 +158,8 @@ describe("layout, padding and the action (round 6)", () => {
     }
   });
 
-  for (const cols of ["2", "3", "4"]) for (const surface of ["plain", "cards"]) for (const mode of ["wireframe", "page"]) test(`team-simple cols ${cols} ${surface} (${mode}): the list fills the container`, async () => {
-    const html = await ssr(path.join(RENDER, "blocks/team-simple.svelte"), { ...team, cols, surface, mode });
+  for (const cols of ["2", "3", "4"]) for (const surface of ["plain", "cards"]) for (const mode of ["wireframe", "clean"]) test(`team-simple cols ${cols} ${surface} (${mode}): the list fills the container`, async () => {
+    const html = await ssr(fileOf("team-simple", mode), { ...team, cols, surface });
     // the column Stack stretches its children (items-stretch, not the default items-start) and the grid is w-full
     expect(html).toMatch(/class="[^"]*\bflex flex-col\b[^"]*\bitems-stretch\b[^"]*gap-12|class="[^"]*gap-12[^"]*items-stretch/);
     expect(html).toMatch(/<ul[^>]*class="[^"]*\bgrid\b[^"]*\bw-full\b/);
@@ -156,14 +167,14 @@ describe("layout, padding and the action (round 6)", () => {
   });
 
   test("hero-simple: the action is a link (a[href], data-slot=button, the link-button recipe), drawn only with a label and an address", async () => {
-    const file = path.join(RENDER, "blocks/hero-simple.svelte");
-    const page = await ssr(file, { ...hero, actionLabel: "Go", actionHref: "https://example.com/go", mode: "page" });
+    const file = fileOf("hero-simple", "clean");
+    const page = await ssr(file, { ...hero, actionLabel: "Go", actionHref: "https://example.com/go" });
     const a = page.match(/<a\b[^>]*>/)![0];
     expect(a).toContain('href="https://example.com/go"');
     expect(a).toContain('data-slot="button"');
     expect(a).toMatch(/bg-primary/);
     expect(page).not.toMatch(/<button\b/);
     for (const p of [{ actionLabel: "Go", actionHref: "" }, { actionLabel: "", actionHref: "https://example.com/go" }])
-      expect(await ssr(file, { ...hero, ...p, mode: "page" })).not.toMatch(/<a\b/);
+      expect(await ssr(file, { ...hero, ...p })).not.toMatch(/<a\b/);
   });
 });

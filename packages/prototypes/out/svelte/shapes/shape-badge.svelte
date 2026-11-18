@@ -10,7 +10,7 @@
 </script>
 
 <script lang="ts">
-  import Box from "../compose/Box.svelte";
+  import Box from "@ui8kit/kit/ui/box/Box.svelte";
 
   let { place, field }: ShapeBadgeProps = $props();
 </script>

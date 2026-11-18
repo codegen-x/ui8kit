@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Prototypes of the simple line: the clean organisms of packages/compose-gen projected onto a wireframe | page mode (src/project.ts), their shapes, contracts and content models. Writes out/ (Svelte 5 + contracts + models + manifest), which ui8kit/prototypes syncs by commit (codegen.lock.json). Depends on compose-gen, never the reverse.",
+  "description": "Prototypes of the simple line: the clean organisms of packages/compose-gen projected onto wireframes, rectangles only (src/project.ts), their shapes, contracts and content models. Writes out/ (Svelte 5 + contracts + models + manifest), which ui8kit/prototypes syncs by commit (codegen.lock.json). Depends on compose-gen, never the reverse.",
   "exports": {
     "./out/*": "./out/*"
   },

@@ -2,97 +2,44 @@
 <!--
   The simple team (model team@1): the heading, a description and the members as a list, each with a portrait,
   the name and a line. Axes: cols (2, 3, 4 columns from md up), surface (plain, cards). Prototype
-  (packages/prototypes): mode wireframe draws the places as shapes, mode page draws the content with data-place
-  and data-field on each place.
+  (packages/prototypes): the wireframe, rectangles only; each shape carries data-place and data-field.
 -->
 <script lang="ts" module>
   import type { Snippet } from "svelte";
-  import type { SimpleMember } from "./team-simple.types";
 
   export type TeamSimpleProps = {
-    id: string;
-    title: string;
-    description?: string;
-    members: SimpleMember[];
-    level?: 1 | 2 | 3;
     padding?: "compact" | "standard" | "spacious";
     cols?: "2" | "3" | "4";
     surface?: "plain" | "cards";
-    landmarkLabel?: string;
-    mode?: "wireframe" | "page";
   };
 </script>
 
 <script lang="ts">
-  import Block from "../compose/Block.svelte";
-  import Card from "../compose/Card.svelte";
-  import Container from "../compose/Container.svelte";
-  import List from "../compose/List.svelte";
-  import ListItem from "../compose/ListItem.svelte";
-  import Stack from "../compose/Stack.svelte";
-  import Text from "../compose/Text.svelte";
-  import Title from "../compose/Title.svelte";
-  import MediaFramePlace from "../shapes/media-frame-place.svelte";
+  import Box from "@ui8kit/kit/ui/box/Box.svelte";
+  import ShapeAvatar from "../shapes/shape-avatar.svelte";
   import ShapeHeading from "../shapes/shape-heading.svelte";
   import ShapeText from "../shapes/shape-text.svelte";
-  import { cn, tpl } from "../utils";
+  import { cn } from "@ui8kit/kit/utils";
 
-  let {
-    id,
-    title,
-    description = "",
-    members,
-    level = 2,
-    padding = "standard",
-    cols = "3",
-    surface = "plain",
-    landmarkLabel,
-    mode = "wireframe",
-  }: TeamSimpleProps = $props();
-  const titleId = $derived(id + "-title");
-  const wire = $derived((mode as string) === "wireframe");
+  let { padding = "standard", cols = "3", surface = "plain" }: TeamSimpleProps = $props();
 </script>
 
-<Block
+<Box
   tag="section"
   class={
     (padding as string) === "compact" ? "py-8 lg:py-16"
     : (padding as string) === "spacious" ? "py-24 lg:py-40"
     : "py-16 lg:py-32"
   }
-  aria-labelledby={(wire ? undefined : (landmarkLabel ? undefined : titleId))}
-  aria-label={landmarkLabel}
   data-slot="team-simple"
 >
-  <Container class="mx-auto w-full max-w-6xl px-4">
-    <Stack gap="12" align="stretch">
-      <Stack gap="4" class="max-w-2xl">
-        {#if wire}
-          <ShapeHeading size="lg" width="3/4" place="title" field="/title" />
-        {:else}
-          <Title
-            as={level}
-            size="3xl"
-            weight="bold"
-            class="tracking-tight"
-            id={titleId}
-            data-place="title"
-            data-field="/title"
-          >
-            {title}
-          </Title>
-        {/if}
-        {#if (wire || description)}
-          {#if wire}
-            <ShapeText lines="2" place="description" field="/description" />
-          {:else}
-            <Text size="base" class="text-muted-foreground" data-place="description" data-field="/description">
-              {description}
-            </Text>
-          {/if}
-        {/if}
-      </Stack>
-      <List
+  <Box class="mx-auto w-full max-w-6xl px-4">
+    <Box class={cn("flex flex-col", "gap-12", "items-stretch")}>
+      <Box class={cn("flex flex-col", "gap-4", "max-w-2xl")}>
+        <ShapeHeading size="lg" width="3/4" place="title" field="/title" />
+        <ShapeText lines="2" place="description" field="/description" />
+      </Box>
+      <Box
         tag="ul"
         class={cn(
           "m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2",
@@ -103,112 +50,70 @@
           )
         )}
       >
-        {#each (wire ? [{ id: "wire-1", avatar: "", title: "", description: "" }, { id: "wire-2", avatar: "", title: "", description: "" }, { id: "wire-3", avatar: "", title: "", description: "" }] : members) as m, mIndex (m.id)}
-          <ListItem class={(((surface as string) === "cards") ? "flex" : "flex flex-col gap-4")} data-slot="member">
-            {#if ((surface as string) === "cards")}
-              <Card class="flex w-full flex-col gap-4 p-6">
-                {#if wire}
-                  <MediaFramePlace
-                    alt={m.title}
-                    ratio="1/1"
-                    class="size-16 rounded-full"
-                    place="members.avatar"
-                    field={tpl("/members/{0}/avatar", mIndex)}
-                    shape="avatar"
-                  />
-                {:else}
-                  <MediaFramePlace
-                    alt={m.title}
-                    src={m.avatar}
-                    ratio="1/1"
-                    class="size-16 rounded-full"
-                    place="members.avatar"
-                    field={tpl("/members/{0}/avatar", mIndex)}
-                  />
-                {/if}
-                <Stack gap="2">
-                  {#if wire}
-                    <ShapeHeading size="md" width="1/2" place="members.title" field={tpl("/members/{0}/title", mIndex)} />
-                  {:else}
-                    <Title
-                      as={(level + 1)}
-                      size="lg"
-                      weight="semibold"
-                      data-place="members.title"
-                      data-field={tpl("/members/{0}/title", mIndex)}
-                    >
-                      {m.title}
-                    </Title>
-                  {/if}
-                  {#if (wire || m.description)}
-                    {#if wire}
-                      <ShapeText lines="1" place="members.description" field={tpl("/members/{0}/description", mIndex)} />
-                    {:else}
-                      <Text
-                        size="sm"
-                        class="text-muted-foreground"
-                        data-place="members.description"
-                        data-field={tpl("/members/{0}/description", mIndex)}
-                      >
-                        {m.description}
-                      </Text>
-                    {/if}
-                  {/if}
-                </Stack>
-              </Card>
-            {:else}
-              {#if wire}
-                <MediaFramePlace
-                  alt={m.title}
-                  ratio="1/1"
-                  class="size-16 rounded-full"
-                  place="members.avatar"
-                  field={tpl("/members/{0}/avatar", mIndex)}
-                  shape="avatar"
-                />
-              {:else}
-                <MediaFramePlace
-                  alt={m.title}
-                  src={m.avatar}
-                  ratio="1/1"
-                  class="size-16 rounded-full"
-                  place="members.avatar"
-                  field={tpl("/members/{0}/avatar", mIndex)}
-                />
-              {/if}
-              <Stack gap="2">
-                {#if wire}
-                  <ShapeHeading size="md" width="1/2" place="members.title" field={tpl("/members/{0}/title", mIndex)} />
-                {:else}
-                  <Title
-                    as={(level + 1)}
-                    size="lg"
-                    weight="semibold"
-                    data-place="members.title"
-                    data-field={tpl("/members/{0}/title", mIndex)}
-                  >
-                    {m.title}
-                  </Title>
-                {/if}
-                {#if (wire || m.description)}
-                  {#if wire}
-                    <ShapeText lines="1" place="members.description" field={tpl("/members/{0}/description", mIndex)} />
-                  {:else}
-                    <Text
-                      size="sm"
-                      class="text-muted-foreground"
-                      data-place="members.description"
-                      data-field={tpl("/members/{0}/description", mIndex)}
-                    >
-                      {m.description}
-                    </Text>
-                  {/if}
-                {/if}
-              </Stack>
-            {/if}
-          </ListItem>
-        {/each}
-      </List>
-    </Stack>
-  </Container>
-</Block>
+        <Box tag="li" class={(((surface as string) === "cards") ? "flex" : "flex flex-col gap-4")} data-slot="member">
+          {#if ((surface as string) === "cards")}
+            <Box
+              tag="div"
+              class={cn("bg-card border border-border rounded", "flex w-full flex-col gap-4 p-6")}
+              data-slot="card"
+            >
+              <ShapeAvatar place="members.avatar" field="/members/0/avatar" />
+              <Box class={cn("flex flex-col", "gap-2")}>
+                <ShapeHeading size="md" width="1/2" place="members.title" field="/members/0/title" />
+                <ShapeText lines="1" place="members.description" field="/members/0/description" />
+              </Box>
+            </Box>
+          {:else}
+            <ShapeAvatar place="members.avatar" field="/members/0/avatar" />
+            <Box class={cn("flex flex-col", "gap-2")}>
+              <ShapeHeading size="md" width="1/2" place="members.title" field="/members/0/title" />
+              <ShapeText lines="1" place="members.description" field="/members/0/description" />
+            </Box>
+          {/if}
+        </Box>
+        <Box tag="li" class={(((surface as string) === "cards") ? "flex" : "flex flex-col gap-4")} data-slot="member">
+          {#if ((surface as string) === "cards")}
+            <Box
+              tag="div"
+              class={cn("bg-card border border-border rounded", "flex w-full flex-col gap-4 p-6")}
+              data-slot="card"
+            >
+              <ShapeAvatar place="members.avatar" field="/members/1/avatar" />
+              <Box class={cn("flex flex-col", "gap-2")}>
+                <ShapeHeading size="md" width="1/2" place="members.title" field="/members/1/title" />
+                <ShapeText lines="1" place="members.description" field="/members/1/description" />
+              </Box>
+            </Box>
+          {:else}
+            <ShapeAvatar place="members.avatar" field="/members/1/avatar" />
+            <Box class={cn("flex flex-col", "gap-2")}>
+              <ShapeHeading size="md" width="1/2" place="members.title" field="/members/1/title" />
+              <ShapeText lines="1" place="members.description" field="/members/1/description" />
+            </Box>
+          {/if}
+        </Box>
+        <Box tag="li" class={(((surface as string) === "cards") ? "flex" : "flex flex-col gap-4")} data-slot="member">
+          {#if ((surface as string) === "cards")}
+            <Box
+              tag="div"
+              class={cn("bg-card border border-border rounded", "flex w-full flex-col gap-4 p-6")}
+              data-slot="card"
+            >
+              <ShapeAvatar place="members.avatar" field="/members/2/avatar" />
+              <Box class={cn("flex flex-col", "gap-2")}>
+                <ShapeHeading size="md" width="1/2" place="members.title" field="/members/2/title" />
+                <ShapeText lines="1" place="members.description" field="/members/2/description" />
+              </Box>
+            </Box>
+          {:else}
+            <ShapeAvatar place="members.avatar" field="/members/2/avatar" />
+            <Box class={cn("flex flex-col", "gap-2")}>
+              <ShapeHeading size="md" width="1/2" place="members.title" field="/members/2/title" />
+              <ShapeText lines="1" place="members.description" field="/members/2/description" />
+            </Box>
+          {/if}
+        </Box>
+      </Box>
+    </Box>
+  </Box>
+</Box>

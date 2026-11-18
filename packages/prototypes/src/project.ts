@@ -1,26 +1,42 @@
-// The projection of a clean organism (page-only, packages/compose-gen) onto its prototype: the same view with a prop `mode`
-// ("wireframe" | "page", default wireframe). Every place (a node that draws a field of the content model) becomes
-// `when(wire, [shape], [the node + data-place/data-field])`; a branch that waits for content is drawn in the wireframe anyway; a
-// loop over a list field draws WIRE_ITEMS placeholders in the wireframe. In page mode, without data-place/data-field, the DOM
-// equals the clean block (test/prototypes.test.ts). IR to IR: the emitters of compose-gen print the result for any runtime.
-import { cond, eq, list, or, organism, ref, tpl, undef, when } from "../../compose-gen/screens/src/build";
+// The projection of a clean organism (page-only, packages/compose-gen) onto its prototype: a wireframe of rectangles only. Every
+// place (a node that draws a field of the content model) becomes its shape (shapes.ts) with data-place / data-field for the
+// builder's inspector; a branch that waits for content is drawn anyway; a loop over a list field is unrolled into WIRE_ITEMS
+// placeholders (data-field /members/0/title …). The layout compositions (Block, Container, Stack, List, …) are lowered onto the kit
+// Box with plain layout classes (LAYOUT below): no composition, no recipe, no state or effect class ships with a prototype.
+// The props are the layout axes of the block and the padding setting: a wireframe takes no content. IR to IR.
+import { cn, cond, eq, organism, ref } from "../../compose-gen/screens/src/build";
 import { isGroup, isOp, isRef, type OrganismSpec, type Value, type ViewNode } from "../../compose-gen/screens/src/ir";
+import type { BlockSpec } from "../../compose-gen/screens/src/ir";
 import type { ModelField, ModelSpec } from "../../compose-gen/model/src/index";
 import { SHAPE, type ShapeName } from "./shapes";
 
 /** how many members a wireframe draws for a list field */
 export const WIRE_ITEMS = 3;
-export const MODES = ["wireframe", "page"] as const;
+export const MODES = ["wireframe"] as const;
 export type PlaceKind = "heading" | "text" | "badge" | "action" | "media";
 
 /** a place: one region of the block that draws fields of the model; `fields` are JSON pointers (`*` is an index of a list) */
 export interface Place { place: string; kind: PlaceKind; fields: string[]; list?: string }
 
-/** the organisms a place of a nested organism is drawn with: a copy of the organism that carries the place on its root */
-export const placeName = (name: string): string => `${name}Place`;
-
-const WIRE = ref("wire");
 const KIND: Record<string, PlaceKind> = { Title: "heading", Text: "text", Badge: "badge", Button: "action", LinkButton: "action", MediaFrame: "media" };
+/** the props of the prototype: the layout axes of the block and these settings */
+export const PROTOTYPE_SETTINGS = ["padding"] as const;
+
+/** the layout compositions a wireframe may use, lowered onto the kit Box: the tag and the classes of each (no recipe) */
+type Lowering = { tag?: string; tagProp?: string; base: string; attrs?: Record<string, string>; keys?: Record<string, (v: string) => string> };
+const ALIGN: Record<string, string> = { start: "items-start", center: "items-center", end: "items-end", stretch: "items-stretch" };
+const JUSTIFY: Record<string, string> = { start: "justify-start", center: "justify-center", end: "justify-end", between: "justify-between" };
+const LAYOUT: Record<string, Lowering> = {
+  Box: { tagProp: "Tag", base: "" },
+  Block: { tagProp: "Tag", base: "" },
+  Container: { tagProp: "Tag", base: "" },
+  Stack: { tagProp: "Tag", base: "flex flex-col", keys: { Gap: (v) => `gap-${v}`, Align: (v) => ALIGN[v] ?? fail(`Stack Align ${v}`), Justify: (v) => JUSTIFY[v] ?? fail(`Stack Justify ${v}`) } },
+  List: { tagProp: "Tag", tag: "ul", base: "" },
+  ListItem: { tag: "li", base: "" },
+  // a card as a plain bordered surface (a border token, no inset ring, no shadow)
+  Card: { tag: "div", base: "bg-card border border-border rounded", attrs: { "data-slot": "card" } },
+};
+function fail(msg: string): never { throw new Error(`prototypes: ${msg}`); }
 
 /** the refs of a value, deep */
 export function refsOf(v: Value | undefined, out: string[] = []): string[] {
@@ -31,20 +47,27 @@ export function refsOf(v: Value | undefined, out: string[] = []): string[] {
   return out;
 }
 
-type Loop = { as: string; index: string; list: string; item: Record<string, ModelField> };
-type Field = { field: string; pointer: string; value: Value; list?: string };
+/** a ratio of MediaFrame (a literal or a cond of literals) as its aspect class */
+const RATIO: Record<string, string> = { "1/1": "aspect-square", "4/3": "aspect-4/3", "3/4": "aspect-3/4", "21/9": "aspect-21/9", "16/9": "aspect-video" };
+function ratioClass(v: Value | undefined): Value {
+  if (v === undefined) return RATIO["16/9"]!;
+  if (typeof v === "string") return RATIO[v] ?? fail(`MediaFrame ratio ${v}`);
+  if (isOp(v) && v.op === "cond") return cond(v.args[0]!, ratioClass(v.args[1]), ratioClass(v.args[2]));
+  return fail(`MediaFrame ratio ${JSON.stringify(v)} is not a literal`);
+}
+
+type Loop = { as: string; index: number; list: string; item: Record<string, ModelField> };
+type Field = { field: string; pointer: string; value: string; list?: string };
 
 class Projector {
   places = new Map<string, Place>();
-  /** the nested organisms a place was drawn with (MediaFrame -> MediaFramePlace) */
-  nested = new Set<string>();
-  constructor(readonly model: ModelSpec) {}
+  constructor(readonly model: ModelSpec, readonly props: Set<string>) {}
 
-  /** a ref as a model field: a top field (`title`) or a field of the item of a loop over a list field (`m.title`) */
+  /** a ref as a model field: a top field (`title`) or a field of the item of an unrolled loop (`m.title`, index i) */
   field(path: string, loops: Loop[]): Field | undefined {
     const [head, rest] = path.includes(".") ? [path.slice(0, path.indexOf(".")), path.slice(path.indexOf(".") + 1)] : [path, ""];
     const loop = loops.find((l) => l.as === head);
-    if (loop && rest && rest in loop.item) return { field: rest, list: loop.list, pointer: `/${loop.list}/*/${rest}`, value: tpl(`/${loop.list}/{0}/${rest}`, ref(loop.index)) };
+    if (loop && rest && rest in loop.item) return { field: rest, list: loop.list, pointer: `/${loop.list}/*/${rest}`, value: `/${loop.list}/${loop.index}/${rest}` };
     const f = this.model.fields[path];
     if (!rest && f && f.type !== "list") return { field: path, pointer: `/${path}`, value: `/${path}` };
     return undefined;
@@ -53,117 +76,117 @@ class Projector {
     return refsOf(v).map((r) => this.field(r, loops)).filter((f): f is Field => !!f);
   }
   readsContent(v: Value | undefined, loops: Loop[]): boolean {
-    return refsOf(v).some((r) => this.field(r, loops) || this.model.fields[r]?.type === "list");
+    return refsOf(v).some((r) => this.field(r, loops) || this.model.fields[r]?.type === "list" || loops.some((l) => r === l.as || r.startsWith(`${l.as}.`)));
   }
   add(p: Place): void {
     const had = this.places.get(p.place);
     this.places.set(p.place, had ? { ...had, fields: [...new Set([...had.fields, ...p.fields])] } : p);
   }
 
-  /** the place of a node, if it draws a field: the primary field (the text, the address of a picture) names it */
-  placeOf(n: ViewNode, loops: Loop[]): { place: Place; primary: Field; shape: ViewNode; page: ViewNode } | undefined {
+  /** the shape of a node that draws a field, and its place */
+  placeOf(n: ViewNode, loops: Loop[]): ViewNode | undefined {
     if ("use" in n && KIND[n.use]) {
-      const textRefs = (n.children ?? []).flatMap((c) => ("text" in c ? this.fieldsOf(c.text, loops) : []));
-      const primary = textRefs[0];
+      const primary = (n.children ?? []).flatMap((c) => ("text" in c ? this.fieldsOf(c.text, loops) : []))[0];
       if (!primary) return undefined;
       const kind = KIND[n.use]!;
       const fields = [primary, ...(kind === "action" ? this.fieldsOf(n.props?.["Href"], loops) : [])];
       const place: Place = { place: kind === "action" ? "action" : prefixed(primary), kind, fields: fields.map((f) => f.pointer), ...(primary.list ? { list: primary.list } : {}) };
-      const attrs = { ...(n.attrs ?? {}), "data-place": place.place, "data-field": primary.value };
-      return { place, primary, shape: this.shape(kind, n, primary, place.place), page: { ...n, attrs } };
+      this.add(place);
+      const size = n.props?.["Size"];
+      const big = typeof size === "string" && ["2xl", "3xl", "4xl", "5xl"].includes(size);
+      const pick: Record<Exclude<PlaceKind, "media">, [ShapeName, Record<string, Value>]> = {
+        heading: ["ShapeHeading", { size: big ? "lg" : "md", width: primary.list ? "1/2" : "3/4" }],
+        text: ["ShapeText", { lines: primary.list ? "1" : "2" }],
+        badge: ["ShapeBadge", {}],
+        action: ["ShapeCta", {}],
+      };
+      const [name, props] = pick[kind as Exclude<PlaceKind, "media">];
+      return organism(SHAPE[name].name, { ...props, place: place.place, field: fields.map((f) => f.value).join(" ") });
     }
     if ("organism" in n && n.organism === "MediaFrame") {
       const props = n.props ?? {};
       const src = this.fieldsOf(props["src"], loops)[0];
       if (!src) return undefined;
-      const owned = new Set(["title"]); // the alt text falls back to the title: the title is the heading's place
-      const more = [...this.fieldsOf(n.props?.["alt"], loops), ...this.fieldsOf(n.props?.["darkSrc"], loops)].filter((f) => !owned.has(f.field) && f.pointer !== src.pointer);
-      const place: Place = { place: src.list ? prefixed(src) : "media", kind: "media", fields: [src, ...more].map((f) => f.pointer), ...(src.list ? { list: src.list } : {}) };
-      this.nested.add("MediaFrame");
-      const shape = organism(placeName("MediaFrame"), { alt: props["alt"]!, ratio: props["ratio"] ?? "16/9", ...(props["className"] !== undefined ? { className: props["className"] } : {}),
-        place: place.place, field: src.value, shape: src.list ? "avatar" : "media" });
-      return { place, primary: src, shape, page: { ...n, organism: placeName("MediaFrame"), props: { ...props, place: place.place, field: src.value } } };
+      const more = [...this.fieldsOf(props["alt"], loops), ...this.fieldsOf(props["darkSrc"], loops)].filter((f) => f.field !== "title" && f.pointer !== src.pointer);
+      const all = [src, ...more].filter((f, i, a) => a.findIndex((x) => x.pointer === f.pointer) === i);
+      const place: Place = { place: src.list ? prefixed(src) : "media", kind: "media", fields: all.map((f) => f.pointer), ...(src.list ? { list: src.list } : {}) };
+      this.add(place);
+      const field = all.map((f) => f.value).join(" ");
+      return src.list
+        ? organism(SHAPE.ShapeAvatar.name, { place: place.place, field })
+        : organism(SHAPE.ShapeMedia.name, { aspect: ratioClass(props["ratio"]), place: place.place, field });
     }
     return undefined;
   }
 
-  shape(kind: PlaceKind, n: Extract<ViewNode, { use: string }>, f: Field, place: string): ViewNode {
-    const at = { place, field: f.value };
-    const size = n.props?.["Size"];
-    const big = typeof size === "string" && ["2xl", "3xl", "4xl", "5xl"].includes(size);
-    const pick: Record<PlaceKind, [ShapeName, Record<string, Value>]> = {
-      heading: ["ShapeHeading", { size: big ? "lg" : "md", width: f.list ? "1/2" : "3/4" }],
-      text: ["ShapeText", { lines: f.list ? "1" : "2" }],
-      badge: ["ShapeBadge", {}],
-      action: ["ShapeCta", {}],
-      media: ["ShapeText", {}],
-    };
-    const [name, props] = pick[kind];
-    return organism(SHAPE[name].name, { ...props, ...at });
-  }
-
   nodes(ns: ViewNode[], loops: Loop[]): ViewNode[] {
-    return ns.map((n) => this.node(n, loops));
+    return ns.flatMap((n) => this.node(n, loops));
   }
 
-  node(n: ViewNode, loops: Loop[]): ViewNode {
-    const p = this.placeOf(n, loops);
-    if (p) {
-      this.add(p.place);
-      return when(WIRE, [p.shape], [p.page]);
-    }
+  node(n: ViewNode, loops: Loop[]): ViewNode[] {
+    const shape = this.placeOf(n, loops);
+    if (shape) return [shape];
     if ("when" in n) {
-      const test = this.readsContent(n.when, loops) ? or(WIRE, n.when) : n.when;
-      return { ...n, when: test, then: this.nodes(n.then, loops), ...(n.else ? { else: this.nodes(n.else, loops) } : {}) };
+      // a branch that waits for content is drawn in the wireframe anyway; a layout branch (an axis) stays
+      if (this.readsContent(n.when, loops)) return this.nodes(n.then, loops);
+      this.check(n.when);
+      return [{ ...n, then: this.nodes(n.then, loops), ...(n.else ? { else: this.nodes(n.else, loops) } : {}) }];
     }
     if ("each" in n) {
-      const listField = refsOf(n.each).find((r) => this.model.fields[r]?.type === "list");
-      if (!listField) return { ...n, do: this.nodes(n.do, loops) };
+      const listField = refsOf(n.each).find((r) => this.model.fields[r]?.type === "list") ?? fail(`a loop over ${JSON.stringify(n.each)} is not a list field`);
       const f = this.model.fields[listField]!;
-      const index = n.index ?? `${n.as}Index`;
-      const placeholder = (i: number): Value => Object.fromEntries(Object.entries(f.item!.fields).map(([k, x]) => [k, x.type === "id" ? `wire-${i}` : ""]));
-      const items = cond(WIRE, list(...Array.from({ length: WIRE_ITEMS }, (_, i) => placeholder(i + 1))), n.each);
-      return { ...n, each: items, index, do: this.nodes(n.do, [...loops, { as: n.as, index, list: listField, item: f.item!.fields }]) };
+      return Array.from({ length: WIRE_ITEMS }, (_, i) => this.nodes(n.do, [...loops, { as: n.as, index: i, list: listField, item: f.item!.fields }])).flat();
     }
-    if ("use" in n) return { ...n, ...(n.children ? { children: this.nodes(n.children, loops) } : {}) };
-    if ("organism" in n && n.slots) return { ...n, slots: Object.fromEntries(Object.entries(n.slots).map(([k, s]) => [k, { ...s, do: this.nodes(s.do, loops) }])) };
-    return n;
+    if ("use" in n) return [this.lower(n, loops)];
+    if ("text" in n || "html" in n) fail("a text outside a place");
+    return fail(`cannot draw ${JSON.stringify(n).slice(0, 80)} in a wireframe`);
+  }
+
+  /** a layout composition onto the kit Box: its tag, the classes of its keys, the classes of the spec; nothing else */
+  lower(n: Extract<ViewNode, { use: string }>, loops: Loop[]): ViewNode {
+    const l = LAYOUT[n.use] ?? fail(`${n.use} is not a layout composition (only ${Object.keys(LAYOUT).join(", ")})`);
+    const props = n.props ?? {};
+    const classes: Value[] = l.base ? [l.base] : [];
+    for (const [k, v] of Object.entries(props)) {
+      if (k === "Class") { this.check(v); classes.push(v); continue; }
+      if (k === l.tagProp) continue;
+      const key = l.keys?.[k] ?? fail(`${n.use} prop ${k} has no wireframe lowering`);
+      if (typeof v !== "string") fail(`${n.use} ${k} is not a literal`);
+      classes.push(key(v));
+    }
+    const tag = l.tagProp && props[l.tagProp] !== undefined ? props[l.tagProp]! : l.tag;
+    const attrs = { ...(n.attrs ?? {}), ...(l.attrs ?? {}) };
+    delete attrs["aria-labelledby"]; delete attrs["aria-label"]; // the heading is a shape: a wireframe names no landmark
+    for (const v of Object.values(attrs)) this.check(v);
+    const cls: Value | undefined = classes.length === 0 ? undefined : classes.length === 1 ? classes[0] : cn(...classes);
+    return {
+      use: "Box",
+      props: { ...(tag !== undefined ? { Tag: tag } : {}), ...(cls !== undefined ? { Class: cls } : {}) },
+      ...(Object.keys(attrs).length ? { attrs } : {}),
+      ...(n.children ? { children: this.nodes(n.children, loops) } : {}),
+    };
+  }
+
+  /** a layout value may read only the props of the prototype (axes, padding) */
+  check(v: Value | undefined): void {
+    for (const r of refsOf(v)) if (!this.props.has(r)) fail(`a layout value reads ${r}, not an axis or a setting of the prototype`);
   }
 }
 
 const prefixed = (f: Field): string => (f.list ? `${f.list}.${f.field}` : f.field);
 
-/** the root attributes that name the heading: dropped in the wireframe (the heading is a shape there) */
-function rootAttrs(view: ViewNode[]): ViewNode[] {
-  return view.map((n) => {
-    if (!("use" in n) || !n.attrs?.["aria-labelledby"]) return n;
-    return { ...n, attrs: { ...n.attrs, "aria-labelledby": cond(WIRE, undef(), n.attrs["aria-labelledby"]!) } };
-  });
-}
-
-/** the prototype of a clean organism for its model, and its places */
-export function project(clean: OrganismSpec, model: ModelSpec): { organism: OrganismSpec; places: Place[]; nested: string[] } {
-  const pr = new Projector(model);
-  const view = rootAttrs(pr.nodes(clean.view, []));
+/** the prototype of a clean organism for its block and model, and its places */
+export function project(clean: OrganismSpec, block: BlockSpec, model: ModelSpec): { organism: OrganismSpec; places: Place[] } {
+  const keep = new Set<string>([...Object.keys(block.axes), ...PROTOTYPE_SETTINGS]);
+  const pr = new Projector(model, keep);
+  const view = pr.nodes(clean.view, []);
   const organismSpec: OrganismSpec = {
     ...clean,
-    docs: `${clean.docs} Prototype (packages/prototypes): mode wireframe draws the places as shapes, mode page draws the content with data-place and data-field on each place.`,
-    props: [...clean.props, { name: "mode", type: { ts: MODES.map((m) => JSON.stringify(m)).join(" | ") }, default: "wireframe", docs: "wireframe: the shapes of the places; page: the content" }],
-    derived: [...(clean.derived ?? []), { name: "wire", value: eq(ref("mode"), "wireframe") }],
+    docs: `${clean.docs} Prototype (packages/prototypes): the wireframe, rectangles only; each shape carries data-place and data-field.`,
+    records: {},
+    props: clean.props.filter((p) => keep.has(p.name)),
+    derived: [],
     view,
   };
-  return { organism: organismSpec, places: [...pr.places.values()], nested: [...pr.nested] };
-}
-
-/** a nested organism that carries a place on its root: props place, field, shape become data-place, data-field, data-shape */
-export function placeCopy(o: OrganismSpec): OrganismSpec {
-  const extra = [
-    { name: "place", type: "string" as const, docs: "the place of the prototype (data-place)" },
-    { name: "field", type: "string" as const, docs: "the JSON pointer of the field it draws (data-field)" },
-    { name: "shape", type: "string" as const, docs: "the shape it stands for in the wireframe (data-shape)" },
-  ];
-  const tag = (ns: ViewNode[]): ViewNode[] => ns.map((n) => ("use" in n
-    ? { ...n, attrs: { ...(n.attrs ?? {}), "data-place": ref("place"), "data-field": ref("field"), "data-shape": ref("shape"), "data-role": cond(ref("shape"), "media", undef()) } }
-    : "when" in n ? { ...n, then: tag(n.then), ...(n.else ? { else: tag(n.else) } : {}) } : n));
-  return { ...o, id: `${o.id.split(".")[0]}.${o.id.split(".")[1]}-place`, name: placeName(o.name), docs: `${o.docs} The copy of packages/prototypes that carries a place on its root.`, props: [...o.props, ...extra], view: tag(o.view) };
+  return { organism: organismSpec, places: [...pr.places.values()] };
 }

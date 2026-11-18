@@ -11,7 +11,7 @@
 </script>
 
 <script lang="ts">
-  import Box from "../compose/Box.svelte";
+  import Box from "@ui8kit/kit/ui/box/Box.svelte";
 
   let { lines = "2", place, field }: ShapeTextProps = $props();
 </script>
