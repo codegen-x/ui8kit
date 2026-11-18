@@ -330,6 +330,14 @@
         "vite": "^8.3.0",
       },
     },
+    "packages/prototypes": {
+      "name": "@codegen-x/prototypes",
+      "version": "0.0.0",
+      "devDependencies": {
+        "@types/bun": "^1.4.2",
+        "typescript": "~6.0.2",
+      },
+    },
     "packages/shared/app": {
       "name": "@ui8kit/app-shared",
       "version": "0.0.0",
@@ -513,6 +521,8 @@
     "@codegen-x/kit-twig": ["@codegen-x/kit-twig@workspace:packages/kit/twig"],
 
     "@codegen-x/kit-vue": ["@codegen-x/kit-vue@workspace:packages/kit/vue"],
+
+    "@codegen-x/prototypes": ["@codegen-x/prototypes@workspace:packages/prototypes"],
 
     "@codegen-x/react-compose": ["@codegen-x/react-compose@workspace:packages/kit-compose/react"],
 

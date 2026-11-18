@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES2023", "lib": ["ES2023", "DOM", "DOM.Iterable"], "module": "ESNext", "moduleResolution": "bundler",
+    "strict": true, "noEmit": true, "skipLibCheck": true, "resolveJsonModule": true, "isolatedModules": true, "verbatimModuleSyntax": true,
+    "paths": { "@ui8kit/kit/ui/*": ["../kit/svelte/src/ui/*"], "@ui8kit/kit/utils": ["../kit/svelte/src/utils/index.ts"] }
+  },
+  "include": ["out/svelte/**/*.ts", "out/svelte/**/*.svelte"]
+}

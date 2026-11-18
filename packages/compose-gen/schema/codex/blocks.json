@@ -3404,6 +3404,51 @@
       "emptyMode": "omit"
     },
     {
+      "id": "HeroSimple",
+      "surface": "kit-block",
+      "spec": "block.herosimple",
+      "source": "packages/compose-gen/specs/blocks/herosimple.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "image",
+        "imageDark",
+        "actionHref",
+        "level",
+        "media",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "badge",
+          "dictionary": "marketing.heroSimple.badge",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "marketing.heroSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.heroSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "imageAlt",
+          "dictionary": "marketing.heroSimple.imageAlt",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "marketing.heroSimple.actionLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "HeroSplit",
       "surface": "kit-block",
       "spec": "block.herosplit",
@@ -7136,6 +7181,43 @@
       "emptyState": true
     },
     {
+      "id": "TeamSimple",
+      "surface": "kit-block",
+      "spec": "block.teamsimple",
+      "source": "packages/compose-gen/specs/blocks/teamsimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "members",
+          "collection": "members",
+          "kind": "member",
+          "record": "SimpleMember",
+          "map": "teamMember",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "cols",
+        "surface",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.teamSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.teamSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "TemplateGrid",
       "surface": "kit-block",
       "spec": "block.templates",
@@ -8572,6 +8654,14 @@
           "list": true
         },
         {
+          "prop": "TeamSimple.members",
+          "collection": "members",
+          "kind": "member",
+          "record": "SimpleMember",
+          "map": "teamMember",
+          "list": true
+        },
+        {
           "prop": "TemplateGrid.templates",
           "collection": "templates",
           "kind": "template",
@@ -8744,6 +8834,7 @@
         "block.grocerylist",
         "block.header",
         "block.hero",
+        "block.herosimple",
         "block.herosplit",
         "block.iconwall",
         "block.jobs",
@@ -8795,6 +8886,7 @@
         "block.summary",
         "block.sushisets",
         "block.team",
+        "block.teamsimple",
         "block.templates",
         "block.testimonials",
         "block.timeline",
@@ -11611,6 +11703,106 @@
         "block.steps",
         "block.sticky",
         "block.videos"
+      ]
+    },
+    {
+      "id": "screen.theme-marketing-simple",
+      "surface": "compose-gen-screen",
+      "source": "packages/compose-gen/specs/screens/theme-marketing-simple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "NavBar.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "TeamSimple.members",
+          "collection": "members",
+          "kind": "member",
+          "record": "SimpleMember",
+          "map": "teamMember",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingSimple.home.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "pages.marketingSimple.home.text",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "pages.marketingSimple.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingSimple.team.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "pages.marketingSimple.team.text",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "pages.marketingSimple.team.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingSimple.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingSimple.team.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": false,
+      "uses": [
+        "block.herosimple",
+        "block.navbar",
+        "block.sitemap",
+        "block.teamsimple"
       ]
     },
     {

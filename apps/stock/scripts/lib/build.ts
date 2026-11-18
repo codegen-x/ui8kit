@@ -28,7 +28,7 @@ const jsonFiles = (dir: string): string[] => readdirSync(dir).filter((f) => f.en
 export const THEMES = ["marketing", "commerce", "promo", "content", "account", "dashboard", "onboarding", "support"] as const;
 
 type BlockSpec = {
-  id: string; name: string; docs: string; theme: string; group: string; organism: string; fit?: "section" | "card";
+  id: string; name: string; docs: string; theme: string; group: string; organism: string; fit?: "section" | "card"; line?: string; model?: string;
   alt?: { axis: string; values: string[]; organism: string };
   axes: Record<string, string[]>; defaults: Record<string, string>;
   variants: { id: string; set: Record<string, string>; props?: Record<string, SpecValue> }[];
@@ -47,6 +47,8 @@ type Ctx = {
   patterns?: string[];
   /** the variant is covered end to end by the BuildY Inspector (content/buildy.v0.json) */
   buildy?: boolean;
+  /** the product line of the block (BlockSpec.line: "simple"), the system facet `line` */
+  line?: string;
 };
 
 const has = (list: string[] | undefined, v: string | undefined): boolean => !!list && v !== undefined && list.includes(v);
@@ -143,6 +145,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       else if (f.derive === "pattern") vals = f.values.map((v) => v.id).filter((v) => x.patterns?.includes(v));
       else if (f.derive === "runtime") vals = runtimes;
       else if (f.derive === "buildy") vals = x.buildy ? f.values.map((v) => v.id) : [];
+      else if (f.derive === "line") vals = f.values.map((v) => v.id).filter((v) => v === x.line);
       else if (f.derive.startsWith("axis:")) vals = x.axes[f.derive.slice(5)] !== undefined ? [x.axes[f.derive.slice(5)]!] : [];
       out[f.id] = vals;
       x.facets[f.id] = vals;
@@ -244,7 +247,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       }
       const o = orgByName.get(org);
       const computed = o && isModular(rootGrid(o.view, variantProps(o.props, b.sample.props, (b.data ?? []).map((d) => d.as), { ...b.defaults, ...v.set }, v.props), orgByName)) ? ["modular-grid"] : [];
-      const ctx = { ...blockCtx(b, v.set), patterns: [...computed, ...(patternMap.labels[key] ?? []), ...(patternMap.labels[`${key}/${v.id}`] ?? [])], buildy: buildy.has(`block.${key}/${v.id}`) };
+      const ctx = { ...blockCtx(b, v.set), patterns: [...computed, ...(patternMap.labels[key] ?? []), ...(patternMap.labels[`${key}/${v.id}`] ?? [])], buildy: buildy.has(`block.${key}/${v.id}`), ...(b.line ? { line: b.line } : {}) };
       const labels = labelsOf("block", ctx, runtimesOf([org]));
       variantLabels.set(`${key}/${v.id}`, labels);
       const preview: Preview = { kind: "block", block: key, variant: v.id };

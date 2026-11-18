@@ -1,0 +1,372 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.hero-simple",
+  "name": "HeroSimple",
+  "docs": "The simple hero (model hero@1): an optional badge, the heading, a description, one link as the action and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).",
+  "records": {},
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "badge",
+      "type": "string",
+      "default": "",
+      "docs": "a short pill above the heading; empty: no badge"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "docs": "one paragraph under the heading; empty: none"
+    },
+    {
+      "name": "image",
+      "type": "string",
+      "docs": "address of the picture (an https URL or a path); none: the placeholder"
+    },
+    {
+      "name": "imageAlt",
+      "type": "string",
+      "docs": "alt text of the picture; none: the title"
+    },
+    {
+      "name": "imageDark",
+      "type": "string",
+      "docs": "address of the picture in the dark theme; none: image"
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the action; the link is drawn when the label and the address are both set"
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the action"
+    },
+    {
+      "name": "level",
+      "type": {
+        "ts": "1 | 2 | 3"
+      },
+      "default": 2,
+      "docs": "the level of the heading (1 on the first section of a page)"
+    },
+    {
+      "name": "media",
+      "type": {
+        "ts": "\"end\" | \"start\" | \"top\""
+      },
+      "default": "end"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "titleId",
+      "value": {
+        "op": "add",
+        "args": [
+          {
+            "$": "id"
+          },
+          "-title"
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "section",
+        "Class": "py-16"
+      },
+      "attrs": {
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "hero-simple"
+      },
+      "children": [
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "children": [
+            {
+              "use": "Box",
+              "props": {
+                "Class": {
+                  "op": "cn",
+                  "args": [
+                    "grid grid-cols-1 gap-8",
+                    {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "media"
+                            },
+                            "top"
+                          ]
+                        },
+                        "",
+                        "items-center md:grid-cols-2"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "when": {
+                    "op": "ne",
+                    "args": [
+                      {
+                        "$": "media"
+                      },
+                      "end"
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "MediaFrame",
+                      "props": {
+                        "alt": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "$": "imageAlt"
+                            },
+                            {
+                              "$": "imageAlt"
+                            },
+                            {
+                              "$": "title"
+                            }
+                          ]
+                        },
+                        "src": {
+                          "$": "image"
+                        },
+                        "darkSrc": {
+                          "$": "imageDark"
+                        },
+                        "ratio": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "media"
+                                },
+                                "top"
+                              ]
+                            },
+                            "21/9",
+                            "4/3"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "6",
+                    "Align": "start"
+                  },
+                  "children": [
+                    {
+                      "when": {
+                        "$": "badge"
+                      },
+                      "then": [
+                        {
+                          "use": "Badge",
+                          "props": {
+                            "Variant": "secondary"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "badge"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Title",
+                      "props": {
+                        "As": {
+                          "$": "level"
+                        },
+                        "Size": "4xl",
+                        "Weight": "bold",
+                        "Class": "tracking-tight"
+                      },
+                      "attrs": {
+                        "id": {
+                          "$": "titleId"
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "title"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "$": "description"
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "lg",
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "description"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "and",
+                        "args": [
+                          {
+                            "$": "actionLabel"
+                          },
+                          {
+                            "$": "actionHref"
+                          }
+                        ]
+                      },
+                      "then": [
+                        {
+                          "use": "Button",
+                          "props": {
+                            "Variant": "default",
+                            "Size": "lg",
+                            "Href": {
+                              "$": "actionHref"
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "actionLabel"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "media"
+                      },
+                      "end"
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "MediaFrame",
+                      "props": {
+                        "alt": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "$": "imageAlt"
+                            },
+                            {
+                              "$": "imageAlt"
+                            },
+                            {
+                              "$": "title"
+                            }
+                          ]
+                        },
+                        "src": {
+                          "$": "image"
+                        },
+                        "darkSrc": {
+                          "$": "imageDark"
+                        },
+                        "ratio": "4/3"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

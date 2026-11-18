@@ -48,7 +48,7 @@ fails on any import or path back into them). Skins: `packages/skins`; rules gate
 - Edit specs, schemas, fixtures, content (`packages/compose-gen`), skins (`packages/skins`), the composition map and recipes
   (`packages/kit-compose/src/map.ts`, `packages/kit-compose/variants`) and `packages/compose-gen/screens/src/authoring`; then `bun run build`
   (it first rewrites the authored JSON specs: `bun packages/compose-gen/check.ts --write --no-check`). Guide: docs/specs-guide.md.
-- Before a commit: `bun run verify` (xgen-exit-guard + kit:check + compose:check (compose-gen check: 12 groups + drift of every generated tree) +
+- Before a commit: `bun run verify` (xgen-exit-guard + kit:check + compose:check (compose-gen check: 13 groups + drift of every generated tree) +
   ui-gates + skins check + codex blocks + rules gate + codex:validate + typecheck + test), `bun run lint:px`, `bun run audit:push`.
   Touching blocks, screens or hosts: also `bun run build:hosts && bun run e2e` (compose-gen e2e, needs Chrome).
 - kit-compose tests can run out of memory in one process; per file: `bun run --cwd packages/kit-compose test`. CI sets

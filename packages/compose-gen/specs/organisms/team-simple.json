@@ -1,0 +1,444 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.team-simple",
+  "name": "TeamSimple",
+  "docs": "The simple team (model team@1): the heading, a description and the members as a list, each with a portrait, the name and a line. Axes: cols (2, 3, 4 columns from md up), surface (plain, cards).",
+  "records": {
+    "SimpleMember": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "avatar",
+        "type": "string",
+        "optional": true
+      },
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "optional": true
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "docs": "one paragraph under the heading; empty: none"
+    },
+    {
+      "name": "members",
+      "type": {
+        "ts": "SimpleMember[]"
+      },
+      "required": true,
+      "docs": "the people, in the order they are shown (1 to 12)"
+    },
+    {
+      "name": "level",
+      "type": {
+        "ts": "1 | 2 | 3"
+      },
+      "default": 2,
+      "docs": "the level of the heading (1 on the first section of a page)"
+    },
+    {
+      "name": "cols",
+      "type": {
+        "ts": "\"2\" | \"3\" | \"4\""
+      },
+      "default": "3"
+    },
+    {
+      "name": "surface",
+      "type": {
+        "ts": "\"plain\" | \"cards\""
+      },
+      "default": "plain"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "titleId",
+      "value": {
+        "op": "add",
+        "args": [
+          {
+            "$": "id"
+          },
+          "-title"
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "section",
+        "Class": "py-16"
+      },
+      "attrs": {
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "team-simple"
+      },
+      "children": [
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "children": [
+            {
+              "use": "Stack",
+              "props": {
+                "Gap": "12"
+              },
+              "children": [
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "4",
+                    "Class": "max-w-2xl"
+                  },
+                  "children": [
+                    {
+                      "use": "Title",
+                      "props": {
+                        "As": {
+                          "$": "level"
+                        },
+                        "Size": "3xl",
+                        "Weight": "bold",
+                        "Class": "tracking-tight"
+                      },
+                      "attrs": {
+                        "id": {
+                          "$": "titleId"
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "title"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "$": "description"
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "base",
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "description"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "List",
+                  "props": {
+                    "Tag": "ul",
+                    "Class": {
+                      "op": "cn",
+                      "args": [
+                        "m-0 grid list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2",
+                        {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "cols"
+                                },
+                                "2"
+                              ]
+                            },
+                            "",
+                            {
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "cols"
+                                    },
+                                    "3"
+                                  ]
+                                },
+                                "md:grid-cols-3",
+                                "md:grid-cols-4"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "each": {
+                        "$": "members"
+                      },
+                      "as": "m",
+                      "key": {
+                        "$": "m.id"
+                      },
+                      "do": [
+                        {
+                          "use": "ListItem",
+                          "props": {
+                            "Class": {
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "surface"
+                                    },
+                                    "cards"
+                                  ]
+                                },
+                                "flex",
+                                "flex flex-col gap-4"
+                              ]
+                            }
+                          },
+                          "attrs": {
+                            "data-slot": "member"
+                          },
+                          "children": [
+                            {
+                              "when": {
+                                "op": "eq",
+                                "args": [
+                                  {
+                                    "$": "surface"
+                                  },
+                                  "cards"
+                                ]
+                              },
+                              "then": [
+                                {
+                                  "use": "Card",
+                                  "props": {
+                                    "Class": "flex w-full flex-col gap-4 p-6"
+                                  },
+                                  "children": [
+                                    {
+                                      "organism": "MediaFrame",
+                                      "props": {
+                                        "alt": {
+                                          "$": "m.title"
+                                        },
+                                        "src": {
+                                          "$": "m.avatar"
+                                        },
+                                        "ratio": "1/1",
+                                        "className": "size-16 rounded-full"
+                                      }
+                                    },
+                                    {
+                                      "use": "Stack",
+                                      "props": {
+                                        "Gap": "2"
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "Title",
+                                          "props": {
+                                            "As": {
+                                              "op": "add",
+                                              "args": [
+                                                {
+                                                  "$": "level"
+                                                },
+                                                1
+                                              ]
+                                            },
+                                            "Size": "lg",
+                                            "Weight": "semibold"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "m.title"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "when": {
+                                            "$": "m.description"
+                                          },
+                                          "then": [
+                                            {
+                                              "use": "Text",
+                                              "props": {
+                                                "Size": "sm",
+                                                "Class": "text-muted-foreground"
+                                              },
+                                              "children": [
+                                                {
+                                                  "text": {
+                                                    "$": "m.description"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "else": [
+                                {
+                                  "organism": "MediaFrame",
+                                  "props": {
+                                    "alt": {
+                                      "$": "m.title"
+                                    },
+                                    "src": {
+                                      "$": "m.avatar"
+                                    },
+                                    "ratio": "1/1",
+                                    "className": "size-16 rounded-full"
+                                  }
+                                },
+                                {
+                                  "use": "Stack",
+                                  "props": {
+                                    "Gap": "2"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "Title",
+                                      "props": {
+                                        "As": {
+                                          "op": "add",
+                                          "args": [
+                                            {
+                                              "$": "level"
+                                            },
+                                            1
+                                          ]
+                                        },
+                                        "Size": "lg",
+                                        "Weight": "semibold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "m.title"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "when": {
+                                        "$": "m.description"
+                                      },
+                                      "then": [
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "sm",
+                                            "Class": "text-muted-foreground"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "m.description"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

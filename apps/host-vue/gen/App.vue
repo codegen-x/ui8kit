@@ -24,6 +24,7 @@ const LOADERS: Record<string, () => Promise<{ default: Component }>> = {
   "theme-marketing-landing": () => import("./screens/ThemeMarketingLandingScreen.vue"),
   "theme-marketing-pricing": () => import("./screens/ThemeMarketingPricingScreen.vue"),
   "theme-marketing-product": () => import("./screens/ThemeMarketingProductScreen.vue"),
+  "theme-marketing-simple": () => import("./screens/ThemeMarketingSimpleScreen.vue"),
   "theme-onboarding-flow": () => import("./screens/ThemeOnboardingFlowScreen.vue"),
   "theme-promo-campaign": () => import("./screens/ThemePromoCampaignScreen.vue"),
   "theme-restaurant-house": () => import("./screens/ThemeRestaurantHouseScreen.vue"),

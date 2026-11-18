@@ -26,6 +26,7 @@ import FooterPage from "./BlocksScreen/FooterPage.vue";
 import FootersplitPage from "./BlocksScreen/FootersplitPage.vue";
 import HeaderPage from "./BlocksScreen/HeaderPage.vue";
 import HeroPage from "./BlocksScreen/HeroPage.vue";
+import HerosimplePage from "./BlocksScreen/HerosimplePage.vue";
 import HerosplitPage from "./BlocksScreen/HerosplitPage.vue";
 import IconwallPage from "./BlocksScreen/IconwallPage.vue";
 import JobsPage from "./BlocksScreen/JobsPage.vue";
@@ -46,6 +47,7 @@ import StatsPage from "./BlocksScreen/StatsPage.vue";
 import StepsPage from "./BlocksScreen/StepsPage.vue";
 import StickyPage from "./BlocksScreen/StickyPage.vue";
 import TeamPage from "./BlocksScreen/TeamPage.vue";
+import TeamsimplePage from "./BlocksScreen/TeamsimplePage.vue";
 import TemplatesPage from "./BlocksScreen/TemplatesPage.vue";
 import TestimonialsPage from "./BlocksScreen/TestimonialsPage.vue";
 import UsagePage from "./BlocksScreen/UsagePage.vue";
@@ -145,6 +147,7 @@ const ROUTES = [
   {"path":"footersplit","area":"footersplit"},
   {"path":"header","area":"header"},
   {"path":"hero","area":"hero"},
+  {"path":"herosimple","area":"herosimple"},
   {"path":"herosplit","area":"herosplit"},
   {"path":"iconwall","area":"iconwall"},
   {"path":"jobs","area":"jobs"},
@@ -165,6 +168,7 @@ const ROUTES = [
   {"path":"steps","area":"steps"},
   {"path":"sticky","area":"sticky"},
   {"path":"team","area":"team"},
+  {"path":"teamsimple","area":"teamsimple"},
   {"path":"templates","area":"templates"},
   {"path":"testimonials","area":"testimonials"},
   {"path":"usage","area":"usage"},
@@ -268,6 +272,7 @@ const actions = { toggleTheme };
     <FootersplitPage v-else-if="route.area === 'footersplit'" />
     <HeaderPage v-else-if="route.area === 'header'" />
     <HeroPage v-else-if="route.area === 'hero'" />
+    <HerosimplePage v-else-if="route.area === 'herosimple'" />
     <HerosplitPage v-else-if="route.area === 'herosplit'" />
     <IconwallPage v-else-if="route.area === 'iconwall'" />
     <JobsPage v-else-if="route.area === 'jobs'" />
@@ -288,6 +293,7 @@ const actions = { toggleTheme };
     <StepsPage v-else-if="route.area === 'steps'" />
     <StickyPage v-else-if="route.area === 'sticky'" />
     <TeamPage v-else-if="route.area === 'team'" />
+    <TeamsimplePage v-else-if="route.area === 'teamsimple'" />
     <TemplatesPage v-else-if="route.area === 'templates'" />
     <TestimonialsPage v-else-if="route.area === 'testimonials'" />
     <UsagePage v-else-if="route.area === 'usage'" />

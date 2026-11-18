@@ -41,6 +41,10 @@ export interface BlockDef {
   name: string;
   docs: string;
   organism: string;
+  /** the product line ("simple": one content model for every variant, Stock facet line) */
+  line?: BlockSpec["line"];
+  /** the content model the organism props are: "<id>@<version>" (specs/models) */
+  model?: string;
   /** a second organism for the variants that set `axis` to values[1] (HeroPrompt for chrome "nav") */
   alt?: BlockSpec["alt"];
   fit?: "section" | "card";
@@ -84,6 +88,8 @@ export function makeDefine(organisms: OrganismSpec[], patterns: Set<string>) {
       group: d.group,
       ...(d.fit ? { fit: d.fit } : {}),
       organism: d.organism,
+      ...(d.line ? { line: d.line } : {}),
+      ...(d.model ? { model: d.model } : {}),
       ...(d.alt ? { alt: d.alt } : {}),
       axes,
       defaults,

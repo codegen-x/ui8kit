@@ -28,6 +28,7 @@ import { featureShowcaseBlocks } from "./blocks-feature-showcase";
 import { storyTabsBlocks } from "./blocks-story-tabs";
 import { moreBlocks } from "./blocks-more";
 import { vibeBlocks } from "./blocks-vibe";
+import { simpleBlocks } from "./blocks-simple";
 
 const header = define({
   key: "header", theme: "marketing", group: "navigation", name: "Header", docs: "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -221,7 +222,7 @@ const steps = define({
 });
 
 export const marketingBlocks = [header, hero, logos, features, stats, testimonials, steps, pricing, plan, faq, cta, footer];
-const all = [...marketingBlocks, ...commerceBlocks, ...shopBlocks, ...foodBlocks, ...restaurantBlocks, ...moreBlocks, ...vibeBlocks, ...companyBlocks, ...shellBlocks, ...heroBlocks, ...faqBlocks, ...ctaBlocks, ...quoteBlocks, ...postBlocks, ...footerBlocks, ...featureSplitBlocks, ...pageTrailBlocks, ...postShowcaseBlocks, ...mediaListBlocks, ...featureShowcaseBlocks, ...storyTabsBlocks];
+const all = [...marketingBlocks, ...commerceBlocks, ...shopBlocks, ...foodBlocks, ...restaurantBlocks, ...moreBlocks, ...vibeBlocks, ...companyBlocks, ...shellBlocks, ...heroBlocks, ...faqBlocks, ...ctaBlocks, ...quoteBlocks, ...postBlocks, ...footerBlocks, ...featureSplitBlocks, ...pageTrailBlocks, ...postShowcaseBlocks, ...mediaListBlocks, ...featureShowcaseBlocks, ...storyTabsBlocks, ...simpleBlocks];
 
 export const blocks: BlockSpec[] = all.map((x) => x.block);
 export const blockTexts: Record<string, BlockTexts> = Object.fromEntries(all.map((x) => [x.block.id.slice("block.".length), x.texts]));

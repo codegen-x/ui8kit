@@ -25,6 +25,7 @@ import { FooterPage } from "./BlocksScreen/FooterPage";
 import { FootersplitPage } from "./BlocksScreen/FootersplitPage";
 import { HeaderPage } from "./BlocksScreen/HeaderPage";
 import { HeroPage } from "./BlocksScreen/HeroPage";
+import { HerosimplePage } from "./BlocksScreen/HerosimplePage";
 import { HerosplitPage } from "./BlocksScreen/HerosplitPage";
 import { IconwallPage } from "./BlocksScreen/IconwallPage";
 import { JobsPage } from "./BlocksScreen/JobsPage";
@@ -45,6 +46,7 @@ import { StatsPage } from "./BlocksScreen/StatsPage";
 import { StepsPage } from "./BlocksScreen/StepsPage";
 import { StickyPage } from "./BlocksScreen/StickyPage";
 import { TeamPage } from "./BlocksScreen/TeamPage";
+import { TeamsimplePage } from "./BlocksScreen/TeamsimplePage";
 import { TemplatesPage } from "./BlocksScreen/TemplatesPage";
 import { TestimonialsPage } from "./BlocksScreen/TestimonialsPage";
 import { UsagePage } from "./BlocksScreen/UsagePage";
@@ -144,6 +146,7 @@ const ROUTES = [
   {"path":"footersplit","area":"footersplit"},
   {"path":"header","area":"header"},
   {"path":"hero","area":"hero"},
+  {"path":"herosimple","area":"herosimple"},
   {"path":"herosplit","area":"herosplit"},
   {"path":"iconwall","area":"iconwall"},
   {"path":"jobs","area":"jobs"},
@@ -164,6 +167,7 @@ const ROUTES = [
   {"path":"steps","area":"steps"},
   {"path":"sticky","area":"sticky"},
   {"path":"team","area":"team"},
+  {"path":"teamsimple","area":"teamsimple"},
   {"path":"templates","area":"templates"},
   {"path":"testimonials","area":"testimonials"},
   {"path":"usage","area":"usage"},
@@ -287,6 +291,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <HeaderPage />
         ) : route.area === "hero" ? (
           <HeroPage />
+        ) : route.area === "herosimple" ? (
+          <HerosimplePage />
         ) : route.area === "herosplit" ? (
           <HerosplitPage />
         ) : route.area === "iconwall" ? (
@@ -327,6 +333,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <StickyPage />
         ) : route.area === "team" ? (
           <TeamPage />
+        ) : route.area === "teamsimple" ? (
+          <TeamsimplePage />
         ) : route.area === "templates" ? (
           <TemplatesPage />
         ) : route.area === "testimonials" ? (

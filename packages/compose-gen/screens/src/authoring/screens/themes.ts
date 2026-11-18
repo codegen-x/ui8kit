@@ -11,7 +11,7 @@ interface Page { path: string; lead: string; head: Head; rest: string[] }
 export interface ThemeApp { name: string; title: string; docs: string; footer: string; pages: Page[] }
 
 /** the lead blocks that take the title and the text of the page; the others (post, product) read them from their data */
-const TAKES_TEXT = new Set(["pagehead", "hero", "errorpage", "authpage"]);
+const TAKES_TEXT = new Set(["pagehead", "hero", "errorpage", "authpage", "herosimple"]);
 /** the key of an app in the dictionary: no hyphen, a hyphen would read as a minus in a path */
 export const keyOf = (name: string): string => name.replace(/-(\w)/g, (_, c: string) => c.toUpperCase());
 export const areaOf = (path: string): string => (path === "" ? "home" : path);
@@ -56,6 +56,14 @@ export const themeApps: ThemeApp[] = [
       { path: "plans", lead: "pagehead.start", head: ["Free or pro", "Start free; the pro plan adds the rest.", "See the usage page"], rest: ["pricing.duo", "plan.standard", "pricing.stack", "compare.highlight"] },
       { path: "usage", lead: "pagehead.muted", head: ["Pay for what you use", "Slide to your volume or buy a pack of credits.", "See how we compare"], rest: ["usage.card", "credits.tiles4", "credits.rows", "pricing.annual", "cta.row"] },
       { path: "compare", lead: "hero.muted", head: ["Why teams switch", "Us against the others, line by line.", "Back to the plans"], rest: ["compare.rivals", "testimonials.featured", "faq.search", "cta.quote"] },
+    ],
+  },
+  {
+    name: "marketing-simple", title: "Simple line", footer: "sitemap.columns",
+    docs: "The simple line: blocks with one content model each (hero@1, team@1), the same content in every variant. A home page with the hero and the team in columns, and a team page with the wide hero and the team on cards.",
+    pages: [
+      { path: "", lead: "herosimple.mediaEnd", head: ["Simple blocks, one content model", "Every variant of a simple block reads the same content, so a layout changes without touching a word.", "Meet the team"], rest: ["teamsimple.cols3", "herosimple.mediaStart", "teamsimple.cols2"] },
+      { path: "team", lead: "herosimple.mediaTop", head: ["The people behind the blocks", "Eight people, one list, four layouts.", "Back to the start"], rest: ["teamsimple.cards3", "teamsimple.cols4"] },
     ],
   },
   {
@@ -208,6 +216,7 @@ const page = (app: ThemeApp, i: number): BlockUse[] => {
     hero: { title: at("title"), text: at("text"), actions: { cta: at("cta"), href } },
     errorpage: { title: at("title"), text: at("text"), actions: { cta: at("cta"), href } },
     authpage: { title: at("title"), text: at("text"), submit: at("cta") },
+    herosimple: { level: 1, title: at("title"), description: at("text"), actionLabel: at("cta"), actionHref: href },
   };
   return [{ block: lb, variant: lv, ...(lead[lb] ? { props: lead[lb] } : {}) }, ...p.rest.map((r) => { const [b, v] = split(r); return { block: b, variant: v }; })];
 };

@@ -1,0 +1,87 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.herosimple",
+  "name": "Simple hero",
+  "docs": "A badge, the heading, one paragraph and one link as the action, with one picture at the end, at the start or on top.",
+  "theme": "marketing",
+  "group": "hero",
+  "organism": "HeroSimple",
+  "line": "simple",
+  "model": "hero@1",
+  "axes": {
+    "media": [
+      "end",
+      "start",
+      "top"
+    ]
+  },
+  "defaults": {
+    "media": "end"
+  },
+  "variants": [
+    {
+      "id": "mediaEnd",
+      "set": {}
+    },
+    {
+      "id": "mediaStart",
+      "set": {
+        "media": "start"
+      }
+    },
+    {
+      "id": "mediaTop",
+      "set": {
+        "media": "top"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section[aria-labelledby] h2",
+      "n": 1
+    },
+    {
+      "sel": "[data-slot=\"badge\"]",
+      "n": 1
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 1
+    },
+    {
+      "sel": "button",
+      "n": 0
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 1
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "herosimple",
+      "badge": {
+        "$": "ui.marketing.heroSimple.badge"
+      },
+      "title": {
+        "$": "ui.marketing.heroSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.heroSimple.description"
+      },
+      "imageAlt": {
+        "$": "ui.marketing.heroSimple.imageAlt"
+      },
+      "actionLabel": {
+        "$": "ui.marketing.heroSimple.actionLabel"
+      },
+      "actionHref": "#/start"
+    }
+  }
+}

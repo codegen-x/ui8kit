@@ -40,6 +40,7 @@ const SECTIONS = [
     cat("marketing-cta", "Call to action", ...all("cta")),
     cat("marketing-cta-proof", "Calls to action with proof", ...all("ctaproof")),
     cat("marketing-team", "Team", ...all("team")),
+    cat("marketing-simple", "Simple blocks", ...all("herosimple", "teamsimple")),
     cat("marketing-about", "About", ...all("about", "aboutme")),
     cat("marketing-portfolio", "Portfolio", ...all("projects")),
     cat("marketing-careers", "Careers", ...all("jobs")),

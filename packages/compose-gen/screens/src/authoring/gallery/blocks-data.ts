@@ -66,6 +66,8 @@ export const details = src("details", "details", "detail", "Detail", CODEX_FIELD
 export const specs = src("specs", "specs", "spec", "Spec", CODEX_FIELDS.spec);
 export const promos = src("promos", "promos", "promo", "Promo", CODEX_FIELDS.promo);
 export const members = src("members", "members", "member", "Member", CODEX_FIELDS.member);
+/** the members as the simple line reads them (TeamSimple, model team@1) */
+export const teamMembers = src("teamMembers", "members", "member", "SimpleMember", CODEX_FIELDS.teamMember);
 export const photos = src("photos", "photos", "photo", "Photo", CODEX_FIELDS.photo);
 export const projects = src("projects", "projects", "project", "Project", CODEX_FIELDS.project);
 export const jobs = src("jobs", "jobs", "job", "Job", CODEX_FIELDS.job);

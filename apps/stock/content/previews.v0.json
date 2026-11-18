@@ -2193,6 +2193,66 @@
     ]
    }
   },
+  "herosimple": {
+   "organism": "HeroSimple",
+   "defaults": {
+    "media": "end"
+   },
+   "sample": {
+    "id": "herosimple",
+    "badge": {
+     "$": "ui.marketing.heroSimple.badge"
+    },
+    "title": {
+     "$": "ui.marketing.heroSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.heroSimple.description"
+    },
+    "imageAlt": {
+     "$": "ui.marketing.heroSimple.imageAlt"
+    },
+    "actionLabel": {
+     "$": "ui.marketing.heroSimple.actionLabel"
+    },
+    "actionHref": "#/start"
+   },
+   "variants": [
+    {
+     "id": "mediaEnd",
+     "set": {}
+    },
+    {
+     "id": "mediaStart",
+     "set": {
+      "media": "start"
+     }
+    },
+    {
+     "id": "mediaTop",
+     "set": {
+      "media": "top"
+     }
+    }
+   ],
+   "data": [],
+   "orgProps": {
+    "HeroSimple": [
+     "id",
+     "badge",
+     "title",
+     "description",
+     "image",
+     "imageAlt",
+     "imageDark",
+     "actionLabel",
+     "actionHref",
+     "level",
+     "media",
+     "landmarkLabel"
+    ]
+   }
+  },
   "herosplit": {
    "organism": "HeroSplit",
    "defaults": {
@@ -4579,6 +4639,73 @@
      "density",
      "image",
      "imageAlt",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "teamsimple": {
+   "organism": "TeamSimple",
+   "defaults": {
+    "cols": "3",
+    "surface": "plain"
+   },
+   "sample": {
+    "id": "teamsimple",
+    "title": {
+     "$": "ui.marketing.teamSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.teamSimple.description"
+    },
+    "members": {
+     "$": "teamMembers"
+    }
+   },
+   "variants": [
+    {
+     "id": "cols3",
+     "set": {}
+    },
+    {
+     "id": "cols2",
+     "set": {
+      "cols": "2"
+     }
+    },
+    {
+     "id": "cols4",
+     "set": {
+      "cols": "4"
+     }
+    },
+    {
+     "id": "cards3",
+     "set": {
+      "surface": "cards"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "teamMembers",
+     "collection": "members",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "description": "metadata.role.value",
+      "avatar": "featured_media_id|media"
+     }
+    }
+   ],
+   "orgProps": {
+    "TeamSimple": [
+     "id",
+     "title",
+     "description",
+     "members",
+     "level",
+     "cols",
+     "surface",
      "landmarkLabel"
     ]
    }
@@ -13364,6 +13491,98 @@
      {
       "block": "footer",
       "variant": "centered"
+     }
+    ]
+   }
+  },
+  "theme-marketing-simple": {
+   "name": "ThemeMarketingSimpleScreen",
+   "before": [
+    {
+     "block": "navbar",
+     "variant": "inline",
+     "props": {
+      "brandHref": "#/",
+      "links": {
+       "$": "nav.links"
+      },
+      "current": {
+       "$": "nav.current"
+      },
+      "skip": {
+       "$": "ui.site.header.skip"
+      },
+      "actions": {
+       "themeLabel": {
+        "$": "ui.theme.toggle"
+       }
+      }
+     }
+    }
+   ],
+   "after": [
+    {
+     "block": "sitemap",
+     "variant": "columns"
+    }
+   ],
+   "areas": {
+    "home": [
+     {
+      "block": "herosimple",
+      "variant": "mediaEnd",
+      "props": {
+       "level": 1,
+       "title": {
+        "$": "ui.pages.marketingSimple.home.title"
+       },
+       "description": {
+        "$": "ui.pages.marketingSimple.home.text"
+       },
+       "actionLabel": {
+        "$": "ui.pages.marketingSimple.home.cta"
+       },
+       "actionHref": "#/team"
+      }
+     },
+     {
+      "block": "teamsimple",
+      "variant": "cols3"
+     },
+     {
+      "block": "herosimple",
+      "variant": "mediaStart"
+     },
+     {
+      "block": "teamsimple",
+      "variant": "cols2"
+     }
+    ],
+    "team": [
+     {
+      "block": "herosimple",
+      "variant": "mediaTop",
+      "props": {
+       "level": 1,
+       "title": {
+        "$": "ui.pages.marketingSimple.team.title"
+       },
+       "description": {
+        "$": "ui.pages.marketingSimple.team.text"
+       },
+       "actionLabel": {
+        "$": "ui.pages.marketingSimple.team.cta"
+       },
+       "actionHref": "#/"
+      }
+     },
+     {
+      "block": "teamsimple",
+      "variant": "cards3"
+     },
+     {
+      "block": "teamsimple",
+      "variant": "cols4"
      }
     ]
    }

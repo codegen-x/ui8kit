@@ -27,6 +27,7 @@
   import MarketingCtaPage from "./CatalogScreen/MarketingCtaPage.svelte";
   import MarketingCtaProofPage from "./CatalogScreen/MarketingCtaProofPage.svelte";
   import MarketingTeamPage from "./CatalogScreen/MarketingTeamPage.svelte";
+  import MarketingSimplePage from "./CatalogScreen/MarketingSimplePage.svelte";
   import MarketingAboutPage from "./CatalogScreen/MarketingAboutPage.svelte";
   import MarketingPortfolioPage from "./CatalogScreen/MarketingPortfolioPage.svelte";
   import MarketingCareersPage from "./CatalogScreen/MarketingCareersPage.svelte";
@@ -123,6 +124,7 @@
     {"path":"marketing-cta","area":"marketing-cta"},
     {"path":"marketing-cta-proof","area":"marketing-cta-proof"},
     {"path":"marketing-team","area":"marketing-team"},
+    {"path":"marketing-simple","area":"marketing-simple"},
     {"path":"marketing-about","area":"marketing-about"},
     {"path":"marketing-portfolio","area":"marketing-portfolio"},
     {"path":"marketing-careers","area":"marketing-careers"},
@@ -243,6 +245,8 @@
     <MarketingCtaProofPage />
   {:else if route.area === "marketing-team"}
     <MarketingTeamPage />
+  {:else if route.area === "marketing-simple"}
+    <MarketingSimplePage />
   {:else if route.area === "marketing-about"}
     <MarketingAboutPage />
   {:else if route.area === "marketing-portfolio"}

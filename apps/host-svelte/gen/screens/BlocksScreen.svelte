@@ -25,6 +25,7 @@
   import FootersplitPage from "./BlocksScreen/FootersplitPage.svelte";
   import HeaderPage from "./BlocksScreen/HeaderPage.svelte";
   import HeroPage from "./BlocksScreen/HeroPage.svelte";
+  import HerosimplePage from "./BlocksScreen/HerosimplePage.svelte";
   import HerosplitPage from "./BlocksScreen/HerosplitPage.svelte";
   import IconwallPage from "./BlocksScreen/IconwallPage.svelte";
   import JobsPage from "./BlocksScreen/JobsPage.svelte";
@@ -45,6 +46,7 @@
   import StepsPage from "./BlocksScreen/StepsPage.svelte";
   import StickyPage from "./BlocksScreen/StickyPage.svelte";
   import TeamPage from "./BlocksScreen/TeamPage.svelte";
+  import TeamsimplePage from "./BlocksScreen/TeamsimplePage.svelte";
   import TemplatesPage from "./BlocksScreen/TemplatesPage.svelte";
   import TestimonialsPage from "./BlocksScreen/TestimonialsPage.svelte";
   import UsagePage from "./BlocksScreen/UsagePage.svelte";
@@ -144,6 +146,7 @@
     {"path":"footersplit","area":"footersplit"},
     {"path":"header","area":"header"},
     {"path":"hero","area":"hero"},
+    {"path":"herosimple","area":"herosimple"},
     {"path":"herosplit","area":"herosplit"},
     {"path":"iconwall","area":"iconwall"},
     {"path":"jobs","area":"jobs"},
@@ -164,6 +167,7 @@
     {"path":"steps","area":"steps"},
     {"path":"sticky","area":"sticky"},
     {"path":"team","area":"team"},
+    {"path":"teamsimple","area":"teamsimple"},
     {"path":"templates","area":"templates"},
     {"path":"testimonials","area":"testimonials"},
     {"path":"usage","area":"usage"},
@@ -286,6 +290,8 @@
     <HeaderPage />
   {:else if route.area === "hero"}
     <HeroPage />
+  {:else if route.area === "herosimple"}
+    <HerosimplePage />
   {:else if route.area === "herosplit"}
     <HerosplitPage />
   {:else if route.area === "iconwall"}
@@ -326,6 +332,8 @@
     <StickyPage />
   {:else if route.area === "team"}
     <TeamPage />
+  {:else if route.area === "teamsimple"}
+    <TeamsimplePage />
   {:else if route.area === "templates"}
     <TemplatesPage />
   {:else if route.area === "testimonials"}

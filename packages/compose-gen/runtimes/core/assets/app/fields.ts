@@ -166,6 +166,8 @@ export const KIT_FIELDS = {
   profilefact: { id: "id", label: "title", value: m("value") },
   promo: { id: "id", code: "title" },
   member: { id: "id", name: "title", role: m("role"), dept: m("dept"), location: m("location"), bio: m("bio"), skills: m("skills") },
+  // the simple line (TeamSimple, model team@1): a member as { id, title, description, avatar }
+  teamMember: { id: "id", title: "title", description: m("role"), avatar: "featured_media_id|media" },
   photo: { id: "id", title: "title", tag: m("tag"), size: m("size") },
   project: { id: "id", title: "title", category: "terms|term:project_category", year: m("year"), summary: m("summary"), tags: m("tags"), featured: m("featured"), client: m("client"), href: "slug|route" },
   job: { id: "id", title: "title", dept: m("dept"), location: m("location"), type: m("type"), salary: m("salary"), posted: `${m("posted")}|ago-days`, href: "slug|route" },

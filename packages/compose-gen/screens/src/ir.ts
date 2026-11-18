@@ -269,6 +269,10 @@ export interface BlockSpec {
   fit?: "section" | "card";
   /** name of the organism that draws it */
   organism: string;
+  /** the product line of the block: "simple" = a block of the simple line (one content model, every variant takes the same content) */
+  line?: "simple";
+  /** the content model the props of the organism are (specs/models): "<id>@<version>", e.g. "hero@1" */
+  model?: string;
   /** a second organism: the variants that set `axis` to values[1] draw it (values[0] is the default); the axis is not a prop */
   alt?: { axis: string; values: [string, string]; organism: string };
   /** axis (a prop of the organism) -> the values the block exposes */

@@ -1,0 +1,131 @@
+{
+  "$schema": "../../schema/schemas/composed.schema.json",
+  "specVersion": 1,
+  "id": "screen.theme-marketing-simple",
+  "name": "ThemeMarketingSimpleScreen",
+  "kind": "composed",
+  "docs": "The simple line: blocks with one content model each (hero@1, team@1), the same content in every variant. A home page with the hero and the team in columns, and a team page with the wide hero and the team on cards.",
+  "routes": [
+    {
+      "path": "",
+      "area": "home"
+    },
+    {
+      "path": "team",
+      "area": "team"
+    }
+  ],
+  "frame": {
+    "before": [
+      {
+        "block": "navbar",
+        "variant": "inline",
+        "props": {
+          "brandHref": "#/",
+          "links": {
+            "$": "nav.links"
+          },
+          "current": {
+            "$": "nav.current"
+          },
+          "skip": {
+            "$": "ui.site.header.skip"
+          },
+          "actions": {
+            "themeLabel": {
+              "$": "ui.theme.toggle"
+            }
+          }
+        }
+      }
+    ],
+    "after": [
+      {
+        "block": "sitemap",
+        "variant": "columns"
+      }
+    ]
+  },
+  "areas": {
+    "home": [
+      {
+        "block": "herosimple",
+        "variant": "mediaEnd",
+        "props": {
+          "level": 1,
+          "title": {
+            "$": "ui.pages.marketingSimple.home.title"
+          },
+          "description": {
+            "$": "ui.pages.marketingSimple.home.text"
+          },
+          "actionLabel": {
+            "$": "ui.pages.marketingSimple.home.cta"
+          },
+          "actionHref": "#/team"
+        }
+      },
+      {
+        "block": "teamsimple",
+        "variant": "cols3"
+      },
+      {
+        "block": "herosimple",
+        "variant": "mediaStart"
+      },
+      {
+        "block": "teamsimple",
+        "variant": "cols2"
+      }
+    ],
+    "team": [
+      {
+        "block": "herosimple",
+        "variant": "mediaTop",
+        "props": {
+          "level": 1,
+          "title": {
+            "$": "ui.pages.marketingSimple.team.title"
+          },
+          "description": {
+            "$": "ui.pages.marketingSimple.team.text"
+          },
+          "actionLabel": {
+            "$": "ui.pages.marketingSimple.team.cta"
+          },
+          "actionHref": "#/"
+        }
+      },
+      {
+        "block": "teamsimple",
+        "variant": "cards3"
+      },
+      {
+        "block": "teamsimple",
+        "variant": "cols4"
+      }
+    ]
+  },
+  "chunks": true,
+  "requireH1": true,
+  "nameLandmarks": true,
+  "nav": true,
+  "menu": [
+    {
+      "id": "home",
+      "path": "",
+      "titleKey": "pages.marketingSimple.home.nav"
+    },
+    {
+      "id": "team",
+      "path": "team",
+      "titleKey": "pages.marketingSimple.team.nav"
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true
+  }
+}

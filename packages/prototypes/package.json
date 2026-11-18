@@ -1,0 +1,19 @@
+{
+  "name": "@codegen-x/prototypes",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Prototypes of the simple line: the clean organisms of packages/compose-gen projected onto a wireframe | page mode (src/project.ts), their shapes, contracts and content models. Writes out/ (Svelte 5 + contracts + models + manifest), which ui8kit/prototypes syncs by commit (codegen.lock.json). Depends on compose-gen, never the reverse.",
+  "exports": {
+    "./out/*": "./out/*"
+  },
+  "scripts": {
+    "build": "bun src/driver.ts",
+    "check": "bun src/driver.ts --check && tsc --noEmit -p tsconfig.json && svelte-check --tsconfig tsconfig.svelte.json --fail-on-warnings",
+    "test": "bun test ./test"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "typescript": "~6.0.2"
+  }
+}

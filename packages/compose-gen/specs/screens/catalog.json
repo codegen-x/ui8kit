@@ -224,6 +224,17 @@
             ]
           },
           {
+            "id": "marketing-simple",
+            "entries": [
+              {
+                "block": "herosimple"
+              },
+              {
+                "block": "teamsimple"
+              }
+            ]
+          },
+          {
             "id": "marketing-about",
             "entries": [
               {

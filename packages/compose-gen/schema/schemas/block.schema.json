@@ -104,6 +104,17 @@
     "organism": {
       "type": "string"
     },
+    "line": {
+      "enum": [
+        "simple"
+      ],
+      "description": "the product line: simple = one content model shared by every variant (Stock facet line)"
+    },
+    "model": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*@[1-9][0-9]*$",
+      "description": "the content model of the organism props (specs/models/<id>.json): <id>@<version>"
+    },
     "axes": {
       "type": "object",
       "additionalProperties": {

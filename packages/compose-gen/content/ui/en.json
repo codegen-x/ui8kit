@@ -202,7 +202,9 @@
       "postshowcase": "Post showcase",
       "medialist": "List beside a picture",
       "featureshowcase": "Feature cards with a picture",
-      "storytabs": "Story in steps"
+      "storytabs": "Story in steps",
+      "herosimple": "Simple hero",
+      "teamsimple": "Simple team"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -315,7 +317,9 @@
       "postshowcase": "Four small post cards beside an intro with a view-all link; the first post in detail beside its picture; or cards with the text on a panel over the picture, in two or three columns.",
       "medialist": "Four figures, figures with a featured review, numbered steps, the latest posts, topic rows, or contact buttons with support figures, beside a picture.",
       "featureshowcase": "Cards with a picture on top and a read link, or with a muted glyph panel on top like an index of categories, in three or four columns.",
-      "storytabs": "Year tabs over the panel of the chosen year, or the heading beside a picture with arrows and one dot per step. Choosing a step is an event."
+      "storytabs": "Year tabs over the panel of the chosen year, or the heading beside a picture with arrows and one dot per step. Choosing a step is an event.",
+      "herosimple": "A badge, the heading, one paragraph and one link as the action, with one picture at the end, at the start or on top.",
+      "teamsimple": "The heading, one paragraph and the people as a list: a portrait, the name and the role, in two, three or four columns, plain or on cards."
     },
     "variants": {
       "header": {
@@ -1065,6 +1069,17 @@
         "yearTabs": "Year tabs over the panel of the chosen year",
         "carouselSplit": "The heading beside a picture with arrows and dots",
         "yearTabsMuted": "Year tabs, muted"
+      },
+      "herosimple": {
+        "mediaEnd": "Picture at the end",
+        "mediaStart": "Picture at the start",
+        "mediaTop": "Wide picture on top"
+      },
+      "teamsimple": {
+        "cols3": "Three columns",
+        "cols2": "Two columns",
+        "cols4": "Four columns",
+        "cards3": "Three columns on cards"
       }
     },
     "landmark": "{0}, {1}",
@@ -1251,6 +1266,17 @@
       "title": "Everything in one place",
       "lead": "Each part does one job well, and they all work together.",
       "more": "Learn more"
+    },
+    "heroSimple": {
+      "badge": "New",
+      "title": "Build the page, keep the content",
+      "description": "One content model drives every layout of the block: move the picture, keep the words.",
+      "imageAlt": "A laptop on a desk with a page in progress",
+      "actionLabel": "Get started"
+    },
+    "teamSimple": {
+      "title": "Meet the team",
+      "description": "The people who design, build and support the kit."
     }
   },
   "cases": {
@@ -1993,6 +2019,20 @@
         "cta": "Back to the plans"
       }
     },
+    "marketingSimple": {
+      "home": {
+        "nav": "Home",
+        "title": "Simple blocks, one content model",
+        "text": "Every variant of a simple block reads the same content, so a layout changes without touching a word.",
+        "cta": "Meet the team"
+      },
+      "team": {
+        "nav": "Team",
+        "title": "The people behind the blocks",
+        "text": "Eight people, one list, four layouts.",
+        "cta": "Back to the start"
+      }
+    },
     "commerceShop": {
       "home": {
         "nav": "Home",
@@ -2416,6 +2456,7 @@
       "marketingCta": "Call to action",
       "marketingCtaProof": "Calls to action with proof",
       "marketingTeam": "Team",
+      "marketingSimple": "Simple blocks",
       "marketingAbout": "About",
       "marketingPortfolio": "Portfolio",
       "marketingCareers": "Careers",

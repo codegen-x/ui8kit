@@ -24,6 +24,7 @@
     "theme-marketing-landing": () => import("./screens/ThemeMarketingLandingScreen.svelte"),
     "theme-marketing-pricing": () => import("./screens/ThemeMarketingPricingScreen.svelte"),
     "theme-marketing-product": () => import("./screens/ThemeMarketingProductScreen.svelte"),
+    "theme-marketing-simple": () => import("./screens/ThemeMarketingSimpleScreen.svelte"),
     "theme-onboarding-flow": () => import("./screens/ThemeOnboardingFlowScreen.svelte"),
     "theme-promo-campaign": () => import("./screens/ThemePromoCampaignScreen.svelte"),
     "theme-restaurant-house": () => import("./screens/ThemeRestaurantHouseScreen.svelte"),

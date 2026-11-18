@@ -28,6 +28,7 @@ import MarketingFaqPage from "./CatalogScreen/MarketingFaqPage.vue";
 import MarketingCtaPage from "./CatalogScreen/MarketingCtaPage.vue";
 import MarketingCtaProofPage from "./CatalogScreen/MarketingCtaProofPage.vue";
 import MarketingTeamPage from "./CatalogScreen/MarketingTeamPage.vue";
+import MarketingSimplePage from "./CatalogScreen/MarketingSimplePage.vue";
 import MarketingAboutPage from "./CatalogScreen/MarketingAboutPage.vue";
 import MarketingPortfolioPage from "./CatalogScreen/MarketingPortfolioPage.vue";
 import MarketingCareersPage from "./CatalogScreen/MarketingCareersPage.vue";
@@ -124,6 +125,7 @@ const ROUTES = [
   {"path":"marketing-cta","area":"marketing-cta"},
   {"path":"marketing-cta-proof","area":"marketing-cta-proof"},
   {"path":"marketing-team","area":"marketing-team"},
+  {"path":"marketing-simple","area":"marketing-simple"},
   {"path":"marketing-about","area":"marketing-about"},
   {"path":"marketing-portfolio","area":"marketing-portfolio"},
   {"path":"marketing-careers","area":"marketing-careers"},
@@ -222,6 +224,7 @@ const actions = { toggleTheme };
     <MarketingCtaPage v-else-if="route.area === 'marketing-cta'" />
     <MarketingCtaProofPage v-else-if="route.area === 'marketing-cta-proof'" />
     <MarketingTeamPage v-else-if="route.area === 'marketing-team'" />
+    <MarketingSimplePage v-else-if="route.area === 'marketing-simple'" />
     <MarketingAboutPage v-else-if="route.area === 'marketing-about'" />
     <MarketingPortfolioPage v-else-if="route.area === 'marketing-portfolio'" />
     <MarketingCareersPage v-else-if="route.area === 'marketing-careers'" />

@@ -1,0 +1,135 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.teamsimple",
+  "name": "Simple team",
+  "docs": "The heading, one paragraph and the people as a list: a portrait, the name and the role, in two, three or four columns, plain or on cards.",
+  "theme": "marketing",
+  "group": "company",
+  "organism": "TeamSimple",
+  "line": "simple",
+  "model": "team@1",
+  "axes": {
+    "cols": [
+      "2",
+      "3",
+      "4"
+    ],
+    "surface": [
+      "plain",
+      "cards"
+    ]
+  },
+  "defaults": {
+    "cols": "3",
+    "surface": "plain"
+  },
+  "variants": [
+    {
+      "id": "cols3",
+      "set": {}
+    },
+    {
+      "id": "cols2",
+      "set": {
+        "cols": "2"
+      }
+    },
+    {
+      "id": "cols4",
+      "set": {
+        "cols": "4"
+      }
+    },
+    {
+      "id": "cards3",
+      "set": {
+        "surface": "cards"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section[aria-labelledby] h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@members"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@members"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@members"
+    },
+    {
+      "sel": "ul > li",
+      "cols": 2,
+      "when": {
+        "cols": "2"
+      }
+    },
+    {
+      "sel": "ul > li",
+      "cols": 3,
+      "when": {
+        "cols": "3"
+      }
+    },
+    {
+      "sel": "ul > li",
+      "cols": 4,
+      "when": {
+        "cols": "4"
+      }
+    },
+    {
+      "sel": "[data-slot=\"card\"]",
+      "n": "@members",
+      "when": {
+        "surface": "cards"
+      }
+    },
+    {
+      "sel": "[data-slot=\"card\"]",
+      "n": 0,
+      "when": {
+        "surface": "plain"
+      }
+    }
+  ],
+  "data": [
+    {
+      "as": "teamMembers",
+      "collection": "members",
+      "kind": "member",
+      "record": "SimpleMember",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "description": "metadata.role.value",
+        "avatar": "featured_media_id|media"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "teamsimple",
+      "title": {
+        "$": "ui.marketing.teamSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.teamSimple.description"
+      },
+      "members": {
+        "$": "teamMembers"
+      }
+    }
+  }
+}

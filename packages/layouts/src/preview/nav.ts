@@ -15,6 +15,7 @@ export const NAVS: Record<string, () => Promise<NavModule>> = {
   ThemeMarketingLandingScreen: () => import("@ui8kit/app-shared/nav/ThemeMarketingLandingScreen"),
   ThemeMarketingPricingScreen: () => import("@ui8kit/app-shared/nav/ThemeMarketingPricingScreen"),
   ThemeMarketingProductScreen: () => import("@ui8kit/app-shared/nav/ThemeMarketingProductScreen"),
+  ThemeMarketingSimpleScreen: () => import("@ui8kit/app-shared/nav/ThemeMarketingSimpleScreen"),
   ThemeOnboardingFlowScreen: () => import("@ui8kit/app-shared/nav/ThemeOnboardingFlowScreen"),
   ThemePromoCampaignScreen: () => import("@ui8kit/app-shared/nav/ThemePromoCampaignScreen"),
   ThemeSupportCenterScreen: () => import("@ui8kit/app-shared/nav/ThemeSupportCenterScreen"),

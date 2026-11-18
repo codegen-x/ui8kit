@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codegen-x.dev/compose-gen/model.schema.json",
+  "title": "compose-gen content model",
+  "description": "A content model (specs/models/<id>.json): the one JSON object of content a block reads, valid in every variant of every block that declares it (BlockSpec.model = <id>@<version>). The JSON Schema 2020-12, the TypeScript types and validate() are derived from it (packages/compose-gen/model).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["specVersion", "id", "version", "docs", "fields"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "specVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+    "version": { "type": "integer", "minimum": 1 },
+    "docs": { "type": "string", "minLength": 1 },
+    "fields": { "$ref": "#/$defs/fields" }
+  },
+  "$defs": {
+    "fields": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-z][A-Za-z0-9]*$" },
+      "additionalProperties": { "$ref": "#/$defs/field" }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "docs"],
+      "properties": {
+        "type": { "enum": ["id", "text", "longText", "url", "image", "list"] },
+        "docs": { "type": "string", "minLength": 1 },
+        "required": { "type": "boolean" },
+        "maxLength": { "type": "integer", "minimum": 1 },
+        "minItems": { "type": "integer", "minimum": 0 },
+        "maxItems": { "type": "integer", "minimum": 1 },
+        "item": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["record", "fields"],
+          "properties": { "record": { "type": "string", "pattern": "^[A-Z][A-Za-z0-9]*$" }, "fields": { "$ref": "#/$defs/fields" } }
+        }
+      },
+      "if": { "properties": { "type": { "const": "list" } } },
+      "then": { "required": ["item"] },
+      "else": { "not": { "anyOf": [{ "required": ["item"] }, { "required": ["minItems"] }, { "required": ["maxItems"] }] } }
+    }
+  }
+}

@@ -2,7 +2,7 @@ import { expect, test } from "bun:test";
 import { schemaFiles, validate } from "../src/index";
 
 test("every kind has its schema file", () => {
-  expect(schemaFiles()).toEqual(["app", "block", "collection", "composed", "dictionary", "organism", "preset", "screen", "spec", "variants"].map((k) => `${k}.schema.json`));
+  expect(schemaFiles()).toEqual(["app", "block", "collection", "composed", "dictionary", "model", "organism", "preset", "screen", "spec", "variants"].map((k) => `${k}.schema.json`));
 });
 
 test("an app is accepted when whole and rejected with a path when a field is wrong", () => {

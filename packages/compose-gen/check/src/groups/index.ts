@@ -8,12 +8,14 @@ import { checkDictionary } from "./dictionary";
 import { checkText } from "./text";
 import { checkDead, checkDuplicates, checkStructure } from "./audit";
 import { checkReadability } from "./readability";
+import { checkModels } from "./models";
 
 export * from "./context";
 export { checkRegistry, checkThemes, checkRoutes, checkVersions, hostedScreens, COVERAGE_DOC } from "./catalog";
 export { checkDictionary, dictionaryUse } from "./dictionary";
 export { checkText, cyrillicLine } from "./text";
 export { checkDead, checkDuplicates, checkStructure, cycles, sameKey } from "./audit";
+export { checkModels } from "./models";
 export { checkReadability, measure, readabilityProblems, kebab, READABILITY } from "./readability";
 
 /** the stored specs (specs/{organisms,parts,patterns,blocks,presets,screens}) are the output of the builder (screens/src/authoring) */
@@ -32,7 +34,7 @@ export function schemaGroup(ctx: Ctx): CheckResult {
   return result("schema", "organism, block, screen, preset, recipe, fixture, dictionary and app files match their JSON Schemas", ctx.problems);
 }
 
-export const GROUPS = [schemaGroup, checkRegistry, checkThemes, checkRoutes, checkDictionary, checkText, checkDead, checkDuplicates, checkReadability, checkStructure, checkVersions] as const;
+export const GROUPS = [schemaGroup, checkRegistry, checkThemes, checkRoutes, checkDictionary, checkModels, checkText, checkDead, checkDuplicates, checkReadability, checkStructure, checkVersions] as const;
 
 export function runChecks(ctx = loadCtx()): CheckResult[] {
   return [checkAuthored(ctx), ...GROUPS.map((g) => g(ctx))];

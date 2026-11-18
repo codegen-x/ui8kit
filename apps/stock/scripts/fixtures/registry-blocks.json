@@ -1,7 +1,7 @@
 {
  "source": "https://registry.buildy.tw/<runtime>/index.json",
  "fetched": "2026-11-14",
- "note": "registry:block names served by all 8 runtime roots (116); written by scripts/registry-fixture.ts",
+ "note": "registry:block names served by all 8 runtime roots (116 fetched; + hero-simple, team-simple of the simple line, added by hand with their ui8kit/site build until the next refresh); written by scripts/registry-fixture.ts",
  "names": [
   "about-company",
   "about-me",
@@ -52,6 +52,7 @@
   "grocery-list",
   "hero-classic",
   "hero-prompt",
+  "hero-simple",
   "hero-split",
   "icon-wall",
   "job-board",
@@ -109,6 +110,7 @@
   "support-channels",
   "sushi-sets",
   "team-grid",
+  "team-simple",
   "template-grid",
   "testimonial-grid",
   "tour-callout",

@@ -1,9 +1,9 @@
-// JSON Schemas of compose-gen and a validator over them. Kinds: spec, variants, organism, screen, app, collection, dictionary, preset.
+// JSON Schemas of compose-gen and a validator over them. Kinds: spec, variants, organism, screen, app, collection, dictionary, preset, model.
 import Ajv2020 from "ajv/dist/2020.js";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
-export type SchemaKind = "spec" | "variants" | "organism" | "screen" | "block" | "composed" | "app" | "collection" | "dictionary" | "preset";
+export type SchemaKind = "spec" | "variants" | "organism" | "screen" | "block" | "composed" | "app" | "collection" | "dictionary" | "preset" | "model";
 
 const dir = join(import.meta.dir, "..", "schemas");
 export const schemaFiles = (): string[] => readdirSync(dir).filter((f) => f.endsWith(".schema.json")).sort();

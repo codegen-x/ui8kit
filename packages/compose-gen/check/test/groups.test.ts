@@ -11,14 +11,14 @@ const seeded = (f: (c: Ctx) => void): Ctx => { const c = { ...ctx, inputs: struc
 
 test("every group passes on the repository", () => {
   const results = runChecks(ctx);
-  expect(results.map((r) => r.name)).toEqual(["authored", "schema", "registry", "themes", "routes", "dictionary", "text", "dead", "duplicates", "readability", "structure", "versions"]);
+  expect(results.map((r) => r.name)).toEqual(["authored", "schema", "registry", "themes", "routes", "dictionary", "models", "text", "dead", "duplicates", "readability", "structure", "versions"]);
   expect(results.filter((r) => r.problems.length).map((r) => `${r.name}: ${r.problems.slice(0, 3).join("; ")}`)).toEqual([]);
 });
 
-test("the context: 272 organism specs, 111 blocks, 18 screens, 4 host apps", () => {
-  expect(ctx.inputs.organisms.length).toBe(272);
-  expect(ctx.inputs.blocks.length).toBe(111);
-  expect(ctx.inputs.screens.length).toBe(18);
+test("the context: 274 organism specs, 113 blocks, 19 screens, 4 host apps", () => {
+  expect(ctx.inputs.organisms.length).toBe(274);
+  expect(ctx.inputs.blocks.length).toBe(113);
+  expect(ctx.inputs.screens.length).toBe(19);
   expect(ctx.apps.map((a) => a.app.runtime).sort()).toEqual(["react", "solid", "svelte", "vue"]);
 });
 

@@ -27,6 +27,7 @@ import { MarketingFaqPage } from "./CatalogScreen/MarketingFaqPage";
 import { MarketingCtaPage } from "./CatalogScreen/MarketingCtaPage";
 import { MarketingCtaProofPage } from "./CatalogScreen/MarketingCtaProofPage";
 import { MarketingTeamPage } from "./CatalogScreen/MarketingTeamPage";
+import { MarketingSimplePage } from "./CatalogScreen/MarketingSimplePage";
 import { MarketingAboutPage } from "./CatalogScreen/MarketingAboutPage";
 import { MarketingPortfolioPage } from "./CatalogScreen/MarketingPortfolioPage";
 import { MarketingCareersPage } from "./CatalogScreen/MarketingCareersPage";
@@ -123,6 +124,7 @@ const ROUTES = [
   {"path":"marketing-cta","area":"marketing-cta"},
   {"path":"marketing-cta-proof","area":"marketing-cta-proof"},
   {"path":"marketing-team","area":"marketing-team"},
+  {"path":"marketing-simple","area":"marketing-simple"},
   {"path":"marketing-about","area":"marketing-about"},
   {"path":"marketing-portfolio","area":"marketing-portfolio"},
   {"path":"marketing-careers","area":"marketing-careers"},
@@ -244,6 +246,8 @@ export function CatalogScreen({ url }: { url: UrlPort }) {
           <MarketingCtaProofPage />
         ) : route.area === "marketing-team" ? (
           <MarketingTeamPage />
+        ) : route.area === "marketing-simple" ? (
+          <MarketingSimplePage />
         ) : route.area === "marketing-about" ? (
           <MarketingAboutPage />
         ) : route.area === "marketing-portfolio" ? (

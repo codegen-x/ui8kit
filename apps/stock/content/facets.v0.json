@@ -247,7 +247,8 @@
                   "theme-marketing-product",
                   "theme-marketing-pricing",
                   "theme-restaurant-house",
-                  "theme-food-grill"
+                  "theme-food-grill",
+                  "theme-marketing-simple"
                 ],
                 "area": [
                   "studio",
@@ -815,7 +816,8 @@
                   "ctaproof",
                   "medialist",
                   "videos",
-                  "team"
+                  "team",
+                  "teamsimple"
                 ]
               }
             }
@@ -4423,6 +4425,58 @@
         }
       ],
       "order": 18
+    },
+    {
+      "id": "line",
+      "label": {
+        "en": "Line",
+        "fr": "Gamme",
+        "de": "Linie",
+        "es": "Línea",
+        "ru": "Линейка"
+      },
+      "ui": "checkbox",
+      "scope": "typed",
+      "types": [
+        "block"
+      ],
+      "source": "system",
+      "derive": "line",
+      "values": [
+        {
+          "id": "simple",
+          "label": {
+            "en": "Simple line",
+            "fr": "Gamme simple",
+            "de": "Einfache Linie",
+            "es": "Línea simple",
+            "ru": "Простая линейка"
+          },
+          "synonyms": {
+            "en": [
+              "simple",
+              "simple line",
+              "content model",
+              "model"
+            ],
+            "fr": [
+              "simple"
+            ],
+            "de": [
+              "einfach"
+            ],
+            "es": [
+              "simple"
+            ],
+            "ru": [
+              "простой",
+              "простая",
+              "простые"
+            ]
+          }
+        }
+      ],
+      "order": 19
     }
   ],
   "quick": [
@@ -4460,6 +4514,10 @@
     {
       "facet": "media",
       "value": "image"
+    },
+    {
+      "facet": "line",
+      "value": "simple"
     }
   ],
   "sorts": [

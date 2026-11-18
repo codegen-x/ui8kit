@@ -27,12 +27,13 @@
     "packages/kit-compose/svelte",
     "packages/kit-compose/vue",
     "packages/kit-compose/solid",
-    "packages/ui-gates"
+    "packages/ui-gates",
+    "packages/prototypes"
   ],
   "packageManager": "bun@1.4.2",
   "scripts": {
-    "build": "bun packages/compose-gen/check.ts --write --no-check && bun packages/kit-compose/src/build.ts && bun packages/kit-compose/src/organisms.ts && bun packages/kit-compose/src/server-organisms.ts && bun packages/kit-compose/src/hosts.ts",
-    "check": "node packages/tooling/bin/xgen-exit-guard.mjs && node packages/tooling/bin/kit-check.mjs && bun run compose:check && bun run gates:source && bun packages/skins/skins.ts build --check && bun packages/compose-gen/schema/src/codex-blocks.ts --check && bun packages/tooling/rules/rules.ts --gate",
+    "build": "bun packages/compose-gen/check.ts --write --no-check && bun packages/kit-compose/src/build.ts && bun packages/kit-compose/src/organisms.ts && bun packages/kit-compose/src/server-organisms.ts && bun packages/kit-compose/src/hosts.ts && bun packages/prototypes/src/driver.ts",
+    "check": "node packages/tooling/bin/xgen-exit-guard.mjs && node packages/tooling/bin/kit-check.mjs && bun run compose:check && bun run gates:source && bun packages/skins/skins.ts build --check && bun packages/compose-gen/schema/src/codex-blocks.ts --check && bun packages/prototypes/src/driver.ts --check && bun packages/tooling/rules/rules.ts --gate",
     "skins": "bun packages/skins/skins.ts",
     "verify": "bun run check && bun run codex:validate && bun run typecheck && bun run test",
     "codex:manifest": "bun packages/compose-gen/schema/src/codex.ts",
@@ -43,8 +44,8 @@
     "audit:push": "bash packages/tooling/bin/audit.sh",
     "hooks:install": "git config core.hooksPath .githooks",
     "build:hosts": "bun run --cwd apps/host-svelte build && bun run --cwd apps/host-react build && bun run --cwd apps/host-vue build && bun run --cwd apps/host-solid build",
-    "typecheck": "bun run --filter \"@ui8kit/app-shared\" --filter \"@codegen-x/*-compose\" --filter \"host-*\" --filter \"discovery\" --filter \"@ui8kit/panorama\" --filter \"@ui8kit/taste-data\" --filter \"@ui8kit/facet-search\" --filter \"@ui8kit/layouts\" --filter \"@ui8kit/theme-model\" --filter \"@ui8kit/taste-screens\" --filter \"magazine\" --filter \"stock\" --parallel check && bun run --cwd packages/kit-compose typecheck",
-    "test": "bun test ./packages/taste-data/src ./packages/facet-search/src ./packages/layouts/src ./packages/theme-model/src ./packages/kit-compose ./packages/ui-gates ./packages/skins ./packages/tooling/rules ./packages/compose-gen ./apps/stock/src ./apps/stock/scripts",
+    "typecheck": "bun run --filter \"@ui8kit/app-shared\" --filter \"@codegen-x/*-compose\" --filter \"host-*\" --filter \"discovery\" --filter \"@ui8kit/panorama\" --filter \"@ui8kit/taste-data\" --filter \"@ui8kit/facet-search\" --filter \"@ui8kit/layouts\" --filter \"@ui8kit/theme-model\" --filter \"@ui8kit/taste-screens\" --filter \"magazine\" --filter \"stock\" --filter \"@codegen-x/prototypes\" --parallel check && bun run --cwd packages/kit-compose typecheck",
+    "test": "bun test ./packages/taste-data/src ./packages/facet-search/src ./packages/layouts/src ./packages/theme-model/src ./packages/kit-compose ./packages/ui-gates ./packages/skins ./packages/tooling/rules ./packages/compose-gen ./packages/prototypes ./apps/stock/src ./apps/stock/scripts",
     "check:all": "bun run build && bun run check && bun run typecheck && bun run build:hosts && bun run test && bun run lint:px && bun run e2e",
     "lint:px": "node packages/tooling/bin/ui8px-gate.mjs",
     "kit:check": "node packages/tooling/bin/kit-check.mjs",
