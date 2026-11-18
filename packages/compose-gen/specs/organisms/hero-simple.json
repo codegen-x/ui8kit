@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "organism.hero-simple",
   "name": "HeroSimple",
-  "docs": "The simple hero (model hero@1): an optional badge, the heading, a description, one link as the action and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).",
+  "docs": "The simple hero (model hero@1): an optional badge, the heading, a description, one link as the action (a link styled as a button: drawn only when the label and the address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).",
   "records": {},
   "props": [
     {
@@ -64,6 +64,14 @@
       "docs": "the level of the heading (1 on the first section of a page)"
     },
     {
+      "name": "padding",
+      "type": {
+        "ts": "\"compact\" | \"standard\" | \"spacious\""
+      },
+      "default": "standard",
+      "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
+    },
+    {
       "name": "media",
       "type": {
         "ts": "\"end\" | \"start\" | \"top\""
@@ -97,7 +105,37 @@
       "use": "Block",
       "props": {
         "Tag": "section",
-        "Class": "py-16"
+        "Class": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "padding"
+                },
+                "compact"
+              ]
+            },
+            "py-8 lg:py-16",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "padding"
+                    },
+                    "spacious"
+                  ]
+                },
+                "py-24 lg:py-40",
+                "py-16 lg:py-32"
+              ]
+            }
+          ]
+        }
       },
       "attrs": {
         "aria-labelledby": {
@@ -293,7 +331,7 @@
                       },
                       "then": [
                         {
-                          "use": "Button",
+                          "use": "LinkButton",
                           "props": {
                             "Variant": "default",
                             "Size": "lg",

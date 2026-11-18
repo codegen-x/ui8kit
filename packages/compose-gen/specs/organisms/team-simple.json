@@ -60,6 +60,14 @@
       "docs": "the level of the heading (1 on the first section of a page)"
     },
     {
+      "name": "padding",
+      "type": {
+        "ts": "\"compact\" | \"standard\" | \"spacious\""
+      },
+      "default": "standard",
+      "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
+    },
+    {
       "name": "cols",
       "type": {
         "ts": "\"2\" | \"3\" | \"4\""
@@ -100,7 +108,37 @@
       "use": "Block",
       "props": {
         "Tag": "section",
-        "Class": "py-16"
+        "Class": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "padding"
+                },
+                "compact"
+              ]
+            },
+            "py-8 lg:py-16",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "padding"
+                    },
+                    "spacious"
+                  ]
+                },
+                "py-24 lg:py-40",
+                "py-16 lg:py-32"
+              ]
+            }
+          ]
+        }
       },
       "attrs": {
         "aria-labelledby": {
@@ -133,7 +171,8 @@
             {
               "use": "Stack",
               "props": {
-                "Gap": "12"
+                "Gap": "12",
+                "Align": "stretch"
               },
               "children": [
                 {
@@ -196,7 +235,7 @@
                     "Class": {
                       "op": "cn",
                       "args": [
-                        "m-0 grid list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2",
+                        "m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2",
                         {
                           "op": "cond",
                           "args": [

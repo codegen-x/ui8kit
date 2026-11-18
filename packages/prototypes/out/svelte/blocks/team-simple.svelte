@@ -15,6 +15,7 @@
     description?: string;
     members: SimpleMember[];
     level?: 1 | 2 | 3;
+    padding?: "compact" | "standard" | "spacious";
     cols?: "2" | "3" | "4";
     surface?: "plain" | "cards";
     landmarkLabel?: string;
@@ -42,6 +43,7 @@
     description = "",
     members,
     level = 2,
+    padding = "standard",
     cols = "3",
     surface = "plain",
     landmarkLabel,
@@ -53,13 +55,17 @@
 
 <Block
   tag="section"
-  class="py-16"
+  class={
+    (padding as string) === "compact" ? "py-8 lg:py-16"
+    : (padding as string) === "spacious" ? "py-24 lg:py-40"
+    : "py-16 lg:py-32"
+  }
   aria-labelledby={(wire ? undefined : (landmarkLabel ? undefined : titleId))}
   aria-label={landmarkLabel}
   data-slot="team-simple"
 >
   <Container class="mx-auto w-full max-w-6xl px-4">
-    <Stack gap="12">
+    <Stack gap="12" align="stretch">
       <Stack gap="4" class="max-w-2xl">
         {#if wire}
           <ShapeHeading size="lg" width="3/4" place="title" field="/title" />
@@ -89,7 +95,7 @@
       <List
         tag="ul"
         class={cn(
-          "m-0 grid list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2",
+          "m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2",
           (
             (cols as string) === "2" ? ""
             : (cols as string) === "3" ? "md:grid-cols-3"

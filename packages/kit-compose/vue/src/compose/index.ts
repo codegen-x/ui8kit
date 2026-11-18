@@ -43,6 +43,7 @@ export { default as Button } from "./Button.vue";
 export { default as ButtonPlain } from "./ButtonPlain.vue";
 export { default as Link } from "./Link.vue";
 export { default as LinkPlain } from "./LinkPlain.vue";
+export { default as LinkButton } from "./LinkButton.vue";
 export { default as Label } from "./Label.vue";
 export { default as Form } from "./Form.vue";
 export { default as Input } from "./Input.vue";

@@ -4,7 +4,7 @@
 //                                                  (copied from packages/kit-compose/svelte/src, kit imports as @ui8kit/kit/*)
 //   contracts/<item>/1.json, contracts/v0.json     what a builder reads (contract.ts)
 //   models/<id>@<v>.schema.json, <id>@<v>.ts, validate.ts   the content models: JSON Schema 2020-12, types, validate()
-//   manifest.json                                  sha256 of every file above and of the inputs (no timestamps, no commit:
+//   manifest.json                                  recipes used (and which are controls), sha256 of every file above and of the inputs (no timestamps, no commit:
 //                                                  the consumer pins the commit in its own lock, see ui8kit/prototypes codegen.lock.json)
 // usage: bun packages/prototypes/src/driver.ts [--check]
 import { createHash } from "node:crypto";
@@ -17,6 +17,7 @@ import { contentType, loadModels, schemaOf, typesOf } from "../../compose-gen/mo
 import { contractIndex, contractOf, type Contract } from "./contract";
 import { placeCopy, project } from "./project";
 import { shapes } from "./shapes";
+import { CONTROL_RECIPES } from "../../kit-compose/src/map";
 
 export const PKG = path.resolve(import.meta.dir, "..");
 export const OUT = path.join(PKG, "out");
@@ -83,9 +84,15 @@ export function build(): Built {
   }
   const inputsDigest = sha([...blocks.map((b) => JSON.stringify(b)), ...ours.map((o) => JSON.stringify(o)), ...[...models.values()].map((m) => JSON.stringify(m.model))].join("\n"));
   const sorted = [...files.keys()].sort();
+  // the recipes the shipped compositions read (rc("<id>", …)), and which of them are controls (owner policy 8 + 4: the 4px step
+  // is allowed only inside controls): a consumer lints svelte/compose/recipes.ts with the matching ui8px scope per recipe
+  const used = [...new Set(sorted.filter((f) => f.startsWith("svelte/compose/") && f.endsWith(".svelte"))
+    .flatMap((f) => [...files.get(f)!.matchAll(/\brc\("([a-z0-9-]+)"/g)].map((m) => m[1]!)))].sort();
+  const controls = used.filter((r) => (CONTROL_RECIPES as readonly string[]).includes(r));
   files.set("manifest.json", json({
     generator: "codegen-x/ui8kit packages/prototypes", version: 1, runtime: "svelte", kit: "@ui8kit/kit",
     items: contracts.map((c) => ({ item: c.item, block: c.block, model: c.model, contract: `contracts/${c.item}/${c.version}.json`, svelte: `svelte/blocks/${c.item}.svelte` })),
+    recipes: { file: "svelte/compose/recipes.ts", used, controls },
     inputs: { sha256: inputsDigest },
     files: Object.fromEntries(sorted.map((f) => [f, sha(files.get(f)!)])),
   }));

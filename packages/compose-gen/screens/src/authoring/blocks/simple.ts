@@ -12,11 +12,17 @@ const O = "organism.";
 const level = { name: "level", type: ts("1 | 2 | 3"), default: 2, docs: "the level of the heading (1 on the first section of a page)" };
 const description = { name: "description", type: "string" as const, default: "", docs: "one paragraph under the heading; empty: none" };
 const titleId = { name: "titleId", value: op("add", ref("id"), "-title") };
+/** the section padding presets (a setting of the instance, not a variant axis): even 8px steps, the lg step doubled */
+export const SECTION_PADDING = { compact: "py-8 lg:py-16", standard: "py-16 lg:py-32", spacious: "py-24 lg:py-40" } as const;
+const padding = { name: "padding", type: tsOf("compact", "standard", "spacious"), default: "standard", docs: "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)" };
+const paddingClass = cond(eq(ref("padding"), "compact"), SECTION_PADDING.compact, cond(eq(ref("padding"), "spacious"), SECTION_PADDING.spacious, SECTION_PADDING.standard));
+// the Container is full width up to max-w-6xl (wide: mx-auto w-full); every direct child of the column Stack stretches to it
+// (Align stretch): the default stack alignment is items-start, which shrinks a grid to the width of its content
 const section = (...body: Parameters<typeof use>[2][]) =>
-  use("Block", { props: { Tag: "section", Class: "py-16" }, attrs: { "aria-labelledby": ref("titleId") } }, use("Container", { props: { Class: wide } }, ...body));
+  use("Block", { props: { Tag: "section", Class: paddingClass }, attrs: { "aria-labelledby": ref("titleId") } }, use("Container", { props: { Class: wide } }, ...body));
 const lead = (size: string) => when(ref("description"), [use("Text", { props: { Size: size, Class: "text-muted-foreground" } }, text(ref("description")))]);
 
-const heroSimple = spec(`${O}hero-simple`, "HeroSimple", "The simple hero (model hero@1): an optional badge, the heading, a description, one link as the action and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).", {
+const heroSimple = spec(`${O}hero-simple`, "HeroSimple", "The simple hero (model hero@1): an optional badge, the heading, a description, one link as the action (a link styled as a button: drawn only when the label and the address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).", {
   props: [
     id,
     { name: "badge", type: "string", default: "", docs: "a short pill above the heading; empty: no badge" },
@@ -27,6 +33,7 @@ const heroSimple = spec(`${O}hero-simple`, "HeroSimple", "The simple hero (model
     { name: "actionLabel", type: "string", default: "", docs: "the label of the action; the link is drawn when the label and the address are both set" },
     { name: "actionHref", type: "string", default: "", docs: "the address of the action" },
     level,
+    padding,
     { name: "media", type: tsOf("end", "start", "top"), default: "end" },
   ],
   derived: [titleId],
@@ -37,7 +44,7 @@ const heroSimple = spec(`${O}hero-simple`, "HeroSimple", "The simple hero (model
         when(ref("badge"), [use("Badge", { props: { Variant: "secondary" } }, text(ref("badge")))]),
         use("Title", { props: { As: ref("level"), Size: "4xl", Weight: "bold", Class: "tracking-tight" }, attrs: { id: ref("titleId") } }, text(ref("title"))),
         lead("lg"),
-        when(and(ref("actionLabel"), ref("actionHref")), [use("Button", { props: { Variant: "default", Size: "lg", Href: ref("actionHref") } }, text(ref("actionLabel")))])),
+        when(and(ref("actionLabel"), ref("actionHref")), [use("LinkButton", { props: { Variant: "default", Size: "lg", Href: ref("actionHref") } }, text(ref("actionLabel")))])),
       when(eq(ref("media"), "end"), [organism("MediaFrame", { alt: imageAlt(), src: ref("image"), darkSrc: ref("imageDark"), ratio: "4/3" })])))],
 });
 
@@ -49,16 +56,17 @@ const teamSimple = spec(`${O}team-simple`, "TeamSimple", "The simple team (model
     description,
     { name: "members", type: ts("SimpleMember[]"), required: true, docs: "the people, in the order they are shown (1 to 12)" },
     level,
+    padding,
     { name: "cols", type: tsOf("2", "3", "4"), default: "3" },
     { name: "surface", type: tsOf("plain", "cards"), default: "plain" },
   ],
   derived: [titleId],
   view: [section(
-    use("Stack", { props: { Gap: "12" } },
+    use("Stack", { props: { Gap: "12", Align: "stretch" } },
       use("Stack", { props: { Gap: "4", Class: "max-w-2xl" } },
         use("Title", { props: { As: ref("level"), Size: "3xl", Weight: "bold", Class: "tracking-tight" }, attrs: { id: ref("titleId") } }, text(ref("title"))),
         lead("base")),
-      use("List", { props: { Tag: "ul", Class: cn("m-0 grid list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2", cond(eq(ref("cols"), "2"), "", cond(eq(ref("cols"), "3"), "md:grid-cols-3", "md:grid-cols-4"))) } },
+      use("List", { props: { Tag: "ul", Class: cn("m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2", cond(eq(ref("cols"), "2"), "", cond(eq(ref("cols"), "3"), "md:grid-cols-3", "md:grid-cols-4"))) } },
         each(ref("members"), "m", ref("m.id"),
           use("ListItem", { props: { Class: cond(eq(ref("surface"), "cards"), "flex", "flex flex-col gap-4") }, attrs: { "data-testid": "member" } },
             when(eq(ref("surface"), "cards"),

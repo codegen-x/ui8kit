@@ -123,3 +123,47 @@ test("the prototype organisms name their mode and keep every clean prop", () => 
     expect(o.props.map((p) => p.name)).toEqual([...byName[o.name]!.props.map((p) => p.name), "mode"]);
   }
 });
+
+describe("layout, padding and the action (round 6)", () => {
+  const hero = c0("HeroSimple"), team = c0("TeamSimple");
+  function c0(name: string) { return cases.find((c) => c.organism === name)!.props as Record<string, unknown>; }
+  const PRESETS = { compact: "py-8 lg:py-16", standard: "py-16 lg:py-32", spacious: "py-24 lg:py-40" } as const;
+
+  for (const item of ["hero-simple", "team-simple"]) for (const mode of ["wireframe", "page"]) test(`${item} (${mode}): padding presets on the section, standard by default`, async () => {
+    const props = item === "hero-simple" ? hero : team;
+    const cls = async (p: Record<string, unknown>) => (await ssr(path.join(RENDER, `blocks/${item}.svelte`), { ...props, ...p, mode })).match(/<section[^>]*class="([^"]*)"/)![1]!.split(/\s+/);
+    expect(await cls({})).toEqual(expect.arrayContaining(PRESETS.standard.split(" ")));
+    for (const [k, v] of Object.entries(PRESETS)) {
+      const got = await cls({ padding: k });
+      expect(got).toEqual(expect.arrayContaining(v.split(" ")));
+      for (const other of Object.values(PRESETS)) if (other !== v) for (const t of other.split(" ")) if (!v.includes(t)) expect(got).not.toContain(t);
+    }
+  });
+
+  test("contracts: padding is a setting (compact | standard | spacious, default standard), not a variant axis", () => {
+    for (const c of simple) {
+      expect(c.settings.padding).toEqual({ type: '"compact" | "standard" | "spacious"', default: "standard" });
+      expect(Object.keys(c.axes)).not.toContain("padding");
+    }
+  });
+
+  for (const cols of ["2", "3", "4"]) for (const surface of ["plain", "cards"]) for (const mode of ["wireframe", "page"]) test(`team-simple cols ${cols} ${surface} (${mode}): the list fills the container`, async () => {
+    const html = await ssr(path.join(RENDER, "blocks/team-simple.svelte"), { ...team, cols, surface, mode });
+    // the column Stack stretches its children (items-stretch, not the default items-start) and the grid is w-full
+    expect(html).toMatch(/class="[^"]*\bflex flex-col\b[^"]*\bitems-stretch\b[^"]*gap-12|class="[^"]*gap-12[^"]*items-stretch/);
+    expect(html).toMatch(/<ul[^>]*class="[^"]*\bgrid\b[^"]*\bw-full\b/);
+    expect(html).toMatch(/class="mx-auto w-full max-w-6xl px-4"/);
+  });
+
+  test("hero-simple: the action is a link (a[href], data-slot=button, the link-button recipe), drawn only with a label and an address", async () => {
+    const file = path.join(RENDER, "blocks/hero-simple.svelte");
+    const page = await ssr(file, { ...hero, actionLabel: "Go", actionHref: "https://example.com/go", mode: "page" });
+    const a = page.match(/<a\b[^>]*>/)![0];
+    expect(a).toContain('href="https://example.com/go"');
+    expect(a).toContain('data-slot="button"');
+    expect(a).toMatch(/bg-primary/);
+    expect(page).not.toMatch(/<button\b/);
+    for (const p of [{ actionLabel: "Go", actionHref: "" }, { actionLabel: "", actionHref: "https://example.com/go" }])
+      expect(await ssr(file, { ...hero, ...p, mode: "page" })).not.toMatch(/<a\b/);
+  });
+});

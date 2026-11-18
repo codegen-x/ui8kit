@@ -20,7 +20,7 @@ export interface Place { place: string; kind: PlaceKind; fields: string[]; list?
 export const placeName = (name: string): string => `${name}Place`;
 
 const WIRE = ref("wire");
-const KIND: Record<string, PlaceKind> = { Title: "heading", Text: "text", Badge: "badge", Button: "action", MediaFrame: "media" };
+const KIND: Record<string, PlaceKind> = { Title: "heading", Text: "text", Badge: "badge", Button: "action", LinkButton: "action", MediaFrame: "media" };
 
 /** the refs of a value, deep */
 export function refsOf(v: Value | undefined, out: string[] = []): string[] {

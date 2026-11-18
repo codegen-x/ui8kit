@@ -3416,6 +3416,7 @@
         "imageDark",
         "actionHref",
         "level",
+        "padding",
         "media",
         "landmarkLabel"
       ],
@@ -7199,6 +7200,7 @@
       "settings": [
         "id",
         "level",
+        "padding",
         "cols",
         "surface",
         "landmarkLabel"

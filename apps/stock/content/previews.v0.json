@@ -2248,6 +2248,7 @@
      "actionLabel",
      "actionHref",
      "level",
+     "padding",
      "media",
      "landmarkLabel"
     ]
@@ -4704,6 +4705,7 @@
      "description",
      "members",
      "level",
+     "padding",
      "cols",
      "surface",
      "landmarkLabel"

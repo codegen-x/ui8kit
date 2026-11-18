@@ -53,6 +53,7 @@ Prop placement, checked against ui8kit/codegen v0.1.0: as there, `variant` / `si
 | ButtonPlain | Button | — | button-plain | — |
 | Link | Link | — | link | — |
 | LinkPlain | Link | — | link-plain | — |
+| LinkButton | Link | — | link-button | data-slot=button (a link drawn as a button; control recipe) |
 | Label | Label | — | label | — |
 | Form | Form | — | form | — |
 | Input | Input | — | input | — |

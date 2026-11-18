@@ -84,6 +84,9 @@ export const BRICKS: Record<string, BrickMap> = {
   ButtonPlain: { primitive: "Button", recipe: "button-plain" },
   Link: { primitive: "Link", recipe: "link" },
   LinkPlain: { primitive: "Link", recipe: "link-plain" },
+  // a link (an a element with href) drawn as a button: the action of a section that navigates; data-slot="button" so the
+  // per-element button tokens of kit.css (radius, density) apply as on Button
+  LinkButton: { primitive: "Link", recipe: "link-button", fixed: { "data-slot": "button" } },
   Label: { primitive: "Label", recipe: "label" },
   Form: { primitive: "Form", recipe: "form" },
   Input: { primitive: "Input", recipe: "input", implies: ERROR_INVALID },
@@ -110,4 +113,4 @@ export const BRICKS: Record<string, BrickMap> = {
 export const COMPOSED = ["Break", "DataList", "DataOption", "Output", "Picture", "Source"] as const;
 
 /** Owner policy 8 + 4: the 4px step (odd Tailwind steps 1, 3, 5, ...) is allowed only inside controls; everywhere else the 8px grid. */
-export const CONTROL_RECIPES = ["button", "button-plain", "badge", "iconbadge", "input", "range", "textarea", "select", "checkbox", "radio", "switch", "link-plain", "lucide-icon", "icon"] as const;
+export const CONTROL_RECIPES = ["button", "button-plain", "badge", "iconbadge", "input", "range", "textarea", "select", "checkbox", "radio", "switch", "link-plain", "link-button", "lucide-icon", "icon"] as const;

@@ -43,6 +43,7 @@ export * from "./button.solid";
 export * from "./button-plain.solid";
 export * from "./link.solid";
 export * from "./link-plain.solid";
+export * from "./link-button.solid";
 export * from "./label.solid";
 export * from "./form.solid";
 export * from "./input.solid";

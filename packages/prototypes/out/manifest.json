@@ -19,34 +19,54 @@
       "svelte": "svelte/blocks/team-simple.svelte"
     }
   ],
+  "recipes": {
+    "file": "svelte/compose/recipes.ts",
+    "used": [
+      "badge",
+      "block",
+      "box",
+      "card",
+      "container",
+      "image",
+      "link-button",
+      "list",
+      "stack",
+      "text",
+      "title"
+    ],
+    "controls": [
+      "badge",
+      "link-button"
+    ]
+  },
   "inputs": {
-    "sha256": "741c66f6fc8edbce01d65b37dd1baf813f941970e84bb283822cba8c2c738d2d"
+    "sha256": "1f21caeca650a01b6157a2aea97d8ad6aaffd6eeb6301d711e6f8db9ec551886"
   },
   "files": {
-    "contracts/hero-simple/1.json": "babdb9a5bd0bd5fb9571381c3e76d5947162d2ac385f1606d89fdb303499c009",
-    "contracts/team-simple/1.json": "c71dd32da3ef8512202b473ea1f4c5e8d785889f8635e972451b65b18478aeac",
+    "contracts/hero-simple/1.json": "7d7858e0ed33a50090fbd2205da74c57b3700a15e077bbf336de3a5378ec65ce",
+    "contracts/team-simple/1.json": "dfc8cfcad0f171aebb66e98d3917b1ca21c3eb7357772ce88302311a6642b1ae",
     "contracts/v0.json": "2c8b5dc42e975e5e565900e3eb0c2d115752c45b7aa231a075c1b4a710494b57",
     "models/hero@1.schema.json": "bc3edaec5a433e1481281f4b93502d2f26b58db374f83e6336f1f2d271987a3b",
     "models/hero@1.ts": "e096129e62a802e39d956868f29f840eba1e96390c34bf210740990f2761eea5",
     "models/team@1.schema.json": "ac003fe0b80251f4fefe73e39572cd63f3eb58b35c5fdbd337d03e232fcf797c",
     "models/team@1.ts": "2201ae700f0b26cd4db68b23cd084ce08c39e7609202726bfe081da31d9e26c0",
     "models/validate.ts": "f736b8b812547bb3780e597d0c48971ce70c9a90df7a0fe51e4d109e8a236e7b",
-    "svelte/blocks/hero-simple.svelte": "497ebfc3cf998dba2316e901d67d51da3accbd19173ce8e8c19c1d6edb60cef7",
-    "svelte/blocks/team-simple.svelte": "9e5b09581e9524af56228934010153e1dae5e84127c9265c2da1c54562d580eb",
+    "svelte/blocks/hero-simple.svelte": "cbda3b5183eca798050e652673fc15d7a39d68c476a394d5664a60cae90a6ed3",
+    "svelte/blocks/team-simple.svelte": "f02c01941fbda2cbfa705971431a0f85818400840a0c7b2165ca30526eac83be",
     "svelte/blocks/team-simple.types.ts": "2f37c4f1673b43fd0148bcf07be0d435176aa37ebfada3787b2627e5872d2628",
     "svelte/compose/Badge.svelte": "0d98af821aae53b38448c8faf1d37fe311cc74b516305e04a3f749a2344ad709",
     "svelte/compose/Block.svelte": "eee05a93b7268b10a96edad189425ad848f9fb3e95a50dea5dda2223e3292fdd",
     "svelte/compose/Box.svelte": "d1d97923444205a54250c4d635ff9f6b47320645e3d69d5a823cce77ceb9acdf",
-    "svelte/compose/Button.svelte": "a76fff79056b850be2c85d503c23899f72362e54cae77fba4f9d00ab4e02f77e",
     "svelte/compose/Card.svelte": "6ab42692a6fbeedb45d8cc80a16ac0de9c3be414af58eb200aedf41e23508f88",
     "svelte/compose/Container.svelte": "16588e97ebe3f1975363213ac0576ea6c0d5e4e549179c80ccda5e060e494c0b",
     "svelte/compose/Image.svelte": "0ba650cfe833fcd343754490623564bb944f4252a7ce44092ed1e85402c2c2bf",
+    "svelte/compose/LinkButton.svelte": "21da9db8293301952114eb6d068bb8d78261c04f43366305848f04a4ae9c8e77",
     "svelte/compose/List.svelte": "0d059758dbb35f623fdf50cfcba2c509a892d279360821d262540d2867918bfb",
     "svelte/compose/ListItem.svelte": "d8ab40bd5de97c8664b10ef48ad4a9dea5ce2a766dca3425ddbd8eca2c8c304e",
     "svelte/compose/Stack.svelte": "ada1a37d810b5b788736643d0039122a789df999fec814a984818036524dac8c",
     "svelte/compose/Text.svelte": "cb916ca46797199708b4d71a0ba892a50574acd7d0488411775e565fac1ff142",
     "svelte/compose/Title.svelte": "f66c9c393e1f6dd269d768747c5edf9aff983dca3b1863191058cccda28bc5ad",
-    "svelte/compose/recipes.ts": "ae94326a1e398419beaf8f627c4fe87dca8eafac7f8da0981ba06ebd1c0f22b9",
+    "svelte/compose/recipes.ts": "68e30d8bbe845066b947bc5bfc8a7669e769b3e18f77e6879f86f1d25695df59",
     "svelte/index.ts": "c1b32742b60f91a4cdc03ad11f129068b91a0118d50ec3375a30bb7a4eeb9472",
     "svelte/shapes/media-frame-place.assets.ts": "1c5aa181e4594278c4954753e401b27cb1b793433f6ec615449ad8fa29e8eb19",
     "svelte/shapes/media-frame-place.svelte": "d7f5cf78eea5003389425b3cd414d1bc37f9530f1fcaa2448ed3f548e62681a1",

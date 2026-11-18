@@ -5,8 +5,8 @@ package blocks
 
 import (
 	"github.com/ui8kit/codegen/generated/templ/ui/box"
-	"github.com/ui8kit/codegen/generated/templ/ui/button"
 	"github.com/codegen-x/ui8kit/packages/kit-compose/templ/src/compose"
+	"github.com/ui8kit/codegen/generated/templ/ui/link"
 	"github.com/ui8kit/codegen/generated/templ/ui/text"
 	uiutils "github.com/codegen-x/ui8kit/packages/kit-compose/templ/src/orgutils"
 )
@@ -23,11 +23,12 @@ type HeroSimpleProps struct {
 	ActionLabel any `json:"actionLabel"`
 	ActionHref any `json:"actionHref"`
 	Level any `json:"level"`
+	Padding any `json:"padding"`
 	Media any `json:"media"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
-// The simple hero (model hero@1): an optional badge, the heading, a description, one link as the action and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).
+// The simple hero (model hero@1): an optional badge, the heading, a description, one link as the action (a link styled as a button: drawn only when the label and the address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).
 templ HeroSimple(p HeroSimpleProps) {
 	{{ vId := p.Id }}
 	{{ vBadge := uiutils.Def(p.Badge, "") }}
@@ -39,10 +40,11 @@ templ HeroSimple(p HeroSimpleProps) {
 	{{ vActionLabel := uiutils.Def(p.ActionLabel, "") }}
 	{{ vActionHref := uiutils.Def(p.ActionHref, "") }}
 	{{ vLevel := uiutils.Def(p.Level, float64(2)) }}
+	{{ vPadding := uiutils.Def(p.Padding, "standard") }}
 	{{ vMedia := uiutils.Def(p.Media, "end") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	{{ vTitleId := any(uiutils.Add(vId, "-title")) }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: "py-16", Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "aria-label", vLandmarkLabel, "data-slot", "hero-simple")}}) {
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "compact")), "py-8 lg:py-16", uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "spacious")), "py-24 lg:py-40", "py-16 lg:py-32"))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "aria-label", vLandmarkLabel, "data-slot", "hero-simple")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-6xl px-4"}}) {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-8", uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "top")), "", "items-center md:grid-cols-2")))}}) {
 				if !uiutils.Eq(vMedia, "end") {
@@ -63,7 +65,7 @@ templ HeroSimple(p HeroSimpleProps) {
 						}
 					}
 					if uiutils.T(uiutils.And(vActionLabel, vActionHref)) {
-						@compose.Button(compose.ButtonProps{Variant: "default", Size: "lg", ButtonProps: button.ButtonProps{Href: uiutils.URL(vActionHref, false)}}) {
+						@compose.LinkButton(compose.LinkButtonProps{Variant: "default", Size: "lg", LinkProps: link.LinkProps{Href: uiutils.URL(vActionHref, false)}}) {
 							{ uiutils.Text(vActionLabel) }
 						}
 					}

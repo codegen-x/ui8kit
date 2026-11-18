@@ -15,6 +15,7 @@ export type TeamSimpleProps = {
   description?: string;
   members: SimpleMember[];
   level?: 1 | 2 | 3;
+  padding?: "compact" | "standard" | "spacious";
   cols?: "2" | "3" | "4";
   surface?: "plain" | "cards";
   landmarkLabel?: string;
@@ -26,6 +27,7 @@ export function TeamSimple({
   description = "",
   members,
   level = 2,
+  padding = "standard",
   cols = "3",
   surface = "plain",
   landmarkLabel,
@@ -34,13 +36,17 @@ export function TeamSimple({
   return (
     <Block
       tag="section"
-      className="py-16"
+      className={
+        (padding as string) === "compact" ? "py-8 lg:py-16"
+        : (padding as string) === "spacious" ? "py-24 lg:py-40"
+        : "py-16 lg:py-32"
+      }
       aria-labelledby={(landmarkLabel ? undefined : titleId)}
       aria-label={landmarkLabel}
       data-slot="team-simple"
     >
       <Container className="mx-auto w-full max-w-6xl px-4">
-        <Stack gap="12">
+        <Stack gap="12" align="stretch">
           <Stack gap="4" className="max-w-2xl">
             <Title as={level} size="3xl" weight="bold" className="tracking-tight" id={titleId}>
               {title}
@@ -54,7 +60,7 @@ export function TeamSimple({
           <List
             tag="ul"
             className={cn(
-              "m-0 grid list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2",
+              "m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2",
               (
                 (cols as string) === "2" ? ""
                 : (cols as string) === "3" ? "md:grid-cols-3"

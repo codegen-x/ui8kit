@@ -43,6 +43,7 @@ export * from "./button";
 export * from "./button-plain";
 export * from "./link";
 export * from "./link-plain";
+export * from "./link-button";
 export * from "./label";
 export * from "./form";
 export * from "./input";
