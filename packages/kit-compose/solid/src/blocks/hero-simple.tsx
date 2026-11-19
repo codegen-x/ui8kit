@@ -21,6 +21,7 @@ export type HeroSimpleProps = {
   actionHref?: string;
   level?: 1 | 2 | 3;
   padding?: "compact" | "standard" | "spacious";
+  align?: "start" | "center" | "end";
   media?: "end" | "start" | "top";
   landmarkLabel?: string;
 };
@@ -37,10 +38,19 @@ export function HeroSimple({
   actionHref = "",
   level = 2,
   padding = "standard",
+  align = "start",
   media = "end",
   landmarkLabel,
 }: HeroSimpleProps) {
   const titleId = id + "-title";
+  const column =
+    (align as string) === "center" ? "center"
+    : (align as string) === "end" ? "end"
+    : "start";
+  const textAlign =
+    (align as string) === "center" ? "text-center"
+    : (align as string) === "end" ? "text-end"
+    : "text-start";
   return (
     <Block
       tag="section"
@@ -68,17 +78,17 @@ export function HeroSimple({
               ratio={(((media as string) === "top") ? "21/9" : "4/3")}
             />
           ) : null}
-          <Stack gap="6" align="start">
+          <Stack gap="6" align={column}>
             {badge ? (
               <Badge variant="secondary">
                 {badge}
               </Badge>
             ) : null}
-            <Title as={level} size="4xl" weight="bold" class="tracking-tight" id={titleId}>
+            <Title as={level} size="4xl" weight="bold" class={cn("tracking-tight", textAlign)} id={titleId}>
               {title}
             </Title>
             {description ? (
-              <Text size="lg" class="text-muted-foreground">
+              <Text size="lg" class={cn("text-muted-foreground", textAlign)}>
                 {description}
               </Text>
             ) : null}

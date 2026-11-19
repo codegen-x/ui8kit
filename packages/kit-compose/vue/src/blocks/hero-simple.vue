@@ -17,6 +17,7 @@ export type HeroSimpleProps = {
   actionHref?: string;
   level?: 1 | 2 | 3;
   padding?: "compact" | "standard" | "spacious";
+  align?: "start" | "center" | "end";
   media?: "end" | "start" | "top";
   landmarkLabel?: string;
 };
@@ -47,10 +48,21 @@ const {
   actionHref = "",
   level = 2,
   padding = "standard",
+  align = "start",
   media = "end",
   landmarkLabel,
 } = defineProps<HeroSimpleProps>();
 const titleId = computed(() => id + "-title");
+const column = computed(() =>
+  (align as string) === "center" ? "center"
+  : (align as string) === "end" ? "end"
+  : "start"
+);
+const textAlign = computed(() =>
+  (align as string) === "center" ? "text-center"
+  : (align as string) === "end" ? "text-end"
+  : "text-start"
+);
 </script>
 
 <template>
@@ -78,14 +90,14 @@ const titleId = computed(() => id + "-title");
           :darkSrc="imageDark"
           :ratio="(((media as string) === 'top') ? '21/9' : '4/3')"
         />
-        <Stack gap="6" align="start">
+        <Stack gap="6" :align="column">
           <Badge v-if="badge" variant="secondary">
             {{ badge }}
           </Badge>
-          <Title :as="level" size="4xl" weight="bold" class="tracking-tight" :id="titleId">
+          <Title :as="level" size="4xl" weight="bold" :class="cn('tracking-tight', textAlign)" :id="titleId">
             {{ title }}
           </Title>
-          <Text v-if="description" size="lg" class="text-muted-foreground">
+          <Text v-if="description" size="lg" :class="cn('text-muted-foreground', textAlign)">
             {{ description }}
           </Text>
           <LinkButton v-if="(actionLabel && actionHref)" variant="default" size="lg" :href="urlOf(actionHref)">

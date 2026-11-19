@@ -24,6 +24,7 @@ type HeroSimpleProps struct {
 	ActionHref any `json:"actionHref"`
 	Level any `json:"level"`
 	Padding any `json:"padding"`
+	Align any `json:"align"`
 	Media any `json:"media"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
@@ -41,26 +42,29 @@ templ HeroSimple(p HeroSimpleProps) {
 	{{ vActionHref := uiutils.Def(p.ActionHref, "") }}
 	{{ vLevel := uiutils.Def(p.Level, float64(2)) }}
 	{{ vPadding := uiutils.Def(p.Padding, "standard") }}
+	{{ vAlign := uiutils.Def(p.Align, "start") }}
 	{{ vMedia := uiutils.Def(p.Media, "end") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	{{ vTitleId := any(uiutils.Add(vId, "-title")) }}
+	{{ vColumn := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "end", "start"))) }}
+	{{ vTextAlign := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "text-center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "text-end", "text-start"))) }}
 	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "compact")), "py-8 lg:py-16", uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "spacious")), "py-24 lg:py-40", "py-16 lg:py-32"))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "aria-label", vLandmarkLabel, "data-slot", "hero-simple")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-6xl px-4"}}) {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-8", uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "top")), "", "items-center md:grid-cols-2")))}}) {
 				if !uiutils.Eq(vMedia, "end") {
 					@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, DarkSrc: vImageDark, Ratio: uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "top")), "21/9", "4/3")})
 				}
-				@compose.Stack(compose.StackProps{Gap: "6", Align: "start", BoxProps: box.BoxProps{}}) {
+				@compose.Stack(compose.StackProps{Gap: "6", Align: uiutils.S(vColumn), BoxProps: box.BoxProps{}}) {
 					if uiutils.T(vBadge) {
 						@compose.Badge(compose.BadgeProps{Variant: "secondary", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(vBadge) }
 						}
 					}
-					@compose.Title(compose.TitleProps{As: uiutils.S(vLevel), Size: "4xl", Weight: "bold", TextProps: text.TextProps{Class: "tracking-tight", Attrs: uiutils.Attrs("id", vTitleId)}}) {
+					@compose.Title(compose.TitleProps{As: uiutils.S(vLevel), Size: "4xl", Weight: "bold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("tracking-tight", vTextAlign)), Attrs: uiutils.Attrs("id", vTitleId)}}) {
 						{ uiutils.Text(vTitle) }
 					}
 					if uiutils.T(vDescription) {
-						@compose.Text(compose.TextProps{Size: "lg", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
+						@compose.Text(compose.TextProps{Size: "lg", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("text-muted-foreground", vTextAlign))}}) {
 							{ uiutils.Text(vDescription) }
 						}
 					}

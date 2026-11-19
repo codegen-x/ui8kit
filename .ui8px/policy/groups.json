@@ -40,6 +40,8 @@
       "text-left",
       "text-center",
       "text-right",
+      "text-start",
+      "text-end",
       "text-justify"
     ],
     "background": [

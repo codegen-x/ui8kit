@@ -10,6 +10,8 @@ const at = [
   { name: "place", type: "string" as const, docs: "the place it stands for (data-place)" },
   { name: "field", type: "string" as const, docs: "the JSON pointer of the field (data-field)" },
 ];
+/** the Stack Align classes (logical: flex start / end follow the writing direction); ShapeText `align` uses the same */
+export const ALIGN = { start: "items-start", center: "items-center", end: "items-end", stretch: "items-stretch" } as const satisfies Record<string, string>;
 const hooks = (shape: string, role: Value, slot?: string): Record<string, Value> => ({
   "aria-hidden": "true", "data-shape": shape, "data-role": role, ...(slot ? { "data-slot": slot } : {}), "data-place": ref("place"), "data-field": ref("field"),
 });
@@ -43,9 +45,10 @@ export const SHAPE = {
     props: { Class: cn(cond(eq(ref("size"), "lg"), ROLE["heading-lg"], ROLE.heading), cond(eq(ref("width"), "1/2"), "w-1/2", cond(eq(ref("width"), "full"), "w-full", "w-3/4"))) },
     attrs: hooks("heading", cond(eq(ref("size"), "lg"), "heading-lg", "heading")),
   })]),
-  ShapeText: shape("shape-text", "ShapeText", "The bars of one text (wireframe): muted, h-2, one to three lines, the last one shorter.", [
+  ShapeText: shape("shape-text", "ShapeText", "The bars of one text (wireframe): muted, h-2, one to three lines, the last one shorter; align places the bars (start, center, end: logical).", [
     { name: "lines", type: ts("1", "2", "3"), default: "2" },
-  ], [use("Box", { props: { Class: "flex w-full flex-col gap-2" }, attrs: hooks("text", "text") },
+    { name: "align", type: ts("start", "center", "end"), default: "start" },
+  ], [use("Box", { props: { Class: cn("flex w-full flex-col gap-2", cond(eq(ref("align"), "center"), ALIGN.center, cond(eq(ref("align"), "end"), ALIGN.end, ALIGN.start))) }, attrs: hooks("text", "text") },
     when(ne(ref("lines"), "1"), [bar("w-full")]),
     when(eq(ref("lines"), "3"), [bar("w-full")]),
     bar("w-2/3"))]),

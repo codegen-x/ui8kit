@@ -8,7 +8,7 @@ import { cn, cond, eq, organism, ref } from "../../compose-gen/screens/src/build
 import { isGroup, isOp, isRef, type OrganismSpec, type Value, type ViewNode } from "../../compose-gen/screens/src/ir";
 import type { BlockSpec } from "../../compose-gen/screens/src/ir";
 import type { ModelField, ModelSpec } from "../../compose-gen/model/src/index";
-import { ROLE, SHAPE, type ShapeName } from "./shapes";
+import { ALIGN, ROLE, SHAPE, type ShapeName } from "./shapes";
 
 /** how many members a wireframe draws for a list field */
 export const WIRE_ITEMS = 3;
@@ -20,12 +20,12 @@ export interface Place { place: string; kind: PlaceKind; fields: string[]; list?
 
 const KIND: Record<string, PlaceKind> = { Title: "heading", Text: "text", Badge: "badge", Button: "action", LinkButton: "action", MediaFrame: "media" };
 /** the props of the prototype: the layout axes of the block and these settings */
-export const PROTOTYPE_SETTINGS = ["padding"] as const;
+export const PROTOTYPE_SETTINGS = ["padding", "align"] as const;
 
 /** the layout compositions a wireframe may use, lowered onto the kit Box: the tag and the classes of each (no recipe) */
 type Lowering = { tag?: string; tagProp?: string; base: string; attrs?: Record<string, string>; keys?: Record<string, (v: string) => string> };
-/** the Stack Align / Justify classes (logical: flex start / end follow the writing direction); shipped in out/classes.json */
-export const ALIGN = { start: "items-start", center: "items-center", end: "items-end", stretch: "items-stretch" } as const satisfies Record<string, string>;
+/** the Stack Align (shapes.ts) / Justify classes (logical: flex start / end follow the writing direction); shipped in out/classes.json */
+export { ALIGN };
 export const JUSTIFY = { start: "justify-start", center: "justify-center", end: "justify-end", between: "justify-between" } as const satisfies Record<string, string>;
 /**
  * The section padding presets (the `padding` setting) and the container of the simple line, as the clean organisms write them
@@ -50,6 +50,12 @@ const dropPreflight = (v: Value): Value =>
   : isOp(v) && (v.op === "cn" || v.op === "cond") ? { ...v, args: v.args.map((a, i) => (v.op === "cond" && i === 0 ? a : dropPreflight(a))) }
   : v;
 function fail(msg: string): never { throw new Error(`prototypes: ${msg}`); }
+/** a key value that is a literal or a cond of literals (`Align: cond(eq(align, "center"), "center", "start")`) as its classes */
+function literals(v: Value, key: (v: string) => string, what: string): Value {
+  if (typeof v === "string") return key(v);
+  if (isOp(v) && v.op === "cond") return cond(v.args[0]!, literals(v.args[1]!, key, what), literals(v.args[2]!, key, what));
+  return fail(`${what} is not a literal or a cond of literals`);
+}
 
 /** the refs of a value, deep */
 export function refsOf(v: Value | undefined, out: string[] = []): string[] {
@@ -74,7 +80,22 @@ type Field = { field: string; pointer: string; value: string; list?: string };
 
 class Projector {
   places = new Map<string, Place>();
-  constructor(readonly model: ModelSpec, readonly props: Set<string>) {}
+  /** the clean organism declares the align setting with the values of ShapeText align */
+  alignable: boolean;
+  /** the derived values of the clean organism, inlined: a prototype has no derived values (`derived: []`) */
+  derived: Map<string, Value>;
+  constructor(readonly model: ModelSpec, readonly props: Set<string>, clean?: OrganismSpec) {
+    this.alignable = !!clean?.props.some((p) => p.name === "align");
+    this.derived = new Map((clean?.derived ?? []).map((d) => [d.name, d.value]));
+  }
+  /** a value with every ref to a derived value replaced by that value (deep) */
+  inline(v: Value): Value {
+    if (v === undefined || v === null || typeof v !== "object") return v;
+    if (isRef(v)) return this.derived.has(v.$) ? this.inline(this.derived.get(v.$)!) : v;
+    if (isOp(v)) return { ...v, args: v.args.map((a) => this.inline(a)) };
+    if (isGroup(v)) return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, this.inline(x as Value)])) as Value;
+    return v;
+  }
 
   /** a ref as a model field: a top field (`title`) or a field of the item of an unrolled loop (`m.title`, index i) */
   field(path: string, loops: Loop[]): Field | undefined {
@@ -109,7 +130,8 @@ class Projector {
       const big = typeof size === "string" && ["2xl", "3xl", "4xl", "5xl"].includes(size);
       const pick: Record<Exclude<PlaceKind, "media">, [ShapeName, Record<string, Value>]> = {
         heading: ["ShapeHeading", { size: big ? "lg" : "md", width: primary.list ? "1/2" : "3/4" }],
-        text: ["ShapeText", { lines: primary.list ? "1" : "2" }],
+        // the text bars follow the `align` setting of the block (items-* inside the shape)
+        text: ["ShapeText", { lines: primary.list ? "1" : "2", ...(this.props.has("align") && this.alignable ? { align: ref("align") } : {}) }],
         badge: ["ShapeBadge", {}],
         action: ["ShapeCta", {}],
       };
@@ -158,14 +180,14 @@ class Projector {
   /** a layout composition onto the kit Box: its tag, the classes of its keys, the classes of the spec; nothing else */
   lower(n: Extract<ViewNode, { use: string }>, loops: Loop[]): ViewNode {
     const l = LAYOUT[n.use] ?? fail(`${n.use} is not a layout composition (only ${Object.keys(LAYOUT).join(", ")})`);
-    const props = n.props ?? {};
+    const props = Object.fromEntries(Object.entries(n.props ?? {}).map(([k, v]) => [k, this.inline(v)]));
     const classes: Value[] = l.base ? [l.base] : [];
     for (const [k, v] of Object.entries(props)) {
       if (k === "Class") { this.check(v); classes.push(dropPreflight(v)); continue; }
       if (k === l.tagProp) continue;
       const key = l.keys?.[k] ?? fail(`${n.use} prop ${k} has no wireframe lowering`);
-      if (typeof v !== "string") fail(`${n.use} ${k} is not a literal`);
-      classes.push(key(v));
+      this.check(v);
+      classes.push(literals(v, key, `${n.use} ${k}`));
     }
     const tag = l.tagProp && props[l.tagProp] !== undefined ? props[l.tagProp]! : l.tag;
     const attrs = { ...(n.attrs ?? {}), ...(l.attrs ?? {}) };
@@ -190,8 +212,8 @@ const prefixed = (f: Field): string => (f.list ? `${f.list}.${f.field}` : f.fiel
 
 /** the prototype of a clean organism for its block and model, and its places */
 export function project(clean: OrganismSpec, block: BlockSpec, model: ModelSpec): { organism: OrganismSpec; places: Place[] } {
-  const keep = new Set<string>([...Object.keys(block.axes), ...PROTOTYPE_SETTINGS]);
-  const pr = new Projector(model, keep);
+  const keep = new Set<string>([...Object.keys(block.axes), ...PROTOTYPE_SETTINGS.filter((s) => clean.props.some((p) => p.name === s))]);
+  const pr = new Projector(model, keep, clean);
   const view = pr.nodes(clean.view, []);
   const organismSpec: OrganismSpec = {
     ...clean,

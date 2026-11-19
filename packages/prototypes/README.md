@@ -11,7 +11,8 @@ from the registry.
   for the builder's inspector. A branch that waits for content is drawn; a loop over a list field is unrolled into three
   placeholders. The layout compositions (Block, Container, Box, Stack, List, ListItem, Card) are lowered onto the kit `Box`
   with plain layout classes; anything else fails the build. The props are the layout axes of the block and the `padding`
-  setting; a wireframe takes no content and names no landmark.
+  and `align` settings (align: `start` | `center` | `end`, logical items-* / text-*, `ShapeText align`); a wireframe takes
+  no content and names no landmark. Derived values of the clean organism are inlined.
 - `src/shapes.ts`: the shapes (heading, text, badge, action, media, avatar): a kit `Box` with a token background and an 8+4
   height, `aria-hidden`, with `data-shape` / `data-role` / `data-slot` hooks for per-element theme tokens.
 - `src/contract.ts`: `out/contracts/<item>/1.json` (item, model and schema URL, axes, variants, settings, modes, places) and
@@ -27,7 +28,7 @@ from the registry.
 | `svelte/blocks/<item>.svelte` | the wireframes (Svelte 5) |
 | `svelte/shapes/shape-*.svelte` | the shapes |
 | `svelte/index.ts` | the exports |
-| `classes.json` | the shared class strings: the role table (`ROLE`, shapes.ts), Stack `align` / `justify`, the `padding` presets and the container; ui8kit/prototypes builds its hand-written `classes.ts` from it (one source) |
+| `classes.json` | the shared class strings: the role table (`ROLE`, shapes.ts), Stack `align` / `justify`, `textAlign` (the `align` setting on text: `text-start` / `text-center` / `text-end`), the `padding` presets and the container; ui8kit/prototypes builds its hand-written `classes.ts` from it (one source) |
 | `contracts/` | the contracts |
 | `models/` | `<id>@<v>.schema.json` (JSON Schema 2020-12), `<id>@<v>.ts` (types, the model, `validate<Type>()`), `validate.ts` |
 | `manifest.json` | sha256 of every file and of the inputs; no timestamps and no commit (the consumer pins the commit: ui8kit/prototypes `codegen.lock.json`) |
@@ -35,5 +36,5 @@ from the registry.
 `test/prototypes.test.ts`: the places cover the model; every place of a contract has its shape in the wireframe (and every
 `data-field` is a pointer of the contract) on every gallery case; the wireframe has no words and three members; `out/` is
 exactly the files above and imports only svelte and the kit; the clean outputs of all 8 runtimes carry no `data-place`,
-`data-field`, `data-shape` or `data-testid`; the padding presets, the width of the team list and the action link are checked
+`data-field`, `data-shape` or `data-testid`; the padding presets, every `align` value, the width of the team list and the action link are checked
 on the wireframe and on the clean kit-compose block; `out/` is the fresh build.

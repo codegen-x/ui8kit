@@ -3417,6 +3417,7 @@
         "actionHref",
         "level",
         "padding",
+        "align",
         "media",
         "landmarkLabel"
       ],
@@ -7201,6 +7202,7 @@
         "id",
         "level",
         "padding",
+        "align",
         "cols",
         "surface",
         "landmarkLabel"

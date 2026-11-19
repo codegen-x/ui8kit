@@ -72,6 +72,14 @@
       "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
     },
     {
+      "name": "align",
+      "type": {
+        "ts": "\"start\" | \"center\" | \"end\""
+      },
+      "default": "start",
+      "docs": "the alignment of the copy: start, center or end (logical, follows the writing direction): items-* on the column, text-* on the text"
+    },
+    {
       "name": "media",
       "type": {
         "ts": "\"end\" | \"start\" | \"top\""
@@ -94,6 +102,74 @@
             "$": "id"
           },
           "-title"
+        ]
+      }
+    },
+    {
+      "name": "column",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "end",
+              "start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "textAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "text-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "text-end",
+              "text-start"
+            ]
+          }
         ]
       }
     }
@@ -250,7 +326,9 @@
                   "use": "Stack",
                   "props": {
                     "Gap": "6",
-                    "Align": "start"
+                    "Align": {
+                      "$": "column"
+                    }
                   },
                   "children": [
                     {
@@ -281,7 +359,15 @@
                         },
                         "Size": "4xl",
                         "Weight": "bold",
-                        "Class": "tracking-tight"
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "tracking-tight",
+                            {
+                              "$": "textAlign"
+                            }
+                          ]
+                        }
                       },
                       "attrs": {
                         "id": {
@@ -305,7 +391,15 @@
                           "use": "Text",
                           "props": {
                             "Size": "lg",
-                            "Class": "text-muted-foreground"
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "text-muted-foreground",
+                                {
+                                  "$": "textAlign"
+                                }
+                              ]
+                            }
                           },
                           "children": [
                             {

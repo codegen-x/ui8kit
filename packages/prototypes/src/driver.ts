@@ -17,6 +17,7 @@ import type { BlockSpec } from "../../compose-gen/screens/src/ir";
 import { contentType, loadModels, schemaOf, typesOf } from "../../compose-gen/model/src/index";
 import { contractIndex, contractOf, type Contract } from "./contract";
 import { ALIGN, CONTAINER, JUSTIFY, PADDING, project } from "./project";
+import { TEXT_ALIGN } from "../../compose-gen/screens/src/authoring/blocks/simple";
 import { ROLE, shapes } from "./shapes";
 
 export const PKG = path.resolve(import.meta.dir, "..");
@@ -76,7 +77,7 @@ export function build(): Built {
   files.set("svelte/index.ts", `// ${HEAD}\n// The wireframes of the simple line (rectangles only) and their shapes.\n${[...blockExports, ...shapeExports].join("\n")}\n`);
 
   // the class strings a consumer's hand-written layer must share with the wireframes (ui8kit/prototypes classes.ts): one source
-  files.set("classes.json", json({ roles: ROLE, align: ALIGN, justify: JUSTIFY, padding: PADDING, container: CONTAINER }));
+  files.set("classes.json", json({ roles: ROLE, align: ALIGN, justify: JUSTIFY, textAlign: TEXT_ALIGN, padding: PADDING, container: CONTAINER }));
   for (const c of contracts) files.set(`contracts/${c.item}/${c.version}.json`, json(c));
   files.set("contracts/v0.json", json(contractIndex(contracts)));
   const validateSrc = readFileSync(path.join(ROOT, "model/src/validate.ts"), "utf8");

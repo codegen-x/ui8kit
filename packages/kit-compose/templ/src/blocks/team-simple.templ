@@ -18,6 +18,7 @@ type TeamSimpleProps struct {
 	Members any `json:"members"`
 	Level any `json:"level"`
 	Padding any `json:"padding"`
+	Align any `json:"align"`
 	Cols any `json:"cols"`
 	Surface any `json:"surface"`
 	LandmarkLabel any `json:"landmarkLabel"`
@@ -31,35 +32,40 @@ templ TeamSimple(p TeamSimpleProps) {
 	{{ vMembers := p.Members }}
 	{{ vLevel := uiutils.Def(p.Level, float64(2)) }}
 	{{ vPadding := uiutils.Def(p.Padding, "standard") }}
+	{{ vAlign := uiutils.Def(p.Align, "start") }}
 	{{ vCols := uiutils.Def(p.Cols, "3") }}
 	{{ vSurface := uiutils.Def(p.Surface, "plain") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	{{ vTitleId := any(uiutils.Add(vId, "-title")) }}
+	{{ vColumn := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "end", "start"))) }}
+	{{ vTextAlign := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "text-center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "text-end", "text-start"))) }}
+	{{ vItemsAlign := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "items-center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "items-end", "items-start"))) }}
+	{{ vSelfAlign := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "self-center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "self-end", ""))) }}
 	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "compact")), "py-8 lg:py-16", uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "spacious")), "py-24 lg:py-40", "py-16 lg:py-32"))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "aria-label", vLandmarkLabel, "data-slot", "team-simple")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-6xl px-4"}}) {
 			@compose.Stack(compose.StackProps{Gap: "12", Align: "stretch", BoxProps: box.BoxProps{}}) {
-				@compose.Stack(compose.StackProps{Gap: "4", BoxProps: box.BoxProps{Class: "max-w-2xl"}}) {
-					@compose.Title(compose.TitleProps{As: uiutils.S(vLevel), Size: "3xl", Weight: "bold", TextProps: text.TextProps{Class: "tracking-tight", Attrs: uiutils.Attrs("id", vTitleId)}}) {
+				@compose.Stack(compose.StackProps{Gap: "4", Align: uiutils.S(vColumn), BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("max-w-2xl", vSelfAlign))}}) {
+					@compose.Title(compose.TitleProps{As: uiutils.S(vLevel), Size: "3xl", Weight: "bold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("tracking-tight", vTextAlign)), Attrs: uiutils.Attrs("id", vTitleId)}}) {
 						{ uiutils.Text(vTitle) }
 					}
 					if uiutils.T(vDescription) {
-						@compose.Text(compose.TextProps{Size: "base", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
+						@compose.Text(compose.TextProps{Size: "base", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("text-muted-foreground", vTextAlign))}}) {
 							{ uiutils.Text(vDescription) }
 						}
 					}
 				}
 				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "3")), "md:grid-cols-3", "md:grid-cols-4"))))}}) {
 					for _, vM := range uiutils.L(vMembers) {
-						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "cards")), "flex", "flex flex-col gap-4")), Attrs: uiutils.Attrs("data-slot", "member")}}) {
+						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "cards")), "flex", uiutils.Cnv("flex flex-col gap-4", vItemsAlign))), Attrs: uiutils.Attrs("data-slot", "member")}}) {
 							if uiutils.Eq(vSurface, "cards") {
-								@compose.Card(compose.CardProps{BoxProps: box.BoxProps{Class: "flex w-full flex-col gap-4 p-6"}}) {
+								@compose.Card(compose.CardProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex w-full flex-col gap-4 p-6", vItemsAlign))}}) {
 									@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vM, "title"), Src: uiutils.Get(vM, "avatar"), Ratio: "1/1", Class: uiutils.Cnv("size-16 rounded-full")})
-									@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
-										@compose.Title(compose.TitleProps{As: uiutils.S(uiutils.Add(vLevel, float64(1))), Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
+									@compose.Stack(compose.StackProps{Gap: "2", Align: uiutils.S(vColumn), BoxProps: box.BoxProps{}}) {
+										@compose.Title(compose.TitleProps{As: uiutils.S(uiutils.Add(vLevel, float64(1))), Size: "lg", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(vTextAlign)}}) {
 											{ uiutils.Text(uiutils.Get(vM, "title")) }
 										}
 										if uiutils.T(uiutils.Get(vM, "description")) {
-											@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
+											@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("text-muted-foreground", vTextAlign))}}) {
 												{ uiutils.Text(uiutils.Get(vM, "description")) }
 											}
 										}
@@ -67,12 +73,12 @@ templ TeamSimple(p TeamSimpleProps) {
 								}
 							} else {
 								@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vM, "title"), Src: uiutils.Get(vM, "avatar"), Ratio: "1/1", Class: uiutils.Cnv("size-16 rounded-full")})
-								@compose.Stack(compose.StackProps{Gap: "2", BoxProps: box.BoxProps{}}) {
-									@compose.Title(compose.TitleProps{As: uiutils.S(uiutils.Add(vLevel, float64(1))), Size: "lg", Weight: "semibold", TextProps: text.TextProps{}}) {
+								@compose.Stack(compose.StackProps{Gap: "2", Align: uiutils.S(vColumn), BoxProps: box.BoxProps{}}) {
+									@compose.Title(compose.TitleProps{As: uiutils.S(uiutils.Add(vLevel, float64(1))), Size: "lg", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(vTextAlign)}}) {
 										{ uiutils.Text(uiutils.Get(vM, "title")) }
 									}
 									if uiutils.T(uiutils.Get(vM, "description")) {
-										@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
+										@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("text-muted-foreground", vTextAlign))}}) {
 											{ uiutils.Text(uiutils.Get(vM, "description")) }
 										}
 									}

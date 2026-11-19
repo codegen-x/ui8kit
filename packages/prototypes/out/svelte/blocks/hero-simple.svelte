@@ -10,6 +10,7 @@
 
   export type HeroSimpleProps = {
     padding?: "compact" | "standard" | "spacious";
+    align?: "start" | "center" | "end";
     media?: "end" | "start" | "top";
   };
 </script>
@@ -23,7 +24,7 @@
   import ShapeText from "../shapes/shape-text.svelte";
   import { cn } from "@ui8kit/kit/utils";
 
-  let { padding = "standard", media = "end" }: HeroSimpleProps = $props();
+  let { padding = "standard", align = "start", media = "end" }: HeroSimpleProps = $props();
 </script>
 
 <Box
@@ -49,10 +50,20 @@
           field="/image /imageAlt /imageDark"
         />
       {/if}
-      <Box class={cn("flex flex-col", "gap-6", "items-start")}>
+      <Box
+        class={cn(
+          "flex flex-col",
+          "gap-6",
+          (
+            (align as string) === "center" ? "items-center"
+            : (align as string) === "end" ? "items-end"
+            : "items-start"
+          )
+        )}
+      >
         <ShapeBadge place="badge" field="/badge" />
         <ShapeHeading size="lg" width="3/4" place="title" field="/title" />
-        <ShapeText lines="2" place="description" field="/description" />
+        <ShapeText lines="2" align={align} place="description" field="/description" />
         <ShapeCta place="action" field="/actionLabel /actionHref" />
       </Box>
       {#if ((media as string) === "end")}

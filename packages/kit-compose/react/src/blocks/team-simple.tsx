@@ -16,6 +16,7 @@ export type TeamSimpleProps = {
   members: SimpleMember[];
   level?: 1 | 2 | 3;
   padding?: "compact" | "standard" | "spacious";
+  align?: "start" | "center" | "end";
   cols?: "2" | "3" | "4";
   surface?: "plain" | "cards";
   landmarkLabel?: string;
@@ -28,11 +29,28 @@ export function TeamSimple({
   members,
   level = 2,
   padding = "standard",
+  align = "start",
   cols = "3",
   surface = "plain",
   landmarkLabel,
 }: TeamSimpleProps) {
   const titleId = id + "-title";
+  const column =
+    (align as string) === "center" ? "center"
+    : (align as string) === "end" ? "end"
+    : "start";
+  const textAlign =
+    (align as string) === "center" ? "text-center"
+    : (align as string) === "end" ? "text-end"
+    : "text-start";
+  const itemsAlign =
+    (align as string) === "center" ? "items-center"
+    : (align as string) === "end" ? "items-end"
+    : "items-start";
+  const selfAlign =
+    (align as string) === "center" ? "self-center"
+    : (align as string) === "end" ? "self-end"
+    : "";
   return (
     <Block
       tag="section"
@@ -47,12 +65,12 @@ export function TeamSimple({
     >
       <Container className="mx-auto w-full max-w-6xl px-4">
         <Stack gap="12" align="stretch">
-          <Stack gap="4" className="max-w-2xl">
-            <Title as={level} size="3xl" weight="bold" className="tracking-tight" id={titleId}>
+          <Stack gap="4" align={column} className={cn("max-w-2xl", selfAlign)}>
+            <Title as={level} size="3xl" weight="bold" className={cn("tracking-tight", textAlign)} id={titleId}>
               {title}
             </Title>
             {description ? (
-              <Text size="base" className="text-muted-foreground">
+              <Text size="base" className={cn("text-muted-foreground", textAlign)}>
                 {description}
               </Text>
             ) : null}
@@ -69,16 +87,19 @@ export function TeamSimple({
             )}
           >
             {(members ?? []).map((m) => (
-              <ListItem key={m.id} className={(((surface as string) === "cards") ? "flex" : "flex flex-col gap-4")} data-slot="member">
+              <ListItem key={m.id}
+                className={(((surface as string) === "cards") ? "flex" : cn("flex flex-col gap-4", itemsAlign))}
+                data-slot="member"
+              >
                 {((surface as string) === "cards") ? (
-                  <Card className="flex w-full flex-col gap-4 p-6">
+                  <Card className={cn("flex w-full flex-col gap-4 p-6", itemsAlign)}>
                     <MediaFrame alt={m.title} src={m.avatar} ratio="1/1" className="size-16 rounded-full" />
-                    <Stack gap="2">
-                      <Title as={(level + 1)} size="lg" weight="semibold">
+                    <Stack gap="2" align={column}>
+                      <Title as={(level + 1)} size="lg" weight="semibold" className={textAlign}>
                         {m.title}
                       </Title>
                       {m.description ? (
-                        <Text size="sm" className="text-muted-foreground">
+                        <Text size="sm" className={cn("text-muted-foreground", textAlign)}>
                           {m.description}
                         </Text>
                       ) : null}
@@ -87,12 +108,12 @@ export function TeamSimple({
                 ) : (
                   <>
                     <MediaFrame alt={m.title} src={m.avatar} ratio="1/1" className="size-16 rounded-full" />
-                    <Stack gap="2">
-                      <Title as={(level + 1)} size="lg" weight="semibold">
+                    <Stack gap="2" align={column}>
+                      <Title as={(level + 1)} size="lg" weight="semibold" className={textAlign}>
                         {m.title}
                       </Title>
                       {m.description ? (
-                        <Text size="sm" className="text-muted-foreground">
+                        <Text size="sm" className={cn("text-muted-foreground", textAlign)}>
                           {m.description}
                         </Text>
                       ) : null}

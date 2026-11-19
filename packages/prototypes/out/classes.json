@@ -21,6 +21,11 @@
     "end": "justify-end",
     "between": "justify-between"
   },
+  "textAlign": {
+    "start": "text-start",
+    "center": "text-center",
+    "end": "text-end"
+  },
   "padding": {
     "compact": "py-8 lg:py-16",
     "standard": "py-16 lg:py-32",

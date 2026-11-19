@@ -8,9 +8,11 @@ import path from "node:path";
 import { blockCases, loadInputs, ROOT, type OrganismSpec } from "../../compose-gen";
 import { loadModels, schemaOf, validate } from "../../compose-gen/model/src/index";
 import { plugin } from "bun";
+import { JSDOM } from "jsdom";
 import { compile } from "svelte/compiler";
 import { build, drift, OUT } from "../src/driver";
 import { CONTAINER, PADDING } from "../src/project";
+import { TEXT_ALIGN } from "../../compose-gen/screens/src/authoring/blocks/simple";
 import { ROLE } from "../src/shapes";
 
 const KIT = path.resolve(import.meta.dir, "../../kit/svelte/src");
@@ -51,7 +53,8 @@ const itemOf = (name: string) => simple.find((c) => c.organism === name)!.item;
 
 test("the simple line has its prototypes: hero-simple and team-simple", () => {
   expect(simple.map((c) => [c.item, c.model, c.defaultMode])).toEqual([["hero-simple", "hero@1", "wireframe"], ["team-simple", "team@1", "wireframe"]]);
-  expect(cases.length).toBe(7);
+  // 7 variants, and each once more per non-default align value (compose-gen blockCases)
+  expect(cases.length).toBe(7 * 3);
 });
 
 test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", () => {
@@ -132,8 +135,8 @@ test("out/models: the schemas are schemaOf(model), the emitted validate() agrees
   }
 });
 
-test("a prototype takes its layout axes and the padding setting, no content", () => {
-  for (const c of simple) expect(built.organisms.find((o) => o.name === c.organism)!.props.map((p) => p.name).sort()).toEqual([...Object.keys(c.axes), "padding"].sort());
+test("a prototype takes its layout axes and the padding and align settings, no content", () => {
+  for (const c of simple) expect(built.organisms.find((o) => o.name === c.organism)!.props.map((p) => p.name).sort()).toEqual([...Object.keys(c.axes), "padding", "align"].sort());
 });
 
 describe("layout, padding and the action: the wireframe and the clean block", () => {
@@ -160,6 +163,34 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     }
   });
 
+  test("contracts: align is a setting (start | center | end, default start), not a variant axis", () => {
+    for (const c of simple) {
+      expect(c.settings.align).toEqual({ type: '"start" | "center" | "end"', default: "start" });
+      expect(Object.keys(c.axes)).not.toContain("align");
+    }
+  });
+
+  // the align setting: logical classes only (ui8kit/prototypes docs/adr/0002-align-as-setting.md)
+  const ITEMS = { start: "items-start", center: "items-center", end: "items-end" } as const;
+  for (const item of ["hero-simple", "team-simple"]) for (const mode of ["wireframe", "clean"]) for (const align of ["start", "center", "end"] as const) test(`${item} (${mode}) align ${align}: items-${align} on the copy, logical text classes only`, async () => {
+    const props = item === "hero-simple" ? hero : team;
+    const html = await ssr(fileOf(item, mode), { ...props, ...(align === "start" ? {} : { align }) });
+    const others = Object.values(ITEMS).filter((x) => x !== ITEMS[align]);
+    // the column of the heading: the parent of the heading shape (wireframe) or of the heading (clean) has items-<align>
+    const doc = new JSDOM(html).window.document;
+    const column = [...doc.querySelector(mode === "wireframe" ? '[data-place="title"]' : "h1, h2, h3")!.parentElement!.classList];
+    expect(column).toContain(ITEMS[align]);
+    for (const o of others) expect(column).not.toContain(o);
+    if (mode === "wireframe") {
+      // the text bars follow it inside ShapeText
+      const text = html.match(/<div[^>]*class="([^"]*)"[^>]*data-shape="text"/)![1]!.split(/\s+/);
+      expect(text).toContain(ITEMS[align]);
+    } else {
+      expect(html.match(/<h[1-3][^>]*class="([^"]*)"/)![1]!.split(/\s+/)).toContain(TEXT_ALIGN[align]);
+    }
+    expect(html).not.toMatch(/\btext-(?:left|right)\b/);
+  });
+
   for (const cols of ["2", "3", "4"]) for (const surface of ["plain", "cards"]) for (const mode of ["wireframe", "clean"]) test(`team-simple cols ${cols} ${surface} (${mode}): the list fills the container`, async () => {
     const html = await ssr(fileOf("team-simple", mode), { ...team, cols, surface });
     // the column Stack stretches its children (items-stretch, not the default items-start) and the grid is w-full
@@ -181,9 +212,10 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
   });
 });
 
-test("out/classes.json: the role table, Stack align / justify, the padding presets and the container, every length on the 8px grid", () => {
-  const c = JSON.parse(built.files.get("classes.json")!) as { roles: Record<string, string>; padding: Record<string, string>; container: string };
+test("out/classes.json: the role table, Stack align / justify, the text align, the padding presets and the container, every length on the 8px grid", () => {
+  const c = JSON.parse(built.files.get("classes.json")!) as { roles: Record<string, string>; padding: Record<string, string>; container: string; textAlign: Record<string, string> };
   expect(c.roles).toEqual(ROLE);
+  expect(c.textAlign).toEqual({ start: "text-start", center: "text-center", end: "text-end" });
   expect(Object.keys(c.padding)).toEqual(["compact", "standard", "spacious"]);
   for (const cls of [...Object.values(c.roles), ...Object.values(c.padding), c.container].join(" ").split(/\s+/)) {
     const step = /^(?:[a-z]+:)?(?:p[xy]?|h|w|gap)-(\d+)$/.exec(cls)?.[1];

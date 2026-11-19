@@ -19,6 +19,7 @@
     actionHref?: string;
     level?: 1 | 2 | 3;
     padding?: "compact" | "standard" | "spacious";
+    align?: "start" | "center" | "end";
     media?: "end" | "start" | "top";
     landmarkLabel?: string;
   };
@@ -48,10 +49,21 @@
     actionHref = "",
     level = 2,
     padding = "standard",
+    align = "start",
     media = "end",
     landmarkLabel,
   }: HeroSimpleProps = $props();
   const titleId = $derived(id + "-title");
+  const column = $derived(
+    (align as string) === "center" ? "center"
+    : (align as string) === "end" ? "end"
+    : "start"
+  );
+  const textAlign = $derived(
+    (align as string) === "center" ? "text-center"
+    : (align as string) === "end" ? "text-end"
+    : "text-start"
+  );
 </script>
 
 <Block
@@ -80,17 +92,17 @@
           ratio={(((media as string) === "top") ? "21/9" : "4/3")}
         />
       {/if}
-      <Stack gap="6" align="start">
+      <Stack gap="6" align={column}>
         {#if badge}
           <Badge variant="secondary">
             {badge}
           </Badge>
         {/if}
-        <Title as={level} size="4xl" weight="bold" class="tracking-tight" id={titleId}>
+        <Title as={level} size="4xl" weight="bold" class={cn("tracking-tight", textAlign)} id={titleId}>
           {title}
         </Title>
         {#if description}
-          <Text size="lg" class="text-muted-foreground">
+          <Text size="lg" class={cn("text-muted-foreground", textAlign)}>
             {description}
           </Text>
         {/if}

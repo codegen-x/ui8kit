@@ -14,6 +14,7 @@
     members: SimpleMember[];
     level?: 1 | 2 | 3;
     padding?: "compact" | "standard" | "spacious";
+    align?: "start" | "center" | "end";
     cols?: "2" | "3" | "4";
     surface?: "plain" | "cards";
     landmarkLabel?: string;
@@ -39,11 +40,32 @@
     members,
     level = 2,
     padding = "standard",
+    align = "start",
     cols = "3",
     surface = "plain",
     landmarkLabel,
   }: TeamSimpleProps = $props();
   const titleId = $derived(id + "-title");
+  const column = $derived(
+    (align as string) === "center" ? "center"
+    : (align as string) === "end" ? "end"
+    : "start"
+  );
+  const textAlign = $derived(
+    (align as string) === "center" ? "text-center"
+    : (align as string) === "end" ? "text-end"
+    : "text-start"
+  );
+  const itemsAlign = $derived(
+    (align as string) === "center" ? "items-center"
+    : (align as string) === "end" ? "items-end"
+    : "items-start"
+  );
+  const selfAlign = $derived(
+    (align as string) === "center" ? "self-center"
+    : (align as string) === "end" ? "self-end"
+    : ""
+  );
 </script>
 
 <Block
@@ -59,12 +81,12 @@
 >
   <Container class="mx-auto w-full max-w-6xl px-4">
     <Stack gap="12" align="stretch">
-      <Stack gap="4" class="max-w-2xl">
-        <Title as={level} size="3xl" weight="bold" class="tracking-tight" id={titleId}>
+      <Stack gap="4" align={column} class={cn("max-w-2xl", selfAlign)}>
+        <Title as={level} size="3xl" weight="bold" class={cn("tracking-tight", textAlign)} id={titleId}>
           {title}
         </Title>
         {#if description}
-          <Text size="base" class="text-muted-foreground">
+          <Text size="base" class={cn("text-muted-foreground", textAlign)}>
             {description}
           </Text>
         {/if}
@@ -81,16 +103,19 @@
         )}
       >
         {#each members as m (m.id)}
-          <ListItem class={(((surface as string) === "cards") ? "flex" : "flex flex-col gap-4")} data-slot="member">
+          <ListItem
+            class={(((surface as string) === "cards") ? "flex" : cn("flex flex-col gap-4", itemsAlign))}
+            data-slot="member"
+          >
             {#if ((surface as string) === "cards")}
-              <Card class="flex w-full flex-col gap-4 p-6">
+              <Card class={cn("flex w-full flex-col gap-4 p-6", itemsAlign)}>
                 <MediaFrame alt={m.title} src={m.avatar} ratio="1/1" class="size-16 rounded-full" />
-                <Stack gap="2">
-                  <Title as={(level + 1)} size="lg" weight="semibold">
+                <Stack gap="2" align={column}>
+                  <Title as={(level + 1)} size="lg" weight="semibold" class={textAlign}>
                     {m.title}
                   </Title>
                   {#if m.description}
-                    <Text size="sm" class="text-muted-foreground">
+                    <Text size="sm" class={cn("text-muted-foreground", textAlign)}>
                       {m.description}
                     </Text>
                   {/if}
@@ -98,12 +123,12 @@
               </Card>
             {:else}
               <MediaFrame alt={m.title} src={m.avatar} ratio="1/1" class="size-16 rounded-full" />
-              <Stack gap="2">
-                <Title as={(level + 1)} size="lg" weight="semibold">
+              <Stack gap="2" align={column}>
+                <Title as={(level + 1)} size="lg" weight="semibold" class={textAlign}>
                   {m.title}
                 </Title>
                 {#if m.description}
-                  <Text size="sm" class="text-muted-foreground">
+                  <Text size="sm" class={cn("text-muted-foreground", textAlign)}>
                     {m.description}
                   </Text>
                 {/if}

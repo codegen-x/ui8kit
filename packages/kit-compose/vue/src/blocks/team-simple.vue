@@ -13,6 +13,7 @@ export type TeamSimpleProps = {
   members: SimpleMember[];
   level?: 1 | 2 | 3;
   padding?: "compact" | "standard" | "spacious";
+  align?: "start" | "center" | "end";
   cols?: "2" | "3" | "4";
   surface?: "plain" | "cards";
   landmarkLabel?: string;
@@ -39,11 +40,32 @@ const {
   members,
   level = 2,
   padding = "standard",
+  align = "start",
   cols = "3",
   surface = "plain",
   landmarkLabel,
 } = defineProps<TeamSimpleProps>();
 const titleId = computed(() => id + "-title");
+const column = computed(() =>
+  (align as string) === "center" ? "center"
+  : (align as string) === "end" ? "end"
+  : "start"
+);
+const textAlign = computed(() =>
+  (align as string) === "center" ? "text-center"
+  : (align as string) === "end" ? "text-end"
+  : "text-start"
+);
+const itemsAlign = computed(() =>
+  (align as string) === "center" ? "items-center"
+  : (align as string) === "end" ? "items-end"
+  : "items-start"
+);
+const selfAlign = computed(() =>
+  (align as string) === "center" ? "self-center"
+  : (align as string) === "end" ? "self-end"
+  : ""
+);
 </script>
 
 <template>
@@ -60,11 +82,11 @@ const titleId = computed(() => id + "-title");
   >
     <Container class="mx-auto w-full max-w-6xl px-4">
       <Stack gap="12" align="stretch">
-        <Stack gap="4" class="max-w-2xl">
-          <Title :as="level" size="3xl" weight="bold" class="tracking-tight" :id="titleId">
+        <Stack gap="4" :align="column" :class="cn('max-w-2xl', selfAlign)">
+          <Title :as="level" size="3xl" weight="bold" :class="cn('tracking-tight', textAlign)" :id="titleId">
             {{ title }}
           </Title>
-          <Text v-if="description" size="base" class="text-muted-foreground">
+          <Text v-if="description" size="base" :class="cn('text-muted-foreground', textAlign)">
             {{ description }}
           </Text>
         </Stack>
@@ -79,30 +101,28 @@ const titleId = computed(() => id + "-title");
             )
           )"
         >
-          <ListItem
-            v-for="m in members"
-            :key="m.id"
-            :class="(((surface as string) === 'cards') ? 'flex' : 'flex flex-col gap-4')"
+          <ListItem v-for="m in members" :key="m.id"
+            :class="(((surface as string) === 'cards') ? 'flex' : cn('flex flex-col gap-4', itemsAlign))"
             data-slot="member"
           >
-            <Card v-if="((surface as string) === 'cards')" class="flex w-full flex-col gap-4 p-6">
+            <Card v-if="((surface as string) === 'cards')" :class="cn('flex w-full flex-col gap-4 p-6', itemsAlign)">
               <MediaFrame :alt="m.title" :src="m.avatar" ratio="1/1" class="size-16 rounded-full" />
-              <Stack gap="2">
-                <Title :as="(level + 1)" size="lg" weight="semibold">
+              <Stack gap="2" :align="column">
+                <Title :as="(level + 1)" size="lg" weight="semibold" :class="textAlign">
                   {{ m.title }}
                 </Title>
-                <Text v-if="m.description" size="sm" class="text-muted-foreground">
+                <Text v-if="m.description" size="sm" :class="cn('text-muted-foreground', textAlign)">
                   {{ m.description }}
                 </Text>
               </Stack>
             </Card>
             <template v-else>
               <MediaFrame :alt="m.title" :src="m.avatar" ratio="1/1" class="size-16 rounded-full" />
-              <Stack gap="2">
-                <Title :as="(level + 1)" size="lg" weight="semibold">
+              <Stack gap="2" :align="column">
+                <Title :as="(level + 1)" size="lg" weight="semibold" :class="textAlign">
                   {{ m.title }}
                 </Title>
-                <Text v-if="m.description" size="sm" class="text-muted-foreground">
+                <Text v-if="m.description" size="sm" :class="cn('text-muted-foreground', textAlign)">
                   {{ m.description }}
                 </Text>
               </Stack>

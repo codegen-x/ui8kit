@@ -57,6 +57,13 @@ export function evaluate(v: Value, scope: Scope, presets: Scope): unknown {
   throw new Error(`templ parity: op ${v.op} in block props`);
 }
 
+/** the non-default values of an organism's `align` setting ("start" | "center" | "end", default start): [] without one */
+export function alignValues(o: OrganismSpec): string[] {
+  const p = o.props.find((x) => x.name === "align");
+  const t = p && typeof p.type === "object" && p.type !== null && "ts" in p.type ? String((p.type as { ts: string }).ts) : "";
+  return [...t.matchAll(/"([^"]+)"/g)].map((m) => m[1]!).filter((x) => x !== (p?.default ?? "start"));
+}
+
 export function blockCases(inputs: Inputs, emitted: Set<string>): { cases: OrgCase[]; skipped: string[] } {
   const organisms = Object.fromEntries(inputs.organisms.map((o) => [o.value.name, o.value as OrganismSpec]));
   const presets = Object.fromEntries(inputs.presets.map((p) => [p.value.name, (p.value as unknown as { values: unknown }).values]));
@@ -85,6 +92,9 @@ export function blockCases(inputs: Inputs, emitted: Set<string>): { cases: OrgCa
         if (val !== undefined) props[k] = val;
       }
       cases.push({ label: `${key}.${v.id} (${node.organism})`, organism: node.organism, props });
+      // the `align` setting (simple line): every other value of it is a case of its own, so every runtime is held to the same DOM
+      // (a setting only on a block with a content model; elsewhere align is a variant axis, drawn by the variants)
+      if (b.model) for (const a of alignValues(o)) cases.push({ label: `${key}.${v.id}.align-${a} (${node.organism})`, organism: node.organism, props: { ...props, align: a } });
     }
   }
   return { cases, skipped };

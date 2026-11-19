@@ -11,7 +11,7 @@ export * from "./validate";
 /** where the published schemas live: https://registry.buildy.tw/models/<id>@<version>.schema.json */
 export const MODEL_BASE = "https://registry.buildy.tw/models";
 /** props of an organism that are settings of an instance, not content (the rest are the model fields and the block axes) */
-export const SETTINGS = ["id", "level", "padding", "landmarkLabel"] as const;
+export const SETTINGS = ["id", "level", "padding", "align", "landmarkLabel"] as const;
 
 export const modelKey = (m: Pick<ModelSpec, "id" | "version">): string => `${m.id}@${m.version}`;
 export const modelsDir = (root: string): string => join(root, "specs", "models");

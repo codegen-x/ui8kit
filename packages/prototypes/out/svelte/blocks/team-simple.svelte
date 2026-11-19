@@ -9,6 +9,7 @@
 
   export type TeamSimpleProps = {
     padding?: "compact" | "standard" | "spacious";
+    align?: "start" | "center" | "end";
     cols?: "2" | "3" | "4";
     surface?: "plain" | "cards";
   };
@@ -21,7 +22,7 @@
   import ShapeText from "../shapes/shape-text.svelte";
   import { cn } from "@ui8kit/kit/utils";
 
-  let { padding = "standard", cols = "3", surface = "plain" }: TeamSimpleProps = $props();
+  let { padding = "standard", align = "start", cols = "3", surface = "plain" }: TeamSimpleProps = $props();
 </script>
 
 <Box
@@ -35,9 +36,20 @@
 >
   <Box class="mx-auto w-full max-w-6xl px-4">
     <Box class={cn("flex flex-col", "gap-12", "items-stretch")}>
-      <Box class={cn("flex flex-col", "gap-4", "max-w-2xl")}>
+      <Box
+        class={cn(
+          "flex flex-col",
+          "gap-4",
+          (
+            (align as string) === "center" ? "items-center"
+            : (align as string) === "end" ? "items-end"
+            : "items-start"
+          ),
+          cn("max-w-2xl", (((align as string) === "center") ? "self-center" : (((align as string) === "end") ? "self-end" : "")))
+        )}
+      >
         <ShapeHeading size="lg" width="3/4" place="title" field="/title" />
-        <ShapeText lines="2" place="description" field="/description" />
+        <ShapeText lines="2" align={align} place="description" field="/description" />
       </Box>
       <Box
         tag="ul"
@@ -50,69 +62,159 @@
           )
         )}
       >
-        <Box tag="li" class={(((surface as string) === "cards") ? "flex" : "flex flex-col gap-4")} data-slot="member">
+        <Box
+          tag="li"
+          class={
+            (surface as string) === "cards" ? "flex"
+            : cn("flex flex-col gap-4", (((align as string) === "center") ? "items-center" : (((align as string) === "end") ? "items-end" : "items-start")))
+          }
+          data-slot="member"
+        >
           {#if ((surface as string) === "cards")}
             <Box
               tag="div"
-              class={cn("bg-card border border-border rounded", "flex w-full flex-col gap-4 p-6")}
+              class={cn(
+                "bg-card border border-border rounded",
+                cn("flex w-full flex-col gap-4 p-6", (((align as string) === "center") ? "items-center" : (((align as string) === "end") ? "items-end" : "items-start")))
+              )}
               data-slot="card"
               data-role="surface"
             >
               <ShapeAvatar place="members.avatar" field="/members/0/avatar" />
-              <Box class={cn("flex flex-col", "gap-2")}>
+              <Box
+                class={cn(
+                  "flex flex-col",
+                  "gap-2",
+                  (
+                    (align as string) === "center" ? "items-center"
+                    : (align as string) === "end" ? "items-end"
+                    : "items-start"
+                  )
+                )}
+              >
                 <ShapeHeading size="md" width="1/2" place="members.title" field="/members/0/title" />
-                <ShapeText lines="1" place="members.description" field="/members/0/description" />
+                <ShapeText lines="1" align={align} place="members.description" field="/members/0/description" />
               </Box>
             </Box>
           {:else}
             <ShapeAvatar place="members.avatar" field="/members/0/avatar" />
-            <Box class={cn("flex flex-col", "gap-2")}>
+            <Box
+              class={cn(
+                "flex flex-col",
+                "gap-2",
+                (
+                  (align as string) === "center" ? "items-center"
+                  : (align as string) === "end" ? "items-end"
+                  : "items-start"
+                )
+              )}
+            >
               <ShapeHeading size="md" width="1/2" place="members.title" field="/members/0/title" />
-              <ShapeText lines="1" place="members.description" field="/members/0/description" />
+              <ShapeText lines="1" align={align} place="members.description" field="/members/0/description" />
             </Box>
           {/if}
         </Box>
-        <Box tag="li" class={(((surface as string) === "cards") ? "flex" : "flex flex-col gap-4")} data-slot="member">
+        <Box
+          tag="li"
+          class={
+            (surface as string) === "cards" ? "flex"
+            : cn("flex flex-col gap-4", (((align as string) === "center") ? "items-center" : (((align as string) === "end") ? "items-end" : "items-start")))
+          }
+          data-slot="member"
+        >
           {#if ((surface as string) === "cards")}
             <Box
               tag="div"
-              class={cn("bg-card border border-border rounded", "flex w-full flex-col gap-4 p-6")}
+              class={cn(
+                "bg-card border border-border rounded",
+                cn("flex w-full flex-col gap-4 p-6", (((align as string) === "center") ? "items-center" : (((align as string) === "end") ? "items-end" : "items-start")))
+              )}
               data-slot="card"
               data-role="surface"
             >
               <ShapeAvatar place="members.avatar" field="/members/1/avatar" />
-              <Box class={cn("flex flex-col", "gap-2")}>
+              <Box
+                class={cn(
+                  "flex flex-col",
+                  "gap-2",
+                  (
+                    (align as string) === "center" ? "items-center"
+                    : (align as string) === "end" ? "items-end"
+                    : "items-start"
+                  )
+                )}
+              >
                 <ShapeHeading size="md" width="1/2" place="members.title" field="/members/1/title" />
-                <ShapeText lines="1" place="members.description" field="/members/1/description" />
+                <ShapeText lines="1" align={align} place="members.description" field="/members/1/description" />
               </Box>
             </Box>
           {:else}
             <ShapeAvatar place="members.avatar" field="/members/1/avatar" />
-            <Box class={cn("flex flex-col", "gap-2")}>
+            <Box
+              class={cn(
+                "flex flex-col",
+                "gap-2",
+                (
+                  (align as string) === "center" ? "items-center"
+                  : (align as string) === "end" ? "items-end"
+                  : "items-start"
+                )
+              )}
+            >
               <ShapeHeading size="md" width="1/2" place="members.title" field="/members/1/title" />
-              <ShapeText lines="1" place="members.description" field="/members/1/description" />
+              <ShapeText lines="1" align={align} place="members.description" field="/members/1/description" />
             </Box>
           {/if}
         </Box>
-        <Box tag="li" class={(((surface as string) === "cards") ? "flex" : "flex flex-col gap-4")} data-slot="member">
+        <Box
+          tag="li"
+          class={
+            (surface as string) === "cards" ? "flex"
+            : cn("flex flex-col gap-4", (((align as string) === "center") ? "items-center" : (((align as string) === "end") ? "items-end" : "items-start")))
+          }
+          data-slot="member"
+        >
           {#if ((surface as string) === "cards")}
             <Box
               tag="div"
-              class={cn("bg-card border border-border rounded", "flex w-full flex-col gap-4 p-6")}
+              class={cn(
+                "bg-card border border-border rounded",
+                cn("flex w-full flex-col gap-4 p-6", (((align as string) === "center") ? "items-center" : (((align as string) === "end") ? "items-end" : "items-start")))
+              )}
               data-slot="card"
               data-role="surface"
             >
               <ShapeAvatar place="members.avatar" field="/members/2/avatar" />
-              <Box class={cn("flex flex-col", "gap-2")}>
+              <Box
+                class={cn(
+                  "flex flex-col",
+                  "gap-2",
+                  (
+                    (align as string) === "center" ? "items-center"
+                    : (align as string) === "end" ? "items-end"
+                    : "items-start"
+                  )
+                )}
+              >
                 <ShapeHeading size="md" width="1/2" place="members.title" field="/members/2/title" />
-                <ShapeText lines="1" place="members.description" field="/members/2/description" />
+                <ShapeText lines="1" align={align} place="members.description" field="/members/2/description" />
               </Box>
             </Box>
           {:else}
             <ShapeAvatar place="members.avatar" field="/members/2/avatar" />
-            <Box class={cn("flex flex-col", "gap-2")}>
+            <Box
+              class={cn(
+                "flex flex-col",
+                "gap-2",
+                (
+                  (align as string) === "center" ? "items-center"
+                  : (align as string) === "end" ? "items-end"
+                  : "items-start"
+                )
+              )}
+            >
               <ShapeHeading size="md" width="1/2" place="members.title" field="/members/2/title" />
-              <ShapeText lines="1" place="members.description" field="/members/2/description" />
+              <ShapeText lines="1" align={align} place="members.description" field="/members/2/description" />
             </Box>
           {/if}
         </Box>
