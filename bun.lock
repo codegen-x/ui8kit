@@ -8,8 +8,7 @@
         "@types/bun": "^1.4.2",
         "html-validate": "^11.16.2",
         "ui8kit": "3.2.1",
-        "ui8px": "0.2.4",
-        "ui8px-preset": "github:ui8kit/ui8px-cli#v0.3.0",
+        "ui8px": "^0.3.0",
       },
     },
     "apps/discovery": {
@@ -987,9 +986,7 @@
 
     "ui8kit": ["ui8kit@3.2.1", "", { "dependencies": { "commander": "^11.1.0", "prompts": "^2.4.2", "zod": "^3.22.4" }, "bin": { "ui8kit": "dist/index.js" } }, "sha512-K+cLoBZdv/xYC59H5bkdqy78Oren6aOZvaL90UgthkFOs6dUO8d3QBKA8j/sjDMG/NltkU9EOehK9JySy8SZXw=="],
 
-    "ui8px": ["ui8px@0.2.4", "", { "bin": { "ui8px": "dist/index.js" } }, "sha512-4Zfq7n1V8z3SRupbXYapbiUWn3Ikk5ziH5WLglZew2NSLWicjoqsvimKD1/LibjLWJ1wu0Q0+26zDpZ2yfYtEg=="],
-
-    "ui8px-preset": ["ui8px@github:ui8kit/ui8px-cli#74aa21b", { "bin": { "ui8px": "./dist/index.js" } }, "ui8kit-ui8px-cli-74aa21b", "sha512-DX7si4PZdIvNpfCmlTuiumeTspmfIKHTVwqqjVLQoIeuvmvboK2qn/NZXci/zKLayFREsTgOmB4+e0VVMD/mtg=="],
+    "ui8px": ["ui8px@0.3.0", "", { "bin": { "ui8px": "dist/index.js" } }, "sha512-y39zfyXLPFpMWHcX42hTYqxKAT0Oybko2Vy/4CjkvWTVoyFIBtV8tdSFd5Ipg+x9FkdLxXI0W4mik3Zds63b+g=="],
 
     "undici-types": ["undici-types@8.9.0", "", {}, "sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg=="],
 

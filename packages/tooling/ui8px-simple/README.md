@@ -1,8 +1,8 @@
 # ui8px gate of the simple line
 
 `bun run lint:px:simple` lints the simple line (blocks with `"line": "simple"`: HeroSimple, TeamSimple) under the shared
-`ui8kit` preset of [ui8kit/ui8px-cli](https://github.com/ui8kit/ui8px-cli) (devDependency `ui8px-preset`, git-pinned to
-the release tag `v0.3.0`, as ui8kit/prototypes; not on npm yet). The rest of the workspace keeps its own policy and gate
+`ui8kit` preset of [ui8kit/ui8px-cli](https://github.com/ui8kit/ui8px-cli) (the root devDependency `ui8px@^0.3.0` from
+npm, as ui8kit/prototypes; the workspace gate runs the same version). The rest of the workspace keeps its own policy and gate
 (`bun run lint:px`, `.ui8px/policy` at the root); this gate does not change it.
 
 What it lints: the React DOM of every gallery variant of the line × every `align` value (`start`, `center`, `end`), as

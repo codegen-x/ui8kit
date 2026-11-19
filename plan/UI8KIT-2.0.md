@@ -55,7 +55,7 @@ no kit commit entered `codegen` history (nor enters `main` of codegen-x/ui8kit).
 Current state (2026-10-13): **0 blocking hits, ratchet `max: 0`** in `.ui8px/gate.json` (a hard gate). The counts and
 lists below are the history of how it got there.
 
-`ui8px` 0.2.4 (root dev dependency) lints utility classes. It reads only `.html`, `.css`, `.templ`, `.go`, so
+`ui8px` 0.3 (root dev dependency, npm) lints utility classes. It reads only `.html`, `.css`, `.templ`, `.go`, so
 `bun run lint:px` (`packages/tooling/bin/ui8px-gate.mjs`):
 
 1. `ui8px-extract.mjs` mirrors every class set of `xgen/specs` (variant tables, recipes, presets, view classes) into

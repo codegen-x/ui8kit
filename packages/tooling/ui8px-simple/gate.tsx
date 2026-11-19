@@ -1,5 +1,5 @@
 // The ui8px gate of the simple line (blocks with "line": "simple": HeroSimple, TeamSimple, …) under the shared `ui8kit`
-// preset of ui8kit/ui8px-cli (git pin `ui8px-preset` in the root package.json: the release tag v0.3.0, as ui8kit/prototypes).
+// preset of ui8kit/ui8px-cli (the root devDependency `ui8px@^0.3.0` from npm, the same one as the workspace gate and ui8kit/prototypes).
 // The rest of the workspace keeps its own policy and gate (`bun run lint:px`, .ui8px/policy); this one checks only the
 // simple line, as the builder gets it: the React DOM of every gallery case × every align value (React is the reference,
 // organisms.test.tsx / server-organisms.test.tsx hold the other seven runtimes to the same DOM), primitives included.
@@ -54,14 +54,8 @@ for (const c of cases.filter((x) => !/\.align-/.test(x.label))) for (const a of 
   n++;
 }
 
-// a git install carries the TypeScript sources only: build node_modules/ui8px-preset/dist with this repo's TypeScript once
-const pkg = path.join(ROOT, "node_modules", "ui8px-preset");
-const entry = path.join(pkg, "dist", "index.js");
-if (!fs.existsSync(pkg)) { console.error("ui8px-preset is not installed: bun install"); process.exit(2); }
-if (!fs.existsSync(entry)) {
-  const built = spawnSync(process.execPath, [path.join(ROOT, "node_modules/typescript/bin/tsc"), "-p", path.join(pkg, "tsconfig.build.json")], { stdio: "inherit" });
-  if (built.status !== 0 || !fs.existsSync(entry)) { console.error("ui8px simple: building ui8px-preset failed"); process.exit(2); }
-}
+const entry = path.join(ROOT, "node_modules", "ui8px", "dist", "index.js");
+if (!fs.existsSync(entry)) { console.error("ui8px is not installed: bun install"); process.exit(2); }
 // stdout goes straight to a file: through a pipe ui8px exits before a long report is flushed
 const report = path.join(out, "lint.json");
 const fd = fs.openSync(report, "w");
