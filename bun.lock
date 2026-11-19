@@ -161,7 +161,7 @@
       "name": "@codegen-x/compose-gen",
       "version": "0.0.0",
       "dependencies": {
-        "@ui8kit/contract": "^0.2.0",
+        "@ui8kit/contract": "^0.4.0",
         "ajv": "^8.17.1",
         "clsx": "^2.1.1",
         "lucide-static": "1.57.0",
@@ -686,7 +686,7 @@
 
     "@ui8kit/app-shared": ["@ui8kit/app-shared@workspace:packages/shared/app"],
 
-    "@ui8kit/contract": ["@ui8kit/contract@0.2.0", "", {}, "sha512-Ba+YQPjwSmgFNh3nUYSyt3+Ap/fYUK6IQCXEj33WoDbeT6j0ejmq1ln8wGLHVe5dgBcRhI5/QDPprjgOYkYeXg=="],
+    "@ui8kit/contract": ["@ui8kit/contract@0.4.0", "", {}, "sha512-CgF6jt+Sx/GFhw5rk7jr3n0Cd1CNaLKiRE2jmyuJpQ8G252rX4uuQk8Chp/Y0w1fnDOd4jOdB70K2IPyanRDKA=="],
 
     "@ui8kit/facet-search": ["@ui8kit/facet-search@workspace:packages/facet-search"],
 
