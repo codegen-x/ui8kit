@@ -60,7 +60,7 @@
     "@types/bun": "^1.4.2",
     "html-validate": "^11.16.2",
     "ui8px": "0.2.4",
-    "ui8px-preset": "github:ui8kit/ui8px-cli#d8c0f06eadd1a56887d76c921d0829fef1c553e1",
+    "ui8px-preset": "github:ui8kit/ui8px-cli#v0.3.0",
     "ui8kit": "3.2.1"
   }
 }

@@ -1,5 +1,5 @@
 // The ui8px gate of the simple line (blocks with "line": "simple": HeroSimple, TeamSimple, …) under the shared `ui8kit`
-// preset of ui8kit/ui8px-cli (git pin `ui8px-preset` in the root package.json, the same commit as ui8kit/prototypes).
+// preset of ui8kit/ui8px-cli (git pin `ui8px-preset` in the root package.json: the release tag v0.3.0, as ui8kit/prototypes).
 // The rest of the workspace keeps its own policy and gate (`bun run lint:px`, .ui8px/policy); this one checks only the
 // simple line, as the builder gets it: the React DOM of every gallery case × every align value (React is the reference,
 // organisms.test.tsx / server-organisms.test.tsx hold the other seven runtimes to the same DOM), primitives included.
