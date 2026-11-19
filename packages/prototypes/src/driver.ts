@@ -141,9 +141,12 @@ export function registryFiles(contracts: Contract[], protos: OrganismSpec[], mod
   const byName = new Map(protos.map((o) => [o.name, o]));
   const catalog = [
     `// ${HEAD}`,
-    `// item -> the wireframe (svelte/blocks/<item>.svelte), in manifest order. ui8kit/prototypes re-exports it (src/catalog.ts).`,
+    `// item -> the wireframe (svelte/blocks/<item>.svelte), in manifest order, and each wireframe by its organism name.`,
+    `// ui8kit/prototypes re-exports it (src/catalog.ts, src/index.ts).`,
     `import type { Component } from "svelte";`,
-    `import { ${contracts.map((c) => (byName.has(c.organism) ? c.organism : fail(`${c.item}: no prototype ${c.organism}`))).join(", ")} } from "./svelte/index";`,
+    ...contracts.map((c) => (byName.has(c.organism) ? `import ${c.organism} from "./svelte/blocks/${c.item}.svelte";` : fail(`${c.item}: no prototype ${c.organism}`))),
+    ``,
+    `export { ${contracts.map((c) => c.organism).join(", ")} };`,
     ``,
     `// eslint-disable-next-line @typescript-eslint/no-explicit-any`,
     `export const CATALOG: Record<string, Component<any>> = {`,
