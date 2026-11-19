@@ -28,6 +28,9 @@ from the registry.
 | `svelte/blocks/<item>.svelte` | the wireframes (Svelte 5) |
 | `svelte/shapes/shape-*.svelte` | the shapes |
 | `svelte/index.ts` | the exports |
+| `registry.ts` | `CONTRACTS` (every contract, manifest order), `CATEGORIES` (item -> catalog category = the model id: `hero@1` -> `hero`), `MODELS` (`id@version` -> spec + `validate()`); no `.svelte` import, so node loads it |
+| `catalog.ts` | `CATALOG`: item -> wireframe component (from `svelte/index.ts`) |
+| `models/index.ts` | the content types of every model |
 | `classes.json` | the shared class strings: the role table (`ROLE`, shapes.ts), Stack `align` / `justify`, `textAlign` (the `align` setting on text: `text-start` / `text-center` / `text-end`), the `padding` presets and the container; ui8kit/prototypes builds its hand-written `classes.ts` from it (one source) |
 | `contracts/` | the contracts |
 | `models/` | `<id>@<v>.schema.json` (JSON Schema 2020-12), `<id>@<v>.ts` (types, the model, `validate<Type>()`), `validate.ts` |

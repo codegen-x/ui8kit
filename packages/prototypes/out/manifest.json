@@ -26,15 +26,18 @@
     "sha256": "be8962f5062d4fd041576eebe8bf391d0a88936e31a8375d71f2181ac82faee9"
   },
   "files": {
+    "catalog.ts": "d0de0b5207607ee201087776390fa8a6ce2056bb240d85cd442bced2a7060c60",
     "classes.json": "f260ede38fd83262a7222f715d18d9043028f25624da051ca9f7b8317d877d1b",
     "contracts/hero-simple/1.json": "b257de955d42d36202199349356c44d20b03482f11be7e0cd6a4ccdbe61cedf0",
     "contracts/team-simple/1.json": "56fba32f87b03a845a3123b0db9b4abe2f1e4be922e185309c1e581f322b1510",
     "contracts/v0.json": "2c8b5dc42e975e5e565900e3eb0c2d115752c45b7aa231a075c1b4a710494b57",
     "models/hero@1.schema.json": "bc3edaec5a433e1481281f4b93502d2f26b58db374f83e6336f1f2d271987a3b",
     "models/hero@1.ts": "e096129e62a802e39d956868f29f840eba1e96390c34bf210740990f2761eea5",
+    "models/index.ts": "d37f126bbaf2226011fa4895064a5dfe1eaa91646a96d89816ab97eec71b0e73",
     "models/team@1.schema.json": "ac003fe0b80251f4fefe73e39572cd63f3eb58b35c5fdbd337d03e232fcf797c",
     "models/team@1.ts": "2201ae700f0b26cd4db68b23cd084ce08c39e7609202726bfe081da31d9e26c0",
     "models/validate.ts": "f736b8b812547bb3780e597d0c48971ce70c9a90df7a0fe51e4d109e8a236e7b",
+    "registry.ts": "ba9e42d929f8f09e7c774412dd2ef1ff7c39d2ad0db93c843e3bf409d68a3ce2",
     "svelte/blocks/hero-simple.svelte": "e3638e0422a81148618885da7e4a384a787c3e32bc02a9ed96b40fb0fa5482de",
     "svelte/blocks/team-simple.svelte": "acc8b3737ea364f4b7569bce6cafa0d4142c5eb08e31ac63b38f5d0055e958f4",
     "svelte/index.ts": "5a1ede65def2ccafb7da524d28801831dc449455ba51d2ce27acedef3c5ccdfa",

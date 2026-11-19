@@ -5,6 +5,8 @@
 //                                                  composition, no recipe ships (the clean blocks are the registry's)
 //   contracts/<item>/1.json, contracts/v0.json     what a builder reads (contract.ts)
 //   models/<id>@<v>.schema.json, <id>@<v>.ts, validate.ts   the content models: JSON Schema 2020-12, types, validate()
+//   registry.ts, catalog.ts, models/index.ts       the registries (contracts + categories + models; item -> wireframe; the
+//                                                  content types), so a consumer lists no block by hand
 //   manifest.json                                  sha256 of every file above and of the inputs (no timestamps, no commit:
 //                                                  the consumer pins the commit in its own lock, see ui8kit/prototypes codegen.lock.json)
 // usage: bun packages/prototypes/src/driver.ts [--check]
@@ -90,6 +92,9 @@ export function build(): Built {
       `export const model = ${JSON.stringify(spec, null, 2)} as const satisfies ModelSpec;`, ``,
       `/** the problems of a ${contentType(model)} value (empty: valid) */`, `export const validate${contentType(model)} = (value: unknown): Issue[] => validate(model, value);`, ``].join("\n"));
   }
+  // the registries a consumer re-exports instead of listing blocks by hand (ui8kit/prototypes src/manifest/registry.ts, src/catalog.ts):
+  // registry.ts (contracts, models, categories; no .svelte, so node can load it), catalog.ts (item -> wireframe), models/index.ts (types)
+  for (const [f, body] of registryFiles(contracts, protos, models)) files.set(f, body);
   const inputsDigest = sha([...blocks.map((b) => JSON.stringify(b)), ...ours.map((o) => JSON.stringify(o)), ...[...models.values()].map((m) => JSON.stringify(m.model))].join("\n"));
   const sorted = [...files.keys()].sort();
   files.set("manifest.json", json({
@@ -99,6 +104,60 @@ export function build(): Built {
     files: Object.fromEntries(sorted.map((f) => [f, sha(files.get(f)!)])),
   }));
   return { files, contracts, organisms: ours };
+}
+
+/** an identifier from an item or model key: hero-simple -> heroSimple, team@1 -> team1 */
+const ident = (s: string): string => s.replace(/[^A-Za-z0-9]+([A-Za-z0-9])/g, (_, c: string) => c.toUpperCase()).replace(/^[^A-Za-z_]+/, "");
+
+/**
+ * registry.ts, catalog.ts and models/index.ts, in contract (item) order. The catalog category of a block is the id of its
+ * content model (hero@1 -> hero, team@1 -> team): one model per kind of section.
+ */
+export function registryFiles(contracts: Contract[], protos: OrganismSpec[], models: ReturnType<typeof loadModels>): Array<[string, string]> {
+  const keys = [...models.keys()].sort((a, b) => a.localeCompare(b));
+  const typeNames = (key: string): string[] => [...typesOf(models.get(key)!.model).matchAll(/^export type (\w+)/gm)].map((m) => m[1]!);
+  const registry = [
+    `// ${HEAD}`,
+    `// The registry of the simple line: every contract (manifest order) with its catalog category, and every content model with`,
+    `// its validate(). No .svelte import: node loads it as is. ui8kit/prototypes re-exports it (src/manifest/registry.ts).`,
+    ...contracts.map((c) => `import ${ident(c.item)} from "./contracts/${c.item}/${c.version}.json" with { type: "json" };`),
+    ...keys.map((k) => `import { model as ${ident(k)}, validate${contentType(models.get(k)!.model)} } from "./models/${k}";`),
+    `import type { Issue, ModelSpec } from "./models/validate";`,
+    ``,
+    `/** the contracts (out/contracts/<item>/<version>.json), in manifest order */`,
+    `export const CONTRACTS: readonly unknown[] = [${contracts.map((c) => ident(c.item)).join(", ")}];`,
+    ``,
+    `/** item -> catalog category (the id of its content model) */`,
+    `export const CATEGORIES: Readonly<Record<string, string>> = {`,
+    ...contracts.map((c) => `  ${JSON.stringify(c.item)}: ${JSON.stringify(c.model.split("@")[0])},`),
+    `};`,
+    ``,
+    `/** every content model, keyed \`id@version\` */`,
+    `export const MODELS: Readonly<Record<string, { spec: ModelSpec; validate: (value: unknown) => Issue[] }>> = {`,
+    ...keys.map((k) => `  ${JSON.stringify(k)}: { spec: ${ident(k)} as unknown as ModelSpec, validate: validate${contentType(models.get(k)!.model)} },`),
+    `};`,
+    ``,
+  ].join("\n");
+  const byName = new Map(protos.map((o) => [o.name, o]));
+  const catalog = [
+    `// ${HEAD}`,
+    `// item -> the wireframe (svelte/blocks/<item>.svelte), in manifest order. ui8kit/prototypes re-exports it (src/catalog.ts).`,
+    `import type { Component } from "svelte";`,
+    `import { ${contracts.map((c) => (byName.has(c.organism) ? c.organism : fail(`${c.item}: no prototype ${c.organism}`))).join(", ")} } from "./svelte/index";`,
+    ``,
+    `// eslint-disable-next-line @typescript-eslint/no-explicit-any`,
+    `export const CATALOG: Record<string, Component<any>> = {`,
+    ...contracts.map((c) => `  ${JSON.stringify(c.item)}: ${c.organism},`),
+    `};`,
+    ``,
+  ].join("\n");
+  const types = [
+    `// ${HEAD}`,
+    `// The content types of every model.`,
+    ...keys.map((k) => `export type { ${typeNames(k).join(", ")} } from "./${k}";`),
+    ``,
+  ].join("\n");
+  return [["registry.ts", registry], ["catalog.ts", catalog], ["models/index.ts", types]];
 }
 
 const json = (v: unknown): string => `${JSON.stringify(v, null, 2)}\n`;

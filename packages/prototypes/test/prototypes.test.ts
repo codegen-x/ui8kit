@@ -65,8 +65,8 @@ test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", (
 
 test("out/ ships wireframes, shapes, contracts, models and the manifest only (no clean block, composition or recipe)", () => {
   expect([...built.files.keys()].sort()).toEqual([
-    "classes.json", "contracts/hero-simple/1.json", "contracts/team-simple/1.json", "contracts/v0.json", "manifest.json",
-    "models/hero@1.schema.json", "models/hero@1.ts", "models/team@1.schema.json", "models/team@1.ts", "models/validate.ts",
+    "catalog.ts", "classes.json", "contracts/hero-simple/1.json", "contracts/team-simple/1.json", "contracts/v0.json", "manifest.json",
+    "models/hero@1.schema.json", "models/hero@1.ts", "models/index.ts", "models/team@1.schema.json", "models/team@1.ts", "models/validate.ts", "registry.ts",
     "svelte/blocks/hero-simple.svelte", "svelte/blocks/team-simple.svelte", "svelte/index.ts",
     ...["avatar", "badge", "cta", "heading", "media", "text"].map((s) => `svelte/shapes/shape-${s}.svelte`),
   ]);
@@ -75,6 +75,24 @@ test("out/ ships wireframes, shapes, contracts, models and the manifest only (no
     expect({ f, ext: ext.filter((x) => !["svelte", "@ui8kit/kit/ui/box/Box.svelte", "@ui8kit/kit/utils"].includes(x)) }).toEqual({ f, ext: [] });
     expect({ f, hit: /\b(rc|recipes|transition|shadow|ring|hover:|focus)/.exec(body.replace(/<!--[\s\S]*?-->/, ""))?.[0] ?? null }).toEqual({ f, hit: null });
   }
+});
+
+test("registry.ts and catalog.ts list every contract once, in manifest order; registry.ts imports no .svelte", async () => {
+  const reg = (await import(path.join(OUT, "registry.ts"))) as { CONTRACTS: Array<{ item: string; model: string }>; CATEGORIES: Record<string, string>; MODELS: Record<string, { spec: { id: string }; validate: (v: unknown) => unknown[] }> };
+  const manifest = JSON.parse(readFileSync(path.join(OUT, "manifest.json"), "utf8")) as { items: Array<{ item: string; model: string }> };
+  expect(reg.CONTRACTS.map((c) => c.item)).toEqual(manifest.items.map((i) => i.item));
+  expect(reg.CONTRACTS).toEqual(simple as never);
+  expect(Object.keys(reg.CATEGORIES)).toEqual(manifest.items.map((i) => i.item));
+  for (const c of simple) {
+    expect(reg.CATEGORIES[c.item]).toBe(c.model.split("@")[0]!);
+    expect(reg.MODELS[c.model]!.spec.id).toBe(c.model.split("@")[0]!);
+  }
+  expect(Object.keys(reg.MODELS).sort()).toEqual([...models.keys()].sort());
+  expect(built.files.get("registry.ts")).not.toMatch(/\.svelte["']/);
+  const catalog = built.files.get("catalog.ts")!;
+  expect([...catalog.matchAll(/^  "([a-z0-9-]+)": (\w+),$/gm)].map((m) => [m[1], m[2]])).toEqual(simple.map((c) => [c.item, c.organism]));
+  const types = built.files.get("models/index.ts")!;
+  for (const key of models.keys()) expect(types).toContain(`from "./${key}";`);
 });
 
 describe("places", () => {

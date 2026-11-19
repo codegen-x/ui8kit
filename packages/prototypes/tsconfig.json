@@ -12,5 +12,5 @@
     "skipLibCheck": true,
     "allowImportingTsExtensions": true
   },
-  "include": ["src/**/*.ts", "out/models/**/*.ts"]
+  "include": ["src/**/*.ts", "out/models/**/*.ts", "out/registry.ts"]
 }
