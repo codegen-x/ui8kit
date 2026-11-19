@@ -30,6 +30,21 @@ describe("align setting", () => {
     for (const o of ["HeroSimple", "TeamSimple"]) for (const a of ["center", "end"]) expect(cases.some((c) => c.organism === o && (c.props as { align?: string }).align === a), `${o} ${a}`).toBe(true);
   });
 
+  // the variant default: the centred composition (HeroSimple mediaTop: the wide picture on top) draws align center without the
+  // prop, every other variant start; a saved block's align overrides it (the extra gallery cases are the other two values)
+  test("variant defaults: mediaTop is centred, the rest start; the prop overrides", () => {
+    const base = cases.filter((x) => !/\.align-/.test(x.label));
+    const want = (label: string) => (/^herosimple\.mediaTop /.test(label) ? "center" : "start");
+    for (const c of base) {
+      expect((c.props as { align?: string }).align ?? "start", c.label).toBe(want(c.label));
+      const title = dom(render(c.organism, c.props)).querySelector("h1, h2, h3")!;
+      expect(title.classList.contains(TEXT[want(c.label)]), c.label).toBe(true);
+    }
+    const top = base.find((c) => /^herosimple\.mediaTop /.test(c.label))!;
+    expect(cases.filter((c) => c.label.startsWith("herosimple.mediaTop.align-")).map((c) => (c.props as { align: string }).align).sort()).toEqual(["end", "start"]);
+    expect(dom(render(top.organism, { ...(top.props as object), align: "start" })).querySelector("h2")!.classList.contains("text-start")).toBe(true);
+  });
+
   for (const c of cases.filter((x) => !/\.align-/.test(x.label))) {
     for (const a of ALIGNS) {
       test(`${c.label} align=${a}: logical classes on the heading, the copy and the column`, () => {

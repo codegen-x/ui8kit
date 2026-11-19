@@ -12,7 +12,9 @@ export const CONTRACT_BASE = "https://registry.buildy.tw/contracts";
 export interface Contract {
   item: string; version: number; block: string; organism: string; line: string; model: string; modelSchema: string;
   axes: Record<string, string[]>; defaults: Record<string, string>;
-  variants: Array<{ id: string; label: string; axes: Record<string, string> }>; defaultVariant: string;
+  /** `settings`: the variant's own setting defaults (HeroSimple mediaTop: align center), over `settings[*].default`; a saved
+   *  block's props override both */
+  variants: Array<{ id: string; label: string; axes: Record<string, string>; settings?: Record<string, string | number | boolean> }>; defaultVariant: string;
   settings: Record<string, { type: string; default?: string | number | boolean }>;
   modes: readonly string[]; defaultMode: string; places: Place[]; wireframe: { items: number };
 }
@@ -26,7 +28,10 @@ export function contractOf(b: BlockSpec, clean: OrganismSpec, model: ModelSpec, 
     item: fileName(clean.name), version: CONTRACT_VERSION, block: b.id, organism: clean.name, line: b.line!, model: b.model!,
     modelSchema: `${MODEL_BASE}/${model.id}@${model.version}.schema.json`,
     axes: b.axes, defaults: b.defaults,
-    variants: b.variants.map((v) => ({ id: v.id, label: labels[v.id] ?? v.id, axes: { ...b.defaults, ...v.set } })),
+    variants: b.variants.map((v) => {
+      const own = Object.entries(v.props ?? {}).filter(([k, x]) => k in settings && (typeof x === "string" || typeof x === "number" || typeof x === "boolean"));
+      return { id: v.id, label: labels[v.id] ?? v.id, axes: { ...b.defaults, ...v.set }, ...(own.length ? { settings: Object.fromEntries(own) as Record<string, string | number | boolean> } : {}) };
+    }),
     defaultVariant: b.variants[0]!.id,
     settings, modes: MODES, defaultMode: MODES[0], places, wireframe: { items: WIRE_ITEMS },
   };

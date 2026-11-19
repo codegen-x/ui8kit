@@ -22,6 +22,7 @@ const teamMembers = fromCodex<SimpleMember>(teamMembersEntries, TEAMMEMBERS_FIEL
     :actionLabel="ui.pages.marketingSimple.team.cta"
     actionHref="#/"
     media="top"
+    align="center"
     :level="1"
   />
   <TeamSimple

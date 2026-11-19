@@ -57,11 +57,12 @@ export function evaluate(v: Value, scope: Scope, presets: Scope): unknown {
   throw new Error(`templ parity: op ${v.op} in block props`);
 }
 
-/** the non-default values of an organism's `align` setting ("start" | "center" | "end", default start): [] without one */
-export function alignValues(o: OrganismSpec): string[] {
+/** the values of an organism's `align` setting ("start" | "center" | "end") other than `current` (the variant's own default,
+ *  else the prop default, start): [] without one */
+export function alignValues(o: OrganismSpec, current?: unknown): string[] {
   const p = o.props.find((x) => x.name === "align");
   const t = p && typeof p.type === "object" && p.type !== null && "ts" in p.type ? String((p.type as { ts: string }).ts) : "";
-  return [...t.matchAll(/"([^"]+)"/g)].map((m) => m[1]!).filter((x) => x !== (p?.default ?? "start"));
+  return [...t.matchAll(/"([^"]+)"/g)].map((m) => m[1]!).filter((x) => x !== (current ?? p?.default ?? "start"));
 }
 
 export function blockCases(inputs: Inputs, emitted: Set<string>): { cases: OrgCase[]; skipped: string[] } {
@@ -93,8 +94,9 @@ export function blockCases(inputs: Inputs, emitted: Set<string>): { cases: OrgCa
       }
       cases.push({ label: `${key}.${v.id} (${node.organism})`, organism: node.organism, props });
       // the `align` setting (simple line): every other value of it is a case of its own, so every runtime is held to the same DOM
-      // (a setting only on a block with a content model; elsewhere align is a variant axis, drawn by the variants)
-      if (b.model) for (const a of alignValues(o)) cases.push({ label: `${key}.${v.id}.align-${a} (${node.organism})`, organism: node.organism, props: { ...props, align: a } });
+      // (a setting only on a block with a content model; elsewhere align is a variant axis, drawn by the variants); a variant may
+      // set its own default (props.align of the variant: HeroSimple mediaTop is centred), the other values are the extra cases
+      if (b.model) for (const a of alignValues(o, props["align"])) cases.push({ label: `${key}.${v.id}.align-${a} (${node.organism})`, organism: node.organism, props: { ...props, align: a } });
     }
   }
   return { cases, skipped };

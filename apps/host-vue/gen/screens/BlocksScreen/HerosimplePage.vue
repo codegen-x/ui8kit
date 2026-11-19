@@ -114,6 +114,7 @@ import { ui } from "@ui8kit/app-shared/content";
               :actionLabel="ui.marketing.heroSimple.actionLabel"
               actionHref="#/start"
               media="top"
+              align="center"
               :level="2"
               :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaTop))"
             />

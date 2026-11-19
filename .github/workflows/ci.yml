@@ -42,3 +42,4 @@ jobs:
       - run: bun run codex:validate
       - run: bun run typecheck
       - run: bun run test
+      - run: bun run lint:px:simple

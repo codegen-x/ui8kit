@@ -1,5 +1,7 @@
 // The simple line (line "simple", one content model each): HeroSimple (hero@1) and TeamSimple (team@1). Every variant reads the same
-// content; the variants only set axes. The facts name data-slot hooks and semantic elements (no data-testid in the output).
+// content; the variants only set axes, plus the default of the `align` setting where the composition is centred (HeroSimple mediaTop:
+// the wide picture on top, the copy centred under it). align stays a setting in props (a saved block overrides it), never a variant
+// of its own, so the feed does not grow. The facts name data-slot hooks and semantic elements (no data-testid in the output).
 import { ref } from "../../build";
 import { define } from "./blocks-define";
 import { t } from "./block-kit";
@@ -15,7 +17,7 @@ const heroSimple = define({
   variants: [
     ["mediaEnd", "Picture at the end"],
     ["mediaStart", "Picture at the start", { media: "start" }],
-    ["mediaTop", "Wide picture on top", { media: "top" }],
+    ["mediaTop", "Wide picture on top", { media: "top" }, { align: "center" }],
   ],
   facts: [
     { sel: "section[aria-labelledby] h2", n: 1 },

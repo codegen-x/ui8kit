@@ -34,6 +34,9 @@
       "id": "mediaTop",
       "set": {
         "media": "top"
+      },
+      "props": {
+        "align": "center"
       }
     }
   ],

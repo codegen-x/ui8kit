@@ -23,11 +23,11 @@
     }
   ],
   "inputs": {
-    "sha256": "5be30efd0a8dc745f6ed1cf8109b6457a34fb0bedfdcd230787bcf66dbeb2662"
+    "sha256": "be8962f5062d4fd041576eebe8bf391d0a88936e31a8375d71f2181ac82faee9"
   },
   "files": {
     "classes.json": "f260ede38fd83262a7222f715d18d9043028f25624da051ca9f7b8317d877d1b",
-    "contracts/hero-simple/1.json": "d36b7322898a6455ea881fc0b9e319c1f97a25194dff9f0b1239434b7fd9653f",
+    "contracts/hero-simple/1.json": "b257de955d42d36202199349356c44d20b03482f11be7e0cd6a4ccdbe61cedf0",
     "contracts/team-simple/1.json": "56fba32f87b03a845a3123b0db9b4abe2f1e4be922e185309c1e581f322b1510",
     "contracts/v0.json": "2c8b5dc42e975e5e565900e3eb0c2d115752c45b7aa231a075c1b4a710494b57",
     "models/hero@1.schema.json": "bc3edaec5a433e1481281f4b93502d2f26b58db374f83e6336f1f2d271987a3b",

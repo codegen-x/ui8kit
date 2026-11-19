@@ -170,6 +170,13 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     }
   });
 
+  test("contracts: the variant default of align: center for the centred composition (HeroSimple mediaTop) only, start elsewhere", () => {
+    const own = simple.flatMap((c) => c.variants.filter((v) => v.settings).map((v) => `${c.item}.${v.id} ${JSON.stringify(v.settings)}`));
+    expect(own).toEqual(['hero-simple.mediaTop {"align":"center"}']);
+    // the feed does not grow: align is never a variant of its own
+    expect(simple.find((c) => c.item === "hero-simple")!.variants.map((v) => v.id)).toEqual(["mediaEnd", "mediaStart", "mediaTop"]);
+  });
+
   // the align setting: logical classes only (ui8kit/prototypes docs/adr/0002-align-as-setting.md)
   const ITEMS = { start: "items-start", center: "items-center", end: "items-end" } as const;
   for (const item of ["hero-simple", "team-simple"]) for (const mode of ["wireframe", "clean"]) for (const align of ["start", "center", "end"] as const) test(`${item} (${mode}) align ${align}: items-${align} on the copy, logical text classes only`, async () => {
