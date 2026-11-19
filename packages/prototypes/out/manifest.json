@@ -26,6 +26,7 @@
     "sha256": "ac2560e30aa1ca16729a8cab14367af85a0bee912a96856b84299128f897cbe5"
   },
   "files": {
+    "classes.json": "2cd702362ddec92f27f3f9a64c2ecee4938bf1f0b5d9abb2c250ef5d9eb0c87a",
     "contracts/hero-simple/1.json": "c6a1c46a08c0fa56066f25c1fa87e3cc3651c3a68185c662c66d0365af4c2fd6",
     "contracts/team-simple/1.json": "8da627f33b9f3fe4aa9dded87661c39787c6d3c9e7fb425284e0471bc8a7555f",
     "contracts/v0.json": "2c8b5dc42e975e5e565900e3eb0c2d115752c45b7aa231a075c1b4a710494b57",

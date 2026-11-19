@@ -8,7 +8,7 @@ import { cn, cond, eq, organism, ref } from "../../compose-gen/screens/src/build
 import { isGroup, isOp, isRef, type OrganismSpec, type Value, type ViewNode } from "../../compose-gen/screens/src/ir";
 import type { BlockSpec } from "../../compose-gen/screens/src/ir";
 import type { ModelField, ModelSpec } from "../../compose-gen/model/src/index";
-import { SHAPE, type ShapeName } from "./shapes";
+import { ROLE, SHAPE, type ShapeName } from "./shapes";
 
 /** how many members a wireframe draws for a list field */
 export const WIRE_ITEMS = 3;
@@ -24,17 +24,24 @@ export const PROTOTYPE_SETTINGS = ["padding"] as const;
 
 /** the layout compositions a wireframe may use, lowered onto the kit Box: the tag and the classes of each (no recipe) */
 type Lowering = { tag?: string; tagProp?: string; base: string; attrs?: Record<string, string>; keys?: Record<string, (v: string) => string> };
-const ALIGN: Record<string, string> = { start: "items-start", center: "items-center", end: "items-end", stretch: "items-stretch" };
-const JUSTIFY: Record<string, string> = { start: "justify-start", center: "justify-center", end: "justify-end", between: "justify-between" };
+/** the Stack Align / Justify classes (logical: flex start / end follow the writing direction); shipped in out/classes.json */
+export const ALIGN = { start: "items-start", center: "items-center", end: "items-end", stretch: "items-stretch" } as const satisfies Record<string, string>;
+export const JUSTIFY = { start: "justify-start", center: "justify-center", end: "justify-end", between: "justify-between" } as const satisfies Record<string, string>;
+/**
+ * The section padding presets (the `padding` setting) and the container of the simple line, as the clean organisms write them
+ * (specs/organisms/*-simple.json; test/prototypes.test.ts holds both to these values). Every step a multiple of 8px.
+ */
+export const PADDING = { compact: "py-8 lg:py-16", standard: "py-16 lg:py-32", spacious: "py-24 lg:py-40" } as const;
+export const CONTAINER = "mx-auto w-full max-w-6xl px-4";
 const LAYOUT: Record<string, Lowering> = {
   Box: { tagProp: "Tag", base: "" },
   Block: { tagProp: "Tag", base: "" },
   Container: { tagProp: "Tag", base: "" },
-  Stack: { tagProp: "Tag", base: "flex flex-col", keys: { Gap: (v) => `gap-${v}`, Align: (v) => ALIGN[v] ?? fail(`Stack Align ${v}`), Justify: (v) => JUSTIFY[v] ?? fail(`Stack Justify ${v}`) } },
+  Stack: { tagProp: "Tag", base: "flex flex-col", keys: { Gap: (v) => `gap-${v}`, Align: (v) => (ALIGN as Record<string, string>)[v] ?? fail(`Stack Align ${v}`), Justify: (v) => (JUSTIFY as Record<string, string>)[v] ?? fail(`Stack Justify ${v}`) } },
   List: { tagProp: "Tag", tag: "ul", base: "" },
   ListItem: { tag: "li", base: "" },
   // a card as a plain bordered surface (a border token, no inset ring, no shadow)
-  Card: { tag: "div", base: "bg-card border border-border rounded", attrs: { "data-slot": "card", "data-role": "surface" } },
+  Card: { tag: "div", base: ROLE.surface, attrs: { "data-slot": "card", "data-role": "surface" } },
 };
 /** classes the wireframe drops: list-none is the preflight of Tailwind v4 already (ul, ol: list-style none), and the li are flex */
 const PREFLIGHT = new Set(["list-none"]);

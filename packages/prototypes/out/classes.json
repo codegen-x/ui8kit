@@ -1,0 +1,30 @@
+{
+  "roles": {
+    "text": "bg-muted rounded h-2",
+    "heading": "bg-secondary rounded h-4",
+    "heading-lg": "bg-secondary rounded h-6",
+    "badge": "bg-accent rounded-full h-6",
+    "cta-primary": "bg-primary rounded h-10",
+    "media": "bg-muted rounded",
+    "avatar": "bg-accent rounded-full h-16 w-16",
+    "surface": "bg-card border border-border rounded"
+  },
+  "align": {
+    "start": "items-start",
+    "center": "items-center",
+    "end": "items-end",
+    "stretch": "items-stretch"
+  },
+  "justify": {
+    "start": "justify-start",
+    "center": "justify-center",
+    "end": "justify-end",
+    "between": "justify-between"
+  },
+  "padding": {
+    "compact": "py-8 lg:py-16",
+    "standard": "py-16 lg:py-32",
+    "spacious": "py-24 lg:py-40"
+  },
+  "container": "mx-auto w-full max-w-6xl px-4"
+}

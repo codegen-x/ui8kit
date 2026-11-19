@@ -10,6 +10,8 @@ import { loadModels, schemaOf, validate } from "../../compose-gen/model/src/inde
 import { plugin } from "bun";
 import { compile } from "svelte/compiler";
 import { build, drift, OUT } from "../src/driver";
+import { CONTAINER, PADDING } from "../src/project";
+import { ROLE } from "../src/shapes";
 
 const KIT = path.resolve(import.meta.dir, "../../kit/svelte/src");
 // Svelte server compile, registered synchronously (the loader of packages/kit-compose/test/ssr.ts sets up asynchronously)
@@ -60,7 +62,7 @@ test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", (
 
 test("out/ ships wireframes, shapes, contracts, models and the manifest only (no clean block, composition or recipe)", () => {
   expect([...built.files.keys()].sort()).toEqual([
-    "contracts/hero-simple/1.json", "contracts/team-simple/1.json", "contracts/v0.json", "manifest.json",
+    "classes.json", "contracts/hero-simple/1.json", "contracts/team-simple/1.json", "contracts/v0.json", "manifest.json",
     "models/hero@1.schema.json", "models/hero@1.ts", "models/team@1.schema.json", "models/team@1.ts", "models/validate.ts",
     "svelte/blocks/hero-simple.svelte", "svelte/blocks/team-simple.svelte", "svelte/index.ts",
     ...["avatar", "badge", "cta", "heading", "media", "text"].map((s) => `svelte/shapes/shape-${s}.svelte`),
@@ -138,7 +140,7 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
   const hero = c0("HeroSimple"), team = c0("TeamSimple");
   function c0(name: string) { return cases.find((c) => c.organism === name)!.props as Record<string, unknown>; }
   const fileOf = (item: string, mode: string) => (mode === "clean" ? path.join(CLEAN, `${item}.svelte`) : path.join(RENDER, `blocks/${item}.svelte`));
-  const PRESETS = { compact: "py-8 lg:py-16", standard: "py-16 lg:py-32", spacious: "py-24 lg:py-40" } as const;
+  const PRESETS = PADDING;
 
   for (const item of ["hero-simple", "team-simple"]) for (const mode of ["wireframe", "clean"]) test(`${item} (${mode}): padding presets on the section, standard by default`, async () => {
     const props = item === "hero-simple" ? hero : team;
@@ -163,7 +165,7 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     // the column Stack stretches its children (items-stretch, not the default items-start) and the grid is w-full
     expect(html).toMatch(/class="[^"]*\bflex flex-col\b[^"]*\bitems-stretch\b[^"]*gap-12|class="[^"]*gap-12[^"]*items-stretch/);
     expect(html).toMatch(/<ul[^>]*class="[^"]*\bgrid\b[^"]*\bw-full\b/);
-    expect(html).toMatch(/class="mx-auto w-full max-w-6xl px-4"/);
+    expect(html).toContain(`class="${CONTAINER}"`);
   });
 
   test("hero-simple: the action is a link (a[href], data-slot=button, the link-button recipe), drawn only with a label and an address", async () => {
@@ -177,4 +179,16 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     for (const p of [{ actionLabel: "Go", actionHref: "" }, { actionLabel: "", actionHref: "https://example.com/go" }])
       expect(await ssr(file, { ...hero, ...p })).not.toMatch(/<a\b/);
   });
+});
+
+test("out/classes.json: the role table, Stack align / justify, the padding presets and the container, every length on the 8px grid", () => {
+  const c = JSON.parse(built.files.get("classes.json")!) as { roles: Record<string, string>; padding: Record<string, string>; container: string };
+  expect(c.roles).toEqual(ROLE);
+  expect(Object.keys(c.padding)).toEqual(["compact", "standard", "spacious"]);
+  for (const cls of [...Object.values(c.roles), ...Object.values(c.padding), c.container].join(" ").split(/\s+/)) {
+    const step = /^(?:[a-z]+:)?(?:p[xy]?|h|w|gap)-(\d+)$/.exec(cls)?.[1];
+    if (step) expect({ cls, px: (Number(step) * 4) % 8 }).toEqual({ cls, px: 0 });
+  }
+  // every shape draws its role
+  for (const [role, cls] of Object.entries(ROLE)) if (role !== "surface") expect(built.files.get("svelte/shapes/" + ({ text: "shape-text", heading: "shape-heading", "heading-lg": "shape-heading", badge: "shape-badge", "cta-primary": "shape-cta", media: "shape-media", avatar: "shape-avatar" } as Record<string, string>)[role] + ".svelte")).toContain(cls);
 });

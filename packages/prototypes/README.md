@@ -27,6 +27,7 @@ from the registry.
 | `svelte/blocks/<item>.svelte` | the wireframes (Svelte 5) |
 | `svelte/shapes/shape-*.svelte` | the shapes |
 | `svelte/index.ts` | the exports |
+| `classes.json` | the shared class strings: the role table (`ROLE`, shapes.ts), Stack `align` / `justify`, the `padding` presets and the container; ui8kit/prototypes builds its hand-written `classes.ts` from it (one source) |
 | `contracts/` | the contracts |
 | `models/` | `<id>@<v>.schema.json` (JSON Schema 2020-12), `<id>@<v>.ts` (types, the model, `validate<Type>()`), `validate.ts` |
 | `manifest.json` | sha256 of every file and of the inputs; no timestamps and no commit (the consumer pins the commit: ui8kit/prototypes `codegen.lock.json`) |
