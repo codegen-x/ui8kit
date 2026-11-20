@@ -1161,7 +1161,7 @@
         "id": "photo",
         "label": "Photo",
         "scope": "workspace",
-        "description": "fixtures: photos",
+        "description": "fixtures: galleryphotos, galleryphotos4, photos",
         "fields": [
           {
             "id": "size",
@@ -1714,7 +1714,7 @@
         "id": "step",
         "label": "Step",
         "scope": "workspace",
-        "description": "fixtures: steps, wizard",
+        "description": "fixtures: simplesteps, steps, wizard",
         "fields": [
           {
             "id": "fieldA",
@@ -1731,6 +1731,11 @@
             "label": "Icon",
             "type": "string",
             "required": true
+          },
+          {
+            "id": "label",
+            "label": "Label",
+            "type": "string"
           },
           {
             "id": "text",

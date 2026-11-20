@@ -1,0 +1,69 @@
+{
+  "collection": "galleryphotos",
+  "kind": "photo",
+  "entries": [
+    {
+      "id": "gallery-harbor",
+      "locale": "en",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": "gallery-harbor",
+      "title": "A sunlit studio desk with page sketches",
+      "metadata": {
+        "tag": {
+          "value": "Travel"
+        },
+        "size": {
+          "value": "large"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-02T09:00:00Z",
+      "updated_at": "2026-03-03T09:00:00Z",
+      "published_at": "2026-03-03T10:00:00Z"
+    },
+    {
+      "id": "gallery-studio",
+      "locale": "en",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": "gallery-studio",
+      "title": "A wall of printed layout proofs",
+      "metadata": {
+        "tag": {
+          "value": "Interior"
+        },
+        "size": {
+          "value": "small"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-04T09:00:00Z",
+      "updated_at": "2026-03-05T09:00:00Z",
+      "published_at": "2026-03-05T10:00:00Z"
+    },
+    {
+      "id": "gallery-market",
+      "locale": "en",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": "gallery-market",
+      "title": "Two people reviewing a page on a laptop",
+      "metadata": {
+        "tag": {
+          "value": "Street"
+        },
+        "size": {
+          "value": "tall"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-06T09:00:00Z",
+      "updated_at": "2026-03-07T09:00:00Z",
+      "published_at": "2026-03-07T10:00:00Z"
+    }
+  ]
+}

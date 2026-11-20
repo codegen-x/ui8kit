@@ -1,0 +1,79 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.faqsimple",
+  "name": "Simple FAQ",
+  "docs": "The heading, one paragraph and the questions with their answers as a list, each under a rule, in two columns or one.",
+  "theme": "marketing",
+  "group": "faq",
+  "organism": "FaqSimple",
+  "line": "simple",
+  "model": "faq@1",
+  "axes": {
+    "columns": [
+      "one",
+      "two"
+    ]
+  },
+  "defaults": {
+    "columns": "two"
+  },
+  "variants": [
+    {
+      "id": "grid2",
+      "set": {}
+    },
+    {
+      "id": "list",
+      "set": {
+        "columns": "one"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@simpleQuestions"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@simpleQuestions"
+    },
+    {
+      "sel": "button",
+      "n": 0
+    }
+  ],
+  "data": [
+    {
+      "as": "simpleQuestions",
+      "collection": "faq",
+      "kind": "faq",
+      "record": "SimpleQuestion",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "description": "metadata.answer.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "faqsimple",
+      "title": {
+        "$": "ui.marketing.faqSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.faqSimple.description"
+      },
+      "items": {
+        "$": "simpleQuestions"
+      }
+    }
+  }
+}

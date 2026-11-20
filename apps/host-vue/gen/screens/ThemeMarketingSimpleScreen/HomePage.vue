@@ -2,21 +2,58 @@
 <!-- The home page of ThemeMarketingSimpleScreen. -->
 <script setup lang="ts">
 import {
+  FaqSimple,
+  FeaturesSimple,
   HeroSimple,
+  IntroSimple,
+  LogosSimple,
   SplitSimple,
+  StatsSimple,
+  StepsSimple,
   TeamSimple,
+  TestimonialsSimple,
   tpl,
   uniqLabel,
+  type SimpleFeature,
+  type SimpleLogo,
   type SimpleMember,
+  type SimpleQuestion,
+  type SimpleQuote,
+  type SimpleStat,
+  type SimpleStep,
 } from "@codegen-x/vue-compose";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
+import { features as simpleFeaturesEntries } from "@ui8kit/app-shared/data/features";
 import { members as teamMembersEntries } from "@ui8kit/app-shared/data/members";
+import { stats as simpleStatsEntries } from "@ui8kit/app-shared/data/stats";
+import { simplesteps as simpleStepsEntries } from "@ui8kit/app-shared/data/simplesteps";
+import { testimonials as simpleQuotesEntries } from "@ui8kit/app-shared/data/testimonials";
+import { logos as simpleLogosEntries } from "@ui8kit/app-shared/data/logos";
+import { faq as simpleQuestionsEntries } from "@ui8kit/app-shared/data/faq";
 
+const SIMPLEFEATURES_FIELDS = {"id":"id","image":"featured_media_id|media","title":"title","description":"metadata.text.value"} as const;
 const TEAMMEMBERS_FIELDS = {"id":"id","title":"title","description":"metadata.role.value","avatar":"featured_media_id|media"} as const;
+const SIMPLESTATS_FIELDS = {"id":"id","value":"metadata.value.value|compact","title":"title","description":"metadata.hint.value"} as const;
+const SIMPLESTEPS_FIELDS = {"id":"id","label":"metadata.label.value","title":"title","description":"metadata.text.value"} as const;
+const SIMPLEQUOTES_FIELDS = {
+  "id": "id",
+  "quote": "metadata.quote.value",
+  "avatar": "featured_media_id|media",
+  "title": "title",
+  "description": "metadata.role.value",
+} as const;
+const SIMPLELOGOS_FIELDS = {"id":"id","image":"featured_media_id|media","title":"title"} as const;
+const SIMPLEQUESTIONS_FIELDS = {"id":"id","title":"title","description":"metadata.answer.value"} as const;
 
+const simpleFeatures = fromCodex<SimpleFeature>(simpleFeaturesEntries, SIMPLEFEATURES_FIELDS, CODEX);
 const teamMembers = fromCodex<SimpleMember>(teamMembersEntries, TEAMMEMBERS_FIELDS, CODEX);
+const simpleStats = fromCodex<SimpleStat>(simpleStatsEntries, SIMPLESTATS_FIELDS, CODEX);
+const simpleSteps = fromCodex<SimpleStep>(simpleStepsEntries, SIMPLESTEPS_FIELDS, CODEX);
+const simpleQuotes = fromCodex<SimpleQuote>(simpleQuotesEntries, SIMPLEQUOTES_FIELDS, CODEX);
+const simpleLogos = fromCodex<SimpleLogo>(simpleLogosEntries, SIMPLELOGOS_FIELDS, CODEX);
+const simpleQuestions = fromCodex<SimpleQuestion>(simpleQuestionsEntries, SIMPLEQUESTIONS_FIELDS, CODEX);
 </script>
 
 <template>
@@ -31,11 +68,34 @@ const teamMembers = fromCodex<SimpleMember>(teamMembersEntries, TEAMMEMBERS_FIEL
     :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
     secondaryActionHref="#/tour"
     media="end"
+    ratio="landscape"
     :level="1"
     :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaEnd))"
   />
+  <IntroSimple
+    id="home-introsimple"
+    :badge="ui.marketing.introSimple.badge"
+    :title="ui.marketing.introSimple.title"
+    :description="ui.marketing.introSimple.description"
+    :actionLabel="ui.marketing.introSimple.actionLabel"
+    actionHref="#/start"
+    :secondaryActionLabel="ui.marketing.introSimple.secondaryActionLabel"
+    secondaryActionHref="#/tour"
+    place="middle"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.introsimple, ui.blocks.variants.introsimple.center))"
+  />
+  <FeaturesSimple
+    id="home-featuressimple"
+    :title="ui.marketing.featuresSimple.title"
+    :description="ui.marketing.featuresSimple.description"
+    :items="simpleFeatures"
+    layout="stack"
+    cols="3"
+    marker="top"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuressimple, ui.blocks.variants.featuressimple.cols3))"
+  />
   <TeamSimple
-    id="home-teamsimple-1"
+    id="home-teamsimple-3"
     :title="ui.marketing.teamSimple.title"
     :description="ui.marketing.teamSimple.description"
     :members="teamMembers"
@@ -43,8 +103,17 @@ const teamMembers = fromCodex<SimpleMember>(teamMembersEntries, TEAMMEMBERS_FIEL
     surface="plain"
     :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cols3))"
   />
+  <StatsSimple
+    id="home-statssimple"
+    :title="ui.marketing.statsSimple.title"
+    :description="ui.marketing.statsSimple.description"
+    :items="simpleStats"
+    cols="4"
+    surface="plain"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.statssimple, ui.blocks.variants.statssimple.cols4))"
+  />
   <HeroSimple
-    id="home-herosimple-2"
+    id="home-herosimple-5"
     :badge="ui.marketing.heroSimple.badge"
     :title="ui.marketing.heroSimple.title"
     :description="ui.marketing.heroSimple.description"
@@ -54,7 +123,17 @@ const teamMembers = fromCodex<SimpleMember>(teamMembersEntries, TEAMMEMBERS_FIEL
     :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
     secondaryActionHref="#/tour"
     media="start"
+    ratio="landscape"
     :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaStart))"
+  />
+  <StepsSimple
+    id="home-stepssimple"
+    :title="ui.marketing.stepsSimple.title"
+    :description="ui.marketing.stepsSimple.description"
+    :steps="simpleSteps"
+    layout="row"
+    cols="4"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepssimple, ui.blocks.variants.stepssimple.row4))"
   />
   <SplitSimple
     id="home-splitsimple"
@@ -68,13 +147,52 @@ const teamMembers = fromCodex<SimpleMember>(teamMembersEntries, TEAMMEMBERS_FIEL
     media="end"
     :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.splitsimple, ui.blocks.variants.splitsimple.mediaEnd))"
   />
+  <TestimonialsSimple
+    id="home-testimonialssimple"
+    :title="ui.marketing.testimonialsSimple.title"
+    :description="ui.marketing.testimonialsSimple.description"
+    :quotes="simpleQuotes"
+    layout="cards"
+    cols="3"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.testimonialssimple, ui.blocks.variants.testimonialssimple.cols3))"
+  />
+  <LogosSimple
+    id="home-logossimple"
+    :title="ui.marketing.logosSimple.title"
+    :logos="simpleLogos"
+    surface="plain"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logossimple, ui.blocks.variants.logossimple.row))"
+  />
+  <FaqSimple
+    id="home-faqsimple"
+    :title="ui.marketing.faqSimple.title"
+    :description="ui.marketing.faqSimple.description"
+    :items="simpleQuestions"
+    columns="two"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faqsimple, ui.blocks.variants.faqsimple.grid2))"
+  />
   <TeamSimple
-    id="home-teamsimple-4"
+    id="home-teamsimple-11"
     :title="ui.marketing.teamSimple.title"
     :description="ui.marketing.teamSimple.description"
     :members="teamMembers"
     cols="2"
     surface="plain"
     :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cols2))"
+  />
+  <HeroSimple
+    id="home-herosimple-12"
+    :badge="ui.marketing.heroSimple.badge"
+    :title="ui.marketing.heroSimple.title"
+    :description="ui.marketing.heroSimple.description"
+    :imageAlt="ui.marketing.heroSimple.imageAlt"
+    :actionLabel="ui.marketing.heroSimple.actionLabel"
+    actionHref="#/start"
+    :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
+    secondaryActionHref="#/tour"
+    media="bottom"
+    ratio="landscape"
+    align="center"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaBottom))"
   />
 </template>

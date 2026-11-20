@@ -1,4 +1,5 @@
-// The simple line (line "simple", one content model each): HeroSimple (hero@1) and TeamSimple (team@1). Every variant reads the same
+// The simple line (line "simple", one content model each): HeroSimple (hero@1), SplitSimple (split@1), TeamSimple (team@1) and the
+// blocks of blocks-simple-more.ts. Every variant reads the same
 // content; the variants only set axes, plus the default of the `align` setting where the composition is centred (HeroSimple mediaTop:
 // the wide picture on top, the copy centred under it). align stays a setting in props (a saved block overrides it), never a variant
 // of its own, so the feed does not grow. The facts name data-slot hooks and semantic elements (no data-testid in the output).
@@ -6,21 +7,25 @@ import { ref } from "../../build";
 import { define } from "./blocks-define";
 import { t } from "./block-kit";
 import * as d from "./blocks-data";
+import { simpleMoreBlocks } from "./blocks-simple-more";
 
 const h = (k: string) => t(`marketing.heroSimple.${k}`);
 const m = (k: string) => t(`marketing.teamSimple.${k}`);
 
 const heroSimple = define({
   key: "herosimple", theme: "marketing", group: "hero", line: "simple", model: "hero@1",
-  name: "Simple hero", docs: "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start or on top.",
-  organism: "HeroSimple", axes: ["media"],
+  name: "Simple hero", docs: "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start (landscape or portrait), on top or at the bottom.",
+  organism: "HeroSimple", axes: ["media", "ratio"],
   variants: [
     ["mediaEnd", "Picture at the end"],
     ["mediaStart", "Picture at the start", { media: "start" }],
     ["mediaTop", "Wide picture on top", { media: "top" }, { align: "center" }],
+    ["mediaBottom", "Wide picture at the bottom", { media: "bottom" }, { align: "center" }],
+    ["mediaEndPortrait", "Portrait picture at the end", { ratio: "portrait" }],
+    ["mediaStartPortrait", "Portrait picture at the start", { media: "start", ratio: "portrait" }],
   ],
   facts: [
-    { sel: "section[aria-labelledby] h2", n: 1 },
+    { sel: "section h2", n: 1 },
     { sel: '[data-slot="badge"]', n: 1 },
     { sel: 'a[data-slot="button"][href]', n: 2 },
     { sel: "button", n: 0 },
@@ -42,7 +47,7 @@ const splitSimple = define({
     ["mediaStart", "Picture at the start, to the edge", { media: "start" }],
   ],
   facts: [
-    { sel: "section[aria-labelledby] h2", n: 1 },
+    { sel: "section h2", n: 1 },
     { sel: 'a[data-slot="button"][href]', n: 2 },
     { sel: "button", n: 0 },
     { sel: '[data-slot="media-frame"]', n: 1 },
@@ -65,7 +70,7 @@ const teamSimple = define({
     ["cards3", "Three columns on cards", { surface: "cards" }],
   ],
   facts: [
-    { sel: "section[aria-labelledby] h2", n: 1 },
+    { sel: "section h2", n: 1 },
     { sel: "ul > li", n: "@members" },
     { sel: "ul > li h3", n: "@members" },
     { sel: '[data-slot="media-frame"]', n: "@members" },
@@ -78,4 +83,4 @@ const teamSimple = define({
   sample: { id: "teamsimple", title: m("title"), description: m("description"), members: ref("teamMembers") },
 });
 
-export const simpleBlocks = [heroSimple, splitSimple, teamSimple];
+export const simpleBlocks = [heroSimple, splitSimple, teamSimple, ...simpleMoreBlocks];

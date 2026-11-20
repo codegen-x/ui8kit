@@ -169,6 +169,16 @@ export const KIT_FIELDS = {
   member: { id: "id", name: "title", role: m("role"), dept: m("dept"), location: m("location"), bio: m("bio"), skills: m("skills") },
   // the simple line (TeamSimple, model team@1): a member as { id, title, description, avatar }
   teamMember: { id: "id", title: "title", description: m("role"), avatar: "featured_media_id|media" },
+  // the other models of the simple line (specs/models): each list item as its model record
+  galleryPhoto: { id: "id", image: "featured_media_id|media", imageAlt: "title" },
+  simpleFeature: { id: "id", image: "featured_media_id|media", title: "title", description: m("text") },
+  simpleStat: { id: "id", value: `${m("value")}|compact`, title: "title", description: m("hint") },
+  simpleStory: { id: "id", image: "featured_media_id|media", title: "title", description: "excerpt", href: "slug|route" },
+  simplePhoto: { id: "id", image: "featured_media_id|media", imageAlt: "title" },
+  simpleQuote: { id: "id", quote: m("quote"), avatar: "featured_media_id|media", title: "title", description: m("role") },
+  simpleLogo: { id: "id", image: "featured_media_id|media", title: "title" },
+  simpleQuestion: { id: "id", title: "title", description: m("answer") },
+  simpleStep: { id: "id", label: m("label"), title: "title", description: m("text") },
   photo: { id: "id", title: "title", tag: m("tag"), size: m("size") },
   project: { id: "id", title: "title", category: "terms|term:project_category", year: m("year"), summary: m("summary"), tags: m("tags"), featured: m("featured"), client: m("client"), href: "slug|route" },
   job: { id: "id", title: "title", dept: m("dept"), location: m("location"), type: m("type"), salary: m("salary"), posted: `${m("posted")}|ago-days`, href: "slug|route" },

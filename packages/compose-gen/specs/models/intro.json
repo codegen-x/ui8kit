@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "intro",
+  "version": 1,
+  "docs": "Intro content: an optional badge, the heading, a description and up to two actions (the first drawn as the primary button, the second as the secondary one). Text only: one object is valid in every intro layout (centred, at the start, low in the section).",
+  "fields": {
+    "badge": { "type": "text", "maxLength": 40, "docs": "a short pill above the heading; empty: no badge" },
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "actionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the action; the link is drawn when the label and the address are both set" },
+    "actionHref": { "type": "url", "docs": "the address of the action" },
+    "secondaryActionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the second action (the secondary button after the first); drawn when the label and the address are both set; empty: none" },
+    "secondaryActionHref": { "type": "url", "docs": "the address of the second action" }
+  }
+}

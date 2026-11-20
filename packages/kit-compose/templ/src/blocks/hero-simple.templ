@@ -28,10 +28,11 @@ type HeroSimpleProps struct {
 	Padding any `json:"padding"`
 	Align any `json:"align"`
 	Media any `json:"media"`
+	Ratio any `json:"ratio"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
-// The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).
+// The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide, bottom: under it, wide), ratio (landscape: 4/3 beside the copy, portrait: narrowed and tall, 3 by 4, beside the copy from md up).
 templ HeroSimple(p HeroSimpleProps) {
 	{{ vId := p.Id }}
 	{{ vBadge := uiutils.Def(p.Badge, "") }}
@@ -48,16 +49,17 @@ templ HeroSimple(p HeroSimpleProps) {
 	{{ vPadding := uiutils.Def(p.Padding, "standard") }}
 	{{ vAlign := uiutils.Def(p.Align, "start") }}
 	{{ vMedia := uiutils.Def(p.Media, "end") }}
+	{{ vRatio := uiutils.Def(p.Ratio, "landscape") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	{{ vTitleId := any(uiutils.Add(vId, "-title")) }}
 	{{ vColumn := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "end", "start"))) }}
 	{{ vTextAlign := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "text-center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "text-end", "text-start"))) }}
+	{{ vFrame := any(uiutils.Cond(uiutils.T(uiutils.Or(uiutils.Eq(vMedia, "top"), uiutils.Eq(vMedia, "bottom"))), "grid grid-cols-1 gap-8", "grid grid-cols-1 items-center gap-8 md:grid-cols-2")) }}
+	{{ vPictureRatio := any(uiutils.Cond(uiutils.T(uiutils.Or(uiutils.Eq(vMedia, "top"), uiutils.Eq(vMedia, "bottom"))), "21/9", "4/3")) }}
+	{{ vPictureClass := any(uiutils.Cond(uiutils.T(uiutils.And(uiutils.Eq(vMedia, "start"), uiutils.Eq(vRatio, "portrait"))), "order-first mx-auto w-full max-w-sm md:aspect-auto md:min-h-128", uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "start")), "order-first", uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "top")), "order-first", uiutils.Cond(uiutils.T(uiutils.And(uiutils.Eq(vMedia, "end"), uiutils.Eq(vRatio, "portrait"))), "mx-auto w-full max-w-sm md:aspect-auto md:min-h-128", ""))))) }}
 	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "compact")), "py-8 lg:py-16", uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "spacious")), "py-24 lg:py-40", "py-16 lg:py-32"))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "aria-label", vLandmarkLabel, "data-slot", "hero-simple")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-6xl px-4"}}) {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-8", uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "top")), "", "items-center md:grid-cols-2")))}}) {
-				if !uiutils.Eq(vMedia, "end") {
-					@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, DarkSrc: vImageDark, Ratio: uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "top")), "21/9", "4/3")})
-				}
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(vFrame)}}) {
 				@compose.Stack(compose.StackProps{Gap: "6", Align: uiutils.S(vColumn), BoxProps: box.BoxProps{}}) {
 					if uiutils.T(vBadge) {
 						@compose.Badge(compose.BadgeProps{Variant: "secondary", TextProps: text.TextProps{}}) {
@@ -87,9 +89,7 @@ templ HeroSimple(p HeroSimpleProps) {
 						}
 					}
 				}
-				if uiutils.Eq(vMedia, "end") {
-					@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, DarkSrc: vImageDark, Ratio: "4/3"})
-				}
+				@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, DarkSrc: vImageDark, Ratio: vPictureRatio, Class: uiutils.Cnv(vPictureClass)})
 			}
 		}
 	}

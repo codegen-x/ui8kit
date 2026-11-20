@@ -29,6 +29,10 @@ import MarketingCtaPage from "./CatalogScreen/MarketingCtaPage.vue";
 import MarketingCtaProofPage from "./CatalogScreen/MarketingCtaProofPage.vue";
 import MarketingTeamPage from "./CatalogScreen/MarketingTeamPage.vue";
 import MarketingSimplePage from "./CatalogScreen/MarketingSimplePage.vue";
+import MarketingSimpleMediaPage from "./CatalogScreen/MarketingSimpleMediaPage.vue";
+import MarketingSimpleFeaturesPage from "./CatalogScreen/MarketingSimpleFeaturesPage.vue";
+import MarketingSimpleProofPage from "./CatalogScreen/MarketingSimpleProofPage.vue";
+import MarketingSimplePeoplePage from "./CatalogScreen/MarketingSimplePeoplePage.vue";
 import MarketingAboutPage from "./CatalogScreen/MarketingAboutPage.vue";
 import MarketingPortfolioPage from "./CatalogScreen/MarketingPortfolioPage.vue";
 import MarketingCareersPage from "./CatalogScreen/MarketingCareersPage.vue";
@@ -126,6 +130,10 @@ const ROUTES = [
   {"path":"marketing-cta-proof","area":"marketing-cta-proof"},
   {"path":"marketing-team","area":"marketing-team"},
   {"path":"marketing-simple","area":"marketing-simple"},
+  {"path":"marketing-simple-media","area":"marketing-simple-media"},
+  {"path":"marketing-simple-features","area":"marketing-simple-features"},
+  {"path":"marketing-simple-proof","area":"marketing-simple-proof"},
+  {"path":"marketing-simple-people","area":"marketing-simple-people"},
   {"path":"marketing-about","area":"marketing-about"},
   {"path":"marketing-portfolio","area":"marketing-portfolio"},
   {"path":"marketing-careers","area":"marketing-careers"},
@@ -225,6 +233,10 @@ const actions = { toggleTheme };
     <MarketingCtaProofPage v-else-if="route.area === 'marketing-cta-proof'" />
     <MarketingTeamPage v-else-if="route.area === 'marketing-team'" />
     <MarketingSimplePage v-else-if="route.area === 'marketing-simple'" />
+    <MarketingSimpleMediaPage v-else-if="route.area === 'marketing-simple-media'" />
+    <MarketingSimpleFeaturesPage v-else-if="route.area === 'marketing-simple-features'" />
+    <MarketingSimpleProofPage v-else-if="route.area === 'marketing-simple-proof'" />
+    <MarketingSimplePeoplePage v-else-if="route.area === 'marketing-simple-people'" />
     <MarketingAboutPage v-else-if="route.area === 'marketing-about'" />
     <MarketingPortfolioPage v-else-if="route.area === 'marketing-portfolio'" />
     <MarketingCareersPage v-else-if="route.area === 'marketing-careers'" />

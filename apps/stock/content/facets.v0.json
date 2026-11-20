@@ -675,7 +675,8 @@
                 "block": [
                   "testimonials",
                   "quotesplit",
-                  "reviews"
+                  "reviews",
+                  "testimonialssimple"
                 ]
               }
             }
@@ -1016,7 +1017,8 @@
             {
               "any": {
                 "block": [
-                  "logos"
+                  "logos",
+                  "logossimple"
                 ]
               }
             }
@@ -1064,7 +1066,8 @@
               "any": {
                 "block": [
                   "stats",
-                  "metrics"
+                  "metrics",
+                  "statssimple"
                 ]
               }
             }
@@ -1271,7 +1274,8 @@
                 "block": [
                   "photos",
                   "projects",
-                  "jobs"
+                  "jobs",
+                  "photossimple"
                 ]
               }
             }
@@ -1460,7 +1464,8 @@
                 "block": [
                   "posts",
                   "postshowcase",
-                  "postsplit"
+                  "postsplit",
+                  "storiessimple"
                 ]
               }
             }

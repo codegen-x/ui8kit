@@ -7,24 +7,16 @@ import {
   Container,
   Group,
   HeroSimple,
+  IntroSimple,
   Link,
   SplitSimple,
   Stack,
-  TeamSimple,
   Text,
   Title,
   tpl,
   uniqLabel,
-  type SimpleMember,
 } from "@codegen-x/solid-compose";
-import { fromCodex } from "@ui8kit/app-shared/runtime/core";
-import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
-import { members as teamMembersEntries } from "@ui8kit/app-shared/data/members";
-
-const TEAMMEMBERS_FIELDS = {"id":"id","title":"title","description":"metadata.role.value","avatar":"featured_media_id|media"} as const;
-
-const teamMembers = fromCodex<SimpleMember>(teamMembersEntries, TEAMMEMBERS_FIELDS, CODEX);
 
 export function MarketingSimplePage() {
   return (
@@ -44,7 +36,7 @@ export function MarketingSimplePage() {
               {ui.catalog.categories.marketingSimple}
             </Title>
             <Text class="max-w-2xl text-muted-foreground">
-              {tpl(ui.catalog.count, 3, 9)}
+              {tpl(ui.catalog.count, 3, 12)}
             </Text>
           </Stack>
           <Stack
@@ -87,6 +79,7 @@ export function MarketingSimplePage() {
                   secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
                   secondaryActionHref="#/tour"
                   media="end"
+                  ratio="landscape"
                   level={2}
                   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaEnd))}
                 />
@@ -116,6 +109,7 @@ export function MarketingSimplePage() {
                   secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
                   secondaryActionHref="#/tour"
                   media="start"
+                  ratio="landscape"
                   level={2}
                   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaStart))}
                 />
@@ -145,9 +139,101 @@ export function MarketingSimplePage() {
                   secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
                   secondaryActionHref="#/tour"
                   media="top"
+                  ratio="landscape"
                   align="center"
                   level={2}
                   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaTop))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="herosimple-mediaBottom-label"
+              data-testid="variant"
+              data-block="herosimple"
+              data-variant="mediaBottom"
+            >
+              <Title as={3} size="base" weight="bold" id="herosimple-mediaBottom-label" data-testid="variant-label">
+                {ui.blocks.variants.herosimple.mediaBottom}
+              </Title>
+              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <HeroSimple
+                  id="herosimple-mediaBottom"
+                  badge={ui.marketing.heroSimple.badge}
+                  title={ui.marketing.heroSimple.title}
+                  description={ui.marketing.heroSimple.description}
+                  imageAlt={ui.marketing.heroSimple.imageAlt}
+                  actionLabel={ui.marketing.heroSimple.actionLabel}
+                  actionHref="#/start"
+                  secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
+                  secondaryActionHref="#/tour"
+                  media="bottom"
+                  ratio="landscape"
+                  align="center"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaBottom))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="herosimple-mediaEndPortrait-label"
+              data-testid="variant"
+              data-block="herosimple"
+              data-variant="mediaEndPortrait"
+            >
+              <Title as={3} size="base" weight="bold" id="herosimple-mediaEndPortrait-label" data-testid="variant-label">
+                {ui.blocks.variants.herosimple.mediaEndPortrait}
+              </Title>
+              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <HeroSimple
+                  id="herosimple-mediaEndPortrait"
+                  badge={ui.marketing.heroSimple.badge}
+                  title={ui.marketing.heroSimple.title}
+                  description={ui.marketing.heroSimple.description}
+                  imageAlt={ui.marketing.heroSimple.imageAlt}
+                  actionLabel={ui.marketing.heroSimple.actionLabel}
+                  actionHref="#/start"
+                  secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
+                  secondaryActionHref="#/tour"
+                  media="end"
+                  ratio="portrait"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaEndPortrait))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="herosimple-mediaStartPortrait-label"
+              data-testid="variant"
+              data-block="herosimple"
+              data-variant="mediaStartPortrait"
+            >
+              <Title as={3} size="base" weight="bold" id="herosimple-mediaStartPortrait-label" data-testid="variant-label">
+                {ui.blocks.variants.herosimple.mediaStartPortrait}
+              </Title>
+              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <HeroSimple
+                  id="herosimple-mediaStartPortrait"
+                  badge={ui.marketing.heroSimple.badge}
+                  title={ui.marketing.heroSimple.title}
+                  description={ui.marketing.heroSimple.description}
+                  imageAlt={ui.marketing.heroSimple.imageAlt}
+                  actionLabel={ui.marketing.heroSimple.actionLabel}
+                  actionHref="#/start"
+                  secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
+                  secondaryActionHref="#/tour"
+                  media="start"
+                  ratio="portrait"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaStartPortrait))}
                 />
               </Box>
             </Stack>
@@ -229,40 +315,43 @@ export function MarketingSimplePage() {
             gap="6"
             align="stretch"
             role="group"
-            aria-labelledby="catalog-teamsimple-title"
+            aria-labelledby="catalog-introsimple-title"
             data-testid="catalog-block"
-            data-block="teamsimple"
+            data-block="introsimple"
           >
             <Stack gap="2" align="stretch">
-              <Title as={2} size="2xl" weight="bold" id="catalog-teamsimple-title">
-                {ui.blocks.names.teamsimple}
+              <Title as={2} size="2xl" weight="bold" id="catalog-introsimple-title">
+                {ui.blocks.names.introsimple}
               </Title>
               <Text size="sm" class="max-w-2xl text-muted-foreground">
-                {ui.blocks.docs.teamsimple}
+                {ui.blocks.docs.introsimple}
               </Text>
             </Stack>
             <Stack
               gap="4"
               align="stretch"
               role="group"
-              aria-labelledby="teamsimple-cols3-label"
+              aria-labelledby="introsimple-center-label"
               data-testid="variant"
-              data-block="teamsimple"
-              data-variant="cols3"
+              data-block="introsimple"
+              data-variant="center"
             >
-              <Title as={3} size="base" weight="bold" id="teamsimple-cols3-label" data-testid="variant-label">
-                {ui.blocks.variants.teamsimple.cols3}
+              <Title as={3} size="base" weight="bold" id="introsimple-center-label" data-testid="variant-label">
+                {ui.blocks.variants.introsimple.center}
               </Title>
               <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <TeamSimple
-                  id="teamsimple-cols3"
-                  title={ui.marketing.teamSimple.title}
-                  description={ui.marketing.teamSimple.description}
-                  members={teamMembers}
-                  cols="3"
-                  surface="plain"
+                <IntroSimple
+                  id="introsimple-center"
+                  badge={ui.marketing.introSimple.badge}
+                  title={ui.marketing.introSimple.title}
+                  description={ui.marketing.introSimple.description}
+                  actionLabel={ui.marketing.introSimple.actionLabel}
+                  actionHref="#/start"
+                  secondaryActionLabel={ui.marketing.introSimple.secondaryActionLabel}
+                  secondaryActionHref="#/tour"
+                  place="middle"
                   level={2}
-                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cols3))}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.introsimple, ui.blocks.variants.introsimple.center))}
                 />
               </Box>
             </Stack>
@@ -270,24 +359,28 @@ export function MarketingSimplePage() {
               gap="4"
               align="stretch"
               role="group"
-              aria-labelledby="teamsimple-cols2-label"
+              aria-labelledby="introsimple-start-label"
               data-testid="variant"
-              data-block="teamsimple"
-              data-variant="cols2"
+              data-block="introsimple"
+              data-variant="start"
             >
-              <Title as={3} size="base" weight="bold" id="teamsimple-cols2-label" data-testid="variant-label">
-                {ui.blocks.variants.teamsimple.cols2}
+              <Title as={3} size="base" weight="bold" id="introsimple-start-label" data-testid="variant-label">
+                {ui.blocks.variants.introsimple.start}
               </Title>
               <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <TeamSimple
-                  id="teamsimple-cols2"
-                  title={ui.marketing.teamSimple.title}
-                  description={ui.marketing.teamSimple.description}
-                  members={teamMembers}
-                  cols="2"
-                  surface="plain"
+                <IntroSimple
+                  id="introsimple-start"
+                  badge={ui.marketing.introSimple.badge}
+                  title={ui.marketing.introSimple.title}
+                  description={ui.marketing.introSimple.description}
+                  actionLabel={ui.marketing.introSimple.actionLabel}
+                  actionHref="#/start"
+                  secondaryActionLabel={ui.marketing.introSimple.secondaryActionLabel}
+                  secondaryActionHref="#/tour"
+                  place="middle"
+                  align="start"
                   level={2}
-                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cols2))}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.introsimple, ui.blocks.variants.introsimple.start))}
                 />
               </Box>
             </Stack>
@@ -295,24 +388,28 @@ export function MarketingSimplePage() {
               gap="4"
               align="stretch"
               role="group"
-              aria-labelledby="teamsimple-cols4-label"
+              aria-labelledby="introsimple-bottomStart-label"
               data-testid="variant"
-              data-block="teamsimple"
-              data-variant="cols4"
+              data-block="introsimple"
+              data-variant="bottomStart"
             >
-              <Title as={3} size="base" weight="bold" id="teamsimple-cols4-label" data-testid="variant-label">
-                {ui.blocks.variants.teamsimple.cols4}
+              <Title as={3} size="base" weight="bold" id="introsimple-bottomStart-label" data-testid="variant-label">
+                {ui.blocks.variants.introsimple.bottomStart}
               </Title>
               <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <TeamSimple
-                  id="teamsimple-cols4"
-                  title={ui.marketing.teamSimple.title}
-                  description={ui.marketing.teamSimple.description}
-                  members={teamMembers}
-                  cols="4"
-                  surface="plain"
+                <IntroSimple
+                  id="introsimple-bottomStart"
+                  badge={ui.marketing.introSimple.badge}
+                  title={ui.marketing.introSimple.title}
+                  description={ui.marketing.introSimple.description}
+                  actionLabel={ui.marketing.introSimple.actionLabel}
+                  actionHref="#/start"
+                  secondaryActionLabel={ui.marketing.introSimple.secondaryActionLabel}
+                  secondaryActionHref="#/tour"
+                  place="bottom"
+                  align="start"
                   level={2}
-                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cols4))}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.introsimple, ui.blocks.variants.introsimple.bottomStart))}
                 />
               </Box>
             </Stack>
@@ -320,24 +417,27 @@ export function MarketingSimplePage() {
               gap="4"
               align="stretch"
               role="group"
-              aria-labelledby="teamsimple-cards3-label"
+              aria-labelledby="introsimple-bottomCenter-label"
               data-testid="variant"
-              data-block="teamsimple"
-              data-variant="cards3"
+              data-block="introsimple"
+              data-variant="bottomCenter"
             >
-              <Title as={3} size="base" weight="bold" id="teamsimple-cards3-label" data-testid="variant-label">
-                {ui.blocks.variants.teamsimple.cards3}
+              <Title as={3} size="base" weight="bold" id="introsimple-bottomCenter-label" data-testid="variant-label">
+                {ui.blocks.variants.introsimple.bottomCenter}
               </Title>
               <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <TeamSimple
-                  id="teamsimple-cards3"
-                  title={ui.marketing.teamSimple.title}
-                  description={ui.marketing.teamSimple.description}
-                  members={teamMembers}
-                  cols="3"
-                  surface="cards"
+                <IntroSimple
+                  id="introsimple-bottomCenter"
+                  badge={ui.marketing.introSimple.badge}
+                  title={ui.marketing.introSimple.title}
+                  description={ui.marketing.introSimple.description}
+                  actionLabel={ui.marketing.introSimple.actionLabel}
+                  actionHref="#/start"
+                  secondaryActionLabel={ui.marketing.introSimple.secondaryActionLabel}
+                  secondaryActionHref="#/tour"
+                  place="bottom"
                   level={2}
-                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cards3))}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.introsimple, ui.blocks.variants.introsimple.bottomCenter))}
                 />
               </Box>
             </Stack>

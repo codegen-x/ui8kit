@@ -1,0 +1,95 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.introsimple",
+  "name": "Simple intro",
+  "docs": "Text only: a badge, a large heading, one paragraph and up to two links as the actions (primary, then secondary), centred or at the start, in the middle of the section or low in a tall one.",
+  "theme": "marketing",
+  "group": "hero",
+  "organism": "IntroSimple",
+  "line": "simple",
+  "model": "intro@1",
+  "axes": {
+    "place": [
+      "middle",
+      "bottom"
+    ]
+  },
+  "defaults": {
+    "place": "middle"
+  },
+  "variants": [
+    {
+      "id": "center",
+      "set": {}
+    },
+    {
+      "id": "start",
+      "set": {},
+      "props": {
+        "align": "start"
+      }
+    },
+    {
+      "id": "bottomStart",
+      "set": {
+        "place": "bottom"
+      },
+      "props": {
+        "align": "start"
+      }
+    },
+    {
+      "id": "bottomCenter",
+      "set": {
+        "place": "bottom"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "[data-slot=\"badge\"]",
+      "n": 1
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 2
+    },
+    {
+      "sel": "button",
+      "n": 0
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 0
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "introsimple",
+      "badge": {
+        "$": "ui.marketing.introSimple.badge"
+      },
+      "title": {
+        "$": "ui.marketing.introSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.introSimple.description"
+      },
+      "actionLabel": {
+        "$": "ui.marketing.introSimple.actionLabel"
+      },
+      "actionHref": "#/start",
+      "secondaryActionLabel": {
+        "$": "ui.marketing.introSimple.secondaryActionLabel"
+      },
+      "secondaryActionHref": "#/tour"
+    }
+  }
+}

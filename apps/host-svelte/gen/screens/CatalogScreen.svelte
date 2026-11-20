@@ -28,6 +28,10 @@
   import MarketingCtaProofPage from "./CatalogScreen/MarketingCtaProofPage.svelte";
   import MarketingTeamPage from "./CatalogScreen/MarketingTeamPage.svelte";
   import MarketingSimplePage from "./CatalogScreen/MarketingSimplePage.svelte";
+  import MarketingSimpleMediaPage from "./CatalogScreen/MarketingSimpleMediaPage.svelte";
+  import MarketingSimpleFeaturesPage from "./CatalogScreen/MarketingSimpleFeaturesPage.svelte";
+  import MarketingSimpleProofPage from "./CatalogScreen/MarketingSimpleProofPage.svelte";
+  import MarketingSimplePeoplePage from "./CatalogScreen/MarketingSimplePeoplePage.svelte";
   import MarketingAboutPage from "./CatalogScreen/MarketingAboutPage.svelte";
   import MarketingPortfolioPage from "./CatalogScreen/MarketingPortfolioPage.svelte";
   import MarketingCareersPage from "./CatalogScreen/MarketingCareersPage.svelte";
@@ -125,6 +129,10 @@
     {"path":"marketing-cta-proof","area":"marketing-cta-proof"},
     {"path":"marketing-team","area":"marketing-team"},
     {"path":"marketing-simple","area":"marketing-simple"},
+    {"path":"marketing-simple-media","area":"marketing-simple-media"},
+    {"path":"marketing-simple-features","area":"marketing-simple-features"},
+    {"path":"marketing-simple-proof","area":"marketing-simple-proof"},
+    {"path":"marketing-simple-people","area":"marketing-simple-people"},
     {"path":"marketing-about","area":"marketing-about"},
     {"path":"marketing-portfolio","area":"marketing-portfolio"},
     {"path":"marketing-careers","area":"marketing-careers"},
@@ -247,6 +255,14 @@
     <MarketingTeamPage />
   {:else if route.area === "marketing-simple"}
     <MarketingSimplePage />
+  {:else if route.area === "marketing-simple-media"}
+    <MarketingSimpleMediaPage />
+  {:else if route.area === "marketing-simple-features"}
+    <MarketingSimpleFeaturesPage />
+  {:else if route.area === "marketing-simple-proof"}
+    <MarketingSimpleProofPage />
+  {:else if route.area === "marketing-simple-people"}
+    <MarketingSimplePeoplePage />
   {:else if route.area === "marketing-about"}
     <MarketingAboutPage />
   {:else if route.area === "marketing-portfolio"}

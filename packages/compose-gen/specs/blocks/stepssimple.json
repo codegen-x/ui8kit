@@ -1,0 +1,94 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.stepssimple",
+  "name": "Simple steps",
+  "docs": "The heading, one paragraph and the steps as an ordered list (a label, a title, a line), in a row of three or four, or one under the other.",
+  "theme": "marketing",
+  "group": "how-it-works",
+  "organism": "StepsSimple",
+  "line": "simple",
+  "model": "steps@1",
+  "axes": {
+    "layout": [
+      "row",
+      "column"
+    ],
+    "cols": [
+      "3",
+      "4"
+    ]
+  },
+  "defaults": {
+    "layout": "row",
+    "cols": "4"
+  },
+  "variants": [
+    {
+      "id": "row4",
+      "set": {}
+    },
+    {
+      "id": "row3",
+      "set": {
+        "cols": "3"
+      }
+    },
+    {
+      "id": "column",
+      "set": {
+        "layout": "column"
+      },
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ol > li",
+      "n": "@simpleSteps"
+    },
+    {
+      "sel": "ol > li h3",
+      "n": "@simpleSteps"
+    },
+    {
+      "sel": "[data-slot=\"badge\"]",
+      "n": "@simpleSteps"
+    }
+  ],
+  "data": [
+    {
+      "as": "simpleSteps",
+      "collection": "simplesteps",
+      "kind": "step",
+      "record": "SimpleStep",
+      "fields": {
+        "id": "id",
+        "label": "metadata.label.value",
+        "title": "title",
+        "description": "metadata.text.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "stepssimple",
+      "title": {
+        "$": "ui.marketing.stepsSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.stepsSimple.description"
+      },
+      "steps": {
+        "$": "simpleSteps"
+      }
+    }
+  }
+}

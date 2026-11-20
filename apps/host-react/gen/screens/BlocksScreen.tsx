@@ -16,26 +16,32 @@ import { CreditsPage } from "./BlocksScreen/CreditsPage";
 import { CtaPage } from "./BlocksScreen/CtaPage";
 import { CtaproofPage } from "./BlocksScreen/CtaproofPage";
 import { FaqPage } from "./BlocksScreen/FaqPage";
+import { FaqsimplePage } from "./BlocksScreen/FaqsimplePage";
 import { FaqsplitPage } from "./BlocksScreen/FaqsplitPage";
 import { FeaturesPage } from "./BlocksScreen/FeaturesPage";
 import { FeatureshowcasePage } from "./BlocksScreen/FeatureshowcasePage";
 import { FeaturesplitPage } from "./BlocksScreen/FeaturesplitPage";
+import { FeaturessimplePage } from "./BlocksScreen/FeaturessimplePage";
 import { FeaturetabsPage } from "./BlocksScreen/FeaturetabsPage";
 import { FooterPage } from "./BlocksScreen/FooterPage";
 import { FootersplitPage } from "./BlocksScreen/FootersplitPage";
+import { GalleryheroPage } from "./BlocksScreen/GalleryheroPage";
 import { HeaderPage } from "./BlocksScreen/HeaderPage";
 import { HeroPage } from "./BlocksScreen/HeroPage";
 import { HerosimplePage } from "./BlocksScreen/HerosimplePage";
 import { HerosplitPage } from "./BlocksScreen/HerosplitPage";
 import { IconwallPage } from "./BlocksScreen/IconwallPage";
+import { IntrosimplePage } from "./BlocksScreen/IntrosimplePage";
 import { JobsPage } from "./BlocksScreen/JobsPage";
 import { LogosPage } from "./BlocksScreen/LogosPage";
+import { LogossimplePage } from "./BlocksScreen/LogossimplePage";
 import { MedialistPage } from "./BlocksScreen/MedialistPage";
 import { MegamenuPage } from "./BlocksScreen/MegamenuPage";
 import { NavbarPage } from "./BlocksScreen/NavbarPage";
 import { PageheadPage } from "./BlocksScreen/PageheadPage";
 import { PagetrailPage } from "./BlocksScreen/PagetrailPage";
 import { PhotosPage } from "./BlocksScreen/PhotosPage";
+import { PhotossimplePage } from "./BlocksScreen/PhotossimplePage";
 import { PlanPage } from "./BlocksScreen/PlanPage";
 import { PricingPage } from "./BlocksScreen/PricingPage";
 import { ProjectsPage } from "./BlocksScreen/ProjectsPage";
@@ -44,12 +50,16 @@ import { QuotesplitPage } from "./BlocksScreen/QuotesplitPage";
 import { SitemapPage } from "./BlocksScreen/SitemapPage";
 import { SplitsimplePage } from "./BlocksScreen/SplitsimplePage";
 import { StatsPage } from "./BlocksScreen/StatsPage";
+import { StatssimplePage } from "./BlocksScreen/StatssimplePage";
 import { StepsPage } from "./BlocksScreen/StepsPage";
+import { StepssimplePage } from "./BlocksScreen/StepssimplePage";
 import { StickyPage } from "./BlocksScreen/StickyPage";
+import { StoriessimplePage } from "./BlocksScreen/StoriessimplePage";
 import { TeamPage } from "./BlocksScreen/TeamPage";
 import { TeamsimplePage } from "./BlocksScreen/TeamsimplePage";
 import { TemplatesPage } from "./BlocksScreen/TemplatesPage";
 import { TestimonialsPage } from "./BlocksScreen/TestimonialsPage";
+import { TestimonialssimplePage } from "./BlocksScreen/TestimonialssimplePage";
 import { UsagePage } from "./BlocksScreen/UsagePage";
 import { VideosPage } from "./BlocksScreen/VideosPage";
 import { CartPage } from "./BlocksScreen/CartPage";
@@ -138,26 +148,32 @@ const ROUTES = [
   {"path":"cta","area":"cta"},
   {"path":"ctaproof","area":"ctaproof"},
   {"path":"faq","area":"faq"},
+  {"path":"faqsimple","area":"faqsimple"},
   {"path":"faqsplit","area":"faqsplit"},
   {"path":"features","area":"features"},
   {"path":"featureshowcase","area":"featureshowcase"},
   {"path":"featuresplit","area":"featuresplit"},
+  {"path":"featuressimple","area":"featuressimple"},
   {"path":"featuretabs","area":"featuretabs"},
   {"path":"footer","area":"footer"},
   {"path":"footersplit","area":"footersplit"},
+  {"path":"galleryhero","area":"galleryhero"},
   {"path":"header","area":"header"},
   {"path":"hero","area":"hero"},
   {"path":"herosimple","area":"herosimple"},
   {"path":"herosplit","area":"herosplit"},
   {"path":"iconwall","area":"iconwall"},
+  {"path":"introsimple","area":"introsimple"},
   {"path":"jobs","area":"jobs"},
   {"path":"logos","area":"logos"},
+  {"path":"logossimple","area":"logossimple"},
   {"path":"medialist","area":"medialist"},
   {"path":"megamenu","area":"megamenu"},
   {"path":"navbar","area":"navbar"},
   {"path":"pagehead","area":"pagehead"},
   {"path":"pagetrail","area":"pagetrail"},
   {"path":"photos","area":"photos"},
+  {"path":"photossimple","area":"photossimple"},
   {"path":"plan","area":"plan"},
   {"path":"pricing","area":"pricing"},
   {"path":"projects","area":"projects"},
@@ -166,12 +182,16 @@ const ROUTES = [
   {"path":"sitemap","area":"sitemap"},
   {"path":"splitsimple","area":"splitsimple"},
   {"path":"stats","area":"stats"},
+  {"path":"statssimple","area":"statssimple"},
   {"path":"steps","area":"steps"},
+  {"path":"stepssimple","area":"stepssimple"},
   {"path":"sticky","area":"sticky"},
+  {"path":"storiessimple","area":"storiessimple"},
   {"path":"team","area":"team"},
   {"path":"teamsimple","area":"teamsimple"},
   {"path":"templates","area":"templates"},
   {"path":"testimonials","area":"testimonials"},
+  {"path":"testimonialssimple","area":"testimonialssimple"},
   {"path":"usage","area":"usage"},
   {"path":"videos","area":"videos"},
   {"path":"cart","area":"cart"},
@@ -275,6 +295,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <CtaproofPage />
         ) : route.area === "faq" ? (
           <FaqPage />
+        ) : route.area === "faqsimple" ? (
+          <FaqsimplePage />
         ) : route.area === "faqsplit" ? (
           <FaqsplitPage />
         ) : route.area === "features" ? (
@@ -283,12 +305,16 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <FeatureshowcasePage />
         ) : route.area === "featuresplit" ? (
           <FeaturesplitPage />
+        ) : route.area === "featuressimple" ? (
+          <FeaturessimplePage />
         ) : route.area === "featuretabs" ? (
           <FeaturetabsPage />
         ) : route.area === "footer" ? (
           <FooterPage />
         ) : route.area === "footersplit" ? (
           <FootersplitPage />
+        ) : route.area === "galleryhero" ? (
+          <GalleryheroPage />
         ) : route.area === "header" ? (
           <HeaderPage />
         ) : route.area === "hero" ? (
@@ -299,10 +325,14 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <HerosplitPage />
         ) : route.area === "iconwall" ? (
           <IconwallPage />
+        ) : route.area === "introsimple" ? (
+          <IntrosimplePage />
         ) : route.area === "jobs" ? (
           <JobsPage />
         ) : route.area === "logos" ? (
           <LogosPage />
+        ) : route.area === "logossimple" ? (
+          <LogossimplePage />
         ) : route.area === "medialist" ? (
           <MedialistPage />
         ) : route.area === "megamenu" ? (
@@ -315,6 +345,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <PagetrailPage />
         ) : route.area === "photos" ? (
           <PhotosPage />
+        ) : route.area === "photossimple" ? (
+          <PhotossimplePage />
         ) : route.area === "plan" ? (
           <PlanPage />
         ) : route.area === "pricing" ? (
@@ -331,10 +363,16 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <SplitsimplePage />
         ) : route.area === "stats" ? (
           <StatsPage />
+        ) : route.area === "statssimple" ? (
+          <StatssimplePage />
         ) : route.area === "steps" ? (
           <StepsPage />
+        ) : route.area === "stepssimple" ? (
+          <StepssimplePage />
         ) : route.area === "sticky" ? (
           <StickyPage />
+        ) : route.area === "storiessimple" ? (
+          <StoriessimplePage />
         ) : route.area === "team" ? (
           <TeamPage />
         ) : route.area === "teamsimple" ? (
@@ -343,6 +381,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <TemplatesPage />
         ) : route.area === "testimonials" ? (
           <TestimonialsPage />
+        ) : route.area === "testimonialssimple" ? (
+          <TestimonialssimplePage />
         ) : route.area === "usage" ? (
           <UsagePage />
         ) : route.area === "videos" ? (

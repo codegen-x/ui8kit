@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "gallery",
+  "version": 1,
+  "docs": "Gallery hero content: an optional badge, the heading, a description, up to two actions and three or four photos. One object is valid in every gallery layout (a grid of photos at the end or the start, layered photos at the end or under the copy).",
+  "fields": {
+    "badge": { "type": "text", "maxLength": 40, "docs": "a short pill above the heading; empty: no badge" },
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "actionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the action; the link is drawn when the label and the address are both set" },
+    "actionHref": { "type": "url", "docs": "the address of the action" },
+    "secondaryActionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the second action (the secondary button after the first); drawn when the label and the address are both set; empty: none" },
+    "secondaryActionHref": { "type": "url", "docs": "the address of the second action" },
+    "photos": {
+      "type": "list",
+      "required": true,
+      "minItems": 3,
+      "maxItems": 4,
+      "docs": "the photos, in the order they are shown (the layout shows three or four)",
+      "item": {
+        "record": "GalleryPhoto",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "image": { "type": "image", "docs": "address of the photo; none: the placeholder" },
+          "imageAlt": { "type": "text", "maxLength": 160, "required": true, "docs": "alt text of the photo" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,675 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.gallery-hero",
+  "name": "GalleryHero",
+  "docs": "The gallery hero (model gallery@1): an optional badge, the heading, a description, up to two links as the actions and three or four photos as a list. Axes: media (end: the photos after the copy, start: before it from md up, bottom: in a row under it), count (3: three square photos in a row, 4: a 2 x 2 grid, a row of four under the copy).",
+  "records": {
+    "GalleryPhoto": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": true
+      },
+      {
+        "name": "imageAlt",
+        "type": "string"
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "badge",
+      "type": "string",
+      "default": "",
+      "docs": "a short pill above the heading; empty: no badge"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "docs": "one paragraph under the heading; empty: none"
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the action; the link is drawn when the label and the address are both set"
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the action"
+    },
+    {
+      "name": "secondaryActionLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the second action (the secondary button after the first); drawn when the label and the address are both set"
+    },
+    {
+      "name": "secondaryActionHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the second action"
+    },
+    {
+      "name": "photos",
+      "type": {
+        "ts": "GalleryPhoto[]"
+      },
+      "required": true,
+      "docs": "the photos, in the order they are shown (3 or 4)"
+    },
+    {
+      "name": "level",
+      "type": {
+        "ts": "1 | 2 | 3"
+      },
+      "default": 2,
+      "docs": "the level of the heading (1 on the first section of a page)"
+    },
+    {
+      "name": "padding",
+      "type": {
+        "ts": "\"compact\" | \"standard\" | \"spacious\""
+      },
+      "default": "standard",
+      "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
+    },
+    {
+      "name": "align",
+      "type": {
+        "ts": "\"start\" | \"center\" | \"end\""
+      },
+      "default": "start",
+      "docs": "the alignment of the copy: start, center or end (logical, follows the writing direction): items-* on the column, text-* on the text"
+    },
+    {
+      "name": "media",
+      "type": {
+        "ts": "\"end\" | \"start\" | \"bottom\""
+      },
+      "default": "end"
+    },
+    {
+      "name": "count",
+      "type": {
+        "ts": "\"3\" | \"4\""
+      },
+      "default": "3"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "titleId",
+      "value": {
+        "op": "add",
+        "args": [
+          {
+            "$": "id"
+          },
+          "-title"
+        ]
+      }
+    },
+    {
+      "name": "column",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "end",
+              "start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "textAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "text-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "text-end",
+              "text-start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "frame",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "bottom"
+            ]
+          },
+          "grid grid-cols-1 gap-12",
+          "grid grid-cols-1 items-center gap-12 md:grid-cols-2"
+        ]
+      }
+    },
+    {
+      "name": "photoCols",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "and",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "media"
+                  },
+                  "bottom"
+                ]
+              },
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "count"
+                  },
+                  "4"
+                ]
+              }
+            ]
+          },
+          "grid-cols-2 md:grid-cols-4",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "count"
+                  },
+                  "4"
+                ]
+              },
+              "grid-cols-2",
+              "grid-cols-3"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "photoOrder",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "start"
+            ]
+          },
+          "md:order-first",
+          ""
+        ]
+      }
+    },
+    {
+      "name": "photoRatio",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "bottom"
+            ]
+          },
+          "4/3",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "count"
+                  },
+                  "4"
+                ]
+              },
+              "4/3",
+              "1/1"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "section",
+        "Class": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "padding"
+                },
+                "compact"
+              ]
+            },
+            "py-8 lg:py-16",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "padding"
+                    },
+                    "spacious"
+                  ]
+                },
+                "py-24 lg:py-40",
+                "py-16 lg:py-32"
+              ]
+            }
+          ]
+        }
+      },
+      "attrs": {
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "gallery-hero"
+      },
+      "children": [
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "children": [
+            {
+              "use": "Box",
+              "props": {
+                "Class": {
+                  "$": "frame"
+                }
+              },
+              "children": [
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "6",
+                    "Align": {
+                      "$": "column"
+                    }
+                  },
+                  "children": [
+                    {
+                      "when": {
+                        "$": "badge"
+                      },
+                      "then": [
+                        {
+                          "use": "Badge",
+                          "props": {
+                            "Variant": "secondary"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "badge"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Title",
+                      "props": {
+                        "As": {
+                          "$": "level"
+                        },
+                        "Size": "4xl",
+                        "Weight": "bold",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "tracking-tight",
+                            {
+                              "$": "textAlign"
+                            }
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "id": {
+                          "$": "titleId"
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "title"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "$": "description"
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "lg",
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "text-muted-foreground",
+                                {
+                                  "$": "textAlign"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "description"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "or",
+                        "args": [
+                          {
+                            "op": "and",
+                            "args": [
+                              {
+                                "$": "actionLabel"
+                              },
+                              {
+                                "$": "actionHref"
+                              }
+                            ]
+                          },
+                          {
+                            "op": "and",
+                            "args": [
+                              {
+                                "$": "secondaryActionLabel"
+                              },
+                              {
+                                "$": "secondaryActionHref"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "then": [
+                        {
+                          "use": "Group",
+                          "props": {
+                            "Gap": "4",
+                            "Align": "center",
+                            "Justify": {
+                              "$": "column"
+                            },
+                            "Class": "flex-wrap"
+                          },
+                          "children": [
+                            {
+                              "when": {
+                                "op": "and",
+                                "args": [
+                                  {
+                                    "$": "actionLabel"
+                                  },
+                                  {
+                                    "$": "actionHref"
+                                  }
+                                ]
+                              },
+                              "then": [
+                                {
+                                  "use": "LinkButton",
+                                  "props": {
+                                    "Variant": "default",
+                                    "Size": "lg",
+                                    "Href": {
+                                      "$": "actionHref"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "actionLabel"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "when": {
+                                "op": "and",
+                                "args": [
+                                  {
+                                    "$": "secondaryActionLabel"
+                                  },
+                                  {
+                                    "$": "secondaryActionHref"
+                                  }
+                                ]
+                              },
+                              "then": [
+                                {
+                                  "use": "LinkButton",
+                                  "props": {
+                                    "Variant": "secondary",
+                                    "Size": "lg",
+                                    "Href": {
+                                      "$": "secondaryActionHref"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "secondaryActionLabel"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "List",
+                  "props": {
+                    "Tag": "ul",
+                    "Class": {
+                      "op": "cn",
+                      "args": [
+                        "m-0 list-none p-0",
+                        {
+                          "op": "cn",
+                          "args": [
+                            "grid items-start gap-4",
+                            {
+                              "$": "photoCols"
+                            },
+                            {
+                              "$": "photoOrder"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "each": {
+                        "$": "photos"
+                      },
+                      "as": "p",
+                      "key": {
+                        "$": "p.id"
+                      },
+                      "do": [
+                        {
+                          "use": "ListItem",
+                          "attrs": {
+                            "data-slot": "photo"
+                          },
+                          "children": [
+                            {
+                              "organism": "MediaFrame",
+                              "props": {
+                                "alt": {
+                                  "$": "p.imageAlt"
+                                },
+                                "src": {
+                                  "$": "p.image"
+                                },
+                                "ratio": {
+                                  "$": "photoRatio"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

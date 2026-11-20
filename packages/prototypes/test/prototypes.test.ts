@@ -51,11 +51,16 @@ const organisms = new Set(simple.map((c) => c.organism));
 const cases = blockCases(inputs, organisms).cases.filter((c) => organisms.has(c.organism));
 const itemOf = (name: string) => simple.find((c) => c.organism === name)!.item;
 
-test("the simple line has its prototypes: hero-simple, split-simple and team-simple", () => {
-  expect(simple.map((c) => [c.item, c.model, c.defaultMode])).toEqual([["hero-simple", "hero@1", "wireframe"], ["split-simple", "split@1", "wireframe"], ["team-simple", "team@1", "wireframe"]]);
-  // 7 variants with the align setting (hero 3, team 4), each once more per non-default align value (compose-gen blockCases),
+const SIMPLE: Array<[string, string]> = [
+  ["faq-simple", "faq@1"], ["features-simple", "features@1"], ["gallery-hero", "gallery@1"], ["hero-simple", "hero@1"], ["intro-simple", "intro@1"],
+  ["logos-simple", "logos@1"], ["photos-simple", "photos@1"], ["split-simple", "split@1"], ["stats-simple", "stats@1"], ["steps-simple", "steps@1"],
+  ["stories-simple", "stories@1"], ["team-simple", "team@1"], ["testimonials-simple", "testimonials@1"],
+];
+test("the simple line has its prototypes: one per block of the simple line, in item order", () => {
+  expect(simple.map((c) => [c.item, c.model, c.defaultMode])).toEqual(SIMPLE.map(([item, model]) => [item, model, "wireframe"]));
+  // 48 variants with the align setting, each once more per non-default align value (compose-gen blockCases),
   // and the 2 of the split (no align setting: its copy is fixed at the start)
-  expect(cases.length).toBe(7 * 3 + 2);
+  expect(cases.length).toBe(48 * 3 + 2);
 });
 
 test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", () => {
@@ -66,11 +71,11 @@ test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", (
 
 test("out/ ships wireframes, shapes, contracts, models and the manifest only (no clean block, composition or recipe)", () => {
   expect([...built.files.keys()].sort()).toEqual([
-    "catalog.ts", "classes.json", "contracts/hero-simple/1.json", "contracts/split-simple/1.json", "contracts/team-simple/1.json", "contracts/v0.json", "manifest.json",
-    "models/hero@1.schema.json", "models/hero@1.ts", "models/index.ts", "models/split@1.schema.json", "models/split@1.ts", "models/team@1.schema.json", "models/team@1.ts", "models/validate.ts", "registry.ts",
-    "svelte/blocks/hero-simple.svelte", "svelte/blocks/split-simple.svelte", "svelte/blocks/team-simple.svelte", "svelte/index.ts",
+    "catalog.ts", "classes.json", ...SIMPLE.map(([item]) => `contracts/${item}/1.json`), "contracts/v0.json", "manifest.json",
+    ...SIMPLE.flatMap(([, model]) => [`models/${model}.schema.json`, `models/${model}.ts`]), "models/index.ts", "models/validate.ts", "registry.ts",
+    ...SIMPLE.map(([item]) => `svelte/blocks/${item}.svelte`), "svelte/index.ts",
     ...["avatar", "badge", "cta", "heading", "media", "text"].map((s) => `svelte/shapes/shape-${s}.svelte`),
-  ]);
+  ].sort());
   for (const [f, body] of built.files) if (f.startsWith("svelte/")) {
     const ext = [...body.matchAll(/(?:from|import)\s+["']([^"'.][^"']*)["']/g)].map((m) => m[1]!);
     expect({ f, ext: ext.filter((x) => !["svelte", "@ui8kit/kit/ui/box/Box.svelte", "@ui8kit/kit/utils"].includes(x)) }).toEqual({ f, ext: [] });
@@ -128,10 +133,10 @@ describe("wireframe mode", () => {
     // a list draws one member per column of the variant (the whole-number axis; cols2: 2, cols4: 4), else WIRE_ITEMS
     const contract = simple.find((x) => x.item === item)!;
     const members = wireItems(contract.axes, { ...contract.defaults, ...(c.props as Record<string, string>) });
-    if (contract.places.some((p) => p.list)) {
-      expect(html.match(/<li\b/g)?.length, c.label).toBe(members);
-      expect(html.match(/data-shape="avatar"/g)?.length, c.label).toBe(members);
-    }
+    if (contract.places.some((p) => p.list)) expect(html.match(/<li\b/g)?.length, c.label).toBe(members);
+    // each picture of a member is drawn once per member (an avatar for a disc, else a media rectangle)
+    for (const p of contract.places.filter((x) => x.list && x.kind === "media")) expect(html.split(`data-place="${p.place}"`).length - 1, c.label).toBe(members);
+    if (item === "team-simple") expect(html.match(/data-shape="avatar"/g)?.length, c.label).toBe(members);
     if (item === "hero-simple") for (const s of ["badge", "cta", "text", "media"]) expect(html).toContain(`data-shape="${s}"`);
   });
 });
@@ -198,7 +203,11 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
   });
 
   // the block default: start, except the team (its member grid reads as one centred composition; start / end stay options)
-  const ALIGN_DEFAULT: Record<string, string> = { "hero-simple": "start", "team-simple": "center" };
+  // the new blocks of the simple line: start for the hero-like compositions (copy beside the media) and the FAQ, center for the grids
+  const ALIGN_DEFAULT: Record<string, string> = {
+    "hero-simple": "start", "team-simple": "center", "gallery-hero": "start", "faq-simple": "start", "intro-simple": "center", "features-simple": "center",
+    "logos-simple": "center", "photos-simple": "center", "stats-simple": "center", "steps-simple": "center", "stories-simple": "center", "testimonials-simple": "center",
+  };
   test("contracts: align is a setting (start | center | end; default start, team-simple center), not a variant axis", () => {
     for (const c of simple.filter((x) => x.item !== "split-simple")) {
       expect(c.settings.align).toEqual({ type: '"start" | "center" | "end"', default: ALIGN_DEFAULT[c.item] });
@@ -206,11 +215,16 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     }
   });
 
-  test("contracts: the variant default of align: center for the centred composition (HeroSimple mediaTop) only, start elsewhere", () => {
+  test("contracts: the variant default of align: center for the centred compositions (media on top or at the bottom), start for the summary rows", () => {
     const own = simple.flatMap((c) => c.variants.filter((v) => v.settings).map((v) => `${c.item}.${v.id} ${JSON.stringify(v.settings)}`));
-    expect(own).toEqual(['hero-simple.mediaTop {"align":"center"}']);
-    // the feed does not grow: align is never a variant of its own
-    expect(simple.find((c) => c.item === "hero-simple")!.variants.map((v) => v.id)).toEqual(["mediaEnd", "mediaStart", "mediaTop"]);
+    expect(own).toEqual([
+      'features-simple.summaryRow {"align":"start"}', 'features-simple.summaryGrid {"align":"start"}', 'features-simple.checklist {"align":"start"}',
+      'gallery-hero.photos3Bottom {"align":"center"}', 'gallery-hero.photos4Bottom {"align":"center"}',
+      'hero-simple.mediaTop {"align":"center"}', 'hero-simple.mediaBottom {"align":"center"}',
+      'intro-simple.start {"align":"start"}', 'intro-simple.bottomStart {"align":"start"}', 'steps-simple.column {"align":"start"}',
+    ]);
+    // the feed grows by compositions only: align is never a variant of its own
+    expect(simple.find((c) => c.item === "hero-simple")!.variants.map((v) => v.id)).toEqual(["mediaEnd", "mediaStart", "mediaTop", "mediaBottom", "mediaEndPortrait", "mediaStartPortrait"]);
     // the split is its own item (split@1): its copy is fixed at the start, no align setting
     expect(simple.find((c) => c.item === "split-simple")!.settings.align).toBeUndefined();
   });

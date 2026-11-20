@@ -2514,6 +2514,44 @@
       "emptyState": true
     },
     {
+      "id": "FaqSimple",
+      "surface": "kit-block",
+      "spec": "block.faqsimple",
+      "source": "packages/compose-gen/specs/blocks/faqsimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "SimpleQuestion",
+          "map": "simpleQuestion",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "columns",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.faqSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.faqSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "FaqSplit",
       "surface": "kit-block",
       "spec": "block.faqsplit",
@@ -2833,6 +2871,46 @@
       "emptyMode": "omit"
     },
     {
+      "id": "FeaturesSimple",
+      "surface": "kit-block",
+      "spec": "block.featuressimple",
+      "source": "packages/compose-gen/specs/blocks/featuressimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "features",
+          "kind": "feature",
+          "record": "SimpleFeature",
+          "map": "simpleFeature",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "marker",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.featuresSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.featuresSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "FeatureTabs",
       "surface": "kit-block",
       "spec": "block.featuretabs",
@@ -3046,6 +3124,70 @@
       ],
       "emptyState": true,
       "emptyMode": "omit"
+    },
+    {
+      "id": "GalleryHero",
+      "surface": "kit-block",
+      "spec": "block.galleryhero",
+      "source": "packages/compose-gen/specs/blocks/galleryhero.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "photos",
+          "collection": "galleryphotos",
+          "kind": "photo",
+          "record": "GalleryPhoto",
+          "map": "galleryPhoto",
+          "list": true
+        },
+        {
+          "prop": "photos",
+          "collection": "galleryphotos4",
+          "kind": "photo",
+          "record": "GalleryPhoto",
+          "map": "galleryPhoto",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "actionHref",
+        "secondaryActionHref",
+        "level",
+        "padding",
+        "align",
+        "media",
+        "count",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "badge",
+          "dictionary": "marketing.galleryHero.badge",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "marketing.galleryHero.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.galleryHero.description",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "marketing.galleryHero.actionLabel",
+          "keys": []
+        },
+        {
+          "prop": "secondaryActionLabel",
+          "dictionary": "marketing.galleryHero.secondaryActionLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "GrillBuilder",
@@ -3420,6 +3562,7 @@
         "padding",
         "align",
         "media",
+        "ratio",
         "landmarkLabel"
       ],
       "labels": [
@@ -3636,6 +3779,52 @@
         }
       ],
       "emptyState": true
+    },
+    {
+      "id": "IntroSimple",
+      "surface": "kit-block",
+      "spec": "block.introsimple",
+      "source": "packages/compose-gen/specs/blocks/introsimple.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "actionHref",
+        "secondaryActionHref",
+        "level",
+        "padding",
+        "align",
+        "place",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "badge",
+          "dictionary": "marketing.introSimple.badge",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "marketing.introSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.introSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "marketing.introSimple.actionLabel",
+          "keys": []
+        },
+        {
+          "prop": "secondaryActionLabel",
+          "dictionary": "marketing.introSimple.secondaryActionLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "JobBoard",
@@ -3945,6 +4134,39 @@
         }
       ],
       "emptyState": true
+    },
+    {
+      "id": "LogosSimple",
+      "surface": "kit-block",
+      "spec": "block.logossimple",
+      "source": "packages/compose-gen/specs/blocks/logossimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "logos",
+          "collection": "logos",
+          "kind": "logo",
+          "record": "SimpleLogo",
+          "map": "simpleLogo",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "surface",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.logosSimple.title",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "MediaList",
@@ -4804,6 +5026,44 @@
         }
       ],
       "emptyState": true
+    },
+    {
+      "id": "PhotosSimple",
+      "surface": "kit-block",
+      "spec": "block.photossimple",
+      "source": "packages/compose-gen/specs/blocks/photossimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "photos",
+          "collection": "photos",
+          "kind": "photo",
+          "record": "SimplePhoto",
+          "map": "galleryPhoto",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.photosSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.photosSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "PizzaPicker",
@@ -6746,6 +7006,45 @@
       "emptyState": true
     },
     {
+      "id": "StatsSimple",
+      "surface": "kit-block",
+      "spec": "block.statssimple",
+      "source": "packages/compose-gen/specs/blocks/statssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "SimpleStat",
+          "map": "simpleStat",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "cols",
+        "surface",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.statsSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.statsSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "Stepper",
       "surface": "kit-block",
       "spec": "block.stepper",
@@ -6846,6 +7145,45 @@
         }
       ],
       "emptyState": true
+    },
+    {
+      "id": "StepsSimple",
+      "surface": "kit-block",
+      "spec": "block.stepssimple",
+      "source": "packages/compose-gen/specs/blocks/stepssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "steps",
+          "collection": "simplesteps",
+          "kind": "step",
+          "record": "SimpleStep",
+          "map": "simpleStep",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.stepsSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.stepsSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "FeatureSticky",
@@ -6966,6 +7304,45 @@
       ],
       "emptyState": true,
       "emptyMode": "omit"
+    },
+    {
+      "id": "StoriesSimple",
+      "surface": "kit-block",
+      "spec": "block.storiessimple",
+      "source": "packages/compose-gen/specs/blocks/storiessimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "stories",
+          "collection": "posts",
+          "kind": "post",
+          "record": "SimpleStory",
+          "map": "simpleStory",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.storiesSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.storiesSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "StoryTabs",
@@ -7410,6 +7787,45 @@
         }
       ],
       "emptyState": true
+    },
+    {
+      "id": "TestimonialsSimple",
+      "surface": "kit-block",
+      "spec": "block.testimonialssimple",
+      "source": "packages/compose-gen/specs/blocks/testimonialssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "quotes",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "SimpleQuote",
+          "map": "simpleQuote",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.testimonialsSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.testimonialsSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "MilestoneTimeline",
@@ -8343,11 +8759,27 @@
           "list": true
         },
         {
+          "prop": "FaqSimple.items",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "SimpleQuestion",
+          "map": "simpleQuestion",
+          "list": true
+        },
+        {
           "prop": "FaqSplit.items",
           "collection": "questions",
           "kind": "question",
           "record": "Question",
           "map": "question",
+          "list": true
+        },
+        {
+          "prop": "FeaturesSimple.items",
+          "collection": "features",
+          "kind": "feature",
+          "record": "SimpleFeature",
+          "map": "simpleFeature",
           "list": true
         },
         {
@@ -8372,6 +8804,22 @@
           "kind": "channel",
           "record": "Feature",
           "map": "channel",
+          "list": true
+        },
+        {
+          "prop": "GalleryHero.photos",
+          "collection": "galleryphotos",
+          "kind": "photo",
+          "record": "GalleryPhoto",
+          "map": "galleryPhoto",
+          "list": true
+        },
+        {
+          "prop": "GalleryHero.photos",
+          "collection": "galleryphotos4",
+          "kind": "photo",
+          "record": "GalleryPhoto",
+          "map": "galleryPhoto",
           "list": true
         },
         {
@@ -8495,6 +8943,14 @@
           "list": true
         },
         {
+          "prop": "LogosSimple.logos",
+          "collection": "logos",
+          "kind": "logo",
+          "record": "SimpleLogo",
+          "map": "simpleLogo",
+          "list": true
+        },
+        {
           "prop": "MediaList.extras.steps",
           "collection": "steps",
           "kind": "step",
@@ -8564,6 +9020,14 @@
           "kind": "page",
           "record": "NavLink",
           "map": "page",
+          "list": true
+        },
+        {
+          "prop": "PhotosSimple.photos",
+          "collection": "photos",
+          "kind": "photo",
+          "record": "SimplePhoto",
+          "map": "galleryPhoto",
           "list": true
         },
         {
@@ -8679,11 +9143,35 @@
           "list": true
         },
         {
+          "prop": "StatsSimple.items",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "SimpleStat",
+          "map": "simpleStat",
+          "list": true
+        },
+        {
+          "prop": "StepsSimple.steps",
+          "collection": "simplesteps",
+          "kind": "step",
+          "record": "SimpleStep",
+          "map": "simpleStep",
+          "list": true
+        },
+        {
           "prop": "StoreHero.perks",
           "collection": "perks",
           "kind": "perk",
           "record": "Feature",
           "map": "perk",
+          "list": true
+        },
+        {
+          "prop": "StoriesSimple.stories",
+          "collection": "posts",
+          "kind": "post",
+          "record": "SimpleStory",
+          "map": "simpleStory",
           "list": true
         },
         {
@@ -8732,6 +9220,14 @@
           "kind": "prompt",
           "record": "Filter",
           "map": "promptFilter",
+          "list": true
+        },
+        {
+          "prop": "TestimonialsSimple.quotes",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "SimpleQuote",
+          "map": "simpleQuote",
           "list": true
         },
         {
@@ -8880,13 +9376,16 @@
         "block.empty",
         "block.errorpage",
         "block.faq",
+        "block.faqsimple",
         "block.faqsplit",
         "block.features",
         "block.featureshowcase",
         "block.featuresplit",
+        "block.featuressimple",
         "block.featuretabs",
         "block.footer",
         "block.footersplit",
+        "block.galleryhero",
         "block.grillbuilder",
         "block.grocerylist",
         "block.header",
@@ -8894,11 +9393,13 @@
         "block.herosimple",
         "block.herosplit",
         "block.iconwall",
+        "block.introsimple",
         "block.jobs",
         "block.kanban",
         "block.lightboxgallery",
         "block.locations",
         "block.logos",
+        "block.logossimple",
         "block.medialist",
         "block.megamenu",
         "block.menuboard",
@@ -8910,6 +9411,7 @@
         "block.pagehead",
         "block.pagetrail",
         "block.photos",
+        "block.photossimple",
         "block.pizzapicker",
         "block.plan",
         "block.postheader",
@@ -8936,10 +9438,13 @@
         "block.slots",
         "block.splitsimple",
         "block.stats",
+        "block.statssimple",
         "block.stepper",
         "block.steps",
+        "block.stepssimple",
         "block.sticky",
         "block.storehero",
+        "block.storiessimple",
         "block.storytabs",
         "block.summary",
         "block.sushisets",
@@ -8947,6 +9452,7 @@
         "block.teamsimple",
         "block.templates",
         "block.testimonials",
+        "block.testimonialssimple",
         "block.timeline",
         "block.tour",
         "block.usage",
@@ -11770,11 +12276,59 @@
       "status": "todo",
       "data": [
         {
+          "prop": "FaqSimple.items",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "SimpleQuestion",
+          "map": "simpleQuestion",
+          "list": true
+        },
+        {
+          "prop": "FeaturesSimple.items",
+          "collection": "features",
+          "kind": "feature",
+          "record": "SimpleFeature",
+          "map": "simpleFeature",
+          "list": true
+        },
+        {
+          "prop": "GalleryHero.photos",
+          "collection": "galleryphotos",
+          "kind": "photo",
+          "record": "GalleryPhoto",
+          "map": "galleryPhoto",
+          "list": true
+        },
+        {
+          "prop": "GalleryHero.photos",
+          "collection": "galleryphotos4",
+          "kind": "photo",
+          "record": "GalleryPhoto",
+          "map": "galleryPhoto",
+          "list": true
+        },
+        {
+          "prop": "LogosSimple.logos",
+          "collection": "logos",
+          "kind": "logo",
+          "record": "SimpleLogo",
+          "map": "simpleLogo",
+          "list": true
+        },
+        {
           "prop": "NavBar.links",
           "collection": "navlinks",
           "kind": "menu_item",
           "record": "NavLink",
           "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "PhotosSimple.photos",
+          "collection": "photos",
+          "kind": "photo",
+          "record": "SimplePhoto",
+          "map": "galleryPhoto",
           "list": true
         },
         {
@@ -11786,11 +12340,43 @@
           "list": true
         },
         {
+          "prop": "StatsSimple.items",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "SimpleStat",
+          "map": "simpleStat",
+          "list": true
+        },
+        {
+          "prop": "StepsSimple.steps",
+          "collection": "simplesteps",
+          "kind": "step",
+          "record": "SimpleStep",
+          "map": "simpleStep",
+          "list": true
+        },
+        {
+          "prop": "StoriesSimple.stories",
+          "collection": "posts",
+          "kind": "post",
+          "record": "SimpleStory",
+          "map": "simpleStory",
+          "list": true
+        },
+        {
           "prop": "TeamSimple.members",
           "collection": "members",
           "kind": "member",
           "record": "SimpleMember",
           "map": "teamMember",
+          "list": true
+        },
+        {
+          "prop": "TestimonialsSimple.quotes",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "SimpleQuote",
+          "map": "simpleQuote",
           "list": true
         }
       ],
@@ -11857,11 +12443,21 @@
       ],
       "emptyState": false,
       "uses": [
+        "block.faqsimple",
+        "block.featuressimple",
+        "block.galleryhero",
         "block.herosimple",
+        "block.introsimple",
+        "block.logossimple",
         "block.navbar",
+        "block.photossimple",
         "block.sitemap",
         "block.splitsimple",
-        "block.teamsimple"
+        "block.statssimple",
+        "block.stepssimple",
+        "block.storiessimple",
+        "block.teamsimple",
+        "block.testimonialssimple"
       ]
     },
     {

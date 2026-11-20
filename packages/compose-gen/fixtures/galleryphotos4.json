@@ -1,0 +1,90 @@
+{
+  "collection": "galleryphotos4",
+  "kind": "photo",
+  "entries": [
+    {
+      "id": "gallery4-harbor",
+      "locale": "en",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": "gallery4-harbor",
+      "title": "A sunlit studio desk with page sketches",
+      "metadata": {
+        "tag": {
+          "value": "Travel"
+        },
+        "size": {
+          "value": "large"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-02T09:00:00Z",
+      "updated_at": "2026-03-03T09:00:00Z",
+      "published_at": "2026-03-03T10:00:00Z"
+    },
+    {
+      "id": "gallery4-studio",
+      "locale": "en",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": "gallery4-studio",
+      "title": "A wall of printed layout proofs",
+      "metadata": {
+        "tag": {
+          "value": "Interior"
+        },
+        "size": {
+          "value": "small"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-04T09:00:00Z",
+      "updated_at": "2026-03-05T09:00:00Z",
+      "published_at": "2026-03-05T10:00:00Z"
+    },
+    {
+      "id": "gallery4-market",
+      "locale": "en",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": "gallery4-market",
+      "title": "Two people reviewing a page on a laptop",
+      "metadata": {
+        "tag": {
+          "value": "Street"
+        },
+        "size": {
+          "value": "tall"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-06T09:00:00Z",
+      "updated_at": "2026-03-07T09:00:00Z",
+      "published_at": "2026-03-07T10:00:00Z"
+    },
+    {
+      "id": "gallery4-ridge",
+      "locale": "en",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": "gallery4-ridge",
+      "title": "A shelf of colour swatches and type samples",
+      "metadata": {
+        "tag": {
+          "value": "Nature"
+        },
+        "size": {
+          "value": "wide"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-08T09:00:00Z",
+      "updated_at": "2026-03-09T09:00:00Z",
+      "published_at": "2026-03-09T10:00:00Z"
+    }
+  ]
+}

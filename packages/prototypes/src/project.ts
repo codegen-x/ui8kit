@@ -37,7 +37,7 @@ const KIND: Record<string, PlaceKind> = { Title: "heading", Text: "text", Badge:
 export const PROTOTYPE_SETTINGS = ["padding", "align"] as const;
 
 /** the layout compositions a wireframe may use, lowered onto the kit Box: the tag and the classes of each (no recipe) */
-type Lowering = { tag?: string; tagProp?: string; base: string; attrs?: Record<string, string>; keys?: Record<string, (v: string) => string> };
+type Lowering = { tag?: string; tagProp?: string; base: string; attrs?: Record<string, string>; keys?: Record<string, (v: string) => string>; drop?: string[] };
 /** the Stack Align (shapes.ts) / Justify classes (logical: flex start / end follow the writing direction); shipped in out/classes.json */
 export { ALIGN };
 export const JUSTIFY = { start: "justify-start", center: "justify-center", end: "justify-end", between: "justify-between" } as const satisfies Record<string, string>;
@@ -59,6 +59,8 @@ const LAYOUT: Record<string, Lowering> = {
   Group: { tagProp: "Tag", base: "flex min-w-0", keys: { Gap: (v) => `gap-${v}`, Align: (v) => (ALIGN as Record<string, string>)[v] ?? fail(`Group Align ${v}`), Justify: (v) => (JUSTIFY as Record<string, string>)[v] ?? fail(`Group Justify ${v}`) } },
   List: { tagProp: "Tag", tag: "ul", base: "" },
   ListItem: { tag: "li", base: "" },
+  // a link around a place (the title of a story): a plain box, the address is content (a wireframe has no link)
+  Link: { tag: "div", base: "", drop: ["Href", "Variant", "Size"] },
   // a card as a plain bordered surface (a border token, no inset ring, no shadow)
   Card: { tag: "div", base: ROLE.surface, attrs: { "data-slot": "card", "data-role": "surface" } },
 };
@@ -87,6 +89,11 @@ export function refsOf(v: Value | undefined, out: string[] = []): string[] {
 
 /** a MediaFrame that fills its half of a split (rounded-none and the full height from md up: md:h-full) */
 const fillsHalf = (v: Value | undefined): boolean => typeof v === "string" && /(^|\s)rounded-none(\s|$)/.test(v) && /(^|\s)md:h-full(\s|$)/.test(v);
+/** the string literals of a class value (a literal, or the literals of a cn / cond) */
+const classText = (v: Value | undefined): string =>
+  typeof v === "string" ? v : isOp(v) ? v.args.map((a, i) => (v.op === "cond" && i === 0 ? "" : classText(a))).join(" ") : "";
+/** a picture of a list item drawn as the avatar disc: a portrait or an icon (rounded-full) or a small fixed thumbnail (size-*) */
+const isDisc = (v: Value | undefined): boolean => /(^|\s)(rounded-full|size-\d+)(\s|$)/.test(classText(v));
 /** a ratio of MediaFrame (a literal or a cond of literals) as its aspect class */
 const RATIO: Record<string, string> = { "1/1": "aspect-square", "4/3": "aspect-4/3", "3/4": "aspect-3/4", "21/9": "aspect-21/9", "16/9": "aspect-video" };
 function ratioClass(v: Value | undefined): Value {
@@ -101,6 +108,10 @@ type Field = { field: string; pointer: string; value: string; list?: string };
 
 class Projector {
   places = new Map<string, Place>();
+  /** the addresses of the enclosing Link compositions: a place inside a link carries the address too */
+  links: Field[][] = [];
+  /** the alt text of a picture read from a title field: kept on the picture place only when no other place draws that field */
+  alts: { place: string; pointer: string }[] = [];
   /** the clean organism declares the align setting with the values of ShapeText align */
   alignable: boolean;
   /** the derived values of the clean organism, inlined: a prototype has no derived values (`derived: []`) */
@@ -144,7 +155,7 @@ class Projector {
       const primary = (n.children ?? []).flatMap((c) => ("text" in c ? this.fieldsOf(c.text, loops) : []))[0];
       if (!primary) return undefined;
       const kind = KIND[n.use]!;
-      const fields = [primary, ...(kind === "action" ? this.fieldsOf(n.props?.["Href"], loops) : [])];
+      const fields = [primary, ...(kind === "action" ? this.fieldsOf(n.props?.["Href"], loops) : []), ...this.links.flat()];
       // an action is named by its label without "Label": actionLabel -> action, secondaryActionLabel -> secondaryAction
       const place: Place = { place: kind === "action" ? prefixed(primary).replace(/Label$/, "") : prefixed(primary), kind, fields: fields.map((f) => f.pointer), ...(primary.list ? { list: primary.list } : {}) };
       this.add(place);
@@ -162,15 +173,17 @@ class Projector {
       return organism(SHAPE[name].name, { ...props, place: place.place, field: fields.map((f) => f.value).join(" ") });
     }
     if ("organism" in n && n.organism === "MediaFrame") {
-      const props = n.props ?? {};
+      // ratio and className may be derived values of the clean organism: inlined (a prototype has no derived values)
+      const props = Object.fromEntries(Object.entries(n.props ?? {}).map(([k, v]) => [k, k === "ratio" || k === "className" ? this.inline(v) : v]));
       const src = this.fieldsOf(props["src"], loops)[0];
       if (!src) return undefined;
       const more = [...this.fieldsOf(props["alt"], loops), ...this.fieldsOf(props["darkSrc"], loops)].filter((f) => f.field !== "title" && f.pointer !== src.pointer);
       const all = [src, ...more].filter((f, i, a) => a.findIndex((x) => x.pointer === f.pointer) === i);
       const place: Place = { place: src.list ? prefixed(src) : "media", kind: "media", fields: all.map((f) => f.pointer), ...(src.list ? { list: src.list } : {}) };
       this.add(place);
+      for (const f of this.fieldsOf(props["alt"], loops)) if (f.field === "title") this.alts.push({ place: place.place, pointer: f.pointer });
       const field = all.map((f) => f.value).join(" ");
-      return src.list
+      return src.list && isDisc(props["className"])
         ? organism(SHAPE.ShapeAvatar.name, { place: place.place, field })
         : organism(SHAPE.ShapeMedia.name, { aspect: ratioClass(props["ratio"]), ...(fillsHalf(props["className"]) ? { fill: "half" } : {}), place: place.place, field });
     }
@@ -217,7 +230,7 @@ class Projector {
     const classes: Value[] = l.base ? [l.base] : [];
     for (const [k, v] of Object.entries(props)) {
       if (k === "Class") { this.check(v); classes.push(dropPreflight(v)); continue; }
-      if (k === l.tagProp) continue;
+      if (k === l.tagProp || l.drop?.includes(k)) continue;
       const key = l.keys?.[k] ?? fail(`${n.use} prop ${k} has no wireframe lowering`);
       this.check(v);
       classes.push(literals(v, key, `${n.use} ${k}`));
@@ -227,11 +240,14 @@ class Projector {
     delete attrs["aria-labelledby"]; delete attrs["aria-label"]; // the heading is a shape: a wireframe names no landmark
     for (const v of Object.values(attrs)) this.check(v);
     const cls: Value | undefined = classes.length === 0 ? undefined : classes.length === 1 ? classes[0] : cn(...classes);
+    if (n.use === "Link") this.links.push(this.fieldsOf(n.props?.["Href"], loops));
+    const children = n.children ? this.nodes(n.children, loops) : undefined;
+    if (n.use === "Link") this.links.pop();
     return {
       use: "Box",
       props: { ...(tag !== undefined ? { Tag: tag } : {}), ...(cls !== undefined ? { Class: cls } : {}) },
       ...(Object.keys(attrs).length ? { attrs } : {}),
-      ...(n.children ? { children: this.nodes(n.children, loops) } : {}),
+      ...(children ? { children } : {}),
     };
   }
 
@@ -248,6 +264,8 @@ export function project(clean: OrganismSpec, block: BlockSpec, model: ModelSpec)
   const keep = new Set<string>([...Object.keys(block.axes), ...PROTOTYPE_SETTINGS.filter((s) => clean.props.some((p) => p.name === s))]);
   const pr = new Projector(model, keep, clean, block.axes);
   const view = pr.nodes(clean.view, []);
+  const placed = new Set([...pr.places.values()].flatMap((p) => p.fields));
+  for (const a of pr.alts) if (!placed.has(a.pointer)) pr.add({ ...pr.places.get(a.place)!, fields: [a.pointer] });
   const organismSpec: OrganismSpec = {
     ...clean,
     docs: `${clean.docs} Prototype (packages/prototypes): the wireframe, rectangles only; each shape carries data-place and data-field.`,

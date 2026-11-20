@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "photos",
+  "version": 1,
+  "docs": "Photos content: the heading, a description and an ordered list of two to eight photos. One object is valid in every photos layout (a row, a grid, a pair, a mosaic, a wide lead photo).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "photos": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 12,
+      "docs": "the photos, in the order they are shown",
+      "item": {
+        "record": "SimplePhoto",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "image": { "type": "image", "docs": "address of the photo; none: the placeholder" },
+          "imageAlt": { "type": "text", "maxLength": 160, "required": true, "docs": "alt text of the photo" }
+        }
+      }
+    }
+  }
+}

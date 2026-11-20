@@ -1,0 +1,108 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.statssimple",
+  "name": "Simple stats",
+  "docs": "The heading, one paragraph and the figures as a list (a large value, a label, a note), in two, three or four columns, plain or on cards.",
+  "theme": "marketing",
+  "group": "proof",
+  "organism": "StatsSimple",
+  "line": "simple",
+  "model": "stats@1",
+  "axes": {
+    "cols": [
+      "2",
+      "3",
+      "4"
+    ],
+    "surface": [
+      "plain",
+      "cards"
+    ]
+  },
+  "defaults": {
+    "cols": "4",
+    "surface": "plain"
+  },
+  "variants": [
+    {
+      "id": "cols4",
+      "set": {}
+    },
+    {
+      "id": "cols3",
+      "set": {
+        "cols": "3"
+      }
+    },
+    {
+      "id": "cols2",
+      "set": {
+        "cols": "2"
+      }
+    },
+    {
+      "id": "cards4",
+      "set": {
+        "surface": "cards"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@simpleStats"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@simpleStats"
+    },
+    {
+      "sel": "[data-slot=\"card\"]",
+      "n": "@simpleStats",
+      "when": {
+        "surface": "cards"
+      }
+    },
+    {
+      "sel": "[data-slot=\"card\"]",
+      "n": 0,
+      "when": {
+        "surface": "plain"
+      }
+    }
+  ],
+  "data": [
+    {
+      "as": "simpleStats",
+      "collection": "stats",
+      "kind": "stat",
+      "record": "SimpleStat",
+      "fields": {
+        "id": "id",
+        "value": "metadata.value.value|compact",
+        "title": "title",
+        "description": "metadata.hint.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "statssimple",
+      "title": {
+        "$": "ui.marketing.statsSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.statsSimple.description"
+      },
+      "items": {
+        "$": "simpleStats"
+      }
+    }
+  }
+}

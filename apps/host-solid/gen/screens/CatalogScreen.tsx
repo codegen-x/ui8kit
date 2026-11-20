@@ -28,6 +28,10 @@ import { MarketingCtaPage } from "./CatalogScreen/MarketingCtaPage";
 import { MarketingCtaProofPage } from "./CatalogScreen/MarketingCtaProofPage";
 import { MarketingTeamPage } from "./CatalogScreen/MarketingTeamPage";
 import { MarketingSimplePage } from "./CatalogScreen/MarketingSimplePage";
+import { MarketingSimpleMediaPage } from "./CatalogScreen/MarketingSimpleMediaPage";
+import { MarketingSimpleFeaturesPage } from "./CatalogScreen/MarketingSimpleFeaturesPage";
+import { MarketingSimpleProofPage } from "./CatalogScreen/MarketingSimpleProofPage";
+import { MarketingSimplePeoplePage } from "./CatalogScreen/MarketingSimplePeoplePage";
 import { MarketingAboutPage } from "./CatalogScreen/MarketingAboutPage";
 import { MarketingPortfolioPage } from "./CatalogScreen/MarketingPortfolioPage";
 import { MarketingCareersPage } from "./CatalogScreen/MarketingCareersPage";
@@ -125,6 +129,10 @@ const ROUTES = [
   {"path":"marketing-cta-proof","area":"marketing-cta-proof"},
   {"path":"marketing-team","area":"marketing-team"},
   {"path":"marketing-simple","area":"marketing-simple"},
+  {"path":"marketing-simple-media","area":"marketing-simple-media"},
+  {"path":"marketing-simple-features","area":"marketing-simple-features"},
+  {"path":"marketing-simple-proof","area":"marketing-simple-proof"},
+  {"path":"marketing-simple-people","area":"marketing-simple-people"},
   {"path":"marketing-about","area":"marketing-about"},
   {"path":"marketing-portfolio","area":"marketing-portfolio"},
   {"path":"marketing-careers","area":"marketing-careers"},
@@ -248,6 +256,14 @@ export function CatalogScreen({ url }: { url: UrlPort }) {
           <MarketingTeamPage />
         ) : route.area === "marketing-simple" ? (
           <MarketingSimplePage />
+        ) : route.area === "marketing-simple-media" ? (
+          <MarketingSimpleMediaPage />
+        ) : route.area === "marketing-simple-features" ? (
+          <MarketingSimpleFeaturesPage />
+        ) : route.area === "marketing-simple-proof" ? (
+          <MarketingSimpleProofPage />
+        ) : route.area === "marketing-simple-people" ? (
+          <MarketingSimplePeoplePage />
         ) : route.area === "marketing-about" ? (
           <MarketingAboutPage />
         ) : route.area === "marketing-portfolio" ? (

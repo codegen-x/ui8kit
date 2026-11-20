@@ -2,21 +2,36 @@
 <!-- The team page of ThemeMarketingSimpleScreen. -->
 <script lang="ts">
   import {
+    GalleryHero,
     HeroSimple,
+    PhotosSimple,
     SplitSimple,
+    StoriesSimple,
     TeamSimple,
     tpl,
     uniqLabel,
+    type GalleryPhoto,
     type SimpleMember,
+    type SimplePhoto,
+    type SimpleStory,
   } from "@codegen-x/svelte-compose";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
   import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { members as teamMembersEntries } from "@ui8kit/app-shared/data/members";
+  import { galleryphotos as galleryPhotosEntries } from "@ui8kit/app-shared/data/galleryphotos";
+  import { photos as simplePhotosEntries } from "@ui8kit/app-shared/data/photos";
+  import { posts as simpleStoriesEntries } from "@ui8kit/app-shared/data/posts";
 
   const TEAMMEMBERS_FIELDS = {"id":"id","title":"title","description":"metadata.role.value","avatar":"featured_media_id|media"} as const;
+  const GALLERYPHOTOS_FIELDS = {"id":"id","image":"featured_media_id|media","imageAlt":"title"} as const;
+  const SIMPLEPHOTOS_FIELDS = {"id":"id","image":"featured_media_id|media","imageAlt":"title"} as const;
+  const SIMPLESTORIES_FIELDS = {"id":"id","image":"featured_media_id|media","title":"title","description":"excerpt","href":"slug|route"} as const;
 
   const teamMembers = fromCodex<SimpleMember>(teamMembersEntries, TEAMMEMBERS_FIELDS, CODEX);
+  const galleryPhotos = fromCodex<GalleryPhoto>(galleryPhotosEntries, GALLERYPHOTOS_FIELDS, CODEX);
+  const simplePhotos = fromCodex<SimplePhoto>(simplePhotosEntries, SIMPLEPHOTOS_FIELDS, CODEX);
+  const simpleStories = fromCodex<SimpleStory>(simpleStoriesEntries, SIMPLESTORIES_FIELDS, CODEX);
 </script>
 
 <HeroSimple
@@ -30,6 +45,7 @@
   secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
   secondaryActionHref="#/tour"
   media="top"
+  ratio="landscape"
   align="center"
   level={1}
 />
@@ -41,6 +57,20 @@
   cols="3"
   surface="cards"
   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cards3))}
+/>
+<GalleryHero
+  id="team-galleryhero"
+  badge={ui.marketing.galleryHero.badge}
+  title={ui.marketing.galleryHero.title}
+  description={ui.marketing.galleryHero.description}
+  actionLabel={ui.marketing.galleryHero.actionLabel}
+  actionHref="#/start"
+  secondaryActionLabel={ui.marketing.galleryHero.secondaryActionLabel}
+  secondaryActionHref="#/tour"
+  photos={galleryPhotos}
+  media="end"
+  count="3"
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.galleryhero, ui.blocks.variants.galleryhero.photos3))}
 />
 <SplitSimple
   id="team-splitsimple"
@@ -54,8 +84,25 @@
   media="start"
   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.splitsimple, ui.blocks.variants.splitsimple.mediaStart))}
 />
+<PhotosSimple
+  id="team-photossimple"
+  title={ui.marketing.photosSimple.title}
+  description={ui.marketing.photosSimple.description}
+  photos={simplePhotos}
+  cols="4"
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photossimple, ui.blocks.variants.photossimple.row4))}
+/>
+<StoriesSimple
+  id="team-storiessimple"
+  title={ui.marketing.storiesSimple.title}
+  description={ui.marketing.storiesSimple.description}
+  stories={simpleStories}
+  layout="grid"
+  cols="3"
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.storiessimple, ui.blocks.variants.storiessimple.cols3))}
+/>
 <TeamSimple
-  id="team-teamsimple-3"
+  id="team-teamsimple-6"
   title={ui.marketing.teamSimple.title}
   description={ui.marketing.teamSimple.description}
   members={teamMembers}

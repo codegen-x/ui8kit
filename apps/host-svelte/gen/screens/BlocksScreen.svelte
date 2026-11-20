@@ -16,26 +16,32 @@
   import CtaPage from "./BlocksScreen/CtaPage.svelte";
   import CtaproofPage from "./BlocksScreen/CtaproofPage.svelte";
   import FaqPage from "./BlocksScreen/FaqPage.svelte";
+  import FaqsimplePage from "./BlocksScreen/FaqsimplePage.svelte";
   import FaqsplitPage from "./BlocksScreen/FaqsplitPage.svelte";
   import FeaturesPage from "./BlocksScreen/FeaturesPage.svelte";
   import FeatureshowcasePage from "./BlocksScreen/FeatureshowcasePage.svelte";
   import FeaturesplitPage from "./BlocksScreen/FeaturesplitPage.svelte";
+  import FeaturessimplePage from "./BlocksScreen/FeaturessimplePage.svelte";
   import FeaturetabsPage from "./BlocksScreen/FeaturetabsPage.svelte";
   import FooterPage from "./BlocksScreen/FooterPage.svelte";
   import FootersplitPage from "./BlocksScreen/FootersplitPage.svelte";
+  import GalleryheroPage from "./BlocksScreen/GalleryheroPage.svelte";
   import HeaderPage from "./BlocksScreen/HeaderPage.svelte";
   import HeroPage from "./BlocksScreen/HeroPage.svelte";
   import HerosimplePage from "./BlocksScreen/HerosimplePage.svelte";
   import HerosplitPage from "./BlocksScreen/HerosplitPage.svelte";
   import IconwallPage from "./BlocksScreen/IconwallPage.svelte";
+  import IntrosimplePage from "./BlocksScreen/IntrosimplePage.svelte";
   import JobsPage from "./BlocksScreen/JobsPage.svelte";
   import LogosPage from "./BlocksScreen/LogosPage.svelte";
+  import LogossimplePage from "./BlocksScreen/LogossimplePage.svelte";
   import MedialistPage from "./BlocksScreen/MedialistPage.svelte";
   import MegamenuPage from "./BlocksScreen/MegamenuPage.svelte";
   import NavbarPage from "./BlocksScreen/NavbarPage.svelte";
   import PageheadPage from "./BlocksScreen/PageheadPage.svelte";
   import PagetrailPage from "./BlocksScreen/PagetrailPage.svelte";
   import PhotosPage from "./BlocksScreen/PhotosPage.svelte";
+  import PhotossimplePage from "./BlocksScreen/PhotossimplePage.svelte";
   import PlanPage from "./BlocksScreen/PlanPage.svelte";
   import PricingPage from "./BlocksScreen/PricingPage.svelte";
   import ProjectsPage from "./BlocksScreen/ProjectsPage.svelte";
@@ -44,12 +50,16 @@
   import SitemapPage from "./BlocksScreen/SitemapPage.svelte";
   import SplitsimplePage from "./BlocksScreen/SplitsimplePage.svelte";
   import StatsPage from "./BlocksScreen/StatsPage.svelte";
+  import StatssimplePage from "./BlocksScreen/StatssimplePage.svelte";
   import StepsPage from "./BlocksScreen/StepsPage.svelte";
+  import StepssimplePage from "./BlocksScreen/StepssimplePage.svelte";
   import StickyPage from "./BlocksScreen/StickyPage.svelte";
+  import StoriessimplePage from "./BlocksScreen/StoriessimplePage.svelte";
   import TeamPage from "./BlocksScreen/TeamPage.svelte";
   import TeamsimplePage from "./BlocksScreen/TeamsimplePage.svelte";
   import TemplatesPage from "./BlocksScreen/TemplatesPage.svelte";
   import TestimonialsPage from "./BlocksScreen/TestimonialsPage.svelte";
+  import TestimonialssimplePage from "./BlocksScreen/TestimonialssimplePage.svelte";
   import UsagePage from "./BlocksScreen/UsagePage.svelte";
   import VideosPage from "./BlocksScreen/VideosPage.svelte";
   import CartPage from "./BlocksScreen/CartPage.svelte";
@@ -138,26 +148,32 @@
     {"path":"cta","area":"cta"},
     {"path":"ctaproof","area":"ctaproof"},
     {"path":"faq","area":"faq"},
+    {"path":"faqsimple","area":"faqsimple"},
     {"path":"faqsplit","area":"faqsplit"},
     {"path":"features","area":"features"},
     {"path":"featureshowcase","area":"featureshowcase"},
     {"path":"featuresplit","area":"featuresplit"},
+    {"path":"featuressimple","area":"featuressimple"},
     {"path":"featuretabs","area":"featuretabs"},
     {"path":"footer","area":"footer"},
     {"path":"footersplit","area":"footersplit"},
+    {"path":"galleryhero","area":"galleryhero"},
     {"path":"header","area":"header"},
     {"path":"hero","area":"hero"},
     {"path":"herosimple","area":"herosimple"},
     {"path":"herosplit","area":"herosplit"},
     {"path":"iconwall","area":"iconwall"},
+    {"path":"introsimple","area":"introsimple"},
     {"path":"jobs","area":"jobs"},
     {"path":"logos","area":"logos"},
+    {"path":"logossimple","area":"logossimple"},
     {"path":"medialist","area":"medialist"},
     {"path":"megamenu","area":"megamenu"},
     {"path":"navbar","area":"navbar"},
     {"path":"pagehead","area":"pagehead"},
     {"path":"pagetrail","area":"pagetrail"},
     {"path":"photos","area":"photos"},
+    {"path":"photossimple","area":"photossimple"},
     {"path":"plan","area":"plan"},
     {"path":"pricing","area":"pricing"},
     {"path":"projects","area":"projects"},
@@ -166,12 +182,16 @@
     {"path":"sitemap","area":"sitemap"},
     {"path":"splitsimple","area":"splitsimple"},
     {"path":"stats","area":"stats"},
+    {"path":"statssimple","area":"statssimple"},
     {"path":"steps","area":"steps"},
+    {"path":"stepssimple","area":"stepssimple"},
     {"path":"sticky","area":"sticky"},
+    {"path":"storiessimple","area":"storiessimple"},
     {"path":"team","area":"team"},
     {"path":"teamsimple","area":"teamsimple"},
     {"path":"templates","area":"templates"},
     {"path":"testimonials","area":"testimonials"},
+    {"path":"testimonialssimple","area":"testimonialssimple"},
     {"path":"usage","area":"usage"},
     {"path":"videos","area":"videos"},
     {"path":"cart","area":"cart"},
@@ -274,6 +294,8 @@
     <CtaproofPage />
   {:else if route.area === "faq"}
     <FaqPage />
+  {:else if route.area === "faqsimple"}
+    <FaqsimplePage />
   {:else if route.area === "faqsplit"}
     <FaqsplitPage />
   {:else if route.area === "features"}
@@ -282,12 +304,16 @@
     <FeatureshowcasePage />
   {:else if route.area === "featuresplit"}
     <FeaturesplitPage />
+  {:else if route.area === "featuressimple"}
+    <FeaturessimplePage />
   {:else if route.area === "featuretabs"}
     <FeaturetabsPage />
   {:else if route.area === "footer"}
     <FooterPage />
   {:else if route.area === "footersplit"}
     <FootersplitPage />
+  {:else if route.area === "galleryhero"}
+    <GalleryheroPage />
   {:else if route.area === "header"}
     <HeaderPage />
   {:else if route.area === "hero"}
@@ -298,10 +324,14 @@
     <HerosplitPage />
   {:else if route.area === "iconwall"}
     <IconwallPage />
+  {:else if route.area === "introsimple"}
+    <IntrosimplePage />
   {:else if route.area === "jobs"}
     <JobsPage />
   {:else if route.area === "logos"}
     <LogosPage />
+  {:else if route.area === "logossimple"}
+    <LogossimplePage />
   {:else if route.area === "medialist"}
     <MedialistPage />
   {:else if route.area === "megamenu"}
@@ -314,6 +344,8 @@
     <PagetrailPage />
   {:else if route.area === "photos"}
     <PhotosPage />
+  {:else if route.area === "photossimple"}
+    <PhotossimplePage />
   {:else if route.area === "plan"}
     <PlanPage />
   {:else if route.area === "pricing"}
@@ -330,10 +362,16 @@
     <SplitsimplePage />
   {:else if route.area === "stats"}
     <StatsPage />
+  {:else if route.area === "statssimple"}
+    <StatssimplePage />
   {:else if route.area === "steps"}
     <StepsPage />
+  {:else if route.area === "stepssimple"}
+    <StepssimplePage />
   {:else if route.area === "sticky"}
     <StickyPage />
+  {:else if route.area === "storiessimple"}
+    <StoriessimplePage />
   {:else if route.area === "team"}
     <TeamPage />
   {:else if route.area === "teamsimple"}
@@ -342,6 +380,8 @@
     <TemplatesPage />
   {:else if route.area === "testimonials"}
     <TestimonialsPage />
+  {:else if route.area === "testimonialssimple"}
+    <TestimonialssimplePage />
   {:else if route.area === "usage"}
     <UsagePage />
   {:else if route.area === "videos"}

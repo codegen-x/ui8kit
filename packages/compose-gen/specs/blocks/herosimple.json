@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "block.herosimple",
   "name": "Simple hero",
-  "docs": "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start or on top.",
+  "docs": "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start (landscape or portrait), on top or at the bottom.",
   "theme": "marketing",
   "group": "hero",
   "organism": "HeroSimple",
@@ -13,11 +13,17 @@
     "media": [
       "end",
       "start",
-      "top"
+      "top",
+      "bottom"
+    ],
+    "ratio": [
+      "landscape",
+      "portrait"
     ]
   },
   "defaults": {
-    "media": "end"
+    "media": "end",
+    "ratio": "landscape"
   },
   "variants": [
     {
@@ -38,6 +44,28 @@
       "props": {
         "align": "center"
       }
+    },
+    {
+      "id": "mediaBottom",
+      "set": {
+        "media": "bottom"
+      },
+      "props": {
+        "align": "center"
+      }
+    },
+    {
+      "id": "mediaEndPortrait",
+      "set": {
+        "ratio": "portrait"
+      }
+    },
+    {
+      "id": "mediaStartPortrait",
+      "set": {
+        "media": "start",
+        "ratio": "portrait"
+      }
     }
   ],
   "slots": [
@@ -45,7 +73,7 @@
   ],
   "facts": [
     {
-      "sel": "section[aria-labelledby] h2",
+      "sel": "section h2",
       "n": 1
     },
     {

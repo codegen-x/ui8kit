@@ -233,7 +233,57 @@
                 "block": "splitsimple"
               },
               {
+                "block": "introsimple"
+              }
+            ]
+          },
+          {
+            "id": "marketing-simple-media",
+            "entries": [
+              {
+                "block": "galleryhero"
+              },
+              {
+                "block": "photossimple"
+              }
+            ]
+          },
+          {
+            "id": "marketing-simple-features",
+            "entries": [
+              {
+                "block": "featuressimple"
+              },
+              {
+                "block": "stepssimple"
+              },
+              {
+                "block": "faqsimple"
+              }
+            ]
+          },
+          {
+            "id": "marketing-simple-proof",
+            "entries": [
+              {
+                "block": "statssimple"
+              },
+              {
+                "block": "testimonialssimple"
+              },
+              {
+                "block": "logossimple"
+              }
+            ]
+          },
+          {
+            "id": "marketing-simple-people",
+            "entries": [
+              {
                 "block": "teamsimple"
+              },
+              {
+                "block": "storiessimple"
               }
             ]
           },

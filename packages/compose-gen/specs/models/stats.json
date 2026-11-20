@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "stats",
+  "version": 1,
+  "docs": "Stats content: the heading, a description and an ordered list of two to four figures, each with a value, a label and an optional note. One object is valid in every stats layout.",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 4,
+      "docs": "the figures, in the order they are shown",
+      "item": {
+        "record": "SimpleStat",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "value": { "type": "text", "maxLength": 16, "required": true, "docs": "the figure as it is shown (12k, 99.9%, 4.8)" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "what the figure counts" },
+          "description": { "type": "longText", "maxLength": 160, "docs": "a short note under the label; empty: none" }
+        }
+      }
+    }
+  }
+}

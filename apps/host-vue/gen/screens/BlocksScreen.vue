@@ -17,26 +17,32 @@ import CreditsPage from "./BlocksScreen/CreditsPage.vue";
 import CtaPage from "./BlocksScreen/CtaPage.vue";
 import CtaproofPage from "./BlocksScreen/CtaproofPage.vue";
 import FaqPage from "./BlocksScreen/FaqPage.vue";
+import FaqsimplePage from "./BlocksScreen/FaqsimplePage.vue";
 import FaqsplitPage from "./BlocksScreen/FaqsplitPage.vue";
 import FeaturesPage from "./BlocksScreen/FeaturesPage.vue";
 import FeatureshowcasePage from "./BlocksScreen/FeatureshowcasePage.vue";
 import FeaturesplitPage from "./BlocksScreen/FeaturesplitPage.vue";
+import FeaturessimplePage from "./BlocksScreen/FeaturessimplePage.vue";
 import FeaturetabsPage from "./BlocksScreen/FeaturetabsPage.vue";
 import FooterPage from "./BlocksScreen/FooterPage.vue";
 import FootersplitPage from "./BlocksScreen/FootersplitPage.vue";
+import GalleryheroPage from "./BlocksScreen/GalleryheroPage.vue";
 import HeaderPage from "./BlocksScreen/HeaderPage.vue";
 import HeroPage from "./BlocksScreen/HeroPage.vue";
 import HerosimplePage from "./BlocksScreen/HerosimplePage.vue";
 import HerosplitPage from "./BlocksScreen/HerosplitPage.vue";
 import IconwallPage from "./BlocksScreen/IconwallPage.vue";
+import IntrosimplePage from "./BlocksScreen/IntrosimplePage.vue";
 import JobsPage from "./BlocksScreen/JobsPage.vue";
 import LogosPage from "./BlocksScreen/LogosPage.vue";
+import LogossimplePage from "./BlocksScreen/LogossimplePage.vue";
 import MedialistPage from "./BlocksScreen/MedialistPage.vue";
 import MegamenuPage from "./BlocksScreen/MegamenuPage.vue";
 import NavbarPage from "./BlocksScreen/NavbarPage.vue";
 import PageheadPage from "./BlocksScreen/PageheadPage.vue";
 import PagetrailPage from "./BlocksScreen/PagetrailPage.vue";
 import PhotosPage from "./BlocksScreen/PhotosPage.vue";
+import PhotossimplePage from "./BlocksScreen/PhotossimplePage.vue";
 import PlanPage from "./BlocksScreen/PlanPage.vue";
 import PricingPage from "./BlocksScreen/PricingPage.vue";
 import ProjectsPage from "./BlocksScreen/ProjectsPage.vue";
@@ -45,12 +51,16 @@ import QuotesplitPage from "./BlocksScreen/QuotesplitPage.vue";
 import SitemapPage from "./BlocksScreen/SitemapPage.vue";
 import SplitsimplePage from "./BlocksScreen/SplitsimplePage.vue";
 import StatsPage from "./BlocksScreen/StatsPage.vue";
+import StatssimplePage from "./BlocksScreen/StatssimplePage.vue";
 import StepsPage from "./BlocksScreen/StepsPage.vue";
+import StepssimplePage from "./BlocksScreen/StepssimplePage.vue";
 import StickyPage from "./BlocksScreen/StickyPage.vue";
+import StoriessimplePage from "./BlocksScreen/StoriessimplePage.vue";
 import TeamPage from "./BlocksScreen/TeamPage.vue";
 import TeamsimplePage from "./BlocksScreen/TeamsimplePage.vue";
 import TemplatesPage from "./BlocksScreen/TemplatesPage.vue";
 import TestimonialsPage from "./BlocksScreen/TestimonialsPage.vue";
+import TestimonialssimplePage from "./BlocksScreen/TestimonialssimplePage.vue";
 import UsagePage from "./BlocksScreen/UsagePage.vue";
 import VideosPage from "./BlocksScreen/VideosPage.vue";
 import CartPage from "./BlocksScreen/CartPage.vue";
@@ -139,26 +149,32 @@ const ROUTES = [
   {"path":"cta","area":"cta"},
   {"path":"ctaproof","area":"ctaproof"},
   {"path":"faq","area":"faq"},
+  {"path":"faqsimple","area":"faqsimple"},
   {"path":"faqsplit","area":"faqsplit"},
   {"path":"features","area":"features"},
   {"path":"featureshowcase","area":"featureshowcase"},
   {"path":"featuresplit","area":"featuresplit"},
+  {"path":"featuressimple","area":"featuressimple"},
   {"path":"featuretabs","area":"featuretabs"},
   {"path":"footer","area":"footer"},
   {"path":"footersplit","area":"footersplit"},
+  {"path":"galleryhero","area":"galleryhero"},
   {"path":"header","area":"header"},
   {"path":"hero","area":"hero"},
   {"path":"herosimple","area":"herosimple"},
   {"path":"herosplit","area":"herosplit"},
   {"path":"iconwall","area":"iconwall"},
+  {"path":"introsimple","area":"introsimple"},
   {"path":"jobs","area":"jobs"},
   {"path":"logos","area":"logos"},
+  {"path":"logossimple","area":"logossimple"},
   {"path":"medialist","area":"medialist"},
   {"path":"megamenu","area":"megamenu"},
   {"path":"navbar","area":"navbar"},
   {"path":"pagehead","area":"pagehead"},
   {"path":"pagetrail","area":"pagetrail"},
   {"path":"photos","area":"photos"},
+  {"path":"photossimple","area":"photossimple"},
   {"path":"plan","area":"plan"},
   {"path":"pricing","area":"pricing"},
   {"path":"projects","area":"projects"},
@@ -167,12 +183,16 @@ const ROUTES = [
   {"path":"sitemap","area":"sitemap"},
   {"path":"splitsimple","area":"splitsimple"},
   {"path":"stats","area":"stats"},
+  {"path":"statssimple","area":"statssimple"},
   {"path":"steps","area":"steps"},
+  {"path":"stepssimple","area":"stepssimple"},
   {"path":"sticky","area":"sticky"},
+  {"path":"storiessimple","area":"storiessimple"},
   {"path":"team","area":"team"},
   {"path":"teamsimple","area":"teamsimple"},
   {"path":"templates","area":"templates"},
   {"path":"testimonials","area":"testimonials"},
+  {"path":"testimonialssimple","area":"testimonialssimple"},
   {"path":"usage","area":"usage"},
   {"path":"videos","area":"videos"},
   {"path":"cart","area":"cart"},
@@ -265,26 +285,32 @@ const actions = { toggleTheme };
     <CtaPage v-else-if="route.area === 'cta'" />
     <CtaproofPage v-else-if="route.area === 'ctaproof'" />
     <FaqPage v-else-if="route.area === 'faq'" />
+    <FaqsimplePage v-else-if="route.area === 'faqsimple'" />
     <FaqsplitPage v-else-if="route.area === 'faqsplit'" />
     <FeaturesPage v-else-if="route.area === 'features'" />
     <FeatureshowcasePage v-else-if="route.area === 'featureshowcase'" />
     <FeaturesplitPage v-else-if="route.area === 'featuresplit'" />
+    <FeaturessimplePage v-else-if="route.area === 'featuressimple'" />
     <FeaturetabsPage v-else-if="route.area === 'featuretabs'" />
     <FooterPage v-else-if="route.area === 'footer'" />
     <FootersplitPage v-else-if="route.area === 'footersplit'" />
+    <GalleryheroPage v-else-if="route.area === 'galleryhero'" />
     <HeaderPage v-else-if="route.area === 'header'" />
     <HeroPage v-else-if="route.area === 'hero'" />
     <HerosimplePage v-else-if="route.area === 'herosimple'" />
     <HerosplitPage v-else-if="route.area === 'herosplit'" />
     <IconwallPage v-else-if="route.area === 'iconwall'" />
+    <IntrosimplePage v-else-if="route.area === 'introsimple'" />
     <JobsPage v-else-if="route.area === 'jobs'" />
     <LogosPage v-else-if="route.area === 'logos'" />
+    <LogossimplePage v-else-if="route.area === 'logossimple'" />
     <MedialistPage v-else-if="route.area === 'medialist'" />
     <MegamenuPage v-else-if="route.area === 'megamenu'" />
     <NavbarPage v-else-if="route.area === 'navbar'" />
     <PageheadPage v-else-if="route.area === 'pagehead'" />
     <PagetrailPage v-else-if="route.area === 'pagetrail'" />
     <PhotosPage v-else-if="route.area === 'photos'" />
+    <PhotossimplePage v-else-if="route.area === 'photossimple'" />
     <PlanPage v-else-if="route.area === 'plan'" />
     <PricingPage v-else-if="route.area === 'pricing'" />
     <ProjectsPage v-else-if="route.area === 'projects'" />
@@ -293,12 +319,16 @@ const actions = { toggleTheme };
     <SitemapPage v-else-if="route.area === 'sitemap'" />
     <SplitsimplePage v-else-if="route.area === 'splitsimple'" />
     <StatsPage v-else-if="route.area === 'stats'" />
+    <StatssimplePage v-else-if="route.area === 'statssimple'" />
     <StepsPage v-else-if="route.area === 'steps'" />
+    <StepssimplePage v-else-if="route.area === 'stepssimple'" />
     <StickyPage v-else-if="route.area === 'sticky'" />
+    <StoriessimplePage v-else-if="route.area === 'storiessimple'" />
     <TeamPage v-else-if="route.area === 'team'" />
     <TeamsimplePage v-else-if="route.area === 'teamsimple'" />
     <TemplatesPage v-else-if="route.area === 'templates'" />
     <TestimonialsPage v-else-if="route.area === 'testimonials'" />
+    <TestimonialssimplePage v-else-if="route.area === 'testimonialssimple'" />
     <UsagePage v-else-if="route.area === 'usage'" />
     <VideosPage v-else-if="route.area === 'videos'" />
     <CartPage v-else-if="route.area === 'cart'" />

@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "features",
+  "version": 1,
+  "docs": "Features content: the heading, a description and an ordered list of two to eight features, each with an optional icon picture, a title and a line. One object is valid in every features layout (columns under the heading, the heading beside them, markers at the side, a checklist).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 8,
+      "docs": "the features, in the order they are shown",
+      "item": {
+        "record": "SimpleFeature",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "image": { "type": "image", "docs": "address of the icon picture of the feature; none: the placeholder" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the title of the feature" },
+          "description": { "type": "longText", "maxLength": 240, "docs": "one line about the feature; empty: none" }
+        }
+      }
+    }
+  }
+}

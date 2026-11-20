@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "organism.hero-simple",
   "name": "HeroSimple",
-  "docs": "The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).",
+  "docs": "The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide, bottom: under it, wide), ratio (landscape: 4/3 beside the copy, portrait: narrowed and tall, 3 by 4, beside the copy from md up).",
   "records": {},
   "props": [
     {
@@ -94,9 +94,16 @@
     {
       "name": "media",
       "type": {
-        "ts": "\"end\" | \"start\" | \"top\""
+        "ts": "\"end\" | \"start\" | \"top\" | \"bottom\""
       },
       "default": "end"
+    },
+    {
+      "name": "ratio",
+      "type": {
+        "ts": "\"landscape\" | \"portrait\""
+      },
+      "default": "landscape"
     },
     {
       "name": "landmarkLabel",
@@ -184,6 +191,164 @@
           }
         ]
       }
+    },
+    {
+      "name": "frame",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "or",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "media"
+                  },
+                  "top"
+                ]
+              },
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "media"
+                  },
+                  "bottom"
+                ]
+              }
+            ]
+          },
+          "grid grid-cols-1 gap-8",
+          "grid grid-cols-1 items-center gap-8 md:grid-cols-2"
+        ]
+      }
+    },
+    {
+      "name": "pictureRatio",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "or",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "media"
+                  },
+                  "top"
+                ]
+              },
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "media"
+                  },
+                  "bottom"
+                ]
+              }
+            ]
+          },
+          "21/9",
+          "4/3"
+        ]
+      }
+    },
+    {
+      "name": "pictureClass",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "and",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "media"
+                  },
+                  "start"
+                ]
+              },
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "ratio"
+                  },
+                  "portrait"
+                ]
+              }
+            ]
+          },
+          "order-first mx-auto w-full max-w-sm md:aspect-auto md:min-h-128",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "media"
+                  },
+                  "start"
+                ]
+              },
+              "order-first",
+              {
+                "op": "cond",
+                "args": [
+                  {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "media"
+                      },
+                      "top"
+                    ]
+                  },
+                  "order-first",
+                  {
+                    "op": "cond",
+                    "args": [
+                      {
+                        "op": "and",
+                        "args": [
+                          {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "media"
+                              },
+                              "end"
+                            ]
+                          },
+                          {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "ratio"
+                              },
+                              "portrait"
+                            ]
+                          }
+                        ]
+                      },
+                      "mx-auto w-full max-w-sm md:aspect-auto md:min-h-128",
+                      ""
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "slots": [],
@@ -257,83 +422,10 @@
               "use": "Box",
               "props": {
                 "Class": {
-                  "op": "cn",
-                  "args": [
-                    "grid grid-cols-1 gap-8",
-                    {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "media"
-                            },
-                            "top"
-                          ]
-                        },
-                        "",
-                        "items-center md:grid-cols-2"
-                      ]
-                    }
-                  ]
+                  "$": "frame"
                 }
               },
               "children": [
-                {
-                  "when": {
-                    "op": "ne",
-                    "args": [
-                      {
-                        "$": "media"
-                      },
-                      "end"
-                    ]
-                  },
-                  "then": [
-                    {
-                      "organism": "MediaFrame",
-                      "props": {
-                        "alt": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "$": "imageAlt"
-                            },
-                            {
-                              "$": "imageAlt"
-                            },
-                            {
-                              "$": "title"
-                            }
-                          ]
-                        },
-                        "src": {
-                          "$": "image"
-                        },
-                        "darkSrc": {
-                          "$": "imageDark"
-                        },
-                        "ratio": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "media"
-                                },
-                                "top"
-                              ]
-                            },
-                            "21/9",
-                            "4/3"
-                          ]
-                        }
-                      }
-                    }
-                  ]
-                },
                 {
                   "use": "Stack",
                   "props": {
@@ -534,43 +626,35 @@
                   ]
                 },
                 {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "media"
-                      },
-                      "end"
-                    ]
-                  },
-                  "then": [
-                    {
-                      "organism": "MediaFrame",
-                      "props": {
-                        "alt": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "$": "imageAlt"
-                            },
-                            {
-                              "$": "imageAlt"
-                            },
-                            {
-                              "$": "title"
-                            }
-                          ]
+                  "organism": "MediaFrame",
+                  "props": {
+                    "alt": {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "$": "imageAlt"
                         },
-                        "src": {
-                          "$": "image"
+                        {
+                          "$": "imageAlt"
                         },
-                        "darkSrc": {
-                          "$": "imageDark"
-                        },
-                        "ratio": "4/3"
-                      }
+                        {
+                          "$": "title"
+                        }
+                      ]
+                    },
+                    "src": {
+                      "$": "image"
+                    },
+                    "darkSrc": {
+                      "$": "imageDark"
+                    },
+                    "ratio": {
+                      "$": "pictureRatio"
+                    },
+                    "className": {
+                      "$": "pictureClass"
                     }
-                  ]
+                  }
                 }
               ]
             }

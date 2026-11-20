@@ -1,0 +1,94 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.storiessimple",
+  "name": "Simple stories",
+  "docs": "The heading, one paragraph and the stories as a list (a cover, the title as a link, a line): cards in two or three columns, or compact rows on a card surface.",
+  "theme": "marketing",
+  "group": "blog",
+  "organism": "StoriesSimple",
+  "line": "simple",
+  "model": "stories@1",
+  "axes": {
+    "layout": [
+      "grid",
+      "compact"
+    ],
+    "cols": [
+      "2",
+      "3"
+    ]
+  },
+  "defaults": {
+    "layout": "grid",
+    "cols": "3"
+  },
+  "variants": [
+    {
+      "id": "cols3",
+      "set": {}
+    },
+    {
+      "id": "duo",
+      "set": {
+        "cols": "2"
+      }
+    },
+    {
+      "id": "related3",
+      "set": {
+        "layout": "compact"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@simpleStories"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@simpleStories"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@simpleStories"
+    }
+  ],
+  "data": [
+    {
+      "as": "simpleStories",
+      "collection": "posts",
+      "kind": "post",
+      "record": "SimpleStory",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "title": "title",
+        "description": "excerpt",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "storiessimple",
+      "title": {
+        "$": "ui.marketing.storiesSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.storiesSimple.description"
+      },
+      "stories": {
+        "$": "simpleStories"
+      }
+    }
+  }
+}

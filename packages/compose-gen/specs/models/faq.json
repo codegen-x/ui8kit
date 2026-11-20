@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "faq",
+  "version": 1,
+  "docs": "FAQ content: the heading, a description and an ordered list of questions with their answers. One object is valid in every FAQ layout (one column, two columns).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 12,
+      "docs": "the questions, in the order they are shown",
+      "item": {
+        "record": "SimpleQuestion",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "title": { "type": "text", "maxLength": 160, "required": true, "docs": "the question" },
+          "description": { "type": "longText", "maxLength": 600, "required": true, "docs": "the answer" }
+        }
+      }
+    }
+  }
+}

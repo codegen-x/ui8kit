@@ -4,7 +4,7 @@
   "id": "screen.theme-marketing-simple",
   "name": "ThemeMarketingSimpleScreen",
   "kind": "composed",
-  "docs": "The simple line: blocks with one content model each (hero@1, team@1), the same content in every variant. A home page with the hero and the team in columns, and a team page with the wide hero and the team on cards.",
+  "docs": "The simple line: blocks with one content model each (hero@1, split@1, team@1, intro@1, gallery@1, features@1, stats@1, stories@1, photos@1, testimonials@1, logos@1, faq@1, steps@1), the same content in every variant. A home page with the hero, the features, the team, the stats, the steps, the quotes and the questions, and a team page with the wide hero, the team on cards, the gallery, the photos and the stories.",
   "routes": [
     {
       "path": "",
@@ -66,20 +66,52 @@
         }
       },
       {
+        "block": "introsimple",
+        "variant": "center"
+      },
+      {
+        "block": "featuressimple",
+        "variant": "cols3"
+      },
+      {
         "block": "teamsimple",
         "variant": "cols3"
+      },
+      {
+        "block": "statssimple",
+        "variant": "cols4"
       },
       {
         "block": "herosimple",
         "variant": "mediaStart"
       },
       {
+        "block": "stepssimple",
+        "variant": "row4"
+      },
+      {
         "block": "splitsimple",
         "variant": "mediaEnd"
       },
       {
+        "block": "testimonialssimple",
+        "variant": "cols3"
+      },
+      {
+        "block": "logossimple",
+        "variant": "row"
+      },
+      {
+        "block": "faqsimple",
+        "variant": "grid2"
+      },
+      {
         "block": "teamsimple",
         "variant": "cols2"
+      },
+      {
+        "block": "herosimple",
+        "variant": "mediaBottom"
       }
     ],
     "team": [
@@ -105,8 +137,20 @@
         "variant": "cards3"
       },
       {
+        "block": "galleryhero",
+        "variant": "photos3"
+      },
+      {
         "block": "splitsimple",
         "variant": "mediaStart"
+      },
+      {
+        "block": "photossimple",
+        "variant": "row4"
+      },
+      {
+        "block": "storiessimple",
+        "variant": "cols3"
       },
       {
         "block": "teamsimple",

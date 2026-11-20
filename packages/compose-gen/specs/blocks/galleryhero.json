@@ -1,0 +1,154 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.galleryhero",
+  "name": "Gallery hero",
+  "docs": "A badge, the heading, one paragraph and up to two links as the actions beside three or four photos: at the end, at the start, or in a row under the copy.",
+  "theme": "marketing",
+  "group": "hero",
+  "organism": "GalleryHero",
+  "line": "simple",
+  "model": "gallery@1",
+  "axes": {
+    "media": [
+      "end",
+      "start",
+      "bottom"
+    ],
+    "count": [
+      "3",
+      "4"
+    ]
+  },
+  "defaults": {
+    "media": "end",
+    "count": "3"
+  },
+  "variants": [
+    {
+      "id": "photos3",
+      "set": {}
+    },
+    {
+      "id": "photos4",
+      "set": {
+        "count": "4"
+      },
+      "props": {
+        "photos": {
+          "$": "galleryPhotos4"
+        }
+      }
+    },
+    {
+      "id": "photos3Start",
+      "set": {
+        "media": "start"
+      }
+    },
+    {
+      "id": "photos4Start",
+      "set": {
+        "media": "start",
+        "count": "4"
+      },
+      "props": {
+        "photos": {
+          "$": "galleryPhotos4"
+        }
+      }
+    },
+    {
+      "id": "photos3Bottom",
+      "set": {
+        "media": "bottom"
+      },
+      "props": {
+        "align": "center"
+      }
+    },
+    {
+      "id": "photos4Bottom",
+      "set": {
+        "media": "bottom",
+        "count": "4"
+      },
+      "props": {
+        "align": "center",
+        "photos": {
+          "$": "galleryPhotos4"
+        }
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 2
+    },
+    {
+      "sel": "ul > li",
+      "n": "$count"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "$count"
+    }
+  ],
+  "data": [
+    {
+      "as": "galleryPhotos",
+      "collection": "galleryphotos",
+      "kind": "photo",
+      "record": "GalleryPhoto",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "imageAlt": "title"
+      }
+    },
+    {
+      "as": "galleryPhotos4",
+      "collection": "galleryphotos4",
+      "kind": "photo",
+      "record": "GalleryPhoto",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "imageAlt": "title"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "galleryhero",
+      "badge": {
+        "$": "ui.marketing.galleryHero.badge"
+      },
+      "title": {
+        "$": "ui.marketing.galleryHero.title"
+      },
+      "description": {
+        "$": "ui.marketing.galleryHero.description"
+      },
+      "actionLabel": {
+        "$": "ui.marketing.galleryHero.actionLabel"
+      },
+      "actionHref": "#/start",
+      "secondaryActionLabel": {
+        "$": "ui.marketing.galleryHero.secondaryActionLabel"
+      },
+      "secondaryActionHref": "#/tour",
+      "photos": {
+        "$": "galleryPhotos"
+      }
+    }
+  }
+}

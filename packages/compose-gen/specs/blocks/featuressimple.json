@@ -1,0 +1,136 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.featuressimple",
+  "name": "Simple features",
+  "docs": "The heading, one paragraph and the features as a list (an icon disc, a title, a line): in columns under the heading or beside it, the icon on top or at the side.",
+  "theme": "marketing",
+  "group": "features",
+  "organism": "FeaturesSimple",
+  "line": "simple",
+  "model": "features@1",
+  "axes": {
+    "layout": [
+      "stack",
+      "aside"
+    ],
+    "cols": [
+      "2",
+      "3",
+      "4"
+    ],
+    "marker": [
+      "top",
+      "inline"
+    ]
+  },
+  "defaults": {
+    "layout": "stack",
+    "cols": "3",
+    "marker": "top"
+  },
+  "variants": [
+    {
+      "id": "cols3",
+      "set": {}
+    },
+    {
+      "id": "cols2",
+      "set": {
+        "cols": "2"
+      }
+    },
+    {
+      "id": "cols4",
+      "set": {
+        "cols": "4"
+      }
+    },
+    {
+      "id": "summaryRow",
+      "set": {
+        "layout": "aside"
+      },
+      "props": {
+        "align": "start"
+      }
+    },
+    {
+      "id": "summaryGrid",
+      "set": {
+        "layout": "aside",
+        "cols": "2"
+      },
+      "props": {
+        "align": "start"
+      }
+    },
+    {
+      "id": "inlineGrid",
+      "set": {
+        "cols": "2",
+        "marker": "inline"
+      }
+    },
+    {
+      "id": "checklist",
+      "set": {
+        "layout": "aside",
+        "cols": "2",
+        "marker": "inline"
+      },
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@simpleFeatures"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@simpleFeatures"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@simpleFeatures"
+    }
+  ],
+  "data": [
+    {
+      "as": "simpleFeatures",
+      "collection": "features",
+      "kind": "feature",
+      "record": "SimpleFeature",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "title": "title",
+        "description": "metadata.text.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "featuressimple",
+      "title": {
+        "$": "ui.marketing.featuresSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.featuresSimple.description"
+      },
+      "items": {
+        "$": "simpleFeatures"
+      }
+    }
+  }
+}

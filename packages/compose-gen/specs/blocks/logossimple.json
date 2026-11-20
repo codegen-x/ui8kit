@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.logossimple",
+  "name": "Simple logos",
+  "docs": "A short heading over the logos as a list: a wrapping row or a grid of cards.",
+  "theme": "marketing",
+  "group": "proof",
+  "organism": "LogosSimple",
+  "line": "simple",
+  "model": "logos@1",
+  "axes": {
+    "surface": [
+      "plain",
+      "cards"
+    ]
+  },
+  "defaults": {
+    "surface": "plain"
+  },
+  "variants": [
+    {
+      "id": "row",
+      "set": {}
+    },
+    {
+      "id": "cards",
+      "set": {
+        "surface": "cards"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@simpleLogos"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@simpleLogos"
+    }
+  ],
+  "data": [
+    {
+      "as": "simpleLogos",
+      "collection": "logos",
+      "kind": "logo",
+      "record": "SimpleLogo",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "title": "title"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "logossimple",
+      "title": {
+        "$": "ui.marketing.logosSimple.title"
+      },
+      "logos": {
+        "$": "simpleLogos"
+      }
+    }
+  }
+}

@@ -60,10 +60,10 @@ export const themeApps: ThemeApp[] = [
   },
   {
     name: "marketing-simple", title: "Simple line", footer: "sitemap.columns",
-    docs: "The simple line: blocks with one content model each (hero@1, team@1), the same content in every variant. A home page with the hero and the team in columns, and a team page with the wide hero and the team on cards.",
+    docs: "The simple line: blocks with one content model each (hero@1, split@1, team@1, intro@1, gallery@1, features@1, stats@1, stories@1, photos@1, testimonials@1, logos@1, faq@1, steps@1), the same content in every variant. A home page with the hero, the features, the team, the stats, the steps, the quotes and the questions, and a team page with the wide hero, the team on cards, the gallery, the photos and the stories.",
     pages: [
-      { path: "", lead: "herosimple.mediaEnd", head: ["Simple blocks, one content model", "Every variant of a simple block reads the same content, so a layout changes without touching a word.", "Meet the team"], rest: ["teamsimple.cols3", "herosimple.mediaStart", "splitsimple.mediaEnd", "teamsimple.cols2"] },
-      { path: "team", lead: "herosimple.mediaTop", head: ["The people behind the blocks", "Eight people, one list, four layouts.", "Back to the start"], rest: ["teamsimple.cards3", "splitsimple.mediaStart", "teamsimple.cols4"] },
+      { path: "", lead: "herosimple.mediaEnd", head: ["Simple blocks, one content model", "Every variant of a simple block reads the same content, so a layout changes without touching a word.", "Meet the team"], rest: ["introsimple.center", "featuressimple.cols3", "teamsimple.cols3", "statssimple.cols4", "herosimple.mediaStart", "stepssimple.row4", "splitsimple.mediaEnd", "testimonialssimple.cols3", "logossimple.row", "faqsimple.grid2", "teamsimple.cols2", "herosimple.mediaBottom"] },
+      { path: "team", lead: "herosimple.mediaTop", head: ["The people behind the blocks", "Eight people, one list, four layouts.", "Back to the start"], rest: ["teamsimple.cards3", "galleryhero.photos3", "splitsimple.mediaStart", "photossimple.row4", "storiessimple.cols3", "teamsimple.cols4"] },
     ],
   },
   {

@@ -33,12 +33,12 @@ describe("align setting", () => {
     for (const o of ["HeroSimple", "TeamSimple"]) for (const a of ALIGNS) expect(cases.some((c) => c.organism === o && ((c.props as { align?: string }).align ?? DEFAULT[o]) === a), `${o} ${a}`).toBe(true);
   });
 
-  // the defaults: the centred compositions draw align center without the prop (HeroSimple mediaTop by its variant, every
+  // the defaults: the centred compositions draw align center without the prop (HeroSimple mediaTop and mediaBottom by their variants, every
   // TeamSimple variant by the block default), the other hero variants start; a saved block's align overrides it (the extra
   // gallery cases are the other two values)
-  test("defaults: hero mediaTop and the team are centred, the other hero variants start; the prop overrides", () => {
+  test("defaults: hero mediaTop, mediaBottom and the team are centred, the other hero variants start; the prop overrides", () => {
     const base = cases.filter((x) => !/\.align-/.test(x.label));
-    const want = (label: string) => (/^herosimple\.mediaTop |^teamsimple\./.test(label) ? "center" : "start");
+    const want = (label: string) => (/^herosimple\.(?:mediaTop|mediaBottom) |^teamsimple\./.test(label) ? "center" : "start");
     for (const c of base) {
       expect((c.props as { align?: string }).align ?? DEFAULT[c.organism], c.label).toBe(want(c.label));
       const title = dom(render(c.organism, c.props)).querySelector("h1, h2, h3")!;

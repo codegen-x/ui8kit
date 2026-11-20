@@ -110,3 +110,14 @@ export const grillsides = option("grillsides");
 export const portions = option("portions");
 export const menusections = section("menusections");
 export const weekdays = section("weekdays");
+/** the lists of the other simple-line models (specs/models), each item as its model record */
+export const galleryPhotos = src("galleryPhotos", "galleryphotos", "photo", "GalleryPhoto", CODEX_FIELDS.galleryPhoto);
+export const galleryPhotos4 = src("galleryPhotos4", "galleryphotos4", "photo", "GalleryPhoto", CODEX_FIELDS.galleryPhoto);
+export const simpleFeatures = src("simpleFeatures", "features", "feature", "SimpleFeature", CODEX_FIELDS.simpleFeature);
+export const simpleStats = src("simpleStats", "stats", "stat", "SimpleStat", CODEX_FIELDS.simpleStat);
+export const simpleStories = src("simpleStories", "posts", "post", "SimpleStory", CODEX_FIELDS.simpleStory);
+export const simplePhotos = src("simplePhotos", "photos", "photo", "SimplePhoto", CODEX_FIELDS.simplePhoto);
+export const simpleQuotes = src("simpleQuotes", "testimonials", "testimonial", "SimpleQuote", CODEX_FIELDS.simpleQuote);
+export const simpleLogos = src("simpleLogos", "logos", "logo", "SimpleLogo", CODEX_FIELDS.simpleLogo);
+export const simpleQuestions = src("simpleQuestions", "faq", "faq", "SimpleQuestion", CODEX_FIELDS.simpleQuestion);
+export const simpleSteps = src("simpleSteps", "simplesteps", "step", "SimpleStep", CODEX_FIELDS.simpleStep);

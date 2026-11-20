@@ -3,7 +3,8 @@
   The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions
   (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its
   address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top:
-  above it, wide).
+  above it, wide, bottom: under it, wide), ratio (landscape: 4/3 beside the copy, portrait: narrowed and tall, 3
+  by 4, beside the copy from md up).
 -->
 <script lang="ts">
 export type HeroSimpleProps = {
@@ -21,7 +22,8 @@ export type HeroSimpleProps = {
   level?: 1 | 2 | 3;
   padding?: "compact" | "standard" | "spacious";
   align?: "start" | "center" | "end";
-  media?: "end" | "start" | "top";
+  media?: "end" | "start" | "top" | "bottom";
+  ratio?: "landscape" | "portrait";
   landmarkLabel?: string;
 };
 </script>
@@ -56,6 +58,7 @@ const {
   padding = "standard",
   align = "start",
   media = "end",
+  ratio = "landscape",
   landmarkLabel,
 } = defineProps<HeroSimpleProps>();
 const titleId = computed(() => id + "-title");
@@ -68,6 +71,21 @@ const textAlign = computed(() =>
   (align as string) === "center" ? "text-center"
   : (align as string) === "end" ? "text-end"
   : "text-start"
+);
+const frame = computed(() =>
+  ((media as string) === "top") || ((media as string) === "bottom") ? "grid grid-cols-1 gap-8"
+  : "grid grid-cols-1 items-center gap-8 md:grid-cols-2"
+);
+const pictureRatio = computed(() =>
+  ((media as string) === "top") || ((media as string) === "bottom") ? "21/9"
+  : "4/3"
+);
+const pictureClass = computed(() =>
+  ((media as string) === "start") && ((ratio as string) === "portrait") ? "order-first mx-auto w-full max-w-sm md:aspect-auto md:min-h-128"
+  : (media as string) === "start" ? "order-first"
+  : (media as string) === "top" ? "order-first"
+  : ((media as string) === "end") && ((ratio as string) === "portrait") ? "mx-auto w-full max-w-sm md:aspect-auto md:min-h-128"
+  : ""
 );
 </script>
 
@@ -84,18 +102,7 @@ const textAlign = computed(() =>
     data-slot="hero-simple"
   >
     <Container class="mx-auto w-full max-w-6xl px-4">
-      <Box
-        :class="cn(
-          'grid grid-cols-1 gap-8',
-          (((media as string) === 'top') ? '' : 'items-center md:grid-cols-2')
-        )"
-      >
-        <MediaFrame v-if="((media as string) !== 'end')"
-          :alt="(imageAlt ? imageAlt : title)"
-          :src="image"
-          :darkSrc="imageDark"
-          :ratio="(((media as string) === 'top') ? '21/9' : '4/3')"
-        />
+      <Box :class="frame">
         <Stack gap="6" :align="column">
           <Badge v-if="badge" variant="secondary">
             {{ badge }}
@@ -127,11 +134,11 @@ const textAlign = computed(() =>
           </Group>
         </Stack>
         <MediaFrame
-          v-if="((media as string) === 'end')"
           :alt="(imageAlt ? imageAlt : title)"
           :src="image"
           :darkSrc="imageDark"
-          ratio="4/3"
+          :ratio="pictureRatio"
+          :class="pictureClass"
         />
       </Box>
     </Container>

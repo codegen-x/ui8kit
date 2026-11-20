@@ -205,7 +205,17 @@
       "storytabs": "Story in steps",
       "herosimple": "Simple hero",
       "splitsimple": "Simple split",
-      "teamsimple": "Simple team"
+      "teamsimple": "Simple team",
+      "introsimple": "Simple intro",
+      "galleryhero": "Gallery hero",
+      "featuressimple": "Simple features",
+      "statssimple": "Simple stats",
+      "storiessimple": "Simple stories",
+      "photossimple": "Simple photos",
+      "testimonialssimple": "Simple testimonials",
+      "logossimple": "Simple logos",
+      "faqsimple": "Simple FAQ",
+      "stepssimple": "Simple steps"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -319,9 +329,19 @@
       "medialist": "Four figures, figures with a featured review, numbered steps, the latest posts, topic rows, or contact buttons with support figures, beside a picture.",
       "featureshowcase": "Cards with a picture on top and a read link, or with a muted glyph panel on top like an index of categories, in three or four columns.",
       "storytabs": "Year tabs over the panel of the chosen year, or the heading beside a picture with arrows and one dot per step. Choosing a step is an event.",
-      "herosimple": "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start or on top.",
+      "herosimple": "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start (landscape or portrait), on top or at the bottom.",
       "splitsimple": "Two halves: the heading, one paragraph and up to two links as the actions (primary, then secondary) beside one picture that fills its half to the edge of the screen.",
-      "teamsimple": "The heading, one paragraph and the people as a list: a portrait, the name and the role, in two, three or four columns, plain or on cards."
+      "teamsimple": "The heading, one paragraph and the people as a list: a portrait, the name and the role, in two, three or four columns, plain or on cards.",
+      "introsimple": "Text only: a badge, a large heading, one paragraph and up to two links as the actions (primary, then secondary), centred or at the start, in the middle of the section or low in a tall one.",
+      "galleryhero": "A badge, the heading, one paragraph and up to two links as the actions beside three or four photos: at the end, at the start, or in a row under the copy.",
+      "featuressimple": "The heading, one paragraph and the features as a list (an icon disc, a title, a line): in columns under the heading or beside it, the icon on top or at the side.",
+      "statssimple": "The heading, one paragraph and the figures as a list (a large value, a label, a note), in two, three or four columns, plain or on cards.",
+      "storiessimple": "The heading, one paragraph and the stories as a list (a cover, the title as a link, a line): cards in two or three columns, or compact rows on a card surface.",
+      "photossimple": "The heading, one paragraph and the photos as a list in two, three or four columns.",
+      "testimonialssimple": "The heading, one paragraph and the quotes as a list (the words, a portrait, the name and the role): on cards in two or three columns, in rows with the portrait at the side, or centred.",
+      "logossimple": "A short heading over the logos as a list: a wrapping row or a grid of cards.",
+      "faqsimple": "The heading, one paragraph and the questions with their answers as a list, each under a rule, in two columns or one.",
+      "stepssimple": "The heading, one paragraph and the steps as an ordered list (a label, a title, a line), in a row of three or four, or one under the other."
     },
     "variants": {
       "header": {
@@ -1075,7 +1095,10 @@
       "herosimple": {
         "mediaEnd": "Picture at the end",
         "mediaStart": "Picture at the start",
-        "mediaTop": "Wide picture on top"
+        "mediaTop": "Wide picture on top",
+        "mediaBottom": "Wide picture at the bottom",
+        "mediaEndPortrait": "Portrait picture at the end",
+        "mediaStartPortrait": "Portrait picture at the start"
       },
       "splitsimple": {
         "mediaEnd": "Picture at the end, to the edge",
@@ -1086,6 +1109,64 @@
         "cols2": "Two columns",
         "cols4": "Four columns",
         "cards3": "Three columns on cards"
+      },
+      "introsimple": {
+        "center": "Centred",
+        "start": "At the start",
+        "bottomStart": "Low in the section, at the start",
+        "bottomCenter": "Low in the section, centred"
+      },
+      "galleryhero": {
+        "photos3": "Three photos at the end",
+        "photos4": "Four photos at the end",
+        "photos3Start": "Three photos at the start",
+        "photos4Start": "Four photos at the start",
+        "photos3Bottom": "Three photos under the copy",
+        "photos4Bottom": "Four photos under the copy"
+      },
+      "featuressimple": {
+        "cols3": "Three columns",
+        "cols2": "Two columns",
+        "cols4": "Four columns",
+        "summaryRow": "The heading beside a row of three",
+        "summaryGrid": "The heading beside a 2 x 2 grid",
+        "inlineGrid": "Icons at the side, two columns",
+        "checklist": "The heading beside a list with icons at the side"
+      },
+      "statssimple": {
+        "cols4": "Four figures",
+        "cols3": "Three columns",
+        "cols2": "Two columns",
+        "cards4": "Four figures on cards"
+      },
+      "storiessimple": {
+        "cols3": "Three columns",
+        "duo": "Two columns, wide covers",
+        "related3": "Compact rows on cards"
+      },
+      "photossimple": {
+        "row4": "Four in a row",
+        "grid3": "Three columns",
+        "diptych": "A pair"
+      },
+      "testimonialssimple": {
+        "cols3": "Three cards",
+        "cards2": "Two long quotes on cards",
+        "portraitRows": "Portraits at the side",
+        "centered": "Centred quotes"
+      },
+      "logossimple": {
+        "row": "Logos in a row",
+        "cards": "Logos on cards"
+      },
+      "faqsimple": {
+        "grid2": "Two columns",
+        "list": "One column"
+      },
+      "stepssimple": {
+        "row4": "Four steps in a row",
+        "row3": "Three columns",
+        "column": "One under the other"
       }
     },
     "landmark": "{0}, {1}",
@@ -1291,6 +1372,51 @@
     "teamSimple": {
       "title": "Meet the team",
       "description": "The people who design, build and support the kit."
+    },
+    "introSimple": {
+      "badge": "New",
+      "title": "Pages that say one thing well",
+      "description": "A large heading, one paragraph and the next step, with nothing else in the way.",
+      "actionLabel": "Get started",
+      "secondaryActionLabel": "Read the guide"
+    },
+    "galleryHero": {
+      "badge": "Studio",
+      "title": "Show the work, not the words",
+      "description": "Three or four photos beside the copy, in a grid or layered.",
+      "actionLabel": "See the work",
+      "secondaryActionLabel": "Talk to us"
+    },
+    "featuresSimple": {
+      "title": "Everything a page needs",
+      "description": "Small, plain blocks that work together and read the same content."
+    },
+    "statsSimple": {
+      "title": "The kit in numbers",
+      "description": "What teams have built with the simple line so far."
+    },
+    "storiesSimple": {
+      "title": "From the blog",
+      "description": "Notes on building pages that stay fast and readable."
+    },
+    "photosSimple": {
+      "title": "Inside the studio",
+      "description": "Where the blocks are drawn, built and tested."
+    },
+    "testimonialsSimple": {
+      "title": "What teams say",
+      "description": "People who ship their pages with the simple line."
+    },
+    "logosSimple": {
+      "title": "Trusted by teams at"
+    },
+    "faqSimple": {
+      "title": "Questions and answers",
+      "description": "The short answers to what people ask first."
+    },
+    "stepsSimple": {
+      "title": "How it works",
+      "description": "From the first block to a published page in four steps."
     }
   },
   "cases": {
@@ -2471,6 +2597,10 @@
       "marketingCtaProof": "Calls to action with proof",
       "marketingTeam": "Team",
       "marketingSimple": "Simple blocks",
+      "marketingSimpleMedia": "Simple blocks: photos",
+      "marketingSimpleFeatures": "Simple blocks: features",
+      "marketingSimpleProof": "Simple blocks: proof",
+      "marketingSimplePeople": "Simple blocks: people and stories",
       "marketingAbout": "About",
       "marketingPortfolio": "Portfolio",
       "marketingCareers": "Careers",

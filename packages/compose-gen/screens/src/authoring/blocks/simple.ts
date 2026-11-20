@@ -8,59 +8,72 @@ import { fields, spec, ts } from "../kit";
 import { wide } from "../components/frames";
 import { id, imageAlt, imageProps, title, tsOf } from "../props";
 
-const O = "organism.";
-const level = { name: "level", type: ts("1 | 2 | 3"), default: 2, docs: "the level of the heading (1 on the first section of a page)" };
-const description = { name: "description", type: "string" as const, default: "", docs: "one paragraph under the heading; empty: none" };
-const titleId = { name: "titleId", value: op("add", ref("id"), "-title") };
+export const O = "organism.";
+export const level = { name: "level", type: ts("1 | 2 | 3"), default: 2, docs: "the level of the heading (1 on the first section of a page)" };
+export const description = { name: "description", type: "string" as const, default: "", docs: "one paragraph under the heading; empty: none" };
+export const titleId = { name: "titleId", value: op("add", ref("id"), "-title") };
 /** the section padding presets (a setting of the instance, not a variant axis): even 8px steps, the lg step doubled */
 export const SECTION_PADDING = { compact: "py-8 lg:py-16", standard: "py-16 lg:py-32", spacious: "py-24 lg:py-40" } as const;
-const padding = { name: "padding", type: tsOf("compact", "standard", "spacious"), default: "standard", docs: "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)" };
+export const padding = { name: "padding", type: tsOf("compact", "standard", "spacious"), default: "standard", docs: "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)" };
 /** the `align` setting (one per block, logical: start / end follow the writing direction; never text-left / text-right) */
 export const TEXT_ALIGN = { start: "text-start", center: "text-center", end: "text-end" } as const;
-const align = { name: "align", type: tsOf("start", "center", "end"), default: "start", docs: "the alignment of the copy: start, center or end (logical, follows the writing direction): items-* on the column, text-* on the text" };
-const isAlign = (v: "center" | "end") => eq(ref("align"), v);
+export const align = { name: "align", type: tsOf("start", "center", "end"), default: "start", docs: "the alignment of the copy: start, center or end (logical, follows the writing direction): items-* on the column, text-* on the text" };
+export const isAlign = (v: "center" | "end") => eq(ref("align"), v);
 /** derived once per organism (packages/prototypes inlines them): the Stack Align of the column and the text class */
-const alignDerived = [
+export const alignDerived = [
   { name: "column", value: cond(isAlign("center"), "center", cond(isAlign("end"), "end", "start")) },
   { name: "textAlign", value: cond(isAlign("center"), TEXT_ALIGN.center, cond(isAlign("end"), TEXT_ALIGN.end, TEXT_ALIGN.start)) },
 ];
 /** the team adds the items-* class of a plain flex column (ListItem, Card) and the align-self of its narrow head */
-const teamDerived = [
+export const teamDerived = [
   ...alignDerived,
   { name: "itemsAlign", value: cond(isAlign("center"), "items-center", cond(isAlign("end"), "items-end", "items-start")) },
   { name: "selfAlign", value: cond(isAlign("center"), "self-center", cond(isAlign("end"), "self-end", "")) },
 ];
-const alignItems = ref("column");
-const textAlign = ref("textAlign");
-const itemsAlign = ref("itemsAlign");
-const selfAlign = ref("selfAlign");
-const paddingClass = cond(eq(ref("padding"), "compact"), SECTION_PADDING.compact, cond(eq(ref("padding"), "spacious"), SECTION_PADDING.spacious, SECTION_PADDING.standard));
+export const alignItems = ref("column");
+export const textAlign = ref("textAlign");
+export const itemsAlign = ref("itemsAlign");
+export const selfAlign = ref("selfAlign");
+export const paddingClass = cond(eq(ref("padding"), "compact"), SECTION_PADDING.compact, cond(eq(ref("padding"), "spacious"), SECTION_PADDING.spacious, SECTION_PADDING.standard));
 // the Container is full width up to max-w-6xl (wide: mx-auto w-full); every direct child of the column Stack stretches to it
 // (Align stretch): the default stack alignment is items-start, which shrinks a grid to the width of its content
-const section = (...body: Parameters<typeof use>[2][]) =>
+export const section = (...body: Parameters<typeof use>[2][]) =>
   use("Block", { props: { Tag: "section", Class: paddingClass }, attrs: { "aria-labelledby": ref("titleId") } }, use("Container", { props: { Class: wide } }, ...body));
-const lead = (size: string) => when(ref("description"), [use("Text", { props: { Size: size, Class: cn("text-muted-foreground", textAlign) } }, text(ref("description")))]);
+export const lead = (size: string) => when(ref("description"), [use("Text", { props: { Size: size, Class: cn("text-muted-foreground", textAlign) } }, text(ref("description")))]);
 
-const picture = (ratio: Value, className?: string) =>
-  organism("MediaFrame", { alt: imageAlt(), src: ref("image"), darkSrc: ref("imageDark"), ratio, ...(className ? { className } : {}) });
+export const picture = (ratio: Value, className?: Value) =>
+  organism("MediaFrame", { alt: imageAlt(), src: ref("image"), darkSrc: ref("imageDark"), ratio, ...(className !== undefined ? { className } : {}) });
 /** an action: drawn when its label and its address are both set; the first is the primary button, the second the secondary */
-const action = (label: string, href: string, variant: "default" | "secondary") =>
+export const action = (label: string, href: string, variant: "default" | "secondary") =>
   when(and(ref(label), ref(href)), [use("LinkButton", { props: { Variant: variant, Size: "lg", Href: ref(href) } }, text(ref(label)))]);
 /** the row of up to two actions (primary, then secondary); none drawn when both are empty */
-const actions = (justify: Value) =>
+export const actions = (justify: Value) =>
   when(or(and(ref("actionLabel"), ref("actionHref")), and(ref("secondaryActionLabel"), ref("secondaryActionHref"))), [
     use("Group", { props: { Gap: "4", Align: "center", Justify: justify, Class: "flex-wrap" } },
       action("actionLabel", "actionHref", "default"),
       action("secondaryActionLabel", "secondaryActionHref", "secondary"))]);
-const actionProps = [
+export const actionProps = [
   { name: "actionLabel", type: "string" as const, default: "", docs: "the label of the action; the link is drawn when the label and the address are both set" },
   { name: "actionHref", type: "string" as const, default: "", docs: "the address of the action" },
   { name: "secondaryActionLabel", type: "string" as const, default: "", docs: "the label of the second action (the secondary button after the first); drawn when the label and the address are both set" },
   { name: "secondaryActionHref", type: "string" as const, default: "", docs: "the address of the second action" },
 ];
-const imageDark = { name: "imageDark", type: "string" as const, docs: "address of the picture in the dark theme; none: image" };
+export const imageDark = { name: "imageDark", type: "string" as const, docs: "address of the picture in the dark theme; none: image" };
 
-const heroSimple = spec(`${O}hero-simple`, "HeroSimple", "The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).", {
+/** the hero picture, one node after the copy: before it (order-first) at the start and on top; wide (21/9) on top or at the bottom,
+ * 4/3 beside the copy; portrait beside the copy: narrowed to max-w-sm and at least min-h-128 tall from md up (3 by 4 at the full width) */
+const wideMedia = or(eq(ref("media"), "top"), eq(ref("media"), "bottom"));
+const media = (v: string) => eq(ref("media"), v);
+const tall = eq(ref("ratio"), "portrait");
+const TALL = "mx-auto w-full max-w-sm md:aspect-auto md:min-h-128";
+const heroPictureDerived = [
+  { name: "frame", value: cond(wideMedia, "grid grid-cols-1 gap-8", "grid grid-cols-1 items-center gap-8 md:grid-cols-2") },
+  { name: "pictureRatio", value: cond(wideMedia, "21/9", "4/3") },
+  { name: "pictureClass", value: cond(and(media("start"), tall), `order-first ${TALL}`, cond(media("start"), "order-first", cond(media("top"), "order-first", cond(and(media("end"), tall), TALL, "")))) },
+];
+const heroPicture = picture(ref("pictureRatio"), ref("pictureClass"));
+
+const heroSimple = spec(`${O}hero-simple`, "HeroSimple", "The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide, bottom: under it, wide), ratio (landscape: 4/3 beside the copy, portrait: narrowed and tall, 3 by 4, beside the copy from md up).", {
   props: [
     id,
     { name: "badge", type: "string", default: "", docs: "a short pill above the heading; empty: no badge" },
@@ -72,18 +85,18 @@ const heroSimple = spec(`${O}hero-simple`, "HeroSimple", "The simple hero (model
     level,
     padding,
     align,
-    { name: "media", type: tsOf("end", "start", "top"), default: "end" },
+    { name: "media", type: tsOf("end", "start", "top", "bottom"), default: "end" },
+    { name: "ratio", type: tsOf("landscape", "portrait"), default: "landscape" },
   ],
-  derived: [titleId, ...alignDerived],
+  derived: [titleId, ...alignDerived, ...heroPictureDerived],
   view: [section(
-    use("Box", { props: { Class: cn("grid grid-cols-1 gap-8", cond(eq(ref("media"), "top"), "", "items-center md:grid-cols-2")) } },
-      when(ne(ref("media"), "end"), [picture(cond(eq(ref("media"), "top"), "21/9", "4/3"))]),
+    use("Box", { props: { Class: ref("frame") } },
       use("Stack", { props: { Gap: "6", Align: alignItems } },
         when(ref("badge"), [use("Badge", { props: { Variant: "secondary" } }, text(ref("badge")))]),
         use("Title", { props: { As: ref("level"), Size: "4xl", Weight: "bold", Class: cn("tracking-tight", textAlign) }, attrs: { id: ref("titleId") } }, text(ref("title"))),
         lead("lg"),
         actions(alignItems)),
-      when(eq(ref("media"), "end"), [picture("4/3")])))],
+      heroPicture))],
 });
 
 // The split (model split@1): two halves of the section, no container. The picture fills its half to the edge of the screen (width

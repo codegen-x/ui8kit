@@ -62,6 +62,7 @@ import { ui } from "@ui8kit/app-shared/content";
               :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
               secondaryActionHref="#/tour"
               media="end"
+              ratio="landscape"
               :level="2"
               :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaEnd))"
             />
@@ -91,6 +92,7 @@ import { ui } from "@ui8kit/app-shared/content";
               :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
               secondaryActionHref="#/tour"
               media="start"
+              ratio="landscape"
               :level="2"
               :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaStart))"
             />
@@ -120,9 +122,101 @@ import { ui } from "@ui8kit/app-shared/content";
               :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
               secondaryActionHref="#/tour"
               media="top"
+              ratio="landscape"
               align="center"
               :level="2"
               :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaTop))"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="herosimple-mediaBottom-label"
+          data-testid="variant"
+          data-block="herosimple"
+          data-variant="mediaBottom"
+        >
+          <Title :as="2" size="base" weight="bold" id="herosimple-mediaBottom-label" data-testid="variant-label">
+            {{ ui.blocks.variants.herosimple.mediaBottom }}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroSimple
+              id="herosimple-mediaBottom"
+              :badge="ui.marketing.heroSimple.badge"
+              :title="ui.marketing.heroSimple.title"
+              :description="ui.marketing.heroSimple.description"
+              :imageAlt="ui.marketing.heroSimple.imageAlt"
+              :actionLabel="ui.marketing.heroSimple.actionLabel"
+              actionHref="#/start"
+              :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
+              secondaryActionHref="#/tour"
+              media="bottom"
+              ratio="landscape"
+              align="center"
+              :level="2"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaBottom))"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="herosimple-mediaEndPortrait-label"
+          data-testid="variant"
+          data-block="herosimple"
+          data-variant="mediaEndPortrait"
+        >
+          <Title :as="2" size="base" weight="bold" id="herosimple-mediaEndPortrait-label" data-testid="variant-label">
+            {{ ui.blocks.variants.herosimple.mediaEndPortrait }}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroSimple
+              id="herosimple-mediaEndPortrait"
+              :badge="ui.marketing.heroSimple.badge"
+              :title="ui.marketing.heroSimple.title"
+              :description="ui.marketing.heroSimple.description"
+              :imageAlt="ui.marketing.heroSimple.imageAlt"
+              :actionLabel="ui.marketing.heroSimple.actionLabel"
+              actionHref="#/start"
+              :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
+              secondaryActionHref="#/tour"
+              media="end"
+              ratio="portrait"
+              :level="2"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaEndPortrait))"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="herosimple-mediaStartPortrait-label"
+          data-testid="variant"
+          data-block="herosimple"
+          data-variant="mediaStartPortrait"
+        >
+          <Title :as="2" size="base" weight="bold" id="herosimple-mediaStartPortrait-label" data-testid="variant-label">
+            {{ ui.blocks.variants.herosimple.mediaStartPortrait }}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroSimple
+              id="herosimple-mediaStartPortrait"
+              :badge="ui.marketing.heroSimple.badge"
+              :title="ui.marketing.heroSimple.title"
+              :description="ui.marketing.heroSimple.description"
+              :imageAlt="ui.marketing.heroSimple.imageAlt"
+              :actionLabel="ui.marketing.heroSimple.actionLabel"
+              actionHref="#/start"
+              :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
+              secondaryActionHref="#/tour"
+              media="start"
+              ratio="portrait"
+              :level="2"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaStartPortrait))"
             />
           </Box>
         </Stack>

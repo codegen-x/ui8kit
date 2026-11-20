@@ -53,7 +53,7 @@
   ],
   "facts": [
     {
-      "sel": "section[aria-labelledby] h2",
+      "sel": "section h2",
       "n": 1
     },
     {

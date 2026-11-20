@@ -3,7 +3,8 @@
  * The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions
  * (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its
  * address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top:
- * above it, wide).
+ * above it, wide, bottom: under it, wide), ratio (landscape: 4/3 beside the copy, portrait: narrowed and tall, 3
+ * by 4, beside the copy from md up).
  */
 import { type ReactNode } from "react";
 import { Badge, Block, Box, Container, Group, LinkButton, Stack, Text, Title } from "../compose";
@@ -25,7 +26,8 @@ export type HeroSimpleProps = {
   level?: 1 | 2 | 3;
   padding?: "compact" | "standard" | "spacious";
   align?: "start" | "center" | "end";
-  media?: "end" | "start" | "top";
+  media?: "end" | "start" | "top" | "bottom";
+  ratio?: "landscape" | "portrait";
   landmarkLabel?: string;
 };
 
@@ -45,6 +47,7 @@ export function HeroSimple({
   padding = "standard",
   align = "start",
   media = "end",
+  ratio = "landscape",
   landmarkLabel,
 }: HeroSimpleProps) {
   const titleId = id + "-title";
@@ -56,6 +59,18 @@ export function HeroSimple({
     (align as string) === "center" ? "text-center"
     : (align as string) === "end" ? "text-end"
     : "text-start";
+  const frame =
+    ((media as string) === "top") || ((media as string) === "bottom") ? "grid grid-cols-1 gap-8"
+    : "grid grid-cols-1 items-center gap-8 md:grid-cols-2";
+  const pictureRatio =
+    ((media as string) === "top") || ((media as string) === "bottom") ? "21/9"
+    : "4/3";
+  const pictureClass =
+    ((media as string) === "start") && ((ratio as string) === "portrait") ? "order-first mx-auto w-full max-w-sm md:aspect-auto md:min-h-128"
+    : (media as string) === "start" ? "order-first"
+    : (media as string) === "top" ? "order-first"
+    : ((media as string) === "end") && ((ratio as string) === "portrait") ? "mx-auto w-full max-w-sm md:aspect-auto md:min-h-128"
+    : "";
   return (
     <Block
       tag="section"
@@ -69,20 +84,7 @@ export function HeroSimple({
       data-slot="hero-simple"
     >
       <Container className="mx-auto w-full max-w-6xl px-4">
-        <Box
-          className={cn(
-            "grid grid-cols-1 gap-8",
-            (((media as string) === "top") ? "" : "items-center md:grid-cols-2")
-          )}
-        >
-          {((media as string) !== "end") ? (
-            <MediaFrame
-              alt={(imageAlt ? imageAlt : title)}
-              src={image}
-              darkSrc={imageDark}
-              ratio={(((media as string) === "top") ? "21/9" : "4/3")}
-            />
-          ) : null}
+        <Box className={frame}>
           <Stack gap="6" align={column}>
             {badge ? (
               <Badge variant="secondary">
@@ -112,9 +114,13 @@ export function HeroSimple({
               </Group>
             ) : null}
           </Stack>
-          {((media as string) === "end") ? (
-            <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} darkSrc={imageDark} ratio="4/3" />
-          ) : null}
+          <MediaFrame
+            alt={(imageAlt ? imageAlt : title)}
+            src={image}
+            darkSrc={imageDark}
+            ratio={pictureRatio}
+            className={pictureClass}
+          />
         </Box>
       </Container>
     </Block>

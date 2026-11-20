@@ -1,0 +1,84 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.photossimple",
+  "name": "Simple photos",
+  "docs": "The heading, one paragraph and the photos as a list in two, three or four columns.",
+  "theme": "marketing",
+  "group": "company",
+  "organism": "PhotosSimple",
+  "line": "simple",
+  "model": "photos@1",
+  "axes": {
+    "cols": [
+      "2",
+      "3",
+      "4"
+    ]
+  },
+  "defaults": {
+    "cols": "4"
+  },
+  "variants": [
+    {
+      "id": "row4",
+      "set": {}
+    },
+    {
+      "id": "grid3",
+      "set": {
+        "cols": "3"
+      }
+    },
+    {
+      "id": "diptych",
+      "set": {
+        "cols": "2"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@simplePhotos"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@simplePhotos"
+    }
+  ],
+  "data": [
+    {
+      "as": "simplePhotos",
+      "collection": "photos",
+      "kind": "photo",
+      "record": "SimplePhoto",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "imageAlt": "title"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "photossimple",
+      "title": {
+        "$": "ui.marketing.photosSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.photosSimple.description"
+      },
+      "photos": {
+        "$": "simplePhotos"
+      }
+    }
+  }
+}

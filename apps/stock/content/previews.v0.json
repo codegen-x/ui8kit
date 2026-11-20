@@ -1064,6 +1064,60 @@
     ]
    }
   },
+  "faqsimple": {
+   "organism": "FaqSimple",
+   "defaults": {
+    "columns": "two"
+   },
+   "sample": {
+    "id": "faqsimple",
+    "title": {
+     "$": "ui.marketing.faqSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.faqSimple.description"
+    },
+    "items": {
+     "$": "simpleQuestions"
+    }
+   },
+   "variants": [
+    {
+     "id": "grid2",
+     "set": {}
+    },
+    {
+     "id": "list",
+     "set": {
+      "columns": "one"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "simpleQuestions",
+     "collection": "faq",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "description": "metadata.answer.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "FaqSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "columns",
+     "landmarkLabel"
+    ]
+   }
+  },
   "faqsplit": {
    "organism": "FaqSplit",
    "defaults": {
@@ -1552,6 +1606,108 @@
     ]
    }
   },
+  "featuressimple": {
+   "organism": "FeaturesSimple",
+   "defaults": {
+    "layout": "stack",
+    "cols": "3",
+    "marker": "top"
+   },
+   "sample": {
+    "id": "featuressimple",
+    "title": {
+     "$": "ui.marketing.featuresSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.featuresSimple.description"
+    },
+    "items": {
+     "$": "simpleFeatures"
+    }
+   },
+   "variants": [
+    {
+     "id": "cols3",
+     "set": {}
+    },
+    {
+     "id": "cols2",
+     "set": {
+      "cols": "2"
+     }
+    },
+    {
+     "id": "cols4",
+     "set": {
+      "cols": "4"
+     }
+    },
+    {
+     "id": "summaryRow",
+     "set": {
+      "layout": "aside"
+     },
+     "props": {
+      "align": "start"
+     }
+    },
+    {
+     "id": "summaryGrid",
+     "set": {
+      "layout": "aside",
+      "cols": "2"
+     },
+     "props": {
+      "align": "start"
+     }
+    },
+    {
+     "id": "inlineGrid",
+     "set": {
+      "cols": "2",
+      "marker": "inline"
+     }
+    },
+    {
+     "id": "checklist",
+     "set": {
+      "layout": "aside",
+      "cols": "2",
+      "marker": "inline"
+     },
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "simpleFeatures",
+     "collection": "features",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "title": "title",
+      "description": "metadata.text.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "FeaturesSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "marker",
+     "landmarkLabel"
+    ]
+   }
+  },
   "featuretabs": {
    "organism": "FeatureTabs",
    "defaults": {
@@ -1815,6 +1971,132 @@
      "tone",
      "image",
      "imageAlt",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "galleryhero": {
+   "organism": "GalleryHero",
+   "defaults": {
+    "media": "end",
+    "count": "3"
+   },
+   "sample": {
+    "id": "galleryhero",
+    "badge": {
+     "$": "ui.marketing.galleryHero.badge"
+    },
+    "title": {
+     "$": "ui.marketing.galleryHero.title"
+    },
+    "description": {
+     "$": "ui.marketing.galleryHero.description"
+    },
+    "actionLabel": {
+     "$": "ui.marketing.galleryHero.actionLabel"
+    },
+    "actionHref": "#/start",
+    "secondaryActionLabel": {
+     "$": "ui.marketing.galleryHero.secondaryActionLabel"
+    },
+    "secondaryActionHref": "#/tour",
+    "photos": {
+     "$": "galleryPhotos"
+    }
+   },
+   "variants": [
+    {
+     "id": "photos3",
+     "set": {}
+    },
+    {
+     "id": "photos4",
+     "set": {
+      "count": "4"
+     },
+     "props": {
+      "photos": {
+       "$": "galleryPhotos4"
+      }
+     }
+    },
+    {
+     "id": "photos3Start",
+     "set": {
+      "media": "start"
+     }
+    },
+    {
+     "id": "photos4Start",
+     "set": {
+      "media": "start",
+      "count": "4"
+     },
+     "props": {
+      "photos": {
+       "$": "galleryPhotos4"
+      }
+     }
+    },
+    {
+     "id": "photos3Bottom",
+     "set": {
+      "media": "bottom"
+     },
+     "props": {
+      "align": "center"
+     }
+    },
+    {
+     "id": "photos4Bottom",
+     "set": {
+      "media": "bottom",
+      "count": "4"
+     },
+     "props": {
+      "align": "center",
+      "photos": {
+       "$": "galleryPhotos4"
+      }
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "galleryPhotos",
+     "collection": "galleryphotos",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "imageAlt": "title"
+     }
+    },
+    {
+     "as": "galleryPhotos4",
+     "collection": "galleryphotos4",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "imageAlt": "title"
+     }
+    }
+   ],
+   "orgProps": {
+    "GalleryHero": [
+     "id",
+     "badge",
+     "title",
+     "description",
+     "actionLabel",
+     "actionHref",
+     "secondaryActionLabel",
+     "secondaryActionHref",
+     "photos",
+     "level",
+     "padding",
+     "align",
+     "media",
+     "count",
      "landmarkLabel"
     ]
    }
@@ -2196,7 +2478,8 @@
   "herosimple": {
    "organism": "HeroSimple",
    "defaults": {
-    "media": "end"
+    "media": "end",
+    "ratio": "landscape"
    },
    "sample": {
     "id": "herosimple",
@@ -2240,6 +2523,28 @@
      "props": {
       "align": "center"
      }
+    },
+    {
+     "id": "mediaBottom",
+     "set": {
+      "media": "bottom"
+     },
+     "props": {
+      "align": "center"
+     }
+    },
+    {
+     "id": "mediaEndPortrait",
+     "set": {
+      "ratio": "portrait"
+     }
+    },
+    {
+     "id": "mediaStartPortrait",
+     "set": {
+      "media": "start",
+      "ratio": "portrait"
+     }
     }
    ],
    "data": [],
@@ -2260,6 +2565,7 @@
      "padding",
      "align",
      "media",
+     "ratio",
      "landmarkLabel"
     ]
    }
@@ -2523,6 +2829,78 @@
     ]
    }
   },
+  "introsimple": {
+   "organism": "IntroSimple",
+   "defaults": {
+    "place": "middle"
+   },
+   "sample": {
+    "id": "introsimple",
+    "badge": {
+     "$": "ui.marketing.introSimple.badge"
+    },
+    "title": {
+     "$": "ui.marketing.introSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.introSimple.description"
+    },
+    "actionLabel": {
+     "$": "ui.marketing.introSimple.actionLabel"
+    },
+    "actionHref": "#/start",
+    "secondaryActionLabel": {
+     "$": "ui.marketing.introSimple.secondaryActionLabel"
+    },
+    "secondaryActionHref": "#/tour"
+   },
+   "variants": [
+    {
+     "id": "center",
+     "set": {}
+    },
+    {
+     "id": "start",
+     "set": {},
+     "props": {
+      "align": "start"
+     }
+    },
+    {
+     "id": "bottomStart",
+     "set": {
+      "place": "bottom"
+     },
+     "props": {
+      "align": "start"
+     }
+    },
+    {
+     "id": "bottomCenter",
+     "set": {
+      "place": "bottom"
+     }
+    }
+   ],
+   "data": [],
+   "orgProps": {
+    "IntroSimple": [
+     "id",
+     "badge",
+     "title",
+     "description",
+     "actionLabel",
+     "actionHref",
+     "secondaryActionLabel",
+     "secondaryActionHref",
+     "level",
+     "padding",
+     "align",
+     "place",
+     "landmarkLabel"
+    ]
+   }
+  },
   "jobs": {
    "organism": "JobBoard",
    "defaults": {
@@ -2702,6 +3080,56 @@
      "item",
      "tone",
      "density",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "logossimple": {
+   "organism": "LogosSimple",
+   "defaults": {
+    "surface": "plain"
+   },
+   "sample": {
+    "id": "logossimple",
+    "title": {
+     "$": "ui.marketing.logosSimple.title"
+    },
+    "logos": {
+     "$": "simpleLogos"
+    }
+   },
+   "variants": [
+    {
+     "id": "row",
+     "set": {}
+    },
+    {
+     "id": "cards",
+     "set": {
+      "surface": "cards"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "simpleLogos",
+     "collection": "logos",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "title": "title"
+     }
+    }
+   ],
+   "orgProps": {
+    "LogosSimple": [
+     "id",
+     "title",
+     "logos",
+     "level",
+     "padding",
+     "align",
+     "surface",
      "landmarkLabel"
     ]
    }
@@ -3590,6 +4018,66 @@
     ]
    }
   },
+  "photossimple": {
+   "organism": "PhotosSimple",
+   "defaults": {
+    "cols": "4"
+   },
+   "sample": {
+    "id": "photossimple",
+    "title": {
+     "$": "ui.marketing.photosSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.photosSimple.description"
+    },
+    "photos": {
+     "$": "simplePhotos"
+    }
+   },
+   "variants": [
+    {
+     "id": "row4",
+     "set": {}
+    },
+    {
+     "id": "grid3",
+     "set": {
+      "cols": "3"
+     }
+    },
+    {
+     "id": "diptych",
+     "set": {
+      "cols": "2"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "simplePhotos",
+     "collection": "photos",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "imageAlt": "title"
+     }
+    }
+   ],
+   "orgProps": {
+    "PhotosSimple": [
+     "id",
+     "title",
+     "description",
+     "photos",
+     "level",
+     "padding",
+     "align",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
   "plan": {
    "organism": "PricingCard",
    "fit": "card",
@@ -4450,6 +4938,75 @@
     ]
    }
   },
+  "statssimple": {
+   "organism": "StatsSimple",
+   "defaults": {
+    "cols": "4",
+    "surface": "plain"
+   },
+   "sample": {
+    "id": "statssimple",
+    "title": {
+     "$": "ui.marketing.statsSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.statsSimple.description"
+    },
+    "items": {
+     "$": "simpleStats"
+    }
+   },
+   "variants": [
+    {
+     "id": "cols4",
+     "set": {}
+    },
+    {
+     "id": "cols3",
+     "set": {
+      "cols": "3"
+     }
+    },
+    {
+     "id": "cols2",
+     "set": {
+      "cols": "2"
+     }
+    },
+    {
+     "id": "cards4",
+     "set": {
+      "surface": "cards"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "simpleStats",
+     "collection": "stats",
+     "fields": {
+      "id": "id",
+      "value": "metadata.value.value|compact",
+      "title": "title",
+      "description": "metadata.hint.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "StatsSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "cols",
+     "surface",
+     "landmarkLabel"
+    ]
+   }
+  },
   "steps": {
    "organism": "StepsList",
    "defaults": {
@@ -4537,6 +5094,72 @@
     ]
    }
   },
+  "stepssimple": {
+   "organism": "StepsSimple",
+   "defaults": {
+    "layout": "row",
+    "cols": "4"
+   },
+   "sample": {
+    "id": "stepssimple",
+    "title": {
+     "$": "ui.marketing.stepsSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.stepsSimple.description"
+    },
+    "steps": {
+     "$": "simpleSteps"
+    }
+   },
+   "variants": [
+    {
+     "id": "row4",
+     "set": {}
+    },
+    {
+     "id": "row3",
+     "set": {
+      "cols": "3"
+     }
+    },
+    {
+     "id": "column",
+     "set": {
+      "layout": "column"
+     },
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "simpleSteps",
+     "collection": "simplesteps",
+     "fields": {
+      "id": "id",
+      "label": "metadata.label.value",
+      "title": "title",
+      "description": "metadata.text.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "StepsSimple": [
+     "id",
+     "title",
+     "description",
+     "steps",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
   "sticky": {
    "organism": "FeatureSticky",
    "defaults": {
@@ -4609,6 +5232,70 @@
      "density",
      "image",
      "imageAlt",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "storiessimple": {
+   "organism": "StoriesSimple",
+   "defaults": {
+    "layout": "grid",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "storiessimple",
+    "title": {
+     "$": "ui.marketing.storiesSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.storiesSimple.description"
+    },
+    "stories": {
+     "$": "simpleStories"
+    }
+   },
+   "variants": [
+    {
+     "id": "cols3",
+     "set": {}
+    },
+    {
+     "id": "duo",
+     "set": {
+      "cols": "2"
+     }
+    },
+    {
+     "id": "related3",
+     "set": {
+      "layout": "compact"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "simpleStories",
+     "collection": "posts",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "title": "title",
+      "description": "excerpt",
+      "href": "slug|route"
+     }
+    }
+   ],
+   "orgProps": {
+    "StoriesSimple": [
+     "id",
+     "title",
+     "description",
+     "stories",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
      "landmarkLabel"
     ]
    }
@@ -5011,6 +5698,76 @@
      "item",
      "tone",
      "density",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "testimonialssimple": {
+   "organism": "TestimonialsSimple",
+   "defaults": {
+    "layout": "cards",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "testimonialssimple",
+    "title": {
+     "$": "ui.marketing.testimonialsSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.testimonialsSimple.description"
+    },
+    "quotes": {
+     "$": "simpleQuotes"
+    }
+   },
+   "variants": [
+    {
+     "id": "cols3",
+     "set": {}
+    },
+    {
+     "id": "cards2",
+     "set": {
+      "cols": "2"
+     }
+    },
+    {
+     "id": "portraitRows",
+     "set": {
+      "layout": "rows"
+     }
+    },
+    {
+     "id": "centered",
+     "set": {
+      "layout": "centered"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "simpleQuotes",
+     "collection": "testimonials",
+     "fields": {
+      "id": "id",
+      "quote": "metadata.quote.value",
+      "avatar": "featured_media_id|media",
+      "title": "title",
+      "description": "metadata.role.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "TestimonialsSimple": [
+     "id",
+     "title",
+     "description",
+     "quotes",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
      "landmarkLabel"
     ]
    }
@@ -13616,20 +14373,52 @@
       }
      },
      {
+      "block": "introsimple",
+      "variant": "center"
+     },
+     {
+      "block": "featuressimple",
+      "variant": "cols3"
+     },
+     {
       "block": "teamsimple",
       "variant": "cols3"
+     },
+     {
+      "block": "statssimple",
+      "variant": "cols4"
      },
      {
       "block": "herosimple",
       "variant": "mediaStart"
      },
      {
+      "block": "stepssimple",
+      "variant": "row4"
+     },
+     {
       "block": "splitsimple",
       "variant": "mediaEnd"
      },
      {
+      "block": "testimonialssimple",
+      "variant": "cols3"
+     },
+     {
+      "block": "logossimple",
+      "variant": "row"
+     },
+     {
+      "block": "faqsimple",
+      "variant": "grid2"
+     },
+     {
       "block": "teamsimple",
       "variant": "cols2"
+     },
+     {
+      "block": "herosimple",
+      "variant": "mediaBottom"
      }
     ],
     "team": [
@@ -13655,8 +14444,20 @@
       "variant": "cards3"
      },
      {
+      "block": "galleryhero",
+      "variant": "photos3"
+     },
+     {
       "block": "splitsimple",
       "variant": "mediaStart"
+     },
+     {
+      "block": "photossimple",
+      "variant": "row4"
+     },
+     {
+      "block": "storiessimple",
+      "variant": "cols3"
      },
      {
       "block": "teamsimple",

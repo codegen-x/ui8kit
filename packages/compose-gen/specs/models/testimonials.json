@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "testimonials",
+  "version": 1,
+  "docs": "Testimonials content: the heading, a description and an ordered list of one to six quotes, each with the words, the author, a role line and a portrait. One object is valid in every testimonials layout (cards in columns, rows with the portrait at the side, one centred quote).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "quotes": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 6,
+      "docs": "the quotes, in the order they are shown",
+      "item": {
+        "record": "SimpleQuote",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "quote": { "type": "longText", "maxLength": 400, "required": true, "docs": "the words of the author" },
+          "avatar": { "type": "image", "docs": "address of the portrait; none: the placeholder" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the name of the author" },
+          "description": { "type": "text", "maxLength": 120, "docs": "the role and the company of the author; empty: none" }
+        }
+      }
+    }
+  }
+}
