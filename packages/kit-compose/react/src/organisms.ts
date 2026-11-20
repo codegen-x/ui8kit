@@ -299,6 +299,8 @@ export type * from "./blocks/review-list.types";
 export * from "./blocks/rooms-simple";
 export type * from "./blocks/rooms-simple.types";
 export * from "./components/search-palette";
+export * from "./blocks/services-simple";
+export type * from "./blocks/services-simple.types";
 export * from "./components/shell-content";
 export * from "./components/shell-footer";
 export * from "./components/shell-sidebar";

@@ -250,7 +250,8 @@ export const ui = {
       "promosimple": "Simple promo",
       "hourssimple": "Simple opening hours",
       "roomssimple": "Simple rooms",
-      "guaranteessimple": "Simple guarantees"
+      "guaranteessimple": "Simple guarantees",
+      "servicessimple": "Simple services"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -409,7 +410,8 @@ export const ui = {
       "promosimple": "One offer: the discount as a badge, the heading, the deadline as text, one paragraph, a promo code when set and one button, beside a picture at the end or at the start, or under a wide one.",
       "hourssimple": "The heading, one paragraph, the address (a link to the map), the phone and the opening hours by day: side by side or in one narrow column, plain or on cards.",
       "roomssimple": "The heading, one paragraph and the rooms (a picture, the name as a link, the guests, a line, the price a night): on cards in three or two columns, or rows with the picture at the start.",
-      "guaranteessimple": "The heading, one paragraph and the promises (delivery, quality, returns), each a short title and a line: side by side on one muted band, or on cards, in four or three columns."
+      "guaranteessimple": "The heading, one paragraph and the promises (delivery, quality, returns), each a short title and a line: side by side on one muted band, or on cards, in four or three columns.",
+      "servicessimple": "The heading, one paragraph and the services (the name as a link, a line, the starting price): on cards in three or two columns, or rows with the price at the end."
     },
     "variants": {
       "header": {
@@ -1392,6 +1394,11 @@ export const ui = {
         "strip3": "A strip of three",
         "cards4": "Four cards",
         "cards3": "Three cards"
+      },
+      "servicessimple": {
+        "cards3": "Three service cards",
+        "cards2": "Two columns",
+        "rows": "Rows, the price at the end"
       }
     },
     "landmark": "{0}, {1}",
@@ -1807,6 +1814,10 @@ export const ui = {
     "guaranteesSimple": {
       "title": "Why order from our grill",
       "description": "Four promises we keep on every order, from a single skewer to a party set."
+    },
+    "servicesSimple": {
+      "title": "What we build",
+      "description": "Fixed scopes and honest starting prices; every project begins with a free one-hour call."
     }
   },
   "cases": {

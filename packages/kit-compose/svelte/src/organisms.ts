@@ -299,6 +299,8 @@ export type * from "./blocks/review-list.types";
 export { default as RoomsSimple } from "./blocks/rooms-simple.svelte";
 export type * from "./blocks/rooms-simple.types";
 export { default as SearchPalette } from "./components/search-palette.svelte";
+export { default as ServicesSimple } from "./blocks/services-simple.svelte";
+export type * from "./blocks/services-simple.types";
 export { default as ShellContent } from "./components/shell-content.svelte";
 export { default as ShellFooter } from "./components/shell-footer.svelte";
 export { default as ShellSidebar } from "./components/shell-sidebar.svelte";

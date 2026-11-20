@@ -367,6 +367,10 @@
       {
         "block": "guaranteessimple",
         "variant": "strip4"
+      },
+      {
+        "block": "servicessimple",
+        "variant": "cards3"
       }
     ],
     "about": [

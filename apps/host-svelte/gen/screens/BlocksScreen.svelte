@@ -77,6 +77,7 @@
   import QuotesplitPage from "./BlocksScreen/QuotesplitPage.svelte";
   import RatingsimplePage from "./BlocksScreen/RatingsimplePage.svelte";
   import RoomssimplePage from "./BlocksScreen/RoomssimplePage.svelte";
+  import ServicessimplePage from "./BlocksScreen/ServicessimplePage.svelte";
   import SitemapPage from "./BlocksScreen/SitemapPage.svelte";
   import SpecssimplePage from "./BlocksScreen/SpecssimplePage.svelte";
   import SplitsimplePage from "./BlocksScreen/SplitsimplePage.svelte";
@@ -242,6 +243,7 @@
     {"path":"quotesplit","area":"quotesplit"},
     {"path":"ratingsimple","area":"ratingsimple"},
     {"path":"roomssimple","area":"roomssimple"},
+    {"path":"servicessimple","area":"servicessimple"},
     {"path":"sitemap","area":"sitemap"},
     {"path":"specssimple","area":"specssimple"},
     {"path":"splitsimple","area":"splitsimple"},
@@ -482,6 +484,8 @@
     <RatingsimplePage />
   {:else if route.area === "roomssimple"}
     <RoomssimplePage />
+  {:else if route.area === "servicessimple"}
+    <ServicessimplePage />
   {:else if route.area === "sitemap"}
     <SitemapPage />
   {:else if route.area === "specssimple"}

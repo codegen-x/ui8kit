@@ -9,6 +9,7 @@ import {
   GuaranteesSimple,
   Link,
   RoomsSimple,
+  ServicesSimple,
   Stack,
   Text,
   Title,
@@ -16,12 +17,14 @@ import {
   uniqLabel,
   type Guarantee,
   type Room,
+  type Service,
 } from "@codegen-x/solid-compose";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { simplerooms as roomItemsEntries } from "@ui8kit/app-shared/data/simplerooms";
 import { simpleguarantees as guaranteeItemsEntries } from "@ui8kit/app-shared/data/simpleguarantees";
+import { simpleservices as serviceItemsEntries } from "@ui8kit/app-shared/data/simpleservices";
 
 const ROOMITEMS_FIELDS = {
   "id": "id",
@@ -33,9 +36,17 @@ const ROOMITEMS_FIELDS = {
   "href": "slug|route",
 } as const;
 const GUARANTEEITEMS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
+const SERVICEITEMS_FIELDS = {
+  "id": "id",
+  "title": "title",
+  "description": "metadata.summary.value",
+  "price": "metadata.display.value",
+  "href": "slug|route",
+} as const;
 
 const roomItems = fromCodex<Room>(roomItemsEntries, ROOMITEMS_FIELDS, CODEX);
 const guaranteeItems = fromCodex<Guarantee>(guaranteeItemsEntries, GUARANTEEITEMS_FIELDS, CODEX);
+const serviceItems = fromCodex<Service>(serviceItemsEntries, SERVICEITEMS_FIELDS, CODEX);
 
 export function MarketingSimpleStayPage() {
   return (
@@ -55,7 +66,7 @@ export function MarketingSimpleStayPage() {
               {ui.catalog.categories.marketingSimpleStay}
             </Title>
             <Text class="max-w-2xl text-muted-foreground">
-              {tpl(ui.catalog.count, 2, 7)}
+              {tpl(ui.catalog.count, 3, 10)}
             </Text>
           </Stack>
           <Stack
@@ -264,6 +275,99 @@ export function MarketingSimpleStayPage() {
                   cols="3"
                   level={2}
                   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.guaranteessimple, ui.blocks.variants.guaranteessimple.cards3))}
+                />
+              </Box>
+            </Stack>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-servicessimple-title"
+            data-testid="catalog-block"
+            data-block="servicessimple"
+          >
+            <Stack gap="2" align="stretch">
+              <Title as={2} size="2xl" weight="bold" id="catalog-servicessimple-title">
+                {ui.blocks.names.servicessimple}
+              </Title>
+              <Text size="sm" class="max-w-2xl text-muted-foreground">
+                {ui.blocks.docs.servicessimple}
+              </Text>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="servicessimple-cards3-label"
+              data-testid="variant"
+              data-block="servicessimple"
+              data-variant="cards3"
+            >
+              <Title as={3} size="base" weight="bold" id="servicessimple-cards3-label" data-testid="variant-label">
+                {ui.blocks.variants.servicessimple.cards3}
+              </Title>
+              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <ServicesSimple
+                  id="servicessimple-cards3"
+                  title={ui.marketing.servicesSimple.title}
+                  description={ui.marketing.servicesSimple.description}
+                  items={serviceItems}
+                  layout="cards"
+                  cols="3"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.servicessimple, ui.blocks.variants.servicessimple.cards3))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="servicessimple-cards2-label"
+              data-testid="variant"
+              data-block="servicessimple"
+              data-variant="cards2"
+            >
+              <Title as={3} size="base" weight="bold" id="servicessimple-cards2-label" data-testid="variant-label">
+                {ui.blocks.variants.servicessimple.cards2}
+              </Title>
+              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <ServicesSimple
+                  id="servicessimple-cards2"
+                  title={ui.marketing.servicesSimple.title}
+                  description={ui.marketing.servicesSimple.description}
+                  items={serviceItems}
+                  layout="cards"
+                  cols="2"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.servicessimple, ui.blocks.variants.servicessimple.cards2))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="servicessimple-rows-label"
+              data-testid="variant"
+              data-block="servicessimple"
+              data-variant="rows"
+            >
+              <Title as={3} size="base" weight="bold" id="servicessimple-rows-label" data-testid="variant-label">
+                {ui.blocks.variants.servicessimple.rows}
+              </Title>
+              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <ServicesSimple
+                  id="servicessimple-rows"
+                  title={ui.marketing.servicesSimple.title}
+                  description={ui.marketing.servicesSimple.description}
+                  items={serviceItems}
+                  layout="rows"
+                  cols="3"
+                  align="start"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.servicessimple, ui.blocks.variants.servicessimple.rows))}
                 />
               </Box>
             </Stack>

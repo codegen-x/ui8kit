@@ -37,6 +37,7 @@ export type { PurchaseContent } from "./purchase@1";
 export type { RatingContent } from "./rating@1";
 export type { ReviewItem, ReviewsContent } from "./reviews@1";
 export type { Room, RoomsContent } from "./rooms@1";
+export type { Service, ServicesContent } from "./services@1";
 export type { SpecItem, SpecsContent } from "./specs@1";
 export type { SplitContent } from "./split@1";
 export type { SimpleStat, StatsContent } from "./stats@1";

@@ -224,6 +224,12 @@
       "model": "rooms@1",
       "path": "rooms-simple/1.json"
     },
+    "services-simple": {
+      "version": 1,
+      "block": "block.servicessimple",
+      "model": "services@1",
+      "path": "services-simple/1.json"
+    },
     "specs-simple": {
       "version": 1,
       "block": "block.specssimple",

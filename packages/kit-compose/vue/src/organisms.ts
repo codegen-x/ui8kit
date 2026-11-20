@@ -299,6 +299,8 @@ export type * from "./blocks/review-list.types";
 export { default as RoomsSimple } from "./blocks/rooms-simple.vue";
 export type * from "./blocks/rooms-simple.types";
 export { default as SearchPalette } from "./components/search-palette.vue";
+export { default as ServicesSimple } from "./blocks/services-simple.vue";
+export type * from "./blocks/services-simple.types";
 export { default as ShellContent } from "./components/shell-content.vue";
 export { default as ShellFooter } from "./components/shell-footer.vue";
 export { default as ShellSidebar } from "./components/shell-sidebar.vue";

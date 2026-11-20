@@ -9,12 +9,14 @@ import {
   MenuSimple,
   PromoSimple,
   RoomsSimple,
+  ServicesSimple,
   tpl,
   uniqLabel,
   type Guarantee,
   type MenuDish,
   type OpeningHour,
   type Room,
+  type Service,
 } from "@codegen-x/vue-compose";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
@@ -23,6 +25,7 @@ import { simplemenu as menuDishesEntries } from "@ui8kit/app-shared/data/simplem
 import { simplehours as openingHoursEntries } from "@ui8kit/app-shared/data/simplehours";
 import { simplerooms as roomItemsEntries } from "@ui8kit/app-shared/data/simplerooms";
 import { simpleguarantees as guaranteeItemsEntries } from "@ui8kit/app-shared/data/simpleguarantees";
+import { simpleservices as serviceItemsEntries } from "@ui8kit/app-shared/data/simpleservices";
 
 const MENUDISHES_FIELDS = {
   "id": "id",
@@ -44,11 +47,19 @@ const ROOMITEMS_FIELDS = {
   "href": "slug|route",
 } as const;
 const GUARANTEEITEMS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
+const SERVICEITEMS_FIELDS = {
+  "id": "id",
+  "title": "title",
+  "description": "metadata.summary.value",
+  "price": "metadata.display.value",
+  "href": "slug|route",
+} as const;
 
 const menuDishes = fromCodex<MenuDish>(menuDishesEntries, MENUDISHES_FIELDS, CODEX);
 const openingHours = fromCodex<OpeningHour>(openingHoursEntries, OPENINGHOURS_FIELDS, CODEX);
 const roomItems = fromCodex<Room>(roomItemsEntries, ROOMITEMS_FIELDS, CODEX);
 const guaranteeItems = fromCodex<Guarantee>(guaranteeItemsEntries, GUARANTEEITEMS_FIELDS, CODEX);
+const serviceItems = fromCodex<Service>(serviceItemsEntries, SERVICEITEMS_FIELDS, CODEX);
 </script>
 
 <template>
@@ -133,5 +144,14 @@ const guaranteeItems = fromCodex<Guarantee>(guaranteeItemsEntries, GUARANTEEITEM
     layout="strip"
     cols="4"
     :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.guaranteessimple, ui.blocks.variants.guaranteessimple.strip4))"
+  />
+  <ServicesSimple
+    id="venue-servicessimple"
+    :title="ui.marketing.servicesSimple.title"
+    :description="ui.marketing.servicesSimple.description"
+    :items="serviceItems"
+    layout="cards"
+    cols="3"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.servicessimple, ui.blocks.variants.servicessimple.cards3))"
   />
 </template>

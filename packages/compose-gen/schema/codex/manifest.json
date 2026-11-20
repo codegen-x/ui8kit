@@ -1774,6 +1774,45 @@
     },
     {
       "record": {
+        "id": "service",
+        "label": "Service",
+        "scope": "workspace",
+        "description": "fixtures: simpleservices",
+        "fields": [
+          {
+            "id": "currency",
+            "label": "Currency",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "display",
+            "label": "Display",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "price",
+            "label": "Price",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/money"
+              }
+            ],
+            "required": true
+          },
+          {
+            "id": "summary",
+            "label": "Summary",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "record": {
         "id": "skill",
         "label": "Skill",
         "scope": "workspace",

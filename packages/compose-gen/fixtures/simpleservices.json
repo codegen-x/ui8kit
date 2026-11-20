@@ -1,0 +1,168 @@
+{
+  "collection": "simpleservices",
+  "kind": "service",
+  "entries": [
+    {
+      "id": "service-landing-page-in-a-week",
+      "locale": "en",
+      "kind": "service",
+      "status": "published",
+      "visibility": "public",
+      "slug": "service-landing-page-in-a-week",
+      "title": "Landing page in a week",
+      "metadata": {
+        "price": {
+          "value": 9000000
+        },
+        "currency": {
+          "value": "RUB"
+        },
+        "display": {
+          "value": "from 90 000 ₽ per project"
+        },
+        "summary": {
+          "value": "A one-page site with a form and analytics, built on our block library."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-01T09:00:00Z",
+      "updated_at": "2026-04-02T09:00:00Z",
+      "published_at": "2026-04-02T10:00:00Z"
+    },
+    {
+      "id": "service-online-shop",
+      "locale": "en",
+      "kind": "service",
+      "status": "published",
+      "visibility": "public",
+      "slug": "service-online-shop",
+      "title": "Online shop",
+      "metadata": {
+        "price": {
+          "value": 35000000
+        },
+        "currency": {
+          "value": "RUB"
+        },
+        "display": {
+          "value": "from 350 000 ₽ per project"
+        },
+        "summary": {
+          "value": "A catalog, a cart and payments, connected to your stock."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-03T09:00:00Z",
+      "updated_at": "2026-04-04T09:00:00Z",
+      "published_at": "2026-04-04T10:00:00Z"
+    },
+    {
+      "id": "service-support-and-hosting",
+      "locale": "en",
+      "kind": "service",
+      "status": "published",
+      "visibility": "public",
+      "slug": "service-support-and-hosting",
+      "title": "Support and hosting",
+      "metadata": {
+        "price": {
+          "value": 1500000
+        },
+        "currency": {
+          "value": "RUB"
+        },
+        "display": {
+          "value": "from 15 000 ₽ a month"
+        },
+        "summary": {
+          "value": "Updates, backups and fixes within one working day."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-05T09:00:00Z",
+      "updated_at": "2026-04-06T09:00:00Z",
+      "published_at": "2026-04-06T10:00:00Z"
+    },
+    {
+      "id": "service-design-system-audit",
+      "locale": "en",
+      "kind": "service",
+      "status": "published",
+      "visibility": "public",
+      "slug": "service-design-system-audit",
+      "title": "Design system audit",
+      "metadata": {
+        "price": {
+          "value": 12000000
+        },
+        "currency": {
+          "value": "RUB"
+        },
+        "display": {
+          "value": "from 120 000 ₽ per audit"
+        },
+        "summary": {
+          "value": "We check tokens, components and accessibility and hand over a plan."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-07T09:00:00Z",
+      "updated_at": "2026-04-08T09:00:00Z",
+      "published_at": "2026-04-08T10:00:00Z"
+    },
+    {
+      "id": "service-mobile-app-mvp",
+      "locale": "en",
+      "kind": "service",
+      "status": "published",
+      "visibility": "public",
+      "slug": "service-mobile-app-mvp",
+      "title": "Mobile app MVP",
+      "metadata": {
+        "price": {
+          "value": 90000000
+        },
+        "currency": {
+          "value": "RUB"
+        },
+        "display": {
+          "value": "from 900 000 ₽ per project"
+        },
+        "summary": {
+          "value": "An iOS and Android app with the core flow, in eight weeks."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-09T09:00:00Z",
+      "updated_at": "2026-04-10T09:00:00Z",
+      "published_at": "2026-04-10T10:00:00Z"
+    },
+    {
+      "id": "service-team-training",
+      "locale": "en",
+      "kind": "service",
+      "status": "published",
+      "visibility": "public",
+      "slug": "service-team-training",
+      "title": "Team training",
+      "metadata": {
+        "price": {
+          "value": 6000000
+        },
+        "currency": {
+          "value": "RUB"
+        },
+        "display": {
+          "value": "from 60 000 ₽ a day"
+        },
+        "summary": {
+          "value": "A hands-on day on components, contracts and the review process."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-11T09:00:00Z",
+      "updated_at": "2026-04-12T09:00:00Z",
+      "published_at": "2026-04-12T10:00:00Z"
+    }
+  ]
+}

@@ -398,6 +398,9 @@
               },
               {
                 "block": "guaranteessimple"
+              },
+              {
+                "block": "servicessimple"
               }
             ]
           },

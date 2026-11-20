@@ -74,6 +74,8 @@ export { default as RatingSimple } from "./blocks/rating-simple.svelte";
 export type { RatingSimpleProps } from "./blocks/rating-simple.svelte";
 export { default as RoomsSimple } from "./blocks/rooms-simple.svelte";
 export type { RoomsSimpleProps } from "./blocks/rooms-simple.svelte";
+export { default as ServicesSimple } from "./blocks/services-simple.svelte";
+export type { ServicesSimpleProps } from "./blocks/services-simple.svelte";
 export { default as SpecsSimple } from "./blocks/specs-simple.svelte";
 export type { SpecsSimpleProps } from "./blocks/specs-simple.svelte";
 export { default as SplitSimple } from "./blocks/split-simple.svelte";

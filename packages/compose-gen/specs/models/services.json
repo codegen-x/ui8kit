@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "services",
+  "version": 1,
+  "docs": "Services content: the heading, a description and an ordered list of services, each with the name, a line, the price as it is shown and an optional address. One object is valid in every services layout (cards in three or two columns, rows).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 9,
+      "docs": "the services, in the order they are shown",
+      "item": {
+        "record": "Service",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the name of the service" },
+          "description": { "type": "longText", "maxLength": 200, "docs": "one line about the service; empty: none" },
+          "price": { "type": "text", "maxLength": 40, "docs": "the price as it is shown (from 90 000 per project); empty: none" },
+          "href": { "type": "url", "docs": "the address of the service page; empty: no link" }
+        }
+      }
+    }
+  }
+}

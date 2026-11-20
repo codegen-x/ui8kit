@@ -78,6 +78,7 @@ import PurchasesimplePage from "./BlocksScreen/PurchasesimplePage.vue";
 import QuotesplitPage from "./BlocksScreen/QuotesplitPage.vue";
 import RatingsimplePage from "./BlocksScreen/RatingsimplePage.vue";
 import RoomssimplePage from "./BlocksScreen/RoomssimplePage.vue";
+import ServicessimplePage from "./BlocksScreen/ServicessimplePage.vue";
 import SitemapPage from "./BlocksScreen/SitemapPage.vue";
 import SpecssimplePage from "./BlocksScreen/SpecssimplePage.vue";
 import SplitsimplePage from "./BlocksScreen/SplitsimplePage.vue";
@@ -243,6 +244,7 @@ const ROUTES = [
   {"path":"quotesplit","area":"quotesplit"},
   {"path":"ratingsimple","area":"ratingsimple"},
   {"path":"roomssimple","area":"roomssimple"},
+  {"path":"servicessimple","area":"servicessimple"},
   {"path":"sitemap","area":"sitemap"},
   {"path":"specssimple","area":"specssimple"},
   {"path":"splitsimple","area":"splitsimple"},
@@ -412,6 +414,7 @@ const actions = { toggleTheme };
     <QuotesplitPage v-else-if="route.area === 'quotesplit'" />
     <RatingsimplePage v-else-if="route.area === 'ratingsimple'" />
     <RoomssimplePage v-else-if="route.area === 'roomssimple'" />
+    <ServicessimplePage v-else-if="route.area === 'servicessimple'" />
     <SitemapPage v-else-if="route.area === 'sitemap'" />
     <SpecssimplePage v-else-if="route.area === 'specssimple'" />
     <SplitsimplePage v-else-if="route.area === 'splitsimple'" />
