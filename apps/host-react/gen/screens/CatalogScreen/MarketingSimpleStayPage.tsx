@@ -6,6 +6,7 @@ import {
   Box,
   Container,
   Group,
+  GuaranteesSimple,
   Link,
   RoomsSimple,
   Stack,
@@ -13,12 +14,14 @@ import {
   Title,
   tpl,
   uniqLabel,
+  type Guarantee,
   type Room,
 } from "@codegen-x/react-compose";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { simplerooms as roomItemsEntries } from "@ui8kit/app-shared/data/simplerooms";
+import { simpleguarantees as guaranteeItemsEntries } from "@ui8kit/app-shared/data/simpleguarantees";
 
 const ROOMITEMS_FIELDS = {
   "id": "id",
@@ -29,8 +32,10 @@ const ROOMITEMS_FIELDS = {
   "description": "metadata.summary.value",
   "href": "slug|route",
 } as const;
+const GUARANTEEITEMS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
 
 const roomItems = fromCodex<Room>(roomItemsEntries, ROOMITEMS_FIELDS, CODEX);
+const guaranteeItems = fromCodex<Guarantee>(guaranteeItemsEntries, GUARANTEEITEMS_FIELDS, CODEX);
 
 export function MarketingSimpleStayPage() {
   return (
@@ -50,7 +55,7 @@ export function MarketingSimpleStayPage() {
               {ui.catalog.categories.marketingSimpleStay}
             </Title>
             <Text className="max-w-2xl text-muted-foreground">
-              {tpl(ui.catalog.count, 1, 3)}
+              {tpl(ui.catalog.count, 2, 7)}
             </Text>
           </Stack>
           <Stack
@@ -142,6 +147,123 @@ export function MarketingSimpleStayPage() {
                   align="start"
                   level={2}
                   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.roomssimple, ui.blocks.variants.roomssimple.rows))}
+                />
+              </Box>
+            </Stack>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-guaranteessimple-title"
+            data-testid="catalog-block"
+            data-block="guaranteessimple"
+          >
+            <Stack gap="2" align="stretch">
+              <Title as={2} size="2xl" weight="bold" id="catalog-guaranteessimple-title">
+                {ui.blocks.names.guaranteessimple}
+              </Title>
+              <Text size="sm" className="max-w-2xl text-muted-foreground">
+                {ui.blocks.docs.guaranteessimple}
+              </Text>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="guaranteessimple-strip4-label"
+              data-testid="variant"
+              data-block="guaranteessimple"
+              data-variant="strip4"
+            >
+              <Title as={3} size="base" weight="bold" id="guaranteessimple-strip4-label" data-testid="variant-label">
+                {ui.blocks.variants.guaranteessimple.strip4}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <GuaranteesSimple
+                  id="guaranteessimple-strip4"
+                  title={ui.marketing.guaranteesSimple.title}
+                  description={ui.marketing.guaranteesSimple.description}
+                  items={guaranteeItems}
+                  layout="strip"
+                  cols="4"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.guaranteessimple, ui.blocks.variants.guaranteessimple.strip4))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="guaranteessimple-strip3-label"
+              data-testid="variant"
+              data-block="guaranteessimple"
+              data-variant="strip3"
+            >
+              <Title as={3} size="base" weight="bold" id="guaranteessimple-strip3-label" data-testid="variant-label">
+                {ui.blocks.variants.guaranteessimple.strip3}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <GuaranteesSimple
+                  id="guaranteessimple-strip3"
+                  title={ui.marketing.guaranteesSimple.title}
+                  description={ui.marketing.guaranteesSimple.description}
+                  items={guaranteeItems}
+                  layout="strip"
+                  cols="3"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.guaranteessimple, ui.blocks.variants.guaranteessimple.strip3))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="guaranteessimple-cards4-label"
+              data-testid="variant"
+              data-block="guaranteessimple"
+              data-variant="cards4"
+            >
+              <Title as={3} size="base" weight="bold" id="guaranteessimple-cards4-label" data-testid="variant-label">
+                {ui.blocks.variants.guaranteessimple.cards4}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <GuaranteesSimple
+                  id="guaranteessimple-cards4"
+                  title={ui.marketing.guaranteesSimple.title}
+                  description={ui.marketing.guaranteesSimple.description}
+                  items={guaranteeItems}
+                  layout="cards"
+                  cols="4"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.guaranteessimple, ui.blocks.variants.guaranteessimple.cards4))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="guaranteessimple-cards3-label"
+              data-testid="variant"
+              data-block="guaranteessimple"
+              data-variant="cards3"
+            >
+              <Title as={3} size="base" weight="bold" id="guaranteessimple-cards3-label" data-testid="variant-label">
+                {ui.blocks.variants.guaranteessimple.cards3}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <GuaranteesSimple
+                  id="guaranteessimple-cards3"
+                  title={ui.marketing.guaranteesSimple.title}
+                  description={ui.marketing.guaranteesSimple.description}
+                  items={guaranteeItems}
+                  layout="cards"
+                  cols="3"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.guaranteessimple, ui.blocks.variants.guaranteessimple.cards3))}
                 />
               </Box>
             </Stack>

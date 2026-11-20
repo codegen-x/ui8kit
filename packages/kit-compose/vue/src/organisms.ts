@@ -142,6 +142,8 @@ export { default as GalleryHero } from "./blocks/gallery-hero.vue";
 export type * from "./blocks/gallery-hero.types";
 export { default as GrillBuilder } from "./blocks/grill-builder.vue";
 export { default as GroceryList } from "./blocks/grocery-list.vue";
+export { default as GuaranteesSimple } from "./blocks/guarantees-simple.vue";
+export type * from "./blocks/guarantees-simple.types";
 export { default as HeaderSimple } from "./blocks/header-simple.vue";
 export type * from "./blocks/header-simple.types";
 export { default as HeroBadge } from "./components/hero-badge.vue";

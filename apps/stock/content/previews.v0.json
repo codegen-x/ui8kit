@@ -2938,6 +2938,75 @@
     ]
    }
   },
+  "guaranteessimple": {
+   "organism": "GuaranteesSimple",
+   "defaults": {
+    "layout": "strip",
+    "cols": "4"
+   },
+   "sample": {
+    "id": "guaranteessimple",
+    "title": {
+     "$": "ui.marketing.guaranteesSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.guaranteesSimple.description"
+    },
+    "items": {
+     "$": "guaranteeItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "strip4",
+     "set": {}
+    },
+    {
+     "id": "strip3",
+     "set": {
+      "cols": "3"
+     }
+    },
+    {
+     "id": "cards4",
+     "set": {
+      "layout": "cards"
+     }
+    },
+    {
+     "id": "cards3",
+     "set": {
+      "layout": "cards",
+      "cols": "3"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "guaranteeItems",
+     "collection": "simpleguarantees",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "text": "metadata.text.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "GuaranteesSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
   "header": {
    "organism": "SiteHeader",
    "defaults": {
@@ -16680,6 +16749,10 @@
      {
       "block": "roomssimple",
       "variant": "cards3"
+     },
+     {
+      "block": "guaranteessimple",
+      "variant": "strip4"
      }
     ],
     "about": [

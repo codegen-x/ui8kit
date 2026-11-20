@@ -249,7 +249,8 @@ export const ui = {
       "ctasimple": "Simple call to action",
       "promosimple": "Simple promo",
       "hourssimple": "Simple opening hours",
-      "roomssimple": "Simple rooms"
+      "roomssimple": "Simple rooms",
+      "guaranteessimple": "Simple guarantees"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -407,7 +408,8 @@ export const ui = {
       "ctasimple": "One band: a badge when set, the heading, one paragraph and up to two buttons; centred or at the start, or the buttons at the end; on a muted or an outlined surface.",
       "promosimple": "One offer: the discount as a badge, the heading, the deadline as text, one paragraph, a promo code when set and one button, beside a picture at the end or at the start, or under a wide one.",
       "hourssimple": "The heading, one paragraph, the address (a link to the map), the phone and the opening hours by day: side by side or in one narrow column, plain or on cards.",
-      "roomssimple": "The heading, one paragraph and the rooms (a picture, the name as a link, the guests, a line, the price a night): on cards in three or two columns, or rows with the picture at the start."
+      "roomssimple": "The heading, one paragraph and the rooms (a picture, the name as a link, the guests, a line, the price a night): on cards in three or two columns, or rows with the picture at the start.",
+      "guaranteessimple": "The heading, one paragraph and the promises (delivery, quality, returns), each a short title and a line: side by side on one muted band, or on cards, in four or three columns."
     },
     "variants": {
       "header": {
@@ -1384,6 +1386,12 @@ export const ui = {
         "cards3": "Three room cards",
         "cards2": "Two columns",
         "rows": "Rows, the picture at the start"
+      },
+      "guaranteessimple": {
+        "strip4": "A strip of four",
+        "strip3": "A strip of three",
+        "cards4": "Four cards",
+        "cards3": "Three cards"
       }
     },
     "landmark": "{0}, {1}",
@@ -1795,6 +1803,10 @@ export const ui = {
     "roomsSimple": {
       "title": "Rooms for the holidays",
       "description": "Every stay includes breakfast, late check-out on 1 January and a seat at the New Year grill dinner."
+    },
+    "guaranteesSimple": {
+      "title": "Why order from our grill",
+      "description": "Four promises we keep on every order, from a single skewer to a party set."
     }
   },
   "cases": {

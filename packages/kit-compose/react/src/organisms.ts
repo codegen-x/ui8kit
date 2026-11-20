@@ -142,6 +142,8 @@ export * from "./blocks/gallery-hero";
 export type * from "./blocks/gallery-hero.types";
 export * from "./blocks/grill-builder";
 export * from "./blocks/grocery-list";
+export * from "./blocks/guarantees-simple";
+export type * from "./blocks/guarantees-simple.types";
 export * from "./blocks/header-simple";
 export type * from "./blocks/header-simple.types";
 export * from "./components/hero-badge";

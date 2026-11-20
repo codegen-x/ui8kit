@@ -395,6 +395,9 @@
             "entries": [
               {
                 "block": "roomssimple"
+              },
+              {
+                "block": "guaranteessimple"
               }
             ]
           },

@@ -40,6 +40,7 @@ import { FooterPage } from "./BlocksScreen/FooterPage";
 import { FootersimplePage } from "./BlocksScreen/FootersimplePage";
 import { FootersplitPage } from "./BlocksScreen/FootersplitPage";
 import { GalleryheroPage } from "./BlocksScreen/GalleryheroPage";
+import { GuaranteessimplePage } from "./BlocksScreen/GuaranteessimplePage";
 import { HeaderPage } from "./BlocksScreen/HeaderPage";
 import { HeadersimplePage } from "./BlocksScreen/HeadersimplePage";
 import { HeroPage } from "./BlocksScreen/HeroPage";
@@ -204,6 +205,7 @@ const ROUTES = [
   {"path":"footersimple","area":"footersimple"},
   {"path":"footersplit","area":"footersplit"},
   {"path":"galleryhero","area":"galleryhero"},
+  {"path":"guaranteessimple","area":"guaranteessimple"},
   {"path":"header","area":"header"},
   {"path":"headersimple","area":"headersimple"},
   {"path":"hero","area":"hero"},
@@ -407,6 +409,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <FootersplitPage />
         ) : route.area === "galleryhero" ? (
           <GalleryheroPage />
+        ) : route.area === "guaranteessimple" ? (
+          <GuaranteessimplePage />
         ) : route.area === "header" ? (
           <HeaderPage />
         ) : route.area === "headersimple" ? (

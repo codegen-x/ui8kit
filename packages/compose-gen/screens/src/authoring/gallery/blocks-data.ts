@@ -145,5 +145,6 @@ export const policyItems = src("policyItems", "simplepolicies", "perk", "PolicyI
 /** wave 3 of the simple line */
 export const openingHours = src("openingHours", "simplehours", "day", "OpeningHour", CODEX_FIELDS.openingHour);
 export const roomItems = src("roomItems", "simplerooms", "room", "Room", CODEX_FIELDS.roomItem);
+export const guaranteeItems = src("guaranteeItems", "simpleguarantees", "perk", "Guarantee", CODEX_FIELDS.guaranteeItem);
 export const menuDishes = src("menuDishes", "simplemenu", "dish", "MenuDish", CODEX_FIELDS.menuDish);
 export const reviewItems = src("reviewItems", "simplereviews", "review", "ReviewItem", CODEX_FIELDS.reviewItem);

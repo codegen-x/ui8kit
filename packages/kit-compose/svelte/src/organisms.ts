@@ -142,6 +142,8 @@ export { default as GalleryHero } from "./blocks/gallery-hero.svelte";
 export type * from "./blocks/gallery-hero.types";
 export { default as GrillBuilder } from "./blocks/grill-builder.svelte";
 export { default as GroceryList } from "./blocks/grocery-list.svelte";
+export { default as GuaranteesSimple } from "./blocks/guarantees-simple.svelte";
+export type * from "./blocks/guarantees-simple.types";
 export { default as HeaderSimple } from "./blocks/header-simple.svelte";
 export type * from "./blocks/header-simple.types";
 export { default as HeroBadge } from "./components/hero-badge.svelte";

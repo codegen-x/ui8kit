@@ -363,6 +363,10 @@
       {
         "block": "roomssimple",
         "variant": "cards3"
+      },
+      {
+        "block": "guaranteessimple",
+        "variant": "strip4"
       }
     ],
     "about": [

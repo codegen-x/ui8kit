@@ -65,6 +65,12 @@
         { key: "footersimple", href: "#/footersimple", name: ui.blocks.names.footersimple, docs: ui.blocks.docs.footersimple },
         { key: "footersplit", href: "#/footersplit", name: ui.blocks.names.footersplit, docs: ui.blocks.docs.footersplit },
         { key: "galleryhero", href: "#/galleryhero", name: ui.blocks.names.galleryhero, docs: ui.blocks.docs.galleryhero },
+        {
+          key: "guaranteessimple",
+          href: "#/guaranteessimple",
+          name: ui.blocks.names.guaranteessimple,
+          docs: ui.blocks.docs.guaranteessimple,
+        },
         { key: "header", href: "#/header", name: ui.blocks.names.header, docs: ui.blocks.docs.header },
         { key: "headersimple", href: "#/headersimple", name: ui.blocks.names.headersimple, docs: ui.blocks.docs.headersimple },
         { key: "hero", href: "#/hero", name: ui.blocks.names.hero, docs: ui.blocks.docs.hero },

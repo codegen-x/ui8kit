@@ -3,6 +3,7 @@
 <script lang="ts">
   import {
     CtaSimple,
+    GuaranteesSimple,
     HeroSimple,
     HoursSimple,
     MenuSimple,
@@ -10,6 +11,7 @@
     RoomsSimple,
     tpl,
     uniqLabel,
+    type Guarantee,
     type MenuDish,
     type OpeningHour,
     type Room,
@@ -20,6 +22,7 @@
   import { simplemenu as menuDishesEntries } from "@ui8kit/app-shared/data/simplemenu";
   import { simplehours as openingHoursEntries } from "@ui8kit/app-shared/data/simplehours";
   import { simplerooms as roomItemsEntries } from "@ui8kit/app-shared/data/simplerooms";
+  import { simpleguarantees as guaranteeItemsEntries } from "@ui8kit/app-shared/data/simpleguarantees";
 
   const MENUDISHES_FIELDS = {
     "id": "id",
@@ -40,10 +43,12 @@
     "description": "metadata.summary.value",
     "href": "slug|route",
   } as const;
+  const GUARANTEEITEMS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
 
   const menuDishes = fromCodex<MenuDish>(menuDishesEntries, MENUDISHES_FIELDS, CODEX);
   const openingHours = fromCodex<OpeningHour>(openingHoursEntries, OPENINGHOURS_FIELDS, CODEX);
   const roomItems = fromCodex<Room>(roomItemsEntries, ROOMITEMS_FIELDS, CODEX);
+  const guaranteeItems = fromCodex<Guarantee>(guaranteeItemsEntries, GUARANTEEITEMS_FIELDS, CODEX);
 </script>
 
 <HeroSimple
@@ -118,4 +123,13 @@
   layout="cards"
   cols="3"
   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.roomssimple, ui.blocks.variants.roomssimple.cards3))}
+/>
+<GuaranteesSimple
+  id="venue-guaranteessimple"
+  title={ui.marketing.guaranteesSimple.title}
+  description={ui.marketing.guaranteesSimple.description}
+  items={guaranteeItems}
+  layout="strip"
+  cols="4"
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.guaranteessimple, ui.blocks.variants.guaranteessimple.strip4))}
 />

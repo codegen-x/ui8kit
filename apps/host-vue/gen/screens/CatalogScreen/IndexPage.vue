@@ -189,8 +189,8 @@ const CATALOG = [
         id: "marketing-simple-stay",
         href: "#/marketing-simple-stay",
         name: ui.catalog.categories.marketingSimpleStay,
-        blocks: 1,
-        variants: 3,
+        blocks: 2,
+        variants: 7,
       },
       {
         id: "marketing-simple-details",

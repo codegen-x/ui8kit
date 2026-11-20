@@ -3939,6 +3939,45 @@
       "emptyState": true
     },
     {
+      "id": "GuaranteesSimple",
+      "surface": "kit-block",
+      "spec": "block.guaranteessimple",
+      "source": "packages/compose-gen/specs/blocks/guaranteessimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simpleguarantees",
+          "kind": "perk",
+          "record": "Guarantee",
+          "map": "chapter",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.guaranteesSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.guaranteesSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "SiteHeader",
       "surface": "kit-block",
       "spec": "block.header",
@@ -10258,6 +10297,14 @@
           "list": true
         },
         {
+          "prop": "GuaranteesSimple.items",
+          "collection": "simpleguarantees",
+          "kind": "perk",
+          "record": "Guarantee",
+          "map": "chapter",
+          "list": true
+        },
+        {
           "prop": "HeaderSimple.links",
           "collection": "simplelinks",
           "kind": "menu_item",
@@ -10925,6 +10972,7 @@
         "block.galleryhero",
         "block.grillbuilder",
         "block.grocerylist",
+        "block.guaranteessimple",
         "block.header",
         "block.headersimple",
         "block.hero",
@@ -13935,6 +13983,14 @@
           "list": true
         },
         {
+          "prop": "GuaranteesSimple.items",
+          "collection": "simpleguarantees",
+          "kind": "perk",
+          "record": "Guarantee",
+          "map": "chapter",
+          "list": true
+        },
+        {
           "prop": "HeaderSimple.links",
           "collection": "simplelinks",
           "kind": "menu_item",
@@ -14307,6 +14363,7 @@
         "block.figuresimple",
         "block.footersimple",
         "block.galleryhero",
+        "block.guaranteessimple",
         "block.headersimple",
         "block.herosimple",
         "block.hourssimple",

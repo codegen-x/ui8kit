@@ -19,6 +19,7 @@ import FeaturesSimple from "./svelte/blocks/features-simple.svelte";
 import FigureSimple from "./svelte/blocks/figure-simple.svelte";
 import FooterSimple from "./svelte/blocks/footer-simple.svelte";
 import GalleryHero from "./svelte/blocks/gallery-hero.svelte";
+import GuaranteesSimple from "./svelte/blocks/guarantees-simple.svelte";
 import HeaderSimple from "./svelte/blocks/header-simple.svelte";
 import HeroSimple from "./svelte/blocks/hero-simple.svelte";
 import HoursSimple from "./svelte/blocks/hours-simple.svelte";
@@ -48,7 +49,7 @@ import TeamSimple from "./svelte/blocks/team-simple.svelte";
 import TestimonialsSimple from "./svelte/blocks/testimonials-simple.svelte";
 import TopicsSimple from "./svelte/blocks/topics-simple.svelte";
 
-export { ArticleLead, ArticleSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, CtaSimple, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, HeaderSimple, HeroSimple, HoursSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PromoSimple, PullQuoteSimple, PurchaseSimple, RatingSimple, RoomsSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TopicsSimple };
+export { ArticleLead, ArticleSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, CtaSimple, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, GuaranteesSimple, HeaderSimple, HeroSimple, HoursSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PromoSimple, PullQuoteSimple, PurchaseSimple, RatingSimple, RoomsSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TopicsSimple };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CATALOG: Record<string, Component<any>> = {
@@ -69,6 +70,7 @@ export const CATALOG: Record<string, Component<any>> = {
   "figure-simple": FigureSimple,
   "footer-simple": FooterSimple,
   "gallery-hero": GalleryHero,
+  "guarantees-simple": GuaranteesSimple,
   "header-simple": HeaderSimple,
   "hero-simple": HeroSimple,
   "hours-simple": HoursSimple,

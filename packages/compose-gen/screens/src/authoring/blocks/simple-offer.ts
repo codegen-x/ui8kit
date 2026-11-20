@@ -1,12 +1,12 @@
-// The simple line, wave 3 (calls to action and offers; one content model each, specs/models): CtaSimple (cta@1), PromoSimple (promo@1).
+// The simple line, wave 3 (calls to action and offers; one content model each, specs/models): CtaSimple (cta@1), PromoSimple (promo@1), GuaranteesSimple (guarantees@1).
 // The rules of simple.ts: the props are the fields of the model plus the axes and the settings; only the compositions
 // packages/prototypes lowers (Box, Block, Container, Stack, Group, List, ListItem, LinkPlain; Title, Text, Badge, LinkButton, MediaFrame).
-import { cn, ref, text, use, when, organism } from "../../build";
+import { cn, each, ref, text, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
-import { spec } from "../kit";
+import { fields, spec } from "../kit";
 import { id, title, tsOf } from "../props";
 import { O, level, description, titleId, padding, teamDerived, alignItems, textAlign, section, lead, action, actions, actionProps, align } from "./simple";
-import { badge, centered, chain, is } from "./simple-more";
+import { badge, centered, chain, is, list, head, itemTitle, itemText, ulist } from "./simple-more";
 
 const str = (name: string, docs: string, required = false) => (required ? { name, type: "string" as const, required: true, docs } : { name, type: "string" as const, default: "", docs });
 const actionPair = [str("actionLabel", "the label of the action; the link is drawn when the label and the address are both set"), str("actionHref", "the address of the action")];
@@ -54,4 +54,23 @@ const promoSimple = spec(`${O}promo-simple`, "PromoSimple", "The simple promo (m
         organism("MediaFrame", { alt: ref("imageAlt"), src: ref("image"), ratio: ref("ratio"), className: "rounded" }))))],
 });
 
-export const simpleOfferOrganisms: OrganismSpec[] = [ctaSimple, promoSimple];
+// ---- GuaranteesSimple (guarantees@1): the promises of a business (delivery, quality, returns) as a strip on a muted band or on cards
+const guaranteesSimple = spec(`${O}guarantees-simple`, "GuaranteesSimple", "The simple guarantees (model guarantees@1): the heading, a description and the promises as a list, each with a short title and a line. Text only. Axes: layout (strip: the promises side by side on one muted band; cards: a card surface per promise), cols (4, 3 columns from md up).", {
+  records: { Guarantee: fields(["id", "string"], ["title", "string"], ["text", "string", true]) },
+  props: [id, title, description, list("items", "Guarantee", "the promises, in the order they are shown (2 to 8)"), level, padding, centered, axis("layout", "strip", "cards"), axis("cols", "4", "3")],
+  derived: [
+    titleId, ...teamDerived,
+    chain("grid", [[is("cols", "3"), "grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3"]], "grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4"),
+    chain("band", [[is("layout", "cards"), ""]], "rounded bg-muted p-8"),
+    chain("item", [[is("layout", "cards"), "rounded border border-border bg-card p-6 text-card-foreground flex flex-col gap-2"]], "flex flex-col gap-2"),
+  ],
+  view: [section(use("Stack", { props: { Gap: "12", Align: "stretch" } }, head(),
+    use("Box", { props: { Class: ref("band") } },
+      ulist(cn("grid", ref("grid")),
+        each(ref("items"), "g", ref("g.id"),
+          use("ListItem", { props: { Class: cn(ref("item"), ref("itemsAlign")) }, attrs: { "data-testid": "guarantee" } },
+            itemTitle("g.title", "base"),
+            itemText("g.text")))))))],
+});
+
+export const simpleOfferOrganisms: OrganismSpec[] = [ctaSimple, promoSimple, guaranteesSimple];

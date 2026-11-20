@@ -34,6 +34,8 @@ export { default as FooterSimple } from "./blocks/footer-simple.svelte";
 export type { FooterSimpleProps } from "./blocks/footer-simple.svelte";
 export { default as GalleryHero } from "./blocks/gallery-hero.svelte";
 export type { GalleryHeroProps } from "./blocks/gallery-hero.svelte";
+export { default as GuaranteesSimple } from "./blocks/guarantees-simple.svelte";
+export type { GuaranteesSimpleProps } from "./blocks/guarantees-simple.svelte";
 export { default as HeaderSimple } from "./blocks/header-simple.svelte";
 export type { HeaderSimpleProps } from "./blocks/header-simple.svelte";
 export { default as HeroSimple } from "./blocks/hero-simple.svelte";

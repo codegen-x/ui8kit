@@ -40,6 +40,7 @@
   import FootersimplePage from "./BlocksScreen/FootersimplePage.svelte";
   import FootersplitPage from "./BlocksScreen/FootersplitPage.svelte";
   import GalleryheroPage from "./BlocksScreen/GalleryheroPage.svelte";
+  import GuaranteessimplePage from "./BlocksScreen/GuaranteessimplePage.svelte";
   import HeaderPage from "./BlocksScreen/HeaderPage.svelte";
   import HeadersimplePage from "./BlocksScreen/HeadersimplePage.svelte";
   import HeroPage from "./BlocksScreen/HeroPage.svelte";
@@ -204,6 +205,7 @@
     {"path":"footersimple","area":"footersimple"},
     {"path":"footersplit","area":"footersplit"},
     {"path":"galleryhero","area":"galleryhero"},
+    {"path":"guaranteessimple","area":"guaranteessimple"},
     {"path":"header","area":"header"},
     {"path":"headersimple","area":"headersimple"},
     {"path":"hero","area":"hero"},
@@ -406,6 +408,8 @@
     <FootersplitPage />
   {:else if route.area === "galleryhero"}
     <GalleryheroPage />
+  {:else if route.area === "guaranteessimple"}
+    <GuaranteessimplePage />
   {:else if route.area === "header"}
     <HeaderPage />
   {:else if route.area === "headersimple"}

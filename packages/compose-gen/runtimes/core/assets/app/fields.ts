@@ -190,6 +190,7 @@ export const KIT_FIELDS = {
   offerItem: { id: "id", title: "title", description: m("text"), actionLabel: m("action"), actionHref: m("href") },
   openingHour: { id: "id", day: "title", time: m("time") },
   roomItem: { id: "id", image: "featured_media_id|media", title: "title", guests: m("guests"), price: m("display"), description: m("summary"), href: "slug|route" },
+  guaranteeItem: { id: "id", title: "title", text: m("text") },
   menuDish: { id: "id", image: "featured_media_id|media", title: "title", weight: m("weight"), price: m("display"), description: m("summary"), badge: m("badge") },
   productItem: { id: "id", image: "featured_media_id|media", title: "title", price: m("display"), href: "slug|route" },
   productPhoto: { id: "id", image: "featured_media_id|media" },

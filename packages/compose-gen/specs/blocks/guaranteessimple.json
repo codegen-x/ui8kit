@@ -1,0 +1,93 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.guaranteessimple",
+  "name": "Simple guarantees",
+  "docs": "The heading, one paragraph and the promises (delivery, quality, returns), each a short title and a line: side by side on one muted band, or on cards, in four or three columns.",
+  "theme": "marketing",
+  "group": "features",
+  "organism": "GuaranteesSimple",
+  "line": "simple",
+  "model": "guarantees@1",
+  "axes": {
+    "layout": [
+      "strip",
+      "cards"
+    ],
+    "cols": [
+      "4",
+      "3"
+    ]
+  },
+  "defaults": {
+    "layout": "strip",
+    "cols": "4"
+  },
+  "variants": [
+    {
+      "id": "strip4",
+      "set": {}
+    },
+    {
+      "id": "strip3",
+      "set": {
+        "cols": "3"
+      }
+    },
+    {
+      "id": "cards4",
+      "set": {
+        "layout": "cards"
+      }
+    },
+    {
+      "id": "cards3",
+      "set": {
+        "layout": "cards",
+        "cols": "3"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@guaranteeItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@guaranteeItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "guaranteeItems",
+      "collection": "simpleguarantees",
+      "kind": "perk",
+      "record": "Guarantee",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "text": "metadata.text.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "guaranteessimple",
+      "title": {
+        "$": "ui.marketing.guaranteesSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.guaranteesSimple.description"
+      },
+      "items": {
+        "$": "guaranteeItems"
+      }
+    }
+  }
+}

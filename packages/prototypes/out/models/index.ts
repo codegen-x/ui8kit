@@ -17,6 +17,7 @@ export type { SimpleFeature, FeaturesContent } from "./features@1";
 export type { FigureContent } from "./figure@1";
 export type { FooterLink, FooterContent } from "./footer@1";
 export type { GalleryPhoto, GalleryContent } from "./gallery@1";
+export type { Guarantee, GuaranteesContent } from "./guarantees@1";
 export type { HeaderLink, HeaderContent } from "./header@1";
 export type { HeroContent } from "./hero@1";
 export type { OpeningHour, HoursContent } from "./hours@1";

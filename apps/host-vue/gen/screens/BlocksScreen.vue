@@ -41,6 +41,7 @@ import FooterPage from "./BlocksScreen/FooterPage.vue";
 import FootersimplePage from "./BlocksScreen/FootersimplePage.vue";
 import FootersplitPage from "./BlocksScreen/FootersplitPage.vue";
 import GalleryheroPage from "./BlocksScreen/GalleryheroPage.vue";
+import GuaranteessimplePage from "./BlocksScreen/GuaranteessimplePage.vue";
 import HeaderPage from "./BlocksScreen/HeaderPage.vue";
 import HeadersimplePage from "./BlocksScreen/HeadersimplePage.vue";
 import HeroPage from "./BlocksScreen/HeroPage.vue";
@@ -205,6 +206,7 @@ const ROUTES = [
   {"path":"footersimple","area":"footersimple"},
   {"path":"footersplit","area":"footersplit"},
   {"path":"galleryhero","area":"galleryhero"},
+  {"path":"guaranteessimple","area":"guaranteessimple"},
   {"path":"header","area":"header"},
   {"path":"headersimple","area":"headersimple"},
   {"path":"hero","area":"hero"},
@@ -373,6 +375,7 @@ const actions = { toggleTheme };
     <FootersimplePage v-else-if="route.area === 'footersimple'" />
     <FootersplitPage v-else-if="route.area === 'footersplit'" />
     <GalleryheroPage v-else-if="route.area === 'galleryhero'" />
+    <GuaranteessimplePage v-else-if="route.area === 'guaranteessimple'" />
     <HeaderPage v-else-if="route.area === 'header'" />
     <HeadersimplePage v-else-if="route.area === 'headersimple'" />
     <HeroPage v-else-if="route.area === 'hero'" />

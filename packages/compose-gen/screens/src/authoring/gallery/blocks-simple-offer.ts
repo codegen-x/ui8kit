@@ -1,6 +1,8 @@
 // The simple line, wave 3: calls to action and offers (organisms in blocks/simple-offer.ts, one content model each). The group
 // of each block is the Stock group of its kind (apps/stock): cta. Variants only set axes, plus the default of `align`.
+import { ref } from "../../build";
 import { define } from "./blocks-define";
+import * as d from "./blocks-data";
 import { t } from "./block-kit";
 
 const k = (block: string) => (key: string) => t(`marketing.${block}.${key}`);
@@ -42,4 +44,19 @@ const promoSimple = define({
   },
 });
 
-export const simpleOfferBlocks = [ctaSimple, promoSimple];
+const gua = k("guaranteesSimple");
+const guaranteesSimple = define({
+  key: "guaranteessimple", theme: "marketing", group: "features", line: "simple", model: "guarantees@1",
+  name: "Simple guarantees", docs: "The heading, one paragraph and the promises (delivery, quality, returns), each a short title and a line: side by side on one muted band, or on cards, in four or three columns.",
+  organism: "GuaranteesSimple", axes: ["layout", "cols"], data: [d.guaranteeItems],
+  variants: [
+    ["strip4", "A strip of four"],
+    ["strip3", "A strip of three", { cols: "3" }],
+    ["cards4", "Four cards", { layout: "cards" }],
+    ["cards3", "Three cards", { layout: "cards", cols: "3" }],
+  ],
+  facts: [h2, { sel: "ul > li", n: "@guaranteeItems" }, { sel: "ul > li h3", n: "@guaranteeItems" }],
+  sample: { id: "guaranteessimple", title: gua("title"), description: gua("description"), items: ref("guaranteeItems") },
+});
+
+export const simpleOfferBlocks = [ctaSimple, promoSimple, guaranteesSimple];

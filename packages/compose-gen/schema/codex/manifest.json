@@ -1189,7 +1189,7 @@
         "id": "perk",
         "label": "Perk",
         "scope": "workspace",
-        "description": "fixtures: perks, simplepolicies",
+        "description": "fixtures: perks, simpleguarantees, simplepolicies",
         "fields": [
           {
             "id": "icon",
