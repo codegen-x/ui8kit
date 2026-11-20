@@ -96,7 +96,7 @@
           </Text>
         {/if}
       </Stack>
-      <List tag="ul" class={cn("m-0 list-none p-0", cn("grid grid-cols-1 gap-8 sm:grid-cols-2", grid))}>
+      <List tag="ul" class={cn("m-0 w-full list-none p-0", cn("grid grid-cols-1 gap-8 sm:grid-cols-2", grid))}>
         {#each items as s (s.id)}
           <ListItem
             class={(((surface as string) === "cards") ? "flex" : cn("flex flex-col gap-2", itemsAlign))}

@@ -93,7 +93,7 @@ const ratio = computed(() => ((cols as string) === "2") ? "4/3" : "1/1");
             {{ description }}
           </Text>
         </Stack>
-        <List tag="ul" :class="cn('m-0 list-none p-0', cn('grid grid-cols-2 gap-4', grid))">
+        <List tag="ul" :class="cn('m-0 w-full list-none p-0', cn('grid grid-cols-2 gap-4', grid))">
           <ListItem v-for="p in photos" :key="p.id" data-slot="photo">
             <MediaFrame :alt="p.imageAlt" :src="p.image" :ratio="ratio" />
           </ListItem>

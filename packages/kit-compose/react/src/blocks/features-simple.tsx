@@ -100,7 +100,7 @@ export function FeaturesSimple({
               </Text>
             ) : null}
           </Stack>
-          <List tag="ul" className={cn("m-0 list-none p-0", cn("grid grid-cols-1 gap-8 sm:grid-cols-2", grid))}>
+          <List tag="ul" className={cn("m-0 w-full list-none p-0", cn("grid grid-cols-1 gap-8 sm:grid-cols-2", grid))}>
             {(items ?? []).map((f) => (
               <ListItem key={f.id} className={item} data-slot="feature">
                 <MediaFrame alt={f.title} src={f.image} ratio="1/1" className="size-12 shrink-0 rounded-full" />

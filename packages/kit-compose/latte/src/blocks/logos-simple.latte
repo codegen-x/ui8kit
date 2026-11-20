@@ -30,7 +30,7 @@
           {=og_include('compose/ListItem.latte', ['class' => og_s($v_item), 'attrs' => og_attrs(['data-slot', 'logo']), 'children' => (string) $c_2])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s(og_cnv(['m-0 list-none p-0', og_cnv(['w-full', $v_row])])), 'children' => (string) $c_3])|noescape}
+      {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s(og_cnv(['m-0 w-full list-none p-0', $v_row])), 'children' => (string) $c_3])|noescape}
     {/capture}
     {=og_include('compose/Stack.latte', ['gap' => '8', 'align' => og_s($v_column), 'children' => (string) $c_4])|noescape}
   {/capture}

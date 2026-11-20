@@ -88,7 +88,7 @@
       <Title as={level} size="lg" weight="semibold" class={cn("text-muted-foreground", textAlign)} id={titleId}>
         {title}
       </Title>
-      <List tag="ul" class={cn("m-0 list-none p-0", cn("w-full", row))}>
+      <List tag="ul" class={cn("m-0 w-full list-none p-0", row)}>
         {#each logos as l (l.id)}
           <ListItem class={item} data-slot="logo">
             <MediaFrame alt={l.title} src={l.image} />

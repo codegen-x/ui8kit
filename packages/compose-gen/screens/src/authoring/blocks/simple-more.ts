@@ -26,7 +26,8 @@ const itemTitle = (field: string, size = "lg", cls: Value = textAlign) =>
   use("Title", { props: { As: add(ref("level"), 1), Size: size, Weight: "semibold", Class: cls } }, text(ref(field)));
 const itemText = (field: string, cls: Value = textAlign, size = "sm") =>
   when(ref(field), [use("Text", { props: { Size: size, Class: cn("text-muted-foreground", cls) } }, text(ref(field)))]);
-const ulist = (cls: Value, ...body: ViewNode[]) => use("List", { props: { Tag: "ul", Class: cn("m-0 list-none p-0", cls) } }, ...body);
+/** a list that fills its column (w-full), the bullets and the browser spacing off */
+const ulist = (cls: Value, ...body: ViewNode[]) => use("List", { props: { Tag: "ul", Class: cn("m-0 w-full list-none p-0", cls) } }, ...body);
 const is = (axis: string, v: string) => eq(ref(axis), v);
 const isAlignV = (v: string) => eq(ref("align"), v);
 /** a derived class (or ratio): the first value whose test holds, else the fallback (a flat chain: one branch per line in the output) */
@@ -51,10 +52,10 @@ const introSimple = spec(`${O}intro-simple`, "IntroSimple", "The simple intro (m
 
 // ---- GalleryHero (gallery@1): the hero copy beside (or over) three or four photos.
 // One list after the copy in the DOM; at the start it is moved before the copy from md up (md:order-first).
-const galleryHero = spec(`${O}gallery-hero`, "GalleryHero", "The gallery hero (model gallery@1): an optional badge, the heading, a description, up to two links as the actions and three or four photos as a list. Axes: media (end: the photos after the copy, start: before it from md up, bottom: in a row under it), count (3: three square photos in a row, 4: a 2 x 2 grid, a row of four under the copy).", {
+const galleryHero = spec(`${O}gallery-hero`, "GalleryHero", "The gallery hero (model gallery@1): the heading, a description, up to two links as the actions and three or four photos as a list. Axes: media (end: the photos after the copy, start: before it from md up, bottom: in a row under it), count (3: three square photos in a row, 4: a 2 x 2 grid, a row of four under the copy).", {
   records: { GalleryPhoto: fields(["id", "string"], ["image", "string", true], ["imageAlt", "string"]) },
   props: [
-    id, badge, title, description, ...actionProps, list("photos", "GalleryPhoto", "the photos, in the order they are shown (3 or 4)"), level, padding, align,
+    id, title, description, ...actionProps, list("photos", "GalleryPhoto", "the photos, in the order they are shown (3 or 4)"), level, padding, align,
     { name: "media", type: tsOf("end", "start", "bottom"), default: "end" },
     { name: "count", type: tsOf("3", "4"), default: "3" },
   ],
@@ -68,7 +69,6 @@ const galleryHero = spec(`${O}gallery-hero`, "GalleryHero", "The gallery hero (m
   view: [section(
     use("Box", { props: { Class: ref("frame") } },
       use("Stack", { props: { Gap: "6", Align: alignItems } },
-        when(ref("badge"), [use("Badge", { props: { Variant: "secondary" } }, text(ref("badge")))]),
         heading("4xl"),
         lead("lg"),
         actions(alignItems)),
@@ -228,7 +228,7 @@ const logosSimple = spec(`${O}logos-simple`, "LogosSimple", "The simple logos (m
   view: [section(
     use("Stack", { props: { Gap: "8", Align: alignItems } },
       use("Title", { props: { As: ref("level"), Size: "lg", Weight: "semibold", Class: cn("text-muted-foreground", textAlign) }, attrs: { id: ref("titleId") } }, text(ref("title"))),
-      ulist(cn("w-full", ref("row")),
+      ulist(ref("row"),
         each(ref("logos"), "l", ref("l.id"),
           use("ListItem", { props: { Class: ref("item") }, attrs: { "data-testid": "logo" } },
             organism("MediaFrame", { alt: ref("l.title"), src: ref("l.image"), ratio: "16/9" }))))))],
@@ -272,7 +272,7 @@ const stepsSimple = spec(`${O}steps-simple`, "StepsSimple", "The simple steps (m
   view: [section(
     use("Stack", { props: { Gap: "12", Align: "stretch", Class: ref("narrow") } },
       head(),
-      use("List", { props: { Tag: "ol", Class: cn("m-0 grid list-none grid-cols-1 gap-8 p-0", ref("grid")) } },
+      use("List", { props: { Tag: "ol", Class: cn("m-0 grid w-full list-none grid-cols-1 gap-8 p-0", ref("grid")) } },
         each(ref("steps"), "s", ref("s.id"),
           use("ListItem", { props: { Class: ref("item") }, attrs: { "data-testid": "step" } },
             use("Badge", { props: { Variant: "secondary" } }, text(ref("s.label"))),

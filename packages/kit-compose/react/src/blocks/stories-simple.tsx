@@ -85,7 +85,7 @@ export function StoriesSimple({
               </Text>
             ) : null}
           </Stack>
-          <List tag="ul" className={cn("m-0 list-none p-0", cn("grid grid-cols-1 gap-8", grid))}>
+          <List tag="ul" className={cn("m-0 w-full list-none p-0", cn("grid grid-cols-1 gap-8", grid))}>
             {(stories ?? []).map((s) => (
               <ListItem key={s.id} className={item} data-slot="story">
                 <MediaFrame alt={s.title} src={s.image} ratio={coverRatio} className={cover} />

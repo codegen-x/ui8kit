@@ -31,7 +31,7 @@ const introSimple = define({
 const gal = k("galleryHero");
 const galleryHero = define({
   key: "galleryhero", theme: "marketing", group: "hero", line: "simple", model: "gallery@1",
-  name: "Gallery hero", docs: "A badge, the heading, one paragraph and up to two links as the actions beside three or four photos: at the end, at the start, or in a row under the copy.",
+  name: "Gallery hero", docs: "The heading, one paragraph and up to two links as the actions beside three or four photos: at the end, at the start, or in a row under the copy.",
   organism: "GalleryHero", axes: ["media", "count"], data: [d.galleryPhotos, d.galleryPhotos4],
   variants: [
     ["photos3", "Three photos at the end"],
@@ -42,7 +42,7 @@ const galleryHero = define({
     ["photos4Bottom", "Four photos under the copy", { media: "bottom", count: "4" }, { align: "center", photos: ref("galleryPhotos4") }],
   ],
   facts: [h2, { sel: 'a[data-slot="button"][href]', n: 2 }, { sel: "ul > li", n: "$count" }, { sel: '[data-slot="media-frame"]', n: "$count" }],
-  sample: { id: "galleryhero", badge: gal("badge"), title: gal("title"), description: gal("description"), ...actionPair(gal), photos: ref("galleryPhotos") },
+  sample: { id: "galleryhero", title: gal("title"), description: gal("description"), ...actionPair(gal), photos: ref("galleryPhotos") },
 });
 
 const fea = k("featuresSimple");

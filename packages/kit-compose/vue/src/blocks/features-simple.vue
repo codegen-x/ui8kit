@@ -121,7 +121,7 @@ const copyText = computed(() =>
             {{ description }}
           </Text>
         </Stack>
-        <List tag="ul" :class="cn('m-0 list-none p-0', cn('grid grid-cols-1 gap-8 sm:grid-cols-2', grid))">
+        <List tag="ul" :class="cn('m-0 w-full list-none p-0', cn('grid grid-cols-1 gap-8 sm:grid-cols-2', grid))">
           <ListItem v-for="f in items" :key="f.id" :class="item" data-slot="feature">
             <MediaFrame :alt="f.title" :src="f.image" ratio="1/1" class="size-12 shrink-0 rounded-full" />
             <Stack gap="2" :align="copyAlign">

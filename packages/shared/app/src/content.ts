@@ -335,7 +335,7 @@ export const ui = {
       "splitsimple": "Two halves: the heading, one paragraph and up to two links as the actions (primary, then secondary) beside one picture that fills its half to the edge of the screen.",
       "teamsimple": "The heading, one paragraph and the people as a list: a portrait, the name and the role, in two, three or four columns, plain or on cards.",
       "introsimple": "Text only: a badge, a large heading, one paragraph and up to two links as the actions (primary, then secondary), centred or at the start, in the middle of the section or low in a tall one.",
-      "galleryhero": "A badge, the heading, one paragraph and up to two links as the actions beside three or four photos: at the end, at the start, or in a row under the copy.",
+      "galleryhero": "The heading, one paragraph and up to two links as the actions beside three or four photos: at the end, at the start, or in a row under the copy.",
       "featuressimple": "The heading, one paragraph and the features as a list (an icon disc, a title, a line): in columns under the heading or beside it, the icon on top or at the side.",
       "statssimple": "The heading, one paragraph and the figures as a list (a large value, a label, a note), in two, three or four columns, plain or on cards.",
       "storiessimple": "The heading, one paragraph and the stories as a list (a cover, the title as a link, a line): cards in two or three columns, or compact rows on a card surface.",
@@ -1383,7 +1383,6 @@ export const ui = {
       "secondaryActionLabel": "Read the guide"
     },
     "galleryHero": {
-      "badge": "Studio",
       "title": "Show the work, not the words",
       "description": "Three or four photos beside the copy, in a grid or layered.",
       "actionLabel": "See the work",

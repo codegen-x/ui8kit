@@ -30,7 +30,7 @@
           {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(v_item), 'Attrs': og_attrs(['data-slot', 'logo'])}, 'children': c_2}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(og_cnv(['m-0 list-none p-0', og_cnv(['w-full', v_row])]))}, 'children': c_3}) }}
+      {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(og_cnv(['m-0 w-full list-none p-0', v_row]))}, 'children': c_3}) }}
     {%- endset -%}
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '8', 'Align': og_s(v_column)}, 'children': c_4}) }}
   {%- endset -%}

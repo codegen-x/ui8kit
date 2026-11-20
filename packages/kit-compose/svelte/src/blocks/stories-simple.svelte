@@ -103,7 +103,7 @@
           </Text>
         {/if}
       </Stack>
-      <List tag="ul" class={cn("m-0 list-none p-0", cn("grid grid-cols-1 gap-8", grid))}>
+      <List tag="ul" class={cn("m-0 w-full list-none p-0", cn("grid grid-cols-1 gap-8", grid))}>
         {#each stories as s (s.id)}
           <ListItem class={item} data-slot="story">
             <MediaFrame alt={s.title} src={s.image} ratio={coverRatio} class={cover} />

@@ -94,7 +94,7 @@
           </Text>
         {/if}
       </Stack>
-      <List tag="ul" class={cn("m-0 list-none p-0", cn("grid grid-cols-2 gap-4", grid))}>
+      <List tag="ul" class={cn("m-0 w-full list-none p-0", cn("grid grid-cols-2 gap-4", grid))}>
         {#each photos as p (p.id)}
           <ListItem data-slot="photo">
             <MediaFrame alt={p.imageAlt} src={p.image} ratio={ratio} />

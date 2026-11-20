@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "organism.gallery-hero",
   "name": "GalleryHero",
-  "docs": "The gallery hero (model gallery@1): an optional badge, the heading, a description, up to two links as the actions and three or four photos as a list. Axes: media (end: the photos after the copy, start: before it from md up, bottom: in a row under it), count (3: three square photos in a row, 4: a 2 x 2 grid, a row of four under the copy).",
+  "docs": "The gallery hero (model gallery@1): the heading, a description, up to two links as the actions and three or four photos as a list. Axes: media (end: the photos after the copy, start: before it from md up, bottom: in a row under it), count (3: three square photos in a row, 4: a 2 x 2 grid, a row of four under the copy).",
   "records": {
     "GalleryPhoto": [
       {
@@ -26,12 +26,6 @@
       "name": "id",
       "type": "string",
       "required": true
-    },
-    {
-      "name": "badge",
-      "type": "string",
-      "default": "",
-      "docs": "a short pill above the heading; empty: no badge"
     },
     {
       "name": "title",
@@ -407,26 +401,6 @@
                   },
                   "children": [
                     {
-                      "when": {
-                        "$": "badge"
-                      },
-                      "then": [
-                        {
-                          "use": "Badge",
-                          "props": {
-                            "Variant": "secondary"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "badge"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
                       "use": "Title",
                       "props": {
                         "As": {
@@ -603,7 +577,7 @@
                     "Class": {
                       "op": "cn",
                       "args": [
-                        "m-0 list-none p-0",
+                        "m-0 w-full list-none p-0",
                         {
                           "op": "cn",
                           "args": [

@@ -439,7 +439,7 @@
                     "Class": {
                       "op": "cn",
                       "args": [
-                        "m-0 list-none p-0",
+                        "m-0 w-full list-none p-0",
                         {
                           "op": "cn",
                           "args": [

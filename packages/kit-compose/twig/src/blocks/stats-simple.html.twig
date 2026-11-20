@@ -81,7 +81,7 @@
           {{ include('compose/ListItem.html.twig', {'class': og_s((og_t(og_eq(v_surface, 'cards')) ? 'flex' : og_cnv(['flex flex-col gap-2', v_itemsAlign]))), 'attrs': og_attrs(['data-slot', 'stat']), 'children': c_13}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/List.html.twig', {'tag': 'ul', 'class': og_s(og_cnv(['m-0 list-none p-0', og_cnv(['grid grid-cols-1 gap-8 sm:grid-cols-2', v_grid])])), 'children': c_14}, with_context = false) }}
+      {{ include('compose/List.html.twig', {'tag': 'ul', 'class': og_s(og_cnv(['m-0 w-full list-none p-0', og_cnv(['grid grid-cols-1 gap-8 sm:grid-cols-2', v_grid])])), 'children': c_14}, with_context = false) }}
     {%- endset -%}
     {{ include('compose/Stack.html.twig', {'gap': '12', 'align': 'stretch', 'children': c_15}, with_context = false) }}
   {%- endset -%}

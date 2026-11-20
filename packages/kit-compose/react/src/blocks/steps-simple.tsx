@@ -95,7 +95,7 @@ export function StepsSimple({
               </Text>
             ) : null}
           </Stack>
-          <List tag="ol" className={cn("m-0 grid list-none grid-cols-1 gap-8 p-0", grid)}>
+          <List tag="ol" className={cn("m-0 grid w-full list-none grid-cols-1 gap-8 p-0", grid)}>
             {(steps ?? []).map((s) => (
               <ListItem key={s.id} className={item} data-slot="step">
                 <Badge variant="secondary">

@@ -79,7 +79,7 @@ export function StatsSimple({
               </Text>
             ) : null}
           </Stack>
-          <List tag="ul" className={cn("m-0 list-none p-0", cn("grid grid-cols-1 gap-8 sm:grid-cols-2", grid))}>
+          <List tag="ul" className={cn("m-0 w-full list-none p-0", cn("grid grid-cols-1 gap-8 sm:grid-cols-2", grid))}>
             {(items ?? []).map((s) => (
               <ListItem key={s.id}
                 className={(((surface as string) === "cards") ? "flex" : cn("flex flex-col gap-2", itemsAlign))}

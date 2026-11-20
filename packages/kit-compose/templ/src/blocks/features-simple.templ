@@ -60,7 +60,7 @@ templ FeaturesSimple(p FeaturesSimpleProps) {
 						}
 					}
 				}
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 list-none p-0", uiutils.Cnv("grid grid-cols-1 gap-8 sm:grid-cols-2", vGrid)))}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 w-full list-none p-0", uiutils.Cnv("grid grid-cols-1 gap-8 sm:grid-cols-2", vGrid)))}}) {
 					for _, vF := range uiutils.L(vItems) {
 						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(vItem), Attrs: uiutils.Attrs("data-slot", "feature")}}) {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vF, "title"), Src: uiutils.Get(vF, "image"), Ratio: "1/1", Class: uiutils.Cnv("size-12 shrink-0 rounded-full")})

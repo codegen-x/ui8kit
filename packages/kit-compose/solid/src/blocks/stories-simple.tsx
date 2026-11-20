@@ -85,7 +85,7 @@ export function StoriesSimple({
               </Text>
             ) : null}
           </Stack>
-          <List tag="ul" class={cn("m-0 list-none p-0", cn("grid grid-cols-1 gap-8", grid))}>
+          <List tag="ul" class={cn("m-0 w-full list-none p-0", cn("grid grid-cols-1 gap-8", grid))}>
             <For each={stories ?? []}>{(s) => (
               <ListItem class={item} data-slot="story">
                 <MediaFrame alt={s.title} src={s.image} ratio={coverRatio} class={cover} />

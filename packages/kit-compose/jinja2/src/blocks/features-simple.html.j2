@@ -59,7 +59,7 @@
           {{ og_include('compose/list-item.html.j2', {'p': {'Class': og_s(v_item), 'Attrs': og_attrs(['data-slot', 'feature'])}, 'children': c_7}) }}
         {%- endfor %}
       {%- endset -%}
-      {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(og_cnv(['m-0 list-none p-0', og_cnv(['grid grid-cols-1 gap-8 sm:grid-cols-2', v_grid])]))}, 'children': c_8}) }}
+      {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(og_cnv(['m-0 w-full list-none p-0', og_cnv(['grid grid-cols-1 gap-8 sm:grid-cols-2', v_grid])]))}, 'children': c_8}) }}
     {%- endset -%}
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '12', 'Align': 'stretch', 'Class': og_s(v_frame)}, 'children': c_9}) }}
   {%- endset -%}

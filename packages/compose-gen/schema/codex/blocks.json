@@ -3162,11 +3162,6 @@
       ],
       "labels": [
         {
-          "prop": "badge",
-          "dictionary": "marketing.galleryHero.badge",
-          "keys": []
-        },
-        {
           "prop": "title",
           "dictionary": "marketing.galleryHero.title",
           "keys": []

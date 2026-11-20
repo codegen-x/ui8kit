@@ -110,8 +110,9 @@ class Projector {
   places = new Map<string, Place>();
   /** the addresses of the enclosing Link compositions: a place inside a link carries the address too */
   links: Field[][] = [];
-  /** the alt text of a picture read from a title field: kept on the picture place only when no other place draws that field */
-  alts: { place: string; pointer: string }[] = [];
+  /** the alt text of a picture read from a title field joins the picture place only when no other place draws that field
+   * (logos-simple: the name is the alt only); found by a first pass (project) */
+  altTitles = new Set<string>();
   /** the clean organism declares the align setting with the values of ShapeText align */
   alignable: boolean;
   /** the derived values of the clean organism, inlined: a prototype has no derived values (`derived: []`) */
@@ -177,11 +178,10 @@ class Projector {
       const props = Object.fromEntries(Object.entries(n.props ?? {}).map(([k, v]) => [k, k === "ratio" || k === "className" ? this.inline(v) : v]));
       const src = this.fieldsOf(props["src"], loops)[0];
       if (!src) return undefined;
-      const more = [...this.fieldsOf(props["alt"], loops), ...this.fieldsOf(props["darkSrc"], loops)].filter((f) => f.field !== "title" && f.pointer !== src.pointer);
+      const more = [...this.fieldsOf(props["alt"], loops), ...this.fieldsOf(props["darkSrc"], loops)].filter((f) => (f.field !== "title" || this.altTitles.has(f.pointer)) && f.pointer !== src.pointer);
       const all = [src, ...more].filter((f, i, a) => a.findIndex((x) => x.pointer === f.pointer) === i);
       const place: Place = { place: src.list ? prefixed(src) : "media", kind: "media", fields: all.map((f) => f.pointer), ...(src.list ? { list: src.list } : {}) };
       this.add(place);
-      for (const f of this.fieldsOf(props["alt"], loops)) if (f.field === "title") this.alts.push({ place: place.place, pointer: f.pointer });
       const field = all.map((f) => f.value).join(" ");
       return src.list && isDisc(props["className"])
         ? organism(SHAPE.ShapeAvatar.name, { place: place.place, field })
@@ -262,10 +262,14 @@ const prefixed = (f: Field): string => (f.list ? `${f.list}.${f.field}` : f.fiel
 /** the prototype of a clean organism for its block and model, and its places */
 export function project(clean: OrganismSpec, block: BlockSpec, model: ModelSpec): { organism: OrganismSpec; places: Place[] } {
   const keep = new Set<string>([...Object.keys(block.axes), ...PROTOTYPE_SETTINGS.filter((s) => clean.props.some((p) => p.name === s))]);
+  // a first pass finds the title fields no place draws; the second draws them as the alt text of their picture
+  const first = new Projector(model, keep, clean, block.axes);
+  first.nodes(clean.view, []);
+  const placed = new Set([...first.places.values()].flatMap((p) => p.fields));
   const pr = new Projector(model, keep, clean, block.axes);
+  const listTitles = Object.entries(model.fields).flatMap(([k, f]) => (f.type === "list" && f.item?.fields["title"] ? [`/${k}/*/title`] : []));
+  pr.altTitles = new Set(listTitles.filter((x) => !placed.has(x)));
   const view = pr.nodes(clean.view, []);
-  const placed = new Set([...pr.places.values()].flatMap((p) => p.fields));
-  for (const a of pr.alts) if (!placed.has(a.pointer)) pr.add({ ...pr.places.get(a.place)!, fields: [a.pointer] });
   const organismSpec: OrganismSpec = {
     ...clean,
     docs: `${clean.docs} Prototype (packages/prototypes): the wireframe, rectangles only; each shape carries data-place and data-field.`,

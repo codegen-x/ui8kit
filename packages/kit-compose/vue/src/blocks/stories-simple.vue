@@ -102,7 +102,7 @@ const cover = computed(() => ((layout as string) === "compact") ? "size-16 shrin
             {{ description }}
           </Text>
         </Stack>
-        <List tag="ul" :class="cn('m-0 list-none p-0', cn('grid grid-cols-1 gap-8', grid))">
+        <List tag="ul" :class="cn('m-0 w-full list-none p-0', cn('grid grid-cols-1 gap-8', grid))">
           <ListItem v-for="s in stories" :key="s.id" :class="item" data-slot="story">
             <MediaFrame :alt="s.title" :src="s.image" :ratio="coverRatio" :class="cover" />
             <Stack gap="2" align="start">

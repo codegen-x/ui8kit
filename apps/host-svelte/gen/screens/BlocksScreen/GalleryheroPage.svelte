@@ -62,7 +62,6 @@
         <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
           <GalleryHero
             id="galleryhero-photos3"
-            badge={ui.marketing.galleryHero.badge}
             title={ui.marketing.galleryHero.title}
             description={ui.marketing.galleryHero.description}
             actionLabel={ui.marketing.galleryHero.actionLabel}
@@ -92,7 +91,6 @@
         <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
           <GalleryHero
             id="galleryhero-photos4"
-            badge={ui.marketing.galleryHero.badge}
             title={ui.marketing.galleryHero.title}
             description={ui.marketing.galleryHero.description}
             actionLabel={ui.marketing.galleryHero.actionLabel}
@@ -122,7 +120,6 @@
         <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
           <GalleryHero
             id="galleryhero-photos3Start"
-            badge={ui.marketing.galleryHero.badge}
             title={ui.marketing.galleryHero.title}
             description={ui.marketing.galleryHero.description}
             actionLabel={ui.marketing.galleryHero.actionLabel}
@@ -152,7 +149,6 @@
         <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
           <GalleryHero
             id="galleryhero-photos4Start"
-            badge={ui.marketing.galleryHero.badge}
             title={ui.marketing.galleryHero.title}
             description={ui.marketing.galleryHero.description}
             actionLabel={ui.marketing.galleryHero.actionLabel}
@@ -182,7 +178,6 @@
         <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
           <GalleryHero
             id="galleryhero-photos3Bottom"
-            badge={ui.marketing.galleryHero.badge}
             title={ui.marketing.galleryHero.title}
             description={ui.marketing.galleryHero.description}
             actionLabel={ui.marketing.galleryHero.actionLabel}
@@ -213,7 +208,6 @@
         <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
           <GalleryHero
             id="galleryhero-photos4Bottom"
-            badge={ui.marketing.galleryHero.badge}
             title={ui.marketing.galleryHero.title}
             description={ui.marketing.galleryHero.description}
             actionLabel={ui.marketing.galleryHero.actionLabel}

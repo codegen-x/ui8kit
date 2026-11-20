@@ -1983,9 +1983,6 @@
    },
    "sample": {
     "id": "galleryhero",
-    "badge": {
-     "$": "ui.marketing.galleryHero.badge"
-    },
     "title": {
      "$": "ui.marketing.galleryHero.title"
     },
@@ -2084,7 +2081,6 @@
    "orgProps": {
     "GalleryHero": [
      "id",
-     "badge",
      "title",
      "description",
      "actionLabel",

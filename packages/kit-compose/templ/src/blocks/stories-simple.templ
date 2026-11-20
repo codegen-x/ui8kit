@@ -58,7 +58,7 @@ templ StoriesSimple(p StoriesSimpleProps) {
 						}
 					}
 				}
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 list-none p-0", uiutils.Cnv("grid grid-cols-1 gap-8", vGrid)))}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 w-full list-none p-0", uiutils.Cnv("grid grid-cols-1 gap-8", vGrid)))}}) {
 					for _, vS := range uiutils.L(vStories) {
 						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(vItem), Attrs: uiutils.Attrs("data-slot", "story")}}) {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vS, "title"), Src: uiutils.Get(vS, "image"), Ratio: vCoverRatio, Class: uiutils.Cnv(vCover)})

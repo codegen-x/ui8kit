@@ -12,10 +12,8 @@ export type GalleryPhoto = {
   imageAlt: string;
 };
 
-/** Gallery hero content: an optional badge, the heading, a description, up to two actions and three or four photos. One object is valid in every gallery layout (a grid of photos at the end or the start, layered photos at the end or under the copy). */
+/** Gallery hero content: the heading, a description, up to two actions and three or four photos. One object is valid in every gallery layout (a grid of photos at the end or the start, layered photos at the end or under the copy). */
 export type GalleryContent = {
-  /** a short pill above the heading; empty: no badge */
-  badge?: string;
   /** the heading of the section */
   title: string;
   /** one paragraph under the heading; empty: none */
@@ -36,13 +34,8 @@ export const model = {
   "specVersion": 1,
   "id": "gallery",
   "version": 1,
-  "docs": "Gallery hero content: an optional badge, the heading, a description, up to two actions and three or four photos. One object is valid in every gallery layout (a grid of photos at the end or the start, layered photos at the end or under the copy).",
+  "docs": "Gallery hero content: the heading, a description, up to two actions and three or four photos. One object is valid in every gallery layout (a grid of photos at the end or the start, layered photos at the end or under the copy).",
   "fields": {
-    "badge": {
-      "type": "text",
-      "maxLength": 40,
-      "docs": "a short pill above the heading; empty: no badge"
-    },
     "title": {
       "type": "text",
       "maxLength": 120,

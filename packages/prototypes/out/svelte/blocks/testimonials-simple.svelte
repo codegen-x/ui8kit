@@ -61,7 +61,7 @@
       <Box
         tag="ul"
         class={cn(
-          "m-0 p-0",
+          "m-0 w-full p-0",
           cn("grid grid-cols-1", (((layout as string) === "rows") ? "gap-12" : (((layout as string) === "centered") ? "mx-auto max-w-3xl gap-16" : (((cols as string) === "2") ? "gap-8 md:grid-cols-2" : "gap-8 md:grid-cols-3"))))
         )}
       >

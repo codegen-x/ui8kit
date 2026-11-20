@@ -60,7 +60,7 @@ templ TestimonialsSimple(p TestimonialsSimpleProps) {
 						}
 					}
 				}
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 list-none p-0", uiutils.Cnv("grid grid-cols-1", vGrid)))}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 w-full list-none p-0", uiutils.Cnv("grid grid-cols-1", vGrid)))}}) {
 					for _, vQ := range uiutils.L(vQuotes) {
 						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(vItem), Attrs: uiutils.Attrs("data-slot", "quote")}}) {
 							@compose.Text(compose.TextProps{Size: uiutils.S(vQuoteSize), TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("md:grow", vQuoteText))}}) {

@@ -78,7 +78,7 @@ export function PhotosSimple({
               </Text>
             ) : null}
           </Stack>
-          <List tag="ul" className={cn("m-0 list-none p-0", cn("grid grid-cols-2 gap-4", grid))}>
+          <List tag="ul" className={cn("m-0 w-full list-none p-0", cn("grid grid-cols-2 gap-4", grid))}>
             {(photos ?? []).map((p) => (
               <ListItem key={p.id} data-slot="photo">
                 <MediaFrame alt={p.imageAlt} src={p.image} ratio={ratio} />

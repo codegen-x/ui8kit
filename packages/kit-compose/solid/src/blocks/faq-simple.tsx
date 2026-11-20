@@ -74,7 +74,7 @@ export function FaqSimple({
               </Text>
             ) : null}
           </Stack>
-          <List tag="ul" class={cn("m-0 list-none p-0", cn("grid grid-cols-1 gap-8", grid))}>
+          <List tag="ul" class={cn("m-0 w-full list-none p-0", cn("grid grid-cols-1 gap-8", grid))}>
             <For each={items ?? []}>{(f) => (
               <ListItem class="flex flex-col gap-2" data-slot="question">
                 <Title as={(level + 1)} size="lg" weight="semibold" class="text-start">

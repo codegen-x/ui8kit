@@ -43,7 +43,7 @@ templ LogosSimple(p LogosSimpleProps) {
 				@compose.Title(compose.TitleProps{As: uiutils.S(vLevel), Size: "lg", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("text-muted-foreground", vTextAlign)), Attrs: uiutils.Attrs("id", vTitleId)}}) {
 					{ uiutils.Text(vTitle) }
 				}
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 list-none p-0", uiutils.Cnv("w-full", vRow)))}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 w-full list-none p-0", vRow))}}) {
 					for _, vL := range uiutils.L(vLogos) {
 						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(vItem), Attrs: uiutils.Attrs("data-slot", "logo")}}) {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vL, "title"), Src: uiutils.Get(vL, "image")})

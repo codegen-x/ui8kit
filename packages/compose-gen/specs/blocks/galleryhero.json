@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "block.galleryhero",
   "name": "Gallery hero",
-  "docs": "A badge, the heading, one paragraph and up to two links as the actions beside three or four photos: at the end, at the start, or in a row under the copy.",
+  "docs": "The heading, one paragraph and up to two links as the actions beside three or four photos: at the end, at the start, or in a row under the copy.",
   "theme": "marketing",
   "group": "hero",
   "organism": "GalleryHero",
@@ -129,9 +129,6 @@
   "sample": {
     "props": {
       "id": "galleryhero",
-      "badge": {
-        "$": "ui.marketing.galleryHero.badge"
-      },
       "title": {
         "$": "ui.marketing.galleryHero.title"
       },

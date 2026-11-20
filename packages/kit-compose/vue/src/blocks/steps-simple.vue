@@ -114,7 +114,7 @@ const copyText = computed(() =>
             {{ description }}
           </Text>
         </Stack>
-        <List tag="ol" :class="cn('m-0 grid list-none grid-cols-1 gap-8 p-0', grid)">
+        <List tag="ol" :class="cn('m-0 grid w-full list-none grid-cols-1 gap-8 p-0', grid)">
           <ListItem v-for="s in steps" :key="s.id" :class="item" data-slot="step">
             <Badge variant="secondary">
               {{ s.label }}

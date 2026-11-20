@@ -58,7 +58,7 @@ templ StepsSimple(p StepsSimpleProps) {
 						}
 					}
 				}
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ol", Class: uiutils.S(uiutils.Cnv("m-0 grid list-none grid-cols-1 gap-8 p-0", vGrid))}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ol", Class: uiutils.S(uiutils.Cnv("m-0 grid w-full list-none grid-cols-1 gap-8 p-0", vGrid))}}) {
 					for _, vS := range uiutils.L(vSteps) {
 						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(vItem), Attrs: uiutils.Attrs("data-slot", "step")}}) {
 							@compose.Badge(compose.BadgeProps{Variant: "secondary", TextProps: text.TextProps{}}) {

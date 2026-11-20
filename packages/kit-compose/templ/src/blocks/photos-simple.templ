@@ -53,7 +53,7 @@ templ PhotosSimple(p PhotosSimpleProps) {
 						}
 					}
 				}
-				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 list-none p-0", uiutils.Cnv("grid grid-cols-2 gap-4", vGrid)))}}) {
+				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 w-full list-none p-0", uiutils.Cnv("grid grid-cols-2 gap-4", vGrid)))}}) {
 					for _, vP := range uiutils.L(vPhotos) {
 						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "photo")}}) {
 							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "imageAlt"), Src: uiutils.Get(vP, "image"), Ratio: vRatio})

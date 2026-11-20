@@ -48,8 +48,13 @@
       <Box
         tag="ul"
         class={cn(
-          "m-0 p-0",
-          cn("w-full", (((surface as string) === "cards") ? "grid grid-cols-2 gap-4 md:grid-cols-4" : (((align as string) === "center") ? "flex flex-wrap justify-center gap-8" : (((align as string) === "end") ? "flex flex-wrap justify-end gap-8" : "flex flex-wrap justify-start gap-8"))))
+          "m-0 w-full p-0",
+          (
+            (surface as string) === "cards" ? "grid grid-cols-2 gap-4 md:grid-cols-4"
+            : (align as string) === "center" ? "flex flex-wrap justify-center gap-8"
+            : (align as string) === "end" ? "flex flex-wrap justify-end gap-8"
+            : "flex flex-wrap justify-start gap-8"
+          )
         )}
       >
         <Box
@@ -60,7 +65,7 @@
           }
           data-slot="logo"
         >
-          <ShapeMedia aspect="aspect-video" place="logos.image" field="/logos/0/image" />
+          <ShapeMedia aspect="aspect-video" place="logos.image" field="/logos/0/image /logos/0/title" />
         </Box>
         <Box
           tag="li"
@@ -70,7 +75,7 @@
           }
           data-slot="logo"
         >
-          <ShapeMedia aspect="aspect-video" place="logos.image" field="/logos/1/image" />
+          <ShapeMedia aspect="aspect-video" place="logos.image" field="/logos/1/image /logos/1/title" />
         </Box>
         <Box
           tag="li"
@@ -80,7 +85,7 @@
           }
           data-slot="logo"
         >
-          <ShapeMedia aspect="aspect-video" place="logos.image" field="/logos/2/image" />
+          <ShapeMedia aspect="aspect-video" place="logos.image" field="/logos/2/image /logos/2/title" />
         </Box>
       </Box>
     </Box>

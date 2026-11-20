@@ -81,7 +81,7 @@
           {=og_include('compose/ListItem.latte', ['class' => og_s((og_t(og_eq($v_surface, 'cards')) ? 'flex' : og_cnv(['flex flex-col gap-2', $v_itemsAlign]))), 'attrs' => og_attrs(['data-slot', 'stat']), 'children' => (string) $c_13])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s(og_cnv(['m-0 list-none p-0', og_cnv(['grid grid-cols-1 gap-8 sm:grid-cols-2', $v_grid])])), 'children' => (string) $c_14])|noescape}
+      {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s(og_cnv(['m-0 w-full list-none p-0', og_cnv(['grid grid-cols-1 gap-8 sm:grid-cols-2', $v_grid])])), 'children' => (string) $c_14])|noescape}
     {/capture}
     {=og_include('compose/Stack.latte', ['gap' => '12', 'align' => 'stretch', 'children' => (string) $c_15])|noescape}
   {/capture}

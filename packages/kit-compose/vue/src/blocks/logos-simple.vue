@@ -89,7 +89,7 @@ const item = computed(() =>
         <Title :as="level" size="lg" weight="semibold" :class="cn('text-muted-foreground', textAlign)" :id="titleId">
           {{ title }}
         </Title>
-        <List tag="ul" :class="cn('m-0 list-none p-0', cn('w-full', row))">
+        <List tag="ul" :class="cn('m-0 w-full list-none p-0', row)">
           <ListItem v-for="l in logos" :key="l.id" :class="item" data-slot="logo">
             <MediaFrame :alt="l.title" :src="l.image" />
           </ListItem>

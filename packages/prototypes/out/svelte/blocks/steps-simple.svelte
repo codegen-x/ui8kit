@@ -62,7 +62,7 @@
       <Box
         tag="ol"
         class={cn(
-          "m-0 grid grid-cols-1 gap-8 p-0",
+          "m-0 grid w-full grid-cols-1 gap-8 p-0",
           (
             (layout as string) === "column" ? ""
             : (cols as string) === "3" ? "sm:grid-cols-2 md:grid-cols-3"

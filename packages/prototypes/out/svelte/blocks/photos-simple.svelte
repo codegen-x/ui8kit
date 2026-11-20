@@ -53,7 +53,7 @@
       <Box
         tag="ul"
         class={cn(
-          "m-0 p-0",
+          "m-0 w-full p-0",
           cn("grid grid-cols-2 gap-4", (((cols as string) === "2") ? "md:grid-cols-2" : (((cols as string) === "3") ? "md:grid-cols-3" : "md:grid-cols-4")))
         )}
       >

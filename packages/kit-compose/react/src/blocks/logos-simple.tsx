@@ -72,7 +72,7 @@ export function LogosSimple({
           <Title as={level} size="lg" weight="semibold" className={cn("text-muted-foreground", textAlign)} id={titleId}>
             {title}
           </Title>
-          <List tag="ul" className={cn("m-0 list-none p-0", cn("w-full", row))}>
+          <List tag="ul" className={cn("m-0 w-full list-none p-0", row)}>
             {(logos ?? []).map((l) => (
               <ListItem key={l.id} className={item} data-slot="logo">
                 <MediaFrame alt={l.title} src={l.image} />

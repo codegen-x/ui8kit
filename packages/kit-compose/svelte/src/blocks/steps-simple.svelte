@@ -115,7 +115,7 @@
           </Text>
         {/if}
       </Stack>
-      <List tag="ol" class={cn("m-0 grid list-none grid-cols-1 gap-8 p-0", grid)}>
+      <List tag="ol" class={cn("m-0 grid w-full list-none grid-cols-1 gap-8 p-0", grid)}>
         {#each steps as s (s.id)}
           <ListItem class={item} data-slot="step">
             <Badge variant="secondary">

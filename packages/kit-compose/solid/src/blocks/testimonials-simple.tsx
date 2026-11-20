@@ -97,7 +97,7 @@ export function TestimonialsSimple({
               </Text>
             ) : null}
           </Stack>
-          <List tag="ul" class={cn("m-0 list-none p-0", cn("grid grid-cols-1", grid))}>
+          <List tag="ul" class={cn("m-0 w-full list-none p-0", cn("grid grid-cols-1", grid))}>
             <For each={quotes ?? []}>{(q) => (
               <ListItem class={item} data-slot="quote">
                 <Text size={quoteSize} class={cn("md:grow", quoteText)}>

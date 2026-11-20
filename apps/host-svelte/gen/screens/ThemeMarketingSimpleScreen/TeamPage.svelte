@@ -60,7 +60,6 @@
 />
 <GalleryHero
   id="team-galleryhero"
-  badge={ui.marketing.galleryHero.badge}
   title={ui.marketing.galleryHero.title}
   description={ui.marketing.galleryHero.description}
   actionLabel={ui.marketing.galleryHero.actionLabel}

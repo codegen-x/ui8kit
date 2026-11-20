@@ -41,7 +41,7 @@
           {=og_include('compose/ListItem.latte', ['attrs' => og_attrs(['data-slot', 'photo']), 'children' => (string) $c_4])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s(og_cnv(['m-0 list-none p-0', og_cnv(['grid grid-cols-2 gap-4', $v_grid])])), 'children' => (string) $c_5])|noescape}
+      {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s(og_cnv(['m-0 w-full list-none p-0', og_cnv(['grid grid-cols-2 gap-4', $v_grid])])), 'children' => (string) $c_5])|noescape}
     {/capture}
     {=og_include('compose/Stack.latte', ['gap' => '12', 'align' => 'stretch', 'children' => (string) $c_6])|noescape}
   {/capture}

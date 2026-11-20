@@ -67,7 +67,7 @@
           {=og_include('compose/ListItem.latte', ['class' => og_s($v_item), 'attrs' => og_attrs(['data-slot', 'story']), 'children' => (string) $c_9])|noescape}
         {/foreach}
       {/capture}
-      {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s(og_cnv(['m-0 list-none p-0', og_cnv(['grid grid-cols-1 gap-8', $v_grid])])), 'children' => (string) $c_10])|noescape}
+      {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s(og_cnv(['m-0 w-full list-none p-0', og_cnv(['grid grid-cols-1 gap-8', $v_grid])])), 'children' => (string) $c_10])|noescape}
     {/capture}
     {=og_include('compose/Stack.latte', ['gap' => '12', 'align' => 'stretch', 'children' => (string) $c_11])|noescape}
   {/capture}

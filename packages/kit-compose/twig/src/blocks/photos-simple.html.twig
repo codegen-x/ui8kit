@@ -41,7 +41,7 @@
           {{ include('compose/ListItem.html.twig', {'attrs': og_attrs(['data-slot', 'photo']), 'children': c_4}, with_context = false) }}
         {%- endfor %}
       {%- endset -%}
-      {{ include('compose/List.html.twig', {'tag': 'ul', 'class': og_s(og_cnv(['m-0 list-none p-0', og_cnv(['grid grid-cols-2 gap-4', v_grid])])), 'children': c_5}, with_context = false) }}
+      {{ include('compose/List.html.twig', {'tag': 'ul', 'class': og_s(og_cnv(['m-0 w-full list-none p-0', og_cnv(['grid grid-cols-2 gap-4', v_grid])])), 'children': c_5}, with_context = false) }}
     {%- endset -%}
     {{ include('compose/Stack.html.twig', {'gap': '12', 'align': 'stretch', 'children': c_6}, with_context = false) }}
   {%- endset -%}
