@@ -79,10 +79,8 @@
     : ""
   );
   const frame = $derived(
-    ((layout as string) === "stack") && ((align as string) === "center") ? "flex w-full max-w-md flex-col gap-8 self-center"
-    : ((layout as string) === "stack") && ((align as string) === "end") ? "flex w-full max-w-md flex-col gap-8 self-end"
-    : (layout as string) === "stack" ? "flex w-full max-w-md flex-col gap-8"
-    : "grid grid-cols-1 gap-8 md:grid-cols-2"
+    (layout as string) === "stack" ? "flex w-full max-w-md flex-col gap-8"
+    : "grid w-full grid-cols-1 gap-8 md:grid-cols-2"
   );
   const panel = $derived(
     (surface as string) === "card" ? "rounded bg-card p-6 text-card-foreground border border-border"
@@ -113,7 +111,7 @@
           </Text>
         {/if}
       </Stack>
-      <Box class={frame}>
+      <Box class={cn(frame, selfAlign)}>
         <Stack gap="4" align={column} class={panel}>
           <Text size="lg" weight="semibold" class={textAlign}>
             {address}
@@ -131,18 +129,20 @@
             </LinkPlain>
           {/if}
         </Stack>
-        <List tag="ul" class={cn("m-0 w-full list-none p-0", cn("grid grid-cols-1 gap-2", panel))}>
-          {#each items as h (h.id)}
-            <ListItem class="flex flex-row justify-between gap-4" data-slot="opening-hour">
-              <Text size="base" class="text-muted-foreground">
-                {h.day}
-              </Text>
-              <Text size="base" weight="semibold">
-                {h.time}
-              </Text>
-            </ListItem>
-          {/each}
-        </List>
+        <Box class={panel}>
+          <List tag="ul" class={cn("m-0 w-full list-none p-0", "grid grid-cols-1 gap-2")}>
+            {#each items as h (h.id)}
+              <ListItem class="flex flex-row justify-between gap-4" data-slot="opening-hour">
+                <Text size="base" class="text-muted-foreground">
+                  {h.day}
+                </Text>
+                <Text size="base" weight="semibold">
+                  {h.time}
+                </Text>
+              </ListItem>
+            {/each}
+          </List>
+        </Box>
       </Box>
     </Stack>
   </Container>

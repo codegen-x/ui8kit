@@ -63,10 +63,8 @@ export function HoursSimple({
     : (align as string) === "end" ? "self-end"
     : "";
   const frame =
-    ((layout as string) === "stack") && ((align as string) === "center") ? "flex w-full max-w-md flex-col gap-8 self-center"
-    : ((layout as string) === "stack") && ((align as string) === "end") ? "flex w-full max-w-md flex-col gap-8 self-end"
-    : (layout as string) === "stack" ? "flex w-full max-w-md flex-col gap-8"
-    : "grid grid-cols-1 gap-8 md:grid-cols-2";
+    (layout as string) === "stack" ? "flex w-full max-w-md flex-col gap-8"
+    : "grid w-full grid-cols-1 gap-8 md:grid-cols-2";
   const panel =
     (surface as string) === "card" ? "rounded bg-card p-6 text-card-foreground border border-border"
     : "";
@@ -94,7 +92,7 @@ export function HoursSimple({
               </Text>
             ) : null}
           </Stack>
-          <Box class={frame}>
+          <Box class={cn(frame, selfAlign)}>
             <Stack gap="4" align={column} class={panel}>
               <Text size="lg" weight="semibold" class={textAlign}>
                 {address}
@@ -112,18 +110,20 @@ export function HoursSimple({
                 </LinkPlain>
               ) : null}
             </Stack>
-            <List tag="ul" class={cn("m-0 w-full list-none p-0", cn("grid grid-cols-1 gap-2", panel))}>
-              <For each={items ?? []}>{(h) => (
-                <ListItem class="flex flex-row justify-between gap-4" data-slot="opening-hour">
-                  <Text size="base" class="text-muted-foreground">
-                    {h.day}
-                  </Text>
-                  <Text size="base" weight="semibold">
-                    {h.time}
-                  </Text>
-                </ListItem>
-              )}</For>
-            </List>
+            <Box class={panel}>
+              <List tag="ul" class={cn("m-0 w-full list-none p-0", "grid grid-cols-1 gap-2")}>
+                <For each={items ?? []}>{(h) => (
+                  <ListItem class="flex flex-row justify-between gap-4" data-slot="opening-hour">
+                    <Text size="base" class="text-muted-foreground">
+                      {h.day}
+                    </Text>
+                    <Text size="base" weight="semibold">
+                      {h.time}
+                    </Text>
+                  </ListItem>
+                )}</For>
+              </List>
+            </Box>
           </Box>
         </Stack>
       </Container>

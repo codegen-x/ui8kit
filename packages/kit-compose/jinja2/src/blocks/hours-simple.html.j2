@@ -21,11 +21,11 @@
 {%- set v_column = ('center' if og_t(og_eq(v_align, 'center')) else ('end' if og_t(og_eq(v_align, 'end')) else 'start')) -%}
 {%- set v_textAlign = ('text-center' if og_t(og_eq(v_align, 'center')) else ('text-end' if og_t(og_eq(v_align, 'end')) else 'text-start')) -%}
 {%- set v_selfAlign = ('self-center' if og_t(og_eq(v_align, 'center')) else ('self-end' if og_t(og_eq(v_align, 'end')) else '')) -%}
-{%- set v_frame = ('flex w-full max-w-md flex-col gap-8 self-center' if og_t(og_and([og_eq(v_layout, 'stack'), og_eq(v_align, 'center')])) else ('flex w-full max-w-md flex-col gap-8 self-end' if og_t(og_and([og_eq(v_layout, 'stack'), og_eq(v_align, 'end')])) else ('flex w-full max-w-md flex-col gap-8' if og_t(og_eq(v_layout, 'stack')) else 'grid grid-cols-1 gap-8 md:grid-cols-2'))) -%}
+{%- set v_frame = ('flex w-full max-w-md flex-col gap-8' if og_t(og_eq(v_layout, 'stack')) else 'grid w-full grid-cols-1 gap-8 md:grid-cols-2') -%}
 {%- set v_panel = ('rounded bg-card p-6 text-card-foreground border border-border' if og_t(og_eq(v_surface, 'card')) else '') -%}
-{%- set c_17 -%}
-  {%- set c_16 -%}
-    {%- set c_15 -%}
+{%- set c_18 -%}
+  {%- set c_17 -%}
+    {%- set c_16 -%}
       {%- set c_3 -%}
         {%- set c_1 -%}
           {{ og_text(v_title) }}
@@ -39,7 +39,7 @@
         {%- endif %}
       {%- endset -%}
       {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': og_s(v_column), 'Class': og_s(og_cnv(['max-w-2xl', v_selfAlign]))}, 'children': c_3}) }}
-      {%- set c_14 -%}
+      {%- set c_15 -%}
         {%- set c_9 -%}
           {%- set c_4 -%}
             {{ og_text(v_address) }}
@@ -63,27 +63,30 @@
           {%- endif %}
         {%- endset -%}
         {{ og_include('compose/stack.html.j2', {'p': {'Gap': '4', 'Align': og_s(v_column), 'Class': og_s(v_panel)}, 'children': c_9}) }}
-        {%- set c_13 -%}
-          {%- for v_h in og_l(v_items) %}
-            {%- set c_12 -%}
-              {%- set c_10 -%}
-                {{ og_text(og_get(v_h, ['day'])) }}
+        {%- set c_14 -%}
+          {%- set c_13 -%}
+            {%- for v_h in og_l(v_items) %}
+              {%- set c_12 -%}
+                {%- set c_10 -%}
+                  {{ og_text(og_get(v_h, ['day'])) }}
+                {%- endset -%}
+                {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Class': 'text-muted-foreground'}, 'children': c_10}) }}
+                {%- set c_11 -%}
+                  {{ og_text(og_get(v_h, ['time'])) }}
+                {%- endset -%}
+                {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Weight': 'semibold'}, 'children': c_11}) }}
               {%- endset -%}
-              {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Class': 'text-muted-foreground'}, 'children': c_10}) }}
-              {%- set c_11 -%}
-                {{ og_text(og_get(v_h, ['time'])) }}
-              {%- endset -%}
-              {{ og_include('compose/text.html.j2', {'p': {'Size': 'base', 'Weight': 'semibold'}, 'children': c_11}) }}
-            {%- endset -%}
-            {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex flex-row justify-between gap-4', 'Attrs': og_attrs(['data-slot', 'opening-hour'])}, 'children': c_12}) }}
-          {%- endfor %}
+              {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex flex-row justify-between gap-4', 'Attrs': og_attrs(['data-slot', 'opening-hour'])}, 'children': c_12}) }}
+            {%- endfor %}
+          {%- endset -%}
+          {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(og_cnv(['m-0 w-full list-none p-0', 'grid grid-cols-1 gap-2']))}, 'children': c_13}) }}
         {%- endset -%}
-        {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(og_cnv(['m-0 w-full list-none p-0', og_cnv(['grid grid-cols-1 gap-2', v_panel])]))}, 'children': c_13}) }}
+        {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(v_panel)}, 'children': c_14}) }}
       {%- endset -%}
-      {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(v_frame)}, 'children': c_14}) }}
+      {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(og_cnv([v_frame, v_selfAlign]))}, 'children': c_15}) }}
     {%- endset -%}
-    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '12', 'Align': 'stretch'}, 'children': c_15}) }}
+    {{ og_include('compose/stack.html.j2', {'p': {'Gap': '12', 'Align': 'stretch'}, 'children': c_16}) }}
   {%- endset -%}
-  {{ og_include('compose/container.html.j2', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4'}, 'children': c_16}) }}
+  {{ og_include('compose/container.html.j2', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4'}, 'children': c_17}) }}
 {%- endset -%}
-{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': og_s(('py-8 lg:py-16' if og_t(og_eq(v_padding, 'compact')) else ('py-24 lg:py-40' if og_t(og_eq(v_padding, 'spacious')) else 'py-16 lg:py-32'))), 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else v_titleId), 'aria-label', v_landmarkLabel, 'data-slot', 'hours-simple'])}, 'children': c_17}) }}
+{{ og_include('compose/block.html.j2', {'p': {'Tag': 'section', 'Class': og_s(('py-8 lg:py-16' if og_t(og_eq(v_padding, 'compact')) else ('py-24 lg:py-40' if og_t(og_eq(v_padding, 'spacious')) else 'py-16 lg:py-32'))), 'Attrs': og_attrs(['aria-labelledby', (none if og_t(v_landmarkLabel) else v_titleId), 'aria-label', v_landmarkLabel, 'data-slot', 'hours-simple'])}, 'children': c_18}) }}

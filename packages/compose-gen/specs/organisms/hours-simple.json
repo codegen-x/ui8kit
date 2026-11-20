@@ -274,74 +274,16 @@
         "op": "cond",
         "args": [
           {
-            "op": "and",
+            "op": "eq",
             "args": [
               {
-                "op": "eq",
-                "args": [
-                  {
-                    "$": "layout"
-                  },
-                  "stack"
-                ]
+                "$": "layout"
               },
-              {
-                "op": "eq",
-                "args": [
-                  {
-                    "$": "align"
-                  },
-                  "center"
-                ]
-              }
+              "stack"
             ]
           },
-          "flex w-full max-w-md flex-col gap-8 self-center",
-          {
-            "op": "cond",
-            "args": [
-              {
-                "op": "and",
-                "args": [
-                  {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "layout"
-                      },
-                      "stack"
-                    ]
-                  },
-                  {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "align"
-                      },
-                      "end"
-                    ]
-                  }
-                ]
-              },
-              "flex w-full max-w-md flex-col gap-8 self-end",
-              {
-                "op": "cond",
-                "args": [
-                  {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "layout"
-                      },
-                      "stack"
-                    ]
-                  },
-                  "flex w-full max-w-md flex-col gap-8",
-                  "grid grid-cols-1 gap-8 md:grid-cols-2"
-                ]
-              }
-            ]
-          }
+          "flex w-full max-w-md flex-col gap-8",
+          "grid w-full grid-cols-1 gap-8 md:grid-cols-2"
         ]
       }
     },
@@ -523,7 +465,15 @@
                   "use": "Box",
                   "props": {
                     "Class": {
-                      "$": "frame"
+                      "op": "cn",
+                      "args": [
+                        {
+                          "$": "frame"
+                        },
+                        {
+                          "$": "selfAlign"
+                        }
+                      ]
                     }
                   },
                   "children": [
@@ -634,69 +584,71 @@
                       ]
                     },
                     {
-                      "use": "List",
+                      "use": "Box",
                       "props": {
-                        "Tag": "ul",
                         "Class": {
-                          "op": "cn",
-                          "args": [
-                            "m-0 w-full list-none p-0",
-                            {
-                              "op": "cn",
-                              "args": [
-                                "grid grid-cols-1 gap-2",
-                                {
-                                  "$": "panel"
-                                }
-                              ]
-                            }
-                          ]
+                          "$": "panel"
                         }
                       },
                       "children": [
                         {
-                          "each": {
-                            "$": "items"
+                          "use": "List",
+                          "props": {
+                            "Tag": "ul",
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "m-0 w-full list-none p-0",
+                                "grid grid-cols-1 gap-2"
+                              ]
+                            }
                           },
-                          "as": "h",
-                          "key": {
-                            "$": "h.id"
-                          },
-                          "do": [
+                          "children": [
                             {
-                              "use": "ListItem",
-                              "props": {
-                                "Class": "flex flex-row justify-between gap-4"
+                              "each": {
+                                "$": "items"
                               },
-                              "attrs": {
-                                "data-slot": "opening-hour"
+                              "as": "h",
+                              "key": {
+                                "$": "h.id"
                               },
-                              "children": [
+                              "do": [
                                 {
-                                  "use": "Text",
+                                  "use": "ListItem",
                                   "props": {
-                                    "Size": "base",
-                                    "Class": "text-muted-foreground"
+                                    "Class": "flex flex-row justify-between gap-4"
+                                  },
+                                  "attrs": {
+                                    "data-slot": "opening-hour"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "h.day"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "base",
-                                    "Weight": "semibold"
-                                  },
-                                  "children": [
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "base",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "h.day"
+                                          }
+                                        }
+                                      ]
+                                    },
                                     {
-                                      "text": {
-                                        "$": "h.time"
-                                      }
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "base",
+                                        "Weight": "semibold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "h.time"
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 }

@@ -58,12 +58,17 @@
         <ShapeText lines="2" align={align} place="description" field="/description" />
       </Box>
       <Box
-        class={
-          ((layout as string) === "stack") && ((align as string) === "center") ? "flex w-full max-w-md flex-col gap-8 self-center"
-          : ((layout as string) === "stack") && ((align as string) === "end") ? "flex w-full max-w-md flex-col gap-8 self-end"
-          : (layout as string) === "stack" ? "flex w-full max-w-md flex-col gap-8"
-          : "grid grid-cols-1 gap-8 md:grid-cols-2"
-        }
+        class={cn(
+          (
+            (layout as string) === "stack" ? "flex w-full max-w-md flex-col gap-8"
+            : "grid w-full grid-cols-1 gap-8 md:grid-cols-2"
+          ),
+          (
+            (align as string) === "center" ? "self-center"
+            : (align as string) === "end" ? "self-end"
+            : ""
+          )
+        )}
       >
         <Box
           class={cn(
@@ -89,23 +94,24 @@
           </Box>
         </Box>
         <Box
-          tag="ul"
-          class={cn(
-            "m-0 w-full p-0",
-            cn("grid grid-cols-1 gap-2", (((surface as string) === "card") ? "rounded bg-card p-6 text-card-foreground border border-border" : ""))
-          )}
+          class={
+            (surface as string) === "card" ? "rounded bg-card p-6 text-card-foreground border border-border"
+            : ""
+          }
         >
-          <Box tag="li" class="flex flex-row justify-between gap-4" data-slot="opening-hour">
-            <ShapeText lines="1" align={align} place="items.day" field="/items/0/day" />
-            <ShapeText lines="1" align={align} place="items.time" field="/items/0/time" />
-          </Box>
-          <Box tag="li" class="flex flex-row justify-between gap-4" data-slot="opening-hour">
-            <ShapeText lines="1" align={align} place="items.day" field="/items/1/day" />
-            <ShapeText lines="1" align={align} place="items.time" field="/items/1/time" />
-          </Box>
-          <Box tag="li" class="flex flex-row justify-between gap-4" data-slot="opening-hour">
-            <ShapeText lines="1" align={align} place="items.day" field="/items/2/day" />
-            <ShapeText lines="1" align={align} place="items.time" field="/items/2/time" />
+          <Box tag="ul" class={cn("m-0 w-full p-0", "grid grid-cols-1 gap-2")}>
+            <Box tag="li" class="flex flex-row justify-between gap-4" data-slot="opening-hour">
+              <ShapeText lines="1" align={align} place="items.day" field="/items/0/day" />
+              <ShapeText lines="1" align={align} place="items.time" field="/items/0/time" />
+            </Box>
+            <Box tag="li" class="flex flex-row justify-between gap-4" data-slot="opening-hour">
+              <ShapeText lines="1" align={align} place="items.day" field="/items/1/day" />
+              <ShapeText lines="1" align={align} place="items.time" field="/items/1/time" />
+            </Box>
+            <Box tag="li" class="flex flex-row justify-between gap-4" data-slot="opening-hour">
+              <ShapeText lines="1" align={align} place="items.day" field="/items/2/day" />
+              <ShapeText lines="1" align={align} place="items.time" field="/items/2/time" />
+            </Box>
           </Box>
         </Box>
       </Box>
