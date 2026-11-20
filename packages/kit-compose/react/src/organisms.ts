@@ -270,6 +270,7 @@ export type * from "./blocks/profile-intro.types";
 export * from "./blocks/project-grid";
 export type * from "./blocks/project-grid.types";
 export * from "./components/project-tiles";
+export * from "./blocks/promo-simple";
 export * from "./components/prompt-composer";
 export * from "./blocks/proof-band";
 export * from "./blocks/pull-quote-simple";

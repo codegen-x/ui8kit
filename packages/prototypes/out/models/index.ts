@@ -29,6 +29,7 @@ export type { PricingPlan, PricingContent } from "./pricing@1";
 export type { ProductPhoto, ProductContent } from "./product@1";
 export type { ProductItem, ProductsContent } from "./products@1";
 export type { ProfileLink, ProfileContent } from "./profile@1";
+export type { PromoContent } from "./promo@1";
 export type { PullQuoteContent } from "./pull-quote@1";
 export type { PurchaseContent } from "./purchase@1";
 export type { RatingContent } from "./rating@1";

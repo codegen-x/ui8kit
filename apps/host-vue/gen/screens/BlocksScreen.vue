@@ -69,6 +69,7 @@ import ProductsimplePage from "./BlocksScreen/ProductsimplePage.vue";
 import ProductssimplePage from "./BlocksScreen/ProductssimplePage.vue";
 import ProfileintroPage from "./BlocksScreen/ProfileintroPage.vue";
 import ProjectsPage from "./BlocksScreen/ProjectsPage.vue";
+import PromosimplePage from "./BlocksScreen/PromosimplePage.vue";
 import ProofPage from "./BlocksScreen/ProofPage.vue";
 import PullquotesimplePage from "./BlocksScreen/PullquotesimplePage.vue";
 import PurchasesimplePage from "./BlocksScreen/PurchasesimplePage.vue";
@@ -230,6 +231,7 @@ const ROUTES = [
   {"path":"productssimple","area":"productssimple"},
   {"path":"profileintro","area":"profileintro"},
   {"path":"projects","area":"projects"},
+  {"path":"promosimple","area":"promosimple"},
   {"path":"proof","area":"proof"},
   {"path":"pullquotesimple","area":"pullquotesimple"},
   {"path":"purchasesimple","area":"purchasesimple"},
@@ -395,6 +397,7 @@ const actions = { toggleTheme };
     <ProductssimplePage v-else-if="route.area === 'productssimple'" />
     <ProfileintroPage v-else-if="route.area === 'profileintro'" />
     <ProjectsPage v-else-if="route.area === 'projects'" />
+    <PromosimplePage v-else-if="route.area === 'promosimple'" />
     <ProofPage v-else-if="route.area === 'proof'" />
     <PullquotesimplePage v-else-if="route.area === 'pullquotesimple'" />
     <PurchasesimplePage v-else-if="route.area === 'purchasesimple'" />

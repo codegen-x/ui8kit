@@ -1,0 +1,93 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.promosimple",
+  "name": "Simple promo",
+  "docs": "One offer: the discount as a badge, the heading, the deadline as text, one paragraph, a promo code when set and one button, beside a picture at the end or at the start, or under a wide one.",
+  "theme": "marketing",
+  "group": "cta",
+  "organism": "PromoSimple",
+  "line": "simple",
+  "model": "promo@1",
+  "axes": {
+    "media": [
+      "end",
+      "start",
+      "top"
+    ]
+  },
+  "defaults": {
+    "media": "end"
+  },
+  "variants": [
+    {
+      "id": "mediaEnd",
+      "set": {}
+    },
+    {
+      "id": "mediaStart",
+      "set": {
+        "media": "start"
+      }
+    },
+    {
+      "id": "mediaTop",
+      "set": {
+        "media": "top"
+      },
+      "props": {
+        "align": "center"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "section a",
+      "n": 1
+    },
+    {
+      "sel": "[data-slot=\"badge\"]",
+      "n": 1
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 1
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "promosimple",
+      "badge": {
+        "$": "ui.marketing.promoSimple.badge"
+      },
+      "title": {
+        "$": "ui.marketing.promoSimple.title"
+      },
+      "deadline": {
+        "$": "ui.marketing.promoSimple.deadline"
+      },
+      "description": {
+        "$": "ui.marketing.promoSimple.description"
+      },
+      "code": {
+        "$": "ui.marketing.promoSimple.code"
+      },
+      "actionLabel": {
+        "$": "ui.marketing.promoSimple.action"
+      },
+      "actionHref": "#order",
+      "image": "",
+      "imageAlt": {
+        "$": "ui.marketing.promoSimple.imageAlt"
+      }
+    }
+  }
+}

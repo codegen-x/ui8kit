@@ -218,6 +218,13 @@
       "svelte": "svelte/blocks/profile-intro.svelte"
     },
     {
+      "item": "promo-simple",
+      "block": "block.promosimple",
+      "model": "promo@1",
+      "contract": "contracts/promo-simple/1.json",
+      "svelte": "svelte/blocks/promo-simple.svelte"
+    },
+    {
       "item": "pull-quote-simple",
       "block": "block.pullquotesimple",
       "model": "pull-quote@1",
@@ -303,10 +310,10 @@
     }
   ],
   "inputs": {
-    "sha256": "1e4131574221843d598c569d0eabbdff492d9fdb6227e11a82d3014e27b92df8"
+    "sha256": "cf8b21c224e3c4869d4a1188f4421e32f5faec26339c9e4dd238f9017f54bbde"
   },
   "files": {
-    "catalog.ts": "e1d93c202184e54f1da21ba7a724d558826e89c0c819f03926a978fe93d33be4",
+    "catalog.ts": "009bffe96f774cf84d746393e29172b9996e884f5cd095af75b51dfe11b74675",
     "classes.json": "7ce202a8a50b51298271063321423d3d553268b904a092a805a3074c80494687",
     "contracts/article-lead/1.json": "8b293a8e7cec0f45fe744e31c5183fea0047725854cbdb7f1c8e38dee4456c9b",
     "contracts/article-simple/1.json": "70aa68c9337171d17c036cd4664dec4145f900c9119a7a7721995a09d4fe581a",
@@ -338,6 +345,7 @@
     "contracts/product-simple/1.json": "801238fd31d594209096a15f56f454d8b52bc14c4263c46d749efd93f66d3023",
     "contracts/products-simple/1.json": "a33961c63684e4ea8511fda430b77030741b4fc7882445ca1cf58129179f0bbc",
     "contracts/profile-intro/1.json": "5aa5893da2bdf4a4d5e32c661fbaf7767dcd570b2136ceb005d019fc56e9a2b9",
+    "contracts/promo-simple/1.json": "2e0cd68bda7a7d1880c2b52cb1876327d641b7161a947f9e1b5e9eef7bb9e2cc",
     "contracts/pull-quote-simple/1.json": "d76457c402e1520b7cb40cfe37d25032e86ee55256040679b2da0b49773b38b3",
     "contracts/purchase-simple/1.json": "20bece6d3641b8357f7bc1cd7410121e96b90a1d80a63f555c35e1c9852d2538",
     "contracts/rating-simple/1.json": "c8e8f0be71bd9d117759715ae674b67c136df8bb1df43511a4c5a292d042a4db",
@@ -350,7 +358,7 @@
     "contracts/team-simple/1.json": "ef54b5212cdea45399540b146b13b9d4829c63e01083ce980acc74f8bf0415ed",
     "contracts/testimonials-simple/1.json": "e8bb4ab2a54963fa56dc96a13f79e1dc3b8327020cb0fc1c21fa5f07d9dae38b",
     "contracts/topics-simple/1.json": "33879d4d7bd937e453a35ad094e18c0762cc4ba10026dedad144f0932013bd5d",
-    "contracts/v0.json": "774e7059cd54ca82287ef9f2561435fa81ceb9fd97114bb237a73a3ed63df8dc",
+    "contracts/v0.json": "d14c775a083fc7571a306c726a23c6d90ea5ebefadf21737e267f8d00afe153f",
     "models/article-lead@1.schema.json": "eae6233434a9bd8330b253110fc4731ab270c38a7e165c00bd0f111384ee3db6",
     "models/article-lead@1.ts": "51364e85070b5f7fb9b2c49c533f46c6620ae73321b10d1831f030516122e5d5",
     "models/article@1.schema.json": "7c6e6ac7fff67a42cb47d4487af5245cb72fd9ba179cf5cd0a4dc7504408c48e",
@@ -389,7 +397,7 @@
     "models/header@1.ts": "a635dbadb15b9155dc67a157d70d2d417a1e310a3eb49bf3ecf7b3bc82ce51f7",
     "models/hero@1.schema.json": "b114d150cc77d9249b8793c9591a6242db9c8d55d94d0dd06bfe6aecd335eee6",
     "models/hero@1.ts": "8c51eb8a671c97bf505d7e1b3d0d5a653b33cd38ebf36ed96155d1e0fd045476",
-    "models/index.ts": "9d4bca90b2d6938c110562ddd95a4c34bb3ccd9f0d38f6bcf5094da65114a202",
+    "models/index.ts": "65005821d926c313fcf6a983c191dd764399c1ea43711ac8612349894ca4c31e",
     "models/intro@1.schema.json": "9ede625f409532dba4ca1f05345afb5b39d69d8945039d38a491618ff7ef5ee6",
     "models/intro@1.ts": "7a20a006fd8979b1a4957bbd812f302e4428f17c3e290e996117077e67374746",
     "models/locations@1.schema.json": "666449da698a09ab3f477cec3009752cd51d00dadf919501991a17b933d482eb",
@@ -410,6 +418,8 @@
     "models/products@1.ts": "4bfa5dcc6074ad9bda5311532353cede7d08181ad086e6b24b1f3c7358c9a2c0",
     "models/profile@1.schema.json": "0c4283ba562f39a9286a8d1448d034c5d32efe12439bd5ec48f204b6410ac6b3",
     "models/profile@1.ts": "830795d8708473f6ca372f349020579ee169fba9bf182439040b76d23baad576",
+    "models/promo@1.schema.json": "e044e1554d5a0ad2ce81aa851c4861eaf975cc291dfbd5f6ef5cd2ec72117bc7",
+    "models/promo@1.ts": "8358198c6c4277f4c0eb99dbc086c9d2593c48a96b2842a59bc1a27fcb01ff39",
     "models/pull-quote@1.schema.json": "f49e69e6332101fee82160220aea2537871ee3704da5eed2edecc5b130cab776",
     "models/pull-quote@1.ts": "7f553e126d0b316dcebd768d18fdd7a5fca85b29542263623fdf51c1a7f1c082",
     "models/purchase@1.schema.json": "7416988230846908eaac6965ef974aa58368000fd23a74ebb626e2f99f66bebf",
@@ -437,7 +447,7 @@
     "models/topics@1.schema.json": "7e85157dcbbeec16b931dcb9dceb9a4ac6a730e74ca632aba69153ac3229ef53",
     "models/topics@1.ts": "0fa38eb5a5e1fa661294091fe6b5aa0196d3049515f13dc1e71fc6e1772da689",
     "models/validate.ts": "f736b8b812547bb3780e597d0c48971ce70c9a90df7a0fe51e4d109e8a236e7b",
-    "registry.ts": "22e4451ab74cf7014916fd603f8c2c216f37fbef73514ab1df86186e34095b8d",
+    "registry.ts": "f49f5b71e5a84728db502ff1354eca0d7971e2538c16a11ddffde8fdabe59b72",
     "svelte/blocks/article-lead.svelte": "85fbac037c9ad5ad289f29379e8a6ccf423d487289eab51492ca4bd804ea13a9",
     "svelte/blocks/article-simple.svelte": "081b0a3a8e057e39c848c488e7baf1a50ed282340e28ebb6747a94f5a81cfa95",
     "svelte/blocks/chapters-simple.svelte": "fd50c7e9c1eed63f30991ee0f4f4d12c53c3b29fb4c2c78b15a806072de3ea0b",
@@ -468,6 +478,7 @@
     "svelte/blocks/product-simple.svelte": "ea4e07622bdea497a96057932ebc081847a8206d030a83fba9a00bb73a3ea5a6",
     "svelte/blocks/products-simple.svelte": "8e07534ba9c62483533067142222fb99ce2bdc61ac3b9517277b318ffbe4905f",
     "svelte/blocks/profile-intro.svelte": "0dd3178bf54b18ecf553d6bd7e3992b02edcaa25e546e7b055c3e89ccfc7caa8",
+    "svelte/blocks/promo-simple.svelte": "0fab144595f08f5af522bbf7fa1c34e54cc5201d48a9c6082909e1ebe46de59a",
     "svelte/blocks/pull-quote-simple.svelte": "e8cc44f70afb206a55e9e0fa48d83c70e877650f544f50c751cb82a0ad87874a",
     "svelte/blocks/purchase-simple.svelte": "1bbe27ad9ff4c01f2bdac70ee757239a9a001a1abbc3af31e94dc2d395118f4b",
     "svelte/blocks/rating-simple.svelte": "8e70a814d5bce856fdb06484b69e876b05f7ee0c018d54a82004482f3c2b321c",
@@ -480,7 +491,7 @@
     "svelte/blocks/team-simple.svelte": "2f220b154e02ed246cfc0a3510ec51cfd6135c9c1f2ab928b3d65399d6f917c9",
     "svelte/blocks/testimonials-simple.svelte": "55e4d80cf6835d526bf7a6a30f28d4f3fe03ded65644aac2e01d82b53d25f6f3",
     "svelte/blocks/topics-simple.svelte": "791965527a3fa8332bfa7b32c77557e53df8b705413363166c771dd8b787352e",
-    "svelte/index.ts": "a10b433166a78d2f8c54bdb01db59b15169da52b91803146d8398b2d3fd68682",
+    "svelte/index.ts": "e6a6f2645106b2870b9afcbbb0fd6ba3bec66e077041ada62e609b57ec715015",
     "svelte/shapes/shape-avatar.svelte": "0cee517413dc4cefdee7d1d31e82033cf3342fdb47a0fd4a6dc58deb53cae3bb",
     "svelte/shapes/shape-badge.svelte": "a4cc87358624d1a2eea97135525f9c073efaaa5f3f67cec75920523ce1eb517a",
     "svelte/shapes/shape-cta.svelte": "cc04ffa611cd2cc460a51c14f1c1aee2f82922bffc9d1fc77b2704cd99818e12",

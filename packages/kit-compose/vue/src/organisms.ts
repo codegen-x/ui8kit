@@ -270,6 +270,7 @@ export type * from "./blocks/profile-intro.types";
 export { default as ProjectGrid } from "./blocks/project-grid.vue";
 export type * from "./blocks/project-grid.types";
 export { default as ProjectTiles } from "./components/project-tiles.vue";
+export { default as PromoSimple } from "./blocks/promo-simple.vue";
 export { default as PromptComposer } from "./components/prompt-composer.vue";
 export { default as ProofBand } from "./blocks/proof-band.vue";
 export { default as PullQuoteSimple } from "./blocks/pull-quote-simple.vue";

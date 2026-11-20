@@ -351,6 +351,10 @@
       {
         "block": "ctasimple",
         "variant": "center"
+      },
+      {
+        "block": "promosimple",
+        "variant": "mediaEnd"
       }
     ],
     "about": [

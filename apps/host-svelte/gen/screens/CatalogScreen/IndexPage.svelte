@@ -182,8 +182,8 @@
           id: "marketing-simple-venue",
           href: "#/marketing-simple-venue",
           name: ui.catalog.categories.marketingSimpleVenue,
-          blocks: 2,
-          variants: 9,
+          blocks: 3,
+          variants: 12,
         },
         {
           id: "marketing-simple-details",

@@ -68,6 +68,7 @@
   import ProductssimplePage from "./BlocksScreen/ProductssimplePage.svelte";
   import ProfileintroPage from "./BlocksScreen/ProfileintroPage.svelte";
   import ProjectsPage from "./BlocksScreen/ProjectsPage.svelte";
+  import PromosimplePage from "./BlocksScreen/PromosimplePage.svelte";
   import ProofPage from "./BlocksScreen/ProofPage.svelte";
   import PullquotesimplePage from "./BlocksScreen/PullquotesimplePage.svelte";
   import PurchasesimplePage from "./BlocksScreen/PurchasesimplePage.svelte";
@@ -229,6 +230,7 @@
     {"path":"productssimple","area":"productssimple"},
     {"path":"profileintro","area":"profileintro"},
     {"path":"projects","area":"projects"},
+    {"path":"promosimple","area":"promosimple"},
     {"path":"proof","area":"proof"},
     {"path":"pullquotesimple","area":"pullquotesimple"},
     {"path":"purchasesimple","area":"purchasesimple"},
@@ -456,6 +458,8 @@
     <ProfileintroPage />
   {:else if route.area === "projects"}
     <ProjectsPage />
+  {:else if route.area === "promosimple"}
+    <PromosimplePage />
   {:else if route.area === "proof"}
     <ProofPage />
   {:else if route.area === "pullquotesimple"}

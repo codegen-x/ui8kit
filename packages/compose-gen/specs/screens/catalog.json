@@ -381,6 +381,9 @@
               },
               {
                 "block": "ctasimple"
+              },
+              {
+                "block": "promosimple"
               }
             ]
           },

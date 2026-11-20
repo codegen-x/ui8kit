@@ -5,6 +5,7 @@
     CtaSimple,
     HeroSimple,
     MenuSimple,
+    PromoSimple,
     tpl,
     uniqLabel,
     type MenuDish,
@@ -62,4 +63,18 @@
   layout="stack"
   surface="muted"
   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctasimple, ui.blocks.variants.ctasimple.center))}
+/>
+<PromoSimple
+  id="venue-promosimple"
+  badge={ui.marketing.promoSimple.badge}
+  title={ui.marketing.promoSimple.title}
+  deadline={ui.marketing.promoSimple.deadline}
+  description={ui.marketing.promoSimple.description}
+  code={ui.marketing.promoSimple.code}
+  actionLabel={ui.marketing.promoSimple.action}
+  actionHref="#order"
+  image=""
+  imageAlt={ui.marketing.promoSimple.imageAlt}
+  media="end"
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.promosimple, ui.blocks.variants.promosimple.mediaEnd))}
 />

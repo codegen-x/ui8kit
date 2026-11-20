@@ -31,6 +31,7 @@ import productReviews from "./contracts/product-reviews/1.json" with { type: "js
 import productSimple from "./contracts/product-simple/1.json" with { type: "json" };
 import productsSimple from "./contracts/products-simple/1.json" with { type: "json" };
 import profileIntro from "./contracts/profile-intro/1.json" with { type: "json" };
+import promoSimple from "./contracts/promo-simple/1.json" with { type: "json" };
 import pullQuoteSimple from "./contracts/pull-quote-simple/1.json" with { type: "json" };
 import purchaseSimple from "./contracts/purchase-simple/1.json" with { type: "json" };
 import ratingSimple from "./contracts/rating-simple/1.json" with { type: "json" };
@@ -72,6 +73,7 @@ import { model as pricing1, validatePricingContent } from "./models/pricing@1";
 import { model as product1, validateProductContent } from "./models/product@1";
 import { model as products1, validateProductsContent } from "./models/products@1";
 import { model as profile1, validateProfileContent } from "./models/profile@1";
+import { model as promo1, validatePromoContent } from "./models/promo@1";
 import { model as pullQuote1, validatePullQuoteContent } from "./models/pull-quote@1";
 import { model as purchase1, validatePurchaseContent } from "./models/purchase@1";
 import { model as rating1, validateRatingContent } from "./models/rating@1";
@@ -88,7 +90,7 @@ import { model as topics1, validateTopicsContent } from "./models/topics@1";
 import type { Issue, ModelSpec } from "./models/validate";
 
 /** the contracts (out/contracts/<item>/<version>.json), in manifest order */
-export const CONTRACTS: readonly unknown[] = [articleLead, articleSimple, chaptersSimple, choiceLinks, collectionsSimple, compareSimple, contactsSimple, courseOutline, ctaSimple, errorSimple, eventIntro, faqSimple, featureShowcaseSimple, featuresSimple, figureSimple, footerSimple, galleryHero, headerSimple, heroSimple, introSimple, locationsSimple, logosSimple, menuSimple, offersSimple, photosSimple, pricingSimple, productReviews, productSimple, productsSimple, profileIntro, pullQuoteSimple, purchaseSimple, ratingSimple, specsSimple, splitSimple, statsSimple, stepsSimple, storePolicies, storiesSimple, teamSimple, testimonialsSimple, topicsSimple];
+export const CONTRACTS: readonly unknown[] = [articleLead, articleSimple, chaptersSimple, choiceLinks, collectionsSimple, compareSimple, contactsSimple, courseOutline, ctaSimple, errorSimple, eventIntro, faqSimple, featureShowcaseSimple, featuresSimple, figureSimple, footerSimple, galleryHero, headerSimple, heroSimple, introSimple, locationsSimple, logosSimple, menuSimple, offersSimple, photosSimple, pricingSimple, productReviews, productSimple, productsSimple, profileIntro, promoSimple, pullQuoteSimple, purchaseSimple, ratingSimple, specsSimple, splitSimple, statsSimple, stepsSimple, storePolicies, storiesSimple, teamSimple, testimonialsSimple, topicsSimple];
 
 /** item -> catalog category (the id of its content model) */
 export const CATEGORIES: Readonly<Record<string, string>> = {
@@ -122,6 +124,7 @@ export const CATEGORIES: Readonly<Record<string, string>> = {
   "product-simple": "product",
   "products-simple": "products",
   "profile-intro": "profile",
+  "promo-simple": "promo",
   "pull-quote-simple": "pull-quote",
   "purchase-simple": "purchase",
   "rating-simple": "rating",
@@ -167,6 +170,7 @@ export const MODELS: Readonly<Record<string, { spec: ModelSpec; validate: (value
   "product@1": { spec: product1 as unknown as ModelSpec, validate: validateProductContent },
   "products@1": { spec: products1 as unknown as ModelSpec, validate: validateProductsContent },
   "profile@1": { spec: profile1 as unknown as ModelSpec, validate: validateProfileContent },
+  "promo@1": { spec: promo1 as unknown as ModelSpec, validate: validatePromoContent },
   "pull-quote@1": { spec: pullQuote1 as unknown as ModelSpec, validate: validatePullQuoteContent },
   "purchase@1": { spec: purchase1 as unknown as ModelSpec, validate: validatePurchaseContent },
   "rating@1": { spec: rating1 as unknown as ModelSpec, validate: validateRatingContent },

@@ -270,6 +270,7 @@ export type * from "./blocks/profile-intro.types";
 export { default as ProjectGrid } from "./blocks/project-grid.svelte";
 export type * from "./blocks/project-grid.types";
 export { default as ProjectTiles } from "./components/project-tiles.svelte";
+export { default as PromoSimple } from "./blocks/promo-simple.svelte";
 export { default as PromptComposer } from "./components/prompt-composer.svelte";
 export { default as ProofBand } from "./blocks/proof-band.svelte";
 export { default as PullQuoteSimple } from "./blocks/pull-quote-simple.svelte";

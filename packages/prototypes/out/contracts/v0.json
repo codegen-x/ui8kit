@@ -182,6 +182,12 @@
       "model": "profile@1",
       "path": "profile-intro/1.json"
     },
+    "promo-simple": {
+      "version": 1,
+      "block": "block.promosimple",
+      "model": "promo@1",
+      "path": "promo-simple/1.json"
+    },
     "pull-quote-simple": {
       "version": 1,
       "block": "block.pullquotesimple",

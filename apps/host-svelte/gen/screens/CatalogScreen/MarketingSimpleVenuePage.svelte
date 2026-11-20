@@ -9,6 +9,7 @@
     Group,
     Link,
     MenuSimple,
+    PromoSimple,
     Stack,
     Text,
     Title,
@@ -50,7 +51,7 @@
           {ui.catalog.categories.marketingSimpleVenue}
         </Title>
         <Text class="max-w-2xl text-muted-foreground">
-          {tpl(ui.catalog.count, 2, 9)}
+          {tpl(ui.catalog.count, 3, 12)}
         </Text>
       </Stack>
       <Stack
@@ -332,6 +333,114 @@
               align="start"
               level={2}
               landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctasimple, ui.blocks.variants.ctasimple.betweenOutline))}
+            />
+          </Box>
+        </Stack>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-promosimple-title"
+        data-testid="catalog-block"
+        data-block="promosimple"
+      >
+        <Stack gap="2" align="stretch">
+          <Title as={2} size="2xl" weight="bold" id="catalog-promosimple-title">
+            {ui.blocks.names.promosimple}
+          </Title>
+          <Text size="sm" class="max-w-2xl text-muted-foreground">
+            {ui.blocks.docs.promosimple}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="promosimple-mediaEnd-label"
+          data-testid="variant"
+          data-block="promosimple"
+          data-variant="mediaEnd"
+        >
+          <Title as={3} size="base" weight="bold" id="promosimple-mediaEnd-label" data-testid="variant-label">
+            {ui.blocks.variants.promosimple.mediaEnd}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PromoSimple
+              id="promosimple-mediaEnd"
+              badge={ui.marketing.promoSimple.badge}
+              title={ui.marketing.promoSimple.title}
+              deadline={ui.marketing.promoSimple.deadline}
+              description={ui.marketing.promoSimple.description}
+              code={ui.marketing.promoSimple.code}
+              actionLabel={ui.marketing.promoSimple.action}
+              actionHref="#order"
+              image=""
+              imageAlt={ui.marketing.promoSimple.imageAlt}
+              media="end"
+              level={2}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.promosimple, ui.blocks.variants.promosimple.mediaEnd))}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="promosimple-mediaStart-label"
+          data-testid="variant"
+          data-block="promosimple"
+          data-variant="mediaStart"
+        >
+          <Title as={3} size="base" weight="bold" id="promosimple-mediaStart-label" data-testid="variant-label">
+            {ui.blocks.variants.promosimple.mediaStart}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PromoSimple
+              id="promosimple-mediaStart"
+              badge={ui.marketing.promoSimple.badge}
+              title={ui.marketing.promoSimple.title}
+              deadline={ui.marketing.promoSimple.deadline}
+              description={ui.marketing.promoSimple.description}
+              code={ui.marketing.promoSimple.code}
+              actionLabel={ui.marketing.promoSimple.action}
+              actionHref="#order"
+              image=""
+              imageAlt={ui.marketing.promoSimple.imageAlt}
+              media="start"
+              level={2}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.promosimple, ui.blocks.variants.promosimple.mediaStart))}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="promosimple-mediaTop-label"
+          data-testid="variant"
+          data-block="promosimple"
+          data-variant="mediaTop"
+        >
+          <Title as={3} size="base" weight="bold" id="promosimple-mediaTop-label" data-testid="variant-label">
+            {ui.blocks.variants.promosimple.mediaTop}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PromoSimple
+              id="promosimple-mediaTop"
+              badge={ui.marketing.promoSimple.badge}
+              title={ui.marketing.promoSimple.title}
+              deadline={ui.marketing.promoSimple.deadline}
+              description={ui.marketing.promoSimple.description}
+              code={ui.marketing.promoSimple.code}
+              actionLabel={ui.marketing.promoSimple.action}
+              actionHref="#order"
+              image=""
+              imageAlt={ui.marketing.promoSimple.imageAlt}
+              media="top"
+              align="center"
+              level={2}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.promosimple, ui.blocks.variants.promosimple.mediaTop))}
             />
           </Box>
         </Stack>

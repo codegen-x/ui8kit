@@ -1,0 +1,603 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.promo-simple",
+  "name": "PromoSimple",
+  "docs": "The simple promo (model promo@1): one offer with the discount as a badge, the heading, the deadline as text (no countdown), a description, an optional promo code, one action and a picture. Axes: media (end: the picture after the copy from md up, start: before it, top: above it, wide).",
+  "records": {},
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "badge",
+      "type": "string",
+      "default": "",
+      "docs": "a short pill above the heading; empty: no badge"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "deadline",
+      "type": "string",
+      "required": true,
+      "docs": "the deadline of the offer as it is shown (until 31 December)"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "docs": "one paragraph under the heading; empty: none"
+    },
+    {
+      "name": "code",
+      "type": "string",
+      "default": "",
+      "docs": "a promo code; empty: none"
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the action; the link is drawn when the label and the address are both set"
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the action"
+    },
+    {
+      "name": "image",
+      "type": "string",
+      "default": "",
+      "docs": "address of the picture; none: the placeholder"
+    },
+    {
+      "name": "imageAlt",
+      "type": "string",
+      "required": true,
+      "docs": "alt text of the picture"
+    },
+    {
+      "name": "level",
+      "type": {
+        "ts": "1 | 2 | 3"
+      },
+      "default": 2,
+      "docs": "the level of the heading (1 on the first section of a page)"
+    },
+    {
+      "name": "padding",
+      "type": {
+        "ts": "\"compact\" | \"standard\" | \"spacious\""
+      },
+      "default": "standard",
+      "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
+    },
+    {
+      "name": "align",
+      "type": {
+        "ts": "\"start\" | \"center\" | \"end\""
+      },
+      "default": "start",
+      "docs": "the alignment of the copy: start, center or end (logical, follows the writing direction): items-* on the column, text-* on the text"
+    },
+    {
+      "name": "media",
+      "type": {
+        "ts": "\"end\" | \"start\" | \"top\""
+      },
+      "default": "end"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "titleId",
+      "value": {
+        "op": "add",
+        "args": [
+          {
+            "$": "id"
+          },
+          "-title"
+        ]
+      }
+    },
+    {
+      "name": "column",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "end",
+              "start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "textAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "text-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "text-end",
+              "text-start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "itemsAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "items-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "items-end",
+              "items-start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "selfAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "self-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "self-end",
+              ""
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "frame",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "top"
+            ]
+          },
+          "flex flex-col gap-8",
+          "grid grid-cols-1 items-center gap-12 md:grid-cols-2"
+        ]
+      }
+    },
+    {
+      "name": "pictureCell",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "end"
+            ]
+          },
+          "w-full",
+          "order-first w-full"
+        ]
+      }
+    },
+    {
+      "name": "ratio",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "top"
+            ]
+          },
+          "21/9",
+          "4/3"
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "section",
+        "Class": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "padding"
+                },
+                "compact"
+              ]
+            },
+            "py-8 lg:py-16",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "padding"
+                    },
+                    "spacious"
+                  ]
+                },
+                "py-24 lg:py-40",
+                "py-16 lg:py-32"
+              ]
+            }
+          ]
+        }
+      },
+      "attrs": {
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "promo-simple"
+      },
+      "children": [
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "children": [
+            {
+              "use": "Box",
+              "props": {
+                "Class": {
+                  "$": "frame"
+                }
+              },
+              "children": [
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "4",
+                    "Align": {
+                      "$": "column"
+                    }
+                  },
+                  "children": [
+                    {
+                      "when": {
+                        "$": "badge"
+                      },
+                      "then": [
+                        {
+                          "use": "Badge",
+                          "props": {
+                            "Variant": "default"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "badge"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Title",
+                      "props": {
+                        "As": {
+                          "$": "level"
+                        },
+                        "Size": "4xl",
+                        "Weight": "bold",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "max-w-2xl tracking-tight",
+                            {
+                              "$": "textAlign"
+                            }
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "id": {
+                          "$": "titleId"
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "title"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Text",
+                      "props": {
+                        "Size": "base",
+                        "Weight": "semibold",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "text-primary",
+                            {
+                              "$": "textAlign"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "deadline"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "$": "description"
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "lg",
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "text-muted-foreground",
+                                {
+                                  "$": "textAlign"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "description"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "$": "code"
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "rounded border border-border px-4 py-2",
+                                {
+                                  "$": "textAlign"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "code"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "and",
+                        "args": [
+                          {
+                            "$": "actionLabel"
+                          },
+                          {
+                            "$": "actionHref"
+                          }
+                        ]
+                      },
+                      "then": [
+                        {
+                          "use": "LinkButton",
+                          "props": {
+                            "Variant": "default",
+                            "Size": "lg",
+                            "Href": {
+                              "$": "actionHref"
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "actionLabel"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "Box",
+                  "props": {
+                    "Class": {
+                      "$": "pictureCell"
+                    }
+                  },
+                  "children": [
+                    {
+                      "organism": "MediaFrame",
+                      "props": {
+                        "alt": {
+                          "$": "imageAlt"
+                        },
+                        "src": {
+                          "$": "image"
+                        },
+                        "ratio": {
+                          "$": "ratio"
+                        },
+                        "className": "rounded"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

@@ -246,7 +246,8 @@ export const ui = {
       "storepolicies": "Store policies",
       "productreviews": "Product reviews",
       "menusimple": "Simple menu",
-      "ctasimple": "Simple call to action"
+      "ctasimple": "Simple call to action",
+      "promosimple": "Simple promo"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -401,7 +402,8 @@ export const ui = {
       "storepolicies": "The heading, one paragraph and the policies (payment, delivery, returns), each with an icon, a title and a line: on cards in columns, or rows.",
       "productreviews": "The heading, one paragraph and the reviews on cards (the rating, the words, the reviewer with the portrait): in three or two columns, or one under the other.",
       "menusimple": "The heading, one paragraph and the dishes (a picture, a badge when set, the name, the weight, a line, the price): on cards in three, two or four columns, or menu rows with the price at the end.",
-      "ctasimple": "One band: a badge when set, the heading, one paragraph and up to two buttons; centred or at the start, or the buttons at the end; on a muted or an outlined surface."
+      "ctasimple": "One band: a badge when set, the heading, one paragraph and up to two buttons; centred or at the start, or the buttons at the end; on a muted or an outlined surface.",
+      "promosimple": "One offer: the discount as a badge, the heading, the deadline as text, one paragraph, a promo code when set and one button, beside a picture at the end or at the start, or under a wide one."
     },
     "variants": {
       "header": {
@@ -1362,6 +1364,11 @@ export const ui = {
         "between": "Buttons at the end",
         "centerOutline": "Centred, outlined",
         "betweenOutline": "Buttons at the end, outlined"
+      },
+      "promosimple": {
+        "mediaEnd": "Picture at the end",
+        "mediaStart": "Picture at the start",
+        "mediaTop": "Wide picture on top"
       }
     },
     "landmark": "{0}, {1}",
@@ -1754,6 +1761,15 @@ export const ui = {
       "description": "Pick up a hot set on the 30th or the 31st, or we bring it to your door. Orders close on 28 December.",
       "action": "Order the set",
       "secondary": "See the menu"
+    },
+    "promoSimple": {
+      "badge": "-20%",
+      "title": "New Year grill sets at a fifth off",
+      "deadline": "Until 31 December",
+      "description": "Every grill set for four or more people is twenty percent off when you order before the end of the year.",
+      "code": "Code GRILL20",
+      "action": "Order with the discount",
+      "imageAlt": "Shashlik skewers over glowing coals"
     }
   },
   "cases": {

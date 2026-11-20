@@ -60,6 +60,8 @@ export { default as ProductsSimple } from "./blocks/products-simple.svelte";
 export type { ProductsSimpleProps } from "./blocks/products-simple.svelte";
 export { default as ProfileIntro } from "./blocks/profile-intro.svelte";
 export type { ProfileIntroProps } from "./blocks/profile-intro.svelte";
+export { default as PromoSimple } from "./blocks/promo-simple.svelte";
+export type { PromoSimpleProps } from "./blocks/promo-simple.svelte";
 export { default as PullQuoteSimple } from "./blocks/pull-quote-simple.svelte";
 export type { PullQuoteSimpleProps } from "./blocks/pull-quote-simple.svelte";
 export { default as PurchaseSimple } from "./blocks/purchase-simple.svelte";

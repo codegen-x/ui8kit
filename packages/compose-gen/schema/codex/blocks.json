@@ -6916,6 +6916,62 @@
       "emptyState": true
     },
     {
+      "id": "PromoSimple",
+      "surface": "kit-block",
+      "spec": "block.promosimple",
+      "source": "packages/compose-gen/specs/blocks/promosimple.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "actionHref",
+        "image",
+        "level",
+        "padding",
+        "align",
+        "media",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "badge",
+          "dictionary": "marketing.promoSimple.badge",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "marketing.promoSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "deadline",
+          "dictionary": "marketing.promoSimple.deadline",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.promoSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "code",
+          "dictionary": "marketing.promoSimple.code",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "marketing.promoSimple.action",
+          "keys": []
+        },
+        {
+          "prop": "imageAlt",
+          "dictionary": "marketing.promoSimple.imageAlt",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "ProofBand",
       "surface": "kit-block",
       "spec": "block.proof",
@@ -10808,6 +10864,7 @@
         "block.profile",
         "block.profileintro",
         "block.projects",
+        "block.promosimple",
         "block.proof",
         "block.pullquotesimple",
         "block.purchasesimple",
@@ -14140,6 +14197,7 @@
         "block.productsimple",
         "block.productssimple",
         "block.profileintro",
+        "block.promosimple",
         "block.pullquotesimple",
         "block.purchasesimple",
         "block.ratingsimple",

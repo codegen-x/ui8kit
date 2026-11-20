@@ -93,6 +93,7 @@
         { key: "productssimple", href: "#/productssimple", name: ui.blocks.names.productssimple, docs: ui.blocks.docs.productssimple },
         { key: "profileintro", href: "#/profileintro", name: ui.blocks.names.profileintro, docs: ui.blocks.docs.profileintro },
         { key: "projects", href: "#/projects", name: ui.blocks.names.projects, docs: ui.blocks.docs.projects },
+        { key: "promosimple", href: "#/promosimple", name: ui.blocks.names.promosimple, docs: ui.blocks.docs.promosimple },
         { key: "proof", href: "#/proof", name: ui.blocks.names.proof, docs: ui.blocks.docs.proof },
         { key: "pullquotesimple", href: "#/pullquotesimple", name: ui.blocks.names.pullquotesimple, docs: ui.blocks.docs.pullquotesimple },
         { key: "purchasesimple", href: "#/purchasesimple", name: ui.blocks.names.purchasesimple, docs: ui.blocks.docs.purchasesimple },

@@ -68,6 +68,7 @@ import { ProductsimplePage } from "./BlocksScreen/ProductsimplePage";
 import { ProductssimplePage } from "./BlocksScreen/ProductssimplePage";
 import { ProfileintroPage } from "./BlocksScreen/ProfileintroPage";
 import { ProjectsPage } from "./BlocksScreen/ProjectsPage";
+import { PromosimplePage } from "./BlocksScreen/PromosimplePage";
 import { ProofPage } from "./BlocksScreen/ProofPage";
 import { PullquotesimplePage } from "./BlocksScreen/PullquotesimplePage";
 import { PurchasesimplePage } from "./BlocksScreen/PurchasesimplePage";
@@ -229,6 +230,7 @@ const ROUTES = [
   {"path":"productssimple","area":"productssimple"},
   {"path":"profileintro","area":"profileintro"},
   {"path":"projects","area":"projects"},
+  {"path":"promosimple","area":"promosimple"},
   {"path":"proof","area":"proof"},
   {"path":"pullquotesimple","area":"pullquotesimple"},
   {"path":"purchasesimple","area":"purchasesimple"},
@@ -457,6 +459,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <ProfileintroPage />
         ) : route.area === "projects" ? (
           <ProjectsPage />
+        ) : route.area === "promosimple" ? (
+          <PromosimplePage />
         ) : route.area === "proof" ? (
           <ProofPage />
         ) : route.area === "pullquotesimple" ? (
