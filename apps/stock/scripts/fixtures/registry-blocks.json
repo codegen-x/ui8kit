@@ -1,7 +1,7 @@
 {
  "source": "https://registry.buildy.tw/<runtime>/index.json",
  "fetched": "2026-11-14",
- "note": "registry:block names served by all 8 runtime roots (116 fetched; + hero-simple, team-simple, split-simple, intro-simple, gallery-hero, features-simple, stats-simple, stories-simple, photos-simple, testimonials-simple, logos-simple, faq-simple, steps-simple of the simple line, and its wave 2: feature-showcase-simple, header-simple, footer-simple, event-intro, profile-intro, rating-simple, error-simple, figure-simple, pull-quote-simple, article-simple, article-lead, topics-simple, chapters-simple, pricing-simple, contacts-simple, locations-simple, offers-simple, products-simple, product-simple, collections-simple, specs-simple, compare-simple, course-outline, choice-links, purchase-simple, store-policies, product-reviews, added by hand with their ui8kit/site build until the next refresh); written by scripts/registry-fixture.ts; wave 3: menu-simple)",
+ "note": "registry:block names served by all 8 runtime roots (116 fetched; + hero-simple, team-simple, split-simple, intro-simple, gallery-hero, features-simple, stats-simple, stories-simple, photos-simple, testimonials-simple, logos-simple, faq-simple, steps-simple of the simple line, and its wave 2: feature-showcase-simple, header-simple, footer-simple, event-intro, profile-intro, rating-simple, error-simple, figure-simple, pull-quote-simple, article-simple, article-lead, topics-simple, chapters-simple, pricing-simple, contacts-simple, locations-simple, offers-simple, products-simple, product-simple, collections-simple, specs-simple, compare-simple, course-outline, choice-links, purchase-simple, store-policies, product-reviews, added by hand with their ui8kit/site build until the next refresh); written by scripts/registry-fixture.ts; wave 3: menu-simple, cta-simple)",
  "names": [
   "about-company",
   "about-me",
@@ -36,6 +36,7 @@
   "cta-band",
   "cta-banner",
   "cta-proof",
+  "cta-simple",
   "dashboard-overview",
   "dashboard-shell",
   "delivery-info",

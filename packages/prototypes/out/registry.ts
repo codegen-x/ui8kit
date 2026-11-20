@@ -9,6 +9,7 @@ import collectionsSimple from "./contracts/collections-simple/1.json" with { typ
 import compareSimple from "./contracts/compare-simple/1.json" with { type: "json" };
 import contactsSimple from "./contracts/contacts-simple/1.json" with { type: "json" };
 import courseOutline from "./contracts/course-outline/1.json" with { type: "json" };
+import ctaSimple from "./contracts/cta-simple/1.json" with { type: "json" };
 import errorSimple from "./contracts/error-simple/1.json" with { type: "json" };
 import eventIntro from "./contracts/event-intro/1.json" with { type: "json" };
 import faqSimple from "./contracts/faq-simple/1.json" with { type: "json" };
@@ -49,6 +50,7 @@ import { model as choices1, validateChoicesContent } from "./models/choices@1";
 import { model as collections1, validateCollectionsContent } from "./models/collections@1";
 import { model as compare1, validateCompareContent } from "./models/compare@1";
 import { model as contacts1, validateContactsContent } from "./models/contacts@1";
+import { model as cta1, validateCtaContent } from "./models/cta@1";
 import { model as curriculum1, validateCurriculumContent } from "./models/curriculum@1";
 import { model as error1, validateErrorContent } from "./models/error@1";
 import { model as event1, validateEventContent } from "./models/event@1";
@@ -86,7 +88,7 @@ import { model as topics1, validateTopicsContent } from "./models/topics@1";
 import type { Issue, ModelSpec } from "./models/validate";
 
 /** the contracts (out/contracts/<item>/<version>.json), in manifest order */
-export const CONTRACTS: readonly unknown[] = [articleLead, articleSimple, chaptersSimple, choiceLinks, collectionsSimple, compareSimple, contactsSimple, courseOutline, errorSimple, eventIntro, faqSimple, featureShowcaseSimple, featuresSimple, figureSimple, footerSimple, galleryHero, headerSimple, heroSimple, introSimple, locationsSimple, logosSimple, menuSimple, offersSimple, photosSimple, pricingSimple, productReviews, productSimple, productsSimple, profileIntro, pullQuoteSimple, purchaseSimple, ratingSimple, specsSimple, splitSimple, statsSimple, stepsSimple, storePolicies, storiesSimple, teamSimple, testimonialsSimple, topicsSimple];
+export const CONTRACTS: readonly unknown[] = [articleLead, articleSimple, chaptersSimple, choiceLinks, collectionsSimple, compareSimple, contactsSimple, courseOutline, ctaSimple, errorSimple, eventIntro, faqSimple, featureShowcaseSimple, featuresSimple, figureSimple, footerSimple, galleryHero, headerSimple, heroSimple, introSimple, locationsSimple, logosSimple, menuSimple, offersSimple, photosSimple, pricingSimple, productReviews, productSimple, productsSimple, profileIntro, pullQuoteSimple, purchaseSimple, ratingSimple, specsSimple, splitSimple, statsSimple, stepsSimple, storePolicies, storiesSimple, teamSimple, testimonialsSimple, topicsSimple];
 
 /** item -> catalog category (the id of its content model) */
 export const CATEGORIES: Readonly<Record<string, string>> = {
@@ -98,6 +100,7 @@ export const CATEGORIES: Readonly<Record<string, string>> = {
   "compare-simple": "compare",
   "contacts-simple": "contacts",
   "course-outline": "curriculum",
+  "cta-simple": "cta",
   "error-simple": "error",
   "event-intro": "event",
   "faq-simple": "faq",
@@ -142,6 +145,7 @@ export const MODELS: Readonly<Record<string, { spec: ModelSpec; validate: (value
   "collections@1": { spec: collections1 as unknown as ModelSpec, validate: validateCollectionsContent },
   "compare@1": { spec: compare1 as unknown as ModelSpec, validate: validateCompareContent },
   "contacts@1": { spec: contacts1 as unknown as ModelSpec, validate: validateContactsContent },
+  "cta@1": { spec: cta1 as unknown as ModelSpec, validate: validateCtaContent },
   "curriculum@1": { spec: curriculum1 as unknown as ModelSpec, validate: validateCurriculumContent },
   "error@1": { spec: error1 as unknown as ModelSpec, validate: validateErrorContent },
   "event@1": { spec: event1 as unknown as ModelSpec, validate: validateEventContent },

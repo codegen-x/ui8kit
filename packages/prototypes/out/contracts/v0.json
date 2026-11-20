@@ -50,6 +50,12 @@
       "model": "curriculum@1",
       "path": "course-outline/1.json"
     },
+    "cta-simple": {
+      "version": 1,
+      "block": "block.ctasimple",
+      "model": "cta@1",
+      "path": "cta-simple/1.json"
+    },
     "error-simple": {
       "version": 1,
       "block": "block.errorsimple",

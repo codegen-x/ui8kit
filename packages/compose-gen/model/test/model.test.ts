@@ -77,6 +77,7 @@ test("the model blocks take exactly their model fields; a missing or extra prop 
     ["purchasesimple", "purchase@1"], ["storepolicies", "store-policy@1"], ["productreviews", "reviews@1"],
     // wave 3
     ["menusimple", "menu@1"],
+    ["ctasimple", "cta@1"],
   ];
   expect(simple.map((b) => [b.id, b.model, b.line]).sort()).toEqual(line.map(([k, m]) => [`block.${k}`, m, "simple"]).sort());
   for (const b of simple) expect(propsProblems(b, byName.get(b.organism)!, models.get(b.model!)!.model)).toEqual([]);

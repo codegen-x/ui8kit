@@ -5,6 +5,7 @@ import {
   Block,
   Box,
   Container,
+  CtaSimple,
   Group,
   Link,
   MenuSimple,
@@ -50,7 +51,7 @@ export function MarketingSimpleVenuePage() {
               {ui.catalog.categories.marketingSimpleVenue}
             </Title>
             <Text class="max-w-2xl text-muted-foreground">
-              {tpl(ui.catalog.count, 1, 4)}
+              {tpl(ui.catalog.count, 2, 9)}
             </Text>
           </Stack>
           <Stack
@@ -167,6 +168,171 @@ export function MarketingSimpleVenuePage() {
                   align="start"
                   level={2}
                   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.menusimple, ui.blocks.variants.menusimple.rows))}
+                />
+              </Box>
+            </Stack>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-ctasimple-title"
+            data-testid="catalog-block"
+            data-block="ctasimple"
+          >
+            <Stack gap="2" align="stretch">
+              <Title as={2} size="2xl" weight="bold" id="catalog-ctasimple-title">
+                {ui.blocks.names.ctasimple}
+              </Title>
+              <Text size="sm" class="max-w-2xl text-muted-foreground">
+                {ui.blocks.docs.ctasimple}
+              </Text>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="ctasimple-center-label"
+              data-testid="variant"
+              data-block="ctasimple"
+              data-variant="center"
+            >
+              <Title as={3} size="base" weight="bold" id="ctasimple-center-label" data-testid="variant-label">
+                {ui.blocks.variants.ctasimple.center}
+              </Title>
+              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaSimple
+                  id="ctasimple-center"
+                  badge={ui.marketing.ctaSimple.badge}
+                  title={ui.marketing.ctaSimple.title}
+                  description={ui.marketing.ctaSimple.description}
+                  actionLabel={ui.marketing.ctaSimple.action}
+                  actionHref="#order"
+                  secondaryActionLabel={ui.marketing.ctaSimple.secondary}
+                  secondaryActionHref="#menu"
+                  layout="stack"
+                  surface="muted"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctasimple, ui.blocks.variants.ctasimple.center))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="ctasimple-start-label"
+              data-testid="variant"
+              data-block="ctasimple"
+              data-variant="start"
+            >
+              <Title as={3} size="base" weight="bold" id="ctasimple-start-label" data-testid="variant-label">
+                {ui.blocks.variants.ctasimple.start}
+              </Title>
+              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaSimple
+                  id="ctasimple-start"
+                  badge={ui.marketing.ctaSimple.badge}
+                  title={ui.marketing.ctaSimple.title}
+                  description={ui.marketing.ctaSimple.description}
+                  actionLabel={ui.marketing.ctaSimple.action}
+                  actionHref="#order"
+                  secondaryActionLabel={ui.marketing.ctaSimple.secondary}
+                  secondaryActionHref="#menu"
+                  layout="stack"
+                  surface="muted"
+                  align="start"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctasimple, ui.blocks.variants.ctasimple.start))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="ctasimple-between-label"
+              data-testid="variant"
+              data-block="ctasimple"
+              data-variant="between"
+            >
+              <Title as={3} size="base" weight="bold" id="ctasimple-between-label" data-testid="variant-label">
+                {ui.blocks.variants.ctasimple.between}
+              </Title>
+              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaSimple
+                  id="ctasimple-between"
+                  badge={ui.marketing.ctaSimple.badge}
+                  title={ui.marketing.ctaSimple.title}
+                  description={ui.marketing.ctaSimple.description}
+                  actionLabel={ui.marketing.ctaSimple.action}
+                  actionHref="#order"
+                  secondaryActionLabel={ui.marketing.ctaSimple.secondary}
+                  secondaryActionHref="#menu"
+                  layout="between"
+                  surface="muted"
+                  align="start"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctasimple, ui.blocks.variants.ctasimple.between))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="ctasimple-centerOutline-label"
+              data-testid="variant"
+              data-block="ctasimple"
+              data-variant="centerOutline"
+            >
+              <Title as={3} size="base" weight="bold" id="ctasimple-centerOutline-label" data-testid="variant-label">
+                {ui.blocks.variants.ctasimple.centerOutline}
+              </Title>
+              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaSimple
+                  id="ctasimple-centerOutline"
+                  badge={ui.marketing.ctaSimple.badge}
+                  title={ui.marketing.ctaSimple.title}
+                  description={ui.marketing.ctaSimple.description}
+                  actionLabel={ui.marketing.ctaSimple.action}
+                  actionHref="#order"
+                  secondaryActionLabel={ui.marketing.ctaSimple.secondary}
+                  secondaryActionHref="#menu"
+                  layout="stack"
+                  surface="outline"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctasimple, ui.blocks.variants.ctasimple.centerOutline))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="ctasimple-betweenOutline-label"
+              data-testid="variant"
+              data-block="ctasimple"
+              data-variant="betweenOutline"
+            >
+              <Title as={3} size="base" weight="bold" id="ctasimple-betweenOutline-label" data-testid="variant-label">
+                {ui.blocks.variants.ctasimple.betweenOutline}
+              </Title>
+              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaSimple
+                  id="ctasimple-betweenOutline"
+                  badge={ui.marketing.ctaSimple.badge}
+                  title={ui.marketing.ctaSimple.title}
+                  description={ui.marketing.ctaSimple.description}
+                  actionLabel={ui.marketing.ctaSimple.action}
+                  actionHref="#order"
+                  secondaryActionLabel={ui.marketing.ctaSimple.secondary}
+                  secondaryActionHref="#menu"
+                  layout="between"
+                  surface="outline"
+                  align="start"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctasimple, ui.blocks.variants.ctasimple.betweenOutline))}
                 />
               </Box>
             </Stack>

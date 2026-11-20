@@ -1413,6 +1413,90 @@
     ]
    }
   },
+  "ctasimple": {
+   "organism": "CtaSimple",
+   "defaults": {
+    "layout": "stack",
+    "surface": "muted"
+   },
+   "sample": {
+    "id": "ctasimple",
+    "badge": {
+     "$": "ui.marketing.ctaSimple.badge"
+    },
+    "title": {
+     "$": "ui.marketing.ctaSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.ctaSimple.description"
+    },
+    "actionLabel": {
+     "$": "ui.marketing.ctaSimple.action"
+    },
+    "actionHref": "#order",
+    "secondaryActionLabel": {
+     "$": "ui.marketing.ctaSimple.secondary"
+    },
+    "secondaryActionHref": "#menu"
+   },
+   "variants": [
+    {
+     "id": "center",
+     "set": {}
+    },
+    {
+     "id": "start",
+     "set": {},
+     "props": {
+      "align": "start"
+     }
+    },
+    {
+     "id": "between",
+     "set": {
+      "layout": "between"
+     },
+     "props": {
+      "align": "start"
+     }
+    },
+    {
+     "id": "centerOutline",
+     "set": {
+      "surface": "outline"
+     }
+    },
+    {
+     "id": "betweenOutline",
+     "set": {
+      "layout": "between",
+      "surface": "outline"
+     },
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [],
+   "orgProps": {
+    "CtaSimple": [
+     "id",
+     "badge",
+     "title",
+     "description",
+     "actionLabel",
+     "actionHref",
+     "secondaryActionLabel",
+     "secondaryActionHref",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "surface",
+     "landmarkLabel"
+    ]
+   }
+  },
   "errorsimple": {
    "organism": "ErrorSimple",
    "defaults": {},
@@ -16351,6 +16435,10 @@
      {
       "block": "menusimple",
       "variant": "cards3"
+     },
+     {
+      "block": "ctasimple",
+      "variant": "center"
      }
     ],
     "about": [

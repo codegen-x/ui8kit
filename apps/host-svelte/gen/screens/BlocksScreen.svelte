@@ -23,6 +23,7 @@
   import CreditsPage from "./BlocksScreen/CreditsPage.svelte";
   import CtaPage from "./BlocksScreen/CtaPage.svelte";
   import CtaproofPage from "./BlocksScreen/CtaproofPage.svelte";
+  import CtasimplePage from "./BlocksScreen/CtasimplePage.svelte";
   import ErrorsimplePage from "./BlocksScreen/ErrorsimplePage.svelte";
   import EventintroPage from "./BlocksScreen/EventintroPage.svelte";
   import FaqPage from "./BlocksScreen/FaqPage.svelte";
@@ -183,6 +184,7 @@
     {"path":"credits","area":"credits"},
     {"path":"cta","area":"cta"},
     {"path":"ctaproof","area":"ctaproof"},
+    {"path":"ctasimple","area":"ctasimple"},
     {"path":"errorsimple","area":"errorsimple"},
     {"path":"eventintro","area":"eventintro"},
     {"path":"faq","area":"faq"},
@@ -364,6 +366,8 @@
     <CtaPage />
   {:else if route.area === "ctaproof"}
     <CtaproofPage />
+  {:else if route.area === "ctasimple"}
+    <CtasimplePage />
   {:else if route.area === "errorsimple"}
     <ErrorsimplePage />
   {:else if route.area === "eventintro"}

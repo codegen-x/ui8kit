@@ -73,6 +73,7 @@ export { default as CtaBanner } from "./blocks/cta-banner.svelte";
 export { default as CtaProofItems } from "./components/cta-proof-items.svelte";
 export { default as CtaProof } from "./blocks/cta-proof.svelte";
 export type * from "./blocks/cta-proof.types";
+export { default as CtaSimple } from "./blocks/cta-simple.svelte";
 export { default as CutCards } from "./components/cut-cards.svelte";
 export { default as DashboardOverview } from "./blocks/dashboard-overview.svelte";
 export type * from "./blocks/dashboard-overview.types";

@@ -73,6 +73,7 @@ export { default as CtaBanner } from "./blocks/cta-banner.vue";
 export { default as CtaProofItems } from "./components/cta-proof-items.vue";
 export { default as CtaProof } from "./blocks/cta-proof.vue";
 export type * from "./blocks/cta-proof.types";
+export { default as CtaSimple } from "./blocks/cta-simple.vue";
 export { default as CutCards } from "./components/cut-cards.vue";
 export { default as DashboardOverview } from "./blocks/dashboard-overview.vue";
 export type * from "./blocks/dashboard-overview.types";

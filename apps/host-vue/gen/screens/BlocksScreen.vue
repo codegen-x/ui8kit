@@ -24,6 +24,7 @@ import CourseoutlinePage from "./BlocksScreen/CourseoutlinePage.vue";
 import CreditsPage from "./BlocksScreen/CreditsPage.vue";
 import CtaPage from "./BlocksScreen/CtaPage.vue";
 import CtaproofPage from "./BlocksScreen/CtaproofPage.vue";
+import CtasimplePage from "./BlocksScreen/CtasimplePage.vue";
 import ErrorsimplePage from "./BlocksScreen/ErrorsimplePage.vue";
 import EventintroPage from "./BlocksScreen/EventintroPage.vue";
 import FaqPage from "./BlocksScreen/FaqPage.vue";
@@ -184,6 +185,7 @@ const ROUTES = [
   {"path":"credits","area":"credits"},
   {"path":"cta","area":"cta"},
   {"path":"ctaproof","area":"ctaproof"},
+  {"path":"ctasimple","area":"ctasimple"},
   {"path":"errorsimple","area":"errorsimple"},
   {"path":"eventintro","area":"eventintro"},
   {"path":"faq","area":"faq"},
@@ -348,6 +350,7 @@ const actions = { toggleTheme };
     <CreditsPage v-else-if="route.area === 'credits'" />
     <CtaPage v-else-if="route.area === 'cta'" />
     <CtaproofPage v-else-if="route.area === 'ctaproof'" />
+    <CtasimplePage v-else-if="route.area === 'ctasimple'" />
     <ErrorsimplePage v-else-if="route.area === 'errorsimple'" />
     <EventintroPage v-else-if="route.area === 'eventintro'" />
     <FaqPage v-else-if="route.area === 'faq'" />

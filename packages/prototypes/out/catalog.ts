@@ -10,6 +10,7 @@ import CollectionsSimple from "./svelte/blocks/collections-simple.svelte";
 import CompareSimple from "./svelte/blocks/compare-simple.svelte";
 import ContactsSimple from "./svelte/blocks/contacts-simple.svelte";
 import CourseOutline from "./svelte/blocks/course-outline.svelte";
+import CtaSimple from "./svelte/blocks/cta-simple.svelte";
 import ErrorSimple from "./svelte/blocks/error-simple.svelte";
 import EventIntro from "./svelte/blocks/event-intro.svelte";
 import FaqSimple from "./svelte/blocks/faq-simple.svelte";
@@ -44,7 +45,7 @@ import TeamSimple from "./svelte/blocks/team-simple.svelte";
 import TestimonialsSimple from "./svelte/blocks/testimonials-simple.svelte";
 import TopicsSimple from "./svelte/blocks/topics-simple.svelte";
 
-export { ArticleLead, ArticleSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, HeaderSimple, HeroSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PullQuoteSimple, PurchaseSimple, RatingSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TopicsSimple };
+export { ArticleLead, ArticleSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, CtaSimple, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, HeaderSimple, HeroSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PullQuoteSimple, PurchaseSimple, RatingSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TopicsSimple };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CATALOG: Record<string, Component<any>> = {
@@ -56,6 +57,7 @@ export const CATALOG: Record<string, Component<any>> = {
   "compare-simple": CompareSimple,
   "contacts-simple": ContactsSimple,
   "course-outline": CourseOutline,
+  "cta-simple": CtaSimple,
   "error-simple": ErrorSimple,
   "event-intro": EventIntro,
   "faq-simple": FaqSimple,

@@ -73,6 +73,7 @@ export * from "./blocks/cta-banner";
 export * from "./components/cta-proof-items";
 export * from "./blocks/cta-proof";
 export type * from "./blocks/cta-proof.types";
+export * from "./blocks/cta-simple";
 export * from "./components/cut-cards";
 export * from "./blocks/dashboard-overview";
 export type * from "./blocks/dashboard-overview.types";

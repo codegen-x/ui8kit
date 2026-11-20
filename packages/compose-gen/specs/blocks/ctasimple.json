@@ -1,0 +1,102 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.ctasimple",
+  "name": "Simple call to action",
+  "docs": "One band: a badge when set, the heading, one paragraph and up to two buttons; centred or at the start, or the buttons at the end; on a muted or an outlined surface.",
+  "theme": "marketing",
+  "group": "cta",
+  "organism": "CtaSimple",
+  "line": "simple",
+  "model": "cta@1",
+  "axes": {
+    "layout": [
+      "stack",
+      "between"
+    ],
+    "surface": [
+      "muted",
+      "outline"
+    ]
+  },
+  "defaults": {
+    "layout": "stack",
+    "surface": "muted"
+  },
+  "variants": [
+    {
+      "id": "center",
+      "set": {}
+    },
+    {
+      "id": "start",
+      "set": {},
+      "props": {
+        "align": "start"
+      }
+    },
+    {
+      "id": "between",
+      "set": {
+        "layout": "between"
+      },
+      "props": {
+        "align": "start"
+      }
+    },
+    {
+      "id": "centerOutline",
+      "set": {
+        "surface": "outline"
+      }
+    },
+    {
+      "id": "betweenOutline",
+      "set": {
+        "layout": "between",
+        "surface": "outline"
+      },
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "section a",
+      "n": 2
+    },
+    {
+      "sel": "[data-slot=\"badge\"]",
+      "n": 1
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "ctasimple",
+      "badge": {
+        "$": "ui.marketing.ctaSimple.badge"
+      },
+      "title": {
+        "$": "ui.marketing.ctaSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.ctaSimple.description"
+      },
+      "actionLabel": {
+        "$": "ui.marketing.ctaSimple.action"
+      },
+      "actionHref": "#order",
+      "secondaryActionLabel": {
+        "$": "ui.marketing.ctaSimple.secondary"
+      },
+      "secondaryActionHref": "#menu"
+    }
+  }
+}

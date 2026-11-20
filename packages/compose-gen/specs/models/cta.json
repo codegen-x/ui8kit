@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "cta",
+  "version": 1,
+  "docs": "Call to action content: an optional badge, the heading, a description, up to two actions. One object is valid in every call to action layout (centred, at the start, the actions at the end; muted or outlined).",
+  "fields": {
+    "badge": { "type": "text", "maxLength": 40, "docs": "a short pill above the heading; empty: no badge" },
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "actionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the action; the link is drawn when the label and the address are both set" },
+    "actionHref": { "type": "url", "docs": "the address of the action" },
+    "secondaryActionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the second action; the link is drawn when the label and the address are both set" },
+    "secondaryActionHref": { "type": "url", "docs": "the address of the second action" }
+  }
+}

@@ -378,6 +378,9 @@
             "entries": [
               {
                 "block": "menusimple"
+              },
+              {
+                "block": "ctasimple"
               }
             ]
           },

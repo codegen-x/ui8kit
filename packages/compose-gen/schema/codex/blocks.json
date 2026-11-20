@@ -2048,6 +2048,53 @@
       "emptyMode": "omit"
     },
     {
+      "id": "CtaSimple",
+      "surface": "kit-block",
+      "spec": "block.ctasimple",
+      "source": "packages/compose-gen/specs/blocks/ctasimple.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "actionHref",
+        "secondaryActionHref",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "surface",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "badge",
+          "dictionary": "marketing.ctaSimple.badge",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "marketing.ctaSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.ctaSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "marketing.ctaSimple.action",
+          "keys": []
+        },
+        {
+          "prop": "secondaryActionLabel",
+          "dictionary": "marketing.ctaSimple.secondary",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "DashboardShell",
       "surface": "kit-block",
       "spec": "block.dashshell",
@@ -10687,6 +10734,7 @@
         "block.credits",
         "block.cta",
         "block.ctaproof",
+        "block.ctasimple",
         "block.dashshell",
         "block.delivery",
         "block.dish",
@@ -14069,6 +14117,7 @@
         "block.comparesimple",
         "block.contactssimple",
         "block.courseoutline",
+        "block.ctasimple",
         "block.errorsimple",
         "block.eventintro",
         "block.faqsimple",

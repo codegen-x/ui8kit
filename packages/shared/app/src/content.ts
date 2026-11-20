@@ -245,7 +245,8 @@ export const ui = {
       "purchasesimple": "Simple purchase",
       "storepolicies": "Store policies",
       "productreviews": "Product reviews",
-      "menusimple": "Simple menu"
+      "menusimple": "Simple menu",
+      "ctasimple": "Simple call to action"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -399,7 +400,8 @@ export const ui = {
       "purchasesimple": "On a card surface: the heading and one paragraph beside the price, the action and a note; or all centred.",
       "storepolicies": "The heading, one paragraph and the policies (payment, delivery, returns), each with an icon, a title and a line: on cards in columns, or rows.",
       "productreviews": "The heading, one paragraph and the reviews on cards (the rating, the words, the reviewer with the portrait): in three or two columns, or one under the other.",
-      "menusimple": "The heading, one paragraph and the dishes (a picture, a badge when set, the name, the weight, a line, the price): on cards in three, two or four columns, or menu rows with the price at the end."
+      "menusimple": "The heading, one paragraph and the dishes (a picture, a badge when set, the name, the weight, a line, the price): on cards in three, two or four columns, or menu rows with the price at the end.",
+      "ctasimple": "One band: a badge when set, the heading, one paragraph and up to two buttons; centred or at the start, or the buttons at the end; on a muted or an outlined surface."
     },
     "variants": {
       "header": {
@@ -1353,6 +1355,13 @@ export const ui = {
         "cards2": "Two columns",
         "cards4": "Four columns",
         "rows": "Menu rows, the price at the end"
+      },
+      "ctasimple": {
+        "center": "Centred band",
+        "start": "At the start",
+        "between": "Buttons at the end",
+        "centerOutline": "Centred, outlined",
+        "betweenOutline": "Buttons at the end, outlined"
       }
     },
     "landmark": "{0}, {1}",
@@ -1738,6 +1747,13 @@ export const ui = {
     "menuSimple": {
       "title": "From our grill this New Year",
       "description": "Order the festive grill set for the holidays: every dish is cooked over live coals on the day you collect it."
+    },
+    "ctaSimple": {
+      "badge": "New Year",
+      "title": "Book the grill set for your holiday table",
+      "description": "Pick up a hot set on the 30th or the 31st, or we bring it to your door. Orders close on 28 December.",
+      "action": "Order the set",
+      "secondary": "See the menu"
     }
   },
   "cases": {
@@ -3000,7 +3016,7 @@ export const ui = {
       "marketingSimpleOffer": "Simple blocks: showcase, pricing and contacts",
       "marketingSimpleShop": "Simple blocks: shop",
       "marketingSimpleDetails": "Simple blocks: product details and courses",
-      "marketingSimpleVenue": "Simple blocks: food, stays and local services"
+      "marketingSimpleVenue": "Simple blocks: venues, offers and services"
     },
     "pages": {
       "saasLanding": {
