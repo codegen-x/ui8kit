@@ -23,7 +23,7 @@
     }
   ],
   "inputs": {
-    "sha256": "be8962f5062d4fd041576eebe8bf391d0a88936e31a8375d71f2181ac82faee9"
+    "sha256": "25e0029ef7a7121c2a6e013c79be3fa3546beb41cd11123c03cab9952d7c6f4c"
   },
   "files": {
     "catalog.ts": "7ce2cafc6c5553beb20c2c00781e1819a086ec2b7b8442596df5a660158ec501",
@@ -38,8 +38,8 @@
     "models/team@1.ts": "2201ae700f0b26cd4db68b23cd084ce08c39e7609202726bfe081da31d9e26c0",
     "models/validate.ts": "f736b8b812547bb3780e597d0c48971ce70c9a90df7a0fe51e4d109e8a236e7b",
     "registry.ts": "ba9e42d929f8f09e7c774412dd2ef1ff7c39d2ad0db93c843e3bf409d68a3ce2",
-    "svelte/blocks/hero-simple.svelte": "e3638e0422a81148618885da7e4a384a787c3e32bc02a9ed96b40fb0fa5482de",
-    "svelte/blocks/team-simple.svelte": "acc8b3737ea364f4b7569bce6cafa0d4142c5eb08e31ac63b38f5d0055e958f4",
+    "svelte/blocks/hero-simple.svelte": "3b4cc69988921682cbb8a93d2b05b92b2ff75720f7b836a06037e862b1ed6e5a",
+    "svelte/blocks/team-simple.svelte": "785b46cd2051f8cbc1ef3392be614c27e87e706f05377d32662168e386275165",
     "svelte/index.ts": "5a1ede65def2ccafb7da524d28801831dc449455ba51d2ce27acedef3c5ccdfa",
     "svelte/shapes/shape-avatar.svelte": "0cee517413dc4cefdee7d1d31e82033cf3342fdb47a0fd4a6dc58deb53cae3bb",
     "svelte/shapes/shape-badge.svelte": "a4cc87358624d1a2eea97135525f9c073efaaa5f3f67cec75920523ce1eb517a",

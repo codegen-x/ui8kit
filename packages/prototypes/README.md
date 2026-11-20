@@ -10,7 +10,7 @@ from the registry.
   link, a MediaFrame); it becomes its shape with `data-place` and `data-field` (a JSON pointer: `/title`, `/members/2/title`)
   for the builder's inspector. A branch that waits for content is drawn; a loop over a list field is unrolled into three
   placeholders. The layout compositions (Block, Container, Box, Stack, List, ListItem, Card) are lowered onto the kit `Box`
-  with plain layout classes; anything else fails the build. The props are the layout axes of the block and the `padding`
+  with plain layout classes (a Stack also gets `w-full`: a wireframe has no intrinsic width, so a column the clean block lets shrink to its content would draw its fraction-wide bars at 0); anything else fails the build. The props are the layout axes of the block and the `padding`
   and `align` settings (align: `start` | `center` | `end`, logical items-* / text-*, `ShapeText align`); a wireframe takes
   no content and names no landmark. Derived values of the clean organism are inlined.
 - `src/shapes.ts`: the shapes (heading, text, badge, action, media, avatar): a kit `Box` with a token background and an 8+4

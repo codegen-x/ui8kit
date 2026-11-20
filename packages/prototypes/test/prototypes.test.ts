@@ -224,6 +224,13 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     expect(html).toContain(`class="${CONTAINER}"`);
   });
 
+  for (const surface of ["plain", "cards"]) for (const align of ["start", "center", "end"] as const) test(`team-simple ${surface} align ${align} (wireframe): the member copy and the header span their column`, async () => {
+    // a wireframe has no intrinsic width: a column that shrinks to its content would draw the w-1/2 / w-3/4 bars at 0
+    const doc = new JSDOM(await ssr(fileOf("team-simple", "wireframe"), { ...team, surface, ...(align === "start" ? {} : { align }) })).window.document;
+    for (const place of ["title", "members.title", "members.description"])
+      for (const shape of doc.querySelectorAll(`[data-place="${place}"]`)) expect([...shape.parentElement!.classList]).toContain("w-full");
+  });
+
   test("hero-simple: the action is a link (a[href], data-slot=button, the link-button recipe), drawn only with a label and an address", async () => {
     const file = fileOf("hero-simple", "clean");
     const page = await ssr(file, { ...hero, actionLabel: "Go", actionHref: "https://example.com/go" });

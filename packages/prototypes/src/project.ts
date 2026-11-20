@@ -37,7 +37,10 @@ const LAYOUT: Record<string, Lowering> = {
   Box: { tagProp: "Tag", base: "" },
   Block: { tagProp: "Tag", base: "" },
   Container: { tagProp: "Tag", base: "" },
-  Stack: { tagProp: "Tag", base: "flex flex-col", keys: { Gap: (v) => `gap-${v}`, Align: (v) => (ALIGN as Record<string, string>)[v] ?? fail(`Stack Align ${v}`), Justify: (v) => (JUSTIFY as Record<string, string>)[v] ?? fail(`Stack Justify ${v}`) } },
+  // w-full: a wireframe has no intrinsic width (its shapes are fractions: w-1/2, w-3/4), so a Stack the clean block lets shrink to
+  // its content (items-start / self-center in a flex column: the member copy of team-simple, a centered header) spans its parent
+  // instead of collapsing to 0; max-w-* of the spec still caps it. A Stack in a grid cell or a stretched column is unchanged.
+  Stack: { tagProp: "Tag", base: "flex w-full flex-col", keys: { Gap: (v) => `gap-${v}`, Align: (v) => (ALIGN as Record<string, string>)[v] ?? fail(`Stack Align ${v}`), Justify: (v) => (JUSTIFY as Record<string, string>)[v] ?? fail(`Stack Justify ${v}`) } },
   List: { tagProp: "Tag", tag: "ul", base: "" },
   ListItem: { tag: "li", base: "" },
   // a card as a plain bordered surface (a border token, no inset ring, no shadow)
