@@ -34,7 +34,7 @@ const heroSimple = define({
 
 const sp = (k: string) => t(`marketing.splitSimple.${k}`);
 const splitSimple = define({
-  key: "splitsimple", theme: "marketing", group: "hero", line: "simple", model: "split@1",
+  key: "splitsimple", theme: "marketing", group: "split", line: "simple", model: "split@1",
   name: "Simple split", docs: "Two halves: the heading, one paragraph and up to two links as the actions (primary, then secondary) beside one picture that fills its half to the edge of the screen.",
   organism: "SplitSimple", axes: ["media"],
   variants: [

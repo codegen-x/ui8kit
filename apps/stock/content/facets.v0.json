@@ -526,7 +526,8 @@
             {
               "any": {
                 "group": [
-                  "hero"
+                  "hero",
+                  "split"
                 ],
                 "block": [
                   "storehero"

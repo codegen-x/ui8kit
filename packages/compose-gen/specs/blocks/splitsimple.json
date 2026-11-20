@@ -5,7 +5,7 @@
   "name": "Simple split",
   "docs": "Two halves: the heading, one paragraph and up to two links as the actions (primary, then secondary) beside one picture that fills its half to the edge of the screen.",
   "theme": "marketing",
-  "group": "hero",
+  "group": "split",
   "organism": "SplitSimple",
   "line": "simple",
   "model": "split@1",
