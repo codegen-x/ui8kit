@@ -6382,6 +6382,75 @@
     ]
    }
   },
+  "roomssimple": {
+   "organism": "RoomsSimple",
+   "defaults": {
+    "layout": "cards",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "roomssimple",
+    "title": {
+     "$": "ui.marketing.roomsSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.roomsSimple.description"
+    },
+    "items": {
+     "$": "roomItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "cards3",
+     "set": {}
+    },
+    {
+     "id": "cards2",
+     "set": {
+      "cols": "2"
+     }
+    },
+    {
+     "id": "rows",
+     "set": {
+      "layout": "rows"
+     },
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "roomItems",
+     "collection": "simplerooms",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "title": "title",
+      "guests": "metadata.guests.value",
+      "price": "metadata.display.value",
+      "description": "metadata.summary.value",
+      "href": "slug|route"
+     }
+    }
+   ],
+   "orgProps": {
+    "RoomsSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
   "sitemap": {
    "organism": "SitemapFooter",
    "defaults": {
@@ -16611,6 +16680,10 @@
      {
       "block": "hourssimple",
       "variant": "columns"
+     },
+     {
+      "block": "roomssimple",
+      "variant": "cards3"
      }
     ],
     "about": [

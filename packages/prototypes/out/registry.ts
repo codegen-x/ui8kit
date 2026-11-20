@@ -36,6 +36,7 @@ import promoSimple from "./contracts/promo-simple/1.json" with { type: "json" };
 import pullQuoteSimple from "./contracts/pull-quote-simple/1.json" with { type: "json" };
 import purchaseSimple from "./contracts/purchase-simple/1.json" with { type: "json" };
 import ratingSimple from "./contracts/rating-simple/1.json" with { type: "json" };
+import roomsSimple from "./contracts/rooms-simple/1.json" with { type: "json" };
 import specsSimple from "./contracts/specs-simple/1.json" with { type: "json" };
 import splitSimple from "./contracts/split-simple/1.json" with { type: "json" };
 import statsSimple from "./contracts/stats-simple/1.json" with { type: "json" };
@@ -80,6 +81,7 @@ import { model as pullQuote1, validatePullQuoteContent } from "./models/pull-quo
 import { model as purchase1, validatePurchaseContent } from "./models/purchase@1";
 import { model as rating1, validateRatingContent } from "./models/rating@1";
 import { model as reviews1, validateReviewsContent } from "./models/reviews@1";
+import { model as rooms1, validateRoomsContent } from "./models/rooms@1";
 import { model as specs1, validateSpecsContent } from "./models/specs@1";
 import { model as split1, validateSplitContent } from "./models/split@1";
 import { model as stats1, validateStatsContent } from "./models/stats@1";
@@ -92,7 +94,7 @@ import { model as topics1, validateTopicsContent } from "./models/topics@1";
 import type { Issue, ModelSpec } from "./models/validate";
 
 /** the contracts (out/contracts/<item>/<version>.json), in manifest order */
-export const CONTRACTS: readonly unknown[] = [articleLead, articleSimple, chaptersSimple, choiceLinks, collectionsSimple, compareSimple, contactsSimple, courseOutline, ctaSimple, errorSimple, eventIntro, faqSimple, featureShowcaseSimple, featuresSimple, figureSimple, footerSimple, galleryHero, headerSimple, heroSimple, hoursSimple, introSimple, locationsSimple, logosSimple, menuSimple, offersSimple, photosSimple, pricingSimple, productReviews, productSimple, productsSimple, profileIntro, promoSimple, pullQuoteSimple, purchaseSimple, ratingSimple, specsSimple, splitSimple, statsSimple, stepsSimple, storePolicies, storiesSimple, teamSimple, testimonialsSimple, topicsSimple];
+export const CONTRACTS: readonly unknown[] = [articleLead, articleSimple, chaptersSimple, choiceLinks, collectionsSimple, compareSimple, contactsSimple, courseOutline, ctaSimple, errorSimple, eventIntro, faqSimple, featureShowcaseSimple, featuresSimple, figureSimple, footerSimple, galleryHero, headerSimple, heroSimple, hoursSimple, introSimple, locationsSimple, logosSimple, menuSimple, offersSimple, photosSimple, pricingSimple, productReviews, productSimple, productsSimple, profileIntro, promoSimple, pullQuoteSimple, purchaseSimple, ratingSimple, roomsSimple, specsSimple, splitSimple, statsSimple, stepsSimple, storePolicies, storiesSimple, teamSimple, testimonialsSimple, topicsSimple];
 
 /** item -> catalog category (the id of its content model) */
 export const CATEGORIES: Readonly<Record<string, string>> = {
@@ -131,6 +133,7 @@ export const CATEGORIES: Readonly<Record<string, string>> = {
   "pull-quote-simple": "pull-quote",
   "purchase-simple": "purchase",
   "rating-simple": "rating",
+  "rooms-simple": "rooms",
   "specs-simple": "specs",
   "split-simple": "split",
   "stats-simple": "stats",
@@ -179,6 +182,7 @@ export const MODELS: Readonly<Record<string, { spec: ModelSpec; validate: (value
   "purchase@1": { spec: purchase1 as unknown as ModelSpec, validate: validatePurchaseContent },
   "rating@1": { spec: rating1 as unknown as ModelSpec, validate: validateRatingContent },
   "reviews@1": { spec: reviews1 as unknown as ModelSpec, validate: validateReviewsContent },
+  "rooms@1": { spec: rooms1 as unknown as ModelSpec, validate: validateRoomsContent },
   "specs@1": { spec: specs1 as unknown as ModelSpec, validate: validateSpecsContent },
   "split@1": { spec: split1 as unknown as ModelSpec, validate: validateSplitContent },
   "stats@1": { spec: stats1 as unknown as ModelSpec, validate: validateStatsContent },

@@ -38,6 +38,7 @@ import MarketingSimpleStoryPage from "./CatalogScreen/MarketingSimpleStoryPage.v
 import MarketingSimpleOfferPage from "./CatalogScreen/MarketingSimpleOfferPage.vue";
 import MarketingSimpleShopPage from "./CatalogScreen/MarketingSimpleShopPage.vue";
 import MarketingSimpleVenuePage from "./CatalogScreen/MarketingSimpleVenuePage.vue";
+import MarketingSimpleStayPage from "./CatalogScreen/MarketingSimpleStayPage.vue";
 import MarketingSimpleDetailsPage from "./CatalogScreen/MarketingSimpleDetailsPage.vue";
 import MarketingAboutPage from "./CatalogScreen/MarketingAboutPage.vue";
 import MarketingPortfolioPage from "./CatalogScreen/MarketingPortfolioPage.vue";
@@ -145,6 +146,7 @@ const ROUTES = [
   {"path":"marketing-simple-offer","area":"marketing-simple-offer"},
   {"path":"marketing-simple-shop","area":"marketing-simple-shop"},
   {"path":"marketing-simple-venue","area":"marketing-simple-venue"},
+  {"path":"marketing-simple-stay","area":"marketing-simple-stay"},
   {"path":"marketing-simple-details","area":"marketing-simple-details"},
   {"path":"marketing-about","area":"marketing-about"},
   {"path":"marketing-portfolio","area":"marketing-portfolio"},
@@ -254,6 +256,7 @@ const actions = { toggleTheme };
     <MarketingSimpleOfferPage v-else-if="route.area === 'marketing-simple-offer'" />
     <MarketingSimpleShopPage v-else-if="route.area === 'marketing-simple-shop'" />
     <MarketingSimpleVenuePage v-else-if="route.area === 'marketing-simple-venue'" />
+    <MarketingSimpleStayPage v-else-if="route.area === 'marketing-simple-stay'" />
     <MarketingSimpleDetailsPage v-else-if="route.area === 'marketing-simple-details'" />
     <MarketingAboutPage v-else-if="route.area === 'marketing-about'" />
     <MarketingPortfolioPage v-else-if="route.area === 'marketing-portfolio'" />

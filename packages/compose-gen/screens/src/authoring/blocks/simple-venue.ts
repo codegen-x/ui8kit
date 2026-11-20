@@ -1,4 +1,4 @@
-// The simple line, wave 3 (food, stays and local services; one content model each, specs/models): MenuSimple (menu@1), HoursSimple (hours@1).
+// The simple line, wave 3 (food, stays and local services; one content model each, specs/models): MenuSimple (menu@1), HoursSimple (hours@1), RoomsSimple (rooms@1).
 // The rules of simple.ts: the props are the fields of the model plus the axes and the settings; only the compositions
 // packages/prototypes lowers (Box, Block, Container, Stack, Group, List, ListItem, LinkPlain; Title, Text, Badge, LinkButton, MediaFrame).
 import { and, cn, each, ref, text, use, when, organism } from "../../build";
@@ -13,6 +13,7 @@ const axis = (name: string, ...values: string[]) => ({ name, type: tsOf(...value
 const CARD = "rounded bg-card p-6 text-card-foreground border border-border";
 const listSection = (body: ViewNode, narrow: Value = "") => section(use("Stack", { props: { Gap: "12", Align: "stretch", Class: narrow } }, head(), body));
 const pill = (field: string) => when(ref(field), [use("Badge", { props: { Variant: "default" } }, text(ref(field)))]);
+const linkTo = (href: string, body: ViewNode) => when(ref(href), [use("LinkPlain", { props: { Href: ref(href), Class: "hover:text-primary" } }, body)], [body]);
 const muted = (field: string, cls: Value = "text-start") => use("Text", { props: { Size: "sm", Class: cn("text-muted-foreground", cls) } }, text(ref(field)));
 const price = (field: string, cls: Value = "text-start") => use("Text", { props: { Size: "lg", Weight: "bold", Class: cn("tracking-tight", cls) } }, text(ref(field)));
 
@@ -63,4 +64,26 @@ const hoursSimple = spec(`${O}hours-simple`, "HoursSimple", "The simple opening 
             use("Text", { props: { Size: "base", Weight: "semibold" } }, text(ref("h.time")))))))))],
 });
 
-export const simpleVenueOrganisms: OrganismSpec[] = [menuSimple, hoursSimple];
+// ---- RoomsSimple (rooms@1): rooms or apartments on cards (a picture, the name as a link, the guests, a line, the price a night) or rows
+const roomsSimple = spec(`${O}rooms-simple`, "RoomsSimple", "The simple rooms (model rooms@1): the heading, a description and the rooms as a list, each with a picture, the name (a link when the room has an address), the guests or the size, a line and the price a night as it is shown. Axes: layout (cards: a card surface per room, the picture on top; rows: the picture at the start, a third of the row from md up), cols (3, 2 columns of the cards).", {
+  records: { Room: fields(["id", "string"], ["image", "string", true], ["title", "string"], ["guests", "string", true], ["price", "string"], ["description", "string", true], ["href", "string", true]) },
+  props: [id, title, description, list("items", "Room", "the rooms, in the order they are shown (1 to 6)"), level, padding, centered, axis("layout", "cards", "rows"), axis("cols", "3", "2")],
+  derived: [
+    titleId, ...teamDerived,
+    chain("grid", [[is("layout", "rows"), "grid-cols-1 gap-8"], [is("cols", "2"), "grid-cols-1 gap-6 md:grid-cols-2"]], "grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"),
+    chain("item", [[is("layout", "rows"), `${CARD} grid grid-cols-1 items-center gap-6 md:grid-cols-3`]], `${CARD} flex flex-col gap-4`),
+    chain("copy", [[is("layout", "rows"), "md:col-span-2"]], "grow"),
+  ],
+  view: [listSection(
+    ulist(cn("grid", ref("grid")),
+      each(ref("items"), "r", ref("r.id"),
+        use("ListItem", { props: { Class: ref("item") }, attrs: { "data-testid": "room" } },
+          organism("MediaFrame", { alt: ref("r.title"), src: ref("r.image"), ratio: "4/3", className: "rounded" }),
+          use("Stack", { props: { Gap: "2", Align: "start", Class: ref("copy") } },
+            linkTo("r.href", itemTitle("r.title", "lg", "text-start")),
+            when(ref("r.guests"), [muted("r.guests")]),
+            itemText("r.description", "text-start"),
+            price("r.price"))))))],
+});
+
+export const simpleVenueOrganisms: OrganismSpec[] = [menuSimple, hoursSimple, roomsSimple];

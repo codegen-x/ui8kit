@@ -294,6 +294,8 @@ export * from "./blocks/restaurant-menu";
 export type * from "./blocks/restaurant-menu.types";
 export * from "./blocks/review-list";
 export type * from "./blocks/review-list.types";
+export * from "./blocks/rooms-simple";
+export type * from "./blocks/rooms-simple.types";
 export * from "./components/search-palette";
 export * from "./components/shell-content";
 export * from "./components/shell-footer";

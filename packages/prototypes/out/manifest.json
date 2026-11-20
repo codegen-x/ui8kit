@@ -253,6 +253,13 @@
       "svelte": "svelte/blocks/rating-simple.svelte"
     },
     {
+      "item": "rooms-simple",
+      "block": "block.roomssimple",
+      "model": "rooms@1",
+      "contract": "contracts/rooms-simple/1.json",
+      "svelte": "svelte/blocks/rooms-simple.svelte"
+    },
+    {
       "item": "specs-simple",
       "block": "block.specssimple",
       "model": "specs@1",
@@ -317,10 +324,10 @@
     }
   ],
   "inputs": {
-    "sha256": "2c7acfc760e4ee26bf3213ebae56a354959e2abdeae6302a810405ee6429fcf8"
+    "sha256": "21f774843f23c71680ff28b27a4b1c333e0c31d2a3ff29f92cf630e89a388577"
   },
   "files": {
-    "catalog.ts": "f4dac69d06b8c2391acd053e78f80cbd4468da80ce2fbbf1c42408ad295749aa",
+    "catalog.ts": "4f64d176f14de406567537a922d37aff85fb4b4285f70cbb5b592ce160b221d1",
     "classes.json": "7ce202a8a50b51298271063321423d3d553268b904a092a805a3074c80494687",
     "contracts/article-lead/1.json": "8b293a8e7cec0f45fe744e31c5183fea0047725854cbdb7f1c8e38dee4456c9b",
     "contracts/article-simple/1.json": "70aa68c9337171d17c036cd4664dec4145f900c9119a7a7721995a09d4fe581a",
@@ -357,6 +364,7 @@
     "contracts/pull-quote-simple/1.json": "d76457c402e1520b7cb40cfe37d25032e86ee55256040679b2da0b49773b38b3",
     "contracts/purchase-simple/1.json": "20bece6d3641b8357f7bc1cd7410121e96b90a1d80a63f555c35e1c9852d2538",
     "contracts/rating-simple/1.json": "c8e8f0be71bd9d117759715ae674b67c136df8bb1df43511a4c5a292d042a4db",
+    "contracts/rooms-simple/1.json": "d8b7b384d17c5306873aaa2949e4cd8c645c3d9308b0a6cb456a3eb4db304703",
     "contracts/specs-simple/1.json": "e884c806e09ae5dae83c4561c6999f76282dd2a9f7bb1eaf460ea00958647ab8",
     "contracts/split-simple/1.json": "cb1936dc7bf74e33036b4051337c47f517fe370cef2d701180dee987e7edbc75",
     "contracts/stats-simple/1.json": "3f7deae3375323293e3e4781cdac763f13441fb4d0d521bfff24d1b33491d115",
@@ -366,7 +374,7 @@
     "contracts/team-simple/1.json": "ef54b5212cdea45399540b146b13b9d4829c63e01083ce980acc74f8bf0415ed",
     "contracts/testimonials-simple/1.json": "e8bb4ab2a54963fa56dc96a13f79e1dc3b8327020cb0fc1c21fa5f07d9dae38b",
     "contracts/topics-simple/1.json": "33879d4d7bd937e453a35ad094e18c0762cc4ba10026dedad144f0932013bd5d",
-    "contracts/v0.json": "364d8734aff8068aee7ccafad3191b9bf2931a0f776e7f0b64ec4b84e3fc2025",
+    "contracts/v0.json": "a5c6c6529821dc01f2e2408bf5374c3dea6c67732b512f3d761c2479a63fafd7",
     "models/article-lead@1.schema.json": "eae6233434a9bd8330b253110fc4731ab270c38a7e165c00bd0f111384ee3db6",
     "models/article-lead@1.ts": "51364e85070b5f7fb9b2c49c533f46c6620ae73321b10d1831f030516122e5d5",
     "models/article@1.schema.json": "7c6e6ac7fff67a42cb47d4487af5245cb72fd9ba179cf5cd0a4dc7504408c48e",
@@ -407,7 +415,7 @@
     "models/hero@1.ts": "8c51eb8a671c97bf505d7e1b3d0d5a653b33cd38ebf36ed96155d1e0fd045476",
     "models/hours@1.schema.json": "94b25f2a4e394804ff6e99dce2178e92e6655ead1c552332287fad01dee310da",
     "models/hours@1.ts": "9821dae4b81c931204beb02619f385f4ff7a463ed2c2299b817c0f7b6caf8227",
-    "models/index.ts": "4b4c9c28987c37d9bd001e84e55104536c86d1bc6de8c2e22eb16c638f5299c1",
+    "models/index.ts": "242aa8bbb10b72ff1a6feb103974b9a1f9603cbc81e86c347b379b7b68473877",
     "models/intro@1.schema.json": "9ede625f409532dba4ca1f05345afb5b39d69d8945039d38a491618ff7ef5ee6",
     "models/intro@1.ts": "7a20a006fd8979b1a4957bbd812f302e4428f17c3e290e996117077e67374746",
     "models/locations@1.schema.json": "666449da698a09ab3f477cec3009752cd51d00dadf919501991a17b933d482eb",
@@ -438,6 +446,8 @@
     "models/rating@1.ts": "f2a7b40f3e19adb783a7e9f33ad57305a4840f9cdaa72721606febaf769daf86",
     "models/reviews@1.schema.json": "9a4f774744074c2d6a3ee633f2879acc1569c802fd847aa04c801e7c160a968a",
     "models/reviews@1.ts": "aa70785d1e756de4fecffa3a6399422639a444690fc90984032238ded357ccc5",
+    "models/rooms@1.schema.json": "2612627b469c7dbeceaf312201e47c722e4a1e121733e47e8f56b8776ef4a5b6",
+    "models/rooms@1.ts": "f8ed49182bd73a9dd13bce3209987a29437ce16db9239c75c1b3ebe34fd3ed66",
     "models/specs@1.schema.json": "190ead29f6da241d6c9fd255aa6b9937477af0ace8f1940378fda9b7e48e5cd9",
     "models/specs@1.ts": "3f293a5d3f74e7e9ff0014d4e5721ccd844cf554a6af925db78395373265235d",
     "models/split@1.schema.json": "40d6489b3bbaa08ab9f5385ef1b8e1d75432b427f51c2598ec92e9c542aada6d",
@@ -457,7 +467,7 @@
     "models/topics@1.schema.json": "7e85157dcbbeec16b931dcb9dceb9a4ac6a730e74ca632aba69153ac3229ef53",
     "models/topics@1.ts": "0fa38eb5a5e1fa661294091fe6b5aa0196d3049515f13dc1e71fc6e1772da689",
     "models/validate.ts": "f736b8b812547bb3780e597d0c48971ce70c9a90df7a0fe51e4d109e8a236e7b",
-    "registry.ts": "358637047f473b359601a19490e2484b78a7a35cb639ad36072e8675259f6fd4",
+    "registry.ts": "bace7e4c4495cae1c75385295a38849b4188e9942c20dd03ad8f6ef93744bdb6",
     "svelte/blocks/article-lead.svelte": "85fbac037c9ad5ad289f29379e8a6ccf423d487289eab51492ca4bd804ea13a9",
     "svelte/blocks/article-simple.svelte": "081b0a3a8e057e39c848c488e7baf1a50ed282340e28ebb6747a94f5a81cfa95",
     "svelte/blocks/chapters-simple.svelte": "fd50c7e9c1eed63f30991ee0f4f4d12c53c3b29fb4c2c78b15a806072de3ea0b",
@@ -493,6 +503,7 @@
     "svelte/blocks/pull-quote-simple.svelte": "e8cc44f70afb206a55e9e0fa48d83c70e877650f544f50c751cb82a0ad87874a",
     "svelte/blocks/purchase-simple.svelte": "1bbe27ad9ff4c01f2bdac70ee757239a9a001a1abbc3af31e94dc2d395118f4b",
     "svelte/blocks/rating-simple.svelte": "8e70a814d5bce856fdb06484b69e876b05f7ee0c018d54a82004482f3c2b321c",
+    "svelte/blocks/rooms-simple.svelte": "0cabf95a60c2b0c3051a7b01dff94429770e429041842b22b075523a6006cf90",
     "svelte/blocks/specs-simple.svelte": "2edbc561997622ca3191d83430f977b4198930f61d29aac5959a7e13d7299cd8",
     "svelte/blocks/split-simple.svelte": "cd0cab695e4eac4efa77ef38ee254ea202c6465670d5cdfbee8a1fce046162bc",
     "svelte/blocks/stats-simple.svelte": "2c91da85a43247738f0b3ce4c979ce70784995017317ff927348bb77322e34b2",
@@ -502,7 +513,7 @@
     "svelte/blocks/team-simple.svelte": "2f220b154e02ed246cfc0a3510ec51cfd6135c9c1f2ab928b3d65399d6f917c9",
     "svelte/blocks/testimonials-simple.svelte": "55e4d80cf6835d526bf7a6a30f28d4f3fe03ded65644aac2e01d82b53d25f6f3",
     "svelte/blocks/topics-simple.svelte": "791965527a3fa8332bfa7b32c77557e53df8b705413363166c771dd8b787352e",
-    "svelte/index.ts": "a712034bb553e7ee7eba2762c665de3a179161c40e9aa912e8e9909379861fbd",
+    "svelte/index.ts": "833eb9679a26ee3297c204d23bb0091303bbbc5e6bb425dcfff955c72e5f00a5",
     "svelte/shapes/shape-avatar.svelte": "0cee517413dc4cefdee7d1d31e82033cf3342fdb47a0fd4a6dc58deb53cae3bb",
     "svelte/shapes/shape-badge.svelte": "a4cc87358624d1a2eea97135525f9c073efaaa5f3f67cec75920523ce1eb517a",
     "svelte/shapes/shape-cta.svelte": "cc04ffa611cd2cc460a51c14f1c1aee2f82922bffc9d1fc77b2704cd99818e12",

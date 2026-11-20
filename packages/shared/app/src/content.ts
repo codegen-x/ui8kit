@@ -248,7 +248,8 @@ export const ui = {
       "menusimple": "Simple menu",
       "ctasimple": "Simple call to action",
       "promosimple": "Simple promo",
-      "hourssimple": "Simple opening hours"
+      "hourssimple": "Simple opening hours",
+      "roomssimple": "Simple rooms"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -405,7 +406,8 @@ export const ui = {
       "menusimple": "The heading, one paragraph and the dishes (a picture, a badge when set, the name, the weight, a line, the price): on cards in three, two or four columns, or menu rows with the price at the end.",
       "ctasimple": "One band: a badge when set, the heading, one paragraph and up to two buttons; centred or at the start, or the buttons at the end; on a muted or an outlined surface.",
       "promosimple": "One offer: the discount as a badge, the heading, the deadline as text, one paragraph, a promo code when set and one button, beside a picture at the end or at the start, or under a wide one.",
-      "hourssimple": "The heading, one paragraph, the address, the phone, a map link and the opening hours by day: side by side or in one narrow column, plain or on cards."
+      "hourssimple": "The heading, one paragraph, the address, the phone, a map link and the opening hours by day: side by side or in one narrow column, plain or on cards.",
+      "roomssimple": "The heading, one paragraph and the rooms (a picture, the name as a link, the guests, a line, the price a night): on cards in three or two columns, or rows with the picture at the start."
     },
     "variants": {
       "header": {
@@ -1377,6 +1379,11 @@ export const ui = {
         "columnsCard": "Side by side on cards",
         "stack": "One centred column",
         "stackCard": "One column on cards"
+      },
+      "roomssimple": {
+        "cards3": "Three room cards",
+        "cards2": "Two columns",
+        "rows": "Rows, the picture at the start"
       }
     },
     "landmark": "{0}, {1}",
@@ -1785,6 +1792,10 @@ export const ui = {
       "address": "12 Riverside Embankment, Moscow",
       "phone": "+7 495 123-45-67",
       "map": "Open the map"
+    },
+    "roomsSimple": {
+      "title": "Rooms for the holidays",
+      "description": "Every stay includes breakfast, late check-out on 1 January and a seat at the New Year grill dinner."
     }
   },
   "cases": {
@@ -3047,7 +3058,8 @@ export const ui = {
       "marketingSimpleOffer": "Simple blocks: showcase, pricing and contacts",
       "marketingSimpleShop": "Simple blocks: shop",
       "marketingSimpleDetails": "Simple blocks: product details and courses",
-      "marketingSimpleVenue": "Simple blocks: venues, offers and services"
+      "marketingSimpleVenue": "Simple blocks: food, offers and opening hours",
+      "marketingSimpleStay": "Simple blocks: stays and local services"
     },
     "pages": {
       "saasLanding": {

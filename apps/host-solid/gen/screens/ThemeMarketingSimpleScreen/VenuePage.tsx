@@ -7,16 +7,19 @@ import {
   HoursSimple,
   MenuSimple,
   PromoSimple,
+  RoomsSimple,
   tpl,
   uniqLabel,
   type MenuDish,
   type OpeningHour,
+  type Room,
 } from "@codegen-x/solid-compose";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { simplemenu as menuDishesEntries } from "@ui8kit/app-shared/data/simplemenu";
 import { simplehours as openingHoursEntries } from "@ui8kit/app-shared/data/simplehours";
+import { simplerooms as roomItemsEntries } from "@ui8kit/app-shared/data/simplerooms";
 
 const MENUDISHES_FIELDS = {
   "id": "id",
@@ -28,9 +31,19 @@ const MENUDISHES_FIELDS = {
   "badge": "metadata.badge.value",
 } as const;
 const OPENINGHOURS_FIELDS = {"id":"id","day":"title","time":"metadata.time.value"} as const;
+const ROOMITEMS_FIELDS = {
+  "id": "id",
+  "image": "featured_media_id|media",
+  "title": "title",
+  "guests": "metadata.guests.value",
+  "price": "metadata.display.value",
+  "description": "metadata.summary.value",
+  "href": "slug|route",
+} as const;
 
 const menuDishes = fromCodex<MenuDish>(menuDishesEntries, MENUDISHES_FIELDS, CODEX);
 const openingHours = fromCodex<OpeningHour>(openingHoursEntries, OPENINGHOURS_FIELDS, CODEX);
+const roomItems = fromCodex<Room>(roomItemsEntries, ROOMITEMS_FIELDS, CODEX);
 
 export function VenuePage() {
   return (
@@ -99,6 +112,15 @@ export function VenuePage() {
         surface="plain"
         align="start"
         landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hourssimple, ui.blocks.variants.hourssimple.columns))}
+      />
+      <RoomsSimple
+        id="venue-roomssimple"
+        title={ui.marketing.roomsSimple.title}
+        description={ui.marketing.roomsSimple.description}
+        items={roomItems}
+        layout="cards"
+        cols="3"
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.roomssimple, ui.blocks.variants.roomssimple.cards3))}
       />
     </>
   );

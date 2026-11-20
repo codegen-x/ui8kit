@@ -186,6 +186,13 @@
           variants: 16,
         },
         {
+          id: "marketing-simple-stay",
+          href: "#/marketing-simple-stay",
+          name: ui.catalog.categories.marketingSimpleStay,
+          blocks: 1,
+          variants: 3,
+        },
+        {
           id: "marketing-simple-details",
           href: "#/marketing-simple-details",
           name: ui.catalog.categories.marketingSimpleDetails,

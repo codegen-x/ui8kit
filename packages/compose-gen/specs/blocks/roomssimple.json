@@ -1,0 +1,99 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.roomssimple",
+  "name": "Simple rooms",
+  "docs": "The heading, one paragraph and the rooms (a picture, the name as a link, the guests, a line, the price a night): on cards in three or two columns, or rows with the picture at the start.",
+  "theme": "marketing",
+  "group": "catalog",
+  "organism": "RoomsSimple",
+  "line": "simple",
+  "model": "rooms@1",
+  "axes": {
+    "layout": [
+      "cards",
+      "rows"
+    ],
+    "cols": [
+      "3",
+      "2"
+    ]
+  },
+  "defaults": {
+    "layout": "cards",
+    "cols": "3"
+  },
+  "variants": [
+    {
+      "id": "cards3",
+      "set": {}
+    },
+    {
+      "id": "cards2",
+      "set": {
+        "cols": "2"
+      }
+    },
+    {
+      "id": "rows",
+      "set": {
+        "layout": "rows"
+      },
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@roomItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@roomItems"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@roomItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "roomItems",
+      "collection": "simplerooms",
+      "kind": "room",
+      "record": "Room",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "title": "title",
+        "guests": "metadata.guests.value",
+        "price": "metadata.display.value",
+        "description": "metadata.summary.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "roomssimple",
+      "title": {
+        "$": "ui.marketing.roomsSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.roomsSimple.description"
+      },
+      "items": {
+        "$": "roomItems"
+      }
+    }
+  }
+}

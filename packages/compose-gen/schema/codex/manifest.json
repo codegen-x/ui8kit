@@ -1680,6 +1680,51 @@
     },
     {
       "record": {
+        "id": "room",
+        "label": "Room",
+        "scope": "workspace",
+        "description": "fixtures: simplerooms",
+        "fields": [
+          {
+            "id": "currency",
+            "label": "Currency",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "display",
+            "label": "Display",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "guests",
+            "label": "Guests",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "price",
+            "label": "Price",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/money"
+              }
+            ],
+            "required": true
+          },
+          {
+            "id": "summary",
+            "label": "Summary",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "record": {
         "id": "row",
         "label": "Row",
         "scope": "workspace",

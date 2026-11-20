@@ -359,6 +359,10 @@
       {
         "block": "hourssimple",
         "variant": "columns"
+      },
+      {
+        "block": "roomssimple",
+        "variant": "cards3"
       }
     ],
     "about": [

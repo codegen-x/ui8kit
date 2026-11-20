@@ -1,0 +1,96 @@
+{
+  "collection": "simplerooms",
+  "kind": "room",
+  "entries": [
+    {
+      "id": "room-standard-double",
+      "locale": "en",
+      "kind": "room",
+      "status": "published",
+      "visibility": "public",
+      "slug": "room-standard-double",
+      "title": "Standard double",
+      "metadata": {
+        "price": {
+          "value": 650000
+        },
+        "currency": {
+          "value": "RUB"
+        },
+        "display": {
+          "value": "from 6 500 ₽ a night"
+        },
+        "guests": {
+          "value": "2 guests, 22 m2"
+        },
+        "summary": {
+          "value": "A queen bed, a work desk and a window on the quiet courtyard."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-01T09:00:00Z",
+      "updated_at": "2026-04-02T09:00:00Z",
+      "published_at": "2026-04-02T10:00:00Z"
+    },
+    {
+      "id": "room-superior-with-a-river-view",
+      "locale": "en",
+      "kind": "room",
+      "status": "published",
+      "visibility": "public",
+      "slug": "room-superior-with-a-river-view",
+      "title": "Superior with a river view",
+      "metadata": {
+        "price": {
+          "value": 980000
+        },
+        "currency": {
+          "value": "RUB"
+        },
+        "display": {
+          "value": "from 9 800 ₽ a night"
+        },
+        "guests": {
+          "value": "2 guests, 28 m2"
+        },
+        "summary": {
+          "value": "A king bed and a wide window over the embankment."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-03T09:00:00Z",
+      "updated_at": "2026-04-04T09:00:00Z",
+      "published_at": "2026-04-04T10:00:00Z"
+    },
+    {
+      "id": "room-family-suite",
+      "locale": "en",
+      "kind": "room",
+      "status": "published",
+      "visibility": "public",
+      "slug": "room-family-suite",
+      "title": "Family suite",
+      "metadata": {
+        "price": {
+          "value": 1450000
+        },
+        "currency": {
+          "value": "RUB"
+        },
+        "display": {
+          "value": "from 14 500 ₽ a night"
+        },
+        "guests": {
+          "value": "4 guests, 46 m2"
+        },
+        "summary": {
+          "value": "Two rooms, a sofa bed and a small kitchen for longer stays."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-05T09:00:00Z",
+      "updated_at": "2026-04-06T09:00:00Z",
+      "published_at": "2026-04-06T10:00:00Z"
+    }
+  ]
+}

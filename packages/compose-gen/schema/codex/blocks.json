@@ -7692,6 +7692,45 @@
       "emptyState": true
     },
     {
+      "id": "RoomsSimple",
+      "surface": "kit-block",
+      "spec": "block.roomssimple",
+      "source": "packages/compose-gen/specs/blocks/roomssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simplerooms",
+          "kind": "room",
+          "record": "Room",
+          "map": "roomItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.roomsSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.roomsSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "AppShell",
       "surface": "kit-block",
       "spec": "block.shell",
@@ -10592,6 +10631,14 @@
           "list": true
         },
         {
+          "prop": "RoomsSimple.items",
+          "collection": "simplerooms",
+          "kind": "room",
+          "record": "Room",
+          "map": "roomItem",
+          "list": true
+        },
+        {
           "prop": "SkeletonLayout.lines",
           "collection": "placeholders",
           "kind": "placeholder",
@@ -10940,6 +10987,7 @@
         "block.reservation",
         "block.restaurantmenu",
         "block.reviews",
+        "block.roomssimple",
         "block.shell",
         "block.sidenav",
         "block.sitemap",
@@ -14004,6 +14052,14 @@
           "list": true
         },
         {
+          "prop": "RoomsSimple.items",
+          "collection": "simplerooms",
+          "kind": "room",
+          "record": "Room",
+          "map": "roomItem",
+          "list": true
+        },
+        {
           "prop": "SitemapFooter.groups",
           "collection": "sitemap",
           "kind": "menu_item",
@@ -14275,6 +14331,7 @@
         "block.pullquotesimple",
         "block.purchasesimple",
         "block.ratingsimple",
+        "block.roomssimple",
         "block.sitemap",
         "block.specssimple",
         "block.splitsimple",

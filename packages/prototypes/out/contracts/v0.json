@@ -212,6 +212,12 @@
       "model": "rating@1",
       "path": "rating-simple/1.json"
     },
+    "rooms-simple": {
+      "version": 1,
+      "block": "block.roomssimple",
+      "model": "rooms@1",
+      "path": "rooms-simple/1.json"
+    },
     "specs-simple": {
       "version": 1,
       "block": "block.specssimple",

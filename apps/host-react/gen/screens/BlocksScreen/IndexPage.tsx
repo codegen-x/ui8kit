@@ -90,6 +90,7 @@ const TOPICS = [
       { key: "purchasesimple", href: "#/purchasesimple", name: ui.blocks.names.purchasesimple, docs: ui.blocks.docs.purchasesimple },
       { key: "quotesplit", href: "#/quotesplit", name: ui.blocks.names.quotesplit, docs: ui.blocks.docs.quotesplit },
       { key: "ratingsimple", href: "#/ratingsimple", name: ui.blocks.names.ratingsimple, docs: ui.blocks.docs.ratingsimple },
+      { key: "roomssimple", href: "#/roomssimple", name: ui.blocks.names.roomssimple, docs: ui.blocks.docs.roomssimple },
       { key: "sitemap", href: "#/sitemap", name: ui.blocks.names.sitemap, docs: ui.blocks.docs.sitemap },
       { key: "specssimple", href: "#/specssimple", name: ui.blocks.names.specssimple, docs: ui.blocks.docs.specssimple },
       { key: "splitsimple", href: "#/splitsimple", name: ui.blocks.names.splitsimple, docs: ui.blocks.docs.splitsimple },

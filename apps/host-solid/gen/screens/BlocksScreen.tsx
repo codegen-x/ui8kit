@@ -75,6 +75,7 @@ import { PullquotesimplePage } from "./BlocksScreen/PullquotesimplePage";
 import { PurchasesimplePage } from "./BlocksScreen/PurchasesimplePage";
 import { QuotesplitPage } from "./BlocksScreen/QuotesplitPage";
 import { RatingsimplePage } from "./BlocksScreen/RatingsimplePage";
+import { RoomssimplePage } from "./BlocksScreen/RoomssimplePage";
 import { SitemapPage } from "./BlocksScreen/SitemapPage";
 import { SpecssimplePage } from "./BlocksScreen/SpecssimplePage";
 import { SplitsimplePage } from "./BlocksScreen/SplitsimplePage";
@@ -238,6 +239,7 @@ const ROUTES = [
   {"path":"purchasesimple","area":"purchasesimple"},
   {"path":"quotesplit","area":"quotesplit"},
   {"path":"ratingsimple","area":"ratingsimple"},
+  {"path":"roomssimple","area":"roomssimple"},
   {"path":"sitemap","area":"sitemap"},
   {"path":"specssimple","area":"specssimple"},
   {"path":"splitsimple","area":"splitsimple"},
@@ -475,6 +477,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <QuotesplitPage />
         ) : route.area === "ratingsimple" ? (
           <RatingsimplePage />
+        ) : route.area === "roomssimple" ? (
+          <RoomssimplePage />
         ) : route.area === "sitemap" ? (
           <SitemapPage />
         ) : route.area === "specssimple" ? (

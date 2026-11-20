@@ -391,6 +391,14 @@
             ]
           },
           {
+            "id": "marketing-simple-stay",
+            "entries": [
+              {
+                "block": "roomssimple"
+              }
+            ]
+          },
+          {
             "id": "marketing-simple-details",
             "entries": [
               {

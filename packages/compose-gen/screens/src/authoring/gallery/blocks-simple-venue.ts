@@ -44,4 +44,18 @@ const hoursSimple = define({
   },
 });
 
-export const simpleVenueBlocks = [menuSimple, hoursSimple];
+const rms = k("roomsSimple");
+const roomsSimple = define({
+  key: "roomssimple", theme: "marketing", group: "catalog", line: "simple", model: "rooms@1",
+  name: "Simple rooms", docs: "The heading, one paragraph and the rooms (a picture, the name as a link, the guests, a line, the price a night): on cards in three or two columns, or rows with the picture at the start.",
+  organism: "RoomsSimple", axes: ["layout", "cols"], data: [d.roomItems],
+  variants: [
+    ["cards3", "Three room cards"],
+    ["cards2", "Two columns", { cols: "2" }],
+    ["rows", "Rows, the picture at the start", { layout: "rows" }, { align: "start" }],
+  ],
+  facts: [h2, li("@roomItems"), h3("@roomItems"), { sel: '[data-slot="media-frame"]', n: "@roomItems" }],
+  sample: { id: "roomssimple", ...head(rms), items: ref("roomItems") },
+});
+
+export const simpleVenueBlocks = [menuSimple, hoursSimple, roomsSimple];
