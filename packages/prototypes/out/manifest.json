@@ -324,7 +324,7 @@
     }
   ],
   "inputs": {
-    "sha256": "21f774843f23c71680ff28b27a4b1c333e0c31d2a3ff29f92cf630e89a388577"
+    "sha256": "98b43672b0c5aed6cb72a1d4c07d261f09e3f3d4b0874957a9972b09d8c9ed41"
   },
   "files": {
     "catalog.ts": "4f64d176f14de406567537a922d37aff85fb4b4285f70cbb5b592ce160b221d1",
@@ -487,7 +487,7 @@
     "svelte/blocks/gallery-hero.svelte": "913013a3cc29f78cb667700f2da9596c2ece4ec065c430344151ba9cbad5372b",
     "svelte/blocks/header-simple.svelte": "5b12b263729bfe5c1edbd2dc7d76756542afe27cccc5baa7a7cb6fd05b9024c0",
     "svelte/blocks/hero-simple.svelte": "84367da8648e509ec7976314dff75eefd67bf027b368a0d0bafaac100236b1f3",
-    "svelte/blocks/hours-simple.svelte": "69ec59235d077f5e924936d6662527ddbf064bc7884c1f5659ef9f2935a8ed6d",
+    "svelte/blocks/hours-simple.svelte": "cf088f1646ce40ccdb6600ced09518439a6670e63be43213d729bfb2d08c45e0",
     "svelte/blocks/intro-simple.svelte": "f6c0a318d582b98eb09b292de157119d2269bbc9bcfbf48488835513181b6e63",
     "svelte/blocks/locations-simple.svelte": "0091f7c4cc5b2f86e6e7aac431ecd561f0092c1bfe3183b1f40edfe82761c885",
     "svelte/blocks/logos-simple.svelte": "2ea1082d07f7e07d12ed7d48274003e3af53faf853a48f8be1f18964a0bae718",

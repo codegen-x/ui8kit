@@ -112,7 +112,7 @@ export function HoursSimple({
                 </LinkPlain>
               ) : null}
             </Stack>
-            <List tag="ul" className={cn("m-0 w-full list-none p-0", cn("flex flex-col gap-2", panel))}>
+            <List tag="ul" className={cn("m-0 w-full list-none p-0", cn("grid grid-cols-1 gap-2", panel))}>
               {(items ?? []).map((h) => (
                 <ListItem key={h.id} className="flex flex-row justify-between gap-4" data-slot="opening-hour">
                   <Text size="base" className="text-muted-foreground">

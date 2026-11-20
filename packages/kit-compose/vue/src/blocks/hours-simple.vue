@@ -128,7 +128,7 @@ const panel = computed(() =>
               </Text>
             </LinkPlain>
           </Stack>
-          <List tag="ul" :class="cn('m-0 w-full list-none p-0', cn('flex flex-col gap-2', panel))">
+          <List tag="ul" :class="cn('m-0 w-full list-none p-0', cn('grid grid-cols-1 gap-2', panel))">
             <ListItem v-for="h in items" :key="h.id" class="flex flex-row justify-between gap-4" data-slot="opening-hour">
               <Text size="base" class="text-muted-foreground">
                 {{ h.day }}

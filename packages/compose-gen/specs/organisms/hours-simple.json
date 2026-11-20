@@ -644,7 +644,7 @@
                             {
                               "op": "cn",
                               "args": [
-                                "flex flex-col gap-2",
+                                "grid grid-cols-1 gap-2",
                                 {
                                   "$": "panel"
                                 }

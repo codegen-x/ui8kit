@@ -57,7 +57,7 @@ const hoursSimple = spec(`${O}hours-simple`, "HoursSimple", "The simple opening 
         use("Text", { props: { Size: "lg", Weight: "semibold", Class: textAlign } }, text(ref("address"))),
         use("LinkPlain", { props: { Href: ref("phoneHref"), Class: "hover:text-primary" } }, use("Text", { props: { Size: "lg", Class: textAlign } }, text(ref("phone")))),
         when(and(ref("mapLabel"), ref("mapHref")), [use("LinkPlain", { props: { Href: ref("mapHref"), Class: "hover:text-primary" } }, use("Text", { props: { Size: "sm", Class: cn("text-primary", textAlign) } }, text(ref("mapLabel"))))])),
-      ulist(cn("flex flex-col gap-2", ref("panel")),
+      ulist(cn("grid grid-cols-1 gap-2", ref("panel")),
         each(ref("items"), "h", ref("h.id"),
           use("ListItem", { props: { Class: "flex flex-row justify-between gap-4" }, attrs: { "data-testid": "opening-hour" } },
             use("Text", { props: { Size: "base", Class: "text-muted-foreground" } }, text(ref("h.day"))),

@@ -92,7 +92,7 @@
           tag="ul"
           class={cn(
             "m-0 w-full p-0",
-            cn("flex flex-col gap-2", (((surface as string) === "card") ? "rounded bg-card p-6 text-card-foreground border border-border" : ""))
+            cn("grid grid-cols-1 gap-2", (((surface as string) === "card") ? "rounded bg-card p-6 text-card-foreground border border-border" : ""))
           )}
         >
           <Box tag="li" class="flex flex-row justify-between gap-4" data-slot="opening-hour">

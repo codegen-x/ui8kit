@@ -78,7 +78,7 @@
             {{ og_include('compose/list-item.html.j2', {'p': {'Class': 'flex flex-row justify-between gap-4', 'Attrs': og_attrs(['data-slot', 'opening-hour'])}, 'children': c_12}) }}
           {%- endfor %}
         {%- endset -%}
-        {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(og_cnv(['m-0 w-full list-none p-0', og_cnv(['flex flex-col gap-2', v_panel])]))}, 'children': c_13}) }}
+        {{ og_include('compose/list.html.j2', {'p': {'Tag': 'ul', 'Class': og_s(og_cnv(['m-0 w-full list-none p-0', og_cnv(['grid grid-cols-1 gap-2', v_panel])]))}, 'children': c_13}) }}
       {%- endset -%}
       {{ og_include('compose/box.html.j2', {'p': {'Class': og_s(v_frame)}, 'children': c_14}) }}
     {%- endset -%}

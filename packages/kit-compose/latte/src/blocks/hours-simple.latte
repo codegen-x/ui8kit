@@ -78,7 +78,7 @@
             {=og_include('compose/ListItem.latte', ['class' => 'flex flex-row justify-between gap-4', 'attrs' => og_attrs(['data-slot', 'opening-hour']), 'children' => (string) $c_12])|noescape}
           {/foreach}
         {/capture}
-        {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s(og_cnv(['m-0 w-full list-none p-0', og_cnv(['flex flex-col gap-2', $v_panel])])), 'children' => (string) $c_13])|noescape}
+        {=og_include('compose/List.latte', ['tag' => 'ul', 'class' => og_s(og_cnv(['m-0 w-full list-none p-0', og_cnv(['grid grid-cols-1 gap-2', $v_panel])])), 'children' => (string) $c_13])|noescape}
       {/capture}
       {=og_include('compose/Box.latte', ['class' => og_s($v_frame), 'children' => (string) $c_14])|noescape}
     {/capture}
