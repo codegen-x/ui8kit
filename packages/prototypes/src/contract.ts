@@ -4,7 +4,7 @@
 import type { BlockSpec, OrganismSpec } from "../../compose-gen/screens/src/ir";
 import { MODEL_BASE, SETTINGS, type ModelSpec } from "../../compose-gen/model/src/index";
 import { fileName } from "../../compose-gen/screens/src/index";
-import { MODES, WIRE_ITEMS, type Place } from "./project";
+import { MODES, wireItems, type Place } from "./project";
 
 export const CONTRACT_VERSION = 1;
 export const CONTRACT_BASE = "https://registry.buildy.tw/contracts";
@@ -33,7 +33,9 @@ export function contractOf(b: BlockSpec, clean: OrganismSpec, model: ModelSpec, 
       return { id: v.id, label: labels[v.id] ?? v.id, axes: { ...b.defaults, ...v.set }, ...(own.length ? { settings: Object.fromEntries(own) as Record<string, string | number | boolean> } : {}) };
     }),
     defaultVariant: b.variants[0]!.id,
-    settings, modes: MODES, defaultMode: MODES[0], places, wireframe: { items: WIRE_ITEMS },
+    // wireframe.items (block-contract/v1): the members of the default variant; another variant draws its column count
+    // (wireItems: the one whole-number axis, team-simple cols), a block without one WIRE_ITEMS
+    settings, modes: MODES, defaultMode: MODES[0], places, wireframe: { items: wireItems(b.axes, { ...b.defaults, ...b.variants[0]!.set }) },
   };
 }
 

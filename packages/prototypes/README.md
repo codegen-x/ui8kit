@@ -8,8 +8,8 @@ from the registry.
 
 - `src/project.ts`: the projection, IR to IR. A place is a node that draws a field of the model (Title, Text, Badge, the action
   link, a MediaFrame); it becomes its shape with `data-place` and `data-field` (a JSON pointer: `/title`, `/members/2/title`)
-  for the builder's inspector. A branch that waits for content is drawn; a loop over a list field is unrolled into three
-  placeholders. The layout compositions (Block, Container, Box, Stack, List, ListItem, Card) are lowered onto the kit `Box`
+  for the builder's inspector. A branch that waits for content is drawn; a loop over a list field is unrolled into one
+  placeholder per column of the variant (the members past the smallest count sit in a `when` on the axis; no column axis: three). The layout compositions (Block, Container, Box, Stack, List, ListItem, Card) are lowered onto the kit `Box`
   with plain layout classes (a Stack also gets `w-full`: a wireframe has no intrinsic width, so a column the clean block lets shrink to its content would draw its fraction-wide bars at 0); anything else fails the build. The props are the layout axes of the block and the `padding`
   and `align` settings (align: `start` | `center` | `end`, logical items-* / text-*, `ShapeText align`); a wireframe takes
   no content and names no landmark. Derived values of the clean organism are inlined.
@@ -37,7 +37,7 @@ from the registry.
 | `manifest.json` | sha256 of every file and of the inputs; no timestamps and no commit (the consumer pins the commit: ui8kit/prototypes `codegen.lock.json`) |
 
 `test/prototypes.test.ts`: the places cover the model; every place of a contract has its shape in the wireframe (and every
-`data-field` is a pointer of the contract) on every gallery case; the wireframe has no words and three members; `out/` is
+`data-field` is a pointer of the contract) on every gallery case; the wireframe has no words and one member per column of the variant (`countAxis`: the one whole-number axis, team-simple `cols`; else `WIRE_ITEMS` = 3); `out/` is
 exactly the files above and imports only svelte and the kit; the clean outputs of all 8 runtimes carry no `data-place`,
 `data-field`, `data-shape` or `data-testid`; the padding presets, every `align` value, the width of the team list and the action link are checked
 on the wireframe and on the clean kit-compose block; `out/` is the fresh build.

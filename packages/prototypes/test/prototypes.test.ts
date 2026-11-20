@@ -1,5 +1,5 @@
 // packages/prototypes: the places cover the model, every place of a contract has its shape in the wireframe (data-place, data-field),
-// the wireframe draws shapes only (three members) and imports only svelte and the kit, the clean outputs carry no builder attribute,
+// the wireframe draws shapes only (one member per column of the variant) and imports only svelte and the kit, the clean outputs carry no builder attribute,
 // and out/ is what the driver writes. The clean block itself (page DOM, the action link, the width of the team) is checked here on the
 // kit-compose output, not through the prototype: no clean code ships with a prototype.
 import { describe, expect, test } from "bun:test";
@@ -11,7 +11,7 @@ import { plugin } from "bun";
 import { JSDOM } from "jsdom";
 import { compile } from "svelte/compiler";
 import { build, drift, OUT } from "../src/driver";
-import { CONTAINER, PADDING } from "../src/project";
+import { CONTAINER, PADDING, WIRE_ITEMS, countAxis, wireItems } from "../src/project";
 import { TEXT_ALIGN } from "../../compose-gen/screens/src/authoring/blocks/simple";
 import { ROLE } from "../src/shapes";
 
@@ -124,9 +124,12 @@ describe("wireframe mode", () => {
     expect(norm(html.replace(/<[^>]+>/g, " ")).trim()).toBe("");
     expect(html).not.toContain("aria-labelledby");
     expect(html).toContain('data-shape="heading"');
-    if (item === "team-simple") {
-      expect(html.match(/<li\b/g)?.length).toBe(3);
-      expect(html.match(/data-shape="avatar"/g)?.length).toBe(3);
+    // a list draws one member per column of the variant (the whole-number axis; cols2: 2, cols4: 4), else WIRE_ITEMS
+    const contract = simple.find((x) => x.item === item)!;
+    const members = wireItems(contract.axes, { ...contract.defaults, ...(c.props as Record<string, string>) });
+    if (contract.places.some((p) => p.list)) {
+      expect(html.match(/<li\b/g)?.length, c.label).toBe(members);
+      expect(html.match(/data-shape="avatar"/g)?.length, c.label).toBe(members);
     }
     if (item === "hero-simple") for (const s of ["badge", "cta", "text", "media"]) expect(html).toContain(`data-shape="${s}"`);
   });
@@ -150,6 +153,18 @@ test("out/models: the schemas are schemaOf(model), the emitted validate() agrees
     const fn = Object.entries(mod).find(([k]) => k.startsWith("validate"))![1] as (v: unknown) => unknown[];
     expect(fn({})).toEqual(validate(model, {}));
     expect(fn({ title: "x", members: [{ id: "a", title: "A" }] }).length).toBe(validate(model, { title: "x", members: [{ id: "a", title: "A" }] }).length);
+  }
+});
+
+test("the column count: the one whole-number axis, read from the axes only; wireframe.items is the default variant's count", () => {
+  expect(countAxis({ cols: ["2", "3", "4"], surface: ["plain", "cards"] })).toBe("cols");
+  expect(countAxis({ media: ["end", "start", "top"] })).toBeUndefined();
+  expect(countAxis({ a: ["1", "2"], b: ["3"] })).toBeUndefined(); // two counts: none is the column count
+  expect(wireItems({ media: ["end"] }, { media: "end" })).toBe(WIRE_ITEMS);
+  for (const c of simple) {
+    expect(c.wireframe.items).toBe(wireItems(c.axes, c.variants.find((v) => v.id === c.defaultVariant)!.axes));
+    const axis = countAxis(c.axes);
+    if (axis) for (const v of c.variants) expect(wireItems(c.axes, v.axes)).toBe(Number(v.axes[axis]));
   }
 });
 

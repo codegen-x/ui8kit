@@ -1,17 +1,31 @@
 // The projection of a clean organism (page-only, packages/compose-gen) onto its prototype: a wireframe of rectangles only. Every
 // place (a node that draws a field of the content model) becomes its shape (shapes.ts) with data-place / data-field for the
-// builder's inspector; a branch that waits for content is drawn anyway; a loop over a list field is unrolled into WIRE_ITEMS
-// placeholders (data-field /members/0/title …). The layout compositions (Block, Container, Stack, List, …) are lowered onto the kit
+// builder's inspector; a branch that waits for content is drawn anyway; a loop over a list field is unrolled into one
+// placeholder per column of the variant (countAxis; else WIRE_ITEMS) (data-field /members/0/title …). The layout compositions (Block, Container, Stack, List, …) are lowered onto the kit
 // Box with plain layout classes (LAYOUT below): no composition, no recipe, no state or effect class ships with a prototype.
 // The props are the layout axes of the block and the padding setting: a wireframe takes no content. IR to IR.
-import { cn, cond, eq, organism, ref } from "../../compose-gen/screens/src/build";
+import { cn, cond, eq, or, organism, ref, when } from "../../compose-gen/screens/src/build";
 import { isGroup, isOp, isRef, type OrganismSpec, type Value, type ViewNode } from "../../compose-gen/screens/src/ir";
 import type { BlockSpec } from "../../compose-gen/screens/src/ir";
 import type { ModelField, ModelSpec } from "../../compose-gen/model/src/index";
 import { ALIGN, ROLE, SHAPE, type ShapeName } from "./shapes";
 
-/** how many members a wireframe draws for a list field */
+/** how many members a wireframe draws for a list field when the block has no column count */
 export const WIRE_ITEMS = 3;
+/**
+ * The column count of a block: its one axis whose every value is a whole number (team-simple `cols`: 2, 3, 4). A wireframe draws
+ * as many members as the variant has columns, so the grid is full (cols4: 4); a block without one draws WIRE_ITEMS. Read from the
+ * axes only: no block is named.
+ */
+export function countAxis(axes: Record<string, string[]>): string | undefined {
+  const counts = Object.entries(axes).filter(([, vs]) => vs.length > 0 && vs.every((v) => /^[1-9][0-9]?$/.test(v)));
+  return counts.length === 1 ? counts[0]![0] : undefined;
+}
+/** the members a wireframe draws in one variant (its axis values): the column count, else WIRE_ITEMS */
+export function wireItems(axes: Record<string, string[]>, values: Record<string, string>): number {
+  const axis = countAxis(axes);
+  return axis && values[axis] ? Number(values[axis]) : WIRE_ITEMS;
+}
 export const MODES = ["wireframe"] as const;
 export type PlaceKind = "heading" | "text" | "badge" | "action" | "media";
 
@@ -89,7 +103,7 @@ class Projector {
   alignable: boolean;
   /** the derived values of the clean organism, inlined: a prototype has no derived values (`derived: []`) */
   derived: Map<string, Value>;
-  constructor(readonly model: ModelSpec, readonly props: Set<string>, clean?: OrganismSpec) {
+  constructor(readonly model: ModelSpec, readonly props: Set<string>, clean?: OrganismSpec, readonly axes: Record<string, string[]> = {}) {
     this.alignable = !!clean?.props.some((p) => p.name === "align");
     this.derived = new Map((clean?.derived ?? []).map((d) => [d.name, d.value]));
   }
@@ -177,7 +191,17 @@ class Projector {
     if ("each" in n) {
       const listField = refsOf(n.each).find((r) => this.model.fields[r]?.type === "list") ?? fail(`a loop over ${JSON.stringify(n.each)} is not a list field`);
       const f = this.model.fields[listField]!;
-      return Array.from({ length: WIRE_ITEMS }, (_, i) => this.nodes(n.do, [...loops, { as: n.as, index: i, list: listField, item: f.item!.fields }])).flat();
+      const draw = (i: number) => this.nodes(n.do, [...loops, { as: n.as, index: i, list: listField, item: f.item!.fields }]);
+      const axis = countAxis(this.axes);
+      if (!axis) return Array.from({ length: WIRE_ITEMS }, (_, i) => draw(i)).flat();
+      // one member per column of the variant: the members past the smallest count are drawn when the column count reaches them
+      const counts = this.axes[axis]!.map(Number);
+      const least = Math.min(...counts);
+      return Array.from({ length: Math.max(...counts) }, (_, i) => {
+        if (i < least) return draw(i);
+        const more = this.axes[axis]!.filter((v) => Number(v) > i).map((v) => eq(ref(axis), v));
+        return [when(more.length === 1 ? more[0]! : or(...more), draw(i))];
+      }).flat();
     }
     if ("use" in n) return [this.lower(n, loops)];
     if ("text" in n || "html" in n) fail("a text outside a place");
@@ -220,7 +244,7 @@ const prefixed = (f: Field): string => (f.list ? `${f.list}.${f.field}` : f.fiel
 /** the prototype of a clean organism for its block and model, and its places */
 export function project(clean: OrganismSpec, block: BlockSpec, model: ModelSpec): { organism: OrganismSpec; places: Place[] } {
   const keep = new Set<string>([...Object.keys(block.axes), ...PROTOTYPE_SETTINGS.filter((s) => clean.props.some((p) => p.name === s))]);
-  const pr = new Projector(model, keep, clean);
+  const pr = new Projector(model, keep, clean, block.axes);
   const view = pr.nodes(clean.view, []);
   const organismSpec: OrganismSpec = {
     ...clean,

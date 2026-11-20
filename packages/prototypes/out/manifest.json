@@ -23,7 +23,7 @@
     }
   ],
   "inputs": {
-    "sha256": "763f698c6111a0c95ef1c34971a1996563279868204061c108781b3ee300e94f"
+    "sha256": "06fd928b3442bec3e2e0292da732c1f884110a2abe47a68cf81fa4d6e97f8527"
   },
   "files": {
     "catalog.ts": "7ce2cafc6c5553beb20c2c00781e1819a086ec2b7b8442596df5a660158ec501",
@@ -39,7 +39,7 @@
     "models/validate.ts": "f736b8b812547bb3780e597d0c48971ce70c9a90df7a0fe51e4d109e8a236e7b",
     "registry.ts": "ba9e42d929f8f09e7c774412dd2ef1ff7c39d2ad0db93c843e3bf409d68a3ce2",
     "svelte/blocks/hero-simple.svelte": "f8bb18becea47fa5dd3ed0044dfefdc6759652f9e3965b68716722954a90f404",
-    "svelte/blocks/team-simple.svelte": "c45b96eb50cd81ce6df6b49512dd6ea3f37002b767ab7627061c74fddc0983c7",
+    "svelte/blocks/team-simple.svelte": "3531e2bf3b56bd57080f9a15d2e157aa6ed42bea786bae796ff9515c66b59976",
     "svelte/index.ts": "5a1ede65def2ccafb7da524d28801831dc449455ba51d2ce27acedef3c5ccdfa",
     "svelte/shapes/shape-avatar.svelte": "0cee517413dc4cefdee7d1d31e82033cf3342fdb47a0fd4a6dc58deb53cae3bb",
     "svelte/shapes/shape-badge.svelte": "a4cc87358624d1a2eea97135525f9c073efaaa5f3f67cec75920523ce1eb517a",
