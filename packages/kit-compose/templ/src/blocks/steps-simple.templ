@@ -41,7 +41,7 @@ templ StepsSimple(p StepsSimpleProps) {
 	{{ vTextAlign := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "text-center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "text-end", "text-start"))) }}
 	{{ vSelfAlign := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "self-center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "self-end", ""))) }}
 	{{ vGrid := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "column")), "", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "3")), "sm:grid-cols-2 md:grid-cols-3", "sm:grid-cols-2 md:grid-cols-4"))) }}
-	{{ vNarrow := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "column")), "mx-auto w-full max-w-2xl", "")) }}
+	{{ vNarrow := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "column")), "mx-auto max-w-2xl", "")) }}
 	{{ vItem := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "column")), "flex flex-row items-start gap-6", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "flex flex-col items-center gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "flex flex-col items-end gap-4", "flex flex-col items-start gap-4")))) }}
 	{{ vCopyAlign := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "column")), "start", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "end", "start")))) }}
 	{{ vCopyText := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "column")), "text-start", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "text-center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "text-end", "text-start")))) }}

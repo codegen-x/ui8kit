@@ -43,7 +43,7 @@ const introSimple = spec(`${O}intro-simple`, "IntroSimple", "The simple intro (m
   derived: [titleId, ...teamDerived],
   view: [section(
     use("Stack", { props: { Gap: "0", Align: alignItems, Justify: cond(is("place", "bottom"), "end", "center"), Class: cond(is("place", "bottom"), "min-h-96", "") } },
-      use("Stack", { props: { Gap: "6", Align: alignItems, Class: "w-full" } },
+      use("Stack", { props: { Gap: "6", Align: alignItems } },
         when(ref("badge"), [use("Badge", { props: { Variant: "secondary" } }, text(ref("badge")))]),
         use("Title", { props: { As: ref("level"), Size: "5xl", Weight: "bold", Class: cn("max-w-4xl tracking-tight", textAlign) }, attrs: { id: ref("titleId") } }, text(ref("title"))),
         when(ref("description"), [use("Text", { props: { Size: "lg", Class: cn("max-w-2xl text-muted-foreground", textAlign) } }, text(ref("description")))]),
@@ -241,7 +241,7 @@ const faqSimple = spec(`${O}faq-simple`, "FaqSimple", "The simple FAQ (model faq
     id, title, description, list("items", "SimpleQuestion", "the questions, in the order they are shown (1 to 12)"), level, padding, align,
     { name: "columns", type: tsOf("one", "two"), default: "two" },
   ],
-  derived: [titleId, ...teamDerived, chain("grid", [[is("columns", "two"), "md:grid-cols-2"]], ""), chain("narrow", [[is("columns", "one"), "mx-auto w-full max-w-3xl"]], "")],
+  derived: [titleId, ...teamDerived, chain("grid", [[is("columns", "two"), "md:grid-cols-2"]], ""), chain("narrow", [[is("columns", "one"), "mx-auto max-w-3xl"]], "")],
   view: [section(
     use("Stack", { props: { Gap: "12", Align: "stretch", Class: ref("narrow") } },
       head(),
@@ -264,7 +264,7 @@ const stepsSimple = spec(`${O}steps-simple`, "StepsSimple", "The simple steps (m
   derived: [
     titleId, ...teamDerived,
     chain("grid", [[column, ""], [is("cols", "3"), "sm:grid-cols-2 md:grid-cols-3"]], "sm:grid-cols-2 md:grid-cols-4"),
-    chain("narrow", [[column, "mx-auto w-full max-w-2xl"]], ""),
+    chain("narrow", [[column, "mx-auto max-w-2xl"]], ""),
     chain("item", [[column, "flex flex-row items-start gap-6"], [isAlignV("center"), "flex flex-col items-center gap-4"], [isAlignV("end"), "flex flex-col items-end gap-4"]], "flex flex-col items-start gap-4"),
     chain("copyAlign", [[column, "start"], [isAlignV("center"), "center"], [isAlignV("end"), "end"]], "start"),
     chain("copyText", [[column, "text-start"], [isAlignV("center"), "text-center"], [isAlignV("end"), "text-end"]], "text-start"),

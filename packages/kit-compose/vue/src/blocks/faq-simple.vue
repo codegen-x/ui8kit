@@ -63,7 +63,7 @@ const selfAlign = computed(() =>
   : ""
 );
 const grid = computed(() => ((columns as string) === "two") ? "md:grid-cols-2" : "");
-const narrow = computed(() => ((columns as string) === "one") ? "mx-auto w-full max-w-3xl" : "");
+const narrow = computed(() => ((columns as string) === "one") ? "mx-auto max-w-3xl" : "");
 </script>
 
 <template>

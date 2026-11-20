@@ -100,7 +100,7 @@
     }
   ],
   "inputs": {
-    "sha256": "34788e8e7eb90995bb2819a1e7ec9d2c992e5d51d81be2480e2a96d336133b8a"
+    "sha256": "0ce27d6c4cb74734c0582346060c6202b2ada587d488fb4cf9c7b8ef2a91b416"
   },
   "files": {
     "catalog.ts": "c11892a573a815ce29ac935a21d762f901312ed955301720548b0bde08fec1bd",
@@ -148,16 +148,16 @@
     "models/testimonials@1.ts": "6c3db8ec456690829d85e6abfbef627760ffeea7c19321edecc734925929d5fa",
     "models/validate.ts": "f736b8b812547bb3780e597d0c48971ce70c9a90df7a0fe51e4d109e8a236e7b",
     "registry.ts": "cd89b31991672a941de2797eebdaa5a17279a2711ae4d9b3a7cc5cb565a71fd0",
-    "svelte/blocks/faq-simple.svelte": "0c71c106a0d5d4e820a78cbb5e40d071a2b1ef148e5866cc1726ca18e0545090",
+    "svelte/blocks/faq-simple.svelte": "923667123410905c6e1ca6fef132fa19d0d148a145fe29e06fb4351e43280bbe",
     "svelte/blocks/features-simple.svelte": "bdcb04109388497addc14d32fbfdd180d24badc635c0f6c0929310f4ad8c48a1",
     "svelte/blocks/gallery-hero.svelte": "913013a3cc29f78cb667700f2da9596c2ece4ec065c430344151ba9cbad5372b",
     "svelte/blocks/hero-simple.svelte": "84367da8648e509ec7976314dff75eefd67bf027b368a0d0bafaac100236b1f3",
-    "svelte/blocks/intro-simple.svelte": "e287f4ea3d9e33335d4da055e9d44b1d2dc915cf20ca99d5c5d79924eecab513",
+    "svelte/blocks/intro-simple.svelte": "f6c0a318d582b98eb09b292de157119d2269bbc9bcfbf48488835513181b6e63",
     "svelte/blocks/logos-simple.svelte": "2ea1082d07f7e07d12ed7d48274003e3af53faf853a48f8be1f18964a0bae718",
     "svelte/blocks/photos-simple.svelte": "05578ea02365d7f420a5349e49d9445453d22fbd442d569fc43d7e323afefe21",
     "svelte/blocks/split-simple.svelte": "cd0cab695e4eac4efa77ef38ee254ea202c6465670d5cdfbee8a1fce046162bc",
     "svelte/blocks/stats-simple.svelte": "2c91da85a43247738f0b3ce4c979ce70784995017317ff927348bb77322e34b2",
-    "svelte/blocks/steps-simple.svelte": "3a1b4aefe41a1a0077bdfecbd179633f9e2e7489a638f72eb2a924fb1cf9db65",
+    "svelte/blocks/steps-simple.svelte": "34e90244540861779e5cf1f03c0ae7a51e4afecdcd0c4ce119208c0caf028a4e",
     "svelte/blocks/stories-simple.svelte": "09fb883e89eb6f747093b6827108375803392e045669b32ee81ba5e08b8a6e8c",
     "svelte/blocks/team-simple.svelte": "3531e2bf3b56bd57080f9a15d2e157aa6ed42bea786bae796ff9515c66b59976",
     "svelte/blocks/testimonials-simple.svelte": "55e4d80cf6835d526bf7a6a30f28d4f3fe03ded65644aac2e01d82b53d25f6f3",

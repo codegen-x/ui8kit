@@ -49,7 +49,7 @@ templ IntroSimple(p IntroSimpleProps) {
 	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "compact")), "py-8 lg:py-16", uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "spacious")), "py-24 lg:py-40", "py-16 lg:py-32"))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "aria-label", vLandmarkLabel, "data-slot", "intro-simple")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-6xl px-4"}}) {
 			@compose.Stack(compose.StackProps{Gap: "0", Align: uiutils.S(vColumn), Justify: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPlace, "bottom")), "end", "center")), BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPlace, "bottom")), "min-h-96", ""))}}) {
-				@compose.Stack(compose.StackProps{Gap: "6", Align: uiutils.S(vColumn), BoxProps: box.BoxProps{Class: "w-full"}}) {
+				@compose.Stack(compose.StackProps{Gap: "6", Align: uiutils.S(vColumn), BoxProps: box.BoxProps{}}) {
 					if uiutils.T(vBadge) {
 						@compose.Badge(compose.BadgeProps{Variant: "secondary", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(vBadge) }

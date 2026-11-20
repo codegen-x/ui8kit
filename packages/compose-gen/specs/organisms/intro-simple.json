@@ -353,8 +353,7 @@
                     "Gap": "6",
                     "Align": {
                       "$": "column"
-                    },
-                    "Class": "w-full"
+                    }
                   },
                   "children": [
                     {

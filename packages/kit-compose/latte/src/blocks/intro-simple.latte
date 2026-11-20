@@ -56,7 +56,7 @@
           {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => og_s($v_column), 'class' => 'flex-wrap', 'children' => (string) $c_6])|noescape}
         {/if}
       {/capture}
-      {=og_include('compose/Stack.latte', ['gap' => '6', 'align' => og_s($v_column), 'class' => 'w-full', 'children' => (string) $c_7])|noescape}
+      {=og_include('compose/Stack.latte', ['gap' => '6', 'align' => og_s($v_column), 'children' => (string) $c_7])|noescape}
     {/capture}
     {=og_include('compose/Stack.latte', ['gap' => '0', 'align' => og_s($v_column), 'justify' => og_s((og_t(og_eq($v_place, 'bottom')) ? 'end' : 'center')), 'class' => og_s((og_t(og_eq($v_place, 'bottom')) ? 'min-h-96' : '')), 'children' => (string) $c_8])|noescape}
   {/capture}

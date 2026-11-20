@@ -76,7 +76,7 @@ export function IntroSimple({
           justify={(((place as string) === "bottom") ? "end" : "center")}
           className={(((place as string) === "bottom") ? "min-h-96" : "")}
         >
-          <Stack gap="6" align={column} className="w-full">
+          <Stack gap="6" align={column}>
             {badge ? (
               <Badge variant="secondary">
                 {badge}

@@ -291,7 +291,7 @@
               "column"
             ]
           },
-          "mx-auto w-full max-w-2xl",
+          "mx-auto max-w-2xl",
           ""
         ]
       }

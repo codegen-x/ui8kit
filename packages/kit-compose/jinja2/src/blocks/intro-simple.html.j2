@@ -56,7 +56,7 @@
           {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': og_s(v_column), 'Class': 'flex-wrap'}, 'children': c_6}) }}
         {%- endif %}
       {%- endset -%}
-      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': og_s(v_column), 'Class': 'w-full'}, 'children': c_7}) }}
+      {{ og_include('compose/stack.html.j2', {'p': {'Gap': '6', 'Align': og_s(v_column)}, 'children': c_7}) }}
     {%- endset -%}
     {{ og_include('compose/stack.html.j2', {'p': {'Gap': '0', 'Align': og_s(v_column), 'Justify': og_s(('end' if og_t(og_eq(v_place, 'bottom')) else 'center')), 'Class': og_s(('min-h-96' if og_t(og_eq(v_place, 'bottom')) else ''))}, 'children': c_8}) }}
   {%- endset -%}

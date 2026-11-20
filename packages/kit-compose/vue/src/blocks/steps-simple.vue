@@ -71,7 +71,7 @@ const grid = computed(() =>
   : (cols as string) === "3" ? "sm:grid-cols-2 md:grid-cols-3"
   : "sm:grid-cols-2 md:grid-cols-4"
 );
-const narrow = computed(() => ((layout as string) === "column") ? "mx-auto w-full max-w-2xl" : "");
+const narrow = computed(() => ((layout as string) === "column") ? "mx-auto max-w-2xl" : "");
 const item = computed(() =>
   (layout as string) === "column" ? "flex flex-row items-start gap-6"
   : (align as string) === "center" ? "flex flex-col items-center gap-4"

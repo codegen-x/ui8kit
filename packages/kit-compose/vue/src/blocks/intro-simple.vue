@@ -92,7 +92,7 @@ const selfAlign = computed(() =>
         :justify="(((place as string) === 'bottom') ? 'end' : 'center')"
         :class="(((place as string) === 'bottom') ? 'min-h-96' : '')"
       >
-        <Stack gap="6" :align="column" class="w-full">
+        <Stack gap="6" :align="column">
           <Badge v-if="badge" variant="secondary">
             {{ badge }}
           </Badge>

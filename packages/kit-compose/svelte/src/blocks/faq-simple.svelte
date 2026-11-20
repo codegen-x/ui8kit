@@ -63,7 +63,7 @@
     : ""
   );
   const grid = $derived(((columns as string) === "two") ? "md:grid-cols-2" : "");
-  const narrow = $derived(((columns as string) === "one") ? "mx-auto w-full max-w-3xl" : "");
+  const narrow = $derived(((columns as string) === "one") ? "mx-auto max-w-3xl" : "");
 </script>
 
 <Block

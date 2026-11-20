@@ -49,7 +49,7 @@ export function FaqSimple({
     : (align as string) === "end" ? "self-end"
     : "";
   const grid = ((columns as string) === "two") ? "md:grid-cols-2" : "";
-  const narrow = ((columns as string) === "one") ? "mx-auto w-full max-w-3xl" : "";
+  const narrow = ((columns as string) === "one") ? "mx-auto max-w-3xl" : "";
   return (
     <Block
       tag="section"

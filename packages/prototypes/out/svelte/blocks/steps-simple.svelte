@@ -41,7 +41,7 @@
         "flex w-full flex-col",
         "gap-12",
         "items-stretch",
-        (((layout as string) === "column") ? "mx-auto w-full max-w-2xl" : "")
+        (((layout as string) === "column") ? "mx-auto max-w-2xl" : "")
       )}
     >
       <Box

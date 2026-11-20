@@ -58,8 +58,7 @@
             (align as string) === "center" ? "items-center"
             : (align as string) === "end" ? "items-end"
             : "items-start"
-          ),
-          "w-full"
+          )
         )}
       >
         <ShapeBadge place="badge" field="/badge" />

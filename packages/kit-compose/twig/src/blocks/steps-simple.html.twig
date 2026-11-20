@@ -17,7 +17,7 @@
 {%- set v_textAlign = (og_t(og_eq(v_align, 'center')) ? 'text-center' : (og_t(og_eq(v_align, 'end')) ? 'text-end' : 'text-start')) -%}
 {%- set v_selfAlign = (og_t(og_eq(v_align, 'center')) ? 'self-center' : (og_t(og_eq(v_align, 'end')) ? 'self-end' : '')) -%}
 {%- set v_grid = (og_t(og_eq(v_layout, 'column')) ? '' : (og_t(og_eq(v_cols, '3')) ? 'sm:grid-cols-2 md:grid-cols-3' : 'sm:grid-cols-2 md:grid-cols-4')) -%}
-{%- set v_narrow = (og_t(og_eq(v_layout, 'column')) ? 'mx-auto w-full max-w-2xl' : '') -%}
+{%- set v_narrow = (og_t(og_eq(v_layout, 'column')) ? 'mx-auto max-w-2xl' : '') -%}
 {%- set v_item = (og_t(og_eq(v_layout, 'column')) ? 'flex flex-row items-start gap-6' : (og_t(og_eq(v_align, 'center')) ? 'flex flex-col items-center gap-4' : (og_t(og_eq(v_align, 'end')) ? 'flex flex-col items-end gap-4' : 'flex flex-col items-start gap-4'))) -%}
 {%- set v_copyAlign = (og_t(og_eq(v_layout, 'column')) ? 'start' : (og_t(og_eq(v_align, 'center')) ? 'center' : (og_t(og_eq(v_align, 'end')) ? 'end' : 'start'))) -%}
 {%- set v_copyText = (og_t(og_eq(v_layout, 'column')) ? 'text-start' : (og_t(og_eq(v_align, 'center')) ? 'text-center' : (og_t(og_eq(v_align, 'end')) ? 'text-end' : 'text-start'))) -%}

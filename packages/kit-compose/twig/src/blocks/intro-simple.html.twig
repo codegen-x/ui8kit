@@ -56,7 +56,7 @@
           {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': og_s(v_column), 'class': 'flex-wrap', 'children': c_6}, with_context = false) }}
         {%- endif %}
       {%- endset -%}
-      {{ include('compose/Stack.html.twig', {'gap': '6', 'align': og_s(v_column), 'class': 'w-full', 'children': c_7}, with_context = false) }}
+      {{ include('compose/Stack.html.twig', {'gap': '6', 'align': og_s(v_column), 'children': c_7}, with_context = false) }}
     {%- endset -%}
     {{ include('compose/Stack.html.twig', {'gap': '0', 'align': og_s(v_column), 'justify': og_s((og_t(og_eq(v_place, 'bottom')) ? 'end' : 'center')), 'class': og_s((og_t(og_eq(v_place, 'bottom')) ? 'min-h-96' : '')), 'children': c_8}, with_context = false) }}
   {%- endset -%}
