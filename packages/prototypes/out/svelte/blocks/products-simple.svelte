@@ -56,7 +56,7 @@
         tag="ul"
         class={cn(
           "m-0 w-full p-0",
-          cn("grid", (((layout as string) === "rows") ? "mx-auto w-full max-w-3xl grid-cols-1 gap-6" : (((cols as string) === "4") ? "grid-cols-2 gap-6 md:grid-cols-4" : "grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3")))
+          cn("grid", (((layout as string) === "rows") ? "mx-auto max-w-3xl grid-cols-1 gap-6" : (((cols as string) === "4") ? "grid-cols-2 gap-6 md:grid-cols-4" : "grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3")))
         )}
       >
         <Box

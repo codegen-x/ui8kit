@@ -15,7 +15,7 @@
 {%- set v_column = ('center' if og_t(og_eq(v_align, 'center')) else ('end' if og_t(og_eq(v_align, 'end')) else 'start')) -%}
 {%- set v_textAlign = ('text-center' if og_t(og_eq(v_align, 'center')) else ('text-end' if og_t(og_eq(v_align, 'end')) else 'text-start')) -%}
 {%- set v_selfAlign = ('self-center' if og_t(og_eq(v_align, 'center')) else ('self-end' if og_t(og_eq(v_align, 'end')) else '')) -%}
-{%- set v_narrow = ('mx-auto w-full max-w-3xl' if og_t(og_eq(v_layout, 'rows')) else '') -%}
+{%- set v_narrow = ('mx-auto max-w-3xl' if og_t(og_eq(v_layout, 'rows')) else '') -%}
 {%- set v_grid = ('md:grid-cols-2' if og_t(og_eq(v_layout, 'columns')) else '') -%}
 {%- set c_10 -%}
   {%- set c_9 -%}

@@ -40,7 +40,7 @@
         "flex w-full flex-col",
         "gap-12",
         "items-stretch",
-        (((layout as string) === "rows") ? "mx-auto w-full max-w-3xl" : "")
+        (((layout as string) === "rows") ? "mx-auto max-w-3xl" : "")
       )}
     >
       <Box

@@ -262,7 +262,7 @@
               "rows"
             ]
           },
-          "mx-auto w-full max-w-3xl",
+          "mx-auto max-w-3xl",
           {
             "op": "cond",
             "args": [

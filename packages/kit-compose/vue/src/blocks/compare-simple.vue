@@ -68,7 +68,7 @@ const selfAlign = computed(() =>
   : (align as string) === "end" ? "self-end"
   : ""
 );
-const narrow = computed(() => ((width as string) === "narrow") ? "mx-auto w-full max-w-3xl" : "");
+const narrow = computed(() => ((width as string) === "narrow") ? "mx-auto max-w-3xl" : "");
 </script>
 
 <template>

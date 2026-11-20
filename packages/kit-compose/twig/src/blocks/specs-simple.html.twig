@@ -15,7 +15,7 @@
 {%- set v_column = (og_t(og_eq(v_align, 'center')) ? 'center' : (og_t(og_eq(v_align, 'end')) ? 'end' : 'start')) -%}
 {%- set v_textAlign = (og_t(og_eq(v_align, 'center')) ? 'text-center' : (og_t(og_eq(v_align, 'end')) ? 'text-end' : 'text-start')) -%}
 {%- set v_selfAlign = (og_t(og_eq(v_align, 'center')) ? 'self-center' : (og_t(og_eq(v_align, 'end')) ? 'self-end' : '')) -%}
-{%- set v_narrow = (og_t(og_eq(v_layout, 'rows')) ? 'mx-auto w-full max-w-3xl' : '') -%}
+{%- set v_narrow = (og_t(og_eq(v_layout, 'rows')) ? 'mx-auto max-w-3xl' : '') -%}
 {%- set v_grid = (og_t(og_eq(v_layout, 'columns')) ? 'md:grid-cols-2' : '') -%}
 {%- set c_10 -%}
   {%- set c_9 -%}

@@ -38,7 +38,7 @@ templ CourseOutline(p CourseOutlineProps) {
 	{{ vColumn := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "end", "start"))) }}
 	{{ vTextAlign := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "text-center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "text-end", "text-start"))) }}
 	{{ vSelfAlign := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "self-center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "self-end", ""))) }}
-	{{ vNarrow := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "rows")), "mx-auto w-full max-w-3xl", "")) }}
+	{{ vNarrow := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "rows")), "mx-auto max-w-3xl", "")) }}
 	{{ vGrid := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "gap-6 md:grid-cols-2", "gap-8")) }}
 	{{ vItem := any(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "rounded bg-card p-6 text-card-foreground border border-border flex flex-col items-start gap-4", "flex flex-col items-start gap-4 sm:flex-row")) }}
 	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "compact")), "py-8 lg:py-16", uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "spacious")), "py-24 lg:py-40", "py-16 lg:py-32"))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "aria-label", vLandmarkLabel, "data-slot", "course-outline")}}) {

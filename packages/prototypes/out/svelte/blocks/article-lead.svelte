@@ -55,7 +55,7 @@
         <ShapeHeading size="lg" width="3/4" place="title" field="/title" />
         <ShapeText lines="2" align={align} place="description" field="/description" />
         <Box class={cn("flex min-w-0", "gap-4", "items-center")}>
-          <ShapeMedia aspect="aspect-square" place="media" field="/avatar /author" />
+          <ShapeMedia aspect="aspect-square" place="avatar" field="/avatar /author" />
           <Box class={cn("flex w-full flex-col", "gap-0", "items-start")}>
             <ShapeText lines="2" align={align} place="author" field="/author" />
             <ShapeText lines="2" align={align} place="date" field="/date" />

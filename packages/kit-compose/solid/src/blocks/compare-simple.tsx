@@ -53,7 +53,7 @@ export function CompareSimple({
     (align as string) === "center" ? "self-center"
     : (align as string) === "end" ? "self-end"
     : "";
-  const narrow = ((width as string) === "narrow") ? "mx-auto w-full max-w-3xl" : "";
+  const narrow = ((width as string) === "narrow") ? "mx-auto max-w-3xl" : "";
   return (
     <Block
       tag="section"

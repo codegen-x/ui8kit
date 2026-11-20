@@ -262,7 +262,7 @@
               "rows"
             ]
           },
-          "mx-auto w-full max-w-3xl grid-cols-1 gap-6",
+          "mx-auto max-w-3xl grid-cols-1 gap-6",
           {
             "op": "cond",
             "args": [

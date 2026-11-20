@@ -49,7 +49,7 @@ export function SpecsSimple({
     (align as string) === "center" ? "self-center"
     : (align as string) === "end" ? "self-end"
     : "";
-  const narrow = ((layout as string) === "rows") ? "mx-auto w-full max-w-3xl" : "";
+  const narrow = ((layout as string) === "rows") ? "mx-auto max-w-3xl" : "";
   const grid = ((layout as string) === "columns") ? "md:grid-cols-2" : "";
   return (
     <Block

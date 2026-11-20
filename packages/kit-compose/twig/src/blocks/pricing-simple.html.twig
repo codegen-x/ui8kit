@@ -16,7 +16,7 @@
 {%- set v_column = (og_t(og_eq(v_align, 'center')) ? 'center' : (og_t(og_eq(v_align, 'end')) ? 'end' : 'start')) -%}
 {%- set v_textAlign = (og_t(og_eq(v_align, 'center')) ? 'text-center' : (og_t(og_eq(v_align, 'end')) ? 'text-end' : 'text-start')) -%}
 {%- set v_selfAlign = (og_t(og_eq(v_align, 'center')) ? 'self-center' : (og_t(og_eq(v_align, 'end')) ? 'self-end' : '')) -%}
-{%- set v_grid = (og_t(og_eq(v_layout, 'rows')) ? '' : (og_t(og_eq(v_cols, '2')) ? 'mx-auto w-full max-w-4xl md:grid-cols-2' : 'md:grid-cols-3')) -%}
+{%- set v_grid = (og_t(og_eq(v_layout, 'rows')) ? '' : (og_t(og_eq(v_cols, '2')) ? 'mx-auto max-w-4xl md:grid-cols-2' : 'md:grid-cols-3')) -%}
 {%- set v_item = (og_t(og_eq(v_layout, 'rows')) ? 'flex flex-col gap-4 md:flex-row md:items-center md:gap-8' : 'flex flex-col justify-between gap-6') -%}
 {%- set v_copy = (og_t(og_eq(v_layout, 'rows')) ? 'md:grow' : '') -%}
 {%- set c_14 -%}

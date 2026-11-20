@@ -69,7 +69,7 @@ const selfAlign = computed(() =>
 );
 const grid = computed(() =>
   (layout as string) === "rows" ? ""
-  : (cols as string) === "2" ? "mx-auto w-full max-w-4xl md:grid-cols-2"
+  : (cols as string) === "2" ? "mx-auto max-w-4xl md:grid-cols-2"
   : "md:grid-cols-3"
 );
 const item = computed(() =>

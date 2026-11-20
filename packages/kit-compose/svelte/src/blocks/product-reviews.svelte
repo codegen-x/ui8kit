@@ -69,7 +69,7 @@
     : ""
   );
   const grid = $derived(
-    (layout as string) === "rows" ? "mx-auto w-full max-w-3xl"
+    (layout as string) === "rows" ? "mx-auto max-w-3xl"
     : (cols as string) === "2" ? "md:grid-cols-2"
     : "md:grid-cols-3"
   );

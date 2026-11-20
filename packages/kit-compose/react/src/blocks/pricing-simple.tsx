@@ -53,7 +53,7 @@ export function PricingSimple({
     : "";
   const grid =
     (layout as string) === "rows" ? ""
-    : (cols as string) === "2" ? "mx-auto w-full max-w-4xl md:grid-cols-2"
+    : (cols as string) === "2" ? "mx-auto max-w-4xl md:grid-cols-2"
     : "md:grid-cols-3";
   const item =
     (layout as string) === "rows" ? "flex flex-col gap-4 md:flex-row md:items-center md:gap-8"

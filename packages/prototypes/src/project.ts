@@ -183,7 +183,8 @@ class Projector {
       if (!src) return undefined;
       const more = [...this.fieldsOf(props["alt"], loops), ...this.fieldsOf(props["darkSrc"], loops)].filter((f) => (f.field !== "title" || this.altTitles.has(f.pointer)) && f.pointer !== src.pointer);
       const all = [src, ...more].filter((f, i, a) => a.findIndex((x) => x.pointer === f.pointer) === i);
-      const place: Place = { place: src.list ? prefixed(src) : "media", kind: "media", fields: all.map((f) => f.pointer), ...(src.list ? { list: src.list } : {}) };
+      // a picture outside a list: "media" for the main image, its own field name for another one (the portrait of an author)
+      const place: Place = { place: src.list ? prefixed(src) : src.field === "image" ? "media" : src.field, kind: "media", fields: all.map((f) => f.pointer), ...(src.list ? { list: src.list } : {}) };
       this.add(place);
       const field = all.map((f) => f.value).join(" ");
       return src.list && isDisc(props["className"])

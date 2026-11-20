@@ -16,7 +16,7 @@
 {var $v_column = (og_t(og_eq($v_align, 'center')) ? 'center' : (og_t(og_eq($v_align, 'end')) ? 'end' : 'start'))}
 {var $v_textAlign = (og_t(og_eq($v_align, 'center')) ? 'text-center' : (og_t(og_eq($v_align, 'end')) ? 'text-end' : 'text-start'))}
 {var $v_selfAlign = (og_t(og_eq($v_align, 'center')) ? 'self-center' : (og_t(og_eq($v_align, 'end')) ? 'self-end' : ''))}
-{var $v_grid = (og_t(og_eq($v_layout, 'rows')) ? 'mx-auto w-full max-w-3xl' : (og_t(og_eq($v_cols, '2')) ? 'md:grid-cols-2' : 'md:grid-cols-3'))}
+{var $v_grid = (og_t(og_eq($v_layout, 'rows')) ? 'mx-auto max-w-3xl' : (og_t(og_eq($v_cols, '2')) ? 'md:grid-cols-2' : 'md:grid-cols-3'))}
 {var $v_item = (og_t(og_eq($v_layout, 'rows')) ? 'md:flex-row md:items-center md:gap-6' : '')}
 {capture $c_14}
   {capture $c_13}

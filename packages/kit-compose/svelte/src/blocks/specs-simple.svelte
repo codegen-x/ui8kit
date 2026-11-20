@@ -63,7 +63,7 @@
     : (align as string) === "end" ? "self-end"
     : ""
   );
-  const narrow = $derived(((layout as string) === "rows") ? "mx-auto w-full max-w-3xl" : "");
+  const narrow = $derived(((layout as string) === "rows") ? "mx-auto max-w-3xl" : "");
   const grid = $derived(((layout as string) === "columns") ? "md:grid-cols-2" : "");
 </script>
 

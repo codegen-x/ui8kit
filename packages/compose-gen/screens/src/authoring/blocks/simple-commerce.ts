@@ -28,7 +28,7 @@ const pricingSimple = spec(`${O}pricing-simple`, "PricingSimple", "The simple pr
   props: [id, title, description, list("plans", "PricingPlan", "the plans, in the order they are shown (1 to 4)"), level, padding, centered, axis("layout", "cards", "rows"), axis("cols", "3", "2")],
   derived: [
     titleId, ...teamDerived,
-    chain("grid", [[is("layout", "rows"), ""], [is("cols", "2"), "mx-auto w-full max-w-4xl md:grid-cols-2"]], "md:grid-cols-3"),
+    chain("grid", [[is("layout", "rows"), ""], [is("cols", "2"), "mx-auto max-w-4xl md:grid-cols-2"]], "md:grid-cols-3"),
     chain("item", [[is("layout", "rows"), "flex flex-col gap-4 md:flex-row md:items-center md:gap-8"]], "flex flex-col justify-between gap-6"),
     chain("copy", [[is("layout", "rows"), "md:grow"]], ""),
   ],
@@ -98,7 +98,7 @@ const productsSimple = spec(`${O}products-simple`, "ProductsSimple", "The simple
   props: [id, title, description, list("items", "ProductItem", "the products, in the order they are shown (1 to 8)"), level, padding, centered, axis("layout", "grid", "rows"), axis("cols", "3", "4")],
   derived: [
     titleId, ...teamDerived,
-    chain("grid", [[is("layout", "rows"), "mx-auto w-full max-w-3xl grid-cols-1 gap-6"], [is("cols", "4"), "grid-cols-2 gap-6 md:grid-cols-4"]], "grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3"),
+    chain("grid", [[is("layout", "rows"), "mx-auto max-w-3xl grid-cols-1 gap-6"], [is("cols", "4"), "grid-cols-2 gap-6 md:grid-cols-4"]], "grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3"),
     chain("item", [[is("layout", "rows"), "flex flex-row items-center gap-6"]], "flex flex-col gap-4"),
     chain("pictureClass", [[is("layout", "rows"), "w-1/4 shrink-0"]], ""),
   ],
@@ -155,7 +155,7 @@ const collectionsSimple = spec(`${O}collections-simple`, "CollectionsSimple", "T
 const specsSimple = spec(`${O}specs-simple`, "SpecsSimple", "The simple specs (model specs@1): the heading, a description and the specifications as a list of rows on a muted surface, each the name and its value. Axes: layout (rows: one narrow column, columns: two columns from md up).", {
   records: { SpecItem: fields(["id", "string"], ["title", "string"], ["description", "string"]) },
   props: [id, title, description, list("items", "SpecItem", "the specifications, in the order they are shown (1 to 16)"), level, padding, centered, axis("layout", "rows", "columns")],
-  derived: [titleId, ...teamDerived, chain("narrow", [[is("layout", "rows"), "mx-auto w-full max-w-3xl"]], ""), chain("grid", [[is("layout", "columns"), "md:grid-cols-2"]], "")],
+  derived: [titleId, ...teamDerived, chain("narrow", [[is("layout", "rows"), "mx-auto max-w-3xl"]], ""), chain("grid", [[is("layout", "columns"), "md:grid-cols-2"]], "")],
   view: [listSection(
     ulist(cn("grid grid-cols-1 gap-2", ref("grid")),
       each(ref("items"), "s", ref("s.id"),
@@ -173,7 +173,7 @@ const ROW = "grid grid-cols-3 gap-4 px-4 py-4";
 const compareSimple = spec(`${O}compare-simple`, "CompareSimple", "The simple compare (model compare@1): the heading, a description, a header row with the names of the two options, then the rows as a list, each a feature with the value of each option, in three columns on a bordered surface. Axes: width (wide: the full container, narrow: max-w-3xl).", {
   records: { CompareLine: fields(["id", "string"], ["title", "string"], ["first", "string"], ["second", "string"]) },
   props: [id, title, description, str("firstLabel", "the name of the first option", true), str("secondLabel", "the name of the second option", true), list("rows", "CompareLine", "the rows, in the order they are shown (1 to 12)"), level, padding, centered, axis("width", "wide", "narrow")],
-  derived: [titleId, ...teamDerived, chain("narrow", [[is("width", "narrow"), "mx-auto w-full max-w-3xl"]], "")],
+  derived: [titleId, ...teamDerived, chain("narrow", [[is("width", "narrow"), "mx-auto max-w-3xl"]], "")],
   view: [listSection(
     use("Box", { props: { Class: "flex w-full flex-col rounded border border-border" } },
       use("Box", { props: { Class: cn(ROW, "rounded bg-muted") } },
@@ -195,7 +195,7 @@ const courseOutline = spec(`${O}course-outline`, "CourseOutline", "The course ou
   props: [id, title, description, list("modules", "CourseModule", "the modules, in the order they are taken (1 to 12)"), level, padding, { ...centered, default: "start" }, axis("layout", "rows", "cards")],
   derived: [
     titleId, ...teamDerived,
-    chain("narrow", [[is("layout", "rows"), "mx-auto w-full max-w-3xl"]], ""),
+    chain("narrow", [[is("layout", "rows"), "mx-auto max-w-3xl"]], ""),
     chain("grid", [[is("layout", "cards"), "gap-6 md:grid-cols-2"]], "gap-8"),
     chain("item", [[is("layout", "cards"), `${CARD} flex flex-col items-start gap-4`]], "flex flex-col items-start gap-4 sm:flex-row"),
   ],
@@ -269,7 +269,7 @@ const storePolicies = spec(`${O}store-policies`, "StorePolicies", "The store pol
 const productReviews = spec(`${O}product-reviews`, "ProductReviews", "The product reviews (model reviews@1): the heading, a description and the reviews as a list on a card surface, each with the rating as it is shown (the primary token), the words, then the reviewer: the portrait, the name and a line. Axes: layout (cards: columns, rows: one under the other in a narrow column), cols (2, 3 columns of the cards).", {
   records: { ReviewItem: fields(["id", "string"], ["rating", "string"], ["quote", "string"], ["avatar", "string", true], ["title", "string"], ["description", "string", true]) },
   props: [id, title, description, list("items", "ReviewItem", "the reviews, in the order they are shown (1 to 6)"), level, padding, centered, axis("layout", "cards", "rows"), axis("cols", "3", "2")],
-  derived: [titleId, ...teamDerived, chain("grid", [[is("layout", "rows"), "mx-auto w-full max-w-3xl"], [is("cols", "2"), "md:grid-cols-2"]], "md:grid-cols-3")],
+  derived: [titleId, ...teamDerived, chain("grid", [[is("layout", "rows"), "mx-auto max-w-3xl"], [is("cols", "2"), "md:grid-cols-2"]], "md:grid-cols-3")],
   view: [listSection(
     ulist(cn("grid grid-cols-1 gap-6", ref("grid")),
       each(ref("items"), "r", ref("r.id"),

@@ -16,7 +16,7 @@
 {%- set v_column = (og_t(og_eq(v_align, 'center')) ? 'center' : (og_t(og_eq(v_align, 'end')) ? 'end' : 'start')) -%}
 {%- set v_textAlign = (og_t(og_eq(v_align, 'center')) ? 'text-center' : (og_t(og_eq(v_align, 'end')) ? 'text-end' : 'text-start')) -%}
 {%- set v_selfAlign = (og_t(og_eq(v_align, 'center')) ? 'self-center' : (og_t(og_eq(v_align, 'end')) ? 'self-end' : '')) -%}
-{%- set v_grid = (og_t(og_eq(v_layout, 'rows')) ? 'mx-auto w-full max-w-3xl grid-cols-1 gap-6' : (og_t(og_eq(v_cols, '4')) ? 'grid-cols-2 gap-6 md:grid-cols-4' : 'grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3')) -%}
+{%- set v_grid = (og_t(og_eq(v_layout, 'rows')) ? 'mx-auto max-w-3xl grid-cols-1 gap-6' : (og_t(og_eq(v_cols, '4')) ? 'grid-cols-2 gap-6 md:grid-cols-4' : 'grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3')) -%}
 {%- set v_item = (og_t(og_eq(v_layout, 'rows')) ? 'flex flex-row items-center gap-6' : 'flex flex-col gap-4') -%}
 {%- set v_pictureClass = (og_t(og_eq(v_layout, 'rows')) ? 'w-1/4 shrink-0' : '') -%}
 {%- set c_13 -%}

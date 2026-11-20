@@ -64,7 +64,7 @@ const selfAlign = computed(() =>
   : (align as string) === "end" ? "self-end"
   : ""
 );
-const narrow = computed(() => ((layout as string) === "rows") ? "mx-auto w-full max-w-3xl" : "");
+const narrow = computed(() => ((layout as string) === "rows") ? "mx-auto max-w-3xl" : "");
 const grid = computed(() => ((layout as string) === "cards") ? "gap-6 md:grid-cols-2" : "gap-8");
 const item = computed(() =>
   (layout as string) === "cards" ? "rounded bg-card p-6 text-card-foreground border border-border flex flex-col items-start gap-4"

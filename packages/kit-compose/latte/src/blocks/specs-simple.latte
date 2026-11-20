@@ -15,7 +15,7 @@
 {var $v_column = (og_t(og_eq($v_align, 'center')) ? 'center' : (og_t(og_eq($v_align, 'end')) ? 'end' : 'start'))}
 {var $v_textAlign = (og_t(og_eq($v_align, 'center')) ? 'text-center' : (og_t(og_eq($v_align, 'end')) ? 'text-end' : 'text-start'))}
 {var $v_selfAlign = (og_t(og_eq($v_align, 'center')) ? 'self-center' : (og_t(og_eq($v_align, 'end')) ? 'self-end' : ''))}
-{var $v_narrow = (og_t(og_eq($v_layout, 'rows')) ? 'mx-auto w-full max-w-3xl' : '')}
+{var $v_narrow = (og_t(og_eq($v_layout, 'rows')) ? 'mx-auto max-w-3xl' : '')}
 {var $v_grid = (og_t(og_eq($v_layout, 'columns')) ? 'md:grid-cols-2' : '')}
 {capture $c_10}
   {capture $c_9}

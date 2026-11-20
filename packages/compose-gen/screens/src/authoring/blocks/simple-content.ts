@@ -239,7 +239,7 @@ const articleLead = spec(`${O}article-lead`, "ArticleLead", "The article lead (m
 const topicsSimple = spec(`${O}topics-simple`, "TopicsSimple", "The simple topics (model topics@1): the heading, a description and the topics as a list on a card surface, each with a short label (a badge), the title (a link when the topic has an address) and a line. Axes: layout (cards: columns, rows: one under the other), cols (2, 3 columns of the cards).", {
   records: { TopicItem: fields(["id", "string"], ["label", "string"], ["title", "string"], ["description", "string", true], ["href", "string", true]) },
   props: [id, title, description, list("items", "TopicItem", "the topics, in the order they are shown (1 to 8)"), level, padding, centered, layout("cards", "rows"), cols("2", "3")],
-  derived: [titleId, ...teamDerived, chain("grid", [[is("layout", "rows"), "mx-auto w-full max-w-3xl"], [is("cols", "2"), "md:grid-cols-2"]], "md:grid-cols-3"), chain("item", [[is("layout", "rows"), "md:flex-row md:items-center md:gap-6"]], "")],
+  derived: [titleId, ...teamDerived, chain("grid", [[is("layout", "rows"), "mx-auto max-w-3xl"], [is("cols", "2"), "md:grid-cols-2"]], "md:grid-cols-3"), chain("item", [[is("layout", "rows"), "md:flex-row md:items-center md:gap-6"]], "")],
   view: [section(
     use("Stack", { props: { Gap: "12", Align: "stretch" } },
       head(),

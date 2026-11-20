@@ -68,7 +68,7 @@
     : (align as string) === "end" ? "self-end"
     : ""
   );
-  const narrow = $derived(((width as string) === "narrow") ? "mx-auto w-full max-w-3xl" : "");
+  const narrow = $derived(((width as string) === "narrow") ? "mx-auto max-w-3xl" : "");
 </script>
 
 <Block
