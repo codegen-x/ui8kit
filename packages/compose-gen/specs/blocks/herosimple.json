@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "block.herosimple",
   "name": "Simple hero",
-  "docs": "A badge, the heading, one paragraph and one link as the action, with one picture at the end, at the start or on top.",
+  "docs": "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start or on top, in a box or split to the edge of the screen.",
   "theme": "marketing",
   "group": "hero",
   "organism": "HeroSimple",
@@ -14,10 +14,15 @@
       "end",
       "start",
       "top"
+    ],
+    "frame": [
+      "box",
+      "split"
     ]
   },
   "defaults": {
-    "media": "end"
+    "media": "end",
+    "frame": "box"
   },
   "variants": [
     {
@@ -38,6 +43,19 @@
       "props": {
         "align": "center"
       }
+    },
+    {
+      "id": "splitEnd",
+      "set": {
+        "frame": "split"
+      }
+    },
+    {
+      "id": "splitStart",
+      "set": {
+        "media": "start",
+        "frame": "split"
+      }
     }
   ],
   "slots": [
@@ -54,7 +72,7 @@
     },
     {
       "sel": "a[data-slot=\"button\"][href]",
-      "n": 1
+      "n": 2
     },
     {
       "sel": "button",
@@ -84,7 +102,11 @@
       "actionLabel": {
         "$": "ui.marketing.heroSimple.actionLabel"
       },
-      "actionHref": "#/start"
+      "actionHref": "#/start",
+      "secondaryActionLabel": {
+        "$": "ui.marketing.heroSimple.secondaryActionLabel"
+      },
+      "secondaryActionHref": "#/tour"
     }
   }
 }

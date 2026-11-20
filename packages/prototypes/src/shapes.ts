@@ -28,6 +28,7 @@ export const ROLE = {
   "heading-lg": "bg-secondary rounded h-6",
   badge: "bg-accent rounded-full h-6",
   "cta-primary": "bg-primary rounded h-10",
+  "cta-secondary": "bg-secondary rounded h-10",
   media: "bg-muted rounded",
   avatar: "bg-accent rounded-full h-16 w-16",
   surface: "bg-card border border-border rounded",
@@ -54,8 +55,12 @@ export const SHAPE = {
     bar("w-2/3"))]),
   ShapeBadge: shape("shape-badge", "ShapeBadge", "The accent pill of a badge (wireframe); its corner follows --radius-badge.", [],
     [use("Box", { props: { Class: `${ROLE.badge} w-16 shrink-0` }, attrs: hooks("badge", "badge", "badge") })]),
-  ShapeCta: shape("shape-cta", "ShapeCta", "The bar of an action (wireframe): primary, h-10 w-24; geometry only, not a link.", [],
-    [use("Box", { props: { Class: `${ROLE["cta-primary"]} w-24 shrink-0` }, attrs: hooks("cta", "cta-primary", "button") })]),
+  ShapeCta: shape("shape-cta", "ShapeCta", "The bar of an action (wireframe): h-10 w-24, primary (the first action) or secondary (the second); geometry only, not a link.", [
+    { name: "tone", type: ts("primary", "secondary"), default: "primary" },
+  ], [use("Box", {
+    props: { Class: cn(cond(eq(ref("tone"), "secondary"), ROLE["cta-secondary"], ROLE["cta-primary"]), "w-24 shrink-0") },
+    attrs: hooks("cta", cond(eq(ref("tone"), "secondary"), "cta-secondary", "cta-primary"), "button"),
+  })]),
   ShapeMedia: shape("shape-media", "ShapeMedia", "The frame of a picture (wireframe): muted, full width, at the ratio of the picture (aspect-*).", [
     { name: "aspect", type: ts("aspect-square", "aspect-4/3", "aspect-3/4", "aspect-21/9", "aspect-video"), default: "aspect-4/3" },
   ], [use("Box", { props: { Class: cn(`${ROLE.media} w-full`, ref("aspect")) }, attrs: hooks("media", "media", "media-frame") })]),

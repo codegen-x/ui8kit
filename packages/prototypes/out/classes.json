@@ -5,6 +5,7 @@
     "heading-lg": "bg-secondary rounded h-6",
     "badge": "bg-accent rounded-full h-6",
     "cta-primary": "bg-primary rounded h-10",
+    "cta-secondary": "bg-secondary rounded h-10",
     "media": "bg-muted rounded",
     "avatar": "bg-accent rounded-full h-16 w-16",
     "surface": "bg-card border border-border rounded"

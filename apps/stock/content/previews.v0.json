@@ -2196,7 +2196,8 @@
   "herosimple": {
    "organism": "HeroSimple",
    "defaults": {
-    "media": "end"
+    "media": "end",
+    "frame": "box"
    },
    "sample": {
     "id": "herosimple",
@@ -2215,7 +2216,11 @@
     "actionLabel": {
      "$": "ui.marketing.heroSimple.actionLabel"
     },
-    "actionHref": "#/start"
+    "actionHref": "#/start",
+    "secondaryActionLabel": {
+     "$": "ui.marketing.heroSimple.secondaryActionLabel"
+    },
+    "secondaryActionHref": "#/tour"
    },
    "variants": [
     {
@@ -2236,6 +2241,19 @@
      "props": {
       "align": "center"
      }
+    },
+    {
+     "id": "splitEnd",
+     "set": {
+      "frame": "split"
+     }
+    },
+    {
+     "id": "splitStart",
+     "set": {
+      "media": "start",
+      "frame": "split"
+     }
     }
    ],
    "data": [],
@@ -2250,10 +2268,13 @@
      "imageDark",
      "actionLabel",
      "actionHref",
+     "secondaryActionLabel",
+     "secondaryActionHref",
      "level",
      "padding",
      "align",
      "media",
+     "frame",
      "landmarkLabel"
     ]
    }

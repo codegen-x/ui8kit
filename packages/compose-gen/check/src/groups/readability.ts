@@ -11,6 +11,7 @@ export interface Measure { lines?: number; long?: number; bytes?: number; props?
 export type Allowance = Measure & { why: string };
 export const READABILITY_ALLOW: Record<string, Allowance> = {
   "footer-split": { lines: 152, why: "the optional picture pair (image, imageAlt) of the split layouts on top of 150 lines; split pending: the layouts into parts" },
+  "hero-simple": { props: 14, why: "the model block takes exactly the fields of hero@1 (10 of the 10-field budget since the second action, owner t90u) plus the settings (level, padding, align) and the axes (media, frame); it cannot split without leaving the model" },
   "hero-classic": { lines: 151, why: "the optional picture pair (image, imageAlt) on top of 150 lines; split pending: the media kinds into a part" },
   "post-grid": { props: 13, why: "the pager prop wp-fasty asked for (audit codegen-gap item 4) on top of 12; split pending: the list options (layout, cols, media, meta) into one group" },
 };

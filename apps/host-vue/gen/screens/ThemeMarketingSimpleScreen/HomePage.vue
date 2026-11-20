@@ -21,7 +21,10 @@ const teamMembers = fromCodex<SimpleMember>(teamMembersEntries, TEAMMEMBERS_FIEL
     :imageAlt="ui.marketing.heroSimple.imageAlt"
     :actionLabel="ui.pages.marketingSimple.home.cta"
     actionHref="#/team"
+    :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
+    secondaryActionHref="#/tour"
     media="end"
+    frame="box"
     :level="1"
     :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaEnd))"
   />
@@ -42,7 +45,10 @@ const teamMembers = fromCodex<SimpleMember>(teamMembersEntries, TEAMMEMBERS_FIEL
     :imageAlt="ui.marketing.heroSimple.imageAlt"
     :actionLabel="ui.marketing.heroSimple.actionLabel"
     actionHref="#/start"
+    :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
+    secondaryActionHref="#/tour"
     media="start"
+    frame="box"
     :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaStart))"
   />
   <TeamSimple

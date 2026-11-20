@@ -42,7 +42,7 @@
           {ui.catalog.categories.marketingSimple}
         </Title>
         <Text class="max-w-2xl text-muted-foreground">
-          {tpl(ui.catalog.count, 2, 7)}
+          {tpl(ui.catalog.count, 2, 9)}
         </Text>
       </Stack>
       <Stack
@@ -82,7 +82,10 @@
               imageAlt={ui.marketing.heroSimple.imageAlt}
               actionLabel={ui.marketing.heroSimple.actionLabel}
               actionHref="#/start"
+              secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
+              secondaryActionHref="#/tour"
               media="end"
+              frame="box"
               level={2}
               landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaEnd))}
             />
@@ -109,7 +112,10 @@
               imageAlt={ui.marketing.heroSimple.imageAlt}
               actionLabel={ui.marketing.heroSimple.actionLabel}
               actionHref="#/start"
+              secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
+              secondaryActionHref="#/tour"
               media="start"
+              frame="box"
               level={2}
               landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaStart))}
             />
@@ -136,10 +142,73 @@
               imageAlt={ui.marketing.heroSimple.imageAlt}
               actionLabel={ui.marketing.heroSimple.actionLabel}
               actionHref="#/start"
+              secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
+              secondaryActionHref="#/tour"
               media="top"
+              frame="box"
               align="center"
               level={2}
               landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.mediaTop))}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="herosimple-splitEnd-label"
+          data-testid="variant"
+          data-block="herosimple"
+          data-variant="splitEnd"
+        >
+          <Title as={3} size="base" weight="bold" id="herosimple-splitEnd-label" data-testid="variant-label">
+            {ui.blocks.variants.herosimple.splitEnd}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroSimple
+              id="herosimple-splitEnd"
+              badge={ui.marketing.heroSimple.badge}
+              title={ui.marketing.heroSimple.title}
+              description={ui.marketing.heroSimple.description}
+              imageAlt={ui.marketing.heroSimple.imageAlt}
+              actionLabel={ui.marketing.heroSimple.actionLabel}
+              actionHref="#/start"
+              secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
+              secondaryActionHref="#/tour"
+              media="end"
+              frame="split"
+              level={2}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.splitEnd))}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="herosimple-splitStart-label"
+          data-testid="variant"
+          data-block="herosimple"
+          data-variant="splitStart"
+        >
+          <Title as={3} size="base" weight="bold" id="herosimple-splitStart-label" data-testid="variant-label">
+            {ui.blocks.variants.herosimple.splitStart}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroSimple
+              id="herosimple-splitStart"
+              badge={ui.marketing.heroSimple.badge}
+              title={ui.marketing.heroSimple.title}
+              description={ui.marketing.heroSimple.description}
+              imageAlt={ui.marketing.heroSimple.imageAlt}
+              actionLabel={ui.marketing.heroSimple.actionLabel}
+              actionHref="#/start"
+              secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
+              secondaryActionHref="#/tour"
+              media="start"
+              frame="split"
+              level={2}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosimple, ui.blocks.variants.herosimple.splitStart))}
             />
           </Box>
         </Stack>

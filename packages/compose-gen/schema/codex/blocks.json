@@ -3415,10 +3415,12 @@
         "image",
         "imageDark",
         "actionHref",
+        "secondaryActionHref",
         "level",
         "padding",
         "align",
         "media",
+        "frame",
         "landmarkLabel"
       ],
       "labels": [
@@ -3445,6 +3447,11 @@
         {
           "prop": "actionLabel",
           "dictionary": "marketing.heroSimple.actionLabel",
+          "keys": []
+        },
+        {
+          "prop": "secondaryActionLabel",
+          "dictionary": "marketing.heroSimple.secondaryActionLabel",
           "keys": []
         }
       ],

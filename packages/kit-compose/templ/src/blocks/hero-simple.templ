@@ -22,14 +22,17 @@ type HeroSimpleProps struct {
 	ImageDark any `json:"imageDark"`
 	ActionLabel any `json:"actionLabel"`
 	ActionHref any `json:"actionHref"`
+	SecondaryActionLabel any `json:"secondaryActionLabel"`
+	SecondaryActionHref any `json:"secondaryActionHref"`
 	Level any `json:"level"`
 	Padding any `json:"padding"`
 	Align any `json:"align"`
 	Media any `json:"media"`
+	Frame any `json:"frame"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
-// The simple hero (model hero@1): an optional badge, the heading, a description, one link as the action (a link styled as a button: drawn only when the label and the address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).
+// The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide), frame (box: inside the container; split: two halves, the picture to the edge of the screen).
 templ HeroSimple(p HeroSimpleProps) {
 	{{ vId := p.Id }}
 	{{ vBadge := uiutils.Def(p.Badge, "") }}
@@ -40,21 +43,27 @@ templ HeroSimple(p HeroSimpleProps) {
 	{{ vImageDark := p.ImageDark }}
 	{{ vActionLabel := uiutils.Def(p.ActionLabel, "") }}
 	{{ vActionHref := uiutils.Def(p.ActionHref, "") }}
+	{{ vSecondaryActionLabel := uiutils.Def(p.SecondaryActionLabel, "") }}
+	{{ vSecondaryActionHref := uiutils.Def(p.SecondaryActionHref, "") }}
 	{{ vLevel := uiutils.Def(p.Level, float64(2)) }}
 	{{ vPadding := uiutils.Def(p.Padding, "standard") }}
 	{{ vAlign := uiutils.Def(p.Align, "start") }}
 	{{ vMedia := uiutils.Def(p.Media, "end") }}
+	{{ vFrame := uiutils.Def(p.Frame, "box") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	{{ vTitleId := any(uiutils.Add(vId, "-title")) }}
 	{{ vColumn := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "end", "start"))) }}
 	{{ vTextAlign := any(uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "center")), "text-center", uiutils.Cond(uiutils.T(uiutils.Eq(vAlign, "end")), "text-end", "text-start"))) }}
-	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "compact")), "py-8 lg:py-16", uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "spacious")), "py-24 lg:py-40", "py-16 lg:py-32"))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "aria-label", vLandmarkLabel, "data-slot", "hero-simple")}}) {
-		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-6xl px-4"}}) {
-			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-8", uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "top")), "", "items-center md:grid-cols-2")))}}) {
+	{{ vEdge := any(uiutils.And(uiutils.Eq(vFrame, "split"), !uiutils.Eq(vMedia, "top"))) }}
+	{{ vPad := any(uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "compact")), "py-8 lg:py-16", uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "spacious")), "py-24 lg:py-40", "py-16 lg:py-32"))) }}
+	{{ vCopyPad := any(uiutils.Cond(uiutils.T(vEdge), uiutils.Cnv("justify-center px-4 md:px-8 lg:px-16", vPad), "")) }}
+	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cond(uiutils.T(vEdge), "", vPad)), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "aria-label", vLandmarkLabel, "data-slot", "hero-simple")}}) {
+		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(vEdge), "w-full", "mx-auto w-full max-w-6xl px-4"))}}) {
+			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1", uiutils.Cond(uiutils.T(vEdge), "", "gap-8"), uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "top")), "", uiutils.Cond(uiutils.T(vEdge), "md:grid-cols-2", "items-center md:grid-cols-2"))))}}) {
 				if !uiutils.Eq(vMedia, "end") {
-					@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, DarkSrc: vImageDark, Ratio: uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "top")), "21/9", "4/3")})
+					@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, DarkSrc: vImageDark, Ratio: uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "top")), "21/9", "4/3"), Class: uiutils.Cnv(uiutils.Cond(uiutils.T(vEdge), "md:aspect-auto md:h-full", ""))})
 				}
-				@compose.Stack(compose.StackProps{Gap: "6", Align: uiutils.S(vColumn), BoxProps: box.BoxProps{}}) {
+				@compose.Stack(compose.StackProps{Gap: "6", Align: uiutils.S(vColumn), BoxProps: box.BoxProps{Class: uiutils.S(vCopyPad)}}) {
 					if uiutils.T(vBadge) {
 						@compose.Badge(compose.BadgeProps{Variant: "secondary", TextProps: text.TextProps{}}) {
 							{ uiutils.Text(vBadge) }
@@ -68,14 +77,23 @@ templ HeroSimple(p HeroSimpleProps) {
 							{ uiutils.Text(vDescription) }
 						}
 					}
-					if uiutils.T(uiutils.And(vActionLabel, vActionHref)) {
-						@compose.LinkButton(compose.LinkButtonProps{Variant: "default", Size: "lg", LinkProps: link.LinkProps{Href: uiutils.URL(vActionHref, false)}}) {
-							{ uiutils.Text(vActionLabel) }
+					if uiutils.T(uiutils.Or(uiutils.And(vActionLabel, vActionHref), uiutils.And(vSecondaryActionLabel, vSecondaryActionHref))) {
+						@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: uiutils.S(vColumn), BoxProps: box.BoxProps{Class: "flex-wrap"}}) {
+							if uiutils.T(uiutils.And(vActionLabel, vActionHref)) {
+								@compose.LinkButton(compose.LinkButtonProps{Variant: "default", Size: "lg", LinkProps: link.LinkProps{Href: uiutils.URL(vActionHref, false)}}) {
+									{ uiutils.Text(vActionLabel) }
+								}
+							}
+							if uiutils.T(uiutils.And(vSecondaryActionLabel, vSecondaryActionHref)) {
+								@compose.LinkButton(compose.LinkButtonProps{Variant: "secondary", Size: "lg", LinkProps: link.LinkProps{Href: uiutils.URL(vSecondaryActionHref, false)}}) {
+									{ uiutils.Text(vSecondaryActionLabel) }
+								}
+							}
 						}
 					}
 				}
 				if uiutils.Eq(vMedia, "end") {
-					@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, DarkSrc: vImageDark, Ratio: "4/3"})
+					@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, DarkSrc: vImageDark, Ratio: "4/3", Class: uiutils.Cnv(uiutils.Cond(uiutils.T(vEdge), "md:aspect-auto md:h-full", ""))})
 				}
 			}
 		}

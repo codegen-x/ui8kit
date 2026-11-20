@@ -53,8 +53,8 @@ const itemOf = (name: string) => simple.find((c) => c.organism === name)!.item;
 
 test("the simple line has its prototypes: hero-simple and team-simple", () => {
   expect(simple.map((c) => [c.item, c.model, c.defaultMode])).toEqual([["hero-simple", "hero@1", "wireframe"], ["team-simple", "team@1", "wireframe"]]);
-  // 7 variants, and each once more per non-default align value (compose-gen blockCases)
-  expect(cases.length).toBe(7 * 3);
+  // 9 variants (hero 5, team 4), and each once more per non-default align value (compose-gen blockCases)
+  expect(cases.length).toBe(9 * 3);
 });
 
 test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", () => {
@@ -194,7 +194,7 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     const own = simple.flatMap((c) => c.variants.filter((v) => v.settings).map((v) => `${c.item}.${v.id} ${JSON.stringify(v.settings)}`));
     expect(own).toEqual(['hero-simple.mediaTop {"align":"center"}']);
     // the feed does not grow: align is never a variant of its own
-    expect(simple.find((c) => c.item === "hero-simple")!.variants.map((v) => v.id)).toEqual(["mediaEnd", "mediaStart", "mediaTop"]);
+    expect(simple.find((c) => c.item === "hero-simple")!.variants.map((v) => v.id)).toEqual(["mediaEnd", "mediaStart", "mediaTop", "splitEnd", "splitStart"]);
   });
 
   // the align setting: logical classes only (ui8kit/prototypes docs/adr/0002-align-as-setting.md)
@@ -241,8 +241,52 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     expect(a).toContain('data-slot="button"');
     expect(a).toMatch(/bg-primary/);
     expect(page).not.toMatch(/<button\b/);
+    const none = { secondaryActionLabel: "", secondaryActionHref: "" };
     for (const p of [{ actionLabel: "Go", actionHref: "" }, { actionLabel: "", actionHref: "https://example.com/go" }])
-      expect(await ssr(file, { ...hero, ...p })).not.toMatch(/<a\b/);
+      expect(await ssr(file, { ...hero, ...none, ...p })).not.toMatch(/<a\b/);
+  });
+
+  test("hero-simple: the second action is the secondary link after the primary one, each drawn only with a label and an address", async () => {
+    const file = fileOf("hero-simple", "clean");
+    const both = { actionLabel: "Go", actionHref: "/go", secondaryActionLabel: "Tour", secondaryActionHref: "/tour" };
+    const links = (html: string) => [...html.matchAll(/<a\b[^>]*>/g)].map((m) => m[0]);
+    const two = links(await ssr(file, { ...hero, ...both }));
+    expect(two).toHaveLength(2);
+    expect(two[0]).toContain('href="/go"');
+    expect(two[0]).toMatch(/bg-primary/);
+    expect(two[1]).toContain('href="/tour"');
+    expect(two[1]).toMatch(/bg-secondary/);
+    for (const a of two) expect(a).toContain('data-slot="button"');
+    const only = links(await ssr(file, { ...hero, ...both, actionLabel: "" }));
+    expect(only).toHaveLength(1);
+    expect(only[0]).toMatch(/bg-secondary/);
+    for (const p of [{ secondaryActionLabel: "" }, { secondaryActionHref: "" }]) expect(links(await ssr(file, { ...hero, ...both, ...p }))).toHaveLength(1);
+    // no action at all: no empty row of actions
+    expect(await ssr(file, { ...hero, ...both, actionLabel: "", secondaryActionLabel: "" })).not.toMatch(/flex-wrap/);
+    // the wireframe draws both bars: the primary role, then the secondary one
+    const doc = new JSDOM(await ssr(fileOf("hero-simple", "wireframe"), {})).window.document;
+    expect([...doc.querySelectorAll('[data-shape="cta"]')].map((e) => [e.getAttribute("data-place"), e.getAttribute("data-role")]))
+      .toEqual([["action", "cta-primary"], ["secondaryAction", "cta-secondary"]]);
+  });
+
+  for (const media of ["end", "start"] as const) for (const mode of ["wireframe", "clean"]) test(`hero-simple split ${media} (${mode}): two halves, the picture to the edge, the padding on the copy`, async () => {
+    const html = await ssr(fileOf("hero-simple", mode), { ...(mode === "clean" ? hero : {}), media, frame: "split" });
+    const doc = new JSDOM(html).window.document;
+    const section = doc.querySelector("section")!;
+    expect(section.getAttribute("class") ?? "").not.toMatch(/\bpy-/);
+    expect(section.firstElementChild!.getAttribute("class")).toBe("w-full");
+    const grid = section.firstElementChild!.firstElementChild!;
+    expect([...grid.classList]).toEqual(["grid", "grid-cols-1", "md:grid-cols-2"]);
+    const kids = [...grid.children];
+    const frame = kids.findIndex((k) => k.matches('[data-slot="media-frame"]'));
+    expect(frame).toBe(media === "start" ? 0 : 1);
+    const copy = kids[1 - frame]!;
+    for (const c of ["justify-center", "px-4", "md:px-8", "lg:px-16", "py-16", "lg:py-32"]) expect([...copy.classList]).toContain(c);
+    if (mode === "clean") for (const c of ["md:aspect-auto", "md:h-full"]) expect([...kids[frame]!.classList]).toContain(c);
+    // the box frame keeps the container and the gap
+    const box = new JSDOM(await ssr(fileOf("hero-simple", mode), { ...(mode === "clean" ? hero : {}), media })).window.document;
+    expect(box.querySelector("section")!.getAttribute("class")).toBe("py-16 lg:py-32");
+    expect(box.querySelector("section")!.firstElementChild!.getAttribute("class")).toBe(CONTAINER);
   });
 });
 
@@ -256,5 +300,5 @@ test("out/classes.json: the role table, Stack align / justify, the text align, t
     if (step) expect({ cls, px: (Number(step) * 4) % 8 }).toEqual({ cls, px: 0 });
   }
   // every shape draws its role
-  for (const [role, cls] of Object.entries(ROLE)) if (role !== "surface") expect(built.files.get("svelte/shapes/" + ({ text: "shape-text", heading: "shape-heading", "heading-lg": "shape-heading", badge: "shape-badge", "cta-primary": "shape-cta", media: "shape-media", avatar: "shape-avatar" } as Record<string, string>)[role] + ".svelte")).toContain(cls);
+  for (const [role, cls] of Object.entries(ROLE)) if (role !== "surface") expect(built.files.get("svelte/shapes/" + ({ text: "shape-text", heading: "shape-heading", "heading-lg": "shape-heading", badge: "shape-badge", "cta-primary": "shape-cta", "cta-secondary": "shape-cta", media: "shape-media", avatar: "shape-avatar" } as Record<string, string>)[role] + ".svelte")).toContain(cls);
 });

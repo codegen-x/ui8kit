@@ -318,7 +318,7 @@
       "medialist": "Four figures, figures with a featured review, numbered steps, the latest posts, topic rows, or contact buttons with support figures, beside a picture.",
       "featureshowcase": "Cards with a picture on top and a read link, or with a muted glyph panel on top like an index of categories, in three or four columns.",
       "storytabs": "Year tabs over the panel of the chosen year, or the heading beside a picture with arrows and one dot per step. Choosing a step is an event.",
-      "herosimple": "A badge, the heading, one paragraph and one link as the action, with one picture at the end, at the start or on top.",
+      "herosimple": "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start or on top, in a box or split to the edge of the screen.",
       "teamsimple": "The heading, one paragraph and the people as a list: a portrait, the name and the role, in two, three or four columns, plain or on cards."
     },
     "variants": {
@@ -1073,7 +1073,9 @@
       "herosimple": {
         "mediaEnd": "Picture at the end",
         "mediaStart": "Picture at the start",
-        "mediaTop": "Wide picture on top"
+        "mediaTop": "Wide picture on top",
+        "splitEnd": "Split, picture at the end to the edge",
+        "splitStart": "Split, picture at the start to the edge"
       },
       "teamsimple": {
         "cols3": "Three columns",
@@ -1272,7 +1274,8 @@
       "title": "Build the page, keep the content",
       "description": "One content model drives every layout of the block: move the picture, keep the words.",
       "imageAlt": "A laptop on a desk with a page in progress",
-      "actionLabel": "Get started"
+      "actionLabel": "Get started",
+      "secondaryActionLabel": "Take the tour"
     },
     "teamSimple": {
       "title": "Meet the team",

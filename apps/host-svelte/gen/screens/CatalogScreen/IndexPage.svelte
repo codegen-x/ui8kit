@@ -121,7 +121,7 @@
           variants: 7,
         },
         { id: "marketing-team", href: "#/marketing-team", name: ui.catalog.categories.marketingTeam, blocks: 1, variants: 6 },
-        { id: "marketing-simple", href: "#/marketing-simple", name: ui.catalog.categories.marketingSimple, blocks: 2, variants: 7 },
+        { id: "marketing-simple", href: "#/marketing-simple", name: ui.catalog.categories.marketingSimple, blocks: 2, variants: 9 },
         { id: "marketing-about", href: "#/marketing-about", name: ui.catalog.categories.marketingAbout, blocks: 2, variants: 7 },
         {
           id: "marketing-portfolio",

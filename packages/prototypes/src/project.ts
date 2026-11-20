@@ -41,6 +41,8 @@ const LAYOUT: Record<string, Lowering> = {
   // its content (items-start / self-center in a flex column: the member copy of team-simple, a centered header) spans its parent
   // instead of collapsing to 0; max-w-* of the spec still caps it. A Stack in a grid cell or a stretched column is unchanged.
   Stack: { tagProp: "Tag", base: "flex w-full flex-col", keys: { Gap: (v) => `gap-${v}`, Align: (v) => (ALIGN as Record<string, string>)[v] ?? fail(`Stack Align ${v}`), Justify: (v) => (JUSTIFY as Record<string, string>)[v] ?? fail(`Stack Justify ${v}`) } },
+  // a row of actions (the hero's primary and secondary links): the Group recipe base, its gap / align / justify as plain classes
+  Group: { tagProp: "Tag", base: "flex min-w-0", keys: { Gap: (v) => `gap-${v}`, Align: (v) => (ALIGN as Record<string, string>)[v] ?? fail(`Group Align ${v}`), Justify: (v) => (JUSTIFY as Record<string, string>)[v] ?? fail(`Group Justify ${v}`) } },
   List: { tagProp: "Tag", tag: "ul", base: "" },
   ListItem: { tag: "li", base: "" },
   // a card as a plain bordered surface (a border token, no inset ring, no shadow)
@@ -127,7 +129,8 @@ class Projector {
       if (!primary) return undefined;
       const kind = KIND[n.use]!;
       const fields = [primary, ...(kind === "action" ? this.fieldsOf(n.props?.["Href"], loops) : [])];
-      const place: Place = { place: kind === "action" ? "action" : prefixed(primary), kind, fields: fields.map((f) => f.pointer), ...(primary.list ? { list: primary.list } : {}) };
+      // an action is named by its label without "Label": actionLabel -> action, secondaryActionLabel -> secondaryAction
+      const place: Place = { place: kind === "action" ? prefixed(primary).replace(/Label$/, "") : prefixed(primary), kind, fields: fields.map((f) => f.pointer), ...(primary.list ? { list: primary.list } : {}) };
       this.add(place);
       const size = n.props?.["Size"];
       const big = typeof size === "string" && ["2xl", "3xl", "4xl", "5xl"].includes(size);
@@ -136,7 +139,8 @@ class Projector {
         // the text bars follow the `align` setting of the block (items-* inside the shape)
         text: ["ShapeText", { lines: primary.list ? "1" : "2", ...(this.props.has("align") && this.alignable ? { align: ref("align") } : {}) }],
         badge: ["ShapeBadge", {}],
-        action: ["ShapeCta", {}],
+        // the tone follows the button variant of the clean block: secondary -> the secondary bar, anything else the primary one
+        action: ["ShapeCta", n.props?.["Variant"] === "secondary" ? { tone: "secondary" } : {}],
       };
       const [name, props] = pick[kind as Exclude<PlaceKind, "media">];
       return organism(SHAPE[name].name, { ...props, place: place.place, field: fields.map((f) => f.value).join(" ") });

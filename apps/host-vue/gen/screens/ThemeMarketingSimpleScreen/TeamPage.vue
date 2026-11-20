@@ -21,7 +21,10 @@ const teamMembers = fromCodex<SimpleMember>(teamMembersEntries, TEAMMEMBERS_FIEL
     :imageAlt="ui.marketing.heroSimple.imageAlt"
     :actionLabel="ui.pages.marketingSimple.team.cta"
     actionHref="#/"
+    :secondaryActionLabel="ui.marketing.heroSimple.secondaryActionLabel"
+    secondaryActionHref="#/tour"
     media="top"
+    frame="box"
     align="center"
     :level="1"
   />

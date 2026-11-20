@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "hero",
   "version": 1,
-  "docs": "Hero content: an optional badge, the heading, a description, one picture (light, optional dark) and one action. One object is valid in every hero layout (media at the end, at the start, on top).",
+  "docs": "Hero content: an optional badge, the heading, a description, one picture (light, optional dark) and up to two actions (the first drawn as the primary button, the second as the secondary one). One object is valid in every hero layout (media at the end, at the start, on top; in a box or split to the edge).",
   "fields": {
     "badge": { "type": "text", "maxLength": 40, "docs": "a short pill above the heading; empty: no badge" },
     "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
@@ -12,6 +12,8 @@
     "imageAlt": { "type": "text", "maxLength": 160, "docs": "alt text of the picture; none: the title (the placeholder is decorative)" },
     "imageDark": { "type": "image", "docs": "address of the picture in the dark theme; none: image" },
     "actionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the action; the link is drawn when the label and the address are both set" },
-    "actionHref": { "type": "url", "docs": "the address of the action" }
+    "actionHref": { "type": "url", "docs": "the address of the action" },
+    "secondaryActionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the second action (the secondary button after the first); drawn when the label and the address are both set; empty: none" },
+    "secondaryActionHref": { "type": "url", "docs": "the address of the second action" }
   }
 }
