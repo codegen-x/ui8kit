@@ -244,7 +244,8 @@ export const ui = {
       "choicelinks": "Choice links",
       "purchasesimple": "Simple purchase",
       "storepolicies": "Store policies",
-      "productreviews": "Product reviews"
+      "productreviews": "Product reviews",
+      "menusimple": "Simple menu"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -397,7 +398,8 @@ export const ui = {
       "choicelinks": "The heading, one paragraph and the options (sizes, versions) as outline links: a wrapping row, or a grid of four.",
       "purchasesimple": "On a card surface: the heading and one paragraph beside the price, the action and a note; or all centred.",
       "storepolicies": "The heading, one paragraph and the policies (payment, delivery, returns), each with an icon, a title and a line: on cards in columns, or rows.",
-      "productreviews": "The heading, one paragraph and the reviews on cards (the rating, the words, the reviewer with the portrait): in three or two columns, or one under the other."
+      "productreviews": "The heading, one paragraph and the reviews on cards (the rating, the words, the reviewer with the portrait): in three or two columns, or one under the other.",
+      "menusimple": "The heading, one paragraph and the dishes (a picture, a badge when set, the name, the weight, a line, the price): on cards in three, two or four columns, or menu rows with the price at the end."
     },
     "variants": {
       "header": {
@@ -1345,6 +1347,12 @@ export const ui = {
       "productreviews": {
         "cards3": "Three cards",
         "rows": "One under the other"
+      },
+      "menusimple": {
+        "cards3": "Three dish cards",
+        "cards2": "Two columns",
+        "cards4": "Four columns",
+        "rows": "Menu rows, the price at the end"
       }
     },
     "landmark": "{0}, {1}",
@@ -1726,6 +1734,10 @@ export const ui = {
     "productReviews": {
       "title": "What customers say",
       "description": "Reviews from people who bought from the shop this year."
+    },
+    "menuSimple": {
+      "title": "From our grill this New Year",
+      "description": "Order the festive grill set for the holidays: every dish is cooked over live coals on the day you collect it."
     }
   },
   "cases": {
@@ -2499,6 +2511,12 @@ export const ui = {
         "text": "Plans, offers and the people to talk to.",
         "cta": "See the plans"
       },
+      "venue": {
+        "nav": "Venue",
+        "title": "Food, stays and local services",
+        "text": "A grill menu, rooms, hours and offers from simple blocks.",
+        "cta": "See the menu"
+      },
       "about": {
         "nav": "About",
         "title": "About the simple line",
@@ -2981,7 +2999,8 @@ export const ui = {
       "marketingSimpleStory": "Simple blocks: long reads",
       "marketingSimpleOffer": "Simple blocks: showcase, pricing and contacts",
       "marketingSimpleShop": "Simple blocks: shop",
-      "marketingSimpleDetails": "Simple blocks: product details and courses"
+      "marketingSimpleDetails": "Simple blocks: product details and courses",
+      "marketingSimpleVenue": "Simple blocks: food, stays and local services"
     },
     "pages": {
       "saasLanding": {

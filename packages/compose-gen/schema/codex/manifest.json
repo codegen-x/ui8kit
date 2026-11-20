@@ -524,7 +524,7 @@
         "id": "dish",
         "label": "Dish",
         "scope": "workspace",
-        "description": "fixtures: cuts, groceries, kits, meals, menudishes, pizzas, rolls, specials, sushisets, veggies, weekmeals",
+        "description": "fixtures: cuts, groceries, kits, meals, menudishes, pizzas, rolls, simplemenu, specials, sushisets, veggies, weekmeals",
         "fields": [
           {
             "id": "badge",
@@ -538,6 +538,11 @@
             "required": true
           },
           {
+            "id": "display",
+            "label": "Display",
+            "type": "string"
+          },
+          {
             "id": "items",
             "label": "Items",
             "type": "collection",
@@ -545,8 +550,7 @@
               "id": "item",
               "label": "Item",
               "type": "string"
-            },
-            "required": true
+            }
           },
           {
             "id": "minutes",
@@ -556,8 +560,7 @@
               {
                 "name": "fastygo.codex/integer"
               }
-            ],
-            "required": true
+            ]
           },
           {
             "id": "price",
@@ -579,8 +582,7 @@
           {
             "id": "tag",
             "label": "Tag",
-            "type": "string",
-            "required": true
+            "type": "string"
           },
           {
             "id": "weight",

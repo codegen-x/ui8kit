@@ -10,6 +10,7 @@ import * as d from "./blocks-data";
 import { simpleMoreBlocks } from "./blocks-simple-more";
 import { simpleContentBlocks } from "./blocks-simple-content";
 import { simpleCommerceBlocks } from "./blocks-simple-commerce";
+import { simpleVenueBlocks } from "./blocks-simple-venue";
 
 const h = (k: string) => t(`marketing.heroSimple.${k}`);
 const m = (k: string) => t(`marketing.teamSimple.${k}`);
@@ -88,4 +89,4 @@ const teamSimple = define({
   sample: { id: "teamsimple", title: m("title"), description: m("description"), members: ref("teamMembers") },
 });
 
-export const simpleBlocks = [heroSimple, splitSimple, teamSimple, ...simpleMoreBlocks, ...simpleContentBlocks, ...simpleCommerceBlocks];
+export const simpleBlocks = [heroSimple, splitSimple, teamSimple, ...simpleMoreBlocks, ...simpleContentBlocks, ...simpleCommerceBlocks, ...simpleVenueBlocks];

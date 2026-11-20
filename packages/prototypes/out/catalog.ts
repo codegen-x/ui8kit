@@ -23,6 +23,7 @@ import HeroSimple from "./svelte/blocks/hero-simple.svelte";
 import IntroSimple from "./svelte/blocks/intro-simple.svelte";
 import LocationsSimple from "./svelte/blocks/locations-simple.svelte";
 import LogosSimple from "./svelte/blocks/logos-simple.svelte";
+import MenuSimple from "./svelte/blocks/menu-simple.svelte";
 import OffersSimple from "./svelte/blocks/offers-simple.svelte";
 import PhotosSimple from "./svelte/blocks/photos-simple.svelte";
 import PricingSimple from "./svelte/blocks/pricing-simple.svelte";
@@ -43,7 +44,7 @@ import TeamSimple from "./svelte/blocks/team-simple.svelte";
 import TestimonialsSimple from "./svelte/blocks/testimonials-simple.svelte";
 import TopicsSimple from "./svelte/blocks/topics-simple.svelte";
 
-export { ArticleLead, ArticleSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, HeaderSimple, HeroSimple, IntroSimple, LocationsSimple, LogosSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PullQuoteSimple, PurchaseSimple, RatingSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TopicsSimple };
+export { ArticleLead, ArticleSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, HeaderSimple, HeroSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PullQuoteSimple, PurchaseSimple, RatingSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TopicsSimple };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CATALOG: Record<string, Component<any>> = {
@@ -68,6 +69,7 @@ export const CATALOG: Record<string, Component<any>> = {
   "intro-simple": IntroSimple,
   "locations-simple": LocationsSimple,
   "logos-simple": LogosSimple,
+  "menu-simple": MenuSimple,
   "offers-simple": OffersSimple,
   "photos-simple": PhotosSimple,
   "pricing-simple": PricingSimple,

@@ -142,4 +142,6 @@ export const compareRows = src("compareRows", "compare", "row", "CompareLine", C
 export const courseModules = src("courseModules", "simplemodules", "module", "CourseModule", CODEX_FIELDS.courseModule);
 export const choiceItems = src("choiceItems", "simplechoices", "menu_item", "ChoiceItem", CODEX_FIELDS.simpleLink);
 export const policyItems = src("policyItems", "simplepolicies", "perk", "PolicyItem", CODEX_FIELDS.policyItem);
+/** wave 3 of the simple line */
+export const menuDishes = src("menuDishes", "simplemenu", "dish", "MenuDish", CODEX_FIELDS.menuDish);
 export const reviewItems = src("reviewItems", "simplereviews", "review", "ReviewItem", CODEX_FIELDS.reviewItem);

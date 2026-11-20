@@ -374,6 +374,14 @@
             ]
           },
           {
+            "id": "marketing-simple-venue",
+            "entries": [
+              {
+                "block": "menusimple"
+              }
+            ]
+          },
+          {
             "id": "marketing-simple-details",
             "entries": [
               {

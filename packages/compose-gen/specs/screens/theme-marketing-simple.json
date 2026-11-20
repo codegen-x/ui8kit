@@ -4,7 +4,7 @@
   "id": "screen.theme-marketing-simple",
   "name": "ThemeMarketingSimpleScreen",
   "kind": "composed",
-  "docs": "The simple line: blocks with one content model each (hero@1, split@1, team@1, intro@1, gallery@1, features@1, stats@1, stories@1, photos@1, testimonials@1, logos@1, faq@1, steps@1), the same content in every variant. A home page with the hero, the features, the team, the stats, the steps, the quotes and the questions, and a team page with the wide hero, the team on cards, the gallery, the photos and the stories; a blog page (the article lead, the article, a figure, a pull quote, chapters, topics), a shop page (collections, products, one product, choices, specs, compare, purchase, reviews, store policies), a pricing page (the showcase, the rating, pricing, offers, a course outline, contacts, locations) and an about page (the header, an event and a profile intro, the team list, the error block, the footer).",
+  "docs": "The simple line: blocks with one content model each (hero@1, split@1, team@1, intro@1, gallery@1, features@1, stats@1, stories@1, photos@1, testimonials@1, logos@1, faq@1, steps@1), the same content in every variant. A home page with the hero, the features, the team, the stats, the steps, the quotes and the questions, and a team page with the wide hero, the team on cards, the gallery, the photos and the stories; a blog page (the article lead, the article, a figure, a pull quote, chapters, topics), a shop page (collections, products, one product, choices, specs, compare, purchase, reviews, store policies), a pricing page (the showcase, the rating, pricing, offers, a course outline, contacts, locations) and an about page (the header, an event and a profile intro, the team list, the error block, the footer). A venue page shows the food, stays and local services blocks (menu@1 and the rest of wave 3).",
   "routes": [
     {
       "path": "",
@@ -25,6 +25,10 @@
     {
       "path": "pricing",
       "area": "pricing"
+    },
+    {
+      "path": "venue",
+      "area": "venue"
     },
     {
       "path": "about",
@@ -290,7 +294,7 @@
           "actionLabel": {
             "$": "ui.pages.marketingSimple.pricing.cta"
           },
-          "actionHref": "#/about"
+          "actionHref": "#/venue"
         }
       },
       {
@@ -320,6 +324,29 @@
       {
         "block": "locationssimple",
         "variant": "mediaStart"
+      }
+    ],
+    "venue": [
+      {
+        "block": "herosimple",
+        "variant": "mediaEnd",
+        "props": {
+          "level": 1,
+          "title": {
+            "$": "ui.pages.marketingSimple.venue.title"
+          },
+          "description": {
+            "$": "ui.pages.marketingSimple.venue.text"
+          },
+          "actionLabel": {
+            "$": "ui.pages.marketingSimple.venue.cta"
+          },
+          "actionHref": "#/about"
+        }
+      },
+      {
+        "block": "menusimple",
+        "variant": "cards3"
       }
     ],
     "about": [
@@ -395,6 +422,11 @@
       "id": "pricing",
       "path": "pricing",
       "titleKey": "pages.marketingSimple.pricing.nav"
+    },
+    {
+      "id": "venue",
+      "path": "venue",
+      "titleKey": "pages.marketingSimple.venue.nav"
     },
     {
       "id": "about",

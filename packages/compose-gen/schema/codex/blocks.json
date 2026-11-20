@@ -5118,6 +5118,45 @@
       "emptyState": true
     },
     {
+      "id": "MenuSimple",
+      "surface": "kit-block",
+      "spec": "block.menusimple",
+      "source": "packages/compose-gen/specs/blocks/menusimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simplemenu",
+          "kind": "dish",
+          "record": "MenuDish",
+          "map": "menuDish",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.menuSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.menuSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "MetricRow",
       "surface": "kit-block",
       "spec": "block.metrics",
@@ -10186,6 +10225,14 @@
           "list": true
         },
         {
+          "prop": "MenuSimple.items",
+          "collection": "simplemenu",
+          "kind": "dish",
+          "record": "MenuDish",
+          "map": "menuDish",
+          "list": true
+        },
+        {
           "prop": "MetricRow.metrics",
           "collection": "metrics",
           "kind": "metric",
@@ -10685,6 +10732,7 @@
         "block.medialist",
         "block.megamenu",
         "block.menuboard",
+        "block.menusimple",
         "block.metrics",
         "block.navbar",
         "block.newsletter",
@@ -13698,6 +13746,14 @@
           "list": true
         },
         {
+          "prop": "MenuSimple.items",
+          "collection": "simplemenu",
+          "kind": "dish",
+          "record": "MenuDish",
+          "map": "menuDish",
+          "list": true
+        },
+        {
           "prop": "NavBar.links",
           "collection": "navlinks",
           "kind": "menu_item",
@@ -13939,6 +13995,21 @@
         },
         {
           "prop": "title",
+          "dictionary": "pages.marketingSimple.venue.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "pages.marketingSimple.venue.text",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "pages.marketingSimple.venue.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
           "dictionary": "pages.marketingSimple.about.title",
           "keys": []
         },
@@ -13979,6 +14050,11 @@
         },
         {
           "prop": "titleKey",
+          "dictionary": "pages.marketingSimple.venue.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
           "dictionary": "pages.marketingSimple.about.nav",
           "keys": []
         }
@@ -14006,6 +14082,7 @@
         "block.introsimple",
         "block.locationssimple",
         "block.logossimple",
+        "block.menusimple",
         "block.navbar",
         "block.offerssimple",
         "block.photossimple",

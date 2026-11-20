@@ -80,7 +80,7 @@ export function PricingPage() {
         description={ui.pages.marketingSimple.pricing.text}
         imageAlt={ui.marketing.heroSimple.imageAlt}
         actionLabel={ui.pages.marketingSimple.pricing.cta}
-        actionHref="#/about"
+        actionHref="#/venue"
         secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
         secondaryActionHref="#/tour"
         media="top"

@@ -36,6 +36,7 @@
   import MarketingSimpleStoryPage from "./CatalogScreen/MarketingSimpleStoryPage.svelte";
   import MarketingSimpleOfferPage from "./CatalogScreen/MarketingSimpleOfferPage.svelte";
   import MarketingSimpleShopPage from "./CatalogScreen/MarketingSimpleShopPage.svelte";
+  import MarketingSimpleVenuePage from "./CatalogScreen/MarketingSimpleVenuePage.svelte";
   import MarketingSimpleDetailsPage from "./CatalogScreen/MarketingSimpleDetailsPage.svelte";
   import MarketingAboutPage from "./CatalogScreen/MarketingAboutPage.svelte";
   import MarketingPortfolioPage from "./CatalogScreen/MarketingPortfolioPage.svelte";
@@ -142,6 +143,7 @@
     {"path":"marketing-simple-story","area":"marketing-simple-story"},
     {"path":"marketing-simple-offer","area":"marketing-simple-offer"},
     {"path":"marketing-simple-shop","area":"marketing-simple-shop"},
+    {"path":"marketing-simple-venue","area":"marketing-simple-venue"},
     {"path":"marketing-simple-details","area":"marketing-simple-details"},
     {"path":"marketing-about","area":"marketing-about"},
     {"path":"marketing-portfolio","area":"marketing-portfolio"},
@@ -281,6 +283,8 @@
     <MarketingSimpleOfferPage />
   {:else if route.area === "marketing-simple-shop"}
     <MarketingSimpleShopPage />
+  {:else if route.area === "marketing-simple-venue"}
+    <MarketingSimpleVenuePage />
   {:else if route.area === "marketing-simple-details"}
     <MarketingSimpleDetailsPage />
   {:else if route.area === "marketing-about"}

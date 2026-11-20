@@ -188,6 +188,8 @@ export { default as MenuBoard } from "./blocks/menu-board.vue";
 export { default as MenuEntry } from "./components/menu-entry.vue";
 export { default as MenuRow } from "./components/menu-row.vue";
 export { default as MenuSectionNav } from "./components/menu-section-nav.vue";
+export { default as MenuSimple } from "./blocks/menu-simple.vue";
+export type * from "./blocks/menu-simple.types";
 export { default as MetricRow } from "./blocks/metric-row.vue";
 export type * from "./blocks/metric-row.types";
 export { default as MilestoneTimeline } from "./blocks/milestone-timeline.vue";

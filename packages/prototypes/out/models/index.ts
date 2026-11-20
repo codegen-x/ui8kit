@@ -21,6 +21,7 @@ export type { HeroContent } from "./hero@1";
 export type { IntroContent } from "./intro@1";
 export type { LocationItem, LocationsContent } from "./locations@1";
 export type { SimpleLogo, LogosContent } from "./logos@1";
+export type { MenuDish, MenuContent } from "./menu@1";
 export type { OfferItem, OffersContent } from "./offers@1";
 export type { SimplePhoto, PhotosContent } from "./photos@1";
 export type { PricingPlan, PricingContent } from "./pricing@1";

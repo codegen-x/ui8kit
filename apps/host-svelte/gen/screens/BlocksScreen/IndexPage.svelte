@@ -77,6 +77,7 @@
         { key: "logossimple", href: "#/logossimple", name: ui.blocks.names.logossimple, docs: ui.blocks.docs.logossimple },
         { key: "medialist", href: "#/medialist", name: ui.blocks.names.medialist, docs: ui.blocks.docs.medialist },
         { key: "megamenu", href: "#/megamenu", name: ui.blocks.names.megamenu, docs: ui.blocks.docs.megamenu },
+        { key: "menusimple", href: "#/menusimple", name: ui.blocks.names.menusimple, docs: ui.blocks.docs.menusimple },
         { key: "navbar", href: "#/navbar", name: ui.blocks.names.navbar, docs: ui.blocks.docs.navbar },
         { key: "offerssimple", href: "#/offerssimple", name: ui.blocks.names.offerssimple, docs: ui.blocks.docs.offerssimple },
         { key: "pagehead", href: "#/pagehead", name: ui.blocks.names.pagehead, docs: ui.blocks.docs.pagehead },

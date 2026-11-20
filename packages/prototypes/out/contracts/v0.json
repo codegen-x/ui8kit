@@ -128,6 +128,12 @@
       "model": "logos@1",
       "path": "logos-simple/1.json"
     },
+    "menu-simple": {
+      "version": 1,
+      "block": "block.menusimple",
+      "model": "menu@1",
+      "path": "menu-simple/1.json"
+    },
     "offers-simple": {
       "version": 1,
       "block": "block.offerssimple",

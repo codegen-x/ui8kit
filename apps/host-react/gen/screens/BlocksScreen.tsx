@@ -52,6 +52,7 @@ import { LogosPage } from "./BlocksScreen/LogosPage";
 import { LogossimplePage } from "./BlocksScreen/LogossimplePage";
 import { MedialistPage } from "./BlocksScreen/MedialistPage";
 import { MegamenuPage } from "./BlocksScreen/MegamenuPage";
+import { MenusimplePage } from "./BlocksScreen/MenusimplePage";
 import { NavbarPage } from "./BlocksScreen/NavbarPage";
 import { OfferssimplePage } from "./BlocksScreen/OfferssimplePage";
 import { PageheadPage } from "./BlocksScreen/PageheadPage";
@@ -211,6 +212,7 @@ const ROUTES = [
   {"path":"logossimple","area":"logossimple"},
   {"path":"medialist","area":"medialist"},
   {"path":"megamenu","area":"megamenu"},
+  {"path":"menusimple","area":"menusimple"},
   {"path":"navbar","area":"navbar"},
   {"path":"offerssimple","area":"offerssimple"},
   {"path":"pagehead","area":"pagehead"},
@@ -421,6 +423,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <MedialistPage />
         ) : route.area === "megamenu" ? (
           <MegamenuPage />
+        ) : route.area === "menusimple" ? (
+          <MenusimplePage />
         ) : route.area === "navbar" ? (
           <NavbarPage />
         ) : route.area === "offerssimple" ? (

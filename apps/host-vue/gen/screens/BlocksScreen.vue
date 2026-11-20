@@ -53,6 +53,7 @@ import LogosPage from "./BlocksScreen/LogosPage.vue";
 import LogossimplePage from "./BlocksScreen/LogossimplePage.vue";
 import MedialistPage from "./BlocksScreen/MedialistPage.vue";
 import MegamenuPage from "./BlocksScreen/MegamenuPage.vue";
+import MenusimplePage from "./BlocksScreen/MenusimplePage.vue";
 import NavbarPage from "./BlocksScreen/NavbarPage.vue";
 import OfferssimplePage from "./BlocksScreen/OfferssimplePage.vue";
 import PageheadPage from "./BlocksScreen/PageheadPage.vue";
@@ -212,6 +213,7 @@ const ROUTES = [
   {"path":"logossimple","area":"logossimple"},
   {"path":"medialist","area":"medialist"},
   {"path":"megamenu","area":"megamenu"},
+  {"path":"menusimple","area":"menusimple"},
   {"path":"navbar","area":"navbar"},
   {"path":"offerssimple","area":"offerssimple"},
   {"path":"pagehead","area":"pagehead"},
@@ -375,6 +377,7 @@ const actions = { toggleTheme };
     <LogossimplePage v-else-if="route.area === 'logossimple'" />
     <MedialistPage v-else-if="route.area === 'medialist'" />
     <MegamenuPage v-else-if="route.area === 'megamenu'" />
+    <MenusimplePage v-else-if="route.area === 'menusimple'" />
     <NavbarPage v-else-if="route.area === 'navbar'" />
     <OfferssimplePage v-else-if="route.area === 'offerssimple'" />
     <PageheadPage v-else-if="route.area === 'pagehead'" />

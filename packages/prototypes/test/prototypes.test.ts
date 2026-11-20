@@ -57,20 +57,21 @@ const SIMPLE: Array<[string, string]> = [
   ["error-simple", "error@1"], ["event-intro", "event@1"], ["faq-simple", "faq@1"], ["feature-showcase-simple", "feature-showcase@1"],
   ["features-simple", "features@1"], ["figure-simple", "figure@1"], ["footer-simple", "footer@1"], ["gallery-hero", "gallery@1"],
   ["header-simple", "header@1"], ["hero-simple", "hero@1"], ["intro-simple", "intro@1"], ["locations-simple", "locations@1"],
-  ["logos-simple", "logos@1"], ["offers-simple", "offers@1"], ["photos-simple", "photos@1"], ["pricing-simple", "pricing@1"],
-  ["product-reviews", "reviews@1"], ["product-simple", "product@1"], ["products-simple", "products@1"], ["profile-intro", "profile@1"],
-  ["pull-quote-simple", "pull-quote@1"], ["purchase-simple", "purchase@1"], ["rating-simple", "rating@1"], ["specs-simple", "specs@1"],
-  ["split-simple", "split@1"], ["stats-simple", "stats@1"], ["steps-simple", "steps@1"], ["store-policies", "store-policy@1"],
-  ["stories-simple", "stories@1"], ["team-simple", "team@1"], ["testimonials-simple", "testimonials@1"], ["topics-simple", "topics@1"],
+  ["logos-simple", "logos@1"], ["menu-simple", "menu@1"], ["offers-simple", "offers@1"], ["photos-simple", "photos@1"],
+  ["pricing-simple", "pricing@1"], ["product-reviews", "reviews@1"], ["product-simple", "product@1"], ["products-simple", "products@1"],
+  ["profile-intro", "profile@1"], ["pull-quote-simple", "pull-quote@1"], ["purchase-simple", "purchase@1"], ["rating-simple", "rating@1"],
+  ["specs-simple", "specs@1"], ["split-simple", "split@1"], ["stats-simple", "stats@1"], ["steps-simple", "steps@1"],
+  ["store-policies", "store-policy@1"], ["stories-simple", "stories@1"], ["team-simple", "team@1"], ["testimonials-simple", "testimonials@1"],
+  ["topics-simple", "topics@1"],
 ];
 // the frame blocks without a heading of their own: the header and the footer (a brand and links), the figure and the pull quote
 // (their caption and their attribution are text, not a heading)
 const NO_HEADING = new Set(["figure-simple", "footer-simple", "header-simple", "pull-quote-simple"]);
 test("the simple line has its prototypes: one per block of the simple line, in item order", () => {
   expect(simple.map((c) => [c.item, c.model, c.defaultMode])).toEqual(SIMPLE.map(([item, model]) => [item, model, "wireframe"]));
-  // 101 variants with the align setting, each once more per non-default align value (compose-gen blockCases),
+  // 105 variants with the align setting, each once more per non-default align value (compose-gen blockCases),
   // and the 17 without it (split, header, footer, figure, pull quote, rating, purchase)
-  expect(cases.length).toBe(101 * 3 + 17);
+  expect(cases.length).toBe(105 * 3 + 17);
 });
 
 test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", () => {
@@ -224,6 +225,8 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     "compare-simple": "center", "contacts-simple": "center", "course-outline": "start", "error-simple": "center", "event-intro": "center",
     "feature-showcase-simple": "start", "locations-simple": "start", "offers-simple": "center", "pricing-simple": "center", "product-reviews": "center",
     "product-simple": "start", "products-simple": "center", "profile-intro": "start", "specs-simple": "center", "store-policies": "center", "topics-simple": "center",
+    // wave 3: start for the copy beside a picture and the rows, center for the grids and the bands
+    "menu-simple": "center",
   };
   // the fixed compositions without the align setting: the split, the header and footer, the figure, the pull quote, the rating, the purchase
   const NO_ALIGN = ["figure-simple", "footer-simple", "header-simple", "pull-quote-simple", "purchase-simple", "rating-simple", "split-simple"];
@@ -241,12 +244,12 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
       'article-simple.column {"align":"start"}', 'article-simple.twoColumns {"align":"center"}', 'contacts-simple.rows {"align":"start"}',
       'error-simple.start {"align":"start"}', 'event-intro.start {"align":"start"}', 'feature-showcase-simple.mediaTop {"align":"center"}',
       'features-simple.summaryRow {"align":"start"}', 'features-simple.summaryGrid {"align":"start"}', 'features-simple.checklist {"align":"start"}',
-      'gallery-hero.photos3Bottom {"align":"center"}', 'gallery-hero.photos4Bottom {"align":"center"}',
-      'hero-simple.mediaTop {"align":"center"}', 'hero-simple.mediaBottom {"align":"center"}',
-      'intro-simple.start {"align":"start"}', 'intro-simple.bottomStart {"align":"start"}', 'offers-simple.duoStart {"align":"start"}',
-      'pricing-simple.rows {"align":"start"}', 'products-simple.rows {"align":"start"}', 'profile-intro.portraitTop {"align":"center"}',
-      'steps-simple.column {"align":"start"}', 'store-policies.rows {"align":"start"}',
-      'team-simple.portraitRow {"align":"start"}', 'team-simple.bylineCols3 {"align":"start"}', 'team-simple.sideList {"align":"start"}',
+      'gallery-hero.photos3Bottom {"align":"center"}', 'gallery-hero.photos4Bottom {"align":"center"}', 'hero-simple.mediaTop {"align":"center"}',
+      'hero-simple.mediaBottom {"align":"center"}', 'intro-simple.start {"align":"start"}', 'intro-simple.bottomStart {"align":"start"}',
+      'menu-simple.rows {"align":"start"}', 'offers-simple.duoStart {"align":"start"}', 'pricing-simple.rows {"align":"start"}',
+      'products-simple.rows {"align":"start"}', 'profile-intro.portraitTop {"align":"center"}', 'steps-simple.column {"align":"start"}',
+      'store-policies.rows {"align":"start"}', 'team-simple.portraitRow {"align":"start"}', 'team-simple.bylineCols3 {"align":"start"}',
+      'team-simple.sideList {"align":"start"}',
     ]);
     // the feed grows by compositions only: align is never a variant of its own
     expect(simple.find((c) => c.item === "hero-simple")!.variants.map((v) => v.id)).toEqual(["mediaEnd", "mediaStart", "mediaTop", "mediaBottom", "mediaEndPortrait", "mediaStartPortrait"]);

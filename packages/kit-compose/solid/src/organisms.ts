@@ -188,6 +188,8 @@ export * from "./blocks/menu-board";
 export * from "./components/menu-entry";
 export * from "./components/menu-row";
 export * from "./components/menu-section-nav";
+export * from "./blocks/menu-simple";
+export type * from "./blocks/menu-simple.types";
 export * from "./blocks/metric-row";
 export type * from "./blocks/metric-row.types";
 export * from "./blocks/milestone-timeline";

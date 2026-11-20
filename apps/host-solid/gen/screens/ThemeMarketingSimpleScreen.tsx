@@ -7,7 +7,8 @@
  * article lead, the article, a figure, a pull quote, chapters, topics), a shop page (collections, products, one
  * product, choices, specs, compare, purchase, reviews, store policies), a pricing page (the showcase, the
  * rating, pricing, offers, a course outline, contacts, locations) and an about page (the header, an event and a
- * profile intro, the team list, the error block, the footer).
+ * profile intro, the team list, the error block, the footer). A venue page shows the food, stays and local
+ * services blocks (menu@1 and the rest of wave 3).
  */
 
 import { Block, NavBar, SitemapFooter, type MegaGroup } from "@codegen-x/solid-compose";
@@ -16,6 +17,7 @@ import { TeamPage } from "./ThemeMarketingSimpleScreen/TeamPage";
 import { BlogPage } from "./ThemeMarketingSimpleScreen/BlogPage";
 import { ShopPage } from "./ThemeMarketingSimpleScreen/ShopPage";
 import { PricingPage } from "./ThemeMarketingSimpleScreen/PricingPage";
+import { VenuePage } from "./ThemeMarketingSimpleScreen/VenuePage";
 import { AboutPage } from "./ThemeMarketingSimpleScreen/AboutPage";
 import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
@@ -30,6 +32,7 @@ const ROUTES = [
   {"path":"blog","area":"blog"},
   {"path":"shop","area":"shop"},
   {"path":"pricing","area":"pricing"},
+  {"path":"venue","area":"venue"},
   {"path":"about","area":"about"},
 ] as const;
 const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
@@ -73,6 +76,8 @@ export function ThemeMarketingSimpleScreen({ url }: { url: UrlPort }) {
           <ShopPage />
         ) : route.area === "pricing" ? (
           <PricingPage />
+        ) : route.area === "venue" ? (
+          <VenuePage />
         ) : route.area === "about" ? (
           <AboutPage />
         ) : (

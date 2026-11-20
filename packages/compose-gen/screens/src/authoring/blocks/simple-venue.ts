@@ -1,0 +1,43 @@
+// The simple line, wave 3 (food, stays and local services; one content model each, specs/models): MenuSimple (menu@1).
+// The rules of simple.ts: the props are the fields of the model plus the axes and the settings; only the compositions
+// packages/prototypes lowers (Box, Block, Container, Stack, Group, List, ListItem, LinkPlain; Title, Text, Badge, LinkButton, MediaFrame).
+import { cn, each, ref, text, use, when, organism } from "../../build";
+import type { OrganismSpec, Value, ViewNode } from "../../ir";
+import { fields, spec } from "../kit";
+import { id, title, tsOf } from "../props";
+import { O, level, description, titleId, padding, teamDerived, section } from "./simple";
+import { centered, list, head, itemTitle, itemText, ulist, is, chain } from "./simple-more";
+
+const axis = (name: string, ...values: string[]) => ({ name, type: tsOf(...values), default: values[0] });
+const CARD = "rounded bg-card p-6 text-card-foreground border border-border";
+const listSection = (body: ViewNode, narrow: Value = "") => section(use("Stack", { props: { Gap: "12", Align: "stretch", Class: narrow } }, head(), body));
+const pill = (field: string) => when(ref(field), [use("Badge", { props: { Variant: "default" } }, text(ref(field)))]);
+const muted = (field: string, cls: Value = "text-start") => use("Text", { props: { Size: "sm", Class: cn("text-muted-foreground", cls) } }, text(ref(field)));
+const price = (field: string, cls: Value = "text-start") => use("Text", { props: { Size: "lg", Weight: "bold", Class: cn("tracking-tight", cls) } }, text(ref(field)));
+
+// ---- MenuSimple (menu@1): dishes on cards (a picture, an optional badge, the name, the weight, a line, the price) or menu rows
+const menuSimple = spec(`${O}menu-simple`, "MenuSimple", "The simple menu (model menu@1): the heading, a description and the dishes as a list, each with a picture, an optional badge (a new or a spicy dish), the name, the weight or the portion, a line and the price as it is shown. Axes: layout (cards: a card surface per dish, the picture on top; rows: the picture at the start, the price at the end), cols (3, 2, 4 columns of the cards).", {
+  records: { MenuDish: fields(["id", "string"], ["image", "string", true], ["title", "string"], ["weight", "string", true], ["price", "string"], ["description", "string", true], ["badge", "string", true]) },
+  props: [id, title, description, list("items", "MenuDish", "the dishes, in the order they are shown (1 to 8)"), level, padding, centered, axis("layout", "cards", "rows"), axis("cols", "3", "2", "4")],
+  derived: [
+    titleId, ...teamDerived,
+    chain("grid", [[is("layout", "rows"), "mx-auto max-w-3xl grid-cols-1 gap-4"], [is("cols", "2"), "grid-cols-1 gap-6 md:grid-cols-2"], [is("cols", "4"), "grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"]], "grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3"),
+    chain("item", [[is("layout", "rows"), "flex flex-row items-center gap-4"]], `${CARD} flex flex-col gap-4`),
+    chain("pictureClass", [[is("layout", "rows"), "size-24 shrink-0 rounded"]], ""),
+    chain("copy", [[is("layout", "rows"), "grow"]], "grow"),
+    chain("cost", [[is("layout", "rows"), "shrink-0 text-end"]], "text-start"),
+  ],
+  view: [listSection(
+    ulist(cn("grid", ref("grid")),
+      each(ref("items"), "p", ref("p.id"),
+        use("ListItem", { props: { Class: ref("item") }, attrs: { "data-testid": "dish" } },
+          organism("MediaFrame", { alt: ref("p.title"), src: ref("p.image"), ratio: "4/3", className: ref("pictureClass") }),
+          use("Stack", { props: { Gap: "2", Align: "start", Class: ref("copy") } },
+            pill("p.badge"),
+            itemTitle("p.title", "lg", "text-start"),
+            when(ref("p.weight"), [muted("p.weight")]),
+            itemText("p.description", "text-start")),
+          price("p.price", ref("cost"))))))],
+});
+
+export const simpleVenueOrganisms: OrganismSpec[] = [menuSimple];

@@ -4530,6 +4530,81 @@
     ]
    }
   },
+  "menusimple": {
+   "organism": "MenuSimple",
+   "defaults": {
+    "layout": "cards",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "menusimple",
+    "title": {
+     "$": "ui.marketing.menuSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.menuSimple.description"
+    },
+    "items": {
+     "$": "menuDishes"
+    }
+   },
+   "variants": [
+    {
+     "id": "cards3",
+     "set": {}
+    },
+    {
+     "id": "cards2",
+     "set": {
+      "cols": "2"
+     }
+    },
+    {
+     "id": "cards4",
+     "set": {
+      "cols": "4"
+     }
+    },
+    {
+     "id": "rows",
+     "set": {
+      "layout": "rows"
+     },
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "menuDishes",
+     "collection": "simplemenu",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "title": "title",
+      "weight": "metadata.weight.value",
+      "price": "metadata.display.value",
+      "description": "metadata.summary.value",
+      "badge": "metadata.badge.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "MenuSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
   "navbar": {
    "organism": "NavBar",
    "defaults": {
@@ -16223,7 +16298,7 @@
        "actionLabel": {
         "$": "ui.pages.marketingSimple.pricing.cta"
        },
-       "actionHref": "#/about"
+       "actionHref": "#/venue"
       }
      },
      {
@@ -16253,6 +16328,29 @@
      {
       "block": "locationssimple",
       "variant": "mediaStart"
+     }
+    ],
+    "venue": [
+     {
+      "block": "herosimple",
+      "variant": "mediaEnd",
+      "props": {
+       "level": 1,
+       "title": {
+        "$": "ui.pages.marketingSimple.venue.title"
+       },
+       "description": {
+        "$": "ui.pages.marketingSimple.venue.text"
+       },
+       "actionLabel": {
+        "$": "ui.pages.marketingSimple.venue.cta"
+       },
+       "actionHref": "#/about"
+      }
+     },
+     {
+      "block": "menusimple",
+      "variant": "cards3"
      }
     ],
     "about": [

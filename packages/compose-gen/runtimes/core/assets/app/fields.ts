@@ -188,6 +188,7 @@ export const KIT_FIELDS = {
   contactItem: { id: "id", image: "featured_media_id|media", title: "title", description: m("text"), actionLabel: m("action"), actionHref: m("href") },
   locationItem: { id: "id", title: "title", description: m("address") },
   offerItem: { id: "id", title: "title", description: m("text"), actionLabel: m("action"), actionHref: m("href") },
+  menuDish: { id: "id", image: "featured_media_id|media", title: "title", weight: m("weight"), price: m("display"), description: m("summary"), badge: m("badge") },
   productItem: { id: "id", image: "featured_media_id|media", title: "title", price: m("display"), href: "slug|route" },
   productPhoto: { id: "id", image: "featured_media_id|media" },
   collectionItem: { id: "id", image: "featured_media_id|media", title: "title", href: m("href") },

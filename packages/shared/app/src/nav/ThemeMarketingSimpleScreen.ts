@@ -8,6 +8,7 @@ export const NAV = [
   { id: "blog", name: ui.pages.marketingSimple.blog.nav, icon: "link", href: "#/blog", area: "blog" },
   { id: "shop", name: ui.pages.marketingSimple.shop.nav, icon: "link", href: "#/shop", area: "shop" },
   { id: "pricing", name: ui.pages.marketingSimple.pricing.nav, icon: "link", href: "#/pricing", area: "pricing" },
+  { id: "venue", name: ui.pages.marketingSimple.venue.nav, icon: "link", href: "#/venue", area: "venue" },
   { id: "about", name: ui.pages.marketingSimple.about.nav, icon: "link", href: "#/about", area: "about" },
 ];
 

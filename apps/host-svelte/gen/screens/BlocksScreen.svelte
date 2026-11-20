@@ -52,6 +52,7 @@
   import LogossimplePage from "./BlocksScreen/LogossimplePage.svelte";
   import MedialistPage from "./BlocksScreen/MedialistPage.svelte";
   import MegamenuPage from "./BlocksScreen/MegamenuPage.svelte";
+  import MenusimplePage from "./BlocksScreen/MenusimplePage.svelte";
   import NavbarPage from "./BlocksScreen/NavbarPage.svelte";
   import OfferssimplePage from "./BlocksScreen/OfferssimplePage.svelte";
   import PageheadPage from "./BlocksScreen/PageheadPage.svelte";
@@ -211,6 +212,7 @@
     {"path":"logossimple","area":"logossimple"},
     {"path":"medialist","area":"medialist"},
     {"path":"megamenu","area":"megamenu"},
+    {"path":"menusimple","area":"menusimple"},
     {"path":"navbar","area":"navbar"},
     {"path":"offerssimple","area":"offerssimple"},
     {"path":"pagehead","area":"pagehead"},
@@ -420,6 +422,8 @@
     <MedialistPage />
   {:else if route.area === "megamenu"}
     <MegamenuPage />
+  {:else if route.area === "menusimple"}
+    <MenusimplePage />
   {:else if route.area === "navbar"}
     <NavbarPage />
   {:else if route.area === "offerssimple"}

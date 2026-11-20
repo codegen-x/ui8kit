@@ -42,6 +42,8 @@ export { default as LocationsSimple } from "./blocks/locations-simple.svelte";
 export type { LocationsSimpleProps } from "./blocks/locations-simple.svelte";
 export { default as LogosSimple } from "./blocks/logos-simple.svelte";
 export type { LogosSimpleProps } from "./blocks/logos-simple.svelte";
+export { default as MenuSimple } from "./blocks/menu-simple.svelte";
+export type { MenuSimpleProps } from "./blocks/menu-simple.svelte";
 export { default as OffersSimple } from "./blocks/offers-simple.svelte";
 export type { OffersSimpleProps } from "./blocks/offers-simple.svelte";
 export { default as PhotosSimple } from "./blocks/photos-simple.svelte";
