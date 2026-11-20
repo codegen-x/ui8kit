@@ -61,7 +61,11 @@ if (php && !REQUIRED) {
 } else test("latte: every .latte compiles without notices (php -n, cold)", () => {
   if (php) throw new Error(php);
   // php -n: no php.ini, so display_errors goes to stdout as on a bare PHP; the script itself catches every notice
-  const raw = execFileSync("php", [...PHP_N, path.join(SRV, "latte-lint.php"), ...LATTE], { cwd: REPO, encoding: "utf8", maxBuffer: 16 << 20 });
-  const notices = JSON.parse(raw) as { file: string; message: string }[];
+  // in chunks of 150 files: one PHP process over 392+ files crashed (SIGSEGV) when spawned from bun test on a static php 8.4 build
+  const notices: { file: string; message: string }[] = [];
+  for (let i = 0; i < LATTE.length; i += 150) {
+    const raw = execFileSync("php", [...PHP_N, path.join(SRV, "latte-lint.php"), ...LATTE.slice(i, i + 150)], { cwd: REPO, encoding: "utf8", maxBuffer: 16 << 20 });
+    notices.push(...(JSON.parse(raw) as { file: string; message: string }[]));
+  }
   expect(notices.map((n) => `${n.file}: ${n.message}`)).toEqual([]);
 }, 120000);
