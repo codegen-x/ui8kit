@@ -324,7 +324,7 @@
     }
   ],
   "inputs": {
-    "sha256": "64e5dbf180ce6d1713181541907bb89e6b388c153901916bfb78c5e3e05fa8b4"
+    "sha256": "dd2496e1a17560c4169f37a367a0dea1a372de7022bfdf49c2775455dd65f6fe"
   },
   "files": {
     "catalog.ts": "4f64d176f14de406567537a922d37aff85fb4b4285f70cbb5b592ce160b221d1",
@@ -348,7 +348,7 @@
     "contracts/gallery-hero/1.json": "d3d96918a81d9e9ac808cc319cd2fe90ae72458ee830cf77bbda5b747749db69",
     "contracts/header-simple/1.json": "39a8ab5a8661c344672b84a187760dbaffa9490457434d371aedd9a74e01b9a4",
     "contracts/hero-simple/1.json": "688efe720e94b29a5bc2e1cd35eb9024008693737f8e2e81db89d6f6ca63dbef",
-    "contracts/hours-simple/1.json": "580ba25e5388d0325f0fa09a4848b2ea5aa8318a7441d4df2baf114f40c765dc",
+    "contracts/hours-simple/1.json": "69c709c07fb55db0c7d411dd28ae9055b60b96aede921b5cab9c8331a3cc7c4e",
     "contracts/intro-simple/1.json": "8eccd2cf0f2e0e53b6dd1737b1c677da0f4fc82b7c85ada85fc0adbfd83801ab",
     "contracts/locations-simple/1.json": "59ba1a5a5913f7f63b45d7e8b1914c353423ce220d6fff2d355e6caf8a6341d2",
     "contracts/logos-simple/1.json": "84b5b8d142a3bea0319c41f6fa8a70edc1f315e6140b39dad6721f10c6e78378",
@@ -413,8 +413,8 @@
     "models/header@1.ts": "a635dbadb15b9155dc67a157d70d2d417a1e310a3eb49bf3ecf7b3bc82ce51f7",
     "models/hero@1.schema.json": "b114d150cc77d9249b8793c9591a6242db9c8d55d94d0dd06bfe6aecd335eee6",
     "models/hero@1.ts": "8c51eb8a671c97bf505d7e1b3d0d5a653b33cd38ebf36ed96155d1e0fd045476",
-    "models/hours@1.schema.json": "94b25f2a4e394804ff6e99dce2178e92e6655ead1c552332287fad01dee310da",
-    "models/hours@1.ts": "9821dae4b81c931204beb02619f385f4ff7a463ed2c2299b817c0f7b6caf8227",
+    "models/hours@1.schema.json": "92011a5a6ecf77b47936e8dd39a2de7a652fc847f28697fbc22dc565ac695e34",
+    "models/hours@1.ts": "32b635486414c55e818e021b9a92dd6ef26200461741df00320a6756bee9f3ce",
     "models/index.ts": "242aa8bbb10b72ff1a6feb103974b9a1f9603cbc81e86c347b379b7b68473877",
     "models/intro@1.schema.json": "9ede625f409532dba4ca1f05345afb5b39d69d8945039d38a491618ff7ef5ee6",
     "models/intro@1.ts": "7a20a006fd8979b1a4957bbd812f302e4428f17c3e290e996117077e67374746",
@@ -487,7 +487,7 @@
     "svelte/blocks/gallery-hero.svelte": "913013a3cc29f78cb667700f2da9596c2ece4ec065c430344151ba9cbad5372b",
     "svelte/blocks/header-simple.svelte": "5b12b263729bfe5c1edbd2dc7d76756542afe27cccc5baa7a7cb6fd05b9024c0",
     "svelte/blocks/hero-simple.svelte": "84367da8648e509ec7976314dff75eefd67bf027b368a0d0bafaac100236b1f3",
-    "svelte/blocks/hours-simple.svelte": "9baf54d5e520970ecd4655943797678a7700fcef376b79ec82153ac1db2e1b16",
+    "svelte/blocks/hours-simple.svelte": "8290bfc90e3742cde5168dae02c291d48abf8a80e5adc79a72bb6e8020d6c12b",
     "svelte/blocks/intro-simple.svelte": "f6c0a318d582b98eb09b292de157119d2269bbc9bcfbf48488835513181b6e63",
     "svelte/blocks/locations-simple.svelte": "0091f7c4cc5b2f86e6e7aac431ecd561f0092c1bfe3183b1f40edfe82761c885",
     "svelte/blocks/logos-simple.svelte": "2ea1082d07f7e07d12ed7d48274003e3af53faf853a48f8be1f18964a0bae718",

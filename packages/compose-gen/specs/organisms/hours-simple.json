@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "organism.hours-simple",
   "name": "HoursSimple",
-  "docs": "The simple opening hours (model hours@1): the heading, a description, the address, the phone as a link, an optional map link and the opening hours as a list (the day or the days and the time per row). Axes: layout (columns: the address and the links at the start, the hours at the end from md up; stack: one narrow column, placed by the align setting), surface (plain, card: the address and the hours each on a card).",
+  "docs": "The simple opening hours (model hours@1): the heading, a description, the address, the phone as a link, the address as a link to the map when it has one, and the opening hours as a list (the day or the days and the time per row). Axes: layout (columns: the address and the links at the start, the hours at the end from md up; stack: one narrow column, placed by the align setting), surface (plain, card: the address and the hours each on a card).",
   "records": {
     "OpeningHour": [
       {
@@ -56,16 +56,10 @@
       "docs": "the address of the phone link (tel:)"
     },
     {
-      "name": "mapLabel",
-      "type": "string",
-      "default": "",
-      "docs": "the label of the map link; the link is drawn when the label and the address are both set"
-    },
-    {
       "name": "mapHref",
       "type": "string",
       "default": "",
-      "docs": "the address of the map"
+      "docs": "the address of the map; set: the address is a link to it"
     },
     {
       "name": "items",
@@ -490,19 +484,56 @@
                       },
                       "children": [
                         {
-                          "use": "Text",
-                          "props": {
-                            "Size": "lg",
-                            "Weight": "semibold",
-                            "Class": {
-                              "$": "textAlign"
-                            }
+                          "when": {
+                            "$": "mapHref"
                           },
-                          "children": [
+                          "then": [
                             {
-                              "text": {
-                                "$": "address"
-                              }
+                              "use": "LinkPlain",
+                              "props": {
+                                "Href": {
+                                  "$": "mapHref"
+                                },
+                                "Class": "hover:text-primary"
+                              },
+                              "children": [
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "lg",
+                                    "Weight": "semibold",
+                                    "Class": {
+                                      "$": "textAlign"
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "address"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "else": [
+                            {
+                              "use": "Text",
+                              "props": {
+                                "Size": "lg",
+                                "Weight": "semibold",
+                                "Class": {
+                                  "$": "textAlign"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "address"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         },
@@ -528,54 +559,6 @@
                                   "text": {
                                     "$": "phone"
                                   }
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "when": {
-                            "op": "and",
-                            "args": [
-                              {
-                                "$": "mapLabel"
-                              },
-                              {
-                                "$": "mapHref"
-                              }
-                            ]
-                          },
-                          "then": [
-                            {
-                              "use": "LinkPlain",
-                              "props": {
-                                "Href": {
-                                  "$": "mapHref"
-                                },
-                                "Class": "hover:text-primary"
-                              },
-                              "children": [
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "sm",
-                                    "Class": {
-                                      "op": "cn",
-                                      "args": [
-                                        "text-primary",
-                                        {
-                                          "$": "textAlign"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "mapLabel"
-                                      }
-                                    }
-                                  ]
                                 }
                               ]
                             }

@@ -4391,11 +4391,6 @@
           "prop": "phone",
           "dictionary": "marketing.hoursSimple.phone",
           "keys": []
-        },
-        {
-          "prop": "mapLabel",
-          "dictionary": "marketing.hoursSimple.map",
-          "keys": []
         }
       ],
       "emptyState": false

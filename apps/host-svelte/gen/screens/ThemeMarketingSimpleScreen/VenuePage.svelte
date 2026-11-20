@@ -103,7 +103,6 @@
   address={ui.marketing.hoursSimple.address}
   phone={ui.marketing.hoursSimple.phone}
   phoneHref="tel:+74951234567"
-  mapLabel={ui.marketing.hoursSimple.map}
   mapHref="https://maps.example.com/?q=grill"
   items={openingHours}
   layout="columns"

@@ -1,7 +1,7 @@
 // The simple line, wave 3 (food, stays and local services; one content model each, specs/models): MenuSimple (menu@1), HoursSimple (hours@1), RoomsSimple (rooms@1).
 // The rules of simple.ts: the props are the fields of the model plus the axes and the settings; only the compositions
 // packages/prototypes lowers (Box, Block, Container, Stack, Group, List, ListItem, LinkPlain; Title, Text, Badge, LinkButton, MediaFrame).
-import { and, cn, each, ref, text, use, when, organism } from "../../build";
+import { cn, each, ref, text, use, when, organism } from "../../build";
 import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { fields, spec } from "../kit";
 import { id, title, tsOf } from "../props";
@@ -42,10 +42,10 @@ const menuSimple = spec(`${O}menu-simple`, "MenuSimple", "The simple menu (model
           price("p.price", ref("cost"))))))],
 });
 
-// ---- HoursSimple (hours@1): the address, the phone, a map link and the opening hours (a day and the time per row)
-const hoursSimple = spec(`${O}hours-simple`, "HoursSimple", "The simple opening hours (model hours@1): the heading, a description, the address, the phone as a link, an optional map link and the opening hours as a list (the day or the days and the time per row). Axes: layout (columns: the address and the links at the start, the hours at the end from md up; stack: one narrow column, placed by the align setting), surface (plain, card: the address and the hours each on a card).", {
+// ---- HoursSimple (hours@1): the address (a link to the map), the phone and the opening hours (a day and the time per row)
+const hoursSimple = spec(`${O}hours-simple`, "HoursSimple", "The simple opening hours (model hours@1): the heading, a description, the address, the phone as a link, the address as a link to the map when it has one, and the opening hours as a list (the day or the days and the time per row). Axes: layout (columns: the address and the links at the start, the hours at the end from md up; stack: one narrow column, placed by the align setting), surface (plain, card: the address and the hours each on a card).", {
   records: { OpeningHour: fields(["id", "string"], ["day", "string"], ["time", "string"]) },
-  props: [id, title, description, str("address", "the address as it is shown", true), str("phone", "the phone number as it is shown", true), str("phoneHref", "the address of the phone link (tel:)", true), str("mapLabel", "the label of the map link; the link is drawn when the label and the address are both set"), str("mapHref", "the address of the map"), list("items", "OpeningHour", "the opening hours, a row per day or per days (1 to 7)"), level, padding, centered, axis("layout", "columns", "stack"), axis("surface", "plain", "card")],
+  props: [id, title, description, str("address", "the address as it is shown", true), str("phone", "the phone number as it is shown", true), str("phoneHref", "the address of the phone link (tel:)", true), str("mapHref", "the address of the map; set: the address is a link to it"), list("items", "OpeningHour", "the opening hours, a row per day or per days (1 to 7)"), level, padding, centered, axis("layout", "columns", "stack"), axis("surface", "plain", "card")],
   derived: [
     titleId, ...teamDerived,
     chain("frame", [[is("layout", "stack"), "flex w-full max-w-md flex-col gap-8"]], "grid w-full grid-cols-1 gap-8 md:grid-cols-2"),
@@ -54,9 +54,8 @@ const hoursSimple = spec(`${O}hours-simple`, "HoursSimple", "The simple opening 
   view: [section(use("Stack", { props: { Gap: "12", Align: "stretch" } }, head(),
     use("Box", { props: { Class: cn(ref("frame"), ref("selfAlign")) } },
       use("Stack", { props: { Gap: "4", Align: alignItems, Class: ref("panel") } },
-        use("Text", { props: { Size: "lg", Weight: "semibold", Class: textAlign } }, text(ref("address"))),
-        use("LinkPlain", { props: { Href: ref("phoneHref"), Class: "hover:text-primary" } }, use("Text", { props: { Size: "lg", Class: textAlign } }, text(ref("phone")))),
-        when(and(ref("mapLabel"), ref("mapHref")), [use("LinkPlain", { props: { Href: ref("mapHref"), Class: "hover:text-primary" } }, use("Text", { props: { Size: "sm", Class: cn("text-primary", textAlign) } }, text(ref("mapLabel"))))])),
+        linkTo("mapHref", use("Text", { props: { Size: "lg", Weight: "semibold", Class: textAlign } }, text(ref("address")))),
+        use("LinkPlain", { props: { Href: ref("phoneHref"), Class: "hover:text-primary" } }, use("Text", { props: { Size: "lg", Class: textAlign } }, text(ref("phone"))))),
       use("Box", { props: { Class: ref("panel") } }, ulist("grid grid-cols-1 gap-2",
         each(ref("items"), "h", ref("h.id"),
           use("ListItem", { props: { Class: "flex flex-row justify-between gap-4" }, attrs: { "data-testid": "opening-hour" } },

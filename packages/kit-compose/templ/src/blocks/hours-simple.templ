@@ -19,7 +19,6 @@ type HoursSimpleProps struct {
 	Address any `json:"address"`
 	Phone any `json:"phone"`
 	PhoneHref any `json:"phoneHref"`
-	MapLabel any `json:"mapLabel"`
 	MapHref any `json:"mapHref"`
 	Items any `json:"items"`
 	Level any `json:"level"`
@@ -30,7 +29,7 @@ type HoursSimpleProps struct {
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
-// The simple opening hours (model hours@1): the heading, a description, the address, the phone as a link, an optional map link and the opening hours as a list (the day or the days and the time per row). Axes: layout (columns: the address and the links at the start, the hours at the end from md up; stack: one narrow column, placed by the align setting), surface (plain, card: the address and the hours each on a card).
+// The simple opening hours (model hours@1): the heading, a description, the address, the phone as a link, the address as a link to the map when it has one, and the opening hours as a list (the day or the days and the time per row). Axes: layout (columns: the address and the links at the start, the hours at the end from md up; stack: one narrow column, placed by the align setting), surface (plain, card: the address and the hours each on a card).
 templ HoursSimple(p HoursSimpleProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
@@ -38,7 +37,6 @@ templ HoursSimple(p HoursSimpleProps) {
 	{{ vAddress := p.Address }}
 	{{ vPhone := p.Phone }}
 	{{ vPhoneHref := p.PhoneHref }}
-	{{ vMapLabel := uiutils.Def(p.MapLabel, "") }}
 	{{ vMapHref := uiutils.Def(p.MapHref, "") }}
 	{{ vItems := p.Items }}
 	{{ vLevel := uiutils.Def(p.Level, float64(2)) }}
@@ -68,19 +66,20 @@ templ HoursSimple(p HoursSimpleProps) {
 				}
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv(vFrame, vSelfAlign))}}) {
 					@compose.Stack(compose.StackProps{Gap: "4", Align: uiutils.S(vColumn), BoxProps: box.BoxProps{Class: uiutils.S(vPanel)}}) {
-						@compose.Text(compose.TextProps{Size: "lg", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(vTextAlign)}}) {
-							{ uiutils.Text(vAddress) }
+						if uiutils.T(vMapHref) {
+							@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: uiutils.URL(vMapHref, false), Class: "hover:text-primary"}}) {
+								@compose.Text(compose.TextProps{Size: "lg", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(vTextAlign)}}) {
+									{ uiutils.Text(vAddress) }
+								}
+							}
+						} else {
+							@compose.Text(compose.TextProps{Size: "lg", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(vTextAlign)}}) {
+								{ uiutils.Text(vAddress) }
+							}
 						}
 						@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: uiutils.URL(vPhoneHref, false), Class: "hover:text-primary"}}) {
 							@compose.Text(compose.TextProps{Size: "lg", TextProps: text.TextProps{Class: uiutils.S(vTextAlign)}}) {
 								{ uiutils.Text(vPhone) }
-							}
-						}
-						if uiutils.T(uiutils.And(vMapLabel, vMapHref)) {
-							@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: uiutils.URL(vMapHref, false), Class: "hover:text-primary"}}) {
-								@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: uiutils.S(uiutils.Cnv("text-primary", vTextAlign))}}) {
-									{ uiutils.Text(vMapLabel) }
-								}
 							}
 						}
 					}

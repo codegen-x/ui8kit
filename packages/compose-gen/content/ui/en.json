@@ -404,7 +404,7 @@
       "menusimple": "The heading, one paragraph and the dishes (a picture, a badge when set, the name, the weight, a line, the price): on cards in three, two or four columns, or menu rows with the price at the end.",
       "ctasimple": "One band: a badge when set, the heading, one paragraph and up to two buttons; centred or at the start, or the buttons at the end; on a muted or an outlined surface.",
       "promosimple": "One offer: the discount as a badge, the heading, the deadline as text, one paragraph, a promo code when set and one button, beside a picture at the end or at the start, or under a wide one.",
-      "hourssimple": "The heading, one paragraph, the address, the phone, a map link and the opening hours by day: side by side or in one narrow column, plain or on cards.",
+      "hourssimple": "The heading, one paragraph, the address (a link to the map), the phone and the opening hours by day: side by side or in one narrow column, plain or on cards.",
       "roomssimple": "The heading, one paragraph and the rooms (a picture, the name as a link, the guests, a line, the price a night): on cards in three or two columns, or rows with the picture at the start."
     },
     "variants": {
@@ -1788,8 +1788,7 @@
       "title": "Opening hours",
       "description": "The grill is lit every day; on 31 December we close at 18:00 and open again on 2 January.",
       "address": "12 Riverside Embankment, Moscow",
-      "phone": "+7 495 123-45-67",
-      "map": "Open the map"
+      "phone": "+7 495 123-45-67"
     },
     "roomsSimple": {
       "title": "Rooms for the holidays",

@@ -12,7 +12,7 @@ export type OpeningHour = {
   time: string;
 };
 
-/** Opening hours content: the heading, a description, the address, the phone and its link, an optional map link and the opening hours, a row per day or per days. One object is valid in every hours layout (side by side, one column; plain or on cards). */
+/** Opening hours content: the heading, a description, the address, the phone and its link, an optional map address (the address links to it) and the opening hours, a row per day or per days. One object is valid in every hours layout (side by side, one column; plain or on cards). */
 export type HoursContent = {
   /** the heading of the section */
   title: string;
@@ -24,9 +24,7 @@ export type HoursContent = {
   phone: string;
   /** the address of the phone link (tel:) */
   phoneHref: string;
-  /** the label of the map link; the link is drawn when the label and the address are both set */
-  mapLabel?: string;
-  /** the address of the map */
+  /** the address of the map; set: the address is a link to it */
   mapHref?: string;
   /** the opening hours, a row per day or per days */
   items: OpeningHour[];
@@ -36,7 +34,7 @@ export const model = {
   "specVersion": 1,
   "id": "hours",
   "version": 1,
-  "docs": "Opening hours content: the heading, a description, the address, the phone and its link, an optional map link and the opening hours, a row per day or per days. One object is valid in every hours layout (side by side, one column; plain or on cards).",
+  "docs": "Opening hours content: the heading, a description, the address, the phone and its link, an optional map address (the address links to it) and the opening hours, a row per day or per days. One object is valid in every hours layout (side by side, one column; plain or on cards).",
   "fields": {
     "title": {
       "type": "text",
@@ -66,14 +64,9 @@ export const model = {
       "required": true,
       "docs": "the address of the phone link (tel:)"
     },
-    "mapLabel": {
-      "type": "text",
-      "maxLength": 40,
-      "docs": "the label of the map link; the link is drawn when the label and the address are both set"
-    },
     "mapHref": {
       "type": "url",
-      "docs": "the address of the map"
+      "docs": "the address of the map; set: the address is a link to it"
     },
     "items": {
       "type": "list",

@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "block.hourssimple",
   "name": "Simple opening hours",
-  "docs": "The heading, one paragraph, the address, the phone, a map link and the opening hours by day: side by side or in one narrow column, plain or on cards.",
+  "docs": "The heading, one paragraph, the address (a link to the map), the phone and the opening hours by day: side by side or in one narrow column, plain or on cards.",
   "theme": "marketing",
   "group": "contact",
   "organism": "HoursSimple",
@@ -98,9 +98,6 @@
         "$": "ui.marketing.hoursSimple.phone"
       },
       "phoneHref": "tel:+74951234567",
-      "mapLabel": {
-        "$": "ui.marketing.hoursSimple.map"
-      },
       "mapHref": "https://maps.example.com/?q=grill",
       "items": {
         "$": "openingHours"

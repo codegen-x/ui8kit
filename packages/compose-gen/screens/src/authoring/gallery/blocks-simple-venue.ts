@@ -29,7 +29,7 @@ const menuSimple = define({
 const hrs = k("hoursSimple");
 const hoursSimple = define({
   key: "hourssimple", theme: "marketing", group: "contact", line: "simple", model: "hours@1",
-  name: "Simple opening hours", docs: "The heading, one paragraph, the address, the phone, a map link and the opening hours by day: side by side or in one narrow column, plain or on cards.",
+  name: "Simple opening hours", docs: "The heading, one paragraph, the address (a link to the map), the phone and the opening hours by day: side by side or in one narrow column, plain or on cards.",
   organism: "HoursSimple", axes: ["layout", "surface"], data: [d.openingHours],
   variants: [
     ["columns", "Address and hours side by side", {}, { align: "start" }],
@@ -40,7 +40,7 @@ const hoursSimple = define({
   facts: [h2, li("@openingHours"), { sel: "section a", n: 2 }],
   sample: {
     id: "hourssimple", ...head(hrs), address: hrs("address"), phone: hrs("phone"), phoneHref: "tel:+74951234567",
-    mapLabel: hrs("map"), mapHref: "https://maps.example.com/?q=grill", items: ref("openingHours"),
+    mapHref: "https://maps.example.com/?q=grill", items: ref("openingHours"),
   },
 });
 
