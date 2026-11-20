@@ -2,22 +2,26 @@
 // The registry of the simple line: every contract (manifest order) with its catalog category, and every content model with
 // its validate(). No .svelte import: node loads it as is. ui8kit/prototypes re-exports it (src/manifest/registry.ts).
 import heroSimple from "./contracts/hero-simple/1.json" with { type: "json" };
+import splitSimple from "./contracts/split-simple/1.json" with { type: "json" };
 import teamSimple from "./contracts/team-simple/1.json" with { type: "json" };
 import { model as hero1, validateHeroContent } from "./models/hero@1";
+import { model as split1, validateSplitContent } from "./models/split@1";
 import { model as team1, validateTeamContent } from "./models/team@1";
 import type { Issue, ModelSpec } from "./models/validate";
 
 /** the contracts (out/contracts/<item>/<version>.json), in manifest order */
-export const CONTRACTS: readonly unknown[] = [heroSimple, teamSimple];
+export const CONTRACTS: readonly unknown[] = [heroSimple, splitSimple, teamSimple];
 
 /** item -> catalog category (the id of its content model) */
 export const CATEGORIES: Readonly<Record<string, string>> = {
   "hero-simple": "hero",
+  "split-simple": "split",
   "team-simple": "team",
 };
 
 /** every content model, keyed `id@version` */
 export const MODELS: Readonly<Record<string, { spec: ModelSpec; validate: (value: unknown) => Issue[] }>> = {
   "hero@1": { spec: hero1 as unknown as ModelSpec, validate: validateHeroContent },
+  "split@1": { spec: split1 as unknown as ModelSpec, validate: validateSplitContent },
   "team@1": { spec: team1 as unknown as ModelSpec, validate: validateTeamContent },
 };

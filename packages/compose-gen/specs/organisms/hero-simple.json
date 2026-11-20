@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "organism.hero-simple",
   "name": "HeroSimple",
-  "docs": "The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide), frame (box: inside the container; split: two halves, the picture to the edge of the screen).",
+  "docs": "The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).",
   "records": {},
   "props": [
     {
@@ -99,13 +99,6 @@
       "default": "end"
     },
     {
-      "name": "frame",
-      "type": {
-        "ts": "\"box\" | \"split\""
-      },
-      "default": "box"
-    },
-    {
       "name": "landmarkLabel",
       "type": "string",
       "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
@@ -191,87 +184,6 @@
           }
         ]
       }
-    },
-    {
-      "name": "edge",
-      "value": {
-        "op": "and",
-        "args": [
-          {
-            "op": "eq",
-            "args": [
-              {
-                "$": "frame"
-              },
-              "split"
-            ]
-          },
-          {
-            "op": "ne",
-            "args": [
-              {
-                "$": "media"
-              },
-              "top"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "pad",
-      "value": {
-        "op": "cond",
-        "args": [
-          {
-            "op": "eq",
-            "args": [
-              {
-                "$": "padding"
-              },
-              "compact"
-            ]
-          },
-          "py-8 lg:py-16",
-          {
-            "op": "cond",
-            "args": [
-              {
-                "op": "eq",
-                "args": [
-                  {
-                    "$": "padding"
-                  },
-                  "spacious"
-                ]
-              },
-              "py-24 lg:py-40",
-              "py-16 lg:py-32"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "copyPad",
-      "value": {
-        "op": "cond",
-        "args": [
-          {
-            "$": "edge"
-          },
-          {
-            "op": "cn",
-            "args": [
-              "justify-center px-4 md:px-8 lg:px-16",
-              {
-                "$": "pad"
-              }
-            ]
-          },
-          ""
-        ]
-      }
     }
   ],
   "slots": [],
@@ -285,11 +197,30 @@
           "op": "cond",
           "args": [
             {
-              "$": "edge"
+              "op": "eq",
+              "args": [
+                {
+                  "$": "padding"
+                },
+                "compact"
+              ]
             },
-            "",
+            "py-8 lg:py-16",
             {
-              "$": "pad"
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "padding"
+                    },
+                    "spacious"
+                  ]
+                },
+                "py-24 lg:py-40",
+                "py-16 lg:py-32"
+              ]
             }
           ]
         }
@@ -319,16 +250,7 @@
         {
           "use": "Container",
           "props": {
-            "Class": {
-              "op": "cond",
-              "args": [
-                {
-                  "$": "edge"
-                },
-                "w-full",
-                "mx-auto w-full max-w-6xl px-4"
-              ]
-            }
+            "Class": "mx-auto w-full max-w-6xl px-4"
           },
           "children": [
             {
@@ -337,17 +259,7 @@
                 "Class": {
                   "op": "cn",
                   "args": [
-                    "grid grid-cols-1",
-                    {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "$": "edge"
-                        },
-                        "",
-                        "gap-8"
-                      ]
-                    },
+                    "grid grid-cols-1 gap-8",
                     {
                       "op": "cond",
                       "args": [
@@ -361,16 +273,7 @@
                           ]
                         },
                         "",
-                        {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "$": "edge"
-                            },
-                            "md:grid-cols-2",
-                            "items-center md:grid-cols-2"
-                          ]
-                        }
+                        "items-center md:grid-cols-2"
                       ]
                     }
                   ]
@@ -426,16 +329,6 @@
                             "21/9",
                             "4/3"
                           ]
-                        },
-                        "className": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "$": "edge"
-                            },
-                            "md:aspect-auto md:h-full",
-                            ""
-                          ]
                         }
                       }
                     }
@@ -447,9 +340,6 @@
                     "Gap": "6",
                     "Align": {
                       "$": "column"
-                    },
-                    "Class": {
-                      "$": "copyPad"
                     }
                   },
                   "children": [
@@ -677,17 +567,7 @@
                         "darkSrc": {
                           "$": "imageDark"
                         },
-                        "ratio": "4/3",
-                        "className": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "$": "edge"
-                            },
-                            "md:aspect-auto md:h-full",
-                            ""
-                          ]
-                        }
+                        "ratio": "4/3"
                       }
                     }
                   ]

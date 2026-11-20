@@ -2,6 +2,8 @@
 // The wireframes of the simple line (rectangles only) and their shapes.
 export { default as HeroSimple } from "./blocks/hero-simple.svelte";
 export type { HeroSimpleProps } from "./blocks/hero-simple.svelte";
+export { default as SplitSimple } from "./blocks/split-simple.svelte";
+export type { SplitSimpleProps } from "./blocks/split-simple.svelte";
 export { default as TeamSimple } from "./blocks/team-simple.svelte";
 export type { TeamSimpleProps } from "./blocks/team-simple.svelte";
 export { default as ShapeHeading } from "./shapes/shape-heading.svelte";

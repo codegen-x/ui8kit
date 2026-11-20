@@ -85,6 +85,8 @@ export function refsOf(v: Value | undefined, out: string[] = []): string[] {
   return out;
 }
 
+/** a MediaFrame that fills its half of a split (rounded-none and the full height from md up: md:h-full) */
+const fillsHalf = (v: Value | undefined): boolean => typeof v === "string" && /(^|\s)rounded-none(\s|$)/.test(v) && /(^|\s)md:h-full(\s|$)/.test(v);
 /** a ratio of MediaFrame (a literal or a cond of literals) as its aspect class */
 const RATIO: Record<string, string> = { "1/1": "aspect-square", "4/3": "aspect-4/3", "3/4": "aspect-3/4", "21/9": "aspect-21/9", "16/9": "aspect-video" };
 function ratioClass(v: Value | undefined): Value {
@@ -170,7 +172,7 @@ class Projector {
       const field = all.map((f) => f.value).join(" ");
       return src.list
         ? organism(SHAPE.ShapeAvatar.name, { place: place.place, field })
-        : organism(SHAPE.ShapeMedia.name, { aspect: ratioClass(props["ratio"]), place: place.place, field });
+        : organism(SHAPE.ShapeMedia.name, { aspect: ratioClass(props["ratio"]), ...(fillsHalf(props["className"]) ? { fill: "half" } : {}), place: place.place, field });
     }
     return undefined;
   }

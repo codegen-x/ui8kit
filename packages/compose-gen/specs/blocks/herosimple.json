@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "block.herosimple",
   "name": "Simple hero",
-  "docs": "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start or on top, in a box or split to the edge of the screen.",
+  "docs": "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start or on top.",
   "theme": "marketing",
   "group": "hero",
   "organism": "HeroSimple",
@@ -14,15 +14,10 @@
       "end",
       "start",
       "top"
-    ],
-    "frame": [
-      "box",
-      "split"
     ]
   },
   "defaults": {
-    "media": "end",
-    "frame": "box"
+    "media": "end"
   },
   "variants": [
     {
@@ -42,19 +37,6 @@
       },
       "props": {
         "align": "center"
-      }
-    },
-    {
-      "id": "splitEnd",
-      "set": {
-        "frame": "split"
-      }
-    },
-    {
-      "id": "splitStart",
-      "set": {
-        "media": "start",
-        "frame": "split"
       }
     }
   ],

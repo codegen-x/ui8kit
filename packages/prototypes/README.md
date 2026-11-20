@@ -13,7 +13,7 @@ from the registry.
   with plain layout classes (a Stack also gets `w-full`: a wireframe has no intrinsic width, so a column the clean block lets shrink to its content would draw its fraction-wide bars at 0); anything else fails the build. The props are the layout axes of the block and the `padding`
   and `align` settings (align: `start` | `center` | `end`, logical items-* / text-*, `ShapeText align`); a wireframe takes
   no content and names no landmark. Derived values of the clean organism are inlined.
-- `src/shapes.ts`: the shapes (heading, text, badge, action, media, avatar; the action in two tones: `cta-primary` for the first action, `cta-secondary` for the second, from the button variant of the clean block): a kit `Box` with a token background and an 8+4
+- `src/shapes.ts`: the shapes (heading, text, badge, action, media, avatar; the action in two tones: `cta-primary` for the first action, `cta-secondary` for the second, from the button variant of the clean block); the media shape fills its half of a split (`fill: half`: no rounding, `md:aspect-auto md:h-full`) when the clean MediaFrame is `rounded-none md:h-full`: a kit `Box` with a token background and an 8+4
   height, `aria-hidden`, with `data-shape` / `data-role` / `data-slot` hooks for per-element theme tokens.
 - `src/contract.ts`: `out/contracts/<item>/1.json` (item, model and schema URL, axes, variants, settings, modes, places) and
   `out/contracts/v0.json`.

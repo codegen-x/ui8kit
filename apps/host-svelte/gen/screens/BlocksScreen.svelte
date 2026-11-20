@@ -42,6 +42,7 @@
   import ProofPage from "./BlocksScreen/ProofPage.svelte";
   import QuotesplitPage from "./BlocksScreen/QuotesplitPage.svelte";
   import SitemapPage from "./BlocksScreen/SitemapPage.svelte";
+  import SplitsimplePage from "./BlocksScreen/SplitsimplePage.svelte";
   import StatsPage from "./BlocksScreen/StatsPage.svelte";
   import StepsPage from "./BlocksScreen/StepsPage.svelte";
   import StickyPage from "./BlocksScreen/StickyPage.svelte";
@@ -163,6 +164,7 @@
     {"path":"proof","area":"proof"},
     {"path":"quotesplit","area":"quotesplit"},
     {"path":"sitemap","area":"sitemap"},
+    {"path":"splitsimple","area":"splitsimple"},
     {"path":"stats","area":"stats"},
     {"path":"steps","area":"steps"},
     {"path":"sticky","area":"sticky"},
@@ -324,6 +326,8 @@
     <QuotesplitPage />
   {:else if route.area === "sitemap"}
     <SitemapPage />
+  {:else if route.area === "splitsimple"}
+    <SplitsimplePage />
   {:else if route.area === "stats"}
     <StatsPage />
   {:else if route.area === "steps"}

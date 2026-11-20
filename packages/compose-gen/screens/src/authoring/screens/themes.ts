@@ -62,8 +62,8 @@ export const themeApps: ThemeApp[] = [
     name: "marketing-simple", title: "Simple line", footer: "sitemap.columns",
     docs: "The simple line: blocks with one content model each (hero@1, team@1), the same content in every variant. A home page with the hero and the team in columns, and a team page with the wide hero and the team on cards.",
     pages: [
-      { path: "", lead: "herosimple.mediaEnd", head: ["Simple blocks, one content model", "Every variant of a simple block reads the same content, so a layout changes without touching a word.", "Meet the team"], rest: ["teamsimple.cols3", "herosimple.mediaStart", "teamsimple.cols2"] },
-      { path: "team", lead: "herosimple.mediaTop", head: ["The people behind the blocks", "Eight people, one list, four layouts.", "Back to the start"], rest: ["teamsimple.cards3", "teamsimple.cols4"] },
+      { path: "", lead: "herosimple.mediaEnd", head: ["Simple blocks, one content model", "Every variant of a simple block reads the same content, so a layout changes without touching a word.", "Meet the team"], rest: ["teamsimple.cols3", "herosimple.mediaStart", "splitsimple.mediaEnd", "teamsimple.cols2"] },
+      { path: "team", lead: "herosimple.mediaTop", head: ["The people behind the blocks", "Eight people, one list, four layouts.", "Back to the start"], rest: ["teamsimple.cards3", "splitsimple.mediaStart", "teamsimple.cols4"] },
     ],
   },
   {

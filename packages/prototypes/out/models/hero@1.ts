@@ -2,7 +2,7 @@
 // The content model hero@1 (packages/compose-gen/specs/models/hero.json): types, the model and validate().
 import { validate, type Issue, type ModelSpec } from "./validate";
 
-/** Hero content: an optional badge, the heading, a description, one picture (light, optional dark) and up to two actions (the first drawn as the primary button, the second as the secondary one). One object is valid in every hero layout (media at the end, at the start, on top; in a box or split to the edge). */
+/** Hero content: an optional badge, the heading, a description, one picture (light, optional dark) and up to two actions (the first drawn as the primary button, the second as the secondary one). One object is valid in every hero layout (media at the end, at the start, on top). */
 export type HeroContent = {
   /** a short pill above the heading; empty: no badge */
   badge?: string;
@@ -30,7 +30,7 @@ export const model = {
   "specVersion": 1,
   "id": "hero",
   "version": 1,
-  "docs": "Hero content: an optional badge, the heading, a description, one picture (light, optional dark) and up to two actions (the first drawn as the primary button, the second as the secondary one). One object is valid in every hero layout (media at the end, at the start, on top; in a box or split to the edge).",
+  "docs": "Hero content: an optional badge, the heading, a description, one picture (light, optional dark) and up to two actions (the first drawn as the primary button, the second as the secondary one). One object is valid in every hero layout (media at the end, at the start, on top).",
   "fields": {
     "badge": {
       "type": "text",

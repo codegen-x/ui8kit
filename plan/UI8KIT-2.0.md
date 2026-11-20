@@ -36,7 +36,7 @@ Ported as one file-level port (tree of the private branch, then the kit content 
 no kit commit entered `codegen` history (nor enters `main` of codegen-x/ui8kit).
 
 - Screens as data: `xgen/specs/screens/*.json`, one host per runtime (`apps/host-svelte` :5180, `host-react` :5181, `host-vue` :5182), shared `packages/shared/app`.
-- Guard rails in `xgen check`: exact-count hardcode ratchet (every allowance has a `why`), readability (150 lines/file, 600/screen, 8000 bytes, 160 chars/line, 12 props), drift, tier test, Cyrillic.
+- Guard rails in `xgen check`: exact-count hardcode ratchet (every allowance has a `why`), readability (150 lines/file, 600/screen, 8000 bytes, 160 chars/line, 20 props, aim 15), drift, tier test, Cyrillic.
 - Pixel gate (`xgen visual`) and `xgen shot`.
 - Tiers `primitives/ components/ blocks/`, variant tables at the top of each file, `DO NOT EDIT` + `Source:` lines, grouped props, `forward()` slot pass-through, React per-part primitive files.
 - Authoring split `xgen/screens/src/authoring/{components,blocks,gallery,screens}`.

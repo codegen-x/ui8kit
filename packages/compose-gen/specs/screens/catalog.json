@@ -230,6 +230,9 @@
                 "block": "herosimple"
               },
               {
+                "block": "splitsimple"
+              },
+              {
                 "block": "teamsimple"
               }
             ]

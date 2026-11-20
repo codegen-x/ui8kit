@@ -12,14 +12,12 @@ const m = (k: string) => t(`marketing.teamSimple.${k}`);
 
 const heroSimple = define({
   key: "herosimple", theme: "marketing", group: "hero", line: "simple", model: "hero@1",
-  name: "Simple hero", docs: "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start or on top, in a box or split to the edge of the screen.",
-  organism: "HeroSimple", axes: ["media", "frame"],
+  name: "Simple hero", docs: "A badge, the heading, one paragraph and up to two links as the actions (primary, then secondary), with one picture at the end, at the start or on top.",
+  organism: "HeroSimple", axes: ["media"],
   variants: [
     ["mediaEnd", "Picture at the end"],
     ["mediaStart", "Picture at the start", { media: "start" }],
     ["mediaTop", "Wide picture on top", { media: "top" }, { align: "center" }],
-    ["splitEnd", "Split, picture at the end to the edge", { frame: "split" }],
-    ["splitStart", "Split, picture at the start to the edge", { media: "start", frame: "split" }],
   ],
   facts: [
     { sel: "section[aria-labelledby] h2", n: 1 },
@@ -31,6 +29,28 @@ const heroSimple = define({
   sample: {
     id: "herosimple", badge: h("badge"), title: h("title"), description: h("description"), imageAlt: h("imageAlt"),
     actionLabel: h("actionLabel"), actionHref: "#/start", secondaryActionLabel: h("secondaryActionLabel"), secondaryActionHref: "#/tour",
+  },
+});
+
+const sp = (k: string) => t(`marketing.splitSimple.${k}`);
+const splitSimple = define({
+  key: "splitsimple", theme: "marketing", group: "hero", line: "simple", model: "split@1",
+  name: "Simple split", docs: "Two halves: the heading, one paragraph and up to two links as the actions (primary, then secondary) beside one picture that fills its half to the edge of the screen.",
+  organism: "SplitSimple", axes: ["media"],
+  variants: [
+    ["mediaEnd", "Picture at the end, to the edge"],
+    ["mediaStart", "Picture at the start, to the edge", { media: "start" }],
+  ],
+  facts: [
+    { sel: "section[aria-labelledby] h2", n: 1 },
+    { sel: 'a[data-slot="button"][href]', n: 2 },
+    { sel: "button", n: 0 },
+    { sel: '[data-slot="media-frame"]', n: 1 },
+    { sel: '[data-slot="media-frame"].rounded-none', n: 1 },
+  ],
+  sample: {
+    id: "splitsimple", title: sp("title"), description: sp("description"), imageAlt: sp("imageAlt"),
+    actionLabel: sp("actionLabel"), actionHref: "#/start", secondaryActionLabel: sp("secondaryActionLabel"), secondaryActionHref: "#/tour",
   },
 });
 
@@ -58,4 +78,4 @@ const teamSimple = define({
   sample: { id: "teamsimple", title: m("title"), description: m("description"), members: ref("teamMembers") },
 });
 
-export const simpleBlocks = [heroSimple, teamSimple];
+export const simpleBlocks = [heroSimple, splitSimple, teamSimple];

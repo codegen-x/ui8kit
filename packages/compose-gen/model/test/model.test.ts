@@ -63,7 +63,7 @@ test("the types name the records and the content", () => {
 test("the model blocks take exactly their model fields; a missing or extra prop is named", () => {
   const byName = new Map(allOrganisms.map((o) => [o.name, o]));
   const simple = blocks.filter((b) => b.model);
-  expect(simple.map((b) => [b.id, b.model, b.line])).toEqual([["block.herosimple", "hero@1", "simple"], ["block.teamsimple", "team@1", "simple"]]);
+  expect(simple.map((b) => [b.id, b.model, b.line])).toEqual([["block.herosimple", "hero@1", "simple"], ["block.splitsimple", "split@1", "simple"], ["block.teamsimple", "team@1", "simple"]]);
   for (const b of simple) expect(propsProblems(b, byName.get(b.organism)!, models.get(b.model!)!.model)).toEqual([]);
   const b = simple[0]!, org = byName.get(b.organism)!;
   const broken = { ...org, props: [...org.props.filter((p) => p.name !== "badge"), { name: "extra", type: "string" as const }] };

@@ -259,6 +259,7 @@ export { default as SlotBoard } from "./blocks/slot-board.vue";
 export type * from "./blocks/slot-board.types";
 export { default as SlotGrid } from "./components/slot-grid.vue";
 export type * from "./components/slot-grid.types";
+export { default as SplitSimple } from "./blocks/split-simple.vue";
 export { default as StatFigure } from "./components/stat-figure.vue";
 export { default as StatsBand } from "./blocks/stats-band.vue";
 export type * from "./blocks/stats-band.types";

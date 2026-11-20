@@ -200,7 +200,7 @@ Two flat shapes carry the address, both optional, both added by the helpers of `
 - a section picture: the props `image` and `imageAlt` (`...imageProps`; `imageAlt` falls back to the title) and `pictureOf(ratio)` in the view;
 - a picture per record: an optional `image` field on the record (`["image", "string", true]`) and `src: ref("item.image")` on the MediaFrame.
 
-`image` and `imageAlt` are not counted by the 12-prop limit of the readability group. Never put a stock URL in a sample: the placeholder is the sample.
+`image` and `imageAlt` (and `landmarkLabel`) are not counted by the prop limit of the readability group: 20 props per organism (blocking), aim 15 (an organism over 15 is printed as a `warn` note of `compose-gen check`, the gate stays green). Never put a stock URL in a sample: the placeholder is the sample.
 
 ## 6. ARIA
 

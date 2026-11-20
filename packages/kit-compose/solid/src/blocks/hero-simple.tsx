@@ -3,7 +3,7 @@
  * The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions
  * (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its
  * address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top:
- * above it, wide), frame (box: inside the container; split: two halves, the picture to the edge of the screen).
+ * above it, wide).
  */
 import { type JSX } from "solid-js";
 import { Badge, Block, Box, Container, Group, LinkButton, Stack, Text, Title } from "../compose";
@@ -26,7 +26,6 @@ export type HeroSimpleProps = {
   padding?: "compact" | "standard" | "spacious";
   align?: "start" | "center" | "end";
   media?: "end" | "start" | "top";
-  frame?: "box" | "split";
   landmarkLabel?: string;
 };
 
@@ -46,7 +45,6 @@ export function HeroSimple({
   padding = "standard",
   align = "start",
   media = "end",
-  frame = "box",
   landmarkLabel,
 }: HeroSimpleProps) {
   const titleId = id + "-title";
@@ -58,26 +56,23 @@ export function HeroSimple({
     (align as string) === "center" ? "text-center"
     : (align as string) === "end" ? "text-end"
     : "text-start";
-  const edge = ((frame as string) === "split") && ((media as string) !== "top");
-  const pad =
-    (padding as string) === "compact" ? "py-8 lg:py-16"
-    : (padding as string) === "spacious" ? "py-24 lg:py-40"
-    : "py-16 lg:py-32";
-  const copyPad = edge ? cn("justify-center px-4 md:px-8 lg:px-16", pad) : "";
   return (
     <Block
       tag="section"
-      class={(edge ? "" : pad)}
+      class={
+        (padding as string) === "compact" ? "py-8 lg:py-16"
+        : (padding as string) === "spacious" ? "py-24 lg:py-40"
+        : "py-16 lg:py-32"
+      }
       aria-labelledby={(landmarkLabel ? undefined : titleId)}
       aria-label={landmarkLabel}
       data-slot="hero-simple"
     >
-      <Container class={(edge ? "w-full" : "mx-auto w-full max-w-6xl px-4")}>
+      <Container class="mx-auto w-full max-w-6xl px-4">
         <Box
           class={cn(
-            "grid grid-cols-1",
-            (edge ? "" : "gap-8"),
-            (((media as string) === "top") ? "" : (edge ? "md:grid-cols-2" : "items-center md:grid-cols-2"))
+            "grid grid-cols-1 gap-8",
+            (((media as string) === "top") ? "" : "items-center md:grid-cols-2")
           )}
         >
           {((media as string) !== "end") ? (
@@ -86,10 +81,9 @@ export function HeroSimple({
               src={image}
               darkSrc={imageDark}
               ratio={(((media as string) === "top") ? "21/9" : "4/3")}
-              class={(edge ? "md:aspect-auto md:h-full" : "")}
             />
           ) : null}
-          <Stack gap="6" align={column} class={copyPad}>
+          <Stack gap="6" align={column}>
             {badge ? (
               <Badge variant="secondary">
                 {badge}
@@ -119,13 +113,7 @@ export function HeroSimple({
             ) : null}
           </Stack>
           {((media as string) === "end") ? (
-            <MediaFrame
-              alt={(imageAlt ? imageAlt : title)}
-              src={image}
-              darkSrc={imageDark}
-              ratio="4/3"
-              class={(edge ? "md:aspect-auto md:h-full" : "")}
-            />
+            <MediaFrame alt={(imageAlt ? imageAlt : title)} src={image} darkSrc={imageDark} ratio="4/3" />
           ) : null}
         </Box>
       </Container>

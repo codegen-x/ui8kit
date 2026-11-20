@@ -43,6 +43,7 @@ import ProjectsPage from "./BlocksScreen/ProjectsPage.vue";
 import ProofPage from "./BlocksScreen/ProofPage.vue";
 import QuotesplitPage from "./BlocksScreen/QuotesplitPage.vue";
 import SitemapPage from "./BlocksScreen/SitemapPage.vue";
+import SplitsimplePage from "./BlocksScreen/SplitsimplePage.vue";
 import StatsPage from "./BlocksScreen/StatsPage.vue";
 import StepsPage from "./BlocksScreen/StepsPage.vue";
 import StickyPage from "./BlocksScreen/StickyPage.vue";
@@ -164,6 +165,7 @@ const ROUTES = [
   {"path":"proof","area":"proof"},
   {"path":"quotesplit","area":"quotesplit"},
   {"path":"sitemap","area":"sitemap"},
+  {"path":"splitsimple","area":"splitsimple"},
   {"path":"stats","area":"stats"},
   {"path":"steps","area":"steps"},
   {"path":"sticky","area":"sticky"},
@@ -289,6 +291,7 @@ const actions = { toggleTheme };
     <ProofPage v-else-if="route.area === 'proof'" />
     <QuotesplitPage v-else-if="route.area === 'quotesplit'" />
     <SitemapPage v-else-if="route.area === 'sitemap'" />
+    <SplitsimplePage v-else-if="route.area === 'splitsimple'" />
     <StatsPage v-else-if="route.area === 'stats'" />
     <StepsPage v-else-if="route.area === 'steps'" />
     <StickyPage v-else-if="route.area === 'sticky'" />

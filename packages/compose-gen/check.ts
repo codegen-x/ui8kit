@@ -19,6 +19,7 @@ for (const r of results) {
   console.log(`${r.problems.length ? "FAIL" : "ok  "}  compose-gen ${r.name.padEnd(11)} ${r.what}`);
   for (const p of r.problems.slice(0, 25)) console.log(`        ${p}`);
   if (r.problems.length > 25) console.log(`        ... and ${r.problems.length - 25} more`);
+  for (const n of r.notes ?? []) console.log(`warn    ${n}`);
   bad += r.problems.length;
 }
 console.log(bad ? `compose-gen check: ${bad} problem(s)` : `compose-gen check: ok (${results.length} groups)`);

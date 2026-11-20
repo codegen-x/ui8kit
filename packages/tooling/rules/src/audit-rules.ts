@@ -15,8 +15,10 @@ export const READABILITY = {
   fileBytes: 8000,
   /** characters of a line of generated code */
   lineChars: 160,
-  /** props of a component (variant props included) */
-  props: 12,
+  /** props of a component (variant props included; landmarkLabel, image, imageAlt not counted): limit 20, aim 15 (owner decision t95u) */
+  props: 20,
+  /** the aim of the props of a component: over it is a `warn` note of `compose-gen check`, not a problem */
+  propsTarget: 15,
 };
 
 /** the spec folders the `corners` group reads */
@@ -45,6 +47,7 @@ export const CORNER_ALLOW: Record<string, { full?: number; none?: number; why: s
   "specs/ui/dialog.variants.json": { none: 1, why: "the sheet fills the screen; a corner would show the page behind it" },
   "specs/patterns/backdrop.json": { none: 1, why: "the backdrop picture fills its section edge to edge (not a framed picture)" },
   "specs/organisms/over-media.json": { none: 1, why: "the picture under a transparent bar fills the band edge to edge" },
+  "specs/organisms/split-simple.json": { none: 2, why: "the picture of the split fills its half of the section edge to edge (not a framed picture)" },
 };
 /** the shadow classes a spec may use: one per floating layer, from the shadcn scale (flat surfaces use the border edge only) */
 export const SHADOWS = ["shadow-md", "shadow-lg"] as const;

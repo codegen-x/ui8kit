@@ -259,6 +259,7 @@ export { default as SlotBoard } from "./blocks/slot-board.svelte";
 export type * from "./blocks/slot-board.types";
 export { default as SlotGrid } from "./components/slot-grid.svelte";
 export type * from "./components/slot-grid.types";
+export { default as SplitSimple } from "./blocks/split-simple.svelte";
 export { default as StatFigure } from "./components/stat-figure.svelte";
 export { default as StatsBand } from "./blocks/stats-band.svelte";
 export type * from "./blocks/stats-band.types";

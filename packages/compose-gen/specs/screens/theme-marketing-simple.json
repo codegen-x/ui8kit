@@ -74,6 +74,10 @@
         "variant": "mediaStart"
       },
       {
+        "block": "splitsimple",
+        "variant": "mediaEnd"
+      },
+      {
         "block": "teamsimple",
         "variant": "cols2"
       }
@@ -99,6 +103,10 @@
       {
         "block": "teamsimple",
         "variant": "cards3"
+      },
+      {
+        "block": "splitsimple",
+        "variant": "mediaStart"
       },
       {
         "block": "teamsimple",

@@ -3,12 +3,14 @@
 // ui8kit/prototypes re-exports it (src/catalog.ts, src/index.ts).
 import type { Component } from "svelte";
 import HeroSimple from "./svelte/blocks/hero-simple.svelte";
+import SplitSimple from "./svelte/blocks/split-simple.svelte";
 import TeamSimple from "./svelte/blocks/team-simple.svelte";
 
-export { HeroSimple, TeamSimple };
+export { HeroSimple, SplitSimple, TeamSimple };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CATALOG: Record<string, Component<any>> = {
   "hero-simple": HeroSimple,
+  "split-simple": SplitSimple,
   "team-simple": TeamSimple,
 };

@@ -47,6 +47,7 @@ const TOPICS = [
       { key: "proof", href: "#/proof", name: ui.blocks.names.proof, docs: ui.blocks.docs.proof },
       { key: "quotesplit", href: "#/quotesplit", name: ui.blocks.names.quotesplit, docs: ui.blocks.docs.quotesplit },
       { key: "sitemap", href: "#/sitemap", name: ui.blocks.names.sitemap, docs: ui.blocks.docs.sitemap },
+      { key: "splitsimple", href: "#/splitsimple", name: ui.blocks.names.splitsimple, docs: ui.blocks.docs.splitsimple },
       { key: "stats", href: "#/stats", name: ui.blocks.names.stats, docs: ui.blocks.docs.stats },
       { key: "steps", href: "#/steps", name: ui.blocks.names.steps, docs: ui.blocks.docs.steps },
       { key: "sticky", href: "#/sticky", name: ui.blocks.names.sticky, docs: ui.blocks.docs.sticky },

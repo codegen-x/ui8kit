@@ -51,10 +51,11 @@ const organisms = new Set(simple.map((c) => c.organism));
 const cases = blockCases(inputs, organisms).cases.filter((c) => organisms.has(c.organism));
 const itemOf = (name: string) => simple.find((c) => c.organism === name)!.item;
 
-test("the simple line has its prototypes: hero-simple and team-simple", () => {
-  expect(simple.map((c) => [c.item, c.model, c.defaultMode])).toEqual([["hero-simple", "hero@1", "wireframe"], ["team-simple", "team@1", "wireframe"]]);
-  // 9 variants (hero 5, team 4), and each once more per non-default align value (compose-gen blockCases)
-  expect(cases.length).toBe(9 * 3);
+test("the simple line has its prototypes: hero-simple, split-simple and team-simple", () => {
+  expect(simple.map((c) => [c.item, c.model, c.defaultMode])).toEqual([["hero-simple", "hero@1", "wireframe"], ["split-simple", "split@1", "wireframe"], ["team-simple", "team@1", "wireframe"]]);
+  // 7 variants with the align setting (hero 3, team 4), each once more per non-default align value (compose-gen blockCases),
+  // and the 2 of the split (no align setting: its copy is fixed at the start)
+  expect(cases.length).toBe(7 * 3 + 2);
 });
 
 test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", () => {
@@ -65,9 +66,9 @@ test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", (
 
 test("out/ ships wireframes, shapes, contracts, models and the manifest only (no clean block, composition or recipe)", () => {
   expect([...built.files.keys()].sort()).toEqual([
-    "catalog.ts", "classes.json", "contracts/hero-simple/1.json", "contracts/team-simple/1.json", "contracts/v0.json", "manifest.json",
-    "models/hero@1.schema.json", "models/hero@1.ts", "models/index.ts", "models/team@1.schema.json", "models/team@1.ts", "models/validate.ts", "registry.ts",
-    "svelte/blocks/hero-simple.svelte", "svelte/blocks/team-simple.svelte", "svelte/index.ts",
+    "catalog.ts", "classes.json", "contracts/hero-simple/1.json", "contracts/split-simple/1.json", "contracts/team-simple/1.json", "contracts/v0.json", "manifest.json",
+    "models/hero@1.schema.json", "models/hero@1.ts", "models/index.ts", "models/split@1.schema.json", "models/split@1.ts", "models/team@1.schema.json", "models/team@1.ts", "models/validate.ts", "registry.ts",
+    "svelte/blocks/hero-simple.svelte", "svelte/blocks/split-simple.svelte", "svelte/blocks/team-simple.svelte", "svelte/index.ts",
     ...["avatar", "badge", "cta", "heading", "media", "text"].map((s) => `svelte/shapes/shape-${s}.svelte`),
   ]);
   for (const [f, body] of built.files) if (f.startsWith("svelte/")) {
@@ -168,8 +169,8 @@ test("the column count: the one whole-number axis, read from the axes only; wire
   }
 });
 
-test("a prototype takes its layout axes and the padding and align settings, no content", () => {
-  for (const c of simple) expect(built.organisms.find((o) => o.name === c.organism)!.props.map((p) => p.name).sort()).toEqual([...Object.keys(c.axes), "padding", "align"].sort());
+test("a prototype takes its layout axes and the padding and align settings (align where the block has it), no content", () => {
+  for (const c of simple) expect(built.organisms.find((o) => o.name === c.organism)!.props.map((p) => p.name).sort()).toEqual([...Object.keys(c.axes), "padding", ...(c.settings.align ? ["align"] : [])].sort());
 });
 
 describe("layout, padding and the action: the wireframe and the clean block", () => {
@@ -199,7 +200,7 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
   // the block default: start, except the team (its member grid reads as one centred composition; start / end stay options)
   const ALIGN_DEFAULT: Record<string, string> = { "hero-simple": "start", "team-simple": "center" };
   test("contracts: align is a setting (start | center | end; default start, team-simple center), not a variant axis", () => {
-    for (const c of simple) {
+    for (const c of simple.filter((x) => x.item !== "split-simple")) {
       expect(c.settings.align).toEqual({ type: '"start" | "center" | "end"', default: ALIGN_DEFAULT[c.item] });
       expect(Object.keys(c.axes)).not.toContain("align");
     }
@@ -209,7 +210,9 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     const own = simple.flatMap((c) => c.variants.filter((v) => v.settings).map((v) => `${c.item}.${v.id} ${JSON.stringify(v.settings)}`));
     expect(own).toEqual(['hero-simple.mediaTop {"align":"center"}']);
     // the feed does not grow: align is never a variant of its own
-    expect(simple.find((c) => c.item === "hero-simple")!.variants.map((v) => v.id)).toEqual(["mediaEnd", "mediaStart", "mediaTop", "splitEnd", "splitStart"]);
+    expect(simple.find((c) => c.item === "hero-simple")!.variants.map((v) => v.id)).toEqual(["mediaEnd", "mediaStart", "mediaTop"]);
+    // the split is its own item (split@1): its copy is fixed at the start, no align setting
+    expect(simple.find((c) => c.item === "split-simple")!.settings.align).toBeUndefined();
   });
 
   // the align setting: logical classes only (ui8kit/prototypes docs/adr/0002-align-as-setting.md)
@@ -284,24 +287,31 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
       .toEqual([["action", "cta-primary"], ["secondaryAction", "cta-secondary"]]);
   });
 
-  for (const media of ["end", "start"] as const) for (const mode of ["wireframe", "clean"]) test(`hero-simple split ${media} (${mode}): two halves, the picture to the edge, the padding on the copy`, async () => {
-    const html = await ssr(fileOf("hero-simple", mode), { ...(mode === "clean" ? hero : {}), media, frame: "split" });
-    const doc = new JSDOM(html).window.document;
+  const split = c0("SplitSimple");
+  for (const media of ["end", "start"] as const) for (const mode of ["wireframe", "clean"]) test(`split-simple ${media} (${mode}): two halves, the picture fills its half (rounded-none, full height), the padding on the copy`, async () => {
+    const doc = new JSDOM(await ssr(fileOf("split-simple", mode), { ...(mode === "clean" ? split : {}), media })).window.document;
     const section = doc.querySelector("section")!;
     expect(section.getAttribute("class") ?? "").not.toMatch(/\bpy-/);
-    expect(section.firstElementChild!.getAttribute("class")).toBe("w-full");
-    const grid = section.firstElementChild!.firstElementChild!;
+    const grid = section.firstElementChild!;
     expect([...grid.classList]).toEqual(["grid", "grid-cols-1", "md:grid-cols-2"]);
     const kids = [...grid.children];
     const frame = kids.findIndex((k) => k.matches('[data-slot="media-frame"]'));
     expect(frame).toBe(media === "start" ? 0 : 1);
+    const pic = [...kids[frame]!.classList];
+    for (const c of ["rounded-none", "md:aspect-auto", "md:h-full", "w-full"]) expect(pic).toContain(c);
+    if (mode === "wireframe") expect(pic).not.toContain("rounded");
     const copy = kids[1 - frame]!;
-    for (const c of ["justify-center", "px-4", "md:px-8", "lg:px-16", "py-16", "lg:py-32"]) expect([...copy.classList]).toContain(c);
-    if (mode === "clean") for (const c of ["md:aspect-auto", "md:h-full"]) expect([...kids[frame]!.classList]).toContain(c);
-    // the box frame keeps the container and the gap
-    const box = new JSDOM(await ssr(fileOf("hero-simple", mode), { ...(mode === "clean" ? hero : {}), media })).window.document;
-    expect(box.querySelector("section")!.getAttribute("class")).toBe("py-16 lg:py-32");
-    expect(box.querySelector("section")!.firstElementChild!.getAttribute("class")).toBe(CONTAINER);
+    for (const c of ["justify-center", "items-start", "px-4", "md:px-8", "lg:px-16", "py-16", "lg:py-32"]) expect([...copy.classList]).toContain(c);
+    for (const [k, v] of Object.entries(PRESETS)) {
+      const d = new JSDOM(await ssr(fileOf("split-simple", mode), { ...(mode === "clean" ? split : {}), media, padding: k })).window.document;
+      const c = [...d.querySelector("section")!.firstElementChild!.children].find((x) => !x.matches('[data-slot="media-frame"]'))!;
+      for (const t of v.split(" ")) expect([...c.classList]).toContain(t);
+    }
+    if (mode === "clean") {
+      const links = [...doc.querySelectorAll('a[data-slot="button"]')];
+      expect(links.map((a) => /bg-primary/.test(a.className) ? "primary" : /bg-secondary/.test(a.className) ? "secondary" : "?")).toEqual(["primary", "secondary"]);
+      expect(doc.querySelector('[data-slot="media-frame"] img')!.className).toMatch(/object-cover/);
+    }
   });
 });
 

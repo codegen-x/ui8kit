@@ -42,6 +42,7 @@ import { ProjectsPage } from "./BlocksScreen/ProjectsPage";
 import { ProofPage } from "./BlocksScreen/ProofPage";
 import { QuotesplitPage } from "./BlocksScreen/QuotesplitPage";
 import { SitemapPage } from "./BlocksScreen/SitemapPage";
+import { SplitsimplePage } from "./BlocksScreen/SplitsimplePage";
 import { StatsPage } from "./BlocksScreen/StatsPage";
 import { StepsPage } from "./BlocksScreen/StepsPage";
 import { StickyPage } from "./BlocksScreen/StickyPage";
@@ -163,6 +164,7 @@ const ROUTES = [
   {"path":"proof","area":"proof"},
   {"path":"quotesplit","area":"quotesplit"},
   {"path":"sitemap","area":"sitemap"},
+  {"path":"splitsimple","area":"splitsimple"},
   {"path":"stats","area":"stats"},
   {"path":"steps","area":"steps"},
   {"path":"sticky","area":"sticky"},
@@ -325,6 +327,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <QuotesplitPage />
         ) : route.area === "sitemap" ? (
           <SitemapPage />
+        ) : route.area === "splitsimple" ? (
+          <SplitsimplePage />
         ) : route.area === "stats" ? (
           <StatsPage />
         ) : route.area === "steps" ? (

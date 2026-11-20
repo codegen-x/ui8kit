@@ -41,48 +41,76 @@ const section = (...body: Parameters<typeof use>[2][]) =>
   use("Block", { props: { Tag: "section", Class: paddingClass }, attrs: { "aria-labelledby": ref("titleId") } }, use("Container", { props: { Class: wide } }, ...body));
 const lead = (size: string) => when(ref("description"), [use("Text", { props: { Size: size, Class: cn("text-muted-foreground", textAlign) } }, text(ref("description")))]);
 
-// the hero frame: box (the copy and the picture inside the container, a gap between them) or split (two halves of the section, the
-// picture to the edge of the screen at the full height of the copy; the padding moves onto the copy). The top picture ignores split.
-const edge = and(eq(ref("frame"), "split"), ne(ref("media"), "top"));
-const heroPicture = (ratio: Value) =>
-  organism("MediaFrame", { alt: imageAlt(), src: ref("image"), darkSrc: ref("imageDark"), ratio, className: cond(ref("edge"), "md:aspect-auto md:h-full", "") });
-/** an action of the hero: drawn when its label and its address are both set; the first is the primary button, the second the secondary */
-const heroAction = (label: string, href: string, variant: "default" | "secondary") =>
+const picture = (ratio: Value, className?: string) =>
+  organism("MediaFrame", { alt: imageAlt(), src: ref("image"), darkSrc: ref("imageDark"), ratio, ...(className ? { className } : {}) });
+/** an action: drawn when its label and its address are both set; the first is the primary button, the second the secondary */
+const action = (label: string, href: string, variant: "default" | "secondary") =>
   when(and(ref(label), ref(href)), [use("LinkButton", { props: { Variant: variant, Size: "lg", Href: ref(href) } }, text(ref(label)))]);
+/** the row of up to two actions (primary, then secondary); none drawn when both are empty */
+const actions = (justify: Value) =>
+  when(or(and(ref("actionLabel"), ref("actionHref")), and(ref("secondaryActionLabel"), ref("secondaryActionHref"))), [
+    use("Group", { props: { Gap: "4", Align: "center", Justify: justify, Class: "flex-wrap" } },
+      action("actionLabel", "actionHref", "default"),
+      action("secondaryActionLabel", "secondaryActionHref", "secondary"))]);
+const actionProps = [
+  { name: "actionLabel", type: "string" as const, default: "", docs: "the label of the action; the link is drawn when the label and the address are both set" },
+  { name: "actionHref", type: "string" as const, default: "", docs: "the address of the action" },
+  { name: "secondaryActionLabel", type: "string" as const, default: "", docs: "the label of the second action (the secondary button after the first); drawn when the label and the address are both set" },
+  { name: "secondaryActionHref", type: "string" as const, default: "", docs: "the address of the second action" },
+];
+const imageDark = { name: "imageDark", type: "string" as const, docs: "address of the picture in the dark theme; none: image" };
 
-const heroSimple = spec(`${O}hero-simple`, "HeroSimple", "The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide), frame (box: inside the container; split: two halves, the picture to the edge of the screen).", {
+const heroSimple = spec(`${O}hero-simple`, "HeroSimple", "The simple hero (model hero@1): an optional badge, the heading, a description, up to two links as the actions (links styled as buttons, the first primary, the second secondary: each drawn only when its label and its address are both set) and one picture. Axes: media (end: the picture after the copy, start: before it, top: above it, wide).", {
   props: [
     id,
     { name: "badge", type: "string", default: "", docs: "a short pill above the heading; empty: no badge" },
     title,
     description,
     ...imageProps,
-    { name: "imageDark", type: "string", docs: "address of the picture in the dark theme; none: image" },
-    { name: "actionLabel", type: "string", default: "", docs: "the label of the action; the link is drawn when the label and the address are both set" },
-    { name: "actionHref", type: "string", default: "", docs: "the address of the action" },
-    { name: "secondaryActionLabel", type: "string", default: "", docs: "the label of the second action (the secondary button after the first); drawn when the label and the address are both set" },
-    { name: "secondaryActionHref", type: "string", default: "", docs: "the address of the second action" },
+    imageDark,
+    ...actionProps,
     level,
     padding,
     align,
     { name: "media", type: tsOf("end", "start", "top"), default: "end" },
-    { name: "frame", type: tsOf("box", "split"), default: "box" },
   ],
-  derived: [titleId, ...alignDerived, { name: "edge", value: edge }, { name: "pad", value: paddingClass },
-    { name: "copyPad", value: cond(ref("edge"), cn("justify-center px-4 md:px-8 lg:px-16", ref("pad")), "") }],
-  view: [use("Block", { props: { Tag: "section", Class: cond(ref("edge"), "", ref("pad")) }, attrs: { "aria-labelledby": ref("titleId") } },
-    use("Container", { props: { Class: cond(ref("edge"), "w-full", wide) } },
-      use("Box", { props: { Class: cn("grid grid-cols-1", cond(ref("edge"), "", "gap-8"), cond(eq(ref("media"), "top"), "", cond(ref("edge"), "md:grid-cols-2", "items-center md:grid-cols-2"))) } },
-        when(ne(ref("media"), "end"), [heroPicture(cond(eq(ref("media"), "top"), "21/9", "4/3"))]),
-        use("Stack", { props: { Gap: "6", Align: alignItems, Class: ref("copyPad") } },
-          when(ref("badge"), [use("Badge", { props: { Variant: "secondary" } }, text(ref("badge")))]),
-          use("Title", { props: { As: ref("level"), Size: "4xl", Weight: "bold", Class: cn("tracking-tight", textAlign) }, attrs: { id: ref("titleId") } }, text(ref("title"))),
-          lead("lg"),
-          when(or(and(ref("actionLabel"), ref("actionHref")), and(ref("secondaryActionLabel"), ref("secondaryActionHref"))), [
-            use("Group", { props: { Gap: "4", Align: "center", Justify: alignItems, Class: "flex-wrap" } },
-              heroAction("actionLabel", "actionHref", "default"),
-              heroAction("secondaryActionLabel", "secondaryActionHref", "secondary"))])),
-        when(eq(ref("media"), "end"), [heroPicture("4/3")]))))],
+  derived: [titleId, ...alignDerived],
+  view: [section(
+    use("Box", { props: { Class: cn("grid grid-cols-1 gap-8", cond(eq(ref("media"), "top"), "", "items-center md:grid-cols-2")) } },
+      when(ne(ref("media"), "end"), [picture(cond(eq(ref("media"), "top"), "21/9", "4/3"))]),
+      use("Stack", { props: { Gap: "6", Align: alignItems } },
+        when(ref("badge"), [use("Badge", { props: { Variant: "secondary" } }, text(ref("badge")))]),
+        use("Title", { props: { As: ref("level"), Size: "4xl", Weight: "bold", Class: cn("tracking-tight", textAlign) }, attrs: { id: ref("titleId") } }, text(ref("title"))),
+        lead("lg"),
+        actions(alignItems)),
+      when(eq(ref("media"), "end"), [picture("4/3")])))],
+});
+
+// The split (model split@1): two halves of the section, no container. The picture fills its half to the edge of the screen (width
+// and height, rounded-none: md:aspect-auto md:h-full, the image object-cover inside MediaFrame); the copy keeps the padding setting
+// and its own inline padding. The copy is aligned to the start (a fixed composition, no align setting). Later media kinds of the
+// half (video, a sign-in form) are fields of a later split model, never a setting of this one.
+const splitSimple = spec(`${O}split-simple`, "SplitSimple", "The simple split (model split@1): two halves of the section, the copy (the heading, a description, up to two links as the actions: the first primary, the second secondary, each drawn only when its label and its address are both set) and one picture that fills its half to the edge of the screen (no rounding). Axes: media (end: the picture after the copy, start: before it).", {
+  props: [
+    id,
+    title,
+    description,
+    ...imageProps,
+    imageDark,
+    ...actionProps,
+    level,
+    padding,
+    { name: "media", type: tsOf("end", "start"), default: "end" },
+  ],
+  derived: [titleId],
+  view: [use("Block", { props: { Tag: "section" }, attrs: { "aria-labelledby": ref("titleId") } },
+    use("Box", { props: { Class: "grid grid-cols-1 md:grid-cols-2" } },
+      when(eq(ref("media"), "start"), [picture("4/3", "rounded-none md:aspect-auto md:h-full")]),
+      use("Stack", { props: { Gap: "6", Align: "start", Justify: "center", Class: cn("px-4 md:px-8 lg:px-16", paddingClass) } },
+        use("Title", { props: { As: ref("level"), Size: "4xl", Weight: "bold", Class: "tracking-tight" }, attrs: { id: ref("titleId") } }, text(ref("title"))),
+        when(ref("description"), [use("Text", { props: { Size: "lg", Class: "text-muted-foreground" } }, text(ref("description")))]),
+        actions("start")),
+      when(eq(ref("media"), "end"), [picture("4/3", "rounded-none md:aspect-auto md:h-full")])))],
 });
 
 const teamSimple = spec(`${O}team-simple`, "TeamSimple", "The simple team (model team@1): the heading, a description and the members as a list, each with a portrait, the name and a line. Axes: cols (2, 3, 4 columns from md up), surface (plain, cards).", {
@@ -123,4 +151,4 @@ function person() {
   ];
 }
 
-export const simpleOrganisms: OrganismSpec[] = [heroSimple, teamSimple];
+export const simpleOrganisms: OrganismSpec[] = [heroSimple, splitSimple, teamSimple];

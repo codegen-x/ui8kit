@@ -15,6 +15,13 @@
       "svelte": "svelte/blocks/hero-simple.svelte"
     },
     {
+      "item": "split-simple",
+      "block": "block.splitsimple",
+      "model": "split@1",
+      "contract": "contracts/split-simple/1.json",
+      "svelte": "svelte/blocks/split-simple.svelte"
+    },
+    {
       "item": "team-simple",
       "block": "block.teamsimple",
       "model": "team@1",
@@ -23,29 +30,33 @@
     }
   ],
   "inputs": {
-    "sha256": "06fd928b3442bec3e2e0292da732c1f884110a2abe47a68cf81fa4d6e97f8527"
+    "sha256": "6b63fa1fd50d73ed87487b278a134081b6e67332d7f0ec18dbaaab45222b1ce5"
   },
   "files": {
-    "catalog.ts": "7ce2cafc6c5553beb20c2c00781e1819a086ec2b7b8442596df5a660158ec501",
+    "catalog.ts": "f710960025dda19a16069529bd6f49c71be5de755d5f0d003da8d0ea8918f680",
     "classes.json": "7ce202a8a50b51298271063321423d3d553268b904a092a805a3074c80494687",
-    "contracts/hero-simple/1.json": "b1e3ba16dc7718a029f0bc77f0c2b4ba97c971cb71ebcb2f2e96480c0fec7b0d",
+    "contracts/hero-simple/1.json": "c9e275e63ebe4bd48487c744e4f4b70465fd669749e0c7213c87bd6ef15074da",
+    "contracts/split-simple/1.json": "cb1936dc7bf74e33036b4051337c47f517fe370cef2d701180dee987e7edbc75",
     "contracts/team-simple/1.json": "ff0b83a814f00624ee3200454fc70fd9fde1789e75412e94b2aeac5c172ed9a8",
-    "contracts/v0.json": "2c8b5dc42e975e5e565900e3eb0c2d115752c45b7aa231a075c1b4a710494b57",
-    "models/hero@1.schema.json": "fe64b0f574767813e0585c875a7ed23ad419f1f603a37ebfc524272ab5211af5",
-    "models/hero@1.ts": "9956becf1554d1426818f03488dd97215d2cded5bdd7561c116b396dc446a90a",
-    "models/index.ts": "d37f126bbaf2226011fa4895064a5dfe1eaa91646a96d89816ab97eec71b0e73",
+    "contracts/v0.json": "75ac42f7b2a2fd1ca5de1b7e8a079f5b744067c8ab5258b7ba0d3fd6db7056ff",
+    "models/hero@1.schema.json": "b114d150cc77d9249b8793c9591a6242db9c8d55d94d0dd06bfe6aecd335eee6",
+    "models/hero@1.ts": "8c51eb8a671c97bf505d7e1b3d0d5a653b33cd38ebf36ed96155d1e0fd045476",
+    "models/index.ts": "74619d676ee9c1de8bf4097f50f243a177bafc58decd29d9c139439610a3a756",
+    "models/split@1.schema.json": "40d6489b3bbaa08ab9f5385ef1b8e1d75432b427f51c2598ec92e9c542aada6d",
+    "models/split@1.ts": "6fc5a544ce9f3a1a3fcd6bca2316d68727e07e718426e54c39a06fd3b2440b01",
     "models/team@1.schema.json": "ac003fe0b80251f4fefe73e39572cd63f3eb58b35c5fdbd337d03e232fcf797c",
     "models/team@1.ts": "2201ae700f0b26cd4db68b23cd084ce08c39e7609202726bfe081da31d9e26c0",
     "models/validate.ts": "f736b8b812547bb3780e597d0c48971ce70c9a90df7a0fe51e4d109e8a236e7b",
-    "registry.ts": "ba9e42d929f8f09e7c774412dd2ef1ff7c39d2ad0db93c843e3bf409d68a3ce2",
-    "svelte/blocks/hero-simple.svelte": "f8bb18becea47fa5dd3ed0044dfefdc6759652f9e3965b68716722954a90f404",
+    "registry.ts": "f8af03dcc3f1b76f79417cb02c534b3e5eba577ef72ba8c0c95924d65b7c2ef3",
+    "svelte/blocks/hero-simple.svelte": "0a80a78354d3d250912c1ecfb5c7c8fb90b9fb0ee20cfbbab818ec87f26bdc88",
+    "svelte/blocks/split-simple.svelte": "cd0cab695e4eac4efa77ef38ee254ea202c6465670d5cdfbee8a1fce046162bc",
     "svelte/blocks/team-simple.svelte": "3531e2bf3b56bd57080f9a15d2e157aa6ed42bea786bae796ff9515c66b59976",
-    "svelte/index.ts": "5a1ede65def2ccafb7da524d28801831dc449455ba51d2ce27acedef3c5ccdfa",
+    "svelte/index.ts": "270af66ed49d479c7bab28e9cea2f9f273632912860f55be6004cc5d43023071",
     "svelte/shapes/shape-avatar.svelte": "0cee517413dc4cefdee7d1d31e82033cf3342fdb47a0fd4a6dc58deb53cae3bb",
     "svelte/shapes/shape-badge.svelte": "a4cc87358624d1a2eea97135525f9c073efaaa5f3f67cec75920523ce1eb517a",
     "svelte/shapes/shape-cta.svelte": "cc04ffa611cd2cc460a51c14f1c1aee2f82922bffc9d1fc77b2704cd99818e12",
     "svelte/shapes/shape-heading.svelte": "bf81e49747592c4be8601dcf28092592ceb050dc31afad3e718f661d656d906f",
-    "svelte/shapes/shape-media.svelte": "501afce11682ed39ff1ce7eae4b88c9d7aff698c58c0fd50d4ef640127448d0d",
+    "svelte/shapes/shape-media.svelte": "354a114d4804aab821515227393947b790e20571f9632026a1034736fec61301",
     "svelte/shapes/shape-text.svelte": "e35eb73a5d5f7fed824debc745a5a4a0da4e3f9aa91f37a87ad3d7ab198e49d5"
   }
 }

@@ -259,6 +259,7 @@ export * from "./blocks/slot-board";
 export type * from "./blocks/slot-board.types";
 export * from "./components/slot-grid";
 export type * from "./components/slot-grid.types";
+export * from "./blocks/split-simple";
 export * from "./components/stat-figure";
 export * from "./blocks/stats-band";
 export type * from "./blocks/stats-band.types";

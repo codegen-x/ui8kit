@@ -5,7 +5,8 @@ import { existsSync, readdirSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { loadInputs, findApps, loadApp, APP_FILE, type Inputs, type AppSpec } from "../../../screens/src/index";
 
-export interface CheckResult { name: string; what: string; problems: string[] }
+/** `notes`: non-blocking remarks of a group (printed as `warn`; they never fail the check) */
+export interface CheckResult { name: string; what: string; problems: string[]; notes?: string[] }
 export const result = (name: string, what: string, problems: string[]): CheckResult => ({ name, what, problems });
 
 export interface HostApp { dir: string; file: string; app: AppSpec }

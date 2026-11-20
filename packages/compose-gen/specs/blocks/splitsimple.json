@@ -1,0 +1,81 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.splitsimple",
+  "name": "Simple split",
+  "docs": "Two halves: the heading, one paragraph and up to two links as the actions (primary, then secondary) beside one picture that fills its half to the edge of the screen.",
+  "theme": "marketing",
+  "group": "hero",
+  "organism": "SplitSimple",
+  "line": "simple",
+  "model": "split@1",
+  "axes": {
+    "media": [
+      "end",
+      "start"
+    ]
+  },
+  "defaults": {
+    "media": "end"
+  },
+  "variants": [
+    {
+      "id": "mediaEnd",
+      "set": {}
+    },
+    {
+      "id": "mediaStart",
+      "set": {
+        "media": "start"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section[aria-labelledby] h2",
+      "n": 1
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 2
+    },
+    {
+      "sel": "button",
+      "n": 0
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 1
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"].rounded-none",
+      "n": 1
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "splitsimple",
+      "title": {
+        "$": "ui.marketing.splitSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.splitSimple.description"
+      },
+      "imageAlt": {
+        "$": "ui.marketing.splitSimple.imageAlt"
+      },
+      "actionLabel": {
+        "$": "ui.marketing.splitSimple.actionLabel"
+      },
+      "actionHref": "#/start",
+      "secondaryActionLabel": {
+        "$": "ui.marketing.splitSimple.secondaryActionLabel"
+      },
+      "secondaryActionHref": "#/tour"
+    }
+  }
+}

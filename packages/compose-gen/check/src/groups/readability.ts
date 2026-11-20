@@ -6,14 +6,14 @@ import { readFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { result, walk, type Ctx, type CheckResult } from "./context";
 
-export const READABILITY = { fileLines: 150, screenLines: 600, fileBytes: 8000, lineChars: 160, props: 12 } as const;
+/** `props`: the limit of the counted props of an organism (blocking); `propsTarget`: the aim (owner decision t95u: limit 20, aim 15).
+ *  An organism over the aim and within the limit is a note of the group (printed as `warn`, not a problem: the gate stays green). */
+export const READABILITY = { fileLines: 150, screenLines: 600, fileBytes: 8000, lineChars: 160, props: 20, propsTarget: 15 } as const;
 export interface Measure { lines?: number; long?: number; bytes?: number; props?: number }
 export type Allowance = Measure & { why: string };
 export const READABILITY_ALLOW: Record<string, Allowance> = {
   "footer-split": { lines: 152, why: "the optional picture pair (image, imageAlt) of the split layouts on top of 150 lines; split pending: the layouts into parts" },
-  "hero-simple": { props: 14, why: "the model block takes exactly the fields of hero@1 (10 of the 10-field budget since the second action, owner t90u) plus the settings (level, padding, align) and the axes (media, frame); it cannot split without leaving the model" },
   "hero-classic": { lines: 151, why: "the optional picture pair (image, imageAlt) on top of 150 lines; split pending: the media kinds into a part" },
-  "post-grid": { props: 13, why: "the pager prop wp-fasty asked for (audit codegen-gap item 4) on top of 12; split pending: the list options (layout, cols, media, meta) into one group" },
 };
 
 /** HeroSection.svelte, hero-section.tsx -> hero-section: one key for every runtime and naming style */
@@ -63,8 +63,19 @@ export function readabilityProblems(now: Record<string, Measure>, allow: Record<
   return problems;
 }
 
+/** the organisms over the props aim (READABILITY.propsTarget) and within the limit: notes, not problems */
+export function propsNotes(ctx: Ctx): string[] {
+  const out: string[] = [];
+  for (const o of ctx.inputs.organisms) {
+    const n = o.value.props.filter((p) => !UNCOUNTED.includes(p.name)).length;
+    if (n > READABILITY.propsTarget && n <= READABILITY.props) out.push(`${kebab(o.value.name)}: ${n} props (aim ${READABILITY.propsTarget}, limit ${READABILITY.props})`);
+  }
+  return out.sort();
+}
+
 export function checkReadability(ctx: Ctx): CheckResult {
   const l = READABILITY;
-  return result("readability", `generated organisms up to ${l.fileLines} lines, ${l.fileBytes} bytes, host screens up to ${l.screenLines} lines, lines up to ${l.lineChars} characters, organisms up to ${l.props} props (ratchet: READABILITY_ALLOW)`, readabilityProblems(measure(ctx), READABILITY_ALLOW));
+  const what = `generated organisms up to ${l.fileLines} lines, ${l.fileBytes} bytes, host screens up to ${l.screenLines} lines, lines up to ${l.lineChars} characters, organisms up to ${l.props} props, aim ${l.propsTarget} (ratchet: READABILITY_ALLOW)`;
+  return { ...result("readability", what, readabilityProblems(measure(ctx), READABILITY_ALLOW)), notes: propsNotes(ctx) };
 }
 export const relToWs = (ctx: Ctx, f: string): string => relative(ctx.workspace, f);

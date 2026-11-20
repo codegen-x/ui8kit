@@ -4,6 +4,7 @@ import {
   loadCtx, runChecks, checkDictionary, checkRoutes, checkThemes, checkDead, checkDuplicates, checkVersions, checkRegistry, checkStructure,
   cycles, sameKey, cyrillicLine, readabilityProblems, kebab, leavesOf, getAt, type Ctx,
 } from "../src/groups/index";
+import { READABILITY, READABILITY_ALLOW, checkReadability } from "../src/groups/readability";
 
 const ctx = loadCtx();
 /** a deep copy of the context whose inputs a test may change */
@@ -15,9 +16,9 @@ test("every group passes on the repository", () => {
   expect(results.filter((r) => r.problems.length).map((r) => `${r.name}: ${r.problems.slice(0, 3).join("; ")}`)).toEqual([]);
 });
 
-test("the context: 274 organism specs, 113 blocks, 19 screens, 4 host apps", () => {
-  expect(ctx.inputs.organisms.length).toBe(274);
-  expect(ctx.inputs.blocks.length).toBe(113);
+test("the context: 275 organism specs, 114 blocks, 19 screens, 4 host apps", () => {
+  expect(ctx.inputs.organisms.length).toBe(275);
+  expect(ctx.inputs.blocks.length).toBe(114);
   expect(ctx.inputs.screens.length).toBe(19);
   expect(ctx.apps.map((a) => a.app.runtime).sort()).toEqual(["react", "solid", "svelte", "vue"]);
 });
@@ -93,4 +94,12 @@ test("readability ratchet: worse fails, better asks to lower the allowance", () 
   expect(readabilityProblems({ hero: { lines: 200 } }, {})).toHaveLength(1);
   expect(readabilityProblems({ hero: { lines: 200 } }, { hero: { lines: 200 } })).toEqual([]);
   expect(readabilityProblems({ hero: { lines: 180 } }, { hero: { lines: 200 } })[0]).toContain("lower the allowance");
+});
+
+test("readability props: limit 20 (blocking), aim 15 (a note, never a problem); no props allowance", () => {
+  expect([READABILITY.props, READABILITY.propsTarget]).toEqual([20, 15]);
+  expect(Object.values(READABILITY_ALLOW).filter((a) => a.props !== undefined)).toEqual([]);
+  const r = checkReadability(ctx);
+  expect(r.problems).toEqual([]);
+  for (const n of r.notes ?? []) expect(n).toMatch(/: (1[6-9]|20) props \(aim 15, limit 20\)$/);
 });

@@ -3420,7 +3420,6 @@
         "padding",
         "align",
         "media",
-        "frame",
         "landmarkLabel"
       ],
       "labels": [
@@ -6647,6 +6646,53 @@
       "emptyState": true
     },
     {
+      "id": "SplitSimple",
+      "surface": "kit-block",
+      "spec": "block.splitsimple",
+      "source": "packages/compose-gen/specs/blocks/splitsimple.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "image",
+        "imageDark",
+        "actionHref",
+        "secondaryActionHref",
+        "level",
+        "padding",
+        "media",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.splitSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.splitSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "imageAlt",
+          "dictionary": "marketing.splitSimple.imageAlt",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "marketing.splitSimple.actionLabel",
+          "keys": []
+        },
+        {
+          "prop": "secondaryActionLabel",
+          "dictionary": "marketing.splitSimple.secondaryActionLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "StatsBand",
       "surface": "kit-block",
       "spec": "block.stats",
@@ -8888,6 +8934,7 @@
         "block.sitemap",
         "block.skeleton",
         "block.slots",
+        "block.splitsimple",
         "block.stats",
         "block.stepper",
         "block.steps",
@@ -11813,6 +11860,7 @@
         "block.herosimple",
         "block.navbar",
         "block.sitemap",
+        "block.splitsimple",
         "block.teamsimple"
       ]
     },

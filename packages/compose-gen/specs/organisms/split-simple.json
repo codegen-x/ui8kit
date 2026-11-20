@@ -1,0 +1,435 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.split-simple",
+  "name": "SplitSimple",
+  "docs": "The simple split (model split@1): two halves of the section, the copy (the heading, a description, up to two links as the actions: the first primary, the second secondary, each drawn only when its label and its address are both set) and one picture that fills its half to the edge of the screen (no rounding). Axes: media (end: the picture after the copy, start: before it).",
+  "records": {},
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "docs": "one paragraph under the heading; empty: none"
+    },
+    {
+      "name": "image",
+      "type": "string",
+      "docs": "address of the picture (an https URL or a path); none: the placeholder"
+    },
+    {
+      "name": "imageAlt",
+      "type": "string",
+      "docs": "alt text of the picture; none: the title"
+    },
+    {
+      "name": "imageDark",
+      "type": "string",
+      "docs": "address of the picture in the dark theme; none: image"
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the action; the link is drawn when the label and the address are both set"
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the action"
+    },
+    {
+      "name": "secondaryActionLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the second action (the secondary button after the first); drawn when the label and the address are both set"
+    },
+    {
+      "name": "secondaryActionHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the second action"
+    },
+    {
+      "name": "level",
+      "type": {
+        "ts": "1 | 2 | 3"
+      },
+      "default": 2,
+      "docs": "the level of the heading (1 on the first section of a page)"
+    },
+    {
+      "name": "padding",
+      "type": {
+        "ts": "\"compact\" | \"standard\" | \"spacious\""
+      },
+      "default": "standard",
+      "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
+    },
+    {
+      "name": "media",
+      "type": {
+        "ts": "\"end\" | \"start\""
+      },
+      "default": "end"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "titleId",
+      "value": {
+        "op": "add",
+        "args": [
+          {
+            "$": "id"
+          },
+          "-title"
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "section"
+      },
+      "attrs": {
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "split-simple"
+      },
+      "children": [
+        {
+          "use": "Box",
+          "props": {
+            "Class": "grid grid-cols-1 md:grid-cols-2"
+          },
+          "children": [
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "media"
+                  },
+                  "start"
+                ]
+              },
+              "then": [
+                {
+                  "organism": "MediaFrame",
+                  "props": {
+                    "alt": {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "$": "imageAlt"
+                        },
+                        {
+                          "$": "imageAlt"
+                        },
+                        {
+                          "$": "title"
+                        }
+                      ]
+                    },
+                    "src": {
+                      "$": "image"
+                    },
+                    "darkSrc": {
+                      "$": "imageDark"
+                    },
+                    "ratio": "4/3",
+                    "className": "rounded-none md:aspect-auto md:h-full"
+                  }
+                }
+              ]
+            },
+            {
+              "use": "Stack",
+              "props": {
+                "Gap": "6",
+                "Align": "start",
+                "Justify": "center",
+                "Class": {
+                  "op": "cn",
+                  "args": [
+                    "px-4 md:px-8 lg:px-16",
+                    {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "padding"
+                            },
+                            "compact"
+                          ]
+                        },
+                        "py-8 lg:py-16",
+                        {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "padding"
+                                },
+                                "spacious"
+                              ]
+                            },
+                            "py-24 lg:py-40",
+                            "py-16 lg:py-32"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "use": "Title",
+                  "props": {
+                    "As": {
+                      "$": "level"
+                    },
+                    "Size": "4xl",
+                    "Weight": "bold",
+                    "Class": "tracking-tight"
+                  },
+                  "attrs": {
+                    "id": {
+                      "$": "titleId"
+                    }
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "$": "title"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "when": {
+                    "$": "description"
+                  },
+                  "then": [
+                    {
+                      "use": "Text",
+                      "props": {
+                        "Size": "lg",
+                        "Class": "text-muted-foreground"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "description"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "when": {
+                    "op": "or",
+                    "args": [
+                      {
+                        "op": "and",
+                        "args": [
+                          {
+                            "$": "actionLabel"
+                          },
+                          {
+                            "$": "actionHref"
+                          }
+                        ]
+                      },
+                      {
+                        "op": "and",
+                        "args": [
+                          {
+                            "$": "secondaryActionLabel"
+                          },
+                          {
+                            "$": "secondaryActionHref"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "Group",
+                      "props": {
+                        "Gap": "4",
+                        "Align": "center",
+                        "Justify": "start",
+                        "Class": "flex-wrap"
+                      },
+                      "children": [
+                        {
+                          "when": {
+                            "op": "and",
+                            "args": [
+                              {
+                                "$": "actionLabel"
+                              },
+                              {
+                                "$": "actionHref"
+                              }
+                            ]
+                          },
+                          "then": [
+                            {
+                              "use": "LinkButton",
+                              "props": {
+                                "Variant": "default",
+                                "Size": "lg",
+                                "Href": {
+                                  "$": "actionHref"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "actionLabel"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "when": {
+                            "op": "and",
+                            "args": [
+                              {
+                                "$": "secondaryActionLabel"
+                              },
+                              {
+                                "$": "secondaryActionHref"
+                              }
+                            ]
+                          },
+                          "then": [
+                            {
+                              "use": "LinkButton",
+                              "props": {
+                                "Variant": "secondary",
+                                "Size": "lg",
+                                "Href": {
+                                  "$": "secondaryActionHref"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "secondaryActionLabel"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "media"
+                  },
+                  "end"
+                ]
+              },
+              "then": [
+                {
+                  "organism": "MediaFrame",
+                  "props": {
+                    "alt": {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "$": "imageAlt"
+                        },
+                        {
+                          "$": "imageAlt"
+                        },
+                        {
+                          "$": "title"
+                        }
+                      ]
+                    },
+                    "src": {
+                      "$": "image"
+                    },
+                    "darkSrc": {
+                      "$": "imageDark"
+                    },
+                    "ratio": "4/3",
+                    "className": "rounded-none md:aspect-auto md:h-full"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}
