@@ -247,7 +247,8 @@ export const ui = {
       "productreviews": "Product reviews",
       "menusimple": "Simple menu",
       "ctasimple": "Simple call to action",
-      "promosimple": "Simple promo"
+      "promosimple": "Simple promo",
+      "hourssimple": "Simple opening hours"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -403,7 +404,8 @@ export const ui = {
       "productreviews": "The heading, one paragraph and the reviews on cards (the rating, the words, the reviewer with the portrait): in three or two columns, or one under the other.",
       "menusimple": "The heading, one paragraph and the dishes (a picture, a badge when set, the name, the weight, a line, the price): on cards in three, two or four columns, or menu rows with the price at the end.",
       "ctasimple": "One band: a badge when set, the heading, one paragraph and up to two buttons; centred or at the start, or the buttons at the end; on a muted or an outlined surface.",
-      "promosimple": "One offer: the discount as a badge, the heading, the deadline as text, one paragraph, a promo code when set and one button, beside a picture at the end or at the start, or under a wide one."
+      "promosimple": "One offer: the discount as a badge, the heading, the deadline as text, one paragraph, a promo code when set and one button, beside a picture at the end or at the start, or under a wide one.",
+      "hourssimple": "The heading, one paragraph, the address, the phone, a map link and the opening hours by day: side by side or in one narrow column, plain or on cards."
     },
     "variants": {
       "header": {
@@ -1369,6 +1371,12 @@ export const ui = {
         "mediaEnd": "Picture at the end",
         "mediaStart": "Picture at the start",
         "mediaTop": "Wide picture on top"
+      },
+      "hourssimple": {
+        "columns": "Address and hours side by side",
+        "columnsCard": "Side by side on cards",
+        "stack": "One centred column",
+        "stackCard": "One column on cards"
       }
     },
     "landmark": "{0}, {1}",
@@ -1770,6 +1778,13 @@ export const ui = {
       "code": "Code GRILL20",
       "action": "Order with the discount",
       "imageAlt": "Shashlik skewers over glowing coals"
+    },
+    "hoursSimple": {
+      "title": "Opening hours",
+      "description": "The grill is lit every day; on 31 December we close at 18:00 and open again on 2 January.",
+      "address": "12 Riverside Embankment, Moscow",
+      "phone": "+7 495 123-45-67",
+      "map": "Open the map"
     }
   },
   "cases": {

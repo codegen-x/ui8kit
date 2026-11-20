@@ -38,6 +38,8 @@ export { default as HeaderSimple } from "./blocks/header-simple.svelte";
 export type { HeaderSimpleProps } from "./blocks/header-simple.svelte";
 export { default as HeroSimple } from "./blocks/hero-simple.svelte";
 export type { HeroSimpleProps } from "./blocks/hero-simple.svelte";
+export { default as HoursSimple } from "./blocks/hours-simple.svelte";
+export type { HoursSimpleProps } from "./blocks/hours-simple.svelte";
 export { default as IntroSimple } from "./blocks/intro-simple.svelte";
 export type { IntroSimpleProps } from "./blocks/intro-simple.svelte";
 export { default as LocationsSimple } from "./blocks/locations-simple.svelte";

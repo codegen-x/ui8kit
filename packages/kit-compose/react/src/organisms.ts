@@ -155,6 +155,8 @@ export * from "./components/hero-split-extras";
 export * from "./components/hero-split-media";
 export * from "./blocks/hero-split";
 export type * from "./blocks/hero-split.types";
+export * from "./blocks/hours-simple";
+export type * from "./blocks/hours-simple.types";
 export * from "./blocks/icon-wall";
 export * from "./blocks/intro-simple";
 export * from "./blocks/job-board";

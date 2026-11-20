@@ -141,6 +141,13 @@
       "svelte": "svelte/blocks/hero-simple.svelte"
     },
     {
+      "item": "hours-simple",
+      "block": "block.hourssimple",
+      "model": "hours@1",
+      "contract": "contracts/hours-simple/1.json",
+      "svelte": "svelte/blocks/hours-simple.svelte"
+    },
+    {
       "item": "intro-simple",
       "block": "block.introsimple",
       "model": "intro@1",
@@ -310,10 +317,10 @@
     }
   ],
   "inputs": {
-    "sha256": "cf8b21c224e3c4869d4a1188f4421e32f5faec26339c9e4dd238f9017f54bbde"
+    "sha256": "2c7acfc760e4ee26bf3213ebae56a354959e2abdeae6302a810405ee6429fcf8"
   },
   "files": {
-    "catalog.ts": "009bffe96f774cf84d746393e29172b9996e884f5cd095af75b51dfe11b74675",
+    "catalog.ts": "f4dac69d06b8c2391acd053e78f80cbd4468da80ce2fbbf1c42408ad295749aa",
     "classes.json": "7ce202a8a50b51298271063321423d3d553268b904a092a805a3074c80494687",
     "contracts/article-lead/1.json": "8b293a8e7cec0f45fe744e31c5183fea0047725854cbdb7f1c8e38dee4456c9b",
     "contracts/article-simple/1.json": "70aa68c9337171d17c036cd4664dec4145f900c9119a7a7721995a09d4fe581a",
@@ -334,6 +341,7 @@
     "contracts/gallery-hero/1.json": "d3d96918a81d9e9ac808cc319cd2fe90ae72458ee830cf77bbda5b747749db69",
     "contracts/header-simple/1.json": "39a8ab5a8661c344672b84a187760dbaffa9490457434d371aedd9a74e01b9a4",
     "contracts/hero-simple/1.json": "688efe720e94b29a5bc2e1cd35eb9024008693737f8e2e81db89d6f6ca63dbef",
+    "contracts/hours-simple/1.json": "580ba25e5388d0325f0fa09a4848b2ea5aa8318a7441d4df2baf114f40c765dc",
     "contracts/intro-simple/1.json": "8eccd2cf0f2e0e53b6dd1737b1c677da0f4fc82b7c85ada85fc0adbfd83801ab",
     "contracts/locations-simple/1.json": "59ba1a5a5913f7f63b45d7e8b1914c353423ce220d6fff2d355e6caf8a6341d2",
     "contracts/logos-simple/1.json": "84b5b8d142a3bea0319c41f6fa8a70edc1f315e6140b39dad6721f10c6e78378",
@@ -358,7 +366,7 @@
     "contracts/team-simple/1.json": "ef54b5212cdea45399540b146b13b9d4829c63e01083ce980acc74f8bf0415ed",
     "contracts/testimonials-simple/1.json": "e8bb4ab2a54963fa56dc96a13f79e1dc3b8327020cb0fc1c21fa5f07d9dae38b",
     "contracts/topics-simple/1.json": "33879d4d7bd937e453a35ad094e18c0762cc4ba10026dedad144f0932013bd5d",
-    "contracts/v0.json": "d14c775a083fc7571a306c726a23c6d90ea5ebefadf21737e267f8d00afe153f",
+    "contracts/v0.json": "364d8734aff8068aee7ccafad3191b9bf2931a0f776e7f0b64ec4b84e3fc2025",
     "models/article-lead@1.schema.json": "eae6233434a9bd8330b253110fc4731ab270c38a7e165c00bd0f111384ee3db6",
     "models/article-lead@1.ts": "51364e85070b5f7fb9b2c49c533f46c6620ae73321b10d1831f030516122e5d5",
     "models/article@1.schema.json": "7c6e6ac7fff67a42cb47d4487af5245cb72fd9ba179cf5cd0a4dc7504408c48e",
@@ -397,7 +405,9 @@
     "models/header@1.ts": "a635dbadb15b9155dc67a157d70d2d417a1e310a3eb49bf3ecf7b3bc82ce51f7",
     "models/hero@1.schema.json": "b114d150cc77d9249b8793c9591a6242db9c8d55d94d0dd06bfe6aecd335eee6",
     "models/hero@1.ts": "8c51eb8a671c97bf505d7e1b3d0d5a653b33cd38ebf36ed96155d1e0fd045476",
-    "models/index.ts": "65005821d926c313fcf6a983c191dd764399c1ea43711ac8612349894ca4c31e",
+    "models/hours@1.schema.json": "94b25f2a4e394804ff6e99dce2178e92e6655ead1c552332287fad01dee310da",
+    "models/hours@1.ts": "9821dae4b81c931204beb02619f385f4ff7a463ed2c2299b817c0f7b6caf8227",
+    "models/index.ts": "4b4c9c28987c37d9bd001e84e55104536c86d1bc6de8c2e22eb16c638f5299c1",
     "models/intro@1.schema.json": "9ede625f409532dba4ca1f05345afb5b39d69d8945039d38a491618ff7ef5ee6",
     "models/intro@1.ts": "7a20a006fd8979b1a4957bbd812f302e4428f17c3e290e996117077e67374746",
     "models/locations@1.schema.json": "666449da698a09ab3f477cec3009752cd51d00dadf919501991a17b933d482eb",
@@ -447,7 +457,7 @@
     "models/topics@1.schema.json": "7e85157dcbbeec16b931dcb9dceb9a4ac6a730e74ca632aba69153ac3229ef53",
     "models/topics@1.ts": "0fa38eb5a5e1fa661294091fe6b5aa0196d3049515f13dc1e71fc6e1772da689",
     "models/validate.ts": "f736b8b812547bb3780e597d0c48971ce70c9a90df7a0fe51e4d109e8a236e7b",
-    "registry.ts": "f49f5b71e5a84728db502ff1354eca0d7971e2538c16a11ddffde8fdabe59b72",
+    "registry.ts": "358637047f473b359601a19490e2484b78a7a35cb639ad36072e8675259f6fd4",
     "svelte/blocks/article-lead.svelte": "85fbac037c9ad5ad289f29379e8a6ccf423d487289eab51492ca4bd804ea13a9",
     "svelte/blocks/article-simple.svelte": "081b0a3a8e057e39c848c488e7baf1a50ed282340e28ebb6747a94f5a81cfa95",
     "svelte/blocks/chapters-simple.svelte": "fd50c7e9c1eed63f30991ee0f4f4d12c53c3b29fb4c2c78b15a806072de3ea0b",
@@ -467,6 +477,7 @@
     "svelte/blocks/gallery-hero.svelte": "913013a3cc29f78cb667700f2da9596c2ece4ec065c430344151ba9cbad5372b",
     "svelte/blocks/header-simple.svelte": "5b12b263729bfe5c1edbd2dc7d76756542afe27cccc5baa7a7cb6fd05b9024c0",
     "svelte/blocks/hero-simple.svelte": "84367da8648e509ec7976314dff75eefd67bf027b368a0d0bafaac100236b1f3",
+    "svelte/blocks/hours-simple.svelte": "69ec59235d077f5e924936d6662527ddbf064bc7884c1f5659ef9f2935a8ed6d",
     "svelte/blocks/intro-simple.svelte": "f6c0a318d582b98eb09b292de157119d2269bbc9bcfbf48488835513181b6e63",
     "svelte/blocks/locations-simple.svelte": "0091f7c4cc5b2f86e6e7aac431ecd561f0092c1bfe3183b1f40edfe82761c885",
     "svelte/blocks/logos-simple.svelte": "2ea1082d07f7e07d12ed7d48274003e3af53faf853a48f8be1f18964a0bae718",
@@ -491,7 +502,7 @@
     "svelte/blocks/team-simple.svelte": "2f220b154e02ed246cfc0a3510ec51cfd6135c9c1f2ab928b3d65399d6f917c9",
     "svelte/blocks/testimonials-simple.svelte": "55e4d80cf6835d526bf7a6a30f28d4f3fe03ded65644aac2e01d82b53d25f6f3",
     "svelte/blocks/topics-simple.svelte": "791965527a3fa8332bfa7b32c77557e53df8b705413363166c771dd8b787352e",
-    "svelte/index.ts": "e6a6f2645106b2870b9afcbbb0fd6ba3bec66e077041ada62e609b57ec715015",
+    "svelte/index.ts": "a712034bb553e7ee7eba2762c665de3a179161c40e9aa912e8e9909379861fbd",
     "svelte/shapes/shape-avatar.svelte": "0cee517413dc4cefdee7d1d31e82033cf3342fdb47a0fd4a6dc58deb53cae3bb",
     "svelte/shapes/shape-badge.svelte": "a4cc87358624d1a2eea97135525f9c073efaaa5f3f67cec75920523ce1eb517a",
     "svelte/shapes/shape-cta.svelte": "cc04ffa611cd2cc460a51c14f1c1aee2f82922bffc9d1fc77b2704cd99818e12",

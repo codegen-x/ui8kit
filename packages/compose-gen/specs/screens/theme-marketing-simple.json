@@ -355,6 +355,10 @@
       {
         "block": "promosimple",
         "variant": "mediaEnd"
+      },
+      {
+        "block": "hourssimple",
+        "variant": "columns"
       }
     ],
     "about": [

@@ -3648,6 +3648,97 @@
     ]
    }
   },
+  "hourssimple": {
+   "organism": "HoursSimple",
+   "defaults": {
+    "layout": "columns",
+    "surface": "plain"
+   },
+   "sample": {
+    "id": "hourssimple",
+    "title": {
+     "$": "ui.marketing.hoursSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.hoursSimple.description"
+    },
+    "address": {
+     "$": "ui.marketing.hoursSimple.address"
+    },
+    "phone": {
+     "$": "ui.marketing.hoursSimple.phone"
+    },
+    "phoneHref": "tel:+74951234567",
+    "mapLabel": {
+     "$": "ui.marketing.hoursSimple.map"
+    },
+    "mapHref": "https://maps.example.com/?q=grill",
+    "items": {
+     "$": "openingHours"
+    }
+   },
+   "variants": [
+    {
+     "id": "columns",
+     "set": {},
+     "props": {
+      "align": "start"
+     }
+    },
+    {
+     "id": "columnsCard",
+     "set": {
+      "surface": "card"
+     },
+     "props": {
+      "align": "start"
+     }
+    },
+    {
+     "id": "stack",
+     "set": {
+      "layout": "stack"
+     }
+    },
+    {
+     "id": "stackCard",
+     "set": {
+      "layout": "stack",
+      "surface": "card"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "openingHours",
+     "collection": "simplehours",
+     "fields": {
+      "id": "id",
+      "day": "title",
+      "time": "metadata.time.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "HoursSimple": [
+     "id",
+     "title",
+     "description",
+     "address",
+     "phone",
+     "phoneHref",
+     "mapLabel",
+     "mapHref",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "surface",
+     "landmarkLabel"
+    ]
+   }
+  },
   "iconwall": {
    "organism": "IconWall",
    "defaults": {
@@ -16516,6 +16607,10 @@
      {
       "block": "promosimple",
       "variant": "mediaEnd"
+     },
+     {
+      "block": "hourssimple",
+      "variant": "columns"
      }
     ],
     "about": [

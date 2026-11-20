@@ -45,6 +45,7 @@ import { HeadersimplePage } from "./BlocksScreen/HeadersimplePage";
 import { HeroPage } from "./BlocksScreen/HeroPage";
 import { HerosimplePage } from "./BlocksScreen/HerosimplePage";
 import { HerosplitPage } from "./BlocksScreen/HerosplitPage";
+import { HourssimplePage } from "./BlocksScreen/HourssimplePage";
 import { IconwallPage } from "./BlocksScreen/IconwallPage";
 import { IntrosimplePage } from "./BlocksScreen/IntrosimplePage";
 import { JobsPage } from "./BlocksScreen/JobsPage";
@@ -207,6 +208,7 @@ const ROUTES = [
   {"path":"hero","area":"hero"},
   {"path":"herosimple","area":"herosimple"},
   {"path":"herosplit","area":"herosplit"},
+  {"path":"hourssimple","area":"hourssimple"},
   {"path":"iconwall","area":"iconwall"},
   {"path":"introsimple","area":"introsimple"},
   {"path":"jobs","area":"jobs"},
@@ -413,6 +415,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <HerosimplePage />
         ) : route.area === "herosplit" ? (
           <HerosplitPage />
+        ) : route.area === "hourssimple" ? (
+          <HourssimplePage />
         ) : route.area === "iconwall" ? (
           <IconwallPage />
         ) : route.area === "introsimple" ? (

@@ -1,0 +1,110 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.hourssimple",
+  "name": "Simple opening hours",
+  "docs": "The heading, one paragraph, the address, the phone, a map link and the opening hours by day: side by side or in one narrow column, plain or on cards.",
+  "theme": "marketing",
+  "group": "contact",
+  "organism": "HoursSimple",
+  "line": "simple",
+  "model": "hours@1",
+  "axes": {
+    "layout": [
+      "columns",
+      "stack"
+    ],
+    "surface": [
+      "plain",
+      "card"
+    ]
+  },
+  "defaults": {
+    "layout": "columns",
+    "surface": "plain"
+  },
+  "variants": [
+    {
+      "id": "columns",
+      "set": {},
+      "props": {
+        "align": "start"
+      }
+    },
+    {
+      "id": "columnsCard",
+      "set": {
+        "surface": "card"
+      },
+      "props": {
+        "align": "start"
+      }
+    },
+    {
+      "id": "stack",
+      "set": {
+        "layout": "stack"
+      }
+    },
+    {
+      "id": "stackCard",
+      "set": {
+        "layout": "stack",
+        "surface": "card"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@openingHours"
+    },
+    {
+      "sel": "section a",
+      "n": 2
+    }
+  ],
+  "data": [
+    {
+      "as": "openingHours",
+      "collection": "simplehours",
+      "kind": "day",
+      "record": "OpeningHour",
+      "fields": {
+        "id": "id",
+        "day": "title",
+        "time": "metadata.time.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "hourssimple",
+      "title": {
+        "$": "ui.marketing.hoursSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.hoursSimple.description"
+      },
+      "address": {
+        "$": "ui.marketing.hoursSimple.address"
+      },
+      "phone": {
+        "$": "ui.marketing.hoursSimple.phone"
+      },
+      "phoneHref": "tel:+74951234567",
+      "mapLabel": {
+        "$": "ui.marketing.hoursSimple.map"
+      },
+      "mapHref": "https://maps.example.com/?q=grill",
+      "items": {
+        "$": "openingHours"
+      }
+    }
+  }
+}

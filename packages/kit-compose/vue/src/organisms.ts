@@ -155,6 +155,8 @@ export { default as HeroSplitExtras } from "./components/hero-split-extras.vue";
 export { default as HeroSplitMedia } from "./components/hero-split-media.vue";
 export { default as HeroSplit } from "./blocks/hero-split.vue";
 export type * from "./blocks/hero-split.types";
+export { default as HoursSimple } from "./blocks/hours-simple.vue";
+export type * from "./blocks/hours-simple.types";
 export { default as IconWall } from "./blocks/icon-wall.vue";
 export { default as IntroSimple } from "./blocks/intro-simple.vue";
 export { default as JobBoard } from "./blocks/job-board.vue";

@@ -19,6 +19,7 @@ export type { FooterLink, FooterContent } from "./footer@1";
 export type { GalleryPhoto, GalleryContent } from "./gallery@1";
 export type { HeaderLink, HeaderContent } from "./header@1";
 export type { HeroContent } from "./hero@1";
+export type { OpeningHour, HoursContent } from "./hours@1";
 export type { IntroContent } from "./intro@1";
 export type { LocationItem, LocationsContent } from "./locations@1";
 export type { SimpleLogo, LogosContent } from "./logos@1";

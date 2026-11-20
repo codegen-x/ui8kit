@@ -4345,6 +4345,62 @@
       "emptyMode": "omit"
     },
     {
+      "id": "HoursSimple",
+      "surface": "kit-block",
+      "spec": "block.hourssimple",
+      "source": "packages/compose-gen/specs/blocks/hourssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simplehours",
+          "kind": "day",
+          "record": "OpeningHour",
+          "map": "openingHour",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "phoneHref",
+        "mapHref",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "surface",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.hoursSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.hoursSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "address",
+          "dictionary": "marketing.hoursSimple.address",
+          "keys": []
+        },
+        {
+          "prop": "phone",
+          "dictionary": "marketing.hoursSimple.phone",
+          "keys": []
+        },
+        {
+          "prop": "mapLabel",
+          "dictionary": "marketing.hoursSimple.map",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "IconWall",
       "surface": "kit-block",
       "spec": "block.iconwall",
@@ -10216,6 +10272,14 @@
           "list": true
         },
         {
+          "prop": "HoursSimple.items",
+          "collection": "simplehours",
+          "kind": "day",
+          "record": "OpeningHour",
+          "map": "openingHour",
+          "list": true
+        },
+        {
           "prop": "JobBoard.jobs",
           "collection": "jobs",
           "kind": "job",
@@ -10824,6 +10888,7 @@
         "block.hero",
         "block.herosimple",
         "block.herosplit",
+        "block.hourssimple",
         "block.iconwall",
         "block.introsimple",
         "block.jobs",
@@ -13835,6 +13900,14 @@
           "list": true
         },
         {
+          "prop": "HoursSimple.items",
+          "collection": "simplehours",
+          "kind": "day",
+          "record": "OpeningHour",
+          "map": "openingHour",
+          "list": true
+        },
+        {
           "prop": "LocationsSimple.items",
           "collection": "stores",
           "kind": "store",
@@ -14185,6 +14258,7 @@
         "block.galleryhero",
         "block.headersimple",
         "block.herosimple",
+        "block.hourssimple",
         "block.introsimple",
         "block.locationssimple",
         "block.logossimple",

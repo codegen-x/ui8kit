@@ -155,6 +155,8 @@ export { default as HeroSplitExtras } from "./components/hero-split-extras.svelt
 export { default as HeroSplitMedia } from "./components/hero-split-media.svelte";
 export { default as HeroSplit } from "./blocks/hero-split.svelte";
 export type * from "./blocks/hero-split.types";
+export { default as HoursSimple } from "./blocks/hours-simple.svelte";
+export type * from "./blocks/hours-simple.types";
 export { default as IconWall } from "./blocks/icon-wall.svelte";
 export { default as IntroSimple } from "./blocks/intro-simple.svelte";
 export { default as JobBoard } from "./blocks/job-board.svelte";

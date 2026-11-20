@@ -46,6 +46,7 @@ import HeadersimplePage from "./BlocksScreen/HeadersimplePage.vue";
 import HeroPage from "./BlocksScreen/HeroPage.vue";
 import HerosimplePage from "./BlocksScreen/HerosimplePage.vue";
 import HerosplitPage from "./BlocksScreen/HerosplitPage.vue";
+import HourssimplePage from "./BlocksScreen/HourssimplePage.vue";
 import IconwallPage from "./BlocksScreen/IconwallPage.vue";
 import IntrosimplePage from "./BlocksScreen/IntrosimplePage.vue";
 import JobsPage from "./BlocksScreen/JobsPage.vue";
@@ -208,6 +209,7 @@ const ROUTES = [
   {"path":"hero","area":"hero"},
   {"path":"herosimple","area":"herosimple"},
   {"path":"herosplit","area":"herosplit"},
+  {"path":"hourssimple","area":"hourssimple"},
   {"path":"iconwall","area":"iconwall"},
   {"path":"introsimple","area":"introsimple"},
   {"path":"jobs","area":"jobs"},
@@ -374,6 +376,7 @@ const actions = { toggleTheme };
     <HeroPage v-else-if="route.area === 'hero'" />
     <HerosimplePage v-else-if="route.area === 'herosimple'" />
     <HerosplitPage v-else-if="route.area === 'herosplit'" />
+    <HourssimplePage v-else-if="route.area === 'hourssimple'" />
     <IconwallPage v-else-if="route.area === 'iconwall'" />
     <IntrosimplePage v-else-if="route.area === 'introsimple'" />
     <JobsPage v-else-if="route.area === 'jobs'" />

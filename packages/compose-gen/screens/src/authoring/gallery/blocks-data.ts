@@ -143,5 +143,6 @@ export const courseModules = src("courseModules", "simplemodules", "module", "Co
 export const choiceItems = src("choiceItems", "simplechoices", "menu_item", "ChoiceItem", CODEX_FIELDS.simpleLink);
 export const policyItems = src("policyItems", "simplepolicies", "perk", "PolicyItem", CODEX_FIELDS.policyItem);
 /** wave 3 of the simple line */
+export const openingHours = src("openingHours", "simplehours", "day", "OpeningHour", CODEX_FIELDS.openingHour);
 export const menuDishes = src("menuDishes", "simplemenu", "dish", "MenuDish", CODEX_FIELDS.menuDish);
 export const reviewItems = src("reviewItems", "simplereviews", "review", "ReviewItem", CODEX_FIELDS.reviewItem);

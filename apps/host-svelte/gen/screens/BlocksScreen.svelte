@@ -45,6 +45,7 @@
   import HeroPage from "./BlocksScreen/HeroPage.svelte";
   import HerosimplePage from "./BlocksScreen/HerosimplePage.svelte";
   import HerosplitPage from "./BlocksScreen/HerosplitPage.svelte";
+  import HourssimplePage from "./BlocksScreen/HourssimplePage.svelte";
   import IconwallPage from "./BlocksScreen/IconwallPage.svelte";
   import IntrosimplePage from "./BlocksScreen/IntrosimplePage.svelte";
   import JobsPage from "./BlocksScreen/JobsPage.svelte";
@@ -207,6 +208,7 @@
     {"path":"hero","area":"hero"},
     {"path":"herosimple","area":"herosimple"},
     {"path":"herosplit","area":"herosplit"},
+    {"path":"hourssimple","area":"hourssimple"},
     {"path":"iconwall","area":"iconwall"},
     {"path":"introsimple","area":"introsimple"},
     {"path":"jobs","area":"jobs"},
@@ -412,6 +414,8 @@
     <HerosimplePage />
   {:else if route.area === "herosplit"}
     <HerosplitPage />
+  {:else if route.area === "hourssimple"}
+    <HourssimplePage />
   {:else if route.area === "iconwall"}
     <IconwallPage />
   {:else if route.area === "introsimple"}

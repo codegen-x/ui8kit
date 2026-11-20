@@ -70,6 +70,7 @@
         { key: "hero", href: "#/hero", name: ui.blocks.names.hero, docs: ui.blocks.docs.hero },
         { key: "herosimple", href: "#/herosimple", name: ui.blocks.names.herosimple, docs: ui.blocks.docs.herosimple },
         { key: "herosplit", href: "#/herosplit", name: ui.blocks.names.herosplit, docs: ui.blocks.docs.herosplit },
+        { key: "hourssimple", href: "#/hourssimple", name: ui.blocks.names.hourssimple, docs: ui.blocks.docs.hourssimple },
         { key: "iconwall", href: "#/iconwall", name: ui.blocks.names.iconwall, docs: ui.blocks.docs.iconwall },
         { key: "introsimple", href: "#/introsimple", name: ui.blocks.names.introsimple, docs: ui.blocks.docs.introsimple },
         { key: "jobs", href: "#/jobs", name: ui.blocks.names.jobs, docs: ui.blocks.docs.jobs },

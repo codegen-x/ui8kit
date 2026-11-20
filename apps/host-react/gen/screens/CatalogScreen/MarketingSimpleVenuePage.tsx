@@ -7,6 +7,7 @@ import {
   Container,
   CtaSimple,
   Group,
+  HoursSimple,
   Link,
   MenuSimple,
   PromoSimple,
@@ -16,11 +17,13 @@ import {
   tpl,
   uniqLabel,
   type MenuDish,
+  type OpeningHour,
 } from "@codegen-x/react-compose";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { simplemenu as menuDishesEntries } from "@ui8kit/app-shared/data/simplemenu";
+import { simplehours as openingHoursEntries } from "@ui8kit/app-shared/data/simplehours";
 
 const MENUDISHES_FIELDS = {
   "id": "id",
@@ -31,8 +34,10 @@ const MENUDISHES_FIELDS = {
   "description": "metadata.summary.value",
   "badge": "metadata.badge.value",
 } as const;
+const OPENINGHOURS_FIELDS = {"id":"id","day":"title","time":"metadata.time.value"} as const;
 
 const menuDishes = fromCodex<MenuDish>(menuDishesEntries, MENUDISHES_FIELDS, CODEX);
+const openingHours = fromCodex<OpeningHour>(openingHoursEntries, OPENINGHOURS_FIELDS, CODEX);
 
 export function MarketingSimpleVenuePage() {
   return (
@@ -52,7 +57,7 @@ export function MarketingSimpleVenuePage() {
               {ui.catalog.categories.marketingSimpleVenue}
             </Title>
             <Text className="max-w-2xl text-muted-foreground">
-              {tpl(ui.catalog.count, 3, 12)}
+              {tpl(ui.catalog.count, 4, 16)}
             </Text>
           </Stack>
           <Stack
@@ -442,6 +447,145 @@ export function MarketingSimpleVenuePage() {
                   align="center"
                   level={2}
                   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.promosimple, ui.blocks.variants.promosimple.mediaTop))}
+                />
+              </Box>
+            </Stack>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-hourssimple-title"
+            data-testid="catalog-block"
+            data-block="hourssimple"
+          >
+            <Stack gap="2" align="stretch">
+              <Title as={2} size="2xl" weight="bold" id="catalog-hourssimple-title">
+                {ui.blocks.names.hourssimple}
+              </Title>
+              <Text size="sm" className="max-w-2xl text-muted-foreground">
+                {ui.blocks.docs.hourssimple}
+              </Text>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="hourssimple-columns-label"
+              data-testid="variant"
+              data-block="hourssimple"
+              data-variant="columns"
+            >
+              <Title as={3} size="base" weight="bold" id="hourssimple-columns-label" data-testid="variant-label">
+                {ui.blocks.variants.hourssimple.columns}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <HoursSimple
+                  id="hourssimple-columns"
+                  title={ui.marketing.hoursSimple.title}
+                  description={ui.marketing.hoursSimple.description}
+                  address={ui.marketing.hoursSimple.address}
+                  phone={ui.marketing.hoursSimple.phone}
+                  phoneHref="tel:+74951234567"
+                  mapLabel={ui.marketing.hoursSimple.map}
+                  mapHref="https://maps.example.com/?q=grill"
+                  items={openingHours}
+                  layout="columns"
+                  surface="plain"
+                  align="start"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hourssimple, ui.blocks.variants.hourssimple.columns))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="hourssimple-columnsCard-label"
+              data-testid="variant"
+              data-block="hourssimple"
+              data-variant="columnsCard"
+            >
+              <Title as={3} size="base" weight="bold" id="hourssimple-columnsCard-label" data-testid="variant-label">
+                {ui.blocks.variants.hourssimple.columnsCard}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <HoursSimple
+                  id="hourssimple-columnsCard"
+                  title={ui.marketing.hoursSimple.title}
+                  description={ui.marketing.hoursSimple.description}
+                  address={ui.marketing.hoursSimple.address}
+                  phone={ui.marketing.hoursSimple.phone}
+                  phoneHref="tel:+74951234567"
+                  mapLabel={ui.marketing.hoursSimple.map}
+                  mapHref="https://maps.example.com/?q=grill"
+                  items={openingHours}
+                  layout="columns"
+                  surface="card"
+                  align="start"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hourssimple, ui.blocks.variants.hourssimple.columnsCard))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="hourssimple-stack-label"
+              data-testid="variant"
+              data-block="hourssimple"
+              data-variant="stack"
+            >
+              <Title as={3} size="base" weight="bold" id="hourssimple-stack-label" data-testid="variant-label">
+                {ui.blocks.variants.hourssimple.stack}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <HoursSimple
+                  id="hourssimple-stack"
+                  title={ui.marketing.hoursSimple.title}
+                  description={ui.marketing.hoursSimple.description}
+                  address={ui.marketing.hoursSimple.address}
+                  phone={ui.marketing.hoursSimple.phone}
+                  phoneHref="tel:+74951234567"
+                  mapLabel={ui.marketing.hoursSimple.map}
+                  mapHref="https://maps.example.com/?q=grill"
+                  items={openingHours}
+                  layout="stack"
+                  surface="plain"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hourssimple, ui.blocks.variants.hourssimple.stack))}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="hourssimple-stackCard-label"
+              data-testid="variant"
+              data-block="hourssimple"
+              data-variant="stackCard"
+            >
+              <Title as={3} size="base" weight="bold" id="hourssimple-stackCard-label" data-testid="variant-label">
+                {ui.blocks.variants.hourssimple.stackCard}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <HoursSimple
+                  id="hourssimple-stackCard"
+                  title={ui.marketing.hoursSimple.title}
+                  description={ui.marketing.hoursSimple.description}
+                  address={ui.marketing.hoursSimple.address}
+                  phone={ui.marketing.hoursSimple.phone}
+                  phoneHref="tel:+74951234567"
+                  mapLabel={ui.marketing.hoursSimple.map}
+                  mapHref="https://maps.example.com/?q=grill"
+                  items={openingHours}
+                  layout="stack"
+                  surface="card"
+                  level={2}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hourssimple, ui.blocks.variants.hourssimple.stackCard))}
                 />
               </Box>
             </Stack>

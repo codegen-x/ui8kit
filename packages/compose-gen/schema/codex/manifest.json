@@ -153,7 +153,7 @@
         "id": "day",
         "label": "Day",
         "scope": "workspace",
-        "description": "fixtures: days",
+        "description": "fixtures: days, simplehours",
         "fields": [
           {
             "id": "closed",
@@ -163,14 +163,12 @@
               "id": "item",
               "label": "Item",
               "type": "string"
-            },
-            "required": true
+            }
           },
           {
             "id": "note",
             "label": "Note",
-            "type": "string",
-            "required": true
+            "type": "string"
           },
           {
             "id": "slots",
@@ -180,8 +178,12 @@
               "id": "item",
               "label": "Item",
               "type": "string"
-            },
-            "required": true
+            }
+          },
+          {
+            "id": "time",
+            "label": "Time",
+            "type": "string"
           }
         ]
       }

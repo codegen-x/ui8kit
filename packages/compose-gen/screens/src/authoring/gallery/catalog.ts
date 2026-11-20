@@ -49,7 +49,7 @@ const SECTIONS = [
     cat("marketing-simple-story", "Simple blocks: long reads", ...all("articlelead", "articlesimple", "figuresimple", "pullquotesimple", "chapterssimple", "topicssimple")),
     cat("marketing-simple-offer", "Simple blocks: showcase, pricing and contacts", ...all("featureshowcasesimple", "ratingsimple", "pricingsimple", "offerssimple", "contactssimple", "locationssimple")),
     cat("marketing-simple-shop", "Simple blocks: shop", ...all("productssimple", "productsimple", "collectionssimple", "choicelinks", "purchasesimple")),
-    cat("marketing-simple-venue", "Simple blocks: venues, offers and services", ...all("menusimple", "ctasimple", "promosimple")),
+    cat("marketing-simple-venue", "Simple blocks: venues, offers and services", ...all("menusimple", "ctasimple", "promosimple", "hourssimple")),
     cat("marketing-simple-details", "Simple blocks: product details and courses", ...all("specssimple", "comparesimple", "productreviews", "storepolicies", "courseoutline")),
     cat("marketing-about", "About", ...all("about", "aboutme")),
     cat("marketing-portfolio", "Portfolio", ...all("projects")),

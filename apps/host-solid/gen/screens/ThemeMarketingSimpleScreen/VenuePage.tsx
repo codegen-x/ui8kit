@@ -4,16 +4,19 @@
 import {
   CtaSimple,
   HeroSimple,
+  HoursSimple,
   MenuSimple,
   PromoSimple,
   tpl,
   uniqLabel,
   type MenuDish,
+  type OpeningHour,
 } from "@codegen-x/solid-compose";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { simplemenu as menuDishesEntries } from "@ui8kit/app-shared/data/simplemenu";
+import { simplehours as openingHoursEntries } from "@ui8kit/app-shared/data/simplehours";
 
 const MENUDISHES_FIELDS = {
   "id": "id",
@@ -24,8 +27,10 @@ const MENUDISHES_FIELDS = {
   "description": "metadata.summary.value",
   "badge": "metadata.badge.value",
 } as const;
+const OPENINGHOURS_FIELDS = {"id":"id","day":"title","time":"metadata.time.value"} as const;
 
 const menuDishes = fromCodex<MenuDish>(menuDishesEntries, MENUDISHES_FIELDS, CODEX);
+const openingHours = fromCodex<OpeningHour>(openingHoursEntries, OPENINGHOURS_FIELDS, CODEX);
 
 export function VenuePage() {
   return (
@@ -79,6 +84,21 @@ export function VenuePage() {
         imageAlt={ui.marketing.promoSimple.imageAlt}
         media="end"
         landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.promosimple, ui.blocks.variants.promosimple.mediaEnd))}
+      />
+      <HoursSimple
+        id="venue-hourssimple"
+        title={ui.marketing.hoursSimple.title}
+        description={ui.marketing.hoursSimple.description}
+        address={ui.marketing.hoursSimple.address}
+        phone={ui.marketing.hoursSimple.phone}
+        phoneHref="tel:+74951234567"
+        mapLabel={ui.marketing.hoursSimple.map}
+        mapHref="https://maps.example.com/?q=grill"
+        items={openingHours}
+        layout="columns"
+        surface="plain"
+        align="start"
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hourssimple, ui.blocks.variants.hourssimple.columns))}
       />
     </>
   );

@@ -1,0 +1,728 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.hours-simple",
+  "name": "HoursSimple",
+  "docs": "The simple opening hours (model hours@1): the heading, a description, the address, the phone as a link, an optional map link and the opening hours as a list (the day or the days and the time per row). Axes: layout (columns: the address and the links at the start, the hours at the end from md up; stack: one narrow column, placed by the align setting), surface (plain, card: the address and the hours each on a card).",
+  "records": {
+    "OpeningHour": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "day",
+        "type": "string"
+      },
+      {
+        "name": "time",
+        "type": "string"
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "docs": "one paragraph under the heading; empty: none"
+    },
+    {
+      "name": "address",
+      "type": "string",
+      "required": true,
+      "docs": "the address as it is shown"
+    },
+    {
+      "name": "phone",
+      "type": "string",
+      "required": true,
+      "docs": "the phone number as it is shown"
+    },
+    {
+      "name": "phoneHref",
+      "type": "string",
+      "required": true,
+      "docs": "the address of the phone link (tel:)"
+    },
+    {
+      "name": "mapLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the map link; the link is drawn when the label and the address are both set"
+    },
+    {
+      "name": "mapHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the map"
+    },
+    {
+      "name": "items",
+      "type": {
+        "ts": "OpeningHour[]"
+      },
+      "required": true,
+      "docs": "the opening hours, a row per day or per days (1 to 7)"
+    },
+    {
+      "name": "level",
+      "type": {
+        "ts": "1 | 2 | 3"
+      },
+      "default": 2,
+      "docs": "the level of the heading (1 on the first section of a page)"
+    },
+    {
+      "name": "padding",
+      "type": {
+        "ts": "\"compact\" | \"standard\" | \"spacious\""
+      },
+      "default": "standard",
+      "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
+    },
+    {
+      "name": "align",
+      "type": {
+        "ts": "\"start\" | \"center\" | \"end\""
+      },
+      "default": "center",
+      "docs": "the alignment of the copy: start, center or end (logical, follows the writing direction): items-* on the column, text-* on the text"
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"columns\" | \"stack\""
+      },
+      "default": "columns"
+    },
+    {
+      "name": "surface",
+      "type": {
+        "ts": "\"plain\" | \"card\""
+      },
+      "default": "plain"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "titleId",
+      "value": {
+        "op": "add",
+        "args": [
+          {
+            "$": "id"
+          },
+          "-title"
+        ]
+      }
+    },
+    {
+      "name": "column",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "end",
+              "start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "textAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "text-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "text-end",
+              "text-start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "itemsAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "items-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "items-end",
+              "items-start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "selfAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "self-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "self-end",
+              ""
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "frame",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "and",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "stack"
+                ]
+              },
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "center"
+                ]
+              }
+            ]
+          },
+          "flex w-full max-w-md flex-col gap-8 self-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "and",
+                "args": [
+                  {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "stack"
+                    ]
+                  },
+                  {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "align"
+                      },
+                      "end"
+                    ]
+                  }
+                ]
+              },
+              "flex w-full max-w-md flex-col gap-8 self-end",
+              {
+                "op": "cond",
+                "args": [
+                  {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "stack"
+                    ]
+                  },
+                  "flex w-full max-w-md flex-col gap-8",
+                  "grid grid-cols-1 gap-8 md:grid-cols-2"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "panel",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "surface"
+              },
+              "card"
+            ]
+          },
+          "rounded bg-card p-6 text-card-foreground border border-border",
+          ""
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "section",
+        "Class": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "padding"
+                },
+                "compact"
+              ]
+            },
+            "py-8 lg:py-16",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "padding"
+                    },
+                    "spacious"
+                  ]
+                },
+                "py-24 lg:py-40",
+                "py-16 lg:py-32"
+              ]
+            }
+          ]
+        }
+      },
+      "attrs": {
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "hours-simple"
+      },
+      "children": [
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "children": [
+            {
+              "use": "Stack",
+              "props": {
+                "Gap": "12",
+                "Align": "stretch"
+              },
+              "children": [
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "4",
+                    "Align": {
+                      "$": "column"
+                    },
+                    "Class": {
+                      "op": "cn",
+                      "args": [
+                        "max-w-2xl",
+                        {
+                          "$": "selfAlign"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "use": "Title",
+                      "props": {
+                        "As": {
+                          "$": "level"
+                        },
+                        "Size": "3xl",
+                        "Weight": "bold",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "tracking-tight",
+                            {
+                              "$": "textAlign"
+                            }
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "id": {
+                          "$": "titleId"
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "title"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "$": "description"
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "base",
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "text-muted-foreground",
+                                {
+                                  "$": "textAlign"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "description"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "Box",
+                  "props": {
+                    "Class": {
+                      "$": "frame"
+                    }
+                  },
+                  "children": [
+                    {
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "4",
+                        "Align": {
+                          "$": "column"
+                        },
+                        "Class": {
+                          "$": "panel"
+                        }
+                      },
+                      "children": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "lg",
+                            "Weight": "semibold",
+                            "Class": {
+                              "$": "textAlign"
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "address"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "LinkPlain",
+                          "props": {
+                            "Href": {
+                              "$": "phoneHref"
+                            },
+                            "Class": "hover:text-primary"
+                          },
+                          "children": [
+                            {
+                              "use": "Text",
+                              "props": {
+                                "Size": "lg",
+                                "Class": {
+                                  "$": "textAlign"
+                                }
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "phone"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "when": {
+                            "op": "and",
+                            "args": [
+                              {
+                                "$": "mapLabel"
+                              },
+                              {
+                                "$": "mapHref"
+                              }
+                            ]
+                          },
+                          "then": [
+                            {
+                              "use": "LinkPlain",
+                              "props": {
+                                "Href": {
+                                  "$": "mapHref"
+                                },
+                                "Class": "hover:text-primary"
+                              },
+                              "children": [
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Class": {
+                                      "op": "cn",
+                                      "args": [
+                                        "text-primary",
+                                        {
+                                          "$": "textAlign"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "mapLabel"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "List",
+                      "props": {
+                        "Tag": "ul",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "m-0 w-full list-none p-0",
+                            {
+                              "op": "cn",
+                              "args": [
+                                "flex flex-col gap-2",
+                                {
+                                  "$": "panel"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "items"
+                          },
+                          "as": "h",
+                          "key": {
+                            "$": "h.id"
+                          },
+                          "do": [
+                            {
+                              "use": "ListItem",
+                              "props": {
+                                "Class": "flex flex-row justify-between gap-4"
+                              },
+                              "attrs": {
+                                "data-slot": "opening-hour"
+                              },
+                              "children": [
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "base",
+                                    "Class": "text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "h.day"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "base",
+                                    "Weight": "semibold"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "h.time"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}
