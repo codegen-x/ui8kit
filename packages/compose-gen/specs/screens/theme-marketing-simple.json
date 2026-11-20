@@ -4,7 +4,7 @@
   "id": "screen.theme-marketing-simple",
   "name": "ThemeMarketingSimpleScreen",
   "kind": "composed",
-  "docs": "The simple line: blocks with one content model each (hero@1, split@1, team@1, intro@1, gallery@1, features@1, stats@1, stories@1, photos@1, testimonials@1, logos@1, faq@1, steps@1), the same content in every variant. A home page with the hero, the features, the team, the stats, the steps, the quotes and the questions, and a team page with the wide hero, the team on cards, the gallery, the photos and the stories.",
+  "docs": "The simple line: blocks with one content model each (hero@1, split@1, team@1, intro@1, gallery@1, features@1, stats@1, stories@1, photos@1, testimonials@1, logos@1, faq@1, steps@1), the same content in every variant. A home page with the hero, the features, the team, the stats, the steps, the quotes and the questions, and a team page with the wide hero, the team on cards, the gallery, the photos and the stories; a blog page (the article lead, the article, a figure, a pull quote, chapters, topics), a shop page (collections, products, one product, choices, specs, compare, purchase, reviews, store policies), a pricing page (the showcase, the rating, pricing, offers, a course outline, contacts, locations) and an about page (the header, an event and a profile intro, the team list, the error block, the footer).",
   "routes": [
     {
       "path": "",
@@ -13,6 +13,22 @@
     {
       "path": "team",
       "area": "team"
+    },
+    {
+      "path": "blog",
+      "area": "blog"
+    },
+    {
+      "path": "shop",
+      "area": "shop"
+    },
+    {
+      "path": "pricing",
+      "area": "pricing"
+    },
+    {
+      "path": "about",
+      "area": "about"
     }
   ],
   "frame": {
@@ -129,7 +145,7 @@
           "actionLabel": {
             "$": "ui.pages.marketingSimple.team.cta"
           },
-          "actionHref": "#/"
+          "actionHref": "#/blog"
         }
       },
       {
@@ -156,6 +172,198 @@
         "block": "teamsimple",
         "variant": "cols4"
       }
+    ],
+    "blog": [
+      {
+        "block": "herosimple",
+        "variant": "mediaEnd",
+        "props": {
+          "level": 1,
+          "title": {
+            "$": "ui.pages.marketingSimple.blog.title"
+          },
+          "description": {
+            "$": "ui.pages.marketingSimple.blog.text"
+          },
+          "actionLabel": {
+            "$": "ui.pages.marketingSimple.blog.cta"
+          },
+          "actionHref": "#/shop"
+        }
+      },
+      {
+        "block": "articlelead",
+        "variant": "mediaTop"
+      },
+      {
+        "block": "articlesimple",
+        "variant": "column"
+      },
+      {
+        "block": "figuresimple",
+        "variant": "wide"
+      },
+      {
+        "block": "pullquotesimple",
+        "variant": "standalone"
+      },
+      {
+        "block": "chapterssimple",
+        "variant": "illustratedRows"
+      },
+      {
+        "block": "topicssimple",
+        "variant": "cards3"
+      },
+      {
+        "block": "teamsimple",
+        "variant": "bylineCols3"
+      }
+    ],
+    "shop": [
+      {
+        "block": "herosimple",
+        "variant": "mediaStart",
+        "props": {
+          "level": 1,
+          "title": {
+            "$": "ui.pages.marketingSimple.shop.title"
+          },
+          "description": {
+            "$": "ui.pages.marketingSimple.shop.text"
+          },
+          "actionLabel": {
+            "$": "ui.pages.marketingSimple.shop.cta"
+          },
+          "actionHref": "#/pricing"
+        }
+      },
+      {
+        "block": "collectionssimple",
+        "variant": "cards4"
+      },
+      {
+        "block": "productssimple",
+        "variant": "cards3"
+      },
+      {
+        "block": "productsimple",
+        "variant": "mediaStart"
+      },
+      {
+        "block": "choicelinks",
+        "variant": "row"
+      },
+      {
+        "block": "specssimple",
+        "variant": "keyValue"
+      },
+      {
+        "block": "comparesimple",
+        "variant": "twoProducts"
+      },
+      {
+        "block": "purchasesimple",
+        "variant": "panel"
+      },
+      {
+        "block": "productreviews",
+        "variant": "cards3"
+      },
+      {
+        "block": "storepolicies",
+        "variant": "cols3"
+      }
+    ],
+    "pricing": [
+      {
+        "block": "herosimple",
+        "variant": "mediaTop",
+        "props": {
+          "level": 1,
+          "title": {
+            "$": "ui.pages.marketingSimple.pricing.title"
+          },
+          "description": {
+            "$": "ui.pages.marketingSimple.pricing.text"
+          },
+          "actionLabel": {
+            "$": "ui.pages.marketingSimple.pricing.cta"
+          },
+          "actionHref": "#/about"
+        }
+      },
+      {
+        "block": "featureshowcasesimple",
+        "variant": "mediaEnd"
+      },
+      {
+        "block": "ratingsimple",
+        "variant": "inline"
+      },
+      {
+        "block": "pricingsimple",
+        "variant": "cards3"
+      },
+      {
+        "block": "offerssimple",
+        "variant": "duo"
+      },
+      {
+        "block": "courseoutline",
+        "variant": "moduleRows"
+      },
+      {
+        "block": "contactssimple",
+        "variant": "cards3"
+      },
+      {
+        "block": "locationssimple",
+        "variant": "mediaStart"
+      }
+    ],
+    "about": [
+      {
+        "block": "herosimple",
+        "variant": "mediaBottom",
+        "props": {
+          "level": 1,
+          "title": {
+            "$": "ui.pages.marketingSimple.about.title"
+          },
+          "description": {
+            "$": "ui.pages.marketingSimple.about.text"
+          },
+          "actionLabel": {
+            "$": "ui.pages.marketingSimple.about.cta"
+          },
+          "actionHref": "#/"
+        }
+      },
+      {
+        "block": "headersimple",
+        "variant": "inline"
+      },
+      {
+        "block": "eventintro",
+        "variant": "center"
+      },
+      {
+        "block": "profileintro",
+        "variant": "portraitEnd"
+      },
+      {
+        "block": "teamsimple",
+        "variant": "sideList"
+      },
+      {
+        "block": "errorsimple",
+        "variant": "center"
+      },
+      {
+        "block": "footersimple",
+        "variant": "brandLinks"
+      }
     ]
   },
   "chunks": true,
@@ -172,6 +380,26 @@
       "id": "team",
       "path": "team",
       "titleKey": "pages.marketingSimple.team.nav"
+    },
+    {
+      "id": "blog",
+      "path": "blog",
+      "titleKey": "pages.marketingSimple.blog.nav"
+    },
+    {
+      "id": "shop",
+      "path": "shop",
+      "titleKey": "pages.marketingSimple.shop.nav"
+    },
+    {
+      "id": "pricing",
+      "path": "pricing",
+      "titleKey": "pages.marketingSimple.pricing.nav"
+    },
+    {
+      "id": "about",
+      "path": "about",
+      "titleKey": "pages.marketingSimple.about.nav"
     }
   ],
   "portable": {

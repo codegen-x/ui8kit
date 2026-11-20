@@ -1,0 +1,75 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.figuresimple",
+  "name": "Simple figure",
+  "docs": "One large picture with its caption (a title, a line, the credit): wide with the caption under it, or the caption at the side.",
+  "theme": "marketing",
+  "group": "story",
+  "organism": "FigureSimple",
+  "line": "simple",
+  "model": "figure@1",
+  "axes": {
+    "layout": [
+      "wide",
+      "end",
+      "start"
+    ]
+  },
+  "defaults": {
+    "layout": "wide"
+  },
+  "variants": [
+    {
+      "id": "wide",
+      "set": {}
+    },
+    {
+      "id": "captionEnd",
+      "set": {
+        "layout": "end"
+      }
+    },
+    {
+      "id": "captionStart",
+      "set": {
+        "layout": "start"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section figure",
+      "n": 1
+    },
+    {
+      "sel": "figure h2",
+      "n": 0
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 1
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "figuresimple",
+      "imageAlt": {
+        "$": "ui.marketing.figureSimple.imageAlt"
+      },
+      "title": {
+        "$": "ui.marketing.figureSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.figureSimple.description"
+      },
+      "credit": {
+        "$": "ui.marketing.figureSimple.credit"
+      }
+    }
+  }
+}

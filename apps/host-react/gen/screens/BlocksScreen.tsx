@@ -9,57 +9,84 @@ import { IndexPage } from "./BlocksScreen/IndexPage";
 import { AboutPage } from "./BlocksScreen/AboutPage";
 import { AboutmePage } from "./BlocksScreen/AboutmePage";
 import { AccordionPage } from "./BlocksScreen/AccordionPage";
+import { ArticleleadPage } from "./BlocksScreen/ArticleleadPage";
+import { ArticlesimplePage } from "./BlocksScreen/ArticlesimplePage";
 import { BeforeafterPage } from "./BlocksScreen/BeforeafterPage";
 import { BentoPage } from "./BlocksScreen/BentoPage";
+import { ChapterssimplePage } from "./BlocksScreen/ChapterssimplePage";
+import { ChoicelinksPage } from "./BlocksScreen/ChoicelinksPage";
+import { CollectionssimplePage } from "./BlocksScreen/CollectionssimplePage";
 import { ComparePage } from "./BlocksScreen/ComparePage";
+import { ComparesimplePage } from "./BlocksScreen/ComparesimplePage";
+import { ContactssimplePage } from "./BlocksScreen/ContactssimplePage";
+import { CourseoutlinePage } from "./BlocksScreen/CourseoutlinePage";
 import { CreditsPage } from "./BlocksScreen/CreditsPage";
 import { CtaPage } from "./BlocksScreen/CtaPage";
 import { CtaproofPage } from "./BlocksScreen/CtaproofPage";
+import { ErrorsimplePage } from "./BlocksScreen/ErrorsimplePage";
+import { EventintroPage } from "./BlocksScreen/EventintroPage";
 import { FaqPage } from "./BlocksScreen/FaqPage";
 import { FaqsimplePage } from "./BlocksScreen/FaqsimplePage";
 import { FaqsplitPage } from "./BlocksScreen/FaqsplitPage";
 import { FeaturesPage } from "./BlocksScreen/FeaturesPage";
 import { FeatureshowcasePage } from "./BlocksScreen/FeatureshowcasePage";
+import { FeatureshowcasesimplePage } from "./BlocksScreen/FeatureshowcasesimplePage";
 import { FeaturesplitPage } from "./BlocksScreen/FeaturesplitPage";
 import { FeaturessimplePage } from "./BlocksScreen/FeaturessimplePage";
 import { FeaturetabsPage } from "./BlocksScreen/FeaturetabsPage";
+import { FiguresimplePage } from "./BlocksScreen/FiguresimplePage";
 import { FooterPage } from "./BlocksScreen/FooterPage";
+import { FootersimplePage } from "./BlocksScreen/FootersimplePage";
 import { FootersplitPage } from "./BlocksScreen/FootersplitPage";
 import { GalleryheroPage } from "./BlocksScreen/GalleryheroPage";
 import { HeaderPage } from "./BlocksScreen/HeaderPage";
+import { HeadersimplePage } from "./BlocksScreen/HeadersimplePage";
 import { HeroPage } from "./BlocksScreen/HeroPage";
 import { HerosimplePage } from "./BlocksScreen/HerosimplePage";
 import { HerosplitPage } from "./BlocksScreen/HerosplitPage";
 import { IconwallPage } from "./BlocksScreen/IconwallPage";
 import { IntrosimplePage } from "./BlocksScreen/IntrosimplePage";
 import { JobsPage } from "./BlocksScreen/JobsPage";
+import { LocationssimplePage } from "./BlocksScreen/LocationssimplePage";
 import { LogosPage } from "./BlocksScreen/LogosPage";
 import { LogossimplePage } from "./BlocksScreen/LogossimplePage";
 import { MedialistPage } from "./BlocksScreen/MedialistPage";
 import { MegamenuPage } from "./BlocksScreen/MegamenuPage";
 import { NavbarPage } from "./BlocksScreen/NavbarPage";
+import { OfferssimplePage } from "./BlocksScreen/OfferssimplePage";
 import { PageheadPage } from "./BlocksScreen/PageheadPage";
 import { PagetrailPage } from "./BlocksScreen/PagetrailPage";
 import { PhotosPage } from "./BlocksScreen/PhotosPage";
 import { PhotossimplePage } from "./BlocksScreen/PhotossimplePage";
 import { PlanPage } from "./BlocksScreen/PlanPage";
 import { PricingPage } from "./BlocksScreen/PricingPage";
+import { PricingsimplePage } from "./BlocksScreen/PricingsimplePage";
+import { ProductreviewsPage } from "./BlocksScreen/ProductreviewsPage";
+import { ProductsimplePage } from "./BlocksScreen/ProductsimplePage";
+import { ProductssimplePage } from "./BlocksScreen/ProductssimplePage";
+import { ProfileintroPage } from "./BlocksScreen/ProfileintroPage";
 import { ProjectsPage } from "./BlocksScreen/ProjectsPage";
 import { ProofPage } from "./BlocksScreen/ProofPage";
+import { PullquotesimplePage } from "./BlocksScreen/PullquotesimplePage";
+import { PurchasesimplePage } from "./BlocksScreen/PurchasesimplePage";
 import { QuotesplitPage } from "./BlocksScreen/QuotesplitPage";
+import { RatingsimplePage } from "./BlocksScreen/RatingsimplePage";
 import { SitemapPage } from "./BlocksScreen/SitemapPage";
+import { SpecssimplePage } from "./BlocksScreen/SpecssimplePage";
 import { SplitsimplePage } from "./BlocksScreen/SplitsimplePage";
 import { StatsPage } from "./BlocksScreen/StatsPage";
 import { StatssimplePage } from "./BlocksScreen/StatssimplePage";
 import { StepsPage } from "./BlocksScreen/StepsPage";
 import { StepssimplePage } from "./BlocksScreen/StepssimplePage";
 import { StickyPage } from "./BlocksScreen/StickyPage";
+import { StorepoliciesPage } from "./BlocksScreen/StorepoliciesPage";
 import { StoriessimplePage } from "./BlocksScreen/StoriessimplePage";
 import { TeamPage } from "./BlocksScreen/TeamPage";
 import { TeamsimplePage } from "./BlocksScreen/TeamsimplePage";
 import { TemplatesPage } from "./BlocksScreen/TemplatesPage";
 import { TestimonialsPage } from "./BlocksScreen/TestimonialsPage";
 import { TestimonialssimplePage } from "./BlocksScreen/TestimonialssimplePage";
+import { TopicssimplePage } from "./BlocksScreen/TopicssimplePage";
 import { UsagePage } from "./BlocksScreen/UsagePage";
 import { VideosPage } from "./BlocksScreen/VideosPage";
 import { CartPage } from "./BlocksScreen/CartPage";
@@ -141,57 +168,84 @@ const ROUTES = [
   {"path":"about","area":"about"},
   {"path":"aboutme","area":"aboutme"},
   {"path":"accordion","area":"accordion"},
+  {"path":"articlelead","area":"articlelead"},
+  {"path":"articlesimple","area":"articlesimple"},
   {"path":"beforeafter","area":"beforeafter"},
   {"path":"bento","area":"bento"},
+  {"path":"chapterssimple","area":"chapterssimple"},
+  {"path":"choicelinks","area":"choicelinks"},
+  {"path":"collectionssimple","area":"collectionssimple"},
   {"path":"compare","area":"compare"},
+  {"path":"comparesimple","area":"comparesimple"},
+  {"path":"contactssimple","area":"contactssimple"},
+  {"path":"courseoutline","area":"courseoutline"},
   {"path":"credits","area":"credits"},
   {"path":"cta","area":"cta"},
   {"path":"ctaproof","area":"ctaproof"},
+  {"path":"errorsimple","area":"errorsimple"},
+  {"path":"eventintro","area":"eventintro"},
   {"path":"faq","area":"faq"},
   {"path":"faqsimple","area":"faqsimple"},
   {"path":"faqsplit","area":"faqsplit"},
   {"path":"features","area":"features"},
   {"path":"featureshowcase","area":"featureshowcase"},
+  {"path":"featureshowcasesimple","area":"featureshowcasesimple"},
   {"path":"featuresplit","area":"featuresplit"},
   {"path":"featuressimple","area":"featuressimple"},
   {"path":"featuretabs","area":"featuretabs"},
+  {"path":"figuresimple","area":"figuresimple"},
   {"path":"footer","area":"footer"},
+  {"path":"footersimple","area":"footersimple"},
   {"path":"footersplit","area":"footersplit"},
   {"path":"galleryhero","area":"galleryhero"},
   {"path":"header","area":"header"},
+  {"path":"headersimple","area":"headersimple"},
   {"path":"hero","area":"hero"},
   {"path":"herosimple","area":"herosimple"},
   {"path":"herosplit","area":"herosplit"},
   {"path":"iconwall","area":"iconwall"},
   {"path":"introsimple","area":"introsimple"},
   {"path":"jobs","area":"jobs"},
+  {"path":"locationssimple","area":"locationssimple"},
   {"path":"logos","area":"logos"},
   {"path":"logossimple","area":"logossimple"},
   {"path":"medialist","area":"medialist"},
   {"path":"megamenu","area":"megamenu"},
   {"path":"navbar","area":"navbar"},
+  {"path":"offerssimple","area":"offerssimple"},
   {"path":"pagehead","area":"pagehead"},
   {"path":"pagetrail","area":"pagetrail"},
   {"path":"photos","area":"photos"},
   {"path":"photossimple","area":"photossimple"},
   {"path":"plan","area":"plan"},
   {"path":"pricing","area":"pricing"},
+  {"path":"pricingsimple","area":"pricingsimple"},
+  {"path":"productreviews","area":"productreviews"},
+  {"path":"productsimple","area":"productsimple"},
+  {"path":"productssimple","area":"productssimple"},
+  {"path":"profileintro","area":"profileintro"},
   {"path":"projects","area":"projects"},
   {"path":"proof","area":"proof"},
+  {"path":"pullquotesimple","area":"pullquotesimple"},
+  {"path":"purchasesimple","area":"purchasesimple"},
   {"path":"quotesplit","area":"quotesplit"},
+  {"path":"ratingsimple","area":"ratingsimple"},
   {"path":"sitemap","area":"sitemap"},
+  {"path":"specssimple","area":"specssimple"},
   {"path":"splitsimple","area":"splitsimple"},
   {"path":"stats","area":"stats"},
   {"path":"statssimple","area":"statssimple"},
   {"path":"steps","area":"steps"},
   {"path":"stepssimple","area":"stepssimple"},
   {"path":"sticky","area":"sticky"},
+  {"path":"storepolicies","area":"storepolicies"},
   {"path":"storiessimple","area":"storiessimple"},
   {"path":"team","area":"team"},
   {"path":"teamsimple","area":"teamsimple"},
   {"path":"templates","area":"templates"},
   {"path":"testimonials","area":"testimonials"},
   {"path":"testimonialssimple","area":"testimonialssimple"},
+  {"path":"topicssimple","area":"topicssimple"},
   {"path":"usage","area":"usage"},
   {"path":"videos","area":"videos"},
   {"path":"cart","area":"cart"},
@@ -281,18 +335,38 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <AboutmePage />
         ) : route.area === "accordion" ? (
           <AccordionPage />
+        ) : route.area === "articlelead" ? (
+          <ArticleleadPage />
+        ) : route.area === "articlesimple" ? (
+          <ArticlesimplePage />
         ) : route.area === "beforeafter" ? (
           <BeforeafterPage />
         ) : route.area === "bento" ? (
           <BentoPage />
+        ) : route.area === "chapterssimple" ? (
+          <ChapterssimplePage />
+        ) : route.area === "choicelinks" ? (
+          <ChoicelinksPage />
+        ) : route.area === "collectionssimple" ? (
+          <CollectionssimplePage />
         ) : route.area === "compare" ? (
           <ComparePage />
+        ) : route.area === "comparesimple" ? (
+          <ComparesimplePage />
+        ) : route.area === "contactssimple" ? (
+          <ContactssimplePage />
+        ) : route.area === "courseoutline" ? (
+          <CourseoutlinePage />
         ) : route.area === "credits" ? (
           <CreditsPage />
         ) : route.area === "cta" ? (
           <CtaPage />
         ) : route.area === "ctaproof" ? (
           <CtaproofPage />
+        ) : route.area === "errorsimple" ? (
+          <ErrorsimplePage />
+        ) : route.area === "eventintro" ? (
+          <EventintroPage />
         ) : route.area === "faq" ? (
           <FaqPage />
         ) : route.area === "faqsimple" ? (
@@ -303,20 +377,28 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <FeaturesPage />
         ) : route.area === "featureshowcase" ? (
           <FeatureshowcasePage />
+        ) : route.area === "featureshowcasesimple" ? (
+          <FeatureshowcasesimplePage />
         ) : route.area === "featuresplit" ? (
           <FeaturesplitPage />
         ) : route.area === "featuressimple" ? (
           <FeaturessimplePage />
         ) : route.area === "featuretabs" ? (
           <FeaturetabsPage />
+        ) : route.area === "figuresimple" ? (
+          <FiguresimplePage />
         ) : route.area === "footer" ? (
           <FooterPage />
+        ) : route.area === "footersimple" ? (
+          <FootersimplePage />
         ) : route.area === "footersplit" ? (
           <FootersplitPage />
         ) : route.area === "galleryhero" ? (
           <GalleryheroPage />
         ) : route.area === "header" ? (
           <HeaderPage />
+        ) : route.area === "headersimple" ? (
+          <HeadersimplePage />
         ) : route.area === "hero" ? (
           <HeroPage />
         ) : route.area === "herosimple" ? (
@@ -329,6 +411,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <IntrosimplePage />
         ) : route.area === "jobs" ? (
           <JobsPage />
+        ) : route.area === "locationssimple" ? (
+          <LocationssimplePage />
         ) : route.area === "logos" ? (
           <LogosPage />
         ) : route.area === "logossimple" ? (
@@ -339,6 +423,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <MegamenuPage />
         ) : route.area === "navbar" ? (
           <NavbarPage />
+        ) : route.area === "offerssimple" ? (
+          <OfferssimplePage />
         ) : route.area === "pagehead" ? (
           <PageheadPage />
         ) : route.area === "pagetrail" ? (
@@ -351,14 +437,32 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <PlanPage />
         ) : route.area === "pricing" ? (
           <PricingPage />
+        ) : route.area === "pricingsimple" ? (
+          <PricingsimplePage />
+        ) : route.area === "productreviews" ? (
+          <ProductreviewsPage />
+        ) : route.area === "productsimple" ? (
+          <ProductsimplePage />
+        ) : route.area === "productssimple" ? (
+          <ProductssimplePage />
+        ) : route.area === "profileintro" ? (
+          <ProfileintroPage />
         ) : route.area === "projects" ? (
           <ProjectsPage />
         ) : route.area === "proof" ? (
           <ProofPage />
+        ) : route.area === "pullquotesimple" ? (
+          <PullquotesimplePage />
+        ) : route.area === "purchasesimple" ? (
+          <PurchasesimplePage />
         ) : route.area === "quotesplit" ? (
           <QuotesplitPage />
+        ) : route.area === "ratingsimple" ? (
+          <RatingsimplePage />
         ) : route.area === "sitemap" ? (
           <SitemapPage />
+        ) : route.area === "specssimple" ? (
+          <SpecssimplePage />
         ) : route.area === "splitsimple" ? (
           <SplitsimplePage />
         ) : route.area === "stats" ? (
@@ -371,6 +475,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <StepssimplePage />
         ) : route.area === "sticky" ? (
           <StickyPage />
+        ) : route.area === "storepolicies" ? (
+          <StorepoliciesPage />
         ) : route.area === "storiessimple" ? (
           <StoriessimplePage />
         ) : route.area === "team" ? (
@@ -383,6 +489,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <TestimonialsPage />
         ) : route.area === "testimonialssimple" ? (
           <TestimonialssimplePage />
+        ) : route.area === "topicssimple" ? (
+          <TopicssimplePage />
         ) : route.area === "usage" ? (
           <UsagePage />
         ) : route.area === "videos" ? (

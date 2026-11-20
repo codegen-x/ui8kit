@@ -1,0 +1,97 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.profileintro",
+  "name": "Profile intro",
+  "docs": "A person: the name, the role, one paragraph and the links beside the portrait (at the end or the start), or under a round portrait.",
+  "theme": "marketing",
+  "group": "hero",
+  "organism": "ProfileIntro",
+  "line": "simple",
+  "model": "profile@1",
+  "axes": {
+    "media": [
+      "end",
+      "start",
+      "top"
+    ]
+  },
+  "defaults": {
+    "media": "end"
+  },
+  "variants": [
+    {
+      "id": "portraitEnd",
+      "set": {}
+    },
+    {
+      "id": "portraitStart",
+      "set": {
+        "media": "start"
+      }
+    },
+    {
+      "id": "portraitTop",
+      "set": {
+        "media": "top"
+      },
+      "props": {
+        "align": "center"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@profileLinks"
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 3
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 1
+    }
+  ],
+  "data": [
+    {
+      "as": "profileLinks",
+      "collection": "profilelinks",
+      "kind": "menu_item",
+      "record": "ProfileLink",
+      "fields": {
+        "id": "id",
+        "label": "title",
+        "href": "metadata.href.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "profileintro",
+      "title": {
+        "$": "ui.marketing.profileIntro.title"
+      },
+      "role": {
+        "$": "ui.marketing.profileIntro.role"
+      },
+      "description": {
+        "$": "ui.marketing.profileIntro.description"
+      },
+      "imageAlt": {
+        "$": "ui.marketing.profileIntro.imageAlt"
+      },
+      "links": {
+        "$": "profileLinks"
+      }
+    }
+  }
+}

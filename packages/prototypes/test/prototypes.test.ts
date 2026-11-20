@@ -52,15 +52,25 @@ const cases = blockCases(inputs, organisms).cases.filter((c) => organisms.has(c.
 const itemOf = (name: string) => simple.find((c) => c.organism === name)!.item;
 
 const SIMPLE: Array<[string, string]> = [
-  ["faq-simple", "faq@1"], ["features-simple", "features@1"], ["gallery-hero", "gallery@1"], ["hero-simple", "hero@1"], ["intro-simple", "intro@1"],
-  ["logos-simple", "logos@1"], ["photos-simple", "photos@1"], ["split-simple", "split@1"], ["stats-simple", "stats@1"], ["steps-simple", "steps@1"],
-  ["stories-simple", "stories@1"], ["team-simple", "team@1"], ["testimonials-simple", "testimonials@1"],
+  ["article-lead", "article-lead@1"], ["article-simple", "article@1"], ["chapters-simple", "chapters@1"], ["choice-links", "choices@1"],
+  ["collections-simple", "collections@1"], ["compare-simple", "compare@1"], ["contacts-simple", "contacts@1"], ["course-outline", "curriculum@1"],
+  ["error-simple", "error@1"], ["event-intro", "event@1"], ["faq-simple", "faq@1"], ["feature-showcase-simple", "feature-showcase@1"],
+  ["features-simple", "features@1"], ["figure-simple", "figure@1"], ["footer-simple", "footer@1"], ["gallery-hero", "gallery@1"],
+  ["header-simple", "header@1"], ["hero-simple", "hero@1"], ["intro-simple", "intro@1"], ["locations-simple", "locations@1"],
+  ["logos-simple", "logos@1"], ["offers-simple", "offers@1"], ["photos-simple", "photos@1"], ["pricing-simple", "pricing@1"],
+  ["product-reviews", "reviews@1"], ["product-simple", "product@1"], ["products-simple", "products@1"], ["profile-intro", "profile@1"],
+  ["pull-quote-simple", "pull-quote@1"], ["purchase-simple", "purchase@1"], ["rating-simple", "rating@1"], ["specs-simple", "specs@1"],
+  ["split-simple", "split@1"], ["stats-simple", "stats@1"], ["steps-simple", "steps@1"], ["store-policies", "store-policy@1"],
+  ["stories-simple", "stories@1"], ["team-simple", "team@1"], ["testimonials-simple", "testimonials@1"], ["topics-simple", "topics@1"],
 ];
+// the frame blocks without a heading of their own: the header and the footer (a brand and links), the figure and the pull quote
+// (their caption and their attribution are text, not a heading)
+const NO_HEADING = new Set(["figure-simple", "footer-simple", "header-simple", "pull-quote-simple"]);
 test("the simple line has its prototypes: one per block of the simple line, in item order", () => {
   expect(simple.map((c) => [c.item, c.model, c.defaultMode])).toEqual(SIMPLE.map(([item, model]) => [item, model, "wireframe"]));
-  // 48 variants with the align setting, each once more per non-default align value (compose-gen blockCases),
-  // and the 2 of the split (no align setting: its copy is fixed at the start)
-  expect(cases.length).toBe(48 * 3 + 2);
+  // 101 variants with the align setting, each once more per non-default align value (compose-gen blockCases),
+  // and the 17 without it (split, header, footer, figure, pull quote, rating, purchase)
+  expect(cases.length).toBe(101 * 3 + 17);
 });
 
 test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", () => {
@@ -129,7 +139,7 @@ describe("wireframe mode", () => {
     // no words: every place is a shape; the placeholder pictures are decorative
     expect(norm(html.replace(/<[^>]+>/g, " ")).trim()).toBe("");
     expect(html).not.toContain("aria-labelledby");
-    expect(html).toContain('data-shape="heading"');
+    if (!NO_HEADING.has(item)) expect(html).toContain('data-shape="heading"');
     // a list draws one member per column of the variant (the whole-number axis; cols2: 2, cols4: 4), else WIRE_ITEMS
     const contract = simple.find((x) => x.item === item)!;
     const members = wireItems(contract.axes, { ...contract.defaults, ...(c.props as Record<string, string>) });
@@ -175,7 +185,7 @@ test("the column count: the one whole-number axis, read from the axes only; wire
 });
 
 test("a prototype takes its layout axes and the padding and align settings (align where the block has it), no content", () => {
-  for (const c of simple) expect(built.organisms.find((o) => o.name === c.organism)!.props.map((p) => p.name).sort()).toEqual([...Object.keys(c.axes), "padding", ...(c.settings.align ? ["align"] : [])].sort());
+  for (const c of simple) expect(built.organisms.find((o) => o.name === c.organism)!.props.map((p) => p.name).sort()).toEqual([...Object.keys(c.axes), ...(c.settings.padding ? ["padding"] : []), ...(c.settings.align ? ["align"] : [])].sort());
 });
 
 describe("layout, padding and the action: the wireframe and the clean block", () => {
@@ -195,9 +205,11 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     }
   });
 
+  // the page frame: the footer sits compact by default, the header has a fixed slim band (no padding setting)
   test("contracts: padding is a setting (compact | standard | spacious, default standard), not a variant axis", () => {
-    for (const c of simple) {
-      expect(c.settings.padding).toEqual({ type: '"compact" | "standard" | "spacious"', default: "standard" });
+    expect(simple.filter((c) => !c.settings.padding).map((c) => c.item)).toEqual(["header-simple"]);
+    for (const c of simple.filter((x) => x.settings.padding)) {
+      expect(c.settings.padding).toEqual({ type: '"compact" | "standard" | "spacious"', default: c.item === "footer-simple" ? "compact" : "standard" });
       expect(Object.keys(c.axes)).not.toContain("padding");
     }
   });
@@ -207,9 +219,17 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
   const ALIGN_DEFAULT: Record<string, string> = {
     "hero-simple": "start", "team-simple": "center", "gallery-hero": "start", "faq-simple": "start", "intro-simple": "center", "features-simple": "center",
     "logos-simple": "center", "photos-simple": "center", "stats-simple": "center", "steps-simple": "center", "stories-simple": "center", "testimonials-simple": "center",
+    // wave 2: start for the copy beside a picture, the article and the course; center for the grids and the single centred messages
+    "article-lead": "start", "article-simple": "start", "chapters-simple": "center", "choice-links": "center", "collections-simple": "center",
+    "compare-simple": "center", "contacts-simple": "center", "course-outline": "start", "error-simple": "center", "event-intro": "center",
+    "feature-showcase-simple": "start", "locations-simple": "start", "offers-simple": "center", "pricing-simple": "center", "product-reviews": "center",
+    "product-simple": "start", "products-simple": "center", "profile-intro": "start", "specs-simple": "center", "store-policies": "center", "topics-simple": "center",
   };
+  // the fixed compositions without the align setting: the split, the header and footer, the figure, the pull quote, the rating, the purchase
+  const NO_ALIGN = ["figure-simple", "footer-simple", "header-simple", "pull-quote-simple", "purchase-simple", "rating-simple", "split-simple"];
   test("contracts: align is a setting (start | center | end; default start, team-simple center), not a variant axis", () => {
-    for (const c of simple.filter((x) => x.item !== "split-simple")) {
+    expect(simple.filter((c) => !c.settings.align).map((c) => c.item)).toEqual(NO_ALIGN);
+    for (const c of simple.filter((x) => !NO_ALIGN.includes(x.item))) {
       expect(c.settings.align).toEqual({ type: '"start" | "center" | "end"', default: ALIGN_DEFAULT[c.item] });
       expect(Object.keys(c.axes)).not.toContain("align");
     }
@@ -218,10 +238,15 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
   test("contracts: the variant default of align: center for the centred compositions (media on top or at the bottom), start for the summary rows", () => {
     const own = simple.flatMap((c) => c.variants.filter((v) => v.settings).map((v) => `${c.item}.${v.id} ${JSON.stringify(v.settings)}`));
     expect(own).toEqual([
+      'article-simple.column {"align":"start"}', 'article-simple.twoColumns {"align":"center"}', 'contacts-simple.rows {"align":"start"}',
+      'error-simple.start {"align":"start"}', 'event-intro.start {"align":"start"}', 'feature-showcase-simple.mediaTop {"align":"center"}',
       'features-simple.summaryRow {"align":"start"}', 'features-simple.summaryGrid {"align":"start"}', 'features-simple.checklist {"align":"start"}',
       'gallery-hero.photos3Bottom {"align":"center"}', 'gallery-hero.photos4Bottom {"align":"center"}',
       'hero-simple.mediaTop {"align":"center"}', 'hero-simple.mediaBottom {"align":"center"}',
-      'intro-simple.start {"align":"start"}', 'intro-simple.bottomStart {"align":"start"}', 'steps-simple.column {"align":"start"}',
+      'intro-simple.start {"align":"start"}', 'intro-simple.bottomStart {"align":"start"}', 'offers-simple.duoStart {"align":"start"}',
+      'pricing-simple.rows {"align":"start"}', 'products-simple.rows {"align":"start"}', 'profile-intro.portraitTop {"align":"center"}',
+      'steps-simple.column {"align":"start"}', 'store-policies.rows {"align":"start"}',
+      'team-simple.portraitRow {"align":"start"}', 'team-simple.bylineCols3 {"align":"start"}', 'team-simple.sideList {"align":"start"}',
     ]);
     // the feed grows by compositions only: align is never a variant of its own
     expect(simple.find((c) => c.item === "hero-simple")!.variants.map((v) => v.id)).toEqual(["mediaEnd", "mediaStart", "mediaTop", "mediaBottom", "mediaEndPortrait", "mediaStartPortrait"]);

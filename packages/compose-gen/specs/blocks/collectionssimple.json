@@ -1,0 +1,79 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.collectionssimple",
+  "name": "Simple collections",
+  "docs": "The heading, one paragraph and the collections (a picture and the name as one link) in four or two columns.",
+  "theme": "marketing",
+  "group": "catalog",
+  "organism": "CollectionsSimple",
+  "line": "simple",
+  "model": "collections@1",
+  "axes": {
+    "cols": [
+      "4",
+      "3",
+      "2"
+    ]
+  },
+  "defaults": {
+    "cols": "4"
+  },
+  "variants": [
+    {
+      "id": "cards4",
+      "set": {}
+    },
+    {
+      "id": "cards2",
+      "set": {
+        "cols": "2"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@collectionItems"
+    },
+    {
+      "sel": "ul > li a[href]",
+      "n": "@collectionItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "collectionItems",
+      "collection": "simplecollections",
+      "kind": "menu_item",
+      "record": "CollectionItem",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "title": "title",
+        "href": "metadata.href.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "collectionssimple",
+      "title": {
+        "$": "ui.marketing.collectionsSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.collectionsSimple.description"
+      },
+      "items": {
+        "$": "collectionItems"
+      }
+    }
+  }
+}

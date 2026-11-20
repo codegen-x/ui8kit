@@ -1,0 +1,84 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.locationssimple",
+  "name": "Simple locations",
+  "docs": "The heading, one paragraph and the offices (the name, the address) in two columns beside one picture, at the start or the end.",
+  "theme": "marketing",
+  "group": "contact",
+  "organism": "LocationsSimple",
+  "line": "simple",
+  "model": "locations@1",
+  "axes": {
+    "media": [
+      "start",
+      "end"
+    ]
+  },
+  "defaults": {
+    "media": "start"
+  },
+  "variants": [
+    {
+      "id": "mediaStart",
+      "set": {}
+    },
+    {
+      "id": "mediaEnd",
+      "set": {
+        "media": "end"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@locationItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@locationItems"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 1
+    }
+  ],
+  "data": [
+    {
+      "as": "locationItems",
+      "collection": "stores",
+      "kind": "store",
+      "record": "LocationItem",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "description": "metadata.address.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "locationssimple",
+      "title": {
+        "$": "ui.marketing.locationsSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.locationsSimple.description"
+      },
+      "imageAlt": {
+        "$": "ui.marketing.locationsSimple.imageAlt"
+      },
+      "items": {
+        "$": "locationItems"
+      }
+    }
+  }
+}

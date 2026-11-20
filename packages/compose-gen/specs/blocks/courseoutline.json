@@ -1,0 +1,81 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.courseoutline",
+  "name": "Course outline",
+  "docs": "The heading, one paragraph and the modules in order (a label, the title, a line, the length): rows in a narrow column, or two columns of cards.",
+  "theme": "marketing",
+  "group": "how-it-works",
+  "organism": "CourseOutline",
+  "line": "simple",
+  "model": "curriculum@1",
+  "axes": {
+    "layout": [
+      "rows",
+      "cards"
+    ]
+  },
+  "defaults": {
+    "layout": "rows"
+  },
+  "variants": [
+    {
+      "id": "moduleRows",
+      "set": {}
+    },
+    {
+      "id": "cards",
+      "set": {
+        "layout": "cards"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ol > li",
+      "n": "@courseModules"
+    },
+    {
+      "sel": "ol > li h3",
+      "n": "@courseModules"
+    },
+    {
+      "sel": "[data-slot=\"badge\"]",
+      "n": "@courseModules"
+    }
+  ],
+  "data": [
+    {
+      "as": "courseModules",
+      "collection": "simplemodules",
+      "kind": "module",
+      "record": "CourseModule",
+      "fields": {
+        "id": "id",
+        "label": "metadata.label.value",
+        "title": "title",
+        "description": "metadata.text.value",
+        "meta": "metadata.meta.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "courseoutline",
+      "title": {
+        "$": "ui.marketing.courseOutline.title"
+      },
+      "description": {
+        "$": "ui.marketing.courseOutline.description"
+      },
+      "modules": {
+        "$": "courseModules"
+      }
+    }
+  }
+}

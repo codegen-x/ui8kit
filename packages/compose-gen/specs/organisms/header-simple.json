@@ -1,0 +1,380 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.header-simple",
+  "name": "HeaderSimple",
+  "docs": "The simple header (model header@1): the brand as the link home, the navigation links as a list in a nav and one action. No menu button: the links wrap under the brand on a narrow screen. Axes: layout (inline: the links in the middle, end: the links beside the action, centered: the brand over the links).",
+  "records": {
+    "HeaderLink": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "name": "href",
+        "type": "string"
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "brand",
+      "type": "string",
+      "required": true,
+      "docs": "the name of the site (the link home)"
+    },
+    {
+      "name": "brandHref",
+      "type": "string",
+      "required": true,
+      "docs": "the address of the home page"
+    },
+    {
+      "name": "links",
+      "type": {
+        "ts": "HeaderLink[]"
+      },
+      "required": true,
+      "docs": "the navigation links, in the order they are shown (1 to 6)"
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the action; the link is drawn when the label and the address are both set"
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the action"
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"inline\" | \"end\" | \"centered\""
+      },
+      "default": "inline"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "frame",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "centered"
+            ]
+          },
+          "flex flex-col items-center gap-4",
+          "flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between"
+        ]
+      }
+    },
+    {
+      "name": "bar",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "inline"
+            ]
+          },
+          "md:grow md:justify-between",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "centered"
+                ]
+              },
+              "justify-center",
+              "md:justify-end"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "nav",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "inline"
+            ]
+          },
+          "md:grow",
+          ""
+        ]
+      }
+    },
+    {
+      "name": "linkRow",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "inline"
+            ]
+          },
+          "md:justify-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "centered"
+                ]
+              },
+              "justify-center",
+              ""
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "header",
+        "Class": "py-4"
+      },
+      "children": [
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "children": [
+            {
+              "use": "Box",
+              "props": {
+                "Class": {
+                  "$": "frame"
+                }
+              },
+              "children": [
+                {
+                  "use": "LinkPlain",
+                  "props": {
+                    "Href": {
+                      "$": "brandHref"
+                    },
+                    "Class": "text-foreground hover:text-primary"
+                  },
+                  "children": [
+                    {
+                      "use": "Text",
+                      "props": {
+                        "Size": "xl",
+                        "Weight": "bold"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "brand"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "Group",
+                  "props": {
+                    "Gap": "6",
+                    "Align": "center",
+                    "Class": {
+                      "op": "cn",
+                      "args": [
+                        "flex-wrap",
+                        {
+                          "$": "bar"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "use": "Box",
+                      "props": {
+                        "Class": {
+                          "$": "nav"
+                        }
+                      },
+                      "children": [
+                        {
+                          "use": "List",
+                          "props": {
+                            "Tag": "ul",
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "m-0 w-full list-none p-0",
+                                {
+                                  "op": "cn",
+                                  "args": [
+                                    "flex flex-wrap gap-6",
+                                    {
+                                      "$": "linkRow"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "each": {
+                                "$": "links"
+                              },
+                              "as": "l",
+                              "key": {
+                                "$": "l.id"
+                              },
+                              "do": [
+                                {
+                                  "use": "ListItem",
+                                  "attrs": {
+                                    "data-slot": "nav-link"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "LinkPlain",
+                                      "props": {
+                                        "Href": {
+                                          "$": "l.href"
+                                        },
+                                        "Class": "text-muted-foreground hover:text-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "sm"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "l.label"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "and",
+                        "args": [
+                          {
+                            "$": "actionLabel"
+                          },
+                          {
+                            "$": "actionHref"
+                          }
+                        ]
+                      },
+                      "then": [
+                        {
+                          "use": "LinkButton",
+                          "props": {
+                            "Variant": "default",
+                            "Size": "lg",
+                            "Href": {
+                              "$": "actionHref"
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "actionLabel"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "attrs": {
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "header-simple"
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

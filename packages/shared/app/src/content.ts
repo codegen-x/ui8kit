@@ -217,7 +217,34 @@ export const ui = {
       "testimonialssimple": "Simple testimonials",
       "logossimple": "Simple logos",
       "faqsimple": "Simple FAQ",
-      "stepssimple": "Simple steps"
+      "stepssimple": "Simple steps",
+      "featureshowcasesimple": "Simple feature showcase",
+      "headersimple": "Simple header",
+      "footersimple": "Simple footer",
+      "eventintro": "Event intro",
+      "profileintro": "Profile intro",
+      "ratingsimple": "Simple rating",
+      "errorsimple": "Simple error",
+      "figuresimple": "Simple figure",
+      "pullquotesimple": "Simple pull quote",
+      "articlesimple": "Simple article",
+      "articlelead": "Article lead",
+      "topicssimple": "Simple topics",
+      "chapterssimple": "Simple chapters",
+      "pricingsimple": "Simple pricing",
+      "contactssimple": "Simple contacts",
+      "locationssimple": "Simple locations",
+      "offerssimple": "Simple offers",
+      "productssimple": "Simple products",
+      "productsimple": "Simple product",
+      "collectionssimple": "Simple collections",
+      "specssimple": "Simple specs",
+      "comparesimple": "Simple compare",
+      "courseoutline": "Course outline",
+      "choicelinks": "Choice links",
+      "purchasesimple": "Simple purchase",
+      "storepolicies": "Store policies",
+      "productreviews": "Product reviews"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -343,7 +370,34 @@ export const ui = {
       "testimonialssimple": "The heading, one paragraph and the quotes as a list (the words, a portrait, the name and the role): on cards in two or three columns, in rows with the portrait at the side, or centred.",
       "logossimple": "A short heading over the logos as a list: a wrapping row or a grid of cards.",
       "faqsimple": "The heading, one paragraph and the questions with their answers as a list, each under a rule, in two columns or one.",
-      "stepssimple": "The heading, one paragraph and the steps as an ordered list (a label, a title, a line), in a row of three or four, or one under the other."
+      "stepssimple": "The heading, one paragraph and the steps as an ordered list (a label, a title, a line), in a row of three or four, or one under the other.",
+      "featureshowcasesimple": "The heading, one paragraph and the key points as a list beside one picture (at the end or the start), or the head over a wide picture with the points in three columns under it.",
+      "headersimple": "The brand as the link home, the navigation links and one action in a bar: the links in the middle, at the end beside the action, or centred under the brand. No menu button: the links wrap on a narrow screen.",
+      "footersimple": "The brand and one line beside the links (a row or a grid of columns), or everything centred; the copyright line under them.",
+      "eventintro": "The first screen of an event: a badge, the name as a large heading, one paragraph, the date and the place, and one action; centred or at the start.",
+      "profileintro": "A person: the name, the role, one paragraph and the links beside the portrait (at the end or the start), or under a round portrait.",
+      "ratingsimple": "The score, what it is and the source as a link: one bar on a card surface, or centred.",
+      "errorsimple": "A page for something that went wrong: the code, the heading, one paragraph and one action back; centred or at the start.",
+      "figuresimple": "One large picture with its caption (a title, a line, the credit): wide with the caption under it, or the caption at the side.",
+      "pullquotesimple": "The words of a quote in large type with the author, a role line and the source under them: a bar at the side, or centred.",
+      "articlesimple": "The heading, one paragraph and the sections of a text (a subheading and its paragraph): one reading column, or two columns under a centred head.",
+      "articlelead": "The head of an article: the heading, the lead paragraph and the byline (the portrait, the author, the date) under a wide cover, or beside it.",
+      "topicssimple": "The heading, one paragraph and the rubrics of a blog on cards (a label, the title as a link, a line): in two or three columns, or one under the other.",
+      "chapterssimple": "The heading, one paragraph and the chapters (a picture, a label, the title, a paragraph): rows with the picture at the side, or a pair with the picture under the copy.",
+      "pricingsimple": "The heading, one paragraph and the plans on cards (the name, a badge on the highlighted plan, a line, the price, an action): in three or two columns, or one row each.",
+      "contactssimple": "The heading, one paragraph and the teams to reach on cards (an icon, the name, a line, an action): in three or two columns, or rows with the icon at the side.",
+      "locationssimple": "The heading, one paragraph and the offices (the name, the address) in two columns beside one picture, at the start or the end.",
+      "offerssimple": "The heading, one paragraph and two or three offers on cards, each with a title, a line and an action.",
+      "productssimple": "The heading, one paragraph and the products (a picture, the name as a link, the price): in three or four columns, or rows with the picture at the side.",
+      "productsimple": "One product: the main picture and thumbnails beside the name, the price, one paragraph and the action; the pictures at the start, at the end or above.",
+      "collectionssimple": "The heading, one paragraph and the collections (a picture and the name as one link) in four or two columns.",
+      "specssimple": "The heading, one paragraph and the specifications as name and value rows on a muted surface, in one narrow column or two columns.",
+      "comparesimple": "The heading, one paragraph and two options side by side: their names in a header row, then a row per feature with the value of each.",
+      "courseoutline": "The heading, one paragraph and the modules in order (a label, the title, a line, the length): rows in a narrow column, or two columns of cards.",
+      "choicelinks": "The heading, one paragraph and the options (sizes, versions) as outline links: a wrapping row, or a grid of four.",
+      "purchasesimple": "On a card surface: the heading and one paragraph beside the price, the action and a note; or all centred.",
+      "storepolicies": "The heading, one paragraph and the policies (payment, delivery, returns), each with an icon, a title and a line: on cards in columns, or rows.",
+      "productreviews": "The heading, one paragraph and the reviews on cards (the rating, the words, the reviewer with the portrait): in three or two columns, or one under the other."
     },
     "variants": {
       "header": {
@@ -1110,7 +1164,10 @@ export const ui = {
         "cols3": "Three columns",
         "cols2": "Two columns",
         "cols4": "Four columns",
-        "cards3": "Three columns on cards"
+        "cards3": "Three columns on cards",
+        "portraitRow": "The heading beside large portraits",
+        "bylineCols3": "Small portraits beside the names, on cards",
+        "sideList": "A compact list in two columns"
       },
       "introsimple": {
         "center": "Centred",
@@ -1169,6 +1226,125 @@ export const ui = {
         "row4": "Four steps in a row",
         "row3": "Three columns",
         "column": "One under the other"
+      },
+      "featureshowcasesimple": {
+        "mediaEnd": "Picture at the end",
+        "mediaStart": "Picture at the start",
+        "mediaTop": "Picture above the points"
+      },
+      "headersimple": {
+        "inline": "Links in the middle",
+        "linksEnd": "Links at the end",
+        "centered": "Centred under the brand"
+      },
+      "footersimple": {
+        "brandLinks": "The brand beside a row of links",
+        "linkGrid": "Links in columns",
+        "centered": "Centred"
+      },
+      "eventintro": {
+        "center": "Centred",
+        "start": "At the start"
+      },
+      "profileintro": {
+        "portraitEnd": "Portrait at the end",
+        "portraitStart": "Portrait at the start",
+        "portraitTop": "Round portrait above"
+      },
+      "ratingsimple": {
+        "inline": "A bar",
+        "centered": "Centred"
+      },
+      "errorsimple": {
+        "center": "Centred",
+        "start": "At the start"
+      },
+      "figuresimple": {
+        "wide": "Wide, the caption under it",
+        "captionEnd": "The caption at the end",
+        "captionStart": "The caption at the start"
+      },
+      "pullquotesimple": {
+        "standalone": "A bar at the side",
+        "centered": "Centred"
+      },
+      "articlesimple": {
+        "column": "One reading column",
+        "twoColumns": "Two columns"
+      },
+      "articlelead": {
+        "mediaTop": "Cover above",
+        "mediaStart": "Cover at the start",
+        "mediaEnd": "Cover at the end"
+      },
+      "topicssimple": {
+        "cards3": "Three columns",
+        "cards2": "Two columns",
+        "rows": "One under the other"
+      },
+      "chapterssimple": {
+        "illustratedRows": "Rows with pictures",
+        "paired": "A pair"
+      },
+      "pricingsimple": {
+        "cards3": "Three plans on cards",
+        "cards2": "Two plans on cards",
+        "rows": "One row per plan"
+      },
+      "contactssimple": {
+        "cards3": "Three cards",
+        "cards2": "Two columns",
+        "rows": "Icons at the side"
+      },
+      "locationssimple": {
+        "mediaStart": "Picture at the start",
+        "mediaEnd": "Picture at the end"
+      },
+      "offerssimple": {
+        "duo": "Two offers",
+        "duoStart": "Two offers, the heading at the start"
+      },
+      "productssimple": {
+        "cards3": "Three columns",
+        "denseGrid": "Four columns, compact",
+        "rows": "Rows"
+      },
+      "productsimple": {
+        "mediaStart": "Pictures at the start",
+        "mediaEnd": "Pictures at the end",
+        "mediaTop": "Pictures above"
+      },
+      "collectionssimple": {
+        "cards4": "Four columns",
+        "cards2": "Two columns"
+      },
+      "specssimple": {
+        "keyValue": "Rows",
+        "twoColumns": "Two columns"
+      },
+      "comparesimple": {
+        "twoProducts": "Two options",
+        "narrow": "Two options, narrow"
+      },
+      "courseoutline": {
+        "moduleRows": "Rows",
+        "cards": "Two columns of cards"
+      },
+      "choicelinks": {
+        "row": "A row",
+        "grid": "A grid"
+      },
+      "purchasesimple": {
+        "panel": "A panel",
+        "centered": "Centred"
+      },
+      "storepolicies": {
+        "cols3": "Three cards",
+        "rows": "Icons at the side"
+      },
+      "productreviews": {
+        "cards3": "Three cards",
+        "rows": "One under the other"
       }
     },
     "landmark": "{0}, {1}",
@@ -1418,6 +1594,138 @@ export const ui = {
     "stepsSimple": {
       "title": "How it works",
       "description": "From the first block to a published page in four steps."
+    },
+    "featureShowcaseSimple": {
+      "title": "Everything a page needs, in one place",
+      "description": "Blocks, data and checks that work together from the first draft to the published site.",
+      "imageAlt": "The block editor with a page in progress"
+    },
+    "headerSimple": {
+      "brand": "Buildy",
+      "actionLabel": "Get started"
+    },
+    "footerSimple": {
+      "brand": "Buildy",
+      "description": "Simple blocks for fast, accessible sites.",
+      "copyright": "© 2026 Buildy. All rights reserved."
+    },
+    "eventIntro": {
+      "badge": "Conference",
+      "title": "Static Pages Summit 2026",
+      "description": "A day of talks and workshops on fast, accessible sites built from simple blocks.",
+      "date": "June 18, 2026, 10:00",
+      "place": "Lisbon and online",
+      "actionLabel": "Get a ticket"
+    },
+    "profileIntro": {
+      "title": "Ava Moreno",
+      "role": "Design lead at Buildy",
+      "description": "Ava shapes the block system and writes about layouts that read well on every screen.",
+      "imageAlt": "Portrait of Ava Moreno"
+    },
+    "ratingSimple": {
+      "title": "Rated by teams who ship every week",
+      "description": "Out of 5, from 1,240 reviews",
+      "sourceLabel": "Read the reviews"
+    },
+    "errorSimple": {
+      "title": "This page is not here",
+      "description": "The address may be mistyped, or the page has moved. Start again from the home page.",
+      "actionLabel": "Back to the home page"
+    },
+    "figureSimple": {
+      "imageAlt": "A wall of printed page layouts pinned in rows",
+      "title": "Every layout starts on paper",
+      "description": "The team pins each draft to the wall before a single block is built.",
+      "credit": "Photo: Mia Chen"
+    },
+    "pullQuoteSimple": {
+      "quote": "We stopped arguing about pixels and started shipping pages our readers could use.",
+      "title": "Leo Martins",
+      "description": "Head of content at Northwind",
+      "sourceLabel": "Read the interview"
+    },
+    "articleSimple": {
+      "title": "How we build pages from data",
+      "description": "A short guide to the way a page goes from a collection to the screen."
+    },
+    "articleLead": {
+      "title": "Why static-first pages still win",
+      "description": "Fast pages are easier to build, cheaper to run and kinder to every reader. Here is how we keep them simple.",
+      "imageAlt": "A laptop showing a fast page loading",
+      "author": "Ava Moreno",
+      "date": "March 12, 2026"
+    },
+    "topicsSimple": {
+      "title": "Browse by topic",
+      "description": "Pick a rubric and read the posts on it."
+    },
+    "chaptersSimple": {
+      "title": "The guide in three chapters",
+      "description": "Read it in order, or jump to the chapter you need."
+    },
+    "pricingSimple": {
+      "title": "Plans for every team",
+      "description": "Start free and upgrade when your site grows. Every plan includes the full block library."
+    },
+    "contactsSimple": {
+      "title": "Talk to the right team",
+      "description": "Pick who you need and we will answer within one working day."
+    },
+    "locationsSimple": {
+      "title": "Our offices",
+      "description": "Visit us in one of four cities, or book a call with the nearest team.",
+      "imageAlt": "A map with the four offices marked"
+    },
+    "offersSimple": {
+      "title": "Offers this month",
+      "description": "Two ways to start for less."
+    },
+    "productsSimple": {
+      "title": "New in the shop",
+      "description": "Desk gear we use every day, picked by the team."
+    },
+    "productSimple": {
+      "title": "Arc desk lamp",
+      "description": "A warm, dimmable light with a weighted base and a single touch control. Made to sit on a desk for years.",
+      "imageAlt": "The Arc desk lamp on an oak desk",
+      "actionLabel": "Add to cart"
+    },
+    "collectionsSimple": {
+      "title": "Shop by collection",
+      "description": "Start from a room or a habit, and find what fits."
+    },
+    "specsSimple": {
+      "title": "Specifications",
+      "description": "Everything that goes into the box."
+    },
+    "compareSimple": {
+      "title": "Compare the plans",
+      "description": "See what changes when your team grows.",
+      "firstLabel": "Starter",
+      "secondLabel": "Team"
+    },
+    "courseOutline": {
+      "title": "What you will learn",
+      "description": "Four modules, from the grid to a published site."
+    },
+    "choiceLinks": {
+      "title": "Choose a size",
+      "description": "Every size ships in two days."
+    },
+    "purchaseSimple": {
+      "title": "Ready to order?",
+      "description": "The Arc desk lamp ships in two days with a two-year warranty.",
+      "note": "Free returns within 30 days",
+      "actionLabel": "Buy now"
+    },
+    "storePolicies": {
+      "title": "Payment, delivery and returns",
+      "description": "The short version of how ordering works."
+    },
+    "productReviews": {
+      "title": "What customers say",
+      "description": "Reviews from people who bought from the shop this year."
     }
   },
   "cases": {
@@ -2172,6 +2480,30 @@ export const ui = {
         "title": "The people behind the blocks",
         "text": "Eight people, one list, four layouts.",
         "cta": "Back to the start"
+      },
+      "blog": {
+        "nav": "Blog",
+        "title": "Notes from the team",
+        "text": "Long reads, figures and quotes, all from simple blocks.",
+        "cta": "Browse the topics"
+      },
+      "shop": {
+        "nav": "Shop",
+        "title": "A small shop of desk gear",
+        "text": "Products, details and reviews in simple blocks.",
+        "cta": "See the collections"
+      },
+      "pricing": {
+        "nav": "Pricing",
+        "title": "Pricing and support",
+        "text": "Plans, offers and the people to talk to.",
+        "cta": "See the plans"
+      },
+      "about": {
+        "nav": "About",
+        "title": "About the simple line",
+        "text": "A header, a footer, intros and a page for when things go wrong.",
+        "cta": "Back to the start"
       }
     },
     "commerceShop": {
@@ -2644,7 +2976,12 @@ export const ui = {
       "appAuthPages": "Sign-in pages",
       "appSettings": "Settings",
       "appOnboarding": "Onboarding",
-      "appGuidance": "Guidance"
+      "appGuidance": "Guidance",
+      "marketingSimpleFrame": "Simple blocks: page frame and intros",
+      "marketingSimpleStory": "Simple blocks: long reads",
+      "marketingSimpleOffer": "Simple blocks: showcase, pricing and contacts",
+      "marketingSimpleShop": "Simple blocks: shop",
+      "marketingSimpleDetails": "Simple blocks: product details and courses"
     },
     "pages": {
       "saasLanding": {

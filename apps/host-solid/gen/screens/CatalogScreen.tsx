@@ -32,6 +32,11 @@ import { MarketingSimpleMediaPage } from "./CatalogScreen/MarketingSimpleMediaPa
 import { MarketingSimpleFeaturesPage } from "./CatalogScreen/MarketingSimpleFeaturesPage";
 import { MarketingSimpleProofPage } from "./CatalogScreen/MarketingSimpleProofPage";
 import { MarketingSimplePeoplePage } from "./CatalogScreen/MarketingSimplePeoplePage";
+import { MarketingSimpleFramePage } from "./CatalogScreen/MarketingSimpleFramePage";
+import { MarketingSimpleStoryPage } from "./CatalogScreen/MarketingSimpleStoryPage";
+import { MarketingSimpleOfferPage } from "./CatalogScreen/MarketingSimpleOfferPage";
+import { MarketingSimpleShopPage } from "./CatalogScreen/MarketingSimpleShopPage";
+import { MarketingSimpleDetailsPage } from "./CatalogScreen/MarketingSimpleDetailsPage";
 import { MarketingAboutPage } from "./CatalogScreen/MarketingAboutPage";
 import { MarketingPortfolioPage } from "./CatalogScreen/MarketingPortfolioPage";
 import { MarketingCareersPage } from "./CatalogScreen/MarketingCareersPage";
@@ -133,6 +138,11 @@ const ROUTES = [
   {"path":"marketing-simple-features","area":"marketing-simple-features"},
   {"path":"marketing-simple-proof","area":"marketing-simple-proof"},
   {"path":"marketing-simple-people","area":"marketing-simple-people"},
+  {"path":"marketing-simple-frame","area":"marketing-simple-frame"},
+  {"path":"marketing-simple-story","area":"marketing-simple-story"},
+  {"path":"marketing-simple-offer","area":"marketing-simple-offer"},
+  {"path":"marketing-simple-shop","area":"marketing-simple-shop"},
+  {"path":"marketing-simple-details","area":"marketing-simple-details"},
   {"path":"marketing-about","area":"marketing-about"},
   {"path":"marketing-portfolio","area":"marketing-portfolio"},
   {"path":"marketing-careers","area":"marketing-careers"},
@@ -264,6 +274,16 @@ export function CatalogScreen({ url }: { url: UrlPort }) {
           <MarketingSimpleProofPage />
         ) : route.area === "marketing-simple-people" ? (
           <MarketingSimplePeoplePage />
+        ) : route.area === "marketing-simple-frame" ? (
+          <MarketingSimpleFramePage />
+        ) : route.area === "marketing-simple-story" ? (
+          <MarketingSimpleStoryPage />
+        ) : route.area === "marketing-simple-offer" ? (
+          <MarketingSimpleOfferPage />
+        ) : route.area === "marketing-simple-shop" ? (
+          <MarketingSimpleShopPage />
+        ) : route.area === "marketing-simple-details" ? (
+          <MarketingSimpleDetailsPage />
         ) : route.area === "marketing-about" ? (
           <MarketingAboutPage />
         ) : route.area === "marketing-portfolio" ? (

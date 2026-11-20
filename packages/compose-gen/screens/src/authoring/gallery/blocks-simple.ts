@@ -8,6 +8,8 @@ import { define } from "./blocks-define";
 import { t } from "./block-kit";
 import * as d from "./blocks-data";
 import { simpleMoreBlocks } from "./blocks-simple-more";
+import { simpleContentBlocks } from "./blocks-simple-content";
+import { simpleCommerceBlocks } from "./blocks-simple-commerce";
 
 const h = (k: string) => t(`marketing.heroSimple.${k}`);
 const m = (k: string) => t(`marketing.teamSimple.${k}`);
@@ -62,12 +64,15 @@ const splitSimple = define({
 const teamSimple = define({
   key: "teamsimple", theme: "marketing", group: "company", line: "simple", model: "team@1",
   name: "Simple team", docs: "The heading, one paragraph and the people as a list: a portrait, the name and the role, in two, three or four columns, plain or on cards.",
-  organism: "TeamSimple", axes: ["cols", "surface"], data: [d.teamMembers],
+  organism: "TeamSimple", axes: ["layout", "cols", "surface"], data: [d.teamMembers],
   variants: [
     ["cols3", "Three columns"],
     ["cols2", "Two columns", { cols: "2" }],
     ["cols4", "Four columns", { cols: "4" }],
     ["cards3", "Three columns on cards", { surface: "cards" }],
+    ["portraitRow", "The heading beside large portraits", { layout: "aside" }, { align: "start" }],
+    ["bylineCols3", "Small portraits beside the names, on cards", { layout: "byline", surface: "cards" }, { align: "start" }],
+    ["sideList", "A compact list in two columns", { layout: "list", cols: "2" }, { align: "start" }],
   ],
   facts: [
     { sel: "section h2", n: 1 },
@@ -77,10 +82,10 @@ const teamSimple = define({
     { sel: "ul > li", cols: 2, when: { cols: "2" } },
     { sel: "ul > li", cols: 3, when: { cols: "3" } },
     { sel: "ul > li", cols: 4, when: { cols: "4" } },
-    { sel: '[data-slot="card"]', n: "@members", when: { surface: "cards" } },
-    { sel: '[data-slot="card"]', n: 0, when: { surface: "plain" } },
+    { sel: "ul > li.bg-card", n: "@members", when: { surface: "cards" } },
+    { sel: "ul > li.bg-card", n: 0, when: { surface: "plain" } },
   ],
   sample: { id: "teamsimple", title: m("title"), description: m("description"), members: ref("teamMembers") },
 });
 
-export const simpleBlocks = [heroSimple, splitSimple, teamSimple, ...simpleMoreBlocks];
+export const simpleBlocks = [heroSimple, splitSimple, teamSimple, ...simpleMoreBlocks, ...simpleContentBlocks, ...simpleCommerceBlocks];

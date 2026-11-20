@@ -1,0 +1,415 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.footer-simple",
+  "name": "FooterSimple",
+  "docs": "The simple footer (model footer@1): the brand, one line about the site, the links as a list in a nav and the copyright line. Axes: layout (row: the brand beside a row of links, grid: the brand beside the links in two or three columns, centered: everything centred).",
+  "records": {
+    "FooterLink": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "name": "href",
+        "type": "string"
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "brand",
+      "type": "string",
+      "required": true,
+      "docs": "the name of the site"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "docs": "one paragraph under the heading; empty: none"
+    },
+    {
+      "name": "links",
+      "type": {
+        "ts": "FooterLink[]"
+      },
+      "required": true,
+      "docs": "the links, in the order they are shown (1 to 12)"
+    },
+    {
+      "name": "copyright",
+      "type": "string",
+      "required": true,
+      "docs": "the copyright line"
+    },
+    {
+      "name": "padding",
+      "type": {
+        "ts": "\"compact\" | \"standard\" | \"spacious\""
+      },
+      "default": "compact",
+      "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"row\" | \"grid\" | \"centered\""
+      },
+      "default": "row"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "frame",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "centered"
+            ]
+          },
+          "flex flex-col items-center gap-8 text-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "grid"
+                ]
+              },
+              "grid grid-cols-1 gap-8 md:grid-cols-2",
+              "flex flex-col gap-8 md:flex-row md:items-start md:justify-between"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "linkRow",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "grid"
+            ]
+          },
+          "grid grid-cols-2 gap-4 sm:grid-cols-3",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "centered"
+                ]
+              },
+              "flex flex-wrap justify-center gap-6",
+              "flex flex-wrap gap-6"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "copyAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "centered"
+            ]
+          },
+          "center",
+          "start"
+        ]
+      }
+    },
+    {
+      "name": "copyText",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "centered"
+            ]
+          },
+          "text-center",
+          "text-start"
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "footer",
+        "Class": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "padding"
+                },
+                "compact"
+              ]
+            },
+            "py-8 lg:py-16",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "padding"
+                    },
+                    "spacious"
+                  ]
+                },
+                "py-24 lg:py-40",
+                "py-16 lg:py-32"
+              ]
+            }
+          ]
+        }
+      },
+      "children": [
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "children": [
+            {
+              "use": "Stack",
+              "props": {
+                "Gap": "8",
+                "Align": "stretch"
+              },
+              "children": [
+                {
+                  "use": "Box",
+                  "props": {
+                    "Class": {
+                      "$": "frame"
+                    }
+                  },
+                  "children": [
+                    {
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "2",
+                        "Align": {
+                          "$": "copyAlign"
+                        },
+                        "Class": "max-w-sm"
+                      },
+                      "children": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "lg",
+                            "Weight": "bold",
+                            "Class": {
+                              "$": "copyText"
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "brand"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "when": {
+                            "$": "description"
+                          },
+                          "then": [
+                            {
+                              "use": "Text",
+                              "props": {
+                                "Size": "sm",
+                                "Class": {
+                                  "op": "cn",
+                                  "args": [
+                                    "text-muted-foreground",
+                                    {
+                                      "$": "copyText"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "description"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Box",
+                      "children": [
+                        {
+                          "use": "List",
+                          "props": {
+                            "Tag": "ul",
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "m-0 w-full list-none p-0",
+                                {
+                                  "$": "linkRow"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "each": {
+                                "$": "links"
+                              },
+                              "as": "l",
+                              "key": {
+                                "$": "l.id"
+                              },
+                              "do": [
+                                {
+                                  "use": "ListItem",
+                                  "attrs": {
+                                    "data-slot": "footer-link"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "LinkPlain",
+                                      "props": {
+                                        "Href": {
+                                          "$": "l.href"
+                                        },
+                                        "Class": "text-muted-foreground hover:text-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "sm"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "l.label"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "Text",
+                  "props": {
+                    "Size": "xs",
+                    "Class": {
+                      "op": "cn",
+                      "args": [
+                        "text-muted-foreground",
+                        {
+                          "$": "copyText"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "$": "copyright"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "attrs": {
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "footer-simple"
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.offerssimple",
+  "name": "Simple offers",
+  "docs": "The heading, one paragraph and two or three offers on cards, each with a title, a line and an action.",
+  "theme": "marketing",
+  "group": "cta",
+  "organism": "OffersSimple",
+  "line": "simple",
+  "model": "offers@1",
+  "axes": {
+    "cols": [
+      "2",
+      "3"
+    ]
+  },
+  "defaults": {
+    "cols": "2"
+  },
+  "variants": [
+    {
+      "id": "duo",
+      "set": {}
+    },
+    {
+      "id": "duoStart",
+      "set": {},
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@offerItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@offerItems"
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": "@offerItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "offerItems",
+      "collection": "simpleoffers",
+      "kind": "promo",
+      "record": "OfferItem",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "description": "metadata.text.value",
+        "actionLabel": "metadata.action.value",
+        "actionHref": "metadata.href.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "offerssimple",
+      "title": {
+        "$": "ui.marketing.offersSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.offersSimple.description"
+      },
+      "items": {
+        "$": "offerItems"
+      }
+    }
+  }
+}

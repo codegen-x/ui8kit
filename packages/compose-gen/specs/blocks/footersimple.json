@@ -1,0 +1,85 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.footersimple",
+  "name": "Simple footer",
+  "docs": "The brand and one line beside the links (a row or a grid of columns), or everything centred; the copyright line under them.",
+  "theme": "marketing",
+  "group": "navigation",
+  "organism": "FooterSimple",
+  "line": "simple",
+  "model": "footer@1",
+  "axes": {
+    "layout": [
+      "row",
+      "grid",
+      "centered"
+    ]
+  },
+  "defaults": {
+    "layout": "row"
+  },
+  "variants": [
+    {
+      "id": "brandLinks",
+      "set": {}
+    },
+    {
+      "id": "linkGrid",
+      "set": {
+        "layout": "grid"
+      }
+    },
+    {
+      "id": "centered",
+      "set": {
+        "layout": "centered"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "footer",
+      "n": 1
+    },
+    {
+      "sel": "footer li",
+      "n": "@footerLinks"
+    },
+    {
+      "sel": "footer a[href]",
+      "n": "@footerLinks"
+    }
+  ],
+  "data": [
+    {
+      "as": "footerLinks",
+      "collection": "footerlinks",
+      "kind": "menu_item",
+      "record": "FooterLink",
+      "fields": {
+        "id": "id",
+        "label": "title",
+        "href": "metadata.href.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "footersimple",
+      "brand": {
+        "$": "ui.marketing.footerSimple.brand"
+      },
+      "description": {
+        "$": "ui.marketing.footerSimple.description"
+      },
+      "links": {
+        "$": "footerLinks"
+      },
+      "copyright": {
+        "$": "ui.marketing.footerSimple.copyright"
+      }
+    }
+  }
+}

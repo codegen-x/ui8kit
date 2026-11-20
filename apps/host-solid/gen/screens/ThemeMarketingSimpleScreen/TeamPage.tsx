@@ -43,7 +43,7 @@ export function TeamPage() {
         description={ui.pages.marketingSimple.team.text}
         imageAlt={ui.marketing.heroSimple.imageAlt}
         actionLabel={ui.pages.marketingSimple.team.cta}
-        actionHref="#/"
+        actionHref="#/blog"
         secondaryActionLabel={ui.marketing.heroSimple.secondaryActionLabel}
         secondaryActionHref="#/tour"
         media="top"
@@ -56,6 +56,7 @@ export function TeamPage() {
         title={ui.marketing.teamSimple.title}
         description={ui.marketing.teamSimple.description}
         members={teamMembers}
+        layout="grid"
         cols="3"
         surface="cards"
         landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cards3))}
@@ -107,6 +108,7 @@ export function TeamPage() {
         title={ui.marketing.teamSimple.title}
         description={ui.marketing.teamSimple.description}
         members={teamMembers}
+        layout="grid"
         cols="4"
         surface="plain"
         landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cols4))}

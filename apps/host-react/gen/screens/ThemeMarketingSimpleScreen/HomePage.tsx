@@ -100,6 +100,7 @@ export function HomePage() {
         title={ui.marketing.teamSimple.title}
         description={ui.marketing.teamSimple.description}
         members={teamMembers}
+        layout="grid"
         cols="3"
         surface="plain"
         landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cols3))}
@@ -177,6 +178,7 @@ export function HomePage() {
         title={ui.marketing.teamSimple.title}
         description={ui.marketing.teamSimple.description}
         members={teamMembers}
+        layout="grid"
         cols="2"
         surface="plain"
         landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cols2))}

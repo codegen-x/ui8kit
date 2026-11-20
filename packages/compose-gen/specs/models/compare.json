@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "compare",
+  "version": 1,
+  "docs": "Compare content: the heading, a description, the names of the two options and an ordered list of rows, each a feature with the value of each option. One object is valid in every compare layout (a table, cards).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "firstLabel": { "type": "text", "maxLength": 40, "required": true, "docs": "the name of the first option" },
+    "secondLabel": { "type": "text", "maxLength": 40, "required": true, "docs": "the name of the second option" },
+    "rows": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 12,
+      "docs": "the rows, in the order they are shown",
+      "item": {
+        "record": "CompareLine",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the feature that is compared" },
+          "first": { "type": "text", "maxLength": 60, "required": true, "docs": "the value of the first option" },
+          "second": { "type": "text", "maxLength": 60, "required": true, "docs": "the value of the second option" }
+        }
+      }
+    }
+  }
+}

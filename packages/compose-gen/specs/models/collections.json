@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "collections",
+  "version": 1,
+  "docs": "Collections content: the heading, a description and an ordered list of collections (categories), each a picture and a name as one link. One object is valid in every collections layout (two, three or four columns).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 8,
+      "docs": "the collections, in the order they are shown",
+      "item": {
+        "record": "CollectionItem",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "image": { "type": "image", "docs": "address of the picture of the collection; none: the placeholder" },
+          "title": { "type": "text", "maxLength": 60, "required": true, "docs": "the name of the collection" },
+          "href": { "type": "url", "required": true, "docs": "the address of the collection" }
+        }
+      }
+    }
+  }
+}

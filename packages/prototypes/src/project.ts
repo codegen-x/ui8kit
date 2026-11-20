@@ -61,13 +61,16 @@ const LAYOUT: Record<string, Lowering> = {
   ListItem: { tag: "li", base: "" },
   // a link around a place (the title of a story): a plain box, the address is content (a wireframe has no link)
   Link: { tag: "div", base: "", drop: ["Href", "Variant", "Size"] },
+  LinkPlain: { tag: "div", base: "", drop: ["Href"] },
   // a card as a plain bordered surface (a border token, no inset ring, no shadow)
   Card: { tag: "div", base: ROLE.surface, attrs: { "data-slot": "card", "data-role": "surface" } },
 };
-/** classes the wireframe drops: list-none is the preflight of Tailwind v4 already (ul, ol: list-style none), and the li are flex */
+/** classes the wireframe drops: list-none is the preflight of Tailwind v4 already (ul, ol: list-style none), and the li are flex;
+ *  an interaction state (hover:, focus:) of a plain link: a wireframe has no link */
 const PREFLIGHT = new Set(["list-none"]);
+const STATE = /^(?:hover|focus):/;
 const dropPreflight = (v: Value): Value =>
-  typeof v === "string" ? v.split(/\s+/).filter((t) => t && !PREFLIGHT.has(t)).join(" ")
+  typeof v === "string" ? v.split(/\s+/).filter((t) => t && !PREFLIGHT.has(t) && !STATE.test(t)).join(" ")
   : isOp(v) && (v.op === "cn" || v.op === "cond") ? { ...v, args: v.args.map((a, i) => (v.op === "cond" && i === 0 ? a : dropPreflight(a))) }
   : v;
 function fail(msg: string): never { throw new Error(`prototypes: ${msg}`); }
@@ -240,9 +243,9 @@ class Projector {
     delete attrs["aria-labelledby"]; delete attrs["aria-label"]; // the heading is a shape: a wireframe names no landmark
     for (const v of Object.values(attrs)) this.check(v);
     const cls: Value | undefined = classes.length === 0 ? undefined : classes.length === 1 ? classes[0] : cn(...classes);
-    if (n.use === "Link") this.links.push(this.fieldsOf(n.props?.["Href"], loops));
+    if (n.use === "Link" || n.use === "LinkPlain") this.links.push(this.fieldsOf(n.props?.["Href"], loops));
     const children = n.children ? this.nodes(n.children, loops) : undefined;
-    if (n.use === "Link") this.links.pop();
+    if (n.use === "Link" || n.use === "LinkPlain") this.links.pop();
     return {
       use: "Box",
       props: { ...(tag !== undefined ? { Tag: tag } : {}), ...(cls !== undefined ? { Class: cls } : {}) },

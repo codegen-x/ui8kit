@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "locations",
+  "version": 1,
+  "docs": "Locations content: the heading, a description, one picture (a map or a place) and an ordered list of offices, each with a name and the address. One object is valid in every locations layout (the picture at the start, at the end).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "image": { "type": "image", "docs": "address of the picture; none: the placeholder" },
+    "imageAlt": { "type": "text", "maxLength": 160, "required": true, "docs": "alt text of the picture" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 6,
+      "docs": "the offices, in the order they are shown",
+      "item": {
+        "record": "LocationItem",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the name of the office or the city" },
+          "description": { "type": "longText", "maxLength": 240, "docs": "the address and the hours; empty: none" }
+        }
+      }
+    }
+  }
+}

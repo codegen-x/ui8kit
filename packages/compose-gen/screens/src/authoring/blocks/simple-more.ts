@@ -13,29 +13,29 @@ import {
   section, lead, actions, actionProps,
 } from "./simple";
 
-const badge = { name: "badge", type: "string" as const, default: "", docs: "a short pill above the heading; empty: no badge" };
-const centered = { ...align, default: "center" };
-const list = (name: string, record: string, docs: string) => ({ name, type: ts(`${record}[]`), required: true, docs });
-const heading = (size: string) =>
+export const badge = { name: "badge", type: "string" as const, default: "", docs: "a short pill above the heading; empty: no badge" };
+export const centered = { ...align, default: "center" };
+export const list = (name: string, record: string, docs: string) => ({ name, type: ts(`${record}[]`), required: true, docs });
+export const heading = (size: string) =>
   use("Title", { props: { As: ref("level"), Size: size, Weight: "bold", Class: cn("tracking-tight", textAlign) }, attrs: { id: ref("titleId") } }, text(ref("title")));
 /** the head of a list section: the heading and the description, narrow (max-w-2xl), placed by the align setting */
-const head = (extra: Value = selfAlign) =>
+export const head = (extra: Value = selfAlign) =>
   use("Stack", { props: { Gap: "4", Align: alignItems, Class: cn("max-w-2xl", extra) } }, heading("3xl"), lead("base"));
 /** the title of an item (one level under the heading) and its line */
-const itemTitle = (field: string, size = "lg", cls: Value = textAlign) =>
+export const itemTitle = (field: string, size = "lg", cls: Value = textAlign) =>
   use("Title", { props: { As: add(ref("level"), 1), Size: size, Weight: "semibold", Class: cls } }, text(ref(field)));
-const itemText = (field: string, cls: Value = textAlign, size = "sm") =>
+export const itemText = (field: string, cls: Value = textAlign, size = "sm") =>
   when(ref(field), [use("Text", { props: { Size: size, Class: cn("text-muted-foreground", cls) } }, text(ref(field)))]);
 /** a list that fills its column (w-full), the bullets and the browser spacing off */
-const ulist = (cls: Value, ...body: ViewNode[]) => use("List", { props: { Tag: "ul", Class: cn("m-0 w-full list-none p-0", cls) } }, ...body);
-const is = (axis: string, v: string) => eq(ref(axis), v);
-const isAlignV = (v: string) => eq(ref("align"), v);
+export const ulist = (cls: Value, ...body: ViewNode[]) => use("List", { props: { Tag: "ul", Class: cn("m-0 w-full list-none p-0", cls) } }, ...body);
+export const is = (axis: string, v: string) => eq(ref(axis), v);
+export const isAlignV = (v: string) => eq(ref("align"), v);
 /** a derived class (or ratio): the first value whose test holds, else the fallback (a flat chain: one branch per line in the output) */
-const chain = (name: string, rows: Array<[Value, string]>, fallback: string) =>
+export const chain = (name: string, rows: Array<[Value, string]>, fallback: string) =>
   ({ name, value: rows.reduceRight<Value>((acc, [t, v]) => cond(t, v, acc), fallback) });
-const colsChain = (name: string, prefix: string, axis = "cols") =>
+export const colsChain = (name: string, prefix: string, axis = "cols") =>
   chain(name, [[is(axis, "2"), `${prefix}md:grid-cols-2`], [is(axis, "3"), `${prefix}md:grid-cols-3`]], `${prefix}md:grid-cols-4`);
-const avatar = (alt: string, src: string, size = "size-12") => organism("MediaFrame", { alt: ref(alt), src: ref(src), ratio: "1/1", className: `${size} shrink-0 rounded-full` });
+export const avatar = (alt: string, src: string, size = "size-12") => organism("MediaFrame", { alt: ref(alt), src: ref(src), ratio: "1/1", className: `${size} shrink-0 rounded-full` });
 
 // ---- IntroSimple (intro@1): text only, the copy centred or at the start, in the middle of the section or low in a tall one
 const introSimple = spec(`${O}intro-simple`, "IntroSimple", "The simple intro (model intro@1): an optional badge, a large heading, a description and up to two links as the actions (the first primary, the second secondary, each drawn only when its label and its address are both set). Text only. Axes: place (middle: the copy in the middle of the section, bottom: low in a tall section, min-h-96).", {

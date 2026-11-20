@@ -9,57 +9,84 @@
   import AboutPage from "./BlocksScreen/AboutPage.svelte";
   import AboutmePage from "./BlocksScreen/AboutmePage.svelte";
   import AccordionPage from "./BlocksScreen/AccordionPage.svelte";
+  import ArticleleadPage from "./BlocksScreen/ArticleleadPage.svelte";
+  import ArticlesimplePage from "./BlocksScreen/ArticlesimplePage.svelte";
   import BeforeafterPage from "./BlocksScreen/BeforeafterPage.svelte";
   import BentoPage from "./BlocksScreen/BentoPage.svelte";
+  import ChapterssimplePage from "./BlocksScreen/ChapterssimplePage.svelte";
+  import ChoicelinksPage from "./BlocksScreen/ChoicelinksPage.svelte";
+  import CollectionssimplePage from "./BlocksScreen/CollectionssimplePage.svelte";
   import ComparePage from "./BlocksScreen/ComparePage.svelte";
+  import ComparesimplePage from "./BlocksScreen/ComparesimplePage.svelte";
+  import ContactssimplePage from "./BlocksScreen/ContactssimplePage.svelte";
+  import CourseoutlinePage from "./BlocksScreen/CourseoutlinePage.svelte";
   import CreditsPage from "./BlocksScreen/CreditsPage.svelte";
   import CtaPage from "./BlocksScreen/CtaPage.svelte";
   import CtaproofPage from "./BlocksScreen/CtaproofPage.svelte";
+  import ErrorsimplePage from "./BlocksScreen/ErrorsimplePage.svelte";
+  import EventintroPage from "./BlocksScreen/EventintroPage.svelte";
   import FaqPage from "./BlocksScreen/FaqPage.svelte";
   import FaqsimplePage from "./BlocksScreen/FaqsimplePage.svelte";
   import FaqsplitPage from "./BlocksScreen/FaqsplitPage.svelte";
   import FeaturesPage from "./BlocksScreen/FeaturesPage.svelte";
   import FeatureshowcasePage from "./BlocksScreen/FeatureshowcasePage.svelte";
+  import FeatureshowcasesimplePage from "./BlocksScreen/FeatureshowcasesimplePage.svelte";
   import FeaturesplitPage from "./BlocksScreen/FeaturesplitPage.svelte";
   import FeaturessimplePage from "./BlocksScreen/FeaturessimplePage.svelte";
   import FeaturetabsPage from "./BlocksScreen/FeaturetabsPage.svelte";
+  import FiguresimplePage from "./BlocksScreen/FiguresimplePage.svelte";
   import FooterPage from "./BlocksScreen/FooterPage.svelte";
+  import FootersimplePage from "./BlocksScreen/FootersimplePage.svelte";
   import FootersplitPage from "./BlocksScreen/FootersplitPage.svelte";
   import GalleryheroPage from "./BlocksScreen/GalleryheroPage.svelte";
   import HeaderPage from "./BlocksScreen/HeaderPage.svelte";
+  import HeadersimplePage from "./BlocksScreen/HeadersimplePage.svelte";
   import HeroPage from "./BlocksScreen/HeroPage.svelte";
   import HerosimplePage from "./BlocksScreen/HerosimplePage.svelte";
   import HerosplitPage from "./BlocksScreen/HerosplitPage.svelte";
   import IconwallPage from "./BlocksScreen/IconwallPage.svelte";
   import IntrosimplePage from "./BlocksScreen/IntrosimplePage.svelte";
   import JobsPage from "./BlocksScreen/JobsPage.svelte";
+  import LocationssimplePage from "./BlocksScreen/LocationssimplePage.svelte";
   import LogosPage from "./BlocksScreen/LogosPage.svelte";
   import LogossimplePage from "./BlocksScreen/LogossimplePage.svelte";
   import MedialistPage from "./BlocksScreen/MedialistPage.svelte";
   import MegamenuPage from "./BlocksScreen/MegamenuPage.svelte";
   import NavbarPage from "./BlocksScreen/NavbarPage.svelte";
+  import OfferssimplePage from "./BlocksScreen/OfferssimplePage.svelte";
   import PageheadPage from "./BlocksScreen/PageheadPage.svelte";
   import PagetrailPage from "./BlocksScreen/PagetrailPage.svelte";
   import PhotosPage from "./BlocksScreen/PhotosPage.svelte";
   import PhotossimplePage from "./BlocksScreen/PhotossimplePage.svelte";
   import PlanPage from "./BlocksScreen/PlanPage.svelte";
   import PricingPage from "./BlocksScreen/PricingPage.svelte";
+  import PricingsimplePage from "./BlocksScreen/PricingsimplePage.svelte";
+  import ProductreviewsPage from "./BlocksScreen/ProductreviewsPage.svelte";
+  import ProductsimplePage from "./BlocksScreen/ProductsimplePage.svelte";
+  import ProductssimplePage from "./BlocksScreen/ProductssimplePage.svelte";
+  import ProfileintroPage from "./BlocksScreen/ProfileintroPage.svelte";
   import ProjectsPage from "./BlocksScreen/ProjectsPage.svelte";
   import ProofPage from "./BlocksScreen/ProofPage.svelte";
+  import PullquotesimplePage from "./BlocksScreen/PullquotesimplePage.svelte";
+  import PurchasesimplePage from "./BlocksScreen/PurchasesimplePage.svelte";
   import QuotesplitPage from "./BlocksScreen/QuotesplitPage.svelte";
+  import RatingsimplePage from "./BlocksScreen/RatingsimplePage.svelte";
   import SitemapPage from "./BlocksScreen/SitemapPage.svelte";
+  import SpecssimplePage from "./BlocksScreen/SpecssimplePage.svelte";
   import SplitsimplePage from "./BlocksScreen/SplitsimplePage.svelte";
   import StatsPage from "./BlocksScreen/StatsPage.svelte";
   import StatssimplePage from "./BlocksScreen/StatssimplePage.svelte";
   import StepsPage from "./BlocksScreen/StepsPage.svelte";
   import StepssimplePage from "./BlocksScreen/StepssimplePage.svelte";
   import StickyPage from "./BlocksScreen/StickyPage.svelte";
+  import StorepoliciesPage from "./BlocksScreen/StorepoliciesPage.svelte";
   import StoriessimplePage from "./BlocksScreen/StoriessimplePage.svelte";
   import TeamPage from "./BlocksScreen/TeamPage.svelte";
   import TeamsimplePage from "./BlocksScreen/TeamsimplePage.svelte";
   import TemplatesPage from "./BlocksScreen/TemplatesPage.svelte";
   import TestimonialsPage from "./BlocksScreen/TestimonialsPage.svelte";
   import TestimonialssimplePage from "./BlocksScreen/TestimonialssimplePage.svelte";
+  import TopicssimplePage from "./BlocksScreen/TopicssimplePage.svelte";
   import UsagePage from "./BlocksScreen/UsagePage.svelte";
   import VideosPage from "./BlocksScreen/VideosPage.svelte";
   import CartPage from "./BlocksScreen/CartPage.svelte";
@@ -141,57 +168,84 @@
     {"path":"about","area":"about"},
     {"path":"aboutme","area":"aboutme"},
     {"path":"accordion","area":"accordion"},
+    {"path":"articlelead","area":"articlelead"},
+    {"path":"articlesimple","area":"articlesimple"},
     {"path":"beforeafter","area":"beforeafter"},
     {"path":"bento","area":"bento"},
+    {"path":"chapterssimple","area":"chapterssimple"},
+    {"path":"choicelinks","area":"choicelinks"},
+    {"path":"collectionssimple","area":"collectionssimple"},
     {"path":"compare","area":"compare"},
+    {"path":"comparesimple","area":"comparesimple"},
+    {"path":"contactssimple","area":"contactssimple"},
+    {"path":"courseoutline","area":"courseoutline"},
     {"path":"credits","area":"credits"},
     {"path":"cta","area":"cta"},
     {"path":"ctaproof","area":"ctaproof"},
+    {"path":"errorsimple","area":"errorsimple"},
+    {"path":"eventintro","area":"eventintro"},
     {"path":"faq","area":"faq"},
     {"path":"faqsimple","area":"faqsimple"},
     {"path":"faqsplit","area":"faqsplit"},
     {"path":"features","area":"features"},
     {"path":"featureshowcase","area":"featureshowcase"},
+    {"path":"featureshowcasesimple","area":"featureshowcasesimple"},
     {"path":"featuresplit","area":"featuresplit"},
     {"path":"featuressimple","area":"featuressimple"},
     {"path":"featuretabs","area":"featuretabs"},
+    {"path":"figuresimple","area":"figuresimple"},
     {"path":"footer","area":"footer"},
+    {"path":"footersimple","area":"footersimple"},
     {"path":"footersplit","area":"footersplit"},
     {"path":"galleryhero","area":"galleryhero"},
     {"path":"header","area":"header"},
+    {"path":"headersimple","area":"headersimple"},
     {"path":"hero","area":"hero"},
     {"path":"herosimple","area":"herosimple"},
     {"path":"herosplit","area":"herosplit"},
     {"path":"iconwall","area":"iconwall"},
     {"path":"introsimple","area":"introsimple"},
     {"path":"jobs","area":"jobs"},
+    {"path":"locationssimple","area":"locationssimple"},
     {"path":"logos","area":"logos"},
     {"path":"logossimple","area":"logossimple"},
     {"path":"medialist","area":"medialist"},
     {"path":"megamenu","area":"megamenu"},
     {"path":"navbar","area":"navbar"},
+    {"path":"offerssimple","area":"offerssimple"},
     {"path":"pagehead","area":"pagehead"},
     {"path":"pagetrail","area":"pagetrail"},
     {"path":"photos","area":"photos"},
     {"path":"photossimple","area":"photossimple"},
     {"path":"plan","area":"plan"},
     {"path":"pricing","area":"pricing"},
+    {"path":"pricingsimple","area":"pricingsimple"},
+    {"path":"productreviews","area":"productreviews"},
+    {"path":"productsimple","area":"productsimple"},
+    {"path":"productssimple","area":"productssimple"},
+    {"path":"profileintro","area":"profileintro"},
     {"path":"projects","area":"projects"},
     {"path":"proof","area":"proof"},
+    {"path":"pullquotesimple","area":"pullquotesimple"},
+    {"path":"purchasesimple","area":"purchasesimple"},
     {"path":"quotesplit","area":"quotesplit"},
+    {"path":"ratingsimple","area":"ratingsimple"},
     {"path":"sitemap","area":"sitemap"},
+    {"path":"specssimple","area":"specssimple"},
     {"path":"splitsimple","area":"splitsimple"},
     {"path":"stats","area":"stats"},
     {"path":"statssimple","area":"statssimple"},
     {"path":"steps","area":"steps"},
     {"path":"stepssimple","area":"stepssimple"},
     {"path":"sticky","area":"sticky"},
+    {"path":"storepolicies","area":"storepolicies"},
     {"path":"storiessimple","area":"storiessimple"},
     {"path":"team","area":"team"},
     {"path":"teamsimple","area":"teamsimple"},
     {"path":"templates","area":"templates"},
     {"path":"testimonials","area":"testimonials"},
     {"path":"testimonialssimple","area":"testimonialssimple"},
+    {"path":"topicssimple","area":"topicssimple"},
     {"path":"usage","area":"usage"},
     {"path":"videos","area":"videos"},
     {"path":"cart","area":"cart"},
@@ -280,18 +334,38 @@
     <AboutmePage />
   {:else if route.area === "accordion"}
     <AccordionPage />
+  {:else if route.area === "articlelead"}
+    <ArticleleadPage />
+  {:else if route.area === "articlesimple"}
+    <ArticlesimplePage />
   {:else if route.area === "beforeafter"}
     <BeforeafterPage />
   {:else if route.area === "bento"}
     <BentoPage />
+  {:else if route.area === "chapterssimple"}
+    <ChapterssimplePage />
+  {:else if route.area === "choicelinks"}
+    <ChoicelinksPage />
+  {:else if route.area === "collectionssimple"}
+    <CollectionssimplePage />
   {:else if route.area === "compare"}
     <ComparePage />
+  {:else if route.area === "comparesimple"}
+    <ComparesimplePage />
+  {:else if route.area === "contactssimple"}
+    <ContactssimplePage />
+  {:else if route.area === "courseoutline"}
+    <CourseoutlinePage />
   {:else if route.area === "credits"}
     <CreditsPage />
   {:else if route.area === "cta"}
     <CtaPage />
   {:else if route.area === "ctaproof"}
     <CtaproofPage />
+  {:else if route.area === "errorsimple"}
+    <ErrorsimplePage />
+  {:else if route.area === "eventintro"}
+    <EventintroPage />
   {:else if route.area === "faq"}
     <FaqPage />
   {:else if route.area === "faqsimple"}
@@ -302,20 +376,28 @@
     <FeaturesPage />
   {:else if route.area === "featureshowcase"}
     <FeatureshowcasePage />
+  {:else if route.area === "featureshowcasesimple"}
+    <FeatureshowcasesimplePage />
   {:else if route.area === "featuresplit"}
     <FeaturesplitPage />
   {:else if route.area === "featuressimple"}
     <FeaturessimplePage />
   {:else if route.area === "featuretabs"}
     <FeaturetabsPage />
+  {:else if route.area === "figuresimple"}
+    <FiguresimplePage />
   {:else if route.area === "footer"}
     <FooterPage />
+  {:else if route.area === "footersimple"}
+    <FootersimplePage />
   {:else if route.area === "footersplit"}
     <FootersplitPage />
   {:else if route.area === "galleryhero"}
     <GalleryheroPage />
   {:else if route.area === "header"}
     <HeaderPage />
+  {:else if route.area === "headersimple"}
+    <HeadersimplePage />
   {:else if route.area === "hero"}
     <HeroPage />
   {:else if route.area === "herosimple"}
@@ -328,6 +410,8 @@
     <IntrosimplePage />
   {:else if route.area === "jobs"}
     <JobsPage />
+  {:else if route.area === "locationssimple"}
+    <LocationssimplePage />
   {:else if route.area === "logos"}
     <LogosPage />
   {:else if route.area === "logossimple"}
@@ -338,6 +422,8 @@
     <MegamenuPage />
   {:else if route.area === "navbar"}
     <NavbarPage />
+  {:else if route.area === "offerssimple"}
+    <OfferssimplePage />
   {:else if route.area === "pagehead"}
     <PageheadPage />
   {:else if route.area === "pagetrail"}
@@ -350,14 +436,32 @@
     <PlanPage />
   {:else if route.area === "pricing"}
     <PricingPage />
+  {:else if route.area === "pricingsimple"}
+    <PricingsimplePage />
+  {:else if route.area === "productreviews"}
+    <ProductreviewsPage />
+  {:else if route.area === "productsimple"}
+    <ProductsimplePage />
+  {:else if route.area === "productssimple"}
+    <ProductssimplePage />
+  {:else if route.area === "profileintro"}
+    <ProfileintroPage />
   {:else if route.area === "projects"}
     <ProjectsPage />
   {:else if route.area === "proof"}
     <ProofPage />
+  {:else if route.area === "pullquotesimple"}
+    <PullquotesimplePage />
+  {:else if route.area === "purchasesimple"}
+    <PurchasesimplePage />
   {:else if route.area === "quotesplit"}
     <QuotesplitPage />
+  {:else if route.area === "ratingsimple"}
+    <RatingsimplePage />
   {:else if route.area === "sitemap"}
     <SitemapPage />
+  {:else if route.area === "specssimple"}
+    <SpecssimplePage />
   {:else if route.area === "splitsimple"}
     <SplitsimplePage />
   {:else if route.area === "stats"}
@@ -370,6 +474,8 @@
     <StepssimplePage />
   {:else if route.area === "sticky"}
     <StickyPage />
+  {:else if route.area === "storepolicies"}
+    <StorepoliciesPage />
   {:else if route.area === "storiessimple"}
     <StoriessimplePage />
   {:else if route.area === "team"}
@@ -382,6 +488,8 @@
     <TestimonialsPage />
   {:else if route.area === "testimonialssimple"}
     <TestimonialssimplePage />
+  {:else if route.area === "topicssimple"}
+    <TopicssimplePage />
   {:else if route.area === "usage"}
     <UsagePage />
   {:else if route.area === "videos"}

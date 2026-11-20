@@ -1,0 +1,77 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.articlesimple",
+  "name": "Simple article",
+  "docs": "The heading, one paragraph and the sections of a text (a subheading and its paragraph): one reading column, or two columns under a centred head.",
+  "theme": "marketing",
+  "group": "story",
+  "organism": "ArticleSimple",
+  "line": "simple",
+  "model": "article@1",
+  "axes": {
+    "layout": [
+      "column",
+      "columns"
+    ]
+  },
+  "defaults": {
+    "layout": "column"
+  },
+  "variants": [
+    {
+      "id": "column",
+      "set": {},
+      "props": {
+        "align": "start"
+      }
+    },
+    {
+      "id": "twoColumns",
+      "set": {
+        "layout": "columns"
+      },
+      "props": {
+        "align": "center"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "section h3",
+      "n": "@articleSections"
+    }
+  ],
+  "data": [
+    {
+      "as": "articleSections",
+      "collection": "article",
+      "kind": "section",
+      "record": "ArticleSection",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "description": "metadata.text.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "articlesimple",
+      "title": {
+        "$": "ui.marketing.articleSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.articleSimple.description"
+      },
+      "sections": {
+        "$": "articleSections"
+      }
+    }
+  }
+}

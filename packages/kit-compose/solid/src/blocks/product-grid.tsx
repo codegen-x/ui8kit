@@ -51,7 +51,7 @@ export function ProductGrid({
       ) : ((layout as string) === "rail") ? (
         <Box class="flex snap-x gap-4 overflow-x-auto pb-4" data-slot="items">
           <For each={products ?? []}>{(p) => (
-            <Box class="w-64 shrink-0 snap-start" data-slot="product">
+            <Box class="w-64 shrink-0 snap-start" data-slot="products-row">
               <ProductCard
                 product={p}
                 labels={labels}

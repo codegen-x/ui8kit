@@ -126,7 +126,9 @@ const splitSimple = spec(`${O}split-simple`, "SplitSimple", "The simple split (m
       when(eq(ref("media"), "end"), [picture("4/3", "rounded-none md:aspect-auto md:h-full")])))],
 });
 
-const teamSimple = spec(`${O}team-simple`, "TeamSimple", "The simple team (model team@1): the heading, a description and the members as a list, each with a portrait, the name and a line. Axes: cols (2, 3, 4 columns from md up), surface (plain, cards).", {
+const teamLayout = (v: string) => eq(ref("layout"), v);
+const inlinePerson = or(teamLayout("byline"), teamLayout("list"));
+const teamSimple = spec(`${O}team-simple`, "TeamSimple", "The simple team (model team@1): the heading, a description and the members as a list, each with a portrait, the name and a line. Axes: layout (grid: the portrait over the copy, aside: the head beside large square portraits from md up, byline: a small disc beside the copy, list: a larger disc beside the copy, two columns), cols (2, 3, 4 columns from md up), surface (plain, cards: each member on a card surface).", {
   records: { SimpleMember: fields(["id", "string"], ["avatar", "string", true], ["title", "string"], ["description", "string", true]) },
   props: [
     id,
@@ -137,30 +139,37 @@ const teamSimple = spec(`${O}team-simple`, "TeamSimple", "The simple team (model
     padding,
     // the team defaults to center: its member grid reads as one composition (cols4 is not left-heavy); start / end stay options
     { ...align, default: "center" },
+    { name: "layout", type: tsOf("grid", "aside", "byline", "list"), default: "grid" },
     { name: "cols", type: tsOf("2", "3", "4"), default: "3" },
     { name: "surface", type: tsOf("plain", "cards"), default: "plain" },
   ],
-  derived: [titleId, ...teamDerived],
+  derived: [
+    titleId, ...alignDerived, teamDerived[3]!,
+    { name: "frame", value: cond(teamLayout("aside"), "md:grid md:grid-cols-3 md:items-start", "") },
+    { name: "grid", value: cond(teamLayout("aside"), "md:col-span-2 md:grid-cols-3", cond(eq(ref("cols"), "2"), "", cond(eq(ref("cols"), "3"), "md:grid-cols-3", "md:grid-cols-4"))) },
+    { name: "person", value: cond(inlinePerson, "flex w-full flex-row items-center gap-4", cond(isAlign("center"), "flex w-full flex-col items-center gap-4", cond(isAlign("end"), "flex w-full flex-col items-end gap-4", "flex w-full flex-col items-start gap-4"))) },
+    { name: "portrait", value: cond(teamLayout("aside"), "w-full", cond(teamLayout("byline"), "size-12 rounded-full", "size-16 rounded-full")) },
+    { name: "copyAlign", value: cond(inlinePerson, "start", ref("column")) },
+    { name: "copyText", value: cond(inlinePerson, "text-start", ref("textAlign")) },
+  ],
   view: [section(
-    use("Stack", { props: { Gap: "12", Align: "stretch" } },
+    use("Stack", { props: { Gap: "12", Align: "stretch", Class: ref("frame") } },
       use("Stack", { props: { Gap: "4", Align: alignItems, Class: cn("max-w-2xl", selfAlign) } },
         use("Title", { props: { As: ref("level"), Size: "3xl", Weight: "bold", Class: cn("tracking-tight", textAlign) }, attrs: { id: ref("titleId") } }, text(ref("title"))),
         lead("base")),
-      use("List", { props: { Tag: "ul", Class: cn("m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2", cond(eq(ref("cols"), "2"), "", cond(eq(ref("cols"), "3"), "md:grid-cols-3", "md:grid-cols-4"))) } },
+      use("List", { props: { Tag: "ul", Class: cn("m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2", ref("grid")) } },
         each(ref("members"), "m", ref("m.id"),
-          use("ListItem", { props: { Class: cond(eq(ref("surface"), "cards"), "flex", cn("flex flex-col gap-4", itemsAlign)) }, attrs: { "data-testid": "member" } },
-            when(eq(ref("surface"), "cards"),
-              [use("Card", { props: { Class: cn("flex w-full flex-col gap-4 p-6", itemsAlign) } }, ...person())],
-              person()))))))],
+          use("ListItem", { props: { Class: cn(ref("person"), cond(eq(ref("surface"), "cards"), "rounded bg-card p-6 text-card-foreground border border-border", "")) }, attrs: { "data-testid": "member" } },
+            ...person())))))],
 });
 
-/** the portrait, the name (one level under the heading) and the line of a member, aligned by the setting */
+/** the portrait, the name (one level under the heading) and the line of a member, aligned by the setting (at the start beside a disc) */
 function person() {
   return [
-    organism("MediaFrame", { alt: ref("m.title"), src: ref("m.avatar"), ratio: "1/1", className: "size-16 rounded-full" }),
-    use("Stack", { props: { Gap: "2", Align: alignItems } },
-      use("Title", { props: { As: add(ref("level"), 1), Size: "lg", Weight: "semibold", Class: textAlign } }, text(ref("m.title"))),
-      when(ref("m.description"), [use("Text", { props: { Size: "sm", Class: cn("text-muted-foreground", textAlign) } }, text(ref("m.description")))])),
+    organism("MediaFrame", { alt: ref("m.title"), src: ref("m.avatar"), ratio: "1/1", className: cn("shrink-0", ref("portrait")) }),
+    use("Stack", { props: { Gap: "2", Align: ref("copyAlign") } },
+      use("Title", { props: { As: add(ref("level"), 1), Size: "lg", Weight: "semibold", Class: ref("copyText") } }, text(ref("m.title"))),
+      when(ref("m.description"), [use("Text", { props: { Size: "sm", Class: cn("text-muted-foreground", ref("copyText")) } }, text(ref("m.description")))])),
   ];
 }
 

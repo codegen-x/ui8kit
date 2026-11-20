@@ -1,0 +1,89 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.productreviews",
+  "name": "Product reviews",
+  "docs": "The heading, one paragraph and the reviews on cards (the rating, the words, the reviewer with the portrait): in three or two columns, or one under the other.",
+  "theme": "marketing",
+  "group": "product",
+  "organism": "ProductReviews",
+  "line": "simple",
+  "model": "reviews@1",
+  "axes": {
+    "layout": [
+      "cards",
+      "rows"
+    ],
+    "cols": [
+      "3",
+      "2"
+    ]
+  },
+  "defaults": {
+    "layout": "cards",
+    "cols": "3"
+  },
+  "variants": [
+    {
+      "id": "cards3",
+      "set": {}
+    },
+    {
+      "id": "rows",
+      "set": {
+        "layout": "rows"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@reviewItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@reviewItems"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@reviewItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "reviewItems",
+      "collection": "simplereviews",
+      "kind": "review",
+      "record": "ReviewItem",
+      "fields": {
+        "id": "id",
+        "rating": "metadata.score.value",
+        "quote": "metadata.text.value",
+        "avatar": "featured_media_id|media",
+        "title": "title",
+        "description": "metadata.note.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "productreviews",
+      "title": {
+        "$": "ui.marketing.productReviews.title"
+      },
+      "description": {
+        "$": "ui.marketing.productReviews.description"
+      },
+      "items": {
+        "$": "reviewItems"
+      }
+    }
+  }
+}

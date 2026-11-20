@@ -1,0 +1,75 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.choicelinks",
+  "name": "Choice links",
+  "docs": "The heading, one paragraph and the options (sizes, versions) as outline links: a wrapping row, or a grid of four.",
+  "theme": "marketing",
+  "group": "product",
+  "organism": "ChoiceLinks",
+  "line": "simple",
+  "model": "choices@1",
+  "axes": {
+    "layout": [
+      "row",
+      "grid"
+    ]
+  },
+  "defaults": {
+    "layout": "row"
+  },
+  "variants": [
+    {
+      "id": "row",
+      "set": {}
+    },
+    {
+      "id": "grid",
+      "set": {
+        "layout": "grid"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@choiceItems"
+    },
+    {
+      "sel": "ul > li a[data-slot=\"button\"][href]",
+      "n": "@choiceItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "choiceItems",
+      "collection": "simplechoices",
+      "kind": "menu_item",
+      "record": "ChoiceItem",
+      "fields": {
+        "id": "id",
+        "label": "title",
+        "href": "metadata.href.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "choicelinks",
+      "title": {
+        "$": "ui.marketing.choiceLinks.title"
+      },
+      "description": {
+        "$": "ui.marketing.choiceLinks.description"
+      },
+      "items": {
+        "$": "choiceItems"
+      }
+    }
+  }
+}

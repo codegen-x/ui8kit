@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "offers",
+  "version": 1,
+  "docs": "Offers content: the heading, a description and an ordered list of two or three offers, each with a title, a line and an action. One object is valid in every offers layout (two or three cards).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 3,
+      "docs": "the offers, in the order they are shown",
+      "item": {
+        "record": "OfferItem",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the title of the offer" },
+          "description": { "type": "longText", "maxLength": 240, "docs": "one line about the offer; empty: none" },
+          "actionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the action; the link is drawn when the label and the address are both set" },
+          "actionHref": { "type": "url", "docs": "the address of the action" }
+        }
+      }
+    }
+  }
+}

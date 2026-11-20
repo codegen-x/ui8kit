@@ -1,0 +1,63 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.pullquotesimple",
+  "name": "Simple pull quote",
+  "docs": "The words of a quote in large type with the author, a role line and the source under them: a bar at the side, or centred.",
+  "theme": "marketing",
+  "group": "story",
+  "organism": "PullQuoteSimple",
+  "line": "simple",
+  "model": "pull-quote@1",
+  "axes": {
+    "layout": [
+      "rule",
+      "centered"
+    ]
+  },
+  "defaults": {
+    "layout": "rule"
+  },
+  "variants": [
+    {
+      "id": "standalone",
+      "set": {}
+    },
+    {
+      "id": "centered",
+      "set": {
+        "layout": "centered"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "figure blockquote",
+      "n": 1
+    },
+    {
+      "sel": "section a[href]",
+      "n": 1
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "pullquotesimple",
+      "quote": {
+        "$": "ui.marketing.pullQuoteSimple.quote"
+      },
+      "title": {
+        "$": "ui.marketing.pullQuoteSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.pullQuoteSimple.description"
+      },
+      "sourceLabel": {
+        "$": "ui.marketing.pullQuoteSimple.sourceLabel"
+      },
+      "sourceHref": "#/interview"
+    }
+  }
+}

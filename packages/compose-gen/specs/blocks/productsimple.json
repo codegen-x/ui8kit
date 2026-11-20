@@ -1,0 +1,91 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.productsimple",
+  "name": "Simple product",
+  "docs": "One product: the main picture and thumbnails beside the name, the price, one paragraph and the action; the pictures at the start, at the end or above.",
+  "theme": "marketing",
+  "group": "product",
+  "organism": "ProductSimple",
+  "line": "simple",
+  "model": "product@1",
+  "axes": {
+    "media": [
+      "start",
+      "end",
+      "top"
+    ]
+  },
+  "defaults": {
+    "media": "start"
+  },
+  "variants": [
+    {
+      "id": "mediaStart",
+      "set": {}
+    },
+    {
+      "id": "mediaEnd",
+      "set": {
+        "media": "end"
+      }
+    },
+    {
+      "id": "mediaTop",
+      "set": {
+        "media": "top"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@productPhotos"
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 1
+    }
+  ],
+  "data": [
+    {
+      "as": "productPhotos",
+      "collection": "galleryphotos4",
+      "kind": "photo",
+      "record": "ProductPhoto",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "productsimple",
+      "title": {
+        "$": "ui.marketing.productSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.productSimple.description"
+      },
+      "price": "$129",
+      "imageAlt": {
+        "$": "ui.marketing.productSimple.imageAlt"
+      },
+      "actionLabel": {
+        "$": "ui.marketing.productSimple.actionLabel"
+      },
+      "actionHref": "#/cart",
+      "photos": {
+        "$": "productPhotos"
+      }
+    }
+  }
+}

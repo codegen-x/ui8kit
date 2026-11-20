@@ -38,7 +38,8 @@ describe("align setting", () => {
   // gallery cases are the other two values)
   test("defaults: hero mediaTop, mediaBottom and the team are centred, the other hero variants start; the prop overrides", () => {
     const base = cases.filter((x) => !/\.align-/.test(x.label));
-    const want = (label: string) => (/^herosimple\.(?:mediaTop|mediaBottom) |^teamsimple\./.test(label) ? "center" : "start");
+    // the team rows with the portrait beside the copy (portraitRow, bylineCols3, sideList) set align start by their variant
+    const want = (label: string) => (/^herosimple\.(?:mediaTop|mediaBottom) |^teamsimple\.(?!portraitRow|bylineCols3|sideList)/.test(label) ? "center" : "start");
     for (const c of base) {
       expect((c.props as { align?: string }).align ?? DEFAULT[c.organism], c.label).toBe(want(c.label));
       const title = dom(render(c.organism, c.props)).querySelector("h1, h2, h3")!;

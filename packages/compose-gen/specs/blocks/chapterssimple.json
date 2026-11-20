@@ -1,0 +1,83 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.chapterssimple",
+  "name": "Simple chapters",
+  "docs": "The heading, one paragraph and the chapters (a picture, a label, the title, a paragraph): rows with the picture at the side, or a pair with the picture under the copy.",
+  "theme": "marketing",
+  "group": "story",
+  "organism": "ChaptersSimple",
+  "line": "simple",
+  "model": "chapters@1",
+  "axes": {
+    "layout": [
+      "rows",
+      "paired"
+    ]
+  },
+  "defaults": {
+    "layout": "rows"
+  },
+  "variants": [
+    {
+      "id": "illustratedRows",
+      "set": {}
+    },
+    {
+      "id": "paired",
+      "set": {
+        "layout": "paired"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@chapterItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@chapterItems"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@chapterItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "chapterItems",
+      "collection": "simplechapters",
+      "kind": "chapter",
+      "record": "ChapterItem",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "label": "metadata.label.value",
+        "title": "title",
+        "description": "metadata.text.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "chapterssimple",
+      "title": {
+        "$": "ui.marketing.chaptersSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.chaptersSimple.description"
+      },
+      "items": {
+        "$": "chapterItems"
+      }
+    }
+  }
+}

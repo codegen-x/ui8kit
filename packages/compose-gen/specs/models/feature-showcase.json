@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "feature-showcase",
+  "version": 1,
+  "docs": "Feature showcase content: the heading, a description, one picture and an ordered list of two to six key points, each with a title and a line. One object is valid in every showcase layout (the picture at the end, at the start, above the points).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "image": { "type": "image", "docs": "address of the picture; none: the placeholder" },
+    "imageAlt": { "type": "text", "maxLength": 160, "required": true, "docs": "alt text of the picture" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 6,
+      "docs": "the key points, in the order they are shown",
+      "item": {
+        "record": "ShowcaseItem",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the title of the point" },
+          "description": { "type": "longText", "maxLength": 240, "docs": "one line about the point; empty: none" }
+        }
+      }
+    }
+  }
+}

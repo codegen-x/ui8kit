@@ -1,0 +1,61 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.ratingsimple",
+  "name": "Simple rating",
+  "docs": "The score, what it is and the source as a link: one bar on a card surface, or centred.",
+  "theme": "marketing",
+  "group": "proof",
+  "organism": "RatingSimple",
+  "line": "simple",
+  "model": "rating@1",
+  "axes": {
+    "layout": [
+      "bar",
+      "centered"
+    ]
+  },
+  "defaults": {
+    "layout": "bar"
+  },
+  "variants": [
+    {
+      "id": "inline",
+      "set": {}
+    },
+    {
+      "id": "centered",
+      "set": {
+        "layout": "centered"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "section a[href]",
+      "n": 1
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "ratingsimple",
+      "value": "4.9",
+      "title": {
+        "$": "ui.marketing.ratingSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.ratingSimple.description"
+      },
+      "sourceLabel": {
+        "$": "ui.marketing.ratingSimple.sourceLabel"
+      },
+      "sourceHref": "#/reviews"
+    }
+  }
+}

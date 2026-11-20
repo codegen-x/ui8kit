@@ -3,12 +3,20 @@
   The simple line: blocks with one content model each (hero@1, split@1, team@1, intro@1, gallery@1, features@1,
   stats@1, stories@1, photos@1, testimonials@1, logos@1, faq@1, steps@1), the same content in every variant. A
   home page with the hero, the features, the team, the stats, the steps, the quotes and the questions, and a
-  team page with the wide hero, the team on cards, the gallery, the photos and the stories.
+  team page with the wide hero, the team on cards, the gallery, the photos and the stories; a blog page (the
+  article lead, the article, a figure, a pull quote, chapters, topics), a shop page (collections, products, one
+  product, choices, specs, compare, purchase, reviews, store policies), a pricing page (the showcase, the
+  rating, pricing, offers, a course outline, contacts, locations) and an about page (the header, an event and a
+  profile intro, the team list, the error block, the footer).
 -->
 <script lang="ts">
   import { Block, NavBar, SitemapFooter, type MegaGroup } from "@codegen-x/svelte-compose";
   import HomePage from "./ThemeMarketingSimpleScreen/HomePage.svelte";
   import TeamPage from "./ThemeMarketingSimpleScreen/TeamPage.svelte";
+  import BlogPage from "./ThemeMarketingSimpleScreen/BlogPage.svelte";
+  import ShopPage from "./ThemeMarketingSimpleScreen/ShopPage.svelte";
+  import PricingPage from "./ThemeMarketingSimpleScreen/PricingPage.svelte";
+  import AboutPage from "./ThemeMarketingSimpleScreen/AboutPage.svelte";
   import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
   import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
@@ -16,7 +24,14 @@
   import { navOf } from "@ui8kit/app-shared/nav/ThemeMarketingSimpleScreen";
   import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
 
-  const ROUTES = [{"path":"","area":"home"},{"path":"team","area":"team"}] as const;
+  const ROUTES = [
+    {"path":"","area":"home"},
+    {"path":"team","area":"team"},
+    {"path":"blog","area":"blog"},
+    {"path":"shop","area":"shop"},
+    {"path":"pricing","area":"pricing"},
+    {"path":"about","area":"about"},
+  ] as const;
   const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 
   let { url }: { url: UrlPort } = $props();
@@ -51,6 +66,14 @@
 <Block tag="main" id="main-content" tabindex={-1} data-testid="main">
   {#if route.area === "team"}
     <TeamPage />
+  {:else if route.area === "blog"}
+    <BlogPage />
+  {:else if route.area === "shop"}
+    <ShopPage />
+  {:else if route.area === "pricing"}
+    <PricingPage />
+  {:else if route.area === "about"}
+    <AboutPage />
   {:else}
     <HomePage />
   {/if}

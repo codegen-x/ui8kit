@@ -260,6 +260,126 @@
     ]
    }
   },
+  "articlelead": {
+   "organism": "ArticleLead",
+   "defaults": {
+    "media": "top"
+   },
+   "sample": {
+    "id": "articlelead",
+    "title": {
+     "$": "ui.marketing.articleLead.title"
+    },
+    "description": {
+     "$": "ui.marketing.articleLead.description"
+    },
+    "imageAlt": {
+     "$": "ui.marketing.articleLead.imageAlt"
+    },
+    "author": {
+     "$": "ui.marketing.articleLead.author"
+    },
+    "date": {
+     "$": "ui.marketing.articleLead.date"
+    }
+   },
+   "variants": [
+    {
+     "id": "mediaTop",
+     "set": {}
+    },
+    {
+     "id": "mediaStart",
+     "set": {
+      "media": "start"
+     }
+    },
+    {
+     "id": "mediaEnd",
+     "set": {
+      "media": "end"
+     }
+    }
+   ],
+   "data": [],
+   "orgProps": {
+    "ArticleLead": [
+     "id",
+     "title",
+     "description",
+     "image",
+     "imageAlt",
+     "author",
+     "avatar",
+     "date",
+     "level",
+     "padding",
+     "align",
+     "media",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "articlesimple": {
+   "organism": "ArticleSimple",
+   "defaults": {
+    "layout": "column"
+   },
+   "sample": {
+    "id": "articlesimple",
+    "title": {
+     "$": "ui.marketing.articleSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.articleSimple.description"
+    },
+    "sections": {
+     "$": "articleSections"
+    }
+   },
+   "variants": [
+    {
+     "id": "column",
+     "set": {},
+     "props": {
+      "align": "start"
+     }
+    },
+    {
+     "id": "twoColumns",
+     "set": {
+      "layout": "columns"
+     },
+     "props": {
+      "align": "center"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "articleSections",
+     "collection": "article",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "description": "metadata.text.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "ArticleSimple": [
+     "id",
+     "title",
+     "description",
+     "sections",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "landmarkLabel"
+    ]
+   }
+  },
   "beforeafter": {
    "organism": "BeforeAfter",
    "defaults": {
@@ -407,6 +527,171 @@
     ]
    }
   },
+  "chapterssimple": {
+   "organism": "ChaptersSimple",
+   "defaults": {
+    "layout": "rows"
+   },
+   "sample": {
+    "id": "chapterssimple",
+    "title": {
+     "$": "ui.marketing.chaptersSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.chaptersSimple.description"
+    },
+    "items": {
+     "$": "chapterItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "illustratedRows",
+     "set": {}
+    },
+    {
+     "id": "paired",
+     "set": {
+      "layout": "paired"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "chapterItems",
+     "collection": "simplechapters",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "label": "metadata.label.value",
+      "title": "title",
+      "description": "metadata.text.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "ChaptersSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "choicelinks": {
+   "organism": "ChoiceLinks",
+   "defaults": {
+    "layout": "row"
+   },
+   "sample": {
+    "id": "choicelinks",
+    "title": {
+     "$": "ui.marketing.choiceLinks.title"
+    },
+    "description": {
+     "$": "ui.marketing.choiceLinks.description"
+    },
+    "items": {
+     "$": "choiceItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "row",
+     "set": {}
+    },
+    {
+     "id": "grid",
+     "set": {
+      "layout": "grid"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "choiceItems",
+     "collection": "simplechoices",
+     "fields": {
+      "id": "id",
+      "label": "title",
+      "href": "metadata.href.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "ChoiceLinks": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "collectionssimple": {
+   "organism": "CollectionsSimple",
+   "defaults": {
+    "cols": "4"
+   },
+   "sample": {
+    "id": "collectionssimple",
+    "title": {
+     "$": "ui.marketing.collectionsSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.collectionsSimple.description"
+    },
+    "items": {
+     "$": "collectionItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "cards4",
+     "set": {}
+    },
+    {
+     "id": "cards2",
+     "set": {
+      "cols": "2"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "collectionItems",
+     "collection": "simplecollections",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "title": "title",
+      "href": "metadata.href.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "CollectionsSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
   "compare": {
    "organism": "ComparisonTable",
    "defaults": {
@@ -500,6 +785,193 @@
      "highlight",
      "tone",
      "density",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "comparesimple": {
+   "organism": "CompareSimple",
+   "defaults": {
+    "width": "wide"
+   },
+   "sample": {
+    "id": "comparesimple",
+    "title": {
+     "$": "ui.marketing.compareSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.compareSimple.description"
+    },
+    "firstLabel": {
+     "$": "ui.marketing.compareSimple.firstLabel"
+    },
+    "secondLabel": {
+     "$": "ui.marketing.compareSimple.secondLabel"
+    },
+    "rows": {
+     "$": "compareRows"
+    }
+   },
+   "variants": [
+    {
+     "id": "twoProducts",
+     "set": {}
+    },
+    {
+     "id": "narrow",
+     "set": {
+      "width": "narrow"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "compareRows",
+     "collection": "compare",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "first": "metadata.a.value",
+      "second": "metadata.b.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "CompareSimple": [
+     "id",
+     "title",
+     "description",
+     "firstLabel",
+     "secondLabel",
+     "rows",
+     "level",
+     "padding",
+     "align",
+     "width",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "contactssimple": {
+   "organism": "ContactsSimple",
+   "defaults": {
+    "layout": "cards",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "contactssimple",
+    "title": {
+     "$": "ui.marketing.contactsSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.contactsSimple.description"
+    },
+    "items": {
+     "$": "contactItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "cards3",
+     "set": {}
+    },
+    {
+     "id": "cards2",
+     "set": {
+      "cols": "2"
+     }
+    },
+    {
+     "id": "rows",
+     "set": {
+      "layout": "rows"
+     },
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "contactItems",
+     "collection": "simplecontacts",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "title": "title",
+      "description": "metadata.text.value",
+      "actionLabel": "metadata.action.value",
+      "actionHref": "metadata.href.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "ContactsSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "courseoutline": {
+   "organism": "CourseOutline",
+   "defaults": {
+    "layout": "rows"
+   },
+   "sample": {
+    "id": "courseoutline",
+    "title": {
+     "$": "ui.marketing.courseOutline.title"
+    },
+    "description": {
+     "$": "ui.marketing.courseOutline.description"
+    },
+    "modules": {
+     "$": "courseModules"
+    }
+   },
+   "variants": [
+    {
+     "id": "moduleRows",
+     "set": {}
+    },
+    {
+     "id": "cards",
+     "set": {
+      "layout": "cards"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "courseModules",
+     "collection": "simplemodules",
+     "fields": {
+      "id": "id",
+      "label": "metadata.label.value",
+      "title": "title",
+      "description": "metadata.text.value",
+      "meta": "metadata.meta.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "CourseOutline": [
+     "id",
+     "title",
+     "description",
+     "modules",
+     "level",
+     "padding",
+     "align",
+     "layout",
      "landmarkLabel"
     ]
    }
@@ -937,6 +1409,108 @@
      "tone",
      "image",
      "imageAlt",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "errorsimple": {
+   "organism": "ErrorSimple",
+   "defaults": {},
+   "sample": {
+    "id": "errorsimple",
+    "code": "404",
+    "title": {
+     "$": "ui.marketing.errorSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.errorSimple.description"
+    },
+    "actionLabel": {
+     "$": "ui.marketing.errorSimple.actionLabel"
+    },
+    "actionHref": "#/"
+   },
+   "variants": [
+    {
+     "id": "center",
+     "set": {}
+    },
+    {
+     "id": "start",
+     "set": {},
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [],
+   "orgProps": {
+    "ErrorSimple": [
+     "id",
+     "code",
+     "title",
+     "description",
+     "actionLabel",
+     "actionHref",
+     "level",
+     "padding",
+     "align",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "eventintro": {
+   "organism": "EventIntro",
+   "defaults": {},
+   "sample": {
+    "id": "eventintro",
+    "badge": {
+     "$": "ui.marketing.eventIntro.badge"
+    },
+    "title": {
+     "$": "ui.marketing.eventIntro.title"
+    },
+    "description": {
+     "$": "ui.marketing.eventIntro.description"
+    },
+    "date": {
+     "$": "ui.marketing.eventIntro.date"
+    },
+    "place": {
+     "$": "ui.marketing.eventIntro.place"
+    },
+    "actionLabel": {
+     "$": "ui.marketing.eventIntro.actionLabel"
+    },
+    "actionHref": "#/tickets"
+   },
+   "variants": [
+    {
+     "id": "center",
+     "set": {}
+    },
+    {
+     "id": "start",
+     "set": {},
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [],
+   "orgProps": {
+    "EventIntro": [
+     "id",
+     "badge",
+     "title",
+     "description",
+     "date",
+     "place",
+     "actionLabel",
+     "actionHref",
+     "level",
+     "padding",
+     "align",
      "landmarkLabel"
     ]
    }
@@ -1494,6 +2068,74 @@
     ]
    }
   },
+  "featureshowcasesimple": {
+   "organism": "FeatureShowcaseSimple",
+   "defaults": {
+    "media": "end"
+   },
+   "sample": {
+    "id": "featureshowcasesimple",
+    "title": {
+     "$": "ui.marketing.featureShowcaseSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.featureShowcaseSimple.description"
+    },
+    "imageAlt": {
+     "$": "ui.marketing.featureShowcaseSimple.imageAlt"
+    },
+    "items": {
+     "$": "showcaseItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "mediaEnd",
+     "set": {}
+    },
+    {
+     "id": "mediaStart",
+     "set": {
+      "media": "start"
+     }
+    },
+    {
+     "id": "mediaTop",
+     "set": {
+      "media": "top"
+     },
+     "props": {
+      "align": "center"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "showcaseItems",
+     "collection": "features",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "description": "metadata.text.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "FeatureShowcaseSimple": [
+     "id",
+     "title",
+     "description",
+     "image",
+     "imageAlt",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "media",
+     "landmarkLabel"
+    ]
+   }
+  },
   "featuresplit": {
    "organism": "FeatureSplit",
    "defaults": {
@@ -1778,6 +2420,59 @@
     ]
    }
   },
+  "figuresimple": {
+   "organism": "FigureSimple",
+   "defaults": {
+    "layout": "wide"
+   },
+   "sample": {
+    "id": "figuresimple",
+    "imageAlt": {
+     "$": "ui.marketing.figureSimple.imageAlt"
+    },
+    "title": {
+     "$": "ui.marketing.figureSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.figureSimple.description"
+    },
+    "credit": {
+     "$": "ui.marketing.figureSimple.credit"
+    }
+   },
+   "variants": [
+    {
+     "id": "wide",
+     "set": {}
+    },
+    {
+     "id": "captionEnd",
+     "set": {
+      "layout": "end"
+     }
+    },
+    {
+     "id": "captionStart",
+     "set": {
+      "layout": "start"
+     }
+    }
+   ],
+   "data": [],
+   "orgProps": {
+    "FigureSimple": [
+     "id",
+     "image",
+     "imageAlt",
+     "title",
+     "description",
+     "credit",
+     "padding",
+     "layout",
+     "landmarkLabel"
+    ]
+   }
+  },
   "footer": {
    "organism": "SiteFooter",
    "defaults": {
@@ -1814,6 +2509,68 @@
      "routes",
      "layout",
      "density",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "footersimple": {
+   "organism": "FooterSimple",
+   "defaults": {
+    "layout": "row"
+   },
+   "sample": {
+    "id": "footersimple",
+    "brand": {
+     "$": "ui.marketing.footerSimple.brand"
+    },
+    "description": {
+     "$": "ui.marketing.footerSimple.description"
+    },
+    "links": {
+     "$": "footerLinks"
+    },
+    "copyright": {
+     "$": "ui.marketing.footerSimple.copyright"
+    }
+   },
+   "variants": [
+    {
+     "id": "brandLinks",
+     "set": {}
+    },
+    {
+     "id": "linkGrid",
+     "set": {
+      "layout": "grid"
+     }
+    },
+    {
+     "id": "centered",
+     "set": {
+      "layout": "centered"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "footerLinks",
+     "collection": "footerlinks",
+     "fields": {
+      "id": "id",
+      "label": "title",
+      "href": "metadata.href.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "FooterSimple": [
+     "id",
+     "brand",
+     "description",
+     "links",
+     "copyright",
+     "padding",
+     "layout",
      "landmarkLabel"
     ]
    }
@@ -2148,6 +2905,67 @@
      "actions",
      "cta",
      "ctaHref",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "headersimple": {
+   "organism": "HeaderSimple",
+   "defaults": {
+    "layout": "inline"
+   },
+   "sample": {
+    "id": "headersimple",
+    "brand": {
+     "$": "ui.marketing.headerSimple.brand"
+    },
+    "brandHref": "#/",
+    "links": {
+     "$": "headerLinks"
+    },
+    "actionLabel": {
+     "$": "ui.marketing.headerSimple.actionLabel"
+    },
+    "actionHref": "#/start"
+   },
+   "variants": [
+    {
+     "id": "inline",
+     "set": {}
+    },
+    {
+     "id": "linksEnd",
+     "set": {
+      "layout": "end"
+     }
+    },
+    {
+     "id": "centered",
+     "set": {
+      "layout": "centered"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "headerLinks",
+     "collection": "simplelinks",
+     "fields": {
+      "id": "id",
+      "label": "title",
+      "href": "metadata.href.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "HeaderSimple": [
+     "id",
+     "brand",
+     "brandHref",
+     "links",
+     "actionLabel",
+     "actionHref",
+     "layout",
      "landmarkLabel"
     ]
    }
@@ -2991,6 +3809,65 @@
     ]
    }
   },
+  "locationssimple": {
+   "organism": "LocationsSimple",
+   "defaults": {
+    "media": "start"
+   },
+   "sample": {
+    "id": "locationssimple",
+    "title": {
+     "$": "ui.marketing.locationsSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.locationsSimple.description"
+    },
+    "imageAlt": {
+     "$": "ui.marketing.locationsSimple.imageAlt"
+    },
+    "items": {
+     "$": "locationItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "mediaStart",
+     "set": {}
+    },
+    {
+     "id": "mediaEnd",
+     "set": {
+      "media": "end"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "locationItems",
+     "collection": "stores",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "description": "metadata.address.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "LocationsSimple": [
+     "id",
+     "title",
+     "description",
+     "image",
+     "imageAlt",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "media",
+     "landmarkLabel"
+    ]
+   }
+  },
   "logos": {
    "organism": "LogoCloud",
    "defaults": {
@@ -3764,6 +4641,63 @@
     ]
    }
   },
+  "offerssimple": {
+   "organism": "OffersSimple",
+   "defaults": {
+    "cols": "2"
+   },
+   "sample": {
+    "id": "offerssimple",
+    "title": {
+     "$": "ui.marketing.offersSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.offersSimple.description"
+    },
+    "items": {
+     "$": "offerItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "duo",
+     "set": {}
+    },
+    {
+     "id": "duoStart",
+     "set": {},
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "offerItems",
+     "collection": "simpleoffers",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "description": "metadata.text.value",
+      "actionLabel": "metadata.action.value",
+      "actionHref": "metadata.href.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "OffersSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
   "pagehead": {
    "organism": "PageIntro",
    "defaults": {
@@ -4285,6 +5219,363 @@
     ]
    }
   },
+  "pricingsimple": {
+   "organism": "PricingSimple",
+   "defaults": {
+    "layout": "cards",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "pricingsimple",
+    "title": {
+     "$": "ui.marketing.pricingSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.pricingSimple.description"
+    },
+    "plans": {
+     "$": "pricingPlans"
+    }
+   },
+   "variants": [
+    {
+     "id": "cards3",
+     "set": {}
+    },
+    {
+     "id": "cards2",
+     "set": {
+      "cols": "2"
+     },
+     "props": {
+      "plans": {
+       "$": "pricingPlans2"
+      }
+     }
+    },
+    {
+     "id": "rows",
+     "set": {
+      "layout": "rows"
+     },
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "pricingPlans",
+     "collection": "simpleplans",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "price": "metadata.display.value",
+      "description": "metadata.text.value",
+      "badge": "metadata.badge.value",
+      "actionLabel": "metadata.action.value",
+      "actionHref": "metadata.href.value"
+     }
+    },
+    {
+     "as": "pricingPlans2",
+     "collection": "simpleplans2",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "price": "metadata.display.value",
+      "description": "metadata.text.value",
+      "badge": "metadata.badge.value",
+      "actionLabel": "metadata.action.value",
+      "actionHref": "metadata.href.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "PricingSimple": [
+     "id",
+     "title",
+     "description",
+     "plans",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "productreviews": {
+   "organism": "ProductReviews",
+   "defaults": {
+    "layout": "cards",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "productreviews",
+    "title": {
+     "$": "ui.marketing.productReviews.title"
+    },
+    "description": {
+     "$": "ui.marketing.productReviews.description"
+    },
+    "items": {
+     "$": "reviewItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "cards3",
+     "set": {}
+    },
+    {
+     "id": "rows",
+     "set": {
+      "layout": "rows"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "reviewItems",
+     "collection": "simplereviews",
+     "fields": {
+      "id": "id",
+      "rating": "metadata.score.value",
+      "quote": "metadata.text.value",
+      "avatar": "featured_media_id|media",
+      "title": "title",
+      "description": "metadata.note.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "ProductReviews": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "productsimple": {
+   "organism": "ProductSimple",
+   "defaults": {
+    "media": "start"
+   },
+   "sample": {
+    "id": "productsimple",
+    "title": {
+     "$": "ui.marketing.productSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.productSimple.description"
+    },
+    "price": "$129",
+    "imageAlt": {
+     "$": "ui.marketing.productSimple.imageAlt"
+    },
+    "actionLabel": {
+     "$": "ui.marketing.productSimple.actionLabel"
+    },
+    "actionHref": "#/cart",
+    "photos": {
+     "$": "productPhotos"
+    }
+   },
+   "variants": [
+    {
+     "id": "mediaStart",
+     "set": {}
+    },
+    {
+     "id": "mediaEnd",
+     "set": {
+      "media": "end"
+     }
+    },
+    {
+     "id": "mediaTop",
+     "set": {
+      "media": "top"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "productPhotos",
+     "collection": "galleryphotos4",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media"
+     }
+    }
+   ],
+   "orgProps": {
+    "ProductSimple": [
+     "id",
+     "title",
+     "description",
+     "price",
+     "image",
+     "imageAlt",
+     "actionLabel",
+     "actionHref",
+     "photos",
+     "level",
+     "padding",
+     "align",
+     "media",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "productssimple": {
+   "organism": "ProductsSimple",
+   "defaults": {
+    "layout": "grid",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "productssimple",
+    "title": {
+     "$": "ui.marketing.productsSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.productsSimple.description"
+    },
+    "items": {
+     "$": "productItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "cards3",
+     "set": {}
+    },
+    {
+     "id": "denseGrid",
+     "set": {
+      "cols": "4"
+     }
+    },
+    {
+     "id": "rows",
+     "set": {
+      "layout": "rows"
+     },
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "productItems",
+     "collection": "simpleproducts",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "title": "title",
+      "price": "metadata.display.value",
+      "href": "slug|route"
+     }
+    }
+   ],
+   "orgProps": {
+    "ProductsSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "profileintro": {
+   "organism": "ProfileIntro",
+   "defaults": {
+    "media": "end"
+   },
+   "sample": {
+    "id": "profileintro",
+    "title": {
+     "$": "ui.marketing.profileIntro.title"
+    },
+    "role": {
+     "$": "ui.marketing.profileIntro.role"
+    },
+    "description": {
+     "$": "ui.marketing.profileIntro.description"
+    },
+    "imageAlt": {
+     "$": "ui.marketing.profileIntro.imageAlt"
+    },
+    "links": {
+     "$": "profileLinks"
+    }
+   },
+   "variants": [
+    {
+     "id": "portraitEnd",
+     "set": {}
+    },
+    {
+     "id": "portraitStart",
+     "set": {
+      "media": "start"
+     }
+    },
+    {
+     "id": "portraitTop",
+     "set": {
+      "media": "top"
+     },
+     "props": {
+      "align": "center"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "profileLinks",
+     "collection": "profilelinks",
+     "fields": {
+      "id": "id",
+      "label": "title",
+      "href": "metadata.href.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "ProfileIntro": [
+     "id",
+     "title",
+     "role",
+     "description",
+     "image",
+     "imageAlt",
+     "links",
+     "level",
+     "padding",
+     "align",
+     "media",
+     "landmarkLabel"
+    ]
+   }
+  },
   "projects": {
    "organism": "ProjectGrid",
    "defaults": {
@@ -4464,6 +5755,105 @@
     ]
    }
   },
+  "pullquotesimple": {
+   "organism": "PullQuoteSimple",
+   "defaults": {
+    "layout": "rule"
+   },
+   "sample": {
+    "id": "pullquotesimple",
+    "quote": {
+     "$": "ui.marketing.pullQuoteSimple.quote"
+    },
+    "title": {
+     "$": "ui.marketing.pullQuoteSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.pullQuoteSimple.description"
+    },
+    "sourceLabel": {
+     "$": "ui.marketing.pullQuoteSimple.sourceLabel"
+    },
+    "sourceHref": "#/interview"
+   },
+   "variants": [
+    {
+     "id": "standalone",
+     "set": {}
+    },
+    {
+     "id": "centered",
+     "set": {
+      "layout": "centered"
+     }
+    }
+   ],
+   "data": [],
+   "orgProps": {
+    "PullQuoteSimple": [
+     "id",
+     "quote",
+     "title",
+     "description",
+     "sourceLabel",
+     "sourceHref",
+     "padding",
+     "layout",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "purchasesimple": {
+   "organism": "PurchaseSimple",
+   "defaults": {
+    "layout": "panel"
+   },
+   "sample": {
+    "id": "purchasesimple",
+    "title": {
+     "$": "ui.marketing.purchaseSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.purchaseSimple.description"
+    },
+    "price": "$129",
+    "note": {
+     "$": "ui.marketing.purchaseSimple.note"
+    },
+    "actionLabel": {
+     "$": "ui.marketing.purchaseSimple.actionLabel"
+    },
+    "actionHref": "#/cart"
+   },
+   "variants": [
+    {
+     "id": "panel",
+     "set": {}
+    },
+    {
+     "id": "centered",
+     "set": {
+      "layout": "centered"
+     }
+    }
+   ],
+   "data": [],
+   "orgProps": {
+    "PurchaseSimple": [
+     "id",
+     "title",
+     "description",
+     "price",
+     "note",
+     "actionLabel",
+     "actionHref",
+     "level",
+     "padding",
+     "layout",
+     "landmarkLabel"
+    ]
+   }
+  },
   "quotesplit": {
    "organism": "QuoteSplit",
    "defaults": {
@@ -4622,6 +6012,53 @@
     ]
    }
   },
+  "ratingsimple": {
+   "organism": "RatingSimple",
+   "defaults": {
+    "layout": "bar"
+   },
+   "sample": {
+    "id": "ratingsimple",
+    "value": "4.9",
+    "title": {
+     "$": "ui.marketing.ratingSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.ratingSimple.description"
+    },
+    "sourceLabel": {
+     "$": "ui.marketing.ratingSimple.sourceLabel"
+    },
+    "sourceHref": "#/reviews"
+   },
+   "variants": [
+    {
+     "id": "inline",
+     "set": {}
+    },
+    {
+     "id": "centered",
+     "set": {
+      "layout": "centered"
+     }
+    }
+   ],
+   "data": [],
+   "orgProps": {
+    "RatingSimple": [
+     "id",
+     "value",
+     "title",
+     "description",
+     "sourceLabel",
+     "sourceHref",
+     "level",
+     "padding",
+     "layout",
+     "landmarkLabel"
+    ]
+   }
+  },
   "sitemap": {
    "organism": "SitemapFooter",
    "defaults": {
@@ -4725,6 +6162,60 @@
      "id",
      "layout",
      "density",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "specssimple": {
+   "organism": "SpecsSimple",
+   "defaults": {
+    "layout": "rows"
+   },
+   "sample": {
+    "id": "specssimple",
+    "title": {
+     "$": "ui.marketing.specsSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.specsSimple.description"
+    },
+    "items": {
+     "$": "specItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "keyValue",
+     "set": {}
+    },
+    {
+     "id": "twoColumns",
+     "set": {
+      "layout": "columns"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "specItems",
+     "collection": "specs",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "description": "metadata.value.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "SpecsSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
      "landmarkLabel"
     ]
    }
@@ -5232,6 +6723,66 @@
     ]
    }
   },
+  "storepolicies": {
+   "organism": "StorePolicies",
+   "defaults": {
+    "layout": "cards",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "storepolicies",
+    "title": {
+     "$": "ui.marketing.storePolicies.title"
+    },
+    "description": {
+     "$": "ui.marketing.storePolicies.description"
+    },
+    "items": {
+     "$": "policyItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "cols3",
+     "set": {}
+    },
+    {
+     "id": "rows",
+     "set": {
+      "layout": "rows"
+     },
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "policyItems",
+     "collection": "simplepolicies",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "title": "title",
+      "description": "metadata.text.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "StorePolicies": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
   "storiessimple": {
    "organism": "StoriesSimple",
    "defaults": {
@@ -5397,6 +6948,7 @@
   "teamsimple": {
    "organism": "TeamSimple",
    "defaults": {
+    "layout": "grid",
     "cols": "3",
     "surface": "plain"
    },
@@ -5434,6 +6986,35 @@
      "set": {
       "surface": "cards"
      }
+    },
+    {
+     "id": "portraitRow",
+     "set": {
+      "layout": "aside"
+     },
+     "props": {
+      "align": "start"
+     }
+    },
+    {
+     "id": "bylineCols3",
+     "set": {
+      "layout": "byline",
+      "surface": "cards"
+     },
+     "props": {
+      "align": "start"
+     }
+    },
+    {
+     "id": "sideList",
+     "set": {
+      "layout": "list",
+      "cols": "2"
+     },
+     "props": {
+      "align": "start"
+     }
     }
    ],
    "data": [
@@ -5457,6 +7038,7 @@
      "level",
      "padding",
      "align",
+     "layout",
      "cols",
      "surface",
      "landmarkLabel"
@@ -5759,6 +7341,70 @@
      "title",
      "description",
      "quotes",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
+  "topicssimple": {
+   "organism": "TopicsSimple",
+   "defaults": {
+    "layout": "cards",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "topicssimple",
+    "title": {
+     "$": "ui.marketing.topicsSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.topicsSimple.description"
+    },
+    "items": {
+     "$": "topicItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "cards3",
+     "set": {}
+    },
+    {
+     "id": "cards2",
+     "set": {
+      "cols": "2"
+     }
+    },
+    {
+     "id": "rows",
+     "set": {
+      "layout": "rows"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "topicItems",
+     "collection": "simpletopics",
+     "fields": {
+      "id": "id",
+      "label": "metadata.label.value",
+      "title": "title",
+      "description": "metadata.text.value",
+      "href": "metadata.href.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "TopicsSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
      "level",
      "padding",
      "align",
@@ -14432,7 +16078,7 @@
        "actionLabel": {
         "$": "ui.pages.marketingSimple.team.cta"
        },
-       "actionHref": "#/"
+       "actionHref": "#/blog"
       }
      },
      {
@@ -14458,6 +16104,198 @@
      {
       "block": "teamsimple",
       "variant": "cols4"
+     }
+    ],
+    "blog": [
+     {
+      "block": "herosimple",
+      "variant": "mediaEnd",
+      "props": {
+       "level": 1,
+       "title": {
+        "$": "ui.pages.marketingSimple.blog.title"
+       },
+       "description": {
+        "$": "ui.pages.marketingSimple.blog.text"
+       },
+       "actionLabel": {
+        "$": "ui.pages.marketingSimple.blog.cta"
+       },
+       "actionHref": "#/shop"
+      }
+     },
+     {
+      "block": "articlelead",
+      "variant": "mediaTop"
+     },
+     {
+      "block": "articlesimple",
+      "variant": "column"
+     },
+     {
+      "block": "figuresimple",
+      "variant": "wide"
+     },
+     {
+      "block": "pullquotesimple",
+      "variant": "standalone"
+     },
+     {
+      "block": "chapterssimple",
+      "variant": "illustratedRows"
+     },
+     {
+      "block": "topicssimple",
+      "variant": "cards3"
+     },
+     {
+      "block": "teamsimple",
+      "variant": "bylineCols3"
+     }
+    ],
+    "shop": [
+     {
+      "block": "herosimple",
+      "variant": "mediaStart",
+      "props": {
+       "level": 1,
+       "title": {
+        "$": "ui.pages.marketingSimple.shop.title"
+       },
+       "description": {
+        "$": "ui.pages.marketingSimple.shop.text"
+       },
+       "actionLabel": {
+        "$": "ui.pages.marketingSimple.shop.cta"
+       },
+       "actionHref": "#/pricing"
+      }
+     },
+     {
+      "block": "collectionssimple",
+      "variant": "cards4"
+     },
+     {
+      "block": "productssimple",
+      "variant": "cards3"
+     },
+     {
+      "block": "productsimple",
+      "variant": "mediaStart"
+     },
+     {
+      "block": "choicelinks",
+      "variant": "row"
+     },
+     {
+      "block": "specssimple",
+      "variant": "keyValue"
+     },
+     {
+      "block": "comparesimple",
+      "variant": "twoProducts"
+     },
+     {
+      "block": "purchasesimple",
+      "variant": "panel"
+     },
+     {
+      "block": "productreviews",
+      "variant": "cards3"
+     },
+     {
+      "block": "storepolicies",
+      "variant": "cols3"
+     }
+    ],
+    "pricing": [
+     {
+      "block": "herosimple",
+      "variant": "mediaTop",
+      "props": {
+       "level": 1,
+       "title": {
+        "$": "ui.pages.marketingSimple.pricing.title"
+       },
+       "description": {
+        "$": "ui.pages.marketingSimple.pricing.text"
+       },
+       "actionLabel": {
+        "$": "ui.pages.marketingSimple.pricing.cta"
+       },
+       "actionHref": "#/about"
+      }
+     },
+     {
+      "block": "featureshowcasesimple",
+      "variant": "mediaEnd"
+     },
+     {
+      "block": "ratingsimple",
+      "variant": "inline"
+     },
+     {
+      "block": "pricingsimple",
+      "variant": "cards3"
+     },
+     {
+      "block": "offerssimple",
+      "variant": "duo"
+     },
+     {
+      "block": "courseoutline",
+      "variant": "moduleRows"
+     },
+     {
+      "block": "contactssimple",
+      "variant": "cards3"
+     },
+     {
+      "block": "locationssimple",
+      "variant": "mediaStart"
+     }
+    ],
+    "about": [
+     {
+      "block": "herosimple",
+      "variant": "mediaBottom",
+      "props": {
+       "level": 1,
+       "title": {
+        "$": "ui.pages.marketingSimple.about.title"
+       },
+       "description": {
+        "$": "ui.pages.marketingSimple.about.text"
+       },
+       "actionLabel": {
+        "$": "ui.pages.marketingSimple.about.cta"
+       },
+       "actionHref": "#/"
+      }
+     },
+     {
+      "block": "headersimple",
+      "variant": "inline"
+     },
+     {
+      "block": "eventintro",
+      "variant": "center"
+     },
+     {
+      "block": "profileintro",
+      "variant": "portraitEnd"
+     },
+     {
+      "block": "teamsimple",
+      "variant": "sideList"
+     },
+     {
+      "block": "errorsimple",
+      "variant": "center"
+     },
+     {
+      "block": "footersimple",
+      "variant": "brandLinks"
      }
     ]
    }

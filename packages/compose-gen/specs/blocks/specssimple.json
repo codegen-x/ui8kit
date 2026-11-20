@@ -1,0 +1,71 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.specssimple",
+  "name": "Simple specs",
+  "docs": "The heading, one paragraph and the specifications as name and value rows on a muted surface, in one narrow column or two columns.",
+  "theme": "marketing",
+  "group": "product",
+  "organism": "SpecsSimple",
+  "line": "simple",
+  "model": "specs@1",
+  "axes": {
+    "layout": [
+      "rows",
+      "columns"
+    ]
+  },
+  "defaults": {
+    "layout": "rows"
+  },
+  "variants": [
+    {
+      "id": "keyValue",
+      "set": {}
+    },
+    {
+      "id": "twoColumns",
+      "set": {
+        "layout": "columns"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@specItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "specItems",
+      "collection": "specs",
+      "kind": "spec",
+      "record": "SpecItem",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "description": "metadata.value.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "specssimple",
+      "title": {
+        "$": "ui.marketing.specsSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.specsSimple.description"
+      },
+      "items": {
+        "$": "specItems"
+      }
+    }
+  }
+}

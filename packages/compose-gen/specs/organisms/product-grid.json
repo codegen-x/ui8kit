@@ -258,7 +258,7 @@
                                 }
                               ],
                               "attrs": {
-                                "data-slot": "product"
+                                "data-slot": "products-row"
                               }
                             }
                           ]

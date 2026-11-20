@@ -67,6 +67,14 @@ test("the model blocks take exactly their model fields; a missing or extra prop 
     ["herosimple", "hero@1"], ["splitsimple", "split@1"], ["teamsimple", "team@1"], ["introsimple", "intro@1"], ["galleryhero", "gallery@1"],
     ["featuressimple", "features@1"], ["statssimple", "stats@1"], ["storiessimple", "stories@1"], ["photossimple", "photos@1"],
     ["testimonialssimple", "testimonials@1"], ["logossimple", "logos@1"], ["faqsimple", "faq@1"], ["stepssimple", "steps@1"],
+    // wave 2
+    ["featureshowcasesimple", "feature-showcase@1"], ["headersimple", "header@1"], ["footersimple", "footer@1"], ["eventintro", "event@1"],
+    ["profileintro", "profile@1"], ["ratingsimple", "rating@1"], ["errorsimple", "error@1"], ["figuresimple", "figure@1"],
+    ["pullquotesimple", "pull-quote@1"], ["articlesimple", "article@1"], ["articlelead", "article-lead@1"], ["topicssimple", "topics@1"],
+    ["chapterssimple", "chapters@1"], ["pricingsimple", "pricing@1"], ["contactssimple", "contacts@1"], ["locationssimple", "locations@1"],
+    ["offerssimple", "offers@1"], ["productssimple", "products@1"], ["productsimple", "product@1"], ["collectionssimple", "collections@1"],
+    ["specssimple", "specs@1"], ["comparesimple", "compare@1"], ["courseoutline", "curriculum@1"], ["choicelinks", "choices@1"],
+    ["purchasesimple", "purchase@1"], ["storepolicies", "store-policy@1"], ["productreviews", "reviews@1"],
   ];
   expect(simple.map((b) => [b.id, b.model, b.line]).sort()).toEqual(line.map(([k, m]) => [`block.${k}`, m, "simple"]).sort());
   for (const b of simple) expect(propsProblems(b, byName.get(b.organism)!, models.get(b.model!)!.model)).toEqual([]);

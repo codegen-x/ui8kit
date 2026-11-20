@@ -101,8 +101,13 @@
         "id": "chapter",
         "label": "Chapter",
         "scope": "workspace",
-        "description": "fixtures: chapters",
+        "description": "fixtures: chapters, simplechapters",
         "fields": [
+          {
+            "id": "label",
+            "label": "Label",
+            "type": "string"
+          },
           {
             "id": "text",
             "label": "Text",
@@ -117,13 +122,22 @@
         "id": "contact",
         "label": "Contact",
         "scope": "workspace",
-        "description": "fixtures: contacts",
+        "description": "fixtures: contacts, simplecontacts",
         "fields": [
+          {
+            "id": "action",
+            "label": "Action",
+            "type": "string"
+          },
+          {
+            "id": "href",
+            "label": "Href",
+            "type": "string"
+          },
           {
             "id": "icon",
             "label": "Icon",
-            "type": "string",
-            "required": true
+            "type": "string"
           },
           {
             "id": "text",
@@ -911,7 +925,7 @@
         "id": "menu_item",
         "label": "Menu item",
         "scope": "workspace",
-        "description": "fixtures: categories, helplinks, megagroups, menulinks, navlinks, outline, sidenav, sitemap, subnav",
+        "description": "fixtures: categories, footerlinks, helplinks, megagroups, menulinks, navlinks, outline, profilelinks, sidenav, simplechoices, simplecollections, simplelinks, sitemap, subnav",
         "fields": [
           {
             "id": "count",
@@ -924,6 +938,11 @@
             ]
           },
           {
+            "id": "href",
+            "label": "Href",
+            "type": "string"
+          },
+          {
             "id": "icon",
             "label": "Icon",
             "type": "string"
@@ -931,8 +950,7 @@
           {
             "id": "location",
             "label": "Location",
-            "type": "string",
-            "required": true
+            "type": "string"
           }
         ]
       }
@@ -991,6 +1009,34 @@
           {
             "id": "tag",
             "label": "Tag",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "text",
+            "label": "Text",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "record": {
+        "id": "module",
+        "label": "Module",
+        "scope": "workspace",
+        "description": "fixtures: simplemodules",
+        "fields": [
+          {
+            "id": "label",
+            "label": "Label",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "meta",
+            "label": "Meta",
             "type": "string",
             "required": true
           },
@@ -1139,13 +1185,12 @@
         "id": "perk",
         "label": "Perk",
         "scope": "workspace",
-        "description": "fixtures: perks",
+        "description": "fixtures: perks, simplepolicies",
         "fields": [
           {
             "id": "icon",
             "label": "Icon",
-            "type": "string",
-            "required": true
+            "type": "string"
           },
           {
             "id": "text",
@@ -1192,13 +1237,27 @@
         "id": "plan",
         "label": "Plan",
         "scope": "workspace",
-        "description": "fixtures: duo, plans, tiers",
+        "description": "fixtures: duo, plans, simpleplans, simpleplans2, tiers",
         "fields": [
+          {
+            "id": "action",
+            "label": "Action",
+            "type": "string"
+          },
+          {
+            "id": "badge",
+            "label": "Badge",
+            "type": "string"
+          },
           {
             "id": "currency",
             "label": "Currency",
-            "type": "string",
-            "required": true
+            "type": "string"
+          },
+          {
+            "id": "display",
+            "label": "Display",
+            "type": "string"
           },
           {
             "id": "features",
@@ -1208,20 +1267,22 @@
               "id": "item",
               "label": "Item",
               "type": "string"
-            },
-            "required": true
+            }
           },
           {
             "id": "highlighted",
             "label": "Highlighted",
-            "type": "boolean",
-            "required": true
+            "type": "boolean"
+          },
+          {
+            "id": "href",
+            "label": "Href",
+            "type": "string"
           },
           {
             "id": "plan_status",
             "label": "Plan status",
-            "type": "string",
-            "required": true
+            "type": "string"
           },
           {
             "id": "price",
@@ -1231,8 +1292,7 @@
               {
                 "name": "fastygo.codex/money"
               }
-            ],
-            "required": true
+            ]
           },
           {
             "id": "seats",
@@ -1242,8 +1302,7 @@
               {
                 "name": "fastygo.codex/integer"
               }
-            ],
-            "required": true
+            ]
           },
           {
             "id": "storage",
@@ -1253,14 +1312,17 @@
               {
                 "name": "fastygo.codex/integer"
               }
-            ],
-            "required": true
+            ]
           },
           {
             "id": "tagline",
             "label": "Tagline",
-            "type": "string",
-            "required": true
+            "type": "string"
+          },
+          {
+            "id": "text",
+            "label": "Text",
+            "type": "string"
           },
           {
             "id": "yearly",
@@ -1270,8 +1332,7 @@
               {
                 "name": "fastygo.codex/money"
               }
-            ],
-            "required": true
+            ]
           }
         ]
       }
@@ -1363,7 +1424,7 @@
         "id": "product",
         "label": "Product",
         "scope": "workspace",
-        "description": "fixtures: products",
+        "description": "fixtures: products, simpleproducts",
         "fields": [
           {
             "id": "badge",
@@ -1383,14 +1444,17 @@
           {
             "id": "currency",
             "label": "Currency",
-            "type": "string",
-            "required": true
+            "type": "string"
+          },
+          {
+            "id": "display",
+            "label": "Display",
+            "type": "string"
           },
           {
             "id": "inStock",
             "label": "In Stock",
-            "type": "boolean",
-            "required": true
+            "type": "boolean"
           },
           {
             "id": "price",
@@ -1400,14 +1464,12 @@
               {
                 "name": "fastygo.codex/money"
               }
-            ],
-            "required": true
+            ]
           },
           {
             "id": "rating",
             "label": "Rating",
-            "type": "number",
-            "required": true
+            "type": "number"
           },
           {
             "id": "reviews",
@@ -1417,14 +1479,12 @@
               {
                 "name": "fastygo.codex/integer"
               }
-            ],
-            "required": true
+            ]
           },
           {
             "id": "summary",
             "label": "Summary",
-            "type": "string",
-            "required": true
+            "type": "string"
           }
         ]
       },
@@ -1506,8 +1566,24 @@
         "id": "promo",
         "label": "Promo",
         "scope": "workspace",
-        "description": "fixtures: promos",
-        "fields": []
+        "description": "fixtures: promos, simpleoffers",
+        "fields": [
+          {
+            "id": "action",
+            "label": "Action",
+            "type": "string"
+          },
+          {
+            "id": "href",
+            "label": "Href",
+            "type": "string"
+          },
+          {
+            "id": "text",
+            "label": "Text",
+            "type": "string"
+          }
+        ]
       }
     },
     {
@@ -1562,13 +1638,17 @@
         "id": "review",
         "label": "Review",
         "scope": "workspace",
-        "description": "fixtures: reviews",
+        "description": "fixtures: reviews, simplereviews",
         "fields": [
           {
             "id": "date",
             "label": "Date",
-            "type": "datetime",
-            "required": true
+            "type": "datetime"
+          },
+          {
+            "id": "note",
+            "label": "Note",
+            "type": "string"
           },
           {
             "id": "rating",
@@ -1578,8 +1658,12 @@
               {
                 "name": "fastygo.codex/integer"
               }
-            ],
-            "required": true
+            ]
+          },
+          {
+            "id": "score",
+            "label": "Score",
+            "type": "string"
           },
           {
             "id": "text",
@@ -2000,8 +2084,23 @@
         "id": "topic",
         "label": "Topic",
         "scope": "workspace",
-        "description": "fixtures: topics",
+        "description": "fixtures: simpletopics, topics",
         "fields": [
+          {
+            "id": "href",
+            "label": "Href",
+            "type": "string"
+          },
+          {
+            "id": "label",
+            "label": "Label",
+            "type": "string"
+          },
+          {
+            "id": "text",
+            "label": "Text",
+            "type": "string"
+          },
           {
             "id": "value",
             "label": "Value",

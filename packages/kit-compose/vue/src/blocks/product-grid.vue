@@ -57,7 +57,7 @@ const emit = defineEmits<{ add: [id: string] }>();
       class="flex snap-x gap-4 overflow-x-auto pb-4"
       data-slot="items"
     >
-      <Box v-for="p in products" :key="p.id" class="w-64 shrink-0 snap-start" data-slot="product">
+      <Box v-for="p in products" :key="p.id" class="w-64 shrink-0 snap-start" data-slot="products-row">
         <ProductCard
           :product="p"
           :labels="labels"

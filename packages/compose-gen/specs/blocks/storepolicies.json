@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.storepolicies",
+  "name": "Store policies",
+  "docs": "The heading, one paragraph and the policies (payment, delivery, returns), each with an icon, a title and a line: on cards in columns, or rows.",
+  "theme": "marketing",
+  "group": "storefront",
+  "organism": "StorePolicies",
+  "line": "simple",
+  "model": "store-policy@1",
+  "axes": {
+    "layout": [
+      "cards",
+      "rows"
+    ],
+    "cols": [
+      "3",
+      "2"
+    ]
+  },
+  "defaults": {
+    "layout": "cards",
+    "cols": "3"
+  },
+  "variants": [
+    {
+      "id": "cols3",
+      "set": {}
+    },
+    {
+      "id": "rows",
+      "set": {
+        "layout": "rows"
+      },
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@policyItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@policyItems"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@policyItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "policyItems",
+      "collection": "simplepolicies",
+      "kind": "perk",
+      "record": "PolicyItem",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "title": "title",
+        "description": "metadata.text.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "storepolicies",
+      "title": {
+        "$": "ui.marketing.storePolicies.title"
+      },
+      "description": {
+        "$": "ui.marketing.storePolicies.description"
+      },
+      "items": {
+        "$": "policyItems"
+      }
+    }
+  }
+}

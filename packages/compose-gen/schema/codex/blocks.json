@@ -343,6 +343,90 @@
       "emptyState": true
     },
     {
+      "id": "ArticleLead",
+      "surface": "kit-block",
+      "spec": "block.articlelead",
+      "source": "packages/compose-gen/specs/blocks/articlelead.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "image",
+        "avatar",
+        "level",
+        "padding",
+        "align",
+        "media",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.articleLead.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.articleLead.description",
+          "keys": []
+        },
+        {
+          "prop": "imageAlt",
+          "dictionary": "marketing.articleLead.imageAlt",
+          "keys": []
+        },
+        {
+          "prop": "author",
+          "dictionary": "marketing.articleLead.author",
+          "keys": []
+        },
+        {
+          "prop": "date",
+          "dictionary": "marketing.articleLead.date",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "ArticleSimple",
+      "surface": "kit-block",
+      "spec": "block.articlesimple",
+      "source": "packages/compose-gen/specs/blocks/articlesimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "sections",
+          "collection": "article",
+          "kind": "section",
+          "record": "ArticleSection",
+          "map": "showcaseItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.articleSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.articleSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "AuthCard",
       "surface": "kit-block",
       "spec": "block.auth",
@@ -966,6 +1050,44 @@
       "emptyState": true
     },
     {
+      "id": "ChaptersSimple",
+      "surface": "kit-block",
+      "spec": "block.chapterssimple",
+      "source": "packages/compose-gen/specs/blocks/chapterssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simplechapters",
+          "kind": "chapter",
+          "record": "ChapterItem",
+          "map": "chapterItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.chaptersSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.chaptersSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "ChartPanel",
       "surface": "kit-block",
       "spec": "block.chart",
@@ -1217,6 +1339,82 @@
       "emptyMode": "omit"
     },
     {
+      "id": "ChoiceLinks",
+      "surface": "kit-block",
+      "spec": "block.choicelinks",
+      "source": "packages/compose-gen/specs/blocks/choicelinks.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simplechoices",
+          "kind": "menu_item",
+          "record": "ChoiceItem",
+          "map": "simpleLink",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.choiceLinks.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.choiceLinks.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "CollectionsSimple",
+      "surface": "kit-block",
+      "spec": "block.collectionssimple",
+      "source": "packages/compose-gen/specs/blocks/collectionssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simplecollections",
+          "kind": "menu_item",
+          "record": "CollectionItem",
+          "map": "collectionItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.collectionsSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.collectionsSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "ComboBuilder",
       "surface": "kit-block",
       "spec": "block.combobuilder",
@@ -1386,6 +1584,54 @@
       "emptyState": true
     },
     {
+      "id": "CompareSimple",
+      "surface": "kit-block",
+      "spec": "block.comparesimple",
+      "source": "packages/compose-gen/specs/blocks/comparesimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "rows",
+          "collection": "compare",
+          "kind": "row",
+          "record": "CompareLine",
+          "map": "compareRow",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "width",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.compareSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.compareSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "firstLabel",
+          "dictionary": "marketing.compareSimple.firstLabel",
+          "keys": []
+        },
+        {
+          "prop": "secondLabel",
+          "dictionary": "marketing.compareSimple.secondLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "ContactForm",
       "surface": "kit-block",
       "spec": "block.contact",
@@ -1446,6 +1692,45 @@
       "emptyMode": "omit"
     },
     {
+      "id": "ContactsSimple",
+      "surface": "kit-block",
+      "spec": "block.contactssimple",
+      "source": "packages/compose-gen/specs/blocks/contactssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simplecontacts",
+          "kind": "contact",
+          "record": "ContactItem",
+          "map": "contactItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.contactsSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.contactsSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "CookieBanner",
       "surface": "kit-block",
       "spec": "block.cookie",
@@ -1483,6 +1768,44 @@
         {
           "prop": "settings",
           "dictionary": "promo.cookie.settings",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "CourseOutline",
+      "surface": "kit-block",
+      "spec": "block.courseoutline",
+      "source": "packages/compose-gen/specs/blocks/courseoutline.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "modules",
+          "collection": "simplemodules",
+          "kind": "module",
+          "record": "CourseModule",
+          "map": "courseModule",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.courseOutline.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.courseOutline.description",
           "keys": []
         }
       ],
@@ -2444,6 +2767,90 @@
       "emptyState": false
     },
     {
+      "id": "ErrorSimple",
+      "surface": "kit-block",
+      "spec": "block.errorsimple",
+      "source": "packages/compose-gen/specs/blocks/errorsimple.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "code",
+        "actionHref",
+        "level",
+        "padding",
+        "align",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.errorSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.errorSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "marketing.errorSimple.actionLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "EventIntro",
+      "surface": "kit-block",
+      "spec": "block.eventintro",
+      "source": "packages/compose-gen/specs/blocks/eventintro.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "actionHref",
+        "level",
+        "padding",
+        "align",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "badge",
+          "dictionary": "marketing.eventIntro.badge",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "marketing.eventIntro.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.eventIntro.description",
+          "keys": []
+        },
+        {
+          "prop": "date",
+          "dictionary": "marketing.eventIntro.date",
+          "keys": []
+        },
+        {
+          "prop": "place",
+          "dictionary": "marketing.eventIntro.place",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "marketing.eventIntro.actionLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "FaqList",
       "surface": "kit-block",
       "spec": "block.faq",
@@ -2792,6 +3199,50 @@
       "emptyState": true
     },
     {
+      "id": "FeatureShowcaseSimple",
+      "surface": "kit-block",
+      "spec": "block.featureshowcasesimple",
+      "source": "packages/compose-gen/specs/blocks/featureshowcasesimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "features",
+          "kind": "feature",
+          "record": "ShowcaseItem",
+          "map": "showcaseItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "image",
+        "level",
+        "padding",
+        "align",
+        "media",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.featureShowcaseSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.featureShowcaseSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "imageAlt",
+          "dictionary": "marketing.featureShowcaseSimple.imageAlt",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "FeatureSplit",
       "surface": "kit-block",
       "spec": "block.featuresplit",
@@ -2961,6 +3412,44 @@
       "emptyState": true
     },
     {
+      "id": "FigureSimple",
+      "surface": "kit-block",
+      "spec": "block.figuresimple",
+      "source": "packages/compose-gen/specs/blocks/figuresimple.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "image",
+        "padding",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "imageAlt",
+          "dictionary": "marketing.figureSimple.imageAlt",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "marketing.figureSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.figureSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "credit",
+          "dictionary": "marketing.figureSimple.credit",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "SiteFooter",
       "surface": "kit-block",
       "spec": "block.footer",
@@ -2983,6 +3472,47 @@
             "home",
             "pricing"
           ]
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "FooterSimple",
+      "surface": "kit-block",
+      "spec": "block.footersimple",
+      "source": "packages/compose-gen/specs/blocks/footersimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "links",
+          "collection": "footerlinks",
+          "kind": "menu_item",
+          "record": "FooterLink",
+          "map": "simpleLink",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "padding",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "brand",
+          "dictionary": "marketing.footerSimple.brand",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.footerSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "copyright",
+          "dictionary": "marketing.footerSimple.copyright",
+          "keys": []
         }
       ],
       "emptyState": false
@@ -3393,6 +3923,43 @@
         {
           "prop": "cta",
           "dictionary": "site.header.cta",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "HeaderSimple",
+      "surface": "kit-block",
+      "spec": "block.headersimple",
+      "source": "packages/compose-gen/specs/blocks/headersimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "links",
+          "collection": "simplelinks",
+          "kind": "menu_item",
+          "record": "HeaderLink",
+          "map": "simpleLink",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "brandHref",
+        "actionHref",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "brand",
+          "dictionary": "marketing.headerSimple.brand",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "marketing.headerSimple.actionLabel",
           "keys": []
         }
       ],
@@ -4086,6 +4653,50 @@
       "emptyState": true
     },
     {
+      "id": "LocationsSimple",
+      "surface": "kit-block",
+      "spec": "block.locationssimple",
+      "source": "packages/compose-gen/specs/blocks/locationssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "stores",
+          "kind": "store",
+          "record": "LocationItem",
+          "map": "locationItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "image",
+        "level",
+        "padding",
+        "align",
+        "media",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.locationsSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.locationsSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "imageAlt",
+          "dictionary": "marketing.locationsSimple.imageAlt",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "LogoCloud",
       "surface": "kit-block",
       "spec": "block.logos",
@@ -4660,6 +5271,44 @@
         {
           "prop": "consent",
           "dictionary": "promo.newsletter.consent",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "OffersSimple",
+      "surface": "kit-block",
+      "spec": "block.offerssimple",
+      "source": "packages/compose-gen/specs/blocks/offerssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simpleoffers",
+          "kind": "promo",
+          "record": "OfferItem",
+          "map": "offerItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.offersSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.offersSimple.description",
           "keys": []
         }
       ],
@@ -5642,6 +6291,53 @@
       "emptyState": true
     },
     {
+      "id": "PricingSimple",
+      "surface": "kit-block",
+      "spec": "block.pricingsimple",
+      "source": "packages/compose-gen/specs/blocks/pricingsimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "plans",
+          "collection": "simpleplans",
+          "kind": "plan",
+          "record": "PricingPlan",
+          "map": "pricingPlan",
+          "list": true
+        },
+        {
+          "prop": "plans",
+          "collection": "simpleplans2",
+          "kind": "plan",
+          "record": "PricingPlan",
+          "map": "pricingPlan",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.pricingSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.pricingSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "ProductDetail",
       "surface": "kit-block",
       "spec": "block.product",
@@ -5776,6 +6472,45 @@
       "emptyMode": "omit"
     },
     {
+      "id": "ProductReviews",
+      "surface": "kit-block",
+      "spec": "block.productreviews",
+      "source": "packages/compose-gen/specs/blocks/productreviews.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simplereviews",
+          "kind": "review",
+          "record": "ReviewItem",
+          "map": "reviewItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.productReviews.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.productReviews.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "ProductGrid",
       "surface": "kit-block",
       "spec": "block.products",
@@ -5849,6 +6584,96 @@
       "emptyState": true
     },
     {
+      "id": "ProductSimple",
+      "surface": "kit-block",
+      "spec": "block.productsimple",
+      "source": "packages/compose-gen/specs/blocks/productsimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "photos",
+          "collection": "galleryphotos4",
+          "kind": "photo",
+          "record": "ProductPhoto",
+          "map": "productPhoto",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "price",
+        "image",
+        "actionHref",
+        "level",
+        "padding",
+        "align",
+        "media",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.productSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.productSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "imageAlt",
+          "dictionary": "marketing.productSimple.imageAlt",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "marketing.productSimple.actionLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "ProductsSimple",
+      "surface": "kit-block",
+      "spec": "block.productssimple",
+      "source": "packages/compose-gen/specs/blocks/productssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simpleproducts",
+          "kind": "product",
+          "record": "ProductItem",
+          "map": "productItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.productsSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.productsSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "ProfileForm",
       "surface": "kit-block",
       "spec": "block.profile",
@@ -5889,6 +6714,55 @@
             "save",
             "cancel"
           ]
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "ProfileIntro",
+      "surface": "kit-block",
+      "spec": "block.profileintro",
+      "source": "packages/compose-gen/specs/blocks/profileintro.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "links",
+          "collection": "profilelinks",
+          "kind": "menu_item",
+          "record": "ProfileLink",
+          "map": "simpleLink",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "image",
+        "level",
+        "padding",
+        "align",
+        "media",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.profileIntro.title",
+          "keys": []
+        },
+        {
+          "prop": "role",
+          "dictionary": "marketing.profileIntro.role",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.profileIntro.description",
+          "keys": []
+        },
+        {
+          "prop": "imageAlt",
+          "dictionary": "marketing.profileIntro.imageAlt",
+          "keys": []
         }
       ],
       "emptyState": false
@@ -6014,6 +6888,84 @@
         }
       ],
       "emptyState": true
+    },
+    {
+      "id": "PullQuoteSimple",
+      "surface": "kit-block",
+      "spec": "block.pullquotesimple",
+      "source": "packages/compose-gen/specs/blocks/pullquotesimple.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "sourceHref",
+        "padding",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "quote",
+          "dictionary": "marketing.pullQuoteSimple.quote",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "marketing.pullQuoteSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.pullQuoteSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "sourceLabel",
+          "dictionary": "marketing.pullQuoteSimple.sourceLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "PurchaseSimple",
+      "surface": "kit-block",
+      "spec": "block.purchasesimple",
+      "source": "packages/compose-gen/specs/blocks/purchasesimple.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "price",
+        "actionHref",
+        "level",
+        "padding",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.purchaseSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.purchaseSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "note",
+          "dictionary": "marketing.purchaseSimple.note",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "marketing.purchaseSimple.actionLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "QuickOrder",
@@ -6221,6 +7173,41 @@
         }
       ],
       "emptyState": true
+    },
+    {
+      "id": "RatingSimple",
+      "surface": "kit-block",
+      "spec": "block.ratingsimple",
+      "source": "packages/compose-gen/specs/blocks/ratingsimple.json",
+      "status": "todo",
+      "data": [],
+      "settings": [
+        "id",
+        "value",
+        "sourceHref",
+        "level",
+        "padding",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.ratingSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.ratingSimple.description",
+          "keys": []
+        },
+        {
+          "prop": "sourceLabel",
+          "dictionary": "marketing.ratingSimple.sourceLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "RecipeKits",
@@ -6901,6 +7888,44 @@
       "emptyState": true
     },
     {
+      "id": "SpecsSimple",
+      "surface": "kit-block",
+      "spec": "block.specssimple",
+      "source": "packages/compose-gen/specs/blocks/specssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "specs",
+          "kind": "spec",
+          "record": "SpecItem",
+          "map": "specItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.specsSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.specsSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "SplitSimple",
       "surface": "kit-block",
       "spec": "block.splitsimple",
@@ -7301,6 +8326,45 @@
       "emptyMode": "omit"
     },
     {
+      "id": "StorePolicies",
+      "surface": "kit-block",
+      "spec": "block.storepolicies",
+      "source": "packages/compose-gen/specs/blocks/storepolicies.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simplepolicies",
+          "kind": "perk",
+          "record": "PolicyItem",
+          "map": "simpleFeature",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.storePolicies.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.storePolicies.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "StoriesSimple",
       "surface": "kit-block",
       "spec": "block.storiessimple",
@@ -7628,6 +8692,7 @@
         "level",
         "padding",
         "align",
+        "layout",
         "cols",
         "surface",
         "landmarkLabel"
@@ -7873,6 +8938,45 @@
         }
       ],
       "emptyState": true
+    },
+    {
+      "id": "TopicsSimple",
+      "surface": "kit-block",
+      "spec": "block.topicssimple",
+      "source": "packages/compose-gen/specs/blocks/topicssimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simpletopics",
+          "kind": "topic",
+          "record": "TopicItem",
+          "map": "topicItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.topicsSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.topicsSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "TourCallout",
@@ -8514,6 +9618,14 @@
           "list": true
         },
         {
+          "prop": "ArticleSimple.sections",
+          "collection": "article",
+          "kind": "section",
+          "record": "ArticleSection",
+          "map": "showcaseItem",
+          "list": true
+        },
+        {
           "prop": "BeforeAfter.points",
           "collection": "beforeafter",
           "kind": "point",
@@ -8578,6 +9690,14 @@
           "list": true
         },
         {
+          "prop": "ChaptersSimple.items",
+          "collection": "simplechapters",
+          "kind": "chapter",
+          "record": "ChapterItem",
+          "map": "chapterItem",
+          "list": true
+        },
+        {
           "prop": "ChartPanel.series",
           "collection": "series",
           "kind": "point",
@@ -8607,6 +9727,22 @@
           "kind": "payment",
           "record": "Payment",
           "map": "payment",
+          "list": true
+        },
+        {
+          "prop": "ChoiceLinks.items",
+          "collection": "simplechoices",
+          "kind": "menu_item",
+          "record": "ChoiceItem",
+          "map": "simpleLink",
+          "list": true
+        },
+        {
+          "prop": "CollectionsSimple.items",
+          "collection": "simplecollections",
+          "kind": "menu_item",
+          "record": "CollectionItem",
+          "map": "collectionItem",
           "list": true
         },
         {
@@ -8647,6 +9783,30 @@
           "kind": "row",
           "record": "CompareRow",
           "map": "row",
+          "list": true
+        },
+        {
+          "prop": "CompareSimple.rows",
+          "collection": "compare",
+          "kind": "row",
+          "record": "CompareLine",
+          "map": "compareRow",
+          "list": true
+        },
+        {
+          "prop": "ContactsSimple.items",
+          "collection": "simplecontacts",
+          "kind": "contact",
+          "record": "ContactItem",
+          "map": "contactItem",
+          "list": true
+        },
+        {
+          "prop": "CourseOutline.modules",
+          "collection": "simplemodules",
+          "kind": "module",
+          "record": "CourseModule",
+          "map": "courseModule",
           "list": true
         },
         {
@@ -8770,11 +9930,27 @@
           "list": true
         },
         {
+          "prop": "FeatureShowcaseSimple.items",
+          "collection": "features",
+          "kind": "feature",
+          "record": "ShowcaseItem",
+          "map": "showcaseItem",
+          "list": true
+        },
+        {
           "prop": "FeaturesSimple.items",
           "collection": "features",
           "kind": "feature",
           "record": "SimpleFeature",
           "map": "simpleFeature",
+          "list": true
+        },
+        {
+          "prop": "FooterSimple.links",
+          "collection": "footerlinks",
+          "kind": "menu_item",
+          "record": "FooterLink",
+          "map": "simpleLink",
           "list": true
         },
         {
@@ -8847,6 +10023,14 @@
           "kind": "dish",
           "record": "Dish",
           "map": "dish",
+          "list": true
+        },
+        {
+          "prop": "HeaderSimple.links",
+          "collection": "simplelinks",
+          "kind": "menu_item",
+          "record": "HeaderLink",
+          "map": "simpleLink",
           "list": true
         },
         {
@@ -8938,6 +10122,14 @@
           "list": true
         },
         {
+          "prop": "LocationsSimple.items",
+          "collection": "stores",
+          "kind": "store",
+          "record": "LocationItem",
+          "map": "locationItem",
+          "list": true
+        },
+        {
           "prop": "LogosSimple.logos",
           "collection": "logos",
           "kind": "logo",
@@ -8999,6 +10191,14 @@
           "kind": "metric",
           "record": "Stat",
           "map": "metric",
+          "list": true
+        },
+        {
+          "prop": "OffersSimple.items",
+          "collection": "simpleoffers",
+          "kind": "promo",
+          "record": "OfferItem",
+          "map": "offerItem",
           "list": true
         },
         {
@@ -9082,6 +10282,22 @@
           "list": true
         },
         {
+          "prop": "PricingSimple.plans",
+          "collection": "simpleplans",
+          "kind": "plan",
+          "record": "PricingPlan",
+          "map": "pricingPlan",
+          "list": true
+        },
+        {
+          "prop": "PricingSimple.plans",
+          "collection": "simpleplans2",
+          "kind": "plan",
+          "record": "PricingPlan",
+          "map": "pricingPlan",
+          "list": true
+        },
+        {
           "prop": "ProductDetail.product",
           "collection": "products",
           "kind": "product",
@@ -9103,6 +10319,38 @@
           "kind": "spec",
           "record": "Spec",
           "map": "spec",
+          "list": true
+        },
+        {
+          "prop": "ProductReviews.items",
+          "collection": "simplereviews",
+          "kind": "review",
+          "record": "ReviewItem",
+          "map": "reviewItem",
+          "list": true
+        },
+        {
+          "prop": "ProductSimple.photos",
+          "collection": "galleryphotos4",
+          "kind": "photo",
+          "record": "ProductPhoto",
+          "map": "productPhoto",
+          "list": true
+        },
+        {
+          "prop": "ProductsSimple.items",
+          "collection": "simpleproducts",
+          "kind": "product",
+          "record": "ProductItem",
+          "map": "productItem",
+          "list": true
+        },
+        {
+          "prop": "ProfileIntro.links",
+          "collection": "profilelinks",
+          "kind": "menu_item",
+          "record": "ProfileLink",
+          "map": "simpleLink",
           "list": true
         },
         {
@@ -9138,6 +10386,14 @@
           "list": true
         },
         {
+          "prop": "SpecsSimple.items",
+          "collection": "specs",
+          "kind": "spec",
+          "record": "SpecItem",
+          "map": "specItem",
+          "list": true
+        },
+        {
           "prop": "StatsSimple.items",
           "collection": "stats",
           "kind": "stat",
@@ -9159,6 +10415,14 @@
           "kind": "perk",
           "record": "Feature",
           "map": "perk",
+          "list": true
+        },
+        {
+          "prop": "StorePolicies.items",
+          "collection": "simplepolicies",
+          "kind": "perk",
+          "record": "PolicyItem",
+          "map": "simpleFeature",
           "list": true
         },
         {
@@ -9223,6 +10487,14 @@
           "kind": "testimonial",
           "record": "SimpleQuote",
           "map": "simpleQuote",
+          "list": true
+        },
+        {
+          "prop": "TopicsSimple.items",
+          "collection": "simpletopics",
+          "kind": "topic",
+          "record": "TopicItem",
+          "map": "topicItem",
           "list": true
         },
         {
@@ -9340,6 +10612,8 @@
         "block.activity",
         "block.announcement",
         "block.article",
+        "block.articlelead",
+        "block.articlesimple",
         "block.auth",
         "block.authpage",
         "block.beforeafter",
@@ -9350,13 +10624,19 @@
         "block.cartpage",
         "block.categories",
         "block.channels",
+        "block.chapterssimple",
         "block.chart",
         "block.checklist",
         "block.checkout",
+        "block.choicelinks",
+        "block.collectionssimple",
         "block.combobuilder",
         "block.compare",
+        "block.comparesimple",
         "block.contact",
+        "block.contactssimple",
         "block.cookie",
+        "block.courseoutline",
         "block.credits",
         "block.cta",
         "block.ctaproof",
@@ -9370,20 +10650,26 @@
         "block.dishstrip",
         "block.empty",
         "block.errorpage",
+        "block.errorsimple",
+        "block.eventintro",
         "block.faq",
         "block.faqsimple",
         "block.faqsplit",
         "block.features",
         "block.featureshowcase",
+        "block.featureshowcasesimple",
         "block.featuresplit",
         "block.featuressimple",
         "block.featuretabs",
+        "block.figuresimple",
         "block.footer",
+        "block.footersimple",
         "block.footersplit",
         "block.galleryhero",
         "block.grillbuilder",
         "block.grocerylist",
         "block.header",
+        "block.headersimple",
         "block.hero",
         "block.herosimple",
         "block.herosplit",
@@ -9393,6 +10679,7 @@
         "block.kanban",
         "block.lightboxgallery",
         "block.locations",
+        "block.locationssimple",
         "block.logos",
         "block.logossimple",
         "block.medialist",
@@ -9401,6 +10688,7 @@
         "block.metrics",
         "block.navbar",
         "block.newsletter",
+        "block.offerssimple",
         "block.orders",
         "block.overview",
         "block.pagehead",
@@ -9414,14 +10702,22 @@
         "block.postshowcase",
         "block.postsplit",
         "block.pricing",
+        "block.pricingsimple",
         "block.product",
         "block.productinfo",
+        "block.productreviews",
         "block.products",
+        "block.productsimple",
+        "block.productssimple",
         "block.profile",
+        "block.profileintro",
         "block.projects",
         "block.proof",
+        "block.pullquotesimple",
+        "block.purchasesimple",
         "block.quickorder",
         "block.quotesplit",
+        "block.ratingsimple",
         "block.recipekits",
         "block.reservation",
         "block.restaurantmenu",
@@ -9431,6 +10727,7 @@
         "block.sitemap",
         "block.skeleton",
         "block.slots",
+        "block.specssimple",
         "block.splitsimple",
         "block.stats",
         "block.statssimple",
@@ -9439,6 +10736,7 @@
         "block.stepssimple",
         "block.sticky",
         "block.storehero",
+        "block.storepolicies",
         "block.storiessimple",
         "block.storytabs",
         "block.summary",
@@ -9449,6 +10747,7 @@
         "block.testimonials",
         "block.testimonialssimple",
         "block.timeline",
+        "block.topicssimple",
         "block.tour",
         "block.usage",
         "block.usp",
@@ -12271,6 +13570,62 @@
       "status": "todo",
       "data": [
         {
+          "prop": "ArticleSimple.sections",
+          "collection": "article",
+          "kind": "section",
+          "record": "ArticleSection",
+          "map": "showcaseItem",
+          "list": true
+        },
+        {
+          "prop": "ChaptersSimple.items",
+          "collection": "simplechapters",
+          "kind": "chapter",
+          "record": "ChapterItem",
+          "map": "chapterItem",
+          "list": true
+        },
+        {
+          "prop": "ChoiceLinks.items",
+          "collection": "simplechoices",
+          "kind": "menu_item",
+          "record": "ChoiceItem",
+          "map": "simpleLink",
+          "list": true
+        },
+        {
+          "prop": "CollectionsSimple.items",
+          "collection": "simplecollections",
+          "kind": "menu_item",
+          "record": "CollectionItem",
+          "map": "collectionItem",
+          "list": true
+        },
+        {
+          "prop": "CompareSimple.rows",
+          "collection": "compare",
+          "kind": "row",
+          "record": "CompareLine",
+          "map": "compareRow",
+          "list": true
+        },
+        {
+          "prop": "ContactsSimple.items",
+          "collection": "simplecontacts",
+          "kind": "contact",
+          "record": "ContactItem",
+          "map": "contactItem",
+          "list": true
+        },
+        {
+          "prop": "CourseOutline.modules",
+          "collection": "simplemodules",
+          "kind": "module",
+          "record": "CourseModule",
+          "map": "courseModule",
+          "list": true
+        },
+        {
           "prop": "FaqSimple.items",
           "collection": "faq",
           "kind": "faq",
@@ -12279,11 +13634,27 @@
           "list": true
         },
         {
+          "prop": "FeatureShowcaseSimple.items",
+          "collection": "features",
+          "kind": "feature",
+          "record": "ShowcaseItem",
+          "map": "showcaseItem",
+          "list": true
+        },
+        {
           "prop": "FeaturesSimple.items",
           "collection": "features",
           "kind": "feature",
           "record": "SimpleFeature",
           "map": "simpleFeature",
+          "list": true
+        },
+        {
+          "prop": "FooterSimple.links",
+          "collection": "footerlinks",
+          "kind": "menu_item",
+          "record": "FooterLink",
+          "map": "simpleLink",
           "list": true
         },
         {
@@ -12303,6 +13674,22 @@
           "list": true
         },
         {
+          "prop": "HeaderSimple.links",
+          "collection": "simplelinks",
+          "kind": "menu_item",
+          "record": "HeaderLink",
+          "map": "simpleLink",
+          "list": true
+        },
+        {
+          "prop": "LocationsSimple.items",
+          "collection": "stores",
+          "kind": "store",
+          "record": "LocationItem",
+          "map": "locationItem",
+          "list": true
+        },
+        {
           "prop": "LogosSimple.logos",
           "collection": "logos",
           "kind": "logo",
@@ -12319,6 +13706,14 @@
           "list": true
         },
         {
+          "prop": "OffersSimple.items",
+          "collection": "simpleoffers",
+          "kind": "promo",
+          "record": "OfferItem",
+          "map": "offerItem",
+          "list": true
+        },
+        {
           "prop": "PhotosSimple.photos",
           "collection": "photos",
           "kind": "photo",
@@ -12327,11 +13722,67 @@
           "list": true
         },
         {
+          "prop": "PricingSimple.plans",
+          "collection": "simpleplans",
+          "kind": "plan",
+          "record": "PricingPlan",
+          "map": "pricingPlan",
+          "list": true
+        },
+        {
+          "prop": "PricingSimple.plans",
+          "collection": "simpleplans2",
+          "kind": "plan",
+          "record": "PricingPlan",
+          "map": "pricingPlan",
+          "list": true
+        },
+        {
+          "prop": "ProductReviews.items",
+          "collection": "simplereviews",
+          "kind": "review",
+          "record": "ReviewItem",
+          "map": "reviewItem",
+          "list": true
+        },
+        {
+          "prop": "ProductSimple.photos",
+          "collection": "galleryphotos4",
+          "kind": "photo",
+          "record": "ProductPhoto",
+          "map": "productPhoto",
+          "list": true
+        },
+        {
+          "prop": "ProductsSimple.items",
+          "collection": "simpleproducts",
+          "kind": "product",
+          "record": "ProductItem",
+          "map": "productItem",
+          "list": true
+        },
+        {
+          "prop": "ProfileIntro.links",
+          "collection": "profilelinks",
+          "kind": "menu_item",
+          "record": "ProfileLink",
+          "map": "simpleLink",
+          "list": true
+        },
+        {
           "prop": "SitemapFooter.groups",
           "collection": "sitemap",
           "kind": "menu_item",
           "record": "MegaGroup",
           "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "SpecsSimple.items",
+          "collection": "specs",
+          "kind": "spec",
+          "record": "SpecItem",
+          "map": "specItem",
           "list": true
         },
         {
@@ -12348,6 +13799,14 @@
           "kind": "step",
           "record": "SimpleStep",
           "map": "simpleStep",
+          "list": true
+        },
+        {
+          "prop": "StorePolicies.items",
+          "collection": "simplepolicies",
+          "kind": "perk",
+          "record": "PolicyItem",
+          "map": "simpleFeature",
           "list": true
         },
         {
@@ -12372,6 +13831,14 @@
           "kind": "testimonial",
           "record": "SimpleQuote",
           "map": "simpleQuote",
+          "list": true
+        },
+        {
+          "prop": "TopicsSimple.items",
+          "collection": "simpletopics",
+          "kind": "topic",
+          "record": "TopicItem",
+          "map": "topicItem",
           "list": true
         }
       ],
@@ -12426,6 +13893,66 @@
           "keys": []
         },
         {
+          "prop": "title",
+          "dictionary": "pages.marketingSimple.blog.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "pages.marketingSimple.blog.text",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "pages.marketingSimple.blog.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingSimple.shop.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "pages.marketingSimple.shop.text",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "pages.marketingSimple.shop.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingSimple.pricing.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "pages.marketingSimple.pricing.text",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "pages.marketingSimple.pricing.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingSimple.about.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "pages.marketingSimple.about.text",
+          "keys": []
+        },
+        {
+          "prop": "actionLabel",
+          "dictionary": "pages.marketingSimple.about.cta",
+          "keys": []
+        },
+        {
           "prop": "titleKey",
           "dictionary": "pages.marketingSimple.home.nav",
           "keys": []
@@ -12434,25 +13961,72 @@
           "prop": "titleKey",
           "dictionary": "pages.marketingSimple.team.nav",
           "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingSimple.blog.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingSimple.shop.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingSimple.pricing.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingSimple.about.nav",
+          "keys": []
         }
       ],
       "emptyState": false,
       "uses": [
+        "block.articlelead",
+        "block.articlesimple",
+        "block.chapterssimple",
+        "block.choicelinks",
+        "block.collectionssimple",
+        "block.comparesimple",
+        "block.contactssimple",
+        "block.courseoutline",
+        "block.errorsimple",
+        "block.eventintro",
         "block.faqsimple",
+        "block.featureshowcasesimple",
         "block.featuressimple",
+        "block.figuresimple",
+        "block.footersimple",
         "block.galleryhero",
+        "block.headersimple",
         "block.herosimple",
         "block.introsimple",
+        "block.locationssimple",
         "block.logossimple",
         "block.navbar",
+        "block.offerssimple",
         "block.photossimple",
+        "block.pricingsimple",
+        "block.productreviews",
+        "block.productsimple",
+        "block.productssimple",
+        "block.profileintro",
+        "block.pullquotesimple",
+        "block.purchasesimple",
+        "block.ratingsimple",
         "block.sitemap",
+        "block.specssimple",
         "block.splitsimple",
         "block.statssimple",
         "block.stepssimple",
+        "block.storepolicies",
         "block.storiessimple",
         "block.teamsimple",
-        "block.testimonialssimple"
+        "block.testimonialssimple",
+        "block.topicssimple"
       ]
     },
     {

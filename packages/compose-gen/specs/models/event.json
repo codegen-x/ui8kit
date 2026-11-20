@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "event",
+  "version": 1,
+  "docs": "Event intro content: an optional badge, the name of the event as the heading, a description, the date, the place and one action. One object is valid in every event intro layout (centred, at the start).",
+  "fields": {
+    "badge": { "type": "text", "maxLength": 40, "docs": "a short pill above the heading; empty: no badge" },
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "date": { "type": "text", "maxLength": 60, "required": true, "docs": "the date and the time as they are shown" },
+    "place": { "type": "text", "maxLength": 80, "required": true, "docs": "the place or the city, or online" },
+    "actionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the action; the link is drawn when the label and the address are both set" },
+    "actionHref": { "type": "url", "docs": "the address of the action" }
+  }
+}

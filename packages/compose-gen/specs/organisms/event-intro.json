@@ -1,0 +1,541 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.event-intro",
+  "name": "EventIntro",
+  "docs": "The event intro (model event@1): an optional badge, the name of the event as a large heading, a description, the date and the place as a list of two facts, and one action. Text only. The align setting places it: centred or at the start.",
+  "records": {},
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "badge",
+      "type": "string",
+      "default": "",
+      "docs": "a short pill above the heading; empty: no badge"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "docs": "one paragraph under the heading; empty: none"
+    },
+    {
+      "name": "date",
+      "type": "string",
+      "required": true,
+      "docs": "the date and the time as they are shown"
+    },
+    {
+      "name": "place",
+      "type": "string",
+      "required": true,
+      "docs": "the place or the city, or online"
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the action; the link is drawn when the label and the address are both set"
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the action"
+    },
+    {
+      "name": "level",
+      "type": {
+        "ts": "1 | 2 | 3"
+      },
+      "default": 2,
+      "docs": "the level of the heading (1 on the first section of a page)"
+    },
+    {
+      "name": "padding",
+      "type": {
+        "ts": "\"compact\" | \"standard\" | \"spacious\""
+      },
+      "default": "standard",
+      "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
+    },
+    {
+      "name": "align",
+      "type": {
+        "ts": "\"start\" | \"center\" | \"end\""
+      },
+      "default": "center",
+      "docs": "the alignment of the copy: start, center or end (logical, follows the writing direction): items-* on the column, text-* on the text"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "titleId",
+      "value": {
+        "op": "add",
+        "args": [
+          {
+            "$": "id"
+          },
+          "-title"
+        ]
+      }
+    },
+    {
+      "name": "column",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "end",
+              "start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "textAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "text-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "text-end",
+              "text-start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "itemsAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "items-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "items-end",
+              "items-start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "selfAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "self-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "self-end",
+              ""
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "facts",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "justify-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "justify-end",
+              "justify-start"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "section",
+        "Class": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "padding"
+                },
+                "compact"
+              ]
+            },
+            "py-8 lg:py-16",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "padding"
+                    },
+                    "spacious"
+                  ]
+                },
+                "py-24 lg:py-40",
+                "py-16 lg:py-32"
+              ]
+            }
+          ]
+        }
+      },
+      "attrs": {
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "event-intro"
+      },
+      "children": [
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "children": [
+            {
+              "use": "Stack",
+              "props": {
+                "Gap": "6",
+                "Align": {
+                  "$": "column"
+                }
+              },
+              "children": [
+                {
+                  "when": {
+                    "$": "badge"
+                  },
+                  "then": [
+                    {
+                      "use": "Badge",
+                      "props": {
+                        "Variant": "secondary"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "badge"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "Title",
+                  "props": {
+                    "As": {
+                      "$": "level"
+                    },
+                    "Size": "5xl",
+                    "Weight": "bold",
+                    "Class": {
+                      "op": "cn",
+                      "args": [
+                        "max-w-4xl tracking-tight",
+                        {
+                          "$": "textAlign"
+                        }
+                      ]
+                    }
+                  },
+                  "attrs": {
+                    "id": {
+                      "$": "titleId"
+                    }
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "$": "title"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "when": {
+                    "$": "description"
+                  },
+                  "then": [
+                    {
+                      "use": "Text",
+                      "props": {
+                        "Size": "lg",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "max-w-2xl text-muted-foreground",
+                            {
+                              "$": "textAlign"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "description"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "List",
+                  "props": {
+                    "Tag": "ul",
+                    "Class": {
+                      "op": "cn",
+                      "args": [
+                        "m-0 w-full list-none p-0",
+                        {
+                          "op": "cn",
+                          "args": [
+                            "flex flex-wrap gap-x-8 gap-y-2",
+                            {
+                              "$": "facts"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "use": "ListItem",
+                      "attrs": {
+                        "data-slot": "event-date"
+                      },
+                      "children": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "base",
+                            "Weight": "semibold"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "date"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "ListItem",
+                      "attrs": {
+                        "data-slot": "event-place"
+                      },
+                      "children": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "base",
+                            "Weight": "semibold"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "place"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "when": {
+                    "op": "and",
+                    "args": [
+                      {
+                        "$": "actionLabel"
+                      },
+                      {
+                        "$": "actionHref"
+                      }
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "LinkButton",
+                      "props": {
+                        "Variant": "default",
+                        "Size": "lg",
+                        "Href": {
+                          "$": "actionHref"
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "actionLabel"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

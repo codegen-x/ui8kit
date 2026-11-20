@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "purchase",
+  "version": 1,
+  "docs": "Purchase content: the heading, a description, the price as it is shown, a note (delivery, returns) and one action. One object is valid in every purchase layout (a panel, centred).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "price": { "type": "text", "maxLength": 24, "required": true, "docs": "the price as it is shown" },
+    "note": { "type": "text", "maxLength": 120, "docs": "a short note under the action; empty: none" },
+    "actionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the action; the link is drawn when the label and the address are both set" },
+    "actionHref": { "type": "url", "docs": "the address of the action" }
+  }
+}

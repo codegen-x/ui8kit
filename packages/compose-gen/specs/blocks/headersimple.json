@@ -1,0 +1,92 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.headersimple",
+  "name": "Simple header",
+  "docs": "The brand as the link home, the navigation links and one action in a bar: the links in the middle, at the end beside the action, or centred under the brand. No menu button: the links wrap on a narrow screen.",
+  "theme": "marketing",
+  "group": "navigation",
+  "organism": "HeaderSimple",
+  "line": "simple",
+  "model": "header@1",
+  "axes": {
+    "layout": [
+      "inline",
+      "end",
+      "centered"
+    ]
+  },
+  "defaults": {
+    "layout": "inline"
+  },
+  "variants": [
+    {
+      "id": "inline",
+      "set": {}
+    },
+    {
+      "id": "linksEnd",
+      "set": {
+        "layout": "end"
+      }
+    },
+    {
+      "id": "centered",
+      "set": {
+        "layout": "centered"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "header",
+      "n": 1
+    },
+    {
+      "sel": "header li",
+      "n": "@headerLinks"
+    },
+    {
+      "sel": "header ul a[href]",
+      "n": "@headerLinks"
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 1
+    },
+    {
+      "sel": "button",
+      "n": 0
+    }
+  ],
+  "data": [
+    {
+      "as": "headerLinks",
+      "collection": "simplelinks",
+      "kind": "menu_item",
+      "record": "HeaderLink",
+      "fields": {
+        "id": "id",
+        "label": "title",
+        "href": "metadata.href.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "headersimple",
+      "brand": {
+        "$": "ui.marketing.headerSimple.brand"
+      },
+      "brandHref": "#/",
+      "links": {
+        "$": "headerLinks"
+      },
+      "actionLabel": {
+        "$": "ui.marketing.headerSimple.actionLabel"
+      },
+      "actionHref": "#/start"
+    }
+  }
+}

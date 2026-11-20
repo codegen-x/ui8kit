@@ -1,0 +1,75 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.eventintro",
+  "name": "Event intro",
+  "docs": "The first screen of an event: a badge, the name as a large heading, one paragraph, the date and the place, and one action; centred or at the start.",
+  "theme": "marketing",
+  "group": "hero",
+  "organism": "EventIntro",
+  "line": "simple",
+  "model": "event@1",
+  "axes": {},
+  "defaults": {},
+  "variants": [
+    {
+      "id": "center",
+      "set": {}
+    },
+    {
+      "id": "start",
+      "set": {},
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "[data-slot=\"badge\"]",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": 2
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 1
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 0
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "eventintro",
+      "badge": {
+        "$": "ui.marketing.eventIntro.badge"
+      },
+      "title": {
+        "$": "ui.marketing.eventIntro.title"
+      },
+      "description": {
+        "$": "ui.marketing.eventIntro.description"
+      },
+      "date": {
+        "$": "ui.marketing.eventIntro.date"
+      },
+      "place": {
+        "$": "ui.marketing.eventIntro.place"
+      },
+      "actionLabel": {
+        "$": "ui.marketing.eventIntro.actionLabel"
+      },
+      "actionHref": "#/tickets"
+    }
+  }
+}

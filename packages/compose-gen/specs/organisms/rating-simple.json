@@ -1,0 +1,376 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.rating-simple",
+  "name": "RatingSimple",
+  "docs": "The simple rating (model rating@1): the score (large), the heading that names it, a line (the count, the scale) and the source as a link. Axes: layout (bar: one row on a card surface from md up, centered: centred, one under the other).",
+  "records": {},
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "docs": "the score as it is shown (4.9, 98%)"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "docs": "the count and the scale; empty: none"
+    },
+    {
+      "name": "sourceLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the source; the link is drawn when the label and the address are both set"
+    },
+    {
+      "name": "sourceHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the source"
+    },
+    {
+      "name": "level",
+      "type": {
+        "ts": "1 | 2 | 3"
+      },
+      "default": 2,
+      "docs": "the level of the heading (1 on the first section of a page)"
+    },
+    {
+      "name": "padding",
+      "type": {
+        "ts": "\"compact\" | \"standard\" | \"spacious\""
+      },
+      "default": "standard",
+      "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"bar\" | \"centered\""
+      },
+      "default": "bar"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "titleId",
+      "value": {
+        "op": "add",
+        "args": [
+          {
+            "$": "id"
+          },
+          "-title"
+        ]
+      }
+    },
+    {
+      "name": "box",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "bar"
+            ]
+          },
+          "flex flex-col gap-4 rounded bg-card p-6 text-card-foreground border border-border md:flex-row md:items-center md:gap-8",
+          "flex flex-col items-center gap-4 text-center"
+        ]
+      }
+    },
+    {
+      "name": "copy",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "bar"
+            ]
+          },
+          "md:grow",
+          ""
+        ]
+      }
+    },
+    {
+      "name": "copyAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "bar"
+            ]
+          },
+          "start",
+          "center"
+        ]
+      }
+    },
+    {
+      "name": "copyText",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "bar"
+            ]
+          },
+          "text-start",
+          "text-center"
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "section",
+        "Class": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "padding"
+                },
+                "compact"
+              ]
+            },
+            "py-8 lg:py-16",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "padding"
+                    },
+                    "spacious"
+                  ]
+                },
+                "py-24 lg:py-40",
+                "py-16 lg:py-32"
+              ]
+            }
+          ]
+        }
+      },
+      "attrs": {
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "rating-simple"
+      },
+      "children": [
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "children": [
+            {
+              "use": "Box",
+              "props": {
+                "Class": {
+                  "$": "box"
+                }
+              },
+              "children": [
+                {
+                  "use": "Text",
+                  "props": {
+                    "Size": "5xl",
+                    "Weight": "bold",
+                    "Class": "tracking-tight text-primary"
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "$": "value"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "2",
+                    "Align": {
+                      "$": "copyAlign"
+                    },
+                    "Class": {
+                      "$": "copy"
+                    }
+                  },
+                  "children": [
+                    {
+                      "use": "Title",
+                      "props": {
+                        "As": {
+                          "$": "level"
+                        },
+                        "Size": "xl",
+                        "Weight": "semibold",
+                        "Class": {
+                          "$": "copyText"
+                        }
+                      },
+                      "attrs": {
+                        "id": {
+                          "$": "titleId"
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "title"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "$": "description"
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "text-muted-foreground",
+                                {
+                                  "$": "copyText"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "description"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "when": {
+                    "op": "and",
+                    "args": [
+                      {
+                        "$": "sourceLabel"
+                      },
+                      {
+                        "$": "sourceHref"
+                      }
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "LinkPlain",
+                      "props": {
+                        "Href": {
+                          "$": "sourceHref"
+                        },
+                        "Class": "text-muted-foreground hover:text-foreground"
+                      },
+                      "children": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "sourceLabel"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "collection": "simpleproducts",
+  "kind": "product",
+  "entries": [
+    {
+      "id": "simpleproduct-arc-desk-lamp",
+      "locale": "en",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": "simpleproduct-arc-desk-lamp",
+      "title": "Arc desk lamp",
+      "metadata": {
+        "display": {
+          "value": "$129"
+        }
+      },
+      "featured_media_id": "media-lamp",
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "simpleproduct-studio-headphones",
+      "locale": "en",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": "simpleproduct-studio-headphones",
+      "title": "Studio headphones",
+      "metadata": {
+        "display": {
+          "value": "$249"
+        }
+      },
+      "featured_media_id": "media-phones",
+      "version": 1,
+      "created_at": "2026-03-03T09:00:00Z",
+      "updated_at": "2026-03-04T09:00:00Z",
+      "published_at": "2026-03-04T10:00:00Z"
+    },
+    {
+      "id": "simpleproduct-canvas-day-bag",
+      "locale": "en",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": "simpleproduct-canvas-day-bag",
+      "title": "Canvas day bag",
+      "metadata": {
+        "display": {
+          "value": "$89"
+        }
+      },
+      "featured_media_id": "media-bag",
+      "version": 1,
+      "created_at": "2026-03-05T09:00:00Z",
+      "updated_at": "2026-03-06T09:00:00Z",
+      "published_at": "2026-03-06T10:00:00Z"
+    },
+    {
+      "id": "simpleproduct-oak-desk-tray",
+      "locale": "en",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": "simpleproduct-oak-desk-tray",
+      "title": "Oak desk tray",
+      "metadata": {
+        "display": {
+          "value": "$39"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-07T09:00:00Z",
+      "updated_at": "2026-03-08T09:00:00Z",
+      "published_at": "2026-03-08T10:00:00Z"
+    },
+    {
+      "id": "simpleproduct-wool-desk-mat",
+      "locale": "en",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": "simpleproduct-wool-desk-mat",
+      "title": "Wool desk mat",
+      "metadata": {
+        "display": {
+          "value": "$45"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-09T09:00:00Z",
+      "updated_at": "2026-03-10T09:00:00Z",
+      "published_at": "2026-03-10T10:00:00Z"
+    },
+    {
+      "id": "simpleproduct-brass-pen",
+      "locale": "en",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": "simpleproduct-brass-pen",
+      "title": "Brass pen",
+      "metadata": {
+        "display": {
+          "value": "$59"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-11T09:00:00Z",
+      "updated_at": "2026-03-12T09:00:00Z",
+      "published_at": "2026-03-12T10:00:00Z"
+    },
+    {
+      "id": "simpleproduct-linen-notebook",
+      "locale": "en",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": "simpleproduct-linen-notebook",
+      "title": "Linen notebook",
+      "metadata": {
+        "display": {
+          "value": "$19"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-13T09:00:00Z",
+      "updated_at": "2026-03-14T09:00:00Z",
+      "published_at": "2026-03-14T10:00:00Z"
+    },
+    {
+      "id": "simpleproduct-walnut-stand",
+      "locale": "en",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": "simpleproduct-walnut-stand",
+      "title": "Walnut stand",
+      "metadata": {
+        "display": {
+          "value": "$75"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-15T09:00:00Z",
+      "updated_at": "2026-03-16T09:00:00Z",
+      "published_at": "2026-03-16T10:00:00Z"
+    }
+  ]
+}

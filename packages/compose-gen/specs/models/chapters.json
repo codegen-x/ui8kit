@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "chapters",
+  "version": 1,
+  "docs": "Chapters content: the heading, a description and an ordered list of chapters, each with a picture, a short label, a title and a line. One object is valid in every chapters layout (rows with the picture at the side, a pair).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 6,
+      "docs": "the chapters, in the order they are read",
+      "item": {
+        "record": "ChapterItem",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "image": { "type": "image", "docs": "address of the picture of the chapter; none: the placeholder" },
+          "label": { "type": "text", "maxLength": 24, "required": true, "docs": "the short label (Chapter 1)" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the title of the chapter (the alt text of the picture)" },
+          "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph about the chapter; empty: none" }
+        }
+      }
+    }
+  }
+}

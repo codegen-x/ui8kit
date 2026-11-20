@@ -1,0 +1,78 @@
+{
+  "collection": "simplechoices",
+  "kind": "menu_item",
+  "entries": [
+    {
+      "id": "choice-small",
+      "locale": "en",
+      "kind": "menu_item",
+      "status": "published",
+      "visibility": "public",
+      "slug": "choice-small",
+      "title": "Small",
+      "metadata": {
+        "href": {
+          "value": "#/size-s"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "choice-medium",
+      "locale": "en",
+      "kind": "menu_item",
+      "status": "published",
+      "visibility": "public",
+      "slug": "choice-medium",
+      "title": "Medium",
+      "metadata": {
+        "href": {
+          "value": "#/size-m"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-03T09:00:00Z",
+      "updated_at": "2026-03-04T09:00:00Z",
+      "published_at": "2026-03-04T10:00:00Z"
+    },
+    {
+      "id": "choice-large",
+      "locale": "en",
+      "kind": "menu_item",
+      "status": "published",
+      "visibility": "public",
+      "slug": "choice-large",
+      "title": "Large",
+      "metadata": {
+        "href": {
+          "value": "#/size-l"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-05T09:00:00Z",
+      "updated_at": "2026-03-06T09:00:00Z",
+      "published_at": "2026-03-06T10:00:00Z"
+    },
+    {
+      "id": "choice-extra-large",
+      "locale": "en",
+      "kind": "menu_item",
+      "status": "published",
+      "visibility": "public",
+      "slug": "choice-extra-large",
+      "title": "Extra large",
+      "metadata": {
+        "href": {
+          "value": "#/size-xl"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-07T09:00:00Z",
+      "updated_at": "2026-03-08T09:00:00Z",
+      "published_at": "2026-03-08T10:00:00Z"
+    }
+  ]
+}

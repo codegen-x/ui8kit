@@ -1,0 +1,14 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "figure",
+  "version": 1,
+  "docs": "Figure content: one large picture with its caption: a title, a line and the credit. One object is valid in every figure layout (wide with the caption under it, the caption at the side).",
+  "fields": {
+    "image": { "type": "image", "docs": "address of the picture; none: the placeholder" },
+    "imageAlt": { "type": "text", "maxLength": 160, "required": true, "docs": "alt text of the picture" },
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the title of the caption (names the section)" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "the caption; empty: none" },
+    "credit": { "type": "text", "maxLength": 80, "docs": "the credit of the picture; empty: none" }
+  }
+}

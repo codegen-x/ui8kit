@@ -1,0 +1,102 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.contactssimple",
+  "name": "Simple contacts",
+  "docs": "The heading, one paragraph and the teams to reach on cards (an icon, the name, a line, an action): in three or two columns, or rows with the icon at the side.",
+  "theme": "marketing",
+  "group": "contact",
+  "organism": "ContactsSimple",
+  "line": "simple",
+  "model": "contacts@1",
+  "axes": {
+    "layout": [
+      "cards",
+      "rows"
+    ],
+    "cols": [
+      "3",
+      "2"
+    ]
+  },
+  "defaults": {
+    "layout": "cards",
+    "cols": "3"
+  },
+  "variants": [
+    {
+      "id": "cards3",
+      "set": {}
+    },
+    {
+      "id": "cards2",
+      "set": {
+        "cols": "2"
+      }
+    },
+    {
+      "id": "rows",
+      "set": {
+        "layout": "rows"
+      },
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@contactItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@contactItems"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@contactItems"
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": "@contactItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "contactItems",
+      "collection": "simplecontacts",
+      "kind": "contact",
+      "record": "ContactItem",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "title": "title",
+        "description": "metadata.text.value",
+        "actionLabel": "metadata.action.value",
+        "actionHref": "metadata.href.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "contactssimple",
+      "title": {
+        "$": "ui.marketing.contactsSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.contactsSimple.description"
+      },
+      "items": {
+        "$": "contactItems"
+      }
+    }
+  }
+}

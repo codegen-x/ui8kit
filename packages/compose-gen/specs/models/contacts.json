@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "contacts",
+  "version": 1,
+  "docs": "Contacts content: the heading, a description and an ordered list of teams or channels to reach, each with an icon picture, a name, a line and an action. One object is valid in every contacts layout (cards in two or three columns, rows).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 6,
+      "docs": "the contacts, in the order they are shown",
+      "item": {
+        "record": "ContactItem",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "image": { "type": "image", "docs": "address of the icon picture; none: the placeholder" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the name of the team or the channel" },
+          "description": { "type": "longText", "maxLength": 240, "docs": "one line: the address, the phone or the hours; empty: none" },
+          "actionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the action; the link is drawn when the label and the address are both set" },
+          "actionHref": { "type": "url", "docs": "the address of the action" }
+        }
+      }
+    }
+  }
+}

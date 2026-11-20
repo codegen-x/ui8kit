@@ -1,0 +1,393 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.pull-quote-simple",
+  "name": "PullQuoteSimple",
+  "docs": "The simple pull quote (model pull-quote@1): the words in a blockquote, then the author (names the section), a role line and the source as a link, in a figure. Axes: layout (rule: a bar in the primary token at the start, centered: centred, no bar).",
+  "records": {},
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "quote",
+      "type": "string",
+      "required": true,
+      "docs": "the words that are quoted"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true,
+      "docs": "the name of the author (names the section)"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "docs": "the role of the author; empty: none"
+    },
+    {
+      "name": "sourceLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the source; the link is drawn when the label and the address are both set"
+    },
+    {
+      "name": "sourceHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the source"
+    },
+    {
+      "name": "padding",
+      "type": {
+        "ts": "\"compact\" | \"standard\" | \"spacious\""
+      },
+      "default": "standard",
+      "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"rule\" | \"centered\""
+      },
+      "default": "rule"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "titleId",
+      "value": {
+        "op": "add",
+        "args": [
+          {
+            "$": "id"
+          },
+          "-title"
+        ]
+      }
+    },
+    {
+      "name": "frame",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "rule"
+            ]
+          },
+          "flex flex-row gap-6",
+          "flex flex-col items-center"
+        ]
+      }
+    },
+    {
+      "name": "copyAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "rule"
+            ]
+          },
+          "start",
+          "center"
+        ]
+      }
+    },
+    {
+      "name": "copyText",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "rule"
+            ]
+          },
+          "text-start",
+          "text-center"
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "section",
+        "Class": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "padding"
+                },
+                "compact"
+              ]
+            },
+            "py-8 lg:py-16",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "padding"
+                    },
+                    "spacious"
+                  ]
+                },
+                "py-24 lg:py-40",
+                "py-16 lg:py-32"
+              ]
+            }
+          ]
+        }
+      },
+      "attrs": {
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "pull-quote-simple"
+      },
+      "children": [
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "children": [
+            {
+              "use": "Box",
+              "props": {
+                "Tag": "figure",
+                "Class": {
+                  "op": "cn",
+                  "args": [
+                    "mx-auto max-w-3xl",
+                    {
+                      "$": "frame"
+                    }
+                  ]
+                }
+              },
+              "children": [
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "rule"
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "Box",
+                      "props": {
+                        "Class": "w-2 shrink-0 self-stretch rounded-full bg-primary"
+                      },
+                      "attrs": {
+                        "aria-hidden": "true"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "6",
+                    "Align": {
+                      "$": "copyAlign"
+                    }
+                  },
+                  "children": [
+                    {
+                      "use": "Text",
+                      "props": {
+                        "Tag": "blockquote",
+                        "Size": "2xl",
+                        "Weight": "medium",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "tracking-tight",
+                            {
+                              "$": "copyText"
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "quote"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "2",
+                        "Align": {
+                          "$": "copyAlign"
+                        }
+                      },
+                      "children": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "base",
+                            "Weight": "semibold",
+                            "Class": {
+                              "$": "copyText"
+                            }
+                          },
+                          "attrs": {
+                            "id": {
+                              "$": "titleId"
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "title"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "when": {
+                            "$": "description"
+                          },
+                          "then": [
+                            {
+                              "use": "Text",
+                              "props": {
+                                "Size": "sm",
+                                "Class": {
+                                  "op": "cn",
+                                  "args": [
+                                    "text-muted-foreground",
+                                    {
+                                      "$": "copyText"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "description"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "when": {
+                            "op": "and",
+                            "args": [
+                              {
+                                "$": "sourceLabel"
+                              },
+                              {
+                                "$": "sourceHref"
+                              }
+                            ]
+                          },
+                          "then": [
+                            {
+                              "use": "LinkPlain",
+                              "props": {
+                                "Href": {
+                                  "$": "sourceHref"
+                                },
+                                "Class": "text-primary hover:text-foreground"
+                              },
+                              "children": [
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "sourceLabel"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

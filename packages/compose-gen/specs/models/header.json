@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "header",
+  "version": 1,
+  "docs": "Header content: the brand (a link home), an ordered list of navigation links and one action. One object is valid in every header layout (inline, the links at the end, centred).",
+  "fields": {
+    "brand": { "type": "text", "maxLength": 40, "required": true, "docs": "the name of the site (the link home)" },
+    "brandHref": { "type": "url", "required": true, "docs": "the address of the home page" },
+    "links": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 6,
+      "docs": "the navigation links, in the order they are shown",
+      "item": {
+        "record": "HeaderLink",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "label": { "type": "text", "maxLength": 40, "required": true, "docs": "the text of the link" },
+          "href": { "type": "url", "required": true, "docs": "the address of the link" }
+        }
+      }
+    },
+    "actionLabel": { "type": "text", "maxLength": 40, "docs": "the label of the action; the link is drawn when the label and the address are both set" },
+    "actionHref": { "type": "url", "docs": "the address of the action" }
+  }
+}

@@ -47,7 +47,7 @@ templ ProductGrid(p ProductGridProps) {
 		} else if uiutils.Eq(vLayout, "rail") {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "flex snap-x gap-4 overflow-x-auto pb-4", Attrs: uiutils.Attrs("data-slot", "items")}}) {
 				for _, vP := range uiutils.L(vProducts) {
-					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-64 shrink-0 snap-start", Attrs: uiutils.Attrs("data-slot", "product")}}) {
+					@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "w-64 shrink-0 snap-start", Attrs: uiutils.Attrs("data-slot", "products-row")}}) {
 						@ProductCard(ProductCardProps{Product: vP, Labels: vLabels, Badges: vBadges, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "horizontal", "vertical"), Ratio: vRatio, Rating: vRating, Action: vAction, Density: uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "compact", "default")})
 					}
 				}

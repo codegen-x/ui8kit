@@ -2,35 +2,89 @@
 // item -> the wireframe (svelte/blocks/<item>.svelte), in manifest order, and each wireframe by its organism name.
 // ui8kit/prototypes re-exports it (src/catalog.ts, src/index.ts).
 import type { Component } from "svelte";
+import ArticleLead from "./svelte/blocks/article-lead.svelte";
+import ArticleSimple from "./svelte/blocks/article-simple.svelte";
+import ChaptersSimple from "./svelte/blocks/chapters-simple.svelte";
+import ChoiceLinks from "./svelte/blocks/choice-links.svelte";
+import CollectionsSimple from "./svelte/blocks/collections-simple.svelte";
+import CompareSimple from "./svelte/blocks/compare-simple.svelte";
+import ContactsSimple from "./svelte/blocks/contacts-simple.svelte";
+import CourseOutline from "./svelte/blocks/course-outline.svelte";
+import ErrorSimple from "./svelte/blocks/error-simple.svelte";
+import EventIntro from "./svelte/blocks/event-intro.svelte";
 import FaqSimple from "./svelte/blocks/faq-simple.svelte";
+import FeatureShowcaseSimple from "./svelte/blocks/feature-showcase-simple.svelte";
 import FeaturesSimple from "./svelte/blocks/features-simple.svelte";
+import FigureSimple from "./svelte/blocks/figure-simple.svelte";
+import FooterSimple from "./svelte/blocks/footer-simple.svelte";
 import GalleryHero from "./svelte/blocks/gallery-hero.svelte";
+import HeaderSimple from "./svelte/blocks/header-simple.svelte";
 import HeroSimple from "./svelte/blocks/hero-simple.svelte";
 import IntroSimple from "./svelte/blocks/intro-simple.svelte";
+import LocationsSimple from "./svelte/blocks/locations-simple.svelte";
 import LogosSimple from "./svelte/blocks/logos-simple.svelte";
+import OffersSimple from "./svelte/blocks/offers-simple.svelte";
 import PhotosSimple from "./svelte/blocks/photos-simple.svelte";
+import PricingSimple from "./svelte/blocks/pricing-simple.svelte";
+import ProductReviews from "./svelte/blocks/product-reviews.svelte";
+import ProductSimple from "./svelte/blocks/product-simple.svelte";
+import ProductsSimple from "./svelte/blocks/products-simple.svelte";
+import ProfileIntro from "./svelte/blocks/profile-intro.svelte";
+import PullQuoteSimple from "./svelte/blocks/pull-quote-simple.svelte";
+import PurchaseSimple from "./svelte/blocks/purchase-simple.svelte";
+import RatingSimple from "./svelte/blocks/rating-simple.svelte";
+import SpecsSimple from "./svelte/blocks/specs-simple.svelte";
 import SplitSimple from "./svelte/blocks/split-simple.svelte";
 import StatsSimple from "./svelte/blocks/stats-simple.svelte";
 import StepsSimple from "./svelte/blocks/steps-simple.svelte";
+import StorePolicies from "./svelte/blocks/store-policies.svelte";
 import StoriesSimple from "./svelte/blocks/stories-simple.svelte";
 import TeamSimple from "./svelte/blocks/team-simple.svelte";
 import TestimonialsSimple from "./svelte/blocks/testimonials-simple.svelte";
+import TopicsSimple from "./svelte/blocks/topics-simple.svelte";
 
-export { FaqSimple, FeaturesSimple, GalleryHero, HeroSimple, IntroSimple, LogosSimple, PhotosSimple, SplitSimple, StatsSimple, StepsSimple, StoriesSimple, TeamSimple, TestimonialsSimple };
+export { ArticleLead, ArticleSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, HeaderSimple, HeroSimple, IntroSimple, LocationsSimple, LogosSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PullQuoteSimple, PurchaseSimple, RatingSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TopicsSimple };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CATALOG: Record<string, Component<any>> = {
+  "article-lead": ArticleLead,
+  "article-simple": ArticleSimple,
+  "chapters-simple": ChaptersSimple,
+  "choice-links": ChoiceLinks,
+  "collections-simple": CollectionsSimple,
+  "compare-simple": CompareSimple,
+  "contacts-simple": ContactsSimple,
+  "course-outline": CourseOutline,
+  "error-simple": ErrorSimple,
+  "event-intro": EventIntro,
   "faq-simple": FaqSimple,
+  "feature-showcase-simple": FeatureShowcaseSimple,
   "features-simple": FeaturesSimple,
+  "figure-simple": FigureSimple,
+  "footer-simple": FooterSimple,
   "gallery-hero": GalleryHero,
+  "header-simple": HeaderSimple,
   "hero-simple": HeroSimple,
   "intro-simple": IntroSimple,
+  "locations-simple": LocationsSimple,
   "logos-simple": LogosSimple,
+  "offers-simple": OffersSimple,
   "photos-simple": PhotosSimple,
+  "pricing-simple": PricingSimple,
+  "product-reviews": ProductReviews,
+  "product-simple": ProductSimple,
+  "products-simple": ProductsSimple,
+  "profile-intro": ProfileIntro,
+  "pull-quote-simple": PullQuoteSimple,
+  "purchase-simple": PurchaseSimple,
+  "rating-simple": RatingSimple,
+  "specs-simple": SpecsSimple,
   "split-simple": SplitSimple,
   "stats-simple": StatsSimple,
   "steps-simple": StepsSimple,
+  "store-policies": StorePolicies,
   "stories-simple": StoriesSimple,
   "team-simple": TeamSimple,
   "testimonials-simple": TestimonialsSimple,
+  "topics-simple": TopicsSimple,
 };

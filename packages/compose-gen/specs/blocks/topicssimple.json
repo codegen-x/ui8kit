@@ -1,0 +1,92 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.topicssimple",
+  "name": "Simple topics",
+  "docs": "The heading, one paragraph and the rubrics of a blog on cards (a label, the title as a link, a line): in two or three columns, or one under the other.",
+  "theme": "marketing",
+  "group": "blog",
+  "organism": "TopicsSimple",
+  "line": "simple",
+  "model": "topics@1",
+  "axes": {
+    "layout": [
+      "cards",
+      "rows"
+    ],
+    "cols": [
+      "2",
+      "3"
+    ]
+  },
+  "defaults": {
+    "layout": "cards",
+    "cols": "3"
+  },
+  "variants": [
+    {
+      "id": "cards3",
+      "set": {}
+    },
+    {
+      "id": "cards2",
+      "set": {
+        "cols": "2"
+      }
+    },
+    {
+      "id": "rows",
+      "set": {
+        "layout": "rows"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@topicItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@topicItems"
+    },
+    {
+      "sel": "[data-slot=\"badge\"]",
+      "n": "@topicItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "topicItems",
+      "collection": "simpletopics",
+      "kind": "topic",
+      "record": "TopicItem",
+      "fields": {
+        "id": "id",
+        "label": "metadata.label.value",
+        "title": "title",
+        "description": "metadata.text.value",
+        "href": "metadata.href.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "topicssimple",
+      "title": {
+        "$": "ui.marketing.topicsSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.topicsSimple.description"
+      },
+      "items": {
+        "$": "topicItems"
+      }
+    }
+  }
+}

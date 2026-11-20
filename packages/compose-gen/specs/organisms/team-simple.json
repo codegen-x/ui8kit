@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "organism.team-simple",
   "name": "TeamSimple",
-  "docs": "The simple team (model team@1): the heading, a description and the members as a list, each with a portrait, the name and a line. Axes: cols (2, 3, 4 columns from md up), surface (plain, cards).",
+  "docs": "The simple team (model team@1): the heading, a description and the members as a list, each with a portrait, the name and a line. Axes: layout (grid: the portrait over the copy, aside: the head beside large square portraits from md up, byline: a small disc beside the copy, list: a larger disc beside the copy, two columns), cols (2, 3, 4 columns from md up), surface (plain, cards: each member on a card surface).",
   "records": {
     "SimpleMember": [
       {
@@ -74,6 +74,13 @@
       },
       "default": "center",
       "docs": "the alignment of the copy: start, center or end (logical, follows the writing direction): items-* on the column, text-* on the text"
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"grid\" | \"aside\" | \"byline\" | \"list\""
+      },
+      "default": "grid"
     },
     {
       "name": "cols",
@@ -177,40 +184,6 @@
       }
     },
     {
-      "name": "itemsAlign",
-      "value": {
-        "op": "cond",
-        "args": [
-          {
-            "op": "eq",
-            "args": [
-              {
-                "$": "align"
-              },
-              "center"
-            ]
-          },
-          "items-center",
-          {
-            "op": "cond",
-            "args": [
-              {
-                "op": "eq",
-                "args": [
-                  {
-                    "$": "align"
-                  },
-                  "end"
-                ]
-              },
-              "items-end",
-              "items-start"
-            ]
-          }
-        ]
-      }
-    },
-    {
       "name": "selfAlign",
       "value": {
         "op": "cond",
@@ -240,6 +213,241 @@
               "self-end",
               ""
             ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "frame",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "aside"
+            ]
+          },
+          "md:grid md:grid-cols-3 md:items-start",
+          ""
+        ]
+      }
+    },
+    {
+      "name": "grid",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "aside"
+            ]
+          },
+          "md:col-span-2 md:grid-cols-3",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "cols"
+                  },
+                  "2"
+                ]
+              },
+              "",
+              {
+                "op": "cond",
+                "args": [
+                  {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "cols"
+                      },
+                      "3"
+                    ]
+                  },
+                  "md:grid-cols-3",
+                  "md:grid-cols-4"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "person",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "or",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "byline"
+                ]
+              },
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "list"
+                ]
+              }
+            ]
+          },
+          "flex w-full flex-row items-center gap-4",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "center"
+                ]
+              },
+              "flex w-full flex-col items-center gap-4",
+              {
+                "op": "cond",
+                "args": [
+                  {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "align"
+                      },
+                      "end"
+                    ]
+                  },
+                  "flex w-full flex-col items-end gap-4",
+                  "flex w-full flex-col items-start gap-4"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "portrait",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "aside"
+            ]
+          },
+          "w-full",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "byline"
+                ]
+              },
+              "size-12 rounded-full",
+              "size-16 rounded-full"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "copyAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "or",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "byline"
+                ]
+              },
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "list"
+                ]
+              }
+            ]
+          },
+          "start",
+          {
+            "$": "column"
+          }
+        ]
+      }
+    },
+    {
+      "name": "copyText",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "or",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "byline"
+                ]
+              },
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "list"
+                ]
+              }
+            ]
+          },
+          "text-start",
+          {
+            "$": "textAlign"
           }
         ]
       }
@@ -316,7 +524,10 @@
               "use": "Stack",
               "props": {
                 "Gap": "12",
-                "Align": "stretch"
+                "Align": "stretch",
+                "Class": {
+                  "$": "frame"
+                }
               },
               "children": [
                 {
@@ -408,35 +619,7 @@
                       "args": [
                         "m-0 grid w-full list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2",
                         {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "cols"
-                                },
-                                "2"
-                              ]
-                            },
-                            "",
-                            {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "cols"
-                                    },
-                                    "3"
-                                  ]
-                                },
-                                "md:grid-cols-3",
-                                "md:grid-cols-4"
-                              ]
-                            }
-                          ]
+                          "$": "grid"
                         }
                       ]
                     }
@@ -455,25 +638,25 @@
                           "use": "ListItem",
                           "props": {
                             "Class": {
-                              "op": "cond",
+                              "op": "cn",
                               "args": [
                                 {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "surface"
-                                    },
-                                    "cards"
-                                  ]
+                                  "$": "person"
                                 },
-                                "flex",
                                 {
-                                  "op": "cn",
+                                  "op": "cond",
                                   "args": [
-                                    "flex flex-col gap-4",
                                     {
-                                      "$": "itemsAlign"
-                                    }
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "surface"
+                                        },
+                                        "cards"
+                                      ]
+                                    },
+                                    "rounded bg-card p-6 text-card-foreground border border-border",
+                                    ""
                                   ]
                                 }
                               ]
@@ -484,187 +667,85 @@
                           },
                           "children": [
                             {
-                              "when": {
-                                "op": "eq",
-                                "args": [
-                                  {
-                                    "$": "surface"
-                                  },
-                                  "cards"
-                                ]
-                              },
-                              "then": [
-                                {
-                                  "use": "Card",
-                                  "props": {
-                                    "Class": {
-                                      "op": "cn",
-                                      "args": [
-                                        "flex w-full flex-col gap-4 p-6",
-                                        {
-                                          "$": "itemsAlign"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "children": [
+                              "organism": "MediaFrame",
+                              "props": {
+                                "alt": {
+                                  "$": "m.title"
+                                },
+                                "src": {
+                                  "$": "m.avatar"
+                                },
+                                "ratio": "1/1",
+                                "className": {
+                                  "op": "cn",
+                                  "args": [
+                                    "shrink-0",
                                     {
-                                      "organism": "MediaFrame",
-                                      "props": {
-                                        "alt": {
-                                          "$": "m.title"
-                                        },
-                                        "src": {
-                                          "$": "m.avatar"
-                                        },
-                                        "ratio": "1/1",
-                                        "className": "size-16 rounded-full"
-                                      }
-                                    },
-                                    {
-                                      "use": "Stack",
-                                      "props": {
-                                        "Gap": "2",
-                                        "Align": {
-                                          "$": "column"
-                                        }
-                                      },
-                                      "children": [
-                                        {
-                                          "use": "Title",
-                                          "props": {
-                                            "As": {
-                                              "op": "add",
-                                              "args": [
-                                                {
-                                                  "$": "level"
-                                                },
-                                                1
-                                              ]
-                                            },
-                                            "Size": "lg",
-                                            "Weight": "semibold",
-                                            "Class": {
-                                              "$": "textAlign"
-                                            }
-                                          },
-                                          "children": [
-                                            {
-                                              "text": {
-                                                "$": "m.title"
-                                              }
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "when": {
-                                            "$": "m.description"
-                                          },
-                                          "then": [
-                                            {
-                                              "use": "Text",
-                                              "props": {
-                                                "Size": "sm",
-                                                "Class": {
-                                                  "op": "cn",
-                                                  "args": [
-                                                    "text-muted-foreground",
-                                                    {
-                                                      "$": "textAlign"
-                                                    }
-                                                  ]
-                                                }
-                                              },
-                                              "children": [
-                                                {
-                                                  "text": {
-                                                    "$": "m.description"
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          ]
-                                        }
-                                      ]
+                                      "$": "portrait"
                                     }
                                   ]
                                 }
-                              ],
-                              "else": [
+                              }
+                            },
+                            {
+                              "use": "Stack",
+                              "props": {
+                                "Gap": "2",
+                                "Align": {
+                                  "$": "copyAlign"
+                                }
+                              },
+                              "children": [
                                 {
-                                  "organism": "MediaFrame",
+                                  "use": "Title",
                                   "props": {
-                                    "alt": {
-                                      "$": "m.title"
+                                    "As": {
+                                      "op": "add",
+                                      "args": [
+                                        {
+                                          "$": "level"
+                                        },
+                                        1
+                                      ]
                                     },
-                                    "src": {
-                                      "$": "m.avatar"
-                                    },
-                                    "ratio": "1/1",
-                                    "className": "size-16 rounded-full"
-                                  }
-                                },
-                                {
-                                  "use": "Stack",
-                                  "props": {
-                                    "Gap": "2",
-                                    "Align": {
-                                      "$": "column"
+                                    "Size": "lg",
+                                    "Weight": "semibold",
+                                    "Class": {
+                                      "$": "copyText"
                                     }
                                   },
                                   "children": [
                                     {
-                                      "use": "Title",
+                                      "text": {
+                                        "$": "m.title"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "when": {
+                                    "$": "m.description"
+                                  },
+                                  "then": [
+                                    {
+                                      "use": "Text",
                                       "props": {
-                                        "As": {
-                                          "op": "add",
-                                          "args": [
-                                            {
-                                              "$": "level"
-                                            },
-                                            1
-                                          ]
-                                        },
-                                        "Size": "lg",
-                                        "Weight": "semibold",
+                                        "Size": "sm",
                                         "Class": {
-                                          "$": "textAlign"
+                                          "op": "cn",
+                                          "args": [
+                                            "text-muted-foreground",
+                                            {
+                                              "$": "copyText"
+                                            }
+                                          ]
                                         }
                                       },
                                       "children": [
                                         {
                                           "text": {
-                                            "$": "m.title"
+                                            "$": "m.description"
                                           }
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "when": {
-                                        "$": "m.description"
-                                      },
-                                      "then": [
-                                        {
-                                          "use": "Text",
-                                          "props": {
-                                            "Size": "sm",
-                                            "Class": {
-                                              "op": "cn",
-                                              "args": [
-                                                "text-muted-foreground",
-                                                {
-                                                  "$": "textAlign"
-                                                }
-                                              ]
-                                            }
-                                          },
-                                          "children": [
-                                            {
-                                              "text": {
-                                                "$": "m.description"
-                                              }
-                                            }
-                                          ]
                                         }
                                       ]
                                     }

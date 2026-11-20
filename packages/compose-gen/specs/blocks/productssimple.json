@@ -1,0 +1,97 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.productssimple",
+  "name": "Simple products",
+  "docs": "The heading, one paragraph and the products (a picture, the name as a link, the price): in three or four columns, or rows with the picture at the side.",
+  "theme": "marketing",
+  "group": "catalog",
+  "organism": "ProductsSimple",
+  "line": "simple",
+  "model": "products@1",
+  "axes": {
+    "layout": [
+      "grid",
+      "rows"
+    ],
+    "cols": [
+      "3",
+      "4"
+    ]
+  },
+  "defaults": {
+    "layout": "grid",
+    "cols": "3"
+  },
+  "variants": [
+    {
+      "id": "cards3",
+      "set": {}
+    },
+    {
+      "id": "denseGrid",
+      "set": {
+        "cols": "4"
+      }
+    },
+    {
+      "id": "rows",
+      "set": {
+        "layout": "rows"
+      },
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@productItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@productItems"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@productItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "productItems",
+      "collection": "simpleproducts",
+      "kind": "product",
+      "record": "ProductItem",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "title": "title",
+        "price": "metadata.display.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "productssimple",
+      "title": {
+        "$": "ui.marketing.productsSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.productsSimple.description"
+      },
+      "items": {
+        "$": "productItems"
+      }
+    }
+  }
+}

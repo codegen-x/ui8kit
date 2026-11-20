@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "profile",
+  "version": 1,
+  "docs": "Profile intro content: the name as the heading, the role, a description, a portrait and an ordered list of links (a site, social profiles). One object is valid in every profile layout (the portrait at the end, at the start, above the name).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the name of the person (the heading)" },
+    "role": { "type": "text", "maxLength": 80, "required": true, "docs": "the role and the company" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "image": { "type": "image", "docs": "address of the portrait; none: the placeholder" },
+    "imageAlt": { "type": "text", "maxLength": 160, "required": true, "docs": "alt text of the portrait" },
+    "links": {
+      "type": "list",
+      "required": true,
+      "minItems": 0,
+      "maxItems": 4,
+      "docs": "the links of the person, in the order they are shown",
+      "item": {
+        "record": "ProfileLink",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "label": { "type": "text", "maxLength": 40, "required": true, "docs": "the text of the link" },
+          "href": { "type": "url", "required": true, "docs": "the address of the link" }
+        }
+      }
+    }
+  }
+}

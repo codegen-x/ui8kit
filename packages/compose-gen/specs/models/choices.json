@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "choices",
+  "version": 1,
+  "docs": "Choices content: the heading, a description and an ordered list of options as links (sizes, versions, plans). One object is valid in every choices layout (a row, a grid).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 8,
+      "docs": "the options, in the order they are shown",
+      "item": {
+        "record": "ChoiceItem",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "label": { "type": "text", "maxLength": 40, "required": true, "docs": "the text of the link" },
+          "href": { "type": "url", "required": true, "docs": "the address of the link" }
+        }
+      }
+    }
+  }
+}

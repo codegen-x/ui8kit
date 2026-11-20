@@ -5,6 +5,10 @@ import { ui } from "../content";
 export const NAV = [
   { id: "home", name: ui.pages.marketingSimple.home.nav, icon: "link", href: "#/", area: "home" },
   { id: "team", name: ui.pages.marketingSimple.team.nav, icon: "link", href: "#/team", area: "team" },
+  { id: "blog", name: ui.pages.marketingSimple.blog.nav, icon: "link", href: "#/blog", area: "blog" },
+  { id: "shop", name: ui.pages.marketingSimple.shop.nav, icon: "link", href: "#/shop", area: "shop" },
+  { id: "pricing", name: ui.pages.marketingSimple.pricing.nav, icon: "link", href: "#/pricing", area: "pricing" },
+  { id: "about", name: ui.pages.marketingSimple.about.nav, icon: "link", href: "#/about", area: "about" },
 ];
 
 /** the links of the menu and the id of the one that leads to the area on screen ("" when none does) */

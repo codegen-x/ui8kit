@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "specs",
+  "version": 1,
+  "docs": "Specs content: the heading, a description and an ordered list of specifications, each a name and its value. One object is valid in every specs layout (rows, two columns).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 16,
+      "docs": "the specifications, in the order they are shown",
+      "item": {
+        "record": "SpecItem",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "title": { "type": "text", "maxLength": 60, "required": true, "docs": "the name of the specification" },
+          "description": { "type": "text", "maxLength": 120, "required": true, "docs": "the value as it is shown" }
+        }
+      }
+    }
+  }
+}

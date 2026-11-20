@@ -3,12 +3,20 @@
  * The simple line: blocks with one content model each (hero@1, split@1, team@1, intro@1, gallery@1, features@1,
  * stats@1, stories@1, photos@1, testimonials@1, logos@1, faq@1, steps@1), the same content in every variant. A
  * home page with the hero, the features, the team, the stats, the steps, the quotes and the questions, and a
- * team page with the wide hero, the team on cards, the gallery, the photos and the stories.
+ * team page with the wide hero, the team on cards, the gallery, the photos and the stories; a blog page (the
+ * article lead, the article, a figure, a pull quote, chapters, topics), a shop page (collections, products, one
+ * product, choices, specs, compare, purchase, reviews, store policies), a pricing page (the showcase, the
+ * rating, pricing, offers, a course outline, contacts, locations) and an about page (the header, an event and a
+ * profile intro, the team list, the error block, the footer).
  */
 
 import { Block, NavBar, SitemapFooter, type MegaGroup } from "@codegen-x/react-compose";
 import { HomePage } from "./ThemeMarketingSimpleScreen/HomePage";
 import { TeamPage } from "./ThemeMarketingSimpleScreen/TeamPage";
+import { BlogPage } from "./ThemeMarketingSimpleScreen/BlogPage";
+import { ShopPage } from "./ThemeMarketingSimpleScreen/ShopPage";
+import { PricingPage } from "./ThemeMarketingSimpleScreen/PricingPage";
+import { AboutPage } from "./ThemeMarketingSimpleScreen/AboutPage";
 import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
@@ -16,7 +24,14 @@ import { ui } from "@ui8kit/app-shared/content";
 import { navOf } from "@ui8kit/app-shared/nav/ThemeMarketingSimpleScreen";
 import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
 
-const ROUTES = [{"path":"","area":"home"},{"path":"team","area":"team"}] as const;
+const ROUTES = [
+  {"path":"","area":"home"},
+  {"path":"team","area":"team"},
+  {"path":"blog","area":"blog"},
+  {"path":"shop","area":"shop"},
+  {"path":"pricing","area":"pricing"},
+  {"path":"about","area":"about"},
+] as const;
 const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 
 const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
@@ -52,6 +67,14 @@ export function ThemeMarketingSimpleScreen({ url }: { url: UrlPort }) {
       <Block tag="main" id="main-content" tabIndex={-1} data-testid="main">
         {route.area === "team" ? (
           <TeamPage />
+        ) : route.area === "blog" ? (
+          <BlogPage />
+        ) : route.area === "shop" ? (
+          <ShopPage />
+        ) : route.area === "pricing" ? (
+          <PricingPage />
+        ) : route.area === "about" ? (
+          <AboutPage />
         ) : (
           <HomePage />
         )}

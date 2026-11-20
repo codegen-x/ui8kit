@@ -1,0 +1,574 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.product-simple",
+  "name": "ProductSimple",
+  "docs": "The simple product (model product@1): the main picture and up to four thumbnails as a list (named by the product), beside the name as the heading, the price, a description and one action. Axes: media (start: the pictures before the copy from md up, end: after it, top: above it, wide).",
+  "records": {
+    "ProductPhoto": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": true
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "default": "",
+      "docs": "one paragraph under the heading; empty: none"
+    },
+    {
+      "name": "price",
+      "type": "string",
+      "required": true,
+      "docs": "the price as it is shown"
+    },
+    {
+      "name": "image",
+      "type": "string",
+      "default": "",
+      "docs": "address of the main picture; none: the placeholder"
+    },
+    {
+      "name": "imageAlt",
+      "type": "string",
+      "required": true,
+      "docs": "alt text of the main picture"
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "default": "",
+      "docs": "the label of the action; the link is drawn when the label and the address are both set"
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "default": "",
+      "docs": "the address of the action"
+    },
+    {
+      "name": "photos",
+      "type": {
+        "ts": "ProductPhoto[]"
+      },
+      "required": true,
+      "docs": "more pictures, thumbnails under the main one (0 to 4)"
+    },
+    {
+      "name": "level",
+      "type": {
+        "ts": "1 | 2 | 3"
+      },
+      "default": 2,
+      "docs": "the level of the heading (1 on the first section of a page)"
+    },
+    {
+      "name": "padding",
+      "type": {
+        "ts": "\"compact\" | \"standard\" | \"spacious\""
+      },
+      "default": "standard",
+      "docs": "the vertical padding of the section: compact (py-8 lg:py-16), standard (py-16 lg:py-32), spacious (py-24 lg:py-40)"
+    },
+    {
+      "name": "align",
+      "type": {
+        "ts": "\"start\" | \"center\" | \"end\""
+      },
+      "default": "start",
+      "docs": "the alignment of the copy: start, center or end (logical, follows the writing direction): items-* on the column, text-* on the text"
+    },
+    {
+      "name": "media",
+      "type": {
+        "ts": "\"start\" | \"end\" | \"top\""
+      },
+      "default": "start"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
+    }
+  ],
+  "derived": [
+    {
+      "name": "titleId",
+      "value": {
+        "op": "add",
+        "args": [
+          {
+            "$": "id"
+          },
+          "-title"
+        ]
+      }
+    },
+    {
+      "name": "column",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "end",
+              "start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "textAlign",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "align"
+              },
+              "center"
+            ]
+          },
+          "text-center",
+          {
+            "op": "cond",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "align"
+                  },
+                  "end"
+                ]
+              },
+              "text-end",
+              "text-start"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "frame",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "top"
+            ]
+          },
+          "grid grid-cols-1 gap-8",
+          "grid grid-cols-1 items-start gap-12 md:grid-cols-2"
+        ]
+      }
+    },
+    {
+      "name": "gallery",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "end"
+            ]
+          },
+          "",
+          "order-first"
+        ]
+      }
+    },
+    {
+      "name": "ratio",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "top"
+            ]
+          },
+          "21/9",
+          "4/3"
+        ]
+      }
+    },
+    {
+      "name": "thumbs",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "top"
+            ]
+          },
+          "grid-cols-4 md:grid-cols-6",
+          "grid-cols-4"
+        ]
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Block",
+      "props": {
+        "Tag": "section",
+        "Class": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "padding"
+                },
+                "compact"
+              ]
+            },
+            "py-8 lg:py-16",
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "padding"
+                    },
+                    "spacious"
+                  ]
+                },
+                "py-24 lg:py-40",
+                "py-16 lg:py-32"
+              ]
+            }
+          ]
+        }
+      },
+      "attrs": {
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
+        },
+        "data-slot": "product-simple"
+      },
+      "children": [
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "children": [
+            {
+              "use": "Box",
+              "props": {
+                "Class": {
+                  "$": "frame"
+                }
+              },
+              "children": [
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "6",
+                    "Align": {
+                      "$": "column"
+                    }
+                  },
+                  "children": [
+                    {
+                      "use": "Title",
+                      "props": {
+                        "As": {
+                          "$": "level"
+                        },
+                        "Size": "4xl",
+                        "Weight": "bold",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "tracking-tight",
+                            {
+                              "$": "textAlign"
+                            }
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "id": {
+                          "$": "titleId"
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "title"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Text",
+                      "props": {
+                        "Size": "2xl",
+                        "Weight": "bold",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "tracking-tight",
+                            {
+                              "op": "cn",
+                              "args": [
+                                "text-primary",
+                                {
+                                  "$": "textAlign"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "price"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "$": "description"
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "base",
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "text-muted-foreground",
+                                {
+                                  "$": "textAlign"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "description"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "and",
+                        "args": [
+                          {
+                            "$": "actionLabel"
+                          },
+                          {
+                            "$": "actionHref"
+                          }
+                        ]
+                      },
+                      "then": [
+                        {
+                          "use": "LinkButton",
+                          "props": {
+                            "Variant": "default",
+                            "Size": "lg",
+                            "Href": {
+                              "$": "actionHref"
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "actionLabel"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "4",
+                    "Align": "stretch",
+                    "Class": {
+                      "$": "gallery"
+                    }
+                  },
+                  "children": [
+                    {
+                      "organism": "MediaFrame",
+                      "props": {
+                        "alt": {
+                          "$": "imageAlt"
+                        },
+                        "src": {
+                          "$": "image"
+                        },
+                        "ratio": {
+                          "$": "ratio"
+                        }
+                      }
+                    },
+                    {
+                      "use": "List",
+                      "props": {
+                        "Tag": "ul",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "m-0 w-full list-none p-0",
+                            {
+                              "op": "cn",
+                              "args": [
+                                "grid gap-4",
+                                {
+                                  "$": "thumbs"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "photos"
+                          },
+                          "as": "t",
+                          "key": {
+                            "$": "t.id"
+                          },
+                          "do": [
+                            {
+                              "use": "ListItem",
+                              "attrs": {
+                                "data-slot": "thumb"
+                              },
+                              "children": [
+                                {
+                                  "organism": "MediaFrame",
+                                  "props": {
+                                    "alt": {
+                                      "$": "title"
+                                    },
+                                    "src": {
+                                      "$": "t.image"
+                                    },
+                                    "ratio": "1/1"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
+  }
+}

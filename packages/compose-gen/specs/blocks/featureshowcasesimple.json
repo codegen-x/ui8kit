@@ -1,0 +1,94 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.featureshowcasesimple",
+  "name": "Simple feature showcase",
+  "docs": "The heading, one paragraph and the key points as a list beside one picture (at the end or the start), or the head over a wide picture with the points in three columns under it.",
+  "theme": "marketing",
+  "group": "features",
+  "organism": "FeatureShowcaseSimple",
+  "line": "simple",
+  "model": "feature-showcase@1",
+  "axes": {
+    "media": [
+      "end",
+      "start",
+      "top"
+    ]
+  },
+  "defaults": {
+    "media": "end"
+  },
+  "variants": [
+    {
+      "id": "mediaEnd",
+      "set": {}
+    },
+    {
+      "id": "mediaStart",
+      "set": {
+        "media": "start"
+      }
+    },
+    {
+      "id": "mediaTop",
+      "set": {
+        "media": "top"
+      },
+      "props": {
+        "align": "center"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@showcaseItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@showcaseItems"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 1
+    }
+  ],
+  "data": [
+    {
+      "as": "showcaseItems",
+      "collection": "features",
+      "kind": "feature",
+      "record": "ShowcaseItem",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "description": "metadata.text.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "featureshowcasesimple",
+      "title": {
+        "$": "ui.marketing.featureShowcaseSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.featureShowcaseSimple.description"
+      },
+      "imageAlt": {
+        "$": "ui.marketing.featureShowcaseSimple.imageAlt"
+      },
+      "items": {
+        "$": "showcaseItems"
+      }
+    }
+  }
+}

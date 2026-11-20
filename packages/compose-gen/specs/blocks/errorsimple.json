@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.errorsimple",
+  "name": "Simple error",
+  "docs": "A page for something that went wrong: the code, the heading, one paragraph and one action back; centred or at the start.",
+  "theme": "marketing",
+  "group": "states",
+  "organism": "ErrorSimple",
+  "line": "simple",
+  "model": "error@1",
+  "axes": {},
+  "defaults": {},
+  "variants": [
+    {
+      "id": "center",
+      "set": {}
+    },
+    {
+      "id": "start",
+      "set": {},
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 1
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 0
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "errorsimple",
+      "code": "404",
+      "title": {
+        "$": "ui.marketing.errorSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.errorSimple.description"
+      },
+      "actionLabel": {
+        "$": "ui.marketing.errorSimple.actionLabel"
+      },
+      "actionHref": "#/"
+    }
+  }
+}

@@ -627,7 +627,8 @@
                   "pricing",
                   "plan",
                   "credits",
-                  "usage"
+                  "usage",
+                  "pricingsimple"
                 ]
               }
             }
@@ -819,7 +820,8 @@
                   "medialist",
                   "videos",
                   "team",
-                  "teamsimple"
+                  "teamsimple",
+                  "ratingsimple"
                 ]
               }
             }
@@ -872,7 +874,9 @@
                   "pagehead",
                   "pagetrail",
                   "errorpage",
-                  "cookie"
+                  "cookie",
+                  "headersimple",
+                  "errorsimple"
                 ]
               }
             }
@@ -1110,7 +1114,8 @@
             {
               "any": {
                 "block": [
-                  "compare"
+                  "compare",
+                  "comparesimple"
                 ]
               }
             }
@@ -1369,7 +1374,8 @@
                   "checkout"
                 ],
                 "block": [
-                  "orders"
+                  "orders",
+                  "storepolicies"
                 ]
               }
             }
@@ -1465,7 +1471,8 @@
                   "posts",
                   "postshowcase",
                   "postsplit",
-                  "storiessimple"
+                  "storiessimple",
+                  "topicssimple"
                 ]
               }
             }
@@ -1557,7 +1564,8 @@
                 "block": [
                   "footer",
                   "footersplit",
-                  "sitemap"
+                  "sitemap",
+                  "footersimple"
                 ]
               }
             }

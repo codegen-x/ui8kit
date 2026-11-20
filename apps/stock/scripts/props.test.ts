@@ -83,7 +83,7 @@ describe("props schemas", () => {
       n++;
     }
     expect(bad).toEqual([]);
-    expect(n).toBe(576);
+    expect(n).toBe(644);
     expect(n).toBe(built.index.counts["block"]);
   });
 

@@ -1,0 +1,151 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.pricingsimple",
+  "name": "Simple pricing",
+  "docs": "The heading, one paragraph and the plans on cards (the name, a badge on the highlighted plan, a line, the price, an action): in three or two columns, or one row each.",
+  "theme": "marketing",
+  "group": "pricing",
+  "organism": "PricingSimple",
+  "line": "simple",
+  "model": "pricing@1",
+  "axes": {
+    "layout": [
+      "cards",
+      "rows"
+    ],
+    "cols": [
+      "3",
+      "2"
+    ]
+  },
+  "defaults": {
+    "layout": "cards",
+    "cols": "3"
+  },
+  "variants": [
+    {
+      "id": "cards3",
+      "set": {}
+    },
+    {
+      "id": "cards2",
+      "set": {
+        "cols": "2"
+      },
+      "props": {
+        "plans": {
+          "$": "pricingPlans2"
+        }
+      }
+    },
+    {
+      "id": "rows",
+      "set": {
+        "layout": "rows"
+      },
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "[data-slot=\"badge\"]",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": 3,
+      "when": {
+        "cols": "3"
+      }
+    },
+    {
+      "sel": "ul > li",
+      "n": 2,
+      "when": {
+        "cols": "2"
+      }
+    },
+    {
+      "sel": "ul > li h3",
+      "n": 3,
+      "when": {
+        "cols": "3"
+      }
+    },
+    {
+      "sel": "ul > li h3",
+      "n": 2,
+      "when": {
+        "cols": "2"
+      }
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 3,
+      "when": {
+        "cols": "3"
+      }
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 2,
+      "when": {
+        "cols": "2"
+      }
+    }
+  ],
+  "data": [
+    {
+      "as": "pricingPlans",
+      "collection": "simpleplans",
+      "kind": "plan",
+      "record": "PricingPlan",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "price": "metadata.display.value",
+        "description": "metadata.text.value",
+        "badge": "metadata.badge.value",
+        "actionLabel": "metadata.action.value",
+        "actionHref": "metadata.href.value"
+      }
+    },
+    {
+      "as": "pricingPlans2",
+      "collection": "simpleplans2",
+      "kind": "plan",
+      "record": "PricingPlan",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "price": "metadata.display.value",
+        "description": "metadata.text.value",
+        "badge": "metadata.badge.value",
+        "actionLabel": "metadata.action.value",
+        "actionHref": "metadata.href.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "pricingsimple",
+      "title": {
+        "$": "ui.marketing.pricingSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.pricingSimple.description"
+      },
+      "plans": {
+        "$": "pricingPlans"
+      }
+    }
+  }
+}

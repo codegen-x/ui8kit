@@ -1,0 +1,14 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "rating",
+  "version": 1,
+  "docs": "Rating content: the score, a heading that names it, a line (the count, the scale) and the source as a link. One object is valid in every rating layout (a bar, centred).",
+  "fields": {
+    "value": { "type": "text", "maxLength": 8, "required": true, "docs": "the score as it is shown (4.9, 98%)" },
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 160, "docs": "the count and the scale (out of 5, from 1,240 reviews); empty: none" },
+    "sourceLabel": { "type": "text", "maxLength": 40, "docs": "the label of the source; the link is drawn when the label and the address are both set" },
+    "sourceHref": { "type": "url", "docs": "the address of the source" }
+  }
+}

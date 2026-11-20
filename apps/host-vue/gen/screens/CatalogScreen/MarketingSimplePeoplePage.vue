@@ -47,7 +47,7 @@ const simpleStories = fromCodex<SimpleStory>(simpleStoriesEntries, SIMPLESTORIES
             {{ ui.catalog.categories.marketingSimplePeople }}
           </Title>
           <Text class="max-w-2xl text-muted-foreground">
-            {{ tpl(ui.catalog.count, 2, 7) }}
+            {{ tpl(ui.catalog.count, 2, 10) }}
           </Text>
         </Stack>
         <Stack
@@ -84,6 +84,7 @@ const simpleStories = fromCodex<SimpleStory>(simpleStoriesEntries, SIMPLESTORIES
                 :title="ui.marketing.teamSimple.title"
                 :description="ui.marketing.teamSimple.description"
                 :members="teamMembers"
+                layout="grid"
                 cols="3"
                 surface="plain"
                 :level="2"
@@ -109,6 +110,7 @@ const simpleStories = fromCodex<SimpleStory>(simpleStoriesEntries, SIMPLESTORIES
                 :title="ui.marketing.teamSimple.title"
                 :description="ui.marketing.teamSimple.description"
                 :members="teamMembers"
+                layout="grid"
                 cols="2"
                 surface="plain"
                 :level="2"
@@ -134,6 +136,7 @@ const simpleStories = fromCodex<SimpleStory>(simpleStoriesEntries, SIMPLESTORIES
                 :title="ui.marketing.teamSimple.title"
                 :description="ui.marketing.teamSimple.description"
                 :members="teamMembers"
+                layout="grid"
                 cols="4"
                 surface="plain"
                 :level="2"
@@ -159,10 +162,92 @@ const simpleStories = fromCodex<SimpleStory>(simpleStoriesEntries, SIMPLESTORIES
                 :title="ui.marketing.teamSimple.title"
                 :description="ui.marketing.teamSimple.description"
                 :members="teamMembers"
+                layout="grid"
                 cols="3"
                 surface="cards"
                 :level="2"
                 :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.cards3))"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="teamsimple-portraitRow-label"
+            data-testid="variant"
+            data-block="teamsimple"
+            data-variant="portraitRow"
+          >
+            <Title :as="3" size="base" weight="bold" id="teamsimple-portraitRow-label" data-testid="variant-label">
+              {{ ui.blocks.variants.teamsimple.portraitRow }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <TeamSimple
+                id="teamsimple-portraitRow"
+                :title="ui.marketing.teamSimple.title"
+                :description="ui.marketing.teamSimple.description"
+                :members="teamMembers"
+                layout="aside"
+                cols="3"
+                surface="plain"
+                align="start"
+                :level="2"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.portraitRow))"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="teamsimple-bylineCols3-label"
+            data-testid="variant"
+            data-block="teamsimple"
+            data-variant="bylineCols3"
+          >
+            <Title :as="3" size="base" weight="bold" id="teamsimple-bylineCols3-label" data-testid="variant-label">
+              {{ ui.blocks.variants.teamsimple.bylineCols3 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <TeamSimple
+                id="teamsimple-bylineCols3"
+                :title="ui.marketing.teamSimple.title"
+                :description="ui.marketing.teamSimple.description"
+                :members="teamMembers"
+                layout="byline"
+                cols="3"
+                surface="cards"
+                align="start"
+                :level="2"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.bylineCols3))"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="teamsimple-sideList-label"
+            data-testid="variant"
+            data-block="teamsimple"
+            data-variant="sideList"
+          >
+            <Title :as="3" size="base" weight="bold" id="teamsimple-sideList-label" data-testid="variant-label">
+              {{ ui.blocks.variants.teamsimple.sideList }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <TeamSimple
+                id="teamsimple-sideList"
+                :title="ui.marketing.teamSimple.title"
+                :description="ui.marketing.teamSimple.description"
+                :members="teamMembers"
+                layout="list"
+                cols="2"
+                surface="plain"
+                align="start"
+                :level="2"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.teamsimple, ui.blocks.variants.teamsimple.sideList))"
               />
             </Box>
           </Stack>

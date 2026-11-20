@@ -1,0 +1,78 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.comparesimple",
+  "name": "Simple compare",
+  "docs": "The heading, one paragraph and two options side by side: their names in a header row, then a row per feature with the value of each.",
+  "theme": "marketing",
+  "group": "product",
+  "organism": "CompareSimple",
+  "line": "simple",
+  "model": "compare@1",
+  "axes": {
+    "width": [
+      "wide",
+      "narrow"
+    ]
+  },
+  "defaults": {
+    "width": "wide"
+  },
+  "variants": [
+    {
+      "id": "twoProducts",
+      "set": {}
+    },
+    {
+      "id": "narrow",
+      "set": {
+        "width": "narrow"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@compareRows"
+    }
+  ],
+  "data": [
+    {
+      "as": "compareRows",
+      "collection": "compare",
+      "kind": "row",
+      "record": "CompareLine",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "first": "metadata.a.value",
+        "second": "metadata.b.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "comparesimple",
+      "title": {
+        "$": "ui.marketing.compareSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.compareSimple.description"
+      },
+      "firstLabel": {
+        "$": "ui.marketing.compareSimple.firstLabel"
+      },
+      "secondLabel": {
+        "$": "ui.marketing.compareSimple.secondLabel"
+      },
+      "rows": {
+        "$": "compareRows"
+      }
+    }
+  }
+}

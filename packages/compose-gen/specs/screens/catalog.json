@@ -288,6 +288,112 @@
             ]
           },
           {
+            "id": "marketing-simple-frame",
+            "entries": [
+              {
+                "block": "headersimple"
+              },
+              {
+                "block": "footersimple"
+              },
+              {
+                "block": "eventintro"
+              },
+              {
+                "block": "profileintro"
+              },
+              {
+                "block": "errorsimple"
+              }
+            ]
+          },
+          {
+            "id": "marketing-simple-story",
+            "entries": [
+              {
+                "block": "articlelead"
+              },
+              {
+                "block": "articlesimple"
+              },
+              {
+                "block": "figuresimple"
+              },
+              {
+                "block": "pullquotesimple"
+              },
+              {
+                "block": "chapterssimple"
+              },
+              {
+                "block": "topicssimple"
+              }
+            ]
+          },
+          {
+            "id": "marketing-simple-offer",
+            "entries": [
+              {
+                "block": "featureshowcasesimple"
+              },
+              {
+                "block": "ratingsimple"
+              },
+              {
+                "block": "pricingsimple"
+              },
+              {
+                "block": "offerssimple"
+              },
+              {
+                "block": "contactssimple"
+              },
+              {
+                "block": "locationssimple"
+              }
+            ]
+          },
+          {
+            "id": "marketing-simple-shop",
+            "entries": [
+              {
+                "block": "productssimple"
+              },
+              {
+                "block": "productsimple"
+              },
+              {
+                "block": "collectionssimple"
+              },
+              {
+                "block": "choicelinks"
+              },
+              {
+                "block": "purchasesimple"
+              }
+            ]
+          },
+          {
+            "id": "marketing-simple-details",
+            "entries": [
+              {
+                "block": "specssimple"
+              },
+              {
+                "block": "comparesimple"
+              },
+              {
+                "block": "productreviews"
+              },
+              {
+                "block": "storepolicies"
+              },
+              {
+                "block": "courseoutline"
+              }
+            ]
+          },
+          {
             "id": "marketing-about",
             "entries": [
               {

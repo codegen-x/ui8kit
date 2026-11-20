@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "reviews",
+  "version": 1,
+  "docs": "Reviews content: the heading, a description and an ordered list of reviews, each with the rating as it is shown, the words, the portrait, the name and a line (the date, the product). One object is valid in every reviews layout (cards in two or three columns, rows).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 6,
+      "docs": "the reviews, in the order they are shown",
+      "item": {
+        "record": "ReviewItem",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "rating": { "type": "text", "maxLength": 16, "required": true, "docs": "the rating as it is shown (5 / 5)" },
+          "quote": { "type": "longText", "maxLength": 400, "required": true, "docs": "the words of the review" },
+          "avatar": { "type": "image", "docs": "address of the portrait; none: the placeholder" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the name of the reviewer" },
+          "description": { "type": "text", "maxLength": 80, "docs": "a line: the date or the product; empty: none" }
+        }
+      }
+    }
+  }
+}

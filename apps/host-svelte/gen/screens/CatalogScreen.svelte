@@ -32,6 +32,11 @@
   import MarketingSimpleFeaturesPage from "./CatalogScreen/MarketingSimpleFeaturesPage.svelte";
   import MarketingSimpleProofPage from "./CatalogScreen/MarketingSimpleProofPage.svelte";
   import MarketingSimplePeoplePage from "./CatalogScreen/MarketingSimplePeoplePage.svelte";
+  import MarketingSimpleFramePage from "./CatalogScreen/MarketingSimpleFramePage.svelte";
+  import MarketingSimpleStoryPage from "./CatalogScreen/MarketingSimpleStoryPage.svelte";
+  import MarketingSimpleOfferPage from "./CatalogScreen/MarketingSimpleOfferPage.svelte";
+  import MarketingSimpleShopPage from "./CatalogScreen/MarketingSimpleShopPage.svelte";
+  import MarketingSimpleDetailsPage from "./CatalogScreen/MarketingSimpleDetailsPage.svelte";
   import MarketingAboutPage from "./CatalogScreen/MarketingAboutPage.svelte";
   import MarketingPortfolioPage from "./CatalogScreen/MarketingPortfolioPage.svelte";
   import MarketingCareersPage from "./CatalogScreen/MarketingCareersPage.svelte";
@@ -133,6 +138,11 @@
     {"path":"marketing-simple-features","area":"marketing-simple-features"},
     {"path":"marketing-simple-proof","area":"marketing-simple-proof"},
     {"path":"marketing-simple-people","area":"marketing-simple-people"},
+    {"path":"marketing-simple-frame","area":"marketing-simple-frame"},
+    {"path":"marketing-simple-story","area":"marketing-simple-story"},
+    {"path":"marketing-simple-offer","area":"marketing-simple-offer"},
+    {"path":"marketing-simple-shop","area":"marketing-simple-shop"},
+    {"path":"marketing-simple-details","area":"marketing-simple-details"},
     {"path":"marketing-about","area":"marketing-about"},
     {"path":"marketing-portfolio","area":"marketing-portfolio"},
     {"path":"marketing-careers","area":"marketing-careers"},
@@ -263,6 +273,16 @@
     <MarketingSimpleProofPage />
   {:else if route.area === "marketing-simple-people"}
     <MarketingSimplePeoplePage />
+  {:else if route.area === "marketing-simple-frame"}
+    <MarketingSimpleFramePage />
+  {:else if route.area === "marketing-simple-story"}
+    <MarketingSimpleStoryPage />
+  {:else if route.area === "marketing-simple-offer"}
+    <MarketingSimpleOfferPage />
+  {:else if route.area === "marketing-simple-shop"}
+    <MarketingSimpleShopPage />
+  {:else if route.area === "marketing-simple-details"}
+    <MarketingSimpleDetailsPage />
   {:else if route.area === "marketing-about"}
     <MarketingAboutPage />
   {:else if route.area === "marketing-portfolio"}

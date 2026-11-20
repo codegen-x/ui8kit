@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.articlelead",
+  "name": "Article lead",
+  "docs": "The head of an article: the heading, the lead paragraph and the byline (the portrait, the author, the date) under a wide cover, or beside it.",
+  "theme": "marketing",
+  "group": "story",
+  "organism": "ArticleLead",
+  "line": "simple",
+  "model": "article-lead@1",
+  "axes": {
+    "media": [
+      "top",
+      "start",
+      "end"
+    ]
+  },
+  "defaults": {
+    "media": "top"
+  },
+  "variants": [
+    {
+      "id": "mediaTop",
+      "set": {}
+    },
+    {
+      "id": "mediaStart",
+      "set": {
+        "media": "start"
+      }
+    },
+    {
+      "id": "mediaEnd",
+      "set": {
+        "media": "end"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": 2
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "articlelead",
+      "title": {
+        "$": "ui.marketing.articleLead.title"
+      },
+      "description": {
+        "$": "ui.marketing.articleLead.description"
+      },
+      "imageAlt": {
+        "$": "ui.marketing.articleLead.imageAlt"
+      },
+      "author": {
+        "$": "ui.marketing.articleLead.author"
+      },
+      "date": {
+        "$": "ui.marketing.articleLead.date"
+      }
+    }
+  }
+}

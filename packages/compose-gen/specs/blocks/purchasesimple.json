@@ -1,0 +1,64 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.purchasesimple",
+  "name": "Simple purchase",
+  "docs": "On a card surface: the heading and one paragraph beside the price, the action and a note; or all centred.",
+  "theme": "marketing",
+  "group": "product",
+  "organism": "PurchaseSimple",
+  "line": "simple",
+  "model": "purchase@1",
+  "axes": {
+    "layout": [
+      "panel",
+      "centered"
+    ]
+  },
+  "defaults": {
+    "layout": "panel"
+  },
+  "variants": [
+    {
+      "id": "panel",
+      "set": {}
+    },
+    {
+      "id": "centered",
+      "set": {
+        "layout": "centered"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "a[data-slot=\"button\"][href]",
+      "n": 1
+    }
+  ],
+  "data": [],
+  "sample": {
+    "props": {
+      "id": "purchasesimple",
+      "title": {
+        "$": "ui.marketing.purchaseSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.purchaseSimple.description"
+      },
+      "price": "$129",
+      "note": {
+        "$": "ui.marketing.purchaseSimple.note"
+      },
+      "actionLabel": {
+        "$": "ui.marketing.purchaseSimple.actionLabel"
+      },
+      "actionHref": "#/cart"
+    }
+  }
+}

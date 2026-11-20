@@ -10,6 +10,12 @@
   "line": "simple",
   "model": "team@1",
   "axes": {
+    "layout": [
+      "grid",
+      "aside",
+      "byline",
+      "list"
+    ],
     "cols": [
       "2",
       "3",
@@ -21,6 +27,7 @@
     ]
   },
   "defaults": {
+    "layout": "grid",
     "cols": "3",
     "surface": "plain"
   },
@@ -45,6 +52,35 @@
       "id": "cards3",
       "set": {
         "surface": "cards"
+      }
+    },
+    {
+      "id": "portraitRow",
+      "set": {
+        "layout": "aside"
+      },
+      "props": {
+        "align": "start"
+      }
+    },
+    {
+      "id": "bylineCols3",
+      "set": {
+        "layout": "byline",
+        "surface": "cards"
+      },
+      "props": {
+        "align": "start"
+      }
+    },
+    {
+      "id": "sideList",
+      "set": {
+        "layout": "list",
+        "cols": "2"
+      },
+      "props": {
+        "align": "start"
       }
     }
   ],
@@ -90,14 +126,14 @@
       }
     },
     {
-      "sel": "[data-slot=\"card\"]",
+      "sel": "ul > li.bg-card",
       "n": "@members",
       "when": {
         "surface": "cards"
       }
     },
     {
-      "sel": "[data-slot=\"card\"]",
+      "sel": "ul > li.bg-card",
       "n": 0,
       "when": {
         "surface": "plain"
