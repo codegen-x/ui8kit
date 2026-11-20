@@ -18,6 +18,8 @@ const cases = blockCases(loaded.inputs, new Set(loaded.organisms.map((o) => o.na
 const ALIGNS = ["start", "center", "end"] as const;
 const TEXT = { start: "text-start", center: "text-center", end: "text-end" } as const;
 const ITEMS = { start: "items-start", center: "items-center", end: "items-end" } as const;
+/** the block default of align (the organism prop): the team is centred */
+const DEFAULT: Record<string, string> = { HeroSimple: "start", TeamSimple: "center" };
 const PHYSICAL = /^(?:[a-z0-9-]+:)*(?:text-(?:left|right)|-?(?:ml|mr|pl|pr)-\S+|-?(?:left|right)-\S+|float-(?:left|right)|rounded-[lr](?:-|$)\S*|border-[lr](?:-|$)\S*)$/;
 
 const render = (organism: string, props: unknown) =>
@@ -27,21 +29,24 @@ const classes = (doc: Document) => [...doc.querySelectorAll("[class]")].flatMap(
 
 describe("align setting", () => {
   test("the gallery draws every align value of both blocks", () => {
-    for (const o of ["HeroSimple", "TeamSimple"]) for (const a of ["center", "end"]) expect(cases.some((c) => c.organism === o && (c.props as { align?: string }).align === a), `${o} ${a}`).toBe(true);
+    // a value is drawn as the default of a case (no prop) or by a case of its own
+    for (const o of ["HeroSimple", "TeamSimple"]) for (const a of ALIGNS) expect(cases.some((c) => c.organism === o && ((c.props as { align?: string }).align ?? DEFAULT[o]) === a), `${o} ${a}`).toBe(true);
   });
 
-  // the variant default: the centred composition (HeroSimple mediaTop: the wide picture on top) draws align center without the
-  // prop, every other variant start; a saved block's align overrides it (the extra gallery cases are the other two values)
-  test("variant defaults: mediaTop is centred, the rest start; the prop overrides", () => {
+  // the defaults: the centred compositions draw align center without the prop (HeroSimple mediaTop by its variant, every
+  // TeamSimple variant by the block default), the other hero variants start; a saved block's align overrides it (the extra
+  // gallery cases are the other two values)
+  test("defaults: hero mediaTop and the team are centred, the other hero variants start; the prop overrides", () => {
     const base = cases.filter((x) => !/\.align-/.test(x.label));
-    const want = (label: string) => (/^herosimple\.mediaTop /.test(label) ? "center" : "start");
+    const want = (label: string) => (/^herosimple\.mediaTop |^teamsimple\./.test(label) ? "center" : "start");
     for (const c of base) {
-      expect((c.props as { align?: string }).align ?? "start", c.label).toBe(want(c.label));
+      expect((c.props as { align?: string }).align ?? DEFAULT[c.organism], c.label).toBe(want(c.label));
       const title = dom(render(c.organism, c.props)).querySelector("h1, h2, h3")!;
       expect(title.classList.contains(TEXT[want(c.label)]), c.label).toBe(true);
     }
     const top = base.find((c) => /^herosimple\.mediaTop /.test(c.label))!;
     expect(cases.filter((c) => c.label.startsWith("herosimple.mediaTop.align-")).map((c) => (c.props as { align: string }).align).sort()).toEqual(["end", "start"]);
+    expect(cases.filter((c) => c.label.startsWith("teamsimple.cols4.align-")).map((c) => (c.props as { align: string }).align).sort()).toEqual(["end", "start"]);
     expect(dom(render(top.organism, { ...(top.props as object), align: "start" })).querySelector("h2")!.classList.contains("text-start")).toBe(true);
   });
 

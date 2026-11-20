@@ -77,7 +77,8 @@ const teamSimple = spec(`${O}team-simple`, "TeamSimple", "The simple team (model
     { name: "members", type: ts("SimpleMember[]"), required: true, docs: "the people, in the order they are shown (1 to 12)" },
     level,
     padding,
-    align,
+    // the team defaults to center: its member grid reads as one composition (cols4 is not left-heavy); start / end stay options
+    { ...align, default: "center" },
     { name: "cols", type: tsOf("2", "3", "4"), default: "3" },
     { name: "surface", type: tsOf("plain", "cards"), default: "plain" },
   ],

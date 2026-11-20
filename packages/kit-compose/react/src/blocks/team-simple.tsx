@@ -29,7 +29,7 @@ export function TeamSimple({
   members,
   level = 2,
   padding = "standard",
-  align = "start",
+  align = "center",
   cols = "3",
   surface = "plain",
   landmarkLabel,
