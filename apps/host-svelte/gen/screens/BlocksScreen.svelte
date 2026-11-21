@@ -13,6 +13,7 @@
   import ArticlesimplePage from "./BlocksScreen/ArticlesimplePage.svelte";
   import BeforeafterPage from "./BlocksScreen/BeforeafterPage.svelte";
   import BentoPage from "./BlocksScreen/BentoPage.svelte";
+  import CasessimplePage from "./BlocksScreen/CasessimplePage.svelte";
   import ChapterssimplePage from "./BlocksScreen/ChapterssimplePage.svelte";
   import ChoicelinksPage from "./BlocksScreen/ChoicelinksPage.svelte";
   import CollectionssimplePage from "./BlocksScreen/CollectionssimplePage.svelte";
@@ -179,6 +180,7 @@
     {"path":"articlesimple","area":"articlesimple"},
     {"path":"beforeafter","area":"beforeafter"},
     {"path":"bento","area":"bento"},
+    {"path":"casessimple","area":"casessimple"},
     {"path":"chapterssimple","area":"chapterssimple"},
     {"path":"choicelinks","area":"choicelinks"},
     {"path":"collectionssimple","area":"collectionssimple"},
@@ -356,6 +358,8 @@
     <BeforeafterPage />
   {:else if route.area === "bento"}
     <BentoPage />
+  {:else if route.area === "casessimple"}
+    <CasessimplePage />
   {:else if route.area === "chapterssimple"}
     <ChapterssimplePage />
   {:else if route.area === "choicelinks"}

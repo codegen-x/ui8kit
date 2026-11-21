@@ -4,6 +4,8 @@ export { default as ArticleLead } from "./blocks/article-lead.svelte";
 export type { ArticleLeadProps } from "./blocks/article-lead.svelte";
 export { default as ArticleSimple } from "./blocks/article-simple.svelte";
 export type { ArticleSimpleProps } from "./blocks/article-simple.svelte";
+export { default as CasesSimple } from "./blocks/cases-simple.svelte";
+export type { CasesSimpleProps } from "./blocks/cases-simple.svelte";
 export { default as ChaptersSimple } from "./blocks/chapters-simple.svelte";
 export type { ChaptersSimpleProps } from "./blocks/chapters-simple.svelte";
 export { default as ChoiceLinks } from "./blocks/choice-links.svelte";

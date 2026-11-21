@@ -4,6 +4,7 @@
 import type { Component } from "svelte";
 import ArticleLead from "./svelte/blocks/article-lead.svelte";
 import ArticleSimple from "./svelte/blocks/article-simple.svelte";
+import CasesSimple from "./svelte/blocks/cases-simple.svelte";
 import ChaptersSimple from "./svelte/blocks/chapters-simple.svelte";
 import ChoiceLinks from "./svelte/blocks/choice-links.svelte";
 import CollectionsSimple from "./svelte/blocks/collections-simple.svelte";
@@ -50,12 +51,13 @@ import TeamSimple from "./svelte/blocks/team-simple.svelte";
 import TestimonialsSimple from "./svelte/blocks/testimonials-simple.svelte";
 import TopicsSimple from "./svelte/blocks/topics-simple.svelte";
 
-export { ArticleLead, ArticleSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, CtaSimple, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, GuaranteesSimple, HeaderSimple, HeroSimple, HoursSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PromoSimple, PullQuoteSimple, PurchaseSimple, RatingSimple, RoomsSimple, ServicesSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TopicsSimple };
+export { ArticleLead, ArticleSimple, CasesSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, CtaSimple, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, GuaranteesSimple, HeaderSimple, HeroSimple, HoursSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PromoSimple, PullQuoteSimple, PurchaseSimple, RatingSimple, RoomsSimple, ServicesSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TopicsSimple };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CATALOG: Record<string, Component<any>> = {
   "article-lead": ArticleLead,
   "article-simple": ArticleSimple,
+  "cases-simple": CasesSimple,
   "chapters-simple": ChaptersSimple,
   "choice-links": ChoiceLinks,
   "collections-simple": CollectionsSimple,

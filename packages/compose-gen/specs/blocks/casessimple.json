@@ -1,0 +1,98 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.casessimple",
+  "name": "Simple case studies",
+  "docs": "The heading, one paragraph and the case studies (a picture, the client, the title as a link, the result in one line): on cards in three or two columns, or rows with the picture at the start.",
+  "theme": "marketing",
+  "group": "proof",
+  "organism": "CasesSimple",
+  "line": "simple",
+  "model": "cases@1",
+  "axes": {
+    "layout": [
+      "cards",
+      "rows"
+    ],
+    "cols": [
+      "3",
+      "2"
+    ]
+  },
+  "defaults": {
+    "layout": "cards",
+    "cols": "3"
+  },
+  "variants": [
+    {
+      "id": "cards3",
+      "set": {}
+    },
+    {
+      "id": "cards2",
+      "set": {
+        "cols": "2"
+      }
+    },
+    {
+      "id": "rows",
+      "set": {
+        "layout": "rows"
+      },
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@caseItems"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@caseItems"
+    },
+    {
+      "sel": "[data-slot=\"media-frame\"]",
+      "n": "@caseItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "caseItems",
+      "collection": "simplecases",
+      "kind": "case",
+      "record": "CaseStudy",
+      "fields": {
+        "id": "id",
+        "image": "featured_media_id|media",
+        "client": "metadata.client.value",
+        "title": "title",
+        "result": "metadata.text.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "casessimple",
+      "title": {
+        "$": "ui.marketing.casesSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.casesSimple.description"
+      },
+      "items": {
+        "$": "caseItems"
+      }
+    }
+  }
+}

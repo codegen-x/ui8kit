@@ -4,6 +4,7 @@
 import {
   Block,
   Box,
+  CasesSimple,
   Container,
   Group,
   GuaranteesSimple,
@@ -15,6 +16,7 @@ import {
   Title,
   tpl,
   uniqLabel,
+  type CaseStudy,
   type Guarantee,
   type Room,
   type Service,
@@ -25,6 +27,7 @@ import { ui } from "@ui8kit/app-shared/content";
 import { simplerooms as roomItemsEntries } from "@ui8kit/app-shared/data/simplerooms";
 import { simpleguarantees as guaranteeItemsEntries } from "@ui8kit/app-shared/data/simpleguarantees";
 import { simpleservices as serviceItemsEntries } from "@ui8kit/app-shared/data/simpleservices";
+import { simplecases as caseItemsEntries } from "@ui8kit/app-shared/data/simplecases";
 
 const ROOMITEMS_FIELDS = {
   "id": "id",
@@ -43,10 +46,19 @@ const SERVICEITEMS_FIELDS = {
   "price": "metadata.display.value",
   "href": "slug|route",
 } as const;
+const CASEITEMS_FIELDS = {
+  "id": "id",
+  "image": "featured_media_id|media",
+  "client": "metadata.client.value",
+  "title": "title",
+  "result": "metadata.text.value",
+  "href": "slug|route",
+} as const;
 
 const roomItems = fromCodex<Room>(roomItemsEntries, ROOMITEMS_FIELDS, CODEX);
 const guaranteeItems = fromCodex<Guarantee>(guaranteeItemsEntries, GUARANTEEITEMS_FIELDS, CODEX);
 const serviceItems = fromCodex<Service>(serviceItemsEntries, SERVICEITEMS_FIELDS, CODEX);
+const caseItems = fromCodex<CaseStudy>(caseItemsEntries, CASEITEMS_FIELDS, CODEX);
 </script>
 
 <template>
@@ -66,7 +78,7 @@ const serviceItems = fromCodex<Service>(serviceItemsEntries, SERVICEITEMS_FIELDS
             {{ ui.catalog.categories.marketingSimpleStay }}
           </Title>
           <Text class="max-w-2xl text-muted-foreground">
-            {{ tpl(ui.catalog.count, 3, 10) }}
+            {{ tpl(ui.catalog.count, 4, 13) }}
           </Text>
         </Stack>
         <Stack
@@ -368,6 +380,99 @@ const serviceItems = fromCodex<Service>(serviceItemsEntries, SERVICEITEMS_FIELDS
                 align="start"
                 :level="2"
                 :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.servicessimple, ui.blocks.variants.servicessimple.rows))"
+              />
+            </Box>
+          </Stack>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-casessimple-title"
+          data-testid="catalog-block"
+          data-block="casessimple"
+        >
+          <Stack gap="2" align="stretch">
+            <Title :as="2" size="2xl" weight="bold" id="catalog-casessimple-title">
+              {{ ui.blocks.names.casessimple }}
+            </Title>
+            <Text size="sm" class="max-w-2xl text-muted-foreground">
+              {{ ui.blocks.docs.casessimple }}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="casessimple-cards3-label"
+            data-testid="variant"
+            data-block="casessimple"
+            data-variant="cards3"
+          >
+            <Title :as="3" size="base" weight="bold" id="casessimple-cards3-label" data-testid="variant-label">
+              {{ ui.blocks.variants.casessimple.cards3 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CasesSimple
+                id="casessimple-cards3"
+                :title="ui.marketing.casesSimple.title"
+                :description="ui.marketing.casesSimple.description"
+                :items="caseItems"
+                layout="cards"
+                cols="3"
+                :level="2"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.casessimple, ui.blocks.variants.casessimple.cards3))"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="casessimple-cards2-label"
+            data-testid="variant"
+            data-block="casessimple"
+            data-variant="cards2"
+          >
+            <Title :as="3" size="base" weight="bold" id="casessimple-cards2-label" data-testid="variant-label">
+              {{ ui.blocks.variants.casessimple.cards2 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CasesSimple
+                id="casessimple-cards2"
+                :title="ui.marketing.casesSimple.title"
+                :description="ui.marketing.casesSimple.description"
+                :items="caseItems"
+                layout="cards"
+                cols="2"
+                :level="2"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.casessimple, ui.blocks.variants.casessimple.cards2))"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="casessimple-rows-label"
+            data-testid="variant"
+            data-block="casessimple"
+            data-variant="rows"
+          >
+            <Title :as="3" size="base" weight="bold" id="casessimple-rows-label" data-testid="variant-label">
+              {{ ui.blocks.variants.casessimple.rows }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CasesSimple
+                id="casessimple-rows"
+                :title="ui.marketing.casesSimple.title"
+                :description="ui.marketing.casesSimple.description"
+                :items="caseItems"
+                layout="rows"
+                cols="3"
+                align="start"
+                :level="2"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.casessimple, ui.blocks.variants.casessimple.rows))"
               />
             </Box>
           </Stack>

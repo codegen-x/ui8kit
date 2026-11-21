@@ -527,6 +527,74 @@
     ]
    }
   },
+  "casessimple": {
+   "organism": "CasesSimple",
+   "defaults": {
+    "layout": "cards",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "casessimple",
+    "title": {
+     "$": "ui.marketing.casesSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.casesSimple.description"
+    },
+    "items": {
+     "$": "caseItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "cards3",
+     "set": {}
+    },
+    {
+     "id": "cards2",
+     "set": {
+      "cols": "2"
+     }
+    },
+    {
+     "id": "rows",
+     "set": {
+      "layout": "rows"
+     },
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "caseItems",
+     "collection": "simplecases",
+     "fields": {
+      "id": "id",
+      "image": "featured_media_id|media",
+      "client": "metadata.client.value",
+      "title": "title",
+      "result": "metadata.text.value",
+      "href": "slug|route"
+     }
+    }
+   ],
+   "orgProps": {
+    "CasesSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
   "chapterssimple": {
    "organism": "ChaptersSimple",
    "defaults": {
@@ -16823,6 +16891,10 @@
      },
      {
       "block": "servicessimple",
+      "variant": "cards3"
+     },
+     {
+      "block": "casessimple",
       "variant": "cards3"
      }
     ],

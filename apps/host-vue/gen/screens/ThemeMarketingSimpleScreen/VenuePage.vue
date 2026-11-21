@@ -2,6 +2,7 @@
 <!-- The venue page of ThemeMarketingSimpleScreen. -->
 <script setup lang="ts">
 import {
+  CasesSimple,
   CtaSimple,
   GuaranteesSimple,
   HeroSimple,
@@ -12,6 +13,7 @@ import {
   ServicesSimple,
   tpl,
   uniqLabel,
+  type CaseStudy,
   type Guarantee,
   type MenuDish,
   type OpeningHour,
@@ -26,6 +28,7 @@ import { simplehours as openingHoursEntries } from "@ui8kit/app-shared/data/simp
 import { simplerooms as roomItemsEntries } from "@ui8kit/app-shared/data/simplerooms";
 import { simpleguarantees as guaranteeItemsEntries } from "@ui8kit/app-shared/data/simpleguarantees";
 import { simpleservices as serviceItemsEntries } from "@ui8kit/app-shared/data/simpleservices";
+import { simplecases as caseItemsEntries } from "@ui8kit/app-shared/data/simplecases";
 
 const MENUDISHES_FIELDS = {
   "id": "id",
@@ -54,12 +57,21 @@ const SERVICEITEMS_FIELDS = {
   "price": "metadata.display.value",
   "href": "slug|route",
 } as const;
+const CASEITEMS_FIELDS = {
+  "id": "id",
+  "image": "featured_media_id|media",
+  "client": "metadata.client.value",
+  "title": "title",
+  "result": "metadata.text.value",
+  "href": "slug|route",
+} as const;
 
 const menuDishes = fromCodex<MenuDish>(menuDishesEntries, MENUDISHES_FIELDS, CODEX);
 const openingHours = fromCodex<OpeningHour>(openingHoursEntries, OPENINGHOURS_FIELDS, CODEX);
 const roomItems = fromCodex<Room>(roomItemsEntries, ROOMITEMS_FIELDS, CODEX);
 const guaranteeItems = fromCodex<Guarantee>(guaranteeItemsEntries, GUARANTEEITEMS_FIELDS, CODEX);
 const serviceItems = fromCodex<Service>(serviceItemsEntries, SERVICEITEMS_FIELDS, CODEX);
+const caseItems = fromCodex<CaseStudy>(caseItemsEntries, CASEITEMS_FIELDS, CODEX);
 </script>
 
 <template>
@@ -153,5 +165,14 @@ const serviceItems = fromCodex<Service>(serviceItemsEntries, SERVICEITEMS_FIELDS
     layout="cards"
     cols="3"
     :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.servicessimple, ui.blocks.variants.servicessimple.cards3))"
+  />
+  <CasesSimple
+    id="venue-casessimple"
+    :title="ui.marketing.casesSimple.title"
+    :description="ui.marketing.casesSimple.description"
+    :items="caseItems"
+    layout="cards"
+    cols="3"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.casessimple, ui.blocks.variants.casessimple.cards3))"
   />
 </template>

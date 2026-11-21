@@ -14,6 +14,7 @@ import ArticleleadPage from "./BlocksScreen/ArticleleadPage.vue";
 import ArticlesimplePage from "./BlocksScreen/ArticlesimplePage.vue";
 import BeforeafterPage from "./BlocksScreen/BeforeafterPage.vue";
 import BentoPage from "./BlocksScreen/BentoPage.vue";
+import CasessimplePage from "./BlocksScreen/CasessimplePage.vue";
 import ChapterssimplePage from "./BlocksScreen/ChapterssimplePage.vue";
 import ChoicelinksPage from "./BlocksScreen/ChoicelinksPage.vue";
 import CollectionssimplePage from "./BlocksScreen/CollectionssimplePage.vue";
@@ -180,6 +181,7 @@ const ROUTES = [
   {"path":"articlesimple","area":"articlesimple"},
   {"path":"beforeafter","area":"beforeafter"},
   {"path":"bento","area":"bento"},
+  {"path":"casessimple","area":"casessimple"},
   {"path":"chapterssimple","area":"chapterssimple"},
   {"path":"choicelinks","area":"choicelinks"},
   {"path":"collectionssimple","area":"collectionssimple"},
@@ -350,6 +352,7 @@ const actions = { toggleTheme };
     <ArticlesimplePage v-else-if="route.area === 'articlesimple'" />
     <BeforeafterPage v-else-if="route.area === 'beforeafter'" />
     <BentoPage v-else-if="route.area === 'bento'" />
+    <CasessimplePage v-else-if="route.area === 'casessimple'" />
     <ChapterssimplePage v-else-if="route.area === 'chapterssimple'" />
     <ChoicelinksPage v-else-if="route.area === 'choicelinks'" />
     <CollectionssimplePage v-else-if="route.area === 'collectionssimple'" />

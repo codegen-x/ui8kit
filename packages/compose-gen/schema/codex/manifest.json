@@ -76,6 +76,28 @@
     },
     {
       "record": {
+        "id": "case",
+        "label": "Case",
+        "scope": "workspace",
+        "description": "fixtures: simplecases",
+        "fields": [
+          {
+            "id": "client",
+            "label": "Client",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "text",
+            "label": "Text",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "record": {
         "id": "channel",
         "label": "Channel",
         "scope": "workspace",

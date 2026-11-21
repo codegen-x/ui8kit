@@ -251,7 +251,8 @@ export const ui = {
       "hourssimple": "Simple opening hours",
       "roomssimple": "Simple rooms",
       "guaranteessimple": "Simple guarantees",
-      "servicessimple": "Simple services"
+      "servicessimple": "Simple services",
+      "casessimple": "Simple case studies"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -411,7 +412,8 @@ export const ui = {
       "hourssimple": "The heading, one paragraph, the address (a link to the map), the phone and the opening hours by day: side by side or in one narrow column, plain or on cards.",
       "roomssimple": "The heading, one paragraph and the rooms (a picture, the name as a link, the guests, a line, the price a night): on cards in three or two columns, or rows with the picture at the start.",
       "guaranteessimple": "The heading, one paragraph and the promises (delivery, quality, returns), each a short title and a line: side by side on one muted band, or on cards, in four or three columns.",
-      "servicessimple": "The heading, one paragraph and the services (the name as a link, a line, the starting price): on cards in three or two columns, or rows with the price at the end."
+      "servicessimple": "The heading, one paragraph and the services (the name as a link, a line, the starting price): on cards in three or two columns, or rows with the price at the end.",
+      "casessimple": "The heading, one paragraph and the case studies (a picture, the client, the title as a link, the result in one line): on cards in three or two columns, or rows with the picture at the start."
     },
     "variants": {
       "header": {
@@ -1399,6 +1401,11 @@ export const ui = {
         "cards3": "Three service cards",
         "cards2": "Two columns",
         "rows": "Rows, the price at the end"
+      },
+      "casessimple": {
+        "cards3": "Three case cards",
+        "cards2": "Two columns",
+        "rows": "Rows, the picture at the start"
       }
     },
     "landmark": "{0}, {1}",
@@ -1818,6 +1825,10 @@ export const ui = {
     "servicesSimple": {
       "title": "What we build",
       "description": "Fixed scopes and honest starting prices; every project begins with a free one-hour call."
+    },
+    "casesSimple": {
+      "title": "Selected work",
+      "description": "Three projects from the last year, with the numbers the clients agreed to share."
     }
   },
   "cases": {

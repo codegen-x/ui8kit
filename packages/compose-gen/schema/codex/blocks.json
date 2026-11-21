@@ -947,6 +947,45 @@
       "emptyState": true
     },
     {
+      "id": "CasesSimple",
+      "surface": "kit-block",
+      "spec": "block.casessimple",
+      "source": "packages/compose-gen/specs/blocks/casessimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simplecases",
+          "kind": "case",
+          "record": "CaseStudy",
+          "map": "caseItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.casesSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.casesSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "CategoryNav",
       "surface": "kit-block",
       "spec": "block.categories",
@@ -9984,6 +10023,14 @@
           "list": true
         },
         {
+          "prop": "CasesSimple.items",
+          "collection": "simplecases",
+          "kind": "case",
+          "record": "CaseStudy",
+          "map": "caseItem",
+          "list": true
+        },
+        {
           "prop": "CategoryNav.categories",
           "collection": "categories",
           "kind": "menu_item",
@@ -10972,6 +11019,7 @@
         "block.cart",
         "block.cartdrawer",
         "block.cartpage",
+        "block.casessimple",
         "block.categories",
         "block.channels",
         "block.chapterssimple",
@@ -13935,6 +13983,14 @@
           "list": true
         },
         {
+          "prop": "CasesSimple.items",
+          "collection": "simplecases",
+          "kind": "case",
+          "record": "CaseStudy",
+          "map": "caseItem",
+          "list": true
+        },
+        {
           "prop": "ChaptersSimple.items",
           "collection": "simplechapters",
           "kind": "chapter",
@@ -14404,6 +14460,7 @@
       "uses": [
         "block.articlelead",
         "block.articlesimple",
+        "block.casessimple",
         "block.chapterssimple",
         "block.choicelinks",
         "block.collectionssimple",

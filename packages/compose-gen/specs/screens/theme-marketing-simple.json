@@ -371,6 +371,10 @@
       {
         "block": "servicessimple",
         "variant": "cards3"
+      },
+      {
+        "block": "casessimple",
+        "variant": "cards3"
       }
     ],
     "about": [

@@ -34,6 +34,8 @@ export type * from "./blocks/cart-list.types";
 export { default as CartSummaryCard } from "./components/cart-summary-card.svelte";
 export type * from "./components/cart-summary-card.types";
 export { default as CartTable } from "./components/cart-table.svelte";
+export { default as CasesSimple } from "./blocks/cases-simple.svelte";
+export type * from "./blocks/cases-simple.types";
 export { default as CategoryNav } from "./blocks/category-nav.svelte";
 export type * from "./blocks/category-nav.types";
 export { default as ChaptersSimple } from "./blocks/chapters-simple.svelte";

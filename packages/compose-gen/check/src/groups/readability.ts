@@ -13,7 +13,7 @@ export interface Measure { lines?: number; long?: number; bytes?: number; props?
 export type Allowance = Measure & { why: string };
 export const READABILITY_ALLOW: Record<string, Allowance> = {
   "footer-split": { lines: 152, why: "the optional picture pair (image, imageAlt) of the split layouts on top of 150 lines; split pending: the layouts into parts" },
-  "screen:blocks-screen": { lines: 669, why: "one import and one route per block of the gallery (158 blocks with the simple line wave 3); split pending: the gallery index by theme" },
+  "screen:blocks-screen": { lines: 673, why: "one import and one route per block of the gallery (159 blocks with the simple line wave 3); split pending: the gallery index by theme" },
   "screen:catalog-screen/index-page": { lines: 603, why: "one card per catalog category (the simple line wave 3 adds its own categories); split pending: the index by theme" },
   "hero-classic": { lines: 151, why: "the optional picture pair (image, imageAlt) on top of 150 lines; split pending: the media kinds into a part" },
 };

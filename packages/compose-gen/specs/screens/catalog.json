@@ -401,6 +401,9 @@
               },
               {
                 "block": "servicessimple"
+              },
+              {
+                "block": "casessimple"
               }
             ]
           },

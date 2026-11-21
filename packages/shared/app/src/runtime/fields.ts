@@ -193,6 +193,7 @@ export const KIT_FIELDS = {
   roomItem: { id: "id", image: "featured_media_id|media", title: "title", guests: m("guests"), price: m("display"), description: m("summary"), href: "slug|route" },
   guaranteeItem: { id: "id", title: "title", text: m("text") },
   serviceItem: { id: "id", title: "title", description: m("summary"), price: m("display"), href: "slug|route" },
+  caseItem: { id: "id", image: "featured_media_id|media", client: m("client"), title: "title", result: m("text"), href: "slug|route" },
   menuDish: { id: "id", image: "featured_media_id|media", title: "title", weight: m("weight"), price: m("display"), description: m("summary"), badge: m("badge") },
   productItem: { id: "id", image: "featured_media_id|media", title: "title", price: m("display"), href: "slug|route" },
   productPhoto: { id: "id", image: "featured_media_id|media" },

@@ -2,6 +2,7 @@
 // The content types of every model.
 export type { ArticleLeadContent } from "./article-lead@1";
 export type { ArticleSection, ArticleContent } from "./article@1";
+export type { CaseStudy, CasesContent } from "./cases@1";
 export type { ChapterItem, ChaptersContent } from "./chapters@1";
 export type { ChoiceItem, ChoicesContent } from "./choices@1";
 export type { CollectionItem, CollectionsContent } from "./collections@1";

@@ -25,4 +25,18 @@ const servicesSimple = define({
   sample: { id: "servicessimple", ...head(svc), items: ref("serviceItems") },
 });
 
-export const simpleBusinessBlocks = [servicesSimple];
+const cas = k("casesSimple");
+const casesSimple = define({
+  key: "casessimple", theme: "marketing", group: "proof", line: "simple", model: "cases@1",
+  name: "Simple case studies", docs: "The heading, one paragraph and the case studies (a picture, the client, the title as a link, the result in one line): on cards in three or two columns, or rows with the picture at the start.",
+  organism: "CasesSimple", axes: ["layout", "cols"], data: [d.caseItems],
+  variants: [
+    ["cards3", "Three case cards"],
+    ["cards2", "Two columns", { cols: "2" }],
+    ["rows", "Rows, the picture at the start", { layout: "rows" }, { align: "start" }],
+  ],
+  facts: [h2, li("@caseItems"), h3("@caseItems"), { sel: '[data-slot="media-frame"]', n: "@caseItems" }],
+  sample: { id: "casessimple", ...head(cas), items: ref("caseItems") },
+});
+
+export const simpleBusinessBlocks = [servicesSimple, casesSimple];

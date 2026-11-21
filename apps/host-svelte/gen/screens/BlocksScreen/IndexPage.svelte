@@ -28,6 +28,7 @@
         { key: "articlesimple", href: "#/articlesimple", name: ui.blocks.names.articlesimple, docs: ui.blocks.docs.articlesimple },
         { key: "beforeafter", href: "#/beforeafter", name: ui.blocks.names.beforeafter, docs: ui.blocks.docs.beforeafter },
         { key: "bento", href: "#/bento", name: ui.blocks.names.bento, docs: ui.blocks.docs.bento },
+        { key: "casessimple", href: "#/casessimple", name: ui.blocks.names.casessimple, docs: ui.blocks.docs.casessimple },
         { key: "chapterssimple", href: "#/chapterssimple", name: ui.blocks.names.chapterssimple, docs: ui.blocks.docs.chapterssimple },
         { key: "choicelinks", href: "#/choicelinks", name: ui.blocks.names.choicelinks, docs: ui.blocks.docs.choicelinks },
         {

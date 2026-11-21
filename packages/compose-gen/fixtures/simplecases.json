@@ -1,0 +1,69 @@
+{
+  "collection": "simplecases",
+  "kind": "case",
+  "entries": [
+    {
+      "id": "case-a-grill-chain-moves-its-orders-online",
+      "locale": "en",
+      "kind": "case",
+      "status": "published",
+      "visibility": "public",
+      "slug": "case-a-grill-chain-moves-its-orders-online",
+      "title": "A grill chain moves its orders online",
+      "metadata": {
+        "client": {
+          "value": "Coal and Smoke"
+        },
+        "text": {
+          "value": "Online orders grew from 12 to 41 percent of revenue in three months."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-01T09:00:00Z",
+      "updated_at": "2026-04-02T09:00:00Z",
+      "published_at": "2026-04-02T10:00:00Z"
+    },
+    {
+      "id": "case-a-hotel-books-direct-not-through-agents",
+      "locale": "en",
+      "kind": "case",
+      "status": "published",
+      "visibility": "public",
+      "slug": "case-a-hotel-books-direct-not-through-agents",
+      "title": "A hotel books direct, not through agents",
+      "metadata": {
+        "client": {
+          "value": "Riverside Hotel"
+        },
+        "text": {
+          "value": "Direct bookings doubled and agent fees fell by a third in one season."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-03T09:00:00Z",
+      "updated_at": "2026-04-04T09:00:00Z",
+      "published_at": "2026-04-04T10:00:00Z"
+    },
+    {
+      "id": "case-a-course-shop-launches-in-two-weeks",
+      "locale": "en",
+      "kind": "case",
+      "status": "published",
+      "visibility": "public",
+      "slug": "case-a-course-shop-launches-in-two-weeks",
+      "title": "A course shop launches in two weeks",
+      "metadata": {
+        "client": {
+          "value": "Learn Design"
+        },
+        "text": {
+          "value": "From a blank page to the first hundred paying students in fourteen days."
+        }
+      },
+      "version": 1,
+      "created_at": "2026-04-05T09:00:00Z",
+      "updated_at": "2026-04-06T09:00:00Z",
+      "published_at": "2026-04-06T10:00:00Z"
+    }
+  ]
+}

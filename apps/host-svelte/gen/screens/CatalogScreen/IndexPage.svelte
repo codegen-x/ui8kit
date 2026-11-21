@@ -189,8 +189,8 @@
           id: "marketing-simple-stay",
           href: "#/marketing-simple-stay",
           name: ui.catalog.categories.marketingSimpleStay,
-          blocks: 3,
-          variants: 10,
+          blocks: 4,
+          variants: 13,
         },
         {
           id: "marketing-simple-details",

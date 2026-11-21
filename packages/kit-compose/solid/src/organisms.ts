@@ -34,6 +34,8 @@ export type * from "./blocks/cart-list.types";
 export * from "./components/cart-summary-card";
 export type * from "./components/cart-summary-card.types";
 export * from "./components/cart-table";
+export * from "./blocks/cases-simple";
+export type * from "./blocks/cases-simple.types";
 export * from "./blocks/category-nav";
 export type * from "./blocks/category-nav.types";
 export * from "./blocks/chapters-simple";

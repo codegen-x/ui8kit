@@ -13,6 +13,7 @@ import { ArticleleadPage } from "./BlocksScreen/ArticleleadPage";
 import { ArticlesimplePage } from "./BlocksScreen/ArticlesimplePage";
 import { BeforeafterPage } from "./BlocksScreen/BeforeafterPage";
 import { BentoPage } from "./BlocksScreen/BentoPage";
+import { CasessimplePage } from "./BlocksScreen/CasessimplePage";
 import { ChapterssimplePage } from "./BlocksScreen/ChapterssimplePage";
 import { ChoicelinksPage } from "./BlocksScreen/ChoicelinksPage";
 import { CollectionssimplePage } from "./BlocksScreen/CollectionssimplePage";
@@ -179,6 +180,7 @@ const ROUTES = [
   {"path":"articlesimple","area":"articlesimple"},
   {"path":"beforeafter","area":"beforeafter"},
   {"path":"bento","area":"bento"},
+  {"path":"casessimple","area":"casessimple"},
   {"path":"chapterssimple","area":"chapterssimple"},
   {"path":"choicelinks","area":"choicelinks"},
   {"path":"collectionssimple","area":"collectionssimple"},
@@ -357,6 +359,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <BeforeafterPage />
         ) : route.area === "bento" ? (
           <BentoPage />
+        ) : route.area === "casessimple" ? (
+          <CasessimplePage />
         ) : route.area === "chapterssimple" ? (
           <ChapterssimplePage />
         ) : route.area === "choicelinks" ? (
