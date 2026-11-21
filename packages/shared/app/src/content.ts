@@ -255,7 +255,8 @@ export const ui = {
       "casessimple": "Simple case studies",
       "timelinesimple": "Simple timeline",
       "amenitiessimple": "Simple amenities",
-      "deliverysimple": "Simple delivery zones"
+      "deliverysimple": "Simple delivery zones",
+      "digitalsimple": "Simple digital goods"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -419,7 +420,8 @@ export const ui = {
       "casessimple": "The heading, one paragraph and the case studies (a picture, the client, the title as a link, the result in one line): on cards in three or two columns, or rows with the picture at the start.",
       "timelinesimple": "The heading, one paragraph and the steps of a process or a history (the date or the stage, a title, a line) as an ordered list: one column of muted steps, or side by side in two or four columns.",
       "amenitiessimple": "The heading, one paragraph and the amenities of a stay or a venue as short names: muted rows in three or two columns, or outlined pills in a wrapping row.",
-      "deliverysimple": "The heading, one paragraph and the delivery zones (the area, the time, the minimum order, the price): card rows with the price at the end, or cards in three columns."
+      "deliverysimple": "The heading, one paragraph and the delivery zones (the area, the time, the minimum order, the price): card rows with the price at the end, or cards in three columns.",
+      "digitalsimple": "The heading, one paragraph and the digital goods (the format as a pill, the name as a link, a line, the price): on cards in three columns, or rows with the price at the end."
     },
     "variants": {
       "header": {
@@ -1426,6 +1428,10 @@ export const ui = {
       "deliverysimple": {
         "rows": "Rows, the price at the end",
         "cards": "Cards in three columns"
+      },
+      "digitalsimple": {
+        "cards3": "Three cards",
+        "rows": "Rows, the price at the end"
       }
     },
     "landmark": "{0}, {1}",
@@ -1861,6 +1867,10 @@ export const ui = {
     "deliverySimple": {
       "title": "Delivery zones",
       "description": "Hot grill sets every day from 12:00 to 23:00; on 31 December the last delivery leaves at 18:00."
+    },
+    "digitalSimple": {
+      "title": "Digital downloads",
+      "description": "Pay once and download straight away; every file comes with free updates."
     }
   },
   "cases": {

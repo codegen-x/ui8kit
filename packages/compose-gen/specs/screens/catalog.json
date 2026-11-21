@@ -418,6 +418,9 @@
               },
               {
                 "block": "deliverysimple"
+              },
+              {
+                "block": "digitalsimple"
               }
             ]
           },

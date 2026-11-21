@@ -387,6 +387,10 @@
       {
         "block": "deliverysimple",
         "variant": "rows"
+      },
+      {
+        "block": "digitalsimple",
+        "variant": "cards3"
       }
     ],
     "about": [

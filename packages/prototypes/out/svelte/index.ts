@@ -24,6 +24,8 @@ export { default as CtaSimple } from "./blocks/cta-simple.svelte";
 export type { CtaSimpleProps } from "./blocks/cta-simple.svelte";
 export { default as DeliverySimple } from "./blocks/delivery-simple.svelte";
 export type { DeliverySimpleProps } from "./blocks/delivery-simple.svelte";
+export { default as DigitalSimple } from "./blocks/digital-simple.svelte";
+export type { DigitalSimpleProps } from "./blocks/digital-simple.svelte";
 export { default as ErrorSimple } from "./blocks/error-simple.svelte";
 export type { ErrorSimpleProps } from "./blocks/error-simple.svelte";
 export { default as EventIntro } from "./blocks/event-intro.svelte";

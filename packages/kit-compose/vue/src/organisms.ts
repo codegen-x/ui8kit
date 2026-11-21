@@ -87,6 +87,8 @@ export { default as DeliveryInfo } from "./blocks/delivery-info.vue";
 export type * from "./blocks/delivery-info.types";
 export { default as DeliverySimple } from "./blocks/delivery-simple.vue";
 export type * from "./blocks/delivery-simple.types";
+export { default as DigitalSimple } from "./blocks/digital-simple.vue";
+export type * from "./blocks/digital-simple.types";
 export { default as DishBento } from "./blocks/dish-bento.vue";
 export { default as DishCard } from "./blocks/dish-card.vue";
 export type * from "./blocks/dish-card.types";

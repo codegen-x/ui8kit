@@ -1,4 +1,4 @@
-// The simple line, wave 3 (IT and small business; one content model each, specs/models): ServicesSimple (services@1), CasesSimple (cases@1), TimelineSimple (timeline@1).
+// The simple line, wave 3 (IT and small business; one content model each, specs/models): ServicesSimple (services@1), CasesSimple (cases@1), TimelineSimple (timeline@1), DigitalSimple (digital@1).
 // The rules of simple.ts: the props are the fields of the model plus the axes and the settings; only the compositions
 // packages/prototypes lowers (Box, Block, Container, Stack, Group, List, ListItem, LinkPlain; Title, Text, Badge, LinkButton, MediaFrame).
 import { cn, each, ref, text, use, when, organism } from "../../build";
@@ -74,4 +74,26 @@ const timelineSimple = spec(`${O}timeline-simple`, "TimelineSimple", "The simple
           itemText("t.text")))))],
 });
 
-export const simpleBusinessOrganisms: OrganismSpec[] = [servicesSimple, casesSimple, timelineSimple];
+// ---- DigitalSimple (digital@1): digital goods (templates, e-books, courses): the format, the name as a link, a line and the price
+const digitalSimple = spec(`${O}digital-simple`, "DigitalSimple", "The simple digital goods (model digital@1): the heading, a description and the goods as a list, each with the format as a pill (PDF, Figma, video course), the name (a link when the good has an address), a line and the price as it is shown. Text only. Axes: layout (cards: a card surface per good in three columns; rows: one row per good, the price at the end from md up).", {
+  records: { DigitalGood: fields(["id", "string"], ["format", "string", true], ["title", "string"], ["description", "string", true], ["price", "string"], ["href", "string", true]) },
+  props: [id, title, description, list("items", "DigitalGood", "the goods, in the order they are shown (1 to 9)"), level, padding, centered, axis("layout", "cards", "rows")],
+  derived: [
+    titleId, ...teamDerived,
+    chain("grid", [[is("layout", "rows"), "mx-auto max-w-3xl grid-cols-1 gap-4"]], "grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"),
+    chain("item", [[is("layout", "rows"), `${CARD} grid grid-cols-1 items-center gap-4 md:grid-cols-3`]], `${CARD} flex flex-col gap-4`),
+    chain("copy", [[is("layout", "rows"), "md:col-span-2"]], "grow"),
+    chain("cost", [[is("layout", "rows"), "text-start md:text-end"]], "text-start"),
+  ],
+  view: [listSection(
+    ulist(cn("grid", ref("grid")),
+      each(ref("items"), "g", ref("g.id"),
+        use("ListItem", { props: { Class: ref("item") }, attrs: { "data-testid": "digital-good" } },
+          use("Stack", { props: { Gap: "2", Align: "start", Class: ref("copy") } },
+            when(ref("g.format"), [use("Badge", { props: { Variant: "outline" } }, text(ref("g.format")))]),
+            linkTo("g.href", itemTitle("g.title", "lg", "text-start")),
+            itemText("g.description", "text-start")),
+          accent("g.price", ref("cost"))))))],
+});
+
+export const simpleBusinessOrganisms: OrganismSpec[] = [servicesSimple, casesSimple, timelineSimple, digitalSimple];

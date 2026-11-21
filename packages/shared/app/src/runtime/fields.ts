@@ -197,6 +197,7 @@ export const KIT_FIELDS = {
   timelineStep: { id: "id", date: m("date"), title: "title", text: m("text") },
   amenityItem: { id: "id", title: "title" },
   deliveryZone: { id: "id", title: "title", time: m("time"), price: m("display"), minimum: m("minimum") },
+  digitalGood: { id: "id", format: m("file_format"), title: "title", description: m("summary"), price: m("display"), href: "slug|route" },
   menuDish: { id: "id", image: "featured_media_id|media", title: "title", weight: m("weight"), price: m("display"), description: m("summary"), badge: m("badge") },
   productItem: { id: "id", image: "featured_media_id|media", title: "title", price: m("display"), href: "slug|route" },
   productPhoto: { id: "id", image: "featured_media_id|media" },

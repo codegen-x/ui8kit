@@ -2405,6 +2405,44 @@
       "emptyState": false
     },
     {
+      "id": "DigitalSimple",
+      "surface": "kit-block",
+      "spec": "block.digitalsimple",
+      "source": "packages/compose-gen/specs/blocks/digitalsimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simpledigital",
+          "kind": "product",
+          "record": "DigitalGood",
+          "map": "digitalGood",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.digitalSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.digitalSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "DishCard",
       "surface": "kit-block",
       "spec": "block.dish",
@@ -10355,6 +10393,14 @@
           "list": true
         },
         {
+          "prop": "DigitalSimple.items",
+          "collection": "simpledigital",
+          "kind": "product",
+          "record": "DigitalGood",
+          "map": "digitalGood",
+          "list": true
+        },
+        {
           "prop": "DishCard.dish",
           "collection": "meals",
           "kind": "dish",
@@ -11183,6 +11229,7 @@
         "block.dashshell",
         "block.delivery",
         "block.deliverysimple",
+        "block.digitalsimple",
         "block.dish",
         "block.dishbento",
         "block.dishcart",
@@ -14198,6 +14245,14 @@
           "list": true
         },
         {
+          "prop": "DigitalSimple.items",
+          "collection": "simpledigital",
+          "kind": "product",
+          "record": "DigitalGood",
+          "map": "digitalGood",
+          "list": true
+        },
+        {
           "prop": "FaqSimple.items",
           "collection": "faq",
           "kind": "faq",
@@ -14637,6 +14692,7 @@
         "block.courseoutline",
         "block.ctasimple",
         "block.deliverysimple",
+        "block.digitalsimple",
         "block.errorsimple",
         "block.eventintro",
         "block.faqsimple",

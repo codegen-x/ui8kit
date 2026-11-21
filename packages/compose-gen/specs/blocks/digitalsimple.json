@@ -1,0 +1,85 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.digitalsimple",
+  "name": "Simple digital goods",
+  "docs": "The heading, one paragraph and the digital goods (the format as a pill, the name as a link, a line, the price): on cards in three columns, or rows with the price at the end.",
+  "theme": "marketing",
+  "group": "product",
+  "organism": "DigitalSimple",
+  "line": "simple",
+  "model": "digital@1",
+  "axes": {
+    "layout": [
+      "cards",
+      "rows"
+    ]
+  },
+  "defaults": {
+    "layout": "cards"
+  },
+  "variants": [
+    {
+      "id": "cards3",
+      "set": {}
+    },
+    {
+      "id": "rows",
+      "set": {
+        "layout": "rows"
+      },
+      "props": {
+        "align": "start"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@digitalGoods"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@digitalGoods"
+    },
+    {
+      "sel": "[data-slot=\"badge\"]",
+      "n": "@digitalGoods"
+    }
+  ],
+  "data": [
+    {
+      "as": "digitalGoods",
+      "collection": "simpledigital",
+      "kind": "product",
+      "record": "DigitalGood",
+      "fields": {
+        "id": "id",
+        "format": "metadata.file_format.value",
+        "title": "title",
+        "description": "metadata.summary.value",
+        "price": "metadata.display.value",
+        "href": "slug|route"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "digitalsimple",
+      "title": {
+        "$": "ui.marketing.digitalSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.digitalSimple.description"
+      },
+      "items": {
+        "$": "digitalGoods"
+      }
+    }
+  }
+}

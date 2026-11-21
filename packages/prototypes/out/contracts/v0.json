@@ -74,6 +74,12 @@
       "model": "delivery@1",
       "path": "delivery-simple/1.json"
     },
+    "digital-simple": {
+      "version": 1,
+      "block": "block.digitalsimple",
+      "model": "digital@1",
+      "path": "digital-simple/1.json"
+    },
     "error-simple": {
       "version": 1,
       "block": "block.errorsimple",

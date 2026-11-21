@@ -28,6 +28,7 @@ import CtaPage from "./BlocksScreen/CtaPage.vue";
 import CtaproofPage from "./BlocksScreen/CtaproofPage.vue";
 import CtasimplePage from "./BlocksScreen/CtasimplePage.vue";
 import DeliverysimplePage from "./BlocksScreen/DeliverysimplePage.vue";
+import DigitalsimplePage from "./BlocksScreen/DigitalsimplePage.vue";
 import ErrorsimplePage from "./BlocksScreen/ErrorsimplePage.vue";
 import EventintroPage from "./BlocksScreen/EventintroPage.vue";
 import FaqPage from "./BlocksScreen/FaqPage.vue";
@@ -198,6 +199,7 @@ const ROUTES = [
   {"path":"ctaproof","area":"ctaproof"},
   {"path":"ctasimple","area":"ctasimple"},
   {"path":"deliverysimple","area":"deliverysimple"},
+  {"path":"digitalsimple","area":"digitalsimple"},
   {"path":"errorsimple","area":"errorsimple"},
   {"path":"eventintro","area":"eventintro"},
   {"path":"faq","area":"faq"},
@@ -372,6 +374,7 @@ const actions = { toggleTheme };
     <CtaproofPage v-else-if="route.area === 'ctaproof'" />
     <CtasimplePage v-else-if="route.area === 'ctasimple'" />
     <DeliverysimplePage v-else-if="route.area === 'deliverysimple'" />
+    <DigitalsimplePage v-else-if="route.area === 'digitalsimple'" />
     <ErrorsimplePage v-else-if="route.area === 'errorsimple'" />
     <EventintroPage v-else-if="route.area === 'eventintro'" />
     <FaqPage v-else-if="route.area === 'faq'" />

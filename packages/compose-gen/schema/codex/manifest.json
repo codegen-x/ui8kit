@@ -1458,7 +1458,7 @@
         "id": "product",
         "label": "Product",
         "scope": "workspace",
-        "description": "fixtures: products, simpleproducts",
+        "description": "fixtures: products, simpledigital, simpleproducts",
         "fields": [
           {
             "id": "badge",
@@ -1483,6 +1483,11 @@
           {
             "id": "display",
             "label": "Display",
+            "type": "string"
+          },
+          {
+            "id": "file_format",
+            "label": "File format",
             "type": "string"
           },
           {

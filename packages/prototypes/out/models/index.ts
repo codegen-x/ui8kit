@@ -12,6 +12,7 @@ export type { ContactItem, ContactsContent } from "./contacts@1";
 export type { CtaContent } from "./cta@1";
 export type { CourseModule, CurriculumContent } from "./curriculum@1";
 export type { DeliveryZone, DeliveryContent } from "./delivery@1";
+export type { DigitalGood, DigitalContent } from "./digital@1";
 export type { ErrorContent } from "./error@1";
 export type { EventContent } from "./event@1";
 export type { SimpleQuestion, FaqContent } from "./faq@1";

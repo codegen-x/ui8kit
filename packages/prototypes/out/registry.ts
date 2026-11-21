@@ -13,6 +13,7 @@ import contactsSimple from "./contracts/contacts-simple/1.json" with { type: "js
 import courseOutline from "./contracts/course-outline/1.json" with { type: "json" };
 import ctaSimple from "./contracts/cta-simple/1.json" with { type: "json" };
 import deliverySimple from "./contracts/delivery-simple/1.json" with { type: "json" };
+import digitalSimple from "./contracts/digital-simple/1.json" with { type: "json" };
 import errorSimple from "./contracts/error-simple/1.json" with { type: "json" };
 import eventIntro from "./contracts/event-intro/1.json" with { type: "json" };
 import faqSimple from "./contracts/faq-simple/1.json" with { type: "json" };
@@ -64,6 +65,7 @@ import { model as contacts1, validateContactsContent } from "./models/contacts@1
 import { model as cta1, validateCtaContent } from "./models/cta@1";
 import { model as curriculum1, validateCurriculumContent } from "./models/curriculum@1";
 import { model as delivery1, validateDeliveryContent } from "./models/delivery@1";
+import { model as digital1, validateDigitalContent } from "./models/digital@1";
 import { model as error1, validateErrorContent } from "./models/error@1";
 import { model as event1, validateEventContent } from "./models/event@1";
 import { model as faq1, validateFaqContent } from "./models/faq@1";
@@ -106,7 +108,7 @@ import { model as topics1, validateTopicsContent } from "./models/topics@1";
 import type { Issue, ModelSpec } from "./models/validate";
 
 /** the contracts (out/contracts/<item>/<version>.json), in manifest order */
-export const CONTRACTS: readonly unknown[] = [amenitiesSimple, articleLead, articleSimple, casesSimple, chaptersSimple, choiceLinks, collectionsSimple, compareSimple, contactsSimple, courseOutline, ctaSimple, deliverySimple, errorSimple, eventIntro, faqSimple, featureShowcaseSimple, featuresSimple, figureSimple, footerSimple, galleryHero, guaranteesSimple, headerSimple, heroSimple, hoursSimple, introSimple, locationsSimple, logosSimple, menuSimple, offersSimple, photosSimple, pricingSimple, productReviews, productSimple, productsSimple, profileIntro, promoSimple, pullQuoteSimple, purchaseSimple, ratingSimple, roomsSimple, servicesSimple, specsSimple, splitSimple, statsSimple, stepsSimple, storePolicies, storiesSimple, teamSimple, testimonialsSimple, timelineSimple, topicsSimple];
+export const CONTRACTS: readonly unknown[] = [amenitiesSimple, articleLead, articleSimple, casesSimple, chaptersSimple, choiceLinks, collectionsSimple, compareSimple, contactsSimple, courseOutline, ctaSimple, deliverySimple, digitalSimple, errorSimple, eventIntro, faqSimple, featureShowcaseSimple, featuresSimple, figureSimple, footerSimple, galleryHero, guaranteesSimple, headerSimple, heroSimple, hoursSimple, introSimple, locationsSimple, logosSimple, menuSimple, offersSimple, photosSimple, pricingSimple, productReviews, productSimple, productsSimple, profileIntro, promoSimple, pullQuoteSimple, purchaseSimple, ratingSimple, roomsSimple, servicesSimple, specsSimple, splitSimple, statsSimple, stepsSimple, storePolicies, storiesSimple, teamSimple, testimonialsSimple, timelineSimple, topicsSimple];
 
 /** item -> catalog category (the id of its content model) */
 export const CATEGORIES: Readonly<Record<string, string>> = {
@@ -122,6 +124,7 @@ export const CATEGORIES: Readonly<Record<string, string>> = {
   "course-outline": "curriculum",
   "cta-simple": "cta",
   "delivery-simple": "delivery",
+  "digital-simple": "digital",
   "error-simple": "error",
   "event-intro": "event",
   "faq-simple": "faq",
@@ -177,6 +180,7 @@ export const MODELS: Readonly<Record<string, { spec: ModelSpec; validate: (value
   "cta@1": { spec: cta1 as unknown as ModelSpec, validate: validateCtaContent },
   "curriculum@1": { spec: curriculum1 as unknown as ModelSpec, validate: validateCurriculumContent },
   "delivery@1": { spec: delivery1 as unknown as ModelSpec, validate: validateDeliveryContent },
+  "digital@1": { spec: digital1 as unknown as ModelSpec, validate: validateDigitalContent },
   "error@1": { spec: error1 as unknown as ModelSpec, validate: validateErrorContent },
   "event@1": { spec: event1 as unknown as ModelSpec, validate: validateEventContent },
   "faq@1": { spec: faq1 as unknown as ModelSpec, validate: validateFaqContent },

@@ -27,6 +27,7 @@
   import CtaproofPage from "./BlocksScreen/CtaproofPage.svelte";
   import CtasimplePage from "./BlocksScreen/CtasimplePage.svelte";
   import DeliverysimplePage from "./BlocksScreen/DeliverysimplePage.svelte";
+  import DigitalsimplePage from "./BlocksScreen/DigitalsimplePage.svelte";
   import ErrorsimplePage from "./BlocksScreen/ErrorsimplePage.svelte";
   import EventintroPage from "./BlocksScreen/EventintroPage.svelte";
   import FaqPage from "./BlocksScreen/FaqPage.svelte";
@@ -197,6 +198,7 @@
     {"path":"ctaproof","area":"ctaproof"},
     {"path":"ctasimple","area":"ctasimple"},
     {"path":"deliverysimple","area":"deliverysimple"},
+    {"path":"digitalsimple","area":"digitalsimple"},
     {"path":"errorsimple","area":"errorsimple"},
     {"path":"eventintro","area":"eventintro"},
     {"path":"faq","area":"faq"},
@@ -392,6 +394,8 @@
     <CtasimplePage />
   {:else if route.area === "deliverysimple"}
     <DeliverysimplePage />
+  {:else if route.area === "digitalsimple"}
+    <DigitalsimplePage />
   {:else if route.area === "errorsimple"}
     <ErrorsimplePage />
   {:else if route.area === "eventintro"}

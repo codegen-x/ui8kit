@@ -151,5 +151,6 @@ export const caseItems = src("caseItems", "simplecases", "case", "CaseStudy", CO
 export const timelineSteps = src("timelineSteps", "simpletimeline", "milestone", "TimelineStep", CODEX_FIELDS.timelineStep);
 export const amenityItems = src("amenityItems", "simpleamenities", "amenity", "Amenity", CODEX_FIELDS.amenityItem);
 export const deliveryZones = src("deliveryZones", "simplezones", "zone", "DeliveryZone", CODEX_FIELDS.deliveryZone);
+export const digitalGoods = src("digitalGoods", "simpledigital", "product", "DigitalGood", CODEX_FIELDS.digitalGood);
 export const menuDishes = src("menuDishes", "simplemenu", "dish", "MenuDish", CODEX_FIELDS.menuDish);
 export const reviewItems = src("reviewItems", "simplereviews", "review", "ReviewItem", CODEX_FIELDS.reviewItem);

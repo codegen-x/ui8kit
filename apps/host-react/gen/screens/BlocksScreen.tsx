@@ -27,6 +27,7 @@ import { CtaPage } from "./BlocksScreen/CtaPage";
 import { CtaproofPage } from "./BlocksScreen/CtaproofPage";
 import { CtasimplePage } from "./BlocksScreen/CtasimplePage";
 import { DeliverysimplePage } from "./BlocksScreen/DeliverysimplePage";
+import { DigitalsimplePage } from "./BlocksScreen/DigitalsimplePage";
 import { ErrorsimplePage } from "./BlocksScreen/ErrorsimplePage";
 import { EventintroPage } from "./BlocksScreen/EventintroPage";
 import { FaqPage } from "./BlocksScreen/FaqPage";
@@ -197,6 +198,7 @@ const ROUTES = [
   {"path":"ctaproof","area":"ctaproof"},
   {"path":"ctasimple","area":"ctasimple"},
   {"path":"deliverysimple","area":"deliverysimple"},
+  {"path":"digitalsimple","area":"digitalsimple"},
   {"path":"errorsimple","area":"errorsimple"},
   {"path":"eventintro","area":"eventintro"},
   {"path":"faq","area":"faq"},
@@ -393,6 +395,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <CtasimplePage />
         ) : route.area === "deliverysimple" ? (
           <DeliverysimplePage />
+        ) : route.area === "digitalsimple" ? (
+          <DigitalsimplePage />
         ) : route.area === "errorsimple" ? (
           <ErrorsimplePage />
         ) : route.area === "eventintro" ? (

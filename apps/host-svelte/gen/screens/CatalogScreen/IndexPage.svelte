@@ -196,8 +196,8 @@
           id: "marketing-simple-local",
           href: "#/marketing-simple-local",
           name: ui.catalog.categories.marketingSimpleLocal,
-          blocks: 2,
-          variants: 5,
+          blocks: 3,
+          variants: 7,
         },
         {
           id: "marketing-simple-details",

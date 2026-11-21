@@ -1682,6 +1682,66 @@
     ]
    }
   },
+  "digitalsimple": {
+   "organism": "DigitalSimple",
+   "defaults": {
+    "layout": "cards"
+   },
+   "sample": {
+    "id": "digitalsimple",
+    "title": {
+     "$": "ui.marketing.digitalSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.digitalSimple.description"
+    },
+    "items": {
+     "$": "digitalGoods"
+    }
+   },
+   "variants": [
+    {
+     "id": "cards3",
+     "set": {}
+    },
+    {
+     "id": "rows",
+     "set": {
+      "layout": "rows"
+     },
+     "props": {
+      "align": "start"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "digitalGoods",
+     "collection": "simpledigital",
+     "fields": {
+      "id": "id",
+      "format": "metadata.file_format.value",
+      "title": "title",
+      "description": "metadata.summary.value",
+      "price": "metadata.display.value",
+      "href": "slug|route"
+     }
+    }
+   ],
+   "orgProps": {
+    "DigitalSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "landmarkLabel"
+    ]
+   }
+  },
   "errorsimple": {
    "organism": "ErrorSimple",
    "defaults": {},
@@ -17092,6 +17152,10 @@
      {
       "block": "deliverysimple",
       "variant": "rows"
+     },
+     {
+      "block": "digitalsimple",
+      "variant": "cards3"
      }
     ],
     "about": [

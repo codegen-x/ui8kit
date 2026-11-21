@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "digital",
+  "version": 1,
+  "docs": "Digital goods content: the heading, a description and an ordered list of digital goods, each with the format, the name, a line, the price as it is shown and an optional address. One object is valid in every layout (cards, rows).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 1,
+      "maxItems": 9,
+      "docs": "the goods, in the order they are shown",
+      "item": {
+        "record": "DigitalGood",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "format": { "type": "text", "maxLength": 40, "docs": "the format as a short pill (PDF, Figma, video course); empty: none" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the name of the good" },
+          "description": { "type": "longText", "maxLength": 200, "docs": "one line about the good; empty: none" },
+          "price": { "type": "text", "maxLength": 40, "required": true, "docs": "the price as it is shown (990 \u20bd, free)" },
+          "href": { "type": "url", "docs": "the address of the good page; empty: no link" }
+        }
+      }
+    }
+  }
+}

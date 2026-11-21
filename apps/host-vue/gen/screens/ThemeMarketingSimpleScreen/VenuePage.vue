@@ -6,6 +6,7 @@ import {
   CasesSimple,
   CtaSimple,
   DeliverySimple,
+  DigitalSimple,
   GuaranteesSimple,
   HeroSimple,
   HoursSimple,
@@ -19,6 +20,7 @@ import {
   type Amenity,
   type CaseStudy,
   type DeliveryZone,
+  type DigitalGood,
   type Guarantee,
   type MenuDish,
   type OpeningHour,
@@ -38,6 +40,7 @@ import { simplecases as caseItemsEntries } from "@ui8kit/app-shared/data/simplec
 import { simpletimeline as timelineStepsEntries } from "@ui8kit/app-shared/data/simpletimeline";
 import { simpleamenities as amenityItemsEntries } from "@ui8kit/app-shared/data/simpleamenities";
 import { simplezones as deliveryZonesEntries } from "@ui8kit/app-shared/data/simplezones";
+import { simpledigital as digitalGoodsEntries } from "@ui8kit/app-shared/data/simpledigital";
 
 const MENUDISHES_FIELDS = {
   "id": "id",
@@ -83,6 +86,14 @@ const DELIVERYZONES_FIELDS = {
   "price": "metadata.display.value",
   "minimum": "metadata.minimum.value",
 } as const;
+const DIGITALGOODS_FIELDS = {
+  "id": "id",
+  "format": "metadata.file_format.value",
+  "title": "title",
+  "description": "metadata.summary.value",
+  "price": "metadata.display.value",
+  "href": "slug|route",
+} as const;
 
 const menuDishes = fromCodex<MenuDish>(menuDishesEntries, MENUDISHES_FIELDS, CODEX);
 const openingHours = fromCodex<OpeningHour>(openingHoursEntries, OPENINGHOURS_FIELDS, CODEX);
@@ -93,6 +104,7 @@ const caseItems = fromCodex<CaseStudy>(caseItemsEntries, CASEITEMS_FIELDS, CODEX
 const timelineSteps = fromCodex<TimelineStep>(timelineStepsEntries, TIMELINESTEPS_FIELDS, CODEX);
 const amenityItems = fromCodex<Amenity>(amenityItemsEntries, AMENITYITEMS_FIELDS, CODEX);
 const deliveryZones = fromCodex<DeliveryZone>(deliveryZonesEntries, DELIVERYZONES_FIELDS, CODEX);
+const digitalGoods = fromCodex<DigitalGood>(digitalGoodsEntries, DIGITALGOODS_FIELDS, CODEX);
 </script>
 
 <template>
@@ -221,5 +233,13 @@ const deliveryZones = fromCodex<DeliveryZone>(deliveryZonesEntries, DELIVERYZONE
     :items="deliveryZones"
     layout="rows"
     :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.deliverysimple, ui.blocks.variants.deliverysimple.rows))"
+  />
+  <DigitalSimple
+    id="venue-digitalsimple"
+    :title="ui.marketing.digitalSimple.title"
+    :description="ui.marketing.digitalSimple.description"
+    :items="digitalGoods"
+    layout="cards"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.digitalsimple, ui.blocks.variants.digitalsimple.cards3))"
   />
 </template>

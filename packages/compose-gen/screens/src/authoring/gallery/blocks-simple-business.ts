@@ -53,4 +53,17 @@ const timelineSimple = define({
   sample: { id: "timelinesimple", ...head(tml), items: ref("timelineSteps") },
 });
 
-export const simpleBusinessBlocks = [servicesSimple, casesSimple, timelineSimple];
+const dig = k("digitalSimple");
+const digitalSimple = define({
+  key: "digitalsimple", theme: "marketing", group: "product", line: "simple", model: "digital@1",
+  name: "Simple digital goods", docs: "The heading, one paragraph and the digital goods (the format as a pill, the name as a link, a line, the price): on cards in three columns, or rows with the price at the end.",
+  organism: "DigitalSimple", axes: ["layout"], data: [d.digitalGoods],
+  variants: [
+    ["cards3", "Three cards"],
+    ["rows", "Rows, the price at the end", { layout: "rows" }, { align: "start" }],
+  ],
+  facts: [h2, li("@digitalGoods"), h3("@digitalGoods"), { sel: '[data-slot="badge"]', n: "@digitalGoods" }],
+  sample: { id: "digitalsimple", ...head(dig), items: ref("digitalGoods") },
+});
+
+export const simpleBusinessBlocks = [servicesSimple, casesSimple, timelineSimple, digitalSimple];
