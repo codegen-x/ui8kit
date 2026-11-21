@@ -72,4 +72,17 @@ const amenitiesSimple = define({
   sample: { id: "amenitiessimple", ...head(amn), items: ref("amenityItems") },
 });
 
-export const simpleVenueBlocks = [menuSimple, hoursSimple, roomsSimple, amenitiesSimple];
+const dlv = k("deliverySimple");
+const deliverySimple = define({
+  key: "deliverysimple", theme: "marketing", group: "delivery", line: "simple", model: "delivery@1",
+  name: "Simple delivery zones", docs: "The heading, one paragraph and the delivery zones (the area, the time, the minimum order, the price): card rows with the price at the end, or cards in three columns.",
+  organism: "DeliverySimple", axes: ["layout"], data: [d.deliveryZones],
+  variants: [
+    ["rows", "Rows, the price at the end"],
+    ["cards", "Cards in three columns", { layout: "cards" }],
+  ],
+  facts: [h2, li("@deliveryZones"), h3("@deliveryZones")],
+  sample: { id: "deliverysimple", ...head(dlv), items: ref("deliveryZones") },
+});
+
+export const simpleVenueBlocks = [menuSimple, hoursSimple, roomsSimple, amenitiesSimple, deliverySimple];

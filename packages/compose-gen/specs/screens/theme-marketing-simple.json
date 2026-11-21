@@ -383,6 +383,10 @@
       {
         "block": "amenitiessimple",
         "variant": "grid3"
+      },
+      {
+        "block": "deliverysimple",
+        "variant": "rows"
       }
     ],
     "about": [

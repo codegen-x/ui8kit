@@ -254,7 +254,8 @@ export const ui = {
       "servicessimple": "Simple services",
       "casessimple": "Simple case studies",
       "timelinesimple": "Simple timeline",
-      "amenitiessimple": "Simple amenities"
+      "amenitiessimple": "Simple amenities",
+      "deliverysimple": "Simple delivery zones"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -417,7 +418,8 @@ export const ui = {
       "servicessimple": "The heading, one paragraph and the services (the name as a link, a line, the starting price): on cards in three or two columns, or rows with the price at the end.",
       "casessimple": "The heading, one paragraph and the case studies (a picture, the client, the title as a link, the result in one line): on cards in three or two columns, or rows with the picture at the start.",
       "timelinesimple": "The heading, one paragraph and the steps of a process or a history (the date or the stage, a title, a line) as an ordered list: one column of muted steps, or side by side in two or four columns.",
-      "amenitiessimple": "The heading, one paragraph and the amenities of a stay or a venue as short names: muted rows in three or two columns, or outlined pills in a wrapping row."
+      "amenitiessimple": "The heading, one paragraph and the amenities of a stay or a venue as short names: muted rows in three or two columns, or outlined pills in a wrapping row.",
+      "deliverysimple": "The heading, one paragraph and the delivery zones (the area, the time, the minimum order, the price): card rows with the price at the end, or cards in three columns."
     },
     "variants": {
       "header": {
@@ -1420,6 +1422,10 @@ export const ui = {
         "grid3": "Three columns",
         "grid2": "Two columns",
         "pills": "Pills in a row"
+      },
+      "deliverysimple": {
+        "rows": "Rows, the price at the end",
+        "cards": "Cards in three columns"
       }
     },
     "landmark": "{0}, {1}",
@@ -1851,6 +1857,10 @@ export const ui = {
     "amenitiesSimple": {
       "title": "In every stay",
       "description": "Everything below is included in the price of the room, with no extra fees at check-out."
+    },
+    "deliverySimple": {
+      "title": "Delivery zones",
+      "description": "Hot grill sets every day from 12:00 to 23:00; on 31 December the last delivery leaves at 18:00."
     }
   },
   "cases": {

@@ -94,6 +94,7 @@ export const COLLECTIONS: Record<string, () => Promise<readonly unknown[]>> = {
   "simplesteps": () => import("@ui8kit/app-shared/data/simplesteps").then((m) => m.simplesteps as readonly unknown[]),
   "simpletimeline": () => import("@ui8kit/app-shared/data/simpletimeline").then((m) => m.simpletimeline as readonly unknown[]),
   "simpletopics": () => import("@ui8kit/app-shared/data/simpletopics").then((m) => m.simpletopics as readonly unknown[]),
+  "simplezones": () => import("@ui8kit/app-shared/data/simplezones").then((m) => m.simplezones as readonly unknown[]),
   "sitemap": () => import("@ui8kit/app-shared/data/sitemap").then((m) => m.sitemap as readonly unknown[]),
   "skills": () => import("@ui8kit/app-shared/data/skills").then((m) => m.skills as readonly unknown[]),
   "specials": () => import("@ui8kit/app-shared/data/specials").then((m) => m.specials as readonly unknown[]),

@@ -415,6 +415,9 @@
             "entries": [
               {
                 "block": "amenitiessimple"
+              },
+              {
+                "block": "deliverysimple"
               }
             ]
           },

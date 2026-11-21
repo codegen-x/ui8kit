@@ -51,7 +51,7 @@ const SECTIONS = [
     cat("marketing-simple-shop", "Simple blocks: shop", ...all("productssimple", "productsimple", "collectionssimple", "choicelinks", "purchasesimple")),
     cat("marketing-simple-venue", "Simple blocks: food, offers and opening hours", ...all("menusimple", "ctasimple", "promosimple", "hourssimple")),
     cat("marketing-simple-stay", "Simple blocks: stays, services and work", ...all("roomssimple", "guaranteessimple", "servicessimple", "casessimple", "timelinesimple")),
-    cat("marketing-simple-local", "Simple blocks: amenities and delivery", ...all("amenitiessimple")),
+    cat("marketing-simple-local", "Simple blocks: amenities and delivery", ...all("amenitiessimple", "deliverysimple")),
     cat("marketing-simple-details", "Simple blocks: product details and courses", ...all("specssimple", "comparesimple", "productreviews", "storepolicies", "courseoutline")),
     cat("marketing-about", "About", ...all("about", "aboutme")),
     cat("marketing-portfolio", "Portfolio", ...all("projects")),

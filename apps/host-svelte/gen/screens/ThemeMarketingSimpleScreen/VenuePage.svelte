@@ -5,6 +5,7 @@
     AmenitiesSimple,
     CasesSimple,
     CtaSimple,
+    DeliverySimple,
     GuaranteesSimple,
     HeroSimple,
     HoursSimple,
@@ -17,6 +18,7 @@
     uniqLabel,
     type Amenity,
     type CaseStudy,
+    type DeliveryZone,
     type Guarantee,
     type MenuDish,
     type OpeningHour,
@@ -35,6 +37,7 @@
   import { simplecases as caseItemsEntries } from "@ui8kit/app-shared/data/simplecases";
   import { simpletimeline as timelineStepsEntries } from "@ui8kit/app-shared/data/simpletimeline";
   import { simpleamenities as amenityItemsEntries } from "@ui8kit/app-shared/data/simpleamenities";
+  import { simplezones as deliveryZonesEntries } from "@ui8kit/app-shared/data/simplezones";
 
   const MENUDISHES_FIELDS = {
     "id": "id",
@@ -73,6 +76,13 @@
   } as const;
   const TIMELINESTEPS_FIELDS = {"id":"id","date":"metadata.date.value","title":"title","text":"metadata.text.value"} as const;
   const AMENITYITEMS_FIELDS = {"id":"id","title":"title"} as const;
+  const DELIVERYZONES_FIELDS = {
+    "id": "id",
+    "title": "title",
+    "time": "metadata.time.value",
+    "price": "metadata.display.value",
+    "minimum": "metadata.minimum.value",
+  } as const;
 
   const menuDishes = fromCodex<MenuDish>(menuDishesEntries, MENUDISHES_FIELDS, CODEX);
   const openingHours = fromCodex<OpeningHour>(openingHoursEntries, OPENINGHOURS_FIELDS, CODEX);
@@ -82,6 +92,7 @@
   const caseItems = fromCodex<CaseStudy>(caseItemsEntries, CASEITEMS_FIELDS, CODEX);
   const timelineSteps = fromCodex<TimelineStep>(timelineStepsEntries, TIMELINESTEPS_FIELDS, CODEX);
   const amenityItems = fromCodex<Amenity>(amenityItemsEntries, AMENITYITEMS_FIELDS, CODEX);
+  const deliveryZones = fromCodex<DeliveryZone>(deliveryZonesEntries, DELIVERYZONES_FIELDS, CODEX);
 </script>
 
 <HeroSimple
@@ -201,4 +212,12 @@
   layout="grid"
   cols="3"
   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.amenitiessimple, ui.blocks.variants.amenitiessimple.grid3))}
+/>
+<DeliverySimple
+  id="venue-deliverysimple"
+  title={ui.marketing.deliverySimple.title}
+  description={ui.marketing.deliverySimple.description}
+  items={deliveryZones}
+  layout="rows"
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.deliverysimple, ui.blocks.variants.deliverysimple.rows))}
 />

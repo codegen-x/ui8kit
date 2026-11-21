@@ -196,8 +196,8 @@ const CATALOG = [
         id: "marketing-simple-local",
         href: "#/marketing-simple-local",
         name: ui.catalog.categories.marketingSimpleLocal,
-        blocks: 1,
-        variants: 3,
+        blocks: 2,
+        variants: 5,
       },
       {
         id: "marketing-simple-details",

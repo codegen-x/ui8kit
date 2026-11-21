@@ -13,6 +13,7 @@ import CompareSimple from "./svelte/blocks/compare-simple.svelte";
 import ContactsSimple from "./svelte/blocks/contacts-simple.svelte";
 import CourseOutline from "./svelte/blocks/course-outline.svelte";
 import CtaSimple from "./svelte/blocks/cta-simple.svelte";
+import DeliverySimple from "./svelte/blocks/delivery-simple.svelte";
 import ErrorSimple from "./svelte/blocks/error-simple.svelte";
 import EventIntro from "./svelte/blocks/event-intro.svelte";
 import FaqSimple from "./svelte/blocks/faq-simple.svelte";
@@ -53,7 +54,7 @@ import TestimonialsSimple from "./svelte/blocks/testimonials-simple.svelte";
 import TimelineSimple from "./svelte/blocks/timeline-simple.svelte";
 import TopicsSimple from "./svelte/blocks/topics-simple.svelte";
 
-export { AmenitiesSimple, ArticleLead, ArticleSimple, CasesSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, CtaSimple, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, GuaranteesSimple, HeaderSimple, HeroSimple, HoursSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PromoSimple, PullQuoteSimple, PurchaseSimple, RatingSimple, RoomsSimple, ServicesSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TimelineSimple, TopicsSimple };
+export { AmenitiesSimple, ArticleLead, ArticleSimple, CasesSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, CtaSimple, DeliverySimple, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, GuaranteesSimple, HeaderSimple, HeroSimple, HoursSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PromoSimple, PullQuoteSimple, PurchaseSimple, RatingSimple, RoomsSimple, ServicesSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TimelineSimple, TopicsSimple };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CATALOG: Record<string, Component<any>> = {
@@ -68,6 +69,7 @@ export const CATALOG: Record<string, Component<any>> = {
   "contacts-simple": ContactsSimple,
   "course-outline": CourseOutline,
   "cta-simple": CtaSimple,
+  "delivery-simple": DeliverySimple,
   "error-simple": ErrorSimple,
   "event-intro": EventIntro,
   "faq-simple": FaqSimple,

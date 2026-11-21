@@ -1,4 +1,4 @@
-// The simple line, wave 3 (food, stays and local services; one content model each, specs/models): MenuSimple (menu@1), HoursSimple (hours@1), RoomsSimple (rooms@1), AmenitiesSimple (amenities@1).
+// The simple line, wave 3 (food, stays and local services; one content model each, specs/models): MenuSimple (menu@1), HoursSimple (hours@1), RoomsSimple (rooms@1), AmenitiesSimple (amenities@1), DeliverySimple (delivery@1).
 // The rules of simple.ts: the props are the fields of the model plus the axes and the settings; only the compositions
 // packages/prototypes lowers (Box, Block, Container, Stack, Group, List, ListItem, LinkPlain; Title, Text, Badge, LinkButton, MediaFrame).
 import { and, cn, each, ref, text, use, when, organism } from "../../build";
@@ -101,4 +101,25 @@ const amenitiesSimple = spec(`${O}amenities-simple`, "AmenitiesSimple", "The sim
           use("Text", { props: { Size: "base", Weight: "medium", Class: "text-start" } }, text(ref("a.title")))))))],
 });
 
-export const simpleVenueOrganisms: OrganismSpec[] = [menuSimple, hoursSimple, roomsSimple, amenitiesSimple];
+// ---- DeliverySimple (delivery@1): delivery zones: the area, the time, the price and the minimum order per zone
+const deliverySimple = spec(`${O}delivery-simple`, "DeliverySimple", "The simple delivery zones (model delivery@1): the heading, a description and the zones as a list, each with the area, the delivery time, the price and the minimum order as they are shown. Text only. Axes: layout (rows: one card row per zone, the price at the end from md up; cards: a card per zone in three columns).", {
+  records: { DeliveryZone: fields(["id", "string"], ["title", "string"], ["time", "string", true], ["price", "string"], ["minimum", "string", true]) },
+  props: [id, title, description, list("items", "DeliveryZone", "the zones, nearest first (1 to 6)"), level, padding, centered, axis("layout", "rows", "cards")],
+  derived: [
+    titleId, ...teamDerived,
+    chain("grid", [[is("layout", "cards"), "grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"]], "mx-auto max-w-3xl grid-cols-1 gap-4"),
+    chain("item", [[is("layout", "cards"), `${CARD} flex flex-col gap-2`]], `${CARD} grid grid-cols-1 items-center gap-2 md:grid-cols-3`),
+    chain("cost", [[is("layout", "cards"), "text-start"]], "text-start md:text-end"),
+  ],
+  view: [listSection(
+    ulist(cn("grid", ref("grid")),
+      each(ref("items"), "z", ref("z.id"),
+        use("ListItem", { props: { Class: ref("item") }, attrs: { "data-testid": "delivery-zone" } },
+          use("Stack", { props: { Gap: "2", Align: "start" } },
+            itemTitle("z.title", "base", "text-start"),
+            when(ref("z.time"), [muted("z.time")])),
+          when(ref("z.minimum"), [muted("z.minimum")]),
+          price("z.price", ref("cost"))))))],
+});
+
+export const simpleVenueOrganisms: OrganismSpec[] = [menuSimple, hoursSimple, roomsSimple, amenitiesSimple, deliverySimple];

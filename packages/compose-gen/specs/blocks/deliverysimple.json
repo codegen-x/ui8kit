@@ -1,0 +1,77 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.deliverysimple",
+  "name": "Simple delivery zones",
+  "docs": "The heading, one paragraph and the delivery zones (the area, the time, the minimum order, the price): card rows with the price at the end, or cards in three columns.",
+  "theme": "marketing",
+  "group": "delivery",
+  "organism": "DeliverySimple",
+  "line": "simple",
+  "model": "delivery@1",
+  "axes": {
+    "layout": [
+      "rows",
+      "cards"
+    ]
+  },
+  "defaults": {
+    "layout": "rows"
+  },
+  "variants": [
+    {
+      "id": "rows",
+      "set": {}
+    },
+    {
+      "id": "cards",
+      "set": {
+        "layout": "cards"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@deliveryZones"
+    },
+    {
+      "sel": "ul > li h3",
+      "n": "@deliveryZones"
+    }
+  ],
+  "data": [
+    {
+      "as": "deliveryZones",
+      "collection": "simplezones",
+      "kind": "zone",
+      "record": "DeliveryZone",
+      "fields": {
+        "id": "id",
+        "title": "title",
+        "time": "metadata.time.value",
+        "price": "metadata.display.value",
+        "minimum": "metadata.minimum.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "deliverysimple",
+      "title": {
+        "$": "ui.marketing.deliverySimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.deliverySimple.description"
+      },
+      "items": {
+        "$": "deliveryZones"
+      }
+    }
+  }
+}

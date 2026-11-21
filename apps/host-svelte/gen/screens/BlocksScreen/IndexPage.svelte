@@ -46,6 +46,7 @@
         { key: "cta", href: "#/cta", name: ui.blocks.names.cta, docs: ui.blocks.docs.cta },
         { key: "ctaproof", href: "#/ctaproof", name: ui.blocks.names.ctaproof, docs: ui.blocks.docs.ctaproof },
         { key: "ctasimple", href: "#/ctasimple", name: ui.blocks.names.ctasimple, docs: ui.blocks.docs.ctasimple },
+        { key: "deliverysimple", href: "#/deliverysimple", name: ui.blocks.names.deliverysimple, docs: ui.blocks.docs.deliverysimple },
         { key: "errorsimple", href: "#/errorsimple", name: ui.blocks.names.errorsimple, docs: ui.blocks.docs.errorsimple },
         { key: "eventintro", href: "#/eventintro", name: ui.blocks.names.eventintro, docs: ui.blocks.docs.eventintro },
         { key: "faq", href: "#/faq", name: ui.blocks.names.faq, docs: ui.blocks.docs.faq },

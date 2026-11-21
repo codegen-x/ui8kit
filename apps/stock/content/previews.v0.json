@@ -1626,6 +1626,62 @@
     ]
    }
   },
+  "deliverysimple": {
+   "organism": "DeliverySimple",
+   "defaults": {
+    "layout": "rows"
+   },
+   "sample": {
+    "id": "deliverysimple",
+    "title": {
+     "$": "ui.marketing.deliverySimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.deliverySimple.description"
+    },
+    "items": {
+     "$": "deliveryZones"
+    }
+   },
+   "variants": [
+    {
+     "id": "rows",
+     "set": {}
+    },
+    {
+     "id": "cards",
+     "set": {
+      "layout": "cards"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "deliveryZones",
+     "collection": "simplezones",
+     "fields": {
+      "id": "id",
+      "title": "title",
+      "time": "metadata.time.value",
+      "price": "metadata.display.value",
+      "minimum": "metadata.minimum.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "DeliverySimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "landmarkLabel"
+    ]
+   }
+  },
   "errorsimple": {
    "organism": "ErrorSimple",
    "defaults": {},
@@ -17032,6 +17088,10 @@
      {
       "block": "amenitiessimple",
       "variant": "grid3"
+     },
+     {
+      "block": "deliverysimple",
+      "variant": "rows"
      }
     ],
     "about": [

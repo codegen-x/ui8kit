@@ -2367,6 +2367,44 @@
       "emptyMode": "omit"
     },
     {
+      "id": "DeliverySimple",
+      "surface": "kit-block",
+      "spec": "block.deliverysimple",
+      "source": "packages/compose-gen/specs/blocks/deliverysimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simplezones",
+          "kind": "zone",
+          "record": "DeliveryZone",
+          "map": "deliveryZone",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.deliverySimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.deliverySimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "DishCard",
       "surface": "kit-block",
       "spec": "block.dish",
@@ -10309,6 +10347,14 @@
           "list": true
         },
         {
+          "prop": "DeliverySimple.items",
+          "collection": "simplezones",
+          "kind": "zone",
+          "record": "DeliveryZone",
+          "map": "deliveryZone",
+          "list": true
+        },
+        {
           "prop": "DishCard.dish",
           "collection": "meals",
           "kind": "dish",
@@ -11136,6 +11182,7 @@
         "block.ctasimple",
         "block.dashshell",
         "block.delivery",
+        "block.deliverysimple",
         "block.dish",
         "block.dishbento",
         "block.dishcart",
@@ -14143,6 +14190,14 @@
           "list": true
         },
         {
+          "prop": "DeliverySimple.items",
+          "collection": "simplezones",
+          "kind": "zone",
+          "record": "DeliveryZone",
+          "map": "deliveryZone",
+          "list": true
+        },
+        {
           "prop": "FaqSimple.items",
           "collection": "faq",
           "kind": "faq",
@@ -14581,6 +14636,7 @@
         "block.contactssimple",
         "block.courseoutline",
         "block.ctasimple",
+        "block.deliverysimple",
         "block.errorsimple",
         "block.eventintro",
         "block.faqsimple",

@@ -6,6 +6,7 @@ import {
   Block,
   Box,
   Container,
+  DeliverySimple,
   Group,
   Link,
   Stack,
@@ -14,15 +15,25 @@ import {
   tpl,
   uniqLabel,
   type Amenity,
+  type DeliveryZone,
 } from "@codegen-x/vue-compose";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { simpleamenities as amenityItemsEntries } from "@ui8kit/app-shared/data/simpleamenities";
+import { simplezones as deliveryZonesEntries } from "@ui8kit/app-shared/data/simplezones";
 
 const AMENITYITEMS_FIELDS = {"id":"id","title":"title"} as const;
+const DELIVERYZONES_FIELDS = {
+  "id": "id",
+  "title": "title",
+  "time": "metadata.time.value",
+  "price": "metadata.display.value",
+  "minimum": "metadata.minimum.value",
+} as const;
 
 const amenityItems = fromCodex<Amenity>(amenityItemsEntries, AMENITYITEMS_FIELDS, CODEX);
+const deliveryZones = fromCodex<DeliveryZone>(deliveryZonesEntries, DELIVERYZONES_FIELDS, CODEX);
 </script>
 
 <template>
@@ -42,7 +53,7 @@ const amenityItems = fromCodex<Amenity>(amenityItemsEntries, AMENITYITEMS_FIELDS
             {{ ui.catalog.categories.marketingSimpleLocal }}
           </Title>
           <Text class="max-w-2xl text-muted-foreground">
-            {{ tpl(ui.catalog.count, 1, 3) }}
+            {{ tpl(ui.catalog.count, 2, 5) }}
           </Text>
         </Stack>
         <Stack
@@ -133,6 +144,71 @@ const amenityItems = fromCodex<Amenity>(amenityItemsEntries, AMENITYITEMS_FIELDS
                 cols="3"
                 :level="2"
                 :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.amenitiessimple, ui.blocks.variants.amenitiessimple.pills))"
+              />
+            </Box>
+          </Stack>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-deliverysimple-title"
+          data-testid="catalog-block"
+          data-block="deliverysimple"
+        >
+          <Stack gap="2" align="stretch">
+            <Title :as="2" size="2xl" weight="bold" id="catalog-deliverysimple-title">
+              {{ ui.blocks.names.deliverysimple }}
+            </Title>
+            <Text size="sm" class="max-w-2xl text-muted-foreground">
+              {{ ui.blocks.docs.deliverysimple }}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="deliverysimple-rows-label"
+            data-testid="variant"
+            data-block="deliverysimple"
+            data-variant="rows"
+          >
+            <Title :as="3" size="base" weight="bold" id="deliverysimple-rows-label" data-testid="variant-label">
+              {{ ui.blocks.variants.deliverysimple.rows }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <DeliverySimple
+                id="deliverysimple-rows"
+                :title="ui.marketing.deliverySimple.title"
+                :description="ui.marketing.deliverySimple.description"
+                :items="deliveryZones"
+                layout="rows"
+                :level="2"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.deliverysimple, ui.blocks.variants.deliverysimple.rows))"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="deliverysimple-cards-label"
+            data-testid="variant"
+            data-block="deliverysimple"
+            data-variant="cards"
+          >
+            <Title :as="3" size="base" weight="bold" id="deliverysimple-cards-label" data-testid="variant-label">
+              {{ ui.blocks.variants.deliverysimple.cards }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <DeliverySimple
+                id="deliverysimple-cards"
+                :title="ui.marketing.deliverySimple.title"
+                :description="ui.marketing.deliverySimple.description"
+                :items="deliveryZones"
+                layout="cards"
+                :level="2"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.deliverysimple, ui.blocks.variants.deliverysimple.cards))"
               />
             </Box>
           </Stack>

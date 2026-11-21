@@ -68,6 +68,12 @@
       "model": "cta@1",
       "path": "cta-simple/1.json"
     },
+    "delivery-simple": {
+      "version": 1,
+      "block": "block.deliverysimple",
+      "model": "delivery@1",
+      "path": "delivery-simple/1.json"
+    },
     "error-simple": {
       "version": 1,
       "block": "block.errorsimple",

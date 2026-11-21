@@ -2281,19 +2281,23 @@
         "id": "zone",
         "label": "Zone",
         "scope": "workspace",
-        "description": "fixtures: zones",
+        "description": "fixtures: simplezones, zones",
         "fields": [
           {
             "id": "area",
             "label": "Area",
-            "type": "string",
-            "required": true
+            "type": "string"
           },
           {
             "id": "currency",
             "label": "Currency",
             "type": "string",
             "required": true
+          },
+          {
+            "id": "display",
+            "label": "Display",
+            "type": "string"
           },
           {
             "id": "express",
@@ -2308,8 +2312,7 @@
               {
                 "name": "fastygo.codex/money"
               }
-            ],
-            "required": true
+            ]
           },
           {
             "id": "minOrder",
@@ -2319,8 +2322,12 @@
               {
                 "name": "fastygo.codex/money"
               }
-            ],
-            "required": true
+            ]
+          },
+          {
+            "id": "minimum",
+            "label": "Minimum",
+            "type": "string"
           },
           {
             "id": "price",

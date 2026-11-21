@@ -85,6 +85,8 @@ export * from "./blocks/dashboard-shell";
 export type * from "./blocks/dashboard-shell.types";
 export * from "./blocks/delivery-info";
 export type * from "./blocks/delivery-info.types";
+export * from "./blocks/delivery-simple";
+export type * from "./blocks/delivery-simple.types";
 export * from "./blocks/dish-bento";
 export * from "./blocks/dish-card";
 export type * from "./blocks/dish-card.types";
