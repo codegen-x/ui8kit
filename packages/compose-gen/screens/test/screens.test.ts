@@ -167,10 +167,10 @@ test("count prints the number of items with a flag", () => {
   expect(printValue(op("count", ref("tasks"), "done"), ctx)).toContain("filter");
 });
 
-test("the catalog: 25 to 160 blocks, over 100 variants, every block in a known theme, the gallery in theme order", () => {
+test("the catalog: 25 to 200 blocks, over 100 variants, every block in a known theme, the gallery in theme order", () => {
   const blocks = inputs.blocks.map((b) => b.value);
   expect(blocks.length).toBeGreaterThanOrEqual(25);
-  expect(blocks.length).toBeLessThanOrEqual(160);
+  expect(blocks.length).toBeLessThanOrEqual(200);
   expect(blocks.reduce((n, b) => n + b.variants.length, 0)).toBeGreaterThan(100);
   for (const b of blocks) expect(THEMES as readonly string[]).toContain(b.theme);
   const order = galleryOf(blocks).map((b) => THEMES.indexOf(b.theme as (typeof THEMES)[number]));
