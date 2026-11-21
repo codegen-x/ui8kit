@@ -94,6 +94,7 @@
   import TemplatesPage from "./BlocksScreen/TemplatesPage.svelte";
   import TestimonialsPage from "./BlocksScreen/TestimonialsPage.svelte";
   import TestimonialssimplePage from "./BlocksScreen/TestimonialssimplePage.svelte";
+  import TimelinesimplePage from "./BlocksScreen/TimelinesimplePage.svelte";
   import TopicssimplePage from "./BlocksScreen/TopicssimplePage.svelte";
   import UsagePage from "./BlocksScreen/UsagePage.svelte";
   import VideosPage from "./BlocksScreen/VideosPage.svelte";
@@ -261,6 +262,7 @@
     {"path":"templates","area":"templates"},
     {"path":"testimonials","area":"testimonials"},
     {"path":"testimonialssimple","area":"testimonialssimple"},
+    {"path":"timelinesimple","area":"timelinesimple"},
     {"path":"topicssimple","area":"topicssimple"},
     {"path":"usage","area":"usage"},
     {"path":"videos","area":"videos"},
@@ -520,6 +522,8 @@
     <TestimonialsPage />
   {:else if route.area === "testimonialssimple"}
     <TestimonialssimplePage />
+  {:else if route.area === "timelinesimple"}
+    <TimelinesimplePage />
   {:else if route.area === "topicssimple"}
     <TopicssimplePage />
   {:else if route.area === "usage"}

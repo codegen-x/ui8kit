@@ -1,11 +1,11 @@
-// The simple line, wave 3 (IT and small business; one content model each, specs/models): ServicesSimple (services@1), CasesSimple (cases@1).
+// The simple line, wave 3 (IT and small business; one content model each, specs/models): ServicesSimple (services@1), CasesSimple (cases@1), TimelineSimple (timeline@1).
 // The rules of simple.ts: the props are the fields of the model plus the axes and the settings; only the compositions
 // packages/prototypes lowers (Box, Block, Container, Stack, Group, List, ListItem, LinkPlain; Title, Text, Badge, LinkButton, MediaFrame).
 import { cn, each, ref, text, use, when, organism } from "../../build";
 import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { fields, spec } from "../kit";
 import { id, title, tsOf } from "../props";
-import { O, level, description, titleId, padding, teamDerived, section } from "./simple";
+import { O, level, description, titleId, padding, align, teamDerived, section } from "./simple";
 import { centered, list, head, itemTitle, itemText, ulist, is, chain } from "./simple-more";
 
 const axis = (name: string, ...values: string[]) => ({ name, type: tsOf(...values), default: values[0] });
@@ -56,4 +56,22 @@ const casesSimple = spec(`${O}cases-simple`, "CasesSimple", "The simple case stu
             itemText("c.result", "text-start"))))))],
 });
 
-export const simpleBusinessOrganisms: OrganismSpec[] = [servicesSimple, casesSimple];
+// ---- TimelineSimple (timeline@1): a process or a history: the date or the stage, the title and a line per step
+const timelineSimple = spec(`${O}timeline-simple`, "TimelineSimple", "The simple timeline (model timeline@1): the heading, a description and the steps of a process or a history as an ordered list, each with the date or the stage (the primary token), a title and a line. Text only. Axes: layout (column: one narrow column, a muted line at the start of each step; grid: the steps side by side), cols (2, 4 columns of the grid from md up).", {
+  records: { TimelineStep: fields(["id", "string"], ["date", "string"], ["title", "string"], ["text", "string", true]) },
+  props: [id, title, description, list("items", "TimelineStep", "the steps, in their order (2 to 8)"), level, padding, align, axis("layout", "column", "grid"), axis("cols", "2", "4")],
+  derived: [
+    titleId, ...teamDerived,
+    chain("grid", [[is("layout", "column"), "max-w-2xl grid-cols-1 gap-8"], [is("cols", "4"), "grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4"]], "grid-cols-1 gap-8 md:grid-cols-2"),
+    chain("item", [[is("layout", "column"), "flex flex-col gap-2 rounded bg-muted p-6"]], "flex flex-col gap-2"),
+  ],
+  view: [listSection(
+    use("List", { props: { Tag: "ol", Class: cn("m-0 grid w-full list-none p-0", ref("grid"), ref("selfAlign")) } },
+      each(ref("items"), "t", ref("t.id"),
+        use("ListItem", { props: { Class: cn(ref("item"), ref("itemsAlign")) }, attrs: { "data-testid": "timeline-step" } },
+          accent("t.date", ref("textAlign")),
+          itemTitle("t.title", "lg"),
+          itemText("t.text")))))],
+});
+
+export const simpleBusinessOrganisms: OrganismSpec[] = [servicesSimple, casesSimple, timelineSimple];

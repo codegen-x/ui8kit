@@ -148,5 +148,6 @@ export const roomItems = src("roomItems", "simplerooms", "room", "Room", CODEX_F
 export const guaranteeItems = src("guaranteeItems", "simpleguarantees", "perk", "Guarantee", CODEX_FIELDS.guaranteeItem);
 export const serviceItems = src("serviceItems", "simpleservices", "service", "Service", CODEX_FIELDS.serviceItem);
 export const caseItems = src("caseItems", "simplecases", "case", "CaseStudy", CODEX_FIELDS.caseItem);
+export const timelineSteps = src("timelineSteps", "simpletimeline", "milestone", "TimelineStep", CODEX_FIELDS.timelineStep);
 export const menuDishes = src("menuDishes", "simplemenu", "dish", "MenuDish", CODEX_FIELDS.menuDish);
 export const reviewItems = src("reviewItems", "simplereviews", "review", "ReviewItem", CODEX_FIELDS.reviewItem);

@@ -13,6 +13,7 @@ import {
   ServicesSimple,
   Stack,
   Text,
+  TimelineSimple,
   Title,
   tpl,
   uniqLabel,
@@ -20,6 +21,7 @@ import {
   type Guarantee,
   type Room,
   type Service,
+  type TimelineStep,
 } from "@codegen-x/vue-compose";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
@@ -28,6 +30,7 @@ import { simplerooms as roomItemsEntries } from "@ui8kit/app-shared/data/simpler
 import { simpleguarantees as guaranteeItemsEntries } from "@ui8kit/app-shared/data/simpleguarantees";
 import { simpleservices as serviceItemsEntries } from "@ui8kit/app-shared/data/simpleservices";
 import { simplecases as caseItemsEntries } from "@ui8kit/app-shared/data/simplecases";
+import { simpletimeline as timelineStepsEntries } from "@ui8kit/app-shared/data/simpletimeline";
 
 const ROOMITEMS_FIELDS = {
   "id": "id",
@@ -54,11 +57,13 @@ const CASEITEMS_FIELDS = {
   "result": "metadata.text.value",
   "href": "slug|route",
 } as const;
+const TIMELINESTEPS_FIELDS = {"id":"id","date":"metadata.date.value","title":"title","text":"metadata.text.value"} as const;
 
 const roomItems = fromCodex<Room>(roomItemsEntries, ROOMITEMS_FIELDS, CODEX);
 const guaranteeItems = fromCodex<Guarantee>(guaranteeItemsEntries, GUARANTEEITEMS_FIELDS, CODEX);
 const serviceItems = fromCodex<Service>(serviceItemsEntries, SERVICEITEMS_FIELDS, CODEX);
 const caseItems = fromCodex<CaseStudy>(caseItemsEntries, CASEITEMS_FIELDS, CODEX);
+const timelineSteps = fromCodex<TimelineStep>(timelineStepsEntries, TIMELINESTEPS_FIELDS, CODEX);
 </script>
 
 <template>
@@ -78,7 +83,7 @@ const caseItems = fromCodex<CaseStudy>(caseItemsEntries, CASEITEMS_FIELDS, CODEX
             {{ ui.catalog.categories.marketingSimpleStay }}
           </Title>
           <Text class="max-w-2xl text-muted-foreground">
-            {{ tpl(ui.catalog.count, 4, 13) }}
+            {{ tpl(ui.catalog.count, 5, 16) }}
           </Text>
         </Stack>
         <Stack
@@ -473,6 +478,99 @@ const caseItems = fromCodex<CaseStudy>(caseItemsEntries, CASEITEMS_FIELDS, CODEX
                 align="start"
                 :level="2"
                 :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.casessimple, ui.blocks.variants.casessimple.rows))"
+              />
+            </Box>
+          </Stack>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-timelinesimple-title"
+          data-testid="catalog-block"
+          data-block="timelinesimple"
+        >
+          <Stack gap="2" align="stretch">
+            <Title :as="2" size="2xl" weight="bold" id="catalog-timelinesimple-title">
+              {{ ui.blocks.names.timelinesimple }}
+            </Title>
+            <Text size="sm" class="max-w-2xl text-muted-foreground">
+              {{ ui.blocks.docs.timelinesimple }}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="timelinesimple-column-label"
+            data-testid="variant"
+            data-block="timelinesimple"
+            data-variant="column"
+          >
+            <Title :as="3" size="base" weight="bold" id="timelinesimple-column-label" data-testid="variant-label">
+              {{ ui.blocks.variants.timelinesimple.column }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <TimelineSimple
+                id="timelinesimple-column"
+                :title="ui.marketing.timelineSimple.title"
+                :description="ui.marketing.timelineSimple.description"
+                :items="timelineSteps"
+                layout="column"
+                cols="2"
+                :level="2"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.timelinesimple, ui.blocks.variants.timelinesimple.column))"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="timelinesimple-grid2-label"
+            data-testid="variant"
+            data-block="timelinesimple"
+            data-variant="grid2"
+          >
+            <Title :as="3" size="base" weight="bold" id="timelinesimple-grid2-label" data-testid="variant-label">
+              {{ ui.blocks.variants.timelinesimple.grid2 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <TimelineSimple
+                id="timelinesimple-grid2"
+                :title="ui.marketing.timelineSimple.title"
+                :description="ui.marketing.timelineSimple.description"
+                :items="timelineSteps"
+                layout="grid"
+                cols="2"
+                :level="2"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.timelinesimple, ui.blocks.variants.timelinesimple.grid2))"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="timelinesimple-grid4-label"
+            data-testid="variant"
+            data-block="timelinesimple"
+            data-variant="grid4"
+          >
+            <Title :as="3" size="base" weight="bold" id="timelinesimple-grid4-label" data-testid="variant-label">
+              {{ ui.blocks.variants.timelinesimple.grid4 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <TimelineSimple
+                id="timelinesimple-grid4"
+                :title="ui.marketing.timelineSimple.title"
+                :description="ui.marketing.timelineSimple.description"
+                :items="timelineSteps"
+                layout="grid"
+                cols="4"
+                align="center"
+                :level="2"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.timelinesimple, ui.blocks.variants.timelinesimple.grid4))"
               />
             </Box>
           </Stack>

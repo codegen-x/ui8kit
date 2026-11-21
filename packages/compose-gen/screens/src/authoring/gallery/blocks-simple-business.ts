@@ -39,4 +39,18 @@ const casesSimple = define({
   sample: { id: "casessimple", ...head(cas), items: ref("caseItems") },
 });
 
-export const simpleBusinessBlocks = [servicesSimple, casesSimple];
+const tml = k("timelineSimple");
+const timelineSimple = define({
+  key: "timelinesimple", theme: "marketing", group: "how-it-works", line: "simple", model: "timeline@1",
+  name: "Simple timeline", docs: "The heading, one paragraph and the steps of a process or a history (the date or the stage, a title, a line) as an ordered list: one column of muted steps, or side by side in two or four columns.",
+  organism: "TimelineSimple", axes: ["layout", "cols"], data: [d.timelineSteps],
+  variants: [
+    ["column", "One column"],
+    ["grid2", "Two columns", { layout: "grid" }],
+    ["grid4", "Four columns", { layout: "grid", cols: "4" }, { align: "center" }],
+  ],
+  facts: [h2, { sel: "ol > li", n: "@timelineSteps" }, { sel: "ol > li h3", n: "@timelineSteps" }],
+  sample: { id: "timelinesimple", ...head(tml), items: ref("timelineSteps") },
+});
+
+export const simpleBusinessBlocks = [servicesSimple, casesSimple, timelineSimple];

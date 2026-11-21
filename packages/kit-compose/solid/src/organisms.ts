@@ -362,6 +362,8 @@ export * from "./blocks/testimonial-grid";
 export type * from "./blocks/testimonial-grid.types";
 export * from "./blocks/testimonials-simple";
 export type * from "./blocks/testimonials-simple.types";
+export * from "./blocks/timeline-simple";
+export type * from "./blocks/timeline-simple.types";
 export * from "./components/topic-chips";
 export type * from "./components/topic-chips.types";
 export * from "./blocks/topics-simple";

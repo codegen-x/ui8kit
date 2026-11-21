@@ -129,6 +129,7 @@
           name: ui.blocks.names.testimonialssimple,
           docs: ui.blocks.docs.testimonialssimple,
         },
+        { key: "timelinesimple", href: "#/timelinesimple", name: ui.blocks.names.timelinesimple, docs: ui.blocks.docs.timelinesimple },
         { key: "topicssimple", href: "#/topicssimple", name: ui.blocks.names.topicssimple, docs: ui.blocks.docs.topicssimple },
         { key: "usage", href: "#/usage", name: ui.blocks.names.usage, docs: ui.blocks.docs.usage },
         { key: "videos", href: "#/videos", name: ui.blocks.names.videos, docs: ui.blocks.docs.videos },

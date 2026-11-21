@@ -94,6 +94,7 @@ import { TeamsimplePage } from "./BlocksScreen/TeamsimplePage";
 import { TemplatesPage } from "./BlocksScreen/TemplatesPage";
 import { TestimonialsPage } from "./BlocksScreen/TestimonialsPage";
 import { TestimonialssimplePage } from "./BlocksScreen/TestimonialssimplePage";
+import { TimelinesimplePage } from "./BlocksScreen/TimelinesimplePage";
 import { TopicssimplePage } from "./BlocksScreen/TopicssimplePage";
 import { UsagePage } from "./BlocksScreen/UsagePage";
 import { VideosPage } from "./BlocksScreen/VideosPage";
@@ -261,6 +262,7 @@ const ROUTES = [
   {"path":"templates","area":"templates"},
   {"path":"testimonials","area":"testimonials"},
   {"path":"testimonialssimple","area":"testimonialssimple"},
+  {"path":"timelinesimple","area":"timelinesimple"},
   {"path":"topicssimple","area":"topicssimple"},
   {"path":"usage","area":"usage"},
   {"path":"videos","area":"videos"},
@@ -521,6 +523,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <TestimonialsPage />
         ) : route.area === "testimonialssimple" ? (
           <TestimonialssimplePage />
+        ) : route.area === "timelinesimple" ? (
+          <TimelinesimplePage />
         ) : route.area === "topicssimple" ? (
           <TopicssimplePage />
         ) : route.area === "usage" ? (

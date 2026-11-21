@@ -9289,6 +9289,45 @@
       "emptyState": true
     },
     {
+      "id": "TimelineSimple",
+      "surface": "kit-block",
+      "spec": "block.timelinesimple",
+      "source": "packages/compose-gen/specs/blocks/timelinesimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simpletimeline",
+          "kind": "milestone",
+          "record": "TimelineStep",
+          "map": "timelineStep",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.timelineSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.timelineSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "TopicsSimple",
       "surface": "kit-block",
       "spec": "block.topicssimple",
@@ -10887,6 +10926,14 @@
           "list": true
         },
         {
+          "prop": "TimelineSimple.items",
+          "collection": "simpletimeline",
+          "kind": "milestone",
+          "record": "TimelineStep",
+          "map": "timelineStep",
+          "list": true
+        },
+        {
           "prop": "TopicsSimple.items",
           "collection": "simpletopics",
           "kind": "topic",
@@ -11152,6 +11199,7 @@
         "block.testimonials",
         "block.testimonialssimple",
         "block.timeline",
+        "block.timelinesimple",
         "block.topicssimple",
         "block.tour",
         "block.usage",
@@ -14287,6 +14335,14 @@
           "list": true
         },
         {
+          "prop": "TimelineSimple.items",
+          "collection": "simpletimeline",
+          "kind": "milestone",
+          "record": "TimelineStep",
+          "map": "timelineStep",
+          "list": true
+        },
+        {
           "prop": "TopicsSimple.items",
           "collection": "simpletopics",
           "kind": "topic",
@@ -14507,6 +14563,7 @@
         "block.storiessimple",
         "block.teamsimple",
         "block.testimonialssimple",
+        "block.timelinesimple",
         "block.topicssimple"
       ]
     },

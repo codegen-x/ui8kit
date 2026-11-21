@@ -1024,7 +1024,7 @@
         "id": "milestone",
         "label": "Milestone",
         "scope": "workspace",
-        "description": "fixtures: milestones",
+        "description": "fixtures: milestones, simpletimeline",
         "fields": [
           {
             "id": "date",
@@ -1035,8 +1035,7 @@
           {
             "id": "tag",
             "label": "Tag",
-            "type": "string",
-            "required": true
+            "type": "string"
           },
           {
             "id": "text",

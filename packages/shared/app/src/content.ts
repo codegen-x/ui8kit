@@ -252,7 +252,8 @@ export const ui = {
       "roomssimple": "Simple rooms",
       "guaranteessimple": "Simple guarantees",
       "servicessimple": "Simple services",
-      "casessimple": "Simple case studies"
+      "casessimple": "Simple case studies",
+      "timelinesimple": "Simple timeline"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -413,7 +414,8 @@ export const ui = {
       "roomssimple": "The heading, one paragraph and the rooms (a picture, the name as a link, the guests, a line, the price a night): on cards in three or two columns, or rows with the picture at the start.",
       "guaranteessimple": "The heading, one paragraph and the promises (delivery, quality, returns), each a short title and a line: side by side on one muted band, or on cards, in four or three columns.",
       "servicessimple": "The heading, one paragraph and the services (the name as a link, a line, the starting price): on cards in three or two columns, or rows with the price at the end.",
-      "casessimple": "The heading, one paragraph and the case studies (a picture, the client, the title as a link, the result in one line): on cards in three or two columns, or rows with the picture at the start."
+      "casessimple": "The heading, one paragraph and the case studies (a picture, the client, the title as a link, the result in one line): on cards in three or two columns, or rows with the picture at the start.",
+      "timelinesimple": "The heading, one paragraph and the steps of a process or a history (the date or the stage, a title, a line) as an ordered list: one column of muted steps, or side by side in two or four columns."
     },
     "variants": {
       "header": {
@@ -1406,6 +1408,11 @@ export const ui = {
         "cards3": "Three case cards",
         "cards2": "Two columns",
         "rows": "Rows, the picture at the start"
+      },
+      "timelinesimple": {
+        "column": "One column",
+        "grid2": "Two columns",
+        "grid4": "Four columns"
       }
     },
     "landmark": "{0}, {1}",
@@ -1829,6 +1836,10 @@ export const ui = {
     "casesSimple": {
       "title": "Selected work",
       "description": "Three projects from the last year, with the numbers the clients agreed to share."
+    },
+    "timelineSimple": {
+      "title": "How a project runs",
+      "description": "Four steps from the first call to the launch, usually in a month."
     }
   },
   "cases": {

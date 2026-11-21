@@ -284,6 +284,12 @@
       "model": "testimonials@1",
       "path": "testimonials-simple/1.json"
     },
+    "timeline-simple": {
+      "version": 1,
+      "block": "block.timelinesimple",
+      "model": "timeline@1",
+      "path": "timeline-simple/1.json"
+    },
     "topics-simple": {
       "version": 1,
       "block": "block.topicssimple",

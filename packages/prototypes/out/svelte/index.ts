@@ -94,6 +94,8 @@ export { default as TeamSimple } from "./blocks/team-simple.svelte";
 export type { TeamSimpleProps } from "./blocks/team-simple.svelte";
 export { default as TestimonialsSimple } from "./blocks/testimonials-simple.svelte";
 export type { TestimonialsSimpleProps } from "./blocks/testimonials-simple.svelte";
+export { default as TimelineSimple } from "./blocks/timeline-simple.svelte";
+export type { TimelineSimpleProps } from "./blocks/timeline-simple.svelte";
 export { default as TopicsSimple } from "./blocks/topics-simple.svelte";
 export type { TopicsSimpleProps } from "./blocks/topics-simple.svelte";
 export { default as ShapeHeading } from "./shapes/shape-heading.svelte";

@@ -63,16 +63,17 @@ const SIMPLE: Array<[string, string]> = [
   ["profile-intro", "profile@1"], ["promo-simple", "promo@1"], ["pull-quote-simple", "pull-quote@1"], ["purchase-simple", "purchase@1"],
   ["rating-simple", "rating@1"], ["rooms-simple", "rooms@1"], ["services-simple", "services@1"], ["specs-simple", "specs@1"],
   ["split-simple", "split@1"], ["stats-simple", "stats@1"], ["steps-simple", "steps@1"], ["store-policies", "store-policy@1"],
-  ["stories-simple", "stories@1"], ["team-simple", "team@1"], ["testimonials-simple", "testimonials@1"], ["topics-simple", "topics@1"],
+  ["stories-simple", "stories@1"], ["team-simple", "team@1"], ["testimonials-simple", "testimonials@1"], ["timeline-simple", "timeline@1"],
+  ["topics-simple", "topics@1"],
 ];
 // the frame blocks without a heading of their own: the header and the footer (a brand and links), the figure and the pull quote
 // (their caption and their attribution are text, not a heading)
 const NO_HEADING = new Set(["figure-simple", "footer-simple", "header-simple", "pull-quote-simple"]);
 test("the simple line has its prototypes: one per block of the simple line, in item order", () => {
   expect(simple.map((c) => [c.item, c.model, c.defaultMode])).toEqual(SIMPLE.map(([item, model]) => [item, model, "wireframe"]));
-  // 130 variants with the align setting, each once more per non-default align value (compose-gen blockCases),
+  // 133 variants with the align setting, each once more per non-default align value (compose-gen blockCases),
   // and the 17 without it (split, header, footer, figure, pull quote, rating, purchase)
-  expect(cases.length).toBe(130 * 3 + 17);
+  expect(cases.length).toBe(133 * 3 + 17);
 });
 
 test("out/ is what the driver writes (bun packages/prototypes/src/driver.ts)", () => {
@@ -235,6 +236,7 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
     "guarantees-simple": "center",
     "services-simple": "center",
     "cases-simple": "center",
+    "timeline-simple": "start",
   };
   // the fixed compositions without the align setting: the split, the header and footer, the figure, the pull quote, the rating, the purchase
   const NO_ALIGN = ["figure-simple", "footer-simple", "header-simple", "pull-quote-simple", "purchase-simple", "rating-simple", "split-simple"];
@@ -260,7 +262,7 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
       'products-simple.rows {"align":"start"}', 'profile-intro.portraitTop {"align":"center"}', 'promo-simple.mediaTop {"align":"center"}',
       'rooms-simple.rows {"align":"start"}', 'services-simple.rows {"align":"start"}', 'steps-simple.column {"align":"start"}',
       'store-policies.rows {"align":"start"}', 'team-simple.portraitRow {"align":"start"}', 'team-simple.bylineCols3 {"align":"start"}',
-      'team-simple.sideList {"align":"start"}',
+      'team-simple.sideList {"align":"start"}', 'timeline-simple.grid4 {"align":"center"}',
     ]);
     // the feed grows by compositions only: align is never a variant of its own
     expect(simple.find((c) => c.item === "hero-simple")!.variants.map((v) => v.id)).toEqual(["mediaEnd", "mediaStart", "mediaTop", "mediaBottom", "mediaEndPortrait", "mediaStartPortrait"]);

@@ -404,6 +404,9 @@
               },
               {
                 "block": "casessimple"
+              },
+              {
+                "block": "timelinesimple"
               }
             ]
           },

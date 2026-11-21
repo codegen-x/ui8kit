@@ -11,6 +11,7 @@
     PromoSimple,
     RoomsSimple,
     ServicesSimple,
+    TimelineSimple,
     tpl,
     uniqLabel,
     type CaseStudy,
@@ -19,6 +20,7 @@
     type OpeningHour,
     type Room,
     type Service,
+    type TimelineStep,
   } from "@codegen-x/svelte-compose";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
   import { CODEX } from "@ui8kit/app-shared/runtime/codex";
@@ -29,6 +31,7 @@
   import { simpleguarantees as guaranteeItemsEntries } from "@ui8kit/app-shared/data/simpleguarantees";
   import { simpleservices as serviceItemsEntries } from "@ui8kit/app-shared/data/simpleservices";
   import { simplecases as caseItemsEntries } from "@ui8kit/app-shared/data/simplecases";
+  import { simpletimeline as timelineStepsEntries } from "@ui8kit/app-shared/data/simpletimeline";
 
   const MENUDISHES_FIELDS = {
     "id": "id",
@@ -65,6 +68,7 @@
     "result": "metadata.text.value",
     "href": "slug|route",
   } as const;
+  const TIMELINESTEPS_FIELDS = {"id":"id","date":"metadata.date.value","title":"title","text":"metadata.text.value"} as const;
 
   const menuDishes = fromCodex<MenuDish>(menuDishesEntries, MENUDISHES_FIELDS, CODEX);
   const openingHours = fromCodex<OpeningHour>(openingHoursEntries, OPENINGHOURS_FIELDS, CODEX);
@@ -72,6 +76,7 @@
   const guaranteeItems = fromCodex<Guarantee>(guaranteeItemsEntries, GUARANTEEITEMS_FIELDS, CODEX);
   const serviceItems = fromCodex<Service>(serviceItemsEntries, SERVICEITEMS_FIELDS, CODEX);
   const caseItems = fromCodex<CaseStudy>(caseItemsEntries, CASEITEMS_FIELDS, CODEX);
+  const timelineSteps = fromCodex<TimelineStep>(timelineStepsEntries, TIMELINESTEPS_FIELDS, CODEX);
 </script>
 
 <HeroSimple
@@ -173,4 +178,13 @@
   layout="cards"
   cols="3"
   landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.casessimple, ui.blocks.variants.casessimple.cards3))}
+/>
+<TimelineSimple
+  id="venue-timelinesimple"
+  title={ui.marketing.timelineSimple.title}
+  description={ui.marketing.timelineSimple.description}
+  items={timelineSteps}
+  layout="column"
+  cols="2"
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.timelinesimple, ui.blocks.variants.timelinesimple.column))}
 />

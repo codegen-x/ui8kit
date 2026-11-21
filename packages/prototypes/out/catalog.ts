@@ -49,9 +49,10 @@ import StorePolicies from "./svelte/blocks/store-policies.svelte";
 import StoriesSimple from "./svelte/blocks/stories-simple.svelte";
 import TeamSimple from "./svelte/blocks/team-simple.svelte";
 import TestimonialsSimple from "./svelte/blocks/testimonials-simple.svelte";
+import TimelineSimple from "./svelte/blocks/timeline-simple.svelte";
 import TopicsSimple from "./svelte/blocks/topics-simple.svelte";
 
-export { ArticleLead, ArticleSimple, CasesSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, CtaSimple, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, GuaranteesSimple, HeaderSimple, HeroSimple, HoursSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PromoSimple, PullQuoteSimple, PurchaseSimple, RatingSimple, RoomsSimple, ServicesSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TopicsSimple };
+export { ArticleLead, ArticleSimple, CasesSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, CtaSimple, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, GuaranteesSimple, HeaderSimple, HeroSimple, HoursSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PromoSimple, PullQuoteSimple, PurchaseSimple, RatingSimple, RoomsSimple, ServicesSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TimelineSimple, TopicsSimple };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CATALOG: Record<string, Component<any>> = {
@@ -102,5 +103,6 @@ export const CATALOG: Record<string, Component<any>> = {
   "stories-simple": StoriesSimple,
   "team-simple": TeamSimple,
   "testimonials-simple": TestimonialsSimple,
+  "timeline-simple": TimelineSimple,
   "topics-simple": TopicsSimple,
 };

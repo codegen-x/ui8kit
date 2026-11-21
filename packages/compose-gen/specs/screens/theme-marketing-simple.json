@@ -375,6 +375,10 @@
       {
         "block": "casessimple",
         "variant": "cards3"
+      },
+      {
+        "block": "timelinesimple",
+        "variant": "column"
       }
     ],
     "about": [

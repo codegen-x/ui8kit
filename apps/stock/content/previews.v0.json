@@ -7942,6 +7942,73 @@
     ]
    }
   },
+  "timelinesimple": {
+   "organism": "TimelineSimple",
+   "defaults": {
+    "layout": "column",
+    "cols": "2"
+   },
+   "sample": {
+    "id": "timelinesimple",
+    "title": {
+     "$": "ui.marketing.timelineSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.timelineSimple.description"
+    },
+    "items": {
+     "$": "timelineSteps"
+    }
+   },
+   "variants": [
+    {
+     "id": "column",
+     "set": {}
+    },
+    {
+     "id": "grid2",
+     "set": {
+      "layout": "grid"
+     }
+    },
+    {
+     "id": "grid4",
+     "set": {
+      "layout": "grid",
+      "cols": "4"
+     },
+     "props": {
+      "align": "center"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "timelineSteps",
+     "collection": "simpletimeline",
+     "fields": {
+      "id": "id",
+      "date": "metadata.date.value",
+      "title": "title",
+      "text": "metadata.text.value"
+     }
+    }
+   ],
+   "orgProps": {
+    "TimelineSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
   "topicssimple": {
    "organism": "TopicsSimple",
    "defaults": {
@@ -16896,6 +16963,10 @@
      {
       "block": "casessimple",
       "variant": "cards3"
+     },
+     {
+      "block": "timelinesimple",
+      "variant": "column"
      }
     ],
     "about": [

@@ -47,4 +47,5 @@ export type { PolicyItem, StorePolicyContent } from "./store-policy@1";
 export type { SimpleStory, StoriesContent } from "./stories@1";
 export type { SimpleMember, TeamContent } from "./team@1";
 export type { SimpleQuote, TestimonialsContent } from "./testimonials@1";
+export type { TimelineStep, TimelineContent } from "./timeline@1";
 export type { TopicItem, TopicsContent } from "./topics@1";

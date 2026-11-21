@@ -1,0 +1,91 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.timelinesimple",
+  "name": "Simple timeline",
+  "docs": "The heading, one paragraph and the steps of a process or a history (the date or the stage, a title, a line) as an ordered list: one column of muted steps, or side by side in two or four columns.",
+  "theme": "marketing",
+  "group": "how-it-works",
+  "organism": "TimelineSimple",
+  "line": "simple",
+  "model": "timeline@1",
+  "axes": {
+    "layout": [
+      "column",
+      "grid"
+    ],
+    "cols": [
+      "2",
+      "4"
+    ]
+  },
+  "defaults": {
+    "layout": "column",
+    "cols": "2"
+  },
+  "variants": [
+    {
+      "id": "column",
+      "set": {}
+    },
+    {
+      "id": "grid2",
+      "set": {
+        "layout": "grid"
+      }
+    },
+    {
+      "id": "grid4",
+      "set": {
+        "layout": "grid",
+        "cols": "4"
+      },
+      "props": {
+        "align": "center"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ol > li",
+      "n": "@timelineSteps"
+    },
+    {
+      "sel": "ol > li h3",
+      "n": "@timelineSteps"
+    }
+  ],
+  "data": [
+    {
+      "as": "timelineSteps",
+      "collection": "simpletimeline",
+      "kind": "milestone",
+      "record": "TimelineStep",
+      "fields": {
+        "id": "id",
+        "date": "metadata.date.value",
+        "title": "title",
+        "text": "metadata.text.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "timelinesimple",
+      "title": {
+        "$": "ui.marketing.timelineSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.timelineSimple.description"
+      },
+      "items": {
+        "$": "timelineSteps"
+      }
+    }
+  }
+}

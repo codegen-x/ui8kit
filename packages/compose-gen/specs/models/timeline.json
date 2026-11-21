@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/schemas/model.schema.json",
+  "specVersion": 1,
+  "id": "timeline",
+  "version": 1,
+  "docs": "Timeline content: the heading, a description and the steps of a process or a history, each with the date or the stage, a title and a line. One object is valid in every timeline layout (one column, two or four columns).",
+  "fields": {
+    "title": { "type": "text", "maxLength": 120, "required": true, "docs": "the heading of the section" },
+    "description": { "type": "longText", "maxLength": 400, "docs": "one paragraph under the heading; empty: none" },
+    "items": {
+      "type": "list",
+      "required": true,
+      "minItems": 2,
+      "maxItems": 8,
+      "docs": "the steps, in their order",
+      "item": {
+        "record": "TimelineStep",
+        "fields": {
+          "id": { "type": "id", "required": true, "docs": "stable key of the entry (the Codex entry id)" },
+          "date": { "type": "text", "maxLength": 40, "required": true, "docs": "the date or the stage as it is shown (Week 1, 2024)" },
+          "title": { "type": "text", "maxLength": 80, "required": true, "docs": "the title of the step" },
+          "text": { "type": "longText", "maxLength": 200, "docs": "one line about the step; empty: none" }
+        }
+      }
+    }
+  }
+}

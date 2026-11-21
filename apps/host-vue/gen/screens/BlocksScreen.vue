@@ -95,6 +95,7 @@ import TeamsimplePage from "./BlocksScreen/TeamsimplePage.vue";
 import TemplatesPage from "./BlocksScreen/TemplatesPage.vue";
 import TestimonialsPage from "./BlocksScreen/TestimonialsPage.vue";
 import TestimonialssimplePage from "./BlocksScreen/TestimonialssimplePage.vue";
+import TimelinesimplePage from "./BlocksScreen/TimelinesimplePage.vue";
 import TopicssimplePage from "./BlocksScreen/TopicssimplePage.vue";
 import UsagePage from "./BlocksScreen/UsagePage.vue";
 import VideosPage from "./BlocksScreen/VideosPage.vue";
@@ -262,6 +263,7 @@ const ROUTES = [
   {"path":"templates","area":"templates"},
   {"path":"testimonials","area":"testimonials"},
   {"path":"testimonialssimple","area":"testimonialssimple"},
+  {"path":"timelinesimple","area":"timelinesimple"},
   {"path":"topicssimple","area":"topicssimple"},
   {"path":"usage","area":"usage"},
   {"path":"videos","area":"videos"},
@@ -433,6 +435,7 @@ const actions = { toggleTheme };
     <TemplatesPage v-else-if="route.area === 'templates'" />
     <TestimonialsPage v-else-if="route.area === 'testimonials'" />
     <TestimonialssimplePage v-else-if="route.area === 'testimonialssimple'" />
+    <TimelinesimplePage v-else-if="route.area === 'timelinesimple'" />
     <TopicssimplePage v-else-if="route.area === 'topicssimple'" />
     <UsagePage v-else-if="route.area === 'usage'" />
     <VideosPage v-else-if="route.area === 'videos'" />

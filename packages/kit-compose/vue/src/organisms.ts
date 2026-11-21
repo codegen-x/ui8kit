@@ -362,6 +362,8 @@ export { default as TestimonialGrid } from "./blocks/testimonial-grid.vue";
 export type * from "./blocks/testimonial-grid.types";
 export { default as TestimonialsSimple } from "./blocks/testimonials-simple.vue";
 export type * from "./blocks/testimonials-simple.types";
+export { default as TimelineSimple } from "./blocks/timeline-simple.vue";
+export type * from "./blocks/timeline-simple.types";
 export { default as TopicChips } from "./components/topic-chips.vue";
 export type * from "./components/topic-chips.types";
 export { default as TopicsSimple } from "./blocks/topics-simple.vue";
