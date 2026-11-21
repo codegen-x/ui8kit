@@ -373,7 +373,7 @@
     }
   ],
   "inputs": {
-    "sha256": "4bbcd0633c4bf096a850989a9bc12035a5ee97995f75e91ffa739bf876b59b00"
+    "sha256": "ec2ad5a8d48e45fb81b604f0d857abe1dde1f4d1960f9c05aa675a13f4fef48e"
   },
   "files": {
     "catalog.ts": "d35a72477c1ae1cb31f606a0fd5b55ffb04e7e5cc22f40ea6cf1c61014172413",
@@ -539,10 +539,10 @@
     "models/validate.ts": "f736b8b812547bb3780e597d0c48971ce70c9a90df7a0fe51e4d109e8a236e7b",
     "registry.ts": "99c7186f35a5bb941e19066835a015428673e6d983430dfea492962863cc1076",
     "svelte/blocks/amenities-simple.svelte": "110970f2a0ebc1f5c009d6434c85788a9a1086eaeea3f0327e957bd7490a54b9",
-    "svelte/blocks/article-lead.svelte": "85fbac037c9ad5ad289f29379e8a6ccf423d487289eab51492ca4bd804ea13a9",
+    "svelte/blocks/article-lead.svelte": "118216b6d7b844ae30e537561f6617d2ee56c2ca7f2fa626aa8e0e5e58ed9ed2",
     "svelte/blocks/article-simple.svelte": "081b0a3a8e057e39c848c488e7baf1a50ed282340e28ebb6747a94f5a81cfa95",
     "svelte/blocks/cases-simple.svelte": "c88cc2a2b714d99c9afc541a1901426515a2629e10c54430a417e1ab2b85c138",
-    "svelte/blocks/chapters-simple.svelte": "fd50c7e9c1eed63f30991ee0f4f4d12c53c3b29fb4c2c78b15a806072de3ea0b",
+    "svelte/blocks/chapters-simple.svelte": "019edc6448fd33a35117531d61f8aa309dccd11f522a711726d7b48f940880bb",
     "svelte/blocks/choice-links.svelte": "89407c9ef17f12d33166e876399f9dc2d6d2ff2e192d9bdf4dd834c9c0aab09a",
     "svelte/blocks/collections-simple.svelte": "4c1b869077d02bbe7efa77f5c31b26a828a62eaa2a1a6bcb5603846fa925c783",
     "svelte/blocks/compare-simple.svelte": "9ec7752735cb5bf5af97c27fa58c38d766466247b246b14a6efb1f2e3bf4e102",
@@ -554,17 +554,17 @@
     "svelte/blocks/error-simple.svelte": "f3da2c191f40c3f5d44e04e076fdacd4d3b7fcdd87bb20b031d83b50efca3e8f",
     "svelte/blocks/event-intro.svelte": "3a0f3052a5cf32c66d255c3aeba959939b0a5fb7494e93621b11ddd47204eb6e",
     "svelte/blocks/faq-simple.svelte": "923667123410905c6e1ca6fef132fa19d0d148a145fe29e06fb4351e43280bbe",
-    "svelte/blocks/feature-showcase-simple.svelte": "06bddf1700b436f7cf28abb17903478acdb13333cc3129deeca36ee9a9521c70",
+    "svelte/blocks/feature-showcase-simple.svelte": "a8eaa6ab8472193f0d89e242c56ff7d4847ca292c10912267291ad3400c4605e",
     "svelte/blocks/features-simple.svelte": "bdcb04109388497addc14d32fbfdd180d24badc635c0f6c0929310f4ad8c48a1",
     "svelte/blocks/figure-simple.svelte": "a9dabeeda9eee8e98029b1ddb140505b44c817b6bc22bf9f0cfbc7bfba13ec3d",
     "svelte/blocks/footer-simple.svelte": "99075daa9de8ff393b67140b8e1bfce53fd8d063199acc1f0417553813e38eb5",
     "svelte/blocks/gallery-hero.svelte": "913013a3cc29f78cb667700f2da9596c2ece4ec065c430344151ba9cbad5372b",
     "svelte/blocks/guarantees-simple.svelte": "d06981ef78ae77a61aa8690d7b2652a2ddc07a2150076285d73d89ec2ab7a6c2",
     "svelte/blocks/header-simple.svelte": "5b12b263729bfe5c1edbd2dc7d76756542afe27cccc5baa7a7cb6fd05b9024c0",
-    "svelte/blocks/hero-simple.svelte": "84367da8648e509ec7976314dff75eefd67bf027b368a0d0bafaac100236b1f3",
+    "svelte/blocks/hero-simple.svelte": "bbc3f20f25000d8363e510624a2a73cfdbbdbacb0eb2019ba1581022e37c2f00",
     "svelte/blocks/hours-simple.svelte": "8290bfc90e3742cde5168dae02c291d48abf8a80e5adc79a72bb6e8020d6c12b",
     "svelte/blocks/intro-simple.svelte": "f6c0a318d582b98eb09b292de157119d2269bbc9bcfbf48488835513181b6e63",
-    "svelte/blocks/locations-simple.svelte": "0091f7c4cc5b2f86e6e7aac431ecd561f0092c1bfe3183b1f40edfe82761c885",
+    "svelte/blocks/locations-simple.svelte": "c2216bcd60ec8076037db0f724bc3c902bd1761829f6cda647a0a7ba11316a0b",
     "svelte/blocks/logos-simple.svelte": "2ea1082d07f7e07d12ed7d48274003e3af53faf853a48f8be1f18964a0bae718",
     "svelte/blocks/menu-simple.svelte": "c65d07c74ff585658dce32a1c4655b0a953aba4912df31ec2f5b3caf2382665a",
     "svelte/blocks/offers-simple.svelte": "94a2c945ee4b00ecc52425fb1070fe01543fd284895e53c40271bbebd0605dcb",
@@ -572,8 +572,8 @@
     "svelte/blocks/pricing-simple.svelte": "c5f1bbeceb5bf227409ae05f4e09ccc068c80d06aab178a6ac09bf32d5146164",
     "svelte/blocks/product-reviews.svelte": "4b787668364405e35ae1e8bca61cf713bf5e54746fe16dc55a67c60bbd75c4e6",
     "svelte/blocks/product-simple.svelte": "ea4e07622bdea497a96057932ebc081847a8206d030a83fba9a00bb73a3ea5a6",
-    "svelte/blocks/products-simple.svelte": "8e07534ba9c62483533067142222fb99ce2bdc61ac3b9517277b318ffbe4905f",
-    "svelte/blocks/profile-intro.svelte": "0dd3178bf54b18ecf553d6bd7e3992b02edcaa25e546e7b055c3e89ccfc7caa8",
+    "svelte/blocks/products-simple.svelte": "e870f54a511aee40060785ea5d3494390a04611d961d58452373c63b0f76318b",
+    "svelte/blocks/profile-intro.svelte": "5900162f6c5ebf2d4be6cd06fedd2d49d70f8857cd746982a7126930364b2b43",
     "svelte/blocks/promo-simple.svelte": "0fab144595f08f5af522bbf7fa1c34e54cc5201d48a9c6082909e1ebe46de59a",
     "svelte/blocks/pull-quote-simple.svelte": "e8cc44f70afb206a55e9e0fa48d83c70e877650f544f50c751cb82a0ad87874a",
     "svelte/blocks/purchase-simple.svelte": "1bbe27ad9ff4c01f2bdac70ee757239a9a001a1abbc3af31e94dc2d395118f4b",
@@ -595,7 +595,7 @@
     "svelte/shapes/shape-badge.svelte": "a4cc87358624d1a2eea97135525f9c073efaaa5f3f67cec75920523ce1eb517a",
     "svelte/shapes/shape-cta.svelte": "cc04ffa611cd2cc460a51c14f1c1aee2f82922bffc9d1fc77b2704cd99818e12",
     "svelte/shapes/shape-heading.svelte": "bf81e49747592c4be8601dcf28092592ceb050dc31afad3e718f661d656d906f",
-    "svelte/shapes/shape-media.svelte": "354a114d4804aab821515227393947b790e20571f9632026a1034736fec61301",
+    "svelte/shapes/shape-media.svelte": "51777a1a368c99cded0b6eab93e4cb98bad64b5a81b83c4e084adb327cc16443",
     "svelte/shapes/shape-text.svelte": "e35eb73a5d5f7fed824debc745a5a4a0da4e3f9aa91f37a87ad3d7ab198e49d5"
   }
 }

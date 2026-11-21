@@ -95,6 +95,34 @@ const fillsHalf = (v: Value | undefined): boolean => typeof v === "string" && /(
 /** the string literals of a class value (a literal, or the literals of a cn / cond) */
 const classText = (v: Value | undefined): string =>
   typeof v === "string" ? v : isOp(v) ? v.args.map((a, i) => (v.op === "cond" && i === 0 ? "" : classText(a))).join(" ") : "";
+/**
+ * Layout classes of a MediaFrame the wireframe must keep on ShapeMedia (the same node as aspect, the grid item):
+ * order-*, width (w- / max-w- / min-w-), height (min-h- / max-h- / h-), md:aspect-auto, mx-auto.
+ * fill:half already owns md:aspect-auto and md:h-full: those stay off the lifted class so a split is not wrapped or doubled.
+ */
+const MEDIA_LAYOUT = /^(?:[a-z]+:)*(?:order-.+|w-.+|max-w-.+|min-w-.+|min-h-.+|max-h-.+|h-.+|aspect-auto|mx-auto|ms-auto|me-auto)$/;
+const HALF_OWNED = /^(?:[a-z]+:)*(?:aspect-auto|h-full)$/;
+const isMediaLayout = (t: string, half: boolean): boolean => !!t && MEDIA_LAYOUT.test(t) && !(half && HALF_OWNED.test(t));
+const emptyClass = (v: Value): boolean =>
+  v === undefined || v === "" || (typeof v === "string" ? v.trim() === ""
+    : isOp(v) && v.op === "cn" ? v.args.every(emptyClass)
+    : isOp(v) && v.op === "cond" ? emptyClass(v.args[1]!) && emptyClass(v.args[2]!)
+    : false);
+function filterMediaLayout(v: Value, half: boolean): Value {
+  if (typeof v === "string") return v.split(/\s+/).filter((t) => isMediaLayout(t, half)).join(" ");
+  if (isOp(v) && v.op === "cond") return cond(v.args[0]!, filterMediaLayout(v.args[1]!, half), filterMediaLayout(v.args[2]!, half));
+  if (isOp(v) && v.op === "cn") {
+    const args = v.args.map((a) => filterMediaLayout(a, half)).filter((a) => !emptyClass(a));
+    return args.length === 0 ? "" : args.length === 1 ? args[0]! : cn(...args);
+  }
+  return fail(`MediaFrame className ${JSON.stringify(v)} is not a literal or a cond of literals`);
+}
+/** the layout class of a MediaFrame to set on ShapeMedia, or undefined when nothing remains (a split half, or no layout class) */
+function mediaLayout(v: Value | undefined, half: boolean): Value | undefined {
+  if (v === undefined) return undefined;
+  const picked = filterMediaLayout(v, half);
+  return emptyClass(picked) ? undefined : picked;
+}
 /** a picture of a list item drawn as the avatar disc: a portrait or an icon (rounded-full) or a small fixed thumbnail (size-*) */
 const isDisc = (v: Value | undefined): boolean => /(^|\s)(rounded-full|size-\d+)(\s|$)/.test(classText(v));
 /** a ratio of MediaFrame (a literal or a cond of literals) as its aspect class */
@@ -187,9 +215,13 @@ class Projector {
       const place: Place = { place: src.list ? prefixed(src) : src.field === "image" ? "media" : src.field, kind: "media", fields: all.map((f) => f.pointer), ...(src.list ? { list: src.list } : {}) };
       this.add(place);
       const field = all.map((f) => f.value).join(" ");
-      return src.list && isDisc(props["className"])
-        ? organism(SHAPE.ShapeAvatar.name, { place: place.place, field })
-        : organism(SHAPE.ShapeMedia.name, { aspect: ratioClass(props["ratio"]), ...(fillsHalf(props["className"]) ? { fill: "half" } : {}), place: place.place, field });
+      if (src.list && isDisc(props["className"])) return organism(SHAPE.ShapeAvatar.name, { place: place.place, field });
+      // layout classes (order-first, portrait max-w-sm / md:min-h-128 / md:aspect-auto) stay on ShapeMedia, not a wrapper:
+      // md:aspect-auto must override aspect-* on the same node, and order-* must be on the grid item. fill:half is unchanged.
+      const half = fillsHalf(props["className"]);
+      const layout = mediaLayout(props["className"], half);
+      if (layout) this.check(layout);
+      return organism(SHAPE.ShapeMedia.name, { aspect: ratioClass(props["ratio"]), ...(half ? { fill: "half" } : {}), ...(layout ? { className: layout } : {}), place: place.place, field });
     }
     return undefined;
   }

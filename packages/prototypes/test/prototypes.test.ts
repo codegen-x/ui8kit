@@ -345,6 +345,41 @@ describe("layout, padding and the action: the wireframe and the clean block", ()
       .toEqual([["action", "cta-primary"], ["secondaryAction", "cta-secondary"]]);
   });
 
+  const mediaFrame = (html: string) => new JSDOM(html).window.document.querySelector('[data-slot="media-frame"]')!;
+  const mediaClass = async (item: string, props: Record<string, unknown> = {}) => [...mediaFrame(await ssr(fileOf(item, "wireframe"), props)).classList];
+
+  test("hero-simple (wireframe): mediaStart / mediaTop order the picture first; portrait narrows and tallies it; mediaEnd keeps the default", async () => {
+    const end = await mediaClass("hero-simple", {});
+    expect(end).toContain("aspect-4/3");
+    expect(end).not.toContain("order-first");
+    expect(end).not.toContain("max-w-sm");
+    const start = await mediaClass("hero-simple", { media: "start" });
+    expect(start).toContain("order-first");
+    expect(start).toContain("aspect-4/3");
+    expect(start).not.toContain("max-w-sm");
+    const top = await mediaClass("hero-simple", { media: "top" });
+    expect(top).toContain("order-first");
+    expect(top).toContain("aspect-21/9");
+    const bottom = await mediaClass("hero-simple", { media: "bottom" });
+    expect(bottom).not.toContain("order-first");
+    expect(bottom).toContain("aspect-21/9");
+    const portrait = ["max-w-sm", "md:min-h-128", "md:aspect-auto", "mx-auto", "w-full"] as const;
+    const endPortrait = await mediaClass("hero-simple", { ratio: "portrait" });
+    for (const c of portrait) expect(endPortrait).toContain(c);
+    expect(endPortrait).not.toContain("order-first");
+    const startPortrait = await mediaClass("hero-simple", { media: "start", ratio: "portrait" });
+    expect(startPortrait).toContain("order-first");
+    for (const c of portrait) expect(startPortrait).toContain(c);
+  });
+
+  test("feature-showcase-simple (wireframe): media start and top put the picture first (order-first)", async () => {
+    expect(await mediaClass("feature-showcase-simple", {})).not.toContain("order-first");
+    expect(await mediaClass("feature-showcase-simple", { media: "start" })).toContain("order-first");
+    const top = await mediaClass("feature-showcase-simple", { media: "top" });
+    expect(top).toContain("order-first");
+    expect(top).toContain("aspect-21/9");
+  });
+
   const split = c0("SplitSimple");
   for (const media of ["end", "start"] as const) for (const mode of ["wireframe", "clean"]) test(`split-simple ${media} (${mode}): two halves, the picture fills its half (rounded-none, full height), the padding on the copy`, async () => {
     const doc = new JSDOM(await ssr(fileOf("split-simple", mode), { ...(mode === "clean" ? split : {}), media })).window.document;

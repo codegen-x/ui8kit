@@ -63,10 +63,10 @@ export const SHAPE = {
     props: { Class: cn(cond(eq(ref("tone"), "secondary"), ROLE["cta-secondary"], ROLE["cta-primary"]), "w-24 shrink-0") },
     attrs: hooks("cta", cond(eq(ref("tone"), "secondary"), "cta-secondary", "cta-primary"), "button"),
   })]),
-  ShapeMedia: shape("shape-media", "ShapeMedia", "The frame of a picture (wireframe): muted, full width, at the ratio of the picture (aspect-*); fill half: the picture fills its half of a split to the edge (no rounding, the full height of the row from md up).", [
+  ShapeMedia: { ...shape("shape-media", "ShapeMedia", "The frame of a picture (wireframe): muted, full width, at the ratio of the picture (aspect-*); fill half: the picture fills its half of a split to the edge (no rounding, the full height of the row from md up). Layout classes of the clean MediaFrame (order-first, portrait max-w-sm / md:min-h-128 / md:aspect-auto) arrive on `className` and stay on this same node, so they override aspect and order the grid item.", [
     { name: "aspect", type: ts("aspect-square", "aspect-4/3", "aspect-3/4", "aspect-21/9", "aspect-video"), default: "aspect-4/3" },
     { name: "fill", type: ts("frame", "half"), default: "frame" },
-  ], [use("Box", { props: { Class: cn(cond(eq(ref("fill"), "half"), `${MEDIA_HALF} w-full`, `${ROLE.media} w-full`), ref("aspect"), cond(eq(ref("fill"), "half"), "md:aspect-auto md:h-full", "")) }, attrs: hooks("media", "media", "media-frame") })]),
+  ], [use("Box", { props: { Class: cn(cond(eq(ref("fill"), "half"), `${MEDIA_HALF} w-full`, `${ROLE.media} w-full`), ref("aspect"), cond(eq(ref("fill"), "half"), "md:aspect-auto md:h-full", ""), ref("className")) }, attrs: hooks("media", "media", "media-frame") })]), className: true },
   ShapeAvatar: shape("shape-avatar", "ShapeAvatar", "The disc of a portrait (wireframe): accent, h-16 w-16, round.", [],
     [use("Box", { props: { Class: `${ROLE.avatar} shrink-0` }, attrs: hooks("avatar", "avatar") })]),
 } satisfies Record<string, OrganismSpec>;
