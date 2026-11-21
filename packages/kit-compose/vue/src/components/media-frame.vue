@@ -5,7 +5,9 @@
   shows the built-in neutral placeholders (base64 data URIs, one light and one dark), so a page can be laid out
   before it has pictures; the placeholder is decorative (`alt` is empty), stands in for a real `src` and is
   switched by the theme token. A real picture gets `alt` and loads lazily. `ratio` comes from the recipe; the
-  corners are the plain theme radius.
+  corners are the plain theme radius. `srcset` lists sizes of `src` (written by an export, e.g. WebP 960w /
+  1280w / 1920w) and `sizes` says how wide the picture is shown, so the browser picks a size; the dark picture
+  takes the srcset only when it is `src` (no `darkSrc`).
 -->
 <script lang="ts">
 import { variants } from "../utils";
@@ -30,6 +32,8 @@ export type MediaFrameProps = {
   src?: string;
   darkSrc?: string;
   ratio?: "16/9" | "4/3" | "1/1" | "3/4" | "21/9";
+  srcset?: string;
+  sizes?: string;
   class?: string;
 };
 </script>
@@ -38,15 +42,27 @@ export type MediaFrameProps = {
 import { computed } from "vue";
 import Box from "../compose/Box.vue";
 import Image from "../compose/Image.vue";
-import { at, cn, urlOf } from "../utils";
+import { at, cn, srcsetOf, urlOf } from "../utils";
 import { PLACEHOLDER } from "./media-frame.assets";
 
-const { alt, src, darkSrc, ratio = "16/9", class: className } = defineProps<MediaFrameProps>();
+const {
+  alt,
+  src,
+  darkSrc,
+  ratio = "16/9",
+  srcset,
+  sizes = "100vw",
+  class: className,
+} = defineProps<MediaFrameProps>();
 const lightSrc = computed(() => src ? src : at(PLACEHOLDER, "light"));
 const nightSrc = computed(() => darkSrc ? darkSrc : (src ? src : at(PLACEHOLDER, "dark")));
 const shownAlt = computed(() => src ? alt : "");
 const loadHint = computed(() => src ? "lazy" : undefined);
 const decodeHint = computed(() => src ? "async" : undefined);
+const lightSet = computed(() => (src && srcset) ? srcset : undefined);
+const nightSet = computed(() => darkSrc ? undefined : lightSet.value);
+const lightSizes = computed(() => lightSet.value ? sizes : undefined);
+const nightSizes = computed(() => nightSet.value ? sizes : undefined);
 </script>
 
 <template>
@@ -57,6 +73,8 @@ const decodeHint = computed(() => src ? "async" : undefined);
   >
     <Image
       :src="urlOf(lightSrc, true)"
+      :srcset="srcsetOf(lightSet)"
+      :sizes="lightSizes"
       :alt="shownAlt"
       :loading="loadHint"
       :decoding="decodeHint"
@@ -65,6 +83,8 @@ const decodeHint = computed(() => src ? "async" : undefined);
     />
     <Image
       :src="urlOf(nightSrc, true)"
+      :srcset="srcsetOf(nightSet)"
+      :sizes="nightSizes"
       :alt="shownAlt"
       :loading="loadHint"
       :decoding="decodeHint"

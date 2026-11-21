@@ -15,6 +15,7 @@ export type ArticleLeadProps = {
   description?: string;
   image?: string;
   imageAlt: string;
+  imageSrcset?: string;
   author: string;
   avatar?: string;
   date: string;
@@ -31,6 +32,7 @@ export function ArticleLead({
   description = "",
   image = "",
   imageAlt,
+  imageSrcset = "",
   author,
   avatar = "",
   date,
@@ -92,7 +94,7 @@ export function ArticleLead({
               </Stack>
             </Group>
           </Stack>
-          <MediaFrame alt={imageAlt} src={image} ratio={ratio} className={pictureClass} />
+          <MediaFrame alt={imageAlt} src={image} srcset={imageSrcset} ratio={ratio} className={pictureClass} />
         </Box>
       </Container>
     </Block>

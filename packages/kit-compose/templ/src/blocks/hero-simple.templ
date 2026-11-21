@@ -19,6 +19,7 @@ type HeroSimpleProps struct {
 	Description any `json:"description"`
 	Image any `json:"image"`
 	ImageAlt any `json:"imageAlt"`
+	ImageSrcset any `json:"imageSrcset"`
 	ImageDark any `json:"imageDark"`
 	ActionLabel any `json:"actionLabel"`
 	ActionHref any `json:"actionHref"`
@@ -40,6 +41,7 @@ templ HeroSimple(p HeroSimpleProps) {
 	{{ vDescription := uiutils.Def(p.Description, "") }}
 	{{ vImage := p.Image }}
 	{{ vImageAlt := p.ImageAlt }}
+	{{ vImageSrcset := p.ImageSrcset }}
 	{{ vImageDark := p.ImageDark }}
 	{{ vActionLabel := uiutils.Def(p.ActionLabel, "") }}
 	{{ vActionHref := uiutils.Def(p.ActionHref, "") }}
@@ -89,7 +91,7 @@ templ HeroSimple(p HeroSimpleProps) {
 						}
 					}
 				}
-				@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, DarkSrc: vImageDark, Ratio: vPictureRatio, Class: uiutils.Cnv(vPictureClass)})
+				@MediaFrame(MediaFrameProps{Alt: uiutils.Cond(uiutils.T(vImageAlt), vImageAlt, vTitle), Src: vImage, DarkSrc: vImageDark, Srcset: vImageSrcset, Ratio: vPictureRatio, Class: uiutils.Cnv(vPictureClass)})
 			}
 		}
 	}

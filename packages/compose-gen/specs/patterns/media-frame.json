@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "pattern.media-frame",
   "name": "MediaFrame",
-  "docs": "A picture in a fixed ratio that follows the theme. `src` is the picture of the light theme, `darkSrc` the one of the dark theme (without it the dark theme shows `src`). Without both (an empty string counts as none) it shows the built-in neutral placeholders (base64 data URIs, one light and one dark), so a page can be laid out before it has pictures; the placeholder is decorative (`alt` is empty), stands in for a real `src` and is switched by the theme token. A real picture gets `alt` and loads lazily. `ratio` comes from the recipe; the corners are the plain theme radius.",
+  "docs": "A picture in a fixed ratio that follows the theme. `src` is the picture of the light theme, `darkSrc` the one of the dark theme (without it the dark theme shows `src`). Without both (an empty string counts as none) it shows the built-in neutral placeholders (base64 data URIs, one light and one dark), so a page can be laid out before it has pictures; the placeholder is decorative (`alt` is empty), stands in for a real `src` and is switched by the theme token. A real picture gets `alt` and loads lazily. `ratio` comes from the recipe; the corners are the plain theme radius. `srcset` lists sizes of `src` (written by an export, e.g. WebP 960w / 1280w / 1920w) and `sizes` says how wide the picture is shown, so the browser picks a size; the dark picture takes the srcset only when it is `src` (no `darkSrc`).",
   "records": {},
   "props": [
     {
@@ -29,6 +29,17 @@
       },
       "docs": "width to height",
       "default": "16/9"
+    },
+    {
+      "name": "srcset",
+      "type": "string",
+      "docs": "sizes of `src` as a srcset (`hero-960.webp 960w, hero-1280.webp 1280w`); used only with a `src`, for the dark theme only without `darkSrc`"
+    },
+    {
+      "name": "sizes",
+      "type": "string",
+      "docs": "how wide the picture is shown (the `sizes` of the srcset)",
+      "default": "100vw"
     }
   ],
   "className": true,
@@ -145,6 +156,86 @@
           }
         ]
       }
+    },
+    {
+      "name": "lightSet",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "op": "and",
+            "args": [
+              {
+                "$": "src"
+              },
+              {
+                "$": "srcset"
+              }
+            ]
+          },
+          {
+            "$": "srcset"
+          },
+          {
+            "op": "undef",
+            "args": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "nightSet",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "$": "darkSrc"
+          },
+          {
+            "op": "undef",
+            "args": []
+          },
+          {
+            "$": "lightSet"
+          }
+        ]
+      }
+    },
+    {
+      "name": "lightSizes",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "$": "lightSet"
+          },
+          {
+            "$": "sizes"
+          },
+          {
+            "op": "undef",
+            "args": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "nightSizes",
+      "value": {
+        "op": "cond",
+        "args": [
+          {
+            "$": "nightSet"
+          },
+          {
+            "$": "sizes"
+          },
+          {
+            "op": "undef",
+            "args": []
+          }
+        ]
+      }
     }
   ],
   "slots": [],
@@ -192,6 +283,12 @@
             "Src": {
               "$": "lightSrc"
             },
+            "SrcSet": {
+              "$": "lightSet"
+            },
+            "Sizes": {
+              "$": "lightSizes"
+            },
             "Alt": {
               "$": "shownAlt"
             },
@@ -212,6 +309,12 @@
           "props": {
             "Src": {
               "$": "nightSrc"
+            },
+            "SrcSet": {
+              "$": "nightSet"
+            },
+            "Sizes": {
+              "$": "nightSizes"
             },
             "Alt": {
               "$": "shownAlt"

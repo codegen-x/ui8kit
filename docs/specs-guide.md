@@ -200,7 +200,14 @@ Two flat shapes carry the address, both optional, both added by the helpers of `
 - a section picture: the props `image` and `imageAlt` (`...imageProps`; `imageAlt` falls back to the title) and `pictureOf(ratio)` in the view;
 - a picture per record: an optional `image` field on the record (`["image", "string", true]`) and `src: ref("item.image")` on the MediaFrame.
 
-`image` and `imageAlt` (and `landmarkLabel`) are not counted by the prop limit of the readability group: 20 props per organism (blocking), aim 15 (an organism over 15 is printed as a `warn` note of `compose-gen check`, the gate stays green). Never put a stock URL in a sample: the placeholder is the sample.
+Sizes (srcset): `MediaFrame` takes `srcset` (sizes of `src`, e.g. `hero-960.webp 960w, hero-1280.webp 1280w`) and `sizes` (default `100vw`);
+the light picture gets them only with a `src`, the dark one only without `darkSrc` (else the dark theme would show the light sizes). Blocks carry
+them as one flat optional prop `imageSrcset` next to `image` (record field `["imageSrcset", "string", true]`, `srcset: ref("item.imageSrcset")`).
+An export writes it (WebP sizes of the downloaded picture); it is no content, so content models have no field for it (`DERIVED` of
+packages/compose-gen/model: allowed next to `image`). Blocks with it today: the simple line pictures that Media mode fills (hero, split, promo,
+feature-showcase, figure, article-lead, profile-intro, product, locations; records of menu, products, rooms).
+
+`image`, `imageAlt`, `imageSrcset` (and `landmarkLabel`) are not counted by the prop limit of the readability group: 20 props per organism (blocking), aim 15 (an organism over 15 is printed as a `warn` note of `compose-gen check`, the gate stays green). Never put a stock URL in a sample: the placeholder is the sample.
 
 ## 6. ARIA
 

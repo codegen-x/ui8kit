@@ -104,7 +104,7 @@ const copy = computed(() => ((layout as string) === "rows") ? "md:col-span-2" : 
         </Stack>
         <List tag="ul" :class="cn('m-0 w-full list-none p-0', cn('grid', grid))">
           <ListItem v-for="r in items" :key="r.id" :class="item" data-slot="room">
-            <MediaFrame :alt="r.title" :src="r.image" ratio="4/3" class="rounded" />
+            <MediaFrame :alt="r.title" :src="r.image" :srcset="r.imageSrcset" ratio="4/3" class="rounded" />
             <Stack gap="2" align="start" :class="copy">
               <LinkPlain v-if="r.href" :href="urlOf(r.href)" class="hover:text-primary">
                 <Title :as="(level + 1)" size="lg" weight="semibold" class="text-start">

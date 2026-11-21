@@ -16,6 +16,7 @@ export type SplitSimpleProps = {
   description?: string;
   image?: string;
   imageAlt?: string;
+  imageSrcset?: string;
   imageDark?: string;
   actionLabel?: string;
   actionHref?: string;
@@ -33,6 +34,7 @@ export function SplitSimple({
   description = "",
   image,
   imageAlt,
+  imageSrcset,
   imageDark,
   actionLabel = "",
   actionHref = "",
@@ -57,6 +59,7 @@ export function SplitSimple({
             alt={(imageAlt ? imageAlt : title)}
             src={image}
             darkSrc={imageDark}
+            srcset={imageSrcset}
             ratio="4/3"
             class="rounded-none md:aspect-auto md:h-full"
           />
@@ -102,6 +105,7 @@ export function SplitSimple({
             alt={(imageAlt ? imageAlt : title)}
             src={image}
             darkSrc={imageDark}
+            srcset={imageSrcset}
             ratio="4/3"
             class="rounded-none md:aspect-auto md:h-full"
           />

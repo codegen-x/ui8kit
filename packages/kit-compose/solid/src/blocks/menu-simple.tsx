@@ -91,7 +91,7 @@ export function MenuSimple({
           <List tag="ul" class={cn("m-0 w-full list-none p-0", cn("grid", grid))}>
             <For each={items ?? []}>{(p) => (
               <ListItem class={item} data-slot="dish">
-                <MediaFrame alt={p.title} src={p.image} ratio="4/3" class={pictureClass} />
+                <MediaFrame alt={p.title} src={p.image} srcset={p.imageSrcset} ratio="4/3" class={pictureClass} />
                 <Stack gap="2" align="start" class={copy}>
                   {p.badge ? (
                     <Badge variant="default">

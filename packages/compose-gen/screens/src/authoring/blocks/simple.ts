@@ -6,7 +6,7 @@ import { add, and, cn, cond, each, eq, ne, op, or, ref, text, use, when, organis
 import type { OrganismSpec, Value } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { wide } from "../components/frames";
-import { id, imageAlt, imageProps, title, tsOf } from "../props";
+import { id, imageAlt, imageProps, imageSrcset, title, tsOf } from "../props";
 
 export const O = "organism.";
 export const level = { name: "level", type: ts("1 | 2 | 3"), default: 2, docs: "the level of the heading (1 on the first section of a page)" };
@@ -42,7 +42,7 @@ export const section = (...body: Parameters<typeof use>[2][]) =>
 export const lead = (size: string) => when(ref("description"), [use("Text", { props: { Size: size, Class: cn("text-muted-foreground", textAlign) } }, text(ref("description")))]);
 
 export const picture = (ratio: Value, className?: Value) =>
-  organism("MediaFrame", { alt: imageAlt(), src: ref("image"), darkSrc: ref("imageDark"), ratio, ...(className !== undefined ? { className } : {}) });
+  organism("MediaFrame", { alt: imageAlt(), src: ref("image"), darkSrc: ref("imageDark"), srcset: ref("imageSrcset"), ratio, ...(className !== undefined ? { className } : {}) });
 /** an action: drawn when its label and its address are both set; the first is the primary button, the second the secondary */
 export const action = (label: string, href: string, variant: "default" | "secondary") =>
   when(and(ref(label), ref(href)), [use("LinkButton", { props: { Variant: variant, Size: "lg", Href: ref(href) } }, text(ref(label)))]);
@@ -80,6 +80,7 @@ const heroSimple = spec(`${O}hero-simple`, "HeroSimple", "The simple hero (model
     title,
     description,
     ...imageProps,
+    imageSrcset,
     imageDark,
     ...actionProps,
     level,
@@ -109,6 +110,7 @@ const splitSimple = spec(`${O}split-simple`, "SplitSimple", "The simple split (m
     title,
     description,
     ...imageProps,
+    imageSrcset,
     imageDark,
     ...actionProps,
     level,

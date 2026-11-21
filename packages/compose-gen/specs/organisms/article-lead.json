@@ -35,6 +35,12 @@
       "docs": "alt text of the picture"
     },
     {
+      "name": "imageSrcset",
+      "type": "string",
+      "default": "",
+      "docs": "sizes of the picture as a srcset (`hero-960.webp 960w, hero-1280.webp 1280w`); none: `image` only"
+    },
+    {
       "name": "author",
       "type": "string",
       "required": true,
@@ -462,6 +468,9 @@
                     },
                     "src": {
                       "$": "image"
+                    },
+                    "srcset": {
+                      "$": "imageSrcset"
                     },
                     "ratio": {
                       "$": "ratio"

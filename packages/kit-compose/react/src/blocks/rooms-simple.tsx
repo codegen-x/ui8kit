@@ -88,7 +88,7 @@ export function RoomsSimple({
           <List tag="ul" className={cn("m-0 w-full list-none p-0", cn("grid", grid))}>
             {(items ?? []).map((r) => (
               <ListItem key={r.id} className={item} data-slot="room">
-                <MediaFrame alt={r.title} src={r.image} ratio="4/3" className="rounded" />
+                <MediaFrame alt={r.title} src={r.image} srcset={r.imageSrcset} ratio="4/3" className="rounded" />
                 <Stack gap="2" align="start" className={copy}>
                   {r.href ? (
                     <LinkPlain href={urlOf(r.href)} className="hover:text-primary">

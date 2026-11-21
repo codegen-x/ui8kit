@@ -110,7 +110,7 @@ const cost = computed(() => ((layout as string) === "rows") ? "shrink-0 text-end
         </Stack>
         <List tag="ul" :class="cn('m-0 w-full list-none p-0', cn('grid', grid))">
           <ListItem v-for="p in items" :key="p.id" :class="item" data-slot="dish">
-            <MediaFrame :alt="p.title" :src="p.image" ratio="4/3" :class="pictureClass" />
+            <MediaFrame :alt="p.title" :src="p.image" :srcset="p.imageSrcset" ratio="4/3" :class="pictureClass" />
             <Stack gap="2" align="start" :class="copy">
               <Badge v-if="p.badge" variant="default">
                 {{ p.badge }}

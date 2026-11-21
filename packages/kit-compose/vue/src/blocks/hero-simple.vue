@@ -14,6 +14,7 @@ export type HeroSimpleProps = {
   description?: string;
   image?: string;
   imageAlt?: string;
+  imageSrcset?: string;
   imageDark?: string;
   actionLabel?: string;
   actionHref?: string;
@@ -49,6 +50,7 @@ const {
   description = "",
   image,
   imageAlt,
+  imageSrcset,
   imageDark,
   actionLabel = "",
   actionHref = "",
@@ -137,6 +139,7 @@ const pictureClass = computed(() =>
           :alt="(imageAlt ? imageAlt : title)"
           :src="image"
           :darkSrc="imageDark"
+          :srcset="imageSrcset"
           :ratio="pictureRatio"
           :class="pictureClass"
         />

@@ -17,6 +17,7 @@ export type ProfileIntroProps = {
   description?: string;
   image?: string;
   imageAlt: string;
+  imageSrcset?: string;
   links: ProfileLink[];
   level?: 1 | 2 | 3;
   padding?: "compact" | "standard" | "spacious";
@@ -32,6 +33,7 @@ export function ProfileIntro({
   description = "",
   image = "",
   imageAlt,
+  imageSrcset = "",
   links,
   level = 2,
   padding = "standard",
@@ -107,7 +109,7 @@ export function ProfileIntro({
             </List>
           </Stack>
           <Box class={pictureCell}>
-            <MediaFrame alt={imageAlt} src={image} ratio="1/1" class={pictureClass} />
+            <MediaFrame alt={imageAlt} src={image} srcset={imageSrcset} ratio="1/1" class={pictureClass} />
           </Box>
         </Box>
       </Container>

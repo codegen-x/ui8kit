@@ -16,6 +16,11 @@
         "optional": true
       },
       {
+        "name": "imageSrcset",
+        "type": "string",
+        "optional": true
+      },
+      {
         "name": "title",
         "type": "string"
       },
@@ -535,6 +540,9 @@
                                 },
                                 "src": {
                                   "$": "r.image"
+                                },
+                                "srcset": {
+                                  "$": "r.imageSrcset"
                                 },
                                 "ratio": "4/3",
                                 "className": "rounded"

@@ -15,6 +15,7 @@ type FigureSimpleProps struct {
 	Id any `json:"id"`
 	Image any `json:"image"`
 	ImageAlt any `json:"imageAlt"`
+	ImageSrcset any `json:"imageSrcset"`
 	Title any `json:"title"`
 	Description any `json:"description"`
 	Credit any `json:"credit"`
@@ -28,6 +29,7 @@ templ FigureSimple(p FigureSimpleProps) {
 	{{ vId := p.Id }}
 	{{ vImage := uiutils.Def(p.Image, "") }}
 	{{ vImageAlt := p.ImageAlt }}
+	{{ vImageSrcset := uiutils.Def(p.ImageSrcset, "") }}
 	{{ vTitle := p.Title }}
 	{{ vDescription := uiutils.Def(p.Description, "") }}
 	{{ vCredit := uiutils.Def(p.Credit, "") }}
@@ -44,7 +46,7 @@ templ FigureSimple(p FigureSimpleProps) {
 	@compose.Block(compose.BlockProps{BoxProps: box.BoxProps{Tag: "section", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "compact")), "py-8 lg:py-16", uiutils.Cond(uiutils.T(uiutils.Eq(vPadding, "spacious")), "py-24 lg:py-40", "py-16 lg:py-32"))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "aria-label", vLandmarkLabel, "data-slot", "figure-simple")}}) {
 		@compose.Container(compose.ContainerProps{BoxProps: box.BoxProps{Class: "mx-auto w-full max-w-6xl px-4"}}) {
 			@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Tag: "figure", Class: uiutils.S(vFrame)}}) {
-				@MediaFrame(MediaFrameProps{Alt: vImageAlt, Src: vImage, Ratio: vRatio, Class: uiutils.Cnv(vPictureClass)})
+				@MediaFrame(MediaFrameProps{Alt: vImageAlt, Src: vImage, Srcset: vImageSrcset, Ratio: vRatio, Class: uiutils.Cnv(vPictureClass)})
 				@compose.Stack(compose.StackProps{Gap: "2", Align: uiutils.S(vCopyAlign), BoxProps: box.BoxProps{Class: uiutils.S(vCaption)}}) {
 					@compose.Text(compose.TextProps{Size: "base", Weight: "semibold", TextProps: text.TextProps{Class: uiutils.S(vCopyText), Attrs: uiutils.Attrs("id", vTitleId)}}) {
 						{ uiutils.Text(vTitle) }

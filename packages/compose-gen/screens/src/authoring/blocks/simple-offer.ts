@@ -12,6 +12,7 @@ const str = (name: string, docs: string, required = false) => (required ? { name
 const actionPair = [str("actionLabel", "the label of the action; the link is drawn when the label and the address are both set"), str("actionHref", "the address of the action")];
 const image = str("image", "address of the picture; none: the placeholder");
 const imageAlt = str("imageAlt", "alt text of the picture", true);
+const imageSrcset = str("imageSrcset", "sizes of the picture as a srcset (`hero-960.webp 960w, hero-1280.webp 1280w`); none: `image` only");
 const axis = (name: string, ...values: string[]) => ({ name, type: tsOf(...values), default: values[0] });
 const pill = when(ref("badge"), [use("Badge", { props: { Variant: "secondary" } }, text(ref("badge")))]);
 
@@ -34,7 +35,7 @@ const ctaSimple = spec(`${O}cta-simple`, "CtaSimple", "The simple call to action
 
 // ---- PromoSimple (promo@1): one offer with a deadline: the discount as a badge, the heading, the deadline, a line, a code and the action; a picture
 const promoSimple = spec(`${O}promo-simple`, "PromoSimple", "The simple promo (model promo@1): one offer with the discount as a badge, the heading, the deadline as text (no countdown), a description, an optional promo code, one action and a picture. Axes: media (end: the picture after the copy from md up, start: before it, top: above it, wide).", {
-  props: [id, badge, title, str("deadline", "the deadline of the offer as it is shown (until 31 December)", true), description, str("code", "a promo code; empty: none"), ...actionPair, image, imageAlt, level, padding, align, axis("media", "end", "start", "top")],
+  props: [id, badge, title, str("deadline", "the deadline of the offer as it is shown (until 31 December)", true), description, str("code", "a promo code; empty: none"), ...actionPair, image, imageAlt, imageSrcset, level, padding, align, axis("media", "end", "start", "top")],
   derived: [
     titleId, ...teamDerived,
     chain("frame", [[is("media", "top"), "flex flex-col gap-8"]], "grid grid-cols-1 items-center gap-12 md:grid-cols-2"),
@@ -51,7 +52,7 @@ const promoSimple = spec(`${O}promo-simple`, "PromoSimple", "The simple promo (m
         when(ref("code"), [use("Text", { props: { Size: "sm", Class: cn("rounded border border-border px-4 py-2", textAlign) } }, text(ref("code")))]),
         action("actionLabel", "actionHref", "default")),
       use("Box", { props: { Class: ref("pictureCell") } },
-        organism("MediaFrame", { alt: ref("imageAlt"), src: ref("image"), ratio: ref("ratio"), className: "rounded" }))))],
+        organism("MediaFrame", { alt: ref("imageAlt"), src: ref("image"), srcset: ref("imageSrcset"), ratio: ref("ratio"), className: "rounded" }))))],
 });
 
 // ---- GuaranteesSimple (guarantees@1): the promises of a business (delivery, quality, returns) as a strip on a muted band or on cards

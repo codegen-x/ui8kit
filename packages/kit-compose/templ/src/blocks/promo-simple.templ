@@ -23,6 +23,7 @@ type PromoSimpleProps struct {
 	ActionHref any `json:"actionHref"`
 	Image any `json:"image"`
 	ImageAlt any `json:"imageAlt"`
+	ImageSrcset any `json:"imageSrcset"`
 	Level any `json:"level"`
 	Padding any `json:"padding"`
 	Align any `json:"align"`
@@ -42,6 +43,7 @@ templ PromoSimple(p PromoSimpleProps) {
 	{{ vActionHref := uiutils.Def(p.ActionHref, "") }}
 	{{ vImage := uiutils.Def(p.Image, "") }}
 	{{ vImageAlt := p.ImageAlt }}
+	{{ vImageSrcset := uiutils.Def(p.ImageSrcset, "") }}
 	{{ vLevel := uiutils.Def(p.Level, float64(2)) }}
 	{{ vPadding := uiutils.Def(p.Padding, "standard") }}
 	{{ vAlign := uiutils.Def(p.Align, "start") }}
@@ -85,7 +87,7 @@ templ PromoSimple(p PromoSimpleProps) {
 					}
 				}
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(vPictureCell)}}) {
-					@MediaFrame(MediaFrameProps{Alt: vImageAlt, Src: vImage, Ratio: vRatio, Class: uiutils.Cnv("rounded")})
+					@MediaFrame(MediaFrameProps{Alt: vImageAlt, Src: vImage, Srcset: vImageSrcset, Ratio: vRatio, Class: uiutils.Cnv("rounded")})
 				}
 			}
 		}

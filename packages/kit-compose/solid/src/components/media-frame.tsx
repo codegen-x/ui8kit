@@ -5,11 +5,13 @@
  * shows the built-in neutral placeholders (base64 data URIs, one light and one dark), so a page can be laid out
  * before it has pictures; the placeholder is decorative (`alt` is empty), stands in for a real `src` and is
  * switched by the theme token. A real picture gets `alt` and loads lazily. `ratio` comes from the recipe; the
- * corners are the plain theme radius.
+ * corners are the plain theme radius. `srcset` lists sizes of `src` (written by an export, e.g. WebP 960w /
+ * 1280w / 1920w) and `sizes` says how wide the picture is shown, so the browser picks a size; the dark picture
+ * takes the srcset only when it is `src` (no `darkSrc`).
  */
 import { type JSX } from "solid-js";
 import { Box, Image } from "../compose";
-import { at, cn, urlOf, variants } from "../utils";
+import { at, cn, srcsetOf, urlOf, variants } from "../utils";
 import { PLACEHOLDER } from "./media-frame.assets";
 
 /** MediaFrame: the classes of each value (shadcn/cva style). */
@@ -32,15 +34,29 @@ export type MediaFrameProps = {
   src?: string;
   darkSrc?: string;
   ratio?: "16/9" | "4/3" | "1/1" | "3/4" | "21/9";
+  srcset?: string;
+  sizes?: string;
   class?: string;
 };
 
-export function MediaFrame({ alt, src, darkSrc, ratio = "16/9", class: className }: MediaFrameProps) {
+export function MediaFrame({
+  alt,
+  src,
+  darkSrc,
+  ratio = "16/9",
+  srcset,
+  sizes = "100vw",
+  class: className,
+}: MediaFrameProps) {
   const lightSrc = src ? src : at(PLACEHOLDER, "light");
   const nightSrc = darkSrc ? darkSrc : (src ? src : at(PLACEHOLDER, "dark"));
   const shownAlt = src ? alt : "";
   const loadHint = src ? "lazy" : undefined;
   const decodeHint = src ? "async" : undefined;
+  const lightSet = (src && srcset) ? srcset : undefined;
+  const nightSet = darkSrc ? undefined : lightSet;
+  const lightSizes = lightSet ? sizes : undefined;
+  const nightSizes = nightSet ? sizes : undefined;
   return (
     <Box
       class={cn(mediaFrameVariants({ ratio: ratio }), className)}
@@ -49,6 +65,8 @@ export function MediaFrame({ alt, src, darkSrc, ratio = "16/9", class: className
     >
       <Image
         src={urlOf(lightSrc, true)}
+        srcset={srcsetOf(lightSet)}
+        sizes={lightSizes}
         alt={shownAlt}
         loading={loadHint}
         decoding={decodeHint}
@@ -57,6 +75,8 @@ export function MediaFrame({ alt, src, darkSrc, ratio = "16/9", class: className
       />
       <Image
         src={urlOf(nightSrc, true)}
+        srcset={srcsetOf(nightSet)}
+        sizes={nightSizes}
         alt={shownAlt}
         loading={loadHint}
         decoding={decodeHint}

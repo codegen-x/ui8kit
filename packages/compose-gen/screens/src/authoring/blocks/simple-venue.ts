@@ -19,7 +19,7 @@ const price = (field: string, cls: Value = "text-start") => use("Text", { props:
 
 // ---- MenuSimple (menu@1): dishes on cards (a picture, an optional badge, the name, the weight, a line, the price) or menu rows
 const menuSimple = spec(`${O}menu-simple`, "MenuSimple", "The simple menu (model menu@1): the heading, a description and the dishes as a list, each with a picture, an optional badge (a new or a spicy dish), the name, the weight or the portion, a line and the price as it is shown. Axes: layout (cards: a card surface per dish, the picture on top; rows: the picture at the start, the price at the end), cols (3, 2, 4 columns of the cards).", {
-  records: { MenuDish: fields(["id", "string"], ["image", "string", true], ["title", "string"], ["weight", "string", true], ["price", "string"], ["description", "string", true], ["badge", "string", true]) },
+  records: { MenuDish: fields(["id", "string"], ["image", "string", true], ["imageSrcset", "string", true], ["title", "string"], ["weight", "string", true], ["price", "string"], ["description", "string", true], ["badge", "string", true]) },
   props: [id, title, description, list("items", "MenuDish", "the dishes, in the order they are shown (1 to 8)"), level, padding, centered, axis("layout", "cards", "rows"), axis("cols", "3", "2", "4")],
   derived: [
     titleId, ...teamDerived,
@@ -33,7 +33,7 @@ const menuSimple = spec(`${O}menu-simple`, "MenuSimple", "The simple menu (model
     ulist(cn("grid", ref("grid")),
       each(ref("items"), "p", ref("p.id"),
         use("ListItem", { props: { Class: ref("item") }, attrs: { "data-testid": "dish" } },
-          organism("MediaFrame", { alt: ref("p.title"), src: ref("p.image"), ratio: "4/3", className: ref("pictureClass") }),
+          organism("MediaFrame", { alt: ref("p.title"), src: ref("p.image"), srcset: ref("p.imageSrcset"), ratio: "4/3", className: ref("pictureClass") }),
           use("Stack", { props: { Gap: "2", Align: "start", Class: ref("copy") } },
             pill("p.badge"),
             itemTitle("p.title", "lg", "text-start"),
@@ -65,7 +65,7 @@ const hoursSimple = spec(`${O}hours-simple`, "HoursSimple", "The simple opening 
 
 // ---- RoomsSimple (rooms@1): rooms or apartments on cards (a picture, the name as a link, the guests, a line, the price a night) or rows
 const roomsSimple = spec(`${O}rooms-simple`, "RoomsSimple", "The simple rooms (model rooms@1): the heading, a description and the rooms as a list, each with a picture, the name (a link when the room has an address), the guests or the size, a line and the price a night as it is shown. Axes: layout (cards: a card surface per room, the picture on top; rows: the picture at the start, a third of the row from md up), cols (3, 2 columns of the cards).", {
-  records: { Room: fields(["id", "string"], ["image", "string", true], ["title", "string"], ["guests", "string", true], ["price", "string"], ["description", "string", true], ["href", "string", true]) },
+  records: { Room: fields(["id", "string"], ["image", "string", true], ["imageSrcset", "string", true], ["title", "string"], ["guests", "string", true], ["price", "string"], ["description", "string", true], ["href", "string", true]) },
   props: [id, title, description, list("items", "Room", "the rooms, in the order they are shown (1 to 6)"), level, padding, centered, axis("layout", "cards", "rows"), axis("cols", "3", "2")],
   derived: [
     titleId, ...teamDerived,
@@ -77,7 +77,7 @@ const roomsSimple = spec(`${O}rooms-simple`, "RoomsSimple", "The simple rooms (m
     ulist(cn("grid", ref("grid")),
       each(ref("items"), "r", ref("r.id"),
         use("ListItem", { props: { Class: ref("item") }, attrs: { "data-testid": "room" } },
-          organism("MediaFrame", { alt: ref("r.title"), src: ref("r.image"), ratio: "4/3", className: "rounded" }),
+          organism("MediaFrame", { alt: ref("r.title"), src: ref("r.image"), srcset: ref("r.imageSrcset"), ratio: "4/3", className: "rounded" }),
           use("Stack", { props: { Gap: "2", Align: "start", Class: ref("copy") } },
             linkTo("r.href", itemTitle("r.title", "lg", "text-start")),
             when(ref("r.guests"), [muted("r.guests")]),

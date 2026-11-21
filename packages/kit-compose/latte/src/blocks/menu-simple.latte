@@ -40,7 +40,7 @@
       {capture $c_11}
         {foreach og_l($v_items) as $v_p}
           {capture $c_10}
-            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'src' => og_get($v_p, ['image']), 'ratio' => '4/3', 'className' => og_cnv([$v_pictureClass])]])|noescape}
+            {=og_include('blocks/media-frame.latte', ['p' => ['alt' => og_get($v_p, ['title']), 'src' => og_get($v_p, ['image']), 'srcset' => og_get($v_p, ['imageSrcset']), 'ratio' => '4/3', 'className' => og_cnv([$v_pictureClass])]])|noescape}
             {capture $c_8}
               {if og_t(og_get($v_p, ['badge']))}
                 {capture $c_4}

@@ -13,6 +13,7 @@ export type LocationsSimpleProps = {
   description?: string;
   image?: string;
   imageAlt: string;
+  imageSrcset?: string;
   items: LocationItem[];
   level?: 1 | 2 | 3;
   padding?: "compact" | "standard" | "spacious";
@@ -41,6 +42,7 @@ const {
   description = "",
   image = "",
   imageAlt,
+  imageSrcset = "",
   items,
   level = 2,
   padding = "standard",
@@ -106,7 +108,7 @@ const pictureClass = computed(() => ((media as string) === "start") ? "md:order-
             </ListItem>
           </List>
         </Stack>
-        <MediaFrame :alt="imageAlt" :src="image" ratio="1/1" :class="pictureClass" />
+        <MediaFrame :alt="imageAlt" :src="image" :srcset="imageSrcset" ratio="1/1" :class="pictureClass" />
       </Box>
     </Container>
   </Block>

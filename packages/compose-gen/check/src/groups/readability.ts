@@ -21,7 +21,7 @@ export const READABILITY_ALLOW: Record<string, Allowance> = {
 /** HeroSection.svelte, hero-section.tsx -> hero-section: one key for every runtime and naming style */
 export const kebab = (stem: string): string => stem.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/([A-Z])([A-Z][a-z])/g, "$1-$2").toLowerCase();
 /** props that are not counted: the landmark name, and the optional picture pair of a section (`image`, `imageAlt`; flat on purpose, ADR 0049 of the chat) */
-const UNCOUNTED = ["landmarkLabel", "image", "imageAlt"];
+const UNCOUNTED = ["landmarkLabel", "image", "imageAlt", "imageSrcset"];
 const COMPONENT = /\.(svelte|vue|tsx)$/;
 const SKIP = [/\.types\.ts$/, /\/index\.ts$/];
 

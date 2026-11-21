@@ -60,7 +60,7 @@ templ ProductsSimple(p ProductsSimpleProps) {
 				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 w-full list-none p-0", uiutils.Cnv("grid", vGrid)))}}) {
 					for _, vP := range uiutils.L(vItems) {
 						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(vItem), Attrs: uiutils.Attrs("data-slot", "product")}}) {
-							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title"), Src: uiutils.Get(vP, "image"), Ratio: "4/3", Class: uiutils.Cnv(vPictureClass)})
+							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vP, "title"), Src: uiutils.Get(vP, "image"), Srcset: uiutils.Get(vP, "imageSrcset"), Ratio: "4/3", Class: uiutils.Cnv(vPictureClass)})
 							@compose.Stack(compose.StackProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{}}) {
 								if uiutils.T(uiutils.Get(vP, "href")) {
 									@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vP, "href"), false), Class: "hover:text-primary"}}) {

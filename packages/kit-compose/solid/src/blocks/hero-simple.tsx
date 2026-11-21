@@ -18,6 +18,7 @@ export type HeroSimpleProps = {
   description?: string;
   image?: string;
   imageAlt?: string;
+  imageSrcset?: string;
   imageDark?: string;
   actionLabel?: string;
   actionHref?: string;
@@ -38,6 +39,7 @@ export function HeroSimple({
   description = "",
   image,
   imageAlt,
+  imageSrcset,
   imageDark,
   actionLabel = "",
   actionHref = "",
@@ -118,6 +120,7 @@ export function HeroSimple({
             alt={(imageAlt ? imageAlt : title)}
             src={image}
             darkSrc={imageDark}
+            srcset={imageSrcset}
             ratio={pictureRatio}
             class={pictureClass}
           />

@@ -20,6 +20,7 @@ export type PromoSimpleProps = {
   actionHref?: string;
   image?: string;
   imageAlt: string;
+  imageSrcset?: string;
   level?: 1 | 2 | 3;
   padding?: "compact" | "standard" | "spacious";
   align?: "start" | "center" | "end";
@@ -38,6 +39,7 @@ export function PromoSimple({
   actionHref = "",
   image = "",
   imageAlt,
+  imageSrcset = "",
   level = 2,
   padding = "standard",
   align = "start",
@@ -109,7 +111,7 @@ export function PromoSimple({
             ) : null}
           </Stack>
           <Box class={pictureCell}>
-            <MediaFrame alt={imageAlt} src={image} ratio={ratio} class="rounded" />
+            <MediaFrame alt={imageAlt} src={image} srcset={imageSrcset} ratio={ratio} class="rounded" />
           </Box>
         </Box>
       </Container>

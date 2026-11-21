@@ -51,6 +51,12 @@
       "docs": "alt text of the picture"
     },
     {
+      "name": "imageSrcset",
+      "type": "string",
+      "default": "",
+      "docs": "sizes of the picture as a srcset (`hero-960.webp 960w, hero-1280.webp 1280w`); none: `image` only"
+    },
+    {
       "name": "items",
       "type": {
         "ts": "LocationItem[]"
@@ -534,6 +540,9 @@
                     },
                     "src": {
                       "$": "image"
+                    },
+                    "srcset": {
+                      "$": "imageSrcset"
                     },
                     "ratio": "1/1",
                     "className": {

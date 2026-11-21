@@ -391,6 +391,7 @@
       "settings": [
         "id",
         "image",
+        "imageSrcset",
         "avatar",
         "level",
         "padding",
@@ -3418,6 +3419,7 @@
       "settings": [
         "id",
         "image",
+        "imageSrcset",
         "level",
         "padding",
         "align",
@@ -3622,6 +3624,7 @@
       "settings": [
         "id",
         "image",
+        "imageSrcset",
         "padding",
         "layout",
         "landmarkLabel"
@@ -4357,6 +4360,7 @@
       "settings": [
         "id",
         "image",
+        "imageSrcset",
         "imageDark",
         "actionHref",
         "secondaryActionHref",
@@ -4962,6 +4966,7 @@
       "settings": [
         "id",
         "image",
+        "imageSrcset",
         "level",
         "padding",
         "align",
@@ -6933,6 +6938,7 @@
         "id",
         "price",
         "image",
+        "imageSrcset",
         "actionHref",
         "level",
         "padding",
@@ -7067,6 +7073,7 @@
       "settings": [
         "id",
         "image",
+        "imageSrcset",
         "level",
         "padding",
         "align",
@@ -7170,6 +7177,7 @@
         "id",
         "actionHref",
         "image",
+        "imageSrcset",
         "level",
         "padding",
         "align",
@@ -8399,6 +8407,7 @@
       "settings": [
         "id",
         "image",
+        "imageSrcset",
         "imageDark",
         "actionHref",
         "secondaryActionHref",

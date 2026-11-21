@@ -16,6 +16,11 @@
         "optional": true
       },
       {
+        "name": "imageSrcset",
+        "type": "string",
+        "optional": true
+      },
+      {
         "name": "title",
         "type": "string"
       },
@@ -525,6 +530,9 @@
                                 },
                                 "src": {
                                   "$": "p.image"
+                                },
+                                "srcset": {
+                                  "$": "p.imageSrcset"
                                 },
                                 "ratio": "4/3",
                                 "className": {

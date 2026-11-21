@@ -11,6 +11,7 @@ export type ArticleLeadProps = {
   description?: string;
   image?: string;
   imageAlt: string;
+  imageSrcset?: string;
   author: string;
   avatar?: string;
   date: string;
@@ -40,6 +41,7 @@ const {
   description = "",
   image = "",
   imageAlt,
+  imageSrcset = "",
   author,
   avatar = "",
   date,
@@ -105,7 +107,7 @@ const ratio = computed(() => ((media as string) === "top") ? "21/9" : "4/3");
             </Stack>
           </Group>
         </Stack>
-        <MediaFrame :alt="imageAlt" :src="image" :ratio="ratio" :class="pictureClass" />
+        <MediaFrame :alt="imageAlt" :src="image" :srcset="imageSrcset" :ratio="ratio" :class="pictureClass" />
       </Box>
     </Container>
   </Block>

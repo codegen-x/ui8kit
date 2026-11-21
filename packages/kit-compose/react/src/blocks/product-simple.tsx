@@ -17,6 +17,7 @@ export type ProductSimpleProps = {
   price: string;
   image?: string;
   imageAlt: string;
+  imageSrcset?: string;
   actionLabel?: string;
   actionHref?: string;
   photos: ProductPhoto[];
@@ -34,6 +35,7 @@ export function ProductSimple({
   price,
   image = "",
   imageAlt,
+  imageSrcset = "",
   actionLabel = "",
   actionHref = "",
   photos,
@@ -91,7 +93,7 @@ export function ProductSimple({
             ) : null}
           </Stack>
           <Stack gap="4" align="stretch" className={gallery}>
-            <MediaFrame alt={imageAlt} src={image} ratio={ratio} />
+            <MediaFrame alt={imageAlt} src={image} srcset={imageSrcset} ratio={ratio} />
             <List tag="ul" className={cn("m-0 w-full list-none p-0", cn("grid gap-4", thumbs))}>
               {(photos ?? []).map((t) => (
                 <ListItem key={t.id} data-slot="thumb">

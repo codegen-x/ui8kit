@@ -17,6 +17,7 @@ type FeatureShowcaseSimpleProps struct {
 	Description any `json:"description"`
 	Image any `json:"image"`
 	ImageAlt any `json:"imageAlt"`
+	ImageSrcset any `json:"imageSrcset"`
 	Items any `json:"items"`
 	Level any `json:"level"`
 	Padding any `json:"padding"`
@@ -32,6 +33,7 @@ templ FeatureShowcaseSimple(p FeatureShowcaseSimpleProps) {
 	{{ vDescription := uiutils.Def(p.Description, "") }}
 	{{ vImage := uiutils.Def(p.Image, "") }}
 	{{ vImageAlt := p.ImageAlt }}
+	{{ vImageSrcset := uiutils.Def(p.ImageSrcset, "") }}
 	{{ vItems := p.Items }}
 	{{ vLevel := uiutils.Def(p.Level, float64(2)) }}
 	{{ vPadding := uiutils.Def(p.Padding, "standard") }}
@@ -91,7 +93,7 @@ templ FeatureShowcaseSimple(p FeatureShowcaseSimpleProps) {
 							}
 						}
 					}
-					@MediaFrame(MediaFrameProps{Alt: vImageAlt, Src: vImage, Ratio: vRatio, Class: uiutils.Cnv(vPictureClass)})
+					@MediaFrame(MediaFrameProps{Alt: vImageAlt, Src: vImage, Srcset: vImageSrcset, Ratio: vRatio, Class: uiutils.Cnv(vPictureClass)})
 				}
 			}
 		}

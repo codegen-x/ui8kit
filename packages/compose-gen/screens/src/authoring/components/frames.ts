@@ -140,12 +140,15 @@ const mediaFrame = spec(`${P}media-frame`, "MediaFrame",
   "A picture in a fixed ratio that follows the theme. `src` is the picture of the light theme, `darkSrc` the one of the dark theme (without it the dark theme shows `src`). " +
   "Without both (an empty string counts as none) it shows the built-in neutral placeholders (base64 data URIs, one light and one dark), so a page can be laid out before it has pictures; " +
   "the placeholder is decorative (`alt` is empty), stands in for a real `src` and is switched by the theme token. A real picture gets `alt` and loads lazily. " +
-  "`ratio` comes from the recipe; the corners are the plain theme radius.", {
+  "`ratio` comes from the recipe; the corners are the plain theme radius. `srcset` lists sizes of `src` (written by an export, e.g. WebP 960w / 1280w / 1920w) and `sizes` says how wide " +
+  "the picture is shown, so the browser picks a size; the dark picture takes the srcset only when it is `src` (no `darkSrc`).", {
   props: [
     req("alt", "string", "accessible name of the picture; used only when there is a `src` (the placeholder is decorative)"),
     prop("src", "string", "address of the picture (light theme); none or empty: the built-in light placeholder"),
     prop("darkSrc", "string", "address of the picture for the dark theme; none or empty: `src`, or the built-in dark placeholder when there is no `src`"),
     prop("ratio", union("media-frame", "ratio"), "width to height", { default: defaultOf("media-frame", "ratio") }),
+    prop("srcset", "string", "sizes of `src` as a srcset (`hero-960.webp 960w, hero-1280.webp 1280w`); used only with a `src`, for the dark theme only without `darkSrc`"),
+    prop("sizes", "string", "how wide the picture is shown (the `sizes` of the srcset)", { default: "100vw" }),
   ],
   className: true,
   consts: { PLACEHOLDER: placeholders },
@@ -156,11 +159,15 @@ const mediaFrame = spec(`${P}media-frame`, "MediaFrame",
     { name: "shownAlt", value: cond(ref("src"), ref("alt"), "") },
     { name: "loadHint", value: cond(ref("src"), "lazy", undef()) },
     { name: "decodeHint", value: cond(ref("src"), "async", undef()) },
+    { name: "lightSet", value: cond(and(ref("src"), ref("srcset")), ref("srcset"), undef()) },
+    { name: "nightSet", value: cond(ref("darkSrc"), undef(), ref("lightSet")) },
+    { name: "lightSizes", value: cond(ref("lightSet"), ref("sizes"), undef()) },
+    { name: "nightSizes", value: cond(ref("nightSet"), ref("sizes"), undef()) },
   ],
   examples: recipeExamples("media-frame", { ratio: "ratio" }, { alt: "Picture" }),
   view: [use("Box", { props: { Class: cn(op("recipe", "mediaFrame", "ratio", ref("ratio")), ref("className")) }, attrs: { "data-slot": "media-frame", "data-placeholder": cond(ref("src"), "false", "true") } },
-    use("Image", { props: { Src: ref("lightSrc"), Alt: ref("shownAlt"), Loading: ref("loadHint"), Decoding: ref("decodeHint"), Class: "absolute inset-0 size-full object-cover dark:hidden" }, attrs: { "data-theme-src": "light" } }),
-    use("Image", { props: { Src: ref("nightSrc"), Alt: ref("shownAlt"), Loading: ref("loadHint"), Decoding: ref("decodeHint"), Class: "absolute inset-0 hidden size-full object-cover dark:block" }, attrs: { "data-theme-src": "dark" } }))],
+    use("Image", { props: { Src: ref("lightSrc"), SrcSet: ref("lightSet"), Sizes: ref("lightSizes"), Alt: ref("shownAlt"), Loading: ref("loadHint"), Decoding: ref("decodeHint"), Class: "absolute inset-0 size-full object-cover dark:hidden" }, attrs: { "data-theme-src": "light" } }),
+    use("Image", { props: { Src: ref("nightSrc"), SrcSet: ref("nightSet"), Sizes: ref("nightSizes"), Alt: ref("shownAlt"), Loading: ref("loadHint"), Decoding: ref("decodeHint"), Class: "absolute inset-0 hidden size-full object-cover dark:block" }, attrs: { "data-theme-src": "dark" } }))],
 });
 
 const actionGroup = spec(`${P}action-group`, "ActionGroup", "One or two calls to action side by side: a filled primary button and an outline secondary one. Links, not handlers: the page decides what they open.", {

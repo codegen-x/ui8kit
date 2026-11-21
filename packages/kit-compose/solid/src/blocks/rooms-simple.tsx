@@ -88,7 +88,7 @@ export function RoomsSimple({
           <List tag="ul" class={cn("m-0 w-full list-none p-0", cn("grid", grid))}>
             <For each={items ?? []}>{(r) => (
               <ListItem class={item} data-slot="room">
-                <MediaFrame alt={r.title} src={r.image} ratio="4/3" class="rounded" />
+                <MediaFrame alt={r.title} src={r.image} srcset={r.imageSrcset} ratio="4/3" class="rounded" />
                 <Stack gap="2" align="start" class={copy}>
                   {r.href ? (
                     <LinkPlain href={urlOf(r.href)} class="hover:text-primary">

@@ -45,6 +45,8 @@ export const imageProps = [
   { name: "image", type: "string" as const, docs: "address of the picture (an https URL or a path); none: the placeholder" },
   { name: "imageAlt", type: "string" as const, docs: "alt text of the picture; none: the title" },
 ];
+/** the sizes of a picture as a srcset (an export writes them, e.g. WebP 960w / 1280w / 1920w); flat next to `image`, not counted in the props budget */
+export const imageSrcset = { name: "imageSrcset", type: "string" as const, docs: "sizes of the picture as a srcset (`hero-960.webp 960w, hero-1280.webp 1280w`); none: `image` only" };
 /** the alt text of the picture of a section: `imageAlt`, else the value of `fallback` (the title) */
 export const imageAlt = (fallback: Value = ref("title")): Value => cond(ref("imageAlt"), ref("imageAlt"), fallback);
 /** the MediaFrame of a section picture: `image` as its address, `imageAlt` (else the title) as its alt text */

@@ -103,7 +103,7 @@ const pictureClass = computed(() => ((layout as string) === "rows") ? "w-1/4 shr
         </Stack>
         <List tag="ul" :class="cn('m-0 w-full list-none p-0', cn('grid', grid))">
           <ListItem v-for="p in items" :key="p.id" :class="item" data-slot="product">
-            <MediaFrame :alt="p.title" :src="p.image" ratio="4/3" :class="pictureClass" />
+            <MediaFrame :alt="p.title" :src="p.image" :srcset="p.imageSrcset" ratio="4/3" :class="pictureClass" />
             <Stack gap="2" align="start">
               <LinkPlain v-if="p.href" :href="urlOf(p.href)" class="hover:text-primary">
                 <Title :as="(level + 1)" size="base" weight="semibold" class="text-start">

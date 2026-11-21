@@ -60,7 +60,7 @@ templ RoomsSimple(p RoomsSimpleProps) {
 				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 w-full list-none p-0", uiutils.Cnv("grid", vGrid)))}}) {
 					for _, vR := range uiutils.L(vItems) {
 						@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Class: uiutils.S(vItem), Attrs: uiutils.Attrs("data-slot", "room")}}) {
-							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vR, "title"), Src: uiutils.Get(vR, "image"), Ratio: "4/3", Class: uiutils.Cnv("rounded")})
+							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vR, "title"), Src: uiutils.Get(vR, "image"), Srcset: uiutils.Get(vR, "imageSrcset"), Ratio: "4/3", Class: uiutils.Cnv("rounded")})
 							@compose.Stack(compose.StackProps{Gap: "2", Align: "start", BoxProps: box.BoxProps{Class: uiutils.S(vCopy)}}) {
 								if uiutils.T(uiutils.Get(vR, "href")) {
 									@compose.LinkPlain(compose.LinkPlainProps{LinkProps: link.LinkProps{Href: uiutils.URL(uiutils.Get(vR, "href"), false), Class: "hover:text-primary"}}) {

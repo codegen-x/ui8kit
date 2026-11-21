@@ -38,7 +38,7 @@
       {%- set c_10 -%}
         {%- for v_p in og_l(v_items) %}
           {%- set c_9 -%}
-            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'src': og_get(v_p, ['image']), 'ratio': '4/3', 'className': og_cnv([v_pictureClass])}}) }}
+            {{ og_include('blocks/media-frame.html.j2', {'p': {'alt': og_get(v_p, ['title']), 'src': og_get(v_p, ['image']), 'srcset': og_get(v_p, ['imageSrcset']), 'ratio': '4/3', 'className': og_cnv([v_pictureClass])}}) }}
             {%- set c_8 -%}
               {%- if og_t(og_get(v_p, ['href'])) %}
                 {%- set c_5 -%}

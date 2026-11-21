@@ -16,6 +16,7 @@ export type FeatureShowcaseSimpleProps = {
   description?: string;
   image?: string;
   imageAlt: string;
+  imageSrcset?: string;
   items: ShowcaseItem[];
   level?: 1 | 2 | 3;
   padding?: "compact" | "standard" | "spacious";
@@ -30,6 +31,7 @@ export function FeatureShowcaseSimple({
   description = "",
   image = "",
   imageAlt,
+  imageSrcset = "",
   items,
   level = 2,
   padding = "standard",
@@ -118,7 +120,7 @@ export function FeatureShowcaseSimple({
                 ))}
               </List>
             </Stack>
-            <MediaFrame alt={imageAlt} src={image} ratio={ratio} className={pictureClass} />
+            <MediaFrame alt={imageAlt} src={image} srcset={imageSrcset} ratio={ratio} className={pictureClass} />
           </Box>
         </Stack>
       </Container>

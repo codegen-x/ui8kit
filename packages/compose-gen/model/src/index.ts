@@ -12,6 +12,9 @@ export * from "./validate";
 export const MODEL_BASE = "https://registry.buildy.tw/models";
 /** props of an organism that are settings of an instance, not content (the rest are the model fields and the block axes) */
 export const SETTINGS = ["id", "level", "padding", "align", "landmarkLabel"] as const;
+/** props and record fields an export derives from the picture `image` (the srcset of its WebP sizes): no content, so no model field */
+export const DERIVED = ["imageSrcset"] as const;
+const derived = (name: string, has: (n: string) => boolean): boolean => (DERIVED as readonly string[]).includes(name) && has("image");
 
 export const modelKey = (m: Pick<ModelSpec, "id" | "version">): string => `${m.id}@${m.version}`;
 export const modelsDir = (root: string): string => join(root, "specs", "models");
@@ -89,11 +92,11 @@ export function propsProblems(block: BlockSpec, org: OrganismSpec, m: ModelSpec)
     if (f.type === "list") {
       const rec = org.records[f.item!.record];
       if (!rec) { out.push(`${where}: record ${f.item!.record} is not declared by the organism`); continue; }
-      const names = rec.map((r) => r.name).sort().join(",");
+      const names = rec.filter((r) => !derived(r.name, (n) => rec.some((x) => x.name === n))).map((r) => r.name).sort().join(",");
       if (names !== Object.keys(f.item!.fields).sort().join(",")) out.push(`${where}: record ${f.item!.record} has fields ${names}, the model ${Object.keys(f.item!.fields).sort().join(",")}`);
       for (const r of rec) { const mf = f.item!.fields[r.name]; if (mf && Boolean(r.optional) === Boolean(mf.required)) out.push(`${where}: ${f.item!.record}.${r.name} optionality differs from the model`); }
     }
   }
-  for (const p of org.props) if (!(p.name in m.fields) && !(p.name in block.axes) && !(SETTINGS as readonly string[]).includes(p.name)) out.push(`${where}: prop ${p.name} is neither a model field, an axis of the block nor a setting (${SETTINGS.join(", ")})`);
+  for (const p of org.props) if (!(p.name in m.fields) && !(p.name in block.axes) && !(SETTINGS as readonly string[]).includes(p.name) && !derived(p.name, (n) => props.has(n))) out.push(`${where}: prop ${p.name} is neither a model field, an axis of the block nor a setting (${SETTINGS.join(", ")})`);
   return out;
 }

@@ -67,7 +67,7 @@ const contactsSimple = spec(`${O}contacts-simple`, "ContactsSimple", "The simple
 // ---- LocationsSimple (locations@1): the head and the offices (a name, the address) beside one picture, at the start or the end
 const locationsSimple = spec(`${O}locations-simple`, "LocationsSimple", "The simple locations (model locations@1): the heading, a description, the offices as a list (the name, the address) and one picture (a map or a place). Axes: media (start: the picture before the copy from md up, end: after it).", {
   records: { LocationItem: fields(["id", "string"], ["title", "string"], ["description", "string", true]) },
-  props: [id, title, description, str("image", "address of the picture; none: the placeholder"), str("imageAlt", "alt text of the picture", true), list("items", "LocationItem", "the offices, in the order they are shown (1 to 6)"), level, padding, { ...centered, default: "start" }, axis("media", "start", "end")],
+  props: [id, title, description, str("image", "address of the picture; none: the placeholder"), str("imageAlt", "alt text of the picture", true), str("imageSrcset", "sizes of the picture as a srcset (`hero-960.webp 960w, hero-1280.webp 1280w`); none: `image` only"), list("items", "LocationItem", "the offices, in the order they are shown (1 to 6)"), level, padding, { ...centered, default: "start" }, axis("media", "start", "end")],
   derived: [titleId, ...teamDerived, chain("pictureClass", [[is("media", "start"), "md:order-first"]], "")],
   view: [section(
     use("Box", { props: { Class: "grid grid-cols-1 items-center gap-12 md:grid-cols-2" } },
@@ -76,7 +76,7 @@ const locationsSimple = spec(`${O}locations-simple`, "LocationsSimple", "The sim
         ulist("grid grid-cols-1 gap-6 sm:grid-cols-2",
           each(ref("items"), "l", ref("l.id"),
             use("ListItem", { props: { Class: cn("flex flex-col gap-2", itemsAlign) }, attrs: { "data-testid": "location" } }, itemTitle("l.title", "base"), itemText("l.description"))))),
-      organism("MediaFrame", { alt: ref("imageAlt"), src: ref("image"), ratio: "1/1", className: ref("pictureClass") })))],
+      organism("MediaFrame", { alt: ref("imageAlt"), src: ref("image"), srcset: ref("imageSrcset"), ratio: "1/1", className: ref("pictureClass") })))],
 });
 
 // ---- OffersSimple (offers@1): two or three offers on cards, each with a title, a line and an action
@@ -94,7 +94,7 @@ const offersSimple = spec(`${O}offers-simple`, "OffersSimple", "The simple offer
 
 // ---- ProductsSimple (products@1): products (a picture, the name as a link, the price) in three or four columns, or rows
 const productsSimple = spec(`${O}products-simple`, "ProductsSimple", "The simple products (model products@1): the heading, a description and the products as a list, each with a picture, the name (a link when the product has an address) and the price. Axes: layout (grid: columns, rows: the picture at the start of each row, a quarter of it), cols (3, 4 columns of the grid).", {
-  records: { ProductItem: fields(["id", "string"], ["image", "string", true], ["title", "string"], ["price", "string"], ["href", "string", true]) },
+  records: { ProductItem: fields(["id", "string"], ["image", "string", true], ["imageSrcset", "string", true], ["title", "string"], ["price", "string"], ["href", "string", true]) },
   props: [id, title, description, list("items", "ProductItem", "the products, in the order they are shown (1 to 8)"), level, padding, centered, axis("layout", "grid", "rows"), axis("cols", "3", "4")],
   derived: [
     titleId, ...teamDerived,
@@ -106,7 +106,7 @@ const productsSimple = spec(`${O}products-simple`, "ProductsSimple", "The simple
     ulist(cn("grid", ref("grid")),
       each(ref("items"), "p", ref("p.id"),
         use("ListItem", { props: { Class: ref("item") }, attrs: { "data-testid": "product" } },
-          organism("MediaFrame", { alt: ref("p.title"), src: ref("p.image"), ratio: "4/3", className: ref("pictureClass") }),
+          organism("MediaFrame", { alt: ref("p.title"), src: ref("p.image"), srcset: ref("p.imageSrcset"), ratio: "4/3", className: ref("pictureClass") }),
           use("Stack", { props: { Gap: "2", Align: "start" } },
             linkTo("p.href", itemTitle("p.title", "base", "text-start")),
             use("Text", { props: { Size: "base", Weight: "semibold", Class: "text-start" } }, text(ref("p.price"))))))))],
@@ -115,7 +115,7 @@ const productsSimple = spec(`${O}products-simple`, "ProductsSimple", "The simple
 // ---- ProductSimple (product@1): the pictures (the main one and thumbnails) beside the name, the price, a line and the action
 const productSimple = spec(`${O}product-simple`, "ProductSimple", "The simple product (model product@1): the main picture and up to four thumbnails as a list (named by the product), beside the name as the heading, the price, a description and one action. Axes: media (start: the pictures before the copy from md up, end: after it, top: above it, wide).", {
   records: { ProductPhoto: fields(["id", "string"], ["image", "string", true]) },
-  props: [id, title, description, str("price", "the price as it is shown", true), str("image", "address of the main picture; none: the placeholder"), str("imageAlt", "alt text of the main picture", true), ...actionPair, list("photos", "ProductPhoto", "more pictures, thumbnails under the main one (0 to 4)"), level, padding, { ...centered, default: "start" }, axis("media", "start", "end", "top")],
+  props: [id, title, description, str("price", "the price as it is shown", true), str("image", "address of the main picture; none: the placeholder"), str("imageAlt", "alt text of the main picture", true), str("imageSrcset", "sizes of the picture as a srcset (`hero-960.webp 960w, hero-1280.webp 1280w`); none: `image` only"), ...actionPair, list("photos", "ProductPhoto", "more pictures, thumbnails under the main one (0 to 4)"), level, padding, { ...centered, default: "start" }, axis("media", "start", "end", "top")],
   derived: [
     titleId, ...alignDerived,
     chain("frame", [[is("media", "top"), "grid grid-cols-1 gap-8"]], "grid grid-cols-1 items-start gap-12 md:grid-cols-2"),
@@ -131,7 +131,7 @@ const productSimple = spec(`${O}product-simple`, "ProductSimple", "The simple pr
         lead("base"),
         action("actionLabel", "actionHref", "default")),
       use("Stack", { props: { Gap: "4", Align: "stretch", Class: ref("gallery") } },
-        organism("MediaFrame", { alt: ref("imageAlt"), src: ref("image"), ratio: ref("ratio") }),
+        organism("MediaFrame", { alt: ref("imageAlt"), src: ref("image"), srcset: ref("imageSrcset"), ratio: ref("ratio") }),
         ulist(cn("grid gap-4", ref("thumbs")),
           each(ref("photos"), "t", ref("t.id"),
             use("ListItem", { attrs: { "data-testid": "thumb" } }, organism("MediaFrame", { alt: ref("title"), src: ref("t.image"), ratio: "1/1" })))))))],

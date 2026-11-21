@@ -17,6 +17,7 @@ type ArticleLeadProps struct {
 	Description any `json:"description"`
 	Image any `json:"image"`
 	ImageAlt any `json:"imageAlt"`
+	ImageSrcset any `json:"imageSrcset"`
 	Author any `json:"author"`
 	Avatar any `json:"avatar"`
 	Date any `json:"date"`
@@ -34,6 +35,7 @@ templ ArticleLead(p ArticleLeadProps) {
 	{{ vDescription := uiutils.Def(p.Description, "") }}
 	{{ vImage := uiutils.Def(p.Image, "") }}
 	{{ vImageAlt := p.ImageAlt }}
+	{{ vImageSrcset := uiutils.Def(p.ImageSrcset, "") }}
 	{{ vAuthor := p.Author }}
 	{{ vAvatar := uiutils.Def(p.Avatar, "") }}
 	{{ vDate := p.Date }}
@@ -72,7 +74,7 @@ templ ArticleLead(p ArticleLeadProps) {
 						}
 					}
 				}
-				@MediaFrame(MediaFrameProps{Alt: vImageAlt, Src: vImage, Ratio: vRatio, Class: uiutils.Cnv(vPictureClass)})
+				@MediaFrame(MediaFrameProps{Alt: vImageAlt, Src: vImage, Srcset: vImageSrcset, Ratio: vRatio, Class: uiutils.Cnv(vPictureClass)})
 			}
 		}
 	}

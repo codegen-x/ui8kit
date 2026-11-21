@@ -19,6 +19,7 @@ type ProductSimpleProps struct {
 	Price any `json:"price"`
 	Image any `json:"image"`
 	ImageAlt any `json:"imageAlt"`
+	ImageSrcset any `json:"imageSrcset"`
 	ActionLabel any `json:"actionLabel"`
 	ActionHref any `json:"actionHref"`
 	Photos any `json:"photos"`
@@ -37,6 +38,7 @@ templ ProductSimple(p ProductSimpleProps) {
 	{{ vPrice := p.Price }}
 	{{ vImage := uiutils.Def(p.Image, "") }}
 	{{ vImageAlt := p.ImageAlt }}
+	{{ vImageSrcset := uiutils.Def(p.ImageSrcset, "") }}
 	{{ vActionLabel := uiutils.Def(p.ActionLabel, "") }}
 	{{ vActionHref := uiutils.Def(p.ActionHref, "") }}
 	{{ vPhotos := p.Photos }}
@@ -74,7 +76,7 @@ templ ProductSimple(p ProductSimpleProps) {
 					}
 				}
 				@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(vGallery)}}) {
-					@MediaFrame(MediaFrameProps{Alt: vImageAlt, Src: vImage, Ratio: vRatio})
+					@MediaFrame(MediaFrameProps{Alt: vImageAlt, Src: vImage, Srcset: vImageSrcset, Ratio: vRatio})
 					@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: uiutils.S(uiutils.Cnv("m-0 w-full list-none p-0", uiutils.Cnv("grid gap-4", vThumbs)))}}) {
 						for _, vT := range uiutils.L(vPhotos) {
 							@compose.ListItem(compose.ListItemProps{BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-slot", "thumb")}}) {

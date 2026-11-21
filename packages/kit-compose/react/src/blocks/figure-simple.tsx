@@ -13,6 +13,7 @@ export type FigureSimpleProps = {
   id: string;
   image?: string;
   imageAlt: string;
+  imageSrcset?: string;
   title: string;
   description?: string;
   credit?: string;
@@ -25,6 +26,7 @@ export function FigureSimple({
   id,
   image = "",
   imageAlt,
+  imageSrcset = "",
   title,
   description = "",
   credit = "",
@@ -58,7 +60,7 @@ export function FigureSimple({
     >
       <Container className="mx-auto w-full max-w-6xl px-4">
         <Box tag="figure" className={frame}>
-          <MediaFrame alt={imageAlt} src={image} ratio={ratio} className={pictureClass} />
+          <MediaFrame alt={imageAlt} src={image} srcset={imageSrcset} ratio={ratio} className={pictureClass} />
           <Stack gap="2" align={copyAlign} className={caption}>
             <Text size="base" weight="semibold" className={copyText} id={titleId}>
               {title}

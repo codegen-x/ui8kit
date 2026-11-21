@@ -13,6 +13,7 @@ export type FeatureShowcaseSimpleProps = {
   description?: string;
   image?: string;
   imageAlt: string;
+  imageSrcset?: string;
   items: ShowcaseItem[];
   level?: 1 | 2 | 3;
   padding?: "compact" | "standard" | "spacious";
@@ -41,6 +42,7 @@ const {
   description = "",
   image = "",
   imageAlt,
+  imageSrcset = "",
   items,
   level = 2,
   padding = "standard",
@@ -128,7 +130,7 @@ const grid = computed(() =>
               </ListItem>
             </List>
           </Stack>
-          <MediaFrame :alt="imageAlt" :src="image" :ratio="ratio" :class="pictureClass" />
+          <MediaFrame :alt="imageAlt" :src="image" :srcset="imageSrcset" :ratio="ratio" :class="pictureClass" />
         </Box>
       </Stack>
     </Container>

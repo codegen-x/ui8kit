@@ -95,4 +95,8 @@ test("the model blocks take exactly their model fields; a missing or extra prop 
   const broken = { ...org, props: [...org.props.filter((p) => p.name !== "badge"), { name: "extra", type: "string" as const }] };
   expect(propsProblems(b, broken, hero).join("\n")).toContain("model field badge is no prop");
   expect(propsProblems(b, broken, hero).join("\n")).toContain("prop extra is neither");
+  // imageSrcset is derived from image by an export: allowed next to image, an error without it
+  const noImage = { ...org, props: org.props.filter((p) => p.name !== "image") };
+  expect(propsProblems(b, org, hero).join("\n")).not.toContain("prop imageSrcset");
+  expect(propsProblems(b, noImage, hero).join("\n")).toContain("prop imageSrcset is neither");
 });

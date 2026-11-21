@@ -33,6 +33,11 @@
       "docs": "alt text of the picture; none: the title"
     },
     {
+      "name": "imageSrcset",
+      "type": "string",
+      "docs": "sizes of the picture as a srcset (`hero-960.webp 960w, hero-1280.webp 1280w`); none: `image` only"
+    },
+    {
       "name": "imageDark",
       "type": "string",
       "docs": "address of the picture in the dark theme; none: image"
@@ -173,6 +178,9 @@
                     },
                     "darkSrc": {
                       "$": "imageDark"
+                    },
+                    "srcset": {
+                      "$": "imageSrcset"
                     },
                     "ratio": "4/3",
                     "className": "rounded-none md:aspect-auto md:h-full"
@@ -410,6 +418,9 @@
                     },
                     "darkSrc": {
                       "$": "imageDark"
+                    },
+                    "srcset": {
+                      "$": "imageSrcset"
                     },
                     "ratio": "4/3",
                     "className": "rounded-none md:aspect-auto md:h-full"

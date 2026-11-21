@@ -15,10 +15,11 @@ const str = (name: string, docs: string, required = false) => (required ? { name
 const actionPair = [str("actionLabel", "the label of the action; the link is drawn when the label and the address are both set"), str("actionHref", "the address of the action")];
 const image = str("image", "address of the picture; none: the placeholder");
 const imageAlt = str("imageAlt", "alt text of the picture", true);
+const imageSrcset = str("imageSrcset", "sizes of the picture as a srcset (`hero-960.webp 960w, hero-1280.webp 1280w`); none: `image` only");
 const media = (...values: string[]) => ({ name: "media", type: tsOf(...values), default: values[0] });
 const layout = (...values: string[]) => ({ name: "layout", type: tsOf(...values), default: values[0] });
 const cols = (...values: string[]) => ({ name: "cols", type: tsOf(...values), default: values[values.length - 1] });
-const picture = (ratio: Value, className: Value = "") => organism("MediaFrame", { alt: ref("imageAlt"), src: ref("image"), ratio, className });
+const picture = (ratio: Value, className: Value = "") => organism("MediaFrame", { alt: ref("imageAlt"), src: ref("image"), srcset: ref("imageSrcset"), ratio, className });
 const muted = (field: string, size = "sm", cls: Value = textAlign) => use("Text", { props: { Size: size, Class: cn("text-muted-foreground", cls) } }, text(ref(field)));
 const linkTo = (href: string, body: ReturnType<typeof use>) =>
   when(ref(href), [use("LinkPlain", { props: { Href: ref(href), Class: "hover:text-primary" } }, body)], [body]);
@@ -29,7 +30,7 @@ const first = (name: string, cls = "") => chain(name, [[is("media", "start"), `o
 const top = is("media", "top");
 const featureShowcase = spec(`${O}feature-showcase-simple`, "FeatureShowcaseSimple", "The simple feature showcase (model feature-showcase@1): the heading, a description, one picture and the key points as a list (a title, a line). Axes: media (end: the picture after the copy, start: before it from md up, top: the head over a wide picture, the points in three columns under it).", {
   records: { ShowcaseItem: fields(["id", "string"], ["title", "string"], ["description", "string", true]) },
-  props: [id, title, description, image, imageAlt, list("items", "ShowcaseItem", "the key points, in the order they are shown (1 to 6)"), level, padding, align, media("end", "start", "top")],
+  props: [id, title, description, image, imageAlt, imageSrcset, list("items", "ShowcaseItem", "the key points, in the order they are shown (1 to 6)"), level, padding, align, media("end", "start", "top")],
   derived: [titleId, ...teamDerived, frame("frame"), first("pictureClass"), chain("ratio", [[top, "21/9"]], "4/3"), chain("grid", [[top, "sm:grid-cols-2 md:grid-cols-3"]], "sm:grid-cols-2")],
   view: [section(
     use("Stack", { props: { Gap: "12", Align: "stretch" } },
@@ -109,7 +110,7 @@ const eventIntro = spec(`${O}event-intro`, "EventIntro", "The event intro (model
 // ---- ProfileIntro (profile@1): a person: the name, the role, a line and the links beside the portrait, or under a disc
 const profileIntro = spec(`${O}profile-intro`, "ProfileIntro", "The profile intro (model profile@1): the name as the heading, the role (the primary token), a description, the links of the person as a list of small outline links, and the portrait. Axes: media (end: the portrait after the copy, start: before it from md up, top: a disc over the copy).", {
   records: { ProfileLink: fields(["id", "string"], ["label", "string"], ["href", "string"]) },
-  props: [id, { ...title, docs: "the name of the person (the heading)" }, str("role", "the role and the company", true), description, image, imageAlt, list("links", "ProfileLink", "the links of the person, in the order they are shown (0 to 4)"), level, padding, align, media("end", "start", "top")],
+  props: [id, { ...title, docs: "the name of the person (the heading)" }, str("role", "the role and the company", true), description, image, imageAlt, imageSrcset, list("links", "ProfileLink", "the links of the person, in the order they are shown (0 to 4)"), level, padding, align, media("end", "start", "top")],
   derived: [
     titleId, ...teamDerived,
     chain("frame", [[top, "flex flex-col items-center gap-8"]], "grid grid-cols-1 items-center gap-12 md:grid-cols-2"),
@@ -164,7 +165,7 @@ const errorSimple = spec(`${O}error-simple`, "ErrorSimple", "The simple error (m
 
 // ---- FigureSimple (figure@1): one large picture and its caption (a figure): under it, wide, or at the side from md up
 const figureSimple = spec(`${O}figure-simple`, "FigureSimple", "The simple figure (model figure@1): one large picture with its caption in a figure: the title (it names the section), a line and the credit. Axes: layout (wide: the caption centred under the picture, end: the caption beside it at the end from md up, start: at the start).", {
-  props: [id, image, imageAlt, { ...title, docs: "the title of the caption (names the section)" }, description, str("credit", "the credit of the picture; empty: none"), padding, layout("wide", "end", "start")],
+  props: [id, image, imageAlt, imageSrcset, { ...title, docs: "the title of the caption (names the section)" }, description, str("credit", "the credit of the picture; empty: none"), padding, layout("wide", "end", "start")],
   derived: [
     titleId,
     chain("frame", [[is("layout", "wide"), "flex flex-col gap-6"]], "grid grid-cols-1 gap-6 md:grid-cols-3 md:items-end"),
@@ -220,7 +221,7 @@ const articleSimple = spec(`${O}article-simple`, "ArticleSimple", "The simple ar
 
 // ---- ArticleLead (article-lead@1): the heading, the lead and the byline beside the cover (end, start) or under it (top)
 const articleLead = spec(`${O}article-lead`, "ArticleLead", "The article lead (model article-lead@1): the heading, the lead paragraph, the byline (the portrait, the author, the date) and the cover picture. Axes: media (top: the cover over the copy, wide, start: the cover before the copy from md up, end: after it).", {
-  props: [id, title, description, image, imageAlt, str("author", "the name of the author", true), str("avatar", "address of the portrait of the author; none: the placeholder"), str("date", "the date as it is shown", true), level, padding, align, media("top", "start", "end")],
+  props: [id, title, description, image, imageAlt, imageSrcset, str("author", "the name of the author", true), str("avatar", "address of the portrait of the author; none: the placeholder"), str("date", "the date as it is shown", true), level, padding, align, media("top", "start", "end")],
   derived: [titleId, ...alignDerived, frame("frame"), first("pictureClass"), chain("ratio", [[top, "21/9"]], "4/3")],
   view: [section(
     use("Box", { props: { Class: ref("frame") } },
