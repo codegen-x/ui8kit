@@ -373,7 +373,7 @@
     }
   ],
   "inputs": {
-    "sha256": "ec2ad5a8d48e45fb81b604f0d857abe1dde1f4d1960f9c05aa675a13f4fef48e"
+    "sha256": "47c467be9f754aa3a99ee545abca9684c18d3454c7b468806e67378d98c3570f"
   },
   "files": {
     "catalog.ts": "d35a72477c1ae1cb31f606a0fd5b55ffb04e7e5cc22f40ea6cf1c61014172413",
@@ -561,7 +561,7 @@
     "svelte/blocks/gallery-hero.svelte": "913013a3cc29f78cb667700f2da9596c2ece4ec065c430344151ba9cbad5372b",
     "svelte/blocks/guarantees-simple.svelte": "d06981ef78ae77a61aa8690d7b2652a2ddc07a2150076285d73d89ec2ab7a6c2",
     "svelte/blocks/header-simple.svelte": "5b12b263729bfe5c1edbd2dc7d76756542afe27cccc5baa7a7cb6fd05b9024c0",
-    "svelte/blocks/hero-simple.svelte": "bbc3f20f25000d8363e510624a2a73cfdbbdbacb0eb2019ba1581022e37c2f00",
+    "svelte/blocks/hero-simple.svelte": "256b85a8bab36cb9d4b1b9d70cd17570ac6270ad78529c5f8390d1aeb4dddf21",
     "svelte/blocks/hours-simple.svelte": "8290bfc90e3742cde5168dae02c291d48abf8a80e5adc79a72bb6e8020d6c12b",
     "svelte/blocks/intro-simple.svelte": "f6c0a318d582b98eb09b292de157119d2269bbc9bcfbf48488835513181b6e63",
     "svelte/blocks/locations-simple.svelte": "c2216bcd60ec8076037db0f724bc3c902bd1761829f6cda647a0a7ba11316a0b",
@@ -572,8 +572,8 @@
     "svelte/blocks/pricing-simple.svelte": "c5f1bbeceb5bf227409ae05f4e09ccc068c80d06aab178a6ac09bf32d5146164",
     "svelte/blocks/product-reviews.svelte": "4b787668364405e35ae1e8bca61cf713bf5e54746fe16dc55a67c60bbd75c4e6",
     "svelte/blocks/product-simple.svelte": "ea4e07622bdea497a96057932ebc081847a8206d030a83fba9a00bb73a3ea5a6",
-    "svelte/blocks/products-simple.svelte": "e870f54a511aee40060785ea5d3494390a04611d961d58452373c63b0f76318b",
-    "svelte/blocks/profile-intro.svelte": "5900162f6c5ebf2d4be6cd06fedd2d49d70f8857cd746982a7126930364b2b43",
+    "svelte/blocks/products-simple.svelte": "25c5525d8f9d27fb8575d3ed74feff7bffa60e21025227c84136ab4376b2a122",
+    "svelte/blocks/profile-intro.svelte": "5d8f11b9ddd014855b0dceea1e77da4e1cafea3bf93831250ae6fb9085321e10",
     "svelte/blocks/promo-simple.svelte": "0fab144595f08f5af522bbf7fa1c34e54cc5201d48a9c6082909e1ebe46de59a",
     "svelte/blocks/pull-quote-simple.svelte": "e8cc44f70afb206a55e9e0fa48d83c70e877650f544f50c751cb82a0ad87874a",
     "svelte/blocks/purchase-simple.svelte": "1bbe27ad9ff4c01f2bdac70ee757239a9a001a1abbc3af31e94dc2d395118f4b",

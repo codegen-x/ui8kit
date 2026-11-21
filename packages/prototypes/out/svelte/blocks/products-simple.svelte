@@ -67,12 +67,9 @@
           }
           data-slot="product"
         >
-          <ShapeMedia
-            aspect="aspect-4/3"
-            class={(((layout as string) === "rows") ? "w-1/4" : "")}
-            place="items.image"
-            field="/items/0/image"
-          />
+          <Box class={(((layout as string) === "rows") ? "w-1/4" : "")}>
+            <ShapeMedia aspect="aspect-4/3" place="items.image" field="/items/0/image" />
+          </Box>
           <Box class={cn("flex w-full flex-col", "gap-2", "items-start")}>
             <Box tag="div">
               <ShapeHeading size="md" width="1/2" place="items.title" field="/items/0/title /items/0/href" />
@@ -88,12 +85,9 @@
           }
           data-slot="product"
         >
-          <ShapeMedia
-            aspect="aspect-4/3"
-            class={(((layout as string) === "rows") ? "w-1/4" : "")}
-            place="items.image"
-            field="/items/1/image"
-          />
+          <Box class={(((layout as string) === "rows") ? "w-1/4" : "")}>
+            <ShapeMedia aspect="aspect-4/3" place="items.image" field="/items/1/image" />
+          </Box>
           <Box class={cn("flex w-full flex-col", "gap-2", "items-start")}>
             <Box tag="div">
               <ShapeHeading size="md" width="1/2" place="items.title" field="/items/1/title /items/1/href" />
@@ -109,12 +103,9 @@
           }
           data-slot="product"
         >
-          <ShapeMedia
-            aspect="aspect-4/3"
-            class={(((layout as string) === "rows") ? "w-1/4" : "")}
-            place="items.image"
-            field="/items/2/image"
-          />
+          <Box class={(((layout as string) === "rows") ? "w-1/4" : "")}>
+            <ShapeMedia aspect="aspect-4/3" place="items.image" field="/items/2/image" />
+          </Box>
           <Box class={cn("flex w-full flex-col", "gap-2", "items-start")}>
             <Box tag="div">
               <ShapeHeading size="md" width="1/2" place="items.title" field="/items/2/title /items/2/href" />
@@ -131,12 +122,9 @@
             }
             data-slot="product"
           >
-            <ShapeMedia
-              aspect="aspect-4/3"
-              class={(((layout as string) === "rows") ? "w-1/4" : "")}
-              place="items.image"
-              field="/items/3/image"
-            />
+            <Box class={(((layout as string) === "rows") ? "w-1/4" : "")}>
+              <ShapeMedia aspect="aspect-4/3" place="items.image" field="/items/3/image" />
+            </Box>
             <Box class={cn("flex w-full flex-col", "gap-2", "items-start")}>
               <Box tag="div">
                 <ShapeHeading size="md" width="1/2" place="items.title" field="/items/3/title /items/3/href" />

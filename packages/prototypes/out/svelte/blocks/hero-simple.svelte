@@ -88,10 +88,10 @@
           : "aspect-4/3"
         }
         class={
-          ((media as string) === "start") && ((ratio as string) === "portrait") ? "order-first mx-auto w-full max-w-sm md:aspect-auto md:min-h-128"
+          ((media as string) === "start") && ((ratio as string) === "portrait") ? "order-first mx-auto max-w-sm md:aspect-auto md:min-h-128"
           : (media as string) === "start" ? "order-first"
           : (media as string) === "top" ? "order-first"
-          : ((media as string) === "end") && ((ratio as string) === "portrait") ? "mx-auto w-full max-w-sm md:aspect-auto md:min-h-128"
+          : ((media as string) === "end") && ((ratio as string) === "portrait") ? "mx-auto max-w-sm md:aspect-auto md:min-h-128"
           : ""
         }
         place="media"

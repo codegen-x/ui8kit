@@ -83,7 +83,7 @@
       >
         <ShapeMedia
           aspect="aspect-square"
-          class={(((media as string) === "top") ? "mx-auto" : "mx-auto w-full max-w-sm")}
+          class={(((media as string) === "top") ? "mx-auto" : "mx-auto max-w-sm")}
           place="media"
           field="/image /imageAlt"
         />

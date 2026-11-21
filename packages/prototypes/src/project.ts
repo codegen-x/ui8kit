@@ -96,32 +96,34 @@ const fillsHalf = (v: Value | undefined): boolean => typeof v === "string" && /(
 const classText = (v: Value | undefined): string =>
   typeof v === "string" ? v : isOp(v) ? v.args.map((a, i) => (v.op === "cond" && i === 0 ? "" : classText(a))).join(" ") : "";
 /**
- * Layout classes of a MediaFrame the wireframe must keep on ShapeMedia (the same node as aspect, the grid item):
- * order-*, width (w- / max-w- / min-w-), height (min-h- / max-h- / h-), md:aspect-auto, mx-auto.
- * fill:half already owns md:aspect-auto and md:h-full: those stay off the lifted class so a split is not wrapped or doubled.
+ * Layout classes of a MediaFrame the wireframe must keep.
+ * On ShapeMedia (the same node as aspect, usually the grid item): order-*, max-w- / min-w-, min-h- / max-h- / h-,
+ * md:aspect-auto, mx-auto. w-full is already on ShapeMedia (do not lift it: a second copy makes join-cn and
+ * tailwind-merge disagree). fill:half already owns md:aspect-auto and md:h-full.
+ * A same-breakpoint width override (w-1/4, not sm:w-*): a Box wrapper, so it does not fight ShapeMedia's w-full.
  */
-const MEDIA_LAYOUT = /^(?:[a-z]+:)*(?:order-.+|w-.+|max-w-.+|min-w-.+|min-h-.+|max-h-.+|h-.+|aspect-auto|mx-auto|ms-auto|me-auto)$/;
+const MEDIA_CLASS = /^(?:(?:[a-z]+:)+w-(?!full).+|(?:[a-z]+:)*(?:order-.+|max-w-.+|min-w-.+|min-h-.+|max-h-.+|h-.+|aspect-auto|mx-auto|ms-auto|me-auto))$/;
+const WIDTH_WRAP = /^w-(?!full(?:$|-))/; // w-1/4, not w-full, not sm:w-1/3 (a prefix stays on ShapeMedia: no conflict)
 const HALF_OWNED = /^(?:[a-z]+:)*(?:aspect-auto|h-full)$/;
-const isMediaLayout = (t: string, half: boolean): boolean => !!t && MEDIA_LAYOUT.test(t) && !(half && HALF_OWNED.test(t));
 const emptyClass = (v: Value): boolean =>
   v === undefined || v === "" || (typeof v === "string" ? v.trim() === ""
     : isOp(v) && v.op === "cn" ? v.args.every(emptyClass)
     : isOp(v) && v.op === "cond" ? emptyClass(v.args[1]!) && emptyClass(v.args[2]!)
     : false);
-function filterMediaLayout(v: Value, half: boolean): Value {
-  if (typeof v === "string") return v.split(/\s+/).filter((t) => isMediaLayout(t, half)).join(" ");
-  if (isOp(v) && v.op === "cond") return cond(v.args[0]!, filterMediaLayout(v.args[1]!, half), filterMediaLayout(v.args[2]!, half));
+function filterClass(v: Value, keep: (t: string) => boolean): Value {
+  if (typeof v === "string") return v.split(/\s+/).filter(keep).join(" ");
+  if (isOp(v) && v.op === "cond") return cond(v.args[0]!, filterClass(v.args[1]!, keep), filterClass(v.args[2]!, keep));
   if (isOp(v) && v.op === "cn") {
-    const args = v.args.map((a) => filterMediaLayout(a, half)).filter((a) => !emptyClass(a));
+    const args = v.args.map((a) => filterClass(a, keep)).filter((a) => !emptyClass(a));
     return args.length === 0 ? "" : args.length === 1 ? args[0]! : cn(...args);
   }
   return fail(`MediaFrame className ${JSON.stringify(v)} is not a literal or a cond of literals`);
 }
-/** the layout class of a MediaFrame to set on ShapeMedia, or undefined when nothing remains (a split half, or no layout class) */
-function mediaLayout(v: Value | undefined, half: boolean): Value | undefined {
-  if (v === undefined) return undefined;
-  const picked = filterMediaLayout(v, half);
-  return emptyClass(picked) ? undefined : picked;
+const asClass = (v: Value): Value | undefined => (emptyClass(v) ? undefined : v);
+function mediaParts(v: Value | undefined, half: boolean): { wrap?: Value; className?: Value } {
+  if (v === undefined) return {};
+  const keep = (t: string, re: RegExp) => !!t && re.test(t) && !(half && HALF_OWNED.test(t));
+  return { wrap: asClass(filterClass(v, (t) => keep(t, WIDTH_WRAP))), className: asClass(filterClass(v, (t) => keep(t, MEDIA_CLASS))) };
 }
 /** a picture of a list item drawn as the avatar disc: a portrait or an icon (rounded-full) or a small fixed thumbnail (size-*) */
 const isDisc = (v: Value | undefined): boolean => /(^|\s)(rounded-full|size-\d+)(\s|$)/.test(classText(v));
@@ -216,12 +218,15 @@ class Projector {
       this.add(place);
       const field = all.map((f) => f.value).join(" ");
       if (src.list && isDisc(props["className"])) return organism(SHAPE.ShapeAvatar.name, { place: place.place, field });
-      // layout classes (order-first, portrait max-w-sm / md:min-h-128 / md:aspect-auto) stay on ShapeMedia, not a wrapper:
-      // md:aspect-auto must override aspect-* on the same node, and order-* must be on the grid item. fill:half is unchanged.
+      // layout classes: order-first / portrait max-w-sm / md:aspect-auto / md:min-h-128 on ShapeMedia (same node as aspect,
+      // the grid item). A same-breakpoint width override (w-1/4) is a Box around it, so it does not fight w-full.
+      // fill:half is unchanged.
       const half = fillsHalf(props["className"]);
-      const layout = mediaLayout(props["className"], half);
+      const { wrap, className: layout } = mediaParts(props["className"], half);
+      if (wrap) this.check(wrap);
       if (layout) this.check(layout);
-      return organism(SHAPE.ShapeMedia.name, { aspect: ratioClass(props["ratio"]), ...(half ? { fill: "half" } : {}), ...(layout ? { className: layout } : {}), place: place.place, field });
+      const media = organism(SHAPE.ShapeMedia.name, { aspect: ratioClass(props["ratio"]), ...(half ? { fill: "half" } : {}), ...(layout ? { className: layout } : {}), place: place.place, field });
+      return wrap ? { use: "Box", props: { Class: wrap }, children: [media] } : media;
     }
     return undefined;
   }
