@@ -2,6 +2,7 @@
 // item -> the wireframe (svelte/blocks/<item>.svelte), in manifest order, and each wireframe by its organism name.
 // ui8kit/prototypes re-exports it (src/catalog.ts, src/index.ts).
 import type { Component } from "svelte";
+import AmenitiesSimple from "./svelte/blocks/amenities-simple.svelte";
 import ArticleLead from "./svelte/blocks/article-lead.svelte";
 import ArticleSimple from "./svelte/blocks/article-simple.svelte";
 import CasesSimple from "./svelte/blocks/cases-simple.svelte";
@@ -52,10 +53,11 @@ import TestimonialsSimple from "./svelte/blocks/testimonials-simple.svelte";
 import TimelineSimple from "./svelte/blocks/timeline-simple.svelte";
 import TopicsSimple from "./svelte/blocks/topics-simple.svelte";
 
-export { ArticleLead, ArticleSimple, CasesSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, CtaSimple, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, GuaranteesSimple, HeaderSimple, HeroSimple, HoursSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PromoSimple, PullQuoteSimple, PurchaseSimple, RatingSimple, RoomsSimple, ServicesSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TimelineSimple, TopicsSimple };
+export { AmenitiesSimple, ArticleLead, ArticleSimple, CasesSimple, ChaptersSimple, ChoiceLinks, CollectionsSimple, CompareSimple, ContactsSimple, CourseOutline, CtaSimple, ErrorSimple, EventIntro, FaqSimple, FeatureShowcaseSimple, FeaturesSimple, FigureSimple, FooterSimple, GalleryHero, GuaranteesSimple, HeaderSimple, HeroSimple, HoursSimple, IntroSimple, LocationsSimple, LogosSimple, MenuSimple, OffersSimple, PhotosSimple, PricingSimple, ProductReviews, ProductSimple, ProductsSimple, ProfileIntro, PromoSimple, PullQuoteSimple, PurchaseSimple, RatingSimple, RoomsSimple, ServicesSimple, SpecsSimple, SplitSimple, StatsSimple, StepsSimple, StorePolicies, StoriesSimple, TeamSimple, TestimonialsSimple, TimelineSimple, TopicsSimple };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CATALOG: Record<string, Component<any>> = {
+  "amenities-simple": AmenitiesSimple,
   "article-lead": ArticleLead,
   "article-simple": ArticleSimple,
   "cases-simple": CasesSimple,

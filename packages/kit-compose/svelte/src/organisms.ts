@@ -6,6 +6,8 @@ export { default as ActivityFeed } from "./blocks/activity-feed.svelte";
 export type * from "./blocks/activity-feed.types";
 export { default as AddIcon } from "./components/add-icon.svelte";
 export { default as AddQty } from "./components/add-qty.svelte";
+export { default as AmenitiesSimple } from "./blocks/amenities-simple.svelte";
+export type * from "./blocks/amenities-simple.types";
 export { default as AnnouncementBar } from "./blocks/announcement-bar.svelte";
 export { default as AppMain } from "./components/app-main.svelte";
 export { default as AppShell } from "./blocks/app-shell.svelte";

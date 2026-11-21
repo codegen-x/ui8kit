@@ -411,6 +411,14 @@
             ]
           },
           {
+            "id": "marketing-simple-local",
+            "entries": [
+              {
+                "block": "amenitiessimple"
+              }
+            ]
+          },
+          {
             "id": "marketing-simple-details",
             "entries": [
               {

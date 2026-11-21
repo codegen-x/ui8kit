@@ -247,6 +247,45 @@
       "emptyState": true
     },
     {
+      "id": "AmenitiesSimple",
+      "surface": "kit-block",
+      "spec": "block.amenitiessimple",
+      "source": "packages/compose-gen/specs/blocks/amenitiessimple.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "items",
+          "collection": "simpleamenities",
+          "kind": "amenity",
+          "record": "Amenity",
+          "map": "amenityItem",
+          "list": true
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "padding",
+        "align",
+        "layout",
+        "cols",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.amenitiesSimple.title",
+          "keys": []
+        },
+        {
+          "prop": "description",
+          "dictionary": "marketing.amenitiesSimple.description",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
       "id": "AnnouncementBar",
       "surface": "kit-block",
       "spec": "block.announcement",
@@ -9998,6 +10037,14 @@
           "list": true
         },
         {
+          "prop": "AmenitiesSimple.items",
+          "collection": "simpleamenities",
+          "kind": "amenity",
+          "record": "Amenity",
+          "map": "amenityItem",
+          "list": true
+        },
+        {
           "prop": "ArticleBody.sections",
           "collection": "article",
           "kind": "section",
@@ -11054,6 +11101,7 @@
         "block.aboutme",
         "block.accordion",
         "block.activity",
+        "block.amenitiessimple",
         "block.announcement",
         "block.article",
         "block.articlelead",
@@ -14023,6 +14071,14 @@
       "status": "todo",
       "data": [
         {
+          "prop": "AmenitiesSimple.items",
+          "collection": "simpleamenities",
+          "kind": "amenity",
+          "record": "Amenity",
+          "map": "amenityItem",
+          "list": true
+        },
+        {
           "prop": "ArticleSimple.sections",
           "collection": "article",
           "kind": "section",
@@ -14514,6 +14570,7 @@
       ],
       "emptyState": false,
       "uses": [
+        "block.amenitiessimple",
         "block.articlelead",
         "block.articlesimple",
         "block.casessimple",

@@ -1,0 +1,81 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.amenitiessimple",
+  "name": "Simple amenities",
+  "docs": "The heading, one paragraph and the amenities of a stay or a venue as short names: muted rows in three or two columns, or outlined pills in a wrapping row.",
+  "theme": "marketing",
+  "group": "features",
+  "organism": "AmenitiesSimple",
+  "line": "simple",
+  "model": "amenities@1",
+  "axes": {
+    "layout": [
+      "grid",
+      "pills"
+    ],
+    "cols": [
+      "3",
+      "2"
+    ]
+  },
+  "defaults": {
+    "layout": "grid",
+    "cols": "3"
+  },
+  "variants": [
+    {
+      "id": "grid3",
+      "set": {}
+    },
+    {
+      "id": "grid2",
+      "set": {
+        "cols": "2"
+      }
+    },
+    {
+      "id": "pills",
+      "set": {
+        "layout": "pills"
+      }
+    }
+  ],
+  "slots": [],
+  "facts": [
+    {
+      "sel": "section h2",
+      "n": 1
+    },
+    {
+      "sel": "ul > li",
+      "n": "@amenityItems"
+    }
+  ],
+  "data": [
+    {
+      "as": "amenityItems",
+      "collection": "simpleamenities",
+      "kind": "amenity",
+      "record": "Amenity",
+      "fields": {
+        "id": "id",
+        "title": "title"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "amenitiessimple",
+      "title": {
+        "$": "ui.marketing.amenitiesSimple.title"
+      },
+      "description": {
+        "$": "ui.marketing.amenitiesSimple.description"
+      },
+      "items": {
+        "$": "amenityItems"
+      }
+    }
+  }
+}

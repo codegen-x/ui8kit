@@ -193,6 +193,13 @@ const CATALOG = [
         variants: 16,
       },
       {
+        id: "marketing-simple-local",
+        href: "#/marketing-simple-local",
+        name: ui.catalog.categories.marketingSimpleLocal,
+        blocks: 1,
+        variants: 3,
+      },
+      {
         id: "marketing-simple-details",
         href: "#/marketing-simple-details",
         name: ui.catalog.categories.marketingSimpleDetails,

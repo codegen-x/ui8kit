@@ -149,5 +149,6 @@ export const guaranteeItems = src("guaranteeItems", "simpleguarantees", "perk", 
 export const serviceItems = src("serviceItems", "simpleservices", "service", "Service", CODEX_FIELDS.serviceItem);
 export const caseItems = src("caseItems", "simplecases", "case", "CaseStudy", CODEX_FIELDS.caseItem);
 export const timelineSteps = src("timelineSteps", "simpletimeline", "milestone", "TimelineStep", CODEX_FIELDS.timelineStep);
+export const amenityItems = src("amenityItems", "simpleamenities", "amenity", "Amenity", CODEX_FIELDS.amenityItem);
 export const menuDishes = src("menuDishes", "simplemenu", "dish", "MenuDish", CODEX_FIELDS.menuDish);
 export const reviewItems = src("reviewItems", "simplereviews", "review", "ReviewItem", CODEX_FIELDS.reviewItem);

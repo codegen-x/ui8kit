@@ -10,6 +10,7 @@ import IndexPage from "./BlocksScreen/IndexPage.vue";
 import AboutPage from "./BlocksScreen/AboutPage.vue";
 import AboutmePage from "./BlocksScreen/AboutmePage.vue";
 import AccordionPage from "./BlocksScreen/AccordionPage.vue";
+import AmenitiessimplePage from "./BlocksScreen/AmenitiessimplePage.vue";
 import ArticleleadPage from "./BlocksScreen/ArticleleadPage.vue";
 import ArticlesimplePage from "./BlocksScreen/ArticlesimplePage.vue";
 import BeforeafterPage from "./BlocksScreen/BeforeafterPage.vue";
@@ -178,6 +179,7 @@ const ROUTES = [
   {"path":"about","area":"about"},
   {"path":"aboutme","area":"aboutme"},
   {"path":"accordion","area":"accordion"},
+  {"path":"amenitiessimple","area":"amenitiessimple"},
   {"path":"articlelead","area":"articlelead"},
   {"path":"articlesimple","area":"articlesimple"},
   {"path":"beforeafter","area":"beforeafter"},
@@ -350,6 +352,7 @@ const actions = { toggleTheme };
     <AboutPage v-else-if="route.area === 'about'" />
     <AboutmePage v-else-if="route.area === 'aboutme'" />
     <AccordionPage v-else-if="route.area === 'accordion'" />
+    <AmenitiessimplePage v-else-if="route.area === 'amenitiessimple'" />
     <ArticleleadPage v-else-if="route.area === 'articlelead'" />
     <ArticlesimplePage v-else-if="route.area === 'articlesimple'" />
     <BeforeafterPage v-else-if="route.area === 'beforeafter'" />

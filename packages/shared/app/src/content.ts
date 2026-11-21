@@ -253,7 +253,8 @@ export const ui = {
       "guaranteessimple": "Simple guarantees",
       "servicessimple": "Simple services",
       "casessimple": "Simple case studies",
-      "timelinesimple": "Simple timeline"
+      "timelinesimple": "Simple timeline",
+      "amenitiessimple": "Simple amenities"
     },
     "docs": {
       "header": "Skip link, brand, navigation, theme button and an optional call to action.",
@@ -415,7 +416,8 @@ export const ui = {
       "guaranteessimple": "The heading, one paragraph and the promises (delivery, quality, returns), each a short title and a line: side by side on one muted band, or on cards, in four or three columns.",
       "servicessimple": "The heading, one paragraph and the services (the name as a link, a line, the starting price): on cards in three or two columns, or rows with the price at the end.",
       "casessimple": "The heading, one paragraph and the case studies (a picture, the client, the title as a link, the result in one line): on cards in three or two columns, or rows with the picture at the start.",
-      "timelinesimple": "The heading, one paragraph and the steps of a process or a history (the date or the stage, a title, a line) as an ordered list: one column of muted steps, or side by side in two or four columns."
+      "timelinesimple": "The heading, one paragraph and the steps of a process or a history (the date or the stage, a title, a line) as an ordered list: one column of muted steps, or side by side in two or four columns.",
+      "amenitiessimple": "The heading, one paragraph and the amenities of a stay or a venue as short names: muted rows in three or two columns, or outlined pills in a wrapping row."
     },
     "variants": {
       "header": {
@@ -1413,6 +1415,11 @@ export const ui = {
         "column": "One column",
         "grid2": "Two columns",
         "grid4": "Four columns"
+      },
+      "amenitiessimple": {
+        "grid3": "Three columns",
+        "grid2": "Two columns",
+        "pills": "Pills in a row"
       }
     },
     "landmark": "{0}, {1}",
@@ -1840,6 +1847,10 @@ export const ui = {
     "timelineSimple": {
       "title": "How a project runs",
       "description": "Four steps from the first call to the launch, usually in a month."
+    },
+    "amenitiesSimple": {
+      "title": "In every stay",
+      "description": "Everything below is included in the price of the room, with no extra fees at check-out."
     }
   },
   "cases": {
@@ -3103,7 +3114,8 @@ export const ui = {
       "marketingSimpleShop": "Simple blocks: shop",
       "marketingSimpleDetails": "Simple blocks: product details and courses",
       "marketingSimpleVenue": "Simple blocks: food, offers and opening hours",
-      "marketingSimpleStay": "Simple blocks: stays and local services"
+      "marketingSimpleStay": "Simple blocks: stays, services and work",
+      "marketingSimpleLocal": "Simple blocks: amenities and delivery"
     },
     "pages": {
       "saasLanding": {

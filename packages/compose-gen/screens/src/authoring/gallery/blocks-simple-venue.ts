@@ -58,4 +58,18 @@ const roomsSimple = define({
   sample: { id: "roomssimple", ...head(rms), items: ref("roomItems") },
 });
 
-export const simpleVenueBlocks = [menuSimple, hoursSimple, roomsSimple];
+const amn = k("amenitiesSimple");
+const amenitiesSimple = define({
+  key: "amenitiessimple", theme: "marketing", group: "features", line: "simple", model: "amenities@1",
+  name: "Simple amenities", docs: "The heading, one paragraph and the amenities of a stay or a venue as short names: muted rows in three or two columns, or outlined pills in a wrapping row.",
+  organism: "AmenitiesSimple", axes: ["layout", "cols"], data: [d.amenityItems],
+  variants: [
+    ["grid3", "Three columns"],
+    ["grid2", "Two columns", { cols: "2" }],
+    ["pills", "Pills in a row", { layout: "pills" }],
+  ],
+  facts: [h2, li("@amenityItems")],
+  sample: { id: "amenitiessimple", ...head(amn), items: ref("amenityItems") },
+});
+
+export const simpleVenueBlocks = [menuSimple, hoursSimple, roomsSimple, amenitiesSimple];

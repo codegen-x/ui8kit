@@ -9,6 +9,7 @@
   import AboutPage from "./BlocksScreen/AboutPage.svelte";
   import AboutmePage from "./BlocksScreen/AboutmePage.svelte";
   import AccordionPage from "./BlocksScreen/AccordionPage.svelte";
+  import AmenitiessimplePage from "./BlocksScreen/AmenitiessimplePage.svelte";
   import ArticleleadPage from "./BlocksScreen/ArticleleadPage.svelte";
   import ArticlesimplePage from "./BlocksScreen/ArticlesimplePage.svelte";
   import BeforeafterPage from "./BlocksScreen/BeforeafterPage.svelte";
@@ -177,6 +178,7 @@
     {"path":"about","area":"about"},
     {"path":"aboutme","area":"aboutme"},
     {"path":"accordion","area":"accordion"},
+    {"path":"amenitiessimple","area":"amenitiessimple"},
     {"path":"articlelead","area":"articlelead"},
     {"path":"articlesimple","area":"articlesimple"},
     {"path":"beforeafter","area":"beforeafter"},
@@ -352,6 +354,8 @@
     <AboutmePage />
   {:else if route.area === "accordion"}
     <AccordionPage />
+  {:else if route.area === "amenitiessimple"}
+    <AmenitiessimplePage />
   {:else if route.area === "articlelead"}
     <ArticleleadPage />
   {:else if route.area === "articlesimple"}

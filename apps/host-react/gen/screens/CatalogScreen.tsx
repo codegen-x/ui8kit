@@ -38,6 +38,7 @@ import { MarketingSimpleOfferPage } from "./CatalogScreen/MarketingSimpleOfferPa
 import { MarketingSimpleShopPage } from "./CatalogScreen/MarketingSimpleShopPage";
 import { MarketingSimpleVenuePage } from "./CatalogScreen/MarketingSimpleVenuePage";
 import { MarketingSimpleStayPage } from "./CatalogScreen/MarketingSimpleStayPage";
+import { MarketingSimpleLocalPage } from "./CatalogScreen/MarketingSimpleLocalPage";
 import { MarketingSimpleDetailsPage } from "./CatalogScreen/MarketingSimpleDetailsPage";
 import { MarketingAboutPage } from "./CatalogScreen/MarketingAboutPage";
 import { MarketingPortfolioPage } from "./CatalogScreen/MarketingPortfolioPage";
@@ -146,6 +147,7 @@ const ROUTES = [
   {"path":"marketing-simple-shop","area":"marketing-simple-shop"},
   {"path":"marketing-simple-venue","area":"marketing-simple-venue"},
   {"path":"marketing-simple-stay","area":"marketing-simple-stay"},
+  {"path":"marketing-simple-local","area":"marketing-simple-local"},
   {"path":"marketing-simple-details","area":"marketing-simple-details"},
   {"path":"marketing-about","area":"marketing-about"},
   {"path":"marketing-portfolio","area":"marketing-portfolio"},
@@ -290,6 +292,8 @@ export function CatalogScreen({ url }: { url: UrlPort }) {
           <MarketingSimpleVenuePage />
         ) : route.area === "marketing-simple-stay" ? (
           <MarketingSimpleStayPage />
+        ) : route.area === "marketing-simple-local" ? (
+          <MarketingSimpleLocalPage />
         ) : route.area === "marketing-simple-details" ? (
           <MarketingSimpleDetailsPage />
         ) : route.area === "marketing-about" ? (

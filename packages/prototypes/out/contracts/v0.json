@@ -2,6 +2,12 @@
   "version": 0,
   "base": "https://registry.buildy.tw/contracts",
   "items": {
+    "amenities-simple": {
+      "version": 1,
+      "block": "block.amenitiessimple",
+      "model": "amenities@1",
+      "path": "amenities-simple/1.json"
+    },
     "article-lead": {
       "version": 1,
       "block": "block.articlelead",

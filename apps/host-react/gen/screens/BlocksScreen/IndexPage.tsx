@@ -14,6 +14,7 @@ const TOPICS = [
       { key: "about", href: "#/about", name: ui.blocks.names.about, docs: ui.blocks.docs.about },
       { key: "aboutme", href: "#/aboutme", name: ui.blocks.names.aboutme, docs: ui.blocks.docs.aboutme },
       { key: "accordion", href: "#/accordion", name: ui.blocks.names.accordion, docs: ui.blocks.docs.accordion },
+      { key: "amenitiessimple", href: "#/amenitiessimple", name: ui.blocks.names.amenitiessimple, docs: ui.blocks.docs.amenitiessimple },
       { key: "articlelead", href: "#/articlelead", name: ui.blocks.names.articlelead, docs: ui.blocks.docs.articlelead },
       { key: "articlesimple", href: "#/articlesimple", name: ui.blocks.names.articlesimple, docs: ui.blocks.docs.articlesimple },
       { key: "beforeafter", href: "#/beforeafter", name: ui.blocks.names.beforeafter, docs: ui.blocks.docs.beforeafter },

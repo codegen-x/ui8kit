@@ -2,6 +2,7 @@
 // The venue page of ThemeMarketingSimpleScreen.
 
 import {
+  AmenitiesSimple,
   CasesSimple,
   CtaSimple,
   GuaranteesSimple,
@@ -14,6 +15,7 @@ import {
   TimelineSimple,
   tpl,
   uniqLabel,
+  type Amenity,
   type CaseStudy,
   type Guarantee,
   type MenuDish,
@@ -32,6 +34,7 @@ import { simpleguarantees as guaranteeItemsEntries } from "@ui8kit/app-shared/da
 import { simpleservices as serviceItemsEntries } from "@ui8kit/app-shared/data/simpleservices";
 import { simplecases as caseItemsEntries } from "@ui8kit/app-shared/data/simplecases";
 import { simpletimeline as timelineStepsEntries } from "@ui8kit/app-shared/data/simpletimeline";
+import { simpleamenities as amenityItemsEntries } from "@ui8kit/app-shared/data/simpleamenities";
 
 const MENUDISHES_FIELDS = {
   "id": "id",
@@ -69,6 +72,7 @@ const CASEITEMS_FIELDS = {
   "href": "slug|route",
 } as const;
 const TIMELINESTEPS_FIELDS = {"id":"id","date":"metadata.date.value","title":"title","text":"metadata.text.value"} as const;
+const AMENITYITEMS_FIELDS = {"id":"id","title":"title"} as const;
 
 const menuDishes = fromCodex<MenuDish>(menuDishesEntries, MENUDISHES_FIELDS, CODEX);
 const openingHours = fromCodex<OpeningHour>(openingHoursEntries, OPENINGHOURS_FIELDS, CODEX);
@@ -77,6 +81,7 @@ const guaranteeItems = fromCodex<Guarantee>(guaranteeItemsEntries, GUARANTEEITEM
 const serviceItems = fromCodex<Service>(serviceItemsEntries, SERVICEITEMS_FIELDS, CODEX);
 const caseItems = fromCodex<CaseStudy>(caseItemsEntries, CASEITEMS_FIELDS, CODEX);
 const timelineSteps = fromCodex<TimelineStep>(timelineStepsEntries, TIMELINESTEPS_FIELDS, CODEX);
+const amenityItems = fromCodex<Amenity>(amenityItemsEntries, AMENITYITEMS_FIELDS, CODEX);
 
 export function VenuePage() {
   return (
@@ -189,6 +194,15 @@ export function VenuePage() {
         layout="column"
         cols="2"
         landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.timelinesimple, ui.blocks.variants.timelinesimple.column))}
+      />
+      <AmenitiesSimple
+        id="venue-amenitiessimple"
+        title={ui.marketing.amenitiesSimple.title}
+        description={ui.marketing.amenitiesSimple.description}
+        items={amenityItems}
+        layout="grid"
+        cols="3"
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.amenitiessimple, ui.blocks.variants.amenitiessimple.grid3))}
       />
     </>
   );

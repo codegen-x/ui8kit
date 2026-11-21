@@ -6,6 +6,8 @@ export * from "./blocks/activity-feed";
 export type * from "./blocks/activity-feed.types";
 export * from "./components/add-icon";
 export * from "./components/add-qty";
+export * from "./blocks/amenities-simple";
+export type * from "./blocks/amenities-simple.types";
 export * from "./blocks/announcement-bar";
 export * from "./components/app-main";
 export * from "./blocks/app-shell";

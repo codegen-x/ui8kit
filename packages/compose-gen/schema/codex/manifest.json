@@ -4,6 +4,15 @@
   "resources": [
     {
       "record": {
+        "id": "amenity",
+        "label": "Amenity",
+        "scope": "workspace",
+        "description": "fixtures: simpleamenities",
+        "fields": []
+      }
+    },
+    {
+      "record": {
         "id": "card",
         "label": "Card",
         "scope": "workspace",

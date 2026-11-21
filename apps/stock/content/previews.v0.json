@@ -260,6 +260,67 @@
     ]
    }
   },
+  "amenitiessimple": {
+   "organism": "AmenitiesSimple",
+   "defaults": {
+    "layout": "grid",
+    "cols": "3"
+   },
+   "sample": {
+    "id": "amenitiessimple",
+    "title": {
+     "$": "ui.marketing.amenitiesSimple.title"
+    },
+    "description": {
+     "$": "ui.marketing.amenitiesSimple.description"
+    },
+    "items": {
+     "$": "amenityItems"
+    }
+   },
+   "variants": [
+    {
+     "id": "grid3",
+     "set": {}
+    },
+    {
+     "id": "grid2",
+     "set": {
+      "cols": "2"
+     }
+    },
+    {
+     "id": "pills",
+     "set": {
+      "layout": "pills"
+     }
+    }
+   ],
+   "data": [
+    {
+     "as": "amenityItems",
+     "collection": "simpleamenities",
+     "fields": {
+      "id": "id",
+      "title": "title"
+     }
+    }
+   ],
+   "orgProps": {
+    "AmenitiesSimple": [
+     "id",
+     "title",
+     "description",
+     "items",
+     "level",
+     "padding",
+     "align",
+     "layout",
+     "cols",
+     "landmarkLabel"
+    ]
+   }
+  },
   "articlelead": {
    "organism": "ArticleLead",
    "defaults": {
@@ -16967,6 +17028,10 @@
      {
       "block": "timelinesimple",
       "variant": "column"
+     },
+     {
+      "block": "amenitiessimple",
+      "variant": "grid3"
      }
     ],
     "about": [

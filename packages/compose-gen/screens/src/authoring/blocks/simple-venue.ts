@@ -1,12 +1,12 @@
-// The simple line, wave 3 (food, stays and local services; one content model each, specs/models): MenuSimple (menu@1), HoursSimple (hours@1), RoomsSimple (rooms@1).
+// The simple line, wave 3 (food, stays and local services; one content model each, specs/models): MenuSimple (menu@1), HoursSimple (hours@1), RoomsSimple (rooms@1), AmenitiesSimple (amenities@1).
 // The rules of simple.ts: the props are the fields of the model plus the axes and the settings; only the compositions
 // packages/prototypes lowers (Box, Block, Container, Stack, Group, List, ListItem, LinkPlain; Title, Text, Badge, LinkButton, MediaFrame).
-import { cn, each, ref, text, use, when, organism } from "../../build";
+import { and, cn, each, ref, text, use, when, organism } from "../../build";
 import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { fields, spec } from "../kit";
 import { id, title, tsOf } from "../props";
 import { O, level, description, titleId, padding, teamDerived, alignItems, textAlign, section } from "./simple";
-import { centered, list, head, itemTitle, itemText, ulist, is, chain } from "./simple-more";
+import { centered, list, head, itemTitle, itemText, ulist, is, isAlignV, chain } from "./simple-more";
 
 const str = (name: string, docs: string, required = false) => (required ? { name, type: "string" as const, required: true, docs } : { name, type: "string" as const, default: "", docs });
 const axis = (name: string, ...values: string[]) => ({ name, type: tsOf(...values), default: values[0] });
@@ -85,4 +85,20 @@ const roomsSimple = spec(`${O}rooms-simple`, "RoomsSimple", "The simple rooms (m
             price("r.price"))))))],
 });
 
-export const simpleVenueOrganisms: OrganismSpec[] = [menuSimple, hoursSimple, roomsSimple];
+// ---- AmenitiesSimple (amenities@1): what a stay or a venue offers (Wi-Fi, parking, breakfast) as a short list: rows in columns or pills
+const amenitiesSimple = spec(`${O}amenities-simple`, "AmenitiesSimple", "The simple amenities (model amenities@1): the heading, a description and the amenities as a list of short names. Text only. Axes: layout (grid: muted rows in columns; pills: outlined pills in a wrapping row, placed by the align setting), cols (3, 2 columns of the grid from md up).", {
+  records: { Amenity: fields(["id", "string"], ["title", "string"]) },
+  props: [id, title, description, list("items", "Amenity", "the amenities, in the order they are shown (2 to 16)"), level, padding, centered, axis("layout", "grid", "pills"), axis("cols", "3", "2")],
+  derived: [
+    titleId, ...teamDerived,
+    chain("grid", [[and(is("layout", "pills"), isAlignV("center")), "flex flex-wrap justify-center gap-2"], [and(is("layout", "pills"), isAlignV("end")), "flex flex-wrap justify-end gap-2"], [is("layout", "pills"), "flex flex-wrap gap-2"], [is("cols", "2"), "grid grid-cols-1 gap-4 sm:grid-cols-2"]], "grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"),
+    chain("item", [[is("layout", "pills"), "rounded border border-border px-4 py-2"]], "rounded bg-muted px-4 py-4"),
+  ],
+  view: [listSection(
+    ulist(ref("grid"),
+      each(ref("items"), "a", ref("a.id"),
+        use("ListItem", { props: { Class: ref("item") }, attrs: { "data-testid": "amenity" } },
+          use("Text", { props: { Size: "base", Weight: "medium", Class: "text-start" } }, text(ref("a.title")))))))],
+});
+
+export const simpleVenueOrganisms: OrganismSpec[] = [menuSimple, hoursSimple, roomsSimple, amenitiesSimple];

@@ -6,6 +6,8 @@ export { default as ActivityFeed } from "./blocks/activity-feed.vue";
 export type * from "./blocks/activity-feed.types";
 export { default as AddIcon } from "./components/add-icon.vue";
 export { default as AddQty } from "./components/add-qty.vue";
+export { default as AmenitiesSimple } from "./blocks/amenities-simple.vue";
+export type * from "./blocks/amenities-simple.types";
 export { default as AnnouncementBar } from "./blocks/announcement-bar.vue";
 export { default as AppMain } from "./components/app-main.vue";
 export { default as AppShell } from "./blocks/app-shell.vue";

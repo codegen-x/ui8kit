@@ -379,6 +379,10 @@
       {
         "block": "timelinesimple",
         "variant": "column"
+      },
+      {
+        "block": "amenitiessimple",
+        "variant": "grid3"
       }
     ],
     "about": [

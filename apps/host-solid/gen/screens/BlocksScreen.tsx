@@ -9,6 +9,7 @@ import { IndexPage } from "./BlocksScreen/IndexPage";
 import { AboutPage } from "./BlocksScreen/AboutPage";
 import { AboutmePage } from "./BlocksScreen/AboutmePage";
 import { AccordionPage } from "./BlocksScreen/AccordionPage";
+import { AmenitiessimplePage } from "./BlocksScreen/AmenitiessimplePage";
 import { ArticleleadPage } from "./BlocksScreen/ArticleleadPage";
 import { ArticlesimplePage } from "./BlocksScreen/ArticlesimplePage";
 import { BeforeafterPage } from "./BlocksScreen/BeforeafterPage";
@@ -177,6 +178,7 @@ const ROUTES = [
   {"path":"about","area":"about"},
   {"path":"aboutme","area":"aboutme"},
   {"path":"accordion","area":"accordion"},
+  {"path":"amenitiessimple","area":"amenitiessimple"},
   {"path":"articlelead","area":"articlelead"},
   {"path":"articlesimple","area":"articlesimple"},
   {"path":"beforeafter","area":"beforeafter"},
@@ -353,6 +355,8 @@ export function BlocksScreen({ url }: { url: UrlPort }) {
           <AboutmePage />
         ) : route.area === "accordion" ? (
           <AccordionPage />
+        ) : route.area === "amenitiessimple" ? (
+          <AmenitiessimplePage />
         ) : route.area === "articlelead" ? (
           <ArticleleadPage />
         ) : route.area === "articlesimple" ? (
