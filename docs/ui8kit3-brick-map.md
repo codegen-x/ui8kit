@@ -105,7 +105,10 @@ semantic names; the consumer must then ship the CSS for them:
   compound variants are multi-class selectors.
 - Recipes of compositions over a primitive with its own recipe (`<primitive>.variants.json`, today Icon: `icon`, `lucide-icon`)
   stay utilities in both modes, because the primitive merges them with its own utilities (a components-layer rule would lose to them).
-- `orgutils.Cnv` is a plain join in semantic mode (no tailwind-merge); the primitives still merge their final class list.
+- `orgutils.Cnv` is a plain join in semantic mode (no tailwind-merge); `orgutils.Variant` (organism recipes) keeps
+  merging, because several organism recipes override their own base (switcher-item, nav-item-content, icon-tab).
+- The primitives merge their final class list unless the app also calls `uiutils.SetClassMode(uiutils.ClassesSemantic)`
+  (kit utils from @ui8kit/registry 3.5.0): then `uiutils.Cn` joins and `uiutils.Compose` (Icon) still merges.
 
 Tests: `templ/src/compose/compose_semantic_test.go`, `packages/compose-gen/runtimes/templ/assets/go/dyn_mode_test.go`, run by `test/semantic.test.ts`.
 
