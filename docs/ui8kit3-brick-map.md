@@ -90,6 +90,25 @@ Server compositions (one template per composition, no logic; props by one helper
 
 Props on the servers: recipe keys (`variant`, `size`, ...; PascalCase in Jinja2 `p` and templ), `tag` / `as`, `class`, `attrs` (aria-*, data-*), plus every prop of the primitive. The server cn merge of the kit (registry 3.3.0) knows the object-fit / object-position / aspect groups, so Image `variant=logo` matches React (the former `KNOWN_KIT_BUGS` entry is gone).
 
+### templ: semantic class mode (opt-in)
+
+`compose.go` and `orgutils/dyn.go` have a class mode; the default `ClassesUtilities` keeps the output above unchanged.
+`compose.SetClassMode(compose.ClassesSemantic)` and `orgutils.SetClassMode(orgutils.ClassesSemantic)` (once, at startup) switch to
+semantic names; the consumer must then ship the CSS for them:
+
+- `Rc` returns `ui-<recipe>` for the base and the default values, `ui-<recipe>-<value>` for a non-default `variant`, and
+  `ui-<recipe>-<axis>-<value>` for any other non-default axis (`Rc("button", {variant: outline, size: sm})` = `ui-button ui-button-outline ui-button-size-sm`).
+  Defaults emit no class: they are baked into the base rule like a CSS framework. Recipes that draw nothing render `""`;
+  the markers `group`, `peer`, `group/*`, `peer/*` stay literal. An unknown value falls back to the default (utilities mode drops the axis).
+- `compose.SemanticRules()` lists the CSS rules (`Selector` + `Apply` utilities) to generate, for example as `@layer components { sel { @apply ...; } }`.
+  Default rules are `.ui-x:where(:not(.ui-x-a, ...))`, so they add no specificity and never leak onto a non-default value;
+  compound variants are multi-class selectors.
+- Recipes of compositions over a primitive with its own recipe (`<primitive>.variants.json`, today Icon: `icon`, `lucide-icon`)
+  stay utilities in both modes, because the primitive merges them with its own utilities (a components-layer rule would lose to them).
+- `orgutils.Cnv` is a plain join in semantic mode (no tailwind-merge); the primitives still merge their final class list.
+
+Tests: `templ/src/compose/compose_semantic_test.go`, `packages/compose-gen/runtimes/templ/assets/go/dyn_mode_test.go`, run by `test/semantic.test.ts`.
+
 ## Raw elements without a primitive (allowlist)
 
 `svg` (with its children), `br`, `datalist` and `output` have no UI8Kit 3 primitive and get none (decision 2026-10-24).

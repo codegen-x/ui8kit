@@ -321,13 +321,41 @@ func SP(v any) *string {
 // Has is `x != null`.
 func Has(v any) bool { return v != nil }
 
-// Cnv is cn(...) over values: clsx skips the falsy ones, tailwind-merge resolves conflicts.
+// Class modes of Cnv (SetClassMode), the same names as compose.SetClassMode. ClassesUtilities, the default:
+// Cnv resolves Tailwind conflicts (tailwind-merge). ClassesSemantic: Cnv only joins; the organism's classes go
+// to a primitive, which still merges them, so the merge here is redundant work.
+const (
+	ClassesUtilities = "utilities"
+	ClassesSemantic  = "semantic"
+)
+
+var joinOnly bool
+
+// SetClassMode selects ClassesUtilities or ClassesSemantic for Cnv (any other value: utilities). Set it once
+// at start, before the first render, together with compose.SetClassMode.
+func SetClassMode(mode string) { joinOnly = mode == ClassesSemantic }
+
+// ClassMode returns the current class mode of Cnv.
+func ClassMode() string {
+	if joinOnly {
+		return ClassesSemantic
+	}
+	return ClassesUtilities
+}
+
+// Cnv is cn(...) over values: clsx skips the falsy ones, tailwind-merge resolves conflicts (ClassesUtilities)
+// or the lists are joined as they are (ClassesSemantic).
 func Cnv(vs ...any) string {
 	parts := make([]string, 0, len(vs))
 	for _, v := range vs {
 		if T(v) {
-			parts = append(parts, S(v))
+			if s := strings.TrimSpace(S(v)); s != "" {
+				parts = append(parts, s)
+			}
 		}
+	}
+	if joinOnly {
+		return strings.Join(parts, " ")
 	}
 	return mergeTailwind(parts...)
 }

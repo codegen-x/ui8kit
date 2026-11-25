@@ -255,7 +255,119 @@ final class ComposeExtension extends AbstractExtension
 }
 `;
 
-const GO = (head: string) => `// ${head}
+const GO_SEMANTIC_TEST = (head: string) => `// ${head}
+
+package compose
+
+import (
+	"strings"
+	"testing"
+)
+
+func semanticMode(t *testing.T) {
+	t.Helper()
+	SetClassMode(ClassesSemantic)
+	t.Cleanup(func() { SetClassMode(ClassesUtilities) })
+}
+
+func TestClassModeDefaultIsUtilities(t *testing.T) {
+	if ClassMode() != ClassesUtilities || !strings.Contains(Rc("button", nil), "inline-flex") {
+		t.Fatalf("default mode %q: %q", ClassMode(), Rc("button", nil))
+	}
+}
+
+func TestRcSemantic(t *testing.T) {
+	semanticMode(t)
+	for _, c := range []struct {
+		id   string
+		vals map[string]string
+		want string
+	}{
+		{"button", nil, "ui-button"},
+		{"button", map[string]string{"variant": "default", "size": "default"}, "ui-button"},
+		{"button", map[string]string{"variant": "outline", "size": "sm"}, "ui-button ui-button-outline ui-button-size-sm"},
+		{"button", map[string]string{"variant": "nope"}, "ui-button"},
+		{"stack", map[string]string{"gap": "2"}, "ui-stack ui-stack-gap-2"},
+		{"box", nil, ""},
+		{"no-such-recipe", nil, ""},
+		{"lucide-icon", nil, "inline-block shrink-0"},
+	} {
+		if got := Rc(c.id, c.vals); got != c.want {
+			t.Errorf("Rc(%q, %v) = %q, want %q", c.id, c.vals, got, c.want)
+		}
+	}
+	for id, r := range recipes {
+		for _, c := range strings.Fields(r.Base) {
+			if marker(c) && !strings.Contains(" "+Rc(id, nil)+" ", " "+c+" ") {
+				t.Errorf("%s: marker %q missing in %q", id, c, Rc(id, nil))
+			}
+		}
+	}
+}
+
+func TestSemanticNamesUnique(t *testing.T) {
+	seen := map[string]string{}
+	use := func(n, what string) {
+		if prev, ok := seen[n]; ok {
+			t.Errorf("%s: %s and %s", n, prev, what)
+		}
+		seen[n] = what
+	}
+	for id, r := range recipes {
+		if !draws(r) || mergedRecipes[id] {
+			continue
+		}
+		use("ui-"+slug(id), id)
+		for k := range r.ByKey {
+			for _, v := range others(r, k) {
+				use(SemanticName(id, k, v), id+" "+k+"="+v)
+			}
+		}
+	}
+}
+
+func TestSemanticRules(t *testing.T) {
+	rules := SemanticRules()
+	if len(rules) == 0 {
+		t.Fatal("no rules")
+	}
+	names := map[string]bool{}
+	for _, r := range rules {
+		names[r.Name] = true
+		if strings.TrimSpace(r.Apply) == "" || !strings.HasPrefix(r.Selector, "."+r.Name) && !strings.HasPrefix(r.Selector, ".ui-") {
+			t.Errorf("bad rule %+v", r)
+		}
+		for _, c := range strings.Fields(r.Apply) {
+			if marker(c) {
+				t.Errorf("%s applies the marker %q", r.Selector, c)
+			}
+		}
+	}
+	// every name Rc can render has a rule or carries no classes of its own
+	for id, r := range recipes {
+		if !draws(r) || mergedRecipes[id] {
+			continue
+		}
+		for k, vs := range r.ByKey {
+			for v, c := range vs {
+				if a, _ := splitMarkers(c); a != "" && v != r.Defaults[k] && !names[SemanticName(id, k, v)] {
+					t.Errorf("no rule for %s", SemanticName(id, k, v))
+				}
+			}
+		}
+	}
+	want := ".ui-button:where(:not(.ui-button-destructive, .ui-button-ghost, .ui-button-link, .ui-button-outline, .ui-button-secondary))"
+	found := false
+	for _, r := range rules {
+		found = found || r.Selector == want
+	}
+	if !found {
+		t.Errorf("no default variant rule %s", want)
+	}
+}
+`;
+
+const GO = (head: string, mergedRecipes: string[]) => `// ${head}
 
 // Package compose: codegen-x compositions over the installed UI8Kit 3 templ primitives (packages/kit/templ).
 package compose
@@ -263,6 +375,7 @@ package compose
 import (
 	_ "embed"
 	"encoding/json"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -290,9 +403,257 @@ var recipes = func() map[string]recipe {
 	return d.Recipes
 }()
 
-// Rc returns the classes of recipe id for the given values (unset = defaults), compound variants included.
+// Class modes (SetClassMode). ClassesUtilities, the default: Rc returns the classes of the recipe and the
+// primitive merges them with the caller's Class. ClassesSemantic: Rc returns fixed names, nothing to merge:
+//
+//	ui-<recipe>                 the base and the default value of every axis
+//	ui-<recipe>-<value>         a non-default value of the variant axis
+//	ui-<recipe>-<axis>-<value>  a non-default value of any other axis
+//
+// The CSS of the names is SemanticRules (one @apply rule each, compiled by the app's Tailwind build). The
+// markers group and peer cannot be applied: they stay literal classes next to the names.
+const (
+	ClassesUtilities = "utilities"
+	ClassesSemantic  = "semantic"
+)
+
+var semantic bool
+
+// SetClassMode selects ClassesUtilities or ClassesSemantic for every Rc call (any other value: utilities).
+// Set it once at start, before the first render; it is not safe to change while rendering.
+func SetClassMode(mode string) { semantic = mode == ClassesSemantic }
+
+// ClassMode returns the current class mode.
+func ClassMode() string {
+	if semantic {
+		return ClassesSemantic
+	}
+	return ClassesUtilities
+}
+
+// SemanticName is the class of a non-default value in ClassesSemantic: ui-<recipe>-<value> on the variant
+// axis, ui-<recipe>-<axis>-<value> on the others; characters outside [a-z0-9-] become "-".
+func SemanticName(id, axis, value string) string {
+	if axis == "variant" {
+		return "ui-" + slug(id) + "-" + slug(value)
+	}
+	return "ui-" + slug(id) + "-" + slug(axis) + "-" + slug(value)
+}
+
+func slug(s string) string {
+	b := []byte(strings.ToLower(s))
+	for i, c := range b {
+		if !(c >= 'a' && c <= 'z' || c >= '0' && c <= '9' || c == '-') {
+			b[i] = '-'
+		}
+	}
+	return string(b)
+}
+
+// mergedRecipes: the recipes of compositions over a primitive that has its own recipe (an installed
+// <primitive>.variants.json, e.g. Icon). Their classes must merge with the primitive's own utilities, so
+// ClassesSemantic keeps them as utilities: Rc returns the recipe's classes and SemanticRules has no rule for them.
+var mergedRecipes = map[string]bool{${mergedRecipes.map((r) => JSON.stringify(r) + ": true").join(", ")}}
+
+// marker: a class that only marks an element for group-*/peer-* variants; @apply cannot carry it.
+func marker(c string) bool {
+	return c == "group" || c == "peer" || strings.HasPrefix(c, "group/") || strings.HasPrefix(c, "peer/")
+}
+
+// splitMarkers splits a class list into the classes to apply and the markers.
+func splitMarkers(s string) (apply, markers string) {
+	var a, m []string
+	for _, c := range strings.Fields(s) {
+		if marker(c) {
+			m = append(m, c)
+		} else {
+			a = append(a, c)
+		}
+	}
+	return strings.Join(a, " "), strings.Join(m, " ")
+}
+
+// draws: the recipe has at least one class (a recipe without any renders no ui-* name).
+func draws(r recipe) bool {
+	if strings.TrimSpace(r.Base) != "" {
+		return true
+	}
+	for _, vs := range r.ByKey {
+		for _, c := range vs {
+			if strings.TrimSpace(c) != "" {
+				return true
+			}
+		}
+	}
+	for _, c := range r.Compound {
+		if strings.TrimSpace(c["class"]) != "" {
+			return true
+		}
+	}
+	return false
+}
+
+// others: the non-default values of axis k, sorted.
+func others(r recipe, k string) []string {
+	out := make([]string, 0, len(r.ByKey[k]))
+	for v := range r.ByKey[k] {
+		if v != r.Defaults[k] {
+			out = append(out, v)
+		}
+	}
+	sort.Strings(out)
+	return out
+}
+
+type semRecipe struct {
+	base string                       // ui-<recipe> and the markers of the base; "" when the recipe draws nothing
+	add  map[string]map[string]string // axis -> value -> its name (non-default values) and its markers
+}
+
+var semRecipes = func() map[string]semRecipe {
+	out := make(map[string]semRecipe, len(recipes))
+	for id, r := range recipes {
+		if !draws(r) || mergedRecipes[id] {
+			continue
+		}
+		_, m := splitMarkers(r.Base)
+		s := semRecipe{base: Join("ui-"+slug(id), m), add: map[string]map[string]string{}}
+		for k, vs := range r.ByKey {
+			s.add[k] = map[string]string{}
+			for v, c := range vs {
+				_, m := splitMarkers(c)
+				if v == r.Defaults[k] {
+					s.add[k][v] = m
+				} else {
+					s.add[k][v] = Join(SemanticName(id, k, v), m)
+				}
+			}
+		}
+		out[id] = s
+	}
+	return out
+}()
+
+func rcSemantic(id string, r recipe, values map[string]string) string {
+	if mergedRecipes[id] {
+		return rcUtilities(r, values)
+	}
+	s := semRecipes[id]
+	if s.base == "" {
+		return ""
+	}
+	out := s.base
+	for _, k := range r.Keys {
+		v := values[k]
+		if v == "" {
+			v = r.Defaults[k]
+		}
+		if a := s.add[k][v]; a != "" {
+			out += " " + a
+		}
+	}
+	return out
+}
+
+// SemanticRule is one CSS rule of ClassesSemantic: Selector { @apply Apply }. Recipe is the recipe id, Name the
+// ui-* class the rule belongs to (a pattern registry such as ui8px patterns.json keys on it).
+type SemanticRule struct {
+	Recipe   string
+	Name     string
+	Selector string
+	Apply    string
+}
+
+// SemanticRules returns the CSS of ClassesSemantic in cascade order, recipes sorted by id. Per recipe: the base
+// on .ui-<recipe>; per axis (in recipe order) the default value on .ui-<recipe>:where(:not(<the other values>)),
+// so a default never leaks into a non-default value and adds no specificity, then every other value on its own
+// class; then the compound variants. Rules without classes to apply are left out; markers are removed.
+func SemanticRules() []SemanticRule {
+	ids := make([]string, 0, len(recipes))
+	for id := range recipes {
+		ids = append(ids, id)
+	}
+	sort.Strings(ids)
+	var out []SemanticRule
+	for _, id := range ids {
+		r := recipes[id]
+		if !draws(r) || mergedRecipes[id] {
+			continue
+		}
+		root := "ui-" + slug(id)
+		add := func(name, sel, cls string) {
+			if a, _ := splitMarkers(cls); a != "" {
+				out = append(out, SemanticRule{Recipe: id, Name: name, Selector: sel, Apply: a})
+			}
+		}
+		notOthers := func(k string) string {
+			os := others(r, k)
+			if len(os) == 0 {
+				return ""
+			}
+			ns := make([]string, len(os))
+			for i, v := range os {
+				ns[i] = "." + SemanticName(id, k, v)
+			}
+			return ":where(:not(" + strings.Join(ns, ", ") + "))"
+		}
+		add(root, "."+root, r.Base)
+		for _, k := range r.Keys {
+			add(root, "."+root+notOthers(k), r.ByKey[k][r.Defaults[k]])
+			for _, v := range others(r, k) {
+				n := SemanticName(id, k, v)
+				add(n, "."+n, r.ByKey[k][v])
+			}
+		}
+		for _, c := range r.Compound {
+			keys := make([]string, 0, len(c))
+			for k := range c {
+				if k != "class" {
+					keys = append(keys, k)
+				}
+			}
+			sort.Strings(keys)
+			sel := "." + root
+			for _, k := range keys {
+				var alts []string
+				always := false
+				for _, v := range strings.Split(c[k], "|") {
+					if v == r.Defaults[k] {
+						d := notOthers(k)
+						if d == "" {
+							always = true
+						}
+						alts = append(alts, d)
+					} else {
+						alts = append(alts, "."+SemanticName(id, k, v))
+					}
+				}
+				switch {
+				case always:
+				case len(alts) == 1:
+					sel += alts[0]
+				default:
+					sel += ":is(" + strings.Join(alts, ", ") + ")"
+				}
+			}
+			add(root, sel, c["class"])
+		}
+	}
+	return out
+}
+
+// Rc returns the classes of recipe id for the given values (unset = defaults), compound variants included;
+// in ClassesSemantic the ui-* names instead (SetClassMode).
 func Rc(id string, values map[string]string) string {
 	r := recipes[id]
+	if semantic {
+		return rcSemantic(id, r, values)
+	}
+	return rcUtilities(r, values)
+}
+
+// rcUtilities: the classes of the recipe for the given values (unset = defaults), compound variants included.
+func rcUtilities(r recipe, values map[string]string) string {
 	pick := func(k string) string {
 		if v := values[k]; v != "" {
 			return v
@@ -380,7 +741,10 @@ export function serverFiles(items: [string, BrickMap][], kit: string, HEAD: stri
   files.set("twig/src/compose/Compose.php", PHP_CORE(HEAD, "CodegenX\\Compose\\Twig"));
   files.set("twig/src/compose/ComposeExtension.php", TWIG_EXT(HEAD));
   files.set("latte/src/compose/Compose.php", PHP_CORE(HEAD, "CodegenX\\Compose\\Latte"));
-  files.set("templ/src/compose/compose.go", GO(HEAD));
+  // compositions over a primitive with its own recipe (packages/kit/templ/src/ui/<dir>/<dir>.variants.json): ClassesSemantic keeps their recipes as utilities
+  const merged = [...new Set(items.filter(([, m]) => m.recipe && existsSync(path.join(kit, "templ/src/ui", dirOf(m.primitive), `${dirOf(m.primitive)}.variants.json`))).map(([, m]) => m.recipe as string))].sort();
+  files.set("templ/src/compose/compose.go", GO(HEAD, merged));
+  files.set("templ/src/compose/compose_semantic_test.go", GO_SEMANTIC_TEST(HEAD));
   for (const [name, m] of items) {
     const p = m.primitive, s = spec(m), leaf = VOID.has(p);
     const j2 = `ui/${dirOf(p)}/${kebab(p)}.html.j2`, tw = `ui/${dirOf(p)}/${p}.html.twig`;
